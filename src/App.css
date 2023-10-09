@@ -1,38 +1,69 @@
+body {
+  background-color: #282c34;
+}
+
 .App {
   text-align: center;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  padding: 40px 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.container-flex {
+  flex-direction: row;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card {
+  max-width: 300px;
+  padding-right: 20px;
+  min-height: 230px;
+}
+
+.card h3 {
+  color: #C90B73;
+}
+
+h1 {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: #fff;
+  text-shadow: 4px 4px #C90B73;
+  text-transform: uppercase;
+  margin: 30px 0px;
+}
+
+h2 {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: #fff;
+  text-shadow: 4px 4px #C90B73;
+  text-transform: uppercase;
+  margin: 30px 0px;
+}
+
+h3 {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 10px 0px;
+}
+
+p {
+  font-weight: 200;
+  font-size: 24px;
+  color: #fff;
 }
