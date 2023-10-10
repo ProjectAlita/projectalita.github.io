@@ -7,6 +7,7 @@
 // Flexibility - Alita is completely cloud and model agnostic that allows you use in your specific environment
 // Customization - Alita is disugned to enable fair level of customization to build your own AI powered workflows
 import React from 'react';
+import img from './hub.png'
 
 // Define a functional React component for the Why Alita section
 const WhyAlita = () => {
@@ -34,25 +35,61 @@ const WhyAlita = () => {
     },
   ];
 
+  const coreFeatures = [
+    {
+      title: 'yout chat',
+      description: 'Alita integrates with your corporate messengers sucg as MS Teams or Slack to provide a seamless experience for your team members.'
+    },
+    {
+      title: 'your IDE',
+      description: 'Alita integrates with your Favorite IDE such as VS Code or JetBrains to empower developers with AI without leaving their environment.'
+    },
+    {
+      title: 'your data',
+      description: 'Alita integrates with your data sources, like Git or Confluence to enable your prompts with better context and more relevant suggestions.'
+    },
+    {
+      title: 'Your workflows',
+      description: 'Alita provide interfaces to configure data flows and AI chains to enable AI-augmented data processing and delivery.'
+    }
+  ]
+
   // Render the Why Alita component
   return (
     <div className="container">
-        <div>
-            <h2>Why Alita?</h2>
-            <p>
-                Alita implements a secure product-centric approach to delivery process
-                augmentation with needed generative AI capabilities through convenient
-                interfaces for all actors within the SDLC.
-            </p>
-        </div>
-        <div className="container container-flex">
-            {benefits.map((benefit, index) => (
-            // Render a card for each benefit
-            <div key={index} className="card">
-                <h3>{benefit.title}</h3>
-                <p>{benefit.description}</p>
+      <div>
+          <div>
+              <h2>Your environment - your rules</h2>
+              <p>
+                  Alita implements a secure product-centric approach to delivery process
+                  augmentation with needed generative AI capabilities through convenient
+                  interfaces for all actors within the SDLC.
+              </p>
+          </div>
+          <div className="container container-flex pb-0">
+              {coreFeatures.map((benefit, index) => (
+              // Render a card for each benefit
+              <div key={index} className="card">
+                  <h3>{benefit.title}</h3>
+                  <p>{benefit.description}</p>
+              </div>
+              ))}
+            <div className="hub-image">
+              <img src={img} alt="hub" className="hub-img" />
             </div>
-            ))}
+          </div>
+        </div>
+        <div className="container-left w-100">
+          <div className="w-75">
+            <h4>Core principles</h4>
+            <div className='text-left'>
+              {
+                benefits.map((feature, index) => (
+                  <p className='mt-0 mb-0'><span>{feature.title}</span> {feature.description}</p>
+                ))
+              }
+            </div>
+          </div>
         </div>
     </div>
   );
