@@ -5,7 +5,7 @@
 // on the right of the section we need to have a picture of architecture
 import React from 'react';
 import './about.css';
-import img from './city.png'
+import img from './hub.png'
 
 const About = () => {
   return (
@@ -27,9 +27,12 @@ const About = () => {
           <button>Explore</button>
         </div>
       </div>
-      <div class="about-image">
-        <img src={img} alt="Architecture" className="about-img" />
+      <div className="hub-image">
+        <img src={img} alt="hub" className="hub-img" />
       </div>
+      {/* <div class="about-image">
+        <img src={img} alt="platform" className="about-img" />
+      </div> */}
     </div>
     
   );

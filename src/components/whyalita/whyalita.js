@@ -6,8 +6,8 @@
 // Integration - Alita brings AI close to the team and integrates with the tools you already use
 // Flexibility - Alita is completely cloud and model agnostic that allows you use in your specific environment
 // Customization - Alita is disugned to enable fair level of customization to build your own AI powered workflows
+
 import React from 'react';
-import img from './hub.png'
 
 // Define a functional React component for the Why Alita section
 const WhyAlita = () => {
@@ -37,20 +37,28 @@ const WhyAlita = () => {
 
   const coreFeatures = [
     {
+      title: 'yout team',
+      description: 'Alita provide project-centric space to collaborate and share prompts, embeddings build with project data, AI chains to easily augment required processes with it'
+    },
+    {
       title: 'yout chat',
-      description: 'Alita integrates with your corporate messengers sucg as MS Teams or Slack to provide a seamless experience for your team members.'
+      description: 'Alita integrates with your corporate messengers such as MS Teams or Slack to provide a seamless experience for your team members'
     },
     {
       title: 'your IDE',
-      description: 'Alita integrates with your Favorite IDE such as VS Code or JetBrains to empower developers with AI without leaving their environment.'
+      description: 'Alita integrates with your Favorite IDE such as VS Code or JetBrains to empower developers with AI without leaving their environment'
+    },
+    {
+      title: 'your tools',
+      description: 'Alita’s API interface can be used to integrate it into your specific tools like Jira, Azure DevOps, Service Now and more to provide additional AI capabilities on a fingertips.'
     },
     {
       title: 'your data',
-      description: 'Alita integrates with your data sources, like Git or Confluence to enable your prompts with better context and more relevant suggestions.'
+      description: 'Alita integrates with your data sources, like Git or Confluence to enable your prompts with better context and more relevant suggestions'
     },
     {
       title: 'Your workflows',
-      description: 'Alita provide interfaces to configure data flows and AI chains to enable AI-augmented data processing and delivery.'
+      description: 'Alita provide configurable flows and chains to enable multi-step data processing and combine data from multiple sources to get crispier outcomes'
     }
   ]
 
@@ -74,22 +82,17 @@ const WhyAlita = () => {
                   <p>{benefit.description}</p>
               </div>
               ))}
-            <div className="hub-image">
-              <img src={img} alt="hub" className="hub-img" />
-            </div>
           </div>
         </div>
-        <div className="container-left w-100">
-          <div className="w-75">
+        <div className="container">
             <h4>Core principles</h4>
-            <div className='text-left'>
+            <div>
               {
                 benefits.map((feature, index) => (
                   <p className='mt-0 mb-0'><span>{feature.title}</span> {feature.description}</p>
                 ))
               }
             </div>
-          </div>
         </div>
     </div>
   );

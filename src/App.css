@@ -31,9 +31,9 @@ body {
 }
 
 .hub-image {
-  position: relative;
-  top: 0px;
-  right: 800px;
+  position: absolute;
+  top: 80px;
+  right: 0px;
   z-index: -1;
   width: 1px;
   height: 10px;
@@ -133,7 +133,7 @@ body {
 /* ----------- 1200px + ----------- */
 @media only screen and (min-width: 1201px) {
     .card {
-      flex: 0 0 22%;
+      flex: 0 0 31%;
     }
     .sm-card {
       flex: 0 0 45%;
