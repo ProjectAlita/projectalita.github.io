@@ -1,0 +1,9 @@
+site_name: Alita Documentation
+site_url: https://projectalita.ai/
+nav:
+  - Release Notes: release-notes.md
+  - User Guide: user-guide.md
+  - Alita and EPAM AI DIAL: alita-dial.md
+  - QA - Prompting and sharing: creating-prompts.md
+theme:
+  name: readthedocs

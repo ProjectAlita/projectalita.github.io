@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/creating-prompts/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>QA - Prompting and sharing - Alita Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "QA - Prompting and sharing";
+        var mkdocs_page_input_path = "creating-prompts.md";
+        var mkdocs_page_url = "/creating-prompts/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Alita Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../release-notes/">Release Notes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../user-guide/">User Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../alita-dial/">Alita and EPAM AI DIAL</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">QA - Prompting and sharing</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#access-to-alita">Access to Alita</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prompts">Prompts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-create-a-prompt">How to Create a Prompt</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#prompt-requirements-for-consistency-and-quality">Prompt Requirements for Consistency and Quality</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#submitting-your-prompt-for-publishing">Submitting Your Prompt for Publishing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#review-process-by-moderators-and-outcome-of-prompt-submission">Review Process by Moderators and Outcome of Prompt Submission</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#moderator-review-process">Moderator Review Process</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#possible-outcomes-of-the-review">Possible Outcomes of the Review</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#engagement-with-prompts-liking-and-trending">Engagement with Prompts: Liking and Trending</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#collections">Collections</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-collection">Creating Collection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#adding-prompts-to-your-collection">Adding Prompts to Your Collection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#publishing-your-collection">Publishing Your Collection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#engagement-with-collections-liking-and-trending">Engagement with Collections: Liking and Trending</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contribution">Contribution</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#why-share-your-prompts">Why Share Your Prompts?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rewards-and-recognition">Rewards and Recognition</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#useful-resources">Useful Resources</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#alita-prompt-library">Alita Prompt Library</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#prompt-engineering">Prompt Engineering</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Alita Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">QA - Prompting and sharing</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="how-to-create-and-publish-useful-prompts-for-testing-and-qa-activities">How to Create and Publish Useful Prompts for Testing and QA Activities</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Welcome to our comprehensive guide designed to empower our Testing and Quality Assurance (QA) community in the crafting and sharing of valuable prompts, specifically tailored for an array of testing activities. In today's rapidly evolving software development landscape, the adoption of Generative AI Tools has become increasingly instrumental in augmenting our testing efforts. These cutting-edge tools offer unparalleled capabilities in automating and innovating processes ranging from generating test cases and creating detailed test plans to formulating comprehensive test strategies and writing automation scripts. Additionally, they play a critical role in generating realistic and diverse test data, facilitating a more thorough and effective testing process.</p>
+<p>The intention behind this activity is twofold: to streamline the process of prompt generation that leverages Gen AI Tools, ensuring that these prompts become potent tools in identifying and resolving defects, bolstering product quality, and refining our testing strategies. Moreover, it seeks to evolve our QA community to actively contribute to and share their expertise through valuable prompts. By participating in enriching our Prompt Library, you not only aid in creating a substantial repository of resources but also contribute to a culture of knowledge sharing and collective growth within our community.</p>
+<p>We encourage you to share prompts across various domains, including but not limited to, generating test cases, creating comprehensive test plans and strategies, developing automation scripts, and generating test data. This endeavor will not only help elevate the efficiency and effectiveness of our testing processes but also foster innovation and creativity within our QA practices.</p>
+<p>In leveraging Gen AI tools, it is imperative to always review the generated outputs meticulously to ensure they not only meet our stringent quality standards but also strictly adhere to Epam’s security guidelines and policies. Our collective commitment to maintaining the highest level of security and protecting sensitive information is paramount and non-negotiable.</p>
+<p>Your contribution to this initiative will play a pivotal role in enhancing our testing capabilities, driving quality improvements, and maintaining our competitive edge in delivering superior software solutions. Let us embark on this journey together, fostering a vibrant and collaborative QA community that thrives on innovation, excellence, and shared success.</p>
+<h2 id="access-to-alita">Access to Alita</h2>
+<p>To access it:</p>
+<ol>
+<li>Open your browser.</li>
+<li>Type in <a href="https://alita.lab.epam.com">https://alita.lab.epam.com</a> in the address bar.</li>
+<li>Provide your EPAM account to login. Note: No need for registration.</li>
+<li>After successful login, you are navigated to the <strong>Prompts</strong> menu.</li>
+<li>Once you have access, navigate to <strong>Discover→My Library</strong> menu, where you will be able to create prompts and collections. <strong>Note:</strong> If you are logging in for the first time into Alita, wait for 5 minutes to allow private project initialization to be completed before creating prompts. </li>
+</ol>
+<p><strong>Note:</strong> No need to enable Epam VPN to access the Prompt Library.</p>
+<p><img alt="Main Interface" src="../img/Main%20Interface.png" /></p>
+<h2 id="prompts">Prompts</h2>
+<p>Prompts are essentially instructions or scenarios designed to generate outcomes to assist QA activities. The effectiveness of the prompts directly correlates with the efficiency and accuracy of our testing efforts. To ensure that every prompt we create serves its purpose effectively, it’s crucial to adhere to several foundational principles. These guidelines not only help in crafting prompts that are valuable and practical but also ensure that they align with our overarching goals of security, versatility, and clarity in our QA processes. With this context in mind, let’s delve into the core principles that should guide the creation of effective prompts:</p>
+<p><strong>Creating Effective Prompts</strong></p>
+<ol>
+<li><strong>Relevance</strong>: Directly tie your prompt to testing and QA activities to ensure relevance.</li>
+<li><strong>Clarity</strong>: Utilize clear, concise language for better comprehension.</li>
+<li><strong>Specificity</strong>: Clearly mention the testing phase, type, and specific focus area of the prompt.</li>
+<li><strong>Scalability</strong>: Aim for prompts that can be broadly applied across various projects.</li>
+<li><strong>Security</strong>: Avoid including any customer data or sensitive information.</li>
+</ol>
+<h3 id="how-to-create-a-prompt">How to Create a Prompt</h3>
+<p>Creating a prompt involves capturing essential details that guide the testing process effectively. Here is how you can create a prompt that adds value:</p>
+<ol>
+<li><strong>Initiate Prompt Creation</strong>: Click the <strong>+ Prompt</strong> button located at the top right of your screen to start crafting your prompt.</li>
+<li><strong>Provide Prompt Details</strong>:<ul>
+<li><strong>Name</strong>: Assign a descriptive name that clearly reflects the aim of the prompt.</li>
+<li><strong>Description</strong>: Summarize the purpose of the prompt, detailing what it intends to achieve. <strong>Note</strong>: The Name and Description fields are crucial for others to understand the prompt’s purpose and are not editable after saving.</li>
+<li><strong>Tag(s)</strong>: A descriptive Tag(s) for grouping the prompts.</li>
+<li><strong>Context</strong>: Well crafted prompt corresponding to well-acceppted Frameworks for creating prompts (e.g. CREATE, CRISPE, Elavis Saravia, etc.).</li>
+<li>In case the prompt's context contains <strong>Variables</strong> - then a descriptive variable name.</li>
+<li>In case the prompt has <strong>System</strong> or <strong>Assistant</strong> messages - then those messages must be informative.</li>
+</ul>
+</li>
+<li><strong>Select the Model</strong>: Choose the appropriate model (e.g., gpt-3.5-turbo, gpt-4-0125-preview, etc.) for which the prompt has been tailored and tested.</li>
+<li><strong>Configure Advanced Settings</strong>: Tune the output of your prompt by adjusting configurations such as Temperature, Top P, Top K, and Maximum length, ensuring the prompt's output aligns with expectations.</li>
+<li><strong>Test Your Prompt</strong>: Execute the prompt and review the results to confirm everything functions as intended.</li>
+<li><strong>Finalize</strong>: Click Save to keep your draft or proceed to the next step to share your work with the community.</li>
+</ol>
+<p><strong>Providing Name, Description and Context of the prompt:</strong></p>
+<p><img alt="Prompt-Create_New_Prompt" src="../img/Prompt-Create_New_Prompt.png" /></p>
+<p><strong>Setup Variables:</strong></p>
+<p><img alt="Prompt-Create_Variables" src="../img/Prompt-Create_Variables.png" /></p>
+<p><strong>Configuring Advanced Settings:</strong></p>
+<p><img alt="Prompt-Advanced_Settings" src="../img/Prompt-Advanced_Settings.png" /></p>
+<h4 id="prompt-requirements-for-consistency-and-quality">Prompt Requirements for Consistency and Quality</h4>
+<p>When crafting your prompt, ensure it includes the following elements for clarity and effectiveness:</p>
+<ul>
+<li><strong>Descriptive Name</strong>: Clearly indicates the focus of the prompt.</li>
+<li><strong>Brief Description</strong>: Eloquently explains the prompt’s goal.</li>
+<li><strong>Descriptive Tags</strong>: Facilitates prompt categorization and searchability.</li>
+<li><strong>Framework Adherence</strong>: Ensures the prompt aligns with accepted Prompt creation frameworks (e.g., CREATE, CRISPE, Elavis Saravia, etc.).</li>
+<li><strong>Variable Clarity</strong>: In scenarios with variables, use descriptive names.</li>
+<li><strong>Informative System Messages</strong>: If your prompt generates system or assistant messages, they must be clear and helpful.</li>
+<li><strong>Expected Outcomes</strong>: Define what successful application of the prompt looks like.</li>
+</ul>
+<h3 id="submitting-your-prompt-for-publishing">Submitting Your Prompt for Publishing</h3>
+<p>To make your prompt available to the wider QA community, follow the steps below for publication:</p>
+<ol>
+<li><strong>Publishing Initiation</strong>: With your prompt crafted and saved, click the Publish button to start the submission process.</li>
+<li><strong>Version Naming</strong>: Provide an informative version name (e.g., Gen-1.0) in the pop-up window. This name should reflect the content or purpose of the prompt, aiding in version control and future modifications.</li>
+<li><strong>Review Submission</strong>: Click Publish to submit your prompt for the moderation review process. This step is crucial to ensure the quality and relevance of prompts available to the QA community.</li>
+</ol>
+<p><strong>Publishing the prompt:</strong></p>
+<p><img alt="Prompt-Publishing_Part_1.png" src="../img/Prompt-Publishing_Part_1.png" /></p>
+<p><strong>Providing Version:</strong></p>
+<p><img alt="Prompt-Publishing" src="../img/Prompt-Publishing.png" /></p>
+<h2 id="review-process-by-moderators-and-outcome-of-prompt-submission">Review Process by Moderators and Outcome of Prompt Submission</h2>
+<h3 id="moderator-review-process">Moderator Review Process</h3>
+<p>After a prompt is submitted for publication, it enters a critical assessment phase led by our designated moderators. Our moderators are QA professionals with a broad understanding of what constitutes a high-quality, effective prompt.
+The review process aims to ensure that each prompt meets our standards for relevance, clarity, security, and overall utility. </p>
+<p>The moderators follow a structured evaluation protocol:</p>
+<ol>
+<li><strong>Initial Assessment</strong>: Moderators perform an initial check to ensure that the prompt submission is complete and adheres to the submission format.</li>
+<li><strong>Content Review</strong>: The content of the prompt is closely examined for its relevance to QA activities, clarity of instructions, adherence to accepted frameworks, and the security of information.</li>
+<li><strong>Practical Evaluation</strong>: Moderators assess the prompt’s practical application, reviewing variables, system messages for clarity, and the feasibility of expected outcomes.</li>
+<li><strong>Compliance Check</strong>: There's a final compliance check against our community guidelines and security policies to ensure no sensitive information is shared.</li>
+</ol>
+<h3 id="possible-outcomes-of-the-review">Possible Outcomes of the Review</h3>
+<p>After the review process, the prompt can have one of the following outcomes:</p>
+<ul>
+<li><strong>Published</strong>: The prompt meets all requirements and is made available in the Prompt Library for the entire network.</li>
+<li><strong>Feedback for Revision</strong>: The prompt has potential but requires changes. Specific feedback is provided for refinement.</li>
+<li><strong>Rejected</strong>: The prompt does not meet the necessary criteria and cannot be published in its current form. Reasons for rejection are shared with the submitter.</li>
+</ul>
+<p><strong>Statuses of Prompts</strong></p>
+<p>Users can track the status of their prompts throughout the review process. The following statuses are available:</p>
+<ul>
+<li><strong>All Statuses</strong>: A general view of all submitted prompts irrespective of their current stage.</li>
+<li><strong>Draft</strong>: The prompt is saved but not yet submitted for publishing.</li>
+<li><strong>Published</strong>: The prompt has been approved by moderators and is available in the Library.</li>
+<li><strong>On Moderation</strong>: The prompt is currently being reviewed by the moderators.</li>
+<li><strong>User Approval</strong>: The prompt needs further approval or action from the submitter based on moderator feedback.</li>
+<li><strong>Rejected</strong>: The prompt has been reviewed and rejected for publication.</li>
+</ul>
+<p>To check the status of your submitted prompts, navigate to "<strong>My libraries → Prompts</strong>" page on the platform, and select the status you wish to view from the dropdown menu.</p>
+<p><img alt="Prompts-Status_Check" src="../img/Prompts-Status_Check.png" /></p>
+<h3 id="engagement-with-prompts-liking-and-trending">Engagement with Prompts: Liking and Trending</h3>
+<p>Once a prompt is published, it becomes an essential resource for the QA community. You are encouraged to engage with these prompts through our "<strong>Like</strong>" functionality. Prompts that receive a significant number of likes can appear in the "<strong>Trending</strong>" page of the Prompt Library, highlighting their popularity and usefulness.</p>
+<p>The "<strong>Trending</strong>" page serves as a quick reference for discovering highly valued prompts within the community. To like a prompt, simply click on the heart icon associated with the prompt in the Prompt Library. Your engagement helps in identifying the most impactful prompts, enriching our QA processes and driving a culture of continuous improvement and collaboration.</p>
+<p><img alt="Prompts-Trending" src="../img/Prompts-Trending.png" /></p>
+<p>By understanding and participating in the review process, you are contributing to a shared knowledge base that benefits the entire QA community. Your efforts and interactions, including submitting, refining, and liking prompts, play a crucial role in enhancing our collective testing efficacy.</p>
+<h2 id="collections">Collections</h2>
+<p>Following the creation and publishing of individual prompts, the next step is the organization and further dissemination of these prompts through Collections. Collections serve as a means to group prompts by theme, project, testing phase, or any other meaningful categorization that enhances accessibility and usefulness for the QA community. This section will guide you through creating collections, adding prompts to them, publishing these collections, and how your peers can interact with them through likes.</p>
+<p><strong>The Purpose and Usefulness of Collections</strong></p>
+<p>Collections are immensely valuable for several reasons:</p>
+<ul>
+<li><strong>Thematic Organization</strong>: They allow for the grouping of prompts by specific themes or projects, making it easy for users to find a set of related prompts.</li>
+<li><strong>Efficiency</strong>: By organizing prompts into collections, we save time for our QA engineers by providing consolidated resources that can be easily accessed and applied.</li>
+<li><strong>Sharing Best Practices</strong>: Collections can be shared across teams, promoting best practices and unified testing approaches across different projects.</li>
+</ul>
+<h3 id="creating-collection">Creating Collection</h3>
+<ol>
+<li>Click the <strong>+ Collection</strong> button located at the top right corner.</li>
+<li>You will be prompted to fill in the <strong>Name</strong> and <strong>Description</strong> fields. Remember, these fields are essential as they give the first impression and understanding of what your collection is about.</li>
+</ol>
+<p><img alt="Collection-Create_Collection" src="../img/Collection-Create_Collection.png" /></p>
+<h3 id="adding-prompts-to-your-collection">Adding Prompts to Your Collection</h3>
+<p>To add prompts to your collection, follow these steps:</p>
+<ol>
+<li>Once you've created a collection, you can start adding relevant prompts. Navigate to the prompt you wish to add and select an option to Add to Collection.</li>
+<li>Select the Collection you wish to add your prompt to from the pop-up window. You can add multiple prompts to a collection as long as they share the thematic relevance or purpose you've defined for your collection.</li>
+</ol>
+<p><img alt="Prompt-Add_to_Collection" src="../img/Prompt-Add_to_Collection.png" /></p>
+<h3 id="publishing-your-collection">Publishing Your Collection</h3>
+<p>Publishing your collection makes it available to the entire QA network, allowing others to benefit from the curated set of prompts you've organized:</p>
+<ol>
+<li>After adding the desired prompts to your collection, open the collection and review the content to ensure completeness and relevance.</li>
+<li>Click the <strong>Publish</strong> icon to submit your collection for review. This process is similar to publishing individual prompts, where your collection will be reviewed for adherence to our guidelines and overall quality.</li>
+<li>Once approved, your collection will be published and accessible from the Collection menu, ready to be used by the community.</li>
+</ol>
+<p><img alt="Collection-Publishing" src="../img/Collection-Publishing.png" /></p>
+<h3 id="engagement-with-collections-liking-and-trending">Engagement with Collections: Liking and Trending</h3>
+<p>Just as with individual prompts, users are encouraged to engage with collections through likes. This interaction is crucial for several reasons:</p>
+<ul>
+<li><strong>Recognition</strong>: Liking a collection serves as a form of recognition and appreciation for the contributor's effort in curating valuable resources.</li>
+<li><strong>Visibility</strong>: Collections with a high number of likes gain visibility and are more likely to appear in the "Trending" page, ensuring that the most useful collections are easily accessible to the community.</li>
+<li><strong>Feedback Mechanism</strong>: Likes serve as a feedback mechanism, helping contributors understand the impact and usefulness of their collections, guiding future efforts in prompt and collection creation.</li>
+</ul>
+<p><img alt="Collections-My_Likes" src="../img/Collections-My_Likes.png" /></p>
+<p>By actively creating, contributing to, and engaging with collections, QA engineers enhance the shared knowledge base and support the continuous improvement of testing practices within the community. Collections not only facilitate access to valuable testing resources but also foster a collaborative environment where knowledge and best practices are freely exchanged.</p>
+<h2 id="contribution">Contribution</h2>
+<h3 id="why-share-your-prompts">Why Share Your Prompts?</h3>
+<p>Sharing your prompts not only contributes to the collective knowledge of our QA community but also highlights your expertise and creativity.
+By contributing, you’re directly impacting the efficiency and efficacy of our testing processes, encouraging a culture of innovation and continuous improvement.</p>
+<h3 id="rewards-and-recognition">Rewards and Recognition</h3>
+<p>To acknowledge the value of your contributions, we have an Appreciation Program in place. Leading contributors will be recognized by the Management Team.
+Your innovation could lead the way in defining our testing standards - an opportunity to shine and be recognized among your peers.
+By following these enhanced guidelines and utilizing the provided resources, you're well on your way to creating impactful prompts that can significantly improve our QA practices.
+Let's work together to build a richer, more effective Prompt Library for everyone in our network.</p>
+<h2 id="useful-resources">Useful Resources</h2>
+<h3 id="alita-prompt-library">Alita Prompt Library</h3>
+<ul>
+<li><a href="../user-guide/">Alita Prompt Library - User Guide</a></li>
+<li><a href="../release-notes/">Alita Prompt Library - Release Notes</a></li>
+<li><a href="https://kb.epam.com/display/EPMQAOPALT/Alita+overview">Alita overview</a></li>
+</ul>
+<h3 id="prompt-engineering">Prompt Engineering</h3>
+<ul>
+<li><a href="https://learn.epam.com/detailsPage?id=92d11cb4-dbaa-45a3-8b22-60f9f391f588">Prompt Engineering Foundations</a></li>
+<li><a href="https://learn.epam.com/detailsPage?id=1c89e986-9a96-4aed-8166-291af0a8a19c">EngX AI-Supported Quality Assurance Engineering</a></li>
+<li><a href="https://www.promptingguide.ai/">Guide to Effective Prompting</a></li>
+<li><a href="[Introduction to Prompt Engineering](https://www.youtube.com/watch?v=AgGu96_rnXo&amp;list=PLYio3GBcDKsPP2_zuxEp8eCulgFjI5a3g)">Introduction to Prompt Engineering</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../alita-dial/" class="btn btn-neutral float-left" title="Alita and EPAM AI DIAL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../alita-dial/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
