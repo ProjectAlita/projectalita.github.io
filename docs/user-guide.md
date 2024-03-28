@@ -33,9 +33,9 @@ To access it:
 
 ![Main Interface](img/Main Interface.png)
 
-## Prompt Library - Main Interface
+## Alita - Main Interface
 
-The Prompt Library application's main interface encompasses several sections, including the Discover Menu, Search feature, Quick Navigation tabs, Settings, a Quick button for creating prompts or collections, Tags, and Trending Authors.
+The Alita application's main interface encompasses several sections, including the Discover Menu, Search feature, Quick Navigation tabs, Settings, a Quick button for creating prompts or collections, Tags, and Trending Authors.
 
 **Sections:**
 
@@ -284,7 +284,7 @@ Prompts undergo several statuses through the review phase:
 - **Draft**: Saved yet unsubmitted prompts.
 - **Published**: Moderation-approved prompts, now accessible in the Library.
 - **On Moderation**: Prompts currently under review.
-- **User Approval**: Prompts pending submitter action or approval following moderator feedback.
+- **User Approval**: Prompts pending prompt's author approval for publishing a new version.
 - **Rejected**: Prompts evaluated and declined for publication.
 
 For status inquiries on your prompts, direct to the "**My Libraries → Prompts**" section on the platform and choose the relevant status from the dropdown menu.
@@ -318,6 +318,18 @@ Exporting prompts allows you to utilize them across different platforms by choos
 
 This functionality facilitates the transfer and application of your prompts across different platforms by generating easily importable JSON files.
 
+### How to Import a Prompt
+
+To use the prompts created in other platforms, follow these simple steps.
+
+1. **Initiate Import**: Select the **Import** option within Alita.
+2. **Choose File**: Browse and select the exported JSON prompt file.
+3. **Complete Process**: The prompt will be added under the 'My libraries - Prompts' section in Alita.
+4. **Use Prompt**: You can now access and utilize the imported prompt.
+
+![Prompt-Import_Alita](img/Prompt-Import_Alita.png)
+
+**Note**: Alita supports [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) template. Make sure the content and variables in your prompt adhere to this format, especially avoiding spaces in variable names. For more information please check [Alita and Epam AI Dial](alita-dial.md) document.
 
 ## My libraries - Collections Page
 
@@ -412,6 +424,137 @@ Exporting a collection allows for its use on different platforms, offering forma
 3. An export file will be generated and automatically downloaded to your device, enabling cross-platform utilization.
 
 
+## My libraries - Datasources Page
+
+Datasources play a pivotal role in broadening and enriching the functionalities of Alita and AI technologies. They enable the extension of LLMs by integrating user-specific or project-specific data, which is not initially part of the model’s training set, thereby enhancing the LLM's context with tailored information.
+
+![My_libraries-Datasources](img/My_libraries-Datasources.png)
+
+### Creating a Datasource
+
+To set up a new datasource and augment your model's capabilities:
+
+1. Click the **+ Datasource** button located at the top right corner.
+2. Fill out the **Name** and **Description** fields. *Note*: These are non-editable fields and cannot be modified after the datasource is saved.
+3. Choose an **Embedding model** from the dropdown list provided.
+4. Select the desired **Storage type** from another dropdown menu.
+5. Optionally, add tags by typing a tag name or selecting from pre-existing tags in the Tags input box.
+6. Click **Save** to finalize the creation.
+
+![Datasources-Create_New_Datasource](img/Datasources-Create_New_Datasource.png)
+
+Your newly created datasource will subsequently appear on the **My Libraries - Datasources** page.
+
+### Exploring Datasources
+
+Discovering the intricacies of a datasource is both simple and insightful:
+
+- Click on the card or the name of a datasource to unveil its configurations, providing a detailed overview of its setup and usage.
+
+### Connecting a Datasource to a Dataset
+
+The initial step involves linking your datasource to the desired dataset:
+
+1. Press the **+** icon to start adding a new dataset.
+2. Enter a name for your dataset. *Note*: This is a non-editable field and cannot be altered post-creation.
+3. From the dropdown list, select the source type of your dataset. Available options include:
+   - **File**: Any supported file type for upload.
+   - **Table**: Supported file types with a table structure, such as CSV or XLSX.
+   - **GIT**: Any accessible Git repository.
+   - **Confluence**: Any Confluence page accessible to you.
+
+![Datasources-Dataset](img/Datasources-Dataset.png)
+
+Depending on the selected source type, various configurations may be necessary to access the dataset source, primarily involving authentication and authorization parameters. This step is exempt for File and Table options since the files will be directly uploaded.
+
+### Configuring Transformers
+
+Transformers enhance your documents by extracting significant keywords, summarizing content, and improving searchability. *Please note if you don't clearly understand the purpose of the parameters and options available here than leave them as is. Don't make any changes.*
+
+**Extract Keywords**
+Options include:
+- **For Document**: Analyses the entire document for keyword extraction.
+- **For Chunks**: Processes document sections independently for more granular insights.
+
+**Keyword Extractor** - the only available option is **KeyBert**, designed for efficient keyword extraction.
+
+**Keyword Strategy** - choices range from **Max Sum**, to **Max MMR High**, and **Max MMR Low**, each offering different focuses on relevance and diversity.
+
+**Maximum Keyword Count** - defines the limit on the number of keywords to be extracted.
+
+**Split By** - determines how the document is sectioned for analysis, with options like Chunks, Lines, Paragraphs, Sentences, or Nothing.
+
+![Datasources-Dataset_Transformers](img/Datasources-Dataset_Transformers.png)
+
+### Configuring Summarization
+
+Summarization utilizes LLMs to condense documents into their core messages. Due to the high computational demand, use of this feature incurs additional costs. Please note if you don't clearly understand the purpose of the parameters and options available here than leave them as is. Don't make any changes.
+
+**Summarization Mode** - select from available LLMs based on your document’s complexity.
+
+**Document Summarization** - enables summarization of the entire document.
+
+**Chunk Summarization** - applies summarization to specific sections or chunks of the document.
+
+![Datasources-Dataset_Summarization](img/Datasources-Dataset_Summarization.png)
+
+4. Finally, click **Create** to index the dataset for use. Note that processing time can take up to 10 minutes, depending on the source type and size.
+
+*Note*: Multiple datasets can be utilized within the same datasource, enhancing versatility and depth of analysis.
+
+
+### Context
+
+**Context** input field is a designated area for providing instructions (prompt'), that facilitates the utilization of information from configured datasets via LLMs. This prompt guides the LLM on how to interpret and analyze the dataset, ensuring that the generated output aligns with the user's specific objectives. **Note**: By providing detailed and clear instructions in the **Context** field, users effectively guide the processing and analysis of their datasets, leveraging the robust capabilities of LLMs for tailored insights and actions.
+
+![Datasources-Context](img/Datasources-Context.png)
+
+### Working with Your Dataset
+
+After you've successfully created your dataset(s), a variety of features become available for you to explore and utilize. These features are designed to help you interact with your dataset in a more intuitive and productive manner. Here's a brief overview of what you can do:
+
+#### Chat
+
+The **Chat** feature is tailored for conversational AI models, enabling you to engage in dialogues or interactions akin to conversing with a human. Whether you're asking a question, making a statement, or giving a command, this feature is designed to generate responses that mimic human conversation.
+
+##### How to Use Chat
+
+1. Select your desired **Embedding model** from the dropdown list.
+2. Choose an **AI model** (e.g., gpt-4-0125-preview, gpt-35-turbo, etc.) suited to your conversation needs.
+3. Type your text in the chat box and click the **Send** icon to initiate the dialogue.
+
+![Datasources-Chat](img/Datasources-Chat.png)
+
+**Advanced Settings** (For those who are comfortable with tweaking parameters for more tailored outputs):
+
+- **Fetch K (1 – 50)**: Determines the number of responses the AI fetches for your query.
+- **Page Top K (1 – 30)**: Specifies the top results to display from your query.
+- **Cut-off score (0 - 1)**: Sets the threshold for response relevance. Higher scores narrow down to more relevant results.
+- **Top K (1 – 40)**: Adjusts the breadth of responses considered by the AI.
+
+Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values.
+
+#### Search
+
+The **Search** function allows you to quickly locate specific information within your indexed dataset.
+
+##### How to Conduct a Search
+
+1. Type your query into the input field and hit the **Send** icon.
+2. Optionally, you can switch the **Embedding model** via the dropdown list to refine your search criteria.
+
+#### Deduplicate
+
+**Deduplication** is a handy feature for identifying duplicate information.
+
+##### Steps for Deduplication
+
+1. **Cut-off score**: Set a threshold for considering information as a duplicate. Configuring this score helps the system identify duplicates with greater accuracy.
+2. Press the **Run** button to start the process.
+3. Remember, deduplication efforts will hinge upon the parameters you've set for the dataset.
+
+By using these features, you’re equipped to enhance your dataset, making it a more efficient and effective tool for your AI applications. Proceed with adjustments only if you're confident in your understanding of their implications.
+
 ## Prompts Menu
 
 The **Prompts** menu showcases a collection of published and shared prompts within the community. By default, upon logging in, the user is directed to the **Latest** page of the Prompts menu, which presents newly published prompts.
@@ -423,6 +566,8 @@ The Prompts menu is organized into three distinct pages, each designed to offer 
 - **Latest**: Displays all recently published prompts, providing a fresh look at the newest contributions to the community.
 - **My Likes**: Highlights the prompts that you have liked. This personalized page allows you to revisit favorites effortlessly.
 - **Trending**: Showcases the prompts with the highest number of likes, serving as a valuable resource for discovering top-rated prompts that hold significant value and popularity within the community.
+
+![Prompts-Menu](img/Prompts-Menu.png)
 
 ### Engaging with Published Prompts
 
@@ -441,6 +586,8 @@ Upon publication, a prompt becomes a crucial resource for the community. To supp
 
 - View and run published prompts by clicking on the prompt card or name. Refer to the [How to Execute Prompt](#how-to-execute-prompt) section for guidance on running a prompt.
 - **Note**: Modifications to a published prompt cannot be saved for future use.
+
+![Prompt-Executing_Public_Prompt](img/Prompt-Executing_Public_Prompt.png)
 
 **Adding Published Prompts to Collections**:
 
@@ -462,6 +609,8 @@ Organized into three distinct pages, the **Collections** menu introduces a struc
 - **Latest**: Showcases the most recently published collections, offering insight into the newest themes and ideas being explored by the community.
 - **My Likes**: Features the collections you have liked, creating a personalized library of favored content that can be revisited at any time.
 - **Trending**: Displays collections that have gathered the most likes, serving as an excellent resource for finding highly-regarded and popular collections esteemed by the community.
+
+![Collections-Menu](img/Collections-Menu.png)
 
 ### Engaging with Collections
 
