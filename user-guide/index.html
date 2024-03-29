@@ -50,7 +50,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#access-to-alita">Access to Alita</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#prompt-library-main-interface">Prompt Library - Main Interface</a>
+    <li class="toctree-l2"><a class="reference internal" href="#alita-main-interface">Alita - Main Interface</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#general-navigation-and-management-across-the-application">General Navigation and Management Across the Application</a>
     </li>
@@ -106,6 +106,8 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-import-a-prompt">How to Import a Prompt</a>
+    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#my-libraries-collections-page">My libraries - Collections Page</a>
@@ -123,6 +125,32 @@
     <li class="toctree-l3"><a class="reference internal" href="#how-to-delete-a-collection">How to Delete a Collection</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#how-to-export-a-collection">How to Export a Collection</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#my-libraries-datasources-page">My libraries - Datasources Page</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-a-datasource">Creating a Datasource</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exploring-datasources">Exploring Datasources</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#connecting-a-datasource-to-a-dataset">Connecting a Datasource to a Dataset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-transformers">Configuring Transformers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-summarization">Configuring Summarization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#context">Context</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#working-with-your-dataset">Working with Your Dataset</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#chat">Chat</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#search">Search</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#deduplicate">Deduplicate</a>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -211,8 +239,8 @@
 </ol>
 <p><strong>Note</strong>: No need to enable Epam VPN to access the Prompt Library.</p>
 <p><img alt="Main Interface" src="../img/Main%20Interface.png" /></p>
-<h2 id="prompt-library-main-interface">Prompt Library - Main Interface</h2>
-<p>The Prompt Library application's main interface encompasses several sections, including the Discover Menu, Search feature, Quick Navigation tabs, Settings, a Quick button for creating prompts or collections, Tags, and Trending Authors.</p>
+<h2 id="alita-main-interface">Alita - Main Interface</h2>
+<p>The Alita application's main interface encompasses several sections, including the Discover Menu, Search feature, Quick Navigation tabs, Settings, a Quick button for creating prompts or collections, Tags, and Trending Authors.</p>
 <p><strong>Sections:</strong></p>
 <ul>
 <li><strong>Discover Menu</strong>: A hamburger menu allowing users to switch among different menus such as Prompts, Datasources, Collections, and My Library.</li>
@@ -410,7 +438,7 @@ Additionally, user have the ability to delete, copy, and reorder messages to bes
 <li><strong>Draft</strong>: Saved yet unsubmitted prompts.</li>
 <li><strong>Published</strong>: Moderation-approved prompts, now accessible in the Library.</li>
 <li><strong>On Moderation</strong>: Prompts currently under review.</li>
-<li><strong>User Approval</strong>: Prompts pending submitter action or approval following moderator feedback.</li>
+<li><strong>User Approval</strong>: Prompts pending prompt's author approval for publishing a new version.</li>
 <li><strong>Rejected</strong>: Prompts evaluated and declined for publication.</li>
 </ul>
 <p>For status inquiries on your prompts, direct to the "<strong>My Libraries → Prompts</strong>" section on the platform and choose the relevant status from the dropdown menu.</p>
@@ -436,6 +464,16 @@ Additionally, user have the ability to delete, copy, and reorder messages to bes
 </ol>
 <p><img alt="Prompt-Export_Prompt" src="../img/Prompt-Export_Prompt.png" /></p>
 <p>This functionality facilitates the transfer and application of your prompts across different platforms by generating easily importable JSON files.</p>
+<h3 id="how-to-import-a-prompt">How to Import a Prompt</h3>
+<p>To use the prompts created in other platforms, follow these simple steps.</p>
+<ol>
+<li><strong>Initiate Import</strong>: Select the <strong>Import</strong> option within Alita.</li>
+<li><strong>Choose File</strong>: Browse and select the exported JSON prompt file.</li>
+<li><strong>Complete Process</strong>: The prompt will be added under the 'My libraries - Prompts' section in Alita.</li>
+<li><strong>Use Prompt</strong>: You can now access and utilize the imported prompt.</li>
+</ol>
+<p><img alt="Prompt-Import_Alita" src="../img/Prompt-Import_Alita.png" /></p>
+<p><strong>Note</strong>: Alita supports <a href="https://jinja.palletsprojects.com/en/3.1.x/">Jinja</a> template. Make sure the content and variables in your prompt adhere to this format, especially avoiding spaces in variable names. For more information please check <a href="../alita-dial/">Alita and Epam AI Dial</a> document.</p>
 <h2 id="my-libraries-collections-page">My libraries - Collections Page</h2>
 <p>The <strong>My libraries - Collections</strong> page serves as a dedicated inventory for all your collections, irrespective of their current status. Consider it your personal repository for saving and organizing the collections you've assembled.</p>
 <p><img alt="Collections-Card_View" src="../img/Collections-Card_View.png" /></p>
@@ -510,6 +548,98 @@ Collections are immensely valuable for several reasons:</p>
 <li>Select your preferred format (Alita or DIAL) for the export.</li>
 <li>An export file will be generated and automatically downloaded to your device, enabling cross-platform utilization.</li>
 </ol>
+<h2 id="my-libraries-datasources-page">My libraries - Datasources Page</h2>
+<p>Datasources play a pivotal role in broadening and enriching the functionalities of Alita and AI technologies. They enable the extension of LLMs by integrating user-specific or project-specific data, which is not initially part of the model’s training set, thereby enhancing the LLM's context with tailored information.</p>
+<p><img alt="My_libraries-Datasources" src="../img/My_libraries-Datasources.png" /></p>
+<h3 id="creating-a-datasource">Creating a Datasource</h3>
+<p>To set up a new datasource and augment your model's capabilities:</p>
+<ol>
+<li>Click the <strong>+ Datasource</strong> button located at the top right corner.</li>
+<li>Fill out the <strong>Name</strong> and <strong>Description</strong> fields. <em>Note</em>: These are non-editable fields and cannot be modified after the datasource is saved.</li>
+<li>Choose an <strong>Embedding model</strong> from the dropdown list provided.</li>
+<li>Select the desired <strong>Storage type</strong> from another dropdown menu.</li>
+<li>Optionally, add tags by typing a tag name or selecting from pre-existing tags in the Tags input box.</li>
+<li>Click <strong>Save</strong> to finalize the creation.</li>
+</ol>
+<p><img alt="Datasources-Create_New_Datasource" src="../img/Datasources-Create_New_Datasource.png" /></p>
+<p>Your newly created datasource will subsequently appear on the <strong>My Libraries - Datasources</strong> page.</p>
+<h3 id="exploring-datasources">Exploring Datasources</h3>
+<p>Discovering the intricacies of a datasource is both simple and insightful:</p>
+<ul>
+<li>Click on the card or the name of a datasource to unveil its configurations, providing a detailed overview of its setup and usage.</li>
+</ul>
+<h3 id="connecting-a-datasource-to-a-dataset">Connecting a Datasource to a Dataset</h3>
+<p>The initial step involves linking your datasource to the desired dataset:</p>
+<ol>
+<li>Press the <strong>+</strong> icon to start adding a new dataset.</li>
+<li>Enter a name for your dataset. <em>Note</em>: This is a non-editable field and cannot be altered post-creation.</li>
+<li>From the dropdown list, select the source type of your dataset. Available options include:</li>
+<li><strong>File</strong>: Any supported file type for upload.</li>
+<li><strong>Table</strong>: Supported file types with a table structure, such as CSV or XLSX.</li>
+<li><strong>GIT</strong>: Any accessible Git repository.</li>
+<li><strong>Confluence</strong>: Any Confluence page accessible to you.</li>
+</ol>
+<p><img alt="Datasources-Dataset" src="../img/Datasources-Dataset.png" /></p>
+<p>Depending on the selected source type, various configurations may be necessary to access the dataset source, primarily involving authentication and authorization parameters. This step is exempt for File and Table options since the files will be directly uploaded.</p>
+<h3 id="configuring-transformers">Configuring Transformers</h3>
+<p>Transformers enhance your documents by extracting significant keywords, summarizing content, and improving searchability. <em>Please note if you don't clearly understand the purpose of the parameters and options available here than leave them as is. Don't make any changes.</em></p>
+<p><strong>Extract Keywords</strong>
+Options include:
+- <strong>For Document</strong>: Analyses the entire document for keyword extraction.
+- <strong>For Chunks</strong>: Processes document sections independently for more granular insights.</p>
+<p><strong>Keyword Extractor</strong> - the only available option is <strong>KeyBert</strong>, designed for efficient keyword extraction.</p>
+<p><strong>Keyword Strategy</strong> - choices range from <strong>Max Sum</strong>, to <strong>Max MMR High</strong>, and <strong>Max MMR Low</strong>, each offering different focuses on relevance and diversity.</p>
+<p><strong>Maximum Keyword Count</strong> - defines the limit on the number of keywords to be extracted.</p>
+<p><strong>Split By</strong> - determines how the document is sectioned for analysis, with options like Chunks, Lines, Paragraphs, Sentences, or Nothing.</p>
+<p><img alt="Datasources-Dataset_Transformers" src="../img/Datasources-Dataset_Transformers.png" /></p>
+<h3 id="configuring-summarization">Configuring Summarization</h3>
+<p>Summarization utilizes LLMs to condense documents into their core messages. Due to the high computational demand, use of this feature incurs additional costs. Please note if you don't clearly understand the purpose of the parameters and options available here than leave them as is. Don't make any changes.</p>
+<p><strong>Summarization Mode</strong> - select from available LLMs based on your document’s complexity.</p>
+<p><strong>Document Summarization</strong> - enables summarization of the entire document.</p>
+<p><strong>Chunk Summarization</strong> - applies summarization to specific sections or chunks of the document.</p>
+<p><img alt="Datasources-Dataset_Summarization" src="../img/Datasources-Dataset_Summarization.png" /></p>
+<ol>
+<li>Finally, click <strong>Create</strong> to index the dataset for use. Note that processing time can take up to 10 minutes, depending on the source type and size.</li>
+</ol>
+<p><em>Note</em>: Multiple datasets can be utilized within the same datasource, enhancing versatility and depth of analysis.</p>
+<h3 id="context">Context</h3>
+<p><strong>Context</strong> input field is a designated area for providing instructions (prompt'), that facilitates the utilization of information from configured datasets via LLMs. This prompt guides the LLM on how to interpret and analyze the dataset, ensuring that the generated output aligns with the user's specific objectives. <strong>Note</strong>: By providing detailed and clear instructions in the <strong>Context</strong> field, users effectively guide the processing and analysis of their datasets, leveraging the robust capabilities of LLMs for tailored insights and actions.</p>
+<p><img alt="Datasources-Context" src="../img/Datasources-Context.png" /></p>
+<h3 id="working-with-your-dataset">Working with Your Dataset</h3>
+<p>After you've successfully created your dataset(s), a variety of features become available for you to explore and utilize. These features are designed to help you interact with your dataset in a more intuitive and productive manner. Here's a brief overview of what you can do:</p>
+<h4 id="chat">Chat</h4>
+<p>The <strong>Chat</strong> feature is tailored for conversational AI models, enabling you to engage in dialogues or interactions akin to conversing with a human. Whether you're asking a question, making a statement, or giving a command, this feature is designed to generate responses that mimic human conversation.</p>
+<h5 id="how-to-use-chat">How to Use Chat</h5>
+<ol>
+<li>Select your desired <strong>Embedding model</strong> from the dropdown list.</li>
+<li>Choose an <strong>AI model</strong> (e.g., gpt-4-0125-preview, gpt-35-turbo, etc.) suited to your conversation needs.</li>
+<li>Type your text in the chat box and click the <strong>Send</strong> icon to initiate the dialogue.</li>
+</ol>
+<p><img alt="Datasources-Chat" src="../img/Datasources-Chat.png" /></p>
+<p><strong>Advanced Settings</strong> (For those who are comfortable with tweaking parameters for more tailored outputs):</p>
+<ul>
+<li><strong>Fetch K (1 – 50)</strong>: Determines the number of responses the AI fetches for your query.</li>
+<li><strong>Page Top K (1 – 30)</strong>: Specifies the top results to display from your query.</li>
+<li><strong>Cut-off score (0 - 1)</strong>: Sets the threshold for response relevance. Higher scores narrow down to more relevant results.</li>
+<li><strong>Top K (1 – 40)</strong>: Adjusts the breadth of responses considered by the AI.</li>
+</ul>
+<p>Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values.</p>
+<h4 id="search">Search</h4>
+<p>The <strong>Search</strong> function allows you to quickly locate specific information within your indexed dataset.</p>
+<h5 id="how-to-conduct-a-search">How to Conduct a Search</h5>
+<ol>
+<li>Type your query into the input field and hit the <strong>Send</strong> icon.</li>
+<li>Optionally, you can switch the <strong>Embedding model</strong> via the dropdown list to refine your search criteria.</li>
+</ol>
+<h4 id="deduplicate">Deduplicate</h4>
+<p><strong>Deduplication</strong> is a handy feature for identifying duplicate information.</p>
+<h5 id="steps-for-deduplication">Steps for Deduplication</h5>
+<ol>
+<li><strong>Cut-off score</strong>: Set a threshold for considering information as a duplicate. Configuring this score helps the system identify duplicates with greater accuracy.</li>
+<li>Press the <strong>Run</strong> button to start the process.</li>
+<li>Remember, deduplication efforts will hinge upon the parameters you've set for the dataset.</li>
+</ol>
+<p>By using these features, you’re equipped to enhance your dataset, making it a more efficient and effective tool for your AI applications. Proceed with adjustments only if you're confident in your understanding of their implications.</p>
 <h2 id="prompts-menu">Prompts Menu</h2>
 <p>The <strong>Prompts</strong> menu showcases a collection of published and shared prompts within the community. By default, upon logging in, the user is directed to the <strong>Latest</strong> page of the Prompts menu, which presents newly published prompts.</p>
 <h3 id="layout-of-the-prompts-menu">Layout of the Prompts Menu</h3>
@@ -519,6 +649,7 @@ Collections are immensely valuable for several reasons:</p>
 <li><strong>My Likes</strong>: Highlights the prompts that you have liked. This personalized page allows you to revisit favorites effortlessly.</li>
 <li><strong>Trending</strong>: Showcases the prompts with the highest number of likes, serving as a valuable resource for discovering top-rated prompts that hold significant value and popularity within the community.</li>
 </ul>
+<p><img alt="Prompts-Menu" src="../img/Prompts-Menu.png" /></p>
 <h3 id="engaging-with-published-prompts">Engaging with Published Prompts</h3>
 <p>Interaction within the community is highly encouraged to recognize and appreciate valuable prompts. The following actions enable active participation:</p>
 <h3 id="liking-published-prompts">Liking Published Prompts</h3>
@@ -533,6 +664,7 @@ Collections are immensely valuable for several reasons:</p>
 <li>View and run published prompts by clicking on the prompt card or name. Refer to the <a href="#how-to-execute-prompt">How to Execute Prompt</a> section for guidance on running a prompt.</li>
 <li><strong>Note</strong>: Modifications to a published prompt cannot be saved for future use.</li>
 </ul>
+<p><img alt="Prompt-Executing_Public_Prompt" src="../img/Prompt-Executing_Public_Prompt.png" /></p>
 <p><strong>Adding Published Prompts to Collections</strong>:</p>
 <ul>
 <li>Enhance your collections by including published prompts. Visit the <a href="#how-to-add-prompt-into-collection">How to Add Prompt into Collection</a> section for instructions on incorporation.</li>
@@ -550,6 +682,7 @@ Collections are immensely valuable for several reasons:</p>
 <li><strong>My Likes</strong>: Features the collections you have liked, creating a personalized library of favored content that can be revisited at any time.</li>
 <li><strong>Trending</strong>: Displays collections that have gathered the most likes, serving as an excellent resource for finding highly-regarded and popular collections esteemed by the community.</li>
 </ul>
+<p><img alt="Collections-Menu" src="../img/Collections-Menu.png" /></p>
 <h3 id="engaging-with-collections">Engaging with Collections</h3>
 <p>Participation and interaction within the community are pivotal in highlighting and appreciating valuable collections. Below are ways you can actively engage:</p>
 <h3 id="liking-collections">Liking Collections</h3>
