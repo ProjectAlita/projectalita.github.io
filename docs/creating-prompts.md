@@ -57,15 +57,15 @@ Creating a prompt involves capturing essential details that guide the testing pr
 
 **Providing Name, Description and Context of the prompt:**
 
-![Prompt-Create_New_Prompt](img/Prompt-Create_New_Prompt.png)
+![Prompt-Create_New_Prompt](<../img/Prompt-Create_New_Prompt.png>)
 
 **Setup Variables:**
 
-![Prompt-Create_Variables](img/Prompt-Create_Variables.png)
+![Prompt-Create_Variables](<../img/Prompt-Create_Variables.png>)
 
 **Configuring Advanced Settings:**
 
-![Prompt-Advanced_Settings](img/Prompt-Advanced_Settings.png)
+![Prompt-Advanced_Settings](<../img/Prompt-Advanced_Settings.png>)
 
 #### Prompt Requirements for Consistency and Quality
 
@@ -89,11 +89,11 @@ To make your prompt available to the wider QA community, follow the steps below 
 
 **Publishing the prompt:**
 
-![Prompt-Publishing_Part_1.png](img/Prompt-Publishing_Part_1.png)
+![Prompt-Publishing_Part_1.png](<../img/Prompt-Publishing_Part_1.png>)
 
 **Providing Version:**
 
-![Prompt-Publishing](img/Prompt-Publishing.png)
+![Prompt-Publishing](<../img/Prompt-Publishing.png>)
 
 ## Review Process by Moderators and Outcome of Prompt Submission
 
@@ -126,12 +126,12 @@ Users can track the status of their prompts throughout the review process. The f
 * **Draft**: The prompt is saved but not yet submitted for publishing.
 * **Published**: The prompt has been approved by moderators and is available in the Library.
 * **On Moderation**: The prompt is currently being reviewed by the moderators.
-* **User Approval**: The prompt needs further approval or action from the submitter based on moderator feedback.
+* **User Approval**: The prompt is pending prompt's author approval for publishing a new version.
 * **Rejected**: The prompt has been reviewed and rejected for publication.
 
 To check the status of your submitted prompts, navigate to "**My libraries → Prompts**" page on the platform, and select the status you wish to view from the dropdown menu.
 
-![Prompts-Status_Check](img/Prompts-Status_Check.png)
+![Prompts-Status_Check](<../img/Prompts-Status_Check.png>)
 
 ### Engagement with Prompts: Liking and Trending
 
@@ -139,7 +139,7 @@ Once a prompt is published, it becomes an essential resource for the QA communit
 
 The "**Trending**" page serves as a quick reference for discovering highly valued prompts within the community. To like a prompt, simply click on the heart icon associated with the prompt in the Prompt Library. Your engagement helps in identifying the most impactful prompts, enriching our QA processes and driving a culture of continuous improvement and collaboration.
 
-![Prompts-Trending](img/Prompts-Trending.png)
+![Prompts-Trending](<../img/Prompts-Trending.png>)
 
 By understanding and participating in the review process, you are contributing to a shared knowledge base that benefits the entire QA community. Your efforts and interactions, including submitting, refining, and liking prompts, play a crucial role in enhancing our collective testing efficacy.
 
@@ -162,7 +162,7 @@ Collections are immensely valuable for several reasons:
 1. Click the **+ Collection** button located at the top right corner.
 2. You will be prompted to fill in the **Name** and **Description** fields. Remember, these fields are essential as they give the first impression and understanding of what your collection is about.
 
-![Collection-Create_Collection](img/Collection-Create_Collection.png)
+![Collection-Create_Collection](<../img/Collection-Create_Collection.png>)
 
 ### Adding Prompts to Your Collection
 
@@ -171,7 +171,7 @@ To add prompts to your collection, follow these steps:
 1. Once you've created a collection, you can start adding relevant prompts. Navigate to the prompt you wish to add and select an option to Add to Collection.
 2. Select the Collection you wish to add your prompt to from the pop-up window. You can add multiple prompts to a collection as long as they share the thematic relevance or purpose you've defined for your collection.
 
-![Prompt-Add_to_Collection](img/Prompt-Add_to_Collection.png)
+![Prompt-Add_to_Collection](<../img/Prompt-Add_to_Collection.png>)
 
 
 ### Publishing Your Collection
@@ -182,7 +182,9 @@ Publishing your collection makes it available to the entire QA network, allowing
 2. Click the **Publish** icon to submit your collection for review. This process is similar to publishing individual prompts, where your collection will be reviewed for adherence to our guidelines and overall quality.
 3. Once approved, your collection will be published and accessible from the Collection menu, ready to be used by the community.
 
-![Collection-Publishing](img/Collection-Publishing.png)
+**Note**: A Collection must contain public prompts before publication.
+
+![Collection-Publishing](<../img/Collection-Publishing.png>)
 
 ### Engagement with Collections: Liking and Trending
 
@@ -192,7 +194,7 @@ Just as with individual prompts, users are encouraged to engage with collections
 * **Visibility**: Collections with a high number of likes gain visibility and are more likely to appear in the "Trending" page, ensuring that the most useful collections are easily accessible to the community.
 * **Feedback Mechanism**: Likes serve as a feedback mechanism, helping contributors understand the impact and usefulness of their collections, guiding future efforts in prompt and collection creation.
 
-![Collections-My_Likes](img/Collections-My_Likes.png)
+![Collections-My_Likes](<../img/Collections-My_Likes.png>)
 
 By actively creating, contributing to, and engaging with collections, QA engineers enhance the shared knowledge base and support the continuous improvement of testing practices within the community. Collections not only facilitate access to valuable testing resources but also foster a collaborative environment where knowledge and best practices are freely exchanged.
 
@@ -212,10 +214,10 @@ Let's work together to build a richer, more effective Prompt Library for everyon
 
 ## Useful Resources
 
-### Alita Prompt Library
+### Alita
 
-* [Alita Prompt Library - User Guide](user-guide.md)
-* [Alita Prompt Library - Release Notes](release-notes.md)
+* [Alita - User Guide](user-guide.md)
+* [Alita - Release Notes](release-notes.md)
 * [Alita overview](https://kb.epam.com/display/EPMQAOPALT/Alita+overview)
 
 ### Prompt Engineering
@@ -223,4 +225,4 @@ Let's work together to build a richer, more effective Prompt Library for everyon
 * [Prompt Engineering Foundations](https://learn.epam.com/detailsPage?id=92d11cb4-dbaa-45a3-8b22-60f9f391f588)
 * [EngX AI-Supported Quality Assurance Engineering](https://learn.epam.com/detailsPage?id=1c89e986-9a96-4aed-8166-291af0a8a19c)
 * [Guide to Effective Prompting](https://www.promptingguide.ai/)
-* [Introduction to Prompt Engineering]([Introduction to Prompt Engineering](https://www.youtube.com/watch?v=AgGu96_rnXo&list=PLYio3GBcDKsPP2_zuxEp8eCulgFjI5a3g))
+* [Introduction to Prompt Engineering](https://www.youtube.com/watch?v=AgGu96_rnXo&list=PLYio3GBcDKsPP2_zuxEp8eCulgFjI5a3g)
