@@ -10,6 +10,6 @@ nav:
     - Datasources: user-guide/datasources.md
   - Manuals:
     - Alita and EPAM AI DIAL: alita-dial.md
-    - QA - Prompting and sharing: creating-prompts.md
+    - QA - Prompting and Sharing: creating-prompts.md
 theme:
   name: readthedocs

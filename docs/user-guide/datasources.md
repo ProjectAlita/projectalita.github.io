@@ -1,3 +1,5 @@
+# Datasources
+
 ## My libraries - Datasources Page
 
 Datasources play a pivotal role in broadening and enriching the functionalities of Alita and AI technologies. They enable the extension of LLMs by integrating user-specific or project-specific data, which is not initially part of the model’s training set, thereby enhancing the LLM's context with tailored information.

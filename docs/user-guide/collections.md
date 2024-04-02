@@ -1,3 +1,5 @@
+# Collections
+
 ## My libraries - Collections Page
 
 The **My libraries - Collections** page serves as a dedicated inventory for all your collections, irrespective of their current status. Consider it your personal repository for saving and organizing the collections you've assembled.
