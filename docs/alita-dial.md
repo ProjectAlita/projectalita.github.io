@@ -9,7 +9,7 @@ Welcome to the user-friendly manual on using [Alita](https://alita.lab.epam.com)
 ### Exporting the Prompt for AI DIAL:
 
 1. **Start the Export**: Click on the **Export prompt** icon.
-2. **Choose Format**: Select the `[DIAL] format` format when prompted. This format is specially designed for compatibility with EPAM AI Dial.
+2. **Choose Format**: Select the **`[DIAL] format`** format when prompted. This format is specially designed for compatibility with EPAM AI Dial.
 3. **Download**: After selecting the format, the file will be downloaded automatically to your device in JSON format.
 
 ![Prompt-Export_Prompt_Dial](img/Prompt-Export_Prompt_Dial.png)
@@ -32,7 +32,7 @@ Once you have the JSON file from Alita, you can easily import it into AI Dial.
 If you have developed or customized prompts in EPAM AI Dial, you can easily export them for use in Alita.
 
 1. **Prompt Selection**: Identify and select the prompt you wish to export.
-2. **Export**: Click the '...' icon next to your selected prompt and choose the **Export** option.
+2. **Export**: Click the **`...`** icon next to your selected prompt and choose the **Export** option.
 3. **File Download**: The prompt will be exported and downloaded in JSON format, ready for Alita.
 
 ![Dial-Prompt_Export](img/Dial-Prompt_Export.png)
@@ -43,7 +43,7 @@ To use the prompts created or exported from EPAM AI Dial in Alita, follow these 
 
 1. **Initiate Import**: Select the **Import** option within Alita.
 2. **Choose File**: Browse and select the exported JSON prompt file.
-3. **Complete Process**: The prompt will be added under the 'My libraries - Prompts' section in Alita.
+3. **Complete Process**: The prompt will be added under the **My libraries - Prompts** page in Alita.
 4. **Use Prompt**: You can now access and utilize the imported prompt.
 
 ![Prompt-Import_Alita](img/Prompt-Import_Alita.png)
@@ -52,7 +52,7 @@ To use the prompts created or exported from EPAM AI Dial in Alita, follow these 
 
 You can also export entire collections from Alita and import them into EPAM AI Dial for broader prompt management.
 
-1. **Export Collection**: In Alita, select the collection you wish to export and choose the `Export Collection` option. Select the `[DIAL] format` for optimal compatibility.
+1. **Export Collection**: In Alita, select the collection you wish to export and choose the **`Export Collection`** option. Select the **`[DIAL] format`** for optimal compatibility.
 2. **Download Collection**: The collection, encompassing multiple prompts, will be exported as a JSON file and automatically downloaded to your device.
 3. **Import into AI Dial**: Upon importing the collection file into EPAM AI Dial, please note that the included prompts will be added as separate items, not as a unified folder.
 
@@ -62,9 +62,9 @@ This feature enhances workflow efficiency by allowing bulk transferring of promp
 
 ## Troubleshooting
 
-- **File Format**: Ensure the prompt file is in JSON format. Other formats won’t be processed.
-- **Template Compatibility**: Alita supports [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) template. Make sure the content and variables in your prompt adhere to this format, especially avoiding spaces in variable names.
-- **File Structure**: If you encounter any unrecognized errors, open the exported JSON file in a text editor. Validate its structure and formatting against the Jinja template requirements, making any necessary adjustments.
+* **File Format**: Ensure the prompt file is in JSON format. Other formats won’t be processed.
+* **Template Compatibility**: Alita supports [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) template. Make sure the content and variables in your prompt adhere to this format, especially avoiding spaces in variable names.
+* **File Structure**: If you encounter any unrecognized errors, open the exported JSON file in a text editor. Validate its structure and formatting against the Jinja template requirements, making any necessary adjustments.
 
 By following these detailed steps, you should be able to smoothly export and import prompts and collections between Alita and EPAM AI Dial, enhancing your productivity and efficiency in creating and managing prompts.
 

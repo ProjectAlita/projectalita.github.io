@@ -2,14 +2,14 @@
 
 ## Introduction
 
-**Alita Prompt Library** is an innovative web application that revolutionizes how you interact with prompts. Designed as a dynamic workspace, it empowers users to create, organize, and collaborate on prompts like never before. This initial version introduces a suite of features aimed at enhancing productivity and creativity in working with prompts.
+**Alita** is an innovative web application that revolutionizes how you interact with prompts. Designed as a dynamic workspace, it empowers users to create, organize, and collaborate on prompts like never before. This initial version introduces a suite of features aimed at enhancing productivity and creativity in working with prompts.
 
 ## Information
 
 - **Release Version**: 1.0.0
-- **Released on**: 22-Mar-2024
-- **Access**: [Alita Prompt Library](https://eye.projectalita.ai/)
-- **User Guide**: [Alita Prompt Library - User Guide](user-guide.md)
+- **Released on**: 05-Apr-2024
+- **Access**: [Alita](https://eye.projectalita.ai/)
+- **User Guide**: [Alita - User Guide](user-guide.md)
 
 ## New Features
 
