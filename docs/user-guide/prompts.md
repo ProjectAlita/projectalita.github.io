@@ -1,3 +1,5 @@
+# Prompts
+
 ## My libraries menu
 
 The **My libraries** menu is a space designed to create prompts, datasources, collections and organize them.
@@ -31,7 +33,7 @@ In the context of AI and machine learning, a prompt is an instruction, question,
 
 ### How to Create Tags
 
-In the Prompt Library application, Tags serve as an efficient organizational tool that allows you to categorize and manage your collection of prompts. By assigning relevant tags to each prompt, you create an intuitive labeling system that facilitates quick access and retrieval. Later on, you can filter prompts by these tags, simplifying the process of finding the precise prompt you need among a vast collection, which is especially useful for users with an extensive library of different prompt types and topics.
+In Alita, **Tags** serve as an efficient organizational tool that allows you to categorize and manage your collection of prompts. By assigning relevant tags to each prompt, you create an intuitive labeling system that facilitates quick access and retrieval. Later on, you can filter prompts by these tags, simplifying the process of finding the precise prompt you need among a vast collection, which is especially useful for users with an extensive library of different prompt types and topics.
 
 **To add a tag to the prompt:**
 

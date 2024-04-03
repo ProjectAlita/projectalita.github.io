@@ -18,11 +18,11 @@ To access it:
 
 1. Open your browser.
 2. Type in <https://alita.lab.epam.com> in the address bar.
-3. Provide your EPAM account to login. Note: No need for registration.
+3. Provide your EPAM account to login. **Note**: No need for registration.
 4. After successful login, you are navigated to the **Prompts** menu.
 5. Once you have access, navigate to **Discover→My Library** menu, where you will be able to create prompts and collections. **Note:** If you are logging in for the first time into Alita, wait for 5 minutes to allow private project initialization to be completed before creating prompts. 
 
-**Note:** No need to enable Epam VPN to access the Prompt Library.
+**Note**: You need to enable Epam VPN to access Alita.
 
 ![Main Interface](img/Main Interface.png)
 

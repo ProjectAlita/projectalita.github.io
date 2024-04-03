@@ -27,7 +27,7 @@ To access Alita:
 4. After successful login, you are navigated to the **Prompts** menu.
 5. Once you have access, navigate to **Discover→My Library** menu, where you will be able to create prompts and collections. **Note**: If you are logging in for the first time into Alita, wait for 5 minutes to allow private project initialization to be completed before creating prompts. 
 
-**Note**: No need to enable Epam VPN to access the Prompt Library.
+**Note**: You need to enable Epam VPN to access Alita.
 
 ![Main Interface](<../img/Main Interface.png>)
 
@@ -96,3 +96,37 @@ Alita consists of 4 main menus:
 3. Click on the menu name to navigate to the desired menu.
 
 ![Discover Menus](<../img/Discover Menus.png>)
+
+## Settings
+
+The **Settings** is designed to offer you a centralized space to manage vital aspects of your account and configurations. To access it click on your avatar on top right part of the page. 
+
+**Profile Tab**
+
+In the Profile tab, you’re presented with options to personalize your account and monitor your engagement and resource utilization within Alita.
+
+* **About me** - fill in or update your personal details to ensure your Alita profile remains current. **Note**: Markdown is supported.
+* **Activities and Usage Statistics** - a comprehensive diary of your actions within Alita, alongside usage statistics, offers insight into how you're leveraging Alita over time. This could be beneficial for tracking your project's evolution or analyzing resource consumption.
+
+![Settings-Profile_tab](../img/Settings-Profile_tab.png)
+
+**Configuration Tab**
+
+This tab serves as the nucleus for managing essential technical settings that enable the smooth operation of Alita's features, such as Alita Code or Alita Chat.
+
+* **URL**: This is the base web address through which you interact with Alita’s services. It's a crucial link for all your API calls or web requests.
+* **Project ID & Integration UID**: Unique identifiers for your project and integration instances. These are required when setting up or customizing Alita’s services to work within your specific project environment.
+* **Integration Options** - allows to select and display available LLMs and Embeddings integrated with your deployments.
+* **Model Name** - displays the correct name of selected integration option
+* **Personal Tokens** - access tokens are your key to secure communication with Alita's backend. Here, you can generate tokens that authorize your applications or scripts to perform operations on behalf of your account. Treat these tokens with care and keep them confidential.
+
+![Settings-Configuration_tab](../img/Settings-Configuration_tab.png)
+
+**Deployments Tab**
+
+The **Deployments** tab is all about managing and launching AI models or services that you’ve connected to your Alita project.
+
+* **Available Deployments** - view a list of current AI deployments, such as AI Dial or Hugging Face, that have been linked to your project. This snapshot gives you quick access to manage these integrations.
+* **Creating New Deployments** - while the possibility exists to set up new deployments, it’s a process that requires coordination with the Alita team. This is to ensure seamless integration and avoid potential conflicts with existing configurations.
+
+![Settings-Deployments_tab](../img/Settings-Deployments_tab.png)
