@@ -13,7 +13,7 @@ Welcome to the Alita platform, an innovative web application that revolutionizes
 * **Powerful Search:** Quickly find the prompts and collections you need with a robust search feature that recognizes tags, names, and descriptions.
 * **Community Engagement:** Create and modify Prompts and Collections, publish your work, and interact with the community through sharing and liking prompts/collections.
 
-Alita is designed to be intuitive, granting you the freedom to focus on creativity and productivity. Whether you are new to prompting or an experienced creator, our user guide will walk you through every feature, ensuring you maximize your Prompt Library experience.
+Alita is designed to be intuitive, granting you the freedom to focus on creativity and productivity. Whether you are new to prompting or an experienced creator, our user guide will walk you through every feature, ensuring you maximize your Alita experience.
 
 Let's embark on this journey to unlock the full potential of your ideas.
 
