@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/admin-guide/user/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>User Management - Alita Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "User Management";
+        var mkdocs_page_input_path = "admin-guide/user.md";
+        var mkdocs_page_url = "/admin-guide/user/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Alita Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Release Notes</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/">Alita Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/intro/">Get Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/prompts/">Prompts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/collections/">Collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/datasources/">Datasources</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manuals</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../alita-dial/">Alita and EPAM AI DIAL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../creating-prompts/">QA - Prompting and Sharing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Admin Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Get Started</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">User Management</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#users-menu">Users Menu</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#roles-menu">Roles Menu</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Alita Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Admin Guide</li>
+      <li class="breadcrumb-item active">User Management</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="managing-users-and-roles">Managing Users and Roles</h1>
+<h2 id="users-menu">Users Menu</h2>
+<p>In the <strong>Users</strong> menu, administrators can manage project participants efficiently. Here's how to navigate this section:</p>
+<p><strong>Adding New Users</strong>:</p>
+<p>Only users with an admin role can invite new members. To do so:</p>
+<ol>
+<li>Enter the prospective member's email address in the <strong>Email Address</strong> input field.</li>
+<li>Select their role from the <strong>Role</strong> dropdown menu. </li>
+<li>Click the <strong>Invite</strong> button. </li>
+<li>An invitation will be sent, and upon their first login, their details will be added to the <strong>Users table</strong>, activating their account.</li>
+</ol>
+<p><img alt="Users-add_new_user" src="../../img/Users-add_new_user.png" /></p>
+<p><strong>Notes</strong></p>
+<ul>
+<li>Multiple users can be invited simultaneously by separating email addresses with a comma.</li>
+<li>For Epam projects, use the invitee's Epam email. For customer projects, the customer's Active Directory is utilized for invitations.</li>
+</ul>
+<p><strong>Managing Users</strong>:</p>
+<p>The <strong>Users table</strong> displays all members, their roles, and their last login information. Admins can modify a user's role or revoke access by clicking the respective <strong>Edit</strong> or <strong>Delete</strong> icons next to a user's name.</p>
+<p><img alt="Users-managing_users" src="../../img/Users-managing_users.png" /></p>
+<h2 id="roles-menu">Roles Menu</h2>
+<p>The <strong>Roles</strong> menu allows for the detailed configuration of permissions across default and custom roles, tailoring access to the project's needs.</p>
+<p><strong>Default Roles</strong>:</p>
+<ul>
+<li><strong>System</strong>: Grants comprehensive permissions, including additional administrative capabilities.</li>
+<li><strong>Admin</strong>: Allows full project access and user management.</li>
+<li><strong>Editor</strong>: Provides editing rights within the project without administrative privileges.</li>
+<li><strong>Viewer</strong>: Limits access to viewing permissions, excluding any create, read, update, delete (CRUD) actions.</li>
+</ul>
+<p><img alt="Roles" src="../../img/Roles.png" /></p>
+<p><strong>Customizing Roles</strong>:</p>
+<p>To adjust permissions for any role:</p>
+<ol>
+<li>Click the <strong>Edit roles</strong> icon.</li>
+<li>Toggle the checkboxes for each permission as needed.</li>
+<li>Click the <strong>Save</strong> to apply changes.</li>
+</ol>
+<p><img alt="Roles-customizing_role" src="../../img/Roles-customizing_role.png" /></p>
+<p><strong>Creating a New Role</strong>:</p>
+<ol>
+<li>Click <strong>Edit roles</strong>.</li>
+<li>Then <strong>Add role</strong>. After naming the new role, select the desired permissions. </li>
+<li>This custom role will now be available for assignment in the <strong>Users</strong> menu.</li>
+</ol>
+<p><img alt="Roles-create_role" src="../../img/Roles-create_role.png" /></p>
+<p>By understanding and utilizing the <strong>Users</strong> and <strong>Roles</strong> menus, administrators can ensure that project participants have the appropriate access levels, fostering a secure and efficient collaborative environment.   </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../intro/" class="btn btn-neutral float-left" title="Get Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../intro/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
