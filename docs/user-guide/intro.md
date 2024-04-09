@@ -114,8 +114,8 @@ In the Profile tab, you’re presented with options to personalize your account 
 
 This tab serves as the nucleus for managing essential technical settings that enable the smooth operation of Alita's features, such as Alita Code or Alita Chat.
 
-* **URL**: This is the base web address through which you interact with Alita’s services. It's a crucial link for all your API calls or web requests.
-* **Project ID & Integration UID**: Unique identifiers for your project and integration instances. These are required when setting up or customizing Alita’s services to work within your specific project environment.
+* **URL** - this is the base web address through which you interact with Alita’s services. It's a crucial link for all your API calls or web requests.
+* **Project ID & Integration UID** - unique identifiers for your project and integration instances. These are required when setting up or customizing Alita’s services to work within your specific project environment.
 * **Integration Options** - allows to select and display available LLMs and Embeddings integrated with your deployments.
 * **Model Name** - displays the correct name of selected integration option
 * **Personal Tokens** - access tokens are your key to secure communication with Alita's backend. Here, you can generate tokens that authorize your applications or scripts to perform operations on behalf of your account. Treat these tokens with care and keep them confidential.

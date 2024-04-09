@@ -11,5 +11,8 @@ nav:
   - Manuals:
     - Alita and EPAM AI DIAL: alita-dial.md
     - QA - Prompting and Sharing: creating-prompts.md
+  - Admin Guide:
+    - Get Started: admin-guide/intro.md
+    - User Management: admin-guide/user.md
 theme:
   name: readthedocs
