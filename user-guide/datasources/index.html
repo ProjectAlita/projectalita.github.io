@@ -210,14 +210,15 @@
 <p>For users who rely on Git repositories to manage their code, documents, or other types of projects, this source type allows to streamline the process of linking and extracting data from these repositories. Here, we outline the options, settings, and parameters available for your GIT source type.</p>
 <ul>
 <li><strong>Name</strong> - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.</li>
-<li><strong>URL</strong> - link to Git Repo. To connect to your Git repository, you'll need to provide the URL. Alita supports two types of Git repository links:</li>
-<li><strong>SSH</strong> - for a secure and password-less connection. If you choose this option, an SSH key pair is required, with the public key added to your Git account and the private key entered in the subsequent SSH Key field.</li>
-<li><strong>HTTPS</strong> - a widely used method that might require username and password authentication based on the repository's access settings.
-Depending on your preference for SSH or HTTPS, ensure you provide the necessary authentication credentials as described:<ul>
-<li>For <strong>SSH</strong>: input the SSH Key in the designated field.</li>
-<li>For <strong>HTTPS</strong>: if prompted, enter the username and password to authenticate.</li>
+<li><strong>URL</strong> - link to Git Repo. To connect to your Git repository, you'll need to provide the URL. Alita supports two types of Git repository links:<ul>
+<li><strong>SSH</strong> - for a secure and password-less connection. If you choose this option, an SSH key pair is required, with the public key added to your Git account and the private key entered in the subsequent SSH Key field. For <strong>SSH</strong>: input the SSH Key in the designated field.</li>
+<li><strong>HTTPS</strong> - a widely used method that might require username and password authentication based on the repository's access settings. For <strong>HTTPS</strong>: if prompted, enter the username and password to authenticate.</li>
 </ul>
 </li>
+</ul>
+<p><strong>Important Note</strong>:
+To ensure a successful connection, <strong>you must clone your Git repository and provide the cloned Git link</strong>. Simply copying the Git repository address from your browser's address bar is not sufficient. Cloning the repository ensures that you're using a valid, accessible link that Alita can connect to without issues.</p>
+<ul>
 <li><strong>Branch</strong> - here, specify the branch within your Git repository you wish to access. By default, the '<strong>main</strong>' branch is selected, but you may adjust this to any branch name that suits your current focus or project needs.</li>
 <li><strong>Advanced Settings</strong> - under this tab, we offer options to further customize how data is retrieved from your Git repository.</li>
 <li><strong>Multithreading</strong> - enabling multithreading can significantly speed up the process of fetching data from your Git repo, especially beneficial for large repositories or when network latency is a concern. This option allows the system to perform multiple operations in parallel, reducing overall extraction time.</li>
@@ -234,7 +235,7 @@ Depending on your preference for SSH or HTTPS, ensure you provide the necessary 
 <p>For users who rely on Confluence pages to manage their information, documents, or other types of projects, this source type allows to streamline the process of linking and extracting data from these knowledge pages. Here, we outline the options, settings, and parameters available for your Confluence source type.</p>
 <ul>
 <li><strong>Name</strong> - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.</li>
-<li><strong>URL</strong> - link to Confluence. To connect to your Confluence KB, you'll need to provide the URL. Regarding authentication, you have two options to securely connect to Confluence:<ul>
+<li><strong>URL</strong> - link to Confluence. To connect to your Confluence KB, you'll need to provide the URL. No need to provide the full link as the page (e.g. https://www.kb.epam.com is enough) handling must be done with the help of <strong>Filters</strong> option. Regarding authentication, you have two options to securely connect to Confluence:<ul>
 <li><strong>API Key</strong>: If you choose the API Key option, you'll need to generate an API Key from your Confluence account and input it in the provided API Key field.</li>
 <li><strong>Token</strong>: Similarly, if the Token option suits you better, you'll have to create an authentication Token from your Confluence user settings and enter it in the Token field.
 <strong>Note</strong>: These authentication methods ensure secure access to your Confluence content, maintaining the integrity and confidentiality of your data.</li>
@@ -250,10 +251,12 @@ Depending on your preference for SSH or HTTPS, ensure you provide the necessary 
 <li><strong>Filter</strong> - use the filter option to refine which Confluence pages you wish to fetch. You can filter by:<ul>
 <li><strong>Space Key</strong> - to fetch pages from specific Confluence spaces.</li>
 <li><strong>Page IDs</strong> - to target specific pages.</li>
-<li><strong>Labels</strong> - to retrieve pages tagged with specific labels.
-<strong>Note</strong>:These filters help in narrowing down to the most relevant content for your needs, enhancing efficiency.</li>
+<li><strong>Labels</strong> - to retrieve pages tagged with specific labels.</li>
 </ul>
 </li>
+</ul>
+<p><strong>Important Note</strong>: To establish a successful connection to Confluence from Alita, you <strong>must select one of these filters</strong> and provide the corresponding value for it. This step is crucial as it defines the scope of content that Alita will access and import from Confluence, aligning the integration process with your project's specific requirements.</p>
+<ul>
 <li><strong>Advanced Settings</strong> - these settings offer additional controls over how your Confluence content is fetched and presented:<ul>
 <li><strong>Include Attachment</strong> - check this if you want to include page attachments in your data fetch. Useful for cases where documents or images are integral to your content.</li>
 <li><strong>Content Format</strong> - select the format in which you wish to view or receive the content. Options include:<ul>
