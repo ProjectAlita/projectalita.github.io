@@ -78,11 +78,12 @@ For users who rely on Git repositories to manage their code, documents, or other
 
 * **Name** - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.
 * **URL** - link to Git Repo. To connect to your Git repository, you'll need to provide the URL. Alita supports two types of Git repository links:
-  * **SSH** - for a secure and password-less connection. If you choose this option, an SSH key pair is required, with the public key added to your Git account and the private key entered in the subsequent SSH Key field.
-  * **HTTPS** - a widely used method that might require username and password authentication based on the repository's access settings.
-Depending on your preference for SSH or HTTPS, ensure you provide the necessary authentication credentials as described:
-    * For **SSH**: input the SSH Key in the designated field.
-    * For **HTTPS**: if prompted, enter the username and password to authenticate.
+    * **SSH** - for a secure and password-less connection. If you choose this option, an SSH key pair is required, with the public key added to your Git account and the private key entered in the subsequent SSH Key field. For **SSH**: input the SSH Key in the designated field.
+    * **HTTPS** - a widely used method that might require username and password authentication based on the repository's access settings. For **HTTPS**: if prompted, enter the username and password to authenticate.
+
+**Important Note**:
+To ensure a successful connection, **you must clone your Git repository and provide the cloned Git link**. Simply copying the Git repository address from your browser's address bar is not sufficient. Cloning the repository ensures that you're using a valid, accessible link that Alita can connect to without issues.
+
 * **Branch** - here, specify the branch within your Git repository you wish to access. By default, the '**main**' branch is selected, but you may adjust this to any branch name that suits your current focus or project needs.
 * **Advanced Settings** - under this tab, we offer options to further customize how data is retrieved from your Git repository.
   * **Multithreading** - enabling multithreading can significantly speed up the process of fetching data from your Git repo, especially beneficial for large repositories or when network latency is a concern. This option allows the system to perform multiple operations in parallel, reducing overall extraction time.
@@ -99,7 +100,7 @@ Depending on your preference for SSH or HTTPS, ensure you provide the necessary 
 For users who rely on Confluence pages to manage their information, documents, or other types of projects, this source type allows to streamline the process of linking and extracting data from these knowledge pages. Here, we outline the options, settings, and parameters available for your Confluence source type.
 
 * **Name** - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.
-* **URL** - link to Confluence. To connect to your Confluence KB, you'll need to provide the URL. Regarding authentication, you have two options to securely connect to Confluence:
+* **URL** - link to Confluence. To connect to your Confluence KB, you'll need to provide the URL. No need to provide the full link as the page (e.g. https://www.kb.epam.com is enough) handling must be done with the help of **Filters** option. Regarding authentication, you have two options to securely connect to Confluence:
     * **API Key**: If you choose the API Key option, you'll need to generate an API Key from your Confluence account and input it in the provided API Key field.
     * **Token**: Similarly, if the Token option suits you better, you'll have to create an authentication Token from your Confluence user settings and enter it in the Token field.
 **Note**: These authentication methods ensure secure access to your Confluence content, maintaining the integrity and confidentiality of your data.
@@ -112,7 +113,9 @@ For users who rely on Confluence pages to manage their information, documents, o
     * **Space Key** - to fetch pages from specific Confluence spaces.
     * **Page IDs** - to target specific pages.
     * **Labels** - to retrieve pages tagged with specific labels.
-**Note**:These filters help in narrowing down to the most relevant content for your needs, enhancing efficiency.
+
+**Important Note**: To establish a successful connection to Confluence from Alita, you **must select one of these filters** and provide the corresponding value for it. This step is crucial as it defines the scope of content that Alita will access and import from Confluence, aligning the integration process with your project's specific requirements.
+
 * **Advanced Settings** - these settings offer additional controls over how your Confluence content is fetched and presented:
     * **Include Attachment** - check this if you want to include page attachments in your data fetch. Useful for cases where documents or images are integral to your content.
     * **Content Format** - select the format in which you wish to view or receive the content. Options include:
