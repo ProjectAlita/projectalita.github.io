@@ -7,8 +7,8 @@
 ## Information
 
 * **Release Version**: 1.0.0
-* **Released on**: 05-Apr-2024
-* **Access**: [Alita Platform](https://eye.projectalita.ai/). **Note**: You need to enable Epam VPN to access Alita.
+* **Released on**: 23-Apr-2024
+* **Access**: [Alita Platform](https://alita.lab.epam.com). **Note**: You need to enable Epam VPN to access Alita.
 * **User Guide**: [Alita - User Guide](user-guide.md) 
 
 ## New Features
