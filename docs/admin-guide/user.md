@@ -7,7 +7,7 @@ To configure or modify the admin settings for a specific project:
 1. Navigate to https://alita.lab.epam.com/-/configuration/users/.
 2. Select the project from the dropdown list for which you want to set up or adjust the admin settings.
 
-![AlitaAdmin-Select](img/AlitaAdmin-Select.png)
+![AlitaAdmin-Select](../img/AlitaAdmin-Select.png)
 
 ## Users Menu
 
