@@ -2,14 +2,14 @@
 
 ## Introduction
 
-**Alita** is an innovative web application that revolutionizes how you interact with prompts. Designed as a dynamic workspace, it empowers users to create, organize, and collaborate on prompts like never before. This initial version introduces a suite of features aimed at enhancing productivity and creativity in working with prompts.
+**Alita** is an innovative web application that revolutionizes how you interact with prompts. Designed as a dynamic workspace, it empowers users to create, organize, and collaborate on prompts like never before.
 
 ## Information
 
 * **Release Version**: 2.0.0
 * **Released on**: 27-May-2024
 * **Access**: [Alita Platform](https://alita.lab.epam.com). **Note**: You need to enable Epam VPN to access Alita.
-* **User Guide**: [Alita - User Guide](user-guide.md) 
+* **User Guide**: [Alita - User Guide](../user-guide/intro.md) 
 
 ## New Features
 
