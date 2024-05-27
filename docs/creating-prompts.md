@@ -72,12 +72,26 @@ Creating a prompt involves capturing essential details that guide the testing pr
 When crafting your prompt, ensure it includes the following elements for clarity and effectiveness:
 
 * **Descriptive Name**: Clearly indicates the focus of the prompt.
+    * **Conciseness**: Aim for a name that is brief yet descriptive, ideally under 30 characters.
+    * **Relevance**: Ensure the name directly reflects the content or purpose of the prompt.
 * **Brief Description**: Eloquently explains the prompt’s goal.
+    * **Specificity**: Include specific details about what the prompt is intended to achieve.
+    * **Brevity**: Keep the description concise, aiming for one to two sentences.
 * **Descriptive Tags**: Facilitates prompt categorization and searchability.
+    * **Relevance**: Choose tags that are directly related to the prompt’s content and purpose.
+    * **Diversity**: Use a mix of broad and specific tags to enhance discoverability.
 * **Framework Adherence**: Ensures the prompt aligns with accepted Prompt creation frameworks (e.g., CREATE, CRISPE, Elavis Saravia, etc.).
+    * **Consistency**: Stick to one framework per prompt to maintain clarity and structure.
+    * **Documentation**: Reference the framework used in the prompt description for clarity.
 * **Variable Clarity**: In scenarios with variables, use descriptive names.
-* **Informative System Messages**: If your prompt generates system or assistant messages, they must be clear and helpful.
+    * **Descriptiveness**: Use names that clearly indicate what the variable represents.
+    * **Standardization**: Follow a consistent naming convention for variables across prompts.
+* **Informative System Messages**: If your prompt uses system or assistant messages, they must be clear and helpful.
+    * **Clarity**: Ensure messages are straightforward and free of jargon.
+    * **Guidance**: Messages should guide the user on how to interact with the prompt effectively.
 * **Expected Outcomes**: Define what successful application of the prompt looks like.
+    * **Measurable Criteria**: Specify clear, measurable criteria for what constitutes a successful outcome.
+    * **Examples**: Provide examples of successful outcomes to illustrate expectations.
 
 ### Submitting Your Prompt for Publishing
 
@@ -85,6 +99,9 @@ To make your prompt available to the wider QA community, follow the steps below 
 
 1. **Publishing Initiation**: With your prompt crafted and saved, click the Publish button to start the submission process.
 2. **Version Naming**: Provide an informative version name (e.g., Gen-1.0) in the pop-up window. This name should reflect the content or purpose of the prompt, aiding in version control and future modifications.
+      * **Length**: Keep the version name concise, not exceeding 48 characters. This ensures readability and compatibility across various systems.
+      * **Characters**: Avoid using special characters such as spaces (" "), underscores ("_"), and others that might cause parsing or recognition issues in certain environments.
+      * **Clarity**: Choose names that clearly and succinctly describe the version's purpose or the changes it introduces, facilitating easier tracking and management of different versions.
 3. **Review Submission**: Click Publish to submit your prompt for the moderation review process. This step is crucial to ensure the quality and relevance of prompts available to the QA community.
 
 **Publishing the prompt:**
