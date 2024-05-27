@@ -41,7 +41,9 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Release Notes</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../release-notes/">Alita Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../release-notes/rn2/">RN 2.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../release-notes/rn1/">RN 1.0.0</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">User Guide</span></p>
@@ -117,12 +119,21 @@
     </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../alita-code/">Alita Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../alita-chat/">Alita Code Chat</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Admin Guide</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../admin-guide/intro/">Get Started</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../admin-guide/user/">User Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FAQs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../faqs/">Frequently Asked Questions</a>
                   </li>
               </ul>
       </div>
@@ -204,19 +215,52 @@
 <h4 id="prompt-requirements-for-consistency-and-quality">Prompt Requirements for Consistency and Quality</h4>
 <p>When crafting your prompt, ensure it includes the following elements for clarity and effectiveness:</p>
 <ul>
-<li><strong>Descriptive Name</strong>: Clearly indicates the focus of the prompt.</li>
-<li><strong>Brief Description</strong>: Eloquently explains the prompt’s goal.</li>
-<li><strong>Descriptive Tags</strong>: Facilitates prompt categorization and searchability.</li>
-<li><strong>Framework Adherence</strong>: Ensures the prompt aligns with accepted Prompt creation frameworks (e.g., CREATE, CRISPE, Elavis Saravia, etc.).</li>
-<li><strong>Variable Clarity</strong>: In scenarios with variables, use descriptive names.</li>
-<li><strong>Informative System Messages</strong>: If your prompt generates system or assistant messages, they must be clear and helpful.</li>
-<li><strong>Expected Outcomes</strong>: Define what successful application of the prompt looks like.</li>
+<li><strong>Descriptive Name</strong>: Clearly indicates the focus of the prompt.<ul>
+<li><strong>Conciseness</strong>: Aim for a name that is brief yet descriptive, ideally under 30 characters.</li>
+<li><strong>Relevance</strong>: Ensure the name directly reflects the content or purpose of the prompt.</li>
+</ul>
+</li>
+<li><strong>Brief Description</strong>: Eloquently explains the prompt’s goal.<ul>
+<li><strong>Specificity</strong>: Include specific details about what the prompt is intended to achieve.</li>
+<li><strong>Brevity</strong>: Keep the description concise, aiming for one to two sentences.</li>
+</ul>
+</li>
+<li><strong>Descriptive Tags</strong>: Facilitates prompt categorization and searchability.<ul>
+<li><strong>Relevance</strong>: Choose tags that are directly related to the prompt’s content and purpose.</li>
+<li><strong>Diversity</strong>: Use a mix of broad and specific tags to enhance discoverability.</li>
+</ul>
+</li>
+<li><strong>Framework Adherence</strong>: Ensures the prompt aligns with accepted Prompt creation frameworks (e.g., CREATE, CRISPE, Elavis Saravia, etc.).<ul>
+<li><strong>Consistency</strong>: Stick to one framework per prompt to maintain clarity and structure.</li>
+<li><strong>Documentation</strong>: Reference the framework used in the prompt description for clarity.</li>
+</ul>
+</li>
+<li><strong>Variable Clarity</strong>: In scenarios with variables, use descriptive names.<ul>
+<li><strong>Descriptiveness</strong>: Use names that clearly indicate what the variable represents.</li>
+<li><strong>Standardization</strong>: Follow a consistent naming convention for variables across prompts.</li>
+</ul>
+</li>
+<li><strong>Informative System Messages</strong>: If your prompt uses system or assistant messages, they must be clear and helpful.<ul>
+<li><strong>Clarity</strong>: Ensure messages are straightforward and free of jargon.</li>
+<li><strong>Guidance</strong>: Messages should guide the user on how to interact with the prompt effectively.</li>
+</ul>
+</li>
+<li><strong>Expected Outcomes</strong>: Define what successful application of the prompt looks like.<ul>
+<li><strong>Measurable Criteria</strong>: Specify clear, measurable criteria for what constitutes a successful outcome.</li>
+<li><strong>Examples</strong>: Provide examples of successful outcomes to illustrate expectations.</li>
+</ul>
+</li>
 </ul>
 <h3 id="submitting-your-prompt-for-publishing">Submitting Your Prompt for Publishing</h3>
 <p>To make your prompt available to the wider QA community, follow the steps below for publication:</p>
 <ol>
 <li><strong>Publishing Initiation</strong>: With your prompt crafted and saved, click the Publish button to start the submission process.</li>
-<li><strong>Version Naming</strong>: Provide an informative version name (e.g., Gen-1.0) in the pop-up window. This name should reflect the content or purpose of the prompt, aiding in version control and future modifications.</li>
+<li><strong>Version Naming</strong>: Provide an informative version name (e.g., Gen-1.0) in the pop-up window. This name should reflect the content or purpose of the prompt, aiding in version control and future modifications.<ul>
+<li><strong>Length</strong>: Keep the version name concise, not exceeding 48 characters. This ensures readability and compatibility across various systems.</li>
+<li><strong>Characters</strong>: Avoid using special characters such as spaces (" "), underscores ("_"), and others that might cause parsing or recognition issues in certain environments.</li>
+<li><strong>Clarity</strong>: Choose names that clearly and succinctly describe the version's purpose or the changes it introduces, facilitating easier tracking and management of different versions.</li>
+</ul>
+</li>
 <li><strong>Review Submission</strong>: Click Publish to submit your prompt for the moderation review process. This step is crucial to ensure the quality and relevance of prompts available to the QA community.</li>
 </ol>
 <p><strong>Publishing the prompt:</strong></p>
@@ -311,7 +355,7 @@ Let's work together to build a richer, more effective Prompt Library for everyon
 <h3 id="alita">Alita</h3>
 <ul>
 <li><a href="user-guide.md">Alita - User Guide</a></li>
-<li><a href="../release-notes/">Alita - Release Notes</a></li>
+<li><a href="release-notes.md">Alita - Release Notes</a></li>
 <li><a href="https://kb.epam.com/display/EPMQAOPALT/Alita+overview">Alita overview</a></li>
 </ul>
 <h3 id="prompt-engineering">Prompt Engineering</h3>
@@ -326,7 +370,7 @@ Let's work together to build a richer, more effective Prompt Library for everyon
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../alita-dial/" class="btn btn-neutral float-left" title="Alita and EPAM AI DIAL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../admin-guide/intro/" class="btn btn-neutral float-right" title="Get Started">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../alita-code/" class="btn btn-neutral float-right" title="Alita Code">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -352,7 +396,7 @@ Let's work together to build a richer, more effective Prompt Library for everyon
       <span><a href="../alita-dial/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../admin-guide/intro/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../alita-code/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

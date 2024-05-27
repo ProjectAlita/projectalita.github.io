@@ -41,7 +41,9 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Release Notes</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/">Alita Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn2/">RN 2.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn1/">RN 1.0.0</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">User Guide</span></p>
@@ -57,6 +59,16 @@
     <li class="toctree-l3"><a class="reference internal" href="#how-to-create-a-new-prompt">How to Create a New Prompt</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#how-to-create-tags">How to Create Tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-create-context">How to Create Context</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#how-to-input-context">How to Input Context</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#prompting-frameworks">Prompting Frameworks</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#editability-and-version-control">Editability and Version Control</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#how-to-setup-messages">How to Setup Messages</a>
     </li>
@@ -121,12 +133,21 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../creating-prompts/">QA - Prompting and Sharing</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../alita-code/">Alita Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../alita-chat/">Alita Code Chat</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Admin Guide</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../admin-guide/intro/">Get Started</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../admin-guide/user/">User Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FAQs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../faqs/">Frequently Asked Questions</a>
                   </li>
               </ul>
       </div>
@@ -156,13 +177,14 @@
                 <h1 id="prompts">Prompts</h1>
 <h2 id="my-libraries-menu">My libraries menu</h2>
 <p>The <strong>My libraries</strong> menu is a space designed to create prompts, datasources, collections and organize them.</p>
-<p>My libraries menu consists of four pages (tabs):</p>
-<ol>
+<p>My libraries menu consists of the following pages (tabs):</p>
+<ul>
 <li><strong>All</strong> - on this page you can find all your created Prompts, Datasources and Collections.</li>
 <li><strong>Prompts</strong> - on this page you can find all your created Prompts.</li>
 <li><strong>Datasources</strong> - on this page you can find all your created Datasources.</li>
+<li><strong>Applications</strong> - on this page you can find all your created Applications.</li>
 <li><strong>Collections</strong> - on this page you can find all your created Collections.</li>
-</ol>
+</ul>
 <p><img alt="My Library" src="../../img/My%20Library.png" /></p>
 <h2 id="my-libraries-prompts-page">My libraries - Prompts page</h2>
 <p>The <strong>My libraries - Prompts</strong> page serves as a dedicated inventory for all your prompts, irrespective of their current status. Consider it your personal repository for saving and organizing the prompts you've crafted. </p>
@@ -186,13 +208,89 @@
 </ol>
 <p><strong>Note:</strong> User has the flexibility to assign one or more tags to each prompt, enabling a multi-dimensional labeling system.</p>
 <p><img alt="Prompt-Create_a_Tag" src="../../img/Prompt-Create_a_Tag.png" /></p>
-<h3 id="how-to-setup-messages">How to Setup Messages</h3>
-<p>The MESSAGES section is a crucial component that allows users to structure the flow of interaction within a prompt.</p>
+<h3 id="how-to-create-context">How to Create Context</h3>
+<p>The <strong>Context</strong> field in Alita is a crucial component where users input the necessary background information or instructions that guide the LLM in generating accurate and relevant responses. This section serves as the foundational knowledge base for the model to understand and process your specific requests.</p>
+<h4 id="how-to-input-context">How to Input Context</h4>
 <ul>
-<li><strong>System</strong> message - a system prompt is a way of providing context and instructions to LLM, such as specifying a particular goal or role for LLM before asking it a question or giving it a task.</li>
-<li><strong>Assistant</strong> message - an Assistant has instructions and can leverage models, tools, and knowledge to respond to user queries</li>
-<li><strong>User</strong> message, on the other hand, exemplifies what a real human user might say or ask within a given scenario.</li>
+<li><strong>Identify Key Information</strong>: Before entering data into the Context field, identify the essential details or instructions that the model needs to know to fulfill your request effectively. This could include the topic, specific terms, relevant background information, or the scope of the task.</li>
+<li><strong>Enter the Details</strong>: In the Context field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the model's focus and efficiency.</li>
+<li><strong>Using Variables</strong>: For dynamic content generation, you can incorporate variables directly into the Context. Variables are denoted by double curly braces, e.g., {{variable_name}}. After defining a variable in the Context, you must specify its value in the <strong>Variables</strong> section to let the model replace the placeholder with the actual data during processing.</li>
 </ul>
+<h4 id="prompting-frameworks">Prompting Frameworks</h4>
+<p>To further refine the instructions and ensure high-quality responses from LLMs, you can utilize structured prompting frameworks. These frameworks help in crafting precise and effective prompts by breaking down the requirements into specific components. Below are examples of how to apply these frameworks in the context of software testing:</p>
+<h5 id="create-framework">CREATE Framework</h5>
+<p>The <strong>CREATE</strong> framework helps in constructing detailed and focused prompts by defining the Character, Request, Examples, Adjustment, Type of Output, and Extras.</p>
+<pre><code>- **Character**: Act as a senior software tester with expertise in regression testing.
+- **Request**: Develop a detailed regression testing strategy for an upcoming version release of our CRM software.
+- **Examples**: Include scenarios like:
+  - Preconditions: CRM software has been updated to the latest version.
+  - Steps to reproduce: User logs in and accesses the customer data module.
+  - Expected results: User should see updated customer data without any data loss.
+- **Adjustment**: Focus on critical modules like customer data management and transaction processing.
+- **Type of Output**: Format the strategy as a formal document with sections for objectives, scope, test scenarios, and resources.
+- **Extras**: After formulating the strategy, provide a rationale for the choice of specific test scenarios and their expected impact on the software quality.
+</code></pre>
+<h5 id="elavis-saravia-framework">Elavis Saravia Framework</h5>
+<p>This framework simplifies the prompt creation process into four main elements: Instruction, Context, Input Data, and Output Indicator.</p>
+<pre><code>- **Instruction**: Generate test cases for user interface consistency across different devices.
+- **Context**: The application is a cross-platform tool accessible on desktops, tablets, and smartphones.
+- **Input Data**: User accesses the application from different devices.
+- **Output Indicator**: The output should be a list of test cases, each describing the test steps, the expected results, and the device type.
+</code></pre>
+<h5 id="crispe-framework">CRISPE Framework</h5>
+<p>The <strong>CRISPE</strong> framework provides a comprehensive approach by incorporating Capacity and Role, Insight, Statement, Personality, and Experiment.</p>
+<pre><code>- **Capacity and Role**: Serve as an automated testing tool expert.
+- **Insight**: The software to be tested is an e-commerce platform with high transaction volumes and user concurrency.
+- **Statement**: Create automated test scripts that simulate multiple user transactions simultaneously.
+- **Personality**: Maintain a technical and precise tone throughout the test scripts.
+- **Experiment**: Offer three variations of the test script focusing on different aspects of the transaction process (e.g., payment processing, cart updates, and user login).
+</code></pre>
+<p>By integrating these frameworks into the <strong>Context</strong> section of your prompts, you can guide LLMs to produce more targeted and effective outputs. Each framework helps in structuring your request to the Gen AI, ensuring that all necessary details are included to generate the desired results.</p>
+<h4 id="editability-and-version-control">Editability and Version Control</h4>
+<p>You can edit the <strong>Context</strong> field at any time to update or refine the instructions:</p>
+<ul>
+<li><strong>Editing Existing Context</strong>: Simply make changes directly in the Context field and save them. This updates the prompt to reflect the latest information.</li>
+<li><strong>Creating New Versions</strong>: If you want to keep the original version, you can save your changes as a new version. This is useful for comparing different versions or keeping a history of changes. <strong>Note</strong>: For more information check the <a href="#managing-prompt-versions-save-create-versions-and-manage">Managing Prompt Versions: Save, Create Versions, and Manage</a>.</li>
+</ul>
+<p>These features allow you to adapt and improve the instructions as needed, ensuring the responses remain relevant and accurate.</p>
+<h3 id="how-to-setup-messages">How to Setup Messages</h3>
+<p>The <strong>MESSAGES</strong> section is a crucial component that allows users to structure the flow of interaction within a prompt.</p>
+<ul>
+<li><strong>System Message</strong>: Sets the interaction's context and guidelines for the Gen AI, not visible to the user but crucial for defining the Gen AI's behavior.</li>
+<li><strong>Assistant Message</strong>: The Gen AI's responses to user inputs, crafted within the context and constraints set by the system message.</li>
+<li><strong>User Message</strong>: Inputs from the user, serving as prompts for the Gen AI to generate responses, thereby driving the conversation forward.</li>
+</ul>
+<p>In conversational models, these message types work together within prompts to create a structured and meaningful dialogue. The system message defines the framework, the user message initiates and guides the flow of the conversation, and the assistant message provides the content of the interaction, all contributing to a coherent and purposeful exchange.</p>
+<p><strong>System Message</strong> is a part of the prompt that provides instructions or context directly from the system's perspective. It sets the stage for the interaction, establishing rules, scenarios, or the setting for the Geb AI model to operate within. This is not generated in response to the user but is predefined by the designer of the prompt to guide the interaction.</p>
+<pre><code>**Example:**
+
+**System Message**: &quot;You are an AI trained to assist in creating detailed and accurate test cases. Focus on clarity and precision, and ensure all responses adhere to software testing standards.&quot;
+
+This message informs the AI of its role in assisting with test case creation, setting expectations for the type of responses it should generate.
+</code></pre>
+<p><strong>Assistant Message</strong> is the AI's response generated based on the user's input and the context provided by the system message. This message aims to fulfill the user's request for information, assistance, or interaction within the guidelines set by the system message.</p>
+<pre><code>**Example:**
+
+* **User Message**: &quot;Generate a test case for a login feature with email and password fields.&quot;
+* **Assistant Message**: &quot;Test Case: Login Feature
+    * Objective: Verify that the user can log in using a valid email and password.
+    * Steps:
+        1. Navigate to the login page.
+        2. Enter a valid email in the email field.
+        3. Enter the corresponding password in the password field.
+        4. Click the login button.
+    * Expected Result: The user is redirected to the homepage after successful login.
+    * Test Data: Use registered email: user@example.com and password: SecurePass123.&quot;
+
+The assistant's message provides a structured test case based on the user's request, adhering to the guidelines set by the system message.
+</code></pre>
+<p><strong>User Message</strong> is the input or query from the individual interacting with the Gen AI model. These messages are the user's side of the conversation, prompting the Gen AI to generate responses based on the context of the interaction as defined by the system message and the capabilities of the Gen AI.</p>
+<pre><code>**Example:**
+
+**User Message**: &quot;Can you add a test for password validation error handling?&quot;
+
+This message prompts the assistant to expand on the existing test cases by adding specific scenarios related to error handling.
+</code></pre>
 <p>To enhance the interactivity of a prompt, user can add multiple messages of any type by clicking the <strong><code>+</code></strong> icon, selecting the desired message type, and providing the relevant content.
 Additionally, user have the ability to delete, copy, and reorder messages to best fit the flow of the conversation, easily arranging them by dragging and dropping the message boxes as needed for optimal organization and presentation.</p>
 <p><img alt="Prompt-System_Messages" src="../../img/Prompt-System_Messages.png" /></p>
@@ -218,17 +316,22 @@ Additionally, user have the ability to delete, copy, and reorder messages to bes
 <li><strong>Maximum length</strong> - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.</li>
 </ul>
 </li>
-<li><strong>Initiate Interaction</strong>: Enter your text (be it a question or a command) in the chat box and click the <strong>Send</strong> icon.</li>
+<li><strong>Initiate Interaction</strong>: Once all instructions for the prompt are set in the <strong>Context</strong> and/or <strong>Messages</strong> sections, you can start the execution by typing your text (be it a question or a command)  into the chat box. Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the <strong>Send</strong> icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.</li>
 </ol>
 <p><img alt="Prompt-Chat_Option" src="../../img/Prompt-Chat_Option.png" /></p>
-<p>Upon receiving the output, the following actions are available:</p>
+<p><strong>Additional Interaction Features:</strong></p>
 <ul>
-<li>To continue the dialogue, enter your subsequent text in the chat box and click the <strong>Send</strong> icon.</li>
-<li>To copy the output, click the <strong>Copy to Clipboard</strong> icon.</li>
-<li>To append the output to the <strong>Assistant Message</strong>, click the <strong>Copy to Messages</strong> icon.</li>
-<li>To generate a new response, click the <strong>Regenerate</strong> icon.</li>
-<li>To eliminate the current output, click the <strong>Delete</strong> icon.</li>
-<li>To purge the chat history, click the <strong>Clean</strong> icon.</li>
+<li><strong>Auto scroll to bottom</strong>: This option can be toggled on or off to automatically scroll to the bottom of the output as it is being generated. This feature is helpful during long outputs to keep the most recent content visible.</li>
+<li><strong>Full Screen Mode</strong>: Increase the size of the output window for better visibility and focus. This mode can be activated to expand the output interface to the full screen.</li>
+</ul>
+<p><strong>Post-Output Actions:</strong></p>
+<ul>
+<li><strong>Continue the Dialogue</strong>: To keep the conversation going, simply type your next question or command in the chat box and click the <strong>Send</strong> icon.</li>
+<li><strong>Copy the Output</strong>: Click the <strong>Copy to Clipboard</strong> icon to copy the generated text for use elsewhere.</li>
+<li><strong>Append to Assistant Message</strong>: Use the <strong>Copy to Messages</strong> icon to add the output directly to the Assistant Message section for reference or further use.</li>
+<li><strong>Regenerate Response</strong>: If the output isn't satisfactory, click the <strong>Regenerate</strong> icon to prompt the Gen AI to produce a new response.</li>
+<li><strong>Delete Output</strong>: To remove the current output from the chat, click the <strong>Delete</strong> icon.</li>
+<li><strong>Purge Chat History</strong>: For a fresh start or to clear sensitive data, click the <strong>Clean</strong> icon to erase the chat history.</li>
 </ul>
 <p><img alt="Prompt-Chat_Output" src="../../img/Prompt-Chat_Output.png" /></p>
 <h4 id="executing-a-prompt-using-the-completion-option">Executing a Prompt Using the <strong>Completion</strong> Option:</h4>
@@ -246,11 +349,6 @@ Additionally, user have the ability to delete, copy, and reorder messages to bes
 <li><strong>Initiate Execution</strong>: Click the <strong>Run</strong> button.</li>
 </ol>
 <p><img alt="Prompt-Completion_Option" src="../../img/Prompt-Completion_Option.png" /></p>
-<p>Upon receiving the output, the following actions are available:</p>
-<ul>
-<li>To regenerate the output, click the <strong>Run</strong> button again.</li>
-<li>To copy the output, utilize the <strong>Copy to Clipboard</strong> icon.</li>
-</ul>
 <h3 id="managing-prompt-versions-save-create-versions-and-manage">Managing Prompt Versions: Save, Create Versions, and Manage</h3>
 <p>To optimally manage your prompts, understanding how to save and create versions is crucial. Follow these guidelines to efficiently save your prompt, create versions, and manage them.</p>
 <h4 id="how-to-save-a-prompt">How to Save a Prompt:</h4>
@@ -263,8 +361,12 @@ Additionally, user have the ability to delete, copy, and reorder messages to bes
 <p>For instances where you need to create and manage different iterations of your prompt:</p>
 <ol>
 <li><strong>Initiate a New Version</strong>: Start by clicking the <strong>Save As Version</strong> button.</li>
-<li><strong>Name Your Version</strong>: Enter a meaningful version name and confirm by clicking <strong>Save</strong>.</li>
+<li><strong>Name Your Version</strong>: When saving your work, provide a version name that clearly identifies the iteration or changes made. Click <strong>Save</strong> to confirm your entry. </li>
 </ol>
+<p><strong>Best Practices for Version Naming</strong>:
+   - <strong>Length</strong>: Keep the version name concise, not exceeding 48 characters. This ensures readability and compatibility across various systems.
+   - <strong>Characters</strong>: Avoid using special characters such as spaces (" "), underscores ("_"), and others that might cause parsing or recognition issues in certain environments.
+   - <strong>Clarity</strong>: Choose names that clearly and succinctly describe the version's purpose or the changes it introduces, facilitating easier tracking and management of different versions.</p>
 <p><img alt="Prompt-Save_Version" src="../../img/Prompt-Save_Version.png" /></p>
 <p>Upon creating a new version of the prompt, several options become available to you:</p>
 <ul>

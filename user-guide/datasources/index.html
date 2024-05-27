@@ -41,7 +41,9 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Release Notes</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/">Alita Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn2/">RN 2.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn1/">RN 1.0.0</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">User Guide</span></p>
@@ -69,6 +71,8 @@
     <li class="toctree-l4"><a class="reference internal" href="#source-type-git">Source type - GIT</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#source-type-confluence">Source type - Confluence</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#source-type-qtest">Source type - QTest</a>
     </li>
         </ul>
     </li>
@@ -111,12 +115,21 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../creating-prompts/">QA - Prompting and Sharing</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../alita-code/">Alita Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../alita-chat/">Alita Code Chat</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Admin Guide</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../admin-guide/intro/">Get Started</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../admin-guide/user/">User Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FAQs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../faqs/">Frequently Asked Questions</a>
                   </li>
               </ul>
       </div>
@@ -172,6 +185,7 @@
 <li><strong>Table</strong>: Supported file types with a table structure, such as CSV or XLSX.</li>
 <li><strong>GIT</strong>: Any accessible Git repository.</li>
 <li><strong>Confluence</strong>: Any Confluence page accessible to you.</li>
+<li><strong>QTest</strong>: Any QTest project accessible to you.</li>
 </ul>
 </li>
 </ol>
@@ -192,7 +206,7 @@
 <li><strong>PythonLoader</strong> - best suited for technical or coded documents, offering more sophisticated parsing capabilities.</li>
 </ul>
 </li>
-<li><strong>Extension Whitelist</strong> - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., pdf, docx, txt), overriding the default supported types if necessary.</li>
+<li><strong>Extension Whitelist</strong> - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., pdf, docx, xlsx, json, txt), overriding the default supported types if necessary.</li>
 <li><strong>Extension Blacklist</strong> - conversely, list file extensions you wish to exclude from processing. Any file type mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.</li>
 </ul>
 <p><img alt="Datassources-Dataset_File" src="../../img/Datassources-Dataset_File.png" /></p>
@@ -201,7 +215,7 @@
 <ul>
 <li><strong>Name</strong> - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.</li>
 <li><strong>Choose File Option</strong> - select the file you wish to process. Alita supports a range of commonly used file types, ensuring compatibility and ease of use. Supported File Types: CSV, JSON, XLSX.</li>
-<li><strong>Columns</strong> - specify which column(s) within your table you want to focus on. These columns should contain the data you wish to analyze or use for generating embeddings. You can select single or multiple columns depending on your requirement. This flexibility allows you to tailor the analysis to the specific data points that are most valuable to your objectives.</li>
+<li><strong>Columns</strong> - specify which column(s) within your table you want to focus on. These columns should contain the data you wish to analyze or use for generating embeddings. You can select single or multiple columns depending on your requirement. This flexibility allows you to tailor the analysis to the specific data points that are most valuable to your objectives. To select multiple columns, separate each column name with a comma (",").</li>
 <li><strong>JSON Documents</strong> - enable this option if your table data is structured as JSON documents, particularly relevant when dealing with JSON files. This tells the system to parse the file as a collection of JSON entries, allowing for a more nuanced understanding and utilization of nested data structures within the file.</li>
 <li><strong>Raw Content</strong> - when enabled, this setting ensures that your selected data is treated as raw content, bypassing any default preprocessing or formatting. This is particularly useful when you want the data to be ingested in its purest form, without any alterations that might affect its original structure or meaning.</li>
 </ul>
@@ -272,6 +286,19 @@ To ensure a successful connection, <strong>you must clone your Git repository an
 </li>
 </ul>
 <p><img alt="Datassources-Dataset_Confluence" src="../../img/Datassources-Dataset_Confluence.png" /></p>
+<h4 id="source-type-qtest">Source type - QTest</h4>
+<p>Integrating QTest with Alita enhances your test management by connecting directly to QTest Test Case Management System (TCMS). This integration allows you to select test cases for duplication checks, search functionalities, and leverage manual test cases for future automation with Generative AI. Below, we detail the configuration options, settings, and parameters available for the QTest source type.</p>
+<ul>
+<li><strong>URL</strong> - the link to your QTest. <strong>Note</strong>: You must provide the link to your QTest in the following format <code>https://&lt;host of your installation of QTest&gt;/api/&lt;api version used&gt;</code></li>
+<li><strong>QTest Project ID</strong> - the specific project ID within QTest you wish to connect to. Enter the project ID to direct Alita to the correct QTest project.</li>
+<li><strong>API Key</strong> - Alita supports two types of authentication methods for QTest API Keys to ensure secure access:<ul>
+<li><strong>Secret</strong> - a confidential key used for enhanced security during API requests.</li>
+<li><strong>Password</strong> - an option for API access, verifying authorized requesters.</li>
+</ul>
+</li>
+<li><strong>Test Cases per Page</strong> - configures the number of test cases displayed per page within the QTest for selection.</li>
+<li><strong>Columns</strong> - specify the columns within your test cases that you wish to focus on for analysis or embedding generation.  Select single or multiple columns to tailor the analysis to your project's specific needs. To select multiple columns, separate each column name with a comma (",").</li>
+</ul>
 <h3 id="configuring-transformers">Configuring Transformers</h3>
 <p>Transformers enhance your documents by extracting significant keywords, summarizing content, and improving searchability. <em>Please note if you don't clearly understand the purpose of the parameters and options available here than leave them as is. Don't make any changes.</em></p>
 <ul>

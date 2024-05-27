@@ -41,7 +41,9 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Release Notes</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/">Alita Release Notes</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn2/">RN 2.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn1/">RN 1.0.0</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">User Guide</span></p>
@@ -65,6 +67,10 @@
     <li class="toctree-l2"><a class="reference internal" href="#discover-menus">Discover - Menus</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#tabs-in-settings">Tabs in Settings</a>
+    </li>
+        </ul>
     </li>
     </ul>
                   </li>
@@ -81,12 +87,21 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../creating-prompts/">QA - Prompting and Sharing</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../alita-code/">Alita Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../alita-chat/">Alita Code Chat</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Admin Guide</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../admin-guide/intro/">Get Started</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../admin-guide/user/">User Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FAQs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../faqs/">Frequently Asked Questions</a>
                   </li>
               </ul>
       </div>
@@ -129,7 +144,7 @@
 <p>Alita is designed to be intuitive, granting you the freedom to focus on creativity and productivity. Whether you are new to prompting or an experienced creator, our user guide will walk you through every feature, ensuring you maximize your Alita experience.</p>
 <p>Let's embark on this journey to unlock the full potential of your ideas.</p>
 <h2 id="access-to-alita">Access to Alita</h2>
-<p>To access Alita:</p>
+<p>To access Alita HUB:</p>
 <ol>
 <li>Open your browser.</li>
 <li>Type in <a href="https://alita.lab.epam.com">https://alita.lab.epam.com</a> in the address bar.</li>
@@ -140,16 +155,17 @@
 <p><strong>Note</strong>: You need to enable Epam VPN to access Alita.</p>
 <p><img alt="Main Interface" src="../../img/Main%20Interface.png" /></p>
 <h2 id="alita-main-interface">Alita - Main Interface</h2>
-<p>The Alita application's main interface encompasses several sections, including the Discover Menu, Search feature, Quick Navigation tabs, Settings, a Quick button for creating prompts or collections, Tags, and Trending Authors.</p>
+<p>The Alita HUB's main interface encompasses several sections, including the Discover Menu, Search feature, Quick Navigation tabs, Settings, a Quick button for creating prompts or collections, Tags, and Trending Authors.</p>
 <p><strong>Sections:</strong></p>
 <ul>
-<li><strong>Discover Menu</strong>: A hamburger menu allowing users to switch among different menus such as Prompts, Datasources, Collections, and My Library.</li>
+<li><strong>Discover Menu</strong>: A sidebar menu allowing users to switch among different menus such as Prompts, Datasources, Collections, and My Library.</li>
 <li><strong>Search</strong>: A Search box available to find prompts by their names and descriptions. Note: The Search functionality operates within the selected menu and is not universal across the entire application.</li>
 <li><strong>Quick Navigation Tabs</strong>: Tabs enabling users to switch among Latest, My Liked, and Trending pages. The names and content of these tabs will change depending on the menu selected.</li>
 <li><strong>Page Content</strong>: This area displays the latest published content, which varies based on the selected menu. For example, the Prompts menu will show the latest published prompts, and the Collections menu will display the latest published collections.</li>
 <li><strong>View Switcher</strong>: A tool for quickly switching between Card and List views.</li>
-<li><strong>Quick button</strong>: A button that allows for the rapid creation of a new prompt or collection. The function of this button (+Prompt or +Collection) changes based on the selected menu.</li>
-<li><strong>Settings</strong>: Accessible by clicking on your user avatar/picture. Here, you can configure your Profile settings or Log Out of the application.</li>
+<li><strong>Quick button</strong>: A button that allows for the rapid creation of a new prompt, datasource, application or collection. The function of this button (+Prompt, +Datasource, +Application or +Collection) changes based on the selected menu.</li>
+<li><strong>Project Switcher</strong>: A tool for quickly switching among projects. <strong>Note</strong>: Becomes available if you are involed in more than one project.</li>
+<li><strong>Settings</strong>: Accessible by clicking on your user avatar/picture. Here, you can configure your Profile, Settings or Log Out of the application.</li>
 <li><strong>Tags</strong>: This section displays the tags (categories) associated with the content being viewed. The tags vary depending on the selected menu.</li>
 <li><strong>Trending Authors</strong>: Shows the authors who have recently contributed or shared the most trending prompts and collections with the community.</li>
 </ul>
@@ -182,7 +198,7 @@
 </ul>
 <p>These standardized functionalities across different menus and pages are designed to simplify navigation and enhance the content management process within the application, promoting a coherent and user-friendly environment.</p>
 <h2 id="discover-menus">Discover - Menus</h2>
-<p>Alita consists of 4 main menus:</p>
+<p>Alita consists of the following main menus:</p>
 <ul>
 <li><strong>Prompts</strong>: Browse through an organized showcase of prompts curated and shared by the community.</li>
 <li><strong>Datasources</strong>:  Browse through an organized showcase of datasources and shared by the community.</li>
@@ -192,18 +208,33 @@
 <p><strong>Navigation:</strong></p>
 <ol>
 <li>To naviagte among the menus, click the <strong>Alita</strong> icon on the top left.</li>
-<li>The <strong>Hamburger</strong> menu is opened.</li>
+<li>The <strong>Sidebar</strong> menu is opened.</li>
 <li>Click on the menu name to navigate to the desired menu.</li>
 </ol>
 <p><img alt="Discover Menus" src="../../img/Discover%20Menus.png" /></p>
 <h2 id="settings">Settings</h2>
-<p>The <strong>Settings</strong> is designed to offer you a centralized space to manage vital aspects of your account and configurations. To access it click on your avatar on top right part of the page. </p>
+<p>The <strong>Settings</strong> is designed to offer you a centralized space to manage vital aspects of your account and configurations. This centralized space is accessible by clicking on your avatar located at the top right corner of the page.</p>
+<h3 id="tabs-in-settings">Tabs in Settings</h3>
+<p>Settings consists of several tabs, each dedicated to specific functionalities:</p>
+<ul>
+<li><strong>Profile</strong>: Customize your user profile and monitor your engagement within Alita.</li>
+<li><strong>Monitoring</strong>: Keep track of usage statistics by selecting different metrics and timeframes.</li>
+<li><strong>Configuration</strong>: Manage essential technical settings crucial for the smooth operation of Alita's features like Alita Code or Alita Chat.</li>
+<li><strong>Deployments</strong>: Handle the management and launching of AI models or services linked to your Alita project.</li>
+<li><strong>Log out</strong>: Securely log out from the Alita Hub.</li>
+</ul>
+<p><strong>Navigation</strong></p>
+<p>To navigate through the Settings menus, follow these steps:</p>
+<ol>
+<li>Click on the <strong>Your Avatar</strong> icon located at the top right corner of the page to open the <strong>Sidebar</strong> menu.</li>
+<li>Select the desired tab by clicking on its name to navigate to that specific section.</li>
+</ol>
 <p><strong>Profile Tab</strong></p>
 <p>In the Profile tab, you’re presented with options to personalize your account and monitor your engagement and resource utilization within Alita.</p>
-<ul>
-<li><strong>About me</strong> - fill in or update your personal details to ensure your Alita profile remains current. <strong>Note</strong>: Markdown is supported.</li>
-<li><strong>Activities and Usage Statistics</strong> - a comprehensive diary of your actions within Alita, alongside usage statistics, offers insight into how you're leveraging Alita over time. This could be beneficial for tracking your project's evolution or analyzing resource consumption.</li>
-</ul>
+<p><strong>About me</strong> - fill in or update your personal details to ensure your Alita profile remains current. <strong>Note</strong>: Markdown is supported.</p>
+<!--* **Activities and Usage Statistics** - a comprehensive diary of your actions within Alita, alongside usage statistics, offers insight into how you're leveraging Alita over time. This could be beneficial for tracking your project's evolution or analyzing resource consumption.
+-->
+
 <p><img alt="Settings-Profile_tab" src="../../img/Settings-Profile_tab.png" /></p>
 <p><strong>Configuration Tab</strong></p>
 <p>This tab serves as the nucleus for managing essential technical settings that enable the smooth operation of Alita's features, such as Alita Code or Alita Chat.</p>
@@ -226,7 +257,7 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../release-notes/" class="btn btn-neutral float-left" title="Alita Release Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../release-notes/rn1/" class="btn btn-neutral float-left" title="RN 1.0.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../prompts/" class="btn btn-neutral float-right" title="Prompts">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -250,7 +281,7 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../release-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../release-notes/rn1/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../prompts/" style="color: #fcfcfc">Next &raquo;</a></span>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/alita-chat/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Alita Code Chat - Alita Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Alita Code Chat";
+        var mkdocs_page_input_path = "alita-chat.md";
+        var mkdocs_page_url = "/alita-chat/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Alita Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Release Notes</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../release-notes/rn2/">RN 2.0.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../release-notes/rn1/">RN 1.0.0</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../user-guide/intro/">Get Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../user-guide/prompts/">Prompts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../user-guide/collections/">Collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../user-guide/datasources/">Datasources</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manuals</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../alita-dial/">Alita and EPAM AI DIAL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../creating-prompts/">QA - Prompting and Sharing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../alita-code/">Alita Code</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Alita Code Chat</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pre-requisite">Pre-requisite</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#features-list">Features list:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alita-code-chat-configuration">Alita Code Chat Configuration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alita-code-chat-usage">Alita Code Chat Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#prompts">Prompts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasources">Datasources</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#applications">Applications</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#chat">Chat</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Admin Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-guide/intro/">Get Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admin-guide/user/">User Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FAQs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../faqs/">Frequently Asked Questions</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Alita Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Manuals</li>
+      <li class="breadcrumb-item active">Alita Code Chat</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="alita-code-chat">Alita Code Chat</h1>
+<p>Alita Code Chat for VSCode is an auxiliary GUI for Alita Code, you can utilize the functionality of Alita Code and you can also chat with Alita HUB.</p>
+<h2 id="pre-requisite">Pre-requisite</h2>
+<p>Alita Code Chat depends on Alita Code for VSCode. It can be installed through VS code's extension market: <a href="https://marketplace.visualstudio.com/items?itemName=ProjectAlita.Alita Code">Alita Code</a>.</p>
+<h2 id="features-list">Features list:</h2>
+<ul>
+<li>Chat with Alita directly. It will use the model settings set by Alita Code extension.</li>
+<li>Type trigger chat to add participants to chat: <code>/</code> for prompt, <code>#</code> for datasources and <code>@</code> for applications.</li>
+</ul>
+<p><strong>Note</strong>: Alita Code Chat doesn't support Chat History, in case of restarting VS Code, the Chat History will be cleaned.</p>
+<h2 id="alita-code-chat-configuration">Alita Code Chat Configuration</h2>
+<p>Alita Code Chat is a visual studio extension to work as chatting companion using Alita Code.</p>
+<h3 id="installation">Installation</h3>
+<p>Getting started with Alita Code Chat is straightforward:</p>
+<ol>
+<li>Navigate to the <strong>Extensions</strong> section in VS Code.</li>
+<li>Search for <strong>Alita Code Chat</strong> in the Marketplace and click <strong>Install</strong>.</li>
+</ol>
+<p><img alt="AlitaChat-Install" src="../img/AlitaChat-Install.png" /></p>
+<p><strong>Note</strong>: After successful installation Alita Code Chat shortcut will be added to left menu of VS Code.</p>
+<h2 id="alita-code-chat-usage">Alita Code Chat Usage</h2>
+<p>With Alita Code Chat set up, you can now:</p>
+<ul>
+<li><strong>Prompts</strong> - call and use prompts configured in Alita HUB.</li>
+<li><strong>Datasources</strong> - call and use datasources configured in Alita HUB.</li>
+<li><strong>Applications</strong> - call and use applications configured in Alita HUB.</li>
+<li><strong>Chat</strong> - is a specific type of input designed for conversational AI models, which aims to initiate or guide a dialogue. This can be in the form of a question, statement, or command that simulates human-like interaction, prompting the AI to produce a conversational response for engagement.</li>
+</ul>
+<p><strong>Important:</strong> To successfully call and utilize prompts, datasources, or applications from Alita HUB, it is essential that these items are tagged with <code>code</code> in Alita HUB. This tag ensures that the resources are correctly categorized and accessible. Ensure that the <code>code</code> tag is applied to relevant prompts, datasources, and applications to enable their proper functionality within the Alita ecosystem.</p>
+<p><strong>Additional Interaction Features:</strong></p>
+<ul>
+<li><strong>Auto scroll to bottom</strong>: This option can be toggled on or off to automatically scroll to the bottom of the output as it is being generated. This feature is helpful during long outputs to keep the most recent content visible.</li>
+<li><strong>Reload Alita Code Settings</strong>: This option allows to reload and update Alita Code settings.</li>
+<li><strong>Stop generating</strong>: To stop generation of output.</li>
+</ul>
+<p><strong>Post-Output Actions:</strong></p>
+<ul>
+<li><strong>Continue the Dialogue</strong>: To keep the conversation going, simply type your next question or command in the chat box and click the <strong>Send</strong> icon.</li>
+<li><strong>Copy the Output</strong>: Click the <strong>Copy to clipboard</strong> icon to copy the generated text for use elsewhere.</li>
+<li><strong>Delete Output</strong>: To remove the current output from the chat, click the <strong>Delete</strong> icon.</li>
+<li><strong>Purge Chat History</strong>: For a fresh start or to clear sensitive data, click the <strong>Clean</strong> icon to erase the chat history.</li>
+</ul>
+<p><img alt="AlitaChat-Buttons" src="../img/AlitaChat-Buttons.png" /></p>
+<h3 id="prompts">Prompts</h3>
+<p>To call and use <strong>Prompts</strong> from Alita HUB:</p>
+<ol>
+<li>Open the Alita Code Chat.</li>
+<li>Type <code>/</code> in the chat box.</li>
+<li>Select the prompt that you want to run.</li>
+<li>Once all instructions for the prompt are set in the <strong>Context</strong> and/or <strong>Messages</strong> sections, you can start the execution by typing your text (be it a question or a command)  into the chat box. Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the <strong>Send</strong> icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.</li>
+<li>If you need to start a fresh conversation or prompt, simply click the <strong>X</strong> icon to clear the current setup and begin anew.</li>
+</ol>
+<p><img alt="AlitaChat-Prompt_Select" src="../img/AlitaChat-Prompt_Select.png" /></p>
+<p><strong>Handling Variables:</strong></p>
+<ul>
+<li><strong>Variable Input</strong>: If the selected prompt requires variables, a pop-up window will appear prompting you to input the necessary values.</li>
+<li><strong>Variable Configuration</strong>: You can adjust or update variable values at any time by clicking the <strong>Settings</strong> icon. This allows for dynamic changes to the prompt's behavior based on updated inputs.</li>
+</ul>
+<p><img alt="AlitaChat-Prompt_Variable" src="../img/AlitaChat-Prompt_Variable.png" /></p>
+<h3 id="datasources">Datasources</h3>
+<p>To call and use <strong>Datasources</strong> from Alita HUB:</p>
+<ol>
+<li>Open the Alita Code Chat.</li>
+<li>Type <code>#</code> in the chat box.</li>
+<li>Select the datasource that you want to run.</li>
+<li>Start conversation in the form of a question, statement, or command that simulates human-like <strong>interaction</strong>.</li>
+<li>If you need to start a fresh conversation or datasource, simply click the <strong>X</strong> icon to clear the current setup and begin anew.</li>
+</ol>
+<p><img alt="AlitaChat-Datasource" src="../img/AlitaChat-Datasource.png" /></p>
+<h3 id="applications">Applications</h3>
+<p>To call and use <strong>Applications</strong> from Alita HUB:</p>
+<ol>
+<li>Open the Alita Code Chat.</li>
+<li>Type <code>@</code> in the chat box.</li>
+<li>Select the application that you want to run.</li>
+<li>Start conversation in the form of a question, statement, or command that simulates human-like <strong>interaction</strong>.</li>
+<li>If you need to start a fresh conversation or application, simply click the <strong>X</strong> icon to clear the current setup and begin anew.</li>
+</ol>
+<h3 id="chat">Chat</h3>
+<ol>
+<li>Open the Alita Code Chat.</li>
+<li>Start conversation in the form of a question, statement, or command that simulates human-like <strong>interaction</strong>.</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../alita-code/" class="btn btn-neutral float-left" title="Alita Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../admin-guide/intro/" class="btn btn-neutral float-right" title="Get Started">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../alita-code/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../admin-guide/intro/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
