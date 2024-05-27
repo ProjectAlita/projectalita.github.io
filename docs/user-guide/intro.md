@@ -19,7 +19,7 @@ Let's embark on this journey to unlock the full potential of your ideas.
 
 ## Access to Alita
 
-To access Alita:
+To access Alita HUB:
 
 1. Open your browser.
 2. Type in <https://alita.lab.epam.com> in the address bar.
@@ -33,17 +33,18 @@ To access Alita:
 
 ## Alita - Main Interface
 
-The Alita application's main interface encompasses several sections, including the Discover Menu, Search feature, Quick Navigation tabs, Settings, a Quick button for creating prompts or collections, Tags, and Trending Authors.
+The Alita HUB's main interface encompasses several sections, including the Discover Menu, Search feature, Quick Navigation tabs, Settings, a Quick button for creating prompts or collections, Tags, and Trending Authors.
 
 **Sections:**
 
-* **Discover Menu**: A hamburger menu allowing users to switch among different menus such as Prompts, Datasources, Collections, and My Library.
+* **Discover Menu**: A sidebar menu allowing users to switch among different menus such as Prompts, Datasources, Collections, and My Library.
 * **Search**: A Search box available to find prompts by their names and descriptions. Note: The Search functionality operates within the selected menu and is not universal across the entire application.
 * **Quick Navigation Tabs**: Tabs enabling users to switch among Latest, My Liked, and Trending pages. The names and content of these tabs will change depending on the menu selected.
 * **Page Content**: This area displays the latest published content, which varies based on the selected menu. For example, the Prompts menu will show the latest published prompts, and the Collections menu will display the latest published collections.
 * **View Switcher**: A tool for quickly switching between Card and List views.
-* **Quick button**: A button that allows for the rapid creation of a new prompt or collection. The function of this button (+Prompt or +Collection) changes based on the selected menu.
-* **Settings**: Accessible by clicking on your user avatar/picture. Here, you can configure your Profile settings or Log Out of the application.
+* **Quick button**: A button that allows for the rapid creation of a new prompt, datasource, application or collection. The function of this button (+Prompt, +Datasource, +Application or +Collection) changes based on the selected menu.
+* **Project Switcher**: A tool for quickly switching among projects. **Note**: Becomes available if you are involed in more than one project.
+* **Settings**: Accessible by clicking on your user avatar/picture. Here, you can configure your Profile, Settings or Log Out of the application.
 * **Tags**: This section displays the tags (categories) associated with the content being viewed. The tags vary depending on the selected menu.
 * **Trending Authors**: Shows the authors who have recently contributed or shared the most trending prompts and collections with the community.
 
@@ -82,7 +83,7 @@ These standardized functionalities across different menus and pages are designed
 
 ## Discover - Menus
 
-Alita consists of 4 main menus:
+Alita consists of the following main menus:
 
 * **Prompts**: Browse through an organized showcase of prompts curated and shared by the community.
 * **Datasources**:  Browse through an organized showcase of datasources and shared by the community.
@@ -92,21 +93,39 @@ Alita consists of 4 main menus:
 **Navigation:**
 
 1. To naviagte among the menus, click the **Alita** icon on the top left.
-2. The **Hamburger** menu is opened.
+2. The **Sidebar** menu is opened.
 3. Click on the menu name to navigate to the desired menu.
 
 ![Discover Menus](<../img/Discover Menus.png>)
 
 ## Settings
 
-The **Settings** is designed to offer you a centralized space to manage vital aspects of your account and configurations. To access it click on your avatar on top right part of the page. 
+The **Settings** is designed to offer you a centralized space to manage vital aspects of your account and configurations. This centralized space is accessible by clicking on your avatar located at the top right corner of the page.
+
+### Tabs in Settings
+
+Settings consists of several tabs, each dedicated to specific functionalities:
+
+* **Profile**: Customize your user profile and monitor your engagement within Alita.
+* **Monitoring**: Keep track of usage statistics by selecting different metrics and timeframes.
+* **Configuration**: Manage essential technical settings crucial for the smooth operation of Alita's features like Alita Code or Alita Chat.
+* **Deployments**: Handle the management and launching of AI models or services linked to your Alita project.
+* **Log out**: Securely log out from the Alita Hub.
+
+**Navigation**
+
+To navigate through the Settings menus, follow these steps:
+
+1. Click on the **Your Avatar** icon located at the top right corner of the page to open the **Sidebar** menu.
+2. Select the desired tab by clicking on its name to navigate to that specific section.
 
 **Profile Tab**
 
 In the Profile tab, you’re presented with options to personalize your account and monitor your engagement and resource utilization within Alita.
 
-* **About me** - fill in or update your personal details to ensure your Alita profile remains current. **Note**: Markdown is supported.
-* **Activities and Usage Statistics** - a comprehensive diary of your actions within Alita, alongside usage statistics, offers insight into how you're leveraging Alita over time. This could be beneficial for tracking your project's evolution or analyzing resource consumption.
+**About me** - fill in or update your personal details to ensure your Alita profile remains current. **Note**: Markdown is supported.
+<!--* **Activities and Usage Statistics** - a comprehensive diary of your actions within Alita, alongside usage statistics, offers insight into how you're leveraging Alita over time. This could be beneficial for tracking your project's evolution or analyzing resource consumption.
+-->
 
 ![Settings-Profile_tab](../img/Settings-Profile_tab.png)
 

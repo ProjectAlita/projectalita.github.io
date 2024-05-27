@@ -4,12 +4,13 @@
 
 The **My libraries** menu is a space designed to create prompts, datasources, collections and organize them.
 
-My libraries menu consists of four pages (tabs):
+My libraries menu consists of the following pages (tabs):
 
-1. **All** - on this page you can find all your created Prompts, Datasources and Collections.
-2. **Prompts** - on this page you can find all your created Prompts.
-3. **Datasources** - on this page you can find all your created Datasources.
-4. **Collections** - on this page you can find all your created Collections.
+* **All** - on this page you can find all your created Prompts, Datasources and Collections.
+* **Prompts** - on this page you can find all your created Prompts.
+* **Datasources** - on this page you can find all your created Datasources.
+* **Applications** - on this page you can find all your created Applications.
+* **Collections** - on this page you can find all your created Collections.
 
 ![My Library](<../img/My Library.png>)
 
@@ -45,13 +46,115 @@ In Alita, **Tags** serve as an efficient organizational tool that allows you to 
 
 ![Prompt-Create_a_Tag](<../img/Prompt-Create_a_Tag.png>)
 
+### How to Create Context
+
+The **Context** field in Alita is a crucial component where users input the necessary background information or instructions that guide the LLM in generating accurate and relevant responses. This section serves as the foundational knowledge base for the model to understand and process your specific requests.
+
+#### How to Input Context
+
+* **Identify Key Information**: Before entering data into the Context field, identify the essential details or instructions that the model needs to know to fulfill your request effectively. This could include the topic, specific terms, relevant background information, or the scope of the task.
+* **Enter the Details**: In the Context field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the model's focus and efficiency.
+* **Using Variables**: For dynamic content generation, you can incorporate variables directly into the Context. Variables are denoted by double curly braces, e.g., {{variable_name}}. After defining a variable in the Context, you must specify its value in the **Variables** section to let the model replace the placeholder with the actual data during processing.
+
+#### Prompting Frameworks
+
+To further refine the instructions and ensure high-quality responses from LLMs, you can utilize structured prompting frameworks. These frameworks help in crafting precise and effective prompts by breaking down the requirements into specific components. Below are examples of how to apply these frameworks in the context of software testing:
+
+##### CREATE Framework
+
+The **CREATE** framework helps in constructing detailed and focused prompts by defining the Character, Request, Examples, Adjustment, Type of Output, and Extras.
+
+```
+- **Character**: Act as a senior software tester with expertise in regression testing.
+- **Request**: Develop a detailed regression testing strategy for an upcoming version release of our CRM software.
+- **Examples**: Include scenarios like:
+  - Preconditions: CRM software has been updated to the latest version.
+  - Steps to reproduce: User logs in and accesses the customer data module.
+  - Expected results: User should see updated customer data without any data loss.
+- **Adjustment**: Focus on critical modules like customer data management and transaction processing.
+- **Type of Output**: Format the strategy as a formal document with sections for objectives, scope, test scenarios, and resources.
+- **Extras**: After formulating the strategy, provide a rationale for the choice of specific test scenarios and their expected impact on the software quality.
+```
+
+##### Elavis Saravia Framework
+
+This framework simplifies the prompt creation process into four main elements: Instruction, Context, Input Data, and Output Indicator.
+
+```
+- **Instruction**: Generate test cases for user interface consistency across different devices.
+- **Context**: The application is a cross-platform tool accessible on desktops, tablets, and smartphones.
+- **Input Data**: User accesses the application from different devices.
+- **Output Indicator**: The output should be a list of test cases, each describing the test steps, the expected results, and the device type.
+```
+
+##### CRISPE Framework
+
+The **CRISPE** framework provides a comprehensive approach by incorporating Capacity and Role, Insight, Statement, Personality, and Experiment.
+
+```
+- **Capacity and Role**: Serve as an automated testing tool expert.
+- **Insight**: The software to be tested is an e-commerce platform with high transaction volumes and user concurrency.
+- **Statement**: Create automated test scripts that simulate multiple user transactions simultaneously.
+- **Personality**: Maintain a technical and precise tone throughout the test scripts.
+- **Experiment**: Offer three variations of the test script focusing on different aspects of the transaction process (e.g., payment processing, cart updates, and user login).
+```
+
+By integrating these frameworks into the **Context** section of your prompts, you can guide LLMs to produce more targeted and effective outputs. Each framework helps in structuring your request to the Gen AI, ensuring that all necessary details are included to generate the desired results.
+
+#### Editability and Version Control
+
+You can edit the **Context** field at any time to update or refine the instructions:
+
+* **Editing Existing Context**: Simply make changes directly in the Context field and save them. This updates the prompt to reflect the latest information.
+* **Creating New Versions**: If you want to keep the original version, you can save your changes as a new version. This is useful for comparing different versions or keeping a history of changes. **Note**: For more information check the [Managing Prompt Versions: Save, Create Versions, and Manage](#managing-prompt-versions-save-create-versions-and-manage).
+
+These features allow you to adapt and improve the instructions as needed, ensuring the responses remain relevant and accurate.
+
+
 ### How to Setup Messages
 
-The MESSAGES section is a crucial component that allows users to structure the flow of interaction within a prompt.
+The **MESSAGES** section is a crucial component that allows users to structure the flow of interaction within a prompt.
 
-* **System** message - a system prompt is a way of providing context and instructions to LLM, such as specifying a particular goal or role for LLM before asking it a question or giving it a task.
-* **Assistant** message - an Assistant has instructions and can leverage models, tools, and knowledge to respond to user queries
-* **User** message, on the other hand, exemplifies what a real human user might say or ask within a given scenario.
+* **System Message**: Sets the interaction's context and guidelines for the Gen AI, not visible to the user but crucial for defining the Gen AI's behavior.
+* **Assistant Message**: The Gen AI's responses to user inputs, crafted within the context and constraints set by the system message.
+* **User Message**: Inputs from the user, serving as prompts for the Gen AI to generate responses, thereby driving the conversation forward.
+
+In conversational models, these message types work together within prompts to create a structured and meaningful dialogue. The system message defines the framework, the user message initiates and guides the flow of the conversation, and the assistant message provides the content of the interaction, all contributing to a coherent and purposeful exchange.
+
+
+**System Message** is a part of the prompt that provides instructions or context directly from the system's perspective. It sets the stage for the interaction, establishing rules, scenarios, or the setting for the Geb AI model to operate within. This is not generated in response to the user but is predefined by the designer of the prompt to guide the interaction.
+```
+**Example:**
+
+**System Message**: "You are an AI trained to assist in creating detailed and accurate test cases. Focus on clarity and precision, and ensure all responses adhere to software testing standards."
+
+This message informs the AI of its role in assisting with test case creation, setting expectations for the type of responses it should generate.
+```
+**Assistant Message** is the AI's response generated based on the user's input and the context provided by the system message. This message aims to fulfill the user's request for information, assistance, or interaction within the guidelines set by the system message.
+```
+**Example:**
+
+* **User Message**: "Generate a test case for a login feature with email and password fields."
+* **Assistant Message**: "Test Case: Login Feature
+    * Objective: Verify that the user can log in using a valid email and password.
+    * Steps:
+        1. Navigate to the login page.
+        2. Enter a valid email in the email field.
+        3. Enter the corresponding password in the password field.
+        4. Click the login button.
+    * Expected Result: The user is redirected to the homepage after successful login.
+    * Test Data: Use registered email: user@example.com and password: SecurePass123."
+
+The assistant's message provides a structured test case based on the user's request, adhering to the guidelines set by the system message.
+```
+**User Message** is the input or query from the individual interacting with the Gen AI model. These messages are the user's side of the conversation, prompting the Gen AI to generate responses based on the context of the interaction as defined by the system message and the capabilities of the Gen AI.
+```
+**Example:**
+
+**User Message**: "Can you add a test for password validation error handling?"
+
+This message prompts the assistant to expand on the existing test cases by adding specific scenarios related to error handling.
+```
 
 To enhance the interactivity of a prompt, user can add multiple messages of any type by clicking the **`+`** icon, selecting the desired message type, and providing the relevant content.
 Additionally, user have the ability to delete, copy, and reorder messages to best fit the flow of the conversation, easily arranging them by dragging and dropping the message boxes as needed for optimal organization and presentation.
@@ -85,18 +188,23 @@ To execute the prompt and get the output you have 2 options:
     * **Top P (0-1)** - determines the cumulative probability threshold for selecting words, balancing between creativity (higher values) and consistency (lower values).
     * **Top K** - limits the choice of words to the K most probable, affecting the response's diversity and predictability.
     * **Maximum length** - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.
-5. **Initiate Interaction**: Enter your text (be it a question or a command) in the chat box and click the **Send** icon.
+5. **Initiate Interaction**: Once all instructions for the prompt are set in the **Context** and/or **Messages** sections, you can start the execution by typing your text (be it a question or a command)  into the chat box. Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the **Send** icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.
 
 ![Prompt-Chat_Option](<../img/Prompt-Chat_Option.png>)
 
-Upon receiving the output, the following actions are available:
+**Additional Interaction Features:**
 
-* To continue the dialogue, enter your subsequent text in the chat box and click the **Send** icon.
-* To copy the output, click the **Copy to Clipboard** icon.
-* To append the output to the **Assistant Message**, click the **Copy to Messages** icon.
-* To generate a new response, click the **Regenerate** icon.
-* To eliminate the current output, click the **Delete** icon.
-* To purge the chat history, click the **Clean** icon.
+* **Auto scroll to bottom**: This option can be toggled on or off to automatically scroll to the bottom of the output as it is being generated. This feature is helpful during long outputs to keep the most recent content visible.
+* **Full Screen Mode**: Increase the size of the output window for better visibility and focus. This mode can be activated to expand the output interface to the full screen.
+
+**Post-Output Actions:**
+
+* **Continue the Dialogue**: To keep the conversation going, simply type your next question or command in the chat box and click the **Send** icon.
+* **Copy the Output**: Click the **Copy to Clipboard** icon to copy the generated text for use elsewhere.
+* **Append to Assistant Message**: Use the **Copy to Messages** icon to add the output directly to the Assistant Message section for reference or further use.
+* **Regenerate Response**: If the output isn't satisfactory, click the **Regenerate** icon to prompt the Gen AI to produce a new response.
+* **Delete Output**: To remove the current output from the chat, click the **Delete** icon.
+* **Purge Chat History**: For a fresh start or to clear sensitive data, click the **Clean** icon to erase the chat history.
 
 ![Prompt-Chat_Output](<../img/Prompt-Chat_Output.png>)
 
@@ -114,11 +222,6 @@ Upon receiving the output, the following actions are available:
 
 ![Prompt-Completion_Option](<../img/Prompt-Completion_Option.png>)
 
-Upon receiving the output, the following actions are available:
-
-* To regenerate the output, click the **Run** button again.
-* To copy the output, utilize the **Copy to Clipboard** icon.
-
 ### Managing Prompt Versions: Save, Create Versions, and Manage
 
 To optimally manage your prompts, understanding how to save and create versions is crucial. Follow these guidelines to efficiently save your prompt, create versions, and manage them.
@@ -135,7 +238,12 @@ To optimally manage your prompts, understanding how to save and create versions 
 For instances where you need to create and manage different iterations of your prompt:
 
 1. **Initiate a New Version**: Start by clicking the **Save As Version** button.
-2. **Name Your Version**: Enter a meaningful version name and confirm by clicking **Save**.
+2. **Name Your Version**: When saving your work, provide a version name that clearly identifies the iteration or changes made. Click **Save** to confirm your entry. 
+
+**Best Practices for Version Naming**:
+   - **Length**: Keep the version name concise, not exceeding 48 characters. This ensures readability and compatibility across various systems.
+   - **Characters**: Avoid using special characters such as spaces (" "), underscores ("_"), and others that might cause parsing or recognition issues in certain environments.
+   - **Clarity**: Choose names that clearly and succinctly describe the version's purpose or the changes it introduces, facilitating easier tracking and management of different versions.
 
 ![Prompt-Save_Version](<../img/Prompt-Save_Version.png>)
 

@@ -38,6 +38,7 @@ The initial step involves linking your datasource to the desired dataset:
       * **Table**: Supported file types with a table structure, such as CSV or XLSX.
       * **GIT**: Any accessible Git repository.
       * **Confluence**: Any Confluence page accessible to you.
+      * **QTest**: Any QTest project accessible to you.
 
 ![Datasources-Dataset](<../img/Datasources-Dataset.png>)
 
@@ -55,7 +56,7 @@ Alita supports a variety of file types and offers flexible settings to handle yo
 * **Default Document Loader** - choose the mechanism by which your document is loaded into the system. Each loader handles your file differently, catering to specific needs.
     * **TextLoader** - optimized for plain text documents, ensuring swift and efficient loading.
     * **PythonLoader** - best suited for technical or coded documents, offering more sophisticated parsing capabilities.
-* **Extension Whitelist** - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., pdf, docx, txt), overriding the default supported types if necessary.
+* **Extension Whitelist** - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., pdf, docx, xlsx, json, txt), overriding the default supported types if necessary.
 * **Extension Blacklist** - conversely, list file extensions you wish to exclude from processing. Any file type mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.
 
 ![Datassources-Dataset_File](../img/Datassources-Dataset_File.png)
@@ -66,7 +67,7 @@ This functionality is crucial for users who work with structured data in formats
 
 * **Name** - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.
 * **Choose File Option** - select the file you wish to process. Alita supports a range of commonly used file types, ensuring compatibility and ease of use. Supported File Types: CSV, JSON, XLSX.
-* **Columns** - specify which column(s) within your table you want to focus on. These columns should contain the data you wish to analyze or use for generating embeddings. You can select single or multiple columns depending on your requirement. This flexibility allows you to tailor the analysis to the specific data points that are most valuable to your objectives.
+* **Columns** - specify which column(s) within your table you want to focus on. These columns should contain the data you wish to analyze or use for generating embeddings. You can select single or multiple columns depending on your requirement. This flexibility allows you to tailor the analysis to the specific data points that are most valuable to your objectives. To select multiple columns, separate each column name with a comma (",").
 * **JSON Documents** - enable this option if your table data is structured as JSON documents, particularly relevant when dealing with JSON files. This tells the system to parse the file as a collection of JSON entries, allowing for a more nuanced understanding and utilization of nested data structures within the file.
 * **Raw Content** - when enabled, this setting ensures that your selected data is treated as raw content, bypassing any default preprocessing or formatting. This is particularly useful when you want the data to be ingested in its purest form, without any alterations that might affect its original structure or meaning.
 
@@ -127,6 +128,18 @@ For users who rely on Confluence pages to manage their information, documents, o
     * **Max Total Pages** - set the maximum number of pages the system should fetch, defaulting to 1000. Useful for limiting data scope and ensuring performance.
 
 ![Datassources-Dataset_Confluence](../img/Datassources-Dataset_Confluence.png)
+
+#### Source type - QTest
+
+Integrating QTest with Alita enhances your test management by connecting directly to QTest Test Case Management System (TCMS). This integration allows you to select test cases for duplication checks, search functionalities, and leverage manual test cases for future automation with Generative AI. Below, we detail the configuration options, settings, and parameters available for the QTest source type.
+
+* **URL** - the link to your QTest. **Note**: You must provide the link to your QTest in the following format `https://<host of your installation of QTest>/api/<api version used>`
+* **QTest Project ID** - the specific project ID within QTest you wish to connect to. Enter the project ID to direct Alita to the correct QTest project.
+* **API Key** - Alita supports two types of authentication methods for QTest API Keys to ensure secure access:
+    * **Secret** - a confidential key used for enhanced security during API requests.
+    * **Password** - an option for API access, verifying authorized requesters.
+* **Test Cases per Page** - configures the number of test cases displayed per page within the QTest for selection.
+* **Columns** - specify the columns within your test cases that you wish to focus on for analysis or embedding generation.  Select single or multiple columns to tailor the analysis to your project's specific needs. To select multiple columns, separate each column name with a comma (",").
 
 ### Configuring Transformers
 
