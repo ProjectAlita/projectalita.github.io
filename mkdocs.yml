@@ -2,7 +2,7 @@ site_name: Alita Documentation
 site_url: https://projectalita.ai
 nav:
   - Release Notes:
-    - RN 2.0.0: release-notes/rn2.md
+    - RN 1.0.1: release-notes/rn2.md
     - RN 1.0.0: release-notes/rn1.md
   - User Guide: 
     - Get Started: user-guide/intro.md
