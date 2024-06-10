@@ -94,7 +94,7 @@ To configure:
 
 ![AlitaCode-Settings(part2)](img/AlitaCode-Settings(part2).png)
 
-**Important**: If using Alita as your LLM service provider, copy the required settings (URL, ProjectId, Integration Uid, Model Name) from **Alita HUB → Settings → Configuration** page.
+**Important**: If using ELITEA as your LLM service provider, copy the required settings (URL, ProjectId, Integration Uid, Model Name) from **ELITEA HUB → Settings → Configuration** page.
 
 ## Configuration
 
@@ -169,7 +169,7 @@ Sync prompts created in the Alita HUB with your Alita Code setup for seamless in
 ![AlitaCode-Sync_Prompt)](img/AlitaCode-Sync_Prompt.png)
 
 
-**Note**: To sync and use prompts from Alita HUB, tag the prompt with `code` in Alita HUB.
+**Note**: To sync and use prompts from ELITEA HUB, tag the prompt with `code` in ELITEA HUB.
 
 By following these detailed steps, you can maximize your productivity and coding efficiency with Alita Code's AI-powered features.
 

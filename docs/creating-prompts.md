@@ -12,7 +12,7 @@ In leveraging Gen AI tools, it is imperative to always review the generated outp
 
 Your contribution to this initiative will play a pivotal role in enhancing our testing capabilities, driving quality improvements, and maintaining our competitive edge in delivering superior software solutions. Let us embark on this journey together, fostering a vibrant and collaborative QA community that thrives on innovation, excellence, and shared success.
 
-## Access to Alita
+## Access to ELITEA
 
 To access it:
 
@@ -20,9 +20,9 @@ To access it:
 2. Type in <https://alita.lab.epam.com> in the address bar.
 3. Provide your EPAM account to login. **Note**: No need for registration.
 4. After successful login, you are navigated to the **Prompts** menu.
-5. Once you have access, navigate to **Discover→My Library** menu, where you will be able to create prompts and collections. **Note:** If you are logging in for the first time into Alita, wait for 5 minutes to allow private project initialization to be completed before creating prompts. 
+5. Once you have access, navigate to **Discover→My Library** menu, where you will be able to create prompts and collections. **Note:** If you are logging in for the first time into ELITEA, wait for 5 minutes to allow private project initialization to be completed before creating prompts. 
 
-**Note**: You need to enable Epam VPN to access Alita.
+**Note**: You need to enable Epam VPN to access ELITEA.
 
 ![Main Interface](img/Main Interface.png)
 
@@ -231,11 +231,10 @@ Let's work together to build a richer, more effective Prompt Library for everyon
 
 ## Useful Resources
 
-### Alita
+### ELITEA
 
-* [Alita - User Guide](user-guide.md)
-* [Alita - Release Notes](release-notes.md)
-* [Alita overview](https://kb.epam.com/display/EPMQAOPALT/Alita+overview)
+* [ELITEA - User Guide](user-guide.md)
+* [ELITEA - Release Notes](release-notes.md)
 
 ### Prompt Engineering
 
