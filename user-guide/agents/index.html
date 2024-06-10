@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/user-guide/agents/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Agents - ELITEA Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Agents";
+        var mkdocs_page_input_path = "user-guide/agents.md";
+        var mkdocs_page_url = "/user-guide/agents/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> ELITEA Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Release Notes</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn3/">RN 1.1.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn2/">RN 1.0.1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn1/">RN 1.0.0</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Get Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../prompts/">Prompts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collections/">Collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../datasources/">Datasources</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Agents</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#my-libraries-agents-page">My libraries - Agents Page</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-are-elitea-agents">What are ELITEA Agents?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-do-agents-work">How do Agents work?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#integration-with-external-tools-services-and-apis">Integration with External Tools, Services, and APIs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creating-an-agent">Creating an Agent</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-create-instructions">How to Create Instructions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#how-to-input-instructions">How to Input Instructions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-select-agent-type">How to select Agent type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-select-and-configure-tools">How to select and configure Tools</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#datasource-tool">Datasource tool</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#prompt-tool">Prompt tool</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#agent-tool">Agent tool</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#browser-tool">Browser tool</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#confluence-tool">Confluence tool</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#jira-tool">Jira tool</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#github-tool">GitHub tool</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#gitlab-tool">Gitlab tool</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#open-api-tool">Open API tool</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#custom-tool">Custom tool</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-setup-conversation-starter">How to Setup Conversation Starter</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#how-to-add-a-conversation-starter">How to Add a Conversation Starter</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#using-a-conversation-starter">Using a Conversation Starter</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples-of-conversation-starters">Examples of Conversation Starters</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-execute-agent">How to Execute Agent</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#managing-agent-versions-save-create-versions-and-manage">Managing Agent Versions: Save, Create Versions, and Manage</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#how-to-save-an-agent">How to Save an Agent:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#how-to-create-new-versions">How to Create New Versions:</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#agents-helpful-materials">Agents - Helpful Materials</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#video-tutorials">Video Tutorials</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#practical-examples">Practical Examples</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manuals</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../alita-dial/">ELITEA and EPAM AI DIAL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../creating-prompts/">QA - Prompting and Sharing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../alita-code/">Alita Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../alita-chat/">Alita Code Chat</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Admin Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin-guide/intro/">Get Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin-guide/user/">User Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FAQs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../faqs/">Frequently Asked Questions</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">ELITEA Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">User Guide</li>
+      <li class="breadcrumb-item active">Agents</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="agents">Agents</h1>
+<h2 id="my-libraries-agents-page">My libraries - Agents Page</h2>
+<p>ELITEA Agents play a pivotal role in broadening and enriching the functionalities of ELITEA and AI technologies. 
+ELITEA Agents is a feature that allows you to create and manage virtual assistants or "agents" within the ELITEA interface. These agents are designed to help you accomplish specific tasks or automate certain workflows by leveraging the natural language processing capabilities of GPT models supported by ELITEA.</p>
+<p>The purpose of Agents in ELITEA is to provide a more efficient way of interacting with the AI models for various use cases. Instead of engaging in open-ended conversations, you can define specific goals, tasks, or workflows for an agent to handle. This can be particularly useful in scenarios where you need to perform repetitive or complex tasks that involve multiple steps or require gathering and processing information from various sources.</p>
+<p><img alt="My_libraries-Agents" src="../../img/My_libraries-Agents.png" /></p>
+<h2 id="what-are-elitea-agents">What are ELITEA Agents?</h2>
+<p>ELITEA Agents are virtual assistants or bots that you can create and customize within the ELITEA interface. Each agent is designed to handle a specific task or set of tasks based on the instructions and capabilities you define for it. Agents bring prompts, datasources and external to LLM tools into one mechanism allowing to use integrate decisions made by LLMs and actions required to be taken, like search in Google or creating a Jira Tickets, etc. Agents are capable to work with more external tools.</p>
+<h2 id="how-do-agents-work">How do Agents work?</h2>
+<p>When you create an agent, you provide it with a set of instructions, tools or a goal that you want it to accomplish. These instructions can be as simple or complex as needed, and they can include steps, conditions, and actions that the agent should take. The agent then uses the natural language processing capabilities of selected GPT model to understand and execute the instructions you've provided.</p>
+<h2 id="integration-with-external-tools-services-and-apis">Integration with External Tools, Services, and APIs</h2>
+<p>One of the powerful features of ELITEA Agents is their ability to integrate with a wide range of external tools, services, and APIs. This integration enables agents to access and interact with different platforms, empowering them to perform more complex and specialized tasks. Below are some examples of integrations that can be set up with ELITEA Agents:</p>
+<ul>
+<li><strong>Project Management Tools</strong>: ELITEA Agents can be integrated with tools like JIRA or Trello to help manage projects, track issues, and collaborate with team members efficiently.</li>
+<li><strong>Test Management Tools</strong>: Integration with tools such as TestRail or qTest can enable agents to assist with test case management, execution, and reporting, enhancing the software testing lifecycle.</li>
+<li><strong>Documentation and Knowledge Base Tools</strong>: Agents can connect to platforms like Confluence to help create, update, and manage documentation and knowledge bases, ensuring that information is always current and accessible.</li>
+<li><strong>Version Control Systems</strong>: Integration with Git repositories like GitHub or GitLab can allow agents to assist with code management, pull requests, and code reviews, streamlining the development process.</li>
+<li><strong>APIs and Web Services</strong>: ELITEA Agents can interact with various APIs and web services, such as Open APIs to retrieve and process data as needed, providing timely and relevant information.</li>
+<li><strong>Web Browsers</strong>: Agents can be configured to automate tasks within web browsers, such as web scraping, web searching, or automating web-based workflows, which can significantly reduce manual effort.</li>
+<li><strong>Internal Tools and Systems</strong>: ELITEA Agents can also be integrated with internal ELITEA tools (prompts, datasources and agents).</li>
+</ul>
+<p>By leveraging these integrations, ELITEA Agents can become powerful virtual assistants that help automate and streamline a wide range of tasks across different platforms and tools. The specific integrations available may vary based on the capabilities of the ELITEA platform and the APIs or tools you want to connect with.</p>
+<p>It's important to note that setting up these integrations may require additional configuration and authentication steps, such as providing API keys, access tokens, or configuring webhooks or other communication channels between ELITEA and the external tools or services. These steps ensure secure and seamless integration, enabling ELITEA Agents to function effectively within your existing technological ecosystem.</p>
+<p><strong>Note</strong>: For more information, please check <a href="https://github.com/ProjectAlita/application-tools">Alita Tools</a> and <a href="https://github.com/ProjectAlita/alita-sdk">Alita SDK</a> git repos.</p>
+<h2 id="creating-an-agent">Creating an Agent</h2>
+<p>To set up a new agent:</p>
+<ol>
+<li>Click the <strong>+ Agent</strong> button located at the top right corner.</li>
+<li>Fill out the <strong>Name</strong> and <strong>Description</strong> fields.</li>
+<li>Optionally, add tags by typing a tag name or selecting from pre-existing tags in the <strong>Tags</strong> input box.</li>
+<li>Select the Agent type.</li>
+<li>Provide instructions for selected Agent type in the Instructions field.</li>
+<li>Add and setup selected tools that agent must use.</li>
+<li>Optionally, add and configure <strong>Conversation Starter</strong>. </li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<p><img alt="Agent-New_Agent" src="../../img/Agent-New_Agent.png" /></p>
+<p>Your newly created agent will subsequently appear on the <strong>My Libraries - Agents</strong> page.</p>
+<h3 id="how-to-create-instructions">How to Create Instructions</h3>
+<p>The <strong>Instructions</strong> field in Agent is a crucial component where users input the necessary background information or instructions that guide the LLM in executing agent and generating accurate and relevant responses. This section serves as the foundational knowledge base for the model to understand and process your specific requests.</p>
+<h4 id="how-to-input-instructions">How to Input Instructions</h4>
+<ul>
+<li><strong>Identify Key Information</strong>: Before entering data into the Instructions field, identify the essential details or instructions that the model needs to know to fulfill your request effectively. This could include the topic, specific terms, relevant background information, or the scope of the task.</li>
+<li><strong>Enter the Details</strong>: In the Instructions field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the agent's focus and efficiency.</li>
+<li><strong>Using Tools</strong>: For enhancing agent's capabilities, you can integrate Tools and provide instructions how to use them and in which order. The name of tool can be denoted by graves, e.g., <code>tool_name</code>.</li>
+</ul>
+<p><img alt="Agent-Instructions" src="../../img/Agent-Instructions.png" /></p>
+<h3 id="how-to-select-agent-type">How to select Agent type</h3>
+<p>Selected Agent type determines the level and depth of instructions required to be provided for the agent to use it.
+The following Agent types are available:
+* <strong>React</strong> - Just tell what you want it do be doing and add tools. Use Actor, Goals, Instructions and Constraints to describe desired behavior
+* <strong>Open AI</strong> - OpenAI based assistants that can interact with models and functions / tools. Restricted to OpenAI models. For more information, please check <a href="https://platform.openai.com/docs/assistants/overview">Open AI Assistants</a> documentation.
+* <strong>Raw</strong> - Expert level ReAct agent, but you need to describe everything there, including response format from LLMs.</p>
+<p><strong>IMPORTANT:</strong></p>
+<p>When opting for the <strong>Raw</strong> Agent type, it is crucial to adhere to the following instructions to ensure proper configuration and functionality:</p>
+<ul>
+<li><strong>Preserve Existing Variables:</strong> Do not delete any variables that automatically appear in the configuration. These are essential for the underlying operations of the agent.</li>
+<li><strong>Avoid Assigning Values to Variables:</strong> Leave the variables unassigned. Values for these variables will be dynamically populated by the agent's code during execution.</li>
+<li>Additionally, ensure to include the following section in your instruction:</li>
+</ul>
+<pre><code>### Tools:
+{{tools}} 
+- Say to user: tool: &quot;complete_task&quot;, args: &quot;final_answer&quot;  - complete message to be communicated to the user, shoudl contain as much details as possible
+
+### Scratchpad
+{{agent_scratchpad}}
+
+### Chat History
+{{chat_history}}
+
+### User Input:
+{{input}}
+
+### Response format
+{
+    &quot;thoughts&quot;: {
+        &quot;text&quot;: &quot;message to a user follow the style of your persona&quot;,
+        &quot;plan&quot;: &quot;short bulleted, list that conveys long-term plan&quot;,
+        &quot;criticism&quot;: &quot;constructive self-criticism&quot;,
+    },
+    &quot;tool&quot;: {
+        &quot;name&quot;: &quot;tool name&quot;,
+        &quot;args&quot;: { &quot;arg name&quot;: &quot;value&quot; }
+    }
+}
+You must answer with only JSON and it could be parsed by Python json.loads
+</code></pre>
+<p><img alt="Agent-Raw" src="../../img/Agent-Raw.png" /></p>
+<p>By following these guidelines and including the necessary code snippet, you ensure that the Raw Agent functions correctly and integrates seamlessly with the intended processes.</p>
+<h3 id="how-to-select-and-configure-tools">How to select and configure Tools</h3>
+<p>Tools are integrations with external or ELITEA's internal services, tools and APIs which allows to enhance Agents to use various resources and do the tasks.</p>
+<p><strong>To add a new tool</strong>:</p>
+<ol>
+<li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
+<li>Select the desired tool from the dropdown list. The <strong>New tool</strong> configuration section is opened.</li>
+<li>Configure it accordingly to provide agent access to this tool.</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
+</ol>
+<p><img alt="Agent-New_Tool" src="../../img/Agent-New_Tool.png" /></p>
+<p><strong>To edit alrady created tool</strong>:</p>
+<ol>
+<li>Click the name of the already created <strong>Tool</strong>.</li>
+<li>The <strong>New [tool_name] tool</strong> configuration section is opened.</li>
+<li>Modify the configuration of the tool accordingly</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New [tool_name] tool</strong> to complete the changes and move back to the main menu of Agent configuration.</li>
+</ol>
+<p>The following internal Tools are available:</p>
+<h4 id="datasource-tool">Datasource tool</h4>
+<p>The <strong>Datasource</strong> tool empowers your Agent by providing access to pre-configured datasources within your ELITEA project. This tool facilitates the integration of structured data into the Agent's operations, enhancing its ability to process and analyze information efficiently.</p>
+<p><strong>To configure Datasource tool</strong>:</p>
+<ol>
+<li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
+<li>Select the <strong>Datasource</strong> tool from the dropdown list.</li>
+<li>The <strong>New datasource tool</strong> configuration section is opened.<ul>
+<li><strong>Name</strong>: Provide informative name for the datasource (tool).</li>
+<li><strong>Description</strong>: Provide informative description for the datasource (tool).</li>
+<li><strong>Datasource</strong>: Select the datasource from the dropdown list that you want to use as a tool for the agent. <strong>Note</strong>: If you select the datasource for the first time, the name and description of the selected datasource will be pulled and displayed as the name/description for the tool. Later you can modify them if needed.</li>
+<li><strong>Action</strong>: Select the required action type that will be used by agent (either <strong>Search</strong> or <strong>Chat</strong>). This will allow Agent to use information from selected datasource either by searching it or by chating with it.</li>
+</ul>
+</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New datasource tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
+</ol>
+<p><img alt="Agent-Datasource_Tool" src="../../img/Agent-Datasource_Tool.png" /></p>
+<h4 id="prompt-tool">Prompt tool</h4>
+<p>The <strong>Prompt</strong> tool allows your Agent to utilize pre-configured prompts from your ELITEA project. This integration enables the Agent to leverage existing prompt configurations to streamline interactions and responses, ensuring consistency and accuracy in its engagements.</p>
+<p><strong>To configure Prompt tool</strong>:</p>
+<ol>
+<li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
+<li>Select the <strong>Prompt</strong> tool from the dropdown list.</li>
+<li>The <strong>New Prompt tool</strong> configuration section is opened.<ul>
+<li><strong>Name</strong>: Provide informative name for the prompt (tool).</li>
+<li><strong>Description</strong>: Provide informative description for the prompt (tool).</li>
+<li><strong>Datasource</strong>: Select the prompt from the dropdown list that you want to use as a tool for the agent. <strong>Note</strong>: If you select the prompt for the first time, the name and description of the selected prompt will be pulled and displayed as the name/description for the tool. Later you can modify them if needed.</li>
+<li><strong>Version</strong>: select the available version of the selected prompt from the dropdown list.</li>
+</ul>
+</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New Prompt tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
+</ol>
+<p><strong>IMPORTANT:</strong> Currently, Agents don't support prompts with variables. Variable for agent is input parameter, if you have “default” you need to bake it into the prompt.</p>
+<p><img alt="Agent-Prompt_Tool" src="../../img/Agent-Prompt_Tool.png" /></p>
+<h4 id="agent-tool">Agent tool</h4>
+<p>The <strong>Agent</strong> tool provides a meta-level functionality by allowing your Agent to incorporate other pre-configured agents within your ELITEA project. This recursive capability enriches the Agent's functionality, enabling complex, layered interactions and processes.</p>
+<p><strong>To configure Agent tool</strong>:</p>
+<ol>
+<li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
+<li>Select the <strong>Prompt</strong> tool from the dropdown list.</li>
+<li>The <strong>New Agent tool</strong> configuration section is opened.<ul>
+<li><strong>Name</strong>: Provide informative name for the agent (tool).</li>
+<li><strong>Description</strong>: provide informative description for the agent (tool).</li>
+<li><strong>Agent</strong>: Select the agent from the dropdown list that you want to use as a tool for the agent. <strong>Note</strong>: If you select the agent for the first time, the name and description of the selected agent will be pulled and displayed as the name/description for the tool. Later you can modify them if needed.</li>
+<li><strong>Version</strong>: Select the available version of the selected agent from the dropdown list.</li>
+</ul>
+</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New Agent tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
+</ol>
+<p><img alt="Agent-Agent_Tool" src="../../img/Agent-Agent_Tool.png" /></p>
+<h4 id="browser-tool">Browser tool</h4>
+<p>The <strong>Browser</strong> tool significantly enhances the capabilities of your Agent by integrating robust search engine functionalities directly into its operations. This tool enables the Agent to access and search the web, thereby enriching the LLM with a vast array of information available online. This integration allows for a more informed and responsive Agent, capable of leveraging up-to-date web data in its tasks.</p>
+<p><strong>To configure Browser tool</strong>:</p>
+<ol>
+<li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
+<li>From the dropdown list, select the <strong>Browser</strong> tool to open the configuration settings.</li>
+<li>The <strong>New Browser tool</strong> configuration section is opened.<ul>
+<li><strong>Name</strong>: Assign a descriptive name to the browser tool for easy identification within Agent's instructions.</li>
+<li><strong>Description</strong>: Provide a brief description of the browser tool's purpose and how it integrates with your workflow.</li>
+<li><strong>API key</strong>: Input the API key for the CSE that you have configured for the selected search engine.</li>
+<li><strong>CSE ID</strong>: Input the Custom Search Engine ID configured for your selected search engine.</li>
+<li><strong>Tools</strong>: Choose which search engines to integrate by selecting from the available options:<ul>
+<li><strong>Wiki</strong>: Include Wikipedia search capabilities.</li>
+<li><strong>DuckDuckGo</strong>: Utilize DuckDuckGo for enhanced privacy in searches.</li>
+<li><strong>Google</strong>: Integrate Google for comprehensive search functionalities. For creating CSE ID and API key for Google, please check the <a href="https://programmablesearchengine.google.com/controlpanel/all">Programmable Search Engine</a> page.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New Browser tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
+</ol>
+<p><img alt="Agent-Browser_Tool" src="../../img/Agent-Browser_Tool.png" /></p>
+<h4 id="confluence-tool">Confluence tool</h4>
+<p>The <strong>Confluence</strong> tool seamlessly integrates Confluence, a widely-used platform for team collaboration and content management, into your Agent's toolkit. This tool enhances the Agent's knowledge base with user-specific or project-specific data from Confluence, enriching its context and response accuracy.</p>
+<p><strong>To configure Confluence tool</strong>:</p>
+<ol>
+<li>Click the <strong>+ icon</strong> under the <strong>Tools</strong> section.</li>
+<li>Select the <strong>Confluence</strong> tool from the dropdown list.</li>
+<li>The <strong>New Confluence tool</strong> configuration section is opened.<ul>
+<li><strong>Name</strong>: Provide an informative name for the Confluence tool.</li>
+<li><strong>Description</strong>: Provide a detailed description of the Confluence tool's purpose.</li>
+<li><strong>URL</strong>: Enter the URL to your Confluence instance (e.g., <code>https://www.kb.epam.com</code>). The URL should be the base link as detailed handling is managed via the </li>
+<li><strong>Authentication Options</strong>: Choose your preferred method for secure connection:<ul>
+<li><strong>API Key</strong>: Select this option if you are using an API key for authentication. Enter your Confluence API key in the provided field. Ensure you handle this key securely. Input the username associated with your Confluence account.</li>
+<li><strong>Token</strong>: Choose this option if you are using a token for authentication.</li>
+</ul>
+</li>
+<li><strong>Hosting Option</strong>: Select the appropriate hosting type for your Confluence setup:<ul>
+<li><strong>Cloud</strong>: If your Confluence is hosted on Atlassian’s cloud.</li>
+<li><strong>Server</strong>: If your Confluence is hosted on your own servers or an enterprise environment.</li>
+</ul>
+</li>
+<li><strong>Tools</strong>: Enable the specific tools you need for your integration:<ul>
+<li><strong>Create page</strong>: Check this to enable page creation in Confluence through Agent.</li>
+<li><strong>Page Exists</strong>: Check this to enable checking for existing pages.</li>
+<li><strong>Get pages with the label</strong>: Check this to retrieve pages associated with a specific label.</li>
+<li><strong>Search pages</strong>: Check this to enable searching for pages within Confluence.</li>
+</ul>
+</li>
+<li><strong>Advanced Settings</strong>: Configure additional settings to control data fetching and presentation:<ul>
+<li><strong>Pages limit per request</strong>: Set the maximum number of pages to retrieve per request (e.g., <code>5</code>).</li>
+<li><strong>Max total pages</strong>: Define the maximum number of pages to retrieve in total (e.g., <code>10</code>).</li>
+<li><strong>Number of retries</strong>: Specify how many times the tool should retry after a failure (e.g., <code>2</code>).</li>
+<li><strong>Min retry, sec</strong>: Set the minimum number of seconds to wait before retrying (e.g., <code>10</code>).</li>
+<li><strong>Max retry, sec</strong>: Set the maximum number of seconds to wait before retrying (e.g., <code>60</code>).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New Confluence tool</strong> to complete the setup and return to the main menu of Agent configuration.</li>
+</ol>
+<p><img alt="Agent-Confluence_Tool" src="../../img/Agent-Confluence_Tool.png" /></p>
+<h4 id="jira-tool">Jira tool</h4>
+<p>The <strong>Jira</strong> tool enables a direct integration with Jira, allowing users to manage issues and projects directly from the ELITEA platform. This tool streamlines project management tasks by enabling real-time interactions and updates through the Agent, enhancing productivity and project tracking.</p>
+<p><strong>To configure Jira tool</strong>:</p>
+<ol>
+<li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
+<li>Select the <strong>Jira</strong> tool from the dropdown list.</li>
+<li>The <strong>New Jira tool</strong> configuration section is opened.<ul>
+<li><strong>Name</strong>: Provide a unique name to identify your Jira tool within ELITEA.</li>
+<li><strong>Description</strong>: Offer a concise description of what the integration is intended for.</li>
+<li><strong>URL</strong>: Enter the URL to your Jira instance (e.g., <code>https://www.jira.epam.com</code>).</li>
+<li><strong>Authentication Options</strong>: Choose your preferred method for secure connection:<ul>
+<li><strong>API Key</strong>: Select this option if you are using an API key for authentication. Enter your Jira API key in the provided field. Ensure you handle this key securely. Input the username associated with your Confluence account.</li>
+<li><strong>Token</strong>: Choose this option if you are using a token for authentication.</li>
+</ul>
+</li>
+<li><strong>Hosting Option</strong>: Select the appropriate hosting type for your Jira setup:<ul>
+<li><strong>Cloud</strong>: If your Jira is hosted on Atlassian’s cloud.</li>
+<li><strong>Server</strong>: If your Jira is hosted on your own servers or an enterprise environment.</li>
+</ul>
+</li>
+<li><strong>Tools</strong> - the following tools are avaialble for selection:<ul>
+<li><strong>Search using JQL</strong>: To enable searching for Jira issues using Jira Query Language.</li>
+<li><strong>Create issue</strong>: To allow the creation of new issues within Jira.</li>
+<li><strong>Update issue</strong>: To enable updating existing Jira issues.</li>
+<li><strong>Add comments</strong>: To allow adding comments to Jira issues.</li>
+<li><strong>List projects</strong>: To enable listing all Jira projects.   </li>
+</ul>
+</li>
+<li><strong>Advanced Settings</strong>: Adjust the advanced settings to fine-tune the tool's operation:<ul>
+<li><strong>Verify SSL</strong>: Check this to enable SSL verification for secure connections to your Jira instance.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New Jira tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
+</ol>
+<p><img alt="Agent-Jira_Tool" src="../../img/Agent-Jira_Tool.png" /></p>
+<h4 id="github-tool">GitHub tool</h4>
+<p>The <strong>GitHub</strong> tool integrates GitHub into your Agent, allowing it to access and interact with repositories directly. This tool enhances the Agent's capabilities by providing it with user-specific or project-specific data from GitHub, facilitating better version control and development process integration.</p>
+<p><strong>To configure GitHub tool</strong>:</p>
+<ol>
+<li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
+<li>Select the <strong>GitHub</strong> tool from the dropdown list.</li>
+<li>The <strong>New GitHub tool</strong> configuration section is opened.<ul>
+<li><strong>Name</strong>: Assign a distinctive name to your GitHub tool integration.</li>
+<li><strong>Description</strong>: Give a concise description that outlines the integration's intended purpose.</li>
+<li><strong>Repository</strong>: Enter the name of the GitHub repository you wish to integrate.
+  <strong>Main branch</strong>: Specify the main branch of your repository, typically <code>main</code>.</li>
+<li><strong>Authentication Options</strong>: Choose your preferred method you will use for the GitHub integration:<ul>
+<li><strong>Private Key</strong>: Opt for this if you are using a private key for authentication. Input the <strong>App ID</strong> associated with your GitHub integration and enter your <strong>private key</strong> in the provided field. Be sure to keep this information secure.</li>
+<li><strong>Token</strong>: Choose this if you prefer to use a personal access token for authentication.</li>
+<li><strong>Password</strong>: Input the username and password associated with your GitHub account.</li>
+</ul>
+</li>
+<li><strong>Tools</strong>: Enable the tools that you require for interacting with your GitHub repository: <ul>
+<li><strong>Get issues</strong>: Enables retrieval of issues from the repository.</li>
+<li><strong>Get issue</strong>: Allows fetching details of a specific issue.</li>
+<li><strong>Comment on issue</strong>: Permits adding comments to issues.</li>
+<li><strong>List open pull requests (PRs)</strong>: Lists all open pull requests.</li>
+<li><strong>Get pull request</strong>: Retrieves details of a specific pull request.</li>
+<li><strong>List pull request files</strong>: Lists the files changed in a pull request.</li>
+<li><strong>Create pull request</strong>: Enables the creation of new pull requests.</li>
+<li><strong>Create file</strong>: Allows for creating new files in the repository.</li>
+<li><strong>Read file</strong>: Enables reading the contents of files.</li>
+<li><strong>Update file</strong>: Permits updating existing files.</li>
+<li><strong>Delete file</strong>: Allows for the deletion of files.</li>
+<li><strong>List files in branch</strong>: Lists all files in a specific branch.</li>
+<li><strong>List branches in repo</strong>: Lists all branches in the repository.</li>
+<li><strong>Set active branch</strong>: Sets a specific branch as the active one.</li>
+<li><strong>Create branch</strong>: Enables the creation of new branches.</li>
+<li><strong>Get files from directory</strong>: Retrieves all files within a specified directory.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New GitHub tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
+</ol>
+<p><img alt="Agent-GitHub_Tool" src="../../img/Agent-GitHub_Tool.png" /></p>
+<h4 id="gitlab-tool">Gitlab tool</h4>
+<p>Similar to the <strong>GitHub</strong> tool, the Gitlab tool integrates your Agent with Gitlab, enabling direct interaction with repositories and project data. This tool enriches the Agent's operational context with specific data from Gitlab, supporting more informed decisions and interactions in software development projects.</p>
+<p><strong>To configure Gitlab tool:</strong></p>
+<ol>
+<li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
+<li>Select the <strong>Gitlab</strong> tool from the dropdown list.</li>
+<li>The <strong>New Gitlab tool</strong> configuration section is opened.<ul>
+<li><strong>Name</strong>: Assign a distinctive name to your GitHub tool integration.</li>
+<li><strong>Description</strong>: Give a concise description that outlines the integration's intended purpose.</li>
+<li><strong>Repository</strong>: Enter the name of the Gitlab repository you wish to integrate.
+  <strong>Main branch</strong>: Specify the main branch of your repository, typically <code>main</code>.</li>
+<li><strong>Authentication Options</strong>: Choose your preferred method you will use for the Gitlab integration:<ul>
+<li><strong>Token</strong>: Choose this if you prefer to use a personal access token for authentication.</li>
+</ul>
+</li>
+<li><strong>Tools</strong>: Enable the tools that you require for interacting with your Gitlab repository: <ul>
+<li><strong>Create branch</strong>: Allows you to create new branches in the repository.</li>
+<li><strong>Create pull request</strong>: Enables the creation of merge requests in GitLab.</li>
+<li><strong>Create file</strong>: Permits the creation of new files within the repository.</li>
+<li><strong>Delete file</strong>: Provides the option to delete files from the repository.</li>
+<li><strong>Set active branch</strong>: Lets you specify a branch as the active one for operations.</li>
+<li><strong>List branches in repo</strong>: Lists all branches within the specified repository.</li>
+<li><strong>Get PR changes</strong>: Retrieves changes associated with a particular merge request.</li>
+<li><strong>Create PR change comment</strong>: Allows you to comment on changes in a merge request.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New Gitlab tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
+</ol>
+<p><img alt="Agent-GitLab_Tool" src="../../img/Agent-GitLab_Tool.png" /></p>
+<h4 id="open-api-tool">Open API tool</h4>
+<p>The <strong>Open API</strong> tool extends your Agent's capabilities by integrating OpenAPI-compliant APIs. This tool allows for a broad range of external functionalities to be incorporated into the Agent, enabling it to interact with and utilize diverse external services and data sources.</p>
+<p><strong>To configure Open API tool</strong>:</p>
+<ol>
+<li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
+<li>Select the <strong>Gitlab</strong> tool from the dropdown list.</li>
+<li>The <strong>New Open API tool</strong> configuration section is opened.</li>
+<li><strong>Name</strong>: Enter a unique name for your Open API tool integration. This name will be used to identify the tool within your agent's instructions.</li>
+<li>Upload your OpenAPI schema by following one of these methods:<ul>
+<li><strong>Enter Schema</strong>: You can directly paste your OpenAPI schema into the text area provided.</li>
+<li><strong>Drag &amp; Drop</strong>: Drag your OpenAPI schema file and drop it into the designated area.</li>
+<li><strong>Choose File</strong>: Click on the <code>choose file</code> link to browse and select your OpenAPI schema file from your local system.</li>
+</ul>
+</li>
+<li>Reviewing Actions: Once the schema is uploaded, the <strong>ACTIONS</strong> section will populate with the endpoints defined in your OpenAPI schema. Review the actions to ensure they have been correctly interpreted from your schema. Each action will display:<ul>
+<li><strong>Name</strong>: The name of the action as defined in the schema.</li>
+<li><strong>Description</strong>: A brief description of what the action does.</li>
+<li><strong>Method</strong>: The HTTP method used for the action (e.g., GET, POST, PUT, DELETE).</li>
+<li><strong>Path</strong>: The endpoint path for the action.</li>
+</ul>
+</li>
+<li>Setting Authentication: Configure the authentication method required for your OpenAPI:<ul>
+<li><strong>Authentication</strong>: Choose the appropriate authentication method for your API from the dropdown menu. Options may include None, API Key, Token, OAuth2, etc., depending on your API's requirements.</li>
+</ul>
+</li>
+<li>Click the <strong>arrow</strong> icon next to the <strong>New Open API tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
+</ol>
+<p><img alt="Agent-OpenAPI_Tool" src="../../img/Agent-OpenAPI_Tool.png" /></p>
+<h4 id="custom-tool">Custom tool</h4>
+<p>The <strong>Custom</strong> tool provides a flexible solution for users to create bespoke integrations tailored to their specific needs. This tool allows for the development of unique functionalities that are not covered by standard tools, offering limitless possibilities to enhance the Agent's capabilities.</p>
+<p><strong>To configure Custom tool</strong>:</p>
+<ol>
+<li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
+<li>Select the <strong>Custom</strong> tool from the dropdown list.</li>
+<li>The <strong>New Custom tool</strong> configuration section is opened. You will see a JSON template in the interface, which you can edit to define your custom tool:
+      <code>{
+       "name": "Custom tool",
+       "description": "",
+       "settings": [],
+       "type": "custom"
+      }</code><ul>
+<li><strong>name</strong>: Provide a unique name for your custom tool that will be used to identify it within ELITEA.</li>
+<li><strong>description</strong>: Enter a brief description of what your custom tool does or its purpose.</li>
+<li><strong>settings</strong>: Define an array of settings for your custom tool. These settings can include various parameters that your tool will use.</li>
+<li><strong>type</strong>: This should be set to "custom" to indicate that it is a custom tool.</li>
+</ul>
+</li>
+<li>Writing the JSON Configuration: Edit the JSON template to match the specifications of your custom tool. Ensure that you input valid JSON syntax.</li>
+<li>Referencing ELITEA Tools Documentation: For detailed instructions on creating custom tools and understanding the available options, refer to the ELITEA Tools GitHub repository: <a href="https://github.com/ProjectAlita/application-tools/tree/main/src/alita_tools">Alita Tools GitHub Repository</a>. This repository contains documentation and examples that can help you build your custom tool.</li>
+<li>Once you have configured your custom tool, review the JSON configuration for accuracy. Click the <strong>arrow</strong> icon next to the <strong>New Custom tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
+</ol>
+<p><img alt="Agent-Custom_Tool" src="../../img/Agent-Custom_Tool.png" /></p>
+<h3 id="how-to-setup-conversation-starter">How to Setup Conversation Starter</h3>
+<p>The <strong>Conversation Starter</strong> feature enables you to configure and add predefined text that can be used to initiate a conversation when executing an agent. This feature is particularly useful for setting a consistent starting point for interactions facilitated by the agent.</p>
+<h4 id="how-to-add-a-conversation-starter">How to Add a Conversation Starter</h4>
+<ol>
+<li><strong>Access the Configuration Panel</strong>: Navigate to the agent configuration section.</li>
+<li><strong>Add a Conversation Starter</strong>: Click the <code>+</code> icon to open the text input field where you can type the text you wish to use as a conversation starter.</li>
+<li><strong>Save the Configuration</strong>: After entering the desired text, ensure to save the changes to the agent. This action makes the configured conversation starter available for use.</li>
+</ol>
+<h4 id="using-a-conversation-starter">Using a Conversation Starter</h4>
+<ul>
+<li><strong>Initiate a Conversation</strong>: Go to the Chat section of the agent. Here, you will find the saved conversation starters listed. Click on the desired starter to automatically populate the chat input and execute the agent.</li>
+</ul>
+<h4 id="examples-of-conversation-starters">Examples of Conversation Starters</h4>
+<ul>
+<li>"Generate test cases for provided Acceptance Criteria."</li>
+<li>"Generate automatic test cases for selected [Test_Case_ID]."</li>
+</ul>
+<p><img alt="Agent-Conversation_Starter" src="../../img/Agent-Conversation_Starter.png" /></p>
+<p>By setting up conversation starters, you streamline the process of initiating specific tasks or queries, making your interactions with the agent more efficient and standardized.</p>
+<h3 id="how-to-execute-agent">How to Execute Agent</h3>
+<p>To execute the agent and get the output you have to:</p>
+<ol>
+<li><strong>Configure the Agent</strong>: Initialize by providing the necessary instructions, and defining tools (if applicable).</li>
+<li><strong>Select the AI Model</strong>: Choose the appropriate AI model (e.g., gpt-4-0125-preview, gpt-35-turbo, etc.).</li>
+<li><strong>Set the Temperature Parameter</strong>: Adjust this parameter to control the level of creativity or unpredictability in responses.</li>
+<li><strong>Advanced Parameters</strong> (Optional): For finer control over response generation, you may adjust these optional settings:<ul>
+<li><strong>Top P (0-1)</strong> - determines the cumulative probability threshold for selecting words, balancing between creativity (higher values) and consistency (lower values).</li>
+<li><strong>Top K</strong> - limits the choice of words to the K most probable, affecting the response's diversity and predictability.</li>
+<li><strong>Maximum length</strong> - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.</li>
+</ul>
+</li>
+<li><strong>Initiate Interaction</strong>: Once all instructions for the agent are set in the <strong>Instructions</strong> and/or <strong>Tools</strong> sections, you can start the execution by typing your text (be it a question or a command)  into the chat box or initate it by selecting the <strong>Conversation Starter</strong> message (if you have configured it). Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the <strong>Send</strong> icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.</li>
+</ol>
+<p><strong>Additional Interaction Features:</strong></p>
+<ul>
+<li><strong>Auto scroll to bottom</strong>: This option can be toggled on or off to automatically scroll to the bottom of the output as it is being generated. This feature is helpful during long outputs to keep the most recent content visible.</li>
+<li><strong>Full Screen Mode</strong>: Increase the size of the output window for better visibility and focus. This mode can be activated to expand the output interface to the full screen.</li>
+</ul>
+<p><strong>Post-Output Actions:</strong></p>
+<ul>
+<li><strong>Continue the Dialogue</strong>: To keep the conversation going, simply type your next question or command in the chat box and click the <strong>Send</strong> icon.</li>
+<li><strong>Copy the Output</strong>: Click the <strong>Copy to Clipboard</strong> icon to copy the generated text for use elsewhere.</li>
+<li><strong>Append to Assistant Message</strong>: Use the <strong>Copy to Messages</strong> icon to add the output directly to the Assistant Message section for reference or further use.</li>
+<li><strong>Regenerate Response</strong>: If the output isn't satisfactory, click the <strong>Regenerate</strong> icon to prompt the Gen AI to produce a new response.</li>
+<li><strong>Delete Output</strong>: To remove the current output from the chat, click the <strong>Delete</strong> icon.</li>
+<li><strong>Purge Chat History</strong>: For a fresh start or to clear sensitive data, click the <strong>Clean</strong> icon to erase the chat history.</li>
+</ul>
+<p><img alt="Agent-Execution" src="../../img/Agent-Execution.png" /></p>
+<h3 id="managing-agent-versions-save-create-versions-and-manage">Managing Agent Versions: Save, Create Versions, and Manage</h3>
+<p>To optimally manage your agent, understanding how to save and create versions is crucial. Follow these guidelines to efficiently save your agent, create versions, and manage them.</p>
+<h4 id="how-to-save-an-agent">How to Save an Agent:</h4>
+<ul>
+<li>To save your work on an agent for the first time, simply click the <strong>Save</strong> button. This action creates what's known as the "<strong>latest</strong>" version of your prompt.</li>
+<li>You can continue to modify your agent and save the changes to the "<strong>latest</strong>" version at any time by clicking the <strong>Save</strong> button again. If you wish to discard any changes made, you have the option to click the <strong>Discard</strong> button before saving.</li>
+</ul>
+<p><strong>Remember</strong>: The "<strong>latest</strong>" version represents the initial version you create. You can keep updating this version with your changes by saving them, without the need to create additional versions for your agent.</p>
+<h4 id="how-to-create-new-versions">How to Create New Versions:</h4>
+<p>For instances where you need to create and manage different iterations of your agent:</p>
+<ol>
+<li><strong>Initiate a New Version</strong>: Start by clicking the <strong>Save As Version</strong> button.</li>
+<li><strong>Name Your Version</strong>: When saving your work, provide a version name that clearly identifies the iteration or changes made. Click <strong>Save</strong> to confirm your entry. </li>
+</ol>
+<p><strong>Best Practices for Version Naming</strong>:</p>
+<ul>
+<li><strong>Length</strong>: Keep the version name concise, not exceeding 48 characters. This ensures readability and compatibility across various systems.</li>
+<li><strong>Characters</strong>: Avoid using special characters such as spaces (" "), underscores ("_"), and others that might cause parsing or recognition issues in certain environments.</li>
+<li><strong>Clarity</strong>: Choose names that clearly and succinctly describe the version's purpose or the changes it introduces, facilitating easier tracking and management of different versions.</li>
+</ul>
+<p>Upon creating a new version of the agent, several options become available to you:</p>
+<ul>
+<li><strong>Delete</strong>: Remove this version of the agent if it’s no longer needed.</li>
+<li><strong>Execute</strong>: Run this specific version of the agent to see how it performs.</li>
+<li><strong>Navigate Versions</strong>: Use the <strong>Version</strong> dropdown list to switch between and select different versions of the agent. This allows for easy comparison and management of various iterations.</li>
+</ul>
+<p>By following these steps, you can effectively manage the lifecycle and iterations of your agents, ensuring that each version is appropriately saved, published, and utilized as per your requirements.</p>
+<h2 id="agents-helpful-materials">Agents - Helpful Materials</h2>
+<p>To assist you in maximizing the capabilities of Agents within the ELITEA platform, we have compiled a selection of helpful materials. These resources are designed to guide you through the processes of creating, setting up, configuring, and effectively using Agents.</p>
+<h3 id="video-tutorials">Video Tutorials</h3>
+<p>Explore our curated video tutorials that provide step-by-step instructions and insights on various aspects of working with Agents:</p>
+<ul>
+<li><a href="https://videoportal.epam.com/playlist/1JebbZ7v/play/WY43Ljea">Alita AQA Agent for QAvaJS autromation</a></li>
+<li><a href="https://videoportal.epam.com/playlist/1JebbZ7v/play/e738vP5a">EBSCO Automated test generation</a></li>
+</ul>
+<h3 id="practical-examples">Practical Examples</h3>
+<p>Gain hands-on experience with our detailed examples that illustrate the practical application of Agents in real-world scenarios:</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../datasources/" class="btn btn-neutral float-left" title="Datasources"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../alita-dial/" class="btn btn-neutral float-right" title="ELITEA and EPAM AI DIAL">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../datasources/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../alita-dial/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

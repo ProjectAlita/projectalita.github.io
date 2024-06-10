@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/release-notes/rn1/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/release-notes/rn3/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>RN 1.0.0 - ELITEA Documentation</title>
+    <title>RN 1.1.0 - ELITEA Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "RN 1.0.0";
-        var mkdocs_page_input_path = "release-notes/rn1.md";
-        var mkdocs_page_url = "/release-notes/rn1/";
+        var mkdocs_page_name = "RN 1.1.0";
+        var mkdocs_page_input_path = "release-notes/rn3.md";
+        var mkdocs_page_url = "/release-notes/rn3/";
       </script>
     
     <!--[if lt IE 9]>
@@ -41,11 +41,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Release Notes</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../rn3/">RN 1.1.0</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../rn2/">RN 1.0.1</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">RN 1.0.0</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">RN 1.1.0</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
     </li>
@@ -53,11 +49,17 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#new-features">New Features</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#changed-features">Changed Features</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#known-issues">Known Issues</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#fixed-issues">Fixed Issues</a>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rn2/">RN 1.0.1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rn1/">RN 1.0.0</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">User Guide</span></p>
@@ -111,7 +113,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Release Notes</li>
-      <li class="breadcrumb-item active">RN 1.0.0</li>
+      <li class="breadcrumb-item active">RN 1.1.0</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -120,41 +122,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="alita-release-notes">Alita Release Notes</h1>
+                <h1 id="elitea-release-notes">ELITEA Release Notes</h1>
 <h2 id="introduction">Introduction</h2>
-<p><strong>Alita</strong> is an innovative web application that revolutionizes how you interact with prompts. Designed as a dynamic workspace, it empowers users to create, organize, and collaborate on prompts like never before. This initial version introduces a suite of features aimed at enhancing productivity and creativity in working with prompts.</p>
+<p><strong>ELITEA</strong> is an innovative web application that revolutionizes how you interact with prompts. Designed as a dynamic workspace, it empowers users to create, organize, and collaborate on prompts like never before.</p>
 <h2 id="information">Information</h2>
 <ul>
-<li><strong>Release Version</strong>: 1.0.0</li>
-<li><strong>Released on</strong>: 23-Apr-2024</li>
-<li><strong>Access</strong>: <a href="https://alita.lab.epam.com">Alita Platform</a>. <strong>Note</strong>: You need to enable Epam VPN to access Alita.</li>
-<li><strong>User Guide</strong>: <a href="../../user-guide/intro/">Alita - User Guide</a></li>
+<li><strong>Release Version</strong>: 1.1.0</li>
+<li><strong>Released on</strong>: 31-May-2024</li>
+<li><strong>Access</strong>: <a href="https://alita.lab.epam.com">ELITEA Platform</a>. <strong>Note</strong>: You need to enable Epam VPN to access ELITEA.</li>
+<li><strong>User Guide</strong>: <a href="../../user-guide/intro/">ELITEA - User Guide</a> </li>
 </ul>
 <h2 id="new-features">New Features</h2>
 <ul>
-<li><strong>Create, Modify, and Save Prompts</strong>: Users can now create, modify, and save their prompts in a dedicated space, streamlining the prompt management process.</li>
-<li><strong>Import Prompts</strong>: Seamlessly import prompts from Epam AI Dial, the previous version of Alita, ensuring continuity and ease of transition.</li>
-<li><strong>Version Control</strong>: Maintain various versions of prompts in one place, with the capability to effortlessly switch between them.</li>
-<li><strong>Execution Options</strong>: Execute prompts using Chat or Completion options, allowing users to gather and save the output (results) efficiently.</li>
-<li><strong>Publish and Share Prompts</strong>: Publish your prompts and share them with your project and network, fostering collaboration and knowledge sharing.</li>
-<li><strong>Engage with Published Prompts</strong>: Use published prompts and collections, with options to like them and mark them as favorites, enhancing community engagement.</li>
-<li><strong>Organize with Collections and Tags</strong>: Group your prompts into Collections and categorize them with Tags for better organization and accessibility.</li>
-<li><strong>Advanced Search Functionality</strong>: Enhanced search functionality to quickly find your prompts or public prompts and collections with various parameters.</li>
-<li><strong>Tag-based Filtering</strong>: Filter prompts and collections using tags, making it easier to find relevant content.</li>
-<li><strong>Datasource Configuration</strong>: Set up various datasources and configure them to enhance your results and the possibilities in using Generative AI.</li>
-<li><strong>Embedding Creation</strong>: Users can create Embeddings, adding a layer of sophistication to prompt management.</li>
-<li><strong>Similarity Search and Deduplication</strong>: Perform similarity searches and deduplicate content, ensuring the uniqueness and relevance of prompts.</li>
+<li><strong>Agents Framework</strong>: Introducing a powerful new feature, Agents, which integrates prompts, datasources, and external tools into a unified mechanism. This allows for seamless decision-making and action-taking processes, such as searching on Google or creating Jira tickets directly through the ELITEA platform.</li>
+<li><strong>Tools Available for Agents</strong>:<ul>
+<li><strong>Prompt Tool</strong>: Leverage pre-configured prompts from your ELITEA project to ensure consistent and accurate interactions.</li>
+<li><strong>Datasource Tool</strong>: Access structured data from pre-configured datasources, enhancing the Agent's ability to process and analyze information.</li>
+<li><strong>OpenAPI Tool</strong>: Integrate with OpenAPI-compliant APIs to expand the Agent's external functionalities and interactions.</li>
+<li><strong>Browser Tool</strong>: Equip your Agent with search engine capabilities, enabling access to a vast array of online information.</li>
+<li><strong>Confluence Tool</strong>: Integrate content from Confluence to enrich the Agent's knowledge base and improve response accuracy.</li>
+<li><strong>GitHub Tool</strong>: Allow your Agent to interact directly with GitHub repositories, enhancing version control and development processes.</li>
+<li><strong>GitLab Tool</strong>: Enable direct interaction with GitLab repositories, providing specific project data to support informed decisions.</li>
+<li><strong>Jira Tool</strong>: Manage Jira issues and projects directly from ELITEA, streamlining project management and enhancing productivity.</li>
+<li><strong>Agent Tool</strong>: Incorporate other pre-configured agents, enabling complex, layered interactions and processes within your projects.</li>
+</ul>
+</li>
+<li><strong>Monitoring Enhancements</strong>: Enhanced monitoring capabilities allow users to track usage statistics with selectable metrics and timeframes, providing deeper insights into application performance and usage patterns.</li>
+</ul>
+<h2 id="changed-features">Changed Features</h2>
+<ul>
+<li><strong>Brand Transition</strong>: Alita has been rebranded to <strong>ELITEA</strong>. This change reflects our commitment to evolving and enhancing the platform's capabilities, aligning with our vision to provide a more elite and refined experience for our users. All references to Alita in the platform, documentation, and related materials have been updated to reflect this new branding.</li>
 </ul>
 <h2 id="known-issues">Known Issues</h2>
-<p>N/A - As this is the initial release, there are currently no known issues. Feedback from users will be invaluable in identifying and addressing future improvements.</p>
+<ul>
+<li><strong>Database Corruption During Indexing</strong>: There is a risk of database corruption if a user searches in one dataset while another is indexing. <strong>Workaround</strong>: Create a new datasource and reindex the data within it to avoid this issue.</li>
+<li><strong>Prompt Saving Error</strong>: Prompts cannot be saved if the <strong>Name</strong> field is filled using a copy/paste action that includes leading spaces.</li>
+<li><strong>Datasources - GIT source Authentication Issue</strong>: Authentication using SSH for Git source type in Datasource fails. <strong>Workaround</strong>: Use the HTTPS option with Username and Password for successful authentication.</li>
+<li><strong>Agent: Confluence tool - Token Authentication type</strong>: Authentication using Token for Confluence tool in Agents fails. <strong>Workaround</strong>: Use the API key option for successful authentication.</li>
+</ul>
 <h2 id="fixed-issues">Fixed Issues</h2>
-<p>N/A - This being the first version, there are no previously fixed issues to report.</p>
+<ul>
+<li><strong>Deduplication Enhancements</strong>: Implemented several fixes and improvements to the deduplication functionality, enhancing data integrity and operational efficiency.</li>
+<li><strong>Delayed File Finder in ELITEA HUB</strong>: Users may experience delays when accessing the file finder in ELITEA HUB.</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../rn2/" class="btn btn-neutral float-left" title="RN 1.0.1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../user-guide/intro/" class="btn btn-neutral float-right" title="Get Started">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rn2/" class="btn btn-neutral float-right" title="RN 1.0.1">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -177,10 +192,8 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../rn2/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../../user-guide/intro/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../rn2/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
