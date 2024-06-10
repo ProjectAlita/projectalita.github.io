@@ -2,7 +2,7 @@
 
 ## My libraries - Datasources Page
 
-Datasources play a pivotal role in broadening and enriching the functionalities of Alita and AI technologies. They enable the extension of LLMs by integrating user-specific or project-specific data, which is not initially part of the model’s training set, thereby enhancing the LLM's context with tailored information.
+Datasources play a pivotal role in broadening and enriching the functionalities of ELITEA and AI technologies. They enable the extension of LLMs by integrating user-specific or project-specific data, which is not initially part of the model’s training set, thereby enhancing the LLM's context with tailored information.
 
 ![My_libraries-Datasources](<../img/My_libraries-Datasources.png>)
 
@@ -11,7 +11,7 @@ Datasources play a pivotal role in broadening and enriching the functionalities 
 To set up a new datasource and augment your model's capabilities:
 
 1. Click the **+ Datasource** button located at the top right corner.
-2. Fill out the **Name** and **Description** fields. *Note*: These are non-editable fields and cannot be modified after the datasource is saved.
+2. Fill out the **Name** and **Description** fields.
 3. Choose an **Embedding model** from the dropdown list provided.
 4. Select the desired **Storage type** from another dropdown menu.
 5. Optionally, add tags by typing a tag name or selecting from pre-existing tags in the Tags input box.
@@ -46,10 +46,10 @@ Depending on the selected source type, various configurations may be necessary t
 
 #### Source type - File
 
-Alita supports a variety of file types and offers flexible settings to handle your documents effectively. Below is an easy-to-understand breakdown of the options, settings, and parameters available for configuration.
+ELITEA supports a variety of file types and offers flexible settings to handle your documents effectively. Below is an easy-to-understand breakdown of the options, settings, and parameters available for configuration.
 
 * **Name** - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.
-* **Choose File Option** - select the file you wish to process. Alita supports a range of commonly used file types, ensuring compatibility and ease of use. Supported File Types: PDF, DOCX, TXT, JSON.
+* **Choose File Option** - select the file you wish to process. ELITEA supports a range of commonly used file types, ensuring compatibility and ease of use. Supported File Types: PDF, DOCX, TXT, JSON.
 * **Advanced Settings** - under this section, additional features enable further customization of how your file is processed.
     * **Split Pages** - when enabled, each page of your document is treated as a separate entity. This is particularly useful when dealing with PDF documents, enabling more granular control over the analysis or processing of individual pages.
     * **Parse Tables by Rows** Selecting this option ensures that any tables within your document are parsed row by row, maintaining the structure and context. This setting is valuable when dealing with documents that contain tabular information, ensuring the data remains organized and comprehensible.
@@ -66,7 +66,7 @@ Alita supports a variety of file types and offers flexible settings to handle yo
 This functionality is crucial for users who work with structured data in formats such as spreadsheets or structured text files. The aim is to make the process straightforward for users without requiring deep technical knowledge. Here, we outline the options, settings, and parameters available for your table data sources.
 
 * **Name** - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.
-* **Choose File Option** - select the file you wish to process. Alita supports a range of commonly used file types, ensuring compatibility and ease of use. Supported File Types: CSV, JSON, XLSX.
+* **Choose File Option** - select the file you wish to process. ELITEA supports a range of commonly used file types, ensuring compatibility and ease of use. Supported File Types: CSV, JSON, XLSX.
 * **Columns** - specify which column(s) within your table you want to focus on. These columns should contain the data you wish to analyze or use for generating embeddings. You can select single or multiple columns depending on your requirement. This flexibility allows you to tailor the analysis to the specific data points that are most valuable to your objectives. To select multiple columns, separate each column name with a comma (",").
 * **JSON Documents** - enable this option if your table data is structured as JSON documents, particularly relevant when dealing with JSON files. This tells the system to parse the file as a collection of JSON entries, allowing for a more nuanced understanding and utilization of nested data structures within the file.
 * **Raw Content** - when enabled, this setting ensures that your selected data is treated as raw content, bypassing any default preprocessing or formatting. This is particularly useful when you want the data to be ingested in its purest form, without any alterations that might affect its original structure or meaning.
@@ -78,12 +78,12 @@ This functionality is crucial for users who work with structured data in formats
 For users who rely on Git repositories to manage their code, documents, or other types of projects, this source type allows to streamline the process of linking and extracting data from these repositories. Here, we outline the options, settings, and parameters available for your GIT source type.
 
 * **Name** - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.
-* **URL** - link to Git Repo. To connect to your Git repository, you'll need to provide the URL. Alita supports two types of Git repository links:
+* **URL** - link to Git Repo. To connect to your Git repository, you'll need to provide the URL. ELITEA supports two types of Git repository links:
     * **SSH** - for a secure and password-less connection. If you choose this option, an SSH key pair is required, with the public key added to your Git account and the private key entered in the subsequent SSH Key field. For **SSH**: input the SSH Key in the designated field.
     * **HTTPS** - a widely used method that might require username and password authentication based on the repository's access settings. For **HTTPS**: if prompted, enter the username and password to authenticate.
 
 **Important Note**:
-To ensure a successful connection, **you must clone your Git repository and provide the cloned Git link**. Simply copying the Git repository address from your browser's address bar is not sufficient. Cloning the repository ensures that you're using a valid, accessible link that Alita can connect to without issues.
+To ensure a successful connection, **you must clone your Git repository and provide the cloned Git link**. Simply copying the Git repository address from your browser's address bar is not sufficient. Cloning the repository ensures that you're using a valid, accessible link that ELITEA can connect to without issues.
 
 * **Branch** - here, specify the branch within your Git repository you wish to access. By default, the '**main**' branch is selected, but you may adjust this to any branch name that suits your current focus or project needs.
 * **Advanced Settings** - under this tab, we offer options to further customize how data is retrieved from your Git repository.
@@ -115,7 +115,7 @@ For users who rely on Confluence pages to manage their information, documents, o
     * **Page IDs** - to target specific pages.
     * **Labels** - to retrieve pages tagged with specific labels.
 
-**Important Note**: To establish a successful connection to Confluence from Alita, you **must select one of these filters** and provide the corresponding value for it. This step is crucial as it defines the scope of content that Alita will access and import from Confluence, aligning the integration process with your project's specific requirements.
+**Important Note**: To establish a successful connection to Confluence from ELITEA, you **must select one of these filters** and provide the corresponding value for it. This step is crucial as it defines the scope of content that ELITEA will access and import from Confluence, aligning the integration process with your project's specific requirements.
 
 * **Advanced Settings** - these settings offer additional controls over how your Confluence content is fetched and presented:
     * **Include Attachment** - check this if you want to include page attachments in your data fetch. Useful for cases where documents or images are integral to your content.
@@ -131,11 +131,11 @@ For users who rely on Confluence pages to manage their information, documents, o
 
 #### Source type - QTest
 
-Integrating QTest with Alita enhances your test management by connecting directly to QTest Test Case Management System (TCMS). This integration allows you to select test cases for duplication checks, search functionalities, and leverage manual test cases for future automation with Generative AI. Below, we detail the configuration options, settings, and parameters available for the QTest source type.
+Integrating QTest with ELITEA enhances your test management by connecting directly to QTest Test Case Management System (TCMS). This integration allows you to select test cases for duplication checks, search functionalities, and leverage manual test cases for future automation with Generative AI. Below, we detail the configuration options, settings, and parameters available for the QTest source type.
 
 * **URL** - the link to your QTest. **Note**: You must provide the link to your QTest in the following format `https://<host of your installation of QTest>/api/<api version used>`
-* **QTest Project ID** - the specific project ID within QTest you wish to connect to. Enter the project ID to direct Alita to the correct QTest project.
-* **API Key** - Alita supports two types of authentication methods for QTest API Keys to ensure secure access:
+* **QTest Project ID** - the specific project ID within QTest you wish to connect to. Enter the project ID to direct ELITEA to the correct QTest project.
+* **API Key** - ELITEA supports two types of authentication methods for QTest API Keys to ensure secure access:
     * **Secret** - a confidential key used for enhanced security during API requests.
     * **Password** - an option for API access, verifying authorized requesters.
 * **Test Cases per Page** - configures the number of test cases displayed per page within the QTest for selection.

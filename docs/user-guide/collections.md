@@ -83,7 +83,7 @@ Click the **Delete** icon. Note that deleting a collection does not remove the p
 
 Exporting a collection allows for its use on different platforms, offering formats tailored to each:
 
-* **`[Alita format]`** - a JSON format designed for the Alita platform, including detailed information like prompt versioning and model configurations.
+* **`[Alita format]`** - a JSON format designed for the ELITEA platform, including detailed information like prompt versioning and model configurations.
 * **`[DIAL format]`** - a JSON format intended for the Epam AI Dial platform, incorporating platform-specific structuring.
 
 **Exporting the Collection:**

@@ -34,7 +34,7 @@ In the context of AI and machine learning, a prompt is an instruction, question,
 
 ### How to Create Tags
 
-In Alita, **Tags** serve as an efficient organizational tool that allows you to categorize and manage your collection of prompts. By assigning relevant tags to each prompt, you create an intuitive labeling system that facilitates quick access and retrieval. Later on, you can filter prompts by these tags, simplifying the process of finding the precise prompt you need among a vast collection, which is especially useful for users with an extensive library of different prompt types and topics.
+In ELITEA, **Tags** serve as an efficient organizational tool that allows you to categorize and manage your collection of prompts. By assigning relevant tags to each prompt, you create an intuitive labeling system that facilitates quick access and retrieval. Later on, you can filter prompts by these tags, simplifying the process of finding the precise prompt you need among a vast collection, which is especially useful for users with an extensive library of different prompt types and topics.
 
 **To add a tag to the prompt:**
 
@@ -48,7 +48,7 @@ In Alita, **Tags** serve as an efficient organizational tool that allows you to 
 
 ### How to Create Context
 
-The **Context** field in Alita is a crucial component where users input the necessary background information or instructions that guide the LLM in generating accurate and relevant responses. This section serves as the foundational knowledge base for the model to understand and process your specific requests.
+The **Context** field in ELITEA is a crucial component where users input the necessary background information or instructions that guide the LLM in generating accurate and relevant responses. This section serves as the foundational knowledge base for the model to understand and process your specific requests.
 
 #### How to Input Context
 
@@ -320,7 +320,7 @@ To add prompts to your collection, follow these steps:
 
 Exporting prompts allows you to utilize them across different platforms by choosing between two specific formats:
 
-* **`[Alita format]`** - this JSON format is optimized for the Alita platform, incorporating Alita-centric details such as prompt versioning, variables with their possible values, tags, and model configurations.
+* **`[Alita format]`** - this JSON format is optimized for the ELITEA platform, incorporating ELITEA-centric details such as prompt versioning, variables with their possible values, tags, and model configurations.
 * **`[DIAL format]`** - also in JSON format, it's tailored for integration with the Epam AI Dial platform, including only information and structuring relevant to DIAL.
 
 #### Exporting Your Prompt:
@@ -337,14 +337,14 @@ This functionality facilitates the transfer and application of your prompts acro
 
 To use the prompts created in other platforms, follow these simple steps.
 
-1. **Initiate Import**: Select the **Import** option within Alita.
+1. **Initiate Import**: Select the **Import** option within ELITEA.
 2. **Choose File**: Browse and select the exported JSON prompt file.
-3. **Complete Process**: The prompt will be added under the **My libraries - Prompts** section in Alita.
+3. **Complete Process**: The prompt will be added under the **My libraries - Prompts** section in ELITEA.
 4. **Use Prompt**: You can now access and utilize the imported prompt.
 
 ![Prompt-Import_Alita](<../img/Prompt-Import_Alita.png>)
 
-**Note**: Alita supports [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) template. Make sure the content and variables in your prompt adhere to this format, especially avoiding spaces in variable names. For more information please check [Alita and Epam AI Dial](../alita-dial.md) document.
+**Note**: ELITEA supports [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) template. Make sure the content and variables in your prompt adhere to this format, especially avoiding spaces in variable names. For more information please check [ELITEA and Epam AI Dial](../alita-dial.md) document.
 
 ## Prompts Menu
 

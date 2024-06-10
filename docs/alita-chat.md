@@ -16,7 +16,6 @@ Alita Code Chat depends on Alita Code for VSCode. It can be installed through VS
 
 Alita Code Chat is a visual studio extension to work as chatting companion using Alita Code.
 
-
 ### Installation
 
 Getting started with Alita Code Chat is straightforward:
@@ -32,12 +31,12 @@ Getting started with Alita Code Chat is straightforward:
 
 With Alita Code Chat set up, you can now:
 
-* **Prompts** - call and use prompts configured in Alita HUB.
-* **Datasources** - call and use datasources configured in Alita HUB.
-* **Applications** - call and use applications configured in Alita HUB.
+* **Prompts** - call and use prompts configured in ELITEA HUB.
+* **Datasources** - call and use datasources configured in ELITEA HUB.
+* **Agents** - call and use agents configured in ELITEA HUB.
 * **Chat** - is a specific type of input designed for conversational AI models, which aims to initiate or guide a dialogue. This can be in the form of a question, statement, or command that simulates human-like interaction, prompting the AI to produce a conversational response for engagement.
 
-**Important:** To successfully call and utilize prompts, datasources, or applications from Alita HUB, it is essential that these items are tagged with `code` in Alita HUB. This tag ensures that the resources are correctly categorized and accessible. Ensure that the `code` tag is applied to relevant prompts, datasources, and applications to enable their proper functionality within the Alita ecosystem.
+**Important:** To successfully call and utilize prompts, datasources, or agents from ELITEA HUB, it is essential that these items are tagged with `code` in ELITEA HUB. This tag ensures that the resources are correctly categorized and accessible. Ensure that the `code` tag is applied to relevant prompts, datasources, and applications to enable their proper functionality within the Alita ecosystem.
 
 **Additional Interaction Features:**
 
@@ -57,7 +56,7 @@ With Alita Code Chat set up, you can now:
 
 ### Prompts
 
-To call and use **Prompts** from Alita HUB:
+To call and use **Prompts** from ELITEA HUB:
 
 1. Open the Alita Code Chat.
 2. Type `/` in the chat box.
@@ -76,7 +75,7 @@ To call and use **Prompts** from Alita HUB:
 
 ### Datasources
 
-To call and use **Datasources** from Alita HUB:
+To call and use **Datasources** from ELITEA HUB:
 
 1. Open the Alita Code Chat.
 2. Type `#` in the chat box.
@@ -86,9 +85,9 @@ To call and use **Datasources** from Alita HUB:
 
 ![AlitaChat-Datasource](img/AlitaChat-Datasource.png)
 
-### Applications
+### Agents
 
-To call and use **Applications** from Alita HUB:
+To call and use **Agents** from ELITEA HUB:
 
 1. Open the Alita Code Chat.
 2. Type `@` in the chat box.
