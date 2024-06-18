@@ -13,17 +13,17 @@
 
 ## New Features
 
-* **Agents Framework**: Introducing a powerful new feature, Agents, which integrates prompts, datasources, and external tools into a unified mechanism. This allows for seamless decision-making and action-taking processes, such as searching on Google or creating Jira tickets directly through the ELITEA platform.
-* **Tools Available for Agents**:
-	* **Prompt Tool**: Leverage pre-configured prompts from your ELITEA project to ensure consistent and accurate interactions.
-	* **Datasource Tool**: Access structured data from pre-configured datasources, enhancing the Agent's ability to process and analyze information.
-	* **OpenAPI Tool**: Integrate with OpenAPI-compliant APIs to expand the Agent's external functionalities and interactions.
-	* **Browser Tool**: Equip your Agent with search engine capabilities, enabling access to a vast array of online information.
-	* **Confluence Tool**: Integrate content from Confluence to enrich the Agent's knowledge base and improve response accuracy.
-	* **GitHub Tool**: Allow your Agent to interact directly with GitHub repositories, enhancing version control and development processes.
-	* **GitLab Tool**: Enable direct interaction with GitLab repositories, providing specific project data to support informed decisions.
-	* **Jira Tool**: Manage Jira issues and projects directly from ELITEA, streamlining project management and enhancing productivity.
-	* **Agent Tool**: Incorporate other pre-configured agents, enabling complex, layered interactions and processes within your projects.
+* **Agents Framework**: Introducing a powerful new feature, Agents, which integrates prompts, datasources, and external toolkits into a unified mechanism. This allows for seamless decision-making and action-taking processes, such as searching on Google or creating Jira tickets directly through the ELITEA platform.
+* **Toolkits Available for Agents**:
+	* **Prompt Toolkit**: Leverage pre-configured prompts from your ELITEA project to ensure consistent and accurate interactions.
+	* **Datasource Toolkit**: Access structured data from pre-configured datasources, enhancing the Agent's ability to process and analyze information.
+	* **OpenAPI Toolkit**: Integrate with OpenAPI-compliant APIs to expand the Agent's external functionalities and interactions.
+	* **Browser Toolkit**: Equip your Agent with search engine capabilities, enabling access to a vast array of online information.
+	* **Confluence Toolkit**: Integrate content from Confluence to enrich the Agent's knowledge base and improve response accuracy.
+	* **GitHub Toolkit**: Allow your Agent to interact directly with GitHub repositories, enhancing version control and development processes.
+	* **GitLab Toolkit**: Enable direct interaction with GitLab repositories, providing specific project data to support informed decisions.
+	* **Jira Toolkit**: Manage Jira issues and projects directly from ELITEA, streamlining project management and enhancing productivity.
+	* **Agent Toolkit**: Incorporate other pre-configured agents, enabling complex, layered interactions and processes within your projects.
 * **Monitoring Enhancements**: Enhanced monitoring capabilities allow users to track usage statistics with selectable metrics and timeframes, providing deeper insights into application performance and usage patterns.
 
 ## Changed Features

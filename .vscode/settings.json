@@ -1,0 +1,11 @@
+{
+    "alitacode.providerServerURL": "https://eye.projectalita.ai/",
+    "alitacode.authToken": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOTdlNzA5ZjMtYTk2ZS00YmRkLWFlODgtNWQ1YjFlNTUxNzk4In0.kKuQXSC81K9jL3vqDuUCFRw9HydZIMxd6k6xmhyjCNMuJuzlgF92o9_go0MRxN6gqFps9A-XgmEy-zG-QANQiQ",
+    "alitacode.modelName": "gpt-4-0125-preview",
+    "alitacode.customModelName": "gpt-4-0125-preview",
+    "alitacode.projectId": 4,
+    "alitacode.integrationUid": "55109c7d-ded9-4c1c-b28e-531c93d2ffba",
+    "alitacode.verifySsl": false,
+    "alitacode.temperature": 0.2,
+    "alitacode.defaultViewMode": "split"
+}

@@ -10,27 +10,27 @@ The purpose of Agents in ELITEA is to provide a more efficient way of interactin
 ![My_libraries-Agents](<../img/My_libraries-Agents.png>)
 
 ## What are ELITEA Agents?
-ELITEA Agents are virtual assistants or bots that you can create and customize within the ELITEA interface. Each agent is designed to handle a specific task or set of tasks based on the instructions and capabilities you define for it. Agents bring prompts, datasources and external to LLM tools into one mechanism allowing to use integrate decisions made by LLMs and actions required to be taken, like search in Google or creating a Jira Tickets, etc. Agents are capable to work with more external tools.
+ELITEA Agents are virtual assistants or bots that you can create and customize within the ELITEA interface. Each agent is designed to handle a specific task or set of tasks based on the instructions and capabilities you define for it. Agents bring prompts, datasources and external to LLM toolkits into one mechanism allowing to use integrate decisions made by LLMs and actions required to be taken, like search in Google or creating a Jira Tickets, etc. Agents are capable to work with more external toolkits.
 
 ## How do Agents work?
-When you create an agent, you provide it with a set of instructions, tools or a goal that you want it to accomplish. These instructions can be as simple or complex as needed, and they can include steps, conditions, and actions that the agent should take. The agent then uses the natural language processing capabilities of selected GPT model to understand and execute the instructions you've provided.
+When you create an agent, you provide it with a set of instructions, toolkits or a goal that you want it to accomplish. These instructions can be as simple or complex as needed, and they can include steps, conditions, and actions that the agent should take. The agent then uses the natural language processing capabilities of selected GPT model to understand and execute the instructions you've provided.
 
 
-## Integration with External Tools, Services, and APIs
+## Integration with External toolkits, Services, and APIs
 
-One of the powerful features of ELITEA Agents is their ability to integrate with a wide range of external tools, services, and APIs. This integration enables agents to access and interact with different platforms, empowering them to perform more complex and specialized tasks. Below are some examples of integrations that can be set up with ELITEA Agents:
+One of the powerful features of ELITEA Agents is their ability to integrate with a wide range of external toolkits, services, and APIs. This integration enables agents to access and interact with different platforms, empowering them to perform more complex and specialized tasks. Below are some examples of integrations that can be set up with ELITEA Agents:
 
-* **Project Management Tools**: ELITEA Agents can be integrated with tools like JIRA or Trello to help manage projects, track issues, and collaborate with team members efficiently.
-* **Test Management Tools**: Integration with tools such as TestRail or qTest can enable agents to assist with test case management, execution, and reporting, enhancing the software testing lifecycle.
-* **Documentation and Knowledge Base Tools**: Agents can connect to platforms like Confluence to help create, update, and manage documentation and knowledge bases, ensuring that information is always current and accessible.
+* **Project Management toolkits**: ELITEA Agents can be integrated with toolkits like JIRA or Trello to help manage projects, track issues, and collaborate with team members efficiently.
+* **Test Management toolkits**: Integration with toolkits such as TestRail or qTest can enable agents to assist with test case management, execution, and reporting, enhancing the software testing lifecycle.
+* **Documentation and Knowledge Base toolkits**: Agents can connect to platforms like Confluence to help create, update, and manage documentation and knowledge bases, ensuring that information is always current and accessible.
 * **Version Control Systems**: Integration with Git repositories like GitHub or GitLab can allow agents to assist with code management, pull requests, and code reviews, streamlining the development process.
 * **APIs and Web Services**: ELITEA Agents can interact with various APIs and web services, such as Open APIs to retrieve and process data as needed, providing timely and relevant information.
 * **Web Browsers**: Agents can be configured to automate tasks within web browsers, such as web scraping, web searching, or automating web-based workflows, which can significantly reduce manual effort.
-* **Internal Tools and Systems**: ELITEA Agents can also be integrated with internal ELITEA tools (prompts, datasources and agents).
+* **Internal toolkits and Systems**: ELITEA Agents can also be integrated with internal ELITEA toolkits (prompts, datasources and agents).
 
-By leveraging these integrations, ELITEA Agents can become powerful virtual assistants that help automate and streamline a wide range of tasks across different platforms and tools. The specific integrations available may vary based on the capabilities of the ELITEA platform and the APIs or tools you want to connect with.
+By leveraging these integrations, ELITEA Agents can become powerful virtual assistants that help automate and streamline a wide range of tasks across different platforms and toolkits. The specific integrations available may vary based on the capabilities of the ELITEA platform and the APIs or toolkits you want to connect with.
 
-It's important to note that setting up these integrations may require additional configuration and authentication steps, such as providing API keys, access tokens, or configuring webhooks or other communication channels between ELITEA and the external tools or services. These steps ensure secure and seamless integration, enabling ELITEA Agents to function effectively within your existing technological ecosystem.
+It's important to note that setting up these integrations may require additional configuration and authentication steps, such as providing API keys, access tokens, or configuring webhooks or other communication channels between ELITEA and the external toolkits or services. These steps ensure secure and seamless integration, enabling ELITEA Agents to function effectively within your existing technological ecosystem.
 
 **Note**: For more information, please check [Alita Tools](https://github.com/ProjectAlita/application-tools) and [Alita SDK](https://github.com/ProjectAlita/alita-sdk) git repos.
 
@@ -44,7 +44,7 @@ To set up a new agent:
 3. Optionally, add tags by typing a tag name or selecting from pre-existing tags in the **Tags** input box.
 4. Select the Agent type.
 5. Provide instructions for selected Agent type in the Instructions field.
-6. Add and setup selected tools that agent must use.
+6. Add and setup selected toolkits that agent must use.
 7. Optionally, add and configure **Conversation Starter**. 
 8. Click **Save**.
 
@@ -60,7 +60,7 @@ The **Instructions** field in Agent is a crucial component where users input the
 
 * **Identify Key Information**: Before entering data into the Instructions field, identify the essential details or instructions that the model needs to know to fulfill your request effectively. This could include the topic, specific terms, relevant background information, or the scope of the task.
 * **Enter the Details**: In the Instructions field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the agent's focus and efficiency.
-* **Using Tools**: For enhancing agent's capabilities, you can integrate Tools and provide instructions how to use them and in which order. The name of tool can be denoted by graves, e.g., `tool_name`.
+* **Using toolkits**: For enhancing agent's capabilities, you can integrate toolkits and provide instructions how to use them and in which order. The name of toolkit can be denoted by graves, e.g., `toolkit_name`.
 
 ![Agent-Instructions](<../img/Agent-Instructions.png>)
 
@@ -68,19 +68,83 @@ The **Instructions** field in Agent is a crucial component where users input the
 
 Selected Agent type determines the level and depth of instructions required to be provided for the agent to use it.
 The following Agent types are available:
-* **React** - Just tell what you want it do be doing and add tools. Use Actor, Goals, Instructions and Constraints to describe desired behavior
-* **Open AI** - OpenAI based assistants that can interact with models and functions / tools. Restricted to OpenAI models. For more information, please check [Open AI Assistants](https://platform.openai.com/docs/assistants/overview) documentation.
+* **React** - Just tell what you want it do be doing and add toolkits. Use Actor, Goals, Instructions and Constraints to describe desired behavior
+* **Open AI** - OpenAI based assistants that can interact with models and functions / toolkits. Restricted to OpenAI models. For more information, please check [Open AI Assistants](https://platform.openai.com/docs/assistants/overview) documentation.
 * **Raw** - Expert level ReAct agent, but you need to describe everything there, including response format from LLMs.
 
-**IMPORTANT:**
+#### Instructions for React and Raw Agent Types
 
-When opting for the **Raw** Agent type, it is crucial to adhere to the following instructions to ensure proper configuration and functionality:
+**General Guidelines for Both Agent Types**
 
-* **Preserve Existing Variables:** Do not delete any variables that automatically appear in the configuration. These are essential for the underlying operations of the agent.
-* **Avoid Assigning Values to Variables:** Leave the variables unassigned. Values for these variables will be dynamically populated by the agent's code during execution.
-* Additionally, ensure to include the following section in your instruction:
+When working with either the React or Raw agent types, it is imperative to adhere to the following general guidelines:
+
+* **Toolkit Interaction**: Ensure to address the appropriate toolkits (e.g., JIRA, GitHub) and address the specific tools available within these toolkits (e.g., Create issue, Add comments).
+* **Execution Constraints**: Always provide clear instructions or constraints to ensure that each toolkit is executed only once to avoid loops. This is crucial for maintaining efficient and error-free operations.
+
+**React Agent Type**
+
+For the **React** agent type, follow these detailed instructions to effectively integrate and utilize various toolkits and tools:
 ```
-### Tools:
+Example: Test Case Generation
+
+### Objective: 
+You are an expert Software Testing engineer. Your task is to connect to a Git repository using the GitHub toolkit, read files related to "Alita Documentation" to find information about datasources, analyze this information, create three test cases covering datasource creation functionality, and save the generated test cases in a newly created Jira ticket using the Jira toolkit.
+
+### Instructions:
+1. Connect to GitHub Repository:
+   - Use the GitHub toolkit to connect to the specified Git repository.
+   - Ensure you have the necessary permissions to read files from the repository.
+2. Read Files:
+   - Use the "Read file" tool to read files related to "Alita Documentation" from the repository.
+   - Focus on finding information about datasources.
+3. Analyze Information:
+   - As an expert Software Testing engineer, analyze the information about datasources.
+   - Identify key functionalities and requirements for datasource creation.
+4. Create Test Cases:
+   - Based on your analysis, create three test cases covering datasource creation functionality.
+   - Ensure the test cases are detailed, clear, and follow industry best practices.
+5. Save Test Cases in Jira:
+   - Use the Jira toolkit to create a new Jira Task.
+   - Use the following project: ETSTCC
+   - The created Issue type must be Task.
+   - Ensure the Jira Task has the next available issue ID. 
+   - Save the generated test cases in the Description field.
+   - Use the following Label: AI_Generated.
+   - Generate a corresponding Summary and apply it to the Summary field of the Task.
+   - Use only standard fields in Jira, do not use neither custom fileds or fields from plugins, they are not available.
+
+### Constraints:
+- Execute each toolkit only once.
+- Do not get into a loop.
+- Provide the best possible output based on the available information.
+
+### Example Test Case Format:
+Test Case ID: TC001 Title: Verify datasource creation with valid inputs Description: Ensure that a datasource can be created successfully when valid inputs are provided. Preconditions: User is logged in and has access to the datasource creation page. Steps:
+
+1. Navigate to the datasource creation page.
+2. Enter valid inputs in all required fields.
+3. Click on the "Create" button. Expected Result: The datasource is created successfully, and a confirmation message is displayed.
+
+Test Case ID: TC002 Title: Verify error message for missing required fields Description: Ensure that an appropriate error message is displayed when required fields are left blank during datasource creation. Preconditions: User is logged in and has access to the datasource creation page. Steps:
+
+1. Navigate to the datasource creation page.
+2. Leave one or more required fields blank.
+3. Click on the "Create" button. Expected Result: An error message is displayed indicating that required fields must be filled.
+
+### Execution:
+- Follow the instructions step-by-step.
+- Ensure each toolkit is executed only once.
+- Provide the best possible output based on the available information.
+```
+**Raw Agent Type**
+
+For the **Raw** agent type, adhere to these specific guidelines to ensure the agent operates correctly:
+
+* **Preserve Existing Variables**: Do not remove any pre-existing variables in the configuration as they are crucial for the agent's functionality.
+* **Avoid Assigning Values to Variables**: Leave variables unassigned; they will be automatically populated during execution.
+* Include the following essential sections in your configuration:
+```
+  ### Tools:
 {{tools}} 
 - Say to user: tool: "complete_task", args: "final_answer"  - complete message to be communicated to the user, shoudl contain as much details as possible
 
@@ -107,15 +171,16 @@ When opting for the **Raw** Agent type, it is crucial to adhere to the following
 }
 You must answer with only JSON and it could be parsed by Python json.loads
 ```
+
 ![Agent-Raw](<../img/Agent-Raw.png>)
 
 By following these guidelines and including the necessary code snippet, you ensure that the Raw Agent functions correctly and integrates seamlessly with the intended processes.
 
-### How to select and configure Tools
+### How to select and configure Toolkits
 
-Tools are integrations with external or ELITEA's internal services, tools and APIs which allows to enhance Agents to use various resources and do the tasks.
+Toolkits are integrations with external or ELITEA's internal services, toolkits and APIs which allows to enhance Agents to use various resources and do the tasks.
 
-**To add a new tool**:
+**To add a new toolkit**:
 
 1. Click the **+ icon** under **Tools** section.
 2. Select the desired tool from the dropdown list. The **New tool** configuration section is opened.
@@ -124,7 +189,7 @@ Tools are integrations with external or ELITEA's internal services, tools and AP
 
 ![Agent-New_Tool](<../img/Agent-New_Tool.png>)
 
-**To edit alrady created tool**:
+**To edit alrady created toolkit**:
 
 1. Click the name of the already created **Tool**.
 2. The **New [tool_name] tool** configuration section is opened.
@@ -133,35 +198,35 @@ Tools are integrations with external or ELITEA's internal services, tools and AP
 
 The following internal Tools are available:
 
-#### Datasource tool
+#### Datasource toolkit
 
-The **Datasource** tool empowers your Agent by providing access to pre-configured datasources within your ELITEA project. This tool facilitates the integration of structured data into the Agent's operations, enhancing its ability to process and analyze information efficiently.
+The **Datasource** toolkit empowers your Agent by providing access to pre-configured datasources within your ELITEA project. This toolkit facilitates the integration of structured data into the Agent's operations, enhancing its ability to process and analyze information efficiently.
 
-**To configure Datasource tool**:
+**To configure Datasource toolkit**:
 
 1. Click the **+ icon** under **Tools** section.
 2. Select the **Datasource** tool from the dropdown list.
 3. The **New datasource tool** configuration section is opened.
-      * **Name**: Provide informative name for the datasource (tool).
-      * **Description**: Provide informative description for the datasource (tool).
-      * **Datasource**: Select the datasource from the dropdown list that you want to use as a tool for the agent. **Note**: If you select the datasource for the first time, the name and description of the selected datasource will be pulled and displayed as the name/description for the tool. Later you can modify them if needed.
+      * **Name**: Provide informative name for the datasource (toolkit).
+      * **Description**: Provide informative description for the datasource (toolkit).
+      * **Datasource**: Select the datasource from the dropdown list that you want to use as a toolkit for the agent. **Note**: If you select the datasource for the first time, the name and description of the selected datasource will be pulled and displayed as the name/description for the toolkit. Later you can modify them if needed.
       * **Action**: Select the required action type that will be used by agent (either **Search** or **Chat**). This will allow Agent to use information from selected datasource either by searching it or by chating with it.
 4. Click the **arrow** icon next to the **New datasource tool** to complete the setup and move back to the main menu of Agent configuration.
 
 ![Agent-Datasource_Tool](<../img/Agent-Datasource_Tool.png>)
 
-#### Prompt tool
+#### Prompt toolkit
 
-The **Prompt** tool allows your Agent to utilize pre-configured prompts from your ELITEA project. This integration enables the Agent to leverage existing prompt configurations to streamline interactions and responses, ensuring consistency and accuracy in its engagements.
+The **Prompt** toolkit allows your Agent to utilize pre-configured prompts from your ELITEA project. This integration enables the Agent to leverage existing prompt configurations to streamline interactions and responses, ensuring consistency and accuracy in its engagements.
 
-**To configure Prompt tool**:
+**To configure Prompt toolkit**:
 
 1. Click the **+ icon** under **Tools** section.
 2. Select the **Prompt** tool from the dropdown list.
 3. The **New Prompt tool** configuration section is opened.
-      * **Name**: Provide informative name for the prompt (tool).
-      * **Description**: Provide informative description for the prompt (tool).
-      * **Datasource**: Select the prompt from the dropdown list that you want to use as a tool for the agent. **Note**: If you select the prompt for the first time, the name and description of the selected prompt will be pulled and displayed as the name/description for the tool. Later you can modify them if needed.
+      * **Name**: Provide informative name for the prompt (toolkit).
+      * **Description**: Provide informative description for the prompt (toolkit).
+      * **Datasource**: Select the prompt from the dropdown list that you want to use as a toolkit for the agent. **Note**: If you select the prompt for the first time, the name and description of the selected prompt will be pulled and displayed as the name/description for the toolkit. Later you can modify them if needed.
       * **Version**: select the available version of the selected prompt from the dropdown list.
 4. Click the **arrow** icon next to the **New Prompt tool** to complete the setup and move back to the main menu of Agent configuration.
 
@@ -169,34 +234,34 @@ The **Prompt** tool allows your Agent to utilize pre-configured prompts from you
 
 ![Agent-Prompt_Tool](<../img/Agent-Prompt_Tool.png>)
 
-#### Agent tool
+#### Agent toolkit
 
-The **Agent** tool provides a meta-level functionality by allowing your Agent to incorporate other pre-configured agents within your ELITEA project. This recursive capability enriches the Agent's functionality, enabling complex, layered interactions and processes.
+The **Agent** toolkit provides a meta-level functionality by allowing your Agent to incorporate other pre-configured agents within your ELITEA project. This recursive capability enriches the Agent's functionality, enabling complex, layered interactions and processes.
 
-**To configure Agent tool**:
+**To configure Agent toolkit**:
 
 1. Click the **+ icon** under **Tools** section.
 2. Select the **Prompt** tool from the dropdown list.
 3. The **New Agent tool** configuration section is opened.
-      * **Name**: Provide informative name for the agent (tool).
-      * **Description**: provide informative description for the agent (tool).
-      * **Agent**: Select the agent from the dropdown list that you want to use as a tool for the agent. **Note**: If you select the agent for the first time, the name and description of the selected agent will be pulled and displayed as the name/description for the tool. Later you can modify them if needed.
+      * **Name**: Provide informative name for the agent (toolkit).
+      * **Description**: provide informative description for the agent (toolkit).
+      * **Agent**: Select the agent from the dropdown list that you want to use as a toolkit for the agent. **Note**: If you select the agent for the first time, the name and description of the selected agent will be pulled and displayed as the name/description for the toolkit. Later you can modify them if needed.
       * **Version**: Select the available version of the selected agent from the dropdown list.
 4. Click the **arrow** icon next to the **New Agent tool** to complete the setup and move back to the main menu of Agent configuration.
 
 ![Agent-Agent_Tool](<../img/Agent-Agent_Tool.png>)
 
-#### Browser tool
+#### Browser toolkit
 
-The **Browser** tool significantly enhances the capabilities of your Agent by integrating robust search engine functionalities directly into its operations. This tool enables the Agent to access and search the web, thereby enriching the LLM with a vast array of information available online. This integration allows for a more informed and responsive Agent, capable of leveraging up-to-date web data in its tasks.
+The **Browser** toolkit significantly enhances the capabilities of your Agent by integrating robust search engine functionalities directly into its operations. This toolkit enables the Agent to access and search the web, thereby enriching the LLM with a vast array of information available online. This integration allows for a more informed and responsive Agent, capable of leveraging up-to-date web data in its tasks.
 
-**To configure Browser tool**:
+**To configure Browser toolkit**:
 
 1. Click the **+ icon** under **Tools** section.
 2. From the dropdown list, select the **Browser** tool to open the configuration settings.
 3. The **New Browser tool** configuration section is opened.
-      * **Name**: Assign a descriptive name to the browser tool for easy identification within Agent's instructions.
-      * **Description**: Provide a brief description of the browser tool's purpose and how it integrates with your workflow.
+      * **Name**: Assign a descriptive name to the browser toolkit for easy identification within Agent's instructions.
+      * **Description**: Provide a brief description of the browser toolkit's purpose and how it integrates with your workflow.
       * **API key**: Input the API key for the CSE that you have configured for the selected search engine.
       * **CSE ID**: Input the Custom Search Engine ID configured for your selected search engine.
       * **Tools**: Choose which search engines to integrate by selecting from the available options:
@@ -207,17 +272,17 @@ The **Browser** tool significantly enhances the capabilities of your Agent by in
 
 ![Agent-Browser_Tool](<../img/Agent-Browser_Tool.png>)
 
-#### Confluence tool
+#### Confluence toolkit
 
-The **Confluence** tool seamlessly integrates Confluence, a widely-used platform for team collaboration and content management, into your Agent's toolkit. This tool enhances the Agent's knowledge base with user-specific or project-specific data from Confluence, enriching its context and response accuracy.
+The **Confluence** toolkit seamlessly integrates Confluence, a widely-used platform for team collaboration and content management, into your Agent's toolkit. This tool enhances the Agent's knowledge base with user-specific or project-specific data from Confluence, enriching its context and response accuracy.
 
-**To configure Confluence tool**:
+**To configure Confluence toolkit**:
 
 1. Click the **+ icon** under the **Tools** section.
 2. Select the **Confluence** tool from the dropdown list.
 3. The **New Confluence tool** configuration section is opened.
-      * **Name**: Provide an informative name for the Confluence tool.
-      * **Description**: Provide a detailed description of the Confluence tool's purpose.
+      * **Name**: Provide an informative name for the Confluence toolkit.
+      * **Description**: Provide a detailed description of the Confluence toolkit's purpose.
       * **URL**: Enter the URL to your Confluence instance (e.g., `https://www.kb.epam.com`). The URL should be the base link as detailed handling is managed via the 
       * **Authentication Options**: Choose your preferred method for secure connection:
          * **API Key**: Select this option if you are using an API key for authentication. Enter your Confluence API key in the provided field. Ensure you handle this key securely. Input the username associated with your Confluence account.
@@ -240,16 +305,16 @@ The **Confluence** tool seamlessly integrates Confluence, a widely-used platform
 
 ![Agent-Confluence_Tool](<../img/Agent-Confluence_Tool.png>)
 
-#### Jira tool
+#### Jira toolkit
 
-The **Jira** tool enables a direct integration with Jira, allowing users to manage issues and projects directly from the ELITEA platform. This tool streamlines project management tasks by enabling real-time interactions and updates through the Agent, enhancing productivity and project tracking.
+The **Jira** toolkit enables a direct integration with Jira, allowing users to manage issues and projects directly from the ELITEA platform. This tool streamlines project management tasks by enabling real-time interactions and updates through the Agent, enhancing productivity and project tracking.
 
-**To configure Jira tool**:
+**To configure Jira toolkit**:
 
 1. Click the **+ icon** under **Tools** section.
 2. Select the **Jira** tool from the dropdown list.
 3. The **New Jira tool** configuration section is opened.
-      * **Name**: Provide a unique name to identify your Jira tool within ELITEA.
+      * **Name**: Provide a unique name to identify your Jira toolkit within ELITEA.
       * **Description**: Offer a concise description of what the integration is intended for.
       * **URL**: Enter the URL to your Jira instance (e.g., `https://www.jira.epam.com`).
       * **Authentication Options**: Choose your preferred method for secure connection:
@@ -264,22 +329,22 @@ The **Jira** tool enables a direct integration with Jira, allowing users to mana
         * **Update issue**: To enable updating existing Jira issues.
         * **Add comments**: To allow adding comments to Jira issues.
         * **List projects**: To enable listing all Jira projects.   
-      * **Advanced Settings**: Adjust the advanced settings to fine-tune the tool's operation:
+      * **Advanced Settings**: Adjust the advanced settings to fine-tune the toolkit's operation:
         * **Verify SSL**: Check this to enable SSL verification for secure connections to your Jira instance.
 4. Click the **arrow** icon next to the **New Jira tool** to complete the setup and move back to the main menu of Agent configuration.
 
 ![Agent-Jira_Tool](<../img/Agent-Jira_Tool.png>)
 
-#### GitHub tool
+#### GitHub toolkit
 
-The **GitHub** tool integrates GitHub into your Agent, allowing it to access and interact with repositories directly. This tool enhances the Agent's capabilities by providing it with user-specific or project-specific data from GitHub, facilitating better version control and development process integration.
+The **GitHub** toolkit integrates GitHub into your Agent, allowing it to access and interact with repositories directly. This toolkit enhances the Agent's capabilities by providing it with user-specific or project-specific data from GitHub, facilitating better version control and development process integration.
 
-**To configure GitHub tool**:
+**To configure GitHub toolkit**:
 
 1. Click the **+ icon** under **Tools** section.
 2. Select the **GitHub** tool from the dropdown list.
 3. The **New GitHub tool** configuration section is opened.
-      * **Name**: Assign a distinctive name to your GitHub tool integration.
+      * **Name**: Assign a distinctive name to your GitHub toolkit integration.
       * **Description**: Give a concise description that outlines the integration's intended purpose.
       * **Repository**: Enter the name of the GitHub repository you wish to integrate.
       **Main branch**: Specify the main branch of your repository, typically `main`.
@@ -308,16 +373,16 @@ The **GitHub** tool integrates GitHub into your Agent, allowing it to access and
 
 ![Agent-GitHub_Tool](<../img/Agent-GitHub_Tool.png>)
 
-#### Gitlab tool
+#### Gitlab toolkit
 
-Similar to the **GitHub** tool, the Gitlab tool integrates your Agent with Gitlab, enabling direct interaction with repositories and project data. This tool enriches the Agent's operational context with specific data from Gitlab, supporting more informed decisions and interactions in software development projects.
+Similar to the **GitHub** toolkit, the Gitlab toolkit integrates your Agent with Gitlab, enabling direct interaction with repositories and project data. This toolkit enriches the Agent's operational context with specific data from Gitlab, supporting more informed decisions and interactions in software development projects.
 
-**To configure Gitlab tool:**
+**To configure Gitlab toolkit:**
 
 1. Click the **+ icon** under **Tools** section.
 2. Select the **Gitlab** tool from the dropdown list.
 3. The **New Gitlab tool** configuration section is opened.
-      * **Name**: Assign a distinctive name to your GitHub tool integration.
+      * **Name**: Assign a distinctive name to your GitHub toolkit integration.
       * **Description**: Give a concise description that outlines the integration's intended purpose.
       * **Repository**: Enter the name of the Gitlab repository you wish to integrate.
       **Main branch**: Specify the main branch of your repository, typically `main`.
@@ -336,16 +401,16 @@ Similar to the **GitHub** tool, the Gitlab tool integrates your Agent with Gitla
 
 ![Agent-GitLab_Tool](<../img/Agent-GitLab_Tool.png>)
 
-#### Open API tool
+#### Open API toolkit
 
-The **Open API** tool extends your Agent's capabilities by integrating OpenAPI-compliant APIs. This tool allows for a broad range of external functionalities to be incorporated into the Agent, enabling it to interact with and utilize diverse external services and data sources.
+The **Open API** toolkit extends your Agent's capabilities by integrating OpenAPI-compliant APIs. This toolkit allows for a broad range of external functionalities to be incorporated into the Agent, enabling it to interact with and utilize diverse external services and data sources.
 
-**To configure Open API tool**:
+**To configure Open API toolkit**:
 
 1. Click the **+ icon** under **Tools** section.
 2. Select the **Gitlab** tool from the dropdown list.
 3. The **New Open API tool** configuration section is opened.
-   * **Name**: Enter a unique name for your Open API tool integration. This name will be used to identify the tool within your agent's instructions.
+   * **Name**: Enter a unique name for your Open API toolkit integration. This name will be used to identify the toolkit within your agent's instructions.
 4. Upload your OpenAPI schema by following one of these methods:
       * **Enter Schema**: You can directly paste your OpenAPI schema into the text area provided.
       * **Drag & Drop**: Drag your OpenAPI schema file and drop it into the designated area.
@@ -361,15 +426,15 @@ The **Open API** tool extends your Agent's capabilities by integrating OpenAPI-c
 
 ![Agent-OpenAPI_Tool](<../img/Agent-OpenAPI_Tool.png>)
 
-#### Custom tool
+#### Custom toolkit
 
-The **Custom** tool provides a flexible solution for users to create bespoke integrations tailored to their specific needs. This tool allows for the development of unique functionalities that are not covered by standard tools, offering limitless possibilities to enhance the Agent's capabilities.
+The **Custom** toolkit provides a flexible solution for users to create bespoke integrations tailored to their specific needs. This toolkit allows for the development of unique functionalities that are not covered by standard toolkit, offering limitless possibilities to enhance the Agent's capabilities.
 
-**To configure Custom tool**:
+**To configure Custom toolkit**:
 
 1. Click the **+ icon** under **Tools** section.
-2. Select the **Custom** tool from the dropdown list.
-3. The **New Custom tool** configuration section is opened. You will see a JSON template in the interface, which you can edit to define your custom tool:
+2. Select the **Custom** toolkit from the dropdown list.
+3. The **New Custom tool** configuration section is opened. You will see a JSON template in the interface, which you can edit to define your custom toolkit:
       ```
       {
        "name": "Custom tool",
@@ -378,13 +443,13 @@ The **Custom** tool provides a flexible solution for users to create bespoke int
        "type": "custom"
       }
       ```
-      * **name**: Provide a unique name for your custom tool that will be used to identify it within ELITEA.
-      * **description**: Enter a brief description of what your custom tool does or its purpose.
-      * **settings**: Define an array of settings for your custom tool. These settings can include various parameters that your tool will use.
+      * **name**: Provide a unique name for your custom toolkit that will be used to identify it within ELITEA.
+      * **description**: Enter a brief description of what your custom toolkit does or its purpose.
+      * **settings**: Define an array of settings for your custom toolkit. These settings can include various parameters that your toolkit will use.
       * **type**: This should be set to "custom" to indicate that it is a custom tool.
-4. Writing the JSON Configuration: Edit the JSON template to match the specifications of your custom tool. Ensure that you input valid JSON syntax.
-5. Referencing ELITEA Tools Documentation: For detailed instructions on creating custom tools and understanding the available options, refer to the ELITEA Tools GitHub repository: [Alita Tools GitHub Repository](https://github.com/ProjectAlita/application-tools/tree/main/src/alita_tools). This repository contains documentation and examples that can help you build your custom tool.
-6. Once you have configured your custom tool, review the JSON configuration for accuracy. Click the **arrow** icon next to the **New Custom tool** to complete the setup and move back to the main menu of Agent configuration.
+4. Writing the JSON Configuration: Edit the JSON template to match the specifications of your custom toolkit. Ensure that you input valid JSON syntax.
+5. Referencing ELITEA Tools Documentation: For detailed instructions on creating custom toolkits and understanding the available options, refer to the ELITEA Tools GitHub repository: [Alita Tools GitHub Repository](https://github.com/ProjectAlita/application-tools/tree/main/src/alita_tools). This repository contains documentation and examples that can help you build your custom tool.
+6. Once you have configured your custom toolkit, review the JSON configuration for accuracy. Click the **arrow** icon next to the **New Custom tool** to complete the setup and move back to the main menu of Agent configuration.
 
 ![Agent-Custom_Tool](<../img/Agent-Custom_Tool.png>)
 
