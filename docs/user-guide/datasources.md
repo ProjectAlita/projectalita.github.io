@@ -108,7 +108,7 @@ For users who rely on Confluence pages to manage their information, documents, o
 * **Username** - input the username associated with your Confluence account. This is the same username you use to log in to your Confluence site.
 * **Hosting Option** - choose the appropriate hosting type for your Confluence setup:
     * **Cloud** - if your Confluence is hosted on Atlassian’s cloud.
-    * **Server** - if your Confluence is hosted on your own servers or enterprise environment.
+    * **Server** - if your Confluence is hosted on your own servers or enterprise environment. **Important Note**: When connecting to Epam's Confluence, ensure you select the **Server** option to establish the correct configuration.
 **Note**:This distinction is crucial for establishing the correct connection and accessing your data appropriately.
 * **Filter** - use the filter option to refine which Confluence pages you wish to fetch. You can filter by:
     * **Space Key** - to fetch pages from specific Confluence spaces.

@@ -289,7 +289,7 @@ The **Confluence** toolkit seamlessly integrates Confluence, a widely-used platf
          * **Token**: Choose this option if you are using a token for authentication.
       * **Hosting Option**: Select the appropriate hosting type for your Confluence setup:
          * **Cloud**: If your Confluence is hosted on Atlassian’s cloud.
-         * **Server**: If your Confluence is hosted on your own servers or an enterprise environment.
+         * **Server**: If your Confluence is hosted on your own servers or an enterprise environment. **Important Note**: When connecting to Epam's Confluence, ensure you select the **Server** option to establish the correct configuration.
       * **Tools**: Enable the specific tools you need for your integration:
          * **Create page**: Check this to enable page creation in Confluence through Agent.
          * **Page Exists**: Check this to enable checking for existing pages.
@@ -316,13 +316,13 @@ The **Jira** toolkit enables a direct integration with Jira, allowing users to m
 3. The **New Jira tool** configuration section is opened.
       * **Name**: Provide a unique name to identify your Jira toolkit within ELITEA.
       * **Description**: Offer a concise description of what the integration is intended for.
-      * **URL**: Enter the URL to your Jira instance (e.g., `https://www.jira.epam.com`).
+      * **URL**: Enter the URL to your Jira instance (e.g., `https://www.jira.epam.com/jira`).
       * **Authentication Options**: Choose your preferred method for secure connection:
         * **API Key**: Select this option if you are using an API key for authentication. Enter your Jira API key in the provided field. Ensure you handle this key securely. Input the username associated with your Confluence account.
         * **Token**: Choose this option if you are using a token for authentication.
       * **Hosting Option**: Select the appropriate hosting type for your Jira setup:
         * **Cloud**: If your Jira is hosted on Atlassian’s cloud.
-        * **Server**: If your Jira is hosted on your own servers or an enterprise environment.
+        * **Server**: If your Jira is hosted on your own servers or an enterprise environment. **Important Note**: When connecting to Epam's Jira, ensure you select the **Server** option to establish the correct configuration.
       *  **Tools** - the following tools are avaialble for selection:
         * **Search using JQL**: To enable searching for Jira issues using Jira Query Language.
         * **Create issue**: To allow the creation of new issues within Jira.
