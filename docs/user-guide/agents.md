@@ -64,13 +64,27 @@ The **Instructions** field in Agent is a crucial component where users input the
 
 ![Agent-Instructions](<../img/Agent-Instructions.png>)
 
-### How to select Agent type
+### How to Select an Agent Type
 
-Selected Agent type determines the level and depth of instructions required to be provided for the agent to use it.
-The following Agent types are available:
-* **React** - Just tell what you want it do be doing and add toolkits. Use Actor, Goals, Instructions and Constraints to describe desired behavior
-* **Open AI** - OpenAI based assistants that can interact with models and functions / toolkits. Restricted to OpenAI models. For more information, please check [Open AI Assistants](https://platform.openai.com/docs/assistants/overview) documentation.
-* **Raw** - Expert level ReAct agent, but you need to describe everything there, including response format from LLMs.
+Choosing the appropriate Agent type is crucial as it dictates the level of detail and the nature of instructions required for the agent to operate effectively. Below is an overview of the available Agent types and their intended use cases:
+
+#### React
+* **Description**: This Agent type is ideal for straightforward, linear scenarios that require minimal context. Simply specify your requirements, including what actions the agent should perform, and add the necessary toolkits. Utilize fields such as Actor, Goals, Instructions, and Constraints to clearly describe the desired behavior.
+* **Best For**: Simple tasks with clear, direct instructions.
+
+#### Dial
+* **Description**: Dial agents are based on Epam AI DIAL technology and are designed to interact with models and functions or tools, specifically restricted to OpenAI models.
+* **Best For**: Scenarios that require interaction with OpenAI models and can benefit from DIAL's capabilities.
+
+#### Alita
+* **Description**: Alita agents are a hybrid of OpenAI's and Langchain's ReAct approaches, making them suitable for more complex, open-ended scenarios. Unlike the React type, Alita agents can maintain chat history, which enhances their ability to handle extended interactions.
+* **Best For**: Complex scenarios that require ongoing interactions and the ability to retain context over time. Not recommended for simple, linear tasks.
+
+#### Raw
+* **Description**: This is an expert-level configuration similar to the React type but requires a comprehensive description of all aspects, including the exact response format expected from language learning models (LLMs). 
+* **Best For**: Advanced users who need full control over the agent's behavior and responses, and are capable of specifying detailed operational parameters.
+
+Each Agent type is designed to cater to different needs and complexities of tasks. Selecting the right type ensures that the agent performs optimally within the specified parameters and scenarios.
 
 #### Instructions for React and Raw Agent Types
 
@@ -266,7 +280,9 @@ The **Browser** toolkit significantly enhances the capabilities of your Agent by
       * **CSE ID**: Input the Custom Search Engine ID configured for your selected search engine.
       * **Tools**: Choose which search engines to integrate by selecting from the available options:
           * **Wiki**: Include Wikipedia search capabilities.
-          * **DuckDuckGo**: Utilize DuckDuckGo for enhanced privacy in searches.
+          * **Single URL Crawler**: This tool is designed to crawl data from a specific web page within the Agent's context, making it ideal for targeted data extraction tasks.
+          * **Multi URL Crawler**: Use this tool to crawl data from multiple specified web pages within the Agent's context. It is suitable for broader data gathering operations across various sources.
+          * **Get HTML Content**: This tool allows you to retrieve the HTML content of a specified web page within the Agent's context, providing direct access to the page's structural data.
           * **Google**: Integrate Google for comprehensive search functionalities. For creating CSE ID and API key for Google, please check the [Programmable Search Engine](https://programmablesearchengine.google.com/controlpanel/all) page.
 4. Click the **arrow** icon next to the **New Browser tool** to complete the setup and move back to the main menu of Agent configuration.
 
@@ -291,8 +307,6 @@ The **Confluence** toolkit seamlessly integrates Confluence, a widely-used platf
          * **Cloud**: If your Confluence is hosted on Atlassian’s cloud.
          * **Server**: If your Confluence is hosted on your own servers or an enterprise environment. **Important Note**: When connecting to Epam's Confluence, ensure you select the **Server** option to establish the correct configuration.
       * **Tools**: Enable the specific tools you need for your integration:
-         * **Create page**: Check this to enable page creation in Confluence through Agent.
-         * **Page Exists**: Check this to enable checking for existing pages.
          * **Get pages with the label**: Check this to retrieve pages associated with a specific label.
          * **Search pages**: Check this to enable searching for pages within Confluence.
       * **Advanced Settings**: Configure additional settings to control data fetching and presentation:
@@ -328,7 +342,8 @@ The **Jira** toolkit enables a direct integration with Jira, allowing users to m
         * **Create issue**: To allow the creation of new issues within Jira.
         * **Update issue**: To enable updating existing Jira issues.
         * **Add comments**: To allow adding comments to Jira issues.
-        * **List projects**: To enable listing all Jira projects.   
+        * **List projects**: To enable listing all Jira projects.
+        * **Set issue status**: To set the status of Jira issues.
       * **Advanced Settings**: Adjust the advanced settings to fine-tune the toolkit's operation:
         * **Verify SSL**: Check this to enable SSL verification for secure connections to your Jira instance.
 4. Click the **arrow** icon next to the **New Jira tool** to complete the setup and move back to the main menu of Agent configuration.
@@ -453,6 +468,28 @@ The **Custom** toolkit provides a flexible solution for users to create bespoke 
 
 ![Agent-Custom_Tool](<../img/Agent-Custom_Tool.png>)
 
+#### Artifact toolkit
+
+The **Artifact** toolkit integrates your project's dedicated database in ELITEA into your Agent, allowing it to access and interact with your project's buckets directly. This toolkit enhances the Agent's capabilities by providing it with user-specific or project-specific data from bucket, as well as saving the agent's generated output into bucket.
+
+**To configure Artifact toolkit**:
+
+1. Click the **+ icon** under **Tools** section.
+2. Select the **Artifact** tool from the dropdown list.
+3. The **New artifact tool** configuration section is opened.
+      * **Name**: Assign a distinctive name to your Artifact toolkit integration.
+      * **Description**: Give a concise description that outlines the integration's intended purpose.
+      **Bucket**: Specify the bucket name that you want to access or create.
+      * **Tools**: Enable the tools that you require for interacting with your Artifact: 
+        * **List Files**: Lists all files in a specific bucket.
+        * **Create File**: Allows for creating new file in the bucket.
+        * **Read File**: Enables reading the contents of files from the bucket.
+        * **Delete File**: Allows for the deletion of files from the bucket.
+        * **Append Data**: Permits updating the context of existing file in the bucket.
+4. Click the **arrow** icon next to the **New artifact tool** to complete the setup and move back to the main menu of Agent configuration.
+
+![Agent-Artifact_Tool](<../img/Agent-Artifact_Tool.png>)
+
 ### How to Setup Conversation Starter
 
 The **Conversation Starter** feature enables you to configure and add predefined text that can be used to initiate a conversation when executing an agent. This feature is particularly useful for setting a consistent starting point for interactions facilitated by the agent.
@@ -539,6 +576,36 @@ Upon creating a new version of the agent, several options become available to yo
 
 By following these steps, you can effectively manage the lifecycle and iterations of your agents, ensuring that each version is appropriately saved, published, and utilized as per your requirements.
 
+
+## Agents Menu
+
+The **Agents** menu showcases a collection of published and shared agents within the community. By default, upon logging in, the user is directed to the **Latest** page of the Agents menu, which presents newly published agents.
+
+### Layout of the Agents Menu
+
+The Agents menu is organized into three distinct pages, each designed to offer a unique perspective on the available agents:
+
+* **Latest**: Displays all recently published agents, providing a fresh look at the newest contributions to the community.
+* **My Likes**: Highlights the agents that you have liked. This personalized page allows you to revisit favorites effortlessly.
+* **Trending**: Showcases the agents with the highest number of likes, serving as a valuable resource for discovering top-rated agents that hold significant value and popularity within the community.
+
+### Engaging with Published Agents
+
+Interaction within the community is highly encouraged to recognize and appreciate valuable agents. The following actions enable active participation:
+
+### Liking Published Agents
+
+Upon publication, an agent becomes a crucial resource for the community. To support and acknowledge an agent, use the **Like** functionality:
+
+* To like an agent, click on the **Heart** icon associated with it.
+* If you wish to withdraw your like, simply click the **Heart** icon again to Unlike the agent.
+
+### Other Actions for Published Agents
+
+**Using Published Agent**:
+
+* View and run agent by clicking on the agent card or name. Refer to the [How to Execute Agent](#how-to-execute-agent) section for guidance on using agent.
+* **Note**: Modifications to a published agent cannot be saved for future use.
 
 ## Agents - Helpful Materials
 

@@ -56,8 +56,8 @@ ELITEA supports a variety of file types and offers flexible settings to handle y
 * **Default Document Loader** - choose the mechanism by which your document is loaded into the system. Each loader handles your file differently, catering to specific needs.
     * **TextLoader** - optimized for plain text documents, ensuring swift and efficient loading.
     * **PythonLoader** - best suited for technical or coded documents, offering more sophisticated parsing capabilities.
-* **Extension Whitelist** - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., pdf, docx, xlsx, json, txt), overriding the default supported types if necessary.
-* **Extension Blacklist** - conversely, list file extensions you wish to exclude from processing. Any file type mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.
+  * **Extension Whitelist** - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., `.pdf`, `.docx`, `.txt`), overriding the default supported types if necessary.
+  * **Extension Blacklist** - conversely, list file extensions you wish to exclude from processing. Any file type (e.g., `.exe`, `.bin`, `.png`) mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.
 
 ![Datassources-Dataset_File](../img/Datassources-Dataset_File.png)
 
@@ -91,8 +91,8 @@ To ensure a successful connection, **you must clone your Git repository and prov
   * **Default Document Loader** - choose the mechanism by which your document is loaded into the system. Each loader handles your file differently, catering to specific needs.
       * **TextLoader**: - optimized for plain text documents, ensuring swift and efficient loading.
       * **PythonLoader**: - best suited for technical or coded documents, offering more sophisticated parsing capabilities.
-  * **Extension Whitelist** - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., pdf, docx, txt), overriding the default supported types if necessary.
-  * **Extension Blacklist** - conversely, list file extensions you wish to exclude from processing. Any file type mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.
+  * **Extension Whitelist** - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., `.pdf`, `.docx`, `.txt`), overriding the default supported types if necessary.
+  * **Extension Blacklist** - conversely, list file extensions you wish to exclude from processing. Any file type (e.g., `.exe`, `.bin`, `.png`) mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.
 
 ![Datassources-Dataset_GIT](../img/Datassources-Dataset_GIT.png)
 
@@ -186,38 +186,75 @@ The **Chat** feature is tailored for conversational AI models, enabling you to e
 
 ##### How to Use Chat
 
-1. Select your desired **Embedding model** from the dropdown list.
+1. Select the **Embedding model** from the dropdown list. **Note**: It must be the same one which is used for creating the datasource.
 2. Choose an **AI model** (e.g., gpt-4-0125-preview, gpt-35-turbo, etc.) suited to your conversation needs.
-3. Type your text in the chat box and click the **Send** icon to initiate the dialogue.
+3. Optionally, you can configure Advanced Settings for more tailord outputs by clicking the **Settings** icon. **Note**: Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values. The following settings are available:
+      * **Initial Lookup Result (1 – 50)** - specifies the number of initial results retrieved from the indexed dataset(s) for further processing. 
+        * **Higher values**: More initial results are retrieved, which can increase the chances of finding relevant information but may slow down processing.
+        * **Lower values**: Fewer initial results are retrieved, which can speed up processing but might miss some relevant information.
+      * **Pages Per Document (1 – 30)** - defines the number of pages to be considered per document during the retrieval or processing phase.
+        * **Higher values**: More pages per document are considered, which can provide more comprehensive information but may slow down processing.
+        * **Lower values**: Fewer pages per document are considered, which can speed up processing but might miss some important details.
+      * **Expected Search Results (1 – 40)** - sets the anticipated number of search results to be returned, guiding the system's retrieval scope.
+        * **Higher values**: More search results are returned, which can provide a broader range of information but may include less relevant results.
+        * **Lower values**: Fewer search results are returned, which can provide more focused and relevant information but might miss some useful results.
+      * **Temperature (0.1-1.0)** - adjusts the level of creativity or unpredictability in responses.
+        * **Higher values**: Responses are more creative and varied, but may be less consistent and more unpredictable.
+        * **Lower values**: Responses are more consistent and predictable, but may be less creative and varied.
+      * **Top P (0-1)** - determines the cumulative probability threshold for selecting words, balancing between creativity and consistency.
+        * **Higher values**: A wider range of words is considered, leading to more creative and diverse responses.
+        * **Lower values**: A narrower range of words is considered, leading to more consistent and predictable responses.
+      * **Top K (1-40)** - limits the choice of words to the K most probable, affecting the response's diversity and predictability.
+        * **Higher values**: More words are considered, leading to more diverse and potentially creative responses.
+        * **Lower values**: Fewer words are considered, leading to more predictable and focused responses.
+      * **Maximum Length** - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.
+        * **Higher values**: Responses can be longer and more detailed.
+        * **Lower values**: Responses are shorter and more concise.
+4. Type your text in the chat box and click the **Send** icon to initiate the dialogue.
 
 ![Datasources-Chat](<../img/Datasources-Chat.png>)
 
-* **Advanced Settings** (For those who are comfortable with tweaking parameters for more tailored outputs):
-     * **Fetch K (1 – 50)**: Determines the number of responses the AI fetches for your query.
-     * **Page Top K (1 – 30)**: Specifies the top results to display from your query.
-     * **Cut-off score (0 - 1)**: Sets the threshold for response relevance. Higher scores narrow down to more relevant results.
-     * **Top K (1 – 40)**: Adjusts the breadth of responses considered by the AI.
-
-**Note**: Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values.
-
 #### Search
 
-The **Search** function allows you to quickly locate specific information within your indexed dataset.
+The **Search** feature allows you to quickly locate specific information within your indexed dataset.
 
 ##### How to Conduct a Search
 
-1. Type your query into the input field and hit the **Send** icon.
-2. Optionally, you can switch the **Embedding model** via the dropdown list to refine your search criteria.
+1. Select the **Embedding model** from the dropdown list. **Note**: It must be the same one which is used for creating the datasource.
+2. Optionally, you can configure **Advanced Settings** for more tailord outputs by clicking the **Settings** icon. **Note**: Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values. The following settings are available:
+      * **Initial Lookup Result (1 – 50)** - specifies the number of initial results retrieved from the indexed dataset(s) for further processing. 
+        * **Higher values**: More initial results are retrieved, which can increase the chances of finding relevant information but may slow down processing.
+        * **Lower values**: Fewer initial results are retrieved, which can speed up processing but might miss some relevant information.
+      * **Pages Per Document (1 – 30)** - defines the number of pages to be considered per document during the retrieval or processing phase.
+        * **Higher values**: More pages per document are considered, which can provide more comprehensive information but may slow down processing.
+        * **Lower values**: Fewer pages per document are considered, which can speed up processing but might miss some important details.
+      * **Expected Search Results (1 – 40)** - sets the anticipated number of search results to be returned, guiding the system's retrieval scope.
+        * **Higher values**: More search results are returned, which can provide a broader range of information but may include less relevant results.
+        * **Lower values**: Fewer search results are returned, which can provide more focused and relevant information but might miss some useful results.
+      * **String content** - determines whether the system should include or consider specific text data in its processing or generation.
+3. Type your query into the input field and hit the **Send** icon.
+
 
 #### Deduplicate
 
 **Deduplication** is a handy feature for identifying duplicate information.
 
-##### Steps for Deduplication
+##### How to Run Deduplication
 
-1. **Cut-off score**: Set a threshold for considering information as a duplicate. Configuring this score helps the system identify duplicates with greater accuracy.
-2. Press the **Run** button to start the process.
-3. Remember, deduplication efforts will hinge upon the parameters you've set for the dataset.
+1. Select the **Embedding model** from the dropdown list. **Note**: It must be the same one which is used for creating the datasource.
+2. Configure the following settings:
+      * **Cut-off Score (0.1-1.0)** - determines the threshold for identifying duplicate content based on similarity scores.
+        * **Higher values**: Only content that is very similar will be considered duplicates, which means more items will be removed. This can be useful if you want to ensure that only highly unique content remains.
+        * **Lower values**: More content will be considered duplicates, which means more items will be removed. This can be useful if you want to keep more variations of the content.
+      * **Show Additional Metadata** - a checkbox option that determines whether to display extra information about the content.
+        * **Selected**: Additional metadata will be shown, providing more context and details about the content.
+        * **Not Selected**: Additional metadata will not be shown, resulting in a cleaner and simpler display of the content.
+      * **Exclude Fields** - a comma-separated list of field names that should be excluded from the deduplication process.
+        * **Specified fields**: The fields listed will be ignored during deduplication, which means differences in these fields will not affect whether content is considered a duplicate. This can be useful if certain fields (like timestamps or IDs) are not relevant to the deduplication criteria.
+        * **No fields specified**: All fields will be considered during deduplication, which means any differences in any field can affect whether content is considered a duplicate.
+3. Press the **Run** button to start the process.
+
+**Note:** Remember, deduplication efforts will hinge upon the parameters you've set for the dataset.
 
 By using these features, you’re equipped to enhance your dataset, making it a more efficient and effective tool for your AI applications. Proceed with adjustments only if you're confident in your understanding of their implications.
 
