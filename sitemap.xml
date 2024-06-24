@@ -2,82 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://projectalita.ai/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/alita-chat/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/alita-code/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/alita-dial/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/creating-prompts/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/faqs/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/intro/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/user/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/release-notes/rn1/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/release-notes/rn2/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/release-notes/rn3/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://projectalita.ai/release-notes/rn4/</loc>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/user-guide/agents/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://projectalita.ai/user-guide/chat/</loc>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/user-guide/collections/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/user-guide/datasources/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/user-guide/intro/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://projectalita.ai/user-guide/prompts/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

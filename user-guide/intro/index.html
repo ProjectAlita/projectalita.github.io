@@ -41,6 +41,8 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Release Notes</span></p>
               <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn4/">RN 1.2.0</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn3/">RN 1.1.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn2/">RN 1.0.1</a>
@@ -82,7 +84,7 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#sentiments">Sentiments</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#relevance">Relevance</a>
+    <li class="toctree-l4"><a class="reference internal" href="#accuracy">Accuracy</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#topics-summary">Topics Summary</a>
     </li>
@@ -105,6 +107,8 @@
                   <li class="toctree-l1"><a class="reference internal" href="../datasources/">Datasources</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../agents/">Agents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chat/">Chat</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Manuals</span></p>
@@ -199,9 +203,11 @@
 <h3 id="general-navigation-and-management-across-the-application">General Navigation and Management Across the Application</h3>
 <p>This section outlines common functionalities and actions available across various menus and pages within the application, aiming to provide a consistent and efficient user experience. These functionalities are shared across:</p>
 <ul>
+<li><strong>Chat</strong> menu: Includes all your private and public conversations.</li>
 <li><strong>Prompts</strong> menu: Including the Latest, My Likes, and Trending pages.</li>
+<li><strong>Datasources</strong> menu: Including the Latest, My Likes, and Trending pages for datasources.</li>
+<li><strong>Agents</strong> menu: Including the Latest, My Likes, and Trending pages for agents.</li>
 <li><strong>Collections</strong> menu: Including the Latest, My Likes, and Trending pages designed for collections.</li>
-<li><strong>Datasources</strong> menu: Including the Latest, My Likes, and Trending pages for data sources.</li>
 <li><strong>My libraries</strong> menu: Including All, Prompts, Datasources, and Collections pages.</li>
 </ul>
 <p>The context may vary depending on the specific page you're viewing, but the core principles of action and functionality remain consistent, ensuring a unified approach to navigating and managing content within the application.</p>
@@ -225,12 +231,12 @@
 <p>These standardized functionalities across different menus and pages are designed to simplify navigation and enhance the content management process within the application, promoting a coherent and user-friendly environment.</p>
 <h2 id="discover-menus">Discover - Menus</h2>
 <p>ELITEA consists of the following main menus:</p>
-<ul>
-<li><strong>Prompts</strong>: Browse through an organized showcase of prompts curated and shared by the community.</li>
-<li><strong>Datasources</strong>:  Browse through an organized showcase of datasources and shared by the community.</li>
-<li><strong>Collections</strong>: Browse through an organized showcase of prompt collections curated and shared by the community.</li>
-<li><strong>My libraries</strong>: Manage your personal creative space where you can craft, save, edit, and organize your prompts and collections.</li>
-</ul>
+<p><strong>Chat</strong>: Create and manage your public and private conversations.
+* <strong>Prompts</strong>: Browse through an organized showcase of prompts curated and shared by the community.
+* <strong>Datasources</strong>:  Browse through an organized showcase of datasources and shared by the community.
+* <strong>Agents</strong>:  Browse through an organized showcase of agents and shared by the community.
+* <strong>Collections</strong>: Browse through an organized showcase of prompt collections curated and shared by the community.
+* <strong>My libraries</strong>: Manage your personal creative space where you can craft, save, edit, and organize your prompts and collections.</p>
 <p><strong>Navigation:</strong></p>
 <ol>
 <li>To naviagte among the menus, click the <strong>ELITEA</strong> icon on the top left.</li>
@@ -247,6 +253,7 @@
 <li><strong>Monitoring</strong>: Keep track of usage statistics by selecting different metrics and timeframes.</li>
 <li><strong>Configuration</strong>: Manage essential technical settings crucial for the smooth operation of ELITEA's features like Alita Code or Alita Chat.</li>
 <li><strong>Deployments</strong>: Handle the management and launching of AI models or services linked to your ELITEA project.</li>
+<li><strong>Users</strong>: Manage users within project. This tab is only available for the user within admin permissions within the project.</li>
 <li><strong>Log out</strong>: Securely log out from the ELITEA Hub.</li>
 </ul>
 <p><strong>Navigation</strong></p>
@@ -298,11 +305,11 @@
 <li><strong>LLM Output</strong>: A pie chart displaying the sentiment distribution of the ELITEA's outputs.</li>
 </ul>
 <p><img alt="Settings-Monitoring(Part2)" src="../../img/Settings-Monitoring%28Part2%29.png" /></p>
-<h4 id="relevance">Relevance</h4>
-<p>The <strong>Relevance</strong> section includes line charts that measure:</p>
+<h4 id="accuracy">Accuracy</h4>
+<p>The <strong>Accuracy</strong> section includes line charts that measure:</p>
 <ul>
 <li><strong>Relevance</strong>: Comparing the relevance of input versus context and output versus input.</li>
-<li><strong>Accuracy</strong>: Displaying the reliability score of the application's outputs.</li>
+<li><strong>Reliability</strong>: Displaying the reliability score of the application's outputs.</li>
 <li><strong>Prompt Quality</strong>: Chart tracks the quality score of prompts over time, helping you understand the effectiveness of your prompts.</li>
 </ul>
 <h4 id="topics-summary">Topics Summary</h4>

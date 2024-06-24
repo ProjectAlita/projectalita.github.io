@@ -41,6 +41,8 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Release Notes</span></p>
               <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn4/">RN 1.2.0</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn3/">RN 1.1.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn2/">RN 1.0.1</a>
@@ -111,6 +113,8 @@
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../agents/">Agents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chat/">Chat</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Manuals</span></p>
@@ -210,8 +214,8 @@
 <li><strong>PythonLoader</strong> - best suited for technical or coded documents, offering more sophisticated parsing capabilities.</li>
 </ul>
 </li>
-<li><strong>Extension Whitelist</strong> - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., pdf, docx, xlsx, json, txt), overriding the default supported types if necessary.</li>
-<li><strong>Extension Blacklist</strong> - conversely, list file extensions you wish to exclude from processing. Any file type mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.</li>
+<li><strong>Extension Whitelist</strong> - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., <code>.pdf</code>, <code>.docx</code>, <code>.txt</code>), overriding the default supported types if necessary.</li>
+<li><strong>Extension Blacklist</strong> - conversely, list file extensions you wish to exclude from processing. Any file type (e.g., <code>.exe</code>, <code>.bin</code>, <code>.png</code>) mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.</li>
 </ul>
 <p><img alt="Datassources-Dataset_File" src="../../img/Datassources-Dataset_File.png" /></p>
 <h4 id="source-type-table">Source type - Table</h4>
@@ -245,8 +249,8 @@ To ensure a successful connection, <strong>you must clone your Git repository an
 <li><strong>PythonLoader</strong>: - best suited for technical or coded documents, offering more sophisticated parsing capabilities.</li>
 </ul>
 </li>
-<li><strong>Extension Whitelist</strong> - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., pdf, docx, txt), overriding the default supported types if necessary.</li>
-<li><strong>Extension Blacklist</strong> - conversely, list file extensions you wish to exclude from processing. Any file type mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.</li>
+<li><strong>Extension Whitelist</strong> - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., <code>.pdf</code>, <code>.docx</code>, <code>.txt</code>), overriding the default supported types if necessary.</li>
+<li><strong>Extension Blacklist</strong> - conversely, list file extensions you wish to exclude from processing. Any file type (e.g., <code>.exe</code>, <code>.bin</code>, <code>.png</code>) mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.</li>
 </ul>
 <p><img alt="Datassources-Dataset_GIT" src="../../img/Datassources-Dataset_GIT.png" /></p>
 <h4 id="source-type-confluence">Source type - Confluence</h4>
@@ -262,7 +266,7 @@ To ensure a successful connection, <strong>you must clone your Git repository an
 <li><strong>Username</strong> - input the username associated with your Confluence account. This is the same username you use to log in to your Confluence site.</li>
 <li><strong>Hosting Option</strong> - choose the appropriate hosting type for your Confluence setup:<ul>
 <li><strong>Cloud</strong> - if your Confluence is hosted on Atlassian’s cloud.</li>
-<li><strong>Server</strong> - if your Confluence is hosted on your own servers or enterprise environment.
+<li><strong>Server</strong> - if your Confluence is hosted on your own servers or enterprise environment. <strong>Important Note</strong>: When connecting to Epam's Confluence, ensure you select the <strong>Server</strong> option to establish the correct configuration.
 <strong>Note</strong>:This distinction is crucial for establishing the correct connection and accessing your data appropriately.</li>
 </ul>
 </li>
@@ -336,36 +340,101 @@ To ensure a successful connection, <strong>you must clone your Git repository an
 <p>The <strong>Chat</strong> feature is tailored for conversational AI models, enabling you to engage in dialogues or interactions akin to conversing with a human. Whether you're asking a question, making a statement, or giving a command, this feature is designed to generate responses that mimic human conversation.</p>
 <h5 id="how-to-use-chat">How to Use Chat</h5>
 <ol>
-<li>Select your desired <strong>Embedding model</strong> from the dropdown list.</li>
+<li>Select the <strong>Embedding model</strong> from the dropdown list. <strong>Note</strong>: It must be the same one which is used for creating the datasource.</li>
 <li>Choose an <strong>AI model</strong> (e.g., gpt-4-0125-preview, gpt-35-turbo, etc.) suited to your conversation needs.</li>
-<li>Type your text in the chat box and click the <strong>Send</strong> icon to initiate the dialogue.</li>
-</ol>
-<p><img alt="Datasources-Chat" src="../../img/Datasources-Chat.png" /></p>
-<ul>
-<li><strong>Advanced Settings</strong> (For those who are comfortable with tweaking parameters for more tailored outputs):<ul>
-<li><strong>Fetch K (1 – 50)</strong>: Determines the number of responses the AI fetches for your query.</li>
-<li><strong>Page Top K (1 – 30)</strong>: Specifies the top results to display from your query.</li>
-<li><strong>Cut-off score (0 - 1)</strong>: Sets the threshold for response relevance. Higher scores narrow down to more relevant results.</li>
-<li><strong>Top K (1 – 40)</strong>: Adjusts the breadth of responses considered by the AI.</li>
+<li>Optionally, you can configure Advanced Settings for more tailord outputs by clicking the <strong>Settings</strong> icon. <strong>Note</strong>: Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values. The following settings are available:<ul>
+<li><strong>Initial Lookup Result (1 – 50)</strong> - specifies the number of initial results retrieved from the indexed dataset(s) for further processing. <ul>
+<li><strong>Higher values</strong>: More initial results are retrieved, which can increase the chances of finding relevant information but may slow down processing.</li>
+<li><strong>Lower values</strong>: Fewer initial results are retrieved, which can speed up processing but might miss some relevant information.</li>
+</ul>
+</li>
+<li><strong>Pages Per Document (1 – 30)</strong> - defines the number of pages to be considered per document during the retrieval or processing phase.<ul>
+<li><strong>Higher values</strong>: More pages per document are considered, which can provide more comprehensive information but may slow down processing.</li>
+<li><strong>Lower values</strong>: Fewer pages per document are considered, which can speed up processing but might miss some important details.</li>
+</ul>
+</li>
+<li><strong>Expected Search Results (1 – 40)</strong> - sets the anticipated number of search results to be returned, guiding the system's retrieval scope.<ul>
+<li><strong>Higher values</strong>: More search results are returned, which can provide a broader range of information but may include less relevant results.</li>
+<li><strong>Lower values</strong>: Fewer search results are returned, which can provide more focused and relevant information but might miss some useful results.</li>
+</ul>
+</li>
+<li><strong>Temperature (0.1-1.0)</strong> - adjusts the level of creativity or unpredictability in responses.<ul>
+<li><strong>Higher values</strong>: Responses are more creative and varied, but may be less consistent and more unpredictable.</li>
+<li><strong>Lower values</strong>: Responses are more consistent and predictable, but may be less creative and varied.</li>
+</ul>
+</li>
+<li><strong>Top P (0-1)</strong> - determines the cumulative probability threshold for selecting words, balancing between creativity and consistency.<ul>
+<li><strong>Higher values</strong>: A wider range of words is considered, leading to more creative and diverse responses.</li>
+<li><strong>Lower values</strong>: A narrower range of words is considered, leading to more consistent and predictable responses.</li>
+</ul>
+</li>
+<li><strong>Top K (1-40)</strong> - limits the choice of words to the K most probable, affecting the response's diversity and predictability.<ul>
+<li><strong>Higher values</strong>: More words are considered, leading to more diverse and potentially creative responses.</li>
+<li><strong>Lower values</strong>: Fewer words are considered, leading to more predictable and focused responses.</li>
+</ul>
+</li>
+<li><strong>Maximum Length</strong> - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.<ul>
+<li><strong>Higher values</strong>: Responses can be longer and more detailed.</li>
+<li><strong>Lower values</strong>: Responses are shorter and more concise.</li>
 </ul>
 </li>
 </ul>
-<p><strong>Note</strong>: Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values.</p>
+</li>
+<li>Type your text in the chat box and click the <strong>Send</strong> icon to initiate the dialogue.</li>
+</ol>
+<p><img alt="Datasources-Chat" src="../../img/Datasources-Chat.png" /></p>
 <h4 id="search">Search</h4>
-<p>The <strong>Search</strong> function allows you to quickly locate specific information within your indexed dataset.</p>
+<p>The <strong>Search</strong> feature allows you to quickly locate specific information within your indexed dataset.</p>
 <h5 id="how-to-conduct-a-search">How to Conduct a Search</h5>
 <ol>
+<li>Select the <strong>Embedding model</strong> from the dropdown list. <strong>Note</strong>: It must be the same one which is used for creating the datasource.</li>
+<li>Optionally, you can configure <strong>Advanced Settings</strong> for more tailord outputs by clicking the <strong>Settings</strong> icon. <strong>Note</strong>: Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values. The following settings are available:<ul>
+<li><strong>Initial Lookup Result (1 – 50)</strong> - specifies the number of initial results retrieved from the indexed dataset(s) for further processing. <ul>
+<li><strong>Higher values</strong>: More initial results are retrieved, which can increase the chances of finding relevant information but may slow down processing.</li>
+<li><strong>Lower values</strong>: Fewer initial results are retrieved, which can speed up processing but might miss some relevant information.</li>
+</ul>
+</li>
+<li><strong>Pages Per Document (1 – 30)</strong> - defines the number of pages to be considered per document during the retrieval or processing phase.<ul>
+<li><strong>Higher values</strong>: More pages per document are considered, which can provide more comprehensive information but may slow down processing.</li>
+<li><strong>Lower values</strong>: Fewer pages per document are considered, which can speed up processing but might miss some important details.</li>
+</ul>
+</li>
+<li><strong>Expected Search Results (1 – 40)</strong> - sets the anticipated number of search results to be returned, guiding the system's retrieval scope.<ul>
+<li><strong>Higher values</strong>: More search results are returned, which can provide a broader range of information but may include less relevant results.</li>
+<li><strong>Lower values</strong>: Fewer search results are returned, which can provide more focused and relevant information but might miss some useful results.</li>
+</ul>
+</li>
+<li><strong>String content</strong> - determines whether the system should include or consider specific text data in its processing or generation.</li>
+</ul>
+</li>
 <li>Type your query into the input field and hit the <strong>Send</strong> icon.</li>
-<li>Optionally, you can switch the <strong>Embedding model</strong> via the dropdown list to refine your search criteria.</li>
 </ol>
 <h4 id="deduplicate">Deduplicate</h4>
 <p><strong>Deduplication</strong> is a handy feature for identifying duplicate information.</p>
-<h5 id="steps-for-deduplication">Steps for Deduplication</h5>
+<h5 id="how-to-run-deduplication">How to Run Deduplication</h5>
 <ol>
-<li><strong>Cut-off score</strong>: Set a threshold for considering information as a duplicate. Configuring this score helps the system identify duplicates with greater accuracy.</li>
+<li>Select the <strong>Embedding model</strong> from the dropdown list. <strong>Note</strong>: It must be the same one which is used for creating the datasource.</li>
+<li>Configure the following settings:<ul>
+<li><strong>Cut-off Score (0.1-1.0)</strong> - determines the threshold for identifying duplicate content based on similarity scores.<ul>
+<li><strong>Higher values</strong>: Only content that is very similar will be considered duplicates, which means more items will be removed. This can be useful if you want to ensure that only highly unique content remains.</li>
+<li><strong>Lower values</strong>: More content will be considered duplicates, which means more items will be removed. This can be useful if you want to keep more variations of the content.</li>
+</ul>
+</li>
+<li><strong>Show Additional Metadata</strong> - a checkbox option that determines whether to display extra information about the content.<ul>
+<li><strong>Selected</strong>: Additional metadata will be shown, providing more context and details about the content.</li>
+<li><strong>Not Selected</strong>: Additional metadata will not be shown, resulting in a cleaner and simpler display of the content.</li>
+</ul>
+</li>
+<li><strong>Exclude Fields</strong> - a comma-separated list of field names that should be excluded from the deduplication process.<ul>
+<li><strong>Specified fields</strong>: The fields listed will be ignored during deduplication, which means differences in these fields will not affect whether content is considered a duplicate. This can be useful if certain fields (like timestamps or IDs) are not relevant to the deduplication criteria.</li>
+<li><strong>No fields specified</strong>: All fields will be considered during deduplication, which means any differences in any field can affect whether content is considered a duplicate.</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Press the <strong>Run</strong> button to start the process.</li>
-<li>Remember, deduplication efforts will hinge upon the parameters you've set for the dataset.</li>
 </ol>
+<p><strong>Note:</strong> Remember, deduplication efforts will hinge upon the parameters you've set for the dataset.</p>
 <p>By using these features, you’re equipped to enhance your dataset, making it a more efficient and effective tool for your AI applications. Proceed with adjustments only if you're confident in your understanding of their implications.</p>
 <p><img alt="Datasources-Deduplicate" src="../../img/Datasources-Deduplicate.png" /></p>
 <h2 id="datasources-menu">Datasources Menu</h2>

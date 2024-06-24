@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/release-notes/rn2/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/release-notes/rn4/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>RN 1.0.1 - ELITEA Documentation</title>
+    <title>RN 1.2.0 - ELITEA Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "RN 1.0.1";
-        var mkdocs_page_input_path = "release-notes/rn2.md";
-        var mkdocs_page_url = "/release-notes/rn2/";
+        var mkdocs_page_name = "RN 1.2.0";
+        var mkdocs_page_input_path = "release-notes/rn4.md";
+        var mkdocs_page_url = "/release-notes/rn4/";
       </script>
     
     <!--[if lt IE 9]>
@@ -41,23 +41,17 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Release Notes</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../rn4/">RN 1.2.0</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../rn3/">RN 1.1.0</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">RN 1.0.1</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">RN 1.2.0</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#information">Information</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#new-features">New Features</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#known-issues">Known Issues</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#fixed-issues">Fixed Issues</a>
-    </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rn3/">RN 1.1.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rn2/">RN 1.0.1</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../rn1/">RN 1.0.0</a>
                   </li>
@@ -115,7 +109,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Release Notes</li>
-      <li class="breadcrumb-item active">RN 1.0.1</li>
+      <li class="breadcrumb-item active">RN 1.2.0</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -124,47 +118,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="alita-release-notes">Alita Release Notes</h1>
+                <h1 id="elitea-release-notes">ELITEA Release Notes</h1>
 <h2 id="introduction">Introduction</h2>
-<p><strong>Alita</strong> is an innovative web application that revolutionizes how you interact with prompts. Designed as a dynamic workspace, it empowers users to create, organize, and collaborate on prompts like never before.</p>
+<p><strong>ELITEA</strong> is an innovative web application that revolutionizes how you interact with prompts. Designed as a dynamic workspace, it empowers users to create, organize, and collaborate on prompts like never before.</p>
 <h2 id="information">Information</h2>
 <ul>
-<li><strong>Release Version</strong>: 1.0.1</li>
-<li><strong>Released on</strong>: 27-May-2024</li>
-<li><strong>Access</strong>: <a href="https://alita.lab.epam.com">Alita Platform</a>. <strong>Note</strong>: You need to enable Epam VPN to access Alita.</li>
-<li><strong>User Guide</strong>: <a href="../../user-guide/intro/">Alita - User Guide</a> </li>
+<li><strong>Release Version</strong>: 1.2.0</li>
+<li><strong>Released on</strong>: 21-June-2024</li>
+<li><strong>Access</strong>: <a href="https://alita.lab.epam.com">ELITEA Platform</a>. <strong>Note</strong>: You need to enable Epam VPN to access ELITEA.</li>
+<li><strong>User Guide</strong>: <a href="../../user-guide/intro/">ELITEA - User Guide</a> </li>
 </ul>
+<h1 id="alita-release-notes">Alita Release Notes</h1>
 <h2 id="new-features">New Features</h2>
 <ul>
-<li><strong>IDE Extensions</strong>: Added support for Alita Code and Alita Code Chat extensions for both Visual Studio Code and IntelliJ IDEA, enhancing coding efficiency directly from your favorite development environments.</li>
-<li><strong>QTest Integration</strong>: Introduced QTest as a new source type under Datasource→Dataset, allowing for seamless integration and management of testing data.</li>
-<li><strong>Project Switcher</strong>: Implemented a new tool for swiftly navigating between different projects, improving workflow fluidity.</li>
-<li><strong>Enhanced Search Functionality</strong>: Improved search capabilities, enabling more precise and faster retrieval of information across the platform.</li>
-<li><strong>Dataset Status Indicators</strong>: Enhanced user interface for dataset status:<ul>
-<li><strong>Done</strong>: No indicator displayed.</li>
-<li><strong>Preparing/In Progress</strong>: Displays a circular progress indicator using the material default component.</li>
-<li><strong>Error</strong>: Shows a warning icon alongside a closeable warning alert to inform users of issues that need attention.</li>
+<li><strong>Chat Functionality</strong>: Introducing a comprehensive Chat feature that integrates all ELITEA functionalities into a single, cohesive environment for optimal output and collaboration:<ul>
+<li><strong>Public and Private Conversations</strong>: Engage openly with project members or conduct private discussions visible only to selected users.</li>
+<li><strong>Participants</strong>: Enrich conversations by adding diverse participants such as users, prompts, data sources, agents, and language models.</li>
+<li><strong>Interactions</strong>: Seamlessly interact with participants, copy responses, and utilize generated content effectively.</li>
+<li><strong>Conversation Management</strong>: Organize your chats by saving, pinning, altering privacy settings, deleting, clearing, or exporting conversation contexts.</li>
+<li><strong>Playback Feature</strong>: Navigate through conversation history with playback controls, allowing you to review without active model engagement.</li>
 </ul>
 </li>
+<li><strong>Artifact Toolkit for Agents</strong>: A new toolkit that enables agents to save their generated outputs directly as files, enhancing data management and retrieval.</li>
+<li><strong>Jira Toolkit Enhancements</strong>: Introduce a tool to adjust the status of Jira issues directly, streamlining project management tasks.</li>
+<li><strong>Browser Toolkit Extensions</strong>:<ul>
+<li><strong>Single URL Crawler</strong>: This tool is designed to crawl data from a specific web page within the Agent's context, making it ideal for targeted data extraction tasks.</li>
+<li><strong>Multi URL Crawler</strong>: Use this tool to crawl data from multiple specified web pages within the Agent's context. It is suitable for broader data gathering operations across various sources.</li>
+<li><strong>Get HTML Content</strong>: This tool allows you to retrieve the HTML content of a specified web page within the Agent's context, providing direct access to the page's structural data.</li>
+</ul>
+</li>
+<li><strong>Alita Agent Type</strong>: A new agent type that combines the strengths of OpenAI's and Langchain's ReAct approaches for complex, open-ended scenarios. This agent maintains chat history, improving its performance in prolonged interactions.</li>
+</ul>
+<h2 id="changed-features">Changed Features</h2>
+<ul>
+<li><strong>Confluence Toolkit Adjustments</strong>: Removed the <strong>Create Page</strong> and <strong>Page Exists</strong> tools to streamline functionalities.</li>
+<li><strong>Browser Toolkit Changes</strong>: Removed the <strong>Duckduckgo</strong> search tool.</li>
+<li><strong>Agent Type Updates</strong>: Declared the <strong>Raw</strong> agent type as obsolete, now reserved for legacy agents only.</li>
+<li><strong>Datasource Authentication</strong>: Temporarily disabled SSH authentication for GIT sources, recommending HTTPS with Username and Password as an alternative.</li>
 </ul>
 <h2 id="known-issues">Known Issues</h2>
 <ul>
-<li><strong>Database Corruption During Indexing</strong>: If a user searches in one dataset while another is indexing, there is a risk of database corruption, leading to irreproducible bugs. <strong>Workaround</strong>: It is recommended to create a new datasource and reindex the data within it.</li>
-<li><strong>Delayed File Finder in Alita HUB</strong>: Users may experience delays when opening the file finder in Alita HUB.</li>
-<li><strong>Prompt Saving Error</strong>: There is an issue where prompts cannot be saved if the <strong>Name</strong> field is filled using a copy/paste action that includes leading spaces.</li>
+<li><strong>Confluence Source Filtering</strong>: Issues with filtering by Space key and Page IDs. <strong>Workaround</strong>: Use the filtering by <strong>label</strong> option.</li>
+<li><strong>Database Corruption During Indexing</strong>: Risk of database corruption if simultaneous actions occur in different datasets. <strong>Workaround</strong>: Create a new datasource and reindex.</li>
+<li><strong>Prompt Saving Error</strong>: Issues saving prompts if the <strong>Name</strong> field contains leading spaces from copy/paste actions.</li>
+<li><strong>GIT Source Authentication</strong>: SSH authentication for GIT sources fails. <strong>Workaround</strong>: Use HTTPS with Username and Password.</li>
 </ul>
 <h2 id="fixed-issues">Fixed Issues</h2>
 <ul>
-<li><strong>GUI Freezing During Indexing</strong>: Resolved an issue where the frontend would freeze when indexing large files in a dataset.</li>
-<li><strong>Token Expiry Display</strong>: Fixed a bug where expired tokens were not marked as <strong>Expired</strong> in the Configuration tab.</li>
-<li><strong>Modal Design Issue</strong>: Corrected the stretched and improperly displayed design of the <strong>Add to collections</strong> modal, ensuring it now renders correctly.</li>
+<li><strong>Confluence Tool Authentication</strong>: Resolved an issue with Token authentication; users should now use the API key method.</li>
+<li><strong>GitLab Toolkit</strong>: Implemented several fixes to enhance functionality.</li>
+<li><strong>Browser Toolkit</strong>: Added exception handling to operate without a Google CSE ID, ensuring broader accessibility and functionality.</li>
 </ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../rn3/" class="btn btn-neutral float-left" title="RN 1.1.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../rn1/" class="btn btn-neutral float-right" title="RN 1.0.0">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rn3/" class="btn btn-neutral float-right" title="RN 1.1.0">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -187,10 +196,8 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../rn3/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../rn1/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../rn3/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
