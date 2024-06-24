@@ -2,6 +2,7 @@ site_name: ELITEA Documentation
 site_url: https://projectalita.ai
 nav:
   - Release Notes:
+    - RN 1.2.0: release-notes/rn4.md
     - RN 1.1.0: release-notes/rn3.md
     - RN 1.0.1: release-notes/rn2.md
     - RN 1.0.0: release-notes/rn1.md
@@ -11,6 +12,7 @@ nav:
     - Collections: user-guide/collections.md
     - Datasources: user-guide/datasources.md
     - Agents: user-guide/agents.md
+    - Chat: user-guide/chat.md
   - Manuals:
     - ELITEA and EPAM AI DIAL: alita-dial.md
     - QA - Prompting and Sharing: creating-prompts.md

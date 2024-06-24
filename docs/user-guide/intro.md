@@ -54,9 +54,11 @@ The ELITEA HUB's main interface encompasses several sections, including the Disc
 
 This section outlines common functionalities and actions available across various menus and pages within the application, aiming to provide a consistent and efficient user experience. These functionalities are shared across:
 
+* **Chat** menu: Includes all your private and public conversations.
 * **Prompts** menu: Including the Latest, My Likes, and Trending pages.
+* **Datasources** menu: Including the Latest, My Likes, and Trending pages for datasources.
+* **Agents** menu: Including the Latest, My Likes, and Trending pages for agents.
 * **Collections** menu: Including the Latest, My Likes, and Trending pages designed for collections.
-* **Datasources** menu: Including the Latest, My Likes, and Trending pages for data sources.
 * **My libraries** menu: Including All, Prompts, Datasources, and Collections pages.
 
 The context may vary depending on the specific page you're viewing, but the core principles of action and functionality remain consistent, ensuring a unified approach to navigating and managing content within the application.
@@ -85,8 +87,10 @@ These standardized functionalities across different menus and pages are designed
 
 ELITEA consists of the following main menus:
 
+**Chat**: Create and manage your public and private conversations.
 * **Prompts**: Browse through an organized showcase of prompts curated and shared by the community.
 * **Datasources**:  Browse through an organized showcase of datasources and shared by the community.
+* **Agents**:  Browse through an organized showcase of agents and shared by the community.
 * **Collections**: Browse through an organized showcase of prompt collections curated and shared by the community.
 * **My libraries**: Manage your personal creative space where you can craft, save, edit, and organize your prompts and collections.
 
@@ -110,6 +114,7 @@ Settings consists of several tabs, each dedicated to specific functionalities:
 * **Monitoring**: Keep track of usage statistics by selecting different metrics and timeframes.
 * **Configuration**: Manage essential technical settings crucial for the smooth operation of ELITEA's features like Alita Code or Alita Chat.
 * **Deployments**: Handle the management and launching of AI models or services linked to your ELITEA project.
+* **Users**: Manage users within project. This tab is only available for the user within admin permissions within the project.
 * **Log out**: Securely log out from the ELITEA Hub.
 
 **Navigation**
@@ -177,12 +182,12 @@ The **Sentiments** section offers a visual representation of the sentiment of in
 
 ![Settings-Monitoring(Part2)](../img/Settings-Monitoring(Part2).png)
 
-#### Relevance
+#### Accuracy
 
-The **Relevance** section includes line charts that measure:
+The **Accuracy** section includes line charts that measure:
 
 * **Relevance**: Comparing the relevance of input versus context and output versus input.
-* **Accuracy**: Displaying the reliability score of the application's outputs.
+* **Reliability**: Displaying the reliability score of the application's outputs.
 * **Prompt Quality**: Chart tracks the quality score of prompts over time, helping you understand the effectiveness of your prompts.
 
 #### Topics Summary
