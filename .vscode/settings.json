@@ -1,11 +1,11 @@
 {
-    "alitacode.providerServerURL": "https://eye.projectalita.ai/",
-    "alitacode.authToken": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOTdlNzA5ZjMtYTk2ZS00YmRkLWFlODgtNWQ1YjFlNTUxNzk4In0.kKuQXSC81K9jL3vqDuUCFRw9HydZIMxd6k6xmhyjCNMuJuzlgF92o9_go0MRxN6gqFps9A-XgmEy-zG-QANQiQ",
-    "alitacode.modelName": "gpt-4-0125-preview",
-    "alitacode.customModelName": "gpt-4-0125-preview",
-    "alitacode.projectId": 66,
-    "alitacode.integrationUid": "55109c7d-ded9-4c1c-b28e-531c93d2ffba",
     "alitacode.verifySsl": false,
-    "alitacode.temperature": 0.2,
-    "alitacode.defaultViewMode": "split"
+    "alitacode.defaultViewMode": "split",
+    "alitacode.temperature": 0.1,
+    "alitacode.topP": 0.2,
+    "alitacode.integrationUid": "55109c7d-ded9-4c1c-b28e-531c93d2ffba",
+    "alitacode.projectId": 4,
+    "alitacode.modelName": "gpt-4-0125-preview",
+    "alitacode.authToken": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNzY4MDgxMjEtMjAzNS00MmI0LTg1NWEtMmFhZjVkOGE5MzE5In0.EQyfL0a1stCkOq8hDwXoYA9Wo7FeDdMKwlYYb2twVDXo0BpDkMqmsm01TBM_atw7_8oqpPqYjU_RG3vb6O_1CQ",
+    "alitacode.providerServerURL": "https://eye.projectalita.ai/"
 }

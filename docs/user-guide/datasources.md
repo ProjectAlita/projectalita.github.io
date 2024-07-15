@@ -101,7 +101,7 @@ To ensure a successful connection, **you must clone your Git repository and prov
 For users who rely on Confluence pages to manage their information, documents, or other types of projects, this source type allows to streamline the process of linking and extracting data from these knowledge pages. Here, we outline the options, settings, and parameters available for your Confluence source type.
 
 * **Name** - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.
-* **URL** - link to Confluence. To connect to your Confluence KB, you'll need to provide the URL. No need to provide the full link as the page (e.g. https://www.kb.epam.com is enough) handling must be done with the help of **Filters** option. Regarding authentication, you have two options to securely connect to Confluence:
+* **URL** - link to Confluence. To connect to your Confluence KB, you'll need to provide the URL. No need to provide the full link as the page (e.g. https://www.kb.epam.com/ is enough) handling must be done with the help of **Filters** option. Regarding authentication, you have two options to securely connect to Confluence:
     * **API Key**: If you choose the API Key option, you'll need to generate an API Key from your Confluence account and input it in the provided API Key field.
     * **Token**: Similarly, if the Token option suits you better, you'll have to create an authentication Token from your Confluence user settings and enter it in the Token field.
 **Note**: These authentication methods ensure secure access to your Confluence content, maintaining the integrity and confidentiality of your data.
