@@ -131,7 +131,7 @@ AlitaCodeChat for IntelliJ is available in 2 modes:
 
 **Important:** To successfully call and utilize prompts, datasources, or agents from ELITEA HUB, it is essential that these items are tagged with `code` in ELITEA HUB. This tag ensures that the resources are correctly categorized and accessible. Ensure that the `code` tag is applied to relevant prompts, datasources, and applications to enable their proper functionality within the ELITEA ecosystem.
 
-### AlitaCodeChat Usage
+### Alita Code Chat Usage
 
 #### Prompts
 
@@ -200,4 +200,4 @@ To call and use **Agents** from ELITEA HUB:
 * **Delete Output**: To remove the current output from the chat, click the **Delete** icon.
 * **Purge Chat History**: For a fresh start or to clear sensitive data, click the **Clean** icon to erase the chat history.
 
-![AlitaChatI-Buttons](img/AlitaChatI-Buttons.png)
+![AlitaChatI-Buttons](img/AlitaChatI-Buttons.png) 
