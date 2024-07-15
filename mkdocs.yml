@@ -2,6 +2,7 @@ site_name: ELITEA Documentation
 site_url: https://projectalita.ai
 nav:
   - Release Notes:
+    - RN 1.2.1: release-notes/rn5.md
     - RN 1.2.0: release-notes/rn4.md
     - RN 1.1.0: release-notes/rn3.md
     - RN 1.0.1: release-notes/rn2.md
