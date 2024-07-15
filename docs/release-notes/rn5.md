@@ -6,8 +6,8 @@
 
 ## Information
 
-* **Release Version**: 1.2.0
-* **Released on**: 21-June-2024
+* **Release Version**: 1.2.1
+* **Released on**: 15-July-2024
 * **Access**: [ELITEA Platform](https://alita.lab.epam.com). **Note**: You need to enable Epam VPN to access ELITEA.
 * **User Guide**: [ELITEA - User Guide](../user-guide/intro.md) 
 

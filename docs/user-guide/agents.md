@@ -60,7 +60,7 @@ The **Instructions** field in Agent is a crucial component where users input the
 
 * **Identify Key Information**: Before entering data into the Instructions field, identify the essential details or instructions that the model needs to know to fulfill your request effectively. This could include the topic, specific terms, relevant background information, or the scope of the task.
 * **Enter the Details**: In the Instructions field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the agent's focus and efficiency.
-* **Using toolkits**: For enhancing agent's capabilities, you can integrate toolkits and provide instructions how to use them and in which order. The name of toolkit can be denoted by graves, e.g., `toolkit_name`.
+* **Using toolkits**: For enhancing agent's capabilities, you can integrate toolkits and provide instructions how to use them and in which order. The name of toolkit can be denoted by "", (e.g. "Access_JIRA" toolkit).
 
 ![Agent-Instructions](<../img/Agent-Instructions.png>)
 
@@ -276,8 +276,8 @@ The **Browser** toolkit significantly enhances the capabilities of your Agent by
 3. The **New Browser tool** configuration section is opened.
       * **Name**: Assign a descriptive name to the browser toolkit for easy identification within Agent's instructions.
       * **Description**: Provide a brief description of the browser toolkit's purpose and how it integrates with your workflow.
-      * **API key**: Input the API key for the CSE that you have configured for the selected search engine.
-      * **CSE ID**: Input the Custom Search Engine ID configured for your selected search engine.
+      * **API key**: Input the API key for the CSE that you have configured for the selected search engine. **Note**: This is required for Google tool only.
+      * **CSE ID**: Input the Custom Search Engine ID configured for your selected search engine. **Note**: This is required for Google tool only.
       * **Tools**: Choose which search engines to integrate by selecting from the available options:
           * **Wiki**: Include Wikipedia search capabilities.
           * **Single URL Crawler**: This tool is designed to crawl data from a specific web page within the Agent's context, making it ideal for targeted data extraction tasks.
@@ -299,7 +299,7 @@ The **Confluence** toolkit seamlessly integrates Confluence, a widely-used platf
 3. The **New Confluence tool** configuration section is opened.
       * **Name**: Provide an informative name for the Confluence toolkit.
       * **Description**: Provide a detailed description of the Confluence toolkit's purpose.
-      * **URL**: Enter the URL to your Confluence instance (e.g., `https://www.kb.epam.com`). The URL should be the base link as detailed handling is managed via the 
+      * **URL**: Enter the URL to your Confluence instance (e.g., `https://www.kb.epam.com/`). The URL should be the base link as detailed handling is managed via the instructions.
       * **Authentication Options**: Choose your preferred method for secure connection:
          * **API Key**: Select this option if you are using an API key for authentication. Enter your Confluence API key in the provided field. Ensure you handle this key securely. Input the username associated with your Confluence account.
          * **Token**: Choose this option if you are using a token for authentication.
@@ -330,7 +330,7 @@ The **Jira** toolkit enables a direct integration with Jira, allowing users to m
 3. The **New Jira tool** configuration section is opened.
       * **Name**: Provide a unique name to identify your Jira toolkit within ELITEA.
       * **Description**: Offer a concise description of what the integration is intended for.
-      * **URL**: Enter the URL to your Jira instance (e.g., `https://www.jira.epam.com/jira`).
+      * **URL**: Enter the URL to your Jira instance (e.g., `https://www.jira.epam.com/jira/`).
       * **Authentication Options**: Choose your preferred method for secure connection:
         * **API Key**: Select this option if you are using an API key for authentication. Enter your Jira API key in the provided field. Ensure you handle this key securely. Input the username associated with your Confluence account.
         * **Token**: Choose this option if you are using a token for authentication.
@@ -361,7 +361,7 @@ The **GitHub** toolkit integrates GitHub into your Agent, allowing it to access 
 3. The **New GitHub tool** configuration section is opened.
       * **Name**: Assign a distinctive name to your GitHub toolkit integration.
       * **Description**: Give a concise description that outlines the integration's intended purpose.
-      * **Repository**: Enter the name of the GitHub repository you wish to integrate.
+      * **Repository**: Enter the name of the GitHub repository you wish to integrate (e.g. `ProjectAlita/projectalita.github.io`)
       **Main branch**: Specify the main branch of your repository, typically `main`.
       * **Authentication Options**: Choose your preferred method you will use for the GitHub integration:
         * **Private Key**: Opt for this if you are using a private key for authentication. Input the **App ID** associated with your GitHub integration and enter your **private key** in the provided field. Be sure to keep this information secure.
@@ -399,7 +399,8 @@ Similar to the **GitHub** toolkit, the Gitlab toolkit integrates your Agent with
 3. The **New Gitlab tool** configuration section is opened.
       * **Name**: Assign a distinctive name to your GitHub toolkit integration.
       * **Description**: Give a concise description that outlines the integration's intended purpose.
-      * **Repository**: Enter the name of the Gitlab repository you wish to integrate.
+      * **URL**: Enter the URL to your GitLab repository (e.g., `https://gitbud.epam.com/`).
+      * **Repository**: Enter the name of the Gitlab repository you wish to integrate (e.g., `Levon_Dadayan/alitatest`)
       **Main branch**: Specify the main branch of your repository, typically `main`.
       * **Authentication Options**: Choose your preferred method you will use for the Gitlab integration:
         * **Token**: Choose this if you prefer to use a personal access token for authentication.
@@ -423,7 +424,7 @@ The **Open API** toolkit extends your Agent's capabilities by integrating OpenAP
 **To configure Open API toolkit**:
 
 1. Click the **+ icon** under **Tools** section.
-2. Select the **Gitlab** tool from the dropdown list.
+2. Select the **Open API** tool from the dropdown list.
 3. The **New Open API tool** configuration section is opened.
    * **Name**: Enter a unique name for your Open API toolkit integration. This name will be used to identify the toolkit within your agent's instructions.
 4. Upload your OpenAPI schema by following one of these methods:
@@ -436,7 +437,7 @@ The **Open API** toolkit extends your Agent's capabilities by integrating OpenAP
       * **Method**: The HTTP method used for the action (e.g., GET, POST, PUT, DELETE).
       * **Path**: The endpoint path for the action.
 6. Setting Authentication: Configure the authentication method required for your OpenAPI:
-      * **Authentication**: Choose the appropriate authentication method for your API from the dropdown menu. Options may include None, API Key, Token, OAuth2, etc., depending on your API's requirements.
+      * **Authentication**: Choose the appropriate authentication method for your API from the dropdown menu. Options may include None, API Key, Token, OAuth, etc., depending on your API's requirements.
 7. Click the **arrow** icon next to the **New Open API tool** to complete the setup and move back to the main menu of Agent configuration.
 
 ![Agent-OpenAPI_Tool](<../img/Agent-OpenAPI_Tool.png>)
@@ -521,9 +522,18 @@ To execute the agent and get the output you have to:
 2. **Select the AI Model**: Choose the appropriate AI model (e.g., gpt-4-0125-preview, gpt-35-turbo, etc.).
 3. **Set the Temperature Parameter**: Adjust this parameter to control the level of creativity or unpredictability in responses.
 4. **Advanced Parameters** (Optional): For finer control over response generation, you may adjust these optional settings:
-    * **Top P (0-1)** - determines the cumulative probability threshold for selecting words, balancing between creativity (higher values) and consistency (lower values).
-    * **Top K** - limits the choice of words to the K most probable, affecting the response's diversity and predictability.
-    * **Maximum length** - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.
+    * **Temperature (0.1-1.0)** - adjusts the level of creativity or unpredictability in responses.
+        * **Higher values**: Responses are more creative and varied, but may be less consistent and more unpredictable.
+        * **Lower values**: Responses are more consistent and predictable, but may be less creative and varied.
+      * **Top P (0-1)** - determines the cumulative probability threshold for selecting words, balancing between creativity and consistency.
+        * **Higher values**: A wider range of words is considered, leading to more creative and diverse responses.
+        * **Lower values**: A narrower range of words is considered, leading to more consistent and predictable responses.
+      * **Top K** - limits the choice of words to the K most probable, affecting the response's diversity and predictability.
+        * **Higher values**: More words are considered, leading to more diverse and potentially creative responses.
+        * **Lower values**: Fewer words are considered, leading to more predictable and focused responses.
+      * **Maximum Length** - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.
+        * **Higher values**: Responses can be longer and more detailed.
+        * **Lower values**: Responses are shorter and more concise.
 5. **Initiate Interaction**: Once all instructions for the agent are set in the **Instructions** and/or **Tools** sections, you can start the execution by typing your text (be it a question or a command)  into the chat box or initate it by selecting the **Conversation Starter** message (if you have configured it). Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the **Send** icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.
 
 
@@ -536,7 +546,6 @@ To execute the agent and get the output you have to:
 
 * **Continue the Dialogue**: To keep the conversation going, simply type your next question or command in the chat box and click the **Send** icon.
 * **Copy the Output**: Click the **Copy to Clipboard** icon to copy the generated text for use elsewhere.
-* **Append to Assistant Message**: Use the **Copy to Messages** icon to add the output directly to the Assistant Message section for reference or further use.
 * **Regenerate Response**: If the output isn't satisfactory, click the **Regenerate** icon to prompt the Gen AI to produce a new response.
 * **Delete Output**: To remove the current output from the chat, click the **Delete** icon.
 * **Purge Chat History**: For a fresh start or to clear sensitive data, click the **Clean** icon to erase the chat history.
