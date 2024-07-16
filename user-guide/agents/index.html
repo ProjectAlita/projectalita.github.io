@@ -256,7 +256,7 @@ ELITEA Agents is a feature that allows you to create and manage virtual assistan
 <ul>
 <li><strong>Identify Key Information</strong>: Before entering data into the Instructions field, identify the essential details or instructions that the model needs to know to fulfill your request effectively. This could include the topic, specific terms, relevant background information, or the scope of the task.</li>
 <li><strong>Enter the Details</strong>: In the Instructions field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the agent's focus and efficiency.</li>
-<li><strong>Using toolkits</strong>: For enhancing agent's capabilities, you can integrate toolkits and provide instructions how to use them and in which order. The name of toolkit can be denoted by graves, e.g., <code>toolkit_name</code>.</li>
+<li><strong>Using toolkits</strong>: For enhancing agent's capabilities, you can integrate toolkits and provide instructions how to use them and in which order. The name of toolkit can be denoted by "", (e.g. "Access_JIRA" toolkit).</li>
 </ul>
 <p><img alt="Agent-Instructions" src="../../img/Agent-Instructions.png" /></p>
 <h3 id="how-to-select-an-agent-type">How to Select an Agent Type</h3>
@@ -454,8 +454,8 @@ You must answer with only JSON and it could be parsed by Python json.loads
 <li>The <strong>New Browser tool</strong> configuration section is opened.<ul>
 <li><strong>Name</strong>: Assign a descriptive name to the browser toolkit for easy identification within Agent's instructions.</li>
 <li><strong>Description</strong>: Provide a brief description of the browser toolkit's purpose and how it integrates with your workflow.</li>
-<li><strong>API key</strong>: Input the API key for the CSE that you have configured for the selected search engine.</li>
-<li><strong>CSE ID</strong>: Input the Custom Search Engine ID configured for your selected search engine.</li>
+<li><strong>API key</strong>: Input the API key for the CSE that you have configured for the selected search engine. <strong>Note</strong>: This is required for Google tool only.</li>
+<li><strong>CSE ID</strong>: Input the Custom Search Engine ID configured for your selected search engine. <strong>Note</strong>: This is required for Google tool only.</li>
 <li><strong>Tools</strong>: Choose which search engines to integrate by selecting from the available options:<ul>
 <li><strong>Wiki</strong>: Include Wikipedia search capabilities.</li>
 <li><strong>Single URL Crawler</strong>: This tool is designed to crawl data from a specific web page within the Agent's context, making it ideal for targeted data extraction tasks.</li>
@@ -478,7 +478,7 @@ You must answer with only JSON and it could be parsed by Python json.loads
 <li>The <strong>New Confluence tool</strong> configuration section is opened.<ul>
 <li><strong>Name</strong>: Provide an informative name for the Confluence toolkit.</li>
 <li><strong>Description</strong>: Provide a detailed description of the Confluence toolkit's purpose.</li>
-<li><strong>URL</strong>: Enter the URL to your Confluence instance (e.g., <code>https://www.kb.epam.com</code>). The URL should be the base link as detailed handling is managed via the </li>
+<li><strong>URL</strong>: Enter the URL to your Confluence instance (e.g., <code>https://www.kb.epam.com/</code>). The URL should be the base link as detailed handling is managed via the instructions.</li>
 <li><strong>Authentication Options</strong>: Choose your preferred method for secure connection:<ul>
 <li><strong>API Key</strong>: Select this option if you are using an API key for authentication. Enter your Confluence API key in the provided field. Ensure you handle this key securely. Input the username associated with your Confluence account.</li>
 <li><strong>Token</strong>: Choose this option if you are using a token for authentication.</li>
@@ -516,7 +516,7 @@ You must answer with only JSON and it could be parsed by Python json.loads
 <li>The <strong>New Jira tool</strong> configuration section is opened.<ul>
 <li><strong>Name</strong>: Provide a unique name to identify your Jira toolkit within ELITEA.</li>
 <li><strong>Description</strong>: Offer a concise description of what the integration is intended for.</li>
-<li><strong>URL</strong>: Enter the URL to your Jira instance (e.g., <code>https://www.jira.epam.com/jira</code>).</li>
+<li><strong>URL</strong>: Enter the URL to your Jira instance (e.g., <code>https://www.jira.epam.com/jira/</code>).</li>
 <li><strong>Authentication Options</strong>: Choose your preferred method for secure connection:<ul>
 <li><strong>API Key</strong>: Select this option if you are using an API key for authentication. Enter your Jira API key in the provided field. Ensure you handle this key securely. Input the username associated with your Confluence account.</li>
 <li><strong>Token</strong>: Choose this option if you are using a token for authentication.</li>
@@ -554,7 +554,7 @@ You must answer with only JSON and it could be parsed by Python json.loads
 <li>The <strong>New GitHub tool</strong> configuration section is opened.<ul>
 <li><strong>Name</strong>: Assign a distinctive name to your GitHub toolkit integration.</li>
 <li><strong>Description</strong>: Give a concise description that outlines the integration's intended purpose.</li>
-<li><strong>Repository</strong>: Enter the name of the GitHub repository you wish to integrate.
+<li><strong>Repository</strong>: Enter the name of the GitHub repository you wish to integrate (e.g. <code>ProjectAlita/projectalita.github.io</code>)
   <strong>Main branch</strong>: Specify the main branch of your repository, typically <code>main</code>.</li>
 <li><strong>Authentication Options</strong>: Choose your preferred method you will use for the GitHub integration:<ul>
 <li><strong>Private Key</strong>: Opt for this if you are using a private key for authentication. Input the <strong>App ID</strong> associated with your GitHub integration and enter your <strong>private key</strong> in the provided field. Be sure to keep this information secure.</li>
@@ -595,7 +595,8 @@ You must answer with only JSON and it could be parsed by Python json.loads
 <li>The <strong>New Gitlab tool</strong> configuration section is opened.<ul>
 <li><strong>Name</strong>: Assign a distinctive name to your GitHub toolkit integration.</li>
 <li><strong>Description</strong>: Give a concise description that outlines the integration's intended purpose.</li>
-<li><strong>Repository</strong>: Enter the name of the Gitlab repository you wish to integrate.
+<li><strong>URL</strong>: Enter the URL to your GitLab repository (e.g., <code>https://gitbud.epam.com/</code>).</li>
+<li><strong>Repository</strong>: Enter the name of the Gitlab repository you wish to integrate (e.g., <code>Levon_Dadayan/alitatest</code>)
   <strong>Main branch</strong>: Specify the main branch of your repository, typically <code>main</code>.</li>
 <li><strong>Authentication Options</strong>: Choose your preferred method you will use for the Gitlab integration:<ul>
 <li><strong>Token</strong>: Choose this if you prefer to use a personal access token for authentication.</li>
@@ -622,7 +623,7 @@ You must answer with only JSON and it could be parsed by Python json.loads
 <p><strong>To configure Open API toolkit</strong>:</p>
 <ol>
 <li>Click the <strong>+ icon</strong> under <strong>Tools</strong> section.</li>
-<li>Select the <strong>Gitlab</strong> tool from the dropdown list.</li>
+<li>Select the <strong>Open API</strong> tool from the dropdown list.</li>
 <li>The <strong>New Open API tool</strong> configuration section is opened.</li>
 <li><strong>Name</strong>: Enter a unique name for your Open API toolkit integration. This name will be used to identify the toolkit within your agent's instructions.</li>
 <li>Upload your OpenAPI schema by following one of these methods:<ul>
@@ -639,7 +640,7 @@ You must answer with only JSON and it could be parsed by Python json.loads
 </ul>
 </li>
 <li>Setting Authentication: Configure the authentication method required for your OpenAPI:<ul>
-<li><strong>Authentication</strong>: Choose the appropriate authentication method for your API from the dropdown menu. Options may include None, API Key, Token, OAuth2, etc., depending on your API's requirements.</li>
+<li><strong>Authentication</strong>: Choose the appropriate authentication method for your API from the dropdown menu. Options may include None, API Key, Token, OAuth, etc., depending on your API's requirements.</li>
 </ul>
 </li>
 <li>Click the <strong>arrow</strong> icon next to the <strong>New Open API tool</strong> to complete the setup and move back to the main menu of Agent configuration.</li>
@@ -718,9 +719,26 @@ You must answer with only JSON and it could be parsed by Python json.loads
 <li><strong>Select the AI Model</strong>: Choose the appropriate AI model (e.g., gpt-4-0125-preview, gpt-35-turbo, etc.).</li>
 <li><strong>Set the Temperature Parameter</strong>: Adjust this parameter to control the level of creativity or unpredictability in responses.</li>
 <li><strong>Advanced Parameters</strong> (Optional): For finer control over response generation, you may adjust these optional settings:<ul>
-<li><strong>Top P (0-1)</strong> - determines the cumulative probability threshold for selecting words, balancing between creativity (higher values) and consistency (lower values).</li>
-<li><strong>Top K</strong> - limits the choice of words to the K most probable, affecting the response's diversity and predictability.</li>
-<li><strong>Maximum length</strong> - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.</li>
+<li><strong>Temperature (0.1-1.0)</strong> - adjusts the level of creativity or unpredictability in responses.<ul>
+<li><strong>Higher values</strong>: Responses are more creative and varied, but may be less consistent and more unpredictable.</li>
+<li><strong>Lower values</strong>: Responses are more consistent and predictable, but may be less creative and varied.</li>
+</ul>
+</li>
+<li><strong>Top P (0-1)</strong> - determines the cumulative probability threshold for selecting words, balancing between creativity and consistency.<ul>
+<li><strong>Higher values</strong>: A wider range of words is considered, leading to more creative and diverse responses.</li>
+<li><strong>Lower values</strong>: A narrower range of words is considered, leading to more consistent and predictable responses.</li>
+</ul>
+</li>
+<li><strong>Top K</strong> - limits the choice of words to the K most probable, affecting the response's diversity and predictability.<ul>
+<li><strong>Higher values</strong>: More words are considered, leading to more diverse and potentially creative responses.</li>
+<li><strong>Lower values</strong>: Fewer words are considered, leading to more predictable and focused responses.</li>
+</ul>
+</li>
+<li><strong>Maximum Length</strong> - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.<ul>
+<li><strong>Higher values</strong>: Responses can be longer and more detailed.</li>
+<li><strong>Lower values</strong>: Responses are shorter and more concise.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>Initiate Interaction</strong>: Once all instructions for the agent are set in the <strong>Instructions</strong> and/or <strong>Tools</strong> sections, you can start the execution by typing your text (be it a question or a command)  into the chat box or initate it by selecting the <strong>Conversation Starter</strong> message (if you have configured it). Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the <strong>Send</strong> icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.</li>
@@ -734,7 +752,6 @@ You must answer with only JSON and it could be parsed by Python json.loads
 <ul>
 <li><strong>Continue the Dialogue</strong>: To keep the conversation going, simply type your next question or command in the chat box and click the <strong>Send</strong> icon.</li>
 <li><strong>Copy the Output</strong>: Click the <strong>Copy to Clipboard</strong> icon to copy the generated text for use elsewhere.</li>
-<li><strong>Append to Assistant Message</strong>: Use the <strong>Copy to Messages</strong> icon to add the output directly to the Assistant Message section for reference or further use.</li>
 <li><strong>Regenerate Response</strong>: If the output isn't satisfactory, click the <strong>Regenerate</strong> icon to prompt the Gen AI to produce a new response.</li>
 <li><strong>Delete Output</strong>: To remove the current output from the chat, click the <strong>Delete</strong> icon.</li>
 <li><strong>Purge Chat History</strong>: For a fresh start or to clear sensitive data, click the <strong>Clean</strong> icon to erase the chat history.</li>

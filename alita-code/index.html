@@ -73,7 +73,7 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Alita Code</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#get-started-with-alita-code-for-vscode">Get Started with Alita Code for VSCode</a>
+    <li class="toctree-l2"><a class="reference internal" href="#get-started-with-alita-code">Get Started with Alita Code</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#why-choose-alita-code">Why Choose Alita Code?</a>
     </li>
@@ -83,27 +83,49 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#alita-code-configuration">Alita Code Configuration</a>
+    <li class="toctree-l2"><a class="reference internal" href="#alita-code-for-vs-code">Alita Code for VS Code</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a>
     </li>
-        </ul>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#alita-code-usage">Alita Code Usage</a>
+    <li class="toctree-l3"><a class="reference internal" href="#alita-code-usage">Alita Code Usage</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#create-a-prompt">Create a Prompt</a>
+    <li class="toctree-l4"><a class="reference internal" href="#create-a-prompt">Create a Prompt</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#extend-prompt-context">Extend Prompt Context</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#predict-execute-prompt">Predict (Execute) Prompt</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#synchronize-external-prompts">Synchronize External Prompts</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#extend-prompt-context">Extend Prompt Context</a>
+        </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#predict-execute-prompt">Predict (Execute) Prompt</a>
+    <li class="toctree-l2"><a class="reference internal" href="#alitacode-for-intellij-idea">AlitaCode for IntelliJ Idea</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installation_1">Installation</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#synchronize-external-prompts">Synchronize External Prompts</a>
+    <li class="toctree-l3"><a class="reference internal" href="#setup_1">Setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration_1">Configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#alitacode-usage">AlitaCode Usage</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#create-a-prompt_1">Create a Prompt</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#edit-prompt-context">Edit Prompt Context</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#predict-execute-prompt_1">Predict (Execute) Prompt</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#synchronize-external-prompts_1">Synchronize External Prompts</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
     </li>
     </ul>
                   </li>
@@ -147,8 +169,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="alita-code">Alita Code</h1>
-<h2 id="get-started-with-alita-code-for-vscode">Get Started with Alita Code for VSCode</h2>
-<p>Welcome to the <strong>Alita Code</strong> your comprehensive resource for harnessing the power of the ultimate AI-powered IDE extension that's set to transform your coding workflow. Alita Code integrates seamlessly with VSCode, offering intelligent suggestions, automating routine tasks, and providing a level of adaptability that's unmatched, all designed to elevate your coding experience.</p>
+<h2 id="get-started-with-alita-code">Get Started with Alita Code</h2>
+<p>Welcome to the <strong>Alita Code</strong> your comprehensive resource for harnessing the power of the ultimate AI-powered IDE extension that's set to transform your coding workflow. Alita Code integrates seamlessly with VS Code amd InteliiJ, offering intelligent suggestions, automating routine tasks, and providing a level of adaptability that's unmatched, all designed to elevate your coding experience.</p>
 <h3 id="why-choose-alita-code">Why Choose Alita Code?</h3>
 <p>Alita Code is not just another IDE extension. It's a revolutionary tool designed to:</p>
 <ul>
@@ -181,8 +203,8 @@
 <li><strong>Alita: Sync External Prompts</strong>: Synchronize your external prompts with Alita Backend.</li>
 </ul>
 <p><strong>Alita Code</strong> is designed to be your coding companion, offering a blend of AI-powered efficiency and customizable support. Whether you're looking to enhance your productivity, streamline your testing process, or simply make your code more understandable, Alita Code is here to help. Let's embark on this journey to revolutionize your coding experience together.</p>
-<h2 id="alita-code-configuration">Alita Code Configuration</h2>
-<p>Alita Code is a visual studio extension to handle prompt-engineering based code generation using Alita as a backend.</p>
+<h2 id="alita-code-for-vs-code">Alita Code for VS Code</h2>
+<p>Alita Code is a visual studio extension to handle prompt-engineering based code generation using ELITEA as a backend.</p>
 <h3 id="installation">Installation</h3>
 <p>Getting started with Alita Code is straightforward:</p>
 <ol>
@@ -202,43 +224,47 @@
 <li>Access <strong>Configuration</strong> by going to <strong>Settings</strong>.</li>
 <li>Navigate to <strong>Extensions</strong> → <strong>Alita Code</strong>.</li>
 <li>Select either <strong>User</strong> or <strong>Workspace</strong> tab.</li>
-<li>Configure the following settings to connect Alita Code with the Alita platform:<ul>
-<li><strong>Alitacode: Provider Server URL</strong>: Enter the URL to your LLM service provider, if applicable.</li>
-<li><strong>Alitacode: Auth Token</strong>: Provide your API Key or Bearer token for the LLM service provider, if applicable.</li>
-<li><strong>Alitacode: Api Version</strong>: Mostly for Azure OpenAI compatible APIs, provided by default.</li>
-<li><strong>Alitacode: Model Name</strong>: Choose the LLM model from the dropdown list.</li>
-<li><strong>Alitacode: Custom Model Name</strong>: Enter a custom model name for local prompts if the desired model is not listed.</li>
-<li><strong>Alitacode: Custom Model Tokens</strong>: Set the max tokens for local prompts, default is 4096.</li>
-<li><strong>Alitacode: Project ID</strong>: Enter the Project Id for Alita Backend, ignored for OpenAI.</li>
-<li><strong>Alitacode: Integration Uid</strong>: Enter the AI integration Id from Alita Backend, ignored for OpenAI.</li>
-<li><strong>Alitacode: Max Tokens</strong>: Set the max tokens for the selected model.</li>
-<li><strong>Alitacode: Temperature</strong>: Adjust the temperature for the selected model.</li>
-<li><strong>Alitacode: Default View Mode</strong>: Select the default display mode for the predictions.<ul>
-<li><strong>append</strong> - when you run Alita predict the results will be displayed after the text or part that you have selected. </li>
-<li><strong>split</strong> - when you run Alita predict the results will be displayed in a separate place (view).</li>
-<li><strong>replace</strong> - when you run Alita predict the results will be displayed instead of the text or part that you have selected. </li>
-<li><strong>prepend</strong> - when you run Alita predict the results will be displayed before the text or part that you have selected.</li>
+<li>Configuring Alita Code for Integration with the ELITEA Platform. To connect Alita Code with the ELITEA platform, configure the following settings appropriately:<ul>
+<li><strong>Alitacode: Provider Server URL</strong>: Enter the URL of your LLM service provider. For connecting to ELITEA HUB, use <code>https://alita.lab.epam.com</code>.</li>
+<li><strong>Alitacode: Auth Token</strong>: Provide your API Key or Bearer token for authentication with the LLM service provider. For ELITEA HUB, input the generated Token.</li>
+<li><strong>Alitacode: Model Name</strong>: Select the desired LLM model from the dropdown list provided.</li>
+<li><strong>Alitacode: Custom Model Name</strong>: If the required model is not listed, enter a custom model name for local prompts.</li>
+<li><strong>Alitacode: Custom Model Tokens</strong>: Specify the maximum tokens for local prompts, with a default setting of 4096 tokens.</li>
+<li><strong>Alitacode: Project ID</strong>: Input the Project ID for the ELITEA backend. This setting is ignored when using OpenAI.</li>
+<li><strong>Alitacode: Integration Uid</strong>: Enter the Integration UID from the ELITEA backend. For ELITEA HUB, use the Integration UID provided by Alita lab. This setting is ignored for OpenAI.</li>
+<li><strong>Alitacode: Max Tokens</strong>: Set the maximum number of tokens for the selected model.</li>
+<li><strong>Alitacode: Temperature</strong>: Adjust the temperature setting for the selected model to control the randomness of the output.</li>
+<li><strong>Alitacode: Default View Mode</strong>: Choose how the prediction results are displayed:<ul>
+<li><strong>append</strong> - when you run <code>Alita Predict</code> the results will be displayed after the text or part that you have selected.</li>
+<li><strong>split</strong> - when you run <code>Alita Predict</code> the results will be displayed in a separate place (view).</li>
+<li><strong>replace</strong> - when you run <code>Alita Predict</code> the results will be displayed instead of the text or part that you have selected.</li>
+<li><strong>prepend</strong> -when you run <code>Alita predict</code> the results will be displayed before the text or part that you have selected.</li>
 </ul>
 </li>
 <li><strong>Alitacode: Top P</strong>: Set the Top P value for the selected model.</li>
 <li><strong>Alitacode: Top K</strong>: Set the Top K value for the selected model.</li>
-<li><strong>Alitacode: Verify Ssl</strong>: Toggle to set the verify LLM service provider certificate.</li>
-<li><strong>Alita Code: Enable</strong>: Toggle to enable or disable the Alita Code extension.</li>
+<li><strong>Alitacode: Verify Ssl</strong>: Toggle this setting to verify the LLM service provider's SSL certificate. For ELITEA HUB, keep this checkbox not selected.</li>
+<li><strong>Alita Code: Enable</strong>: Toggle to enable or disable the Alita Code extension as needed.</li>
 </ul>
 </li>
 </ol>
+<p>These settings ensure that Alita Code is properly configured to interact with the ELITEA platform, allowing for seamless integration and efficient use of LLM models within your projects.</p>
 <p><strong>Note</strong>: Changes may require restarting VS Code to take effect.</p>
 <p><img alt="AlitaCode-Settings(part1)" src="../img/AlitaCode-Settings%28part1%29.png" /></p>
 <p><img alt="AlitaCode-Settings(part2)" src="../img/AlitaCode-Settings%28part2%29.png" /></p>
-<p><strong>Important</strong>: If using ELITEA as your LLM service provider, copy the required settings (URL, ProjectId, Integration Uid, Model Name) from <strong>ELITEA HUB → Settings → Configuration</strong> page.</p>
-<h2 id="configuration">Configuration</h2>
+<p><strong>Important</strong>:</p>
+<ul>
+<li>For connecting to ELITEA HUB, copy the required settings (URL, ProjectId, Integration Uid, Model Name) from <strong>ELITEA HUB → Settings → Configuration</strong> page. </li>
+<li>Check and verify that the <strong>Alitacode: Verify Ssl</strong> is NOT selected.</li>
+</ul>
+<h3 id="configuration">Configuration</h3>
 <p>To initialize <strong>Alita Code</strong> in your project:</p>
 <ol>
 <li>Open any file and right-click to select <strong>Alita → Alita:Init</strong>.</li>
 <li>This creates a <code>.promptLib</code> folder with default prompts and <code>prompts.json</code> files.</li>
 </ol>
 <p><img alt="AlitaCode-Init" src="../img/AlitaCode-Init.png" /></p>
-<h2 id="alita-code-usage">Alita Code Usage</h2>
+<h3 id="alita-code-usage">Alita Code Usage</h3>
 <p>With Alita Code set up, you can now:</p>
 <ul>
 <li><strong>Create Prompts</strong>: Right-click in the editor and navigate to <strong>Alita → Create Prompt</strong> to craft new prompts.</li>
@@ -246,19 +272,19 @@
 <li><strong>Predict</strong>: Generate predictions by selecting <strong>Alita Predict</strong> after right-clicking selected text.</li>
 <li><strong>Sync External Prompts</strong>: Keep your external prompts up-to-date with <strong>Alita Sync External Prompts</strong>.</li>
 </ul>
-<h3 id="create-a-prompt">Create a Prompt</h3>
+<h4 id="create-a-prompt">Create a Prompt</h4>
 <p>Creating a custom prompt in Alita Code allows you to tailor Gen AI suggestions to your specific tasks. Here's how to create one:</p>
 <ol>
 <li><strong>Open a File</strong>: Start by opening any file from your project, or create a new one.</li>
 <li><strong>Access Alita Menu</strong>: Right-click in the editor view to bring up the context menu, where you'll find the Alita item.</li>
-<li><strong>Create Prompt Option</strong>: Hover over Alita in the menu, and on the second level menu, select “Create Prompt”.</li>
+<li><strong>Create Prompt Option</strong>: Hover over Alita in the menu, and on the second level menu, select <code>Create Prompt</code>.</li>
 <li><strong>Name Your Prompt</strong>: Enter a name for your prompt-template, such as "Generate unit-tests".</li>
 <li><strong>Describe Your Prompt</strong>: Press Enter and provide a description for your prompt.</li>
 <li><strong>Provide Prompt Content</strong>: Press Enter again and input the content of your prompt. This can be modified later in the <code>.promptLib</code> folder.</li>
 <li><strong>Finalize Creation</strong>: Hit Enter to finalize. Alita will add a reference to the new prompt in <code>prompts.json</code> and create a corresponding <code>.yaml</code> file in the <code>.promptLib</code> folder, which can be edited to extend content and add examples.</li>
 </ol>
 <p><img alt="AlitaCode-Create_Prompt" src="../img/AlitaCode-Create_Prompt.png" /></p>
-<h2 id="extend-prompt-context">Extend Prompt Context</h2>
+<h4 id="extend-prompt-context">Extend Prompt Context</h4>
 <p>Enhance the context of an existing prompt with selected text from your code, improving the relevance of AI suggestions:</p>
 <ol>
 <li><strong>Open and Select</strong>: Open any file from your project and select a portion of the text.</li>
@@ -268,7 +294,7 @@
 <li><strong>Extend Context</strong>: The selected text will be automatically added to the prompt's context, enriching its understanding for future suggestions.</li>
 </ol>
 <p>This feature significantly boosts productivity by integrating Gen AI tools directly into the testing process for real-time analysis and enhancement.</p>
-<h2 id="predict-execute-prompt">Predict (Execute) Prompt</h2>
+<h4 id="predict-execute-prompt">Predict (Execute) Prompt</h4>
 <p>To predict (execute) a prompt directly from VS Code to generate Gen AI-driven code suggestions:</p>
 <ol>
 <li><strong>Open a File and Select Text</strong>: Open any project file and select the text you want to analyze or for which you need suggestions.</li>
@@ -279,17 +305,130 @@
 </ol>
 <p><img alt="AlitaCode-Predict" src="../img/AlitaCode-Predict.png" /></p>
 <p><img alt="AlitaCode-Predict(Response)" src="../img/AlitaCode-Predict%28Response%29.png" /></p>
-<p><strong>Note</strong>: You can use default prompts, those you've created, or external prompts synced from <strong>Alita HUB</strong>.</p>
-<h2 id="synchronize-external-prompts">Synchronize External Prompts</h2>
+<p><strong>Note</strong>: You can use default prompts, those you've created, or external prompts synced from <strong>ELITEA HUB</strong>.</p>
+<h4 id="synchronize-external-prompts">Synchronize External Prompts</h4>
 <p>Sync prompts created in the Alita HUB with your Alita Code setup for seamless integration:</p>
 <ol>
 <li><strong>Open <code>prompts.json</code></strong>: Locate and open the <code>prompts.json</code> file.</li>
 <li><strong>Access Alita Menu</strong>: Right-click in the editor to see the Alita menu option.</li>
-<li><strong>Sync Prompts Option</strong>: Select "Alita Sync External Prompts" from the submenu.</li>
+<li><strong>Sync Prompts Option</strong>: Select <code>Alita Sync External Prompts</code> from the submenu.</li>
 <li><strong>Synchronization</strong>: The prompts will be synced and added to the <code>prompts.json</code> file, with a <code>.yaml</code> file created for each synced prompt.</li>
-<li><strong>Usage</strong>: These prompts are now ready to be used with <code>Alita: Prompts</code> command.</li>
+<li><strong>Usage</strong>: These prompts are now ready to be used with <code>Alita: Predict</code> command.</li>
 </ol>
 <p><img alt="AlitaCode-Sync_Prompt)" src="../img/AlitaCode-Sync_Prompt.png" /></p>
+<p><strong>Note</strong>: To sync and use prompts from ELITEA HUB, tag the prompt with <code>code</code> in ELITEA HUB.</p>
+<p>By following these detailed steps, you can maximize your productivity and coding efficiency with Alita Code's AI-powered features.</p>
+<h2 id="alitacode-for-intellij-idea">AlitaCode for IntelliJ Idea</h2>
+<p>AlitaCode is a IntelliJ plugin to handle prompt-engineering based code generation using ELITEA as a backend.</p>
+<h3 id="installation_1">Installation</h3>
+<p>Getting started with AlitaCode is straightforward:</p>
+<ol>
+<li>Navigate to the <strong>Settings</strong>→<strong>Plugins</strong> section in IntelliJ.</li>
+<li>Search for <strong>AlitaCode</strong> in the Marketplace and click <strong>Install</strong>.</li>
+</ol>
+<p><img alt="AlitaCodeI-Install" src="../img/AlitaCodeI-Install.png" /></p>
+<h3 id="setup_1">Setup</h3>
+<p>Once installed, setting up AlitaCode to work with your projects is simple. To configure AlitaCode effectively:</p>
+<ol>
+<li>Navigate to the to the <strong>Settings</strong>→<strong>Tools</strong> section in IntelliJ.</li>
+<li>Select the <strong>Alita</strong>.</li>
+<li>Start configuration:<ul>
+<li><strong>LLM Provider</strong>: Select the LLM Provider. To connect with ELITEA Hub, select <code>Alita</code>.</li>
+<li><strong>LLM Auth Token</strong>: Provide your Bearer token for the LLM service provider.</li>
+<li><strong>Project ID</strong>: Enter the Project Id for ELITEA Backend, ignored for OpenAI.</li>
+<li><strong>LLM Server URL</strong>: Enter the URL to your LLM service provider. (e.g. <code>https://alita.lab.epam.com/</code>)</li>
+<li><strong>Integration UID</strong>: Enter the AI integration Id from ELITEA Backend, ignored for OpenAI.</li>
+<li><strong>LLM Model Name</strong>: Choose the LLM model from the dropdown list.</li>
+<li><strong>Custom Model Name</strong>: Enter a custom model name if the desired model is not listed.</li>
+<li><strong>Custom Encoding Type</strong>: Select the encoding type, default <code>cl100k_base</code>.</li>
+<li><strong>Custom Model Size</strong>: Set the max tokens for custom model, default is <code>4096</code>.</li>
+<li><strong>LLM Response timeout</strong>: Set the response timeout, default is <code>90</code> seconds. </li>
+<li><strong>Max Tokens</strong>: Set the max tokens for the selected model.</li>
+<li><strong>Temperature</strong>: Adjust the temperature for the selected model.</li>
+<li><strong>Top K</strong>: Set the Top K value for the selected model.</li>
+<li><strong>Top P</strong>: Set the Top P value for the selected model.</li>
+<li><strong>Display Type</strong>: Select the default display mode for the predictions.<ul>
+<li><strong>append</strong> - when you run <code>Alita Predict</code> the results will be displayed after the text or part that you have selected. </li>
+<li><strong>split</strong> - when you run <code>Alita Predict</code> the results will be displayed in a separate place (view).</li>
+<li><strong>replace</strong> - when you run <code>Alita Predict</code> the results will be displayed instead of the text or part that you have selected. </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>To check and apply configuration:<ul>
+<li>Click the <strong>Reload</strong> icon next to the <strong>Integration UID</strong>.</li>
+<li>Select the ai_dial as integration and click <strong>OK</strong> button.</li>
+</ul>
+</li>
+<li>To complete the setup click the <strong>OK</strong> button.</li>
+</ol>
+<p><img alt="AlitaCodeI-Settings(part1)" src="../img/AlitaCodeI-Settings%28part1%29.png" /></p>
+<p><img alt="AlitaCodeI-Settings(part2)" src="../img/AlitaCodeI-Settings%28part2%29.png" /></p>
+<p><img alt="AlitaCodeI-Settings(part3" src="../img/AlitaCodeI-Settings%28part3%29.png" /></p>
+<p><strong>Important</strong>: For connecting to ELITEA HUB, copy the required settings (URL, Token, Project ID, Integration UID, Model Name) from <strong>ELITEA HUB → Settings → Configuration</strong> page. </p>
+<h3 id="configuration_1">Configuration</h3>
+<p>To initialize <strong>Alita Code</strong> in your project:</p>
+<ol>
+<li>Open any file and right-click to select <strong>Alita → Alita:Init</strong>.</li>
+<li>This creates a <code>.promptLib</code> folder with default prompts and <code>prompts.json</code> files.</li>
+</ol>
+<p><img alt="AlitaCodeI-Init" src="../img/AlitaCodeI-Init.png" /></p>
+<h3 id="alitacode-usage">AlitaCode Usage</h3>
+<p>With AlitaCode set up, you can now:</p>
+<ul>
+<li><strong>Create Prompts</strong>: Right-click in the editor and navigate to <strong>Alita → Create Prompt</strong> to craft new prompts.</li>
+<li><strong>Extend Context</strong>: Enhance the context of an existing prompt by selecting text and choosing <strong>Extend Context</strong> from the right-click menu.</li>
+<li><strong>Predict</strong>: Generate predictions by selecting <strong>Alita Predict</strong> after right-clicking selected text.</li>
+<li><strong>Sync External Prompts</strong>: Keep your external prompts up-to-date with <strong>Alita Sync External Prompts</strong>.</li>
+</ul>
+<h4 id="create-a-prompt_1">Create a Prompt</h4>
+<p>Creating a custom prompt in Alita Code allows you to tailor Gen AI suggestions to your specific tasks. Here's how to create one:</p>
+<ol>
+<li><strong>Open a File</strong>: Start by opening any file from your project, or create a new one.</li>
+<li><strong>Access Alita Menu</strong>: Right-click in the editor view to bring up the context menu, where you'll find the <strong>Alita Actions</strong> item.</li>
+<li><strong>Create Prompt Option</strong>: Hover over <strong>Alita Actions</strong> in the menu, and on the second level menu, select <strong>Alita: Create Prompt</strong>. The Create Prompt window is opened:<ul>
+<li><strong>Name</strong>: Assign a descriptive name that clearly reflects the aim of the prompt.</li>
+<li><strong>Description</strong>: Summarize the purpose of the prompt, detailing what it intends to achieve. </li>
+<li><strong>Context</strong>: Well crafted prompt corresponding to well-acceppted Frameworks for creating prompts (e.g. CREATE, CRISPE, Elavis Saravia, etc.). In case the prompt's context contains <strong>Variables</strong>, then provide the names and values of the variables in the Variables section..</li>
+<li>Click the <strong>Use the project integration settings in the context file</strong> checkbox to configure Model, Top-P, Top-K, Tempreature and MaX Tokens settings.</li>
+</ul>
+</li>
+<li>Click the <strong>Ok</strong> button to create a prompt. This can be modified later in the <code>.promptLib</code> folder. AlitaCode will add a reference to the new prompt in <code>prompts.json</code> and create a corresponding <code>.yaml</code> file in the <code>.promptLib</code> folder, which can be edited to extend content and add examples.</li>
+</ol>
+<p><img alt="AlitaCodeI-Create_Prompt" src="../img/AlitaCodeI-Create_Prompt.png" /></p>
+<h4 id="edit-prompt-context">Edit Prompt Context</h4>
+<p>Enhance the context of an existing prompt with selected text from your code, improving the relevance of AI suggestions:</p>
+<ol>
+<li><strong>Open and Select</strong>: Open any file from your project and select a portion of the text.</li>
+<li><strong>Access Alita Menu</strong>: Right-click to open the context menu and find the <strong>Alita Actions</strong> item.</li>
+<li><strong>Edit Context Option</strong>: Hover over <strong>Alita Actions</strong> and select <strong>Alita: Edit Context</strong> from the submenu.</li>
+<li><strong>Choose a Prompt</strong>: Select the prompt you wish to modify for from the list and click the <strong>Edit</strong> button.</li>
+<li><strong>Edit Context</strong> The selected prompt's <code>yaml</code> file will be opened where you can make the changes.</li>
+</ol>
+<p>This feature significantly boosts productivity by integrating Gen AI tools directly into the testing process for real-time analysis and enhancement.</p>
+<p><img alt="AlitaCodeI-Edit_Prompt" src="../img/AlitaCodeI-Edit_Prompt.png" /></p>
+<h4 id="predict-execute-prompt_1">Predict (Execute) Prompt</h4>
+<p>To predict (execute) a prompt directly from VS Code to generate Gen AI-driven code suggestions:</p>
+<ol>
+<li><strong>Open a File and Select Text</strong>: Open any project file and select the text you want to analyze or for which you need suggestions.</li>
+<li><strong>Access Alita Menu</strong>: Right-click in the editor view to see the <strong>Alita Actions</strong> item.</li>
+<li><strong>Predict Option</strong>: Hover over <strong>Alita Actions</strong> and choose <strong>Alita: Predict</strong> from the submenu.</li>
+<li><strong>Select a Prompt</strong>: Pick the prompt you wish to execute from the list and click the <strong>OK</strong> button.</li>
+<li><strong>View Predictions</strong>: The generated response will be displayed according to the method selected in <code>AlitaCode: Display Type</code>.</li>
+</ol>
+<p><img alt="AlitaCodeI-Predict" src="../img/AlitaCodeI-Predict.png" /></p>
+<p><img alt="AlitaCodeI-Predict(Response)" src="../img/AlitaCodeI-Predict%28Response%29.png" /></p>
+<p><strong>Note</strong>: You can use default prompts, those you've created, or external prompts synced from <strong>ELITEA HUB</strong>.</p>
+<h4 id="synchronize-external-prompts_1">Synchronize External Prompts</h4>
+<p>Sync prompts created in the ELITEA HUB with your AlitaCode setup for seamless integration:</p>
+<ol>
+<li><strong>Open <code>prompts.json</code></strong>: Locate and open the <code>prompts.json</code> file.</li>
+<li><strong>Access Alita Menu</strong>: Right-click in the editor to see the <strong>Alita Actions</strong> item.</li>
+<li><strong>Sync Prompts Option</strong>: Select the <strong>Alita: Sync External Prompts</strong> option from the submenu.</li>
+<li><strong>Synchronization</strong>: The prompts will be synced and added to the <code>prompts.json</code> file.</li>
+<li><strong>Usage</strong>: These prompts are now ready to be used with <code>Alita: Predict</code> command.</li>
+</ol>
+<p><img alt="AlitaCodeI-Sync_Prompt)" src="../img/AlitaCodeI-Sync_Prompt.png" /></p>
 <p><strong>Note</strong>: To sync and use prompts from ELITEA HUB, tag the prompt with <code>code</code> in ELITEA HUB.</p>
 <p>By following these detailed steps, you can maximize your productivity and coding efficiency with Alita Code's AI-powered features.</p>
               
