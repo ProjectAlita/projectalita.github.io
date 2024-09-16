@@ -1,10 +1,10 @@
 # Datasources
 
-## My libraries - Datasources Page
+## Private project - Datasources menu
 
 Datasources play a pivotal role in broadening and enriching the functionalities of ELITEA and AI technologies. They enable the extension of LLMs by integrating user-specific or project-specific data, which is not initially part of the model’s training set, thereby enhancing the LLM's context with tailored information.
 
-![My_libraries-Datasources](<../img/My_libraries-Datasources.png>)
+![Datasources-Menu_Private](<../img/user-guide/datasources/Datasources-Menu_Private.png>)
 
 ### Creating a Datasource
 
@@ -17,22 +17,19 @@ To set up a new datasource and augment your model's capabilities:
 5. Optionally, add tags by typing a tag name or selecting from pre-existing tags in the Tags input box.
 6. Click **Save** to finalize the creation.
 
-![Datasources-Create_New_Datasource](<../img/Datasources-Create_New_Datasource.png>)
-
-Your newly created datasource will subsequently appear on the **My Libraries - Datasources** page.
+![Datasources-Create_New_Datasource](<../img/user-guide/datasources/Datasources-Create_New_Datasource.png>)
 
 ### Exploring Datasources
 
 Discovering the intricacies of a datasource is both simple and insightful:
-
 Click on the card or the name of a datasource to unveil its configurations, providing a detailed overview of its setup and usage.
 
-### Connecting a Datasource to a Dataset
+### Connecting a Dataset to the Datasource
 
-The initial step involves linking your datasource to the desired dataset:
+The initial step involves linking your dataset to the desired datasource:
 
 1. Press the **`+`** icon to start adding a new dataset.
-2. Enter a name for your dataset. *Note*: This is a non-editable field and cannot be altered post-creation.
+2. Enter a name for your dataset.
 3. From the dropdown list, select the source type of your dataset. Available options include:
       * **File**: Any supported file type for upload.
       * **Table**: Supported file types with a table structure, such as CSV or XLSX.
@@ -40,7 +37,7 @@ The initial step involves linking your datasource to the desired dataset:
       * **Confluence**: Any Confluence page accessible to you.
       * **QTest**: Any QTest project accessible to you.
 
-![Datasources-Dataset](<../img/Datasources-Dataset.png>)
+![Datasources-Dataset](<../img/user-guide/datasources/Datasources-Dataset.png>)
 
 Depending on the selected source type, various configurations may be necessary to access the dataset source, primarily involving authentication and authorization parameters. This step is exempt for File and Table options since the files will be directly uploaded.
 
@@ -49,7 +46,7 @@ Depending on the selected source type, various configurations may be necessary t
 ELITEA supports a variety of file types and offers flexible settings to handle your documents effectively. Below is an easy-to-understand breakdown of the options, settings, and parameters available for configuration.
 
 * **Name** - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.
-* **Choose File Option** - select the file you wish to process. ELITEA supports a range of commonly used file types, ensuring compatibility and ease of use. Supported File Types: PDF, DOCX, TXT, JSON.
+* **Choose File Option** - select the file you wish to process. ELITEA supports a range of commonly used file types, ensuring compatibility and ease of use. Supported file types: PDF, DOCX, TXT, JSON.
 * **Advanced Settings** - under this section, additional features enable further customization of how your file is processed.
     * **Split Pages** - when enabled, each page of your document is treated as a separate entity. This is particularly useful when dealing with PDF documents, enabling more granular control over the analysis or processing of individual pages.
     * **Parse Tables by Rows** Selecting this option ensures that any tables within your document are parsed row by row, maintaining the structure and context. This setting is valuable when dealing with documents that contain tabular information, ensuring the data remains organized and comprehensible.
@@ -59,7 +56,7 @@ ELITEA supports a variety of file types and offers flexible settings to handle y
   * **Extension Whitelist** - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., `.pdf`, `.docx`, `.txt`), overriding the default supported types if necessary.
   * **Extension Blacklist** - conversely, list file extensions you wish to exclude from processing. Any file type (e.g., `.exe`, `.bin`, `.png`) mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.
 
-![Datassources-Dataset_File](../img/Datassources-Dataset_File.png)
+![Datasources-Dataset_File](../img/user-guide/datasources/Datasources-Dataset_File.png)
 
 #### Source type - Table
 
@@ -71,7 +68,7 @@ This functionality is crucial for users who work with structured data in formats
 * **JSON Documents** - enable this option if your table data is structured as JSON documents, particularly relevant when dealing with JSON files. This tells the system to parse the file as a collection of JSON entries, allowing for a more nuanced understanding and utilization of nested data structures within the file.
 * **Raw Content** - when enabled, this setting ensures that your selected data is treated as raw content, bypassing any default preprocessing or formatting. This is particularly useful when you want the data to be ingested in its purest form, without any alterations that might affect its original structure or meaning.
 
-![Datassources-Dataset_Table](../img/Datassources-Dataset_Table.png)
+![Datasources-Dataset_Table](../img/user-guide/datasources/Datasources-Dataset_Table.png)
 
 #### Source type - GIT
 
@@ -94,16 +91,16 @@ To ensure a successful connection, **you must clone your Git repository and prov
   * **Extension Whitelist** - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., `.pdf`, `.docx`, `.txt`), overriding the default supported types if necessary.
   * **Extension Blacklist** - conversely, list file extensions you wish to exclude from processing. Any file type (e.g., `.exe`, `.bin`, `.png`) mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.
 
-![Datassources-Dataset_GIT](../img/Datassources-Dataset_GIT.png)
+![Datasources-Dataset_GIT](../img/user-guide/datasources/Datasources-Dataset_GIT.png)
 
 #### Source type - Confluence
 
 For users who rely on Confluence pages to manage their information, documents, or other types of projects, this source type allows to streamline the process of linking and extracting data from these knowledge pages. Here, we outline the options, settings, and parameters available for your Confluence source type.
 
 * **Name** - specify a unique name for your source configuration. This helps in easily identifying and managing multiple sources.
-* **URL** - link to Confluence. To connect to your Confluence KB, you'll need to provide the URL. No need to provide the full link as the page (e.g. https://www.kb.epam.com/ is enough) handling must be done with the help of **Filters** option. Regarding authentication, you have two options to securely connect to Confluence:
-    * **API Key**: If you choose the API Key option, you'll need to generate an API Key from your Confluence account and input it in the provided API Key field.
-    * **Token**: Similarly, if the Token option suits you better, you'll have to create an authentication Token from your Confluence user settings and enter it in the Token field.
+* **URL** - link to Confluence. To connect to your Confluence KB, you'll need to provide the URL. No need to provide the full link as the page (e.g. `https://www.kb.epam.com/` is enough) handling must be done with the help of **Filters** option. Regarding authentication, you have two options to securely connect to Confluence:
+    * **API Key**: If you choose the API Key option, you'll need to generate an API Key from your Confluence account and input it in the provided API Key field. The **Secret** and **Password** options are available.
+    * **Token**: Similarly, if the Token option suits you better, you'll have to create an authentication Token from your Confluence user settings and enter it in the Token field. The **Secret** and **Password** options are available.
 **Note**: These authentication methods ensure secure access to your Confluence content, maintaining the integrity and confidentiality of your data.
 * **Username** - input the username associated with your Confluence account. This is the same username you use to log in to your Confluence site.
 * **Hosting Option** - choose the appropriate hosting type for your Confluence setup:
@@ -127,7 +124,7 @@ For users who rely on Confluence pages to manage their information, documents, o
     * **Pages Limit Per Request** - define how many pages you want to fetch in a single request, with a default setting of 50. This helps manage data volume and response times.
     * **Max Total Pages** - set the maximum number of pages the system should fetch, defaulting to 1000. Useful for limiting data scope and ensuring performance.
 
-![Datassources-Dataset_Confluence](../img/Datassources-Dataset_Confluence.png)
+![Datasources-Dataset_Confluence](../img/user-guide/datasources/Datasources-Dataset_Confluence.png)
 
 #### Source type - QTest
 
@@ -136,12 +133,13 @@ Integrating QTest with ELITEA enhances your test management by connecting direct
 * **URL** - the link to your QTest. **Note**: You must provide the link to your QTest in the following format `https://<host of your installation of QTest>/api/<api version used>`
 * **QTest Project ID** - the specific project ID within QTest you wish to connect to. Enter the project ID to direct ELITEA to the correct QTest project.
 * **API Key** - ELITEA supports two types of authentication methods for QTest API Keys to ensure secure access:
-    * **Secret** - a confidential key used for enhanced security during API requests.
-    * **Password** - an option for API access, verifying authorized requesters.
+    * **Secret** - Utilize a confidential key configured in the **Secrets** feature within ELITEA HUB for enhanced security during API requests. This secret can be selected from the secrets you have set up previously.
+    * **Password** - an option for API access, that verifies authorized requesters through a password.
 * **Test Cases per Page** - configures the number of test cases displayed per page within the QTest for selection.
+* **DQL for QTest** - this setting allows you to query and filter data before indexing it. Utilize DQL (Data Query Language) to define specific criteria that refine the data fetched from QTest, ensuring that only relevant data is processed and indexed.
 * **Columns** - specify the columns within your test cases that you wish to focus on for analysis or embedding generation.  Select single or multiple columns to tailor the analysis to your project's specific needs. To select multiple columns, separate each column name with a comma (",").
 
-### Configuring Transformers
+### TRANSFORMERS
 
 Transformers enhance your documents by extracting significant keywords, summarizing content, and improving searchability. *Please note if you don't clearly understand the purpose of the parameters and options available here than leave them as is. Don't make any changes.*
 
@@ -153,28 +151,69 @@ Transformers enhance your documents by extracting significant keywords, summariz
 * **Maximum Keyword Count** - defines the limit on the number of keywords to be extracted.
 * **Split By** - determines how the document is sectioned for analysis, with options like Chunks, Lines, Paragraphs, Sentences, or Nothing.
 
-![Datasources-Dataset_Transformers](<../img/Datasources-Dataset_Transformers.png>)
+![Datasources-Dataset_Transformers](<../img/user-guide/datasources/Datasources-Dataset_Transformers.png>)
 
-### Configuring Summarization
+### SUMMARIZATION
 
 Summarization utilizes LLMs to condense documents into their core messages. Due to the high computational demand, use of this feature incurs additional costs. Please note if you don't clearly understand the purpose of the parameters and options available here than leave them as is. Don't make any changes.
 
-* **Summarization Mode** - select from available LLMs based on your document’s complexity.
-* **Document Summarization** - enables summarization of the entire document.
-* **Chunk Summarization** - applies summarization to specific sections or chunks of the document.
+1. * **Summarization model** - select from available LLMs based on your document’s complexity.
+2. * **Document summarization** - enables summarization of the entire document.
+3. * **Chunk summarization** - applies summarization to specific sections or chunks of the document.
+4. * Finally, click **Create** to index the dataset for use. Note that processing time can take up to 10 minutes, depending on the source type and size.
 
-![Datasources-Dataset_Summarization](<../img/Datasources-Dataset_Summarization.png>)
-
-Finally, click **Create** to index the dataset for use. Note that processing time can take up to 10 minutes, depending on the source type and size.
+![Datasources-Dataset_Summarization](<../img/user-guide/datasources/Datasources-Dataset_Summarization.png>)
 
 **Note**: Multiple datasets can be utilized within the same datasource, enhancing versatility and depth of analysis.
 
-
-### Context
+### CONTEXT
 
 **Context** input field is a designated area for providing instructions (prompt'), that facilitates the utilization of information from configured datasets via LLMs. This prompt guides the LLM on how to interpret and analyze the dataset, ensuring that the generated output aligns with the user's specific objectives. **Note**: By providing detailed and clear instructions in the **Context** field, users effectively guide the processing and analysis of their datasets, leveraging the robust capabilities of LLMs for tailored insights and actions.
 
-![Datasources-Context](<../img/Datasources-Context.png>)
+![Datasources-Context](<../img/user-guide/datasources/Datasources-Context.png>)
+
+### WELCOME MESSAGE
+
+The **Welcome Message** feature allows you to provide additional context for prompts, datasources, and agents. Currently, the Welcome Message is sent to LLM along with other instructions.
+
+**How to Add the Welcome Message**:
+
+1. **Add the Welcome Message**: Type the welcome message text in the input field.
+2. **Save the Configuration**: After entering the desired text, ensure to save the changes to the datasource. This action makes the configured welcome message available to user in the **Chat** section.
+
+**Using the Welcome Message**:
+
+ Go to the **Chat** section of the datasource. Here, you will see the configured **Welcome Message**. It will provide additional notification, instruction to the user.
+
+**Examples of Welcome Message**:
+
+* "Use this datasource for asking questions about FT Armenia"
+* "Don't forget to double-check the generated responses"
+
+![Datasources-Welcome_Message](<../img/user-guide/datasources/Datasources-Welcome_Message.png>)
+
+### CONVERSATION STARTERS
+
+The **Conversation Starter** feature enables you to configure and add predefined text that can be used to initiate a conversation when executing an agent. This feature is particularly useful for setting a consistent starting point for interactions facilitated by the datasource.
+
+**How to Add a Conversation Starter**:
+
+1. **Access the Configuration Panel**: Navigate to the **Conversation Starter**  section.
+2. **Add a Conversation Starter**: Click the `+` icon to open the text input field where you can type the text you wish to use as a conversation starter.
+3. **Save the Configuration**: After entering the desired text, ensure to save the changes to the prompt. This action makes the configured conversation starter available for use.
+
+**Using a Conversation Starter**:
+
+**Initiate a Conversation**: Go to the **Chat** section of the datasource. Here, you will find the saved conversation starters listed. Click on the desired starter to automatically populate the chat input and execute the datasource.
+
+**Examples of Conversation Starters**:
+
+* "How to create a prompt?"
+* "I am on bench, and want to know what activities can be done"
+
+![Datasources-Conversation_Starters](<../img/user-guide/datasources/Datasources-Conversation_Starters.png>)
+
+By setting up conversation starters, you streamline the process of initiating specific tasks or queries, making your interactions with the datasource more efficient and standardized.
 
 ### Working with Your Dataset
 
@@ -184,10 +223,10 @@ After you've successfully created your dataset(s), a variety of features become 
 
 The **Chat** feature is tailored for conversational AI models, enabling you to engage in dialogues or interactions akin to conversing with a human. Whether you're asking a question, making a statement, or giving a command, this feature is designed to generate responses that mimic human conversation.
 
-##### How to Use Chat
+**To use the Chat and query info**:
 
 1. Select the **Embedding model** from the dropdown list. **Note**: It must be the same one which is used for creating the datasource.
-2. Choose an **AI model** (e.g., gpt-4-0125-preview, gpt-35-turbo, etc.) suited to your conversation needs.
+2. Choose an **Chat model** (e.g., gpt-4-0125-preview, gpt-35-turbo, etc.) suited to your conversation needs.
 3. Optionally, you can configure Advanced Settings for more tailord outputs by clicking the **Settings** icon. **Note**: Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values. The following settings are available:
       * **Initial Lookup Result (1 – 50)** - specifies the number of initial results retrieved from the indexed dataset(s) for further processing. 
         * **Higher values**: More initial results are retrieved, which can increase the chances of finding relevant information but may slow down processing.
@@ -207,18 +246,35 @@ The **Chat** feature is tailored for conversational AI models, enabling you to e
       * **Top K (1-40)** - limits the choice of words to the K most probable, affecting the response's diversity and predictability.
         * **Higher values**: More words are considered, leading to more diverse and potentially creative responses.
         * **Lower values**: Fewer words are considered, leading to more predictable and focused responses.
-      * **Maximum Length** - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.
+      * **Maximum length** - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.
         * **Higher values**: Responses can be longer and more detailed.
         * **Lower values**: Responses are shorter and more concise.
 4. Type your text in the chat box and click the **Send** icon to initiate the dialogue.
 
-![Datasources-Chat](<../img/Datasources-Chat.png>)
+![Datasources-Chat](<../img/user-guide/datasources/Datasources-Chat.png>)
+
+**Additional Interaction Features:**
+
+* **Auto scroll to bottom**: This option can be toggled on or off to automatically scroll to the bottom of the output as it is being generated. This feature is helpful during long outputs to keep the most recent content visible.
+* **Full Screen Mode**: Increase the size of the output window for better visibility and focus. This mode can be activated to expand the output interface to the full screen.
+
+**Post-Output Actions:**
+
+* **Continue the Dialogue**: To keep the conversation going, simply type your next question or command in the chat box and click the **Send** icon.
+* **Copy the Output**: Click the **Copy to clipboard** icon to copy the generated text for use elsewhere.
+* **Regenerate Response**: If the output isn't satisfactory, click the **Regenerate** icon to prompt the Gen AI to produce a new response.
+* **Delete Output**: To remove the current output from the chat, click the **Delete** icon.
+* **Purge Chat History**: For a fresh start or to clear sensitive data, click the **Clean** icon to erase the chat history.
+* **Specialized Download Options** for **Tabular** outputs. When the Gen AI generates output in a tabular format, additional options become available to manage and utilize this structured data:
+    * **Download as xlsx**: Allows you to save the tabular output directly in an Excel spreadsheet format, facilitating easy data manipulation and analysis.
+    * **Copy as markdown**: Enables copying the tabular output in markdown format, suitable for use in markdown-supported environments like GitHub or blogging platforms.
+    * **Copy as html**: Permits copying the tabular output in HTML format, ideal for integration into web pages or emails, preserving the formatting and structure.
 
 #### Search
 
 The **Search** feature allows you to quickly locate specific information within your indexed dataset.
 
-##### How to Conduct a Search
+**How to Conduct a Search**:
 
 1. Select the **Embedding model** from the dropdown list. **Note**: It must be the same one which is used for creating the datasource.
 2. Optionally, you can configure **Advanced Settings** for more tailord outputs by clicking the **Settings** icon. **Note**: Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values. The following settings are available:
@@ -234,36 +290,53 @@ The **Search** feature allows you to quickly locate specific information within 
       * **String content** - determines whether the system should include or consider specific text data in its processing or generation.
 3. Type your query into the input field and hit the **Send** icon.
 
+![Datasources-Search](<../img/user-guide/datasources/Datasources-Search.png>)
+
+**Post-Output Actions:**
+
+* **View Selection**:  A tool for quickly switching between **Code view** and **List view** views.
+* **Copy the Output**: Click the **Copy to clipboard** icon to copy the generated text for use elsewhere.
+* **Full Screen Mode**: Increase the size of the output window for better visibility and focus. This mode can be activated to expand the output interface to the full screen.
+* **Purge Chat History**: For a fresh start or to clear sensitive data, click the **Clean** icon to erase the chat history.
 
 #### Deduplicate
 
-**Deduplication** is a handy feature for identifying duplicate information.
+The **Deduplication** is a handy feature for identifying duplicate information.
 
-##### How to Run Deduplication
+**How to Run Deduplication**:
 
 1. Select the **Embedding model** from the dropdown list. **Note**: It must be the same one which is used for creating the datasource.
 2. Configure the following settings:
       * **Cut-off Score (0.1-1.0)** - determines the threshold for identifying duplicate content based on similarity scores.
-        * **Higher values**: Only content that is very similar will be considered duplicates, which means more items will be removed. This can be useful if you want to ensure that only highly unique content remains.
-        * **Lower values**: More content will be considered duplicates, which means more items will be removed. This can be useful if you want to keep more variations of the content.
+        * **Higher values**: More items will be **excluded**, as they will not be considered similar enough. This can be useful if you want to ensure that only highly unique content remains.
+        * **Lower values**: More items will be **retained**, as they will be considered similar enough. This can be useful if you want to keep more variations of the content.
+3. Optionally, you can configure **Advanced Settings** for more tailord outputs by clicking the **Settings** icon. **Note**: Please exercise caution with these settings. If unsure about their functions, it's advisable to leave them at their default values. The following settings are available:
       * **Show Additional Metadata** - a checkbox option that determines whether to display extra information about the content.
         * **Selected**: Additional metadata will be shown, providing more context and details about the content.
         * **Not Selected**: Additional metadata will not be shown, resulting in a cleaner and simpler display of the content.
       * **Exclude Fields** - a comma-separated list of field names that should be excluded from the deduplication process.
         * **Specified fields**: The fields listed will be ignored during deduplication, which means differences in these fields will not affect whether content is considered a duplicate. This can be useful if certain fields (like timestamps or IDs) are not relevant to the deduplication criteria.
         * **No fields specified**: All fields will be considered during deduplication, which means any differences in any field can affect whether content is considered a duplicate.
-3. Press the **Run** button to start the process.
+4. Click the **Run** button to start the process.
 
 **Note:** Remember, deduplication efforts will hinge upon the parameters you've set for the dataset.
 
 By using these features, you’re equipped to enhance your dataset, making it a more efficient and effective tool for your AI applications. Proceed with adjustments only if you're confident in your understanding of their implications.
 
-![Datasources-Deduplicate](../img/Datasources-Deduplicate.png)
+![Datasources-Deduplicate](../img/user-guide/datasources/Datasources-Deduplicate.png)
 
+**Post-Output Actions:**
 
-## Datasources Menu
+* **View Selection**:  A tool for quickly switching between **Code view** and **List view** views.
+* **Show differences**: An option allowing to quickly show/hide differences.
+* **Download result**: Allows you to save the deduplication results directly in an Excel spreadsheet format, facilitating easy data manipulation and analysis. 
+* **Copy the Output**: Click the **Copy to clipboard** icon to copy the generated text for use elsewhere.
+* **Full Screen Mode**: Increase the size of the output window for better visibility and focus. This mode can be activated to expand the output interface to the full screen.
+* **Purge Chat History**: For a fresh start or to clear sensitive data, click the **Clean** icon to erase the chat history.
 
-The **Datasources** menu showcases a collection of published and shared datasources within the community. By default, upon logging in, the user is directed to the **Latest** page of the Datasources menu, which presents newly published datasources.
+## Public project - Datasources menu
+
+The **Datasources** menu within **Public** project showcases a collection of published and shared datasources within the community.
 
 ### Layout of the Datasources Menu
 
@@ -273,13 +346,13 @@ The Datasources menu is organized into three distinct pages, each designed to of
 * **My Likes**: Highlights the datasources that you have liked. This personalized page allows you to revisit favorites effortlessly.
 * **Trending**: Showcases the datasources with the highest number of likes, serving as a valuable resource for discovering top-rated datasources that hold significant value and popularity within the community.
 
-![Datasources-Menu](<../img/Datasources-Menu.png>)
+![Datasources-Menu_Public](<../img/user-guide/datasources/Datasources-Menu_Public.png>)
 
 ### Engaging with Published Datasources
 
 Interaction within the community is highly encouraged to recognize and appreciate valuable datasources. The following actions enable active participation:
 
-### Liking Published datasources
+### Liking Published Datasources
 
 Upon publication, a datasource becomes a crucial resource for the community. To support and acknowledge a datasource, use the **Like** functionality:
 
@@ -293,4 +366,3 @@ Upon publication, a datasource becomes a crucial resource for the community. To 
 * View and run datasources by clicking on the datasource card or name. Refer to the [Exploring Datasources](#exploring-datasources) section for guidance on using datasource.
 * **Note**: Modifications to a published datasource cannot be saved for future use.
 
-![Datasource-Published_Usage](<../img/Datasource-Published_Usage.png>)

@@ -1,22 +1,21 @@
 # Collections
 
-## My libraries - Collections Page
+## Private project - Collections menu
 
-The **My libraries - Collections** page serves as a dedicated inventory for all your collections, irrespective of their current status. Consider it your personal repository for saving and organizing the collections you've assembled.
+The **Collections** menu within **Private** project serves as a dedicated inventory for all your collections, irrespective of their current status. Consider it your personal repository for saving and organizing the collections you've crafted. 
 
-![Collections-Card_View](<../img/Collections-Card_View.png>)
+![Collections-Menu_Card_View](<../img/user-guide/collections/Collections-Menu_Card_View.png>)
 
 These features ensure your collections are not only stored securely but also organized in a manner that simplifies management, review, and retrieval, tailoring the user experience to your needs and preferences.
 
 **The Purpose and Usefulness of Collections**
 
-**Collections** serve as a means to group prompts by theme, project, or any other meaningful categorization that enhances accessibility and usefulness for the users. 
+The **Collection** serve as a means to group prompts by theme, project, or any other meaningful categorization that enhances accessibility and usefulness for the users. 
 Collections are immensely valuable for several reasons:
 
 * **Thematic Organization**: They allow for the grouping of prompts by specific themes or projects, making it easy for users to find a set of related prompts.
 * **Efficiency**: By organizing prompts into collections, we save time by providing consolidated resources that can be easily accessed and applied.
 * **Sharing Best Practices**: Collections can be shared across teams, promoting best practices and unified testing approaches across different projects.
-  
   
 ### How to Create a Collection
 
@@ -26,9 +25,7 @@ Creating a collection allows you to organize and categorize your prompts for bet
 2. You will be prompted to fill in the **Name** and **Description** fields. It's important to provide clear and concise information here, as this helps others understand the purpose and content of your collection.
 3. Click **Save** to create the collection.
 
-![Collection-Create_Collection](<../img/Collection-Create_Collection.png>)
-
-After creation, your new collection will be added to the **My Libraries - Collections** page.
+![Collections-Create_Collection](<../img/user-guide/collections/Collections-Create_Collection.png>)
 
 ### Exploring Collections
 
@@ -38,14 +35,12 @@ Simply click on the collection card or the name of a collection. This action rev
 
 Within a collection, you can:
 
-- **View** and **Open** available prompts
-- **Modify Collection** (Name and Description)
-- **Filter Collection** by tags
-- **Publish Collection**
-- **Delete Collection**
-- **Export Collection**
-
-![Collection-Prompts](<../img/Collection-Prompts.png>)
+* **View** and **Open** available prompts
+* **Modify Collection** (Name and Description)
+* **Filter Collection** by tags
+* **Publish Collection**
+* **Delete Collection**
+* **Export Collection**
 
 ### How to Modify a Collection
 
@@ -69,7 +64,7 @@ To publish a collection:
 2. Click the **Publish collection** icon to submit your collection for review, similar to the individual prompt publishing process. The collection will be evaluated according to guidelines for quality and relevance.
 3. Once approved, your collection will be published and made available under the **Collection** menu for community use.
 
-**Note**: A Collection must contain public prompts before publication.
+**Note**: A Collection must contain already published prompts before publication.
 
 ### How to Delete a Collection
 
@@ -105,7 +100,7 @@ Organized into three distinct pages, the **Collections** menu introduces a struc
 * **My Likes**: Features the collections you have liked, creating a personalized library of favored content that can be revisited at any time.
 * **Trending**: Displays collections that have gathered the most likes, serving as an excellent resource for finding highly-regarded and popular collections esteemed by the community.
 
-![Collections-Menu](<../img/Collections-Menu.png>)
+![Collections-Menu_Public](<../img/user-guide/collections/Collections-Menu_Public.png>)
 
 ### Engaging with Collections
 
@@ -115,8 +110,8 @@ Participation and interaction within the community are pivotal in highlighting a
 
 Each collection, upon curation, becomes a vital resource. To show support and appreciation for a collection, you can use the **Like** functionality:
 
-* Simply click on the **Heart** icon associated with a collection to like it.
-* **Note**: Should you change your mind, clicking the **Heart** icon again will allow you to unlike the collection.
+* To like a collection, click on the **Heart** icon associated with it.
+* If you wish to withdraw your like, simply click the **Heart** icon again to Unlike the collection.
 
 ### Other Actions for Collections
 

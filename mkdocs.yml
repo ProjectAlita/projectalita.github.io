@@ -2,26 +2,30 @@ site_name: ELITEA Documentation
 site_url: https://projectalita.ai
 nav:
   - Release Notes:
-    - RN 1.2.1: release-notes/rn5.md
-    - RN 1.2.0: release-notes/rn4.md
-    - RN 1.1.0: release-notes/rn3.md
-    - RN 1.0.1: release-notes/rn2.md
-    - RN 1.0.0: release-notes/rn1.md
+    - RN 1.3.0: release-notes/rn_current.md
+    - Archive:
+      - RN 1.2.0: release-notes/archived/rn4.md
+      - RN 1.1.0: release-notes/archived/rn3.md
+      - RN 1.0.1: release-notes/archived/rn2.md
+      - RN 1.0.0: release-notes/archived/rn1.md
   - User Guide: 
     - Get Started: user-guide/intro.md
-    - Prompts: user-guide/prompts.md
-    - Collections: user-guide/collections.md
-    - Datasources: user-guide/datasources.md
-    - Agents: user-guide/agents.md
     - Chat: user-guide/chat.md
+    - Prompts: 
+      - Prompts: user-guide/prompts/prompts.md    
+      - Prompts Examples and Materials: user-guide/prompts/prompts-examples.md
+    - Datasources: user-guide/datasources.md
+    - Agents: 
+      - Agents: user-guide/agents/agents.md
+      - Agents Examples and Materials: user-guide/agents/agents-examples.md
+    - Collections: user-guide/collections.md
+    - ELITEA Extensions:
+      - Alita Code: user-guide/extensions/alita-code.md
+      - Alita Code Chat: user-guide/extensions/alita-chat.md
   - Manuals:
-    - ELITEA and EPAM AI DIAL: alita-dial.md
-    - QA - Prompting and Sharing: creating-prompts.md
-    - Alita Code: alita-code.md
-    - Alita Code Chat: alita-chat.md
-  - Admin Guide:
-    - Get Started: admin-guide/intro.md
-    - User Management: admin-guide/user.md
+    - ELITEA and EPAM AI DIAL: manuals/alita-dial.md
+    - QA - Prompting and Sharing: manuals/creating-prompts.md
+    - Roles Management: manuals/roles.md    
   - FAQs: 
     - faqs.md
 
