@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/user-guide/extensions/alita-chat/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Alita Code Chat - ELITEA Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Alita Code Chat";
+        var mkdocs_page_input_path = "user-guide/extensions/alita-chat.md";
+        var mkdocs_page_url = "/user-guide/extensions/alita-chat/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> ELITEA Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Release Notes</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../release-notes/rn_current/">RN 1.3.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Archive</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../intro/">Get Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../chat/">Chat</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Prompts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../prompts/prompts/">Prompts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../prompts/prompts-examples/">Prompts Examples and Materials</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../datasources/">Datasources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Agents</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../agents/agents/">Agents</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../agents/agents-examples/">Agents Examples and Materials</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collections/">Collections</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">ELITEA Extensions</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../alita-code/">Alita Code</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Alita Code Chat</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#pre-requisite">Pre-requisite</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#features-list">Features list:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#alita-code-chat-for-vs-code">Alita Code Chat for VS code</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#alita-code-chat-usage">Alita Code Chat Usage</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#alitacodechat-for-intellij">AlitaCodeChat for IntelliJ</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#installation_1">Installation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#alitacodechat-usage">AlitaCodeChat Usage</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manuals</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../manuals/alita-dial/">ELITEA and EPAM AI DIAL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../manuals/creating-prompts/">QA - Prompting and Sharing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../manuals/roles/">Roles Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FAQs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../faqs/">Frequently Asked Questions</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">ELITEA Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">User Guide</li>
+          <li class="breadcrumb-item">ELITEA Extensions</li>
+      <li class="breadcrumb-item active">Alita Code Chat</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="alita-code-chat">Alita Code Chat</h1>
+<p>Alita Code Chat for VSCode and IntelliJ is an auxiliary GUI for Alita Code, you can utilize the functionality of Alita Code and you can also chat with ELITEA HUB.</p>
+<h2 id="pre-requisite">Pre-requisite</h2>
+<p>Alita Code Chat operates in conjunction with Alita Code for both VS Code and IntelliJ. To utilize Alita Code Chat, you must first install Alita Code from their respective marketplaces:</p>
+<ul>
+<li><strong>VS Code</strong>: Install <a href="https://marketplace.visualstudio.com/items?itemName=ProjectAlita.AlitaCode">Alita Code</a> from the VS Code Marketplace.</li>
+<li><strong>IntelliJ</strong>: Install <a href="https://plugins.jetbrains.com/plugin/23040-alitacode">AlitaCode</a> from the JetBrains Marketplace.</li>
+</ul>
+<p><strong>Important</strong>: Ensure that Alita Code is not only installed but also properly configured with ELITEA HUB to function correctly. For detailed installation and configuration instructions, please refer to the <a href="../alita-code/">Alita Code documentation</a>. This step is crucial for enabling the full capabilities of Alita Code Chat within your development environment.</p>
+<h2 id="features-list">Features list:</h2>
+<ul>
+<li>Chat with ELITEA directly. It will use the model settings set by Alita Code extension.</li>
+<li>Type trigger chat to add participants to chat: <code>/</code> for prompt, <code>#</code> for datasources and <code>@</code> for agents.</li>
+</ul>
+<p><strong>Note</strong>: Alita Code Chat doesn't support Chat History, in case of restarting VS Code or IntelliJ, the Chat History will be cleaned.</p>
+<h2 id="alita-code-chat-for-vs-code">Alita Code Chat for VS code</h2>
+<p>Alita Code Chat is a visual studio extension to work as chatting companion using Alita Code.</p>
+<h3 id="installation">Installation</h3>
+<p>Getting started with Alita Code Chat is straightforward:</p>
+<ol>
+<li>Navigate to the <strong>Extensions</strong> section in VS Code.</li>
+<li>Search for <strong>Alita Code Chat</strong> in the Marketplace and click <strong>Install</strong>.</li>
+</ol>
+<p><img alt="VS-AlitaChat_Install" src="../../../img/user-guide/extensions/chat/VS-AlitaChat_Install.png" /></p>
+<p><strong>Note</strong>: After successful installation Alita Code Chat shortcut will be added to left menu of VS Code.</p>
+<h3 id="alita-code-chat-usage">Alita Code Chat Usage</h3>
+<p>With Alita Code Chat set up, you can now:</p>
+<ul>
+<li><strong>Prompts</strong> - call and use prompts configured in ELITEA HUB.</li>
+<li><strong>Datasources</strong> - call and use datasources configured in ELITEA HUB.</li>
+<li><strong>Agents</strong> - call and use agents configured in ELITEA HUB.</li>
+<li><strong>Chat</strong> - is a specific type of input designed for conversational AI models, which aims to initiate or guide a dialogue. This can be in the form of a question, statement, or command that simulates human-like interaction, prompting the AI to produce a conversational response for engagement.</li>
+</ul>
+<p><strong>Important:</strong> To successfully call and utilize prompts, datasources, or agents from ELITEA HUB, it is essential that these items are tagged with <code>code</code> in ELITEA HUB. This tag ensures that the resources are correctly categorized and accessible. Ensure that the <code>code</code> tag is applied to relevant prompts, datasources, and agents to enable their proper functionality within the ELITEA ecosystem.</p>
+<p><strong>Additional Interaction Features:</strong></p>
+<ul>
+<li><strong>Auto scroll to bottom</strong>: This option can be toggled on or off to automatically scroll to the bottom of the output as it is being generated. This feature is helpful during long outputs to keep the most recent content visible.</li>
+<li><strong>Reload Alita Code Settings</strong>: This option allows to reload and update Alita Code settings.</li>
+<li><strong>Stop generating</strong>: To stop generation of output.</li>
+</ul>
+<p><strong>Post-Output Actions:</strong></p>
+<ul>
+<li><strong>Continue the Dialogue</strong>: To keep the conversation going, simply type your next question or command in the chat box and click the <strong>Send</strong> icon.</li>
+<li><strong>Copy the Output</strong>: Click the <strong>Copy to clipboard</strong> icon to copy the generated text for use elsewhere.</li>
+<li><strong>Delete Output</strong>: To remove the current output from the chat, click the <strong>Delete</strong> icon.</li>
+<li><strong>Purge Chat History</strong>: For a fresh start or to clear sensitive data, click the <strong>Clean</strong> icon to erase the chat history.</li>
+<li><strong>Specialized Download Options</strong> for <strong>Tabular</strong> outputs. When the Gen AI generates output in a tabular format, additional options become available to manage and utilize this structured data:<ul>
+<li><strong>Download as xlsx</strong>: Allows you to save the tabular output directly in an Excel spreadsheet format, facilitating easy data manipulation and analysis.</li>
+<li><strong>Copy as markdown</strong>: Enables copying the tabular output in markdown format, suitable for use in markdown-supported environments like GitHub or blogging platforms.</li>
+<li><strong>Copy as html</strong>: Permits copying the tabular output in HTML format, ideal for integration into web pages or emails, preserving the formatting and structure.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="VS-AlitaChat_Buttons" src="../../../img/user-guide/extensions/chat/VS-AlitaChat_Buttons.png" /></p>
+<h4 id="prompts">Prompts</h4>
+<p>To call and use <strong>Prompts</strong> from ELITEA HUB:</p>
+<ol>
+<li>Open the Alita Code Chat.</li>
+<li>Type <code>/</code> in the chat box.</li>
+<li>Select the prompt that you want to run.<ul>
+<li><strong>Version Selection</strong>: Prompts may have multiple versions. Ensure you select the appropriate version from the dropdown list as different versions may vary in functionality and variables.</li>
+<li><strong>Variable Management</strong>: If the selected prompt version includes variables, a dialog will appear allowing you to input or modify the values. Prepopulated values might be present, or you may need to provide your own. Ensure that all required variables are correctly filled to execute the prompt accurately. You can adjust or update variable values at any time by clicking the <strong>Settings</strong> icon.</li>
+</ul>
+</li>
+<li>Once all instructions for the prompt are set in the <strong>Context</strong> and/or <strong>Messages</strong> sections, you can start the execution by typing your text (be it a question or a command)  into the chat box. Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the <strong>Send</strong> icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.</li>
+<li>If you need to start a fresh conversation or prompt, simply click the <strong>X</strong> icon to clear the current setup and begin anew.</li>
+</ol>
+<p><img alt="VS-AlitaChat_Prompt_Select" src="../../../img/user-guide/extensions/chat/VS-AlitaChat_Prompt_Select.png" /></p>
+<p><img alt="VS-AlitaChat_Prompt_Variable" src="../../../img/user-guide/extensions/chat/VS-AlitaChat_Prompt_Variable.png" /></p>
+<h4 id="datasources">Datasources</h4>
+<p>To call and use <strong>Datasources</strong> from ELITEA HUB:</p>
+<ol>
+<li>Open the Alita Code Chat.</li>
+<li>Type <code>#</code> in the chat box.</li>
+<li>Select the datasource that you want to run.</li>
+<li>Start conversation in the form of a question, statement, or command that simulates human-like <strong>interaction</strong>.</li>
+<li>If you need to start a fresh conversation or datasource, simply click the <strong>X</strong> icon to clear the current setup and begin anew.</li>
+</ol>
+<p><img alt="VS-AlitaChat_Datasource" src="../../../img/user-guide/extensions/chat/VS-AlitaChat_Datasource.png" /></p>
+<h4 id="agents">Agents</h4>
+<p>To call and use <strong>Agents</strong> from ELITEA HUB:</p>
+<ol>
+<li>Open the Alita Code Chat.</li>
+<li>Type <code>@</code> in the chat box.</li>
+<li>Select the prompt that you want to run.<ul>
+<li><strong>Version Selection</strong>: Agents may have multiple versions. Ensure you select the appropriate version from the dropdown list as different versions may vary in functionality and variables.</li>
+<li><strong>Variable Management</strong>: If the selected agent version includes variables, a dialog will appear allowing you to input or modify the values. Prepopulated values might be present, or you may need to provide your own. Ensure that all required variables are correctly filled to execute the agent accurately. You can adjust or update variable values at any time by clicking the <strong>Settings</strong> icon.</li>
+</ul>
+</li>
+<li>Start conversation in the form of a question, statement, or command that simulates human-like <strong>interaction</strong>.</li>
+<li>If you need to start a fresh conversation or application, simply click the <strong>X</strong> icon to clear the current setup and begin anew.</li>
+</ol>
+<p><img alt="VS-AlitaChat_Agent" src="../../../img/user-guide/extensions/chat/VS-AlitaChat_Agent.png" /></p>
+<h4 id="chat">Chat</h4>
+<ol>
+<li>Open the AlitaCodeChat.</li>
+<li>Start conversation in the form of a question, statement, or command that simulates human-like <strong>interaction</strong>.</li>
+</ol>
+<h2 id="alitacodechat-for-intellij">AlitaCodeChat for IntelliJ</h2>
+<p>AlitaCodeChat is an IntelliJ plugin to work as chatting companion using AlitaCode.</p>
+<h3 id="installation_1">Installation</h3>
+<p>Getting started with AlitaCodeChat is straightforward:</p>
+<ol>
+<li>Navigate to the <strong>Settings</strong>→<strong>Plugins</strong> section in IntelliJ.</li>
+<li>Search for <strong>AlitaCodeChat</strong> in the Marketplace and click <strong>Install</strong>.</li>
+</ol>
+<p><img alt="IJ-AlitaChat_Install" src="../../../img/user-guide/extensions/chat/IJ-AlitaChat_Install.png" /></p>
+<p>Alita Chat for IntelliJ offers two distinct modes to cater to different user preferences and integration styles. Each mode is designed to provide a seamless user experience while aligning with specific design philosophies:</p>
+<ul>
+<li><strong>Native Mode</strong>: This mode is tailored to blend seamlessly with the IntelliJ environment. It adheres to the native design and style guidelines of IntelliJ, ensuring that the interface feels familiar and integrated for users who prefer consistency with their development environment.</li>
+<li><strong>React Mode</strong>: Designed to echo the aesthetics and usability of ELITEA, this mode brings the distinctive look and feel of ELITEA's design language into IntelliJ. It's ideal for users who enjoy the ELITEA interface and wish to have a similar user experience within the IntelliJ platform.</li>
+</ul>
+<p>Both modes are crafted to provide a robust and intuitive chat interface, allowing users to choose according to their design preference and familiarity.</p>
+<p><strong>Note</strong>:</p>
+<ul>
+<li>After successful installation AlitaCodeChat shortcut will be added to right menu of IntelliJ.</li>
+<li>To ensure seamless integration and functionality, the Alita Code and AlitaCodeChat plugins must be installed with matching versions. Please verify that both plugins are updated to the same version to avoid compatibility issues.</li>
+<li>To successfully call and utilize prompts, datasources, or agents from ELITEA HUB, it is essential that these items are tagged with <code>code</code> in ELITEA HUB. This tag ensures that the resources are correctly categorized and accessible. Ensure that the <code>code</code> tag is applied to relevant prompts, datasources, and applications to enable their proper functionality within the ELITEA ecosystem.</li>
+</ul>
+<h3 id="alitacodechat-usage">AlitaCodeChat Usage</h3>
+<h4 id="prompts_1">Prompts</h4>
+<p>To call and use <strong>Prompts</strong> from ELITEA HUB:</p>
+<ol>
+<li>Open the AlitaCodeChat.</li>
+<li>Select the <strong>React</strong> or <strong>Native</strong> tab.</li>
+<li>Type <code>/</code> in the chat box.</li>
+<li>Select the prompt that you want to run.<ul>
+<li><strong>Version Selection</strong>: Prompts may have multiple versions. Ensure you select the appropriate version from the dropdown list as different versions may vary in functionality and variables.</li>
+<li><strong>Variable Management</strong>: If the selected prompt version includes variables, a dialog will appear allowing you to input or modify the values. Prepopulated values might be present, or you may need to provide your own. Ensure that all required variables are correctly filled to execute the prompt accurately. You can adjust or update variable values at any time by clicking the <strong>Settings</strong> icon.</li>
+</ul>
+</li>
+<li>Once all instructions for the prompt are set in the <strong>Context</strong> and/or <strong>Messages</strong> sections, you can start the execution by typing your text (be it a question or a command)  into the chat box. Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the <strong>Send</strong> icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.</li>
+<li>If you need to start a fresh conversation or prompt, simply click the <strong>X</strong> icon to clear the current setup and begin anew.</li>
+</ol>
+<p><img alt="IJ-AlitaChat_Prompt_Select" src="../../../img/user-guide/extensions/chat/IJ-AlitaChat_Prompt_Select.png" /></p>
+<p><img alt="IJ-AlitaChat_Prompt_Variable" src="../../../img/user-guide/extensions/chat/IJ-AlitaChat_Prompt_Variable.png" /></p>
+<h4 id="datasources_1">Datasources</h4>
+<p>To call and use <strong>Datasources</strong> from ELITEA HUB:</p>
+<ol>
+<li>Open the AlitaCodeChat.</li>
+<li>Select the <strong>React</strong> or <strong>Native</strong> tab.</li>
+<li>Type <code>#</code> in the chat box.</li>
+<li>Select the datasource that you want to run.</li>
+<li>Start conversation in the form of a question, statement, or command that simulates human-like <strong>interaction</strong>.</li>
+<li>If you need to start a fresh conversation or datasource, simply click the <strong>X</strong> icon to clear the current setup and begin anew.</li>
+</ol>
+<p><img alt="IJ-AlitaChat_Datasource" src="../../../img/user-guide/extensions/chat/IJ-AlitaChat_Datasource.png" /></p>
+<h4 id="agents_1">Agents</h4>
+<p>To call and use <strong>Agents</strong> from ELITEA HUB:</p>
+<ol>
+<li>Open the AlitaCodeChat.</li>
+<li>Select the <strong>React</strong> tab.</li>
+<li>Type <code>@</code> in the chat box.</li>
+<li>Select the agent that you want to run.<ul>
+<li><strong>Version Selection</strong>: Agents may have multiple versions. Ensure you select the appropriate version from the dropdown list as different versions may vary in functionality and variables.</li>
+<li><strong>Variable Management</strong>: If the selected agent version includes variables, a dialog will appear allowing you to input or modify the values. Prepopulated values might be present, or you may need to provide your own. Ensure that all required variables are correctly filled to execute the agent accurately. You can adjust or update variable values at any time by clicking the <strong>Settings</strong> icon.</li>
+</ul>
+</li>
+<li>Start conversation in the form of a question, statement, or command that simulates human-like <strong>interaction</strong>.</li>
+<li>If you need to start a fresh conversation or application, simply click the <strong>X</strong> icon to clear the current setup and begin anew.</li>
+</ol>
+<p><img alt="IJ-AlitaChat_Agent" src="../../../img/user-guide/extensions/chat/IJ-AlitaChat_Agent.png" /></p>
+<h4 id="chat_1">Chat</h4>
+<ol>
+<li>Open the AlitaCodeChat.</li>
+<li>Select either the <strong>Native</strong> or <strong>React</strong> tab.</li>
+<li>Start conversation in the form of a question, statement, or command that simulates human-like <strong>interaction</strong>.</li>
+</ol>
+<p><img alt="IJ-AlitaChat_Native" src="../../../img/user-guide/extensions/chat/IJ-AlitaChat_Native.png" /></p>
+<h4 id="additional-interaction-features">Additional Interaction Features</h4>
+<ul>
+<li><strong>Auto scroll to bottom</strong>: This option can be toggled on or off to automatically scroll to the bottom of the output as it is being generated. This feature is helpful during long outputs to keep the most recent content visible.</li>
+<li><strong>Reload Alita Code Settings</strong>: This option allows to reload and update Alita Code settings.</li>
+<li><strong>Stop generating</strong>: To stop generation of output.</li>
+</ul>
+<p><strong>Post-Output Actions:</strong></p>
+<ul>
+<li><strong>Continue the Dialogue</strong>: To keep the conversation going, simply type your next question or command in the chat box and click the <strong>Send</strong> icon.</li>
+<li><strong>Copy the Output</strong>: Click the <strong>Copy to clipboard</strong> icon to copy the generated text for use elsewhere.</li>
+<li><strong>Delete Output</strong>: To remove the current output from the chat, click the <strong>Delete</strong> icon.</li>
+<li><strong>Purge Chat History</strong>: For a fresh start or to clear sensitive data, click the <strong>Clean</strong> icon to erase the chat history.</li>
+<li><strong>Specialized Download Options</strong> for <strong>Tabular</strong> outputs. When the Gen AI generates output in a tabular format, additional options become available to manage and utilize this structured data:<ul>
+<li><strong>Download as xlsx</strong>: Allows you to save the tabular output directly in an Excel spreadsheet format, facilitating easy data manipulation and analysis.</li>
+<li><strong>Copy as markdown</strong>: Enables copying the tabular output in markdown format, suitable for use in markdown-supported environments like GitHub or blogging platforms.</li>
+<li><strong>Copy as html</strong>: Permits copying the tabular output in HTML format, ideal for integration into web pages or emails, preserving the formatting and structure.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="IJ-AlitaChat_Buttons" src="../../../img/user-guide/extensions/chat/IJ-AlitaChat_Buttons.png" /> </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../alita-code/" class="btn btn-neutral float-left" title="Alita Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../manuals/alita-dial/" class="btn btn-neutral float-right" title="ELITEA and EPAM AI DIAL">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../alita-code/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../manuals/alita-dial/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

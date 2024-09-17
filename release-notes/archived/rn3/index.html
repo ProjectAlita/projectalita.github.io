@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/release-notes/archived/rn3/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>RN 1.1.0 - ELITEA Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "RN 1.1.0";
+        var mkdocs_page_input_path = "release-notes/archived/rn3.md";
+        var mkdocs_page_url = "/release-notes/archived/rn3/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> ELITEA Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Release Notes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../rn_current/">RN 1.3.0</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Archive</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../rn4/">RN 1.2.0</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">RN 1.1.0</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#information">Information</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#changed-features">Changed Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#known-issues">Known Issues</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fixed-issues">Fixed Issues</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../rn2/">RN 1.0.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../rn1/">RN 1.0.0</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../user-guide/intro/">Get Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../user-guide/chat/">Chat</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Prompts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../user-guide/prompts/prompts/">Prompts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../user-guide/prompts/prompts-examples/">Prompts Examples and Materials</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../user-guide/datasources/">Datasources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Agents</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../user-guide/agents/agents/">Agents</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../user-guide/agents/agents-examples/">Agents Examples and Materials</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../user-guide/collections/">Collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">ELITEA Extensions</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../user-guide/extensions/alita-code/">Alita Code</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../user-guide/extensions/alita-chat/">Alita Code Chat</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manuals</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../manuals/alita-dial/">ELITEA and EPAM AI DIAL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../manuals/creating-prompts/">QA - Prompting and Sharing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../manuals/roles/">Roles Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FAQs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../faqs/">Frequently Asked Questions</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">ELITEA Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Release Notes</li>
+          <li class="breadcrumb-item">Archive</li>
+      <li class="breadcrumb-item active">RN 1.1.0</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="elitea-release-notes">ELITEA Release Notes</h1>
+<h2 id="introduction">Introduction</h2>
+<p><strong>ELITEA</strong> is an innovative web application that revolutionizes how you interact with prompts. Designed as a dynamic workspace, it empowers users to create, organize, and collaborate on prompts like never before.</p>
+<h2 id="information">Information</h2>
+<ul>
+<li><strong>Release Version</strong>: 1.1.0</li>
+<li><strong>Released on</strong>: 31-May-2024</li>
+<li><strong>Access</strong>: <a href="https://alita.lab.epam.com">ELITEA Platform</a>. <strong>Note</strong>: You need to enable Epam VPN to access ELITEA.</li>
+<li><strong>User Guide</strong>: <a href="../user-guide/intro.md">ELITEA - User Guide</a> </li>
+</ul>
+<h2 id="new-features">New Features</h2>
+<ul>
+<li><strong>Agents Framework</strong>: Introducing a powerful new feature, Agents, which integrates prompts, datasources, and external toolkits into a unified mechanism. This allows for seamless decision-making and action-taking processes, such as searching on Google or creating Jira tickets directly through the ELITEA platform.</li>
+<li><strong>Toolkits Available for Agents</strong>:<ul>
+<li><strong>Prompt Toolkit</strong>: Leverage pre-configured prompts from your ELITEA project to ensure consistent and accurate interactions.</li>
+<li><strong>Datasource Toolkit</strong>: Access structured data from pre-configured datasources, enhancing the Agent's ability to process and analyze information.</li>
+<li><strong>OpenAPI Toolkit</strong>: Integrate with OpenAPI-compliant APIs to expand the Agent's external functionalities and interactions.</li>
+<li><strong>Browser Toolkit</strong>: Equip your Agent with search engine capabilities, enabling access to a vast array of online information.</li>
+<li><strong>Confluence Toolkit</strong>: Integrate content from Confluence to enrich the Agent's knowledge base and improve response accuracy.</li>
+<li><strong>GitHub Toolkit</strong>: Allow your Agent to interact directly with GitHub repositories, enhancing version control and development processes.</li>
+<li><strong>GitLab Toolkit</strong>: Enable direct interaction with GitLab repositories, providing specific project data to support informed decisions.</li>
+<li><strong>Jira Toolkit</strong>: Manage Jira issues and projects directly from ELITEA, streamlining project management and enhancing productivity.</li>
+<li><strong>Agent Toolkit</strong>: Incorporate other pre-configured agents, enabling complex, layered interactions and processes within your projects.</li>
+</ul>
+</li>
+<li><strong>Monitoring Enhancements</strong>: Enhanced monitoring capabilities allow users to track usage statistics with selectable metrics and timeframes, providing deeper insights into application performance and usage patterns.</li>
+</ul>
+<h2 id="changed-features">Changed Features</h2>
+<ul>
+<li><strong>Brand Transition</strong>: Alita has been rebranded to <strong>ELITEA</strong>. This change reflects our commitment to evolving and enhancing the platform's capabilities, aligning with our vision to provide a more elite and refined experience for our users. All references to Alita in the platform, documentation, and related materials have been updated to reflect this new branding.</li>
+</ul>
+<h2 id="known-issues">Known Issues</h2>
+<ul>
+<li><strong>Database Corruption During Indexing</strong>: There is a risk of database corruption if a user searches in one dataset while another is indexing. <strong>Workaround</strong>: Create a new datasource and reindex the data within it to avoid this issue.</li>
+<li><strong>Prompt Saving Error</strong>: Prompts cannot be saved if the <strong>Name</strong> field is filled using a copy/paste action that includes leading spaces.</li>
+<li><strong>Datasources - GIT source Authentication Issue</strong>: Authentication using SSH for Git source type in Datasource fails. <strong>Workaround</strong>: Use the HTTPS option with Username and Password for successful authentication.</li>
+<li><strong>Agent: Confluence tool - Token Authentication type</strong>: Authentication using Token for Confluence tool in Agents fails. <strong>Workaround</strong>: Use the API key option for successful authentication.</li>
+</ul>
+<h2 id="fixed-issues">Fixed Issues</h2>
+<ul>
+<li><strong>Deduplication Enhancements</strong>: Implemented several fixes and improvements to the deduplication functionality, enhancing data integrity and operational efficiency.</li>
+<li><strong>Delayed File Finder in ELITEA HUB</strong>: Users may experience delays when accessing the file finder in ELITEA HUB.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../rn4/" class="btn btn-neutral float-left" title="RN 1.2.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rn2/" class="btn btn-neutral float-right" title="RN 1.0.1">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../rn4/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../rn2/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

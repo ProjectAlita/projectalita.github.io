@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/manuals/alita-dial/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>ELITEA and EPAM AI DIAL - ELITEA Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ELITEA and EPAM AI DIAL";
+        var mkdocs_page_input_path = "manuals/alita-dial.md";
+        var mkdocs_page_url = "/manuals/alita-dial/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> ELITEA Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Release Notes</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn_current/">RN 1.3.0</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Archive</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release-notes/archived/rn4/">RN 1.2.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release-notes/archived/rn3/">RN 1.1.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release-notes/archived/rn2/">RN 1.0.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release-notes/archived/rn1/">RN 1.0.0</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/intro/">Get Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/chat/">Chat</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Prompts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/prompts/prompts/">Prompts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/prompts/prompts-examples/">Prompts Examples and Materials</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/datasources/">Datasources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Agents</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/agents/agents/">Agents</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/agents/agents-examples/">Agents Examples and Materials</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/collections/">Collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">ELITEA Extensions</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/extensions/alita-code/">Alita Code</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/extensions/alita-chat/">Alita Code Chat</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manuals</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ELITEA and EPAM AI DIAL</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#export-prompts-from-elitea">Export Prompts from ELITEA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exporting-the-prompt-for-ai-dial">Exporting the Prompt for AI DIAL:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#import-prompts-to-epam-ai-dial">Import Prompts to EPAM AI Dial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#importing-the-prompt-into-ai-dial">Importing the Prompt into AI Dial:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#export-prompts-from-epam-ai-dial">Export Prompts from EPAM AI Dial</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#import-prompts-to-elitea">Import Prompts to ELITEA</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exporting-and-importing-collections-from-elitea-to-epam-ai-dial">Exporting and Importing Collections from ELITEA to EPAM AI Dial</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#useful-links">Useful Links</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../creating-prompts/">QA - Prompting and Sharing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles Management</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">FAQs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../faqs/">Frequently Asked Questions</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">ELITEA Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Manuals</li>
+      <li class="breadcrumb-item active">ELITEA and EPAM AI DIAL</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="interoperability-guide-elitea-and-epam-ai-dial">Interoperability Guide: ELITEA and EPAM AI Dial</h1>
+<p>Welcome to the user-friendly manual on using <a href="https://alita.lab.epam.com">ELITEA</a> and <a href="https://chat.lab.epam.com/">EPAM AI Dial</a> seamlessly together. This guide walks you through the steps to export from one platform and import into another, ensuring a hassle-free interoperation between ELITEA and EPAM AI Dial.</p>
+<h2 id="export-prompts-from-elitea">Export Prompts from ELITEA</h2>
+<p><strong>Exporting a prompt</strong> in ELITEA enables you to use it on different platforms including EPAM AI Dial. Here’s how to do it:</p>
+<h3 id="exporting-the-prompt-for-ai-dial">Exporting the Prompt for AI DIAL:</h3>
+<ol>
+<li><strong>Start the Export</strong>: Click on the <strong>Export prompt</strong> icon.</li>
+<li><strong>Choose Format</strong>: Select the <strong><code>[DIAL] format</code></strong> format when prompted. This format is specially designed for compatibility with EPAM AI Dial.</li>
+<li><strong>Download</strong>: After selecting the format, the file will be downloaded automatically to your device in JSON format.</li>
+</ol>
+<p><img alt="Prompt-Export_Prompt_Dial" src="../../img/manuals/Prompt-Export_Prompt_Dial.png" /></p>
+<h3 id="import-prompts-to-epam-ai-dial">Import Prompts to EPAM AI Dial</h3>
+<p>Once you have the JSON file from ELITEA, you can easily import it into AI Dial.</p>
+<h3 id="importing-the-prompt-into-ai-dial">Importing the Prompt into AI Dial:</h3>
+<ol>
+<li><strong>Begin Import</strong>: Click on the <strong>Import prompts</strong> icon within the AI Dial platform.</li>
+<li><strong>Select File</strong>: Browse your device and select the JSON file you exported from ELITEA.</li>
+<li><strong>Complete Import</strong>: The platform will automatically add the prompt to the <strong>Prompts</strong> section.</li>
+<li><strong>Usage</strong>: You can now select and use the prompt within AI Dial.</li>
+</ol>
+<p><img alt="Prompt-Import_Dial" src="../../img/manuals/Prompt-Import_Dial.png" /></p>
+<h2 id="export-prompts-from-epam-ai-dial">Export Prompts from EPAM AI Dial</h2>
+<p>If you have developed or customized prompts in EPAM AI Dial, you can easily export them for use in ELITEA.</p>
+<ol>
+<li><strong>Prompt Selection</strong>: Identify and select the prompt you wish to export.</li>
+<li><strong>Export</strong>: Click the <strong><code>...</code></strong> icon next to your selected prompt and choose the <strong>Export</strong> option.</li>
+<li><strong>File Download</strong>: The prompt will be exported and downloaded in JSON format, ready for ELITEA.</li>
+</ol>
+<p><img alt="Dial-Prompt_Export" src="../../img/manuals/Dial-Prompt_Export.png" /></p>
+<h3 id="import-prompts-to-elitea">Import Prompts to ELITEA</h3>
+<p>To use the prompts created or exported from EPAM AI Dial in ELITEA, follow these simple steps.</p>
+<ol>
+<li><strong>Initiate Import</strong>: Select the <strong>Import</strong> option within ELITEA.</li>
+<li><strong>Choose File</strong>: Browse and select the exported JSON prompt file.</li>
+<li><strong>Complete Process</strong>: The prompt will be added under the <strong>Prompts</strong> page in ELITEA.</li>
+<li><strong>Use Prompt</strong>: You can now access and utilize the imported prompt.</li>
+</ol>
+<p><img alt="Prompt-Import_Alita" src="../../img/manuals/Prompt-Import_Alita.png" /></p>
+<h2 id="exporting-and-importing-collections-from-elitea-to-epam-ai-dial">Exporting and Importing Collections from ELITEA to EPAM AI Dial</h2>
+<p>You can also export entire collections from ELITEA and import them into EPAM AI Dial for broader prompt management.</p>
+<ol>
+<li><strong>Export Collection</strong>: In ELITEA, select the collection you wish to export and choose the <strong><code>Export Collection</code></strong> option. Select the <strong><code>[DIAL] format</code></strong> for optimal compatibility.</li>
+<li><strong>Download Collection</strong>: The collection, encompassing multiple prompts, will be exported as a JSON file and automatically downloaded to your device.</li>
+<li><strong>Import into AI Dial</strong>: Upon importing the collection file into EPAM AI Dial, please note that the included prompts will be added as separate items, not as a unified folder.</li>
+</ol>
+<p>This feature enhances workflow efficiency by allowing bulk transferring of prompts between the platforms, albeit without retaining the folder structure during import into AI Dial.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li><strong>File Format</strong>: Ensure the prompt file is in JSON format. Other formats won’t be processed.</li>
+<li><strong>Template Compatibility</strong>: ELITEA supports <a href="https://jinja.palletsprojects.com/en/3.1.x/">Jinja</a> template. Make sure the content and variables in your prompt adhere to this format, especially avoiding spaces in variable names.</li>
+<li><strong>File Structure</strong>: If you encounter any unrecognized errors, open the exported JSON file in a text editor. Validate its structure and formatting against the Jinja template requirements, making any necessary adjustments.</li>
+</ul>
+<p>By following these detailed steps, you should be able to smoothly export and import prompts and collections between ELITEA and EPAM AI Dial, enhancing your productivity and efficiency in creating and managing prompts.</p>
+<h2 id="useful-links">Useful Links</h2>
+<ul>
+<li><a href="../../user-guide/intro/">ELITEA - User Guide</a></li>
+<li><a href="../../release-notes/rn_current/">ELITEA - Release Notes</a></li>
+<li><a href="https://docs.epam-rail.com/user-guide">Epam AI Dial - User Guide</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../user-guide/extensions/alita-chat/" class="btn btn-neutral float-left" title="Alita Code Chat"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../creating-prompts/" class="btn btn-neutral float-right" title="QA - Prompting and Sharing">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../user-guide/extensions/alita-chat/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../creating-prompts/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
