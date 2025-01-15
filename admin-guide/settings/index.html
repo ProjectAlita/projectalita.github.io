@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/admin-guide/settings/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    
+    <title>Settings - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../intro/">Get Started</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Settings</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../chat/">Chat</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Prompts</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../prompts/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../prompts/prompts-examples/">Prompts Examples and Materials</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../datasources/">Datasources</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../agents/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents/agents-examples/">Agents Examples and Materials</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../collections/">Collections</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../user-guide/public-project/">Public Project Guide</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../user-guide/integrations/">Integrations Guide</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manuals <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../manuals/alita-dial/">ELITEA and EPAM AI DIAL</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../manuals/creating-prompts/">QA - Prompting and Sharing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../manuals/roles/">Roles Management</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../faqs/">Frequently Asked Questions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../intro/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../chat/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#settings">Settings</a></li>
+            <li class="second-level"><a href="#profile">Profile</a></li>
+                
+            <li class="second-level"><a href="#monitoring">Monitoring</a></li>
+                
+                <li class="third-level"><a href="#configuration-options">Configuration Options</a></li>
+                <li class="third-level"><a href="#key-metrics">Key Metrics</a></li>
+                <li class="third-level"><a href="#adoption-and-usage">Adoption and Usage</a></li>
+                <li class="third-level"><a href="#acceptance-rate">Acceptance Rate</a></li>
+                <li class="third-level"><a href="#sentiments">Sentiments</a></li>
+                <li class="third-level"><a href="#accuracy">Accuracy</a></li>
+                <li class="third-level"><a href="#prompt-topics">Prompt Topics</a></li>
+                <li class="third-level"><a href="#topics-summary">Topics Summary</a></li>
+            <li class="second-level"><a href="#configuration">Configuration</a></li>
+                
+            <li class="second-level"><a href="#deployments">Deployments</a></li>
+                
+                <li class="third-level"><a href="#creating-a-new-deployment-for-epam-ai-dial">Creating a New Deployment for EPAM AI Dial</a></li>
+            <li class="second-level"><a href="#integrations">Integrations</a></li>
+                
+                <li class="third-level"><a href="#confluence-integration-setup">Confluence Integration Setup</a></li>
+                <li class="third-level"><a href="#github-integration-setup">GitHub Integration Setup</a></li>
+                <li class="third-level"><a href="#jira-integration-setup">Jira Integration Setup</a></li>
+                <li class="third-level"><a href="#testrail-integration-setup">TestRail Integration Setup</a></li>
+            <li class="second-level"><a href="#projects">Projects</a></li>
+                
+                <li class="third-level"><a href="#groups">Groups</a></li>
+            <li class="second-level"><a href="#secrets">Secrets</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="settings">Settings</h1>
+<p>The <strong>Settings</strong> is designed to offer you a centralized space to manage vital aspects of your account and configurations. This centralized space is accessible by clicking on your avatar located at the top right corner of the page.</p>
+<p>The <strong>Settings</strong> consists of several tabs and settings each dedicated to specific functionalities:</p>
+<ul>
+<li><strong>Profile</strong>: Customize your user profile within ELITEA.</li>
+<li><strong>Monitoring</strong>: Keep track of usage statistics by selecting different metrics and timeframes.</li>
+<li><strong>Configuration</strong>: Manage essential technical settings crucial for the smooth operation of ELITEA's features like Alita Code or Alita Code Chat.</li>
+<li><strong>Deployments</strong>: Handle the management and launching of AI models or services linked to your ELITEA project.</li>
+<li><strong>Projects</strong>: Manage users within project. This tab is only available for the user within admin permissions within the project.</li>
+<li><strong>Theme</strong>: Switch between <strong>Dark</strong> and <strong>Light</strong> theme for the whole application.</li>
+<li><strong>Log out</strong>: Securely log out from the ELITEA.</li>
+</ul>
+<p><strong>Navigation</strong>:</p>
+<p>To navigate through the <strong>Settings</strong> menus, follow these steps:</p>
+<ol>
+<li>Click on the <strong>Your Avatar</strong> icon located at the top right corner of the page to open the <strong>Sidebar</strong> menu.</li>
+<li>Select the desired tab by clicking on its name to navigate to that specific section.</li>
+</ol>
+<h2 id="profile">Profile</h2>
+<p>In the <strong>Profile</strong>, you’re presented with options to personalize your account within ELITEA.</p>
+<p><strong>About me</strong> - fill in or update your personal details to ensure your ELITEA profile remains current. <strong>Note</strong>: Markdown is supported.</p>
+<p><img alt="Intro-Settings_Profile" src="../../img/admin-guide/intro/Intro-Settings_Profile.png" /></p>
+<h2 id="monitoring">Monitoring</h2>
+<p>The <strong>Monitoring</strong> feature in ELITEA is designed to provide a comprehensive overview of the application's usage and performance. This feature is essential for administrators and users who want to gain insights into various aspects of the application, from user engagement to the effectiveness of configured artifacts like prompts, datasources, and agents. By leveraging the detailed charts and statistics available within the Monitoring feature, you can make informed decisions to optimize the performance and user experience of your ELITEA application.</p>
+<p>This section will guide you through the various components of the Monitoring feature, including configuration options, key metrics, adoption and usage statistics, sentiment analysis, accuracy metrics, prompt topics, and topics summary. Each of these components offers valuable insights that can help you understand how the application is being used and how it can be improved.</p>
+<h3 id="configuration-options">Configuration Options</h3>
+<p>At the top of the <strong>Monitoring</strong> page, you have several options and settings to configure the charts and metrics you wish to monitor:</p>
+<ul>
+<li><strong>Projects</strong>: A dropdown lits allowing you to select the project. <strong>Note</strong>: For your Private project, you can only see your private project data. If you have an admin role in another projects, you can select other projects to monitor.</li>
+<li><strong>From and To Date Fields</strong>: These fields are used to select the time period for which you want to see the data.</li>
+<li><strong>Aggregation</strong>: A dropdown list providing options to view aggregated data over different time periods. You can choose from <code>Hour</code>, <code>Day</code>, <code>Week</code>, <code>Two Weeks</code>, <code>Three Weeks</code>, and <code>Month</code> to tailor the data aggregation to your specific needs.</li>
+<li><strong>Type</strong>: A dropdown list allowing you to select among <code>Prompt</code>, <code>Datasource</code>, <code>Agent</code>, and <code>Conversation</code> to focus your monitoring on specific elements.</li>
+<li><strong>Name</strong>: A dropdown list to select specific items by name, such as created prompts, datasources, agents, or conversations.</li>
+<li><strong>Users</strong>: A dropdown list to select which users' data you want to monitor. <strong>Note</strong>: For your private project, you can only see your own user data. If you have an admin role in another project, you can select other users to monitor.</li>
+</ul>
+<p>To apply any changes or selections, click the <strong>Apply</strong> button. Use the <strong>Refresh</strong> button to update the monitoring data based on the latest activities and configurations.</p>
+<h3 id="key-metrics">Key Metrics</h3>
+<p>Below the configuration options, you'll find an overview of key metrics that give you a snapshot of the current state of the system:</p>
+<ul>
+<li><strong>Users</strong>: The total number of users interacting with the ELITEA application.</li>
+<li><strong>Tokens In</strong>: The number of tokens consumed by the ELITEA application.</li>
+<li><strong>Tokens Out</strong>: The number of tokens generated by the ELITEA application.</li>
+<li><strong>Engagement</strong>: The percentage of active users out of all users who logged into ELITEA for the selected period, indicating the level of interaction with the application.</li>
+<li><strong>Acceptance rate</strong>: The percentage of interactions during the selected period where users accepted the generated output by copying, downloading, or saving it, reflecting user satisfaction and utility of the results.</li>
+<li><strong>Prompts</strong>: The total number of prompts created.</li>
+<li><strong>Agents</strong>: The total number of agents created.</li>
+<li><strong>Conversations</strong>: The total number of conversations created.</li>
+</ul>
+<p>These metrics are accompanied by a date range selector, allowing you to filter the data for a specific period.</p>
+<p><img alt="Intro-Settings_Monitoring(Part1)" src="../../img/admin-guide/intro/Intro-Settings_Monitoring%28Part1%29.png" /></p>
+<h3 id="adoption-and-usage">Adoption and Usage</h3>
+<p>Below the key metrics, you'll find the <strong>Adoption and Usage</strong> section, which includes:</p>
+<ul>
+<li><strong>Active Users</strong>: A bar chart displaying the number of active users over time.</li>
+<li><strong>Token Usage</strong>: A line chart showing the tokens consumed (In) and generated (Out) over time.</li>
+</ul>
+<p>These charts provide insights into user engagement and the application's token economy.</p>
+<h3 id="acceptance-rate">Acceptance Rate</h3>
+<p>The <strong>Acceptance Rate</strong> section provides a comprehensive view of user interactions with the ELITEA application, focusing on how often users accept the generated outputs. This section includes visualizations that help you understand user satisfaction and the effectiveness of the system's responses.</p>
+<p><strong>Acceptance Rate Chart</strong></p>
+<p>The Acceptance Rate Chart displays the number of accepted and not accepted interactions for the selected period and filter options. This chart helps you assess how frequently users find the generated outputs useful enough to accept by copying, downloading, or saving them.</p>
+<ul>
+<li><strong>Accepted Interactions</strong>: This metric shows the count of interactions where user(s) have accepted the generated output, indicating satisfaction and utility.</li>
+<li><strong>Not Accepted Interactions</strong>: This metric reflects the number of interactions where user(s) did not accept the output, suggesting areas for potential improvement in response quality.</li>
+</ul>
+<p>By analyzing the Acceptance Rate Chart, you can gain insights into user satisfaction levels and identify opportunities to enhance the effectiveness of the ELITEA application, ultimately improving the overall user experience.</p>
+<h3 id="sentiments">Sentiments</h3>
+<p>The <strong>Sentiments</strong> section provides a visual representation of the emotional tone of both user inputs and the outputs generated by LLMs. Understanding sentiment is crucial for tailoring responses to better meet user needs and improve overall interaction quality.</p>
+<h4 id="sentiment-analysis-overview">Sentiment Analysis Overview</h4>
+<p>Sentiment analysis categorizes text into three primary emotional states:</p>
+<ul>
+<li><strong>Positive</strong>: Indicates a favorable or happy emotional tone.</li>
+<li><strong>Negative</strong>: Indicates an unfavorable or unhappy emotional tone.</li>
+<li><strong>Neutral</strong>: Indicates a neutral or indifferent emotional tone.</li>
+</ul>
+<p>ELITEA performs sentiment analysis on user inputs to gauge the user's emotional state. This capability is particularly important for providing high-quality customer service, as the LLM can adjust its response tone and content based on the user's emotions.</p>
+<h4 id="visual-representation">Visual Representation</h4>
+<p>The <strong>Sentiments</strong> section includes two pie charts that offer a clear visual representation of sentiment distribution:</p>
+<ul>
+<li><strong>Human Input</strong>: This pie chart shows the sentiment distribution of user inputs. It helps you understand how users are feeling when they interact with the LLMs.</li>
+<li><strong>LLM Output</strong>: This pie chart displays the sentiment distribution of LLM's outputs. It helps you ensure that the responses generated by the LLM are appropriate and aligned with user emotions.</li>
+</ul>
+<h4 id="practical-applications">Practical Applications</h4>
+<p>Understanding sentiment can significantly enhance the user experience in several ways:</p>
+<ul>
+<li><strong>Customer Service</strong>: By analyzing the sentiment of user inputs, LLMs can adjust its responses to be more empathetic and supportive, thereby improving customer satisfaction.</li>
+<li><strong>User Engagement</strong>: Monitoring sentiment trends over time can help you identify patterns in user behavior and adjust your strategies accordingly.</li>
+<li><strong>Content Moderation</strong>: Sentiment analysis can be used to flag potentially harmful or inappropriate content, ensuring a safer and more positive interaction environment.</li>
+</ul>
+<p><img alt="Intro-Settings_Monitoring(Part2)" src="../../img/admin-guide/intro/Intro-Settings_Monitoring%28Part2%29.png" /></p>
+<h3 id="accuracy">Accuracy</h3>
+<p>The <strong>Accuracy</strong> section provides detailed insights into the performance and reliability of the ELITEA application. This section includes various metrics and visualizations that help you understand how well the system is responding to user inputs and how effective your configured artifacts (prompts, datasources, agents, conversations) are.</p>
+<h4 id="relevance">Relevance</h4>
+<p>The <strong>Relevance</strong> metric is divided into two key lines:</p>
+<ul>
+<li><strong>Input vs Context</strong>: This line measures the relevance of the user's input (question or query) against the context of the artifact (prompt, datasource, agent or conversation). In the ELITEA, "context" refers to the configured instructions for the artifact. A higher relevance score indicates that the user's input closely matches the context, making it easier for the LLM to provide accurate responses.</li>
+<li><strong>Output vs Input</strong>: This line measures the relevance of the generated output by the LLM against the user's input. A higher relevance score here indicates that the output is closely aligned with the user's query, ensuring that the response is appropriate and useful.</li>
+</ul>
+<p><strong>Note</strong>: The maximum value for relevance is 6. The higher the score, the better the relevance, indicating a more accurate and contextually appropriate interaction.</p>
+<h4 id="reliability">Reliability</h4>
+<p>The <strong>Reliability Score</strong> answers the question of whether there is enough context to respond accurately to the user's questions or queries. This metric helps you gauge the confidence level of the LLM's responses. <strong>Note</strong>: The maximum reliability score is 10. A higher score indicates that there is sufficient context to provide a correct and reliable response to the user's query.</p>
+<h4 id="instruction-quality-vs-usage">Instruction Quality vs Usage</h4>
+<p>The <strong>Instruction Quality vs Usage</strong> is a 2x2 matrix that helps you evaluate the effectiveness and utilization of your artifacts (prompts, agents, datasources or conversations):</p>
+<ul>
+<li><strong>Low Quality, Low Usage</strong>: Artifacts in this box have low quality scores and are rarely used. These artifacts may need to be re-evaluated or improved.</li>
+<li><strong>High Quality, Low Usage</strong>: Artifacts in this box have high quality scores but are not frequently used. Efforts should be made to promote these high-quality artifacts to increase their usage.</li>
+<li><strong>High Quality, High Usage</strong>: Artifacts in this box have high quality scores and are frequently used. These are your most effective artifacts and should be maintained.</li>
+<li><strong>Low Quality, High Usage</strong>: Artifacts in this box have low quality scores but are frequently used. These artifacts should be improved in quality or their usage should be reduced in favor of higher-quality alternatives.</li>
+</ul>
+<p><strong>Matrix legend</strong>:</p>
+<ul>
+<li><strong>Quality Score</strong>: The maximum quality score is 4. A higher score indicates better quality.</li>
+<li><strong>Calls</strong>: This metric shows how many times an artifact has been used. Depending on the context (matrix box), a higher number of calls can be either positive or negative.</li>
+</ul>
+<p>By analyzing these metrics, you can make informed decisions to improve the accuracy and reliability of your Alita AI application, ensuring a better user experience.</p>
+<h3 id="prompt-topics">Prompt Topics</h3>
+<p>The <strong>Prompt Topics</strong> section provides an automatic classification of the available artifacts (prompts, datasources, and agents) within the Alita AI application. This section helps you understand the distribution and focus areas of your artifacts, enabling you to identify trends and gaps in your content.</p>
+<h4 id="chart-components">Chart Components</h4>
+<p>The <strong>Prompt Topics</strong> section displays a clustered column chart that categorizes your artifacts by topic. This visual representation allows you to quickly see how many prompts, datasources, or agents are associated with each topic. The clustered column chart includes the following components:</p>
+<ul>
+<li><strong>Items</strong>: Indicates the number of artifacts associated with each topic.</li>
+<li><strong>Topic Name</strong>: Displays the name of each topic, helping you identify the subject matter of your artifacts.</li>
+</ul>
+<h4 id="practical-applications_1">Practical Applications</h4>
+<p>Understanding the distribution of your artifacts across different topics can provide several benefits:</p>
+<ul>
+<li><strong>Content Gaps</strong>: Identify topics with fewer artifacts, indicating potential areas where additional content may be needed.</li>
+<li><strong>Content Focus</strong>: Recognize topics with a high number of artifacts, helping you understand the primary focus areas of your users.</li>
+<li><strong>Resource Allocation</strong>: Allocate resources more effectively by focusing on topics that require more attention or improvement.</li>
+</ul>
+<p><img alt="Intro-Settings_Monitoring(Part3)" src="../../img/admin-guide/intro/Intro-Settings_Monitoring%28Part3%29.png" /></p>
+<p>By leveraging the insights provided by the <strong>Prompt Topics</strong> section, you can ensure that your application covers a comprehensive range of topics, enhancing the overall user experience and effectiveness of the application.</p>
+<h3 id="topics-summary">Topics Summary</h3>
+<p>The <strong>Topics Summary</strong> section provides an automatic classification of user inputs, categorizing the topics that users have queried or questioned about. This section helps you understand user interests and the most frequently discussed topics within ELITEA.</p>
+<h4 id="chart-components_1">Chart Components</h4>
+<p>The <strong>Topics Summary</strong> section displays a clustered column chart that categorizes user inputs by topic. This visual representation allows you to quickly see how many times users have queried information for each topic within a selected timeframe. The clustered column chart includes the following components:</p>
+<ul>
+<li><strong>Items</strong>: Indicates the number of user queries associated with each topic.</li>
+<li><strong>Topic Name</strong>: Displays the name of each topic, helping you identify the subject matter of user queries.</li>
+</ul>
+<h4 id="practical-applications_2">Practical Applications</h4>
+<p>Understanding the distribution of user queries across different topics can provide several benefits:</p>
+<ul>
+<li><strong>User Interests</strong>: Identify the topics that users are most interested in, allowing you to tailor your content and responses to better meet their needs.</li>
+<li><strong>Content Gaps</strong>: Recognize topics with fewer user queries, indicating potential areas where additional content or promotion may be needed.</li>
+<li><strong>Trend Analysis</strong>: Monitor how user interests evolve over time, helping you stay ahead of emerging trends and adjust your strategies accordingly.</li>
+</ul>
+<p>By leveraging the insights provided by the <strong>Topics Summary</strong> section, you can ensure that ELITEA is aligned with user interests, enhancing the overall user experience and effectiveness of the application.</p>
+<p><img alt="Intro-Settings_Monitoring(Part4)" src="../../img/admin-guide/intro/Intro-Settings_Monitoring%28Part4%29.png" /></p>
+<p>The <strong>Monitoring</strong> feature in ELITEA offers a robust set of tools and metrics to help you understand the performance and usage of your application. By utilizing the various charts and statistics available, you can gain valuable insights into user engagement, sentiment, accuracy, and the distribution of topics within your project. These insights are crucial for making data-driven decisions that can enhance the overall user experience and effectiveness of your ELITEA application.</p>
+<p>Whether you are looking to improve customer's experience through sentiment analysis, optimize the relevance and reliability of LLM responses, or identify content gaps and user interests, the Monitoring feature provides the necessary data to guide your efforts. By regularly reviewing and analyzing these metrics, you can ensure that your project remains aligned with user needs and continues to perform at its best.
+By leveraging the comprehensive monitoring capabilities of ELITEA, you can create a more responsive, efficient, and user-friendly application, ultimately leading to higher user satisfaction and better overall performance.</p>
+<h2 id="configuration">Configuration</h2>
+<p>The <strong>Configuration</strong> page serves as the nucleus for managing essential technical settings that enable the smooth operation of ELITEA's features, such as Alita Code or Alita Code Chat. <strong>Note</strong>: The available settings and configurations may vary depending on the project selected. It's important to select the appropriate project from the project dropdown menu to access specific configurations relevant to that project.</p>
+<ul>
+<li><strong>URL</strong> - this is the base web address through which you interact with ELITEA’s services. It's a crucial link for all your API calls or web requests.</li>
+<li><strong>Project ID &amp; Integration UID</strong> - unique identifiers for your project and integration instances. These are required when setting up or customizing ELITEA’s services to work within your specific project environment.</li>
+<li><strong>Integration Options</strong> - allows to select and display available LLMs and Embeddings integrated with your deployments.</li>
+<li><strong>Model Name</strong> - displays the correct name of selected integration option</li>
+<li><strong>Personal Tokens</strong> - access tokens are your key to secure communication with ELITEA's backend. Here, you can generate tokens that authorize your applications or scripts to perform operations on behalf of your account. Treat these tokens with care and keep them confidential.</li>
+</ul>
+<p><strong>To create a token:</strong></p>
+<ol>
+<li>Click the <code>+</code> icon to create a new token.</li>
+<li>Enter a <strong>name</strong> and set an <strong>expiration date</strong> for the token.</li>
+<li>Click <strong>Generate</strong> to create the token.</li>
+<li>Immediately copy and securely store the generated token; it will not be visible again once you close the pop-up window.</li>
+<li>From the Integration Option dropdown list, select the desired LLM model (e.g., gpt-4, gpt-4o, gpt-4-0125-preview, etc.).</li>
+<li>Once the LLM model is selected, the <strong>Download VS Code Settings</strong> and the <strong>Download Jetbrains Settings</strong> icons will appear next to the created token. This allows you to download the configuration files to integrate and configure the ELITEA project with Alita Code extensions on VSCode and IntelliJ respectively. For more information about how to setup it, please refer to the <a href="../user-guide/extensions/alita-code.md">Alita Code Documentation</a>.</li>
+</ol>
+<p><img alt="Intro-Settings_Configuration" src="../../img/admin-guide/intro/Intro-Settings_Configuration.png" /></p>
+<h2 id="deployments">Deployments</h2>
+<p>The <strong>Deployments</strong> page is all about managing and launching AI models or services that you’ve connected to your ELITEA project. <strong>Note</strong>: The available settings and configurations may vary depending on the project selected. It's important to select the appropriate project from the project dropdown menu to access specific configurations relevant to that project.</p>
+<ul>
+<li><strong>Available Deployments</strong> - view a list of current AI deployments, such as AI Dial or Hugging Face, that have been linked to your project. This snapshot gives you quick access to manage these integrations.</li>
+<li><strong>Creating New Deployments</strong> - while the possibility exists to set up new deployments, it’s a process that requires coordination with the ELITEA team. This is to ensure seamless integration and avoid potential conflicts with existing configurations.</li>
+</ul>
+<h4 id="creating-a-new-deployment-for-epam-ai-dial">Creating a New Deployment for EPAM AI Dial</h4>
+<p>To set up a new deployment for EPAM AI Dial within your system, follow these detailed steps:</p>
+<ol>
+<li><strong>Obtain API Key</strong>: <strong>Important</strong>: Before proceeding, you must obtain a separate <a href="https://chat.lab.epam.com/#requestApiKey">API Key</a> from the EPAM DIAL team. This key is essential for authenticating and enabling communication with the AI Dial services.   </li>
+<li><strong>API Key Retrieval</strong>: Once you have received the API Key and any additional required information via email, return to this page to input these details.</li>
+<li><strong>Initiate Deployment Creation</strong>:  Click the <code>+</code> icon to start creating a new deployment.</li>
+<li><strong>Select Deployment Type</strong>: From the list of available deployment types, select <code>AI Dial</code>.</li>
+<li><strong>Configure Deployment Details</strong>: In the configuration window, fill in the following information:<ul>
+<li><strong>Name</strong>: Enter a descriptive name for the deployment. This name will be displayed alongside LLM models configured with this deployment.</li>
+<li><strong>API Base</strong>: For EPAM AI Dial, use <code>https://ai-proxy.lab.epam.com</code> as the API Base.</li>
+<li><strong>Secret API Key</strong>: Paste the API Key that you received from the AI Dial team.</li>
+<li><strong>API Version</strong>: Enter the API version information provided by the AI Dial team.</li>
+</ul>
+</li>
+<li><strong>Add Models to Deployment</strong>:<ul>
+<li>Click the <code>+</code> icon to add one or more models associated with this deployment. For each model, provide the model's name, maximum input tokens, and capabilities.</li>
+<li><strong>Important</strong>: Ensure that you enter the correct model name as used in EPAM AI DIAL. For detailed information on model specifications and configurations, refer to the <a href="https://github.com/epam/ai-dial-core">EPAM AI Dial documentation</a>.</li>
+</ul>
+</li>
+<li>Click <strong>Save</strong> to complete the creation of the deployment.</li>
+</ol>
+<p>By following these steps, you can successfully create and configure a new deployment for EPAM AI Dial, enabling you to leverage advanced  capabilities within your projects.</p>
+<p><img alt="Intro-Settings_Deployments" src="../../img/admin-guide/intro/Intro-Settings_Deployments.png" /></p>
+<h2 id="integrations">Integrations</h2>
+<p>The <strong>Integrations</strong> menu in ELITEA is designed to enhance the platform's functionality and flexibility by allowing users to connect with essential external tools such as Jira, Confluence, Testrail, and GitHub. These integrations enable seamless data flow and collaboration across different platforms, enhancing productivity and efficiency. Once configured, these integrations can be selected as configurations in the Agent's tool setup for each corresponding tool, allowing for streamlined operations within ELITEA. You can create integrations in both <strong>Private</strong> workspaces and <strong>Team</strong> projects, providing versatility in managing your connections.</p>
+<h3 id="confluence-integration-setup">Confluence Integration Setup</h3>
+<p>To set up a Confluence integration, follow these step-by-step instructions:</p>
+<ol>
+<li><strong>Initiate New Integration</strong>: Click the <code>+</code> icon to start the process of creating a new integration. A pop-up window will appear, prompting you to select the type of integration you wish to create.</li>
+<li><strong>Select Confluence</strong>: From the available options, select <strong>Confluence</strong>. This will open a new pop-up window where you can enter the necessary details for the integration.</li>
+<li><strong>Enter Integration Details</strong>:<ul>
+<li><strong>Name</strong>: Provide a descriptive name for the integration, such as "Conf_Integration".</li>
+<li><strong>URL</strong>: Enter the Confluence URL for your organization, e.g., <code>https://kb.epam.com/</code>.</li>
+<li><strong>Authentication Options</strong>: Choose your preferred method for secure connection: <ul>
+<li><strong>API Key</strong>: Select this option if you are using an API key for authentication. You have two choices for providing the necessary credentials:<ul>
+<li><strong>Password</strong>: Enter your API key value directly into the provided field.</li>
+<li><strong>Secret</strong>: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in <strong>Secrets</strong> page for secure storage and retrieval.</li>
+</ul>
+</li>
+<li><strong>Username</strong>: Additionally, you will need to input the <strong>Username</strong> associated with your Confluence account to complete the authentication process. </li>
+<li><strong>Token</strong>: Select this option if you are using a token for authentication. Similar to the API key, you have two choices for providing the necessary credentials:<ul>
+<li><strong>Password</strong>: Enter the your token value directly into the provided field.</li>
+<li><strong>Secret</strong>: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in <strong>Secrets</strong> page for secure storage and retrieval.</li>
+</ul>
+</li>
+<li><strong>Hosting Option</strong>: Select the appropriate hosting type for your Jira setup:</li>
+<li><strong>Cloud</strong>: If your Confluence is hosted on Atlassian’s cloud.</li>
+<li><strong>Server</strong>: If your Confluence is hosted on your own servers or an enterprise environment. <strong>Important Note</strong>: When connecting to Epam's Confluence, ensure you select the <strong>Server</strong> option to establish the correct configuration.</li>
+</ul>
+</li>
+<li><strong>Set as Default</strong>: Check the checkbox to set this integration as the default.</li>
+</ul>
+</li>
+<li><strong>Save the Integration</strong>: Click the <strong>Save</strong> button to finalize the integration setup. Your Confluence integration is now configured and ready to use.</li>
+</ol>
+<h3 id="github-integration-setup">GitHub Integration Setup</h3>
+<p>For GitHub integration, choose from the following authentication options:</p>
+<ol>
+<li><strong>Initiate New Integration</strong>: Click the <code>+</code> icon to start the process of creating a new integration. A pop-up window will appear, prompting you to select the type of integration you wish to create.</li>
+<li><strong>Select Confluence</strong>: From the available options, select <strong>GitHub</strong>. This will open a new pop-up window where you can enter the necessary details for the integration.</li>
+<li><strong>Enter Integration Details</strong>:<ul>
+<li><strong>Name</strong>: Provide a descriptive name for the integration, such as "GitHub_Integration".</li>
+<li><strong>Authentication Options</strong>: Choose your preferred method for secure connection: <ul>
+<li><strong>Private Key</strong>: Select this option if you are using an Private key for authentication. <ul>
+<li><strong>App ID</strong>: Enter the <strong>App ID</strong> associated with your GitHub integration.</li>
+<li><strong>Private Key</strong>: Enter the configured Private key. You have two choices for providing the necessary credentials:<ul>
+<li><strong>Password</strong>: Enter your Private key value directly into the provided field.</li>
+<li><strong>Secret</strong>: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in <strong>Secrets</strong> page for secure storage and retrieval.        </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Token</strong>: Select this option if you are using a token for authentication. Similar to the Private key, you have two choices for providing the necessary credentials:<ul>
+<li><strong>Password</strong>: Enter the your token value directly into the provided field.</li>
+<li><strong>Secret</strong>: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in <strong>Secrets</strong> page for secure storage and retrieval.</li>
+</ul>
+</li>
+<li><strong>Password</strong>: Select this option if you are using your GitHub account password for authentication.<ul>
+<li><strong>Password</strong>: Enter the password associated with your GitHub account. Similar to previous options, you have two choices for providing the necessary credentials:<ul>
+<li><strong>Password</strong>: Enter your password value directly into the provided field.</li>
+<li><strong>Secret</strong>: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in <strong>Secrets</strong> page for secure storage and retrieval. </li>
+</ul>
+</li>
+<li><strong>Username</strong>: Additionally, you will need to input the <strong>Username</strong> associated with your GitHub account to complete the authentication process. </li>
+</ul>
+</li>
+<li><strong>Anonymous</strong>: Select this option, if no anuthentication is required.</li>
+</ul>
+</li>
+<li><strong>Set as Default</strong>: Check the checkbox to set this integration as the default.</li>
+</ul>
+</li>
+<li><strong>Save the Integration</strong>: Click the <strong>Save</strong> button to finalize the integration setup. Your GitHub integration is now configured and ready to use.</li>
+</ol>
+<h3 id="jira-integration-setup">Jira Integration Setup</h3>
+<p>To set up a Jira integration, follow these step-by-step instructions:</p>
+<ol>
+<li><strong>Initiate New Integration</strong>: Click the <code>+</code> icon to start the process of creating a new integration. A pop-up window will appear, prompting you to select the type of integration you wish to create.</li>
+<li><strong>Select Jira</strong>: From the available options, select <strong>Jira</strong>. This will open a new pop-up window where you can enter the necessary details for the integration.</li>
+<li><strong>Enter Integration Details</strong>:<ul>
+<li><strong>Name</strong>: Provide a descriptive name for the integration, such as "Jira_Integration".</li>
+<li><strong>URL</strong>: Enter the Jira URL for your organization, e.g., <code>https://jiraeu.epam.com/</code>.</li>
+<li><strong>Authentication Options</strong>: Choose your preferred method for secure connection: <ul>
+<li><strong>API Key</strong>: Select this option if you are using an API key for authentication. You have two choices for providing the necessary credentials:<ul>
+<li><strong>Password</strong>: Enter your API key value directly into the provided field.</li>
+<li><strong>Secret</strong>: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in <strong>Secrets</strong> page for secure storage and retrieval.</li>
+</ul>
+</li>
+<li><strong>Username</strong>: Additionally, you will need to input the <strong>Username</strong> associated with your Jira account to complete the authentication process. </li>
+<li><strong>Token</strong>: Select this option if you are using a token for authentication. Similar to the API key, you have two choices for providing the necessary credentials:<ul>
+<li><strong>Password</strong>: Enter the your token value directly into the provided field.</li>
+<li><strong>Secret</strong>: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in <strong>Secrets</strong> page for secure storage and retrieval.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Hosting Option</strong>: Select the appropriate hosting type for your Jira setup:<ul>
+<li><strong>Cloud</strong>: If your Jira is hosted on Atlassian’s cloud.</li>
+<li><strong>Server</strong>: If your Jira is hosted on your own servers or an enterprise environment. <strong>Important Note</strong>: When connecting to Epam's Jira, ensure you select the <strong>Server</strong> option to establish the correct configuration.</li>
+</ul>
+</li>
+<li><strong>Set as Default</strong>: Check the checkbox to set this integration as the default.</li>
+</ul>
+</li>
+<li><strong>Save the Integration</strong>: Click the <strong>Save</strong> button to finalize the integration setup. Your Jira integration is now configured and ready to use.</li>
+</ol>
+<h3 id="testrail-integration-setup">TestRail Integration Setup</h3>
+<p>To set up a Testrail integration, provide the following details:</p>
+<ol>
+<li><strong>Initiate New Integration</strong>: Click the <code>+</code> icon to start the process of creating a new integration. A pop-up window will appear, prompting you to select the type of integration you wish to create.</li>
+<li><strong>Select Jira</strong>: From the available options, select <strong>TestRail</strong>. This will open a new pop-up window where you can enter the necessary details for the integration.</li>
+<li><strong>Enter Integration Details</strong>:<ul>
+<li><strong>Name</strong>: Provide a descriptive name for the integration, such as "TestRail_Integration".</li>
+<li><strong>URL</strong>: Enter the TestRail URL for your organization, e.g., <code>https://testrail.epam.com/</code>.</li>
+<li><strong>Email</strong>: Enter the email used for authentication.</li>
+<li><strong>Authentication Options</strong>: Choose your preferred method for secure connection: <ul>
+<li><strong>Password</strong>: Enter your password value directly into the provided field.</li>
+<li><strong>Secret</strong>: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in <strong>Secrets</strong> page for secure storage and retrieval.</li>
+</ul>
+</li>
+<li><strong>Set as Default</strong>: Check the checkbox to set this integration as the default.</li>
+</ul>
+</li>
+<li><strong>Save the Integration</strong>: Click the <strong>Save</strong> button to finalize the integration setup. Your TestRail integration is now configured and ready to use. </li>
+</ol>
+<p>By setting up these integrations, you can streamline workflows and enhance collaboration across different platforms, making ELITEA a more powerful tool for your projects.</p>
+<h2 id="projects">Projects</h2>
+<p>The <strong>Projects</strong> menu is specifically designed for administrators and becomes accessible when you hold administrative privileges in any project other than your private project within ELITEA. <strong>Note</strong>: It's important to select the appropriate project from the project dropdown menu to access specific configurations relevant to that project.</p>
+<h3 id="groups">Groups</h3>
+<p>The <strong>Groups</strong> feature in ELITEA is designed to facilitate efficient management and monitoring of multiple projects by admins or managers. This feature allows you to consolidate several projects under a single group, making it easier to oversee and coordinate activities across these projects.
+If you are an admin of two or more projects, you can leverage the Groups feature to organize and monitor your projects collectively:</p>
+<ul>
+<li><strong>Create a New Group</strong>: Click the <strong>Pencil</strong> icon to initiate the creation of a new group. You will be prompted to name the group and select the projects you wish to include.</li>
+<li><strong>Add Projects to Existing Group</strong>: If you already have established groups, you can add additional projects to these groups.</li>
+</ul>
+<p>This grouping functionality not only simplifies the administrative workload but also enhances the visibility and control over multiple projects, enabling more effective management and monitoring.</p>
+<h4 id="teammates">Teammates</h4>
+<p>The <strong>Teammates</strong> feature in ELITEA is specifically crafted to streamline the process of collaborating within projects by allowing you to invite new users (teammates) and assign them appropriate roles. These roles include system, admin, editor, and viewer, each providing different levels of access and control within the project. <strong>Note</strong>: Only users with an admin role are empowered to invite new members. This ensures that the invitation and role assignment process is managed by users with appropriate authority and understanding of the project’s needs.</p>
+<p><strong>Inviting New Teammates</strong>:</p>
+<ol>
+<li>Enter the prospective member's email address in the <strong>Email Address</strong> input field.</li>
+<li>Select their role from the <strong>Role</strong> dropdown menu. </li>
+<li>Click the <strong>Invite</strong> button. </li>
+<li>An invitation will be sent, and upon their first login, their details will be added to the <strong>Teammates</strong>, activating their account.</li>
+</ol>
+<p><img alt="Intro-Settings_Projects" src="../../img/admin-guide/intro/Intro-Settings_Projects.png" /></p>
+<p><strong>Notes</strong></p>
+<ul>
+<li>Multiple users can be invited simultaneously by separating email addresses with a comma.</li>
+<li>For Epam projects, use the invitee's Epam email. For customer projects, the customer's Active Directory is utilized for invitations.</li>
+</ul>
+<p><strong>Managing Teammates</strong>:</p>
+<p>The <strong>Teammates</strong> table displays all members, their roles, and their last login information. Admins can modify a user's role or revoke access by clicking the respective <strong>Edit</strong> or <strong>Delete</strong> icons next to a user's name.</p>
+<h2 id="secrets">Secrets</h2>
+<p>The <strong>Secrets</strong> feature in ELITEA serves as a secure vault designed to store and manage sensitive information such as passwords, tokens, API keys, and other authentication details. This centralized system allows you to configure secrets once and utilize them across various components, such as Agent's toolkits within ELITEA.</p>
+<p><strong>Creating a Secret</strong>:</p>
+<p>To add a new secret to the vault, follow these steps:</p>
+<ol>
+<li>Click the <code>+</code> icon to initiate the creation of a new secret.</li>
+<li>Enter a descriptive name for the secret to help you identify its use.</li>
+<li>In the Value field, input the token, password, API key, or any other authentication details.</li>
+<li>Once configured, this secret can now be selected and used within various components of ELITEA.</li>
+</ol>
+<p><strong>Managing Secrets</strong>:</p>
+<p>The management of secrets is straightforward and secure, facilitated by the <strong>Secrets</strong> table which displays all your configured secrets:</p>
+<ul>
+<li><strong>View Secret</strong>: Click the <strong>Eye</strong> icon to reveal the value of a configured secret. This allows you to quickly check the details without modifying them.</li>
+<li><strong>Copy Secret</strong>: Easily copy the secret value to your clipboard (by clicking the hidden value) for use in configurations or integrations.</li>
+<li><strong>Hide Secret</strong>: Hide the secret from the interface to maintain security when not actively managing the secret.</li>
+<li><strong>Modify Secret</strong>: Update the value of the secret if the existing credentials change or need to be corrected.</li>
+<li><strong>Delete Secret</strong>: Remove a secret permanently from the vault if it is no longer needed or if security concerns necessitate its deletion.</li>
+</ul>
+<p>This feature enhances the security and efficiency of managing sensitive information within ELITEA, ensuring that authentication details are handled in a secure, centralized manner.</p>
+<p><img alt="Intro-Settings_Secrets" src="../../img/admin-guide/intro/Intro-Settings_Secrets.png" /></p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../.."</script>
+    
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

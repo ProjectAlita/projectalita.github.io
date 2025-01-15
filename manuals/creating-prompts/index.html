@@ -1,139 +1,352 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://projectalita.ai/manuals/creating-prompts/" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/manuals/creating-prompts/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    
     <title>QA - Prompting and Sharing - ELITEA Documentation</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
-      <script>
-        // Current page data
-        var mkdocs_page_name = "QA - Prompting and Sharing";
-        var mkdocs_page_input_path = "manuals/creating-prompts.md";
-        var mkdocs_page_url = "/manuals/creating-prompts/";
-      </script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
+
     
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body>
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> ELITEA Documentation
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Release Notes</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../release-notes/rn_current/">RN 1.3.0</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Archive</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../release-notes/archived/rn4/">RN 1.2.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../release-notes/archived/rn3/">RN 1.1.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../release-notes/archived/rn2/">RN 1.0.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../release-notes/archived/rn1/">RN 1.0.0</a>
-                </li>
-    </ul>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">User Guide</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/intro/">Get Started</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/chat/">Chat</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Prompts</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/prompts/prompts/">Prompts</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/prompts/prompts-examples/">Prompts Examples and Materials</a>
-                </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/datasources/">Datasources</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Agents</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/agents/agents/">Agents</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/agents/agents-examples/">Agents Examples and Materials</a>
-                </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../user-guide/collections/">Collections</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">ELITEA Extensions</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/extensions/alita-code/">Alita Code</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../user-guide/extensions/alita-chat/">Alita Code Chat</a>
-                </li>
-    </ul>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Manuals</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../alita-dial/">ELITEA and EPAM AI DIAL</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">QA - Prompting and Sharing</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
-    </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../roles/">Roles Management</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">FAQs</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../faqs/">Frequently Asked Questions</a>
-                  </li>
-              </ul>
-      </div>
-    </div>
-    </nav>
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">ELITEA Documentation</a>
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Manuals</li>
-      <li class="breadcrumb-item active">QA - Prompting and Sharing</li>
-    <li class="wy-breadcrumbs-aside">
-    </li>
-  </ul>
-  <hr/>
+            
+<li >
+    <a href="../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../admin-guide/intro/">Get Started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../admin-guide/settings/">Settings</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../admin-guide/chat/">Chat</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Prompts</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../admin-guide/prompts/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../admin-guide/prompts/prompts-examples/">Prompts Examples and Materials</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../admin-guide/datasources/">Datasources</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../admin-guide/agents/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../admin-guide/agents/agents-examples/">Agents Examples and Materials</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../admin-guide/collections/">Collections</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../admin-guide/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../admin-guide/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../user-guide/public-project/">Public Project Guide</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../user-guide/integrations/">Integrations Guide</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manuals <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../alita-dial/">ELITEA and EPAM AI DIAL</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">QA - Prompting and Sharing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../roles/">Roles Management</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../faqs/">Frequently Asked Questions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../alita-dial/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../roles/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
-              
-                <h1 id="how-to-create-and-publish-useful-prompts-for-testing-and-qa-activities">How to Create and Publish Useful Prompts for Testing and QA Activities</h1>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#how-to-create-and-publish-useful-prompts-for-testing-and-qa-activities">How to Create and Publish Useful Prompts for Testing and QA Activities</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+        <li class="first-level "><a href="#accessing-elitea-hub">Accessing ELITEA HUB</a></li>
+            <li class="second-level"><a href="#prompts">Prompts</a></li>
+                
+                <li class="third-level"><a href="#how-to-create-a-prompt">How to Create a Prompt</a></li>
+                <li class="third-level"><a href="#submitting-your-prompt-for-publishing">Submitting Your Prompt for Publishing</a></li>
+            <li class="second-level"><a href="#review-process-by-moderators-and-outcome-of-prompt-submission">Review Process by Moderators and Outcome of Prompt Submission</a></li>
+                
+                <li class="third-level"><a href="#moderator-review-process">Moderator Review Process</a></li>
+                <li class="third-level"><a href="#possible-outcomes-of-the-review">Possible Outcomes of the Review</a></li>
+                <li class="third-level"><a href="#engagement-with-prompts-liking-and-trending">Engagement with Prompts: Liking and Trending</a></li>
+            <li class="second-level"><a href="#collections">Collections</a></li>
+                
+                <li class="third-level"><a href="#creating-collection">Creating Collection</a></li>
+                <li class="third-level"><a href="#adding-prompts-to-your-collection">Adding Prompts to Your Collection</a></li>
+                <li class="third-level"><a href="#publishing-your-collection">Publishing Your Collection</a></li>
+                <li class="third-level"><a href="#engagement-with-collections-liking-and-trending">Engagement with Collections: Liking and Trending</a></li>
+            <li class="second-level"><a href="#contribution">Contribution</a></li>
+                
+                <li class="third-level"><a href="#why-share-your-prompts">Why Share Your Prompts?</a></li>
+                <li class="third-level"><a href="#rewards-and-recognition">Rewards and Recognition</a></li>
+            <li class="second-level"><a href="#useful-resources">Useful Resources</a></li>
+                
+                <li class="third-level"><a href="#elitea">ELITEA</a></li>
+                <li class="third-level"><a href="#prompt-engineering">Prompt Engineering</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="how-to-create-and-publish-useful-prompts-for-testing-and-qa-activities">How to Create and Publish Useful Prompts for Testing and QA Activities</h1>
 <h2 id="introduction">Introduction</h2>
 <p>Welcome to our comprehensive guide designed to empower our Testing and Quality Assurance (QA) community in the crafting and sharing of valuable prompts, specifically tailored for an array of testing activities. In today's rapidly evolving software development landscape, the adoption of Generative AI Tools has become increasingly instrumental in augmenting our testing efforts. These cutting-edge tools offer unparalleled capabilities in automating and innovating processes ranging from generating test cases and creating detailed test plans to formulating comprehensive test strategies and writing automation scripts. Additionally, they play a critical role in generating realistic and diverse test data, facilitating a more thorough and effective testing process.</p>
 <p>The intention behind this activity is twofold: to streamline the process of prompt generation that leverages Gen AI Tools, ensuring that these prompts become potent tools in identifying and resolving defects, bolstering product quality, and refining our testing strategies. Moreover, it seeks to evolve our QA community to actively contribute to and share their expertise through valuable prompts. By participating in enriching our Prompt Library, you not only aid in creating a substantial repository of resources but also contribute to a culture of knowledge sharing and collective growth within our community.</p>
@@ -152,7 +365,7 @@
 </ol>
 <p>By following these steps, you will be able to effectively utilize the features and functionalities offered by ELITEA HUB.</p>
 <p><strong>Note</strong>: You need to enable Epam VPN to access ELITEA.</p>
-<p><img alt="Intro-Main_Interface" src="../../img/user-guide/intro/Intro-Main_Interface.png" /></p>
+<p><img alt="Intro-Main_Interface" src="../img/user-guide/intro/Intro-Main_Interface.png" /></p>
 <h2 id="prompts">Prompts</h2>
 <p>Prompts are essentially instructions or scenarios designed to generate outcomes to assist QA activities. The effectiveness of the prompts directly correlates with the efficiency and accuracy of our testing efforts. To ensure that every prompt we create serves its purpose effectively, it’s crucial to adhere to several foundational principles. These guidelines not only help in crafting prompts that are valuable and practical but also ensure that they align with our overarching goals of security, versatility, and clarity in our QA processes. With this context in mind, let’s delve into the core principles that should guide the creation of effective prompts:</p>
 <p><strong>Creating Effective Prompts</strong></p>
@@ -182,11 +395,11 @@
 <li><strong>Finalize</strong>: Click Save to keep your draft or proceed to the next step to share your work with the community.</li>
 </ol>
 <p><strong>Providing Name, Description and Context of the prompt:</strong></p>
-<p><img alt="Prompts-Create_New_Prompt" src="../../img/user-guide/prompts/Prompts-Create_New_Prompt.png" /></p>
+<p><img alt="Prompts-Create_New_Prompt" src="../img/user-guide/prompts/Prompts-Create_New_Prompt.png" /></p>
 <p><strong>Setup Variables:</strong></p>
-<p><img alt="Prompts-Create_Variables" src="../../img/user-guide/prompts/Prompts-Create_Variables.png" /></p>
+<p><img alt="Prompts-Create_Variables" src="../img/user-guide/prompts/Prompts-Create_Variables.png" /></p>
 <p><strong>Configuring Advanced Settings:</strong></p>
-<p><img alt="Prompts-Advanced_Settings" src="../../img/user-guide/prompts/Prompts-Advanced_Settings.png" /></p>
+<p><img alt="Prompts-Advanced_Settings" src="../img/user-guide/prompts/Prompts-Advanced_Settings.png" /></p>
 <h4 id="prompt-requirements-for-consistency-and-quality">Prompt Requirements for Consistency and Quality</h4>
 <p>When crafting your prompt, ensure it includes the following elements for clarity and effectiveness:</p>
 <ul>
@@ -239,7 +452,7 @@
 <li><strong>Review Submission</strong>: Click Publish to submit your prompt for the moderation review process. This step is crucial to ensure the quality and relevance of prompts available to the QA community.</li>
 </ol>
 <p><strong>Publishing the prompt:</strong></p>
-<p><img alt="Prompts-Publishing" src="../../img/user-guide/prompts/Prompts-Publishing.png" /></p>
+<p><img alt="Prompts-Publishing" src="../img/user-guide/prompts/Prompts-Publishing.png" /></p>
 <h2 id="review-process-by-moderators-and-outcome-of-prompt-submission">Review Process by Moderators and Outcome of Prompt Submission</h2>
 <h3 id="moderator-review-process">Moderator Review Process</h3>
 <p>After a prompt is submitted for publication, it enters a critical assessment phase led by our designated moderators. Our moderators are QA professionals with a broad understanding of what constitutes a high-quality, effective prompt.
@@ -287,14 +500,14 @@ The review process aims to ensure that each prompt meets our standards for relev
 <li>Click the <strong>+ Collection</strong> button located at the top right corner.</li>
 <li>You will be prompted to fill in the <strong>Name</strong> and <strong>Description</strong> fields. Remember, these fields are essential as they give the first impression and understanding of what your collection is about.</li>
 </ol>
-<p><img alt="Collections-Create_Collection" src="../../img/user-guide/collections/Collections-Create_Collection.png" /></p>
+<p><img alt="Collections-Create_Collection" src="../img/user-guide/collections/Collections-Create_Collection.png" /></p>
 <h3 id="adding-prompts-to-your-collection">Adding Prompts to Your Collection</h3>
 <p>To add prompts to your collection, follow these steps:</p>
 <ol>
 <li>Once you've created a collection, you can start adding relevant prompts. Navigate to the prompt you wish to add and select an option to Add to Collection.</li>
 <li>Select the Collection you wish to add your prompt to from the pop-up window. You can add multiple prompts to a collection as long as they share the thematic relevance or purpose you've defined for your collection.</li>
 </ol>
-<p><img alt="Prompts-Add_to_Collection" src="../../img/user-guide/prompts/Prompts-Add_to_Collection.png" /></p>
+<p><img alt="Prompts-Add_to_Collection" src="../img/user-guide/prompts/Prompts-Add_to_Collection.png" /></p>
 <h3 id="publishing-your-collection">Publishing Your Collection</h3>
 <p>Publishing your collection makes it available to the entire QA network, allowing others to benefit from the curated set of prompts you've organized:</p>
 <ol>
@@ -323,7 +536,7 @@ Let's work together to build a richer, more effective Prompt Library for everyon
 <h2 id="useful-resources">Useful Resources</h2>
 <h3 id="elitea">ELITEA</h3>
 <ul>
-<li><a href="../../user-guide/intro/">ELITEA - User Guide</a></li>
+<li><a href="../user-guide/intro.md">ELITEA - User Guide</a></li>
 <li><a href="../../release-notes/rn_current/">ELITEA - Release Notes</a></li>
 </ul>
 <h3 id="prompt-engineering">Prompt Engineering</h3>
@@ -332,52 +545,105 @@ Let's work together to build a richer, more effective Prompt Library for everyon
 <li><a href="https://learn.epam.com/detailsPage?id=1c89e986-9a96-4aed-8166-291af0a8a19c">EngX AI-Supported Quality Assurance Engineering</a></li>
 <li><a href="https://www.promptingguide.ai/">Guide to Effective Prompting</a></li>
 <li><a href="https://www.youtube.com/watch?v=AgGu96_rnXo&amp;list=PLYio3GBcDKsPP2_zuxEp8eCulgFjI5a3g">Introduction to Prompt Engineering</a></li>
-</ul>
-              
-            </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../alita-dial/" class="btn btn-neutral float-left" title="ELITEA and EPAM AI DIAL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../roles/" class="btn btn-neutral float-right" title="Roles Management">Next <span class="icon icon-circle-arrow-right"></span></a>
+</ul></div>
+        
+        
     </div>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
+    
+      <footer class="col-md-12 text-center">
           
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../.."</script>
+    
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-    
-      <span><a href="../alita-dial/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../roles/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../..";</script>
-    <script src="../../js/theme_extra.js"></script>
-    <script src="../../js/theme.js"></script>
-      <script src="../../search/main.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
+    </body>
 
-</body>
 </html>

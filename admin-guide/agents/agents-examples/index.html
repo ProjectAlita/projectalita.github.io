@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/admin-guide/agents/agents-examples/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Agents Examples and Materials - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../intro/">Get Started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../settings/">Settings</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../chat/">Chat</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Prompts</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../prompts/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../prompts/prompts-examples/">Prompts Examples and Materials</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../datasources/">Datasources</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../agents/">Agents</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Agents Examples and Materials</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../collections/">Collections</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../user-guide/public-project/">Public Project Guide</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../user-guide/integrations/">Integrations Guide</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manuals <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../manuals/alita-dial/">ELITEA and EPAM AI DIAL</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../manuals/creating-prompts/">QA - Prompting and Sharing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../manuals/roles/">Roles Management</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../faqs/">Frequently Asked Questions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../agents/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../../collections/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#agents-examples-and-materials">Agents Examples and Materials</a></li>
+            <li class="second-level"><a href="#agents-helpful-materials">Agents - Helpful Materials</a></li>
+                
+                <li class="third-level"><a href="#video-tutorials">Video Tutorials</a></li>
+            <li class="second-level"><a href="#agent-frameworks">Agent Frameworks</a></li>
+                
+            <li class="second-level"><a href="#practical-examples">Practical Examples</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="agents-examples-and-materials">Agents Examples and Materials</h1>
+<h2 id="agents-helpful-materials">Agents - Helpful Materials</h2>
+<p>To assist you in maximizing the capabilities of Agents within the ELITEA platform, we have compiled a selection of helpful materials. These resources are designed to guide you through the processes of creating, setting up, configuring, and effectively using Agents.</p>
+<h3 id="video-tutorials">Video Tutorials</h3>
+<p>Explore our curated video tutorials that provide step-by-step instructions and insights on various aspects of working with Agents:</p>
+<ul>
+<li><a href="https://videoportal.epam.com/playlist/1JebbZ7v/play/WY43Ljea">Alita AQA Agent for QAvaJS autromation</a></li>
+<li><a href="https://videoportal.epam.com/playlist/1JebbZ7v/play/e738vP5a">EBSCO Automated test generation</a></li>
+</ul>
+<h2 id="agent-frameworks">Agent Frameworks</h2>
+<p><strong>General Guidelines for Both Agent Types</strong></p>
+<p>When working with either the React or Raw agent types, it is imperative to adhere to the following general guidelines:</p>
+<ul>
+<li><strong>Toolkit Interaction</strong>: Ensure to address the appropriate toolkits (e.g., JIRA, GitHub) and address the specific tools available within these toolkits (e.g., Create issue, Add comments).</li>
+<li><strong>Execution Constraints</strong>: Always provide clear instructions or constraints to ensure that each toolkit is executed only once to avoid loops. This is crucial for maintaining efficient and error-free operations.</li>
+</ul>
+<p><strong>ReAct Agent Type</strong></p>
+<p>For the <strong>ReAct</strong> agent type, follow these detailed instructions to effectively integrate and utilize various toolkits and tools:</p>
+<pre><code>Example: Test Case Generation
+
+### Objective: 
+You are an expert Software Testing engineer. Your task is to connect to a Git repository using the GitHub toolkit, read files related to &quot;Alita Documentation&quot; to find information about datasources, analyze this information, create three test cases covering datasource creation functionality, and save the generated test cases in a newly created Jira ticket using the Jira toolkit.
+
+### Instructions:
+1. Connect to GitHub Repository:
+   - Use the GitHub toolkit to connect to the specified Git repository.
+   - Ensure you have the necessary permissions to read files from the repository.
+2. Read Files:
+   - Use the &quot;Read file&quot; tool to read files related to &quot;Alita Documentation&quot; from the repository.
+   - Focus on finding information about datasources.
+3. Analyze Information:
+   - As an expert Software Testing engineer, analyze the information about datasources.
+   - Identify key functionalities and requirements for datasource creation.
+4. Create Test Cases:
+   - Based on your analysis, create three test cases covering datasource creation functionality.
+   - Ensure the test cases are detailed, clear, and follow industry best practices.
+5. Save Test Cases in Jira:
+   - Use the Jira toolkit to create a new Jira Task.
+   - Use the following project: ETSTCC
+   - The created Issue type must be Task.
+   - Ensure the Jira Task has the next available issue ID. 
+   - Save the generated test cases in the Description field.
+   - Use the following Label: AI_Generated.
+   - Generate a corresponding Summary and apply it to the Summary field of the Task.
+   - Use only standard fields in Jira, do not use neither custom fileds or fields from plugins, they are not available.
+
+### Constraints:
+- Execute each toolkit only once.
+- Do not get into a loop.
+- Provide the best possible output based on the available information.
+
+### Example Test Case Format:
+Test Case ID: TC001 Title: Verify datasource creation with valid inputs Description: Ensure that a datasource can be created successfully when valid inputs are provided. Preconditions: User is logged in and has access to the datasource creation page. Steps:
+
+1. Navigate to the datasource creation page.
+2. Enter valid inputs in all required fields.
+3. Click on the &quot;Create&quot; button. Expected Result: The datasource is created successfully, and a confirmation message is displayed.
+
+Test Case ID: TC002 Title: Verify error message for missing required fields Description: Ensure that an appropriate error message is displayed when required fields are left blank during datasource creation. Preconditions: User is logged in and has access to the datasource creation page. Steps:
+
+1. Navigate to the datasource creation page.
+2. Leave one or more required fields blank.
+3. Click on the &quot;Create&quot; button. Expected Result: An error message is displayed indicating that required fields must be filled.
+
+### Execution:
+- Follow the instructions step-by-step.
+- Ensure each toolkit is executed only once.
+- Provide the best possible output based on the available information.
+</code></pre>
+<p><strong>Raw Agent Type</strong></p>
+<p>For the <strong>Raw</strong> agent type, adhere to these specific guidelines to ensure the agent operates correctly:</p>
+<ul>
+<li><strong>Preserve Existing Variables</strong>: Do not remove any pre-existing variables in the configuration as they are crucial for the agent's functionality.</li>
+<li><strong>Avoid Assigning Values to Variables</strong>: Leave variables unassigned; they will be automatically populated during execution.</li>
+<li>Include the following essential sections in your configuration:</li>
+</ul>
+<pre><code>  ### Tools:
+{{tools}} 
+- Say to user: tool: &quot;complete_task&quot;, args: &quot;final_answer&quot;  - complete message to be communicated to the user, shoudl contain as much details as possible
+
+### Scratchpad
+{{agent_scratchpad}}
+
+### Chat History
+{{chat_history}}
+
+### User Input:
+{{input}}
+
+### Response format
+{
+    &quot;thoughts&quot;: {
+        &quot;text&quot;: &quot;message to a user follow the style of your persona&quot;,
+        &quot;plan&quot;: &quot;short bulleted, list that conveys long-term plan&quot;,
+        &quot;criticism&quot;: &quot;constructive self-criticism&quot;,
+    },
+    &quot;tool&quot;: {
+        &quot;name&quot;: &quot;tool name&quot;,
+        &quot;args&quot;: { &quot;arg name&quot;: &quot;value&quot; }
+    }
+}
+You must answer with only JSON and it could be parsed by Python json.loads
+</code></pre>
+<p><img alt="Agents-Raw" src="../../img/user-guide/agents/Agents-Raw.png" /></p>
+<p>By following these guidelines and including the necessary code snippet, you ensure that the Raw Agent functions correctly and integrates seamlessly with the intended processes.</p>
+<h2 id="practical-examples">Practical Examples</h2>
+<p>Gain hands-on experience with our detailed examples that illustrate the practical application of Agents in real-world scenarios:</p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

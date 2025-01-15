@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/release-notes/archived/rn5/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>RN 1.3.0 - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li class="active">
+    <a href="./">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../admin-guide/intro/">Get Started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../admin-guide/settings/">Settings</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../admin-guide/chat/">Chat</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Prompts</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../admin-guide/prompts/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../admin-guide/prompts/prompts-examples/">Prompts Examples and Materials</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../admin-guide/datasources/">Datasources</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../admin-guide/agents/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../admin-guide/agents/agents-examples/">Agents Examples and Materials</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../admin-guide/collections/">Collections</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../admin-guide/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../admin-guide/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../user-guide/public-project/">Public Project Guide</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../user-guide/integrations/">Integrations Guide</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manuals <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../manuals/alita-dial/">ELITEA and EPAM AI DIAL</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../manuals/creating-prompts/">QA - Prompting and Sharing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../manuals/roles/">Roles Management</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../faqs/">Frequently Asked Questions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../rn_current/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../rn4/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-release-notes">ELITEA Release Notes</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+            <li class="second-level"><a href="#information">Information</a></li>
+                
+            <li class="second-level"><a href="#new-features">New Features</a></li>
+                
+            <li class="second-level"><a href="#changed-features">Changed Features</a></li>
+                
+            <li class="second-level"><a href="#known-issues">Known Issues</a></li>
+                
+            <li class="second-level"><a href="#fixed-issues">Fixed Issues</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-release-notes">ELITEA Release Notes</h1>
+<h2 id="introduction">Introduction</h2>
+<p><strong>ELITEA</strong> is an innovative web application that revolutionizes how you interact with prompts. Designed as a dynamic workspace, it empowers users to create, organize, and collaborate on prompts like never before.</p>
+<h2 id="information">Information</h2>
+<ul>
+<li><strong>Release Version</strong>: 1.3.0</li>
+<li><strong>Released on</strong>: 16-Sep-2024</li>
+<li><strong>Access</strong>: <a href="https://alita.lab.epam.com">ELITEA Platform</a>. <strong>Note</strong>: You need to enable Epam VPN to access ELITEA.</li>
+<li><strong>User Guide</strong>: <a href="../user-guide/intro.md">ELITEA - User Guide</a> </li>
+</ul>
+<h2 id="new-features">New Features</h2>
+<ul>
+<li><strong>New Navigation Flow</strong>: Completely redesigned navigation flow within ELITEA HUB. Access prompts, datasources, agents, and collections through dedicated menus. A new Project Selection dropdown list has been added next to your avatar for easy switching between public and private projects. The 'My Libraries' menu has been completely removed.</li>
+<li><strong>Light Theme</strong>: A new light theme has been added for users who prefer bright and vivid colors. Quickly switch between dark and light themes from the Settings menu.</li>
+<li><strong>Preloaded LLM Models</strong>: Deploy, select, and use locally loaded LLM models to speed up output generation and allow simultaneous calls to LLM models.</li>
+<li><strong>Secrets</strong>: Introducing a secure vault for setting up passwords, tokens, and other authentication options within ELITEA HUB. Configure secrets once and use them across various components like Agent's toolkits.</li>
+<li><strong>Notifications</strong>: New notification functionality to alert users about various events such as prompt publishing status within the ELITEA Hub.</li>
+<li><strong>ELITEA Extensions</strong>: Updated versions of Alita Chat and Alita Chat Code for VSCode and IntelliJ IDEs. These versions support prompt versioning and variables, allowing selection of versions and variable values. Enhanced design for Alita Code in VSCode IDE and improved settings management for Alita Code plugin in IntelliJ IDE. Option to download pre-generated settings for Alita Code from <strong>ELITEA Hub</strong> → <strong>Configurations</strong> page.</li>
+<li><strong>Pgvector Storage</strong>: Added Pgvector storage type for datasources, enhancing indexing, saving, and querying of data.</li>
+<li><strong>New Agent Types</strong>: Introduced new agent types including OpenAI, Llama, and Autogen. Enhanced performance and stability of ReAct and Alita agent types.</li>
+<li><strong>Bitbucket Toolkit for Agents</strong>: Allow your Agent to interact directly with Bitbucket repositories, enhancing version control and development processes.</li>
+<li><strong>TesTrail Toolkit for Agents</strong>: Allow your Agent to interact directly with TestRail test management tool.</li>
+<li><strong>New tools for Confluence Toolkit</strong>: Added <code>Create page</code>, <code>Create pages</code>, <code>Delete page</code>, <code>Update page by id</code>, <code>Update page bt title</code>, <code>Update labels</code>, <code>Update pages</code>, <code>Site search</code>, <code>Search by title</code>, <code>Get page tree</code> and <code>Read page by id</code> tools.</li>
+<li><strong>Export Datasource</strong>: New functionality to export datasource instructions, conversation starters, welcome messages, and settings. <strong>Note</strong>: Datasets within the datasource will not be exported for security reasons.</li>
+<li><strong>Welcome Message</strong>: Added a welcome message feature for prompts, datasources, and agents, providing additional context. Currently, the welcome message is sent to LLM along with other instructions. Future updates will allow users to configure the delivery of welcome messages.</li>
+<li><strong>Conversation Starter</strong>: Added a feature for prompts and datasources to configure and initiate conversations with predefined questions, queries, or information.</li>
+</ul>
+<h2 id="changed-features">Changed Features</h2>
+<ul>
+<li><strong>Chat Functionality</strong>: Completely redesigned and improved <strong>Chat</strong> functionality. Enhanced ability to search and add various participants easily. Fixes implemented for synchronization and speed issues. Now supports agent and prompt versions, as well as prompts with variables.</li>
+<li><strong>Monitoring</strong>: Completely redesigned and enhanced Monitoring functionality. Now supports grouping projects and improved visualization with better charts and graphics.</li>
+<li><strong>Projects</strong>: Redesigned the Settings→Users page to a Projects page, allowing project admins to add new users to projects. Also supports creating/selecting groups for monitoring functionality.</li>
+</ul>
+<h2 id="known-issues">Known Issues</h2>
+<ul>
+<li><strong>Confluence Source Filtering</strong>: Issues with filtering by Space key and Page IDs. <strong>Workaround</strong>: Use the filtering by <strong>label</strong> option.</li>
+<li><strong>Database Corruption During Indexing</strong>: Risk of database corruption if simultaneous actions occur in different datasets for Chroma storage type. <strong>Workaround</strong>: Create a new datasource and reindex, or use Pgvector storage type when creating a datasource.</li>
+<li><strong>GIT Source Authentication</strong>: SSH authentication for GIT sources fails. <strong>Workaround</strong>: Use HTTPS with Username and Password.</li>
+</ul>
+<h2 id="fixed-issues">Fixed Issues</h2>
+<ul>
+<li><strong>Prompt Saving Error</strong>: Fixed issues with saving prompts if the <strong>Name</strong> field contains leading spaces from copy/paste actions.</li>
+<li><strong>GitLab Toolkit - Set Active Branch Tool</strong>: Resolved an issue where the 'Set Active Branch' tool was not functioning properly. Users can now successfully set the active branch in GitLab without encountering errors.</li>
+<li><strong>Typo in Error Message When Selecting 'Update File' from GitLab Tool</strong>: Resolved an issue where a typo in the error message appeared when selecting the 'Update file' option from the GitLab tool.</li>
+<li><strong>Agents Disappear on Scroll and Incorrect Message Displayed</strong>: Fixed an issue where agents disappeared from the page when scrolling, and an incorrect message was displayed. A page refresh was required to bring the agents back.</li>
+<li><strong>User Search Crash in Settings</strong>: Resolved an issue where attempting to search for a user via the Teammates 'search box' in Settings→Projects→Users caused the UI to crash. The search functionality now operates smoothly without causing disruptions.</li>
+<li><strong>Date Selection Crash in Monitoring Settings</strong>: Fixed a problem where selecting an incorrect date in the date fields on the Settings→Monitoring page caused the UI to crash. Proper error handling and date validation have been implemented to ensure stability and prevent crashes.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
