@@ -1,6 +1,7 @@
 site_name: ELITEA Documentation
-site_url: https://projectalita.ai
+site_url: https://elitea.ai/docs/
 nav:
+  - Home: '../'
   - Release Notes:
     - RN 1.4.0: release-notes/rn_current.md
     - Archive:
