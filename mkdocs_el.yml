@@ -1,0 +1,58 @@
+site_name: ELITEA Documentation
+site_url: https://projectalita.ai
+nav:
+  - Release Notes:
+    - RN 1.4.0: release-notes/rn_current.md
+    - Archive:
+      - RN 1.3.0: release-notes/archived/rn5.md
+      - RN 1.2.0: release-notes/archived/rn4.md
+      - RN 1.1.0: release-notes/archived/rn3.md
+      - RN 1.0.1: release-notes/archived/rn2.md
+      - RN 1.0.0: release-notes/archived/rn1.md
+  - Admin Guide: 
+    - Get Started: admin-guide/intro.md
+    - Settings: admin-guide/settings.md
+    - Chat: admin-guide/chat.md
+    - Prompts: 
+      - Prompts: admin-guide/prompts/prompts.md    
+      - Prompts Examples and Materials: admin-guide/prompts/prompts-examples.md
+    - Datasources: admin-guide/datasources.md
+    - Agents: 
+      - Agents: admin-guide/agents/agents.md
+      - Agents Examples and Materials: admin-guide/agents/agents-examples.md
+    - Collections: admin-guide/collections.md
+    - ELITEA Extensions:
+      - Alita Code: admin-guide/extensions/alita-code.md
+      - Alita Code Chat: admin-guide/extensions/alita-chat.md
+  - User Guides:
+    - Public Project Guide: user-guide/public-project.md
+    - Integrations Guide: user-guide/integrations.md
+  - Manuals:
+    - ELITEA and EPAM AI DIAL: manuals/alita-dial.md
+    - QA - Prompting and Sharing: manuals/creating-prompts.md
+    - Roles Management: manuals/roles.md    
+  - FAQs: 
+    - faqs.md
+
+theme:
+  name: material
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
