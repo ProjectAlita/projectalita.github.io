@@ -4,7 +4,7 @@
 
 Datasources play a pivotal role in broadening and enriching the functionalities of ELITEA and AI technologies. They enable the extension of LLMs by integrating user-specific or project-specific data, which is not initially part of the model’s training set, thereby enhancing the LLM's context with tailored information.
 
-![Datasources-Menu_Private](<../img/user-guide/datasources/Datasources-Menu_Private.png>)
+![Datasources-Menu_Private](<../img/admin-guide/datasources/Datasources-Menu_Private.png>)
 
 ### Creating a Datasource
 
@@ -17,7 +17,7 @@ To set up a new datasource and augment your model's capabilities:
 5. Optionally, add tags by typing a tag name or selecting from pre-existing tags in the Tags input box.
 6. Click **Save** to finalize the creation.
 
-![Datasources-Create_New_Datasource](<../img/user-guide/datasources/Datasources-Create_New_Datasource.png>)
+![Datasources-Create_New_Datasource](<../img/admin-guide/datasources/Datasources-Create_New_Datasource.png>)
 
 ### Exploring Datasources
 
@@ -37,7 +37,7 @@ The initial step involves linking your dataset to the desired datasource:
       * **Confluence**: Any Confluence page accessible to you.
       * **QTest**: Any QTest project accessible to you.
 
-![Datasources-Dataset](<../img/user-guide/datasources/Datasources-Dataset.png>)
+![Datasources-Dataset](<../img/admin-guide/datasources/Datasources-Dataset.png>)
 
 Depending on the selected source type, various configurations may be necessary to access the dataset source, primarily involving authentication and authorization parameters. This step is exempt for File and Table options since the files will be directly uploaded.
 
@@ -56,7 +56,7 @@ ELITEA supports a variety of file types and offers flexible settings to handle y
   * **Extension Whitelist** - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., `.pdf`, `.docx`, `.txt`), overriding the default supported types if necessary.
   * **Extension Blacklist** - conversely, list file extensions you wish to exclude from processing. Any file type (e.g., `.exe`, `.bin`, `.png`) mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.
 
-![Datasources-Dataset_File](../img/user-guide/datasources/Datasources-Dataset_File.png)
+![Datasources-Dataset_File](../img/admin-guide/datasources/Datasources-Dataset_File.png)
 
 #### Source type - Table
 
@@ -68,7 +68,7 @@ This functionality is crucial for users who work with structured data in formats
 * **JSON Documents** - enable this option if your table data is structured as JSON documents, particularly relevant when dealing with JSON files. This tells the system to parse the file as a collection of JSON entries, allowing for a more nuanced understanding and utilization of nested data structures within the file.
 * **Raw Content** - when enabled, this setting ensures that your selected data is treated as raw content, bypassing any default preprocessing or formatting. This is particularly useful when you want the data to be ingested in its purest form, without any alterations that might affect its original structure or meaning.
 
-![Datasources-Dataset_Table](../img/user-guide/datasources/Datasources-Dataset_Table.png)
+![Datasources-Dataset_Table](../img/admin-guide/datasources/Datasources-Dataset_Table.png)
 
 #### Source type - GIT
 
@@ -91,7 +91,7 @@ To ensure a successful connection, **you must clone your Git repository and prov
   * **Extension Whitelist** - specify file extensions that are explicitly allowed. This security measure ensures only designated file types are processed, safeguarding against unwanted or potentially harmful files. List the extensions separated by commas (e.g., `.pdf`, `.docx`, `.txt`), overriding the default supported types if necessary.
   * **Extension Blacklist** - conversely, list file extensions you wish to exclude from processing. Any file type (e.g., `.exe`, `.bin`, `.png`) mentioned here will be automatically rejected, further enhancing security and control over the documents your system handles.
 
-![Datasources-Dataset_GIT](../img/user-guide/datasources/Datasources-Dataset_GIT.png)
+![Datasources-Dataset_GIT](../img/admin-guide/datasources/Datasources-Dataset_GIT.png)
 
 #### Source type - Confluence
 
@@ -124,7 +124,7 @@ For users who rely on Confluence pages to manage their information, documents, o
     * **Pages Limit Per Request** - define how many pages you want to fetch in a single request, with a default setting of 50. This helps manage data volume and response times.
     * **Max Total Pages** - set the maximum number of pages the system should fetch, defaulting to 1000. Useful for limiting data scope and ensuring performance.
 
-![Datasources-Dataset_Confluence](../img/user-guide/datasources/Datasources-Dataset_Confluence.png)
+![Datasources-Dataset_Confluence](../img/admin-guide/datasources/Datasources-Dataset_Confluence.png)
 
 #### Source type - QTest
 
@@ -151,7 +151,7 @@ Transformers enhance your documents by extracting significant keywords, summariz
 * **Maximum Keyword Count** - defines the limit on the number of keywords to be extracted.
 * **Split By** - determines how the document is sectioned for analysis, with options like Chunks, Lines, Paragraphs, Sentences, or Nothing.
 
-![Datasources-Dataset_Transformers](<../img/user-guide/datasources/Datasources-Dataset_Transformers.png>)
+![Datasources-Dataset_Transformers](<../img/admin-guide/datasources/Datasources-Dataset_Transformers.png>)
 
 ### SUMMARIZATION
 
@@ -162,7 +162,7 @@ Summarization utilizes LLMs to condense documents into their core messages. Due 
 3. * **Chunk summarization** - applies summarization to specific sections or chunks of the document.
 4. * Finally, click **Create** to index the dataset for use. Note that processing time can take up to 10 minutes, depending on the source type and size.
 
-![Datasources-Dataset_Summarization](<../img/user-guide/datasources/Datasources-Dataset_Summarization.png>)
+![Datasources-Dataset_Summarization](<../img/admin-guide/datasources/Datasources-Dataset_Summarization.png>)
 
 **Note**: Multiple datasets can be utilized within the same datasource, enhancing versatility and depth of analysis.
 
@@ -170,7 +170,7 @@ Summarization utilizes LLMs to condense documents into their core messages. Due 
 
 **Context** input field is a designated area for providing instructions (prompt'), that facilitates the utilization of information from configured datasets via LLMs. This prompt guides the LLM on how to interpret and analyze the dataset, ensuring that the generated output aligns with the user's specific objectives. **Note**: By providing detailed and clear instructions in the **Context** field, users effectively guide the processing and analysis of their datasets, leveraging the robust capabilities of LLMs for tailored insights and actions.
 
-![Datasources-Context](<../img/user-guide/datasources/Datasources-Context.png>)
+![Datasources-Context](<../img/admin-guide/datasources/Datasources-Context.png>)
 
 ### WELCOME MESSAGE
 
@@ -190,7 +190,7 @@ The **Welcome Message** feature allows you to provide additional context for pro
 * "Use this datasource for asking questions about FT Armenia"
 * "Don't forget to double-check the generated responses"
 
-![Datasources-Welcome_Message](<../img/user-guide/datasources/Datasources-Welcome_Message.png>)
+![Datasources-Welcome_Message](<../img/admin-guide/datasources/Datasources-Welcome_Message.png>)
 
 ### CONVERSATION STARTERS
 
@@ -211,7 +211,7 @@ The **Conversation Starter** feature enables you to configure and add predefined
 * "How to create a prompt?"
 * "I am on bench, and want to know what activities can be done"
 
-![Datasources-Conversation_Starters](<../img/user-guide/datasources/Datasources-Conversation_Starters.png>)
+![Datasources-Conversation_Starters](<../img/admin-guide/datasources/Datasources-Conversation_Starters.png>)
 
 By setting up conversation starters, you streamline the process of initiating specific tasks or queries, making your interactions with the datasource more efficient and standardized.
 
@@ -251,7 +251,7 @@ The **Chat** feature is tailored for conversational AI models, enabling you to e
         * **Lower values**: Responses are shorter and more concise.
 4. Type your text in the chat box and click the **Send** icon to initiate the dialogue.
 
-![Datasources-Chat](<../img/user-guide/datasources/Datasources-Chat.png>)
+![Datasources-Chat](<../img/admin-guide/datasources/Datasources-Chat.png>)
 
 **Additional Interaction Features:**
 
@@ -290,7 +290,7 @@ The **Search** feature allows you to quickly locate specific information within 
       * **String content** - determines whether the system should include or consider specific text data in its processing or generation.
 3. Type your query into the input field and hit the **Send** icon.
 
-![Datasources-Search](<../img/user-guide/datasources/Datasources-Search.png>)
+![Datasources-Search](<../img/admin-guide/datasources/Datasources-Search.png>)
 
 **Post-Output Actions:**
 
@@ -323,7 +323,7 @@ The **Deduplication** is a handy feature for identifying duplicate information.
 
 By using these features, you’re equipped to enhance your dataset, making it a more efficient and effective tool for your AI applications. Proceed with adjustments only if you're confident in your understanding of their implications.
 
-![Datasources-Deduplicate](../img/user-guide/datasources/Datasources-Deduplicate.png)
+![Datasources-Deduplicate](../img/admin-guide/datasources/Datasources-Deduplicate.png)
 
 **Post-Output Actions:**
 
@@ -346,7 +346,7 @@ The Datasources menu is organized into three distinct pages, each designed to of
 * **My Likes**: Highlights the datasources that you have liked. This personalized page allows you to revisit favorites effortlessly.
 * **Trending**: Showcases the datasources with the highest number of likes, serving as a valuable resource for discovering top-rated datasources that hold significant value and popularity within the community.
 
-![Datasources-Menu_Public](<../img/user-guide/datasources/Datasources-Menu_Public.png>)
+![Datasources-Menu_Public](<../img/admin-guide/datasources/Datasources-Menu_Public.png>)
 
 ### Engaging with Published Datasources
 

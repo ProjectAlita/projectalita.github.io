@@ -14,7 +14,7 @@ Conversations support the following functionality:
 * **Managing Conversations**: Save conversations, pin the most important ones at the top of the screen, make private conversations public, delete conversations, clean the content of the conversation, and export the context of the conversation.
 * **Playback**: During playback, you can move backward and forward through the playback process or stop the conversation by simulating the current conversation without any engagement with models.
 
-![Chat](<../img/user-guide/chat/Chat.png>)
+![Chat](<../img/admin-guide/chat/Chat.png>)
 
 ## Creating a Conversation
 
@@ -23,7 +23,7 @@ Conversations support the following functionality:
 3. After creating Conversation add partiicpants to the conversation by clicking the **PARTICIPANTS +** button.
 4. Start the conversation by typing your text (be it a question or a command) into the chat box. Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the **Send** icon to begin.
 
-![Chat-New_Conversation](<../img/user-guide/chat/Chat-New_Conversation.png>)
+![Chat-New_Conversation](<../img/admin-guide/chat/Chat-New_Conversation.png>)
 
 Your newly created conversation will subsequently appear on the Conversation's list.
 
@@ -58,7 +58,7 @@ To add a participant to a conversation:
 
 **Note**: You can also add several participants at once (by clicking in the cards) and then click the **Add Participants** button.
 
-![Chat-Add_Participants](<../img/user-guide/chat/Chat-Add_Participants.png>)
+![Chat-Add_Participants](<../img/admin-guide/chat/Chat-Add_Participants.png>)
 
 ### How to Use a Participant
 
@@ -69,7 +69,7 @@ To add a participant to a conversation:
 3. After adding the active participant to the conversation, you can use it by typing simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the **Send** icon to execute the participant.
 4. To remove the participant from the conversation's active participant list, click the X icon. Note: This will not remove the participant from the Conversation entirely. You can call it again.
 
-![Chat-Use_Participants](<../img/user-guide/chat/Chat-Use_Participants.png>)
+![Chat-Use_Participants](<../img/admin-guide/chat/Chat-Use_Participants.png>)
 
 ### How to Configure/Modify Participants
 
@@ -83,7 +83,7 @@ For **Models**:
 4. To apply changes, click the **< SETTINGS** button.
 5. You can also restore back to default settings by clicking the **Restore** icon.
 
-![Chat-Participants_Model_Settings](<../img/user-guide/chat/Chat-Participants_Model_Settings.png>)
+![Chat-Participants_Model_Settings](<../img/admin-guide/chat/Chat-Participants_Model_Settings.png>)
 
 For **Prompts**:
 
@@ -94,7 +94,7 @@ For **Prompts**:
 5. To apply changes, click the **< SETTINGS** button.
 6. You can also restore back to default settings by clicking the **Restore** icon.
 
-![Chat-Participants_Prompt_Settings](<../img/user-guide/chat/Chat-Participants_Prompt_Settings.png>)
+![Chat-Participants_Prompt_Settings](<../img/admin-guide/chat/Chat-Participants_Prompt_Settings.png>)
 
 For **Datasources**:
 
@@ -106,7 +106,7 @@ For **Datasources**:
 4. To apply changes, click the **< SETTINGS** button.
 5. You can also restore back to default settings by clicking the **Restore** icon.
 
-![Chat-Participants_Datasource_Settings](<../img/user-guide/chat/Chat-Participants_Datasource_Settings.png>)
+![Chat-Participants_Datasource_Settings](<../img/admin-guide/chat/Chat-Participants_Datasource_Settings.png>)
 
 For **Agents**:
 
@@ -117,7 +117,7 @@ For **Agents**:
 5. To apply changes, click the **< SETTINGS** button.
 6. You can also restore back to default settings by clicking the **Restore** icon.
 
-![Chat-Participants_Agent_Settings](<../img/user-guide/chat/Chat-Participants_Agent_Settings.png>)
+![Chat-Participants_Agent_Settings](<../img/admin-guide/chat/Chat-Participants_Agent_Settings.png>)
 
 ### Actions for Conversation
 
@@ -130,4 +130,4 @@ The following actions are available for created conversations from **CONVERSATIO
 * **Playback**: The **Playback** mode can be used to simulate the current conversation without any engagement with models. This mode accurately reproduces the conversation like a recording. It's well designed for demo purposes.
 * **Pin**: To pin a single conversation, on the left panel, in the conversation contextual menu, select **Pin**. Your conversation will be pinned at the top of your conversation's list. **Note**: You can unpin the conversation by clicking the **Unpin** action.
 
-![Chat-Conversation_Actions](<../img/user-guide/chat/Chat-Conversation_Actions.png>)
+![Chat-Conversation_Actions](<../img/admin-guide/chat/Chat-Conversation_Actions.png>)

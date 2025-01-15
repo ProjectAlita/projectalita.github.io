@@ -2,34 +2,50 @@
 
 ## Private project - Agents menu
 
-ELITEA Agents play a pivotal role in broadening and enriching the functionalities of ELITEA and AI technologies. 
-ELITEA Agents is a feature that allows you to create and manage virtual assistants or "agents" within the ELITEA interface. These agents are designed to help you accomplish specific tasks or automate certain workflows by leveraging the natural language processing capabilities of GPT models supported by ELITEA.
+ELITEA Agents are a cornerstone feature within the ELITEA platform, designed to significantly enhance and expand the capabilities of AI technologies. By leveraging the advanced natural language processing capabilities of GPT models, ELITEA Agents serve as virtual assistants or "agents" that automate tasks and streamline workflows, providing users with a more efficient and effective way to interact with AI models.
 
-The purpose of Agents in ELITEA is to provide a more efficient way of interacting with the AI models for various use cases. Instead of engaging in open-ended conversations, you can define specific goals, tasks, or workflows for an agent to handle. This can be particularly useful in scenarios where you need to perform repetitive or complex tasks that involve multiple steps or require gathering and processing information from various sources.
-
-![Agents-Menu_Private](<../../img/user-guide/agents/Agents-Menu_Private.png>)
+![Agents-Menu_Private](<../../img/admin-guide/agents/Agents-Menu_Private.png>)
 
 ## What are ELITEA Agents?
-ELITEA Agents are virtual assistants or bots that you can create and customize within the ELITEA interface. Each agent is designed to handle a specific task or set of tasks based on the instructions and capabilities you define for it. Agents bring prompts, datasources and external to LLM toolkits into one mechanism allowing to use integrate decisions made by LLMs and actions required to be taken, like search in Google or creating a Jira Tickets, etc. Agents are capable to work with more external toolkits.
+
+ELITEA Agents are customizable virtual assistants or bots that you can create within the ELITEA interface. Each agent is tailored to handle specific tasks or sets of tasks, based on the instructions and capabilities you define. These agents integrate various components such as prompts, datasources, and external toolkits, allowing them to make informed decisions and perform actions like searching on Google, creating Jira tickets, interacting with your code in GitHub. The flexibility of ELITEA Agents enables them to work with a wide range of external toolkits, making them versatile tools for automating complex workflows.
+
+## Purpose of ELITEA Agents
+
+The primary purpose of ELITEA Agents is to provide a structured and efficient way to interact with AI models for diverse use cases. Unlike open-ended conversations, agents are designed to achieve specific goals, tasks, or workflows. This is particularly beneficial in scenarios that involve repetitive or intricate tasks requiring multiple steps or the aggregation and processing of information from various sources. By automating these processes, ELITEA Agents help reduce manual effort and increase productivity.
 
 ## How do Agents work?
-When you create an agent, you provide it with a set of instructions, toolkits or a goal that you want it to accomplish. These instructions can be as simple or complex as needed, and they can include steps, conditions, and actions that the agent should take. The agent then uses the natural language processing capabilities of selected GPT model to understand and execute the instructions you've provided.
 
-## Integration with External toolkits, Services, and APIs
+Creating an Agent involves defining a set of instructions, toolkits, or goals that the agent is meant to accomplish. These instructions can range from simple to complex, incorporating steps, conditions, and actions that guide the agent's behavior. Once configured, the agent utilizes the natural language processing capabilities of the selected GPT model to interpret and execute the provided instructions. This allows the agent to autonomously perform tasks, make decisions, and adapt to changing conditions without requiring constant human intervention.
 
-One of the powerful features of ELITEA Agents is their ability to integrate with a wide range of external toolkits, services, and APIs. This integration enables agents to access and interact with different platforms, empowering them to perform more complex and specialized tasks. Below are some examples of integrations that can be set up with ELITEA Agents:
+## Key Features of ELITEA Agents
 
-* **Project Management toolkits**: ELITEA Agents can be integrated with toolkits like JIRA or Trello to help manage projects, track issues, and collaborate with team members efficiently.
-* **Test Management toolkits**: Integration with toolkits such as TestRail or qTest can enable agents to assist with test case management, execution, and reporting, enhancing the software testing lifecycle.
-* **Documentation and Knowledge Base toolkits**: Agents can connect to platforms like Confluence to help create, update, and manage documentation and knowledge bases, ensuring that information is always current and accessible.
-* **Version Control Systems**: Integration with Git repositories like GitHub or GitLab can allow agents to assist with code management, pull requests, and code reviews, streamlining the development process.
-* **APIs and Web Services**: ELITEA Agents can interact with various APIs and web services, such as Open APIs to retrieve and process data as needed, providing timely and relevant information.
-* **Web Browsers**: Agents can be configured to automate tasks within web browsers, such as web scraping, web searching, or automating web-based workflows, which can significantly reduce manual effort.
-* **Internal toolkits and Systems**: ELITEA Agents can also be integrated with internal ELITEA toolkits (prompts, datasources and agents).
+* **Autonomy**: ELITEA Agents operate independently, making decisions and taking actions based on predefined goals and instructions.
+* **Proactivity**: Agents can proactively determine the next steps needed to achieve their objectives, even in the absence of explicit instructions.
+* **Integration**: By combining prompts, datasources, and external toolkits, agents can seamlessly integrate decision-making processes with actionable tasks.
+* **Customization**: Users can tailor agents to meet specific needs, defining the scope and complexity of tasks they are designed to handle.
+* **Scalability**: ELITEA Agents can be scaled to manage a wide array of tasks across different domains, enhancing their utility and effectiveness.
 
-By leveraging these integrations, ELITEA Agents can become powerful virtual assistants that help automate and streamline a wide range of tasks across different platforms and toolkits. The specific integrations available may vary based on the capabilities of the ELITEA platform and the APIs or toolkits you want to connect with.
+By understanding and utilizing ELITEA Agents, users can unlock the full potential of AI-driven automation, transforming how tasks are managed and executed within the ELITEA platform. This not only improves efficiency but also empowers users to focus on more strategic and creative aspects of their work.
 
-It's important to note that setting up these integrations may require additional configuration and authentication steps, such as providing API keys, access tokens, or configuring webhooks or other communication channels between ELITEA and the external toolkits or services. These steps ensure secure and seamless integration, enabling ELITEA Agents to function effectively within your existing technological ecosystem.
+
+## Integration with External Toolkits, Services, and APIs
+
+ELITEA Agents are designed to be highly versatile, capable of integrating with a wide array of external toolkits, services, and APIs. This capability allows agents to extend their functionality beyond the core ELITEA platform, enabling them to perform complex and specialized tasks across various domains. By leveraging these integrations, Agents can act as powerful virtual assistants, automating and streamlining workflows to enhance productivity and efficiency.
+
+* **Internal Toolkits**: - **Agents, Datasources, Prompts, and Artifacts**: These are the foundational components within ELITEA that agents can utilize to perform tasks, manage data, and execute workflows. By integrating these internal toolkits, agents can seamlessly coordinate actions and decisions within the ELITEA environment.
+* **Management Tools**: - **Jira, Confluence, Bitbucket, Rally**: Agents can integrate with these project management and collaboration tools to manage tasks, track issues, and facilitate team collaboration. This integration allows agents to automate project updates, issue tracking, and documentation management, ensuring that teams remain aligned and informed.
+* **Test Management Tools** - **XRAY Cloud, TestRail, Zephyr Scale, QTest**: By connecting with test management platforms, agents can assist in managing test cases, executing tests, and generating reports. This integration streamlines the software testing lifecycle, improving accuracy and efficiency in quality assurance processes.
+* **Coding Tools**: - **GitHub, GitLab, GitLab Org, Sonar**: Integration with version control and code quality tools enables agents to manage code repositories, facilitate pull requests, and conduct code reviews. This helps streamline the development process, ensuring code integrity and facilitating collaboration among developers.
+* **EPAM Tools**: - **Report Portal, TEST IO**: Agents can leverage EPAM-specific tools to enhance reporting and testing capabilities. This integration allows for automated data collection and analysis, providing insights that drive informed decision-making.
+* **Azure Tools**: - **ADO wiki, ADO plans, ADO boards**: By integrating with Azure DevOps tools, agents can manage documentation, project plans, and work items. This ensures that development and operations teams can collaborate effectively, maintaining alignment with project goals and timelines.
+* **Other Tools**: - **SQL, Browser, Google Places, Open API, Custom**: ELITEA Agents can interact with databases, search web, access location data, and connect with custom APIs. These integrations enable agents to perform data retrieval, automate web-based workflows, and access external data sources, reducing manual effort and enhancing data-driven decision-making.
+
+### Setting Up Integrations
+
+To set up these integrations, users may need to perform additional configuration and authentication steps. This includes providing API keys, access tokens, or configuring webhooks and communication channels between ELITEA and the external toolkits or services. These steps ensure secure and seamless integration, allowing ELITEA Agents to function effectively within your existing technological ecosystem.
+
+By harnessing the power of these integrations, ELITEA Agents can automate a wide range of tasks, from project management and software testing to code management and data processing. This not only enhances the capabilities of the ELITEA platform but also empowers users to achieve greater efficiency and productivity in their workflows.
 
 **Note**: For more information, please check [Alita Tools](https://github.com/ProjectAlita/application-tools) and [Alita SDK](https://github.com/ProjectAlita/alita-sdk) git repos.
 
@@ -43,10 +59,10 @@ To set up a new agent:
 4. Select the **Agent type**.
 5. Provide instructions for selected **Agent type** in the Instructions field.
 6. Add and setup selected toolkits that agent must use.
-7. Optionally, add and configure **Conversation Starter**. 
+7. Optionally, add and configure **Conversation Starter** and **Welcome Message**. 
 8. Click **Save**.
 
-![Agents-New_Agent](<../../img/user-guide/agents/Agents-New_Agent.png>)
+![Agents-New_Agent](<../../img/admin-guide/agents/Agents-New_Agent.png>)
 
 Your newly created agent will subsequently appear on the **Agents** page for your project.
 
@@ -60,51 +76,34 @@ The **Instructions** field in Agent is a crucial component where users input the
 * **Enter the Details**: In the Instructions field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the agent's focus and efficiency.
 * **Using toolkits**: For enhancing agent's capabilities, you can integrate toolkits and provide instructions how to use them and in which order. The name of toolkit can be denoted by "", (e.g. "Access_JIRA" toolkit).
 
-![Agents-Instructions](<../../img/user-guide/agents/Agents-Instructions.png>)
+![Agents-Instructions](<../../img/admin-guide/agents/Agents-Instructions.png>)
+
 
 ### How to Select an Agent Type
 
-Choosing the appropriate Agent type is crucial as it dictates the level of detail and the nature of instructions required for the agent to operate effectively. Below is an overview of the available Agent types and their intended use cases:
+Selecting the right Agent type in ELITEA is essential for optimizing the performance and effectiveness of your AI-driven tasks. Each Agent type is designed to leverage specific capabilities and frameworks, catering to different use cases and operational needs. Below is a detailed overview of the available Agent types and their ideal applications:
 
-**ReAct**
+#### ReAct
 
-* **Description**: This Agent type is ideal for straightforward, linear scenarios that require minimal context. Simply specify your requirements, including what actions the agent should perform, and add the necessary toolkits. Utilize fields such as Actor, Goals, Instructions, and Constraints to clearly describe the desired behavior.
-* **Best For**: Simple tasks with clear, direct instructions.
+* **Description**: The ReAct Agent type is designed for straightforward, linear tasks that require minimal context. Users can specify the desired actions and add necessary toolkits using fields such as Actor, Goals, Instructions, and Constraints to clearly define the agent's behavior.
+* **Best For**: Simple tasks with clear, direct instructions where the agent's actions are well-defined and do not require extensive context or interaction history.
 
-**Alita**
+#### XMLChat
 
-* **Description**: Alita agents are a hybrid of OpenAI's and Langchain's ReAct approaches, making them suitable for more complex, open-ended scenarios. Unlike the React type, Alita agents can maintain chat history, which enhances their ability to handle extended interactions.
-* **Best For**: Complex scenarios that require ongoing interactions and the ability to retain context over time. Not recommended for simple, linear tasks.
+* **Description**: Similar to ReAct, but utilizes XML for tool integration instead of JSON. This makes XMLChat more suitable for models like LLama and Anthropic, which may benefit from XML's structured format.
+* **Best For**: Scenarios where XML is preferred for tool integration, particularly with LLama and Anthropic models.
 
-**Dial**
+#### OpenAI
 
-* **Description**: Dial agents are based on Epam AI DIAL technology and are designed to interact with models and functions or tools, specifically restricted to OpenAI models.
-* **Best For**: Scenarios that require interaction with OpenAI models and can benefit from DIAL's capabilities.
+* **Description**: OpenAI Agents are built on the LangChain backend and are specifically designed for integrations with Azure OpenAI Service. These agents excel in generating human-like text and handling a wide range of conversational tasks.
+* **Best For**: Tasks requiring high-quality natural language understanding and generation, such as customer support, content creation, and complex query resolution.
 
-**CodeMie**
+#### Pipeline
 
-* **Description**: Coming soon. Integrated Agent Runtime for CodeMie agents.
+* **Description**: Similar to OpenAI, Pipeline Agents are also based on the LangChain backend and work exclusively with Azure OpenAI Service integrations. They are designed to handle complex workflows and data processing tasks. Instructions must be written in YAML format.
+* **Best For**: Scenarios that require structured workflows and data processing capabilities, leveraging the power of Azure OpenAI Service.
 
-**OpenAI**
-
-* **Description**: OpenAI agent types are designed to leverage the cutting-edge capabilities of GPT models. These agents excel in generating human-like text and handling a wide range of conversational tasks. They can be easily integrated with OpenAI's API, allowing for seamless interaction and response generation based on the model's extensive training data.
-* **Best For**: Tasks that require high-quality natural language understanding and generation, such as customer support, content creation, and complex query resolution. Ideal for scenarios where engaging, contextually aware interactions are crucial.
-
-**Autogen**
-
-* **Description**: Autogen agents specialize in automated content generation and data extraction tasks. These agents use advanced algorithms to parse and interpret data, then generate structured outputs such as reports, summaries, and detailed analyses. Autogen agents are highly customizable and can be tailored to specific industry needs.
-* **Best For**: Automated report generation, data analysis tasks, and scenarios where structured data output is required. Ideal for sectors like finance, healthcare, and research where precision and reliability in data handling are paramount.
-
-**Llama**
-
-* **Description**: Llama agents are built on top of the Llama model, known for its efficiency and adaptability across various languages and tasks. These agents are particularly effective in multilingual environments and can handle diverse datasets with ease. Llama agents are optimized for speed and accuracy, making them suitable for real-time applications.
-* **Best For**: Multilingual applications, real-time interaction scenarios, and tasks that require processing large volumes of data efficiently. They are also well-suited for educational and informational services where quick, accurate responses are needed.
-
-**Raw**
-
-* **Description**: Obsolete. Used for oldschool agents. Going to be depricated soon.
-
-Each of these agent types is tailored to leverage specific strengths of their underlying models and frameworks. Choosing the appropriate agent type based on the task requirements and desired outcomes ensures optimal performance and efficiency. **Note**: For more information how to select corresponding Agent type and create better instructions for agents please check [Agent Frameworks](../agents/agents-examples.md) document.
+Each Agent type in ELITEA is crafted to maximize the strengths of its underlying models and frameworks. Selecting the appropriate Agent type based on your specific task requirements and desired outcomes will ensure optimal performance and efficiency. For more detailed guidance on selecting the right Agent type and crafting effective instructions, please refer to the [Agent Frameworks](../agents/agents-examples.md) document.
 
 
 ### How to select and configure Toolkits
@@ -118,9 +117,9 @@ Toolkits are integrations with external or ELITEA's internal services, toolkits 
 3. Configure it accordingly to provide agent access to this tool.
 4. Click the **arrow** icon next to the **New tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-New_Tool](<../../img/user-guide/agents/Agents-New_Tool.png>)
+![Agents-New_Tool](<../../img/admin-guide/agents/Agents-New_Tool.png>)
 
-**To edit alrady created toolkit**:
+**To edit already created toolkit**:
 
 1. Click the name of the already created **Tool**.
 2. The **New [tool_name] tool** configuration section is opened.
@@ -144,7 +143,7 @@ The **Agent** toolkit provides a meta-level functionality by allowing your Agent
       * **Version**: Select the available version of the selected agent from the dropdown list.
 4. Click the **arrow** icon next to the **New Agent tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Agent_Tool](<../../img/user-guide/agents/Agents-Agent_Tool.png>)
+![Agents-Agent_Tool](<../../img/admin-guide/agents/Agents-Agent_Tool.png>)
 
 #### Datasource toolkit
 
@@ -161,7 +160,7 @@ The **Datasource** toolkit empowers your Agent by providing access to pre-config
       * **Action**: Select the required action type that will be used by agent (either **Search** or **Chat**). This will allow Agent to use information from selected datasource either by searching it or by chating with it.
 4. Click the **arrow** icon next to the **New datasource tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Datasource_Tool](<../../img/user-guide/agents/Agents-Datasource_Tool.png>)
+![Agents-Datasource_Tool](<../../img/admin-guide/agents/Agents-Datasource_Tool.png>)
 
 #### Prompt toolkit
 
@@ -180,7 +179,7 @@ The **Prompt** toolkit allows your Agent to utilize pre-configured prompts from 
 
 **IMPORTANT:** Currently, Agents don't support prompts with variables. Variable for agent is input parameter, if you have “default” you need to bake it into the prompt.
 
-![Agents-Prompt_Tool](<../../img/user-guide/agents/Agents-Prompt_Tool.png>)
+![Agents-Prompt_Tool](<../../img/admin-guide/agents/Agents-Prompt_Tool.png>)
 
 
 #### Browser toolkit
@@ -206,7 +205,7 @@ The **Browser** toolkit significantly enhances the capabilities of your Agent by
           * **Google**: Integrate Google for comprehensive search functionalities. For creating CSE ID and API key for Google, please check the [Programmable Search Engine](https://programmablesearchengine.google.com/controlpanel/all) page.
 4. Click the **arrow** icon next to the **New Browser tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Browser_Tool](<../../img/user-guide/agents/Agents-Browser_Tool.png>)
+![Agents-Browser_Tool](<../../img/admin-guide/agents/Agents-Browser_Tool.png>)
 
 #### Confluence toolkit
 
@@ -229,8 +228,8 @@ The **Confluence** toolkit seamlessly integrates Confluence, a widely-used platf
             * **Password**: Enter the your token value directly into the provided field.
             * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
       * **Hosting Option**: Select the appropriate hosting type for your Jira setup:
-        * **Cloud**: If your Jira is hosted on Atlassian’s cloud.
-        * **Server**: If your Jira is hosted on your own servers or an enterprise environment. **Important Note**: When connecting to Epam's Jira, ensure you select the **Server** option to establish the correct configuration.
+        * **Cloud**: If your Confluence is hosted on Atlassian’s cloud.
+        * **Server**: If your Confluence is hosted on your own servers or an enterprise environment. **Important Note**: When connecting to Epam's Confluence, ensure you select the **Server** option to establish the correct configuration.
       * **Hosting Option**: Select the appropriate hosting type for your Confluence setup:
          * **Cloud**: If your Confluence is hosted on Atlassian’s cloud.
          * **Server**: If your Confluence is hosted on your own servers or an enterprise environment. **Important Note**: When connecting to Epam's Confluence, ensure you select the **Server** option to establish the correct configuration.
@@ -256,7 +255,7 @@ The **Confluence** toolkit seamlessly integrates Confluence, a widely-used platf
          * **Max retry, sec**: Set the maximum number of seconds to wait before retrying (e.g., `60`).
 4. Click the **arrow** icon next to the **New Confluence tool** to complete the setup and return to the main menu of Agent configuration.
 
-![Agents-Confluence_Tool](<../../img/user-guide/agents/Agents-Confluence_Tool.png>)
+![Agents-Confluence_Tool](<../../img/admin-guide/agents/Agents-Confluence_Tool.png>)
 
 #### Jira toolkit
 
@@ -294,7 +293,7 @@ The **Jira** toolkit enables a direct integration with Jira, allowing users to m
         * **Verify SSL**: Check this to enable SSL verification for secure connections to your Jira instance.
 4. Click the **arrow** icon next to the **New Jira tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Jira_Tool](<../../img/user-guide/agents/Agents-Jira_Tool.png>)
+![Agents-Jira_Tool](<../../img/admin-guide/agents/Agents-Jira_Tool.png>)
 
 #### GitHub toolkit
 
@@ -342,7 +341,7 @@ The **GitHub** toolkit integrates GitHub into your Agent, allowing it to access 
         * **Get files from directory**: Retrieves all files within a specified directory.
 4. Click the **arrow** icon next to the **New GitHub tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-GitHub_Tool](<../../img/user-guide/agents/Agents-GitHub_Tool.png>)
+![Agents-GitHub_Tool](<../../img/admin-guide/agents/Agents-GitHub_Tool.png>)
 
 #### Gitlab toolkit
 
@@ -372,7 +371,7 @@ Similar to the **GitHub** toolkit, the Gitlab toolkit integrates your Agent with
         * **Create PR change comment**: Allows you to comment on changes in a merge request.
 4. Click the **arrow** icon next to the **New Gitlab tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-GitLab_Tool](<../../img/user-guide/agents/Agents-GitLab_Tool.png>)
+![Agents-GitLab_Tool](<../../img/admin-guide/agents/Agents-GitLab_Tool.png>)
 
 #### Bitbucket toolkit
 
@@ -402,7 +401,7 @@ The **Bitbucket** toolkit integrates  into your Agent, allowing it to access and
         * **Create branch**: Enables the creation of new branches.
 4. Click the **arrow** icon next to the **New Bitbucket tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Bitbucket_Tool](<../../img/user-guide/agents/Agents-Bitbucket_Tool.png>)
+![Agents-Bitbucket_Tool](<../../img/admin-guide/agents/Agents-Bitbucket_Tool.png>)
 
 #### Testrail toolkit
 
@@ -424,7 +423,7 @@ The **Testrail** toolkit enables a direct integration with Testrauk, allowing us
         * **Add case**: To enable adding new case into Testrail.
 4. Click the **arrow** icon next to the **New testrail tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Testrail_Tool](<../../img/user-guide/agents/Agents-Testrail_Tool.png>)
+![Agents-Testrail_Tool](<../../img/admin-guide/agents/Agents-Testrail_Tool.png>)
 
 #### Open API toolkit
 
@@ -449,7 +448,7 @@ The **Open API** toolkit extends your Agent's capabilities by integrating OpenAP
       * **Authentication**: Choose the appropriate authentication method for your API from the dropdown menu. Options may include None, API Key, Token, OAuth, etc., depending on your API's requirements.
 7. Click the **arrow** icon next to the **New Open API tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-OpenAPI_Tool](<../../img/user-guide/agents/Agents-OpenAPI_Tool.png>)
+![Agents-OpenAPI_Tool](<../../img/admin-guide/agents/Agents-OpenAPI_Tool.png>)
 
 #### Custom toolkit
 
@@ -476,7 +475,7 @@ The **Custom** toolkit provides a flexible solution for users to create bespoke 
 5. Referencing ELITEA Tools Documentation: For detailed instructions on creating custom toolkits and understanding the available options, refer to the ELITEA Tools GitHub repository: [Alita Tools GitHub Repository](https://github.com/ProjectAlita/application-tools/tree/main/src/alita_tools). This repository contains documentation and examples that can help you build your custom tool.
 6. Once you have configured your custom toolkit, review the JSON configuration for accuracy. Click the **arrow** icon next to the **New Custom tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Custom_Tool](<../../img/user-guide/agents/Agents-Custom_Tool.png>)
+![Agents-Custom_Tool](<../../img/admin-guide/agents/Agents-Custom_Tool.png>)
 
 #### Artifact toolkit
 
@@ -498,7 +497,7 @@ The **Artifact** toolkit integrates your project's dedicated database in ELITEA 
         * **Append Data**: Permits updating the context of existing file in the bucket.
 4. Click the **arrow** icon next to the **New artifact tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Artifact_Tool](<../../img/user-guide/agents/Agents-Artifact_Tool.png>)
+![Agents-Artifact_Tool](<../../img/admin-guide/agents/Agents-Artifact_Tool.png>)
 
 ### WELCOME MESSAGE
 
@@ -518,7 +517,7 @@ The **Welcome Message** feature allows you to provide additional context for pro
 * "Use this agent for generating manual test cases"
 * "Don't forget to double-check the generated test cases"
 
-![Agents-Welcome_Message](<../../img/user-guide/agents/Agents-Welcome_Message.png>)
+![Agents-Welcome_Message](<../../img/admin-guide/agents/Agents-Welcome_Message.png>)
 
 ### CONVERSATION STARTERS
 
@@ -539,7 +538,7 @@ The **Conversation Starter** feature enables you to configure and add predefined
 * "Generate test cases for provided Acceptance Criteria."
 * "Generate automatic test cases for selected [Test_Case_ID]."
 
-![Agents-Conversation_Starter](<../../img/user-guide/agents/Agents-Conversation_Starter.png>)
+![Agents-Conversation_Starter](<../../img/admin-guide/agents/Agents-Conversation_Starter.png>)
 
 By setting up conversation starters, you streamline the process of initiating specific tasks or queries, making your interactions with the agent more efficient and standardized.
 
@@ -580,7 +579,7 @@ To execute the agent and get the output you have to:
 * **Delete Output**: To remove the current output from the chat, click the **Delete** icon.
 * **Purge Chat History**: For a fresh start or to clear sensitive data, click the **Clean** icon to erase the chat history.
 
-![Agents-Execution](<../../img/user-guide/agents/Agents-Execution.png>)
+![Agents-Execution](<../../img/admin-guide/agents/Agents-Execution.png>)
 
 ### Managing Agent Versions: Save, Create Versions, and Manage
 
