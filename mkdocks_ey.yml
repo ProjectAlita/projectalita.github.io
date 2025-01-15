@@ -2,26 +2,31 @@ site_name: ELITEA Documentation
 site_url: https://projectalita.ai
 nav:
   - Release Notes:
-    - RN 1.3.0: release-notes/rn_current.md
+    - RN 1.4.0: release-notes/rn_current.md
     - Archive:
+      - RN 1.3.0: release-notes/archived/rn5.md
       - RN 1.2.0: release-notes/archived/rn4.md
       - RN 1.1.0: release-notes/archived/rn3.md
       - RN 1.0.1: release-notes/archived/rn2.md
       - RN 1.0.0: release-notes/archived/rn1.md
-  - User Guide: 
-    - Get Started: user-guide/intro.md
-    - Chat: user-guide/chat.md
+  - Admin Guide: 
+    - Get Started: admin-guide/intro.md
+    - Settings: admin-guide/settings.md
+    - Chat: admin-guide/chat.md
     - Prompts: 
-      - Prompts: user-guide/prompts/prompts.md    
-      - Prompts Examples and Materials: user-guide/prompts/prompts-examples.md
-    - Datasources: user-guide/datasources.md
+      - Prompts: admin-guide/prompts/prompts.md    
+      - Prompts Examples and Materials: admin-guide/prompts/prompts-examples.md
+    - Datasources: admin-guide/datasources.md
     - Agents: 
-      - Agents: user-guide/agents/agents.md
-      - Agents Examples and Materials: user-guide/agents/agents-examples.md
-    - Collections: user-guide/collections.md
+      - Agents: admin-guide/agents/agents.md
+      - Agents Examples and Materials: admin-guide/agents/agents-examples.md
+    - Collections: admin-guide/collections.md
     - ELITEA Extensions:
-      - Alita Code: user-guide/extensions/alita-code.md
-      - Alita Code Chat: user-guide/extensions/alita-chat.md
+      - Alita Code: admin-guide/extensions/alita-code.md
+      - Alita Code Chat: admin-guide/extensions/alita-chat.md
+  - User Guides:
+    - Public Project Guide: user-guide/public-project.md
+    - Integrations Guide: user-guide/integrations.md
   - Manuals:
     - ELITEA and EPAM AI DIAL: manuals/alita-dial.md
     - QA - Prompting and Sharing: manuals/creating-prompts.md
@@ -30,4 +35,4 @@ nav:
     - faqs.md
 
 theme:
-  name: readthedocs
+  name: cinder

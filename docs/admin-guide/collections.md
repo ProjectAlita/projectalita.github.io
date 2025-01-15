@@ -4,7 +4,7 @@
 
 The **Collections** menu within **Private** project serves as a dedicated inventory for all your collections, irrespective of their current status. Consider it your personal repository for saving and organizing the collections you've crafted. 
 
-![Collections-Menu_Card_View](<../img/user-guide/collections/Collections-Menu_Card_View.png>)
+![Collections-Menu_Card_View](<../img/admin-guide/collections/Collections-Menu_Card_View.png>)
 
 These features ensure your collections are not only stored securely but also organized in a manner that simplifies management, review, and retrieval, tailoring the user experience to your needs and preferences.
 
@@ -25,7 +25,7 @@ Creating a collection allows you to organize and categorize your prompts for bet
 2. You will be prompted to fill in the **Name** and **Description** fields. It's important to provide clear and concise information here, as this helps others understand the purpose and content of your collection.
 3. Click **Save** to create the collection.
 
-![Collections-Create_Collection](<../img/user-guide/collections/Collections-Create_Collection.png>)
+![Collections-Create_Collection](<../img/admin-guide/collections/Collections-Create_Collection.png>)
 
 ### Exploring Collections
 
@@ -100,7 +100,7 @@ Organized into three distinct pages, the **Collections** menu introduces a struc
 * **My Likes**: Features the collections you have liked, creating a personalized library of favored content that can be revisited at any time.
 * **Trending**: Displays collections that have gathered the most likes, serving as an excellent resource for finding highly-regarded and popular collections esteemed by the community.
 
-![Collections-Menu_Public](<../img/user-guide/collections/Collections-Menu_Public.png>)
+![Collections-Menu_Public](<../img/admin-guide/collections/Collections-Menu_Public.png>)
 
 ### Engaging with Collections
 
