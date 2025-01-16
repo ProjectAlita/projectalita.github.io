@@ -29,7 +29,7 @@ ELITEA allows you to export prompts, datasources, and agents individually. The e
 2. **Navigate to the Project**: Go to the specific project that contains the prompt, datasource, or agent you wish to export.
 3. **Access the Relevant Menu**: Within the project, navigate to the menu corresponding to the entity type you want to export (e.g., **Prompts**, **Datasources**, or **Agents**).
 4. **Locate the Entity for Export**: Find the specific entity you want to export within the list. ELITEA offers two view options, and the export process varies slightly depending on the view you are using:
-   a. **Card List View**: If you are viewing your entities in a card format, click on the specific entity's card that you wish to export. This will open the entity's details. Once open, locate and click the **Export [entity type]** icon (e.g., **Export Prompt**, **Export Datasource**, or **Export Agent**).
+   a. **Card List View**: If you are viewing your entities in a card format, click on the specific entity's card that you wish to export. This will open the entity's details. Once open, locate and click the **Export [entity type]** icon (e.g., **Export prompt**, **Export datasource**, or **Export agent**).
    b. **Table View**: If you are viewing your entities in a table format, locate the entity you want to export in the list. In the **Actions** column, which is usually the last column in the table, click on the ellipsis icon (`...`) next to the entity. A dropdown menu will appear. Select the **Export** option from this menu.
 5. **Automatic Download**: Upon clicking the **Export** icon or selecting the **Export** option, your web browser will automatically initiate the download of a JSON file. This file contains all the configuration data for the exported entity and will be saved to your local device's default download location.
 
@@ -104,11 +104,6 @@ The exported JSON file includes:
     * Toolkit configurations (including tool details and parameters, *excluding authentication credentials*)
 
 **Important Security Note:** For security purposes, the authentication information for toolkits (such as API Keys, usernames, tokens, and passwords) is **not** included in the exported agent file. You will need to re-enter this information when importing the agent.
-
-### Exporting Master Agents with Connected Entities
-
-ELITEA offers a convenient feature to export a 'master' agent along with all its connected prompts, datasources, and child agents. This is particularly useful for transferring complex AI solutions.
-If you export a 'master' agent that has other agents, prompts, or datasources configured as toolkits, these nested entities will also be included in the exported JSON file.
 
 ### Exporting Collections
 
@@ -199,9 +194,39 @@ ELITEA provides a straightforward import process for prompts, datasources, and a
 
 ![Agent-Import_Wizard](<../img/user-guides/export-import/Agent-Import_Wizard.png>)
 
-### Importing Master Agents with Connected Entities
+### Managing Master Agents with Connected Entities: Exporting and Importing
 
-When importing a master agent that contains connected prompts, datasources, or child agents in its toolkits, ELITEA will automatically import these nested entities as well. This simplifies the process of transferring complex AI solutions.
+ELITEA simplifies the management of complex AI workflows by providing integrated features for exporting and importing 'master' agents along with their connected entities. This allows for efficient transfer of intricate AI workflows between different ELITEA environments or for creating comprehensive backups.
+
+**Exporting Master Agents with Connected Entities:**
+
+ELITEA offers a convenient feature to export a 'master' agent, ensuring that all its directly connected prompts, datasources, and child agents are included in the exported file. This is particularly useful for transferring complex AI solutions between different ELITEA environments or for creating comprehensive backups.
+
+When you export a 'master' agent that has other agents, prompts, or datasources configured as toolkits, these nested entities are automatically included in the exported JSON file. This single file contains the configuration details for the 'master' agent and all its connected resources, simplifying the transfer process.
+
+**Importing Master Agents with Connected Entities:**
+
+When importing a 'master' agent from an exported file, ELITEA automatically imports all the connected prompts, datasources, and child agents that were included in the file. This streamlined process eliminates the need to import each component individually, making it significantly easier to transfer complex AI workflows between ELITEA environments.
+
+Upon importing the 'master' agent's file, ELITEA will create the 'master' agent and all its associated toolkit entities in the target project, preserving the structure and relationships of the original workflow.
+
+**Benefits of Managing Master Agents with Connected Entities:**
+
+* **Simplified Transfer of Complex Workflows:** Move entire AI workflows, including agents and their dependencies, in a single operation.
+* **Preservation of Relationships:** Maintain the connections and configurations between the 'master' agent and its toolkits during the transfer process.
+* **Time Efficiency:** Avoid the manual effort of locating and importing each connected entity individually.
+
+**How it Works:**
+
+* **Export:** When exporting a 'master' agent, ELITEA identifies all the child prompts, datasources, and agents configured as toolkits and includes their configurations in the exported JSON file.
+* **Import:** During import, ELITEA reads the file and creates the 'master' agent and all its listed toolkit entities in the target project, re-establishing the connections.
+
+**Important Considerations:**
+
+* As with individual entity importing, the actual datasets within datasources will need to be reindexed in the target project after importing the 'master' agent and its connected entities.
+* As with individual entity importing, the authentication details for any configured toolkits and datasets are not copied to the new project. You will need to re-enter the authentication credentials (API Keys, usernames, tokens, passwords) for any toolkits and datasets while importing the 'master' agent.
+
+These integrated features for managing 'master' agents and their connected entities provide a powerful and efficient way to handle complex AI workflows within ELITEA.
 
 ![MasterAgent-Import_Wizard](<../img/user-guides/export-import/MasterAgent-Import_Wizard.png>)
 
