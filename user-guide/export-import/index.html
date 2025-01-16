@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/user-guide/export-import/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    
+    <title>Export and Import Guide - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../admin-guide/intro/">Get Started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../admin-guide/settings/">Settings</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../admin-guide/chat/">Chat</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Prompts</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../admin-guide/prompts/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../admin-guide/prompts/prompts-examples/">Prompts Examples and Materials</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../admin-guide/datasources/">Datasources</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../admin-guide/agents/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../admin-guide/agents/agents-examples/">Agents Examples and Materials</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../admin-guide/collections/">Collections</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../admin-guide/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../admin-guide/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../public-project/">Public Project Guide</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../integrations/">Integrations Guide</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Export and Import Guide</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manuals <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../manuals/alita-dial/">ELITEA and EPAM AI DIAL</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../manuals/creating-prompts/">QA - Prompting and Sharing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../manuals/roles/">Roles Management</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../faqs/">Frequently Asked Questions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../prompt-magic-assistant/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../../manuals/alita-dial/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#export-and-import-guide-managing-prompts-datasources-and-agents-for-backup-migration-and-collaboration">Export and Import Guide: Managing Prompts, Datasources, and Agents for Backup, Migration, and Collaboration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+            <li class="second-level"><a href="#import-and-export-features-a-general-overview">Import and Export Features: A General Overview</a></li>
+                
+            <li class="second-level"><a href="#how-to-export-entities">How to Export Entities</a></li>
+                
+                <li class="third-level"><a href="#exporting-a-prompt">Exporting a Prompt</a></li>
+                <li class="third-level"><a href="#exporting-a-datasource">Exporting a Datasource</a></li>
+                <li class="third-level"><a href="#exporting-an-agent">Exporting an Agent</a></li>
+                <li class="third-level"><a href="#exporting-master-agents-with-connected-entities">Exporting Master Agents with Connected Entities</a></li>
+            <li class="second-level"><a href="#how-to-import-entities">How to Import Entities</a></li>
+                
+                <li class="third-level"><a href="#importing-a-prompt">Importing a Prompt</a></li>
+                <li class="third-level"><a href="#importing-a-datasource">Importing a Datasource</a></li>
+                <li class="third-level"><a href="#importing-an-agent">Importing an Agent</a></li>
+                <li class="third-level"><a href="#importing-master-agents-with-connected-entities">Importing Master Agents with Connected Entities</a></li>
+            <li class="second-level"><a href="#best-practices-and-use-cases">Best Practices and Use Cases</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="export-and-import-guide-managing-prompts-datasources-and-agents-for-backup-migration-and-collaboration">Export and Import Guide: Managing Prompts, Datasources, and Agents for Backup, Migration, and Collaboration</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This user guide provides a comprehensive overview of the <strong>Export</strong> and <strong>Import</strong> features within ELITEA. These powerful functionalities allow you to seamlessly transfer your valuable entities – <strong>Prompts</strong>, <strong>Datasources</strong>, and <strong>Agents</strong> – between different ELITEA environments, projects, or for backup purposes.</p>
+<p>The ability to export and import entities offers significant flexibility and control over your AI workflows. You can leverage these features in various scenarios, including:</p>
+<ul>
+<li><strong>Migrating Entities:</strong>  Effortlessly move your carefully crafted prompts, configured datasources, and intelligent agents from one ELITEA environment to another. For instance, you can migrate entities from an ELITEA <a href="https://alita.lab.epam.com">Alita LAB</a> environment to a new <a href="https://nexus.elitea.ai/">Nexus</a> environment.</li>
+<li><strong>Sharing and Collaboration:</strong>  Share your entities with colleagues working in different projects or ELITEA instances, fostering collaboration and knowledge sharing.</li>
+<li><strong>Backup and Recovery:</strong> Create backups of your critical entities, ensuring data safety and enabling quick recovery in case of unforeseen issues.</li>
+<li><strong>Development and Testing:</strong> Develop and test entities in a dedicated environment and then easily import them into your production environment.</li>
+</ul>
+<p>This guide will detail the process of exporting and importing each entity type, along with best practices and practical use cases to help you effectively utilize these features.</p>
+<h2 id="import-and-export-features-a-general-overview">Import and Export Features: A General Overview</h2>
+<p>The <strong>Export</strong> feature allows you to save a snapshot of your prompts, datasources, or agents as JSON files. These files contain the complete configuration and relevant data of the entity at the time of export.</p>
+<p>The <strong>Import</strong> feature enables you to bring previously exported JSON files back into ELITEA. During the import process, you have the flexibility to configure certain aspects of the imported entity, such as the target project and specific settings.</p>
+<p>These features provide a convenient and reliable way to manage and transfer your assets within and across ELITEA environments.</p>
+<h2 id="how-to-export-entities">How to Export Entities</h2>
+<p>ELITEA allows you to export prompts, datasources, and agents individually. The export process is similar for each entity type.</p>
+<h3 id="exporting-a-prompt">Exporting a Prompt</h3>
+<ol>
+<li>Navigate to the <strong>Prompts</strong> menu within the project containing the prompt you wish to export.</li>
+<li>Locate the specific prompt you want to export from the list.</li>
+<li>Hover over the prompt entry, and you will see several icons appear on the right side.</li>
+<li>Click the <strong>Export prompt</strong> icon.</li>
+<li>Your browser will automatically download a JSON file containing the prompt's data to your local device.</li>
+</ol>
+<p><img alt="Prompt-Export" src="../../img/user-guides/export-import/Prompt-Export.png" /></p>
+<p>The exported JSON file includes:</p>
+<ul>
+<li>All versions of the prompt.</li>
+<li>The complete configuration of each version, including:<ul>
+<li>Context</li>
+<li>Messages (System, Assistant, User)</li>
+<li>Variables and their potential values</li>
+<li>Settings (Model, Temperature, Top-P, Top-K, Max Completion Tokens)</li>
+<li>Welcome Message</li>
+<li>Conversation Starters</li>
+<li>Tags</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Prompt-Exported_File" src="../../img/user-guides/export-import/Prompt-Exported_File.png" /></p>
+<h3 id="exporting-a-datasource">Exporting a Datasource</h3>
+<ol>
+<li>Navigate to the <strong>Datasources</strong> menu within the project containing the datasource you wish to export.</li>
+<li>Locate the specific datasource you want to export from the list.</li>
+<li>Hover over the datasource entry, and you will see several icons appear on the right side.</li>
+<li>Click the <strong>Export datasource</strong> prompt.</li>
+<li>Your browser will automatically download a JSON file containing the datasource's data to your local device.</li>
+</ol>
+<p><img alt="Datasource-Export" src="../../img/user-guides/export-import/Datasource-Export.png" /></p>
+<p>The exported JSON file includes:</p>
+<ul>
+<li>The complete configuration of the datasource, including:<ul>
+<li>Name and Description</li>
+<li>Context</li>
+<li>Welcome Message</li>
+<li>Conversation Starters</li>
+<li>Tags</li>
+<li>Settings for Chat, Search, and Deduplicate functionalities (including selected LLM and Embedding Models)</li>
+<li>Dataset configurations (including storage details and connection parameters, <em>excluding authentication credentials</em>)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Important Security Note:</strong> For security purposes, the authentication information for datasets (such as API Keys, usernames, tokens, and passwords) is <strong>not</strong> included in the exported datasource file. You will need to re-enter this information when importing the datasource.</p>
+<h3 id="exporting-an-agent">Exporting an Agent</h3>
+<ol>
+<li>Navigate to the <strong>Agents</strong> menu within the project containing the agent you wish to export.</li>
+<li>Locate the specific agent you want to export from the list.</li>
+<li>Hover over the agent entry, and you will see several icons appear on the right side.</li>
+<li>Click the <strong>Export agent</strong> icon.</li>
+<li>Your browser will automatically download a JSON file containing the agent's data to your local device.</li>
+</ol>
+<p><img alt="Agent-Export" src="../../img/user-guides/export-import/Agent-Export.png" /></p>
+<p>The exported JSON file includes:</p>
+<ul>
+<li>All versions of the agent.</li>
+<li>The complete configuration of each version, including:<ul>
+<li>Name and Description</li>
+<li>Context</li>
+<li>Welcome Message</li>
+<li>Conversation Starters</li>
+<li>Tags</li>
+<li>Settings (Model, Temperature, Top-P, Top-K, Max Completion Tokens)</li>
+<li>Toolkit configurations (including tool details and parameters, <em>excluding authentication credentials</em>)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Important Security Note:</strong> For security purposes, the authentication information for toolkits (such as API Keys, usernames, tokens, and passwords) is <strong>not</strong> included in the exported agent file. You will need to re-enter this information when importing the agent.</p>
+<h3 id="exporting-master-agents-with-connected-entities">Exporting Master Agents with Connected Entities</h3>
+<p>ELITEA offers a convenient feature to export a master agent along with all its connected prompts, datasources, and child agents. This is particularly useful for transferring complex AI solutions.</p>
+<p>If you export a master agent that has other agents, prompts, or datasources configured as toolkits, these nested entities will also be included in the exported JSON file.</p>
+<h2 id="how-to-import-entities">How to Import Entities</h2>
+<p>ELITEA provides a straightforward import process for prompts, datasources, and agents.</p>
+<ol>
+<li>Login ELITEA.</li>
+<li>Click the <strong>+Quick</strong> button switcher, located in the top right corner of the interface.</li>
+<li>Click the <strong>Import</strong> button.</li>
+<li>Choose the appropiate file (in *.json) from your local device.</li>
+<li>An <strong>Import Wizard</strong> will appear, guiding you through the import process.</li>
+</ol>
+<p><img alt="Import-Button" src="../../img/user-guides/export-import/Import-Button.png" /></p>
+<h3 id="importing-a-prompt">Importing a Prompt</h3>
+<ol>
+<li><strong>Select File:</strong> Choose the appropiate prompt file (in *.json) from your local device.</li>
+<li><strong>Import Wizard - Prompt Options:</strong><ul>
+<li><strong>Select Project:</strong> Choose the target project where you want to import the prompt. You can select your Private workspace or any other project where you have the necessary permissions.</li>
+<li><strong>Select Versions to Import:</strong> You can choose to import all versions of the prompt or select specific versions.</li>
+<li><strong>Select LLM Model:</strong> For each version you are importing, you can select the desired LLM Model.<ul>
+<li>If the LLM Model specified in the exported file is also available in your current ELITEA environment, it will be selected automatically.</li>
+<li>If the model is not available, the first available model in your environment will be selected as a default.</li>
+<li>You can manually change the selected model to your preferred choice before completing the import.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Click the <strong>Import</strong> button in the Import Wizard.</li>
+<li>The imported prompt will now be available in the <strong>Prompts</strong> menu of the selected project.</li>
+</ol>
+<p><img alt="Prompt-Import_Wizard" src="../../img/user-guides/export-import/Prompt-Import_Wizard.png" /></p>
+<h3 id="importing-a-datasource">Importing a Datasource</h3>
+<ol>
+<li><strong>Select File:</strong> Choose the appropiate datasource file (in *.json) from your local device.</li>
+<li><strong>Import Wizard - Datasource Options:</strong><ul>
+<li><strong>Select Project:</strong> Choose the target project where you want to import the datasource.</li>
+<li><strong>Select Embedding Model:</strong> Choose the desired Embedding Model for the datasource.<ul>
+<li>If the Embedding Model specified in the exported file is also available in your current ELITEA environment, it will be selected automatically.</li>
+<li>If the model is not available, the first available model in your environment will be selected as a default.</li>
+<li>You can manually change the selected model to your preferred choice.</li>
+</ul>
+</li>
+<li><strong>Configure Models for Chat, Search, and Deduplicate:</strong> Select the desired LLM models for the Chat, Search, and Deduplicate functionalities of the datasource.</li>
+<li><strong>Provide Mandatory Parameters:</strong> Fill in all mandatory fields and parameters, which are highlighted with an asterisk <code>*</code>. This typically includes the <strong>Storage</strong> type and various authentication parameters for the datasets.</li>
+<li><strong>Select Datasets to Import:</strong> Choose which datasets you want to import along with the datasource.</li>
+<li><strong>Provide Dataset Authentication:</strong> For any datasets requiring authentication, you will need to manually provide the necessary credentials (API Keys, usernames, tokens, passwords).</li>
+</ul>
+</li>
+<li>Click the <strong>Import</strong> button in the Import Wizard.</li>
+<li>The imported datasource will now be available in the <strong>Datasources</strong> menu of the selected project.</li>
+<li><strong>Reindexing Datasets:</strong> After successfully importing the datasource, you <strong>must</strong> open the datasource and initiate the reindexing of the imported datasets. This step is crucial as the actual vector databases are not exported or imported.</li>
+</ol>
+<p><img alt="Datasource-Import_Wizard" src="../../img/user-guides/export-import/Datasource-Import_Wizard.png" /></p>
+<p><img alt="Datasource-Reindex" src="../../img/user-guides/export-import/Datasource-Reindex.png" /></p>
+<h3 id="importing-an-agent">Importing an Agent</h3>
+<ol>
+<li><strong>Select File:</strong> Choose the appropiate agent file (in *.json) from your local device.</li>
+<li><strong>Import Wizard - Agent Options:</strong><ul>
+<li><strong>Select Project:</strong> Choose the target project where you want to import the agent.</li>
+<li><strong>Select Versions to Import:</strong> You can choose to import all versions of the agent or select specific versions.</li>
+<li><strong>Select LLM Model:</strong> For each version you are importing, you can select the desired LLM Model.<ul>
+<li>If the LLM Model specified in the exported file is also available in your current ELITEA environment, it will be selected automatically.</li>
+<li>If the model is not available, the first available model in your environment will be selected as a default.</li>
+<li>You can manually change the selected model to your preferred choice before completing the import.</li>
+</ul>
+</li>
+<li><strong>Provide Mandatory Parameters:</strong> Fill in all mandatory fields and parameters, which are highlighted with an asterisk <code>*</code>. This typically includes various authentication parameters for the agent's toolkits.</li>
+<li><strong>Select Tools to Import:</strong> Choose which tools you want to import along with the agent.</li>
+<li><strong>Configure Tool Parameters:</strong> You can review and reconfigure the available options and parameters for each tool being imported. You can either use the default values from the exported file or customize them as needed.</li>
+<li><strong>Provide Toolkit Authentication:</strong> For any toolkits requiring authentication, you will need to manually provide the necessary credentials (API Keys, usernames, tokens, passwords).</li>
+</ul>
+</li>
+<li>Click the <strong>Import</strong> button in the Import Wizard.</li>
+<li>The imported agent will now be available in the <strong>Agents</strong> menu of the selected project.</li>
+</ol>
+<p><img alt="Agent-Import_Wizard" src="../../img/user-guides/export-import/Agent-Import_Wizard.png" /></p>
+<h3 id="importing-master-agents-with-connected-entities">Importing Master Agents with Connected Entities</h3>
+<p>When importing a master agent that contains connected prompts, datasources, or child agents in its toolkits, ELITEA will automatically import these nested entities as well. This simplifies the process of transferring complex AI solutions.</p>
+<p><img alt="MasterAgent-Import_Wizard" src="../../img/user-guides/export-import/MasterAgent-Import_Wizard.png" /></p>
+<h2 id="best-practices-and-use-cases">Best Practices and Use Cases</h2>
+<ul>
+<li><strong>Regular Backups:</strong>  Utilize the export feature to create regular backups of your important prompts, datasources, and agents. Store these exported files in a safe location for disaster recovery purposes.</li>
+<li><strong>Environment Migration:</strong>  When migrating from one ELITEA environment to another (e.g., from a development to a production environment), export your entities from the source environment and import them into the target environment.</li>
+<li><strong>Sharing with Colleagues:</strong> Export your well-crafted prompts or useful datasources and share the JSON files with colleagues so they can import them into their own projects.</li>
+<li><strong>Collaborative Development:</strong>  Developers can work on different parts of an AI solution in separate ELITEA instances and then use export/import to integrate their work. For example, one developer might create a set of prompts, while another configures a datasource.</li>
+<li><strong>Template Creation:</strong> Create a library of reusable prompt and datasource templates by exporting them. These templates can then be easily imported into new projects, saving time and effort.</li>
+<li><strong>Security Considerations:</strong> Remember that authentication credentials for datasets and toolkits are not included in exported files. Ensure you have a secure way to manage and provide these credentials when importing.</li>
+<li><strong>Testing in Isolation:</strong> Export a production agent and import it into a separate testing environment. This allows you to test new changes without impacting the live system.</li>
+</ul>
+<p>By understanding and utilizing the Export and Import features effectively, you can significantly enhance your workflow within ELITEA, improve collaboration, and ensure the safety and portability of your valuable AI assets.</p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../.."</script>
+    
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
