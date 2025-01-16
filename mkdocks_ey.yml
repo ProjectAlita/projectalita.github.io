@@ -27,6 +27,8 @@ nav:
   - User Guides:
     - Public Project Guide: user-guide/public-project.md
     - Integrations Guide: user-guide/integrations.md
+    - Prompt Magic Assistant Guide: user-guide/prompt-magic-assistant.md
+    - Export and Import Guide: user-guide/export-import.md
   - Manuals:
     - ELITEA and EPAM AI DIAL: manuals/alita-dial.md
     - QA - Prompting and Sharing: manuals/creating-prompts.md

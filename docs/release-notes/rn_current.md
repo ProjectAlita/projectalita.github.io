@@ -33,7 +33,7 @@
 * **Forking Prompts, Agents, and Datasources**: Introduce the forking feature to transfer Agents, Datasources, and Prompts between projects without needing to export and import the entities. **Note**: For security reasons, passwords and actual datasets are excluded from the forking process.
 * **Integrations**: Enable seamless connections with external platforms such as Jira, Confluence, GitHub, and Testrail, enhancing workflow efficiency by allowing centralized management and improved collaboration across different tools.
 * **Configurations**: Set up project-specific or personal configurations for Jira, Confluence, GitHub, and Testrail toolkits within the Agent interface, ensuring unique setups based on service URLs for optimal integration management.
-* **Magic AI Prompt Assistant**: Auto-generate new prompts based on user input, enhancing the interactive capabilities of ELITEA.
+* **Magic Prompt Assistant**: Auto-generate new prompts based on user input, enhancing the interactive capabilities of ELITEA.
 * **UI Enhancements: Full Screen View**: Enable a Full Screen view for Context, Conversation Starter, and Welcome Message fields for Agents, Prompts, and Datasources.
 * **New BDD Loader**: Reduce manual efforts required to update datasources for automation tests, allowing automation QAs to create specific datasources directly from the ELITEA UI.
 * **Improved Sorting and Ordering for Projects Dropdown List**: Projects are now sorted in alphanumerical order, with Public and Private workspaces shown at the top of the list.
