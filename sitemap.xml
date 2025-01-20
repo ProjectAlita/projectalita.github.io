@@ -2,106 +2,110 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://projectalita.ai/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/faqs/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/chat/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/collections/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/datasources/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/intro/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/settings/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/agents/agents-examples/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/agents/agents/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/extensions/alita-chat/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/extensions/alita-code/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/prompts/prompts-examples/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/admin-guide/prompts/prompts/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/manuals/alita-dial/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/manuals/creating-prompts/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/manuals/roles/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/release-notes/rn_current/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/release-notes/archived/rn1/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/release-notes/archived/rn2/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/release-notes/archived/rn3/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/release-notes/archived/rn4/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/release-notes/archived/rn5/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/user-guide/export-import/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
+    </url>
+    <url>
+         <loc>https://projectalita.ai/user-guide/forking/</loc>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/user-guide/integrations/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/user-guide/prompt-magic-assistant/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
     <url>
          <loc>https://projectalita.ai/user-guide/public-project/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-01-20</lastmod>
     </url>
 </urlset>
