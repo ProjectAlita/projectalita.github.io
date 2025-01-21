@@ -13,7 +13,8 @@ The ability to integrate with external services and manage their configurations 
 
 This guide will detail the process of setting up Integrations and utilizing Configurations within Agent toolkits, along with best practices and practical use cases to help you effectively leverage these features. 
 
-```markdown
+**Important Note:**
+
 In ELITEA, your work is organized within three distinct types of spaces:
 
 * **Private Workspace:** This is your personal area within ELITEA. You have exclusive access to all the content you create and manage here. Think of it as your individual sandbox where you can experiment and build your AI solutions. This includes your personal Chats, Agents, Prompts, Datasources, Collections and Artifacts.
@@ -21,7 +22,6 @@ In ELITEA, your work is organized within three distinct types of spaces:
 * **Public Project:** This space allows you to engage with the wider ELITEA community and explore content shared by other users. This shared content includes Chats, Agents, Prompts, Datasources, and Collections.
 
 Understanding the distinction between your **Private Workspace**, where you have exclusive access to your content, and **Team Projects**, which are collaborative spaces where team members share access to project resources, is crucial for effectively managing **Integrations** and **Configurations** within ELITEA.
-```
 
 ## Integration Feature: Connecting ELITEA with External Platforms
 
@@ -42,9 +42,9 @@ The **Integrations** menu in ELITEA serves as a central hub for establishing con
 3. Click on the **Your Avatar** icon located at the top right corner of the page to open the **Settings** sidebar menu.
 4. Click the **Integrations** to navigate to that section.
 
-![Settings-Integrations](<../img/user-guides/integrations/Settings-Integrations.png>)
+![Settings-Integrations](<../../img/guides/integrations/Settings-Integrations.png>)
 
-![Integrations-Menu](<../img/user-guides/integrations/Integrations-Menu.png>)
+![Integrations-Menu](<../../img/guides/integrations/Integrations-Menu.png>)
 
 **Setting up an Integration:**
 
@@ -54,7 +54,7 @@ The **Integrations** menu in ELITEA serves as a central hub for establishing con
 4. Configure the Intergation parameters.
 5. Click the **Save** button to finalize the integration setup.
 
-![Integrations-Create_New_Integration](<../img/user-guides/integrations/Integrations-Create_New_Integration.png>)
+![Integrations-Create_New_Integration](<../../img/guides/integrations/Integrations-Create_New_Integration.png>)
 
 After saving, the newly created integration will be added to the **Integrations** table, making it available for selection and reuse in the Configurations section of your Agent toolkits. You can manage your saved integrations directly from the **Integrations** table. In the **Actions** column, click on the ellipsis icon (`...`) next to a specific integration, you will reveal options to **Edit** the integration details, **Set as Default** to make it the default one for that Integration type, or **Delete** the integration if it's no longer needed.
 
@@ -84,7 +84,7 @@ To enable connection with your **Confluence** instance:
     * **Set as Default:** Optionally, check this box to make this integration the default **Confluence** connection for the **Private** workspace or **Team** project.
 3. **Save the Integration:** Click the **Save** button.
 
-![Integrations-Confluence](<../img/user-guides/integrations/Integrations-Confluence.png>)
+![Integrations-Confluence](<../../img/guides/integrations/Integrations-Confluence.png>)
 
 ### GitHub Integration Setup
 
@@ -109,7 +109,7 @@ To connect with your **GitHub** repositories:
     * **Set as Default:** Optionally, check this box to make this integration the default **GitHub** connection for the **Private** workspace or **Team** project.
 3. **Save the Integration:** Click the **Save** button.
 
-![Integrations-GitHub](<../img/user-guides/integrations/Integrations-GitHub.png>)
+![Integrations-GitHub](<../../img/guides/integrations/Integrations-GitHub.png>)
 
 ### Jira Integration Setup
 
@@ -137,7 +137,7 @@ To enable connection with your **Jira** instance:
     * **Set as Default:** Optionally, check this box to make this integration the default **Jira** connection for the **Private** workspace or **Team** project.
 3. **Save the Integration:** Click the **Save** button.
 
-![Integrations-Jira](<../img/user-guides/integrations/Integrations-Jira.png>)
+![Integrations-Jira](<../../img/guides/integrations/Integrations-Jira.png>)
 
 ### TestRail Integration Setup
 
@@ -153,7 +153,7 @@ To connect with your **TestRail** instance:
     * **Set as Default:** Optionally, check this box to make this integration the default **TestRail** connection for the **Private** workspace or **Team** project.
 3. **Save the Integration:** Click the **Save** button.
 
-![Integrations-TestRail](<../img/user-guides/integrations/Integrations-TestRail.png>)
+![Integrations-TestRail](<../../img/guides/integrations/Integrations-TestRail.png>)
 
 ### Important Considerations for Integrations
 
@@ -178,7 +178,7 @@ When configuring a toolkit, you will typically find a dropdown menu or a selecti
 * **Create project configuration:** Similar to the private configuration, this option creates a new integration configuration for the toolkit. The details will be used for this toolkit and will also be saved as a reusable integration in the current **Team** project's Integrations page, making it available for other agents and toolkits within **that project**.
 * **Select existing integration:** This option allows you to choose from the list of integrations that have already been configured in your **Private** workspace or the current **Team** project's Integrations page. Selecting an existing integration automatically populates the toolkit's connection details, simplifying the setup process.
 
-![Configuration-Options](<../img/user-guides/integrations/Configuration-Options.png>)
+![Configuration-Options](<../../img/guides/integrations/Configuration-Options.png>)
 
 ### Create manual configuration
 
@@ -189,7 +189,7 @@ When configuring a toolkit, you will typically find a dropdown menu or a selecti
 5. Depending on the selected toolkit fill all **required fields** and **options**.
 6. Click the **Save** button to apply changes.
 
-![Configuration-Manual_Configuration](<../img/user-guides/integrations/Configuration-Manual_Configuration.png>)
+![Configuration-Manual_Configuration](<../../img/guides/integrations/Configuration-Manual_Configuration.png>)
 
 ### Create private configuration
 
@@ -201,7 +201,7 @@ When configuring a toolkit, you will typically find a dropdown menu or a selecti
 6. Depending on the selected toolkit fill all **required fields** and **options**.
 7. Click the **Save configuration** button to save the changes and add this configuration as reusable integration in your **Private** workspace's Integrations page.
 
-![Configuration-Private_Configuration](<../img/user-guides/integrations/Configuration-Private_Configuration.png>)
+![Configuration-Private_Configuration](<../../img/guides/integrations/Configuration-Private_Configuration.png>)
 
 ### Create project configuration
 
@@ -209,11 +209,11 @@ When configuring a toolkit, you will typically find a dropdown menu or a selecti
 2. Click the **+ icon** or open already created toolkit under **TOOLS** section.
 3. Select the desired tool (Confluence, Jira, GitHub, TestRail) from the dropdown list. The **New tool** configuration section is opened.
 4. Select the **Create project configuration** under the **Configuration** option.
-5. Provide the **Configuration Name**. **Note**: It will be saved as GitHub after saving configuration, as only GitHub integration is allowed within the space.
+5. Provide the **Configuration Name**.
 6. Depending on the selected toolkit fill all **required fields** and **options**.
 7. Click the **Save configuration** button to save the changes and add this configuration as reusable integration in your **Team** project's Integrations page.
 
-![Configuration-Project_Configuration](<../img/user-guides/integrations/Configuration-Project_Configuration.png>)
+![Configuration-Project_Configuration](<../../img/guides/integrations/Configuration-Project_Configuration.png>)
 
 ### Configurations: Selecting existing Integrations
 
@@ -228,9 +228,9 @@ To help you distinguish between integrations configured in your Private workspac
 * **Private Integration**: Integrations configured in your **Private** workspace are indicated by a person icon (👤) at the beginning of the integration URL or name in the dropdown list.
 * **Project Integration**: Integrations configured within the current **Team** project are indicated by a folder icon (📁) at the beginning of the integration URL or name.
 
-![Configuration-Select_Private_Integration](<../img/user-guides/integrations/Configuration-Select_Private_Integration.png>)
+![Configuration-Select_Private_Integration](<../../img/guides/integrations/Configuration-Select_Private_Integration.png>)
 
-![Configuration-Select_Project_Integration](<../img/user-guides/integrations/Configuration-Select_Project_Integration.png>)
+![Configuration-Select_Project_Integration](<../../img/guides/integrations/Configuration-Select_Project_Integration.png>)
 
 **Integration Naming Convention:**
 
@@ -254,7 +254,7 @@ Here are some examples of how to effectively utilize Integrations and Configurat
 * **Scenario:** You are building an agent workflow to create and publish user stories in Jira. You want each Business Analyst (BA) using the agent to authenticate with their own Jira credentials to ensure traceability of who created which user story.
 * **Solution:**
     1. Instruct each BA to configure their personal Jira integration in their **Private** workspace's Integrations page.
-    2. In the project where the agent is being configured, when setting up the Jira toolkit for publishing user stories, select already created **Private configuration** option. This will allow each BA running the agent to select their own private Jira integration, using their personal credentials for authentication.
+    2. In the project where the agent is being configured, when setting up the Jira toolkit for publishing user stories, select already created **Private configuration** option. This will allow each BA running the agent to use their own private Jira integration, using their personal credentials for authentication.
 
 ### Use Case 2: Service Account for GitHub Code Access
 
@@ -270,7 +270,7 @@ Here are some examples of how to effectively utilize Integrations and Configurat
     1. The team manager configures a Confluence integration in the **Team** project Integrations page using the service account's credentials.
     2. Instruct each QA engineer to configure their personal TestRail integration in their **Private** workspace's Integrations page.
     3. When configuring the agent:
-        * For the Confluence toolkit, select already created **Project configuration** and choose the service account integration.
-        * For the TestRail toolkit, select already created **Private configuration** option, allowing each QA to use their own TestRail integration.
+        * For the Confluence toolkit, use already created **Project configuration** and choose the service account integration.
+        * For the TestRail toolkit, use already created **Private configuration** option, allowing each QA to use their own TestRail integration.
 
 By strategically using **Integrations** and **Configurations**, you can create flexible and secure agent workflows that cater to various authentication needs and enhance collaboration within your ELITEA environment.

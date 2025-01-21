@@ -4,7 +4,7 @@
 
 ELITEA Agents are a cornerstone feature within the ELITEA platform, designed to significantly enhance and expand the capabilities of AI technologies. By leveraging the advanced natural language processing capabilities of GPT models, ELITEA Agents serve as virtual assistants or "agents" that automate tasks and streamline workflows, providing users with a more efficient and effective way to interact with AI models.
 
-![Agents-Menu_Private](<../../img/admin-guide/agents/Agents-Menu_Private.png>)
+![Agents-Menu_Private](<../../img/platform/menus/agents/Agents-Menu_Private.png>)
 
 ## What are ELITEA Agents?
 
@@ -62,7 +62,7 @@ To set up a new agent:
 7. Optionally, add and configure **Conversation Starter** and **Welcome Message**. 
 8. Click **Save**.
 
-![Agents-New_Agent](<../../img/admin-guide/agents/Agents-New_Agent.png>)
+![Agents-New_Agent](<../../img/platform/menus/agents/Agents-New_Agent.png>)
 
 Your newly created agent will subsequently appear on the **Agents** page for your project.
 
@@ -76,7 +76,7 @@ The **Instructions** field in Agent is a crucial component where users input the
 * **Enter the Details**: In the Instructions field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the agent's focus and efficiency.
 * **Using toolkits**: For enhancing agent's capabilities, you can integrate toolkits and provide instructions how to use them and in which order. The name of toolkit can be denoted by "", (e.g. "Access_JIRA" toolkit).
 
-![Agents-Instructions](<../../img/admin-guide/agents/Agents-Instructions.png>)
+![Agents-Instructions](<../../img/platform/menus/agents/Agents-Instructions.png>)
 
 
 ### How to Select an Agent Type
@@ -117,7 +117,7 @@ Toolkits are integrations with external or ELITEA's internal services, toolkits 
 3. Configure it accordingly to provide agent access to this tool.
 4. Click the **arrow** icon next to the **New tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-New_Tool](<../../img/admin-guide/agents/Agents-New_Tool.png>)
+![Agents-New_Tool](<../../img/platform/menus/agents/Agents-New_Tool.png>)
 
 **To edit already created toolkit**:
 
@@ -143,7 +143,7 @@ The **Agent** toolkit provides a meta-level functionality by allowing your Agent
       * **Version**: Select the available version of the selected agent from the dropdown list.
 4. Click the **arrow** icon next to the **New Agent tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Agent_Tool](<../../img/admin-guide/agents/Agents-Agent_Tool.png>)
+![Agents-Agent_Tool](<../../img/platform/menus/agents/Agents-Agent_Tool.png>)
 
 #### Datasource toolkit
 
@@ -160,7 +160,7 @@ The **Datasource** toolkit empowers your Agent by providing access to pre-config
       * **Action**: Select the required action type that will be used by agent (either **Search** or **Chat**). This will allow Agent to use information from selected datasource either by searching it or by chating with it.
 4. Click the **arrow** icon next to the **New datasource tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Datasource_Tool](<../../img/admin-guide/agents/Agents-Datasource_Tool.png>)
+![Agents-Datasource_Tool](<../../img/platform/menus/agents/Agents-Datasource_Tool.png>)
 
 #### Prompt toolkit
 
@@ -179,7 +179,7 @@ The **Prompt** toolkit allows your Agent to utilize pre-configured prompts from 
 
 **IMPORTANT:** Currently, Agents don't support prompts with variables. Variable for agent is input parameter, if you have “default” you need to bake it into the prompt.
 
-![Agents-Prompt_Tool](<../../img/admin-guide/agents/Agents-Prompt_Tool.png>)
+![Agents-Prompt_Tool](<../../img/platform/menus/agents/Agents-Prompt_Tool.png>)
 
 
 #### Browser toolkit
@@ -205,7 +205,7 @@ The **Browser** toolkit significantly enhances the capabilities of your Agent by
           * **Google**: Integrate Google for comprehensive search functionalities. For creating CSE ID and API key for Google, please check the [Programmable Search Engine](https://programmablesearchengine.google.com/controlpanel/all) page.
 4. Click the **arrow** icon next to the **New Browser tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Browser_Tool](<../../img/admin-guide/agents/Agents-Browser_Tool.png>)
+![Agents-Browser_Tool](<../../img/platform/menus/agents/Agents-Browser_Tool.png>)
 
 #### Confluence toolkit
 
@@ -255,7 +255,7 @@ The **Confluence** toolkit seamlessly integrates Confluence, a widely-used platf
          * **Max retry, sec**: Set the maximum number of seconds to wait before retrying (e.g., `60`).
 4. Click the **arrow** icon next to the **New Confluence tool** to complete the setup and return to the main menu of Agent configuration.
 
-![Agents-Confluence_Tool](<../../img/admin-guide/agents/Agents-Confluence_Tool.png>)
+![Agents-Confluence_Tool](<../../img/platform/menus/agents/Agents-Confluence_Tool.png>)
 
 #### Jira toolkit
 
@@ -293,7 +293,7 @@ The **Jira** toolkit enables a direct integration with Jira, allowing users to m
         * **Verify SSL**: Check this to enable SSL verification for secure connections to your Jira instance.
 4. Click the **arrow** icon next to the **New Jira tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Jira_Tool](<../../img/admin-guide/agents/Agents-Jira_Tool.png>)
+![Agents-Jira_Tool](<../../img/platform/menus/agents/Agents-Jira_Tool.png>)
 
 #### GitHub toolkit
 
@@ -341,7 +341,7 @@ The **GitHub** toolkit integrates GitHub into your Agent, allowing it to access 
         * **Get files from directory**: Retrieves all files within a specified directory.
 4. Click the **arrow** icon next to the **New GitHub tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-GitHub_Tool](<../../img/admin-guide/agents/Agents-GitHub_Tool.png>)
+![Agents-GitHub_Tool](<../../img/platform/menus/agents/Agents-GitHub_Tool.png>)
 
 #### Gitlab toolkit
 
@@ -371,7 +371,7 @@ Similar to the **GitHub** toolkit, the Gitlab toolkit integrates your Agent with
         * **Create PR change comment**: Allows you to comment on changes in a merge request.
 4. Click the **arrow** icon next to the **New Gitlab tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-GitLab_Tool](<../../img/admin-guide/agents/Agents-GitLab_Tool.png>)
+![Agents-GitLab_Tool](<../../img/platform/menus/agents/Agents-GitLab_Tool.png>)
 
 #### Bitbucket toolkit
 
@@ -401,7 +401,7 @@ The **Bitbucket** toolkit integrates  into your Agent, allowing it to access and
         * **Create branch**: Enables the creation of new branches.
 4. Click the **arrow** icon next to the **New Bitbucket tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Bitbucket_Tool](<../../img/admin-guide/agents/Agents-Bitbucket_Tool.png>)
+![Agents-Bitbucket_Tool](<../../img/platform/menus/agents/Agents-Bitbucket_Tool.png>)
 
 #### Testrail toolkit
 
@@ -423,7 +423,7 @@ The **Testrail** toolkit enables a direct integration with Testrauk, allowing us
         * **Add case**: To enable adding new case into Testrail.
 4. Click the **arrow** icon next to the **New testrail tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Testrail_Tool](<../../img/admin-guide/agents/Agents-Testrail_Tool.png>)
+![Agents-Testrail_Tool](<../../img/platform/menus/agents/Agents-Testrail_Tool.png>)
 
 #### Open API toolkit
 
@@ -448,7 +448,7 @@ The **Open API** toolkit extends your Agent's capabilities by integrating OpenAP
       * **Authentication**: Choose the appropriate authentication method for your API from the dropdown menu. Options may include None, API Key, Token, OAuth, etc., depending on your API's requirements.
 7. Click the **arrow** icon next to the **New Open API tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-OpenAPI_Tool](<../../img/admin-guide/agents/Agents-OpenAPI_Tool.png>)
+![Agents-OpenAPI_Tool](<../../img/platform/menus/agents/Agents-OpenAPI_Tool.png>)
 
 #### Custom toolkit
 
@@ -475,7 +475,7 @@ The **Custom** toolkit provides a flexible solution for users to create bespoke 
 5. Referencing ELITEA Tools Documentation: For detailed instructions on creating custom toolkits and understanding the available options, refer to the ELITEA Tools GitHub repository: [Alita Tools GitHub Repository](https://github.com/ProjectAlita/application-tools/tree/main/src/alita_tools). This repository contains documentation and examples that can help you build your custom tool.
 6. Once you have configured your custom toolkit, review the JSON configuration for accuracy. Click the **arrow** icon next to the **New Custom tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Custom_Tool](<../../img/admin-guide/agents/Agents-Custom_Tool.png>)
+![Agents-Custom_Tool](<../../img/platform/menus/agents/Agents-Custom_Tool.png>)
 
 #### Artifact toolkit
 
@@ -497,7 +497,7 @@ The **Artifact** toolkit integrates your project's dedicated database in ELITEA 
         * **Append Data**: Permits updating the context of existing file in the bucket.
 4. Click the **arrow** icon next to the **New artifact tool** to complete the setup and move back to the main menu of Agent configuration.
 
-![Agents-Artifact_Tool](<../../img/admin-guide/agents/Agents-Artifact_Tool.png>)
+![Agents-Artifact_Tool](<../../img/platform/menus/agents/Agents-Artifact_Tool.png>)
 
 ### WELCOME MESSAGE
 
@@ -517,7 +517,7 @@ The **Welcome Message** feature allows you to provide additional context for pro
 * "Use this agent for generating manual test cases"
 * "Don't forget to double-check the generated test cases"
 
-![Agents-Welcome_Message](<../../img/admin-guide/agents/Agents-Welcome_Message.png>)
+![Agents-Welcome_Message](<../../img/platform/menus/agents/Agents-Welcome_Message.png>)
 
 ### CONVERSATION STARTERS
 
@@ -538,7 +538,7 @@ The **Conversation Starter** feature enables you to configure and add predefined
 * "Generate test cases for provided Acceptance Criteria."
 * "Generate automatic test cases for selected [Test_Case_ID]."
 
-![Agents-Conversation_Starter](<../../img/admin-guide/agents/Agents-Conversation_Starter.png>)
+![Agents-Conversation_Starter](<../../img/platform/menus/agents/Agents-Conversation_Starter.png>)
 
 By setting up conversation starters, you streamline the process of initiating specific tasks or queries, making your interactions with the agent more efficient and standardized.
 
@@ -579,7 +579,7 @@ To execute the agent and get the output you have to:
 * **Delete Output**: To remove the current output from the chat, click the **Delete** icon.
 * **Purge Chat History**: For a fresh start or to clear sensitive data, click the **Clean** icon to erase the chat history.
 
-![Agents-Execution](<../../img/admin-guide/agents/Agents-Execution.png>)
+![Agents-Execution](<../../img/platform/menus/agents/Agents-Execution.png>)
 
 ### Managing Agent Versions: Save, Create Versions, and Manage
 

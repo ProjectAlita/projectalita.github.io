@@ -9,7 +9,6 @@
 * **Release Version**: 1.4.0
 * **Released on**: 15-Jan-2025
 * **Access**: [ELITEA Platform](https://nexus.elitea.ai)
-* **User Guide**: [ELITEA - User Guide](../user-guide/intro.md) 
 
 ## New Features
 

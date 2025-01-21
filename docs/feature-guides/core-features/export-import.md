@@ -35,7 +35,7 @@ ELITEA allows you to export prompts, datasources, and agents individually. The e
 
 This process allows you to easily export your ELITEA entities for various purposes, such as sharing them with others or creating backups of your configurations.
 
-![Export-Table_view](<../img/user-guides/export-import/Export-Table_view.png>)
+![Export-Table_view](<../../img/guides/export-import/Export-Table_view.png>)
 
 ### Exporting a Prompt
 
@@ -44,7 +44,7 @@ This process allows you to easily export your ELITEA entities for various purpos
 3. Open the prompt and click the **Export prompt** icon.
 4. Your browser will automatically download a JSON file containing the prompt's data to your local device.
 
-![Prompt-Export](<../img/user-guides/export-import/Prompt-Export.png>)
+![Prompt-Export](<../../img/guides/export-import/Prompt-Export.png>)
 
 The exported JSON file includes:
 
@@ -58,7 +58,7 @@ The exported JSON file includes:
     * Conversation Starters
     * Tags
 
-![Prompt-Exported_File](<../img/user-guides/export-import/Prompt-Exported_File.png>)
+![Prompt-Exported_File](<../../img/guides/export-import/Prompt-Exported_File.png>)
 
 ### Exporting a Datasource
 
@@ -67,7 +67,7 @@ The exported JSON file includes:
 3. Open the datasource and click the **Export datasource** icon.
 4. Your browser will automatically download a JSON file containing the datasource's data to your local device.
 
-![Datasource-Export](<../img/user-guides/export-import/Datasource-Export.png>)
+![Datasource-Export](<../../img/guides/export-import/Datasource-Export.png>)
 
 The exported JSON file includes:
 
@@ -89,7 +89,7 @@ The exported JSON file includes:
 3. Open the agent and click the **Export agent** icon.
 4. Your browser will automatically download a JSON file containing the agent's data to your local device.
 
-![Agent-Export](<../img/user-guides/export-import/Agent-Export.png>)
+![Agent-Export](<../../img/guides/export-import/Agent-Export.png>)
 
 The exported JSON file includes:
 
@@ -125,7 +125,7 @@ Collections in ELITEA provide a powerful way to group and organize various entit
 
 This streamlined process allows you to efficiently manage and transfer groups of related assets within ELITEA.
 
-![Collection-Export](<../img/user-guides/export-import/Collection-Export.png>)
+![Collection-Export](<../../img/guides/export-import/Collection-Export.png>)
 
 ## How to Import Entities
 
@@ -137,7 +137,7 @@ ELITEA provides a straightforward import process for prompts, datasources, and a
 4. Choose the appropiate file (in *.json) from your local device.
 5. An **Import Wizard** will appear, guiding you through the import process.
 
-![Import-Button](<../img/user-guides/export-import/Import-Button.png>)
+![Import-Button](<../../img/guides/export-import/Import-Button.png>)
 
 ### Importing a Prompt
 
@@ -152,7 +152,7 @@ ELITEA provides a straightforward import process for prompts, datasources, and a
 3. Click the **Import** button in the Import Wizard.
 4. The imported prompt will now be available in the **Prompts** menu of the selected project.
 
-![Prompt-Import_Wizard](<../img/user-guides/export-import/Prompt-Import_Wizard.png>)
+![Prompt-Import_Wizard](<../../img/guides/export-import/Prompt-Import_Wizard.png>)
 
 ### Importing a Datasource
 
@@ -171,9 +171,9 @@ ELITEA provides a straightforward import process for prompts, datasources, and a
 4. The imported datasource will now be available in the **Datasources** menu of the selected project.
 5. **Reindexing Datasets:** After successfully importing the datasource, you **must** open the datasource and initiate the reindexing of the imported datasets. This step is crucial as the actual vector databases are not exported or imported.
 
-![Datasource-Import_Wizard](<../img/user-guides/export-import/Datasource-Import_Wizard.png>)
+![Datasource-Import_Wizard](<../../img/guides/export-import/Datasource-Import_Wizard.png>)
 
-![Datasource-Reindex](<../img/user-guides/export-import/Datasource-Reindex.png>)
+![Datasource-Reindex](<../../img/guides/export-import/Datasource-Reindex.png>)
 
 ### Importing an Agent
 
@@ -192,7 +192,7 @@ ELITEA provides a straightforward import process for prompts, datasources, and a
 3. Click the **Import** button in the Import Wizard.
 4. The imported agent will now be available in the **Agents** menu of the selected project.
 
-![Agent-Import_Wizard](<../img/user-guides/export-import/Agent-Import_Wizard.png>)
+![Agent-Import_Wizard](<../../img/guides/export-import/Agent-Import_Wizard.png>)
 
 ### Managing Master Agents with Connected Entities: Exporting and Importing
 
@@ -228,7 +228,7 @@ Upon importing the 'master' agent's file, ELITEA will create the 'master' agent 
 
 These integrated features for managing 'master' agents and their connected entities provide a powerful and efficient way to handle complex AI workflows within ELITEA.
 
-![MasterAgent-Import_Wizard](<../img/user-guides/export-import/MasterAgent-Import_Wizard.png>)
+![MasterAgent-Import_Wizard](<../../img/guides/export-import/MasterAgent-Import_Wizard.png>)
 
 ### Importing a Collection
 
@@ -247,7 +247,7 @@ You can import a JSON file that contains all the information of an exported coll
 3. Click the **Import** button in the Import Wizard.
 4. The individual entities will be imported and added to their respective menus.
 
-![Collection-Import](<../img/user-guides/export-import/Collection-Import.png>)
+![Collection-Import](<../../img/guides/export-import/Collection-Import.png>)
 
 **After Importing:**
 

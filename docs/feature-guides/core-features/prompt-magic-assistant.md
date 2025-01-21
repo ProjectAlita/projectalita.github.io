@@ -15,13 +15,13 @@ The **Prompt Magic Assistant** is available when you are creating a **new** prom
 3. On the **Configuration** tab, look for the **"Wizard" icon**. This icon indicates the availability of the **Prompt Magic Assistant**.
 4. Click the **"Wizard" icon** to open the assistant.
 
-![Prompt-Create_New_Prompt](<../img/user-guides/Prompt-Create_New_Prompt.png>)
+![Prompt-Create_New_Prompt](<../../img/guides/magic-assistant/Prompt-Create_New_Prompt.png>)
 
 ## Configuring Your Prompt with the Magic Assistant
 
 The Prompt Magic Assistant simplifies the initial setup of your prompt by generating key elements based on your description of the task.
 
-![Prompt-Magic_Assistant_Window](<../img/user-guides/Prompt-Magic_Assistant_Window.png>)
+![Prompt-Magic_Assistant_Window](<../../img/guides/magic-assistant/Prompt-Magic_Assistant_Window.png>)
 
 **Using the Prompt Magic Assistant:**
 
@@ -33,7 +33,7 @@ The Prompt Magic Assistant simplifies the initial setup of your prompt by genera
 
 2. **Generate Prompt Ideas:** After entering your task description, click the **Generate Prompt** button. The Magic Assistant will analyze your input and generate suggestions for various prompt elements.
 
-![Prompt-Magic_Assistant_Task](<../img/user-guides/Prompt-Magic_Assistant_Task.png>)
+![Prompt-Magic_Assistant_Task](<../../img/guides/magic-assistant/Prompt-Magic_Assistant_Task.png>)
 
 ## What the Magic Assistant Generates
 
@@ -46,7 +46,7 @@ Based on your task description, the Prompt Magic Assistant can automatically pop
 * **Welcome Message:** An optional message displayed to users when they interact with the prompt, providing additional context or instructions.
 * **Conversation Starter(s):** Predefined text options that users can click to initiate a conversation or trigger a specific action when executing the prompt.
 
-![Prompt-Magic_Assistant_Result](<../img/user-guides/Prompt-Magic_Assistant_Result.png>)
+![Prompt-Magic_Assistant_Result](<../../img/guides/magic-assistant/Prompt-Magic_Assistant_Result.png>)
 
 ## Review and Modify
 
