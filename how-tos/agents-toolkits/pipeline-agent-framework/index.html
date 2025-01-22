@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/pipeline-agent-framework/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Pipeline Agent Framework - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/prompts.md">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/agents.md">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring.md">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles.md">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li class="active">
+    <a href="./">Pipeline Agent Framework</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../../feature-guides/core-features/public-project/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../../creating-prompts/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#pipeline-agent-framework">Pipeline Agent Framework</a></li>
+            <li class="second-level"><a href="#what-is-the-pipeline-agent-framework">What is the Pipeline Agent Framework?</a></li>
+                
+            <li class="second-level"><a href="#core-concepts-the-building-blocks-of-your-pipeline-agent">Core Concepts: The Building Blocks of Your Pipeline Agent</a></li>
+                
+                <li class="third-level"><a href="#nodes">Nodes</a></li>
+                <li class="third-level"><a href="#transitions">Transitions</a></li>
+                <li class="third-level"><a href="#decisions">Decisions</a></li>
+                <li class="third-level"><a href="#conditions">Conditions</a></li>
+                <li class="third-level"><a href="#entry-point-and-interruptions">Entry Point and Interruptions</a></li>
+                <li class="third-level"><a href="#state">State</a></li>
+            <li class="second-level"><a href="#creating-your-first-pipeline-agent-in-elitea">Creating Your First Pipeline Agent in ELITEA</a></li>
+                
+            <li class="second-level"><a href="#best-practices-and-use-cases">Best Practices and Use Cases</a></li>
+                
+                <li class="third-level"><a href="#use-case-1-user-story-creation-workflow-manager">Use Case 1: User Story Creation Workflow Manager</a></li>
+                <li class="third-level"><a href="#use-case-2-user-story-review-workflow-manager">Use Case 2: User Story Review Workflow Manager</a></li>
+                <li class="third-level"><a href="#use-case-3-code-documentation">Use Case 3: Code Documentation</a></li>
+                <li class="third-level"><a href="#use-case-4-orchestrating-us-creation-and-test-case-generation">Use Case 4: Orchestrating US Creation and Test Case Generation</a></li>
+                <li class="third-level"><a href="#use-case-5-master-bulk-user-story-creation-workflow-manager">Use Case 5: Master - Bulk User Story Creation Workflow Manager</a></li>
+            <li class="second-level"><a href="#troubleshooting">Troubleshooting</a></li>
+                
+            <li class="second-level"><a href="#useful-links-and-materials">Useful Links and Materials</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="pipeline-agent-framework">Pipeline Agent Framework</h1>
+<p>Welcome to the Pipeline Agent Framework guide for ELITEA! This guide will help you understand how to create your own intelligent <strong>agents</strong> within ELITEA, even if you don't have a background in coding. Think of these <strong>agents</strong> as helpful assistants that can guide users through tasks, answer questions, and automate processes. The Pipeline Agent Framework is specifically designed for creating the instructions that your <strong>agents</strong> will follow. Pipeline Agents are based on the LangChain backend and work with Azure OpenAI Service integrations.</p>
+<p>Pipeline agents are designed for orchestrating the work of various entities together like prompts, agents, and datasources. This agent type must be selected when you are writing instructions for so-called 'master' agents.</p>
+<p>In Pipeline agent instructions, you <strong>can not</strong> directly use available toolkits except for the following ones: prompts, agents, and datasources. These toolkits must be incorporated as part of 'child' agents that your Pipeline Agent orchestrates.</p>
+<h2 id="what-is-the-pipeline-agent-framework">What is the Pipeline Agent Framework?</h2>
+<p>Imagine you're building a process step-by-step. The <strong>Pipeline Agent Framework</strong> allows you to define these steps and how they connect in a clear and organized way. It's like creating a flowchart for your AI agent. You define individual actions (like asking a question or using a tool) and then connect them to create a smooth flow.</p>
+<p>This framework uses a simple configuration language <strong>YAML</strong> to define how your <strong>agent</strong> works. YAML is designed to be easy to read and understand, making it perfect for describing the steps your <strong>agent</strong> will take. You'll write instructions in YAML that tell ELITEA how your agent should behave.</p>
+<h2 id="core-concepts-the-building-blocks-of-your-pipeline-agent">Core Concepts: The Building Blocks of Your Pipeline Agent</h2>
+<p>Let's understand the key parts that make up your intelligent <strong>agent</strong>:</p>
+<ul>
+<li><strong>Nodes:</strong> The fundamental building blocks representing individual actions or steps the agent can take.<ul>
+<li>These are the <em>verbs</em> of your agent's workflow, defining what the agent <em>does</em> at each stage.</li>
+<li>Different node types allow for various actions, such as interacting with the user, calling external tools, or performing specific functions.</li>
+</ul>
+</li>
+<li><strong>Transitions:</strong> Define the flow and connections between nodes, dictating the sequence of actions the agent follows.<ul>
+<li>Transitions specify which node the agent should move to after completing the current node's task.</li>
+<li>They create the directed path through the agent's workflow.</li>
+</ul>
+</li>
+<li><strong>Decisions:</strong> Enable the agent to make choices and branch its execution path based on available information or the outcome of a node.<ul>
+<li>Decision points allow for more dynamic and intelligent agent behavior.</li>
+<li>The agent can evaluate different conditions and select the appropriate next step.</li>
+</ul>
+</li>
+<li><strong>Conditions:</strong> Allow for conditional transitions between nodes, where the next step depends on whether a specific rule or condition is met.<ul>
+<li>Conditions introduce logic into the agent's workflow, enabling it to react differently based on data or user input.</li>
+</ul>
+</li>
+<li><strong>Entry Point:</strong> Specifies the starting node of the agent's execution, defining where the agent begins its workflow.<ul>
+<li>This is the initial step from which the agent's journey begins.</li>
+</ul>
+</li>
+<li><strong>Interruptions:</strong> Provide mechanisms to pause the agent's execution at specific points, allowing for user intervention or inspection.<ul>
+<li>Interruptions can be set to occur before or after a particular node's execution.</li>
+</ul>
+</li>
+<li><strong>State:</strong> Represents the agent's memory defined by user, storing information gathered and used throughout its execution.<ul>
+<li>The <strong>state</strong> allows the agent to retain context and use previously acquired information in subsequent steps.</li>
+<li>It can include default information like messages (conversation history) and custom data defined by the user.</li>
+</ul>
+</li>
+</ul>
+<h3 id="nodes">Nodes</h3>
+<p><strong>Nodes</strong> are the individual actions or steps your agent can take. Each node performs a specific task. Think of them as verbs – what your <strong>agent</strong> <em>does</em>. The following <strong>Node</strong> types are available:</p>
+<ul>
+<li><strong>llm</strong>: Enables the agent to interact with users using natural language, powered by AI models.<ul>
+<li>Used for asking questions, providing information, and engaging in conversational exchanges.</li>
+</ul>
+</li>
+<li><strong>tool</strong>: Allows the agent to utilize pre-built entities (prompts, agents and datasources) in ELITEA.<ul>
+<li>Facilitates actions like retrieving data, triggering other agents, or using specific prompts and datasources.</li>
+</ul>
+</li>
+<li><strong>function</strong>: Provides a mechanism for the agent to directly call and execute specific ELITEA functionalities with precise control over input mapping.<ul>
+<li>Offers a more advanced and potentially efficient way to interact with ELITEA's internal capabilities.</li>
+</ul>
+</li>
+<li><strong>loop</strong>: Enables the agent to repeatedly execute a specific task or action, often iterating over a list of items or until a condition is met.<ul>
+<li>Useful for processing collections of data or performing repetitive operations.</li>
+</ul>
+</li>
+<li><strong>loop_tool</strong>: Allows the agent to iterate through a list of inputs generated by another ELITEA agent, executing a specified tool or function for each item.<ul>
+<li>Facilitates workflows where the input for a repetitive task is dynamically generated by another entity.</li>
+</ul>
+</li>
+</ul>
+<h4 id="common-node-attributes">Common Node Attributes</h4>
+<p><strong>Nodes</strong> have the following attributes:</p>
+<ul>
+<li><strong><code>id</code></strong>: A unique name for this specific step. This helps you refer to this node later in your instructions.</li>
+<li><strong><code>type</code></strong>:  Specifies the kind of action this node will perform (e.g., asking a question, using a tool).</li>
+<li><strong><code>input</code></strong>:  A list of information the node needs to perform its task. This information comes from the agent's memory (the <code>state</code>).</li>
+<li><strong><code>output</code></strong>: A list of information the node produces after completing its task. This information is then stored in the agent's memory (the <code>state</code>).</li>
+<li><strong><code>transition</code></strong>:  Specifies the <code>id</code> of the next node the agent should move to after this node is finished. If the value is <code>END</code>, the agent's execution will stop.</li>
+<li><strong><code>condition</code></strong>:  Allows the agent to decide which node to go to next based on certain rules.</li>
+<li><strong><code>decision</code></strong>: Allows the agent to choose the next node based on available information or the result of the current action.</li>
+</ul>
+<p><strong>Node types</strong></p>
+<p>Here are the different types of nodes you can use to build your agent:</p>
+<h4 id="node-type-llm">Node type: llm</h4>
+<p>The <strong>llm</strong> node allows your <strong>agent</strong> to communicate with the user using the power of AI. You provide a <code>prompt</code> (a question or instruction), and the AI generates a response.</p>
+<p><strong>Purpose:</strong> To interact with the user, ask questions, provide information, and get feedback using natural language.</p>
+<p><strong>Common Attributes for </strong>llm<strong> Nodes:</strong></p>
+<ul>
+<li><strong><code>id</code></strong>: A unique name for this conversation step (e.g., <code>Conversation Partner</code>).</li>
+<li><strong><code>type</code></strong>:  Always set this to <strong>llm</strong>.</li>
+<li><strong><code>input</code> (optional)</strong>: A list of information from the agent's memory (<code>state</code>) that the prompt might need. If your prompt uses variables (like in the <code>fstring</code> example), this is mandatory.</li>
+<li><strong><code>prompt</code></strong>: The question or instruction you want the AI to use.<ul>
+<li><strong><code>type</code></strong>: Specifies the format of the prompt. It can be either <code>string</code> or <code>fstring</code>.<ul>
+<li><strong><code>string</code></strong>:  A simple text prompt.</li>
+<li><strong><code>fstring</code></strong>: A prompt that includes variables in the prompt's value (instrcutions).</li>
+</ul>
+</li>
+<li><strong><code>value</code></strong>: The actual text of the question or instruction.</li>
+</ul>
+</li>
+<li><strong><code>output</code> (optional)</strong>: A list of names for the information you expect to extract from the user's response. This information will be stored back in the agent's memory (<code>state</code>).</li>
+<li><strong><code>structured_output</code> (optional)</strong>:  Set to <code>true</code> if you expect the AI's response to be in a structured format that makes it easy to extract the <code>output</code> values. The default is <code>false</code>. This also depends on the selected LLM model's capabilities.</li>
+</ul>
+<p><strong>Example 1: llm node - Simple Text Prompt</strong></p>
+<pre><code class="language-yaml">- id: Conversation Partner
+  type: llm
+  input: [input] # Optional, but included here as the prompt refers to user input
+  prompt:
+    type: string
+    value: |
+      To create a new User Story, I need some information from you. Could you please provide the 
+      following details in the specified format?
+      - **Jira Project ID**: (e.g., PLAN)
+      - **EPIC ID**: (e.g., PLAN-128)
+      - **Title**: (e.g., Checkout functionality)
+      - **Description**: (e.g., &quot;The informative description of future US.&quot;)
+      Once you provide this information, I will ask for your approval (should be 'approved' word) to start the User Story creation process. Make your instructions to user highlighted by using markdown highlight for text.
+  output: [description, jira_project_id, epic_id, us_title]
+  structured_output: true
+  transition: Confluence Extractor # You would define the next step here
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong><code>id: Conversation Partner</code></strong>:  This node is named "Conversation Partner".</li>
+<li><strong><code>type: llm</code></strong>: This indicates it's an LLM node, meaning it will use AI to generate a response.</li>
+<li><strong><code>input: [input]</code></strong>: This node takes the user's current input from the agent's chat history.</li>
+<li><strong><code>prompt</code></strong>:<ul>
+<li><strong><code>type: string</code></strong>: The prompt is a simple text instruction.</li>
+<li><strong><code>value</code></strong>: This is the actual instruction given to the AI. It asks the user for specific information to create a user story.</li>
+</ul>
+</li>
+<li><strong><code>output: [description, jira_project_id, epic_id, us_title]</code></strong>: The agent expects to extract the description, Jira project ID, Epic ID, and user story title from the user's response.</li>
+<li><strong><code>structured_output: true</code></strong>: The agent expects the user to provide the information in a structured way (in a <code>json</code> format), making it easier to extract the output values.</li>
+</ul>
+<p><strong>Example 2: llm node - Parametrized Prompt (fstring)</strong></p>
+<pre><code class="language-yaml">- id: User Feedback and Approval
+  type: llm
+  input: [input, enhanced_us, info_from_datasource] # Mandatory because of fstring
+  output: [enhanced_us] # Mandatory because of fstring
+  prompt:
+    type: fstring
+    value: |
+      When reviewing and updating a user story, ensure its structure and format remain consistent with the original, unless the user specifically requests changes. Present the updated user story in its entirety, enriched with any necessary information, clearly and concisely for user feedback. Use the following variables to guide the process:
+      - **Current User Input:** {input}
+      - **Information from Data Source:** {info_from_datasource}
+      - **Enhanced User Story:** {enhanced_us}
+      Users can provide feedback through free form queries, which will be controlled by the &quot;Current User Input&quot; value. If the query contains &quot;datasource:&quot;, access and incorporate specific data from the identified sources into the enhanced user story via &quot;Information from Data Source&quot;. Present the full &quot;Enhanced User Story&quot; to the user, ensuring that the structure and format remain unchanged.
+      Approval of the enhanced user story can be given by typing &quot;approved,&quot; which will publish it to Jira. If no further changes or publication is desired, the user can type &quot;finish&quot; to conclude the session.
+  transition: User Story Publisher # You would define the next step here
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong><code>id: User Feedback and Approval</code></strong>: This node is named "User Feedback and Approval".</li>
+<li><strong><code>type: llm</code></strong>: This indicates it's an LLM node.</li>
+<li><strong><code>input: [input, enhanced_us, info_from_datasource]</code></strong>: This node requires the user's current input, the enhanced user story, and information from a data source from the agent's memory. This is mandatory because the prompt uses these variables.</li>
+<li><strong><code>prompt</code></strong>:<ul>
+<li><strong><code>type: fstring</code></strong>: The prompt uses variables.</li>
+<li><strong><code>value</code></strong>: This instruction tells the AI how to present the updated user story to the user, incorporating information from different sources. It uses placeholders like <code>{input}</code>, <code>{info_from_datasource}</code>, and <code>{enhanced_us}</code> to insert the actual values from the agent's memory.</li>
+</ul>
+</li>
+<li><strong><code>output: [enhanced_us]</code></strong>: The agent expects the AI to potentially modify or confirm the enhanced user story.</li>
+<li><strong><code>transition</code></strong>: You would specify the next node here.</li>
+</ul>
+<h4 id="node-type-tool">Node type: tool</h4>
+<p>The <strong>tool</strong> node allows your <strong>agent</strong> to use pre-built entities (prompts, agents and datasources) in ELITEA. The <code>tool</code> node is similar to the <code>function</code> node.</p>
+<p><strong>Purpose:</strong> To leverage existing entities within ELITEA to perform specific tasks.</p>
+<p><strong>Common Attributes for </strong>tool<strong> nodes:</strong></p>
+<ul>
+<li><strong><code>id</code></strong>: A unique name for this tool usage step (e.g., <code>Draft User Story Creator</code>).</li>
+<li><strong><code>type</code></strong>: Always set this to <code>tool</code>.</li>
+<li><strong><code>tool</code></strong>: The name of the specific tool you want to use.       </li>
+<li><strong><code>transition</code></strong>: The <code>id</code> of the next node to execute after the tool finishes.</li>
+</ul>
+<p><strong>Example 1: tool node</strong></p>
+<pre><code class="language-yaml">- id: Draft User Story Creator
+  type: tool
+  tool: User Story Draft Prompt  # Assuming 'User Story Draft Prompt' is a defined prompt in ELITEA
+  transition: User Story Enhance Aggregator
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong><code>id: Draft User Story Creator</code></strong>: This node is named "Draft User Story Creator".</li>
+<li><strong><code>type: tool</code></strong>: This indicates it's a tool node.</li>
+<li><strong><code>tool: User Story Draft Prompt</code></strong>: This node will use the ELITEA prompt named "User Story Draft Prompt".</li>
+<li><strong><code>transition: User Story Enhance Aggregator</code></strong>: After the "User Story Draft Prompt" tool is executed, the agent will move to the node named "User Story Enhance Aggregator".</li>
+</ul>
+<h4 id="node-type-function">Node type: function</h4>
+<p>The <strong>function</strong> node is a more advanced way to interact with ELITEA entities. It allows you to call any ELITEA functionality, but you need to explicitly define how the inputs for that functionality are prepared. This gives you more control and can be more efficient in terms of token usage compared to using an <strong>tool</strong> node for input preparation.</p>
+<p><strong>Purpose:</strong> To directly call and utilize specific ELITEA functionalities with precise input mapping.</p>
+<p><strong>Common Attributes for </strong>function<strong> nodes:</strong></p>
+<ul>
+<li><strong><code>id</code></strong>: A unique name for this function call step (e.g., <code>Draft User Story Creator</code>).</li>
+<li><strong><code>type</code></strong>: Always set this to <code>function</code>.</li>
+<li><strong><code>input</code></strong>: A list of information from the agent's memory or chat history (<code>state</code>) that will be used to prepare the input for the ELITEA entity. This is mandatory.</li>
+<li><strong><code>output</code></strong>: A list of names for the information that will be returned by the ELITEA entity. This is mandatory.</li>
+<li><strong><code>input_mapping</code></strong>: Defines how the <code>input</code> from the agent's memory is mapped to the input parameters of the ELITEA entity.<ul>
+<li><strong><code>type</code></strong>: Specifies how the input value is determined:<ul>
+<li><strong><code>variable</code></strong>:  Uses the value of a variable from the agent's memory or chat history (<code>state</code>).</li>
+<li><strong><code>fstring</code></strong>: Creates a text string by combining values from the agent's memory or chat history.</li>
+<li><strong><code>fixed</code></strong>: Provides a specific, unchanging value.</li>
+</ul>
+</li>
+<li><strong><code>value</code></strong>: The actual value or the template for creating the value.</li>
+</ul>
+</li>
+<li><strong><code>transition</code></strong>: The <code>id</code> of the next node to execute after the function call.</li>
+</ul>
+<p><strong>Example 1: function node - Parametrized node (variable)</strong></p>
+<pre><code class="language-yaml">- id: Draft User Story Creator
+  type: function
+  input: [filtered_sumarized_info]
+  output: [draft_us]
+  input_mapping:
+    input:
+      type: variable
+      value: filtered_sumarized_info
+  transition: User Story Enhance Aggregator
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong><code>id: Draft User Story Creator</code></strong>: This node is named "Draft User Story Creator".</li>
+<li><strong><code>type: function</code></strong>: This indicates it's a function node.</li>
+<li><strong><code>input: [filtered_sumarized_info]</code></strong>: This node takes the <code>filtered_sumarized_info</code> from the agent's memory as input.</li>
+<li><strong><code>output: [draft_us]</code></strong>: The function call is expected to produce a <code>draft_us</code> (draft user story).</li>
+<li><strong><code>input_mapping</code></strong>:<ul>
+<li><strong><code>input</code></strong>: This defines the input parameter for the ELITEA entity being called.</li>
+<li><strong><code>type: variable</code></strong>: The value for the <code>input</code> parameter will be taken directly from a variable in the agent's memory.</li>
+<li><strong><code>value: filtered_sumarized_info</code></strong>: The value of the <code>filtered_sumarized_info</code> variable will be used as the input.</li>
+</ul>
+</li>
+<li><strong><code>transition: User Story Enhance Aggregator</code></strong>: After the function call, the agent will move to the "User Story Enhance Aggregator" node.</li>
+</ul>
+<p><strong>Example 2: function node - Parametrized node (fstring)</strong></p>
+<pre><code class="language-yaml">- id: User Story Enhance Aggregator
+  input: [draft_us]
+  output: [enhanced_us]
+  input_mapping:
+    task:
+      type: fstring
+      value: |
+        Enhance the Narrative, Description and Scenarios with AC's for the given draft User Story: {draft_us}
+    chat_history:
+      type: fixed
+      value: []
+  type: function
+  transition: User Feedback and Approval
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong><code>id: User Story Enhance Aggregator</code></strong>: This node is named "User Story Enhance Aggregator".</li>
+<li><strong><code>input: [draft_us]</code></strong>: This node takes the <code>draft_us</code> from the agent's memory as input.</li>
+<li><strong><code>output: [enhanced_us]</code></strong>: The function call is expected to produce an <code>enhanced_us</code> (enhanced user story).</li>
+<li><strong><code>input_mapping</code></strong>:<ul>
+<li><strong><code>task</code></strong>: This defines the <code>task</code> input parameter for the ELITEA entity.<ul>
+<li><strong><code>type: fstring</code></strong>: The value for the <code>task</code> parameter will be created using a template.</li>
+<li><strong><code>value</code></strong>: The template includes the <code>draft_us</code> variable from the agent's memory.</li>
+</ul>
+</li>
+<li><strong><code>chat_history</code></strong>: This defines the <code>chat_history</code> input parameter.<ul>
+<li><strong><code>type: fixed</code></strong>: The value for the <code>chat_history</code> parameter will be a fixed value.</li>
+<li><strong><code>value: []</code></strong>: The fixed value is an empty list.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>type: function</code></strong>: This indicates it's a function node.</li>
+<li><strong><code>transition: User Feedback and Approval</code></strong>: After the function call, the agent will move to the "User Feedback and Approval" node.</li>
+</ul>
+<h4 id="node-type-loop">Node type: loop</h4>
+<p>The <strong>loop</strong> node allows you to execute a specific task repeatedly. You define how to create the input for each iteration of the loop.</p>
+<p><strong>Purpose:</strong> To perform the same action multiple times, potentially with different inputs each time.</p>
+<p><strong>Common Attributes for </strong>loop<strong> nodes:</strong></p>
+<ul>
+<li><strong><code>id</code></strong>: A unique name for this loop step (e.g., <code>Documentor</code>).</li>
+<li><strong><code>type</code></strong>: Always set this to <code>loop</code>.</li>
+<li><strong><code>task</code></strong>: Instructions on how to create the input for each iteration of the loop. This often involves accessing and formatting data from the agent's memory.</li>
+<li><strong><code>tool</code></strong>: The name of the ELITEA entity (like a prompt or another agent) that will be executed in each iteration of the loop.</li>
+<li><strong><code>transition</code></strong>: The <code>id</code> of the next node to execute after the loop finishes.</li>
+</ul>
+<p><strong>Example 1: loop node</strong></p>
+<pre><code class="language-yaml">- id: Documentor
+  type: loop
+  task: &quot;Formulate ALL file paths from chat_history as a list of inputs. The input values should be of format \&quot;{\&quot;task\&quot;: \&quot;&lt;file path from chat history&gt;\&quot;, \&quot;chat_history\&quot;: [&lt;actual chat history&gt;]}\&quot;&quot;
+  tool: Code Documentation  # Assuming 'Code Documentation' is a defined prompt or agent in ELITEA
+  transition: END
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong><code>id: Documentor</code></strong>: This node is named "Documentor".</li>
+<li><strong><code>type: loop</code></strong>: This indicates it's a loop node.</li>
+<li><strong><code>task</code></strong>: This instruction tells the agent how to prepare the input for each loop iteration. It specifies to extract file paths from the <code>chat_history</code> and format them into a specific structure.</li>
+<li><strong><code>tool: Code Documentation</code></strong>: In each iteration of the loop, the agent will execute the ELITEA entity named "Code Documentation".</li>
+<li><strong><code>transition: END</code></strong>: After the loop finishes, the agent's execution will stop.</li>
+</ul>
+<h4 id="node-type-loop_tool">Node type: loop_tool</h4>
+<p>The <strong>loop_tool</strong> node is similar to the <strong>loop</strong> node, but it gets the list of inputs for the loop from the output of another ELITEA agent.</p>
+<p><strong>Purpose:</strong> To iterate through a list of items generated by another agent and perform a specific action on each item.</p>
+<p><strong>Common Attributes for </strong>loop_tool<strong> nodes:</strong></p>
+<ul>
+<li><strong><code>id</code></strong>: A unique name for this loop step (e.g., <code>Documentor</code>).</li>
+<li><strong><code>type</code></strong>: Always set this to <code>loop_tool</code>.</li>
+<li><strong><code>tool</code></strong>: The name of the ELITEA agent that will generate the list of inputs for the loop.</li>
+<li><strong><code>loop_tool</code></strong>: The name of the ELITEA entity (like a prompt or another agent) that will be executed for each item in the list.</li>
+<li><strong><code>variables_mapping</code></strong>:  Specifies how the variables from the output of the <code>tool</code> are mapped to the input parameters of the <code>loop_tool</code>.</li>
+<li><strong><code>input</code></strong>:  A list of information from the agent's memory (<code>state</code>) that might be needed by the <code>tool</code> that generates the input list.</li>
+<li><strong><code>output</code></strong>: A list of names for the information produced by the <code>loop_tool</code> in each iteration.</li>
+<li><strong><code>structured_output</code></strong>:  Indicates whether the output of the <code>loop_tool</code> is structured. Defaults to <code>False</code>.</li>
+</ul>
+<p><strong>Example 1: loop-tool node</strong></p>
+<pre><code class="language-yaml">- id: Documentor
+  type: loop_tool
+  tool: File List Generator  # Assuming 'File List Generator' is an agent that outputs a list of files
+  loop_tool: Code Documentation  # Assuming 'Code Documentation' is a prompt or agent
+  variables_mapping:
+    file_name: str
+    output_dir: str
+  input: []
+  output: []
+  structured_output: True
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong><code>id: Documentor</code></strong>: This node is named "Documentor".</li>
+<li><strong><code>type: loop_tool</code></strong>: This indicates it's a <code>loop_from_tool</code> node.</li>
+<li><strong><code>tool: File List Generator</code></strong>: The agent named "File List Generator" will be executed first to generate a list of files.</li>
+<li><strong><code>loop_tool: Code Documentation</code></strong>: For each file in the list generated by "File List Generator", the agent named "Code Documentation" will be executed.</li>
+<li><strong><code>variables_mapping</code></strong>: This specifies that the output of "File List Generator" contains <code>file_name</code> and <code>output_dir</code> variables (both strings), which will be used as input for "Code Documentation".</li>
+<li><strong><code>input: []</code></strong>: The "File List Generator" agent doesn't require any specific input from the agent's memory in this case.</li>
+<li><strong><code>output: []</code></strong>: The "Code Documentation" agent's output is not explicitly stored in the agent's memory in this example.</li>
+<li><strong><code>structured_output: True</code></strong>: The output of the "Code Documentation" agent is expected to be structured.</li>
+</ul>
+<h3 id="transitions">Transitions</h3>
+<p><strong>Transitions</strong> define how the agent moves from one node to the next. They are the connections between the steps in your agent's workflow.</p>
+<p>The <strong>transition</strong> within a node, the <strong>transition</strong> attribute specifies the <code>id</code> of the next node to be executed after the current node completes its task. If the <code>transition</code> is set to <code>END</code>, the agent's execution will stop.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-yaml">- id: Get User Input
+  type: llm
+  # ... other attributes ...
+  transition: Process User Input
+
+- id: Process User Input
+  type: function
+  # ... other attributes ...
+  transition: END
+</code></pre>
+<p>In this example, after the "Get User Input" node is completed, the agent will move to the "Process User Input" node. After "Process User Input" is done, it will complete the execution of the agent.</p>
+<h3 id="decisions">Decisions</h3>
+<p>The <strong>decision</strong> allows a node to choose the next node to execute based on available information or the result of its current action. This creates branching paths in your agent's workflow.</p>
+<p><strong>Common Attributes for </strong>decision<strong>:</strong></p>
+<ul>
+<li><strong><code>decision</code></strong>: Indicates that this node will make a decision.<ul>
+<li><strong><code>nodes</code></strong>: A list of the possible <code>id</code>s of the nodes the agent can transition to.</li>
+<li><strong><code>description</code></strong>: A brief explanation of the decision being made.</li>
+<li><strong><code>decisional_inputs</code></strong>: A list of information from the agent's memory or chat history (<code>state</code>) that will be used to make the decision.</li>
+<li><strong><code>default_output</code></strong>: The <code>id</code> of the node to transition to if none of the specific decision conditions are met.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Example 1: decision within an llm node:</strong></p>
+<pre><code class="language-yaml">- id: User Feedback
+  type: llm
+  # ... other attributes ...
+  decision:
+    nodes: [&quot;Publish Story&quot;, &quot;Request Clarification&quot;, &quot;END&quot;]
+    description: &quot;Decide the next step based on user feedback.&quot;
+    decisional_inputs: [&quot;user_input&quot;]
+    default_output: &quot;User Feedback&quot;
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>After the "User Feedback" node, the agent will examine the <code>user_input</code>. Based on the content of <code>user_input</code> (which you would define the logic for in the background), it can decide to go to "Publish Story", "Request Clarification", or end the execution (<code>END</code>). If the <code>user_input</code> doesn't match the criteria for any of those options, it will default back to the "User Feedback" node.</p>
+<h3 id="conditions">Conditions</h3>
+<p>The <strong>condition</strong> attribute allows a node to move to different next nodes depending on whether a specific rule or condition is true or false. This lets you create more complex logic in your agent.</p>
+<p><strong>Common Attributes for <code>condition</code>:</strong></p>
+<ul>
+<li><strong><code>condition</code></strong>: Indicates that the transition depends on a condition.<ul>
+<li><strong><code>condition_input</code></strong>: A list of information from the agent's memory or chat history (<code>state</code>) that will be used to evaluate the condition.</li>
+<li><strong><code>condition_definition</code></strong>: The actual rule or condition to be evaluated. This is often written using a templating language like Jinja.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Example 1: condition within an llm node:</strong></p>
+<pre><code class="language-yaml">- id: Get User Story Details
+  type: llm
+  input: [input]
+  prompt:
+    type: string
+    value: &quot;Please provide the description, Jira Project ID, EPIC ID, and User Story Title.&quot;
+  output: [description, jira_project_id, epic_id, us_title]
+  structured_output: true
+  condition:
+    condition_input: [description, jira_project_id, epic_id, us_title, input]
+    condition_definition: |
+      {% if 'approved' in input|lower and description and jira_project_id and epic_id and us_title %}
+      Unified Content Aggregator
+      {% else %}
+      Conversation Partner
+      {% endif %}
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>After the "Get User Story Details" node, the agent will check the <code>condition_definition</code>. It checks if the user's input (converted to lowercase) contains the word "approved" AND if the <code>description</code>, <code>jira_project_id</code>, <code>epic_id</code>, and <code>us_title</code> variables in the agent's memory have values.</p>
+<ul>
+<li>If the condition is true (the user typed "approved" and provided all the information), the agent will transition to the node named "Unified Content Aggregator".</li>
+<li>If the condition is false, the agent will transition to the node named "Conversation Partner".</li>
+</ul>
+<h3 id="entry-point-and-interruptions">Entry Point and Interruptions</h3>
+<ul>
+<li>
+<p>The <strong>entry_point</strong>: This is defined at the top level of your <strong>YAML</strong> instructions and specifies the <code>id</code> of the first node that will be executed when the agent starts. This is the starting point of your agent's journey.</p>
+<p><strong>Example:</strong></p>
+<p><code>yaml
+entry_point: Conversation Partner</code></p>
+</li>
+<li>
+<p><strong>interrupt_before</strong>: This is an optional attribute you can add to the top level of your YAML file. It allows you to pause the agent's execution <em>before</em> a specific node is executed and give control back to the user.</p>
+<p><strong>Example:</strong></p>
+<p><code>yaml
+interrupt_before:
+  - Unified Content Aggregator</code></p>
+</li>
+</ul>
+<p><strong>Explanation:</strong> This will pause the agent right before it executes the "Unified Content Aggregator" node.</p>
+<ul>
+<li>
+<p><strong>interrupt_after</strong>: This is an optional attribute you can add to the top level of your YAML file. It allows you to pause the agent's execution <em>after</em> a specific node has been executed and give control back to the user.</p>
+<p><strong>Example:</strong></p>
+<p><code>yaml
+interrupt_after:
+  - Conversation Partner</code></p>
+</li>
+</ul>
+<p><strong>Explanation:</strong> This will pause the agent right after it finishes executing the "Conversation Partner" node.</p>
+<h3 id="state">State</h3>
+<p>The <strong>state</strong> is the agent's memory defined by user. It stores information that the agent gathers and uses throughout its execution. The default state includes <code>messages</code> (the conversation history). You can define <strong>custom states</strong> to store other relevant information. <strong>Note:</strong> If you define custome states, you must add messages into state.</p>
+<p><strong>Example 1: State</strong></p>
+<pre><code class="language-yaml">state:
+  jira_project_id: str
+  epic_id: str
+  us_title: str
+  description: str
+  input: str
+  messages: list
+  filtered_sumarized_info: str
+  draft_us: str
+  info_from_datasource: str
+  enhanced_us: str
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>This <strong>state</strong> definition indicates that the agent will store information related to Jira project ID, Epic ID, user story title, description, user input, conversation history, summarized information, draft user story, information from a data source, and the enhanced user story. The <code>str</code> and <code>list</code> indicate the expected data type for each piece of information. If you only need the default <code>messages</code> state, you can omit the <strong>state</strong> section entirely.</p>
+<h2 id="creating-your-first-pipeline-agent-in-elitea">Creating Your First Pipeline Agent in ELITEA</h2>
+<p>Ready to build your own agent? Here's a step-by-step instructions to creating a Pipeline Agent in ELITEA:</p>
+<ol>
+<li><strong>Start a New Agent:</strong><ul>
+<li>Look for the <strong>"+ Agent"</strong> button, located in the top right corner of the ELITEA interface. Click this button to begin creating a new agent.</li>
+<li>This action will open the <strong>Configuration</strong> tab for your new agent, where you'll define its settings and behavior.</li>
+</ul>
+</li>
+<li><strong>Name and Describe Your Agent:</strong><ul>
+<li>In the <strong>Configuration</strong> tab, you'll see fields for <strong>Name</strong> and <strong>Description</strong>.</li>
+<li><strong>Name:</strong> Give your agent a clear and descriptive name. This name will help you easily identify your agent in ELITEA. For example, "User Story Creator" or "Code Documentor".</li>
+<li><strong>Description:</strong> Write a brief description of what your agent does. This helps you and others understand the agent's purpose at a glance. For example, "Agent to guide users through creating user stories in Jira."</li>
+</ul>
+</li>
+<li><strong>Add Tags (Optional):</strong><ul>
+<li>The <strong>Tags</strong> input box allows you to categorize your agent using keywords or labels.</li>
+<li>You can either type in a new tag name and press Enter, or select from a list of tags you've used before.</li>
+<li>Tags are helpful for organizing and searching for your agents later, especially if you create many of them.</li>
+</ul>
+</li>
+<li><strong>Choose the Agent Type:</strong><ul>
+<li>Locate the <strong>Agent type</strong> dropdown menu in the <strong>Configuration</strong> tab.</li>
+<li>Select <strong>"Pipeline"</strong> from the dropdown. This tells ELITEA that you want to create a Pipeline Agent, which uses the YAML-based framework we're discussing in this guide.</li>
+</ul>
+</li>
+<li><strong>Provide YAML Instructions:</strong><ul>
+<li>This is the heart of creating a Pipeline Agent! In the <strong>Instructions</strong> field, you will write the YAML code that defines your agent's workflow.</li>
+<li>Refer to the previous sections of this guide to understand how to write YAML instructions, define nodes, transitions, conditions, and more.</li>
+<li><strong>Important:</strong> Make sure your YAML is correctly formatted, especially the indentation. You can use the YAML Indentation Corrector prompt mentioned in the Troubleshooting section if needed.</li>
+</ul>
+</li>
+<li><strong>Add and Set Up Toolkits:</strong><ul>
+<li>Scroll down to the <strong>Toolkits</strong> section in the agent configuration.</li>
+<li>Toolkits provide your agent with access to various functionalities within ELITEA.</li>
+<li>Click <strong>"Add Toolkit"</strong> and choose the toolkits your agent needs to perform its tasks. For example, you might need a Jira toolkit to interact with Jira, or a data source toolkit to access external information.</li>
+<li>After adding a toolkit, you may need to configure it. This might involve providing API keys, connection details, or other settings specific to the toolkit. Follow the instructions provided for each toolkit you add.</li>
+<li><strong>Remember:</strong> For Pipeline Agents, you generally won't directly add "prompt", "agent", or "datasource" toolkits here. These are orchestrated <em>within</em> your Pipeline Agent's YAML instructions, often as 'child' agents or functions.</li>
+</ul>
+</li>
+<li><strong>Configure Conversation Starter and Welcome Message (Optional):</strong><ul>
+<li>These optional settings allow you to customize the initial interaction with your agent.</li>
+<li><strong>Conversation Starter:</strong> This is a predefined set of questions or prompts that are suggested to the user when they first start a conversation with your agent. It can help guide users on how to interact with the agent.</li>
+<li><strong>Welcome Message:</strong> This is a message that your agent automatically sends to the user when a conversation begins. It can be used to greet the user, explain what the agent can do, or provide initial instructions.</li>
+<li>You can configure these in the <strong>Conversation Starter</strong> and <strong>Welcome Message</strong> sections of the agent configuration.</li>
+</ul>
+</li>
+<li><strong>Save Your Agent:</strong><ul>
+<li>Once you have filled in the necessary information, provided your YAML instructions, and added toolkits, click the <strong>"Save"</strong> button (usually located at the bottom or top of the configuration page).</li>
+<li>Saving your agent makes your configuration live and ready to use.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="Pipeline-Create_Agent" src="../../../img/how-tos/pipeline/Pipeline-Create_Agent.png" />   </p>
+<h2 id="best-practices-and-use-cases">Best Practices and Use Cases</h2>
+<ul>
+<li><strong>Start with a clear goal:</strong> Define what you want your agent to achieve before you start building.</li>
+<li><strong>Break down complex tasks:</strong> Divide large tasks into smaller, manageable nodes.</li>
+<li><strong>Use descriptive node IDs:</strong> Choose names that clearly indicate the purpose of each node.</li>
+<li><strong>Plan your transitions carefully:</strong> Ensure a logical flow between nodes.</li>
+<li><strong>Test your agent thoroughly:</strong>  Run your agent through different scenarios to identify and fix any issues.</li>
+<li><strong>Utilize conditions and decisions for dynamic behavior:</strong> Make your agent more intelligent by allowing it to adapt based on user input and data.</li>
+<li><strong>Leverage the </strong>function<strong> node for efficiency:</strong> When interacting with ELITEA entities, consider using the <strong>function</strong> node for more direct and potentially token-saving interactions.</li>
+</ul>
+<p><strong>Use Cases:</strong></p>
+<p>Pipeline Agents in ELITEA are particularly powerful for creating "master" agents. These master agents are designed for orchestration, meaning they manage and direct the flow between various other agents and ELITEA entities to achieve complex goals. Let's explore some detailed use cases:</p>
+<h3 id="use-case-1-user-story-creation-workflow-manager">Use Case 1: User Story Creation Workflow Manager</h3>
+<p><strong>Scenario:</strong> This agent guides a user through the entire process of creating a well-defined user story in Jira, from gathering initial requirements to publishing the final version.</p>
+<p><strong>Solution:</strong> This agent uses a combination of <strong>llm</strong> nodes for interacting with the user and <strong>function</strong> nodes to process information and interact with Jira. The <strong>condition</strong> is used for decision-making based on user input.</p>
+<p><strong>YAML Instructions:</strong></p>
+<pre><code class="language-yaml">state:
+  jira_project_id: str
+  epic_id: str
+  us_title: str
+  description: str
+  input: str
+  messages: list
+  filtered_sumarized_info: str
+  draft_us: str
+  info_from_datasource: str
+  enhanced_us: str
+entry_point: Conversation Partner
+interrupt_after:
+  - Conversation Partner
+  - User Feedback and Approval
+nodes:
+  - id: Conversation Partner
+    type: llm
+    input: [input]
+    prompt:
+      type: string
+      value: |
+        To create a new User Story, I need some information from you. Could you please provide the following details in the specified format?
+        - **Jira Project ID**: (e.g., PLAN)
+        - **EPIC ID**: (e.g., PLAN-128)
+        - **Title**: (e.g., Checkout functionality)
+        - **Description**: (e.g., &quot;The informative description of future US.&quot;)
+        Once you provide this information, I will ask for your approval (should be 'approved' word) to start the User Story creation process. Make your instructions to user highlighted by using markdown highlight for text.
+    output: [description, jira_project_id, epic_id, us_title]
+    structured_output: true
+    condition:
+      condition_input: [description, jira_project_id, epic_id, us_title, input]
+      condition_definition: |
+        {% if 'approved' in input|lower and description and jira_project_id and epic_id and us_title %}
+        Unified Content Aggregator
+        {% else %}
+        Conversation Partner
+        {% endif %}
+  - id: Unified Content Aggregator
+    input: [epic_id, description]
+    output: [filtered_sumarized_info]
+    input_mapping:
+      task:
+        type: fstring
+        value: |
+          Epic ID: {epic_id}.
+          Description: {description}
+      chat_history:
+        type: fixed
+        value: []
+    type: function
+    transition: Draft User Story Creator
+  - id: Draft User Story Creator
+    type: function
+    input: [filtered_sumarized_info]
+    output: [draft_us]
+    input_mapping:
+      input:
+        type: variable
+        value: filtered_sumarized_info
+    transition: User Story Enhance Aggregator
+  - id: User Story Enhance Aggregator
+    input: [draft_us]
+    output: [enhanced_us]
+    input_mapping:
+      task:
+        type: fstring
+        value: |
+          Enhance the Narrative, Description and Scenarios with AC's for the given draft User Story: {draft_us}
+      chat_history:
+        type: fixed
+        value: []
+    type: function
+    transition: User Feedback and Approval
+  - id: User Feedback and Approval
+    type: llm
+    input: [input, enhanced_us, info_from_datasource]
+    output: [enhanced_us]
+    prompt:
+      type: fstring
+      value: |
+        When reviewing and updating a user story, ensure its structure and format remain consistent with the original, unless the user specifically requests changes. Present the updated user story in its entirety, enriched with any necessary information, clearly and concisely for user feedback. Use the following variables to guide the process:
+        - **Current User Input:** {input}
+        - **Information from Data Source:** {info_from_datasource}
+        - **Enhanced User Story:** {enhanced_us}
+        Users can provide feedback through free form queries, which will be controlled by the &quot;Current User Input&quot; value. If the query contains &quot;datasource:&quot;, access and incorporate specific data from the identified sources into the enhanced user story via &quot;Information from Data Source&quot;. Present the full &quot;Enhanced User Story&quot; to the user, ensuring that the structure and format remain unchanged.
+        Approval of the enhanced user story can be given by typing &quot;approved,&quot; which will publish it to Jira. If no further changes or publication is desired, the user can type &quot;finish&quot; to conclude the session.
+    condition:
+      condition_input: [input]
+      condition_definition: |
+        {% if 'approved' in input|lower %}
+        User Story Publisher
+        {% elif 'datasource:' in input|lower %}
+        Special
+        {% elif 'finish' in input|lower %}
+        END
+        {% else %}
+        User Feedback and Approval
+        {% endif %}
+  - id: Special
+    input: [input]
+    output: [info_from_datasource]
+    input_mapping:
+      task:
+        type: variable
+        value: input
+      chat_history:
+        type: fixed
+        value: []
+    type: function
+    transition: User Feedback and Approval
+  - id: User Story Publisher
+    input: [jira_project_id, epic_id, enhanced_us]
+    input_mapping:
+      task:
+        type: fstring
+        value: |
+          Create User Story in Jira using the following details:
+          Project Id: {jira_project_id}
+          Parent Jira Issue ID: {epic_id}
+          User Story content: {enhanced_us}
+      chat_history:
+        type: fixed
+        value: []
+    type: function
+    transition: END
+</code></pre>
+<p><strong>Detailed Explanation:</strong></p>
+<ol>
+<li><strong><code>state</code></strong>: Defines the information the agent will remember, such as Jira details, user input, and the evolving user story.</li>
+<li><strong><code>entry_point: Conversation Partner</code></strong>: The agent starts by engaging the user with the "Conversation Partner" node.</li>
+<li><strong><code>interrupt_after</code></strong>: Specifies points where the agent will pause and allow user intervention after the "Conversation Partner" and "User Feedback and Approval" nodes.</li>
+<li><strong><code>nodes</code></strong>:<ul>
+<li><strong><code>Conversation Partner</code> (llm node)</strong>:<ul>
+<li><strong>Purpose</strong>: Gathers initial information (Jira Project ID, Epic ID, Title, Description) from the user using a prompt.</li>
+<li><strong><code>input: [input]</code></strong>: Takes the user's latest input.</li>
+<li><strong><code>prompt</code></strong>:  Instructs the user on what information to provide and in what format.</li>
+<li><strong><code>output: [description, jira_project_id, epic_id, us_title]</code></strong>: Extracts the provided information and stores it in the agent's <code>state</code>.</li>
+<li><strong><code>condition</code></strong>: Checks if the user has provided all necessary information and typed 'approved'. If so, it moves to "Unified Content Aggregator"; otherwise, it loops back to "Conversation Partner".</li>
+</ul>
+</li>
+<li><strong><code>Unified Content Aggregator</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>:  Prepares input for the next step by combining the Epic ID and Description.</li>
+<li><strong><code>input: [epic_id, description]</code></strong>: Uses the Epic ID and Description from the <code>state</code>.</li>
+<li><strong><code>output: [filtered_sumarized_info]</code></strong>: Stores the combined information.</li>
+<li><strong><code>input_mapping</code></strong>: Creates a formatted string (<code>fstring</code>) with the Epic ID and Description.</li>
+<li><strong><code>transition: Draft User Story Creator</code></strong>: Moves to the next step.</li>
+</ul>
+</li>
+<li><strong><code>Draft User Story Creator</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: Creates a draft user story. This would likely call an internal ELITEA function or another agent.</li>
+<li><strong><code>input: [filtered_sumarized_info]</code></strong>: Uses the combined information from the previous step.</li>
+<li><strong><code>output: [draft_us]</code></strong>: Stores the generated draft user story.</li>
+<li><strong><code>input_mapping</code></strong>:  Passes the <code>filtered_sumarized_info</code> as input.</li>
+<li><strong><code>transition: User Story Enhance Aggregator</code></strong>: Proceeds to the enhancement phase.</li>
+</ul>
+</li>
+<li><strong><code>User Story Enhance Aggregator</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: Enhances the draft user story with narratives, descriptions, and acceptance criteria.</li>
+<li><strong><code>input: [draft_us]</code></strong>: Takes the draft user story as input.</li>
+<li><strong><code>output: [enhanced_us]</code></strong>: Stores the enhanced user story.</li>
+<li><strong><code>input_mapping</code></strong>: Uses an <code>fstring</code> to instruct the enhancement process.</li>
+<li><strong><code>transition: User Feedback and Approval</code></strong>: Moves to get user feedback.</li>
+</ul>
+</li>
+<li><strong><code>User Feedback and Approval</code> (llm node)</strong>:<ul>
+<li><strong>Purpose</strong>: Presents the enhanced user story to the user for review and gathers feedback.</li>
+<li><strong><code>input: [input, enhanced_us, info_from_datasource]</code></strong>: Uses the current user input, the enhanced user story, and any information from external data sources.</li>
+<li><strong><code>prompt</code></strong>:  Provides instructions to the user on how to provide feedback, request data, approve, or finish.</li>
+<li><strong><code>output: [enhanced_us]</code></strong>: Updates the enhanced user story based on feedback.</li>
+<li><strong><code>condition</code></strong>: Directs the flow based on user input:<ul>
+<li><code>approved</code>: Moves to "User Story Publisher".</li>
+<li><code>datasource:</code>: Moves to "Special" to fetch data.</li>
+<li><code>finish</code>: Ends the agent execution.</li>
+<li>Other input: Loops back to "User Feedback and Approval".</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>Special</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: Handles requests for incorporating data from external sources.</li>
+<li><strong><code>input: [input]</code></strong>: Takes the user's input containing the datasource request.</li>
+<li><strong><code>output: [info_from_datasource]</code></strong>: Stores the fetched data.</li>
+<li><strong><code>input_mapping</code></strong>: Passes the user's input as the task.</li>
+<li><strong><code>transition: User Feedback and Approval</code></strong>: Returns to the feedback stage.</li>
+</ul>
+</li>
+<li><strong><code>User Story Publisher</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: Publishes the approved user story to Jira.</li>
+<li><strong><code>input: [jira_project_id, epic_id, enhanced_us]</code></strong>: Uses the Jira details and the final user story.</li>
+<li><strong><code>input_mapping</code></strong>: Creates a formatted string with the Jira details and user story content for publishing.</li>
+<li><strong><code>transition: END</code></strong>: Completes the agent execution.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="use-case-2-user-story-review-workflow-manager">Use Case 2: User Story Review Workflow Manager</h3>
+<p><strong>Scenario:</strong> This agent assists in reviewing and updating existing user stories in Jira.</p>
+<p><strong>Solution:</strong> Similar to the creation workflow, this agent uses <strong>llm</strong> for user interaction and <strong>function</strong> nodes to read and update Jira. <strong>condition</strong> manages the flow based on user input.</p>
+<p><strong>YAML Instructions:</strong></p>
+<pre><code class="language-yaml">entry_point: Conversation Partner
+interrupt_after:
+  - Conversation Partner
+  - User Feedback and Approval
+nodes:
+  - id: Conversation Partner
+    type: llm
+    prompt:
+      type: string
+      value: |
+      To review and update User Story, I need some information from you. Could you please provide the following details in the specified format?
+      - **JIRA Ticket ID**: (e.g., PLAN-128)
+      Once you provide this information, I will ask for your approval (should be 'approved' word) to start the US review process. Make your instructions to user highlighted by using markdown highlight for text.
+    condition:
+      condition_input: [messages]
+      condition_definition: |
+        {% if 'approved' in messages[-1]['content']|lower %}
+        Jira_Read
+        {% else %}
+        Conversation Partner
+        {% endif %}
+  - id: Jira_Read
+    type: function
+    transition: User Feedback and Approval
+  - id: User Feedback and Approval
+    type: llm
+    prompt: 
+      type: string
+      value: |
+      Ensure that after each review and update, the structure and format of the updated User Story remain consistent with the original, unless the user explicitly requests changes.
+      Present the user story for user review and approval.
+        - **Free format instructions** to make changes.
+        - **Type 'datasource:'** followed by instructions to enhance using datasources.
+        - **Type 'approved'** to publish the enhanced User Story to Jira.
+        - **Type 'finish'** if you don't want to publish the enhanced User Story to Jira or make further changes.
+    condition:
+      condition_input: [messages]
+      condition_definition: |
+        {% if 'approved' in messages[-1]['content']|lower %}
+        Jira_Update
+        {% elif 'datasource:' in messages[-1]['content']|lower %}
+        Special
+        {% elif 'finish' in messages[-1]['content']|lower %}
+        END
+        {% else %}
+        User Feedback and Approval
+        {% endif %}
+  - id: Special
+    type: function
+    transition: User Feedback and Approval
+  - id: Jira_Update
+    type: function
+    transition: END
+</code></pre>
+<p><strong>Detailed Explanation:</strong></p>
+<ol>
+<li><strong><code>entry_point: Conversation Partner</code></strong>: The agent starts by asking for the Jira Ticket ID.</li>
+<li><strong><code>interrupt_after</code></strong>: Allows user intervention after the initial information gathering and feedback stages.</li>
+<li><strong><code>nodes</code></strong>:<ul>
+<li><strong><code>Conversation Partner</code> (llm node)</strong>:<ul>
+<li><strong>Purpose</strong>: Gets the Jira Ticket ID from the user.</li>
+<li><strong><code>prompt</code></strong>: Asks for the Jira Ticket ID and approval to start the review.</li>
+<li><strong><code>condition</code></strong>: Checks if the last message contains 'approved' (case-insensitive). If yes, moves to "Jira_Read"; otherwise, stays at "Conversation Partner".</li>
+</ul>
+</li>
+<li><strong><code>Jira_Read</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: Reads the user story details from Jira using the provided Ticket ID.</li>
+<li><strong><code>transition: User Feedback and Approval</code></strong>: Proceeds to the feedback stage.</li>
+</ul>
+</li>
+<li><strong><code>User Feedback and Approval</code> (llm node)</strong>:<ul>
+<li><strong>Purpose</strong>: Presents the user story for review and gathers feedback.</li>
+<li><strong><code>prompt</code></strong>: Provides instructions on how to provide feedback, request data, approve, or finish.</li>
+<li><strong><code>condition</code></strong>: Directs the flow based on the last message content:<ul>
+<li><code>approved</code>: Moves to "Jira_Update".</li>
+<li><code>datasource:</code>: Moves to "Special".</li>
+<li><code>finish</code>: Ends the execution.</li>
+<li>Other input: Loops back to "User Feedback and Approval".</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>Special</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: Handles requests for incorporating data from external sources (implementation details would be similar to the previous use case).</li>
+<li><strong><code>transition: User Feedback and Approval</code></strong>: Returns to the feedback stage.</li>
+</ul>
+</li>
+<li><strong><code>Jira_Update</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: Updates the user story in Jira with the reviewed content.</li>
+<li><strong><code>transition: END</code></strong>: Completes the agent execution.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="use-case-3-code-documentation">Use Case 3: Code Documentation</h3>
+<p><strong>Scenario:</strong> This agent automates the process of generating technical documentation for code files.</p>
+<p><strong>Solution:</strong> This agent uses a <strong>tool</strong> node to get a list of files and a <strong>loop</strong> node to iterate through each file and generate documentation.</p>
+<p><strong>YAML Instructions:</strong></p>
+<pre><code class="language-yaml">entry_point: File List Extractor
+nodes:
+  - id: File List Extractor
+    type: tool
+    transition: Documentor
+  - id: Documentor
+    type: loop
+    task: &quot;Formulate ALL file paths from chat_history as a list of inputs. The input values should be of format \&quot;{\&quot;task\&quot;: \&quot;&lt;file path from chat history&gt;\&quot;, \&quot;chat_history\&quot;: [&lt;actual chat history&gt;]}\&quot;&quot;
+    tool: Code Documentation
+    transition: END
+</code></pre>
+<p><strong>Detailed Explanation:</strong></p>
+<ol>
+<li><strong><code>entry_point: File List Extractor</code></strong>: The agent starts by extracting a list of files.</li>
+<li><strong><code>nodes</code></strong>:<ul>
+<li><strong><code>File List Extractor</code> (tool node)</strong>:<ul>
+<li><strong>Purpose</strong>: Uses a pre-built tool (likely within ELITEA) to get a list of relevant files.</li>
+<li><strong><code>transition: Documentor</code></strong>: Moves to the documentation generation phase.</li>
+</ul>
+</li>
+<li><strong><code>Documentor</code> (loop node)</strong>:<ul>
+<li><strong>Purpose</strong>: Iterates through the list of files and generates documentation for each.</li>
+<li><strong><code>task</code></strong>: Defines how to format the input for the "Code Documentation" tool for each file. It instructs the agent to take file paths from the <code>chat_history</code> and format them.</li>
+<li><strong><code>tool: Code Documentation</code></strong>:  This refers to an ELITEA entity (likely a prompt or another agent) responsible for generating documentation for a given file path.</li>
+<li><strong><code>transition: END</code></strong>: Completes the agent execution after processing all files.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="use-case-4-orchestrating-us-creation-and-test-case-generation">Use Case 4: Orchestrating US Creation and Test Case Generation</h3>
+<p><strong>Scenario:</strong> This master agent orchestrates the creation of a user story followed by the generation of test cases for that user story.</p>
+<p><strong>Solution:</strong> This agent uses <strong>function</strong> nodes to trigger other specialized agents for user story creation and test case generation.</p>
+<p><strong>YAML Instructions:</strong></p>
+<pre><code class="language-yaml">entry_point: BA Agent - Create User Stories
+nodes:
+  - id: BA Agent - Create User Stories
+    type: function
+    transition: QA Agent - Create Test Cases
+  - id: QA Agent - Create Test Cases
+    type: function
+    transition: END
+</code></pre>
+<p><strong>Detailed Explanation:</strong></p>
+<ol>
+<li><strong><code>entry_point: BA Agent - Create User Stories</code></strong>: The agent starts by triggering the "BA Agent - Create User Stories".</li>
+<li><strong><code>nodes</code></strong>:<ul>
+<li><strong><code>BA Agent - Create User Stories</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: Triggers another ELITEA agent specifically designed for user story creation.</li>
+<li><strong><code>transition: QA Agent - Create Test Cases</code></strong>: Once the user story is created, it moves to the test case generation phase.</li>
+</ul>
+</li>
+<li><strong><code>QA Agent - Create Test Cases</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: Triggers another ELITEA agent responsible for generating test cases for the newly created user story.</li>
+<li><strong><code>transition: END</code></strong>: Completes the agent execution after test cases are generated.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>This use case highlights the power of Pipeline Agents for orchestration. The master agent doesn't perform the detailed tasks itself but delegates them to specialized agents, creating a modular and efficient workflow.</p>
+<h3 id="use-case-5-master-bulk-user-story-creation-workflow-manager">Use Case 5: Master - Bulk User Story Creation Workflow Manager</h3>
+<p><strong>Scenario:</strong> This agent acts as a central hub for creating multiple user stories at once and then publishing them either to Jira or Confluence, depending on the user's provided information.</p>
+<p><strong>Solution:</strong> This agent utilizes an <strong>llm</strong> node for initial input, a <strong>function</strong> node to extract relevant information, a <strong>tool</strong> node to handle the bulk creation, another <strong>llm</strong> node to prepare data for publishing, and a <strong>decision</strong> node to route to the appropriate publishing function (<strong>function</strong> nodes for Jira and Confluence).</p>
+<p><strong>YAML Instructions:</strong></p>
+<pre><code class="language-yaml">entry_point: User Input
+nodes:
+  - id: User Input
+    type: llm
+    prompt:
+      type: string
+      value: |
+        Act as a router and route the user query to the appropriate node using the provided user input.
+    transition: Jira Epic Extractor
+  - id: Jira Epic Extractor
+    type: function
+    transition: Bulk User Stories Creator
+  - id: Bulk User Stories Creator
+    type: tool
+    transition: Story Creator
+  - id: Story Creator
+    type: llm
+    prompt:
+      type: string
+      value: |
+        For publishing, provide the Project and EPIC if using the &quot;Jira Bulk US Publisher&quot; node. Provide the Confluence Space Key and Confluence  Parent Page ID if using the &quot;Confluence Bulk US Publisher&quot; node. Use the created bulk User Stories from the chat history and pass them unchanged to the next node. Carefully prepare the data for the next node including the initial provided by user input (first message in the chat history).
+    decision:
+      nodes:
+        - Confluence Bulk US Publisher
+        - Jira Bulk US Publisher
+      description: |
+        Select &quot;Confluence Bulk US Publisher&quot; if a Confluence Parent Page ID is provided in the user input. If not, select &quot;Jira Bulk US Publisher.&quot; Ensure publishing occurs in only one node based on the presence of the Confluence Parent Page ID.
+  - id: Confluence Bulk US Publisher
+    type: function
+    transition: END
+  - id: Jira Bulk US Publisher
+    type: function
+    transition: END
+</code></pre>
+<p><strong>Detailed Explanation:</strong></p>
+<ol>
+<li><strong><code>entry_point: User Input</code></strong>: The agent begins by receiving user input in the "User Input" node.</li>
+<li><strong><code>nodes</code></strong>:<ul>
+<li><strong><code>User Input</code> (llm node)</strong>:<ul>
+<li><strong>Purpose</strong>: Acts as an initial entry point, receiving the user's request for bulk user story creation. While the prompt itself is simple, in a real-world scenario, this node might contain more elaborate instructions to guide the user on providing the necessary information for bulk creation.</li>
+<li><strong><code>prompt</code></strong>:  The prompt instructs the LLM to act as a router, preparing to send the user's query to the next appropriate node.</li>
+<li><strong><code>transition: Jira Epic Extractor</code></strong>:  The agent proceeds to the "Jira Epic Extractor" node. Note that the naming of this transition might be slightly misleading as the agent intends to handle both Jira and Confluence publishing. A more generic name like "Extract Information" might be more accurate.</li>
+</ul>
+</li>
+<li><strong><code>Jira Epic Extractor</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: This node is intended to extract relevant information from the user's input, such as the Jira Epic under which the user stories should be created. It's important to note that the current YAML doesn't explicitly define the <code>input</code>, <code>output</code>, or <code>input_mapping</code> for this node. In a functional implementation, these attributes would be crucial to define how the information is extracted.</li>
+<li><strong><code>transition: Bulk User Stories Creator</code></strong>: After extracting the necessary information (presumably the Jira Epic), the agent moves to the "Bulk User Stories Creator" node.</li>
+</ul>
+</li>
+<li><strong><code>Bulk User Stories Creator</code> (tool node)</strong>:<ul>
+<li><strong>Purpose</strong>: This node utilizes a pre-built tool within ELITEA to handle the actual creation of multiple user stories. The specifics of this tool (e.g., how it receives the user story data) are not detailed in the YAML.</li>
+<li><strong><code>transition: Story Creator</code></strong>: Once the bulk user stories are created, the agent transitions to the "Story Creator" node to prepare them for publishing.</li>
+</ul>
+</li>
+<li><strong><code>Story Creator</code> (llm node)</strong>:<ul>
+<li><strong>Purpose</strong>: This node prepares the created user stories and gathers necessary publishing information from the user.</li>
+<li><strong><code>prompt</code></strong>: The prompt instructs the user to provide either Jira Project and EPIC details or Confluence Space Key and Parent Page ID, depending on where they want to publish the stories. It also emphasizes passing the created user stories (from the chat history) to the next node.</li>
+<li><strong><code>decision</code></strong>: This attribute defines the logic for choosing the appropriate publishing node.<ul>
+<li><strong><code>nodes</code></strong>: Lists the possible next nodes: "Confluence Bulk US Publisher" and "Jira Bulk US Publisher".</li>
+<li><strong><code>description</code></strong>: Explains the decision-making process: if a Confluence Parent Page ID is present in the user input, route to the Confluence publisher; otherwise, route to the Jira publisher. This ensures that the publishing happens in only one of the nodes.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>Confluence Bulk US Publisher</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: This node utilizes a function within ELITEA to publish the bulk user stories to Confluence. The specific implementation details of this function are not shown in the YAML, but it would handle the interaction with the Confluence API.</li>
+<li><strong><code>transition: END</code></strong>: After publishing to Confluence, the agent's execution is complete.</li>
+</ul>
+</li>
+<li><strong><code>Jira Bulk US Publisher</code> (function node)</strong>:<ul>
+<li><strong>Purpose</strong>: This node utilizes a function within ELITEA to publish the bulk user stories to Jira. Similar to the Confluence publisher, the implementation details are not shown.</li>
+<li><strong><code>transition: END</code></strong>: After publishing to Jira, the agent's execution is complete.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>This use case demonstrates a more complex orchestration scenario where the Pipeline Agent acts as a smart router, guiding the user through bulk operations and making decisions based on the provided information to ensure the user stories are published to the correct platform.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Building and running Pipeline Agents can sometimes present challenges. This section provides guidance on how to diagnose and resolve common issues. Remember to carefully check the error messages displayed in the Chat window during the agent's execution, as they often provide valuable clues.</p>
+<p>Here are some common problems and how to address them:</p>
+<ul>
+<li><strong>YAML Syntax:</strong><ul>
+<li><strong>Problem:</strong> The agent fails to load or behaves unexpectedly due to errors in the basic structure of the YAML file.</li>
+<li><strong>Solution:</strong> Ensure you have a solid understanding of fundamental YAML syntax, including:<ul>
+<li><strong>Key-value pairs:</strong> Data is represented as <code>key: value</code>.</li>
+<li><strong>Indentation:</strong> Consistent indentation is crucial for defining hierarchy and structure.</li>
+<li><strong>Lists:</strong> Use hyphens (-) to denote items in a list.</li>
+<li><strong>Data types:</strong> Be mindful of data types (strings, numbers, booleans, lists, dictionaries).</li>
+<li><strong>Avoid tabs:</strong> Use spaces for indentation.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>YAML Indentation Issue:</strong><ul>
+<li><strong>Problem:</strong> The agent fails to load or behaves unexpectedly due to incorrect YAML formatting.</li>
+<li><strong>Solution:</strong> YAML relies heavily on proper indentation (using spaces, not tabs) to define its structure. Ensure that your YAML instructions are correctly indented. You can use the <a href="https://nexus.elitea.ai/alita_ui/1/prompts/all/31?viewMode=public">YAML Indentation Corrector</a> prompt within ELITEA to automatically fix indentation issues in your YAML code.</li>
+</ul>
+</li>
+<li><strong>Agent not starting:</strong><ul>
+<li><strong>Problem:</strong> The agent doesn't begin execution when you expect it to.</li>
+<li><strong>Solution:</strong> Double-check the <code>entry_point</code> defined in your YAML file. Ensure that the value you've provided exactly matches the <code>id</code> of the node you intend to be the starting point of your agent's workflow. Even a small typo can prevent the agent from starting correctly.</li>
+</ul>
+</li>
+<li><strong>Unexpected transitions:</strong><ul>
+<li><strong>Problem:</strong> The agent moves to a different node than you intended.</li>
+<li><strong>Solution:</strong> Carefully review the <code>transition</code>, <code>condition</code>, and <code>decision</code> attributes of the node <em>from which</em> the unexpected transition occurred.<ul>
+<li><strong><code>transition</code></strong>: Verify that the <code>id</code> of the target node is spelled correctly.</li>
+<li><strong><code>condition</code></strong>: Analyze the <code>condition_input</code> and <code>condition_definition</code>. Ensure the logic in your Jinja2 template is correct and that the referenced state variables contain the expected data.</li>
+<li><strong><code>decision</code></strong>: Examine the <code>decisional_inputs</code> and the <code>default_output</code>. Understand the criteria for each possible transition and ensure your <code>default_output</code> is correctly set.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Node Names Issue:</strong><ul>
+<li><strong>Problem:</strong> The agent cannot find or execute a specific node.</li>
+<li><strong>Solution:</strong><ul>
+<li><strong>Verify Node IDs:</strong> Double-check that the <code>id</code> values you've assigned to your nodes are spelled correctly and consistently throughout your YAML file. This is crucial for <code>transition</code>, <code>condition</code>, and <code>decision</code> attributes that reference other nodes.</li>
+<li><strong>ELITEA Toolkit Names:</strong> If you are using ELITEA toolkits (prompts, datasources, or agents) as nodes ensure that the node names in your YAML instructions <em>exactly</em> matches the names of the toolkit in ELITEA. Names are case-sensitive.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Node Name Issue with </strong>llm<strong> nodes:</strong><ul>
+<li><strong>Problem:</strong> Transitions, conditions, or decisions are not correctly referencing an <strong>llm</strong> node.</li>
+<li><strong>Solution:</strong> Confirm that the <code>id</code> you've given to your <strong>llm</strong> node is accurate and that you are using this exact <code>id</code> when referencing the <code>llm</code> node in <code>transition</code>, <code>condition</code>, or <code>decision</code> attributes of other nodes.</li>
+</ul>
+</li>
+<li><strong>Incorrect data in state:</strong><ul>
+<li><strong>Problem:</strong> The agent is using or displaying incorrect information.</li>
+<li><strong>Solution:</strong> Utilize the <code>interrupt_before</code> or <code>interrupt_after</code> attributes in your YAML to strategically pause the agent's execution at specific nodes. When the agent pauses, inspect the current <code>state</code> (the agent's memory) to see the values of the variables. This allows you to verify if the data is being populated and updated as expected at different stages of the workflow.</li>
+</ul>
+</li>
+<li><strong>Condition Format Issue:</strong><ul>
+<li><strong>Problem:</strong> Conditions are not evaluating as expected, leading to incorrect transitions.</li>
+<li><strong>Solution:</strong> Remember that conditions in Pipeline Agents use the Jinja2 templating language. Carefully review your <code>condition_definition</code> to ensure:<ul>
+<li>Correct Jinja2 syntax is used (e.g., <code>{% if condition %}</code>, <code>{% else %}</code>, <code>{% endif %}</code>).</li>
+<li>Variables from the <code>condition_input</code> are referenced correctly within the Jinja2 template.</li>
+<li>The logical operators and comparisons in your condition are accurate.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Errors in node execution:</strong><ul>
+<li><strong>Problem:</strong> A specific node fails to execute its intended action.</li>
+<li><strong>Solution:</strong><ul>
+<li><strong>Examine Error Messages:</strong> Pay close attention to the specific error messages displayed in the ELITEA Chat window during the agent's execution. These messages often pinpoint the exact cause of the error.</li>
+<li><strong>function node Input/Output Mappings:</strong> For <strong>function</strong> nodes, meticulously review the <code>input</code> and <code>output</code> attributes, as well as the <code>input_mapping</code>. Ensure that:<ul>
+<li>The <code>input</code> list correctly references variables in your agent's <code>state</code>.</li>
+<li>The <code>output</code> list specifies where the function's results should be stored in the <code>state</code>.</li>
+<li>The <code>input_mapping</code> correctly defines how data from the <code>state</code> is being passed to the function's parameters (using <code>variable</code>, <code>fstring</code>, or <code>fixed</code>).</li>
+</ul>
+</li>
+<li><strong>Tool Availability:</strong> If the error involves a <strong>tool</strong> node, verify that the specified <strong>tool</strong> (ELITEA prompt, datasource, or agent) exists and is accessible within your ELITEA environment.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Debugging Complex Pipelines:</strong><ul>
+<li><strong>Problem:</strong> Identifying the root cause of errors in agents with many nodes and complex logic can be difficult.</li>
+<li><strong>Solution:</strong><ul>
+<li><strong>Systematic Analysis:</strong> Break down the execution flow step-by-step.</li>
+<li><strong>Strategic Interruptions:</strong> Use <code>interrupt_before</code> and <code>interrupt_after</code> at multiple points in the pipeline to inspect the <code>state</code> and understand how data is changing.</li>
+<li><strong>Simplify Temporarily:</strong> Consider temporarily commenting out sections of your YAML to isolate the part of the pipeline where the error is occurring.</li>
+<li><strong>Review Error Messages:</strong> Pay close attention to any error messages generated during execution, as they often provide clues about the location and nature of the problem.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>By systematically checking these potential issues and utilizing the debugging tools available in ELITEA, you can effectively troubleshoot and refine your Pipeline Agents.</p>
+<h2 id="useful-links-and-materials">Useful Links and Materials</h2>
+<p>To further enhance your understanding and skills in building Pipeline Agents, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="../../../platform-documentation/menus/agents/">ELITEA Agents Configuration</a></strong>: Learn more about configuring and managing agents within ELITEA.</li>
+<li><strong><a href="https://nexus.elitea.ai/alita_ui/agents/latest">Public Agents in Nexus</a></strong>: Discover and study real-world examples of Pipeline Agents created by the ELITEA community. This is a great source of inspiration and practical learning.</li>
+<li><strong><a href="https://github.com/ProjectAlita/alita-sdk/tree/main">Alita SDK GitHub Repository</a></strong>: Explore the codebase behind the Pipeline Agent Framework and its nodes. This is a valuable resource for understanding the inner workings and extending its capabilities. </li>
+<li><strong><a href="https://yaml.org/spec/">YAML Specification</a></strong>: Gain a comprehensive understanding of YAML syntax and structure.</li>
+<li><strong><a href="https://jinja.palletsprojects.com/en/3.1.x/">Jinja Templating Engine Documentation</a></strong> Master the syntax and features of Jinja2, the templating language used for defining conditions in Pipeline Agents.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

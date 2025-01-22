@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/platform-documentation/menus/chat/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Chat - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../settings/">Settings</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../prompts/prompts.md">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents/agents.md">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring.md">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles.md">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../how-tos/agents-toolkits/pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../how-tos/creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../settings/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../datasources/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#conversations">Conversations</a></li>
+            <li class="second-level"><a href="#creating-a-conversation">Creating a Conversation</a></li>
+                
+            <li class="second-level"><a href="#private-and-public-conversations">Private and Public Conversations</a></li>
+                
+            <li class="second-level"><a href="#participants">Participants</a></li>
+                
+                <li class="third-level"><a href="#how-to-add-a-participant">How to Add a Participant</a></li>
+                <li class="third-level"><a href="#how-to-use-a-participant">How to Use a Participant</a></li>
+                <li class="third-level"><a href="#how-to-configuremodify-participants">How to Configure/Modify Participants</a></li>
+                <li class="third-level"><a href="#actions-for-conversation">Actions for Conversation</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="conversations">Conversations</h1>
+<p>ELITEA Chat is an ultimate feature, allowing you to combine all ELITEA features in one place and achieve the best output and results.</p>
+<p>In the ELITEA framework, a conversation is a dialogue among various participants such as selected language models, prompts, datasources, agents, and human users. The chat uses natural language to interact with a human and receive/give feedback. Within one conversation, you can refer to previous questions and answers. However, different conversations don’t share context.</p>
+<p>All your conversations are stored on the ELITEA server, and you can access them from any device you use. All your conversations are accessible from the <strong>Chat</strong> menu.</p>
+<p>Conversations support the following functionality:</p>
+<ul>
+<li><strong>Public and Private Conversations</strong>: Share your conversation with other users from your project, involve them in the same conversation, or keep it private and visible only to you.</li>
+<li><strong>Participants</strong>: Add various participants to the conversation, including other users in public conversations, prompts, data sources, agents, and language models, making them part of the conversation.</li>
+<li><strong>Interactions</strong>: Interact with added participants, copy generated responses, and more.</li>
+<li><strong>Managing Conversations</strong>: Save conversations, pin the most important ones at the top of the screen, make private conversations public, delete conversations, clean the content of the conversation, and export the context of the conversation.</li>
+<li><strong>Playback</strong>: During playback, you can move backward and forward through the playback process or stop the conversation by simulating the current conversation without any engagement with models.</li>
+</ul>
+<p><img alt="Chat" src="../../../img/platform/menus/chat/Chat.png" /></p>
+<h2 id="creating-a-conversation">Creating a Conversation</h2>
+<ol>
+<li>Click the <strong>+ Conversation</strong> button located at the top right corner or <strong>+</strong> icon next to <strong>CONVERSATIONS</strong>.</li>
+<li>Provide the <strong>Name</strong>. By default, it is set to "New Conversation".</li>
+<li>After creating Conversation add partiicpants to the conversation by clicking the <strong>PARTICIPANTS +</strong> button.</li>
+<li>Start the conversation by typing your text (be it a question or a command) into the chat box. Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the <strong>Send</strong> icon to begin.</li>
+</ol>
+<p><img alt="Chat-New_Conversation" src="../../../img/platform/menus/chat/Chat-New_Conversation.png" /></p>
+<p>Your newly created conversation will subsequently appear on the Conversation's list.</p>
+<h2 id="private-and-public-conversations">Private and Public Conversations</h2>
+<p>Private conversations are only visible to the user who created them. You can add all available participants to your project and use this conversation. You can also make private conversations public later.
+<strong>Note</strong>: By default, all conversations created in a Private project will be Private as you can't invite/share such conversations with other users.</p>
+<p>Public conversations are visible to all users of the same project. Those users can also interact in the public conversations, add/remove their participants, delete conversations, copy messages, etc.
+<strong>Note</strong>: Users can't convert public conversations back to private.</p>
+<h2 id="participants">Participants</h2>
+<p>Participants are additional "tools" that can be added to the conversation to enhance it. The following types of participants are available:</p>
+<ul>
+<li><strong>Models</strong>: LLM models which can be added to the conversation to interact with Gen AI and get responses from the selected model.</li>
+<li><strong>Prompts</strong>: Already created prompts within the project or public ones which can be added to the conversation to execute them and get responses.</li>
+<li><strong>Datasources</strong>: Already created datasources within the project or public ones which can be added to the conversation to execute them and get responses.</li>
+<li><strong>Agents</strong>: Already created agents within the project or public ones which can be added to the conversation to execute them and get responses.</li>
+</ul>
+<p><strong>Note</strong>: Another category of participant is the user, which can't be added, but in the case of public conversations, users within the project can follow the conversation, interact with it, and thus become participants.</p>
+<h3 id="how-to-add-a-participant">How to Add a Participant</h3>
+<p>To add a participant to a conversation:</p>
+<ol>
+<li>Click the <strong>Add participants</strong> button if you just created a conversation or <strong>+</strong> icon next to <strong>PARTICIPANTS</strong>.</li>
+<li>A pop-up window appears.</li>
+<li>Type the letters of the name or description of the available participant in the Search field. You can also filter and select required participant by type or tags.</li>
+<li>As soon as you see the participant that you need from the proposed list, click the <strong>Chat Now</strong> button on the participant card.</li>
+<li>The participant will be immediately added to your conversation and become visible in the <strong>PARTICIPANTS</strong> section.</li>
+</ol>
+<p><strong>Note</strong>: You can also add several participants at once (by clicking in the cards) and then click the <strong>Add Participants</strong> button.</p>
+<p><img alt="Chat-Add_Participants" src="../../../img/platform/menus/chat/Chat-Add_Participants.png" /></p>
+<h3 id="how-to-use-a-participant">How to Use a Participant</h3>
+<ol>
+<li>Check that the participant is selected and added to the conversation.</li>
+<li>If you see in the Conversation's main section "Select from the list or mention participant you wish to engage with.", then you need to include the participant that you want to use. To do it:<ul>
+<li>You can either click on the required participant option from the <strong>PARTICIPANTS</strong> section.</li>
+<li>Or you can call the required participant from the "Type your message" input box by typing <strong>/</strong> - prompt, <strong>#</strong> - data source, <strong>@</strong> - agent, <strong>&gt;</strong> - model. Then select it from the dropdown list.</li>
+</ul>
+</li>
+<li>After adding the active participant to the conversation, you can use it by typing simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the <strong>Send</strong> icon to execute the participant.</li>
+<li>To remove the participant from the conversation's active participant list, click the X icon. Note: This will not remove the participant from the Conversation entirely. You can call it again.</li>
+</ol>
+<p><img alt="Chat-Use_Participants" src="../../../img/platform/menus/chat/Chat-Use_Participants.png" /></p>
+<h3 id="how-to-configuremodify-participants">How to Configure/Modify Participants</h3>
+<p>You can easily configure participants that you have added to the conversation.</p>
+<p>For <strong>Models</strong>:</p>
+<ol>
+<li>Navigate to the model.</li>
+<li>Click on the <strong>Settings</strong> icon.</li>
+<li>You can configure the following settings for the model: Temperature, Top P (0-1), Top K, and Maximum Length.</li>
+<li>To apply changes, click the <strong>&lt; SETTINGS</strong> button.</li>
+<li>You can also restore back to default settings by clicking the <strong>Restore</strong> icon.</li>
+</ol>
+<p><img alt="Chat-Participants_Model_Settings" src="../../../img/platform/menus/chat/Chat-Participants_Model_Settings.png" /></p>
+<p>For <strong>Prompts</strong>:</p>
+<ol>
+<li>Navigate to the prompt.</li>
+<li>Click on the <strong>Settings</strong> icon.</li>
+<li>Select the version of the prompt. By default the "latest" will be selected.</li>
+<li>You can configure the following settings for the prompt:Temperature, Top P (0-1), Top K, and Maximum Length. If the prompt has variable(s), you can modify them as well.</li>
+<li>To apply changes, click the <strong>&lt; SETTINGS</strong> button.</li>
+<li>You can also restore back to default settings by clicking the <strong>Restore</strong> icon.</li>
+</ol>
+<p><img alt="Chat-Participants_Prompt_Settings" src="../../../img/platform/menus/chat/Chat-Participants_Prompt_Settings.png" /></p>
+<p>For <strong>Datasources</strong>:</p>
+<ol>
+<li>Navigate to the datasource.</li>
+<li>Click on the <strong>Settings</strong> icon.</li>
+<li>You can configure the following settings for the datasource: <ul>
+<li><strong>Embedding Settings</strong>: Initial Lookup Result (1-50), Pages Per Document (1-30), Expected Search Result (1-40).</li>
+<li>Temperature, Top P (0-1), Top K, and Maximum Length.</li>
+</ul>
+</li>
+<li>To apply changes, click the <strong>&lt; SETTINGS</strong> button.</li>
+<li>You can also restore back to default settings by clicking the <strong>Restore</strong> icon.</li>
+</ol>
+<p><img alt="Chat-Participants_Datasource_Settings" src="../../../img/platform/menus/chat/Chat-Participants_Datasource_Settings.png" /></p>
+<p>For <strong>Agents</strong>:</p>
+<ol>
+<li>Navigate to the agent.</li>
+<li>Click on the <strong>Settings</strong> icon.</li>
+<li>Select the version of the prompt. By default the "latest" will be selected.</li>
+<li>You can configure the following settings for the agent: Temperature, Top P (0-1), Top K, and Maximum Length. If the agent has variable(s), you can modify them as well.</li>
+<li>To apply changes, click the <strong>&lt; SETTINGS</strong> button.</li>
+<li>You can also restore back to default settings by clicking the <strong>Restore</strong> icon.</li>
+</ol>
+<p><img alt="Chat-Participants_Agent_Settings" src="../../../img/platform/menus/chat/Chat-Participants_Agent_Settings.png" /></p>
+<h3 id="actions-for-conversation">Actions for Conversation</h3>
+<p>The following actions are available for created conversations from <strong>CONVERSATIONS</strong> sidebar:</p>
+<ul>
+<li><strong>Delete</strong>: To delete a single conversation, on the left panel, in the conversation contextual menu, select <strong>Delete</strong> and confirm your action.</li>
+<li><strong>Edit</strong>: To rename a conversation, on the left panel, in the conversation contextual menu, select <strong>Edit</strong> and confirm your action.</li>
+<li><strong>Export</strong>: To export a single conversation, on the left panel, in the conversation contextual menu, point to Export. <strong>Note</strong>: Not applicable now.</li>
+<li><strong>Make Public</strong>: To make a private conversation public, on the left panel, in the conversation contextual menu, click the <strong>Make Public</strong> icon. Note: You will not be able to convert it back to Private.</li>
+<li><strong>Playback</strong>: The <strong>Playback</strong> mode can be used to simulate the current conversation without any engagement with models. This mode accurately reproduces the conversation like a recording. It's well designed for demo purposes.</li>
+<li><strong>Pin</strong>: To pin a single conversation, on the left panel, in the conversation contextual menu, select <strong>Pin</strong>. Your conversation will be pinned at the top of your conversation's list. <strong>Note</strong>: You can unpin the conversation by clicking the <strong>Unpin</strong> action.</li>
+</ul>
+<p><img alt="Chat-Conversation_Actions" src="../../../img/platform/menus/chat/Chat-Conversation_Actions.png" /></p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
