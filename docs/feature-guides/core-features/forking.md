@@ -33,16 +33,16 @@ The process for forking Agents, Prompts, and Datasources is similar.
 2. **Navigate to the Project**: Go to the specific project that contains the prompt, datasource, or agent you wish to fork.
 3. **Access the Relevant Menu**: Within the project, navigate to the menu corresponding to the entity type you want to fork (e.g., **Prompts**, **Datasources**, or **Agents**).
 4. **Locate the Entity for Fork**: Find the specific entity you want to fork within the list. ELITEA offers two view options, and the fork process varies slightly depending on the view you are using:
-   a. **Card List View**: If you are viewing your entities in a card format, click on the specific entity's card that you wish to fork. This will open the entity's details. Once open, locate and click the **Fork [entity type]** icon (e.g., **Fork prompt**, **Fork datasource**, or **Fork agent**).
-   b. **Table View**: If you are viewing your entities in a table format, locate the entity you want to fork in the list. In the **Actions** column, which is usually the last column in the table, click on the ellipsis icon (`...`) next to the entity. A dropdown menu will appear. Select the **Fork** option from this menu.
+    a. **Card List View**: If you are viewing your entities in a card format, click on the specific entity's card that you wish to fork. This will open the entity's details. Once open, locate and click the **Fork [entity type]** icon (e.g., **Fork prompt**, **Fork datasource**, or **Fork agent**).
+    b. **Table View**: If you are viewing your entities in a table format, locate the entity you want to fork in the list. In the **Actions** column, which is usually the last column in the table, click on the ellipsis icon (`...`) next to the entity. A dropdown menu will appear. Select the **Fork** option from this menu.
 5. A **Forking wizard** will appear.
 5. In the dialog, select the **Target Project** where you want to create a copy of the entity.
 6. Click the **Fork** button.
 7. A copy of the entity will now be created in the selected target project. You will be forwarded to that entity created in the target project.
 
-![Datasource-Fork](<../img/user-guides/forking/Datasource-Fork.png>)
+![Datasource-Fork](<../../img/guides/forking/Datasource-Fork.png>)
 
-![Fork-Table_view](<../img/user-guides/forking/Fork-Table_view.png>)
+![Fork-Table_view](<../../img/guides/forking/Fork-Table_view.png>)
 
 ### Forking a Prompt
 
@@ -50,13 +50,13 @@ The process for forking Agents, Prompts, and Datasources is similar.
 2. Locate the specific prompt you want to fork.
 3. Open the prompt and click the **Fork prompt** icon.
 4. **Forking Wizard - Prompt Options:**
-   * **Select Project:** Choose the target project where you want to fork the prompt. You can select your **Private** workspace or any other project where you have the necessary permissions.
-   * **Select Versions to Fork:** You can choose to fork all versions of the prompt or select specific versions. **Note:** It is always highly recommended to select and fork the **'latest'** version of the prompt, otherwise you might have validation errors, preventing successful fork, or resulting the forked prompt not to function as expected.
-    * **Select LLM Model:** For each version you are forking, you can select the desired LLM Model. You can manually change the selected model to your preferred choice before completing the fork.
+      * **Select Project:** Choose the target project where you want to fork the prompt. You can select your **Private** workspace or any other project where you have the necessary permissions.
+      * **Select Versions to Fork:** You can choose to fork all versions of the prompt or select specific versions. **Note:** It is always highly recommended to select and fork the 'latest' version of the prompt, otherwise you might have validation errors, preventing successful fork, or latest version will be cloned from one of the versions
+      * **Select LLM Model:** For each version you are forking, you can select the desired LLM Model. You can manually change the selected model to your preferred choice before completing the fork.
 5. Click the **Fork** button in the **Forking Wizard**.
 6. A copy of the prompt will now be created in the selected target project. You will be forwarded to that prompt created in the target project.
 
-![Prompt-Forking_Wizard](<../img/user-guides/forking/Prompt-Forking_Wizard.png>)
+![Prompt-Forking_Wizard](<../../img/guides/forking/Prompt-Forking_Wizard.png>)
 
 ### Forking a Datasource
 
@@ -75,14 +75,14 @@ The process for forking Agents, Prompts, and Datasources is similar.
 6. A copy of the datasource will now be created in the selected target project. You will be forwarded to that datasource created in the target project.
 7. **Reindexing Datasets:** After successfully forking the datasource, you **must** initiate the reindexing of the forked datasets. This step is crucial as the actual vector databases are not forked.
 
-![Datasource-Forking_Wizard](<../img/user-guides/forking/Datasource-Forking_Wizard.png>)
+![Datasource-Forking_Wizard](<../../img/guides/forking/Datasource-Forking_Wizard.png>)
 
 **Important Note:** When forking a datasource, the actual datasets and authentication details are not copied to the new project:
 
 * **Reconfigure Dataset Connections:** You will need to re-enter the storage details and connection parameters, including authentication credentials (API Keys, usernames, tokens, passwords) while forking.
 * **Reindex Datasets:** You will need to initiate the reindexing of the datasets in the forked datasource within the target project.
 
-![Datasource-Reindex](<../img/user-guides/forking/Datasource-Reindex.png>)
+![Datasource-Reindex](<../../img/guides/forking/Datasource-Reindex.png>)
 
 ### Forking an Agent
 
@@ -91,18 +91,18 @@ The process for forking Agents, Prompts, and Datasources is similar.
 3. Open the agent and click the **Fork agent** icon.
 4. **Forking Wizard - Agent Options:**
    * **Select Project:** Choose the target project where you want to fork the agent.
-    * **Select Versions to Fork:** You can choose to fork all versions of the agent or select specific versions. **Note:** It is always highly recommended to select and import the **'latest'** version of the agent, otherwise you might have validation errors, preventing successful fork, or resulting the forked agent not to function as expected.
+    * **Select Versions to Fork:** You can choose to fork all versions of the agent or select specific versions. **Note:** It is always highly recommended to select and fork the 'latest' version of the agent, otherwise you might have validation errors, preventing successful fork, or latest version will be cloned from one of the versions.
     * **Select LLM Model:** For each version you are forking, you can select the desired LLM Model. You can manually change the selected model to your preferred choice before completing the import.
     * **Provide Mandatory Parameters:** Fill in all mandatory fields and parameters, which are highlighted with an asterisk `*`. This typically includes various authentication parameters for the agent's toolkits.
     * **Select Tools to Fork:** Choose which tools you want to fork along with the agent.
     * **Configure Tool Parameters:** You can review and reconfigure the available options and parameters for each tool being forked. You can either use the default values from the toolkit or customize them as needed.
     * **Provide Toolkit Authentication:** For any toolkits requiring authentication, you will need to manually provide the necessary credentials (API Keys, usernames, tokens, passwords).
 5. Click the **Fork** button in the **Forking Wizard**.
-6. A copy of the ageny will now be created in the selected target project. You will be forwarded to that agent created in the target project.
+6. A copy of the agent will now be created in the selected target project. You will be forwarded to that agent created in the target project.
 
 **Important Note:** When forking an agent, the authentication details for any configured toolkits are not copied to the new project. You will need to re-enter the authentication credentials (API Keys, usernames, tokens, passwords) for any toolkits while forking the agent.
 
-![Agent-Forking_Wizard](<../img/user-guides/forking/Agent-Forking_Wizard.png>)
+![Agent-Forking_Wizard](<../../img/guides/forking/Agent-Forking_Wizard.png>)
 
 ### Forking Master Agents with Connected Entities
 
@@ -120,7 +120,7 @@ This capability significantly simplifies the process of transferring complex AI 
 
 When you initiate the forking process for a 'master' agent, ELITEA identifies all the prompts, datasources, and child agents that are configured as toolkits for that 'master' agent. During the forking operation, copies of these connected entities are also created in the target project, ensuring that the forked 'master' agent has access to the necessary resources to function correctly.
 
-![MasterAgent-Forking_Wizard](<../img/user-guides/forking/MasterAgent-Forking_Wizard.png>)
+![MasterAgent-Forking_Wizard](<../../img/guides/forking/MasterAgent-Forking_Wizard.png>)
 
 **Important Considerations:**
 

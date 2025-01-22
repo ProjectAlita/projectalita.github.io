@@ -25,7 +25,7 @@ In the **Profile**, you’re presented with options to personalize your account 
 
 **About me** - fill in or update your personal details to ensure your ELITEA profile remains current. **Note**: Markdown is supported.
 
-![Intro-Settings_Profile](../img/admin-guide/intro/Intro-Settings_Profile.png)
+![Intro-Settings_Profile](../../img/platform/menus/settings/Intro-Settings_Profile.png)
 
 ## Monitoring
 
@@ -61,7 +61,7 @@ Below the configuration options, you'll find an overview of key metrics that giv
 
 These metrics are accompanied by a date range selector, allowing you to filter the data for a specific period.
 
-![Intro-Settings_Monitoring(Part1)](../img/admin-guide/intro/Intro-Settings_Monitoring(Part1).png)
+![Intro-Settings_Monitoring(Part1)](../../img/platform/menus/settings/Intro-Settings_Monitoring(Part1).png)
 
 ### Adoption and Usage
 
@@ -115,7 +115,7 @@ Understanding sentiment can significantly enhance the user experience in several
 * **User Engagement**: Monitoring sentiment trends over time can help you identify patterns in user behavior and adjust your strategies accordingly.
 * **Content Moderation**: Sentiment analysis can be used to flag potentially harmful or inappropriate content, ensuring a safer and more positive interaction environment.
 
-![Intro-Settings_Monitoring(Part2)](../img/admin-guide/intro/Intro-Settings_Monitoring(Part2).png)
+![Intro-Settings_Monitoring(Part2)](../../img/platform/menus/settings/Intro-Settings_Monitoring(Part2).png)
 
 ### Accuracy
 
@@ -169,7 +169,7 @@ Understanding the distribution of your artifacts across different topics can pro
 * **Content Focus**: Recognize topics with a high number of artifacts, helping you understand the primary focus areas of your users.
 * **Resource Allocation**: Allocate resources more effectively by focusing on topics that require more attention or improvement.
 
-![Intro-Settings_Monitoring(Part3)](../img/admin-guide/intro/Intro-Settings_Monitoring(Part3).png)
+![Intro-Settings_Monitoring(Part3)](../../img/platform/menus/settings/Intro-Settings_Monitoring(Part3).png)
 
 By leveraging the insights provided by the **Prompt Topics** section, you can ensure that your application covers a comprehensive range of topics, enhancing the overall user experience and effectiveness of the application.
 
@@ -194,7 +194,7 @@ Understanding the distribution of user queries across different topics can provi
 
 By leveraging the insights provided by the **Topics Summary** section, you can ensure that ELITEA is aligned with user interests, enhancing the overall user experience and effectiveness of the application.
 
-![Intro-Settings_Monitoring(Part4)](../img/admin-guide/intro/Intro-Settings_Monitoring(Part4).png)
+![Intro-Settings_Monitoring(Part4)](../../img/platform/menus/settings/Intro-Settings_Monitoring(Part4).png)
 
 The **Monitoring** feature in ELITEA offers a robust set of tools and metrics to help you understand the performance and usage of your application. By utilizing the various charts and statistics available, you can gain valuable insights into user engagement, sentiment, accuracy, and the distribution of topics within your project. These insights are crucial for making data-driven decisions that can enhance the overall user experience and effectiveness of your ELITEA application.
 
@@ -221,7 +221,7 @@ The **Configuration** page serves as the nucleus for managing essential technica
 4. Once the LLM model is selected, the **Download VS Code Settings** and the **Download Jetbrains Settings** icons will appear next to the created token. This allows you to download the configuration files to integrate and configure the ELITEA project with Alita Code extensions on VSCode and IntelliJ respectively. For more information about how to setup it, please refer to the [Alita Code Documentation](../user-guide/extensions/alita-code.md).
 
 
-![Intro-Settings_Configuration](../img/admin-guide/intro/Intro-Settings_Configuration.png)
+![Intro-Settings_Configuration](../../img/platform/menus/settings/Intro-Settings_Configuration.png)
 
 ## Deployments
 
@@ -250,7 +250,7 @@ To set up a new deployment for EPAM AI Dial within your system, follow these det
 
 By following these steps, you can successfully create and configure a new deployment for EPAM AI Dial, enabling you to leverage advanced  capabilities within your projects.
 
-![Intro-Settings_Deployments](../img/admin-guide/intro/Intro-Settings_Deployments.png)
+![Intro-Settings_Deployments](../../img/platform/menus/settings/Intro-Settings_Deployments.png)
 
 ## Integrations
 
@@ -371,7 +371,7 @@ The **Teammates** feature in ELITEA is specifically crafted to streamline the pr
 3. Click the **Invite** button. 
 4. An invitation will be sent, and upon their first login, their details will be added to the **Teammates**, activating their account.
 
-![Intro-Settings_Projects](../img/admin-guide/intro/Intro-Settings_Projects.png)
+![Intro-Settings_Projects](../../img/platform/menus/settings/Intro-Settings_Projects.png)
 
 **Notes**
 
@@ -408,4 +408,4 @@ The management of secrets is straightforward and secure, facilitated by the **Se
 
 This feature enhances the security and efficiency of managing sensitive information within ELITEA, ensuring that authentication details are handled in a secure, centralized manner.
 
-![Intro-Settings_Secrets](../img/admin-guide/intro/Intro-Settings_Secrets.png)
+![Intro-Settings_Secrets](../../img/platform/menus/settings/Intro-Settings_Secrets.png)

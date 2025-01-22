@@ -1,42 +1,47 @@
 site_name: ELITEA Documentation
 site_url: https://elitea.ai/docs/
 nav:
-  - Home: '../'
+  - Home:
+      - Introduction: home/introduction.md
   - Release Notes:
-    - RN 1.4.0: release-notes/rn_current.md
-    - Archive:
-      - RN 1.3.0: release-notes/archived/rn5.md
-      - RN 1.2.0: release-notes/archived/rn4.md
-      - RN 1.1.0: release-notes/archived/rn3.md
-      - RN 1.0.1: release-notes/archived/rn2.md
-      - RN 1.0.0: release-notes/archived/rn1.md
-  - Admin Guide: 
-    - Get Started: admin-guide/intro.md
-    - Settings: admin-guide/settings.md
-    - Chat: admin-guide/chat.md
-    - Prompts: 
-      - Prompts: admin-guide/prompts/prompts.md    
-      - Prompts Examples and Materials: admin-guide/prompts/prompts-examples.md
-    - Datasources: admin-guide/datasources.md
-    - Agents: 
-      - Agents: admin-guide/agents/agents.md
-      - Agents Examples and Materials: admin-guide/agents/agents-examples.md
-    - Collections: admin-guide/collections.md
-    - ELITEA Extensions:
-      - Alita Code: admin-guide/extensions/alita-code.md
-      - Alita Code Chat: admin-guide/extensions/alita-chat.md
-  - User Guides:
-    - Export and Import Guide: user-guide/export-import.md
-    - Forking Guide: user-guide/forking.md    
-    - Integrations Guide: user-guide/integrations.md
-    - Prompt Magic Assistant Guide: user-guide/prompt-magic-assistant.md
-    - Public Project Guide: user-guide/public-project.md
-  - Manuals:
-    - ELITEA and EPAM AI DIAL: manuals/alita-dial.md
-    - QA - Prompting and Sharing: manuals/creating-prompts.md
-    - Roles Management: manuals/roles.md    
-  - FAQs: 
-    - faqs.md
+      - RN 1.4.0: release-notes/rn_current.md
+      - Archive:
+          - RN 1.3.0: release-notes/archived/rn5.md
+          - RN 1.2.0: release-notes/archived/rn4.md
+          - RN 1.1.0: release-notes/archived/rn3.md
+          - RN 1.0.1: release-notes/archived/rn2.md
+          - RN 1.0.0: release-notes/archived/rn1.md
+  - Platform Documentation:
+      - ELITEA Menus & Settings:
+          - Overview: platform-documentation/menus/overview.md
+          - Settings: platform-documentation/menus/settings.md
+          - Chat: platform-documentation/menus/chat.md 
+          - Prompts: platform-documentation/menus/prompts/prompts.md    
+          - Datasources: platform-documentation/menus/datasources.md
+          - Agents: platform-documentation/menus/agents/agents.md    
+          - Collections: platform-documentation/menus/collections.md
+      - ELITEA Extensions:
+          - Alita Code: platform-documentation/extensions/alita-code.md
+          - Alita Code Chat: platform-documentation/extensions/alita-chat.md
+  - Features Guides:
+      - ELITEA Core Features:
+          - Export and Import Guide: feature-guides/core-features/export-import.md
+          - Forking Guide: feature-guides/core-features/forking.md    
+          - Integrations Guide: feature-guides/core-features/integrations.md
+          - Prompt Magic Assistant Guide: feature-guides/core-features/prompt-magic-assistant.md
+          - Public Project Guide: feature-guides/core-features/public-project.md
+          - Monitoring Guide: feature-guides/core-features/monitoring.md
+      - ELITEA Advanced Features:
+          - Roles Management: feature-guides/advanced-features/roles.md
+  - How TOs:
+      - Agents & Toolkits:
+          - Pipeline Agent Framework: how-tos/agents-toolkits/pipeline-agent-framework.md
+      - General How-Tos:
+          - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
+      - FAQs: faqs.md   
+  - Support & Resources:
+      - Contact Us: support-resources/contact-support.md
+      - Resources & Materials: support-resources/additional-resources.md
 
 theme:
   name: material

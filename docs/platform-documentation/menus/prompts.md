@@ -4,7 +4,7 @@
 
 The **Prompts** menu within **Private** project serves as a dedicated inventory for all your prompts, irrespective of their current status. Consider it your personal repository for saving and organizing the prompts you've crafted. 
 
-![Prompts-Menu_Detailed_View](<../../img/admin-guide/prompts/Prompts-Menu_Detailed_View.png>)
+![Prompts-Menu_Detailed_View](<../../img/platform/menus/prompts/Prompts-Menu_Detailed_View.png>)
 
 ### How to Create a New Prompt
 
@@ -19,7 +19,7 @@ In the context of AI and machine learning, a prompt is an instruction, question,
 
 **Note**: The **Name** and **Description** fields are non-editable after the prompt is saved. Ensure you have entered the correct information before saving. While creating your prompt in the **Configuration** tab, you can also configure other settings like **Tags**, **Welcome Message**, **Conversation Starters**, and **Messages** to further customize your prompt's behavior and interaction flow.
 
-![Prompts-Create_New_Prompt](<../../img/admin-guide/prompts/Prompts-Create_New_Prompt.png>)
+![Prompts-Create_New_Prompt](<../../img/platform/menus/prompts/Prompts-Create_New_Prompt.png>)
 
 
 After creating a prompt and saving it, the prompt's interface will be organized into three distinct tabs, each serving a specific purpose in managing and utilizing your prompt:
@@ -44,7 +44,7 @@ In ELITEA, **Tags** are a powerful organizational tool that allows you to catego
 
 **Note**: You have the flexibility to assign one or more tags to each prompt, allowing for a multi-dimensional labeling system. This means a single prompt can be associated with multiple categories, enhancing its discoverability.
 
-![Prompts-Create_a_Tag](<../../img/admin-guide/prompts/Prompts-Create_a_Tag.png>)
+![Prompts-Create_a_Tag](<../../img/platform/menus/prompts/Prompts-Create_a_Tag.png>)
 
 ### CONTEXT
 
@@ -105,7 +105,7 @@ You also have the flexibility to manage the order and content of your messages:
 * **Copy**: Duplicate a message by clicking the copy icon.
 * **Reorder**: Change the order of messages by dragging and dropping the message boxes. This allows you to precisely control the flow of the conversation.
 
-![Prompts-System_Messages](<../../img/admin-guide/prompts/Prompts-System_Messages.png>)
+![Prompts-System_Messages](<../../img/platform/menus/prompts/Prompts-System_Messages.png>)
 
 ### WELCOME MESSAGE
 
@@ -127,7 +127,7 @@ When a user navigates to the **Chat** section of the prompt, the configured **We
 * "Remember to carefully review the generated output before implementing it."
 * "This prompt is designed to assist with summarizing technical documentation. Please provide the document content below."
 
-![Prompts-Welcome_Message](<../../img/admin-guide/prompts/Prompts-Welcome_Message.png>)
+![Prompts-Welcome_Message](<../../img/platform/menus/prompts/Prompts-Welcome_Message.png>)
 
 ### CONVERSATION STARTERS
 
@@ -153,7 +153,7 @@ When a user goes to the **Chat** section of the prompt, they will see a list of 
 
 By providing these pre-defined options, you make it easier for users to understand the capabilities of the prompt and quickly initiate relevant interactions.
 
-![Prompts-Conversation_Starters](<../../img/admin-guide/prompts/Prompts-Conversation_Starters.png>)
+![Prompts-Conversation_Starters](<../../img/platform/menus/prompts/Prompts-Conversation_Starters.png>)
 
 By setting up conversation starters, you streamline the process of initiating specific tasks or queries, making your interactions with the prompt more efficient and standardized.
 
@@ -176,7 +176,7 @@ This process empowers you to create prompts that can be easily adapted by simply
 
 **Note**: You have the flexibility to define one or more variables within each prompt. Variables can be defined in both the **Context** and **Messages** sections, providing flexibility in how you structure your dynamic prompts.
 
-![Prompts-Create_Variables](<../../img/admin-guide/prompts/Prompts-Create_Variables.png>)
+![Prompts-Create_Variables](<../../img/platform/menus/prompts/Prompts-Create_Variables.png>)
 
 
 ### ADVANCED SETTINGS
@@ -223,7 +223,7 @@ Once your prompt is configured, ELITEA offers two primary methods to execute it 
 6. **Initiate Interaction**: In the chat input box, type your question, statement, or command to initiate the conversation with the AI. This input serves as the starting point for the interaction.
 7. **Send Your Message**: Click the **Send** icon (often represented by a paper airplane or similar symbol) to submit your input to the AI model. ELITEA will process your request based on the prompt's configuration and the selected settings. The AI's response will then appear in the chat interface.
 
-![Prompts-Chat_Option](<../../img/admin-guide/prompts/Prompts-Chat_Option.png>)
+![Prompts-Chat_Option](<../../img/platform/menus/prompts/Prompts-Chat_Option.png>)
 
 **Additional Interaction Features:**
 
@@ -243,7 +243,7 @@ Once your prompt is configured, ELITEA offers two primary methods to execute it 
     * **Copy as markdown**: Enables copying the tabular output in markdown format, suitable for use in markdown-supported environments like GitHub or blogging platforms.
     * **Copy as html**: Permits copying the tabular output in HTML format, ideal for integration into web pages or emails, preserving the formatting and structure.
 
-![Prompts-Chat_Output](<../../img/admin-guide/prompts/Prompts-Chat_Output.png>)
+![Prompts-Chat_Output](<../../img/platform/menus/prompts/Prompts-Chat_Output.png>)
 
 #### Executing a Prompt Using the **Completion** Option:
 
@@ -255,7 +255,7 @@ Once your prompt is configured, ELITEA offers two primary methods to execute it 
 6. **Select the Completion Option**: Ensure that the **Completion** option is selected as the execution method. This is typically a radio button or a tab within the **Run** tab interface.
 7. **Initiate Execution**: Once you have reviewed the configuration and selected the **Completion** option, click the **Run** button. ELITEA will then process your prompt based on the defined settings and generate a single, complete output. The result will be displayed in the output area.
 
-![Prompts-Completion_Option](<../../img/admin-guide/prompts/Prompts-Completion_Option.png>)
+![Prompts-Completion_Option](<../../img/platform/menus/prompts/Prompts-Completion_Option.png>)
 
 ### Managing Prompt Versions: Save, Create Versions, and Manage
 
@@ -281,7 +281,7 @@ For instances where you need to create and manage different iterations of your p
 * **Characters**: Avoid using special characters such as spaces (" "), underscores ("_"), and others that might cause parsing or recognition issues in certain environments.
 * **Clarity**: Choose names that clearly and succinctly describe the version's purpose or the changes it introduces, facilitating easier tracking and management of different versions.
 
-![Prompts-Save_Version](<../../img/admin-guide/prompts/Prompts-Save_Version.png>)
+![Prompts-Save_Version](<../../img/platform/menus/prompts/Prompts-Save_Version.png>)
 
 Upon creating a new version of the prompt, several options become available to you:
 
@@ -290,7 +290,7 @@ Upon creating a new version of the prompt, several options become available to y
 * **Execute**: Run this specific version of the prompt to see how it performs.
 * **Navigate Versions**: Use the **Version** dropdown list to switch between and select different versions of the prompt. This allows for easy comparison and management of various iterations.
 
-![Prompts-Saved_Version](<../../img/admin-guide/prompts/Prompts-Saved_Version.png>)
+![Prompts-Saved_Version](<../../img/platform/menus/prompts/Prompts-Saved_Version.png>)
 
 By following these steps, you can effectively manage the lifecycle and iterations of your prompts, ensuring that each version is appropriately saved, published, and utilized as per your requirements.
 
@@ -302,7 +302,7 @@ To make your prompt available to the wider Epam Network and Communities, follow 
 2. **Version Naming**: Assign an informative version name (e.g., Gen-1.0) in the pop-up window. This name should encapsulate the essence or objective of the prompt, facilitating version management and future iterations.
 3. **Review Submission**: Finalize your submission by clicking **Publish**, forwarding your prompt for the moderation review process. This stage is vital to guarantee the prompts shared within the Epam community meet a standard of quality and relevance.
 
-![Prompts-Publishing](<../../img/admin-guide/prompts/Prompts-Publishing.png>)
+![Prompts-Publishing](<../../img/platform/menus/prompts/Prompts-Publishing.png>)
 
 For publishing a specific version, firstly select the desired version and opt to publish. The chosen version's name appears in the "**Publish version**" pop-up window. It can be published as is or renamed before the final publication step.
 
@@ -356,7 +356,7 @@ To use the prompts created in other projects, environments, follow these simple 
 3. **Complete Process**: The prompt will be added under the **Prompts** section in ELITEA.
 4. **Use Prompt**: You can now access and utilize the imported prompt.
 
-![Prompts-Import_Alita](<../../img/admin-guide/prompts/Prompts-Import_Alita.png>)
+![Prompts-Import_Alita](<../../img/platform/menus/prompts/Prompts-Import_Alita.png>)
 
 **Note**: ELITEA supports [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) template. Make sure the content and variables in your prompt adhere to this format, especially avoiding spaces in variable names. For more information please check [ELITEA and Epam AI Dial](../../manuals/alita-dial.md) document.
 
@@ -372,7 +372,7 @@ The Prompts menu is organized into three distinct pages, each designed to offer 
 * **My Likes**: Highlights the prompts that you have liked. This personalized page allows you to revisit favorites effortlessly.
 * **Trending**: Showcases the prompts with the highest number of likes, serving as a valuable resource for discovering top-rated prompts that hold significant value and popularity within the community.
 
-![Prompts-Menu_Public_Latest](<../../img/admin-guide/prompts/Prompts-Menu_Public_Latest.png>)
+![Prompts-Menu_Public_Latest](<../../img/platform/menus/prompts/Prompts-Menu_Public_Latest.png>)
 
 ### Engaging with Published Prompts
 
@@ -392,7 +392,7 @@ Upon publication, a prompt becomes a crucial resource for the community. To supp
 * View and run published prompts by clicking on the prompt card or name. Refer to the [How to Execute Prompt](#how-to-execute-prompt) section for guidance on running a prompt.s
 * **Note**: Modifications to a published prompt cannot be saved for future use.
 
-![Prompts-Executing_Published_Prompt](<../../img/admin-guide/prompts/Prompts-Executing_Published_Prompt.png>)
+![Prompts-Executing_Published_Prompt](<../../img/platform/menus/prompts/Prompts-Executing_Published_Prompt.png>)
 
 **Adding Published Prompts to Collections**:
 
