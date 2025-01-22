@@ -29,7 +29,7 @@ Getting started with Alita Code Chat is straightforward:
 1. Navigate to the **Extensions** section in VS Code.
 2. Search for **Alita Code Chat** in the Marketplace and click **Install**.
 
-![VS-AlitaChat_Install](<../../img/admin-guide/extensions/chat/VS-AlitaChat_Install.png>)
+![VS-AlitaChat_Install](<../../img/platform/extensions/chat/VS-AlitaChat_Install.png>)
 
 **Note**: After successful installation Alita Code Chat shortcut will be added to left menu of VS Code.
 
@@ -61,7 +61,7 @@ With Alita Code Chat set up, you can now:
     * **Copy as markdown**: Enables copying the tabular output in markdown format, suitable for use in markdown-supported environments like GitHub or blogging platforms.
     * **Copy as html**: Permits copying the tabular output in HTML format, ideal for integration into web pages or emails, preserving the formatting and structure.
 
-![VS-AlitaChat_Buttons](<../../img/admin-guide/extensions/chat/VS-AlitaChat_Buttons.png>)
+![VS-AlitaChat_Buttons](<../../img/platform/extensions/chat/VS-AlitaChat_Buttons.png>)
 
 #### Prompts
 
@@ -75,9 +75,9 @@ To call and use **Prompts** from ELITEA HUB:
 4. Once all instructions for the prompt are set in the **Context** and/or **Messages** sections, you can start the execution by typing your text (be it a question or a command)  into the chat box. Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the **Send** icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.
 5. If you need to start a fresh conversation or prompt, simply click the **X** icon to clear the current setup and begin anew.
 
-![VS-AlitaChat_Prompt_Select](<../../img/admin-guide/extensions/chat/VS-AlitaChat_Prompt_Select.png>)
+![VS-AlitaChat_Prompt_Select](<../../img/platform/extensions/chat/VS-AlitaChat_Prompt_Select.png>)
 
-![VS-AlitaChat_Prompt_Variable](<../../img/admin-guide/extensions/chat/VS-AlitaChat_Prompt_Variable.png>)
+![VS-AlitaChat_Prompt_Variable](<../../img/platform/extensions/chat/VS-AlitaChat_Prompt_Variable.png>)
 
 #### Datasources
 
@@ -89,7 +89,7 @@ To call and use **Datasources** from ELITEA HUB:
 4. Start conversation in the form of a question, statement, or command that simulates human-like **interaction**.
 5. If you need to start a fresh conversation or datasource, simply click the **X** icon to clear the current setup and begin anew.
 
-![VS-AlitaChat_Datasource](<../../img/admin-guide/extensions/chat/VS-AlitaChat_Datasource.png>)
+![VS-AlitaChat_Datasource](<../../img/platform/extensions/chat/VS-AlitaChat_Datasource.png>)
 
 #### Agents
 
@@ -103,7 +103,7 @@ To call and use **Agents** from ELITEA HUB:
 4. Start conversation in the form of a question, statement, or command that simulates human-like **interaction**.
 5. If you need to start a fresh conversation or application, simply click the **X** icon to clear the current setup and begin anew.
 
-![VS-AlitaChat_Agent](<../../img/admin-guide/extensions/chat/VS-AlitaChat_Agent.png>)
+![VS-AlitaChat_Agent](<../../img/platform/extensions/chat/VS-AlitaChat_Agent.png>)
 
 #### Chat
 
@@ -121,7 +121,7 @@ Getting started with AlitaCodeChat is straightforward:
 1. Navigate to the **Settings**→**Plugins** section in IntelliJ.
 2. Search for **AlitaCodeChat** in the Marketplace and click **Install**.
 
-![IJ-AlitaChat_Install](<../../img/admin-guide/extensions/chat/IJ-AlitaChat_Install.png>)
+![IJ-AlitaChat_Install](<../../img/platform/extensions/chat/IJ-AlitaChat_Install.png>)
 
 Alita Chat for IntelliJ offers two distinct modes to cater to different user preferences and integration styles. Each mode is designed to provide a seamless user experience while aligning with specific design philosophies:
 
@@ -151,9 +151,9 @@ To call and use **Prompts** from ELITEA HUB:
 5. Once all instructions for the prompt are set in the **Context** and/or **Messages** sections, you can start the execution by typing your text (be it a question or a command)  into the chat box. Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the **Send** icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.
 6. If you need to start a fresh conversation or prompt, simply click the **X** icon to clear the current setup and begin anew.
 
-![IJ-AlitaChat_Prompt_Select](<../../img/admin-guide/extensions/chat/IJ-AlitaChat_Prompt_Select.png>)
+![IJ-AlitaChat_Prompt_Select](<../../img/platform/extensions/chat/IJ-AlitaChat_Prompt_Select.png>)
 
-![IJ-AlitaChat_Prompt_Variable](<../../img/admin-guide/extensions/chat/IJ-AlitaChat_Prompt_Variable.png>)
+![IJ-AlitaChat_Prompt_Variable](<../../img/platform/extensions/chat/IJ-AlitaChat_Prompt_Variable.png>)
 
 #### Datasources
 
@@ -166,7 +166,7 @@ To call and use **Datasources** from ELITEA HUB:
 5. Start conversation in the form of a question, statement, or command that simulates human-like **interaction**.
 6. If you need to start a fresh conversation or datasource, simply click the **X** icon to clear the current setup and begin anew.
 
-![IJ-AlitaChat_Datasource](<../../img/admin-guide/extensions/chat/IJ-AlitaChat_Datasource.png>)
+![IJ-AlitaChat_Datasource](<../../img/platform/extensions/chat/IJ-AlitaChat_Datasource.png>)
 
 #### Agents
 
@@ -181,7 +181,7 @@ To call and use **Agents** from ELITEA HUB:
 5. Start conversation in the form of a question, statement, or command that simulates human-like **interaction**.
 6. If you need to start a fresh conversation or application, simply click the **X** icon to clear the current setup and begin anew.
 
-![IJ-AlitaChat_Agent](<../../img/admin-guide/extensions/chat/IJ-AlitaChat_Agent.png>)
+![IJ-AlitaChat_Agent](<../../img/platform/extensions/chat/IJ-AlitaChat_Agent.png>)
 
 #### Chat
 
@@ -189,7 +189,7 @@ To call and use **Agents** from ELITEA HUB:
 2. Select either the **Native** or **React** tab.
 3. Start conversation in the form of a question, statement, or command that simulates human-like **interaction**.
 
-![IJ-AlitaChat_Native](<../../img/admin-guide/extensions/chat/IJ-AlitaChat_Native.png>)
+![IJ-AlitaChat_Native](<../../img/platform/extensions/chat/IJ-AlitaChat_Native.png>)
 
 #### Additional Interaction Features
 
@@ -208,4 +208,4 @@ To call and use **Agents** from ELITEA HUB:
     * **Copy as markdown**: Enables copying the tabular output in markdown format, suitable for use in markdown-supported environments like GitHub or blogging platforms.
     * **Copy as html**: Permits copying the tabular output in HTML format, ideal for integration into web pages or emails, preserving the formatting and structure.
 
-![IJ-AlitaChat_Buttons](<../../img/admin-guide/extensions/chat/IJ-AlitaChat_Buttons.png>) 
+![IJ-AlitaChat_Buttons](<../../img/platform/extensions/chat/IJ-AlitaChat_Buttons.png>) 
