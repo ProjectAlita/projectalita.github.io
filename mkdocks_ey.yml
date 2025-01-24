@@ -17,9 +17,9 @@ nav:
           - Overview: platform-documentation/menus/overview.md
           - Settings: platform-documentation/menus/settings.md
           - Chat: platform-documentation/menus/chat.md 
-          - Prompts: platform-documentation/menus/prompts/prompts.md    
+          - Prompts: platform-documentation/menus/prompts.md    
           - Datasources: platform-documentation/menus/datasources.md
-          - Agents: platform-documentation/menus/agents/agents.md    
+          - Agents: platform-documentation/menus/agents.md    
           - Collections: platform-documentation/menus/collections.md
       - ELITEA Extensions:
           - Alita Code: platform-documentation/extensions/alita-code.md

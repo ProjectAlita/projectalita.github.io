@@ -27,7 +27,7 @@ By following these steps, you will be able to effectively utilize the features a
 
 **Note**: You need to enable Epam VPN to access ELITEA.
 
-![Intro-Main_Interface](<../img/user-guide/intro/Intro-Main_Interface.png>)
+![Intro-Main_Interface](<../img/platform/menus/overview/Intro-Main_Interface.png>)
 
 ## Prompts
 
@@ -60,15 +60,15 @@ Creating a prompt involves capturing essential details that guide the testing pr
 
 **Providing Name, Description and Context of the prompt:**
 
-![Prompts-Create_New_Prompt](<../img/user-guide/prompts/Prompts-Create_New_Prompt.png>)
+![Prompts-Create_New_Prompt](<../img/platform/menus/prompts/Prompts-Create_New_Prompt.png>)
 
 **Setup Variables:**
 
-![Prompts-Create_Variables](<../img/user-guide/prompts/Prompts-Create_Variables.png>)
+![Prompts-Create_Variables](<../img/platform/menus/prompts/Prompts-Create_Variables.png>)
 
 **Configuring Advanced Settings:**
 
-![Prompts-Advanced_Settings](<../img/user-guide/prompts/Prompts-Advanced_Settings.png>)
+![Prompts-Advanced_Settings](<../img/platform/menus/prompts/Prompts-Advanced_Settings.png>)
 
 #### Prompt Requirements for Consistency and Quality
 
@@ -109,7 +109,7 @@ To make your prompt available to the wider QA community, follow the steps below 
 
 **Publishing the prompt:**
 
-![Prompts-Publishing](<../img/user-guide/prompts/Prompts-Publishing.png>)
+![Prompts-Publishing](<../img/platform/menus/prompts/Prompts-Publishing.png>)
 
 ## Review Process by Moderators and Outcome of Prompt Submission
 
@@ -152,7 +152,7 @@ Once a prompt is published, it becomes an essential resource for the QA communit
 
 The "**Trending**" page serves as a quick reference for discovering highly valued prompts within the community. To like a prompt, simply click on the heart icon associated with the prompt in the Prompt Library. Your engagement helps in identifying the most impactful prompts, enriching our QA processes and driving a culture of continuous improvement and collaboration.
 
-![Prompts-Trending](<../img/manuals/Prompts-Trending.png>)
+![Prompts-Trending](<../img/how-tos/publishing//Prompts-Trending.png>)
 
 By understanding and participating in the review process, you are contributing to a shared knowledge base that benefits the entire QA community. Your efforts and interactions, including submitting, refining, and liking prompts, play a crucial role in enhancing our collective testing efficacy.
 
@@ -175,7 +175,7 @@ Collections are immensely valuable for several reasons:
 1. Click the **+ Collection** button located at the top right corner.
 2. You will be prompted to fill in the **Name** and **Description** fields. Remember, these fields are essential as they give the first impression and understanding of what your collection is about.
 
-![Collections-Create_Collection](<../img/user-guide/collections/Collections-Create_Collection.png>)
+![Collections-Create_Collection](<../img/platform/menus/collections/Collections-Create_Collection.png>)
 
 ### Adding Prompts to Your Collection
 
@@ -184,7 +184,7 @@ To add prompts to your collection, follow these steps:
 1. Once you've created a collection, you can start adding relevant prompts. Navigate to the prompt you wish to add and select an option to Add to Collection.
 2. Select the Collection you wish to add your prompt to from the pop-up window. You can add multiple prompts to a collection as long as they share the thematic relevance or purpose you've defined for your collection.
 
-![Prompts-Add_to_Collection](<../img/user-guide/prompts/Prompts-Add_to_Collection.png>)
+![Prompts-Add_to_Collection](<../img/platform/menus/prompts/Prompts-Add_to_Collection.png>)
 
 
 ### Publishing Your Collection

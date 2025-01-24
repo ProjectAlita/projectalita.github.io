@@ -82,26 +82,36 @@ Alita Code offers two types of settings to cater to different needs:
 
 The following settings are available in both tabs (which can either be prepopulated or manually configured):
 
-* **Alitacode: Provider Server URL**: Enter the URL of your LLM service provider. For connecting to ELITEA HUB, use `https://alita.lab.epam.com`.
-* **Alitacode: Auth Token**: Provide your API Key or Bearer token for authentication with the LLM service provider. For ELITEA HUB, input the generated Token.
-* **Alitacode: Model Name**: Select the desired LLM model from the dropdown list provided.
-* **Alitacode: Custom Model Name**: If the required model is not listed, enter a custom model name for local prompts.
-* **Alitacode: Custom Model Tokens**: Specify the maximum tokens for local prompts, with a default setting of 4096 tokens.
-* **Alitacode: Project ID**: Input the Project ID for the ELITEA backend. This setting is ignored when using OpenAI.
-* **Alitacode: Integration Uid**: Enter the Integration UID from the ELITEA backend. For ELITEA HUB, use the Integration UID provided by Alita lab. This setting is ignored for OpenAI.
-* **Alitacode: Max Tokens**: Set the maximum number of tokens for the selected model.
-* **Alitacode: Temperature**: Adjust the temperature setting for the selected model to control the randomness of the output.
-* **Alitacode: Default View Mode**: Choose how the prediction results are displayed:
+**Main Settings**:
+
+* **Alitacode: LLMServer Url**: Enter the URL of your LLM service provider. For connecting to ELITEA Nexus env., use `https://nexus.elitea.ai/`.
+* **Alitacode: LLMAuth Token**: Provide your token for authentication with the LLM service provider. For ELITEA Prod env, input the generated Token.
+* **Alitacode: Project ID**: Input the Project ID for the ELITEA backend.
+* **Alitacode: Display Type**: Choose how the prediction results are displayed:
   * **append** - when you run `Alita Predict` the results will be displayed after the text or part that you have selected.
   * **split** - when you run `Alita Predict` the results will be displayed in a separate place (view).
   * **replace** - when you run `Alita Predict` the results will be displayed instead of the text or part that you have selected.
   * **prepend** -when you run `Alita predict` the results will be displayed before the text or part that you have selected.
-* **Alitacode: Top P**: Set the Top P value for the selected model.
-* **Alitacode: Top K**: Set the Top K value for the selected model.
-* **Alitacode: Verify Ssl**: Toggle this setting to verify the LLM service provider's SSL certificate. For ELITEA HUB, keep this checkbox not selected.
+* **Alitacode: Verify Ssl**: Toggle this setting to verify the LLM service provider's SSL certificate. For [Nexus](https://nexus.elitea.ai/) env, keep this checkbox not selected.
 * **Alitacode: Enable**: Toggle to enable or disable the Alita Code extension as needed.
+* **Alitacode: Debug**: Toggle to enable or disable the debugging feature as needed.
 
-These settings ensure that Alita Code is properly configured to interact with the ELITEA HUB, allowing for seamless integration and efficient use of LLM models within your projects.
+**Integration Settings**:
+
+**Alitacode: Select Integration**: Click here to select link to select the available models from dropdown list for above selected environment. Note: After selection the corresponding information will be automatically populated for **Alitacode: LLMModel Name**, **Alitacode: Integration Name** and **Alitacode: Integration Uid** fields.
+* **Alitacode: LLMModel Name**: Write manually the desired LLM model name, if you don't want to preopoluate all information from .
+* **Alitacode: Integration Name**: This is the integration type which is used for selected LLM model setup in ELITEA→Settings-Integrations page. Will automatically be populated and set after selecting LLM model from **Alitacode: Select Integration**.
+* **Alitacode: Integration Uid**: Enter the Integration UID from the ELITEA backend. Will automatically be populated and set after selecting LLM model from **Alitacode: Select Integration**.
+
+**Advanced Settings**:
+
+* **Alitacode: Custom Model Tokens**: Set the maximum completion tokens for selected custom model. This setting defines the maximum length of the AI's generated response, measured in tokens.
+* **Alitacode: Max Tokens**: Set the maximum completion tokens for selected model. This setting defines the maximum length of the AI's generated response, measured in tokens.
+* **Alitacode: Temperature**: Adjust the temperature setting for the selected model to control the randomness of the output.
+* **Alitacode: Top P**: Set the Top P value for the selected model. Also known as nucleus sampling, **Top P** offers another way to control the randomness of the output.
+* **Alitacode: Top K**: Set the Top K value for the selected model. This parameter limits the AI's token selection to the **K** most likely tokens at each step of the generation process.
+
+These settings ensure that Alita Code is properly configured to interact with the ELITEA, allowing for seamless integration and efficient use of LLM models within your projects.
 
 **Note**: Restarting VS Code may be necessary for changes to take effect.
 
