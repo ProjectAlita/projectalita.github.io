@@ -65,3 +65,6 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
+
+extra_css:
+  - extra_css/material.css
