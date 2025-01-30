@@ -1,127 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://projectalita.ai/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/admin-guide/agents/agents-examples/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/admin-guide/agents/agents-examples/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/admin-guide/prompts/prompts-examples/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/admin-guide/prompts/prompts-examples/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/feature-guides/advacned-features/roles/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/feature-guides/advanced-features/roles/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/feature-guides/core-features/export-import/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/feature-guides/core-features/export-import/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/feature-guides/core-features/forking/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/feature-guides/core-features/forking/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/feature-guides/core-features/integrations/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/feature-guides/core-features/integrations/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/feature-guides/core-features/prompt-magic-assistant/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/feature-guides/core-features/monitoring/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/feature-guides/core-features/public-project/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/feature-guides/core-features/prompt-magic-assistant/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/home/introduction/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/feature-guides/core-features/public-project/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/how-tos/alita-dial/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/home/introduction/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/how-tos/creating-prompts/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/how-tos/alita-dial/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/how-tos/faqs/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/how-tos/creating-prompts/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/how-tos/agents-toolkits/pipeline-agent-framework/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/how-tos/faqs/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/platform-documentation/extensions/alita-chat/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/how-tos/agents-toolkits/pipeline-agent-framework/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/platform-documentation/extensions/alita-code/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/platform-documentation/extensions/alita-chat/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/platform-documentation/menus/agents/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/platform-documentation/extensions/alita-code/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/platform-documentation/menus/chat/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/platform-documentation/menus/agents/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/platform-documentation/menus/collections/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/platform-documentation/menus/chat/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/platform-documentation/menus/datasources/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/platform-documentation/menus/collections/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/platform-documentation/menus/overview/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/platform-documentation/menus/datasources/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/platform-documentation/menus/prompts/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/platform-documentation/menus/overview/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/platform-documentation/menus/settings/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/platform-documentation/menus/prompts/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/release-notes/rn_current/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/platform-documentation/menus/settings/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/release-notes/archived/rn1/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/release-notes/rn_current/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/release-notes/archived/rn2/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/release-notes/archived/rn1/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/release-notes/archived/rn3/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/release-notes/archived/rn2/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/release-notes/archived/rn4/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/release-notes/archived/rn3/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/release-notes/archived/rn5/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/release-notes/archived/rn4/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/support-resources/additional-resources/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/release-notes/archived/rn5/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
     <url>
-         <loc>https://projectalita.ai/support-resources/contact-support/</loc>
-         <lastmod>2025-01-22</lastmod>
+         <loc>https://elitea.ai/docs/support-resources/additional-resources/</loc>
+         <lastmod>2025-01-30</lastmod>
+    </url>
+    <url>
+         <loc>https://elitea.ai/docs/support-resources/contact-support/</loc>
+         <lastmod>2025-01-30</lastmod>
     </url>
 </urlset>

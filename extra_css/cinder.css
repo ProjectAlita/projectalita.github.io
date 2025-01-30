@@ -1,0 +1,56 @@
+/* docs/stylesheets/extra.css */
+
+/* 1. Ensure pre-wrap for code blocks (reinforce and prioritize) */
+pre code {
+    white-space: pre-wrap !important;
+    /* Important to override other rules */
+}
+
+/* 2. Override nowrap from the general 'code' rule for code blocks inside 'pre' */
+pre code {
+    white-space: pre-wrap !important;
+    /* Already here, but important to reiterate */
+}
+
+/* 3. Override word-break: break-all in 'pre' and use word-wrap: break-word for better word breaking */
+pre {
+    word-break: normal !important;
+    /* Prevent aggressive word breaking */
+    word-wrap: break-word !important;
+    /* Allow wrapping at word boundaries */
+}
+
+.container {
+    padding-right: 100px;
+    /* Custom padding */
+    padding-left: 25px;
+    /* Custom padding */
+    margin-right: auto;
+    margin-left: 50px;
+    width: auto !important;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.navbar navbar-default navbar-fixed-top {
+    display: flex !important;
+    justify-content: space-between;
+    /* Distribute space between items */
+    align-items: center;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+.navbar-right {
+    float: none !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex !important;
+    width: auto !important;
+}
+
+.navbar-collapse.collapse {
+
+    width: 100% !important;
+}

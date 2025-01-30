@@ -1,0 +1,2825 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://elitea.ai/docs/feature-guides/core-features/monitoring/">
+      
+      
+        <link rel="prev" href="../public-project/">
+      
+      
+        <link rel="next" href="../../advanced-features/roles/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Monitoring Guide - ELITEA Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extra_css/material.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#elitea-monitoring-user-guide-understanding-application-usage-and-performance" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ELITEA Documentation" class="md-header__button md-logo" aria-label="ELITEA Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ELITEA Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Monitoring Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ELITEA Documentation" class="md-nav__button md-logo" aria-label="ELITEA Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ELITEA Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../home/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/rn_current/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RN 1.4.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/archived/rn5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RN 1.3.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/archived/rn4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RN 1.2.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/archived/rn3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RN 1.1.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/archived/rn2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RN 1.0.1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/archived/rn1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RN 1.0.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Platform Documentation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Platform Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ELITEA Menus & Settings
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            ELITEA Menus & Settings
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../platform-documentation/menus/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../platform-documentation/menus/settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../platform-documentation/menus/chat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../platform-documentation/menus/prompts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../platform-documentation/menus/datasources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Datasources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../platform-documentation/menus/agents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../platform-documentation/menus/collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ELITEA Extensions
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ELITEA Extensions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../platform-documentation/extensions/alita-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alita Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../platform-documentation/extensions/alita-chat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alita Code Chat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Features Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Features Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ELITEA Core Features
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            ELITEA Core Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../export-import/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Export and Import Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forking Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrations Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt-magic-assistant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prompt Magic Assistant Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../public-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Public Project Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Monitoring Guide
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring Guide
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-monitoring-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Monitoring Feature
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-scope-and-user-roles-in-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Scope and User Roles in Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Scope and User Roles in Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-types-in-elitea-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Types in ELITEA Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping-projects-for-portfolio-level-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grouping Projects for Portfolio-Level Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assigning-the-monitor-role-to-users-in-team-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assigning the "Monitor" Role to Users in Team Projects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-monitoring-within-elitea" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Monitoring Within ELITEA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-scope-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      In-Scope Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="In-Scope Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#engagement-rate-measuring-user-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engagement Rate: Measuring User Activity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-rate-gauging-use-case-and-entity-effectiveness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Rate: Gauging Use Case and Entity Effectiveness
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Charts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adoption-and-usage-charts-tracking-user-activity-and-resource-consumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adoption and Usage Charts: Tracking User Activity and Resource Consumption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adoption and Usage Charts: Tracking User Activity and Resource Consumption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-users-chart-understanding-user-adoption-trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Users Chart: Understanding User Adoption Trends
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-usage-chart-monitoring-llm-resource-consumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Usage Chart: Monitoring LLM Resource Consumption
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-rate-chart-measuring-user-satisfaction-with-ai-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Rate Chart: Measuring User Satisfaction with AI Outputs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentiments-charts-understanding-user-and-ai-tone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentiments Charts: Understanding User and AI Tone
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sentiments Charts: Understanding User and AI Tone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#human-input-chart-analyzing-user-sentiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human Input Chart: Analyzing User Sentiment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-output-chart-assessing-ai-tone-and-positivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Output Chart: Assessing AI Tone and Positivity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accuracy-charts-assessing-relevance-and-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy Charts: Assessing Relevance and Reliability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accuracy Charts: Assessing Relevance and Reliability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relevance-chart-measuring-input-and-output-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relevance Chart: Measuring Input and Output Alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reliability-chart-assessing-llm-response-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliability Chart: Assessing LLM Response Consistency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-quality-vs-usage-matrix-optimizing-ai-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction Quality vs. Usage Matrix: Optimizing AI Artifacts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topics-chart-understanding-content-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topics Chart: Understanding Content Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topics-summary-chart-understanding-user-query-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topics Summary Chart: Understanding User Query Focus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases-and-reporting-practical-scenarios-for-elitea-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases and Reporting: Practical Scenarios for ELITEA Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ELITEA Advanced Features
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            ELITEA Advanced Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-features/roles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Roles Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    How TOs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            How TOs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Agents & Toolkits
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Agents & Toolkits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-tos/agents-toolkits/pipeline-agent-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pipeline Agent Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    General How-Tos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            General How-Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-tos/creating-prompts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Create and Publish Useful Prompts for Testing and QA Activities
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faqs.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Support & Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Support & Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support-resources/contact-support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact Us
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support-resources/additional-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resources & Materials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-monitoring-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Monitoring Feature
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-scope-and-user-roles-in-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Scope and User Roles in Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Scope and User Roles in Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-types-in-elitea-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Types in ELITEA Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping-projects-for-portfolio-level-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grouping Projects for Portfolio-Level Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assigning-the-monitor-role-to-users-in-team-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assigning the "Monitor" Role to Users in Team Projects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-monitoring-within-elitea" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Monitoring Within ELITEA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-scope-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      In-Scope Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="In-Scope Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#engagement-rate-measuring-user-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engagement Rate: Measuring User Activity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-rate-gauging-use-case-and-entity-effectiveness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Rate: Gauging Use Case and Entity Effectiveness
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Charts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adoption-and-usage-charts-tracking-user-activity-and-resource-consumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adoption and Usage Charts: Tracking User Activity and Resource Consumption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adoption and Usage Charts: Tracking User Activity and Resource Consumption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-users-chart-understanding-user-adoption-trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Users Chart: Understanding User Adoption Trends
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-usage-chart-monitoring-llm-resource-consumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Usage Chart: Monitoring LLM Resource Consumption
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-rate-chart-measuring-user-satisfaction-with-ai-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Rate Chart: Measuring User Satisfaction with AI Outputs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentiments-charts-understanding-user-and-ai-tone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentiments Charts: Understanding User and AI Tone
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sentiments Charts: Understanding User and AI Tone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#human-input-chart-analyzing-user-sentiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human Input Chart: Analyzing User Sentiment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-output-chart-assessing-ai-tone-and-positivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Output Chart: Assessing AI Tone and Positivity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accuracy-charts-assessing-relevance-and-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy Charts: Assessing Relevance and Reliability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accuracy Charts: Assessing Relevance and Reliability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relevance-chart-measuring-input-and-output-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relevance Chart: Measuring Input and Output Alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reliability-chart-assessing-llm-response-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliability Chart: Assessing LLM Response Consistency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-quality-vs-usage-matrix-optimizing-ai-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction Quality vs. Usage Matrix: Optimizing AI Artifacts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topics-chart-understanding-content-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topics Chart: Understanding Content Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topics-summary-chart-understanding-user-query-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topics Summary Chart: Understanding User Query Focus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases-and-reporting-practical-scenarios-for-elitea-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases and Reporting: Practical Scenarios for ELITEA Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="elitea-monitoring-user-guide-understanding-application-usage-and-performance">ELITEA Monitoring User Guide: Understanding Application Usage and Performance</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This user guide provides a comprehensive overview of the <strong>Monitoring</strong> feature in ELITEA. This powerful tool is designed to offer deep insights into the application's usage and performance, empowering administrators and users to make informed decisions for optimization and improvement. Whether you're looking to understand user engagement, assess the effectiveness of your  entities (prompts, datasources, agents and conversations), or identify areas for enhancement, the Monitoring feature provides the data and visualizations you need.</p>
+<p><img alt="Monitoring-Interface" src="../../../img/guides/monitoring/Monitoring-Interface.png" /></p>
+<p><strong>Purpose of the Monitoring Feature:</strong></p>
+<ul>
+<li><strong>Gain Insights into Application Usage:</strong> Understand how users are interacting with ELITEA, including the frequency of use, active user trends, and popular features.</li>
+<li><strong>Evaluate Each Entity Performance:</strong> Assess the effectiveness of your prompts, datasources, and agents by tracking metrics like <strong>user engagement</strong> and <strong>acceptance rate of AI generated output</strong>.</li>
+<li><strong>Identify Areas for Optimization:</strong> Pinpoint areas where user engagement can be improved and understand how effectively AI generated outputs are being utilized.</li>
+<li><strong>Make Data-Driven Decisions:</strong> Utilize concrete data and visualizations to guide your strategies for improving ELITEA's adoption and effectiveness.</li>
+</ul>
+<p><strong>How to Use This Guide:</strong></p>
+<p>This guide is structured to provide a detailed understanding of each aspect of the <strong>Monitoring</strong> feature. You will find explanations of key metrics, how they are calculated, and how to interpret the various charts and data presented. Whether you are a Chapter Manager, Project Admin, or a user interested in understanding ELITEA usage, this guide will equip you with the knowledge to effectively utilize ELITEA's monitoring capabilities.</p>
+<h2 id="overview-of-monitoring-feature">Overview of Monitoring Feature</h2>
+<p>The ELITEA Monitoring feature is a powerful analytics tool designed to track and visualize key aspects of application usage and the effectiveness of AI-driven workflows.  It allows users with administrative roles to gain valuable insights into how ELITEA is being adopted and utilized within their projects and portfolios.</p>
+<p><strong>Key Monitoring Capabilities (Currently in Scope):</strong></p>
+<ul>
+<li><strong>User Engagement:</strong> Measures how actively users with the "<strong>Monitor</strong>" role are interacting with ELITEA projects. This helps understand the adoption and active usage levels within your teams.</li>
+<li><strong>Acceptance Rate of AI Generated Output:</strong>  Tracks how often users accept and utilize the outputs generated by ELITEA's prompts, datasources and agents. This metric provides insights into the perceived usefulness and quality of the AI-driven assistance provided by ELITEA.</li>
+</ul>
+<p><strong>Important Note:</strong></p>
+<ul>
+<li>ELITEA's Monitoring feature <strong>exclusively tracks activities performed by users who have been assigned the "Monitor" role</strong> within ELITEA projects. This ensures that the metrics reflect the engagement and usage patterns of designated users who are intended to utilize and benefit from ELITEA's capabilities.</li>
+<li>It's important to note that <strong>Monitoring is a cross-project capability</strong>. This means that regardless of which project is currently selected in the <strong>Project</strong> dropdown menu at the top of the screen, the Monitoring screen will provide data aggregated across all projects that you have Admin access to. This allows for portfolio-level analysis and a holistic view of ELITEA usage across your organization.</li>
+</ul>
+<p><strong>Future Enhancements:</strong></p>
+<p>ELITEA's Monitoring feature is continuously evolving. Future updates will expand the scope of monitoring capabilities to include metrics that measure:</p>
+<ul>
+<li><strong>Relevancy of User Input:</strong>  Assess how well user inputs align with the intended context and purpose of ELITEA's functionalities.</li>
+<li><strong>Relevancy of Output Generated by ELITEA:</strong> Evaluate the quality and relevance of the outputs generated by ELITEA in relation to user inputs and needs.</li>
+</ul>
+<p>These future metrics will provide even deeper insights into the effectiveness and efficiency of ELITEA, allowing for more fine-tuned optimization and improvement.</p>
+<p>Here's the enhanced section for the ELITEA Monitoring User Guide, detailing Project Types, Grouping, and User Role Assignment for Monitoring:</p>
+<h2 id="project-scope-and-user-roles-in-monitoring">Project Scope and User Roles in Monitoring</h2>
+<p>ELITEA Monitoring provides flexible options to analyze data at different levels, from individual projects to aggregated group (portfolio) views. Understanding the different project types and user roles is crucial for effectively utilizing the Monitoring feature.</p>
+<h3 id="project-types-in-elitea-monitoring">Project Types in ELITEA Monitoring</h3>
+<p>ELITEA Monitoring allows you to review data across various project scopes, catering to different analytical needs:</p>
+<ul>
+<li><strong>All projects:</strong> This option provides a comprehensive, aggregated view of monitoring data across <strong>all projects</strong> available within your ELITEA deployed environment. This is useful for high-level, organization-wide analysis.</li>
+<li><strong>Public Project:</strong> ELITEA includes a default <strong>Public project</strong>, accessible to all users. Monitoring data for the Public project can be reviewed separately to understand usage patterns within this shared space.</li>
+<li><strong>Private Workspace:</strong> Each user has a personal <strong>Private</strong> workspace. You always have access to your own <strong>Private</strong> workspace and can review its monitoring data in isolation.</li>
+<li><strong>Team Projects:</strong>  These are projects created for specific teams or purposes. Access to <em>Team</em> projects and their monitoring data is controlled by user roles and permissions.</li>
+<li><strong>Groups (Portfolios):</strong> ELITEA allows you to group multiple projects together into user-defined <strong>Groups</strong> (often referred to as Portfolios). This enables you to aggregate monitoring data across a collection of related projects for portfolio-level reporting and analysis.</li>
+</ul>
+<p><strong>Access and Permissions:</strong></p>
+<p>Your access to monitoring data for different project types depends on your role and permissions within ELITEA:</p>
+<ul>
+<li><strong>Project and Group Access Based on Roles:</strong>  Within the Monitoring feature, the projects and groups you can select and view data for are determined by your Admin role and project/group memberships.</li>
+<li><strong>Private Workspace and Public Project Access:</strong>  All users will always have access to monitoring data for the <strong>Public</strong> project and their own <strong>Private</strong> workspace.</li>
+</ul>
+<h3 id="grouping-projects-for-portfolio-level-monitoring">Grouping Projects for Portfolio-Level Monitoring</h3>
+<p>To facilitate portfolio-level reporting and analysis, ELITEA allows you to group multiple projects together. Here's how to create and utilize Project Groups for monitoring:</p>
+<p><strong>Creating a Project Group:</strong></p>
+<ol>
+<li><strong>Select a Team Project:</strong> From the <strong>Projects</strong> dropdown list at the top of the ELITEA interface, select a <strong>Team project</strong> that you want to include in a group.</li>
+<li><strong>Navigate to Project Settings:</strong> Go to <strong>Settings -&gt; Projects page</strong>.</li>
+</ol>
+<p><img alt="Monitoring-Groups" src="../../../img/guides/monitoring/Monitoring-Groups.png" /></p>
+<ol>
+<li><strong>Edit Groups:</strong> Locate the <strong>Groups</strong> field (displayed as "Groups:") and click the <strong>Pencil</strong> icon next to it to edit the project's group membership.</li>
+<li><strong>Create or Select a Group:</strong><ul>
+<li><strong>Create New Group:</strong> To create a new group, type the desired <strong>group name</strong> in the input field.</li>
+<li><strong>Select Existing Group:</strong> To add the project to an existing group, start typing the name of the group and select it from the dropdown list of existing groups that appears.</li>
+</ul>
+</li>
+<li><strong>Save Group Assignment:</strong> Click the <strong>"Save"</strong> button (or a checkmark icon) to add the selected project to the specified group.</li>
+</ol>
+<p><img alt="Monitoring-Select_Group" src="../../../img/guides/monitoring/Monitoring-Select_Group.png" /></p>
+<ol>
+<li><strong>Repeat for Other Projects:</strong> To add more projects to the same group, select another <strong>Team project</strong> from the <strong>Projects</strong> dropdown list and repeat steps 2-5, ensuring you select the <em>same</em> group name in step 4.</li>
+<li><strong>Access Group Monitoring Data:</strong> Navigate to the <strong>Monitoring</strong> page.</li>
+<li><strong>Select Project Group in Filters:</strong> Click the <strong>Projects</strong> dropdown in the Filtering Panel. Scroll down the list – you will now see your newly created <strong>Project Group</strong> listed at the bottom, along with the individual projects that are members of that group.</li>
+<li><strong>View Portfolio-Level Metrics:</strong> Click on the name of your created <strong>Project Group</strong> in the <strong>Projects</strong> dropdown. The Monitoring page will now display aggregated metrics and charts for <em>all projects</em> that are members of that group, providing a Portfolio-level view.</li>
+</ol>
+<p><img alt="Monitoring-Projects_Groups" src="../../../img/guides/monitoring/Monitoring-Projects_Groups.png" /></p>
+<p><strong>Navigating Project Groups and "All projects" in Monitoring:</strong></p>
+<p>When you select a <strong>Project Group</strong> (or <strong>"All projects"</strong>) in the <strong>Projects</strong> dropdown on the Monitoring page, you will notice a visual representation of the projects included in that scope.</p>
+<ul>
+<li><strong>Project Rectangles:</strong> Below the "Projects" dropdown, you will see a series of selectable rectangles, each representing a project that is part of the selected Group (or all projects if "All projects" is selected).</li>
+<li><strong>Drilling Down into Individual Projects:</strong> These rectangles are interactive. By <strong>clicking on a specific project rectangle</strong>, you can "drill down" into the monitoring data for that individual project. The Monitoring page will then update to display metrics and charts specifically for the project you clicked on, allowing for more granular project-level analysis.</li>
+</ul>
+<h3 id="assigning-the-monitor-role-to-users-in-team-projects">Assigning the "Monitor" Role to Users in Team Projects</h3>
+<p>By default, users are automatically assigned the "Monitor" role only within their <strong>Private workspace</strong> and the <strong>Public project</strong>. To enable monitoring for users within <strong>Team projects</strong>, you need to explicitly assign them the "Monitor" role within those projects. Only users with the <strong>Admin role</strong> in a project have the permission to change roles for other users in that project.</p>
+<p><strong>Assigning the "Monitor" Role:</strong></p>
+<ol>
+<li><strong>Select the Team Project:</strong> From the <strong>Projects</strong> dropdown at the top of the ELITEA interface, select the <strong>Team project</strong> where you want to assign the "Monitor" role to a user.</li>
+<li><strong>Navigate to Project Settings:</strong> Go to <strong>Settings -&gt; Projects page</strong>.</li>
+<li><strong>Locate Teammates Table:</strong> Scroll down the "Projects" page to find the <strong>"Teammates"</strong> table. This table lists all users who are members of the selected Team project and their assigned roles.</li>
+<li><strong>Edit User Role:</strong> Find the row corresponding to the user to whom you want to assign the "Monitor" role. Click the <strong>Pencil icon</strong> in the "Role" column for that user to edit their role.</li>
+<li><strong>Select "Monitor" Role:</strong> In the role dropdown menu that appears, select <strong>"Monitor"</strong> as the new role for the user.</li>
+<li><strong>Apply Changes:</strong> Click the <strong>Checkmark icon</strong> (or "Save" button) to apply the role change and save the updated user role.</li>
+</ol>
+<p><img alt="Monitoring-Monitor_Role" src="../../../img/guides/monitoring/Monitoring-Monitor_Role.png" /></p>
+<p>After assigning the "Monitor" role to users in your Team projects, their activities within those projects will be included in the ELITEA Monitoring data, allowing you to track their engagement and the effectiveness of ELITEA within your teams.</p>
+<h2 id="accessing-monitoring-within-elitea">Accessing Monitoring Within ELITEA</h2>
+<p>To access the Monitoring screen in ELITEA, follow these steps:</p>
+<ol>
+<li><strong>Open Settings Menu:</strong> Click on your user avatar located in the top right corner of the ELITEA interface. This will open the settings menu.</li>
+<li><strong>Select Monitoring:</strong> In the <strong>Settings</strong> menu, click on the <strong>"Monitoring"</strong> option.</li>
+<li><strong>Monitoring Landing Page:</strong> After selecting "Monitoring," you will be redirected to the <strong>Monitoring Landing Page</strong>. This page is the central dashboard where you can filter, view, and analyze various monitoring metrics.</li>
+</ol>
+<p><img alt="Monitoring-Landing_Page" src="../../../img/guides/monitoring/Monitoring-Landing_Page.png" /></p>
+<p><strong>Key Components of the Monitoring Landing Page:</strong></p>
+<p>The <strong>Monitoring Landing Page</strong> is designed to be intuitive and informative, providing a clear overview of ELITEA usage and performance. It is structured into three main panels, each serving a distinct purpose:</p>
+<p><img alt="Monitoring-Landing_Page_Panels" src="../../../img/guides/monitoring/Monitoring-Landing_Page_Panels.png" /></p>
+<ul>
+<li>
+<p><strong>1. Filtering Panel: Tailoring Your Data View</strong></p>
+<p>The <strong>Filtering Panel</strong>, located prominently at the top of the Monitoring Landing Page, is your control center for customizing the data displayed throughout the dashboard.  It allows you to precisely define the scope of your analysis by applying various filters.  By using these filters, you can focus on specific projects, timeframes, Use Cases, or even individual users to gain targeted insights.</p>
+<p>Here's a breakdown of the filtering options available:</p>
+<ul>
+<li>
+<p><strong>Projects:</strong>  This dropdown menu allows you to select the specific projects or pre-configured Portfolio groupings you want to include in your analysis.</p>
+<ul>
+<li><strong>Single Project Selection:</strong> Choose a specific project from the list to view monitoring data relevant only to that project.</li>
+<li><strong>Group Selection:</strong> Scroll to the bottom of the dropdown to select a user-defined  grouping. This aggregates data across all projects within that Group, providing a high-level overview.</li>
+<li><strong>All Projects:</strong> By default, or by selecting an "All Projects" option (if available), you can view data aggregated across all projects you have Admin access to.</li>
+</ul>
+</li>
+<li>
+<p><strong>Time Period (From &amp; To Dates):</strong> These date fields enable you to define a custom reporting period.</p>
+<ul>
+<li><strong>"From" Date:</strong>  Select the starting date for your analysis.</li>
+<li><strong>"To" Date:</strong> Select the ending date for your analysis.</li>
+<li>The Monitoring feature will then calculate metrics and display charts based on data within this specified date range.</li>
+</ul>
+</li>
+<li>
+<p><strong>Type:</strong> This dropdown filter allows you to narrow down the metrics to specific types of ELITEA entities. You can choose to focus on:</p>
+<ul>
+<li><strong>Prompts:</strong> Analyze metrics related specifically to Prompt usage and performance.</li>
+<li><strong>Datasources:</strong> Focus on metrics related to Datasource access and relevance.</li>
+<li><strong>Agents:</strong>  View metrics related to Agent executions and effectiveness.</li>
+<li><strong>Conversations:</strong> Analyze metrics related to user conversations within ELITEA. This allows you to understand overall conversation trends, user engagement at the conversation level, and acceptance rates within conversations.</li>
+<li><strong>Prompts, Datasources, Agents, Conversations (Combined):</strong>  This option (often the default) aggregates metrics across all three entity types, providing a broader overview.</li>
+</ul>
+</li>
+<li>
+<p><strong>Name:</strong> This dropdown filter becomes active when you select a specific "Type" (Prompts, Datasources, or Agents). It allows you to further refine your analysis to a specific entity <em>within</em> the selected type.</p>
+<ul>
+<li><strong>"All Items":</strong> (Default) When "All Items" is selected, the metrics will be calculated for <em>all</em> entities of the chosen "Type".</li>
+<li><strong>Specific Entity Selection:</strong> Choose a specific Prompt name, Datasource name, Agent name or Conversation name from the list to view metrics for that individual entity only.</li>
+</ul>
+</li>
+<li>
+<p><strong>Users:</strong> This dropdown allows you to filter the data to show activity related to specific users.</p>
+<ul>
+<li><strong>"All Users":</strong> (Default) Metrics are calculated based on the activity of all users with the "<strong>Monitor</strong>" role within the selected projects and timeframe.</li>
+<li><strong>Specific User Selection:</strong> Choose a specific user from the list to view metrics related only to that user's activity.</li>
+</ul>
+</li>
+<li>
+<p><strong>Aggregation:</strong> This dropdown menu allows you to control how the data is grouped and displayed in charts. Choosing the right aggregation level is crucial for visualizing data at the appropriate granularity for your analysis. Available aggregation options include:</p>
+<ul>
+<li><strong>Hour:</strong> Data is grouped and displayed on an hourly basis. This provides the most granular view, allowing you to identify peak usage times within a day, track hourly fluctuations, and potentially pinpoint immediate issues or usage spikes.</li>
+<li><strong>Day:</strong>  Data is grouped and displayed on a daily basis. This is a common and versatile aggregation level, useful for understanding daily usage patterns, tracking daily active users, and monitoring daily token consumption.</li>
+<li><strong>Week:</strong> Data is aggregated and displayed on a weekly basis. This provides a broader view, smoothing out daily fluctuations and highlighting weekly trends in adoption, engagement, and performance. Weekly aggregation is often suitable for regular weekly reporting and tracking week-over-week changes.</li>
+<li><strong>Two Weeks:</strong> Data is aggregated and displayed over two-week periods. This aggregation level can be particularly useful for teams or projects that operate in two-week sprints. It allows you to align your monitoring reports with sprint cycles and assess performance and usage across a complete sprint.</li>
+<li><strong>Three Weeks:</strong> Data is aggregated and displayed over three-week periods. Similar to the "Two Weeks" option, this aggregation is beneficial for teams or projects following three-week sprint cycles. It provides a sprint-level view of metrics, enabling performance evaluation within the context of a three-week iteration.</li>
+<li><strong>Month:</strong> Data is aggregated and displayed on a monthly basis. This provides the broadest overview, smoothing out weekly variations and highlighting long-term trends in adoption, usage, and performance over calendar months. Monthly aggregation is useful for high-level reporting, executive summaries, and identifying long-term patterns.</li>
+</ul>
+</li>
+<li>
+<p><strong>Refresh Button:</strong>  After you have selected your desired filters in the Filtering Panel, <strong>click the "Refresh" button to apply these filters.</strong>  Clicking "<strong>Refresh</strong>" triggers the Monitoring feature to recalculate all metrics and update the charts based on your chosen criteria.</p>
+</li>
+<li>
+<p><strong>Reset Filters Button:</strong> Click the "<strong>Reset Filters</strong>" button to clear all currently applied filters and revert the Monitoring Landing Page back to its default view, displaying data for all projects and the default timeframe.</p>
+</li>
+</ul>
+<p><strong>Note on Filter Persistence:</strong></p>
+<p>ELITEA Monitoring remembers your filter selections during your active session for a seamless analysis experience.</p>
+<ul>
+<li><strong>Filters are Auto-Saved:</strong> When you click <strong>Refresh</strong> your filter settings are saved for your current session.</li>
+<li><strong>Persistence Across Session:</strong> Your filters remain active even if you navigate to other ELITEA pages or refresh the Monitoring page.</li>
+<li><strong>Resetting Filters to Default:</strong> Filters are reset to default ("All Projects," "Default Time Period," etc.) only when:<ul>
+<li>You click the "<strong>Reset Filters</strong>" button.</li>
+<li>You <strong>log out</strong> of ELITEA.</li>
+</ul>
+</li>
+</ul>
+<p>This ensures you maintain your analysis context without re-applying filters repeatedly during your active session.</p>
+</li>
+<li>
+<p><strong>2. Key Metrics Summary Panel: At-a-Glance Performance Indicators</strong></p>
+<p>The <strong>Key Metrics Summary Panel</strong>, positioned below the <strong>Filtering Panel</strong>, provides a concise and easily digestible overview of the most important performance indicators for ELITEA. This panel displays key metrics as numerical values in individual boxes, allowing you to quickly grasp the overall state of application usage and effectiveness based on your applied filters.</p>
+<p>It's important to understand how filters affect the metrics displayed in this panel:</p>
+<ul>
+<li>
+<p><strong>Project Filter Dependency:</strong> The metrics <strong>Users, Prompts, Agents, and Conversations</strong> are <strong>static counts</strong> that are <strong>only influenced by the "Projects" filter.</strong>  Selecting different projects or groups in the "<strong>Projects</strong>" dropdown will change these numbers to reflect the totals <em>within</em> those selected projects. However, <strong>these static counts are <em>not</em> affected by the "Time Period," "Type," "Name," or "Users" filters.</strong> They always represent the total number of users, prompts, agents, and conversations <em>ever created</em> within the selected project(s).</p>
+</li>
+<li>
+<p><strong>Dynamically Filtered Metrics:</strong> In contrast, the metrics <strong>Tokens in, Tokens out, Engagement, and Acceptance Rate</strong> are <strong>dynamic</strong> and <strong>respond to <em>all</em> filters</strong> applied in the Filtering Panel, including "Projects," "Time Period," "Type," "Name," and "Users." These metrics are recalculated and updated based on the specific filter criteria you set, providing contextually relevant performance indicators for your chosen scope.</p>
+</li>
+</ul>
+<p>The metrics included in this panel are:</p>
+<ul>
+<li><strong>Users:</strong>  Displays the <strong>total number of unique users</strong> who have <em>ever</em> interacted with ELITEA within the selected project(s). <strong>(Static, Project filter dependent)</strong></li>
+<li><strong>Tokens in:</strong> Shows the total number of tokens <strong>generated by LLMs and sent back to ELITEA as responses</strong> within the filtered scope. This reflects the <strong>output token generation</strong> for the applied filters. <strong>(Dynamic, All filters dependent)</strong></li>
+<li><strong>Tokens out:</strong> Displays the total number of tokens <strong>sent to LLMs by ELITEA within the filtered scope.</strong> This represents the <strong>input token consumption</strong> for the applied filters. <strong>(Dynamic, All filters dependent)</strong></li>
+<li><strong>Engagement:</strong> Presents the Engagement Rate as a percentage, indicating the proportion of active users with the "Monitor" role within the filtered scope and <strong>time period</strong>. <strong>(Dynamic, All filters dependent)</strong></li>
+<li><strong>Acceptance Rate:</strong> Shows the Acceptance Rate as a percentage, reflecting the proportion of conversations where users accepted the AI-generated output within the filtered scope and <strong>time period</strong>. <strong>(Dynamic, All filters dependent)</strong></li>
+<li><strong>Prompts:</strong> Displays the <strong>total number of prompts</strong> created within the selected project(s). <strong>(Static, Project filter dependent)</strong></li>
+<li><strong>Agents:</strong> Displays the <strong>total number of agents</strong> created within the selected project(s). <strong>(Static, Project filter dependent)</strong></li>
+<li><strong>Conversations:</strong> Displays the <strong>total number of conversations</strong> initiated within the selected project(s). <strong>(Static, Project filter dependent)</strong></li>
+</ul>
+<p>Understanding which metrics are static and which are dynamic based on the filters is crucial for correctly interpreting the data presented in the Key Metrics Summary Panel and drawing accurate conclusions about ELITEA usage and performance.</p>
+</li>
+<li>
+<p><strong>3. Visual Metrics Panel: Detailed Charts and Trend Analysis</strong></p>
+<p>The <strong>Visual Metrics Panel</strong>, located below the <strong>Key Metrics Summary Panel</strong>, provides a comprehensive suite of charts and visualizations for in-depth analysis of ELITEA usage, performance, and user sentiment. This panel is organized into several sections, each focusing on a specific aspect of the monitoring data:</p>
+<ul>
+<li>
+<p><strong>Adoption and Usage:</strong> This section contains charts that visualize user adoption and overall application usage trends over time.</p>
+<ul>
+<li><strong>Active Users Chart:</strong>  A bar chart visualizing the number of unique active users for each time interval (e.g., day, week, month) within your selected timeframe. This chart helps you understand user adoption trends and identify periods of high or low activity.  It often distinguishes between "active" and "inactive" users within each interval.</li>
+<li><strong>Token Usage Chart:</strong> A line chart displaying the trend of token consumption over time. It typically shows two lines:<ul>
+<li><strong>Tokens in:</strong> Representing the number of tokens generated by the LLMs (output tokens).</li>
+<li><strong>Tokens out:</strong> Representing the number of tokens sent <em>to</em> the LLMs (input tokens).
+This chart helps you monitor token usage patterns, identify potential cost optimization opportunities, and understand the computational demand on the LLM system over time.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Acceptance Rate:</strong> This section features the <strong>Acceptance Rate Chart</strong>, a bar chart visualizing the number of interactions where users accepted the output versus those where they did not, for the selected period.</p>
+</li>
+<li>
+<p><strong>Sentiments:</strong> This section provides insights into user and LLM sentiment through pie charts:</p>
+<ul>
+<li><strong>Human Input Chart:</strong> A pie chart showing the distribution of sentiment (Positive, Negative, Neutral) in user inputs.</li>
+<li><strong>LLM Output Chart:</strong> A pie chart showing the distribution of sentiment (Positive, Negative, Neutral) in LLM-generated outputs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Accuracy:</strong> This section presents charts related to the accuracy and quality of ELITEA interactions:</p>
+<ul>
+<li><strong>Relevance Chart:</strong> A line chart displaying the average relevance scores of user inputs (vs. context) and LLM outputs (vs. user inputs) over time.</li>
+<li><strong>Reliability Chart:</strong> A line chart showing the average reliability score of LLM responses over time.</li>
+<li><strong>Instruction Quality vs Usage Matrix:</strong> A 2x2 matrix visualizing the relationship between the quality score and usage frequency of prompts (or other relevant entities).</li>
+</ul>
+</li>
+<li>
+<p><strong>Topics:</strong> This section includes the <strong>Topics Chart</strong>, a clustered column chart showing the distribution of prompts, datasources, and agents across different identified topics.</p>
+</li>
+<li>
+<p><strong>Topics Summary:</strong> This section features the <strong>Topics Summary Chart</strong>, a clustered column chart showing the distribution of user queries across different identified topics.</p>
+</li>
+</ul>
+<p>These charts, collectively presented in the Visual Metrics Panel, provide a rich and diverse set of visualizations for analyzing ELITEA usage patterns, user sentiment, AI artifact performance, and overall application effectiveness over time.</p>
+</li>
+</ul>
+<p>By effectively utilizing the Filtering Panel and interpreting the information presented in the <strong>Key Metrics Summary Panel</strong> and <strong>Visual Metrics Panel</strong>, you can gain a comprehensive understanding of ELITEA usage and performance, enabling data-driven decisions for optimization and continuous improvement.</p>
+<h2 id="metrics">Metrics</h2>
+<h3 id="overview">Overview</h3>
+<p>The Monitoring feature in ELITEA presents a variety of metrics and charts to help you understand different aspects of application usage and performance. This section provides a detailed breakdown of each currently available metric, explaining its purpose, how it is calculated, the formula used, and practical examples to illustrate its interpretation and utilization. Understanding these metrics is key to effectively monitoring ELITEA's adoption, user engagement, and the effectiveness of your AI-powered workflows.</p>
+<h3 id="in-scope-metrics">In-Scope Metrics</h3>
+<p>Currently, ELITEA Monitoring focuses on two key metrics that provide valuable insights into user interaction and workflow success: <strong>Engagement Rate</strong> and <strong>Acceptance Rate</strong>. These metrics are designed to be actionable, helping you identify areas for improvement and measure the impact of your optimization efforts.</p>
+<h4 id="engagement-rate-measuring-user-activity">Engagement Rate: Measuring User Activity</h4>
+<p><strong>Description:</strong></p>
+<p>The <strong>Engagement Rate</strong> metric is a vital indicator of user adoption and active participation within ELITEA. It quantifies the percentage of users with the designated "<strong>Monitor</strong>" role who are actively interacting with ELITEA projects during a specific time period.  A higher <strong>Engagement Rate</strong> suggests broader adoption and more consistent utilization of ELITEA within your team.</p>
+<p><strong>Formula: Unpacking the Calculation</strong></p>
+<pre><code class="language-javascript">Engagement Rate = (Number of Active Users with “Monitor” role) / (Total Number of Users with “Monitor” role) * 100%
+</code></pre>
+<p>Let's break down the components of this formula:</p>
+<ul>
+<li><strong>Numerator: Number of Active Users with “Monitor” role:</strong> This represents the count of <em>unique</em> individuals who have been assigned the "Monitor" role in ELITEA and have demonstrated active engagement during the chosen time frame.  "Active engagement" is defined by specific actions (see "Definition of 'Active User'" below).</li>
+<li><strong>Denominator: Total Number of Users with “Monitor” role:</strong> This is the total count of all users who have been granted the "Monitor" role within the selected Project or Portfolio. This represents the total potential user base for ELITEA monitoring.</li>
+<li><strong>Multiplication by 100%:</strong>  The result of the division is multiplied by 100 to express the Engagement Rate as a percentage, making it easier to interpret and compare.</li>
+</ul>
+<p><strong>Calculation Period:</strong> The Engagement Rate is calculated for the specific time period defined by the <strong>"From" and "To" dates</strong> that you select in the Filtering Panel. This allows you to analyze engagement over different durations, such as weekly, monthly, or custom date ranges.</p>
+<p><strong>Key Notes:</strong></p>
+<ul>
+<li><strong>Calculated per Project or Group:</strong>  Engagement Rate is not a global metric. It is calculated and displayed <em>separately</em> for each Project or Group that you select in the "Projects" filter. This allows you to compare engagement levels across different teams or areas of your organization.</li>
+<li><strong>Definition of "Active User":</strong>  To be counted as an "active user" for the Engagement Rate metric, a user with the "<strong>Monitor</strong>" role must have performed at least <em>one</em> of the following actions within the selected timeframe:<ul>
+<li><strong>Engaged in a Conversation (New or Existing) and Interacted with an ELITEA Entity:</strong> This action encompasses both initiating new chat sessions and actively participating in existing ones, demonstrating ongoing engagement with ELITEA's core functionalities. To be considered "active" through conversation engagement, the user must have:<ul>
+<li><strong>Created a new conversation within the Chat interface, OR interacted with an <em>existing</em> conversation.</strong>  This means either starting a fresh chat or continuing an ongoing dialogue in a previously created chat.</li>
+<li><strong>Interacted within that conversation (whether new or existing) with at least one of the following ELITEA entities:</strong> an LLM model directly, a Prompt, a Datasource, or an Agent.  Simply viewing a conversation or having it open without actively sending messages to or receiving responses from an ELITEA entity does not qualify as "active" usage.</li>
+</ul>
+</li>
+<li><strong>Directly Executed an ELITEA Entity:</strong> This action signifies a user directly invoking and utilizing ELITEA's core functionalities outside of a standard chat conversation flow. To be considered "active" through this action, the user must have:<ul>
+<li><strong>Executed (run or triggered) at least one of the following ELITEA entities:</strong> a Prompt, a Datasource, or an Agent.  This includes direct executions initiated through any part of the ELITEA interface, not solely within chat conversations.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>How to Utilize Engagement Rate for Actionable Insights:</strong></p>
+<p>The User Engagement Rate is not just a number; it's a powerful diagnostic tool to understand ELITEA adoption and guide improvement efforts.</p>
+<ul>
+<li><strong>Identify Low Engagement as a Trigger for Action:</strong> A consistently low Engagement Rate (e.g., consistently below 50%, or below your expected target) should serve as a trigger for investigation and action. It suggests that a significant portion of users with the "<strong>Monitor</strong>" role are not actively using ELITEA, indicating a potential gap between the intended and actual utilization of the platform.</li>
+<li><strong>Diagnose Potential Causes of Low Engagement:</strong>  A low Engagement Rate prompts you to investigate <em>why</em> users are not engaging. Consider these potential reasons:<ul>
+<li><strong>Insufficient User Training and Onboarding:</strong> Users may be unaware of ELITEA's capabilities, unsure how to use it effectively, or lack the necessary skills to leverage its Use Cases.<ul>
+<li><strong>Resolution:</strong> Implement or enhance user training programs. Provide hands-on workshops, create easily accessible user guides and tutorials, offer personalized onboarding support, and establish channels for users to ask questions and receive guidance.</li>
+</ul>
+</li>
+<li><strong>Lack of Use Case Relevance to User Needs:</strong> The currently available Use Cases within ELITEA might not be directly relevant or valuable to the daily tasks and workflows of the intended users. If users don't find the Use Cases helpful for their actual work, they are less likely to engage.<ul>
+<li><strong>Resolution:</strong>  Actively solicit user feedback on the relevance and usefulness of existing Use Cases. Conduct user interviews, surveys, or feedback sessions to understand their specific needs and pain points. Based on this feedback, fine-tune existing Use Cases to better align with user workflows, or prioritize the development of new Use Cases that address unmet needs and provide more tangible value to users' daily activities.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Recommendations for Effective Engagement Rate Monitoring:</strong></p>
+<ul>
+<li><strong>Establish a Regular Review Cadence:</strong>  Make reviewing the Engagement Rate a recurring activity. <strong>Weekly reviews are highly recommended</strong> to track trends and identify any sudden drops or consistently low engagement levels.</li>
+<li><strong>Set Weekly Reporting Timeframes:</strong>  For consistent weekly tracking, always use the "From" and "To" date filters to define the reporting period as the <strong>past week (e.g., Monday to Sunday of the previous week)</strong>. This ensures that you capture a complete week's worth of usage data, accounting for variations in weekday vs. weekend activity and potential offshore team usage patterns.</li>
+</ul>
+<p><strong>Example Scenario:</strong></p>
+<p>Let's consider "Project Alpha" and analyze its Engagement Rate for the past week (Monday to Sunday):</p>
+<ul>
+<li>
+<p><strong>Data:</strong></p>
+<ul>
+<li>Total users with "<strong>Monitor</strong>" role in "Project Alpha": <strong>50</strong></li>
+<li>Number of users in "Project Alpha" who were "active" (created chats or used workflows) during the past week: 20</li>
+</ul>
+</li>
+<li>
+<p><strong>Engagement Rate Calculation:</strong> (20 Active Users / 50 Total Users) * 100% = <strong>40%</strong></p>
+</li>
+<li>
+<p><strong>Interpretation:</strong> An Engagement Rate of 40% for "Project Alpha" suggests that a significant majority (60%) of users with the "Monitor" role are <em>not</em> actively engaging with ELITEA within this project. This low rate warrants further investigation. You should explore potential reasons for this low engagement, such as lack of training, irrelevant Use Cases, or technical barriers, and implement appropriate resolutions to improve user adoption and utilization.</p>
+</li>
+</ul>
+<h4 id="acceptance-rate-gauging-use-case-and-entity-effectiveness">Acceptance Rate: Gauging Use Case and Entity Effectiveness</h4>
+<p><strong>Description:</strong></p>
+<p>The <strong>Acceptance Rate</strong> metric provides crucial insights into the perceived value and successful utilization of ELITEA's AI-powered capabilities, <strong>extending beyond just Use Cases to encompass the effectiveness of individual Prompts, Datasources, and Agents.</strong> It quantifies the percentage of times users take a defined "acceptance action" after interacting with ELITEA, indicating they found the generated output or the outcome of the execution useful and successfully leveraged ELITEA to achieve their intended goal. A higher Acceptance Rate signifies that ELITEA's functionalities are effectively meeting user needs and providing valuable assistance across various interaction types.</p>
+<p><strong>Formula: Understanding the Broader Acceptance Calculation</strong></p>
+<pre><code class="language-javascript">Acceptance Rate = (Accepted Interactions) / (All Interactions) * 100%
+</code></pre>
+<p>Let's understand the components of this formula in this broader context:</p>
+<ul>
+<li><strong>Numerator: Accepted Interactions:</strong> This represents the count of interactions where a user has performed a specific "acceptance action."  Crucially, "interactions" now encompass not only conversations but also direct executions of Prompts, Datasources, and Agents. An interaction is deemed "Accepted" when the user performs a relevant "<strong>acceptance action</strong>" signaling successful utilization of ELITEA's output or functionality.</li>
+<li><strong>Denominator: All Interactions:</strong> This is the total count of <em>all</em> user interactions within the selected scope (Use Case, Project, timeframe, or entity type).  "Interactions" now include all attempts to utilize ELITEA, whether through conversations or direct executions of Prompts, Datasources, and Agents.</li>
+</ul>
+<p><strong>Calculation Period:</strong> The Acceptance Rate is calculated based on the <strong>"From" and "To" dates</strong> selected in the Filtering Panel, allowing you to analyze acceptance over different timeframes and across various types of interactions.</p>
+<p><strong>Key Notes: Expanding the Definition of "Accepted Interactions"</strong></p>
+<ul>
+<li>
+<p><strong>Broader Scope of Acceptance Actions:</strong>  The definition of "Accepted Interactions" is now expanded to encompass a wider range of user actions that indicate successful utilization of ELITEA, regardless of whether the interaction occurs within a conversation or through direct entity execution.  "Acceptance actions" now include:</p>
+<ul>
+<li>
+<p><strong>Keyword Acceptance within Agent Conversations (Explicit Approval):</strong> As before, for Agents designed with explicit approval steps, typing a pre-defined "acceptance keyword" (e.g., "approved," "publish") within a conversation is considered acceptance.</p>
+</li>
+<li>
+<p><strong>Content Copying Actions:</strong>  Indicating user utilization of generated text or data:</p>
+<ul>
+<li><strong>Manual Text Selection and Copy:</strong>  Selecting and copying generated text directly from the ELITEA interface.</li>
+<li><strong>"Copy to Clipboard" Button Usage:</strong> Clicking a "Copy to Clipboard" button associated with generated output.</li>
+<li><strong>"Copy to Messages" Button Usage (Prompts):</strong>  Clicking a "Copy to Messages" button specifically available for Prompt executions, indicating the user is incorporating the prompt's output into a conversation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Table Export/Download Actions (Prompts):</strong> For Prompts that generate tabular data, utilizing export or download options signifies acceptance:</p>
+<ul>
+<li><strong>"Download as xlsx"</strong>: Downloading generated tables in Excel format.</li>
+<li><strong>"Copy as html"</strong>: Copying table data in HTML format.</li>
+<li><strong>"Copy as markdown"</strong>: Copying table data in Markdown format.</li>
+</ul>
+</li>
+<li>
+<p><strong>Agent Goal Completion Actions (External Service Interaction):</strong> For Agents designed to interact with external services, successful goal completion is considered acceptance:</p>
+<ul>
+<li><strong>File Creation in GitHub:</strong> Agents designed to create files in GitHub repositories.</li>
+<li><strong>Issue Creation in Jira:</strong> Agents designed to create issues in Jira.</li>
+<li><strong>Page Creation in Confluence:</strong> Agents designed to create pages in Confluence.</li>
+<li>Any other Agent-specific action that signifies successful completion of its intended task in an external system.</li>
+</ul>
+</li>
+<li>
+<p><strong>Datasource Specific Actions:</strong> Actions indicating utilization of data retrieved from Datasources:</p>
+<ul>
+<li><strong>Downloading Deduplication Results as Excel File:</strong> Downloading the output of deduplication processes from Datasources in Excel format.</li>
+<li><strong>Copying Search Results:</strong> Copying search results obtained from Datasource queries.</li>
+</ul>
+</li>
+<li>
+<p><strong>Contextual Application:</strong> These "acceptance actions" are tracked and considered for Acceptance Rate calculations regardless of whether they occur:</p>
+<ul>
+<li><strong>Within Chat Conversations:</strong> When users interact with Prompts, Datasources, or Agents through the ELITEA Chat interface.</li>
+<li><strong>During Direct Entity Execution:</strong> When users directly execute Prompts, Datasources, or Agents outside of a chat conversation, through other parts of the ELITEA interface.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>How to Utilize Acceptance Rate for Broader Performance Improvement:</strong></p>
+<p>The Acceptance Rate, now with its expanded definition, provides a comprehensive measure of user satisfaction and the effectiveness of ELITEA's AI capabilities across various interaction modes.</p>
+<ul>
+<li><strong>Identify Areas of Friction and Success Across ELITEA:</strong>  A low Acceptance Rate, whether for a specific Use Case, a particular Prompt, a Datasource, or an Agent, points to potential areas of friction, usability issues, or output quality problems that need attention. Conversely, high Acceptance Rates highlight successful functionalities and well-performing entities that are effectively meeting user needs.</li>
+<li><strong>Diagnose Issues Based on Interaction Type:</strong>  Analyze Acceptance Rates in conjunction with the "Type" and "Name" filters in the Monitoring Panel to pinpoint specific areas for improvement:<ul>
+<li><strong>Low Prompt Acceptance Rate:</strong> Focus on the Prompt itself. Review the prompt's instructions, context, input parameters, and output examples. Experiment with prompt engineering techniques to improve output relevance, clarity, and accuracy. Consider user feedback on specific prompts to identify areas for refinement.</li>
+<li><strong>Low Agent Acceptance Rate:</strong> Analyze the Agent's workflow, the quality of prompts and tools it utilizes, and its overall logic. Debug potential issues in the agent's execution flow, error handling, or interaction with external services.</li>
+<li><strong>Low Datasource Acceptance Rate:</strong> Examine the Datasource's configuration, data quality, and query effectiveness. Ensure the datasource is providing relevant and accurate information for the intended use cases. Investigate if query parameters are being correctly mapped and if the datasource is reliably accessible.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Recommendations for Comprehensive Acceptance Rate Monitoring:</strong></p>
+<ul>
+<li><strong>Weekly Review Remains Crucial:</strong> Continue to prioritize weekly reviews of Acceptance Rate metrics to proactively identify and address performance issues across all aspects of ELITEA.</li>
+<li><strong>Granular Analysis by Type and Name:</strong> Leverage the "Type" and "Name" filters extensively to analyze Acceptance Rates not only by Use Case but also by individual Prompts, Datasources, and Agents. This granular view is essential for pinpointing specific AI artifacts or functionalities that require optimization.</li>
+<li><strong>Weekly Timeframe for Consistency:</strong> Maintain the practice of using a weekly timeframe (e.g., Monday to Sunday of the previous week) for consistent and comparable Acceptance Rate tracking across different entities and time periods.</li>
+</ul>
+<p><strong>Example Scenario (Expanded Scope):</strong></p>
+<p>Let's consider a scenario where you are analyzing the Acceptance Rate for a specific Prompt, "User Story Creator Prompt," used within "Project Alpha" over the past week:</p>
+<ul>
+<li>
+<p><strong>Data:</strong></p>
+<ul>
+<li>Total Executions of "User Story Creator Prompt" in "Project Gamma" last week (both within chats and direct executions): <strong>150</strong></li>
+<li>Number of "Accepted Interactions" for "User Story Creator Prompt" (users copied output, downloaded table, etc.): <strong>75</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Acceptance Rate Calculation:</strong> (75 Accepted Interactions / 150 Total Interactions) * 100% = <strong>50%</strong></p>
+</li>
+<li>
+<p><strong>Interpretation:</strong> An Acceptance Rate of 50% for the "Code Summary Prompt" suggests that this particular prompt is only meeting user needs in half of its executions. This warrants a focused investigation into the prompt's design, output quality, and user expectations. You should review the prompt's instructions, analyze user feedback related to code summarization tasks, and potentially refine the prompt to improve its accuracy, clarity, and usefulness, aiming to increase its Acceptance Rate and ensure it effectively serves its intended purpose within ELITEA.</p>
+</li>
+</ul>
+<p>This enhanced "Acceptance Rate" section now provides a much broader and more practical understanding of how to utilize this metric to assess the effectiveness of ELITEA's AI capabilities across Use Cases, Prompts, Datasources, and Agents, whether used in conversations or directly executed. Let me know if you have any further refinements!</p>
+<h2 id="charts">Charts</h2>
+<p>The <strong>Visual Metrics Panel</strong> in ELITEA Monitoring provides a rich set of charts and diagrams to help you visually analyze trends, patterns, and key performance indicators. This section provides a detailed explanation of each chart type, guiding you on how to interpret these visualizations to gain actionable insights into ELITEA usage and effectiveness.</p>
+<h3 id="adoption-and-usage-charts-tracking-user-activity-and-resource-consumption">Adoption and Usage Charts: Tracking User Activity and Resource Consumption</h3>
+<p>These charts provide a visual representation of user adoption and overall application usage trends over time, as well as the consumption of LLM tokens.</p>
+<p><img alt="Monitoring-Charts_Adoption_and_Usage" src="../../../img/guides/monitoring/Monitoring-Charts_Adoption_and_Usage.png" /></p>
+<h4 id="active-users-chart-understanding-user-adoption-trends">Active Users Chart: Understanding User Adoption Trends</h4>
+<p><strong>Purpose:</strong> The <strong>Active Users Chart</strong> helps you visualize user adoption and engagement levels over time. It shows the number of unique active users for each time interval, allowing you to identify trends in user activity and pinpoint periods of high or low engagement.</p>
+<p><strong>Chart Type:</strong> Stacked Bar Chart</p>
+<p><strong>Data Displayed:</strong></p>
+<ul>
+<li><strong>X-axis (Horizontal):</strong> Represents the <strong>Time Interval</strong>, based on the "Aggregation" level you select in the Filtering Panel (e.g., Day, Week, Month). Each bar on the chart corresponds to a specific time interval.</li>
+<li><strong>Y-axis (Vertical):</strong> Represents the <strong>Number of Users</strong>.</li>
+<li><strong>Stacked Bars:</strong> Each bar is divided into two stacked segments, representing:<ul>
+<li><strong>Active Users (Teal/Green segment):</strong> The number of <em>active</em> users during that time interval.</li>
+<li><strong>Inactive Users (Light Gray segment):</strong> The number of <em>inactive</em> users (users with "Monitor" role who did <em>not</em> perform any "active" actions) during that time interval.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Trend Analysis:</strong> Observe the overall trend of the teal/green "active users" bars over time. An upward trend indicates increasing user adoption and engagement, while a downward trend may signal declining interest or usability issues.</li>
+<li><strong>Identify Peak and Low Activity Periods:</strong>  Visually identify time intervals (days, weeks, etc.) with the highest and lowest bars for "active users." This can help you understand when ELITEA is most and least utilized.</li>
+<li><strong>Active vs. Inactive User Ratio:</strong>  Compare the relative sizes of the teal/green "active users" segment and the light gray "inactive users" segment within each bar. A larger teal/green segment indicates a higher proportion of active users for that period, signifying stronger engagement.</li>
+</ul>
+<p><strong>Example:</strong> If the "Active Users Chart" shows consistently increasing teal/green bars over the past few weeks, it indicates positive user adoption and growing engagement with ELITEA. Conversely, if you see a sudden drop in the height of the teal/green bars for a recent week, it might warrant investigation into potential issues affecting user engagement during that period.</p>
+<h4 id="token-usage-chart-monitoring-llm-resource-consumption">Token Usage Chart: Monitoring LLM Resource Consumption</h4>
+<p><strong>Purpose:</strong> The <strong>Token Usage Chart</strong> is essential for monitoring the consumption of LLM resources within ELITEA. It visualizes the trend of tokens sent to LLMs (Tokens Out - input tokens) and tokens received from LLMs (Tokens In - output tokens) over time, helping you understand the computational demand and potential costs associated with ELITEA usage.</p>
+<p><strong>Chart Type:</strong> Line Chart</p>
+<p><strong>Data Displayed:</strong></p>
+<ul>
+<li><strong>X-axis (Horizontal):</strong> Represents the <strong>Time Interval</strong>, based on the "Aggregation" level you select in the Filtering Panel (e.g., Day, Week, Month). Each point on the lines corresponds to a specific time interval.</li>
+<li><strong>Y-axis (Vertical):</strong> Represents the <strong>Number of Tokens</strong>, typically measured in thousands (e.g., 50k, 100k, 150k).</li>
+<li><strong>Lines:</strong> The chart displays two distinct lines, each representing a type of token usage:<ul>
+<li><strong>Tokens In (Teal/Cyan Line):</strong>  Represents the number of tokens <strong>generated by LLMs and sent back to ELITEA</strong> (output tokens).</li>
+<li><strong>Tokens Out (Magenta/Purple Line):</strong> Represents the number of tokens <strong>sent <em>to</em> the LLMs by ELITEA</strong> (input tokens).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Token Usage Trends:</strong> Observe the overall trends of both the "Tokens In" (teal/cyan) and "Tokens Out" (magenta/purple) lines over time. Upward trends indicate increasing LLM resource consumption, while downward trends suggest decreasing usage or more efficient workflows.</li>
+<li><strong>Input vs. Output Token Ratio:</strong> Compare the relative positions and trends of the two lines.  Significant differences in the volume of input vs. output tokens might indicate specific usage patterns or potential areas for optimization. For example, consistently high "Tokens Out" with relatively lower "Tokens In" might suggest users are sending complex or lengthy queries.</li>
+<li><strong>Identify Token Spikes:</strong> Look for sudden spikes or peaks in either the "Tokens In" or "Tokens Out" lines. These spikes can highlight periods of unusually high LLM usage, which might warrant further investigation to understand the cause (e.g., a specific event, a new Use Case being heavily utilized).</li>
+<li><strong>Cost Monitoring (Indirect):</strong> While the chart doesn't directly display costs, tracking token usage trends is crucial for cost management, as LLM usage is often billed based on token consumption. Monitoring this chart helps you anticipate potential cost fluctuations and optimize workflows to minimize unnecessary token usage.</li>
+</ul>
+<p><strong>Example:</strong> If the "Token Usage Chart" shows a sharp increase in the "Tokens Out" (magenta/purple) line during a particular week, it indicates a surge in input tokens sent to LLMs. This could be due to increased user activity, more complex queries being submitted, or a change in Use Case usage patterns. Further investigation, potentially combined with other monitoring data, can help pinpoint the cause of this token usage spike.</p>
+<h3 id="acceptance-rate-chart-measuring-user-satisfaction-with-ai-outputs">Acceptance Rate Chart: Measuring User Satisfaction with AI Outputs</h3>
+<p><strong>Purpose:</strong> The <strong>Acceptance Rate Chart</strong> visually represents the overall user satisfaction with the outputs generated by ELITEA. It shows the proportion of user interactions where users took "acceptance actions" (indicating satisfaction) versus those where they did not. This chart provides a direct measure of how well ELITEA is meeting user needs and delivering valuable results.</p>
+<p><img alt="Monitoring-Charts_Acceptance_Rate" src="../../../img/guides/monitoring/Monitoring-Charts_Acceptance_Rate.png" /></p>
+<p><strong>Chart Type:</strong> Stacked Bar Chart</p>
+<p><strong>Data Displayed:</strong></p>
+<ul>
+<li><strong>X-axis (Horizontal):</strong> Represents the <strong>Time Interval</strong>, based on the "Aggregation" level you select in the Filtering Panel (e.g., Day, Week, Month). Each bar corresponds to a specific time interval.</li>
+<li><strong>Y-axis (Vertical):</strong> Represents the <strong>Number of Interactions</strong>.</li>
+<li><strong>Stacked Bars:</strong> Each bar is divided into two stacked segments, representing:<ul>
+<li><strong>Accepted Interactions (Teal/Green segment):</strong> The number of user interactions during that time interval that were classified as "Accepted" based on user actions (copying output, downloading, explicit approval, etc.).</li>
+<li><strong>Not Accepted Interactions (Light Gray segment):</strong> The number of user interactions during that time interval where users did <em>not</em> perform any "acceptance actions."</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Overall Acceptance Trend:</strong> Observe the overall trend of the teal/green "Accepted Interactions" bars over time. An upward trend indicates increasing user satisfaction and more effective Use Cases, Prompts, Datasources, or Agents. A downward trend may signal declining user satisfaction or issues with output quality or relevance.</li>
+<li><strong>Identify Periods of High and Low Acceptance:</strong> Visually identify time intervals with the highest and lowest bars for "Accepted Interactions." This can help correlate acceptance rates with specific events, changes in Use Cases, or other factors.</li>
+<li><strong>Accepted vs. Not Accepted Ratio:</strong> Compare the relative sizes of the teal/green "Accepted Interactions" segment and the light gray "Not Accepted Interactions" segment within each bar. A larger teal/green segment indicates a higher Acceptance Rate for that period, signifying greater user satisfaction and perceived value.</li>
+</ul>
+<p><strong>Example:</strong> If the "Acceptance Rate Chart" shows consistently tall teal/green bars, dominating the light gray "Not Accepted" segments, it indicates a high overall Acceptance Rate and suggests that ELITEA is effectively meeting user needs and generating valuable outputs. Conversely, if you observe a significant increase in the light gray "Not Accepted" segments, particularly for a specific Use Case or time period, it warrants investigation into potential issues affecting user satisfaction and output quality.</p>
+<h3 id="sentiments-charts-understanding-user-and-ai-tone">Sentiments Charts: Understanding User and AI Tone</h3>
+<p>These pie charts provide a quick visual overview of the emotional tone expressed in user inputs and generated LLM outputs, helping you assess the overall user experience and the sentiment conveyed by the AI.</p>
+<p><img alt="Monitoring-Charts_Sentiments" src="../../../img/guides/monitoring/Monitoring-Charts_Sentiments.png" /></p>
+<h4 id="human-input-chart-analyzing-user-sentiment">Human Input Chart: Analyzing User Sentiment</h4>
+<p><strong>Purpose:</strong> The <strong>Human Input Chart</strong> visualizes the distribution of sentiment expressed in user inputs to ELITEA. By analyzing the sentiment of user queries and instructions, you can gain insights into user attitudes, potential frustrations, and areas where users might be expressing negative sentiment that needs to be addressed.</p>
+<p><strong>Chart Type:</strong> Pie Chart</p>
+<p><strong>Data Displayed:</strong></p>
+<ul>
+<li><strong>Pie Chart Slices:</strong> The pie chart is divided into three slices, each representing a sentiment category:<ul>
+<li><strong>Positive (Green slice):</strong> Represents the percentage of user inputs classified as having a positive sentiment (e.g., expressing satisfaction, appreciation, optimism).</li>
+<li><strong>Negative (Orange slice):</strong> Represents the percentage of user inputs classified as having a negative sentiment (e.g., expressing frustration, dissatisfaction, criticism).</li>
+<li><strong>Neutral (Light Blue slice):</strong> Represents the percentage of user inputs classified as having a neutral sentiment (e.g., factual questions, objective statements, requests without emotional tone).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Overall Sentiment Balance:</strong>  Examine the relative sizes of the pie chart slices to understand the overall sentiment balance in user inputs. A larger green "Positive" slice is generally desirable, indicating a positive user experience.</li>
+<li><strong>Identify Negative Sentiment Trends:</strong>  Pay attention to the size of the orange "Negative" slice. A consistently large or increasing "Negative" slice might signal user frustration, usability issues, or problems with output quality that are causing negative sentiment.</li>
+<li><strong>Neutral Sentiment as Baseline:</strong> The light blue "Neutral" slice represents a baseline level of objective or unemotional communication. While a high "Neutral" percentage is not necessarily negative, it's important to consider the context. In some cases, a shift from "Neutral" to "Positive" might be a desirable outcome of improvements to ELITEA.</li>
+</ul>
+<p><strong>Example:</strong> If the "Human Input Chart" shows a large green "Positive" slice and small orange "Negative" and light blue "Neutral" slices, it indicates that users are generally expressing positive sentiment in their interactions with ELITEA, suggesting a positive user experience. Conversely, a larger orange "Negative" slice might prompt further investigation into potential usability issues or areas of user dissatisfaction.</p>
+<h4 id="llm-output-chart-assessing-ai-tone-and-positivity">LLM Output Chart: Assessing AI Tone and Positivity</h4>
+<p><strong>Purpose:</strong> The <strong>LLM Output Chart</strong> visualizes the distribution of sentiment expressed in the outputs generated by ELITEA's Large Language Models (LLMs). Analyzing the sentiment of LLM responses is crucial for ensuring that the AI is communicating in a helpful, positive, and appropriate tone, contributing to a positive user experience and avoiding unintended negative or unhelpful communication styles.</p>
+<p><strong>Chart Type:</strong> Pie Chart</p>
+<p><strong>Data Displayed:</strong></p>
+<ul>
+<li><strong>Pie Chart Slices:</strong> Similar to the "<strong>Human Input Chart</strong>" this pie chart is also divided into three slices, each representing a sentiment category for LLM outputs:<ul>
+<li><strong>Positive (Green slice):</strong> Represents the percentage of LLM outputs classified as having a positive sentiment (e.g., helpful, encouraging, supportive, optimistic).</li>
+<li><strong>Negative (Orange slice):</strong> Represents the percentage of LLM outputs classified as having a negative sentiment (e.g., unhelpful, discouraging, critical, pessimistic).</li>
+<li><strong>Neutral (Light Blue slice):</strong> Represents the percentage of LLM outputs classified as having a neutral sentiment (e.g., factual responses, objective information, task-oriented outputs without emotional tone).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Desired Positive AI Tone:</strong> Aim for a large green "Positive" slice in the "LLM Output Chart." This indicates that ELITEA's AI is generally communicating in a positive and helpful tone, contributing to a positive user experience.</li>
+<li><strong>Minimize Negative LLM Sentiment:</strong>  The orange "Negative" slice should ideally be minimal. A significant or increasing "Negative" slice in LLM outputs is a cause for concern. It might indicate issues with prompt design, agent logic, or underlying LLM behavior that are causing the AI to generate unhelpful, critical, or negatively toned responses.</li>
+<li><strong>Contextual Neutrality:</strong>  The light blue "Neutral" slice represents a baseline of objective and task-focused AI communication. While neutrality is often appropriate for factual responses, consider whether a higher proportion of "Positive" sentiment in LLM outputs could further enhance user engagement and satisfaction, depending on the specific Use Case and context.</li>
+</ul>
+<p><strong>Example:</strong> If the "LLM Output Chart" shows a dominant green "Positive" slice, with minimal orange "Negative" and a moderate light blue "Neutral" slice, it suggests that ELITEA's AI is generally communicating in a helpful and positive manner. However, if you observe a noticeable increase in the orange "Negative" slice, it's crucial to investigate the prompts, agents, or configurations that are leading to these negatively toned outputs and take corrective actions to ensure the AI communicates in a more positive and constructive way.</p>
+<h3 id="accuracy-charts-assessing-relevance-and-reliability">Accuracy Charts: Assessing Relevance and Reliability</h3>
+<p>These charts provide quantitative measures of the accuracy, relevance, and reliability of ELITEA's AI-powered interactions, helping you evaluate the quality and trustworthiness of the generated outputs and data retrievals.</p>
+<p><img alt="Monitoring-Charts_Accuracy" src="../../../img/guides/monitoring/Monitoring-Charts_Accuracy.png" /></p>
+<h4 id="relevance-chart-measuring-input-and-output-alignment">Relevance Chart: Measuring Input and Output Alignment</h4>
+<p><strong>Purpose:</strong> The <strong>Relevance Chart</strong> helps you assess the relevance of user inputs to the intended context and the relevance of LLM outputs to the user inputs they are responding to. By tracking relevance scores over time, you can monitor the quality of interactions and identify potential issues with input clarity or output alignment.</p>
+<p><strong>Chart Type:</strong> Line Chart</p>
+<p><strong>Data Displayed:</strong></p>
+<ul>
+<li><strong>X-axis (Horizontal):</strong> Represents the <strong>Time Interval</strong>, based on the "Aggregation" level you select in the Filtering Panel (e.g., Day, Week, Month). Each point on the lines corresponds to a specific time interval.</li>
+<li><strong>Y-axis (Vertical):</strong> Represents the <strong>Relevance Score</strong>, typically on a scale from 0 to 5 or 0 to 10, where higher scores indicate greater relevance.</li>
+<li><strong>Lines:</strong> The chart displays two distinct lines, each representing a type of relevance score:<ul>
+<li><strong>Input vs. Context (Teal/Cyan Line):</strong> Represents the average relevance score of <strong>user inputs compared to the intended context</strong> of the interaction (e.g., the topic of the Use Case, the purpose of the prompt). Higher scores indicate that user inputs are generally well-aligned with the expected context.</li>
+<li><strong>Output vs. Input (Magenta/Purple Line):</strong> Represents the average relevance score of <strong>LLM outputs compared to the user inputs</strong> they are responding to. Higher scores indicate that LLM outputs are generally relevant and responsive to user queries and instructions.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Relevance Score Trends:</strong> Observe the trends of both the "Input vs. Context" (teal/cyan) and "Output vs. Input" (magenta/purple) lines over time. Ideally, you want to see consistently high relevance scores for both, indicating that user inputs are clear and focused, and LLM outputs are relevant and on-topic.</li>
+<li><strong>Identify Relevance Dips:</strong> Look for dips or downward trends in either relevance line. A drop in "Input vs. Context" relevance might suggest users are providing less focused or less relevant inputs, potentially due to confusion or usability issues. A drop in "Output vs. Input" relevance might indicate problems with prompt design, agent logic, or LLM performance, leading to less relevant or off-topic outputs.</li>
+<li><strong>Compare Input and Output Relevance:</strong> Compare the relative levels of the two relevance lines. Ideally, you want both lines to be consistently high and relatively close to each other, indicating a good flow of relevant information between users and the AI system. Significant divergence between the lines might warrant further investigation.</li>
+</ul>
+<p><strong>Example:</strong> If the "Relevance Chart" shows both the "Input vs. Context" and "Output vs. Input" lines consistently above a score of 4 (on a 0-5 scale), it suggests a high degree of relevance in ELITEA interactions. Users are generally providing relevant inputs, and the AI is generating relevant and responsive outputs. However, if you notice a dip in the "Output vs. Input" line below a certain threshold, it might indicate a need to review and refine the prompts or agents responsible for generating those less relevant outputs.</p>
+<h4 id="reliability-chart-assessing-llm-response-consistency">Reliability Chart: Assessing LLM Response Consistency</h4>
+<p><strong>Purpose:</strong> The <strong>Reliability Chart</strong> focuses specifically on the reliability of LLM responses, measuring the consistency and predictability of the AI's output quality over time. A high Reliability score indicates that the LLM is generating consistently dependable and trustworthy responses.</p>
+<p><strong>Chart Type:</strong> Line Chart</p>
+<p><strong>Data Displayed:</strong></p>
+<ul>
+<li><strong>X-axis (Horizontal):</strong> Represents the <strong>Time Interval</strong>, based on the "Aggregation" level you select in the Filtering Panel (e.g., Day, Week, Month). Each point on the line corresponds to a specific time interval.</li>
+<li><strong>Y-axis (Vertical):</strong> Represents the <strong>Reliability Score</strong>, typically on a scale from 0 to 10 or a percentage scale, where higher scores indicate greater reliability.</li>
+<li><strong>Reliability Score Line (Teal/Cyan Line):</strong>  A single line representing the average reliability score of LLM responses for each time interval.</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Reliability Trend:</strong> Observe the trend of the teal/cyan "Reliability Score" line over time. A consistently high and stable line is desirable, indicating that the LLM is providing dependable and consistent responses.</li>
+<li><strong>Identify Reliability Drops:</strong> Look for dips or downward trends in the Reliability Score line. A drop in reliability might signal issues with the LLM model itself, changes in the input data quality, or problems with the prompts or agents that are relying on the LLM.</li>
+<li><strong>Benchmark against Target Reliability:</strong>  Establish a target reliability score for your ELITEA implementation. Use the Reliability Chart to monitor whether the average reliability score is consistently meeting or exceeding your target.</li>
+</ul>
+<p><strong>Example:</strong> If the "Reliability Chart" shows the "Reliability Score" line consistently above 8 (on a 0-10 scale), it suggests that ELITEA's LLM responses are generally highly reliable and consistent. However, if you observe a sudden drop in the Reliability Score below your target threshold, it might indicate a need to investigate potential issues affecting LLM performance or consistency, such as model updates, changes in API configurations, or underlying data quality problems.</p>
+<h4 id="instruction-quality-vs-usage-matrix-optimizing-ai-artifacts">Instruction Quality vs. Usage Matrix: Optimizing AI Artifacts</h4>
+<p><strong>Purpose:</strong> The <strong>Instruction Quality vs. Usage Matrix</strong> is a powerful 2x2 matrix visualization designed to help you optimize your ELITEA Prompts (and potentially Agents or Datasources in future iterations). It plots the relationship between the "Quality Score" of your Prompts and their "Usage" frequency, allowing you to identify high-performing, underutilized, or low-quality prompts for targeted improvement efforts.</p>
+<p><strong>Chart Type:</strong> 2x2 Matrix (Scatter Plot within Quadrants)</p>
+<p><strong>Data Displayed:</strong></p>
+<ul>
+<li><strong>X-axis (Horizontal):</strong> Represents <strong>Usage (#Calls)</strong>, indicating the number of times each Prompt has been executed or called within the selected timeframe.</li>
+<li><strong>Y-axis (Vertical):</strong> Represents <strong>Quality Score</strong>, reflecting a composite score that combines metrics like Relevance and Reliability to assess the overall quality and effectiveness of each Prompt's instructions.</li>
+<li><strong>Quadrants:</strong> The matrix is divided into four quadrants, each representing a combination of Instruction Quality and Usage levels:<ul>
+<li><strong>Low Quality, Low Usage (Bottom-Left Quadrant):</strong> Contains Prompts with both low Quality Scores and low Usage frequency. These are typically prompts that are underperforming and not being actively utilized.</li>
+<li><strong>High Quality, Low Usage (Top-Left Quadrant):</strong> Contains Prompts with high Quality Scores but low Usage frequency. These are potentially valuable prompts that are not being leveraged to their full potential.</li>
+<li><strong>High Quality, High Usage (Top-Right Quadrant):</strong> Contains Prompts with both high Quality Scores and high Usage frequency. These are your top-performing and most valuable prompts, effectively meeting user needs and being actively utilized.</li>
+<li><strong>Low Quality, High Usage (Bottom-Right Quadrant):</strong> Contains Prompts with low Quality Scores but surprisingly high Usage frequency. These are prompts that are being used frequently despite their lower quality, potentially indicating a critical need for improvement or that users are using them despite their limitations due to lack of better alternatives.</li>
+</ul>
+</li>
+<li><strong>Data Points:</strong> Each data point on the matrix represents a <strong>Prompt</strong>. The position of the data point within the matrix is determined by its "Quality Score" (Y-axis) and "#Calls" (X-axis). Hovering over a data point typically reveals the name of the Prompt it represents.</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Identify High-Value Prompts (Top-Right Quadrant):</strong> Focus on the Prompts located in the "High Quality, High Usage" (top-right) quadrant. These are your most valuable assets. Analyze these prompts to understand what makes them successful (e.g., clear instructions, relevant context, effective prompt engineering techniques). Leverage these insights to improve other prompts.</li>
+<li><strong>Optimize Underutilized High-Quality Prompts (Top-Left Quadrant):</strong> Prompts in the "High Quality, Low Usage" (top-left) quadrant represent untapped potential. Investigate why these high-quality prompts are not being used more frequently. Potential reasons include:
+        *   <strong>Lack of User Awareness:</strong> Users may not know about these valuable prompts. Promote these prompts through training, documentation, or in-app discovery features.
+        *   <strong>Discoverability Issues:</strong> Make sure these prompts are easily discoverable and accessible within the ELITEA interface.
+        *   <strong>Limited Use Cases:</strong> Explore if the use cases for these prompts can be expanded or better communicated to users.</li>
+<li><strong>Improve or Retire Low-Quality Prompts (Bottom-Left Quadrant):</strong> Prompts in the "Low Quality, Low Usage" (bottom-left) quadrant are likely underperforming and not providing value. Consider these options:
+        *   <strong>Improve and Refine:</strong> Analyze these prompts to identify specific weaknesses in their instructions, context, or logic. Invest time in prompt engineering to improve their quality and relevance.
+        *   <strong>Retire or Deprecate:</strong> If improvement efforts are not successful, or if these prompts are no longer relevant, consider retiring or deprecating them to avoid user confusion and focus on higher-value assets.</li>
+<li><strong>Address Low-Quality, High-Usage Prompts (Bottom-Right Quadrant - Critical Attention Needed):</strong> Prompts in the "Low Quality, High Usage" (bottom-right) quadrant are a critical area for attention. These prompts are being used frequently <em>despite</em> their low quality, which is a potential problem. This situation might indicate:
+        *   <strong>Critical Need:</strong> Users may be using these low-quality prompts because they address a critical need for which no better alternatives exist within ELITEA.
+        *   <strong>User Frustration:</strong> Users might be experiencing frustration and reduced productivity due to the low quality of these frequently used prompts.
+        *   <strong>Prioritize Improvement:</strong> <strong>Prioritize immediate improvement efforts for prompts in this quadrant.</strong>  Focus on significantly enhancing their quality and relevance to better meet the needs of users who are relying on them heavily.</li>
+</ul>
+<p><strong>Example:</strong> By examining the "Instruction Quality vs. Usage Matrix," you might identify that your "Code Documentation Prompt" is located in the "High Quality, High Usage" quadrant, indicating it's a valuable and well-utilized asset. On the other hand, you might find a "Competitor Analysis Prompt" in the "Low Quality, High Usage" quadrant, signaling a critical need to improve this prompt to better serve the users who are frequently relying on it, despite its current shortcomings.</p>
+<h3 id="topics-chart-understanding-content-distribution">Topics Chart: Understanding Content Distribution</h3>
+<p><strong>Purpose:</strong> The <strong>Topics Chart</strong> provides a visual representation of how your ELITEA Prompts, Datasources, and Agents are distributed across different identified topics or categories. This chart helps you understand the content focus of your AI artifacts and identify areas where you have strong content coverage and areas where you might need to expand your topic coverage.</p>
+<p><img alt="Monitoring-Charts_Topics" src="../../../img/guides/monitoring/Monitoring-Charts_Topics.png" /></p>
+<p><strong>Chart Type:</strong> Clustered Column Chart</p>
+<p><strong>Data Displayed:</strong></p>
+<ul>
+<li><strong>X-axis (Horizontal):</strong> Represents <strong>Topics</strong> identified within ELITEA (e.g., "User Stories," "Code Documentation," "Competitive Analysis," "Confluence Pages"). Each cluster of columns corresponds to a specific topic.</li>
+<li><strong>Y-axis (Vertical):</strong> Represents the <strong>Number of Items (# Items)</strong>, indicating the count of ELITEA entities associated with each topic.</li>
+<li><strong>Clustered Columns:</strong> For each topic on the X-axis, you will see a cluster of columns, with each column representing a different type of ELITEA entity:<ul>
+<li><strong>Prompts (Teal/Cyan Column):</strong>  The number of Prompts categorized under that topic.</li>
+<li><strong>Datasources (Light Blue Column):</strong> The number of Datasources categorized under that topic.</li>
+<li><strong>Agents (Magenta/Purple Column):</strong> The number of Agents categorized under that topic.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Topic Coverage Distribution:</strong> Examine the overall distribution of columns across different topics. This chart provides a visual overview of which topics are well-represented by your ELITEA content (Prompts, Datasources, Agents) and which topics have less coverage.</li>
+<li><strong>Identify Content Gaps:</strong> Look for topics on the X-axis that have very short or missing columns, indicating a lack of Prompts, Datasources, or Agents related to those topics. These "gaps" represent potential areas where you need to create new AI artifacts to expand ELITEA's content coverage and address user needs in those areas.</li>
+<li><strong>Content Focus Areas:</strong> Identify topics with tall columns across all entity types (Prompts, Datasources, Agents). These "focus areas" represent topics where you have a strong and well-developed set of AI resources within ELITEA.</li>
+</ul>
+<p><strong>Example:</strong> If the "Prompt Topics Chart" shows tall columns for "User Stories" and "Code Documentation" but very short or no columns for "Competitive Analysis," it indicates that your ELITEA implementation has strong content coverage for user story creation and code documentation tasks, but lacks resources for competitive analysis. This might prompt you to prioritize the creation of new Prompts, Datasources, or Agents focused on competitive analysis to address this content gap and expand ELITEA's capabilities in that area.</p>
+<h3 id="topics-summary-chart-understanding-user-query-focus">Topics Summary Chart: Understanding User Query Focus</h3>
+<p><strong>Purpose:</strong> The <strong>Topics Summary Chart</strong> provides insights into the topics that users are most frequently querying and interacting with within ELITEA. By analyzing the distribution of user queries across different topics, you can understand user interests, identify popular areas of focus, and ensure that your ELITEA content and functionalities are aligned with user demand.</p>
+<p><img alt="Monitoring-Charts_Topics_Summary" src="../../../img/guides/monitoring/Monitoring-Charts_Topics_Summary.png" /></p>
+<p><strong>Chart Type:</strong> Clustered Column Chart (Single Cluster per Topic)</p>
+<p><strong>Data Displayed:</strong></p>
+<ul>
+<li><strong>X-axis (Horizontal):</strong> Represents <strong>Topics</strong> identified within ELITEA (consistent with the "Prompt Topics Chart" - e.g., "User Stories," "Code Documentation," "Competitive Analysis," "Confluence Pages"). Each column corresponds to a specific topic.</li>
+<li><strong>Y-axis (Vertical):</strong> Represents the <strong>Number of Items (# Items)</strong>, indicating the count of user queries associated with each topic.</li>
+<li><strong>Columns:</strong> For each topic on the X-axis, you will see a single column representing:<ul>
+<li><strong>User Queries (Teal/Cyan Column):</strong> The number of user queries (or interactions) that have been categorized as belonging to that specific topic.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>User Interest Distribution:</strong> Examine the relative heights of the columns across different topics. This chart visually represents the distribution of user interest across various topics within ELITEA. Taller columns indicate topics that users are querying more frequently, signifying higher user interest and demand.</li>
+<li><strong>Identify Popular Topics:</strong> Pinpoint topics with the tallest columns. These are the most popular areas of user interest within ELITEA. Ensure that you have robust and high-quality content (Prompts, Datasources, Agents) available to effectively address user queries and needs in these popular topic areas.</li>
+<li><strong>Identify Under-Queried Topics:</strong> Look for topics with short or very short columns. These are topics that users are querying less frequently. This might indicate:
+        *   <strong>Lack of User Awareness:</strong> Users might not be aware that ELITEA has capabilities related to these topics. Consider promoting these functionalities through training or in-app communication.
+        *   <strong>Limited User Need:</strong> There might be genuinely less user demand for information or assistance related to these topics.
+        *   <strong>Relevance Issues:</strong>  The existing content related to these topics might not be sufficiently relevant or useful to users, leading to lower query frequency.</li>
+</ul>
+<p><strong>Example:</strong> If the "Topics Summary Chart" shows a very tall column for "User Stories" and significantly shorter columns for other topics like "Code Documentation" or "Competitive Analysis," it indicates that user interest and demand within ELITEA are heavily focused on user story-related tasks and information. This insight might prompt you to prioritize further development and optimization of Use Cases, Prompts, and Agents related to user stories to cater to this high user demand. You might also consider investigating why other topics are less frequently queried and explore strategies to increase user awareness or improve content relevance in those areas.</p>
+<p>By utilizing these detailed chart explanations and understanding how to interpret the visualizations provided by ELITEA Monitoring, you can gain valuable insights into application usage, user behavior, AI artifact performance, and content effectiveness, enabling data-driven decisions to continuously improve and optimize your ELITEA implementation.</p>
+<h2 id="use-cases-and-reporting-practical-scenarios-for-elitea-monitoring">Use Cases and Reporting: Practical Scenarios for ELITEA Monitoring</h2>
+<p>The <strong>Monitoring</strong> feature is not just about viewing charts and metrics; it's about gaining actionable insights to improve ELITEA's value and user experience. This section outlines several practical use case scenarios, demonstrating how you can leverage the Monitoring data to answer key questions, identify areas for optimization, and generate insightful reports.</p>
+<p><strong>Scenario 1: Tracking Overall ELITEA Adoption and Engagement (Portfolio Level)</strong></p>
+<ul>
+<li><strong>Goal:</strong>  As a Portfolio Manager, you want to track the overall adoption and engagement of ELITEA across your entire portfolio of projects on a weekly basis. You need to report on user activity and identify any portfolio-wide trends.</li>
+<li><strong>How to Use Monitoring:</strong><ol>
+<li><strong>Access Monitoring Landing Page:</strong> Navigate to the Monitoring page in ELITEA.</li>
+<li><strong>Set Project Filter to Portfolio:</strong> In the Filtering Panel, select your desired Portfolio grouping from the <strong>Projects</strong> dropdown menu.</li>
+<li><strong>Set Time Period to "Last Week":</strong> Use the <strong>From</strong> and <strong>To Date</strong> filters to set the time range to cover the past week (e.g., Monday to Sunday of the previous week).</li>
+<li><strong>Set Aggregation to "Week":</strong>  Ensure the <strong>Aggregation</strong> dropdown is set to "Week" for weekly reporting.</li>
+<li><strong>Apply Filters:</strong> Click the <strong>"Refresh"</strong> button.</li>
+<li><strong>Review Key Metrics Summary Panel:</strong>  Focus on the <strong>Engagement Rate</strong> metric in the Key Metrics Summary Panel. This will give you the overall Engagement Rate for your entire Portfolio for the past week. Note down this percentage for your report.</li>
+<li><strong>Analyze Adoption and Usage Charts Panel:</strong> Examine the <strong>Active Users Chart</strong> and <strong>Token Usage Chart</strong> in the Adoption and Usage Charts Panel.<ul>
+<li><strong>Active Users Chart:</strong> Observe the trend of "Active Users" over the past weeks (or months, if you expand the timeframe). Is user adoption increasing, decreasing, or stable? Note down any significant trends.</li>
+<li><strong>Token Usage Chart:</strong> Analyze the "Tokens In" and "Tokens Out" lines. Is token consumption increasing, decreasing, or fluctuating? Correlate token usage trends with user activity trends.</li>
+</ul>
+</li>
+<li><strong>Generate Report:</strong>  Compile your findings into a weekly Portfolio Adoption Report. Include:<ul>
+<li>Portfolio Name and Reporting Week (Date Range).</li>
+<li>Overall Engagement Rate for the Portfolio (from Key Metrics Summary Panel).</li>
+<li>Summary of Active User trends (from Active Users Chart - e.g., "Active users increased by 15% this week").</li>
+<li>Summary of Token Usage trends (from Token Usage Chart - e.g., "Token consumption remained stable compared to last week").</li>
+<li>Key Insights and Potential Actions: Based on your analysis, include a brief summary of key insights and any recommended actions (e.g., "Engagement Rate is healthy, continue current adoption strategies," or "Engagement Rate declined slightly, investigate potential causes and consider targeted training").</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>Scenario 2: Identifying Underperforming AI entities (Use Case Level Analysis)</strong></p>
+<ul>
+<li><strong>Goal:</strong> As a Project Admin, you want to identify AI entities within your project that have low user acceptance rates. You suspect that some entities might not be as effective or user-friendly as others and need to pinpoint those for improvement.</li>
+<li><strong>How to Use Monitoring:</strong><ol>
+<li><strong>Access Monitoring Landing Page:</strong> Navigate to the Monitoring page in ELITEA.</li>
+<li><strong>Select Your Project:</strong> In the Filtering Panel, select your specific project from the <strong>Projects</strong> dropdown menu.</li>
+<li><strong>Set Time Period to "Last Month":</strong> Use the <strong>From</strong> and <strong>To Date</strong> filters to set the time range to cover the past month to get a representative sample of Use Case usage.</li>
+<li><strong>Set Aggregation to "Week":</strong>  Set the <strong>Aggregation</strong> to "Week" to analyze weekly trends in Acceptance Rate.</li>
+<li><strong>Filter by "Type" and "Name":</strong>  Leave the "Type" filter set to "Prompts, Datasources, Agents, Conversations" (or "All Items"). Leave the "Name" filter set to "All Items" initially to get an overview of all Use Cases.</li>
+<li><strong>Apply Filters:</strong> Click the <strong>"Refresh"</strong> button.</li>
+<li><strong>Review Key Metrics Summary Panel:</strong>  Examine the <strong>Acceptance Rate</strong> metric in the Key Metrics Summary Panel. This provides the overall Acceptance Rate for all Use Cases within your project. Note this baseline value.</li>
+<li><strong>Analyze Acceptance Rate Chart:</strong>  Focus on the <strong>Acceptance Rate Chart</strong> in the Visual Metrics Panel. Observe the overall Acceptance Rate trend over the past month.</li>
+<li><strong>Granular Use Case Analysis:</strong> Now, use the <strong>"Type"</strong> and <strong>"Name"</strong> filters to analyze Acceptance Rates for individual Use Cases:<ul>
+<li><strong>Select "Type" to "Conversations":</strong> This will filter the data to focus on conversation-based Use Cases.</li>
+<li><strong>Use "Name" dropdown to select individual Use Case Names one by one:</strong> For each Use Case Name, click "Refresh" and observe the <strong>Acceptance Rate</strong> metric in the Key Metrics Summary Panel and the <strong>Acceptance Rate Chart</strong>. Note down the Acceptance Rate for each Use Case.</li>
+<li><strong>Identify Low Acceptance Use Cases:</strong> Compare the Acceptance Rates of different Use Cases. Identify Use Cases with significantly lower Acceptance Rates compared to the average or your desired benchmark (e.g., Use Cases with Acceptance Rates below 60%).</li>
+</ul>
+</li>
+<li><strong>Investigate Low Acceptance Use Cases:</strong> For the Use Cases with low Acceptance Rates, investigate potential causes:<ul>
+<li><strong>Review User Feedback:</strong> Gather user feedback specifically on these underperforming Use Cases.</li>
+<li><strong>Analyze Use Case Workflow:</strong> Examine the design and complexity of the Use Case workflow. Is it intuitive and user-friendly?</li>
+<li><strong>Evaluate Output Quality:</strong> Assess the quality and relevance of the AI-generated outputs for these Use Cases.</li>
+</ul>
+</li>
+<li><strong>Take Action to Improve:</strong> Based on your investigation, take targeted actions to improve the low-acceptance Use Cases:<ul>
+<li><strong>Enhance User Training:</strong> Provide more specific training and guidance for these Use Cases.</li>
+<li><strong>Refine Use Case Design:</strong> Simplify the workflow, improve prompts, or adjust agent logic to enhance output quality and user experience.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>Scenario 3: Monitoring Prompt Performance and Optimizing for Quality</strong></p>
+<ul>
+<li><strong>Goal:</strong> As a Prompt Engineer, you want to monitor the performance of specific Prompts within your project, identify underperforming prompts, and optimize them for better relevance and reliability.</li>
+<li><strong>How to Use Monitoring:</strong><ol>
+<li><strong>Access Monitoring Landing Page:</strong> Navigate to the Monitoring page in ELITEA.</li>
+<li><strong>Select Your Project:</strong> In the Filtering Panel, select your specific project from the <strong>Projects</strong> dropdown menu.</li>
+<li><strong>Set Time Period to "Last 3 Months":</strong> Use a longer timeframe (e.g., "Last 3 Months") to get a broader performance overview.</li>
+<li><strong>Set Aggregation to "Month":</strong> Set <strong>Aggregation</strong> to "Month" for monthly trend analysis.</li>
+<li><strong>Set "Type" to "Prompts":</strong> In the "Type" dropdown, specifically select <strong>"Prompts"</strong> to focus your analysis on prompts.</li>
+<li><strong>Leave "Name" as "All Items" initially:</strong> Start with an overview of all prompts.</li>
+<li><strong>Apply Filters:</strong> Click the <strong>"Refresh"</strong> button.</li>
+<li><strong>Analyze Instruction Quality vs. Usage Matrix:</strong> Focus on the <strong>Instruction Quality vs. Usage Matrix</strong> in the Accuracy Charts Panel.<ul>
+<li><strong>Identify Low-Quality, High-Usage Prompts:</strong>  Look for prompts in the <strong>Bottom-Right Quadrant</strong> (Low Quality, High Usage). These are critical prompts that need immediate attention and improvement. Note down the names of these prompts.</li>
+<li><strong>Identify High-Quality, Low-Usage Prompts:</strong> Look for prompts in the <strong>Top-Left Quadrant</strong> (High Quality, Low Usage). These are prompts with untapped potential. Note down their names for potential promotion and wider utilization.</li>
+</ul>
+</li>
+<li><strong>Granular Prompt Analysis:</strong> For the prompts you identified in step 8 (especially low-quality, high-usage ones), perform a more detailed analysis:<ul>
+<li><strong>Use "Name" Filter:</strong>  Select the name of a specific prompt from the "Name" dropdown and click "Refresh."</li>
+<li><strong>Review Key Metrics Summary Panel:</strong> Examine the <strong>Acceptance Rate</strong>, <strong>Relevance</strong>, and <strong>Reliability</strong> metrics in the Key Metrics Summary Panel for this specific prompt.</li>
+<li><strong>Analyze Performance Charts:</strong> Focus on the <strong>Relevance Chart</strong> and <strong>Reliability Chart</strong> in the Accuracy Charts Panel, and the <strong>Acceptance Rate Chart</strong>. Observe the trends of these metrics over the past months.</li>
+</ul>
+</li>
+<li><strong>Optimize Prompts:</strong> Based on your analysis, take action to optimize underperforming prompts:<ul>
+<li><strong>Prompt Engineering:</strong> Refine the prompt instructions, context, input parameters, and examples to improve output quality and relevance.</li>
+<li><strong>User Feedback:</strong> Gather user feedback specifically on these prompts to understand their pain points and areas for improvement.</li>
+<li><strong>A/B Testing (If Applicable):</strong> If possible, create variations of the prompt and A/B test them to see which version performs better based on monitoring metrics.</li>
+<li><strong>Promote High-Quality, Low-Usage Prompts:</strong> For prompts in the "High Quality, Low Usage" quadrant, promote their use through documentation, training, or in-app suggestions to increase their visibility and utilization.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>These are just a few examples of how you can utilize the ELITEA Monitoring feature for practical analysis and reporting. By strategically applying filters, understanding the metrics and charts, and focusing on specific use cases and entities, you can unlock valuable insights to continuously improve ELITEA's effectiveness and user experience.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>
