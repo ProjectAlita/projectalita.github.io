@@ -51,8 +51,5 @@ theme:
   hljs_languages:
     - yaml
 
-markdown_extensions:
-  - admonition
-
 extra_css:
-  - extra_css/style.css
+  - extra_css/cinder.css

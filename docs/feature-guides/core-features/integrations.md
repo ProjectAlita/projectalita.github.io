@@ -23,6 +23,7 @@ In ELITEA, your work is organized within three distinct types of spaces:
 
 Understanding the distinction between your **Private Workspace**, where you have exclusive access to your content, and **Team Projects**, which are collaborative spaces where team members share access to project resources, is crucial for effectively managing **Integrations** and **Configurations** within ELITEA.
 
+
 ## Integration Feature: Connecting ELITEA with External Platforms
 
 The **Integrations** menu in ELITEA serves as a central hub for establishing connections with external platforms. By configuring integrations, you make these external services available for use within your Agent toolkits.
