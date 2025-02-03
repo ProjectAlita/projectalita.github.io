@@ -1,126 +1,136 @@
 # Collections
 
-## Private project - Collections menu
+## Collections menu
 
-The **Collections** menu within **Private** project serves as a dedicated inventory for all your collections, irrespective of their current status. Consider it your personal repository for saving and organizing the collections you've crafted. 
+The **Collections** menu within **Private** workspace and **Team** projects in ELITEA serves as your central hub for organizing and managing your **Collections**. Think of it as your personal workspace for curating sets of related **Entities** (Prompts, Datasources, and Agents), allowing for efficient access, management, and sharing of your AI resources.
 
-![Collections-Menu_Card_View](<../../img/platform/menus/collections/Collections-Menu_Card_View.png>)
+![Collections-Menu](../../img/platform/menus/collections/Collections-Menu.png)
 
-These features ensure your collections are not only stored securely but also organized in a manner that simplifies management, review, and retrieval, tailoring the user experience to your needs and preferences.
+**Understanding Project Scopes:**
+
+*   **Private Workspace:** Your personal and private area within ELITEA to create and manage your Entities and Collections. Only you have access to your **Private** workspace.
+*   **Team Projects:** Collaborative spaces for teams to work together on projects, sharing and managing Entities and Collections. Access to Team projects is controlled by project roles and permissions.
+*   **Public Project:** A shared, community space within ELITEA where published Prompts and Collections are available for all users to discover and utilize.
 
 **The Purpose and Usefulness of Collections**
 
-The **Collection** serve as a means to group prompts by theme, project, or any other meaningful categorization that enhances accessibility and usefulness for the users. 
-Collections are immensely valuable for several reasons:
+**Collections** are designed to enhance your workflow by providing a structured way to group and manage Entities. They offer significant benefits:
 
-* **Thematic Organization**: They allow for the grouping of prompts by specific themes or projects, making it easy for users to find a set of related prompts.
-* **Efficiency**: By organizing prompts into collections, we save time by providing consolidated resources that can be easily accessed and applied.
-* **Sharing Best Practices**: Collections can be shared across teams, promoting best practices and unified testing approaches across different projects.
-  
-### How to Create a Collection
+*   **Thematic Organization:** Group Entities by themes, projects, or any relevant category for easy access.
+*   **Efficiency:** Consolidate related resources, saving time and effort in finding and utilizing them.
+*   **Sharing Best Practices:** Facilitate sharing and collaboration by grouping best-practice Entities into easily shareable units.
 
-Creating a collection allows you to organize and categorize your prompts for better accessibility and management. Follow these steps to create a new collection:
+### Accessing the Collections menu
 
-1. Click the **+ Collection** button located at the top right corner of the page.
-2. You will be prompted to fill in the **Name** and **Description** fields. It's important to provide clear and concise information here, as this helps others understand the purpose and content of your collection.
-3. Click **Save** to create the collection.
-
-![Collections-Create_Collection](<../../img/platform/menus/collections/Collections-Create_Collection.png>)
-
-### Exploring Collections
-
-Exploring collections is straightforward and insightful:
-
-Simply click on the collection card or the name of a collection. This action reveals the prompts contained within the selected collection, providing a comprehensive view of its contents.
-
-Within a collection, you can:
-
-* **View** and **Open** available prompts
-* **Modify Collection** (Name and Description)
-* **Filter Collection** by tags
-* **Publish Collection**
-* **Delete Collection**
-* **Export Collection**
-
-### How to Modify a Collection
-
-To modify an existing collection:
-
-1. Click the **Edit** icon.
-2. Update the **Name** and/or **Description** of the collection as needed.
-3. Click **Save** to apply the changes.
-
-**Note**: Modifications are restricted for collections that have already been published.
-
-### How to Filter Prompts within a Collection
-
-Easily find specific prompts within a collection by selecting applicable tags from the **Tags** section. This enables efficient organization and retrieval based on subjects or themes.
-
-### How to Publish a Collection
-
-To publish a collection:
-
-1. Ensure the collection is complete and relevant by reviewing its contents.
-2. Click the **Publish collection** icon to submit your collection for review, similar to the individual prompt publishing process. The collection will be evaluated according to guidelines for quality and relevance.
-3. Once approved, your collection will be published and made available under the **Collection** menu for community use.
-
-**Note**: A Collection must contain already published prompts before publication.
-
-### How to Delete a Collection
-
-To delete a collection:
-
-Click the **Delete** icon. Note that deleting a collection does not remove the prompts within it from your library.
-
-**Note**: Deletion is not possible for published collections.
-
-### How to Export a Collection
-
-Exporting a collection allows for its use on different platforms, offering formats tailored to each:
-
-* **`[Alita format]`** - a JSON format designed for the ELITEA platform, including detailed information like prompt versioning and model configurations.
-* **`[DIAL format]`** - a JSON format intended for the Epam AI Dial platform, incorporating platform-specific structuring.
-
-**Exporting the Collection:**
-
-1. Click the **Export prompt** icon to begin.
-2. Select your preferred format (Alita or DIAL) for the export.
-3. An export file will be generated and automatically downloaded to your device, enabling cross-platform utilization.
-
-
-## Collections Menu
-
-The **Collections** menu is a curated space of grouped prompts shared and published within the community. 
+To access the **Collections** menu, navigate to the main menu sidebar within your **Private** or **Team** project and click on **"Collections"**.
 
 ### Layout of the Collections Menu
 
-Organized into three distinct pages, the **Collections** menu introduces a structured way to explore and discover grouped prompts:
+The **Collections** menu presents your collections in a visually organized layout, typically using a **Card List View** as shown in the image above.  Key elements of the Collections Menu interface include:
 
-* **Latest**: Showcases the most recently published collections, offering insight into the newest themes and ideas being explored by the community.
-* **My Likes**: Features the collections you have liked, creating a personalized library of favored content that can be revisited at any time.
-* **Trending**: Displays collections that have gathered the most likes, serving as an excellent resource for finding highly-regarded and popular collections esteemed by the community.
+*   **"+ Collection" Button:** Located at the top right corner, this button allows you to create new collections.
+*   **Search Bar:** Positioned at the top left, the Search bar enables you to quickly find specific collections by name or description.
+*   **View Options:** Icons for toggling between different view formats (e.g., Card list view, Table view) may be available, allowing you to customize how collections are displayed.
+*   **Collection Cards:** Each collection is represented by a card, displaying:
+    *   **Collection Name:** The user-defined name of the collection.
+    *   **Collection Description:** A brief description of the collection's purpose (if provided).
+    *   **User Avatar:**  The avatar of the user who created the collection.
+    *   **Action Icons:** Icons for performing actions on the collection (Edit, Publish, Delete, Export).
 
-![Collections-Menu_Public](<../../img/platform/menus/collections/Collections-Menu_Public.png>)
+### Creating a New Collection
 
-### Engaging with Collections
+Creating a collection allows you to organize and categorize your Entities for better accessibility and management. Follow these steps to create a new collection:
 
-Participation and interaction within the community are pivotal in highlighting and appreciating valuable collections. Below are ways you can actively engage:
+1.  **Create New Collection:** Click the **"+ Collection"** button located at the top right of the **Collections** menu.
+2.  **Define Collection Details:** In the "Create Collection" dialog:
+    *   **Name:** Enter a descriptive **Name** for the collection.
+    *   **Description:** Write a concise **Description** explaining the collection's purpose.
+3.  **Create Collection:** Click **Create** to create the collection.
 
-### Liking Collections
+![Collection-Create_Collection](../../img/platform/menus/collections/Collection-Create_Collection.png)
 
-Each collection, upon curation, becomes a vital resource. To show support and appreciation for a collection, you can use the **Like** functionality:
+### Exploring Collections and Viewing Entities
 
-* To like a collection, click on the **Heart** icon associated with it.
-* If you wish to withdraw your like, simply click the **Heart** icon again to Unlike the collection.
+Exploring collections is straightforward and insightful:
 
-### Other Actions for Collections
+1.  **Open Collection:** Click on a **Collection Card** or **Name** to view its contents.
+2.  **View Entities:** Explore the list of Prompts, Datasources, and Agents within the collection.
+3.  **Interact with Entities:** Within a collection, you can perform the following actions on individual Entities:
+    *   **View and Open Entities:** Click on Entity cards to view their details and configurations.
+    *   **Add to Collection:** Use the **Bookmark icon** on Entity cards or in the Actions menu to add Entities to other Collections.
 
-**Exploring Published Collections**:
+![Collection-Available_Actions](../../img/platform/menus/collections/Collection-Available_Actions.png)
 
-Simply click on the collection card or the name of a collection. This action reveals the prompts contained within the opened collection, providing a comprehensive view of its contents.
+### Filtering Entities within a Collection
 
-You will be able to work with published prompts within the collection. Detailed instructions for this process are available in the [Other Actions for Published Prompts](prompts.md#other-actions-for-published-prompts) section.
+Within the **Collection Detail View**, you can filter Entities for easier browsing and management:
 
-**Exporting Collections**:
+*   **Filter by Type using Tabs:** Use the **All**, **Prompts**, **Datasources**, and **Agents** tabs at the top of the Collection Detail View to view specific entity types within the collection.
+*   **Filter by Tags:** Use the **"Tags"** filter section, typically located on the right side, to narrow down the displayed list to Entities with specific tags.
 
-Collections can be exported for sharing or external use. Detailed instructions for this process are available in the [How to Export a Collection](#how-to-export-a-collection) section.
+![Collection-Filtering](../../img/platform/menus/collections/Collection-Filtering.png)
+
+### Modifying a Collection
+
+To modify an existing collection:
+
+1.  **Edit Collection Details:** Click the **"Edit" icon** on the Collection Card or within the Collection Detail View.
+2.  **Update Information:** Modify the **Name** and/or **Description** in the "Edit Collection" dialog.
+3.  **Saving Changes:** Click the **"Save"** button to apply your changes.
+
+### Publishing a Collection (Public Project)
+
+To publish a collection to the Public Project:
+
+1.  **Open Collection Detail View:** Navigate to the Collections menu and open the collection you want to publish.
+2.  **Review Collection Contents:** Ensure the collection is complete and contains at least one published entity.
+3.  **Publish Collection:** Click the **"Publish collection" icon** within the collection detail view.
+4.  **Moderation and Approval:** The collection will be submitted for moderation and, upon approval, published to the Public project.
+
+![Collection-Publishing](../../img/platform/menus/collections/Collection-Publishing.png)
+
+### Deleting a Collection
+
+To delete a collection:
+
+1.  **Locate Collection:** Find the collection you want to delete in the Collections menu.
+2.  **Delete Collection:** Click the **"Delete" icon** on the Collection Card or within the Collection Detail View.
+3.  **Confirmation:** Confirm the deletion when prompted.
+
+### Exporting Collections
+
+Exporting a collection allows you to save it as a JSON file for backup or sharing:
+
+1.  **Open Collection Detail View:** Navigate to the Collections menu and open the collection you want to export.
+2.  **Export Collection:** Click the **"Export Collection" icon** within the collection detail view.
+3.  **Download JSON File:** A JSON file containing the collection data will be automatically downloaded to your device.
+
+### Importing Collections
+
+Importing collections allows you to add pre-built collections from JSON files:
+
+1.  **Import Collection:** Click the **"Import"** button in the Collections menu.
+2.  **Select Collection File:** In the "Import Wizard," select the **JSON file** from your device.
+3.  **Configure Import Options:** Choose the target project and select Entities to import in the Import Wizard.
+4.  **Start Import:** Click the **"Import"** button to import the selected Entities.
+5.  **Locate Imported Entities:** Find the imported Prompts, Datasources, and Agents in their respective menus.
+
+**Important Note:** The Collection entity itself is not automatically recreated during import.
+
+For more information about importing collections and entities, please refer to the [Export and Import Guide](../feature-guides/core-features/export-import.md).
+
+## How to Add an Entity to a Collection
+
+ELITEA offers a convenient **Bookmark icon** to add Entities to Collections directly from the Entity menus:
+
+1.  **Navigate to Entity Menu:** Go to the **Prompts**, **Datasources**, or **Agents** menu.
+2.  **Locate the Entity to Add:** Find the Entity you want to add to a Collection.
+3.  **Click the Bookmark Icon:** Click the **Bookmark icon** associated with the Entity:
+    *   **Card List View**: Top right corner of the Entity card.
+    *   **Table View**: "Add to collection" option under the ellipsis icon (`...`) in the Actions column.
+
+    ![CardView_Add_to_Collection](../../img/platform/menus/collections/CardView_Add_to_Collection.png)
+    ![TableView_Add_to_Collection](../../img/platform/menus/collections/TableView_Add_to_Collection.png)
+
+4.  **Select Target Collection:** In the pop-up window, choose the **Collection** to add the Entity to.
+5.  **Entity Added:** The Entity is automatically added to the selected Collection.

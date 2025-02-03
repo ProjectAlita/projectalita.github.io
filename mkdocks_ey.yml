@@ -37,8 +37,11 @@ nav:
   - How TOs:
       - Agents & Toolkits:
           - Pipeline Agent Framework: how-tos/agents-toolkits/pipeline-agent-framework.md
+          - Toolkits - BitBucket Integration: how-tos/agents-toolkits/bitbucket_toolkit.md
+          - Toolkits - GitHub Integration: how-tos/agents-toolkits/github_toolkit.md
       - General How-Tos:
           - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
+          - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md
       - FAQs: faqs.md   
   - Support & Resources:
       - Contact Us: support-resources/contact-support.md
