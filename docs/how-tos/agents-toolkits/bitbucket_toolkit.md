@@ -1,282 +1,304 @@
 # ELITEA Toolkit Guide: Bitbucket Integration
 
-## 1. Introduction
+## Introduction
 
-### 1.1 Purpose of the Guide
+### Purpose of this Guide
 
-This guide is your comprehensive resource for setting up and utilizing the **Bitbucket toolkit** within ELITEA. It will walk you through each step, from initial Bitbucket account setup to integrating it seamlessly with ELITEA Agents.  This integration empowers you to automate code management tasks, streamline development workflows, and enhance collaboration directly within the ELITEA platform. By following this guide, you will be able to leverage the combined power of ELITEA and Bitbucket to boost your productivity and optimize your software development processes.
+This guide is your definitive resource for integrating and utilizing the **Bitbucket toolkit** within ELITEA. It provides a step-by-step walkthrough, from setting up your Bitbucket App Password to configuring the toolkit in ELITEA and effectively using it within your Agents.  By following this guide, you will unlock the power of automated code management, streamlined development workflows, and enhanced team collaboration, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your software development lifecycle using the combined strengths of ELITEA and Bitbucket.
 
-### 1.2 Brief Overview of Bitbucket
+### Brief Overview of Bitbucket
 
-Bitbucket is a web-based version control repository hosting service owned by Atlassian, primarily used for source code and development projects that use either Git or Mercurial revision control systems. It offers professional teams a collaborative platform to plan projects, collaborate on code, test, and deploy, all in one place. Bitbucket is widely used by development teams for:
+Bitbucket, by Atlassian, is a leading web-based platform for version control and code collaboration. It's designed for professional teams working on software development projects using Git. Bitbucket provides a central place to manage your entire development process, offering features for:
 
-*   **Version Control:** Tracking changes to code over time, enabling easy rollback and collaboration.
-*   **Code Collaboration:** Facilitating team-based code development through features like pull requests and code reviews.
-*   **Branch Management:**  Organizing code development into branches for feature development, bug fixes, and releases.
-*   **Workflow Automation:** Supporting automated workflows for building, testing, and deploying software.
+*   **Efficient Version Control:** Track every change to your code, enabling easy collaboration, rollback to previous versions, and a clear history of project evolution.
+*   **Seamless Code Collaboration:** Facilitate teamwork with features like pull requests, in-line code reviews, and branch-based development workflows.
+*   **Organized Branch Management:** Structure your development with branches for features, bug fixes, and releases, ensuring a clear and manageable development process.
+*   **Workflow Automation:** Integrate with CI/CD pipelines and other tools to automate building, testing, and deploying your software.
 
-Integrating Bitbucket with ELITEA allows you to bring these powerful code management capabilities directly into your AI-driven workflows, enabling agents to interact with your repositories, automate code-related tasks, and enhance your development lifecycle.
+Integrating Bitbucket with ELITEA brings these robust code management capabilities directly into your AI-powered workflows. Your ELITEA Agents can then interact with your Bitbucket repositories to automate code-related tasks, enhance development processes, and improve team collaboration through intelligent automation.
 
-### 1.3 Target Audience
+## BitBucket Account Setup and Configuration
 
-This guide is designed for a broad range of users, including:
+### Account Setup
 
-*   **End-Users:** Developers, engineers, and project team members who will use ELITEA Agents with Bitbucket integration to automate code-related tasks and streamline their workflows.
-*   **Administrators:** ELITEA administrators responsible for setting up and configuring toolkit integrations, ensuring seamless connectivity and security.
-*   **Support Staff:** Support personnel who need to understand the Bitbucket integration to assist users with setup, troubleshooting, and best practices.
+If you don't have a Bitbucket account yet, here’s how to get started:
 
-This guide assumes an **beginner level of technical understanding**, meaning users should have a basic familiarity with ELITEA and version control concepts, but advanced technical expertise is not required.
+1.  **Go to Bitbucket:** Open your web browser and navigate to [bitbucket.org](https://bitbucket.org).
+2.  **Sign Up for Free:** Click the **"Sign up for Free"** button.
+3.  **Enter Your Email:** Provide your email address. **For professional use, it's highly recommended to use your company email.**
+4.  **Create Your Account:** Follow the prompts to set up your account, including entering your name and creating a secure password.
+5.  **Verify Your Email:** Check your inbox for a verification email from Bitbucket and click the verification link to activate your account.
+6.  **Log In:** Once verified, log in to Bitbucket with your new credentials.
 
-## 2. Account Setup and Initial Configuration in Bitbucket
+### Token/API Key Generation: Creating an App Password in Bitbucket
 
-Before integrating Bitbucket with ELITEA, you need to ensure you have a Bitbucket account and the necessary access permissions.
+For secure integration with ELITEA, we strongly recommend using a Bitbucket **App Password**. This method is more secure than using your primary account password directly and allows you to control the permissions granted to ELITEA.
 
-### 2.1 Account Creation
-
-If you don't already have a Bitbucket account, follow these steps to create one:
-
-1.  **Visit Bitbucket Website:** Go to the official Bitbucket website (e.g., [bitbucket.org](https://bitbucket.org)).
-2.  **Sign Up:** Click on the **"Sign Up"** or **"Create Account"** button, usually located in the top right corner of the homepage.
-3.  **Enter Details:** Fill in the required information on the signup form. This typically includes your email address, full name, and a secure password. **Note:** It is recommended to use your **company email address** for professional use cases.
-4.  **Verify Email:** Check your inbox for a verification email from Bitbucket. Click on the confirmation link in the email to verify your email address and activate your account.
-5.  **Log In:** Once your email is verified, log in to Bitbucket using your newly created credentials (email address and password).
-
-### 2.2 Access Requirements
-
-*   **Valid Company Email:**  In most enterprise settings, you will need a valid company email address to sign up for a Bitbucket account.
-*   **Repository Access:** Ensure you have the necessary permissions to access the specific Bitbucket repositories you intend to integrate with ELITEA. This may involve being added as a member to the repository or having appropriate organizational permissions.
-*   **Organizational Admin Approval (Potentially):** Depending on your organization's policies, you might require approval from your Bitbucket or organizational administrator to create integrations or grant access to external applications like ELITEA. Check with your internal IT or administration team if you encounter access restrictions.
-
-### 2.3 Software-Specific Setup: Creating an App Password in Bitbucket
-
-For secure integration with ELITEA, it's recommended to create an **App Password** within Bitbucket specifically for ELITEA's use. App passwords provide a more secure alternative to using your main Bitbucket account password directly in integrations.
-
-**Steps to Create an App Password in Bitbucket:**
+**Follow these steps to create an App Password:**
 
 1.  **Log in to Bitbucket:** Access your Bitbucket account at [bitbucket.org](https://bitbucket.org).
-2.  **Access Personal Settings:** Click on your profile avatar in the bottom left corner and select **"Personal settings"** from the dropdown menu.
-3.  **Navigate to App Passwords:** In the left-hand navigation menu under "Security," click on **"App passwords"**.
-4.  **Create App Password:** Click on the **"Create app password"** button.
-5.  **Name the App Password:** In the "Label" field, enter a descriptive name for the app password, such as "ELITEA Integration" or "ELITEA Agent Access." This helps you identify the purpose of this app password later.
-6.  **Define Permissions (Crucial for Security):** Carefully select the **permissions** you grant to this app password. **Grant only the minimum necessary permissions** required for your ELITEA Agent's intended interactions with Bitbucket.  For basic integration, you might need permissions like:
-    *   **Repository: Read** (to allow ELITEA to read repository content, list branches, etc.)
-    *   **Repository: Write** (if you want ELITEA to create files, branches, or pull requests)
-    *   **Issues: Read** (if you want ELITEA to access and manage issues)
-    *   **Pull requests: Write** (if you want ELITEA to create pull requests)
-    *   **Wiki: Read** (if you want ELITEA to access wiki content)
-    *   **Wiki: Write** (if you want ELITEA to modify wiki content)
-    *   **Project: Read** (to list projects)
-    *   **Account: Read** (to verify account details)
+2.  **Access Personal Settings:** Click on your profile avatar in the bottom left corner and select **"Personal settings"**.
+3.  **Navigate to App Passwords:** In the left-hand menu under "Security," click on **"App passwords"**.
+4.  **Create App Password:** Click the **"Create app password"** button.
+5.  **Name the App Password:** In the "Label" field, enter a descriptive name like "ELITEA Integration" to easily identify its purpose.
+6.  **Define Permissions - Grant Least Privilege:**  This is crucial for security. **Carefully select only the necessary permissions** for ELITEA to interact with Bitbucket.  For typical ELITEA integration, consider these minimal permissions:
+    *   **Account permissions:**
+        *   **Account:** Read
+    *   **Project permissions:**
+        *   **Projects:** Read
+    *   **Repository permissions:**
+        *   **Repository:** Read
+        *   **Repository:** Write (Only if your Agent needs to modify repositories, e.g., create files, branches, or pull requests)
+        *   **Pull requests:** Write (If your Agent will create pull requests)
+        *   **Issues:** Read (If your Agent needs to access issues)
+        *   **Wiki:** Read (If your Agent needs to read wiki content)
 
-    **Important Security Practice:**  **Do not grant "Admin" or unnecessary permissions to the app password.** Limiting permissions reduces the potential security impact if the app password is ever compromised.
-7.  **Create Password:** Click the **"Create"** button.
-8.  **Securely Copy and Store the App Password:**  **Immediately copy the generated app password** that is displayed in the pop-up window. **This is the only time you will see the full app password.** Store it securely in a password manager or a safe location. You will need this app password to configure the Bitbucket toolkit in ELITEA.
+    **Security Best Practice:**  **Avoid granting "Admin" or any unnecessary permissions.** Limiting permissions significantly reduces potential security risks.
+
+7.  **Create Password:** Click **"Create"** by using the following [link](https://bitbucket.org/account/settings/app-passwords/).
+8.  **Securely Store Your App Password:** **Immediately copy the generated App Password.** This is the only time it will be displayed in full. Store it securely using a password manager or ELITEA's built-in Secrets feature (recommended for enhanced security within ELITEA). You will need this App Password to configure the Bitbucket toolkit in ELITEA.
 
 ![Bitbucket-App_Password](../../img/how-tos/bitbucket/Bitbucket-App_Password.png)
 
-## 3. System Integration with ELITEA
+## BitBucket Integration with ELITEA
 
-### 3.1 Overview and Usage of Bitbucket Integration with ELITEA
+### Agent Creation/Configuration
 
-The Bitbucket toolkit integration in ELITEA provides a seamless bridge between your AI Agents and your Bitbucket repositories. This integration allows your Agents to:
+To integrate Bitbucket, you'll need to configure it within an ELITEA Agent. You can either create a new Agent or modify an existing one.
 
-*   **Access Code Repositories:** Directly interact with your Bitbucket repositories to retrieve code, documentation, and project information.
-*   **Automate Code Management Tasks:** Automate tasks such as creating branches, listing files, reading file contents, creating pull requests, and managing issues directly through ELITEA Agents.
-*   **Enhance Development Workflows:** Streamline development workflows by integrating AI-powered automation into your code management processes.
-*   **Improve Collaboration:** Facilitate code collaboration by enabling agents to assist with pull request creation, commenting, and issue tracking.
+1.  **Navigate to Agents:** In ELITEA, go to the **Agents** menu.
+2.  **Create or Edit Agent:**
+    *   **New Agent:** Click **"+ Agent"** to create a new Agent. Follow the steps to define Agent details like name, description, type, and instructions.
+    *   **Existing Agent:** Select the Agent you want to integrate with Bitbucket and click on its name to edit.
+3.  **Access Tools Section:** In the Agent configuration, scroll down to the **"Tools"** section.
 
-### 3.2 Integration Steps: Configuring the Bitbucket Toolkit in ELITEA
+### Toolkit Configuration
 
-To integrate Bitbucket with ELITEA and enable your Agents to interact with your repositories, follow these configuration steps within ELITEA:
+This section details how to configure the Bitbucket toolkit within your ELITEA Agent.
 
-1.  **Navigate to Agents Menu:** In ELITEA, go to the **Agents** menu and either **create a new Agent** or **edit an existing Agent** that you want to integrate with Bitbucket.
-2.  **Access Toolkits Section:** Within the Agent configuration, scroll down to the **"Tools"** section.
-3.  **Add Toolkit:** Click the **"+" icon** under the "TOOLS" section to add a new toolkit.
-4.  **Select Bitbucket Toolkit:** From the dropdown list of available toolkits, choose **"Bitbucket"**. This will open the "New Bitbucket tool" configuration section.
-5.  **Configure Bitbucket Toolkit Settings:**  Fill in the following configuration fields in the "New Bitbucket tool" section:
+1.  **Add Toolkit:** In the "Tools" section, click the **"+" icon**.
+2.  **Select Bitbucket:** Choose **"Bitbucket"** from the dropdown list of available toolkits. This opens the "New Bitbucket tool" configuration panel.
+3.  **Configure Toolkit Details:** Fill in the following fields:
 
-    *   **Name:**  Enter a descriptive **Name** for your Bitbucket toolkit instance. This name will be used to reference the toolkit within your Agent's instructions (e.g., "MyBitbucketRepo", "CodeRepoAccess").
-    *   **Description:** Provide a brief **Description** of the toolkit's purpose or the specific Bitbucket repository it will access (e.g., "Access to Project Alpha code repository").
-    *   **URL:** Enter your Bitbucket API URL. **Crucially, ensure you use the following format:** `https://api.bitbucket.org/` (This is the base URL for the Bitbucket API).
+    *   **Name:**  Enter a **Name** for this Bitbucket toolkit instance. Choose a descriptive name that helps you identify its purpose within your Agent's instructions (e.g., "ProjectCodeRepo", "BitbucketAccess").
+    *   **Description:** Provide a **Description** for the toolkit, clarifying its purpose or the specific Bitbucket repository it accesses (e.g., "Toolkit to access and manage the main project repository").
+    *   **URL:**  Enter the Bitbucket API URL. **It is crucial to use the correct format:** `https://api.bitbucket.org/`. This is the base URL for the Bitbucket API endpoint.
     *   **Username:** Enter your Bitbucket **Username**. This is the username associated with the Bitbucket account for which you created the App Password.
+    *   **Project / Workspace:**  Specify the **Project or Workspace** in Bitbucket where your repository is located.
+        *   For **personal accounts or teams**, this is your **Workspace ID**. You can find your Workspace ID in Bitbucket URL after login, e.g., `https://bitbucket.org/your_workspace_id/`.
+        *   For **organizations using Bitbucket Cloud Premium/Enterprise**, this is the **Project Key**. You can find the Project Key in the Project settings in Bitbucket.
 
     ![Bitbucket-Account_Username](../../img/how-tos/bitbucket/Bitbucket-Account_Username.png)
 
-    *   **Repository:** Enter the **Repository name** that you want to access with this toolkit. Use the format: `repository_owner/repository_name` (e.g., `ProjectAlita/projectalita.github.io`).
-    *   **Main branch:** Specify the **Main branch** of your repository, typically `main` or `master`.
-    *   **Authentication Options - Password:** Select the **"Password"** authentication option.
-        *   **Password/Secret:** Choose **"Password"** and then paste the **App Password** you generated in Bitbucket (during the "Software-Specific Setup" section of this guide) into the **"Password"** field.  **Important Security Note:** For enhanced security, consider using the **"Secret"** option instead and storing your App Password securely as a Secret within [Secrets](../../atform-documentation/menus/settings.md#secrets) feature.
+    *   **Repository:** Specify the **Repository name** you want to access. Use the format: `repository_owner/repository_name` (e.g., `MyOrganization/MyProjectRepo`). This refers to the specific repository within your Bitbucket **Workspace** or **Project** that you want to integrate with ELITEA.
+    *   **Main branch:**  Indicate the **Main branch** of your repository. Typically, this is `main` or `master`.
+    *   **Authentication - Password:** Select **"Password"** as the authentication method.
+        *   **Password/Secret:** Choose **"Password"** and paste the **App Password** you generated in Bitbucket into the **"Password"** field.
+        *   **Enhanced Security with Secrets:** For improved security, it's highly recommended to use **"Secret"**. Select **"Secret"** and choose a pre-configured secret from the dropdown. You must first create and securely store your **App Password** as a Secret in ELITEA's [Secrets](../../atform-documentation/menus/settings.md#secrets) feature. Using Secrets prevents hardcoding sensitive credentials directly in the toolkit configuration.
 
     ![Bitbucket-Toolkit_Configuration](../../img/how-tos/bitbucket/Bitbucket-Toolkit_Configuration.png)
 
-6.  **Enable Desired Tools:** In the **"Tools"** section within the Bitbucket toolkit configuration, **check the boxes next to the specific Bitbucket tools** you want to enable for your Agent. Select only the tools that your Agent will actually need to use to minimize unnecessary permissions and maintain security. Available tools include:
-    *   **Create pull request**
-    *   **Create file**
-    *   **Read file**
-    *   **List branches in repo**
-    *   **Set active branch**
-    *   **Create branch**
+4.  **Enable Tools:** In the "Tools" section of the Bitbucket toolkit configuration, **select the checkboxes next to the Bitbucket tools** you want to enable for your Agent. **Enable only the tools your Agent will actually use** to adhere to the principle of least privilege and enhance security. Available tools are:
+    *   **Create pull request:**  Allows the Agent to create pull requests.
+    *   **Create file:** Enables the Agent to create new files in the repository.
+    *   **Read file:**  Allows the Agent to read file content from the repository.
+    *   **Update file:**  Allows the Agent to update existing files content in the repository.
+    *   **List branches in repo:** Enables the Agent to list branches in the repository.
+    *   **Set active branch:** Allows the Agent to set a specific branch as active.
+    *   **Create branch:** Enables the Agent to create new branches.
 
-7.  **Complete Setup:** Click the **arrow icon** (located at the top right of the toolkit configuration section) to complete the Bitbucket toolkit setup and return to the main Agent configuration menu.
+5.  **Complete Configuration:** Click the **arrow icon** (at the top right of the toolkit configuration) to save the Bitbucket toolkit setup and return to the main Agent configuration.
+6.  Click **Save** to apply configuration and changes.
 
-### 3.3 Tool Overview: Bitbucket Toolkit Functionalities
+### Tool Overview
 
-Once the Bitbucket toolkit is configured and added to your Agent, you can leverage the following tools within your Agent's instructions to interact with your Bitbucket repositories:
+The Bitbucket toolkit provides the following tools for your ELITEA Agents:
 
-*   **Create pull request:**  **Tool Name:** `create_pull_request`
-    *   **Functionality:** Creates a new pull request in the specified Bitbucket repository.
-    *   **Use Case:** Automate the creation of pull requests for code changes, feature branches, or bug fixes directly from within ELITEA workflows.
-*   **Create file** **Tool Name:** `create_file`
-    *   **Functionality:** Creates a new file in the specified Bitbucket repository.
-    *   **Use Case:** Automate the creation of new code files, documentation files, or configuration files within your repository.
-*   **Read file:** **Tool Name:** `read_file`
-    *   **Functionality:** Reads the content of a file from the specified Bitbucket repository.
-    *   **Use Case:** Retrieve code snippets, configuration files, or documentation content from your repository to provide context or data to your ELITEA Agent.
-*   **List branches in repo:** **Tool Name:** `list_branches_in_repo`
-    *   **Functionality:** Lists all branches available in the specified Bitbucket repository.
-    *   **Use Case:** Get a list of branches for branch management tasks, reporting, or to provide users with branch options within ELITEA workflows.
-*   **Set active branch:** **Tool Name:** `set_active_branch`
-    *   **Functionality:** Sets a specific branch as the active branch in the specified Bitbucket repository for subsequent operations.
-    *   **Use Case:** Switch the active branch for file operations or pull request creation within your ELITEA Agent workflows.
-*   **Create branch:** **Tool Name:** `create_branch`
-    *   **Functionality:** Creates a new branch in the specified Bitbucket repository.
-    *   **Use Case:** Automate the creation of new branches for feature development, bug fixes, or experimental code changes directly from ELITEA.
+*   **Create pull request:** `create_pull_request` -  Automates the creation of pull requests for code changes.
+*   **Create file:** `create_file` -  Enables automated creation of new files within your repository.
+*   **Read file:** `read_file` -  Allows Agents to retrieve and utilize file contents from your repository.
+*   **Update file:** `update_file` -  Allows Agents to update the content of existing files within your repository.
+*   **List branches in repo:** `list_branches_in_repo` - Provides a list of all branches in the repository for branch management tasks.
+*   **Set active branch:** `set_active_branch` - Sets a specific branch as the target for subsequent repository operations.
+*   **Create branch:** `create_branch` -  Automates the creation of new branches for feature development or bug fixes.
 
-## 4. Instructions and Prompts for Using the Bitbucket Toolkit
+## Instructions and Prompts for Using the Toolkit
 
-To effectively utilize the Bitbucket toolkit within your ELITEA Agents, you need to provide clear instructions within the Agent's "Instructions" field, telling the Agent *how* and *when* to use these tools.
+To instruct your ELITEA Agent to use the Bitbucket toolkit, you need to provide clear instructions within the Agent's "Instructions" field. These instructions guide the Agent on *when* and *how* to use the available tools.
 
-**General Instruction Structure:**
+### Instruction Creation for OpenAI Agents
 
-When instructing your Agent to use a Bitbucket toolkit, you will typically follow this pattern:
+When creating instructions for the Bitbucket toolkit for OpenAI-based Agents, focus on clear, action-oriented language. Break down tasks into simple steps and explicitly state the parameters required for each tool.  OpenAI Agents respond best to instructions that are:
 
+*   **Direct and Imperative:** Use action verbs and clear commands (e.g., "Use the 'read_file' tool...", "Create a branch named...").
+*   **Parameter-Focused:** Clearly list each parameter and how the Agent should determine its value.
+*   **Context-Aware:** Provide enough context so the Agent understands the overall goal and when to use specific tools within a workflow.
+
+When instructing your Agent to use a Bitbucket toolkit, use this pattern:
+
+```markdown
+1. Identify the goal: [State the objective, e.g., "To read the content of a file"].
+2. Tool Selection: Use the "[tool_name]" tool.
+3. Parameter Specification: Provide the following parameters:
+    - Parameter Name 1: <value or description of value>
+    - Parameter Name 2: <value or description of value>
+    - ...
+4. Expected Outcome: [Optionally, describe what should happen after the tool is used].
 ```
-Use the "[tool_name]" tool to [describe the action you want to perform]. 
-Provide the following parameters:
-- Parameter 1: <value or description of value>
-- Parameter 2: <value or description of value>
-- ...
-```
 
-**Example Agent Instructions for Bitbucket Toolkit Tools:**
+**Example Agent Instructions for Bitbucket Toolkit Tools (OpenAI Agent Friendly):**
+
+*   **Agent Instructions for Updating a File:**
+
+```markdown
+1. Goal: To update the content of the 'config.json' file in the 'settings' branch.
+2. Tool: Use the "update_file" tool.
+3. Parameters:
+    - Repository Name: "your-bitbucket-username/your-repository-name"
+    - File Path: "config.json"
+    - Branch Name: "settings"
+    - New Content: "Provide the new JSON configuration content here. For example: {\"setting\": \"new_value\"}"
+4. Outcome: The 'config.json' file in the 'settings' branch will be updated with the new content.
+```
 
 *   **Agent Instructions for Creating a New Branch:**
 
-    ```
-    Use the "create_branch" tool to create a new branch in the repository.
-    Provide the following parameters:
+```markdown
+1. Goal: To create a new feature branch for user authentication.
+2. Tool: Use the "create_branch" tool.
+3. Parameters:
     - Repository Name: "your-bitbucket-username/your-repository-name"
-    - New Branch Name: "feature-xyz"
-    - Base Branch: "main"
-    ```
+    - New Branch Name: "feature-user-auth"
+    - Base Branch: "develop"
+4. Outcome: A new branch named 'feature-user-auth' will be created based on the 'develop' branch.
+```
 
 *   **Agent Instructions for Listing Branches in a Repository:**
 
-    ```
-    Use the "list_branches_in_repo" tool to list all branches in the repository.
-    Provide the following parameters:
+```markdown
+1. Goal: To get a list of all branches in the repository to understand the current project structure.
+2. Tool: Use the "list_branches_in_repo" tool.
+3. Parameters:
     - Repository Name: "your-bitbucket-username/your-repository-name"
-    ```
+4. Outcome: The Agent will provide a list of all branches in the repository.
+```
 
 *   **Agent Instructions for Reading a File from a Repository:**
 
-    ```
-    Use the "read_file" tool to read the content of a file from the repository.
-    Provide the following parameters:
+```markdown
+1. Goal: To read the content of the 'README.md' file to understand the project's overview.
+2. Tool: Use the "read_file" tool.
+3. Parameters:
     - Repository Name: "your-bitbucket-username/your-repository-name"
-    - File Path: "path/to/your/file.txt"
+    - File Path: "README.md"
     - Branch Name: "main"
-    ```
+4. Outcome: The Agent will provide the content of the 'README.md' file from the 'main' branch.
+```
 
-**Important Considerations for Agent Instructions:**
+### Conversation Starters
 
-*   **Tool Name Accuracy:** Ensure you use the correct **Tool Name** (e.g., `"create_pull_request"`) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the tools correctly.
-*   **Parameter Clarity:** Clearly specify the **parameters** required for each tool and provide instructions on where the Agent should obtain the values for these parameters (e.g., from user input, from previous steps in the workflow, or hardcoded values).
-*   **Context and Examples:** Provide sufficient context and examples within your Agent's "Instructions" to guide the LLM in understanding *when* and *how* to use the Bitbucket toolkit's tools effectively within your desired workflow.
+Use these conversation starters to interact with your Bitbucket-integrated Agent.
 
-## 5. Best Practices and Use Cases for Bitbucket Integration
+**1. For Testing and Troubleshooting Connection:**
 
-### 5.1 Best Practices for Efficient Integration
+These starters are designed to verify if the Bitbucket toolkit is correctly configured and connected to your Bitbucket repository.
 
-*   **Test Integration Regularly:**  After setting up the Bitbucket toolkit and incorporating it into your Agents, **thoroughly test the integration** to ensure it is functioning as expected. Test each tool you intend to use to verify connectivity, authentication, and correct execution of Bitbucket actions.
-*   **Monitor Agent Performance:**  After deploying Agents with Bitbucket integration, **monitor their performance** regularly. Track metrics like task completion success rate, execution time, and error rates to identify any potential issues or areas for optimization in your Agent's instructions or toolkit configurations.
-*   **Follow Security Best Practices:**
-    *   **Use App Passwords:** Always use Bitbucket App Passwords instead of your main account password for integrations.
-    *   **Grant Least Privilege:** Grant only the minimum necessary permissions to the App Password to limit potential security risks.
-    *   **Securely Store Credentials:** Utilize ELITEA's Secrets Management feature to securely store and manage your Bitbucket App Passwords or tokens instead of hardcoding them directly in Agent configurations.
-*   **Provide Clear Instructions and Prompts:**  Craft clear and unambiguous instructions within your ELITEA Agents to guide them in using the Bitbucket toolkit effectively. Use the prompt examples provided in this guide as a starting point and adapt them to your specific use cases.
-*   **Start with Simple Use Cases:** Begin by implementing Bitbucket integration for simpler automation tasks and gradually progress to more complex workflows as you gain experience and confidence with the toolkit.
+*   "List branches in the repository." - *This tests basic connectivity and read permissions.*
+*   "Read the file 'README.md' from the main branch." - *This further tests read permissions and file access.*
+*   "Create a new branch named 'test-connection' based on main." - *This tests write permissions (if enabled) and branch creation functionality. Remember to delete the test branch afterwards.*
 
-### 5.2 Use Cases for Bitbucket Toolkit Integration
+**2. For General Agent Usage Scenarios:**
 
-The Bitbucket toolkit opens up a wide range of automation possibilities for your software development workflows within ELITEA. Here are some compelling use cases:
+These starters demonstrate how to initiate agent execution for common Bitbucket-related tasks.
 
-*   **Automated Branch Creation for New Features:**  Agents can automatically create new branches in your Bitbucket repository based on user requests or triggers within ELITEA workflows. This streamlines the branch management process for feature development.
-*   **Code Snippet Retrieval for Contextual Assistance:** Agents can retrieve code snippets from your Bitbucket repository and provide them to users within ELITEA conversations, offering contextual code examples or documentation directly within the AI interaction.
-*   **Automated Documentation Updates:** Agents can be configured to automatically update documentation files within your Bitbucket repository based on changes in code or project requirements, ensuring documentation stays synchronized with the latest codebase.
-*   **Pull Request Automation for Code Reviews:** Agents can assist in the code review process by automatically creating pull requests for code changes submitted through ELITEA workflows. This can streamline the code review process and improve code quality.
-*   **Issue Tracking and Management:** Agents can be used to create, update, and comment on issues in your Bitbucket issue tracker, automating issue management tasks and improving project tracking.
-*   **Codebase Analysis and Reporting:** Agents can analyze code files within your Bitbucket repository to generate reports on code complexity, identify potential code quality issues, or extract specific information from the codebase.
+*   "I want to update the documentation file 'user_guide.md' with the new feature details. Can you help me with that?" - *This could trigger a workflow involving `read_file`, content modification, and `update_file`.*
+*   "Create a pull request to merge my 'feature-x' branch into 'develop' for review." - *This directly initiates the `create_pull_request` tool.*
+*   "What are the active feature branches currently in the repository?" - *This would use the `list_branches_in_repo` tool to provide a project status overview.*
+*   "I need to add a new configuration file 'deploy.config' to the 'config' directory in the main branch." - *This would use the `create_file` tool.*
 
-**Example Use Case Table:**
+These conversation starters provide a starting point for interacting with your Bitbucket-integrated ELITEA Agent and can be customized further based on your specific use cases and workflows.
 
-| Tool                    | Use Case Example                                                                                                     | Benefit                                                                                                    |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `Create pull request`   | Agent automatically creates a pull request when a developer completes a feature branch in ELITEA.                    | Streamlines code review process, reduces manual PR creation effort.                                        |
-| `Create file`           | Agent generates a new documentation file based on user input and automatically commits it to the repository.         | Automates documentation creation, ensures documentation is up-to-date in the repository.                   |
-| `Read file`             | Agent retrieves a specific code file to provide code examples or context to a user within a chat conversation.       | Provides users with quick access to code snippets directly within ELITEA, enhancing contextual assistance. |
-| `List branches in repo` | Agent lists all branches in a repository to allow a user to select a target branch for a new feature or code change. | Simplifies branch selection and management within ELITEA workflows.                                        |
-| `Set active branch`     | Agent automatically switches to a specific branch before performing file operations or pull request creation.        | Ensures operations are performed on the correct branch, reducing errors and improving workflow accuracy.   |
-| `Create branch`         | Agent automatically creates a new feature branch based on a user request to start developing a new feature.          | Automates branch creation, speeding up the feature development workflow.                                   |
+## Use Cases
 
-## 6. Integration Helpdesk/Common Issues and Key Terms
+The Bitbucket toolkit unlocks numerous automation possibilities for software development workflows within ELITEA. Here are some key use cases, demonstrating how each tool can be applied:
 
-### 6.1 Troubleshooting Common Issues
+*   **Automated Feature Branching:**
+    *   **Scenario:** When a new feature is planned, the Agent can automatically create a dedicated feature branch in Bitbucket.
+    *   **Tools Used:** `create_branch`
+    *   **Example Instruction:** "Use the 'create_branch' tool to create a new branch named 'feature-branch-name' based on the 'develop' branch."
+    *   **Benefit:** Streamlines branch management, ensures organized feature development.
 
-*   **Connection Errors:**
-    *   **Problem:** ELITEA Agent fails to connect to Bitbucket, resulting in errors during toolkit execution.
-    *   **Possible Solutions:**
-        *   **Verify Bitbucket URL:** Double-check that you have entered the correct Bitbucket API URL (`https://api.bitbucket.org/`) in the toolkit configuration.
-        *   **Check Authentication:** Ensure that the Username and App Password (or Token) you provided are correct and valid for your Bitbucket account and repository.
-        *   **Verify App Password Permissions:** Review the permissions granted to your Bitbucket App Password. Ensure it has the necessary permissions (Read, Write, etc.) for the Bitbucket tools you are trying to use in ELITEA.
-        *   **Network Connectivity:** Confirm that both your ELITEA environment and your Bitbucket instance are connected to the internet and that there are no network connectivity issues blocking the integration.
-        *   **Hosting Option:** Double-check that you have selected the correct "Hosting Option" (Cloud or Server) in the Confluence toolkit configuration, especially when connecting to Epam's Confluence (use "Server").
-*   **Permission Denied Errors:**
-    *   **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify Bitbucket resources.
-    *   **Possible Solutions:**
-        *   **Verify App Password Permissions:**  Double-check the permissions granted to your Bitbucket App Password. Ensure it has the necessary permissions (Read, Write, etc.) for the specific Bitbucket actions your Agent is trying to perform (e.g., creating a file, creating a pull request).
-        *   **Repository Access:** Confirm that the Bitbucket account associated with the App Password has the required access to the specified repository. Verify that the account is a member of the repository and has the necessary roles or permissions.
-*   **Incorrect Repository or Branch Names:**
-    *   **Problem:** Agent tools fail to operate on the intended repository or branch.
-    *   **Possible Solutions:**
-        *   **Double-Check Repository Name:** Carefully verify that you have entered the correct Bitbucket Repository name in the toolkit configuration, using the format `repository_owner/repository_name`.
-        *   **Verify Branch Name:** Ensure that you are using the correct branch name (e.g., `main`, `develop`, `feature-branch`) in your Agent's instructions when specifying branch-related parameters for Bitbucket tools.
+*   **Contextual Code Retrieval for Support:**
+    *   **Scenario:** During a support conversation, an Agent can retrieve relevant code snippets from Bitbucket to provide context or examples to the user.
+    *   **Tools Used:** `read_file`
+    *   **Example Instruction:** "Use the 'read_file' tool to read the content of the file 'src/components/UserComponent.js' from the 'main' branch and show it to the user."
+    *   **Benefit:** Enhances support interactions with direct access to codebase information.
 
-### 6.2 FAQs
+*   **Automated Documentation Updates:**
+    *   **Scenario:** When code changes are made, the Agent can automatically update related documentation files in the repository.
+    *   **Tools Used:** `read_file`, `update_file`
+    *   **Example Instruction:** "Use the 'read_file' tool to get the current content of 'docs/api.md'. Update it with the new API changes and use 'update_file' to save the updated content back to 'docs/api.md' in the 'main' branch."
+    *   **Benefit:** Keeps documentation synchronized with the latest codebase, reducing manual effort and errors.
 
-1.  **Q: Can I use my regular Bitbucket password for the ELITEA integration?**
-    *   **A:** While technically possible, it is **strongly recommended to use a Bitbucket App Password** instead of your main account password for security reasons. App Passwords provide a more secure and controlled way to grant access to external applications like ELITEA.
-2.  **Q: What permissions should I grant to the Bitbucket App Password?**
-    *   **A:** Grant only the **minimum necessary permissions** required for your ELITEA Agent's intended interactions with Bitbucket. For basic integration, "Repository: Read" and "Repository: Write" permissions might be sufficient. Avoid granting "Admin" or unnecessary permissions.
-3.  **Q: Can I integrate with both Cloud and Server hosted Bitbucket instances?**
-    *   **A:** Yes, the ELITEA Bitbucket toolkit supports both **Cloud** and **Server** hosted Bitbucket instances. Ensure you select the correct "Hosting Option" (Cloud or Server) during toolkit configuration to match your Bitbucket setup.
-4.  **Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?**
-    *   **A:** Double-check the permissions granted to your Bitbucket App Password. Ensure that the App Password has the specific permissions required for the Bitbucket tools your Agent is trying to use (e.g., "Write" permission for creating files or pull requests). Also, verify that the Bitbucket account associated with the App Password has the necessary access to the target repository.
+*   **Pull Request Automation for Code Review:**
+    *   **Scenario:** After a developer completes a task, the Agent can automatically create a pull request for code review.
+    *   **Tools Used:** `create_pull_request`
+    *   **Example Instruction:** "Use the 'create_pull_request' tool to create a pull request from branch 'feature-branch-name' to 'develop' branch with the title 'Feature Branch Review' and description 'Please review the changes for the new feature.'"
+    *   **Benefit:** Automates the pull request process, facilitating timely code reviews and improving code quality.
 
-### 6.3 Glossary of Key Terms
+*   **Listing Branches for Project Overview:**
+    *   **Scenario:** A project manager wants a quick overview of all active branches in the repository.
+    *   **Tools Used:** `list_branches_in_repo`
+    *   **Example Instruction:** "Use the 'list_branches_in_repo' tool to list all branches in the repository and present them to the user."
+    *   **Benefit:** Provides easy access to branch information for project management and monitoring.
 
-*   **API (Application Programming Interface):** A set of rules and specifications that allows different software systems to communicate and exchange data with each other.
-*   **App Password:** A password specifically generated for application integrations in Bitbucket, providing a more secure alternative to using your main account password.
-*   **Repository:** A storage location for code, files, and version history in Bitbucket (and other version control systems).
-*   **Branch:** A parallel version of a repository, used for isolating code changes and feature development.
-*   **Pull Request (PR):** A request to merge code changes from one branch into another, often used for code review and collaboration.
-*   **Toolkit:** In ELITEA, a toolkit refers to an integration with an external service or platform (like Bitbucket, Jira, Confluence) that provides a set of pre-built tools and functionalities for Agents to use.
+*   **Setting Active Branch for Focused Operations:**
+    *   **Scenario:** Before performing a series of file operations, ensure the Agent is working on the correct branch.
+    *   **Tools Used:** `set_active_branch`
+    *   **Example Instruction:** "First, use 'set_active_branch' to set the active branch to 'develop'. Then, use 'read_file' to read 'config.json' from the active branch."
+    *   **Benefit:** Ensures operations are performed in the intended branch context, reducing errors and improving workflow reliability.
 
-### 6.4 Support and Contact Information
+## Troubleshooting and Support
 
-If you encounter any issues, have questions, or require further assistance beyond what is covered in this guide regarding the Bitbucket integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.
+### Troubleshooting
 
-**How to Reach ELITEA Support:**
+*   **Connection Issues:**
+    *   **Problem:** Agent fails to connect to Bitbucket, resulting in errors during toolkit execution.
+    *   **Troubleshooting Steps:**
+        1.  **Verify Bitbucket API URL:** Ensure the URL is correctly entered as `https://api.bitbucket.org/`.
+        2.  **Check Authentication:** Double-check the Bitbucket Username and App Password for accuracy.
+        3.  **App Password Permissions:** Review the App Password permissions in Bitbucket. Ensure they include the necessary permissions (Read, Write, etc.) for the tools you are using.
+        4.  **Network Connectivity:** Verify that both ELITEA and Bitbucket have internet access and no network issues are blocking the connection.
+        5.  **Hosting Option (If Applicable):** For self-hosted Bitbucket Server instances, ensure the URL and network settings are correctly configured.
+
+*   **Authorization Errors (Permission Denied):**
+    *   **Problem:** Agent receives "Permission Denied" or "Unauthorized" errors when accessing or modifying Bitbucket resources.
+    *   **Troubleshooting Steps:**
+        1.  **App Password Permissions:** Re-verify the App Password permissions. Ensure they grant sufficient access for the specific actions the Agent is trying to perform (e.g., "Repository: Write" for creating files).
+        2.  **Repository Access:** Confirm that the Bitbucket account associated with the App Password has the necessary access to the target repository. Check repository membership and permissions within Bitbucket.
+
+*   **Incorrect Repository or Branch:**
+    *   **Problem:** Agent operates on the wrong repository or branch.
+    *   **Troubleshooting Steps:**
+        1.  **Repository Name:** Double-check the Repository name in the toolkit configuration. It should be in the format `repository_owner/repository_name`.
+        2.  **Branch Names in Instructions:** Verify that branch names used in Agent instructions (e.g., for `read_file`, `create_branch`) are correct and exist in the repository.
+
+### FAQ
+
+1.  **Q: Can I use my regular Bitbucket password instead of an App Password?**
+    *   **A:** While possible, **using a Bitbucket App Password is strongly recommended for security.** App Passwords are more secure and allow you to limit the permissions granted to ELITEA.
+2.  **Q: What are the minimum permissions I should grant to the App Password?**
+    *   **A:** Grant only the **essential permissions** needed for your Agent's tasks. For read-only access, "Repository: Read" and "Account: Read" might suffice. If your Agent needs to modify the repository, include "Repository: Write" and other relevant permissions like "Pull requests: Write" as needed.
+3.  **Q: Can I use this toolkit with both Bitbucket Cloud and Bitbucket Server?**
+    *   **A:** Yes, the ELITEA Bitbucket toolkit is designed to work with both **Bitbucket Cloud** and **Bitbucket Server** instances. Ensure your URL is correctly pointing to your specific Bitbucket instance.
+4.  **Q: Why am I getting "Permission Denied" errors even though I think I have the right permissions?**
+    *   **A:** Carefully re-examine the App Password permissions in Bitbucket. Ensure that the specific permissions required for the actions your Agent is performing are granted. Also, double-check that the Bitbucket account associated with the App Password has the necessary repository access.
+
+### Support Contact
+
+For any issues, questions, or further assistance with the Bitbucket integration or ELITEA Agents, please reach out to our dedicated ELITEA Support Team. We are committed to providing prompt and effective support to ensure your success with ELITEA.
+
+**Contact ELITEA Support:**
 
 *   **Email:**  **[SupportAlita@epam.com](mailto:SupportAlita@epam.com)**
 
@@ -289,10 +311,24 @@ To help us understand and resolve your issue as quickly as possible, please ensu
 *   **Detailed Issue Description:** Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.
 *   **Relevant Configuration Information:**  To help us diagnose the issue, please include relevant configuration details, such as:
     *   **Agent Instructions (Screenshot or Text):** If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.
-    *   **Toolkit Configurations (Screenshots):** If the issue involves the Bitbucket toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.    
+    *   **Toolkit Configurations (Screenshots):** If the issue involves the Bitbucket toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.
 *   **Error Messages (Full Error Text):** If you are encountering an error message, please provide the **complete error text**. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.
 *   **Your Query/Prompt (Exact Text):** If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.
 
 **Before Contacting Support:**
 
 We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
+
+
+## Useful Links
+
+To further enhance your understanding and skills in integrating Bitbucket with ELITEA, here are some helpful resources:
+
+*   **[Bitbucket Website](https://bitbucket.org)**: Access the main Bitbucket platform to create an account or log in.
+*   **[Bitbucket Workspace URL Example](https://bitbucket.org/your_workspace_id/)**:  Example URL to understand the structure of a Bitbucket Workspace URL and locate your Workspace ID.
+*   **[Bitbucket API URL](https://api.bitbucket.org/)**: Access the base URL for the Bitbucket API endpoint, necessary for configuring the Bitbucket toolkit in ELITEA.
+*   **[Bitbucket App Passwords Settings](https://bitbucket.org/account/settings/app-passwords/)**: Directly navigate to the App Passwords settings page in Bitbucket to create and manage app passwords for secure integrations.
+*   **[ELITEA Secrets](../../atform-documentation/menus/settings.md#secrets)**: Learn how to securely store your Bitbucket App Password using ELITEA's Secrets management feature for enhanced security.
+*   **[ELITEA Agents Configuration](../../platform-documentation/menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Bitbucket toolkit to automate your workflows.
+*   **[ELITEA Support Email](mailto:SupportAlita@epam.com)**: Contact the ELITEA support team for direct assistance with Bitbucket integration or any other questions and issues you may encounter.
+
