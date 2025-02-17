@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/jira_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Jira Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../confluence_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../qtest_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-jira-integration">ELITEA Toolkit Guide: Jira Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-this-guide">Purpose of this Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-jira">Brief Overview of Jira</a></li>
+            <li class="second-level"><a href="#toolkits-account-setup-and-configuration-in-jira">Toolkit's Account Setup and Configuration in Jira</a></li>
+                
+                <li class="third-level"><a href="#account-setup">Account Setup</a></li>
+                <li class="third-level"><a href="#tokenapi-key-generation-creating-an-api-token-in-jira">Token/API Key Generation: Creating an API Token in Jira</a></li>
+            <li class="second-level"><a href="#system-integration-with-elitea">System Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#agent-creationconfiguration">Agent Creation/Configuration</a></li>
+                <li class="third-level"><a href="#toolkit-configuration">Toolkit Configuration</a></li>
+                <li class="third-level"><a href="#tool-overview-jira-toolkit-functionalities">Tool Overview: Jira Toolkit Functionalities</a></li>
+            <li class="second-level"><a href="#instructions-and-prompts-for-using-the-jira-toolkit">Instructions and Prompts for Using the Jira Toolkit</a></li>
+                
+            <li class="second-level"><a href="#best-practices-and-use-cases-for-jira-integration">Best Practices and Use Cases for Jira Integration</a></li>
+                
+                <li class="third-level"><a href="#best-practices-for-efficient-integration">Best Practices for Efficient Integration</a></li>
+                <li class="third-level"><a href="#use-cases-for-jira-toolkit-integration">Use Cases for Jira Toolkit Integration</a></li>
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting-common-issues">Troubleshooting Common Issues</a></li>
+                <li class="third-level"><a href="#faqs">FAQs</a></li>
+                <li class="third-level"><a href="#support-and-contact-information">Support and Contact Information</a></li>
+            <li class="second-level"><a href="#useful-links">Useful Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-jira-integration">ELITEA Toolkit Guide: Jira Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-this-guide">Purpose of this Guide</h3>
+<p>This guide is your definitive resource for integrating and effectively utilizing the <strong>Jira toolkit</strong> within ELITEA. It provides a detailed, step-by-step walkthrough, from setting up your Jira API token to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated issue tracking, streamlined project management workflows, and enhanced team collaboration, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your Jira-driven workflows, enhance team productivity, and improve project visibility within your organization.</p>
+<h3 id="brief-overview-of-jira">Brief Overview of Jira</h3>
+<p>Jira, by Atlassian, is a leading project management and issue tracking platform widely used by software development teams and various business teams for planning, tracking, and managing work. It serves as a central hub for teams to collaborate on projects, manage tasks, track bugs, and streamline workflows. Jira offers a wide array of functionalities, including:</p>
+<ul>
+<li><strong>Robust Issue Tracking:</strong> Jira provides a powerful and customizable issue tracking system that allows teams to capture, organize, and track all types of work items, including bugs, tasks, user stories, and feature requests, ensuring comprehensive issue management throughout the project lifecycle.</li>
+<li><strong>Agile Project Management:</strong> Jira is designed to support Agile methodologies like Scrum and Kanban, offering features such as Scrum boards, Kanban boards, sprint planning tools, and backlog management, enabling teams to effectively plan, execute, and track agile projects.</li>
+<li><strong>Customizable Workflows:</strong> Jira allows for the creation of highly customizable workflows to match specific project needs and team processes. Workflows can be tailored to reflect different stages of work items, approval processes, and automated transitions, streamlining project workflows and improving efficiency.</li>
+<li><strong>Comprehensive Reporting and Analytics:</strong> Jira provides a wide range of reporting and analytics features, offering real-time insights into project progress, team performance, issue resolution times, and other key metrics, enabling data-driven decision-making and continuous improvement.</li>
+<li><strong>Seamless Integration Ecosystem:</strong> Jira integrates seamlessly with a vast ecosystem of Atlassian tools and third-party applications, including Confluence, Bitbucket, and various development and collaboration tools, creating a unified and connected DevOps environment.</li>
+</ul>
+<p>Integrating Jira with ELITEA brings these powerful project management and issue tracking capabilities directly into your AI-driven workflows. Your ELITEA Agents can then intelligently interact with your Jira projects and issues to automate task management, enhance project tracking, improve team collaboration, and leverage AI to optimize your entire project management lifecycle within Jira.</p>
+<h2 id="toolkits-account-setup-and-configuration-in-jira">Toolkit's Account Setup and Configuration in Jira</h2>
+<h3 id="account-setup">Account Setup</h3>
+<p>If you do not yet have a Jira account, please follow these steps to create one:</p>
+<ol>
+<li><strong>Visit Atlassian Website:</strong> Open your web browser and navigate to the official Atlassian website: <a href="https://www.atlassian.com/software/jira">https://www.atlassian.com/software/jira</a>.</li>
+<li><strong>Sign Up for Jira:</strong> Click on the <strong>"Try Jira free"</strong> or <strong>"Get it free"</strong> button to start the sign-up process for Jira.</li>
+<li><strong>Create an Atlassian Account:</strong> Follow the prompts to create an Atlassian account. You can sign up using your email address, Google account, or Apple account. For professional use, it's recommended to use your company email address.</li>
+<li><strong>Choose a Workspace/Site Name:</strong> During the signup process, you will be asked to choose a workspace or site name for your Jira instance. Enter a suitable name for your workspace.</li>
+<li><strong>Set Up Your Project:</strong> Follow the remaining onboarding steps to set up your first Jira project. You will be prompted to choose a project template (e.g., Scrum, Kanban) and provide a project name.</li>
+<li><strong>Explore Jira Features:</strong> Once your Jira board is ready, explore the onboarding tips and familiarize yourself with Jira features, projects, boards, and navigation.</li>
+</ol>
+<h3 id="tokenapi-key-generation-creating-an-api-token-in-jira">Token/API Key Generation: Creating an API Token in Jira</h3>
+<p>For secure integration with ELITEA, it is essential to use a Jira <strong>API token</strong> for authentication. This method is more secure than using your primary Jira account password directly and allows you to control access permissions.</p>
+<p><strong>Follow these steps to generate an API token in Jira:</strong></p>
+<ol>
+<li><strong>Log in to Jira:</strong> Access your Jira workspace by navigating to your Jira URL (e.g., <code>your-workspace.atlassian.net</code>) and logging in with your credentials.</li>
+<li>
+<p><strong>Access Account Settings:</strong> Click on your profile avatar in the top right corner of the Jira interface. From the dropdown menu, select <strong>"Manage account"</strong>.</p>
+<p><img alt="Jira-Manage_Account" src="../../../img/how-tos/jira/Jira-Manage_Account.png" /></p>
+</li>
+<li>
+<p><strong>Navigate to Security Settings:</strong> In the Atlassian account settings page, navigate to the <strong>"Security"</strong> section in the left-hand sidebar.</p>
+<p><img alt="Jira-Security_tab" src="../../../img/how-tos/jira/Jira-Security_tab.png" /></p>
+</li>
+<li>
+<p><strong>Access API Tokens:</strong> Within the "Security" settings, locate the <strong>"API tokens"</strong> section and click on <strong>"Create and manage API tokens"</strong>.</p>
+<p><img alt="Jira-Access_API_Token" src="../../../img/how-tos/jira/Jira-Access_API_Token.png" /></p>
+</li>
+<li>
+<p><strong>Create API Token:</strong> On the "API tokens" page, click the <strong>"Create API token"</strong> button.</p>
+</li>
+<li><strong>Name Your Token:</strong> In the "Create API token" dialog, enter a descriptive <strong>Label</strong> for your token, such as "ELITEA Integration Token" or "ELITEA Agent Access." This label will help you identify the purpose of this token later.</li>
+<li>
+<p><strong>Create Token:</strong> Click the <strong>"Create"</strong> button to generate the API token.</p>
+<p><img alt="Jira-API_Token_Creation" src="../../../img/how-tos/jira/Jira-API_Token_Creation.png" /></p>
+</li>
+<li>
+<p><strong>Securely Copy and Store Your API Token:</strong>  <strong>Immediately copy the generated API token</strong> that is displayed in the pop-up window. <strong>This is the only time you will see the full token value.</strong> Store it securely in a password manager or, preferably, ELITEA's built-in Secrets feature for enhanced security within ELITEA. You will need this API token to configure the Jira toolkit in ELITEA.</p>
+</li>
+</ol>
+<p><img alt="Jira-Copy_API_Token" src="../../../img/how-tos/jira/Jira-Copy_API_Token.png" /></p>
+<p><img alt="Jira-Created_API_Tokens" src="../../../img/how-tos/jira/Jira-Created_API_Tokens.png" /></p>
+<h2 id="system-integration-with-elitea">System Integration with ELITEA</h2>
+<h3 id="agent-creationconfiguration">Agent Creation/Configuration</h3>
+<p>To integrate Jira functionalities into your workflows, you will need to configure the Jira toolkit within an ELITEA Agent. You can either create a new Agent specifically for Jira interactions or modify an existing Agent to incorporate Jira tools.</p>
+<ol>
+<li><strong>Navigate to Agents Menu:</strong> In ELITEA, go to the <strong>Agents</strong> menu from the main navigation panel.</li>
+<li><strong>Create or Edit Agent:</strong><ul>
+<li><strong>Create a New Agent:</strong> Click on the <strong>"+ Agent"</strong> button to initiate the creation of a new Agent. Follow the on-screen prompts to define essential Agent attributes such as Agent name, a descriptive Agent description, the desired Agent type, and initial instructions for the Agent.</li>
+<li><strong>Edit an Existing Agent:</strong> Select the Agent you intend to integrate with Jira from your list of Agents. Click on the Agent's name to open its configuration settings for editing.</li>
+</ul>
+</li>
+<li><strong>Access Tools Section:</strong> Within the Agent configuration interface, scroll down until you locate the <strong>"Tools"</strong> section. This section is where you will add and configure toolkits, including the Jira toolkit.</li>
+</ol>
+<h3 id="toolkit-configuration">Toolkit Configuration</h3>
+<p>This section provides detailed instructions on how to configure the Jira toolkit within your ELITEA Agent.</p>
+<ol>
+<li><strong>Add Toolkit:</strong> In the "Tools" section of the Agent configuration, click on the <strong>"+" icon</strong>. This action will display a dropdown list of available toolkits that can be integrated with your Agent.</li>
+<li><strong>Select Jira Toolkit:</strong> From the dropdown list of available toolkits, choose <strong>"Jira"</strong>. Selecting "Jira" will open the "New Jira tool" configuration panel, where you will specify the settings for your Jira integration.</li>
+<li>
+<p><strong>Configure Jira Toolkit Settings:</strong> Carefully fill in the following configuration fields within the "New Jira tool" section:</p>
+<ul>
+<li><strong>Name:</strong>  Enter a descriptive <strong>Name</strong> for your Jira toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions (e.g., "ProjectJira", "IssueTrackerAccess", "JiraIntegration").</li>
+<li><strong>Description:</strong> Provide a concise <strong>Description</strong> for the toolkit. This description should clarify the toolkit's purpose or the specific Jira project it is intended to access (e.g., "Toolkit for accessing and managing issues in Jira", "Integration for Jira Project 'Project Alpha'").</li>
+<li><strong>URL:</strong> Enter the base URL of your Jira instance. <strong>Ensure you use the correct format</strong>, including <code>https://</code> or <code>http://</code> and the full workspace URL (e.g., <code>https://your-workspace.atlassian.net/jira</code> or <code>https://your-company.atlassian.net</code>). For Epam Jira, use <code>https://jira.epam.com/jira/</code>.</li>
+<li><strong>Username:</strong> Enter the <strong>Username</strong> associated with your Jira account for which you generated the API token. This is typically your email address used for Jira login.</li>
+<li><strong>Authentication Options - API Key:</strong> Select the <strong>"API Key"</strong> authentication option.<ul>
+<li><strong>Password/Secret:</strong> Choose <strong>"Password"</strong> and paste the <strong>API token</strong> you generated in Jira (during the "Software-Specific Setup" section of this guide) into the <strong>"Password"</strong> field.</li>
+<li><strong>Enhanced Security with Secrets (Recommended):</strong> For enhanced security, it is strongly recommended to use ELITEA's <strong>Secrets Management</strong> feature to store your Jira API token securely. Instead of directly pasting the token into the "Password" field, select the <strong>"Secret"</strong> option and choose the pre-configured secret containing your Jira API token from the dropdown list. This prevents hardcoding sensitive credentials in your toolkit configuration.</li>
+</ul>
+</li>
+<li><strong>Hosting Option:</strong> Select the appropriate <strong>"Hosting option"</strong> for your Jira instance:<ul>
+<li><strong>Cloud:</strong> Select "Cloud" if you are using Jira Cloud (e.g., accessed via <code>atlassian.net</code>).</li>
+<li><strong>Server:</strong> Select "Server" if you are using a self-hosted Jira Server or Data Center instance. <strong>Note:</strong> When connecting to an Epam Jira instance, ensure you select "Server" as the Hosting option.</li>
+</ul>
+</li>
+<li><strong>Advanced Settings:</strong> Adjust the advanced settings to fine-tune the toolkit's operation:<ul>
+<li><strong>Additional Fields</strong>: Enumeration of custom fields which can be used (e.g. <code>customfield_100450</code>). Enter a comma-separated list of custom field IDs that you want to be accessible within the toolkit. This allows you to interact with custom fields specific to your Jira projects.</li>
+<li><strong>Verify SSL</strong>: Check this box to enable SSL verification for secure connections to your Jira instance. It is generally recommended to keep SSL verification enabled for enhanced security.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Jira-Toolkit_Configuration" src="../../../img/how-tos/jira/Jira-Toolkit_Configuration.png" /></p>
+</li>
+<li>
+<p><strong>Enable Desired Tools:</strong> In the "Tools" section within the Jira toolkit configuration panel, <strong>select the checkboxes next to the specific Jira tools</strong> that you want to enable for your Agent. <strong>It is crucial to enable only the tools that your Agent will actually need to use</strong> to adhere to the principle of least privilege and minimize potential security risks. Available tools include:</p>
+<ul>
+<li><strong>Search using JQL</strong> - Allows searching for Jira issues using Jira Query Language (JQL).</li>
+<li><strong>Create issue</strong> - Enables the Agent to create new Jira issues.</li>
+<li><strong>Update issue</strong> - Allows the Agent to update existing Jira issues.</li>
+<li><strong>List comments</strong> - Enables the Agent to list comments for a specific Jira issue.</li>
+<li><strong>Add comments</strong> - Allows the Agent to add new comments to a Jira issue.</li>
+<li><strong>Get attachments content</strong> - Enables the Agent to retrieve the content of attachments from a Jira issue.</li>
+<li><strong>List projects</strong> - Allows the Agent to list all projects in the Jira instance.</li>
+<li><strong>Set issue status</strong> - Allows the Agent to change the status of a Jira issue.</li>
+<li><strong>Get specific field info</strong> - Enables the Agent to retrieve information from a specific field of a Jira issue.</li>
+<li><strong>Get remote links</strong> - Allows the Agent to retrieve remote links associated with a Jira issue.</li>
+<li><strong>Link issues</strong> - Enables the Agent to create links between Jira issues.</li>
+<li><strong>Modify labels</strong> - Allows the Agent to add or remove labels from a Jira issue.</li>
+<li><strong>Generic request</strong> - Allows to send custom HTTP requests to Jira API.</li>
+</ul>
+</li>
+<li>
+<p><strong>Complete Setup:</strong> After configuring all the necessary settings and enabling the desired tools, click the <strong>arrow icon</strong> (typically located at the top right of the toolkit configuration section) to finalize the Jira toolkit setup and return to the main Agent configuration menu.</p>
+</li>
+<li>Click <strong>Save</strong> in the Agent configuration to save all changes and activate the Jira toolkit integration for your Agent.</li>
+</ol>
+<h3 id="tool-overview-jira-toolkit-functionalities">Tool Overview: Jira Toolkit Functionalities</h3>
+<p>Once the Jira toolkit is successfully configured and added to your Agent, you can leverage the following tools within your Agent's instructions to enable intelligent interaction with your Jira projects and issues:</p>
+<ul>
+<li>
+<p><strong>Search using JQL:</strong>  <strong>Tool Name:</strong> <code>search_using_jql</code></p>
+<ul>
+<li><strong>Functionality:</strong> Allows Agents to search for Jira issues using Jira Query Language (JQL) queries. Returns a list of Jira issues matching the JQL query.</li>
+<li><strong>Purpose:</strong> Enables advanced and flexible issue searching based on complex criteria defined using JQL, allowing Agents to retrieve specific sets of issues for reporting, analysis, or workflow automation based on Jira data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create issue:</strong>  <strong>Tool Name:</strong> <code>create_issue</code></p>
+<ul>
+<li><strong>Functionality:</strong> Automates the creation of new Jira issues within a specified Jira project. Requires parameters such as Summary, Description, Issue Type, and Priority.</li>
+<li><strong>Purpose:</strong> Streamlines issue reporting and task management by enabling Agents to automatically create new Jira issues directly from ELITEA workflows, based on user input, workflow triggers, or automated analysis, ensuring timely and consistent issue logging.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update issue:</strong>  <strong>Tool Name:</strong> <code>update_issue</code></p>
+<ul>
+<li><strong>Functionality:</strong> Allows Agents to modify and update fields of existing Jira issues. Requires the Issue Key and a JSON object containing the fields to update and their new values.</li>
+<li><strong>Purpose:</strong> Enables automated issue lifecycle management by allowing Agents to update issue statuses, assignees, priorities, custom fields, or any other issue attributes based on workflow progress, user actions, or external events, ensuring Jira issues are always up-to-date and accurately reflect project status.</li>
+</ul>
+</li>
+<li>
+<p><strong>List comments:</strong>  <strong>Tool Name:</strong> <code>list_comments</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of comments associated with a specific Jira issue, identified by its Issue Key. Returns a list of comment texts and author information.</li>
+<li><strong>Purpose:</strong> Enables Agents to access and summarize discussions and feedback related to specific Jira issues, facilitating efficient review of issue communication history, providing context for issue analysis, and enabling automated reporting on issue discussions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Add comments:</strong>  <strong>Tool Name:</strong> <code>add_comments</code></p>
+<ul>
+<li><strong>Functionality:</strong> Adds a new comment to a specific Jira issue. Requires the Issue Key and the comment text as parameters.</li>
+<li><strong>Purpose:</strong> Automates communication and updates within Jira issue tracking workflows by allowing Agents to add comments to Jira issues directly from ELITEA. Streamlines providing status updates, asking for clarifications, notifying stakeholders, or logging automated actions related to specific issues.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get attachments content:</strong>  <strong>Tool Name:</strong> <code>get_attachments_content</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves the content of attachments from a specific Jira issue. Requires the Issue Key as a parameter.</li>
+<li><strong>Purpose:</strong> Enables Agents to access and process attachments associated with Jira issues, allowing for automated analysis of attached files, extraction of data from attachments, or integration of attachment content into ELITEA workflows, enhancing data accessibility and processing for issue-related information.</li>
+</ul>
+</li>
+<li>
+<p><strong>List projects:</strong>  <strong>Tool Name:</strong> <code>list_projects</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of all projects available in the connected Jira instance. Returns a list of project names and keys.</li>
+<li><strong>Purpose:</strong> Enables Agents to dynamically discover and list available Jira projects, allowing for dynamic project selection in workflows, automated reporting across projects, or providing users with a list of projects to choose from within ELITEA.</li>
+</ul>
+</li>
+<li>
+<p><strong>Set issue status:</strong>  <strong>Tool Name:</strong> <code>set_issue_status</code></p>
+<ul>
+<li><strong>Functionality:</strong> Updates the status of a specific Jira issue. Requires the Issue Key and the desired Status name (e.g., "In Progress", "Done") as parameters.</li>
+<li><strong>Purpose:</strong> Automates issue lifecycle management by allowing Agents to automatically transition Jira issues to different statuses based on workflow progress, events, or user actions, ensuring issue statuses are always aligned with the current state of work and streamlining issue workflow management.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get specific field info:</strong>  <strong>Tool Name:</strong> <code>get_specific_field_info</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves information from a specific field of a Jira issue. Requires the Issue Key and the Field Name (or Field ID) as parameters.</li>
+<li><strong>Purpose:</strong> Enables Agents to extract specific data points from Jira issues, allowing for targeted retrieval of information from particular fields, facilitating data extraction for reporting, analysis, or integration with other systems, and providing access to granular issue data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get remote links:</strong>  <strong>Tool Name:</strong> <code>get_remote_links</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves remote links associated with a specific Jira issue. Returns a list of URLs and link titles.</li>
+<li><strong>Purpose:</strong> Enables Agents to access and utilize external web links associated with Jira issues, allowing for retrieval of related documentation, external resources, or linked information, providing a comprehensive view of issue context and related resources.</li>
+</ul>
+</li>
+<li>
+<p><strong>Link issues:</strong>  <strong>Tool Name:</strong> <code>link_issues</code></p>
+<ul>
+<li><strong>Functionality:</strong> Creates a link between two Jira issues. Requires the keys of the inward and outward issues and the Link Type (e.g., "Relates to", "Blocks").</li>
+<li><strong>Purpose:</strong> Automates the process of linking related Jira issues, establishing relationships between tasks, bugs, user stories, or other work items, improving issue traceability, dependency management, and providing a clear view of issue relationships within ELITEA workflows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Modify labels:</strong>  <strong>Tool Name:</strong> <code>modify_labels</code></p>
+<ul>
+<li><strong>Functionality:</strong> Adds or removes labels from a specific Jira issue. Requires the Issue Key and lists of labels to add and remove.</li>
+<li><strong>Purpose:</strong> Enables automated categorization and tagging of Jira issues through label management, improving issue organization, searchability, and filtering based on labels, streamlining issue classification and enhancing issue discoverability.</li>
+</ul>
+</li>
+<li>
+<p><strong>Generic request:</strong>  <strong>Tool Name:</strong> <code>generic_request</code></p>
+<ul>
+<li><strong>Functionality:</strong> Allows sending custom HTTP requests to the Jira API endpoint. Provides advanced users with the flexibility to interact with the Jira API directly for actions not covered by other pre-built tools.</li>
+<li><strong>Purpose:</strong> Enables advanced and customized interactions with the Jira API, allowing experienced users to extend the toolkit's capabilities, access specific Jira API endpoints, and perform actions beyond the scope of the standard Jira tools, providing maximum flexibility for complex or specialized Jira integrations.</li>
+</ul>
+</li>
+</ul>
+<h2 id="instructions-and-prompts-for-using-the-jira-toolkit">Instructions and Prompts for Using the Jira Toolkit</h2>
+<p>To effectively utilize the Jira toolkit within your ELITEA Agents, you need to provide clear and precise instructions within the Agent's "Instructions" field, telling the Agent <em>how</em> and <em>when</em> to use these tools.</p>
+<p><strong>General Instruction Structure:</strong></p>
+<p>When instructing your Agent to use a Jira tool, you will typically follow this pattern:</p>
+<pre><code>Use the &quot;[tool_name]&quot; tool to [describe the action you want to perform] in Jira.
+Provide the following parameters:
+- Parameter 1: &lt;value or description of value&gt;
+- Parameter 2: &lt;value or description of value&gt;
+- ...
+</code></pre>
+<p><strong>Example Agent Instructions for Jira Toolkit Tools:</strong></p>
+<ul>
+<li>
+<p><strong>Agent Instructions for Searching Issues using JQL:</strong></p>
+<p><code>Use the "search_using_jql" tool to search for Jira issues using a JQL query.
+Provide the following parameters:
+- JQL Query: "project = 'Project Alpha' AND status = 'In Progress' AND assignee = currentUser()"</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Creating a New Issue:</strong></p>
+<p><code>Use the "create_issue" tool to create a new Bug issue in Jira.
+Provide the following parameters:
+- Summary: "User login failing after recent update"
+- Description: "Users are reporting login failures on both web and mobile platforms after the latest update. Password reset does not resolve the issue."
+- Issue Type: "Bug"
+- Priority: "High"</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Updating an Existing Issue:</strong></p>
+<p><code>Use the "update_issue" tool to update the description of an existing Jira issue.
+Provide the following parameters:
+- Issue Key: "PA-123"
+- Fields to Update: 
+    {
+      "description": "Updated description: After further investigation, the login issue seems to be related to a database connection problem."
+    }</code></p>
+</li>
+</ul>
+<p><strong>Important Considerations for Agent Instructions:</strong></p>
+<ul>
+<li><strong>Tool Name Accuracy:</strong> Ensure you use the correct <strong>Tool Name</strong> (e.g., <code>"search_using_jql"</code>, <code>"create_issue"</code>, <code>"update_issue"</code>) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the toolkit correctly.</li>
+<li><strong>Parameter Clarity:</strong> Clearly specify the <strong>parameters</strong> required for each tool and provide instructions on where the Agent should obtain the values for these parameters (e.g., from user input, from previous steps in the workflow, or hardcoded values).</li>
+<li><strong>Context and Examples:</strong> Provide sufficient context and examples within your Agent's "Instructions" to guide the LLM in understanding <em>when</em> and <em>how</em> to use the Jira toolkit tools effectively within your desired workflow.</li>
+<li><strong>Jira Field Names and Values:</strong> Ensure that you use the correct Jira Field Names (e.g., "Summary", "Description", "Status", custom field IDs) and valid values for those fields as defined in your Jira project configuration. Incorrect field names or invalid values will cause errors during tool execution.</li>
+</ul>
+<h2 id="best-practices-and-use-cases-for-jira-integration">Best Practices and Use Cases for Jira Integration</h2>
+<h3 id="best-practices-for-efficient-integration">Best Practices for Efficient Integration</h3>
+<ul>
+<li><strong>Test Integration Thoroughly:</strong> After setting up the Jira toolkit and incorporating it into your Agents, <strong>thoroughly test each tool</strong> you intend to use to ensure seamless connectivity, correct authentication, and accurate execution of Jira actions.</li>
+<li><strong>Monitor Agent Performance and Usage:</strong>  Regularly <strong>monitor the performance of Agents</strong> utilizing Jira toolkits. Track metrics such as task completion success rate, execution time, and error rates to identify any potential issues or areas for optimization in Agent instructions or toolkit configurations.</li>
+<li><strong>Follow Security Best Practices:</strong><ul>
+<li><strong>Use API Tokens:</strong> Always use Jira API tokens instead of your main account password for integrations.</li>
+<li><strong>Grant Least Privilege:</strong> Grant only the minimum necessary scopes/permissions to the API token to limit potential security risks. While Jira API tokens have limited scope control, ensure you are generating tokens specifically for ELITEA integration and not reusing tokens with broader access.</li>
+<li><strong>Securely Store Credentials:</strong> Utilize ELITEA's Secrets Management feature to securely store and manage your Jira API tokens instead of hardcoding them directly in Agent configurations.</li>
+</ul>
+</li>
+<li><strong>Provide Clear Instructions and Prompts:</strong>  Craft clear and unambiguous instructions within your ELITEA Agents to guide them in using the Jira toolkit effectively. Use the prompt examples provided in this guide as a starting point and adapt them to your specific use cases.</li>
+<li><strong>Start with Simple Use Cases:</strong> Begin by implementing Jira integration for simpler automation tasks, such as retrieving issue lists or updating issue statuses, and gradually progress to more complex workflows as you gain experience and confidence with the toolkit.</li>
+<li><strong>Leverage Advanced Settings for Custom Fields:</strong>  Utilize the "Advanced Settings" in the toolkit configuration, specifically the "Additional Fields" option, to ensure your Agent can interact with and manage custom fields specific to your Jira projects, extending the toolkit's functionality to meet your unique Jira configurations.</li>
+</ul>
+<h3 id="use-cases-for-jira-toolkit-integration">Use Cases for Jira Toolkit Integration</h3>
+<p>The Jira toolkit opens up a wide range of automation possibilities for project management, issue tracking, and workflow automation within ELITEA. Here are some compelling use cases:</p>
+<ul>
+<li>
+<p><strong>Automated Issue Reporting and Bug Logging:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When automated tests within ELITEA workflows detect a bug or failure, automatically create a new Bug issue in Jira, pre-populated with detailed error information, logs, and environment details, streamlining bug reporting and ensuring timely issue logging.</li>
+<li><strong>Tools Used:</strong> <code>create_issue</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_issue' tool to create a new 'Bug' issue in Jira with the summary 'Automated Test Failure Detected' and description containing the full error logs and test execution details. Set priority to 'High'."</li>
+<li><strong>Benefit:</strong> Streamlines bug reporting and issue tracking by automating issue creation directly from ELITEA workflows, reducing manual effort for developers and testers, ensuring consistent and structured bug reports, and accelerating the bug triage process.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Task Prioritization Based on Real-time Data:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> ELITEA Agents can dynamically reprioritize Jira issues based on real-time data from external monitoring systems, customer feedback, or changing business priorities, ensuring teams are always working on the most critical tasks.</li>
+<li><strong>Tools Used:</strong> <code>search_using_jql</code>, <code>update_issue</code>, <code>generic_request</code> (for external data retrieval)</li>
+<li><strong>Example Instruction:</strong> "Use the 'generic_request' tool to retrieve the latest customer support ticket volume from the support dashboard API. Use 'search_using_jql' to find all open 'Bug' issues in Jira. Analyze the support ticket volume and reprioritize 'Bug' issues related to areas with high ticket volume to 'Highest' priority using 'update_issue' tool."</li>
+<li><strong>Benefit:</strong> Enables dynamic and data-driven task prioritization in Jira, ensuring development efforts are aligned with real-time business needs and customer feedback, improving responsiveness and resource allocation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Issue Status Updates and Workflow Management:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> As tasks progress through ELITEA workflows, automatically update the status of linked Jira issues to reflect the current progress, keeping Jira project boards and dashboards up-to-date in real-time.</li>
+<li><strong>Tools Used:</strong> <code>update_issue</code>, <code>set_issue_status</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'update_issue' tool to update the 'Status' field of Jira issue with key [issue_key] to 'In Progress' when the ELITEA workflow reaches the 'Development' stage. When the workflow completes successfully, use 'set_issue_status' to set the issue status to 'Done'."</li>
+<li><strong>Benefit:</strong> Automates issue lifecycle management, ensuring Jira issue statuses are always synchronized with the actual project progress. Reduces manual status updates, improves issue tracking accuracy, and provides real-time visibility into project workflow status.</li>
+</ul>
+</li>
+<li>
+<p><strong>Intelligent Issue Commenting and Notifications:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> ELITEA Agents can automatically add comments to Jira issues to provide status updates to stakeholders, notify assignees of new tasks, or request clarification on issue details, streamlining communication and collaboration within Jira.</li>
+<li><strong>Tools Used:</strong> <code>add_comments</code>, <code>get_specific_field_info</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'add_comments' tool to add a comment to Jira issue with key [issue_key] with the text 'Automated status update: Workflow execution completed successfully. Please proceed with testing.' Also, use 'get_specific_field_info' to retrieve the 'Assignee' field value for the issue and send a notification to the assignee via ELITEA chat about the status update."</li>
+<li><strong>Benefit:</strong> Streamlines communication and collaboration within Jira issue tracking by automating updates and notifications directly within Jira issues. Keeps all stakeholders informed of progress, reduces manual communication overhead, and ensures timely notifications for task assignments and status changes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Issue Linking for Dependency Management:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When creating new Jira issues for sub-tasks or related features, automatically link them to parent issues or related user stories to establish clear dependencies and relationships between work items.</li>
+<li><strong>Tools Used:</strong> <code>create_issue</code>, <code>link_issues</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_issue' tool to create a new 'Sub-task' issue for user story [user_story_key]. After creating the sub-task, use the 'link_issues' tool to link the new sub-task issue to the parent user story issue using the 'Sub-task' link type."</li>
+<li><strong>Benefit:</strong> Enhances issue traceability and project management by automating the creation of links between related Jira issues, providing a clear view of dependencies and relationships between tasks, user stories, and features, improving project planning and dependency tracking.</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting-common-issues">Troubleshooting Common Issues</h3>
+<ul>
+<li>
+<p><strong>Connection Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> ELITEA Agent fails to connect to Jira, resulting in errors during toolkit execution.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify Jira URL:</strong> Double-check that you have entered the correct Jira workspace URL in the toolkit configuration, including <code>https://</code> or <code>http://</code> and the full workspace URL (e.g., <code>https://your-workspace.atlassian.net/jira</code> or <code>https://your-company.atlassian.net</code>). For Epam Jira, use <code>https://jira.epam.com/jira/</code>.</li>
+<li><strong>Check Username and API Token:</strong> Ensure that the <strong>Username</strong> and <strong>API Token</strong> you provided are correct and valid for your Jira account and workspace. Carefully re-enter or copy-paste these credentials to rule out typos.</li>
+<li><strong>Verify Hosting Option:</strong> Double-check that you have selected the correct <strong>Hosting option</strong> (Cloud or Server) in the Jira toolkit configuration, especially when connecting to Epam's Jira (use "Server").</li>
+<li><strong>Network Connectivity:</strong> Confirm that both your ELITEA environment and your Jira instance are connected to the internet and that there are no network connectivity issues blocking the integration.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization Errors (Permission Denied/Unauthorized):</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify Jira resources.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify API Token Validity:</strong> Ensure that the Jira API token you are using is still valid and has not been revoked in your Atlassian account settings. Generate a new token if necessary.</li>
+<li><strong>Check Jira Permissions:</strong> Confirm that the Jira account associated with the Username and API Token has the necessary permissions within Jira to access and modify the specific projects and issues your Agent is trying to interact with. Verify project and issue permissions within Jira project settings.</li>
+<li><strong>Hosting Option Mismatch:</strong> Double-check that you have selected the correct "Hosting option" (Cloud or Server) in the Jira toolkit configuration. Using the wrong hosting option can lead to authentication and connection errors.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Tool-Specific Parameter Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails for specific Jira tools due to incorrect parameter values or formats.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Verify Project Keys:</strong> Ensure that you are using the correct Jira Project Keys in your Agent's instructions and toolkit configuration. Project Keys are case-sensitive and must exactly match the project keys in your Jira instance. Use the "List projects" tool to verify project keys if needed.</li>
+<li><strong>Verify Issue Keys:</strong> Double-check that you are using the correct Jira Issue Keys when referencing specific issues in your Agent's instructions. Issue Keys are case-sensitive and must match the issue keys in Jira exactly (e.g., "PA-123", "PROJECT-456").</li>
+<li><strong>Parameter Format:</strong> Verify that you are providing parameters in the correct format expected by each Jira tool (e.g., string values for names, numerical values for IDs, JSON format for issue updates). Refer to the "Instructions and Prompts for Using the Toolkit" section for parameter details and examples.</li>
+<li><strong>Custom Fields:</strong> If you are using custom fields in your Agent instructions, ensure that you have added the correct <strong>Additional Fields</strong> IDs in the toolkit's "Advanced Settings" and that you are using the correct custom field IDs and values in your Agent instructions. Use the "Get specific field info" tool to verify custom field IDs and values if needed.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="faqs">FAQs</h3>
+<ol>
+<li><strong>Q: Can I use my regular Jira password for the ELITEA integration?</strong><ul>
+<li><strong>A:</strong> No, it is <strong>strongly recommended to use a Jira API token</strong> instead of your main account password for security reasons. API tokens provide a more secure and controlled way to grant access to external applications like ELITEA.</li>
+</ul>
+</li>
+<li><strong>Q: What permissions should I grant to the Jira API Token?</strong><ul>
+<li><strong>A:</strong> Jira API tokens have a fixed scope (access to Jira REST API). You don't need to select specific scopes when generating the token. However, ensure that the Jira account associated with the API token has the necessary permissions within Jira to access and modify the projects and issues your Agent will be interacting with.</li>
+</ul>
+</li>
+<li><strong>Q: What is the correct format for the Jira URL in the toolkit configuration?</strong><ul>
+<li><strong>A:</strong>  The Jira URL should be entered in the full format, including <code>https://</code> or <code>http://</code> and the complete workspace URL (e.g., <code>https://your-workspace.atlassian.net/jira</code> or <code>https://your-company.atlassian.net</code>). Ensure there are no typos or missing parts in the URL. For Epam Jira, use <code>https://jira.epam.com/jira/</code>.</li>
+</ul>
+</li>
+<li><strong>Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?</strong><ul>
+<li><strong>A:</strong> Double-check the following:<ul>
+<li><strong>API Token Validity:</strong> Ensure that the API token is valid and has not been revoked.</li>
+<li><strong>Jira Account Permissions:</strong> Verify that the Jira account associated with the API token has the necessary permissions to access the specific projects and issues your Agent is trying to interact with.</li>
+<li><strong>Hosting Option:</strong> Double-check that you have selected the correct "Hosting option" (Cloud or Server) in the Jira toolkit configuration, especially for self-hosted or Epam Jira instances.</li>
+<li><strong>Verify SSL Setting:</strong> If you are connecting to a Jira Server instance, try toggling the "Verify SSL" setting in the "Advanced Settings" of the toolkit configuration, as SSL verification issues can sometimes cause connection problems.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="support-and-contact-information">Support and Contact Information</h3>
+<p>If you encounter any issues, have questions, or require further assistance beyond what is covered in this guide regarding the Jira integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.</p>
+<p><strong>How to Reach ELITEA Support:</strong></p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p><strong>Best Practices for Effective Support Requests:</strong></p>
+<p>To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> Clearly specify the ELITEA environment you are using (e.g., "Nexus," "Alita Lab," "EYE").</li>
+<li><strong>Project Details:</strong>  Indicate the <strong>Project Name</strong> and whether you are working in your <strong>Private</strong> workspace or a <strong>Team</strong> project.</li>
+<li><strong>Detailed Issue Description:</strong> Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.</li>
+<li><strong>Relevant Configuration Information:</strong>  To help us diagnose the issue, please include relevant configuration details, such as:<ul>
+<li><strong>Agent Instructions (Screenshot or Text):</strong> If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.</li>
+<li><strong>Toolkit Configurations (Screenshots):</strong> If the issue involves the Jira toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.</li>
+</ul>
+</li>
+<li><strong>Error Messages (Full Error Text):</strong> If you are encountering an error message, please provide the <strong>complete error text</strong>. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.</li>
+<li><strong>Your Query/Prompt (Exact Text):</strong> If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p>
+<h2 id="useful-links">Useful Links</h2>
+<p>To further enhance your understanding and skills in integrating Jira with ELITEA, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="https://www.atlassian.com/software/jira">Atlassian Jira Website</a></strong>: Access the main Jira product website for product information and documentation.</li>
+<li><strong><a href="https://id.atlassian.com/manage-profile/security">Atlassian Account Settings</a></strong>: Access your Atlassian account settings to manage your profile and API tokens.</li>
+<li><strong><a href="https://confluence.atlassian.com/jirasoftwareserver/advanced-searching-jql-reference-765593971.html">Jira Query Language (JQL) Documentation</a></strong>: Learn more about Jira Query Language (JQL) and how to construct advanced search queries in Jira.</li>
+<li><strong><a href="../../../platform-documentation/menus/settings/#secrets">ELITEA Secrets Management</a></strong>: Learn how to securely store your Jira API Token using ELITEA's Secrets management feature for enhanced security.</li>
+<li><strong><a href="../../../platform-documentation/menus/agents/">ELITEA Agents Configuration</a></strong>:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Jira toolkit to automate your workflows.</li>
+<li><strong><a href="mailto:SupportAlita@epam.com">ELITEA Support Email</a></strong>: Contact the ELITEA support team for direct assistance with Jira integration or any other questions and issues you may encounter.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

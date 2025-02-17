@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/testrail_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>TestRail Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">TestRail Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../xray_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../../creating-prompts/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-testrail-integration">ELITEA Toolkit Guide: TestRail Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-this-guide">Purpose of this Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-testrail">Brief Overview of TestRail</a></li>
+            <li class="second-level"><a href="#testrail-account-setup-and-configuration">TestRail Account Setup and Configuration</a></li>
+                
+                <li class="third-level"><a href="#account-setup">Account Setup</a></li>
+                <li class="third-level"><a href="#api-key-generation-in-testrail">API Key Generation in TestRail</a></li>
+            <li class="second-level"><a href="#testrail-integration-with-elitea">TestRail Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#agent-creationconfiguration">Agent Creation/Configuration</a></li>
+                <li class="third-level"><a href="#toolkit-configuration">Toolkit Configuration</a></li>
+                <li class="third-level"><a href="#tool-overview">Tool Overview</a></li>
+            <li class="second-level"><a href="#instructions-and-prompts-for-using-the-toolkit">Instructions and Prompts for Using the Toolkit</a></li>
+                
+                <li class="third-level"><a href="#instruction-creation-for-openai-agents">Instruction Creation for OpenAI Agents</a></li>
+                <li class="third-level"><a href="#conversation-starters">Conversation Starters</a></li>
+            <li class="second-level"><a href="#use-cases">Use Cases</a></li>
+                
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting">Troubleshooting</a></li>
+                <li class="third-level"><a href="#faq">FAQ</a></li>
+                <li class="third-level"><a href="#support-contact">Support Contact</a></li>
+            <li class="second-level"><a href="#useful-links">Useful Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-testrail-integration">ELITEA Toolkit Guide: TestRail Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-this-guide">Purpose of this Guide</h3>
+<p>This guide is your definitive resource for integrating and utilizing the <strong>TestRail toolkit</strong> within ELITEA. It provides a step-by-step walkthrough, from setting up your TestRail API Key to configuring the toolkit in ELITEA and effectively using it within your Agents. By following this guide, you will unlock the power of automated test management, streamlined testing workflows, and enhanced team collaboration, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your software testing lifecycle using the combined strengths of ELITEA and TestRail.</p>
+<h3 id="brief-overview-of-testrail">Brief Overview of TestRail</h3>
+<p>TestRail is a comprehensive, web-based test management tool that helps teams of all sizes efficiently organize, manage, and track their software testing efforts. It provides a centralized platform to streamline your testing process, offering features for:</p>
+<ul>
+<li><strong>Test Case Management:</strong> Create, organize, and manage test cases with rich text formatting, attachments, and custom fields. Structure test cases into projects, suites, and sections for easy navigation and maintenance.</li>
+<li><strong>Test Execution &amp; Tracking:</strong> Plan and execute test runs and test plans, track test results in real-time, and assign tests to team members. Get a clear overview of testing progress and identify areas needing attention.</li>
+<li><strong>Reporting &amp; Metrics:</strong> Generate insightful reports and metrics on test coverage, test results, and team performance. Use dashboards and charts to visualize testing progress and identify trends.</li>
+<li><strong>Integration with Development Tools:</strong> Seamlessly integrates with issue trackers like Jira, and automation tools, making it a central hub for your testing ecosystem.</li>
+<li><strong>Customization &amp; Scalability:</strong> Adapt TestRail to your specific testing processes with customizable workflows, fields, and templates. Scale TestRail as your team and projects grow.</li>
+</ul>
+<p>Integrating TestRail with ELITEA brings these robust test management capabilities directly into your AI-powered workflows. Your ELITEA Agents can then interact with your TestRail instance to automate test-related tasks, enhance testing processes, and improve team collaboration through intelligent automation.</p>
+<h2 id="testrail-account-setup-and-configuration">TestRail Account Setup and Configuration</h2>
+<h3 id="account-setup">Account Setup</h3>
+<p>If you don't have a TestRail account yet, here’s how to get started with a free trial:</p>
+<ol>
+<li><strong>Go to TestRail Website:</strong> Open your web browser and navigate to <a href="https://www.gurocksoftware.com/testrail/">TestRail's official website</a>.</li>
+<li><strong>Start a Free Trial:</strong> On the homepage, locate and click the <strong>"Free Trial"</strong> button.</li>
+<li><strong>Fill Out the Registration Form:</strong> Provide your details in the registration form. This typically includes your name, company email address, company name, and other relevant information. <strong>For professional use, it's highly recommended to use your company email.</strong></li>
+<li>
+<p><strong>Submit the Form:</strong> Click on the <strong>“Start Free Trial”</strong> or similar button to submit the form. TestRail will send a confirmation email to the email address you provided.</p>
+<p><img alt="TestRail-Account_Form" src="../../../img/how-tos/testrail/TestRail-Account_Form.png" /></p>
+</li>
+<li>
+<p><strong>Verify Your Email:</strong> Open the confirmation email from TestRail and click on the verification link provided within the email. This step is crucial to activate your TestRail trial account.</p>
+<p><img alt="TestRail-Confirm_Your_Account_1" src="../../../img/how-tos/testrail/TestRail-Confirm_Your_Account_1.png" /></p>
+<p><img alt="TestRail-Confirm_Your_Account_2" src="../../../img/how-tos/testrail/TestRail-Confirm_Your_Account_2.png" /></p>
+</li>
+<li>
+<p><strong>Access Your Account:</strong> After email verification, you will be redirected to your new TestRail instance or prompted to log in. Follow any on-screen instructions to complete the setup and access your TestRail account.</p>
+</li>
+</ol>
+<h3 id="api-key-generation-in-testrail">API Key Generation in TestRail</h3>
+<p>To securely integrate TestRail with ELITEA, you need to generate an API key within TestRail. This API key will be used by ELITEA to authenticate and access your TestRail instance.</p>
+<p><strong>Follow these steps to create an API Key:</strong></p>
+<ol>
+<li>
+<p><strong>Log in to TestRail:</strong> Access your TestRail account using your credentials.</p>
+<p><img alt="TestRail-Welcome" src="../../../img/how-tos/testrail/TestRail-Welcome.png" /></p>
+</li>
+<li>
+<p><strong>Access My Settings:</strong> Click on your profile name in the top right corner of the TestRail interface. From the dropdown menu, select <strong>"My Settings"</strong>.</p>
+</li>
+<li><strong>Navigate to API Keys:</strong> In the "My Settings" page, find and click on the <strong>"API keys"</strong> tab.</li>
+<li>
+<p><strong>Add API Key:</strong> Click the <strong>"Add Key"</strong> button to create a new API key.</p>
+<p><img alt="TestRail-Add_API_Key" src="../../../img/how-tos/testrail/TestRail-Add_API_Key.png" /></p>
+</li>
+<li>
+<p><strong>Name the API Key:</strong> In the "Name" field, enter a descriptive name for the API key, such as "ELITEA Integration Key". This will help you identify the purpose of this key later.</p>
+</li>
+<li><strong>Generate API Key:</strong> Click the <strong>"Generate Key"</strong> button. TestRail will generate a new API key and display it to you.</li>
+<li><strong>Securely Store Your API Key:</strong> <strong>Immediately copy the generated API key.</strong> This is the only time it will be displayed in full. Store it securely using a password manager or ELITEA's built-in Secrets feature (recommended for enhanced security within ELITEA). You will need this API Key to configure the TestRail toolkit in ELITEA.</li>
+</ol>
+<h2 id="testrail-integration-with-elitea">TestRail Integration with ELITEA</h2>
+<h3 id="agent-creationconfiguration">Agent Creation/Configuration</h3>
+<p>To integrate TestRail, you'll need to configure it within an ELITEA Agent. You can either create a new Agent or modify an existing one.</p>
+<ol>
+<li><strong>Navigate to Agents:</strong> In ELITEA, go to the <strong>Agents</strong> menu.</li>
+<li><strong>Create or Edit Agent:</strong><ul>
+<li><strong>New Agent:</strong> Click <strong>"+ Agent"</strong> to create a new Agent. Follow the steps to define Agent details like name, description, type, and instructions.</li>
+<li><strong>Existing Agent:</strong> Select the Agent you want to integrate with TestRail and click on its name to edit.</li>
+</ul>
+</li>
+<li><strong>Access Tools Section:</strong> In the Agent configuration, scroll down to the <strong>"Tools"</strong> section.</li>
+</ol>
+<h3 id="toolkit-configuration">Toolkit Configuration</h3>
+<p>This section details how to configure the TestRail toolkit within your ELITEA Agent.</p>
+<ol>
+<li><strong>Add Toolkit:</strong> In the "Tools" section, click the <strong>"+" icon</strong>.</li>
+<li><strong>Select TestRail:</strong> Choose <strong>"TestRail"</strong> from the dropdown list of available toolkits. This opens the "New TestRail tool" configuration panel.</li>
+<li>
+<p><strong>Configure Toolkit Details:</strong> Fill in the following fields:</p>
+<ul>
+<li><strong>Name:</strong> Enter a <strong>Name</strong> for this TestRail toolkit instance. Choose a descriptive name that helps you identify its purpose within your Agent's instructions (e.g., "TestRailQA", "TestManagementTool").</li>
+<li><strong>Description:</strong> Provide a <strong>Description</strong> for the toolkit, clarifying its purpose or the specific TestRail project it accesses (e.g., "Toolkit to access and manage test cases in TestRail").</li>
+<li><strong>URL:</strong> Enter the <strong>URL of your TestRail instance</strong>.  <strong>It is crucial to use the correct format and your specific instance URL.</strong> For example: <code>https://yourcompany.testrail.io/</code>.  Replace <code>yourcompany</code> with your actual TestRail subdomain.</li>
+<li><strong>Email:</strong> Enter the <strong>Email address</strong> associated with your TestRail account that you used to generate the API key.</li>
+<li><strong>Password/API token:</strong> Select <strong>"API token"</strong> as the authentication method.<ul>
+<li><strong>Password/Secret:</strong> Choose <strong>"Secret"</strong> and select a pre-configured secret from the dropdown. You must first create and securely store your <strong>API Key</strong> as a Secret in ELITEA's <a href="../../atform-documentation/menus/settings.md#secrets">Secrets</a> feature. Using Secrets prevents hardcoding sensitive credentials directly in the toolkit configuration and enhances security. Alternatively, you can choose <strong>"Password"</strong> and paste the <strong>API Key</strong> you generated in TestRail into the <strong>"Password"</strong> field, but using Secrets is highly recommended for security best practices.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="TestRail-Toolkit_Configuration" src="../../img/how-tos/testrail/TestRail-Toolkit_Configuration.png" /> <em>[</em><em>Note:</em><em> Replace with actual screenshot of TestRail Toolkit Configuration in ELITEA if available]</em></p>
+</li>
+<li>
+<p><strong>Enable Tools:</strong> In the "Tools" section of the TestRail toolkit configuration, <strong>select the checkboxes next to the TestRail tools</strong> you want to enable for your Agent. <strong>Enable only the tools your Agent will actually use</strong> to adhere to the principle of least privilege and enhance security. Available tools are:</p>
+<ul>
+<li><strong>Get case:</strong> Retrieves a specific test case from TestRail.</li>
+<li><strong>Get cases:</strong> Retrieves a list of test cases from a TestRail project.</li>
+<li><strong>Get cases by filter:</strong> Retrieves test cases based on specified filter criteria.</li>
+<li><strong>Add case:</strong> Adds a new test case to TestRail.</li>
+</ul>
+</li>
+<li>
+<p><strong>Complete Configuration:</strong> Click the <strong>arrow icon</strong> (at the top right of the toolkit configuration) to save the TestRail toolkit setup and return to the main Agent configuration.</p>
+</li>
+<li>Click <strong>Save</strong> to apply configuration and changes to the Agent.</li>
+</ol>
+<h3 id="tool-overview">Tool Overview</h3>
+<p>The TestRail toolkit provides the following tools for your ELITEA Agents:</p>
+<ul>
+<li><strong>Get case:</strong> <code>get_case</code> - Retrieves a specific test case from TestRail using its ID. Useful for reviewing details of a particular test case.</li>
+<li><strong>Get cases:</strong> <code>get_cases</code> - Retrieves a list of test cases from a specified TestRail project. Useful for getting an overview of test cases within a project.</li>
+<li><strong>Get cases by filter:</strong> <code>get_cases_by_filter</code> - Retrieves test cases from TestRail based on specified filter criteria, such as priority, status, or type. Useful for targeted retrieval of test cases based on specific attributes.</li>
+<li><strong>Add case:</strong> <code>add_case</code> - Adds a new test case to a specified TestRail project and section. Useful for automating test case creation.</li>
+</ul>
+<h2 id="instructions-and-prompts-for-using-the-toolkit">Instructions and Prompts for Using the Toolkit</h2>
+<p>To instruct your ELITEA Agent to use the TestRail toolkit, you need to provide clear instructions within the Agent's "Instructions" field. These instructions guide the Agent on <em>when</em> and <em>how</em> to use the available tools.</p>
+<h3 id="instruction-creation-for-openai-agents">Instruction Creation for OpenAI Agents</h3>
+<p>When creating instructions for the TestRail toolkit for OpenAI-based Agents, focus on clear, action-oriented language. Break down tasks into simple steps and explicitly state the parameters required for each tool. OpenAI Agents respond best to instructions that are:</p>
+<ul>
+<li><strong>Direct and Imperative:</strong> Use action verbs and clear commands (e.g., "Use the 'get_case' tool...", "Add a new test case with...").</li>
+<li><strong>Parameter-Focused:</strong> Clearly list each parameter and how the Agent should determine its value.</li>
+<li><strong>Context-Aware:</strong> Provide enough context so the Agent understands the overall goal and when to use specific tools within a workflow.</li>
+</ul>
+<p>When instructing your Agent to use a TestRail toolkit, use this pattern:</p>
+<pre><code class="language-markdown">1. Identify the goal: [State the objective, e.g., &quot;To retrieve details of a specific test case&quot;].
+2. Tool Selection: Use the &quot;[tool_name]&quot; tool.
+3. Parameter Specification: Provide the following parameters:
+    - Parameter Name 1: &lt;value or description of value&gt;
+    - Parameter Name 2: &lt;value or description of value&gt;
+    - ...
+4. Expected Outcome: [Optionally, describe what should happen after the tool is used].
+</code></pre>
+<p><strong>Example Agent Instructions for TestRail Toolkit Tools (OpenAI Agent Friendly):</strong></p>
+<ul>
+<li><strong>Agent Instructions for Retrieving a Specific Test Case:</strong></li>
+</ul>
+<pre><code class="language-markdown">1. Goal: To get the details of test case with ID 2260 from TestRail.
+2. Tool: Use the &quot;get_case&quot; tool.
+3. Parameters:
+    - Case ID: &quot;2260&quot;
+4. Outcome: The Agent will retrieve and display the details of test case with ID 2260.
+</code></pre>
+<ul>
+<li><strong>Agent Instructions for Adding a New Test Case:</strong></li>
+</ul>
+<pre><code class="language-markdown">1. Goal: To create a new test case in TestRail project with ID 1, section ID 5, with title &quot;Login Functionality Test&quot; and priority &quot;High&quot;.
+2. Tool: Use the &quot;add_case&quot; tool.
+3. Parameters:
+    - Project ID: &quot;1&quot;
+    - Section ID: &quot;5&quot;
+    - Title: &quot;Login Functionality Test&quot;
+    - Case Properties (JSON format): '{&quot;priority_id&quot;: 1}'  (Note: priority_id 1 usually corresponds to High priority in TestRail, check your TestRail instance for specific IDs)
+4. Outcome: A new test case named &quot;Login Functionality Test&quot; will be created in TestRail under project ID 1 and section ID 5 with High priority.
+</code></pre>
+<ul>
+<li><strong>Agent Instructions for Retrieving All Test Cases in a Project:</strong></li>
+</ul>
+<pre><code class="language-markdown">1. Goal: To get a list of all test cases from TestRail project with ID 2.
+2. Tool: Use the &quot;get_cases&quot; tool.
+3. Parameters:
+    - Project ID: &quot;2&quot;
+4. Outcome: The Agent will retrieve and display a list of all test cases in project ID 2.
+</code></pre>
+<ul>
+<li><strong>Agent Instructions for Retrieving Test Cases by Filter:</strong></li>
+</ul>
+<pre><code class="language-markdown">1. Goal: To retrieve all test cases from project ID 1 that are of &quot;Functional&quot; type and have &quot;High&quot; priority.
+2. Tool: Use the &quot;get_cases_by_filter&quot; tool.
+3. Parameters:
+    - Project ID: &quot;1&quot;
+    - Filter Arguments (JSON format): '{&quot;priority_id&quot;: 1, &quot;type_id&quot;: 2}' (Note: priority_id 1 for High, type_id 2 for Functional are examples, check your TestRail instance for specific IDs)
+4. Outcome: The Agent will retrieve and display a list of test cases from project ID 1 that match the specified filter criteria (Functional type and High priority).
+</code></pre>
+<h3 id="conversation-starters">Conversation Starters</h3>
+<p>Use these conversation starters to interact with your TestRail-integrated Agent.</p>
+<p><strong>1. For Testing and Troubleshooting Connection:</strong></p>
+<p>These starters are designed to verify if the TestRail toolkit is correctly configured and connected to your TestRail instance.</p>
+<ul>
+<li>"Get test case with ID 1." - <em>This tests basic connectivity and read permissions.</em></li>
+<li>"Get all test cases for project ID 1." - <em>This further tests read permissions and project access.</em></li>
+</ul>
+<p><strong>2. For General Agent Usage Scenarios:</strong></p>
+<p>These starters demonstrate how to initiate agent execution for common TestRail-related tasks.</p>
+<ul>
+<li>"I need to review the details of test case 2260." - <em>This could trigger the <code>get_case</code> tool.</em></li>
+<li>"Create a new test case in project 1, section 5, with title 'User Registration Test' and priority 'Medium'." - <em>This directly initiates the <code>add_case</code> tool.</em></li>
+<li>"List all high priority test cases in project 2." - <em>This would use the <code>get_cases_by_filter</code> tool.</em></li>
+<li>"Get me all test cases from project 3." - <em>This would use the <code>get_cases</code> tool.</em></li>
+</ul>
+<p>These conversation starters provide a starting point for interacting with your TestRail-integrated ELITEA Agent and can be customized further based on your specific use cases and workflows.</p>
+<h2 id="use-cases">Use Cases</h2>
+<p>The TestRail toolkit unlocks numerous automation possibilities for software testing workflows within ELITEA. Here are some key use cases, demonstrating how each tool can be applied:</p>
+<ul>
+<li>
+<p><strong>Automated Test Case Review:</strong></p>
+<ul>
+<li><strong>Scenario:</strong>  Quickly review the details of a specific test case to understand its steps, expected results, and current status.</li>
+<li><strong>Tools Used:</strong> <code>get_case</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_case' tool to retrieve test case with ID 2260 and show me the details."</li>
+<li><strong>Benefit:</strong> Saves time in manually searching for and opening test cases in TestRail, allowing for faster reviews and decision-making.</li>
+</ul>
+</li>
+<li>
+<p><strong>Project Test Case Overview:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Get a comprehensive list of all test cases within a specific TestRail project to understand the testing scope and coverage.</li>
+<li><strong>Tools Used:</strong> <code>get_cases</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_cases' tool to list all test cases in project ID 1 so I can get an overview of the project's test suite."</li>
+<li><strong>Benefit:</strong> Provides a quick and easy way to get a high-level view of all test cases in a project, aiding in test planning and progress monitoring.</li>
+</ul>
+</li>
+<li>
+<p><strong>Filtered Test Case Retrieval for Targeted Analysis:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Identify and retrieve test cases based on specific criteria, such as priority, status, or type, for focused analysis or reporting.</li>
+<li><strong>Tools Used:</strong> <code>get_cases_by_filter</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_cases_by_filter' tool to get all 'Failed' test cases with 'High' priority in project ID 2 to prioritize bug fixing."</li>
+<li><strong>Benefit:</strong> Enables targeted retrieval of test cases, allowing testers and managers to quickly focus on specific areas of interest, such as failed tests or high-priority items.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Test Case Creation from Requirements:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Automatically create new test cases in TestRail based on new software requirements or user stories.</li>
+<li><strong>Tools Used:</strong> <code>add_case</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'add_case' tool to create a new test case in project ID 3, section ID 10, with title 'Data Validation Test' and priority 'Medium' based on this new requirement: [paste requirement details here]."</li>
+<li><strong>Benefit:</strong> Streamlines test case creation, reduces manual effort, and ensures that test cases are created promptly as requirements evolve, improving test coverage and efficiency.</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ul>
+<li>
+<p><strong>Connection Issues:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent fails to connect to TestRail, resulting in errors during toolkit execution.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Verify TestRail URL:</strong> Ensure the URL is correctly entered and points to your TestRail instance (e.g., <code>https://yourcompany.testrail.io/</code>).</li>
+<li><strong>Check Authentication:</strong> Double-check the Email address and API Key for accuracy.</li>
+<li><strong>API Key Generation:</strong> Re-generate a new API key in TestRail and try using that if you suspect the key might be invalid.</li>
+<li><strong>Network Connectivity:</strong> Verify that both ELITEA and TestRail have internet access and no network issues are blocking the connection.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization Errors (Permission Denied):</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent receives "Permission Denied" or "Unauthorized" errors when accessing TestRail resources.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>API Key Validity:</strong> Ensure the API key is valid and has not been revoked in TestRail.</li>
+<li><strong>Account Permissions:</strong> Confirm that the TestRail account associated with the API key has the necessary permissions to access the specified projects and perform the requested actions (e.g., read test cases, add test cases). TestRail permissions are generally managed within TestRail itself, ensure your user role has sufficient privileges.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Incorrect Project or Section IDs:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent fails to find projects or sections, especially when adding new test cases.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Verify Project ID:</strong> Double-check the Project ID in your TestRail instance. You can usually find the Project ID in the URL when you are viewing a specific project in TestRail.</li>
+<li><strong>Verify Section ID:</strong> Similarly, verify the Section ID. Section IDs are typically found in the URL when you are within a specific section of a test suite in TestRail. Ensure the Section ID is valid within the specified Project.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="faq">FAQ</h3>
+<ol>
+<li><strong>Q: Can I use my regular TestRail password instead of an API Key?</strong><ul>
+<li><strong>A:</strong> No, for secure integration with ELITEA, you <strong>must use a TestRail API Key</strong>.  Using your regular password directly is not supported and is a security risk.</li>
+</ul>
+</li>
+<li><strong>Q: Where do I find Project IDs and Section IDs in TestRail?</strong><ul>
+<li><strong>A:</strong> Project IDs and Section IDs are typically visible in the URL when you navigate to a specific project or section within TestRail. For example, in the URL <code>https://yourcompany.testrail.io/index.php?/projects/overview/1</code>, <code>1</code> is likely the Project ID. Similarly, when viewing a section, the URL will contain a section identifier. You can also find these IDs through TestRail's API if needed, but checking the URL is usually the easiest method.</li>
+</ul>
+</li>
+<li><strong>Q: What if I don't know the exact IDs for priority or type when filtering test cases?</strong><ul>
+<li><strong>A:</strong> TestRail uses numerical IDs for various fields like priority and type. You need to find the correct IDs within your TestRail instance. Typically, you can find these IDs by inspecting the source code of the TestRail page when you are viewing or editing test cases, or by using TestRail's API to query available priorities and types. Contact your TestRail administrator if you are unsure about these IDs.</li>
+</ul>
+</li>
+</ol>
+<h3 id="support-contact">Support Contact</h3>
+<p>For any issues, questions, or further assistance with the TestRail integration or ELITEA Agents, please reach out to our dedicated ELITEA Support Team. We are committed to providing prompt and effective support to ensure your success with ELITEA.</p>
+<p><strong>Contact ELITEA Support:</strong></p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p><strong>Best Practices for Effective Support Requests:</strong></p>
+<p>To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> Clearly specify the ELITEA environment you are using (e.g., "Nexus," "Alita Lab," "EYE").</li>
+<li><strong>Project Details:</strong>  Indicate the <strong>Project Name</strong> and whether you are working in your <strong>Private</strong> workspace or a <strong>Team</strong> project.</li>
+<li><strong>Detailed Issue Description:</strong> Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.</li>
+<li><strong>Relevant Configuration Information:</strong>  To help us diagnose the issue, please include relevant configuration details, such as:<ul>
+<li><strong>Agent Instructions (Screenshot or Text):</strong> If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.</li>
+<li><strong>Toolkit Configurations (Screenshots):</strong> If the issue involves the TestRail toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.</li>
+</ul>
+</li>
+<li><strong>Error Messages (Full Error Text):</strong> If you are encountering an error message, please provide the <strong>complete error text</strong>. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.</li>
+<li><strong>Your Query/Prompt (Exact Text):</strong> If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p>
+<h2 id="useful-links">Useful Links</h2>
+<p>To further enhance your understanding and skills in integrating TestRail with ELITEA, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="https://www.gurocksoftware.com/testrail/">TestRail Website</a></strong>: Access the main TestRail platform to create an account or log in and explore TestRail features.</li>
+<li><strong><a href="https://www.gurocksoftware.com/testrail/docs/api/">TestRail API Documentation</a></strong>:  Refer to the official TestRail API documentation for detailed information on API endpoints, data structures, and advanced usage.</li>
+<li><strong><a href="../../atform-documentation/menus/settings.md#secrets">ELITEA Secrets</a></strong>: Learn how to securely store your TestRail API Key using ELITEA's Secrets management feature for enhanced security.</li>
+<li><strong><a href="../../../platform-documentation/menus/agents/">ELITEA Agents Configuration</a></strong>:  Find out more about creating and configuring Agents in ELITEA, where you integrate the TestRail toolkit to automate your workflows.</li>
+<li><strong><a href="mailto:SupportAlita@epam.com">ELITEA Support Email</a></strong>: Contact the ELITEA support team for direct assistance with TestRail integration or any other questions and issues you may encounter.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

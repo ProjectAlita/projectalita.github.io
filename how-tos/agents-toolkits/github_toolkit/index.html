@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/github_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>GitHub Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../bitbucket_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../gitlab_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-github-integration">ELITEA Toolkit Guide: GitHub Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-this-guide">Purpose of this Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-github">Brief Overview of GitHub</a></li>
+            <li class="second-level"><a href="#toolkits-account-setup-and-configuration-in-github">Toolkit's Account Setup and Configuration in GitHub</a></li>
+                
+                <li class="third-level"><a href="#account-setup">Account Setup</a></li>
+                <li class="third-level"><a href="#tokenapi-key-generation-creating-a-personal-access-token-classic-in-github">Token/API Key Generation: Creating a Personal Access Token (Classic) in GitHub</a></li>
+            <li class="second-level"><a href="#github-integration-with-elitea">GitHub Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#agent-creationconfiguration">Agent Creation/Configuration</a></li>
+                <li class="third-level"><a href="#toolkit-configuration">Toolkit Configuration</a></li>
+                <li class="third-level"><a href="#tool-overview">Tool Overview</a></li>
+            <li class="second-level"><a href="#instructions-and-prompts-for-using-the-github-toolkit">Instructions and Prompts for Using the GitHub Toolkit</a></li>
+                
+                <li class="third-level"><a href="#instruction-creation-for-openai-agents">Instruction Creation for OpenAI Agents</a></li>
+                <li class="third-level"><a href="#conversation-starters">Conversation Starters</a></li>
+            <li class="second-level"><a href="#use-cases">Use Cases</a></li>
+                
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting">Troubleshooting</a></li>
+                <li class="third-level"><a href="#faq">FAQ</a></li>
+                <li class="third-level"><a href="#support-and-contact-information">Support and Contact Information</a></li>
+            <li class="second-level"><a href="#useful-links">Useful Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-github-integration">ELITEA Toolkit Guide: GitHub Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-this-guide">Purpose of this Guide</h3>
+<p>This guide is your definitive resource for integrating and utilizing the <strong>GitHub toolkit</strong> within ELITEA. It provides a comprehensive, step-by-step walkthrough, from generating a GitHub Personal Access Token to configuring the toolkit in ELITEA and effectively using it within your Agents. By following this guide, you will unlock the power of automated code management, streamlined development workflows, and enhanced team collaboration, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your software development lifecycle using the combined strengths of ELITEA and GitHub.</p>
+<h3 id="brief-overview-of-github">Brief Overview of GitHub</h3>
+<p>GitHub is the world's leading web-based platform for version control, collaboration, and software development.  It is built around Git and provides a rich ecosystem for developers to host, manage, and collaborate on code. GitHub is essential for modern software development, offering features for:</p>
+<ul>
+<li><strong>Robust Version Control:</strong> Leveraging Git, GitHub meticulously tracks every change to your code, enabling seamless collaboration, easy rollback to previous states, and a complete history of project evolution.</li>
+<li><strong>Streamlined Code Collaboration:</strong> Facilitate effective teamwork with features like pull requests for code review, in-line commenting, and branch-based development workflows, fostering a collaborative coding environment.</li>
+<li><strong>Centralized Code Hosting:</strong> Provides a secure, reliable, and globally accessible platform for hosting and managing your Git repositories, ensuring code availability and integrity.</li>
+<li><strong>Powerful Workflow Automation (GitHub Actions):</strong> Enables you to automate your software development lifecycle with GitHub Actions, including building, testing, and deploying code directly from your repositories.</li>
+<li><strong>Issue Tracking and Project Management:</strong> Integrated issue tracking and project management tools help teams organize tasks, track bugs, and manage projects directly within the GitHub platform.</li>
+</ul>
+<p>Integrating GitHub with ELITEA brings these powerful development capabilities directly into your AI-driven workflows. Your ELITEA Agents can then interact with your GitHub repositories to automate code-related tasks, enhance development processes, and improve team collaboration through intelligent automation, making your development workflows smarter and more efficient.</p>
+<h2 id="toolkits-account-setup-and-configuration-in-github">Toolkit's Account Setup and Configuration in GitHub</h2>
+<h3 id="account-setup">Account Setup</h3>
+<p>If you don't already have a GitHub account, follow these steps to create one:</p>
+<ol>
+<li><strong>Visit GitHub Website:</strong> Open your web browser and go to <a href="https://github.com">github.com</a>.</li>
+<li><strong>Sign Up:</strong> Click on the <strong>"Sign up"</strong> button, located in the top right corner of the homepage.</li>
+<li><strong>Enter Details:</strong> Follow the on-screen instructions to create your account. You will need to choose a username, provide your email address, and create a strong password.</li>
+<li><strong>Verify Email:</strong> Check your inbox for a verification email from GitHub. Click the verification link in the email to activate your account.</li>
+<li><strong>Log In:</strong> Once your email is verified, log in to GitHub using your newly created username and password.</li>
+</ol>
+<h3 id="tokenapi-key-generation-creating-a-personal-access-token-classic-in-github">Token/API Key Generation: Creating a Personal Access Token (Classic) in GitHub</h3>
+<p>For secure integration with ELITEA, it is essential to use a GitHub <strong>Personal Access Token (Classic)</strong>. This method is significantly more secure than using your primary GitHub account password directly and allows you to precisely control the permissions granted to ELITEA.</p>
+<p><strong>Follow these steps to generate a Personal Access Token (Classic) in GitHub:</strong></p>
+<ol>
+<li><strong>Log in to GitHub:</strong> Access your GitHub account at <a href="https://github.com">github.com</a>.</li>
+<li><strong>Access Settings:</strong> Click on your profile avatar in the top right corner and then click on <strong>"Settings"</strong>.</li>
+<li><strong>Navigate to Developer Settings:</strong> In the left-hand sidebar, scroll down and click on <strong>"Developer settings"</strong>.</li>
+<li><strong>Access Personal Access Tokens (Classic):</strong> In the left-hand sidebar under "Personal access tokens," click on <strong>"Tokens (classic)"</strong>.</li>
+<li><strong>Generate New Token:</strong> Click the <strong>"Generate new token (classic)"</strong> button.<ul>
+<li><strong>Note:</strong> If you have previously created tokens, you might see a "Generate new token" button instead.</li>
+</ul>
+</li>
+<li>
+<p><strong>Provide Token Details:</strong></p>
+<ul>
+<li><strong>Note (Description):</strong> In the "Note" field, enter a descriptive label for your token, such as "ELITEA Integration" or "ELITEA Agent Access." This will help you easily identify the purpose of this token in the future.</li>
+<li><strong>Expiration (Recommended):</strong> For enhanced security, it is highly recommended to set an <strong>Expiration</strong> date for your token. Choose a reasonable validity period to limit the token's lifespan. If compromised, a token with a shorter lifespan poses less risk.</li>
+<li>
+<p><strong>Select Scopes - Grant Least Privilege (Crucial for Security):</strong> Carefully and deliberately select the <strong>scopes</strong> or permissions you grant to this token. <strong>It is paramount to grant only the absolute minimum necessary permissions</strong> required for your ELITEA Agent's intended interactions with GitHub. Overly permissive tokens pose a significant security risk. For typical ELITEA integration, consider these minimal scopes:</p>
+<ul>
+<li>
+<p><strong>Minimal Scopes for Common Use Cases:</strong></p>
+<ul>
+<li><strong>repo</strong> (For full access to private and public repositories. If possible, select more granular <code>repo</code> scopes instead of full <code>repo</code>):<ul>
+<li><strong>repo:status</strong> (Access commit statuses)</li>
+<li><strong>public_repo</strong> (Access public repositories)</li>
+</ul>
+</li>
+<li><strong>workflow</strong> (Access GitHub Actions workflows if your Agent needs to interact with workflows)</li>
+<li><strong>read:user</strong> (To read user profile information, often needed for basic interactions)</li>
+</ul>
+</li>
+<li>
+<p><strong>Additional Scopes for Specific Functionality (Grant only if needed):</strong></p>
+<ul>
+<li><strong>issues</strong> (To access and manage issues)</li>
+<li><strong>pull_request</strong> (To access and manage pull requests)</li>
+<li><strong>gist</strong> (To access gists, if your Agent needs to work with gists)</li>
+<li><strong>read:org</strong> (To read organization membership and information, if your Agent needs organization-level access)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Important Security Practices:</strong></p>
+<ul>
+<li><strong>Principle of Least Privilege:</strong>  <strong>Strictly adhere to the principle of least privilege.</strong> Grant only the scopes that are absolutely essential for your ELITEA Agent to perform its intended tasks.</li>
+<li><strong>Avoid "admin" or Broad Scopes:</strong> <strong>Never grant "admin" or overly broad permissions unless absolutely necessary and with a clear understanding of the security implications.</strong>  Broad scopes significantly increase the potential security impact if the token is compromised.</li>
+<li><strong>Regular Token Review and Rotation:</strong> Regularly review the tokens you have generated and their associated scopes. Rotate tokens periodically (generate new ones and revoke old ones) as a security best practice, especially for sensitive integrations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Generate Token:</strong> Click the <strong>"Generate token"</strong> button at the bottom of the page.</p>
+</li>
+<li><strong>Securely Copy and Store the Personal Access Token:</strong>  <strong>Immediately copy the generated token</strong> that is displayed on the next page. <strong>This is the only time you will be able to see and copy the full token value.</strong> Store it securely using a robust password manager or, preferably, ELITEA's built-in Secrets feature for enhanced security within the ELITEA platform. You will need this token to configure the GitHub toolkit in ELITEA.</li>
+</ol>
+<p><img alt="GitHub-Generate_Token" src="../../../img/how-tos/github/GitHub-Generate_Token.png" />
+<img alt="GitHub-Generate_Token2" src="../../../img/how-tos/github/GitHub-Generate_Token2.png" />
+<img alt="GitHub-Generate_Token3" src="../../../img/how-tos/github/GitHub-Generate_Token3.png" />
+<img alt="GitHub-Generate_Token4" src="../../../img/how-tos/github/GitHub-Generate_Token4.png" /></p>
+<h2 id="github-integration-with-elitea">GitHub Integration with ELITEA</h2>
+<h3 id="agent-creationconfiguration">Agent Creation/Configuration</h3>
+<p>To integrate GitHub, you'll need to configure it within an ELITEA Agent. You can integrate GitHub with a new Agent or modify an existing one.</p>
+<ol>
+<li><strong>Navigate to Agents Menu:</strong> In ELITEA, go to the <strong>Agents</strong> menu.</li>
+<li><strong>Create or Edit Agent:</strong><ul>
+<li><strong>New Agent:</strong> Click <strong>"+ Agent"</strong> to create a new Agent. Follow the steps to define Agent details such as name, description, type, and instructions.</li>
+<li><strong>Existing Agent:</strong> Select the Agent you wish to integrate with GitHub and click on its name to edit its configuration.</li>
+</ul>
+</li>
+<li><strong>Access Toolkits Section:</strong> Within the Agent configuration, scroll down to the <strong>"Tools"</strong> section.</li>
+</ol>
+<h3 id="toolkit-configuration">Toolkit Configuration</h3>
+<p>This section details how to configure the GitHub toolkit within your ELITEA Agent.</p>
+<ol>
+<li><strong>Add Toolkit:</strong> In the "Tools" section, click the <strong>"+" icon</strong>.</li>
+<li><strong>Select GitHub Toolkit:</strong> From the dropdown list of available toolkits, choose <strong>"GitHub"</strong>. This will open the "New GitHub tool" configuration section.</li>
+<li>
+<p><strong>Configure GitHub Toolkit Settings:</strong> Fill in the following configuration fields in the "New GitHub tool" section:</p>
+<ul>
+<li><strong>Name:</strong>  Enter a descriptive <strong>Name</strong> for your GitHub toolkit instance. This name will be used to reference the toolkit within your Agent's instructions (e.g., "MyGitHubRepo", "CodeRepoAccess"). Choose a name that clearly indicates its purpose.</li>
+<li><strong>Description:</strong> Provide a concise <strong>Description</strong> of the toolkit's purpose or the specific GitHub repository it will access (e.g., "Access to the main development code repository").</li>
+<li><strong>URL:</strong>  This field is pre-filled with the standard GitHub API URL: <code>https://api.github.com</code>. <strong>In the vast majority of cases, you should not modify this URL.</strong> Only change it if you are connecting to a self-hosted <strong>GitHub Enterprise Server</strong> instance, in which case you should enter the specific API URL for your Enterprise Server.</li>
+<li><strong>Repository:</strong> Enter the <strong>Repository name</strong> that you want to access with this toolkit. Use the format: <code>repository_owner/repository_name</code> (e.g., <code>MyOrganization/my-project-repo</code>). Ensure you use the correct owner/organization and repository name.</li>
+<li><strong>Main branch:</strong> Specify the <strong>Main branch</strong> of your repository. This is typically <code>main</code> or <code>master</code>.</li>
+<li><strong>Authentication Options - Token:</strong> Select the <strong>"Token"</strong> authentication option.<ul>
+<li><strong>Password/Secret:</strong> Choose <strong>"Password"</strong> and then paste the <strong>Personal Access Token (Classic)</strong> you generated in GitHub (during the "Software-Specific Setup" section of this guide) into the <strong>"Password"</strong> field.</li>
+<li><strong>Enhanced Security with Secrets (Recommended):</strong> For significantly enhanced security, it is strongly recommended to use the <strong>"Secret"</strong> option. Select <strong>"Secret"</strong> and then choose a pre-configured secret from the dropdown list. You must first securely store your Personal Access Token as a Secret within ELITEA's <a href="../../../platform-documentation/menus/settings/#secrets">Secrets Management</a> feature. Using Secrets is a critical security best practice that prevents hardcoding sensitive credentials directly in the toolkit configuration, reducing the risk of exposure.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="GitHub-Toolkit_Configuration.png" src="../../../img/how-tos/github/GitHub-Toolkit_Configuration.png" /></p>
+</li>
+<li>
+<p><strong>Enable Desired Tools:</strong> In the <strong>"Tools"</strong> section within the GitHub toolkit configuration, <strong>carefully select the checkboxes next to only the specific GitHub tools</strong> that your Agent will actually need to use. <strong>Enable only the tools that are absolutely necessary</strong> to adhere to the principle of least privilege and minimize potential security risks. Available tools include:</p>
+<ul>
+<li><strong>Get issues</strong> - Retrieves a list of issues.</li>
+<li><strong>Get issue</strong> - Retrieves details of a specific issue.</li>
+<li><strong>Search issues</strong> - Searches for issues based on provided criteria.</li>
+<li><strong>Create issue</strong> - Creates a new issue.</li>
+<li><strong>Update issue</strong> - Updates an existing issue.</li>
+<li><strong>Comment on issue</strong> - Adds a comment to an issue.</li>
+<li><strong>List open pull requests (PRs)</strong> - Lists open pull requests.</li>
+<li><strong>Get pull request</strong> - Retrieves details of a specific pull request.</li>
+<li><strong>List pull request files</strong> - Lists files changed in a pull request.</li>
+<li><strong>Create pull request</strong> - Creates a new pull request.</li>
+<li><strong>Create file</strong> - Creates a new file.</li>
+<li><strong>Read file</strong> - Reads the content of a file.</li>
+<li><strong>Update file</strong> - Updates the content of an existing file.</li>
+<li><strong>Delete file</strong> - Deletes a file.</li>
+<li><strong>List files in branch</strong> - Lists files in a branch.</li>
+<li><strong>List branches in repo</strong> - Lists branches in the repository.</li>
+<li><strong>Set active branch</strong> - Sets the active branch.</li>
+<li><strong>Create branch</strong> - Creates a new branch.</li>
+<li><strong>Get files from directory</strong> - Retrieves files from a directory.</li>
+</ul>
+</li>
+<li>
+<p><strong>Complete Setup:</strong> Click the <strong>arrow icon</strong> (usually located at the top right of the toolkit configuration section) to finalize the GitHub toolkit setup and return to the main Agent configuration menu.</p>
+</li>
+<li>Click <strong>Save</strong> in the Agent configuration to save all changes.</li>
+</ol>
+<h3 id="tool-overview">Tool Overview</h3>
+<p>Once the GitHub toolkit is configured and added to your Agent, you can utilize the following tools within your Agent's instructions to enable interaction with your GitHub repositories:</p>
+<ul>
+<li>
+<p><strong>Get Issues:</strong>  <strong>Tool Name:</strong> <code>get_issues</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of issues from the specified GitHub repository. Supports filtering and sorting based on various criteria like state, labels, assignees, and creation date.</li>
+<li><strong>Purpose:</strong> Enables Agents to efficiently fetch and organize issue lists for task management, prioritization of bug fixes and feature requests, generating reports on project issues, or providing users with summarized views of project issues directly within ELITEA workflows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get Issue:</strong>  <strong>Tool Name:</strong> <code>get_issue</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves detailed information about a specific issue from a GitHub repository using its issue number. Includes comprehensive details such as issue title, description, status, labels, assignees, creation and update dates, and all associated comments and metadata.</li>
+<li><strong>Purpose:</strong> Allows Agents to access in-depth issue details for providing rich context during problem-solving, summarizing the complete status of a particular issue, or incorporating comprehensive issue information into ELITEA conversations, reports, and automated workflows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Search Issues:</strong> <strong>Tool Name:</strong> <code>search_issues</code></p>
+<ul>
+<li><strong>Functionality:</strong> Searches for issues across the specified GitHub repository based on a query string. Supports advanced search syntax and filters to refine search results by keywords, authors, labels, state, and more.</li>
+<li><strong>Purpose:</strong> Enables Agents to perform targeted searches for issues matching specific criteria, facilitating efficient retrieval of relevant issues based on keywords, user queries, or workflow requirements. Useful for finding issues related to specific topics, bugs, or feature areas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create Issue:</strong> <strong>Tool Name:</strong> <code>create_issue</code></p>
+<ul>
+<li><strong>Functionality:</strong> Creates a new issue in the specified GitHub repository. Requires parameters such as issue title and body, and optionally supports setting assignees, labels, and milestones during issue creation.</li>
+<li><strong>Purpose:</strong> Automates the process of issue creation directly from ELITEA workflows. Allows Agents to automatically log bugs, feature requests, or tasks based on user input, workflow triggers, or analysis results, streamlining issue reporting and task management.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update Issue:</strong> <strong>Tool Name:</strong> <code>update_issue</code></p>
+<ul>
+<li><strong>Functionality:</strong> Updates an existing issue in the specified GitHub repository. Allows modification of issue attributes such as title, body, status (open/closed), assignees, and labels. Requires the issue number to identify the issue to be updated.</li>
+<li><strong>Purpose:</strong> Enables Agents to automate issue status updates, assignment changes, priority adjustments, or content modifications based on workflow progress, user actions, or external events. Facilitates dynamic issue management and keeps issue tracking information current and accurate.</li>
+</ul>
+</li>
+<li>
+<p><strong>Comment on Issue:</strong>  <strong>Tool Name:</strong> <code>comment_on_issue</code></p>
+<ul>
+<li><strong>Functionality:</strong> Adds a new comment to a specific issue in a GitHub repository. Requires the issue number and the comment text as parameters.</li>
+<li><strong>Purpose:</strong> Automates communication and updates within issue tracking workflows by allowing Agents to add comments to GitHub issues directly from ELITEA. Streamlines providing status updates, asking for clarifications, notifying stakeholders, or logging automated actions related to specific issues.</li>
+</ul>
+</li>
+<li>
+<p><strong>List Open Pull Requests (PRs):</strong>  <strong>Tool Name:</strong> <code>list_open_pull_requests</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of currently open pull requests from the specified GitHub repository. Provides an overview of pending code changes and code review activities.</li>
+<li><strong>Purpose:</strong> Enables Agents to fetch lists of open pull requests for code review management, generating reminders for pending reviews, creating reports on code changes in progress, or providing users with summaries of open PRs within ELITEA, improving code review workflow efficiency.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get Pull Request:</strong>  <strong>Tool Name:</strong> <code>get_pull_request</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves detailed information about a specific pull request from a GitHub repository using its pull request number. Includes details like PR title, description, status, associated commits, comments, reviewers, and merge status.</li>
+<li><strong>Purpose:</strong> Allows Agents to access comprehensive pull request details for in-depth code review assistance, providing complete context on specific pull requests, facilitating informed decision-making during code merging, or incorporating detailed PR information into ELITEA workflows and reports.</li>
+</ul>
+</li>
+<li>
+<p><strong>List Pull Request Files:</strong>  <strong>Tool Name:</strong> <code>list_pull_request_files</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of files that have been changed within a specific pull request in a GitHub repository. Highlights the specific code modifications introduced by the pull request.</li>
+<li><strong>Purpose:</strong> Enables Agents to provide concise summaries of files changed in a pull request, facilitate efficient code review by quickly listing modified files for reviewers, or analyze the scope and potential impact of code changes introduced by a PR within ELITEA workflows, aiding in impact assessment and review focus.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create Pull Request:</strong>  <strong>Tool Name:</strong> <code>create_pull_request</code></p>
+<ul>
+<li><strong>Functionality:</strong> Creates a new pull request in the specified GitHub repository. Requires parameters such as the source branch, target branch, pull request title, and body.</li>
+<li><strong>Purpose:</strong> Automates the pull request creation process for code contributions, feature branches, or bug fixes directly from ELITEA. Significantly streamlines the code review and merging process, reduces manual effort for developers, and accelerates development cycles by automating the initiation of code integration.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create File:</strong>  <strong>Tool Name:</strong> <code>create_file</code></p>
+<ul>
+<li><strong>Functionality:</strong> Creates a new file within the specified GitHub repository at a specified path with provided content.</li>
+<li><strong>Purpose:</strong> Automates the creation of new code files, documentation files, configuration files, or any other type of file within your repository directly from ELITEA workflows. Ensures consistency in file creation, reduces manual file creation tasks, and enables automated generation of project assets.</li>
+</ul>
+</li>
+<li>
+<p><strong>Read File:</strong>  <strong>Tool Name:</strong> <code>read_file</code></p>
+<ul>
+<li><strong>Functionality:</strong> Reads and retrieves the content of a specific file from the specified GitHub repository, based on the file path and branch name.</li>
+<li><strong>Purpose:</strong> Enables Agents to dynamically retrieve code snippets, configuration parameters, documentation content, or any file content from your repository. Provides context, data, or instructions to your ELITEA Agent or to users within ELITEA conversations, facilitating dynamic, data-driven, and context-aware workflows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update File:</strong>  <strong>Tool Name:</strong> <code>update_file</code></p>
+<ul>
+<li><strong>Functionality:</strong> Updates the content of a specific, existing file within a GitHub repository. Replaces the entire file content with the provided new content.</li>
+<li><strong>Purpose:</strong> Automates the process of updating code files, documentation, configuration files, or any file content within your repository based on ELITEA workflow outputs, user requests, or external triggers. Ensures configurations are synchronized, documentation is kept up-to-date, and codebase modifications are automated.</li>
+</ul>
+</li>
+<li>
+<p><strong>Delete File:</strong>  <strong>Tool Name:</strong> <code>delete_file</code></p>
+<ul>
+<li><strong>Functionality:</strong> Deletes a specific file from a GitHub repository, based on the file path and branch name.</li>
+<li><strong>Purpose:</strong> Automates file deletion tasks within your repository, such as removing obsolete files, cleaning up temporary files generated by ELITEA workflows, or enforcing codebase cleanup policies. Helps maintain a clean, organized, and efficient codebase by automating file lifecycle management.</li>
+</ul>
+</li>
+<li>
+<p><strong>List Files in Branch:</strong>  <strong>Tool Name:</strong> <code>list_files_in_branch</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of files present in a specific branch of a GitHub repository. Provides a flat list of file paths within the branch.</li>
+<li><strong>Purpose:</strong> Allows Agents to programmatically browse repository contents, provide users with file lists for navigation and file selection within ELITEA, or analyze file structures within automated workflows, facilitating file-based operations and repository exploration.</li>
+</ul>
+</li>
+<li>
+<p><strong>List Branches in Repo:</strong>  <strong>Tool Name:</strong> <code>list_branches_in_repo</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of all branches available in the specified GitHub repository. Provides a simple list of branch names.</li>
+<li><strong>Purpose:</strong> Enables Agents to get a comprehensive list of branches for branch management automation, generating reports on repository branching structure, providing users with branch selection options within ELITEA workflows, or automating branch-related decision-making processes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Set Active Branch:</strong>  <strong>Tool Name:</strong> <code>set_active_branch</code></p>
+<ul>
+<li><strong>Functionality:</strong> Sets a specific branch as the currently active branch within the GitHub toolkit's context. Affects subsequent file-related operations to target the specified branch.</li>
+<li><strong>Purpose:</strong> Ensures that subsequent file operations (like <code>read_file</code>, <code>update_file</code>, <code>create_file</code>, <code>delete_file</code>) performed by the Agent are directed to the correct branch. Improves workflow accuracy, prevents unintended modifications to incorrect branches, and provides branch context for file actions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create Branch:</strong>  <strong>Tool Name:</strong> <code>create_branch</code></p>
+<ul>
+<li><strong>Functionality:</strong> Creates a new branch in the specified GitHub repository, branching off from a specified base branch. Requires the new branch name and the base branch name as parameters.</li>
+<li><strong>Purpose:</strong> Automates the creation of new branches for feature development, bug fixes, experimental code changes, or any branching requirement directly from ELITEA. Streamlines branch management, speeds up development workflows by automating branch setup, and reduces manual steps for initiating new development work streams.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get files from directory:</strong> <strong>Tool Name:</strong> <code>get_files_from_directory</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of files located within a specific directory in a GitHub repository. Allows retrieval of files from a specified subdirectory path within a branch.</li>
+<li><strong>Purpose:</strong> Enables Agents to retrieve file listings from specific directories, facilitating focused navigation within complex repositories, targeting relevant files within a directory structure for processing, or automating directory-specific file management tasks within ELITEA workflows, improving efficiency when working with organized file sets.</li>
+</ul>
+</li>
+</ul>
+<h2 id="instructions-and-prompts-for-using-the-github-toolkit">Instructions and Prompts for Using the GitHub Toolkit</h2>
+<p>To effectively instruct your ELITEA Agent to use the GitHub toolkit, you need to provide clear and precise instructions within the Agent's "Instructions" field. These instructions are crucial for guiding the Agent on <em>when</em> and <em>how</em> to utilize the available GitHub tools to achieve your desired automation goals.</p>
+<h3 id="instruction-creation-for-openai-agents">Instruction Creation for OpenAI Agents</h3>
+<p>When crafting instructions for the GitHub toolkit, especially for OpenAI-based Agents, clarity and precision are paramount. Break down complex tasks into a sequence of simple, actionable steps. Explicitly define all parameters required for each tool and guide the Agent on how to obtain or determine the values for these parameters. OpenAI Agents respond best to instructions that are:</p>
+<ul>
+<li><strong>Direct and Action-Oriented:</strong> Employ strong action verbs and clear commands to initiate actions. For example, "Use the 'read_file' tool...", "Create a branch named...", "List all open pull requests...".</li>
+<li><strong>Parameter-Centric:</strong> Clearly enumerate each parameter required by the tool. For each parameter, specify:<ul>
+<li>Its name (exactly as expected by the tool).</li>
+<li>The format or type of value expected.</li>
+<li>How the Agent should obtain the value – whether from user input, derived from previous steps in the conversation, retrieved from an external source, or a predefined static value.</li>
+</ul>
+</li>
+<li><strong>Contextually Rich:</strong> Provide sufficient context so the Agent understands the overarching objective and the specific scenario in which each GitHub tool should be applied within the broader workflow. Explain the desired outcome or goal for each tool invocation.</li>
+<li><strong>Step-by-Step Structure:</strong> Organize instructions into a numbered or bulleted list of steps for complex workflows. This helps the Agent follow a logical sequence of actions.</li>
+</ul>
+<p>When instructing your Agent to use a GitHub toolkit tool, adhere to this structured pattern:</p>
+<pre><code class="language-markdown">1. **State the Goal:** Begin by clearly stating the objective you want to achieve with this step. For example, &quot;Goal: To retrieve the content of the 'README.md' file.&quot;
+2. **Specify the Tool:** Clearly indicate the specific GitHub tool to be used for this step. For example, &quot;Tool: Use the 'read_file' tool.&quot;
+3. **Define Parameters:** Provide a detailed list of all parameters required by the selected tool. For each parameter:
+    - Parameter Name: `&lt;Parameter Name as defined in tool documentation&gt;`
+    - Value or Source: `&lt;Specify the value or how to obtain the value. Examples: &quot;user input&quot;, &quot;from previous step&quot;, &quot;hardcoded value 'main'&quot;, &quot;value of variable X&quot;&gt;`
+4. **Describe Expected Outcome (Optional but Recommended):** Briefly describe the expected result or outcome after the tool is successfully executed. For example, &quot;Outcome: The Agent will provide the content of the 'README.md' file.&quot;
+</code></pre>
+<p><strong>Example Agent Instructions for GitHub Toolkit Tools (Optimized for OpenAI Agents):</strong></p>
+<ul>
+<li><strong>Agent Instructions for Updating a File:</strong></li>
+</ul>
+<pre><code class="language-markdown">1. Goal: Update the 'config.json' file in the 'settings' branch with new configuration values provided by the user.
+2. Tool: Use the &quot;update_file&quot; tool.
+3. Parameters:
+    - Repository Name: &quot;Specify the repository name in 'owner/repo' format. Use the repository configured in the GitHub toolkit.&quot;
+    - File Path: &quot;config.json&quot;
+    - Branch Name: &quot;settings&quot;
+    - New Content: &quot;Ask the user for the new JSON configuration content. Ensure it is valid JSON format. Example: {\&quot;setting\&quot;: \&quot;new_value\&quot;}&quot;
+4. Outcome: The 'config.json' file in the 'settings' branch will be updated with the user-provided JSON configuration. Confirm the update to the user.
+</code></pre>
+<ul>
+<li><strong>Agent Instructions for Creating a New Feature Branch:</strong></li>
+</ul>
+<pre><code class="language-markdown">1. Goal: Create a new feature branch for implementing user authentication, named 'feature-user-auth', branching from the 'develop' branch.
+2. Tool: Use the &quot;create_branch&quot; tool.
+3. Parameters:
+    - Repository Name: &quot;Specify the repository name in 'owner/repo' format. Use the repository configured in the GitHub toolkit.&quot;
+    - New Branch Name: &quot;feature-user-auth&quot;
+    - Base Branch: &quot;develop&quot;
+4. Outcome: A new branch named 'feature-user-auth' will be created in the repository, based on the 'develop' branch. Inform the user that the branch has been created.
+</code></pre>
+<ul>
+<li><strong>Agent Instructions for Listing Branches in a Repository:</strong></li>
+</ul>
+<pre><code class="language-markdown">1. Goal: Provide the user with a list of all branches in the repository to help them understand the project's branch structure.
+2. Tool: Use the &quot;list_branches_in_repo&quot; tool.
+3. Parameters:
+    - Repository Name: &quot;Specify the repository name in 'owner/repo' format. Use the repository configured in the GitHub toolkit.&quot;
+4. Outcome: Present the list of branches to the user in a clear and readable format.
+</code></pre>
+<ul>
+<li><strong>Agent Instructions for Reading a File from a Repository:</strong></li>
+</ul>
+<pre><code class="language-markdown">1. Goal: Retrieve the content of the 'README.md' file from the 'main' branch to provide the user with a project overview.
+2. Tool: Use the &quot;read_file&quot; tool.
+3. Parameters:
+    - Repository Name: &quot;Specify the repository name in 'owner/repo' format. Use the repository configured in the GitHub toolkit.&quot;
+    - File Path: &quot;README.md&quot;
+    - Branch Name: &quot;main&quot;
+4. Outcome: Display the content of the 'README.md' file to the user.
+</code></pre>
+<h3 id="conversation-starters">Conversation Starters</h3>
+<p>Utilize these conversation starters to initiate interactions with your GitHub-integrated Agent. These are useful for both testing the integration and for common usage scenarios.</p>
+<p><strong>1. For Testing and Troubleshooting Connection &amp; Configuration:</strong></p>
+<p>These conversation starters are specifically designed to verify if the GitHub toolkit is correctly configured, authenticated, and successfully connected to your GitHub repository. They test basic functionalities to ensure the integration is working as expected.</p>
+<ul>
+<li>"List branches in the repository." - <em>This starter tests basic connectivity to GitHub and verifies read permissions for branch listing.</em></li>
+<li>"Read the file 'README.md' from the main branch." - <em>This starter further tests read permissions and the ability to access and retrieve file content from the repository.</em></li>
+<li>"Create a new branch named 'test-connection' based on main." - <em>This starter tests write permissions (if enabled in your token scopes) and the branch creation functionality. </em><em>Important:</em><em> Remember to manually delete the 'test-connection' branch from your repository after successful testing to maintain repository hygiene.</em></li>
+<li>"List open pull requests." - <em>Tests the ability to retrieve pull request data, verifying permissions for PR access.</em></li>
+<li>"Get issues." - <em>Tests the ability to retrieve issue data, verifying permissions for issue access.</em></li>
+</ul>
+<p><strong>2. For General Agent Usage Scenarios &amp; Workflow Initiation:</strong></p>
+<p>These conversation starters demonstrate how to initiate agent execution for common, practical GitHub-related tasks and workflows. They represent typical user requests and showcase the agent's ability to perform useful actions within GitHub.</p>
+<ul>
+<li>"I need to update the documentation file 'user_guide.md' with details about the new API endpoints. Can you help me update it in GitHub?" - <em>This starter could trigger a workflow involving <code>read_file</code> to get the current documentation content, potentially some content modification steps, and then <code>update_file</code> to save the updated documentation back to the repository.</em></li>
+<li>"Create a pull request to merge my 'feature-x' branch into 'develop' for code review and integration." - <em>This starter directly initiates the <code>create_pull_request</code> tool to automate the pull request creation process.</em></li>
+<li>"What are the currently open feature branches in the repository that need code review?" - <em>This starter would utilize the <code>list_branches_in_repo</code> tool (potentially combined with issue or PR data) to provide a project status overview, specifically focusing on feature branches awaiting review.</em></li>
+<li>"I want to add a new configuration file named 'deployment.config' to the 'config' directory in the main branch with these settings: [provide configuration settings here]. Can you create this file for me?" - <em>This starter would use the <code>create_file</code> tool to automate the creation of a new configuration file with user-specified content in the designated repository location.</em></li>
+<li>"Comment on issue #123 with 'I have completed the code changes and addressed the feedback.'" - <em>This starter directly uses the <code>comment_on_issue</code> tool to add a comment to a specific GitHub issue, automating communication within issue tracking.</em></li>
+</ul>
+<p>These conversation starters offer a solid foundation for interacting with your GitHub-integrated ELITEA Agent. They can be further customized and expanded upon to precisely match your specific use cases, workflows, and the unique automation needs of your software development projects.</p>
+<h2 id="use-cases">Use Cases</h2>
+<p>The GitHub toolkit unlocks numerous automation possibilities for software development workflows within ELITEA. Here are key use cases, demonstrating how each tool can be applied, formatted to match the Bitbucket guide style:</p>
+<ul>
+<li>
+<p><strong>Automated Retrieval of High-Priority Issues:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> At the start of each workday, development teams need to be aware of critical, high-priority bug issues requiring immediate attention.</li>
+<li><strong>Tools Used:</strong> <code>get_issues</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_issues' tool to retrieve a list of issues from the repository that are labeled 'priority:high'. Present the issue titles and descriptions."</li>
+<li><strong>Benefit:</strong> Proactively informs developers about critical issues, enabling them to focus on high-priority bug fixes, improve issue resolution times, and minimize potential disruptions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Contextual Issue Details for Support and Troubleshooting:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> During a troubleshooting session or support interaction, quick access to detailed information about a specific GitHub issue is needed to understand the problem and provide context.</li>
+<li><strong>Tools Used:</strong> <code>get_issue</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_issue' tool to get details for issue number [issue_number]. Summarize the issue title, description, and the latest comments for the user."</li>
+<li><strong>Benefit:</strong> Provides users with quick, contextual access to detailed issue information directly within ELITEA, improving understanding, facilitating faster problem-solving, and enhancing communication around specific issues.</li>
+</ul>
+</li>
+<li>
+<p><strong>Intelligent Issue Search for Targeted Information Retrieval:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Project managers or developers need to find issues related to a specific topic or keyword within the repository to track progress or identify related tasks.</li>
+<li><strong>Tools Used:</strong> <code>search_issues</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'search_issues' tool to find all open issues in the repository that contain the keywords '[search_keywords]' in their title or description. List the titles and issue numbers."</li>
+<li><strong>Benefit:</strong> Enables efficient and targeted issue discovery based on keywords and search criteria. Allows users to quickly locate relevant issues, track progress on specific features or bug areas, and identify related tasks or discussions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Bug Reporting from User Feedback:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When users report bugs through ELITEA-integrated support channels, automatically create corresponding issues in the GitHub repository for the development team to address.</li>
+<li><strong>Tools Used:</strong> <code>create_issue</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_issue' tool to create a new issue in the repository with the title '[issue_title]' and body '[issue_description]'. Add labels 'bug' and 'reported-by-user'."</li>
+<li><strong>Benefit:</strong> Streamlines bug reporting by automating issue creation directly from user feedback. Reduces manual effort, ensures consistent bug report formatting, and accelerates the process of logging and triaging new issues.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Issue Status Updates Based on Workflow Events:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Automatically update the status of a GitHub issue to 'closed' when a linked code change (e.g., pull request merge) is completed in ELITEA, reflecting the issue resolution in the tracking system.</li>
+<li><strong>Tools Used:</strong> <code>update_issue</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'update_issue' tool to update issue number [issue_number]. Set the issue status to 'closed' and add a comment 'Issue resolved by commit [commit_hash]'."</li>
+<li><strong>Benefit:</strong> Automates issue lifecycle management, ensuring issue statuses are always synchronized with the actual development progress. Reduces manual status updates, improves issue tracking accuracy, and provides a clear audit trail of issue resolution.</li>
+</ul>
+</li>
+<li>
+<p><strong>Real-time Issue Commenting for Enhanced Collaboration:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Allow ELITEA Agents to automatically add comments to GitHub issues to provide updates, request information, or log actions taken within ELITEA workflows, keeping issue discussions current.</li>
+<li><strong>Tools Used:</strong> <code>comment_on_issue</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'comment_on_issue' tool to add a comment to issue number [issue_number] with the text '[comment_text]'."</li>
+<li><strong>Benefit:</strong> Streamlines communication within issue tracking, enabling automated updates and feedback directly within GitHub issues. Keeps all stakeholders informed, reduces manual communication overhead, and centralizes issue-related discussions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Proactive Pull Request Review Reminders:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Automatically remind developers about open pull requests awaiting their review to expedite code reviews and maintain a smooth development pipeline.</li>
+<li><strong>Tools Used:</strong> <code>list_open_pull_requests</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'list_open_pull_requests' tool to get a list of open pull requests assigned to [developer_username]. Send a summary of these PRs to the developer as a reminder."</li>
+<li><strong>Benefit:</strong> Improves code review workflow efficiency by providing automated reminders. Helps developers prioritize code reviews, reduces bottlenecks in the code integration process, and promotes timely code integration.</li>
+</ul>
+</li>
+<li>
+<p><strong>Quick Access to Pull Request Details for Code Review:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> During code review discussions within ELITEA, provide reviewers with immediate access to the full details of a specific pull request to facilitate informed and efficient reviews.</li>
+<li><strong>Tools Used:</strong> <code>get_pull_request</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_pull_request' tool to get details for pull request number [pr_number]. Display the PR title, description, status, and reviewer information."</li>
+<li><strong>Benefit:</strong> Provides code reviewers with immediate access to comprehensive pull request information directly within ELITEA, facilitating informed and efficient code reviews without context switching.</li>
+</ul>
+</li>
+<li>
+<p><strong>Efficient Code Review Preparation with File Lists:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Before starting a code review, provide reviewers with a list of files changed in a pull request to help them understand the scope of changes and plan their review approach.</li>
+<li><strong>Tools Used:</strong> <code>list_pull_request_files</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'list_pull_request_files' tool to get a list of files changed in pull request number [pr_number]. Present this list to the code reviewers before the review meeting."</li>
+<li><strong>Benefit:</strong> Enhances code review preparation and efficiency by providing reviewers with a clear overview of the files modified in a pull request beforehand, enabling better planning and focused review efforts.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Pull Request Creation for Code Contributions:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> After a developer completes a code modification task within ELITEA, automatically initiate the code review process by creating a pull request for their changes in GitHub.</li>
+<li><strong>Tools Used:</strong> <code>create_pull_request</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_pull_request' tool to create a pull request from branch '[source_branch]' to branch '[target_branch]' with the title '[pr_title]' and description '[pr_description]'."</li>
+<li><strong>Benefit:</strong> Automates the pull request creation process, significantly reducing manual effort for developers and streamlining the code contribution workflow. Ensures code changes are promptly submitted for review and integration.</li>
+</ul>
+</li>
+<li>
+<p><strong>Templated File Creation for Code Consistency:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When creating new code components or modules, automatically generate template files in the repository to enforce coding standards and project conventions.</li>
+<li><strong>Tools Used:</strong> <code>create_file</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_file' tool to create a new file at path '[file_path]' with the content from the template '[template_content]'. Ensure the file extension is '.js'."</li>
+<li><strong>Benefit:</strong> Automates file creation using templates, enforcing coding standards and consistency across the codebase. Reduces manual file creation effort and ensures adherence to project conventions for new files.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Configuration Loading from Repository Files:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Dynamically load application configuration settings from a configuration file stored in the GitHub repository to ensure ELITEA workflows are always using the latest configurations.</li>
+<li><strong>Tools Used:</strong> <code>read_file</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'read_file' tool to read the content of the file '[config_file_path]' from the 'main' branch. Parse the content as JSON and use the configuration values in the workflow."</li>
+<li><strong>Benefit:</strong> Enables dynamic configuration management, allowing ELITEA to adapt its behavior based on configuration files stored in GitHub. Ensures configurations are centrally managed, version-controlled, and consistently applied.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Documentation Updates for Code Changes:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When code changes are merged that affect API documentation, automatically update the corresponding documentation files in the repository to keep documentation synchronized with the codebase.</li>
+<li><strong>Tools Used:</strong> <code>read_file</code>, <code>update_file</code></li>
+<li><strong>Example Instruction:</strong> "Use 'read_file' to get the current content of '[docs_file_path]'. Update the content with the new API documentation and use 'update_file' to save the updated content back to '[docs_file_path]' in the 'main' branch."</li>
+<li><strong>Benefit:</strong> Keeps documentation synchronized with the latest codebase, reducing manual effort and errors in documentation maintenance. Ensures accurate and up-to-date documentation for users and developers.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Cleanup of Obsolete Code Files:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Periodically delete obsolete or unused code files from designated directories in the repository to maintain codebase cleanliness and reduce technical debt.</li>
+<li><strong>Tools Used:</strong> <code>delete_file</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'delete_file' tool to delete the file at path '[obsolete_file_path]' from the 'cleanup' branch. Verify the file is no longer needed before deletion."</li>
+<li><strong>Benefit:</strong> Helps maintain a clean and organized codebase by automating the removal of unnecessary files. Reduces repository clutter, improves code navigability, and enhances long-term project maintainability.</li>
+</ul>
+</li>
+<li>
+<p><strong>Codebase Exploration and File Navigation within ELITEA:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Allow users to easily browse the file structure of a specific branch in the GitHub repository directly within ELITEA to explore code or locate specific files.</li>
+<li><strong>Tools Used:</strong> <code>list_files_in_branch</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'list_files_in_branch' tool to list all files in the branch '[branch_name]'. Present the file list to the user in a tree-like structure if possible."</li>
+<li><strong>Benefit:</strong> Provides users with a convenient way to browse repository contents directly within ELITEA, enabling easy navigation and file selection for further actions without switching to GitHub.</li>
+</ul>
+</li>
+<li>
+<p><strong>Project Overview with Branch Listing and Summaries:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Provide project managers with an automated overview of all active branches in the repository, including their last commit dates, to monitor development activity and branch management.</li>
+<li><strong>Tools Used:</strong> <code>list_branches_in_repo</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'list_branches_in_repo' tool to list all branches in the repository. For each branch, retrieve the date of the last commit and present a summary to the project manager."</li>
+<li><strong>Benefit:</strong> Provides project managers with an automated overview of repository branches, facilitating project monitoring, branch management, and understanding of the current development landscape within the repository.</li>
+</ul>
+</li>
+<li>
+<p><strong>Branch Context Management for Workflow Reliability:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Ensure that a series of automated code modification operations are performed within the correct branch context to prevent unintended changes and maintain workflow integrity.</li>
+<li><strong>Tools Used:</strong> <code>set_active_branch</code></li>
+<li><strong>Example Instruction:</strong> "First, use 'set_active_branch' to set the active branch to '[target_branch]'. Then, proceed with the file modification operations within this active branch context."</li>
+<li><strong>Benefit:</strong> Ensures operations are performed on the intended branch, reducing the risk of errors and unintended modifications to the wrong branch. Improves the reliability and accuracy of automated workflows involving file operations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Sprint Branch Creation for Agile Development:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> At the beginning of each sprint, automatically create a new sprint branch in the repository to provide a dedicated space for sprint-related development activities, following agile development practices.</li>
+<li><strong>Tools Used:</strong> <code>create_branch</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_branch' tool to create a new branch named 'sprint-[sprint_number]' based on the 'develop' branch. Notify the development team about the new sprint branch."</li>
+<li><strong>Benefit:</strong> Automates branch creation for sprint-based development, streamlining sprint setup and ensuring organized code management for each sprint cycle. Reduces manual branch creation steps and promotes branch-based development best practices.</li>
+</ul>
+</li>
+<li>
+<p><strong>Directory-Specific File Retrieval for Focused Operations:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Retrieve a list of all configuration files located within the 'config' directory of the repository to enable centralized access and management of project configurations within ELITEA workflows.</li>
+<li><strong>Tools Used:</strong> <code>get_files_from_directory</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_files_from_directory' tool to get a list of files from the 'config' directory in the 'main' branch. Present the list of configuration files to the user."</li>
+<li><strong>Benefit:</strong> Provides a focused way to access and manage files within specific directories, enabling efficient retrieval of configuration files, documentation sets, or other organized file groups within the repository structure, improving workflow efficiency when working with structured file sets.</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ul>
+<li>
+<p><strong>Connection Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> ELITEA Agent fails to establish a connection with GitHub, resulting in errors during toolkit execution.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Verify GitHub API URL:</strong> Ensure that the <strong>URL</strong> field in the toolkit configuration is correctly set to the standard GitHub API URL: <code>https://api.github.com</code>. Avoid modifying this URL unless you are using GitHub Enterprise Server.</li>
+<li><strong>Check Personal Access Token (PAT):</strong> Double-check that the <strong>Personal Access Token (Classic)</strong> you have provided is accurate, has not expired, and is valid for your GitHub account and the target repository. Carefully re-enter or copy-paste the token to rule out typos.</li>
+<li><strong>Verify Token Scopes:</strong> Review the <strong>scopes/permissions</strong> granted to your Personal Access Token in GitHub. Ensure that the token has the necessary scopes (e.g., <code>repo</code>, <code>workflow</code>, <code>issues</code>, <code>pull_request</code>) for the specific GitHub tools your Agent is attempting to use. Insufficient scopes are a common cause of connection and permission errors.</li>
+<li><strong>Network Connectivity:</strong> Confirm that both your ELITEA environment and the GitHub service are connected to the internet and that there are no network connectivity issues, firewalls, or proxies blocking the integration. Test network connectivity to <code>api.github.com</code> from your ELITEA environment if possible.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization Errors (Permission Denied/Unauthorized):</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails with "Permission Denied" or "Unauthorized" errors when attempting to access or modify GitHub resources, even with a seemingly valid token.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Re-verify Token Scopes:</strong> Double-check the <strong>scopes/permissions</strong> granted to your Personal Access Token with extreme care. Ensure that the token possesses the precise scopes required for the specific GitHub actions your Agent is trying to perform. For example, creating files or pull requests requires scopes that grant write access (<code>repo</code> scope or granular <code>write:repo</code> scopes).</li>
+<li><strong>Repository Access Permissions:</strong> Confirm that the GitHub account associated with the Personal Access Token has the necessary access permissions to the specified repository. Verify that the account is a collaborator, member of the organization that owns the repository, or has the appropriate roles and permissions (e.g., write access for modifying repositories). Check repository settings in GitHub to confirm access levels.</li>
+<li><strong>Token Revocation or Expiration:</strong> Ensure that the Personal Access Token has not been accidentally revoked in GitHub settings or that it has not reached its expiration date if you set one. Generate a new token if necessary.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Incorrect Repository or Branch Names:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent tools fail to operate on the intended repository or branch, often resulting in "Repository not found" or "Branch not found" errors.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Double-Check Repository Name:</strong> Carefully and meticulously verify that you have entered the correct GitHub Repository name in the toolkit configuration within ELITEA. Pay close attention to capitalization, spelling, and the <code>repository_owner/repository_name</code> format. Even minor typos can cause errors.</li>
+<li><strong>Verify Branch Name Spelling and Case:</strong> Ensure that you are using the correct branch name (e.g., <code>main</code>, <code>develop</code>, <code>feature-branch</code>) in your Agent's instructions when specifying branch-related parameters for GitHub tools. Branch names in Git are case-sensitive. Double-check the spelling and capitalization of branch names against your repository in GitHub.</li>
+<li><strong>Branch Existence:</strong> Confirm that the specified branch actually exists in your GitHub repository. It's possible the branch name is correct but the branch was deleted or renamed.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="faq">FAQ</h3>
+<ol>
+<li>
+<p><strong>Q: Can I use my regular GitHub password directly for the ELITEA integration instead of a Personal Access Token?</strong></p>
+<ul>
+<li><strong>A:</strong> <strong>No, using a GitHub Personal Access Token (Classic) is mandatory and strongly recommended for security.</strong>  Direct password authentication is not supported for ELITEA's GitHub toolkit integration. Personal Access Tokens provide a significantly more secure and controlled method for granting access to external applications like ELITEA, without exposing your primary account credentials.</li>
+</ul>
+</li>
+<li>
+<p><strong>Q: What scopes/permissions are absolutely necessary and minimally sufficient for the GitHub Personal Access Token to work with ELITEA?</strong></p>
+<ul>
+<li><strong>A:</strong> The minimum required scopes depend on the specific GitHub tools your ELITEA Agent will be using. For basic read-only access to repositories (e.g., using <code>read_file</code>, <code>list_files_in_branch</code>), the <code>repo:status</code> and <code>public_repo</code> scopes might suffice. However, for most common integration scenarios involving modifications (e.g., <code>create_file</code>, <code>update_file</code>, <code>create_pull_request</code>), you will need the broader <code>repo</code> scope or more granular <code>repo</code> write scopes. For issue and pull request management, include <code>issues</code> and <code>pull_request</code> scopes respectively. <strong>Always adhere to the principle of least privilege and grant only the scopes that are strictly necessary for your Agent's intended functionalities.</strong> Refer to the GitHub documentation for detailed scope descriptions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Q: What is the correct format for specifying the GitHub Repository name in the ELITEA toolkit configuration?</strong></p>
+<ul>
+<li><strong>A:</strong> The GitHub Repository name must be entered in the format <code>repository_owner/repository_name</code> (e.g., <code>MyOrganization/my-project-repo</code>). Ensure you include both the repository owner's username or organization name and the repository name, separated by a forward slash <code>/</code>. This format is crucial for ELITEA to correctly identify and access your repository on GitHub.</li>
+</ul>
+</li>
+<li>
+<p><strong>Q: Why am I consistently encountering "Permission Denied" errors, even though I believe I have configured everything correctly and granted the necessary permissions?</strong></p>
+<ul>
+<li><strong>A:</strong> If you are still facing "Permission Denied" errors despite careful configuration, systematically re-examine the following:<ul>
+<li><strong>Token Scope Accuracy:</strong> Double and triple-check the <strong>scopes/permissions</strong> granted to your GitHub Personal Access Token in your GitHub Developer Settings. Ensure that the token possesses the <em>exact</em> scopes required for <em>each</em> GitHub tool your Agent is attempting to use. Pay close attention to write vs. read permissions.</li>
+<li><strong>Repository Access Verification:</strong> Explicitly verify that the GitHub account associated with the Personal Access Token has the necessary access rights to the <em>specific target repository</em> within GitHub itself. Confirm repository membership, collaborator status, and assigned roles/permissions within the GitHub repository settings.</li>
+<li><strong>Token Validity and Revocation:</strong> Double-check that the Personal Access Token is still valid, has not expired, and has not been accidentally revoked in your GitHub settings. Generate a new token as a test if unsure.</li>
+<li><strong>Typographical Errors:</strong> Carefully review all configuration fields in ELITEA, especially the Repository name, Username (though less relevant for token auth), and the Token itself for any hidden typographical errors or accidental whitespace.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>If, after meticulously checking all of these points, you still encounter "Permission Denied" errors, please reach out to ELITEA Support with detailed information for further assistance.</p>
+<h3 id="support-and-contact-information">Support and Contact Information</h3>
+<p>If you encounter any persistent issues, have further questions, or require additional assistance beyond the scope of this guide regarding the GitHub integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are committed to providing timely and effective support to ensure you have a seamless and productive experience with ELITEA.</p>
+<p><strong>How to Reach ELITEA Support:</strong></p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p><strong>Best Practices for Submitting Effective Support Requests:</strong></p>
+<p>To enable our support team to understand and resolve your issue as efficiently as possible, please include the following critical information in your support email:</p>
+<ul>
+<li><strong>ELITEA Environment Details:</strong> Clearly specify the ELITEA environment you are currently using (e.g., "Nexus," "Alita Lab," "EYE," or the specific name of your ELITEA instance).</li>
+<li><strong>Project Context:</strong>  Indicate the <strong>Project Name</strong> within ELITEA where you are experiencing the issue and specify whether you are working in your <strong>Private</strong> workspace or a <strong>Team</strong> project.</li>
+<li><strong>Detailed Issue Description:</strong> Provide a clear, concise, and comprehensive description of the problem you are encountering. Articulate precisely what you were attempting to do, what behavior you expected to observe, and what actually occurred (the unexpected behavior or error). Step-by-step descriptions are highly valuable.</li>
+<li><strong>Relevant Configuration Information (Screenshots Preferred):</strong> To facilitate efficient diagnosis, please include relevant configuration details, ideally as screenshots:<ul>
+<li><strong>Agent Instructions (Screenshot or Text Export):</strong> If the issue is related to a specific Agent's behavior, provide a screenshot of the Agent's "Instructions" field or export the instructions as text.</li>
+<li><strong>Toolkit Configurations (Screenshots):</strong> If the issue involves the GitHub toolkit or any other toolkits, include clear screenshots of the toolkit configuration settings as they appear within your Agent's configuration in ELITEA.</li>
+</ul>
+</li>
+<li><strong>Complete Error Messages (Full Text):</strong> If you are encountering any error messages, please provide the <strong>complete and unabridged error text</strong>. In the ELITEA Chat window, expand the error details section (if available) and copy the entire error message text. Detailed error information is often crucial for accurate diagnosis.</li>
+<li><strong>Your Query/Prompt (Exact Text):</strong> If the issue is related to Agent execution or an unexpected response, provide the exact query or prompt you used to trigger the Agent's action that led to the problem.</li>
+</ul>
+<p><strong>Pre-Support Request Actions (Self-Help):</strong></p>
+<p>Before contacting support, we strongly encourage you to first thoroughly explore the resources available within this comprehensive guide and the broader ELITEA documentation. You may find readily available answers to common questions, solutions to known issues, or configuration guidance within these resources, potentially resolving your issue more quickly.</p>
+<h2 id="useful-links">Useful Links</h2>
+<p>To further enhance your understanding and skills in integrating GitHub with ELITEA, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="https://github.com">GitHub Website</a></strong>: Access the main GitHub platform to create an account or log in.</li>
+<li><strong><a href="https://github.com/settings/developers">GitHub Developer Settings</a></strong>: Navigate to the Developer settings in your GitHub account to manage Personal Access Tokens and other developer-related configurations.</li>
+<li><strong><a href="https://github.com/settings/tokens">GitHub Personal Access Tokens (Classic)</a></strong>: Directly access the section in GitHub settings to manage your Personal Access Tokens (Classic) for secure integrations.</li>
+<li><strong><a href="https://api.github.com">GitHub API URL</a></strong>: Access the base URL for the GitHub API endpoint, necessary for configuring the GitHub toolkit in ELITEA.</li>
+<li><strong><a href="../../../platform-documentation/menus/settings/#secrets">ELITEA Secrets Management</a></strong>: Learn how to securely store your GitHub Personal Access Token using ELITEA's Secrets management feature for enhanced security.</li>
+<li><strong><a href="../../../platform-documentation/menus/agents/">ELITEA Agents Configuration</a></strong>:  Find out more about creating and configuring Agents in ELITEA, where you integrate the GitHub toolkit to automate your workflows.</li>
+<li><strong><a href="mailto:SupportAlita@epam.com">ELITEA Support Email</a></strong>: Contact the ELITEA support team for direct assistance with GitHub integration or any other questions and issues you may encounter.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

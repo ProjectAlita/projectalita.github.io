@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/collections-and-organizing-entities/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    
+    <title>Collections and Organizing Entities in ELITEA - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../agents-toolkits/pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../agents-toolkits/testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../creating-prompts/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../../support-resources/contact-support/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#collections-and-organizing-entities-in-elitea">Collections and Organizing Entities in ELITEA</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+            <li class="second-level"><a href="#importance-of-organizing-entities-in-elitea">Importance of Organizing Entities in ELITEA</a></li>
+                
+            <li class="second-level"><a href="#overview-of-tags">Overview of Tags</a></li>
+                
+            <li class="second-level"><a href="#overview-of-collections">Overview of Collections</a></li>
+                
+                <li class="third-level"><a href="#how-to-add-an-entity-to-a-collection">How to Add an Entity to a Collection</a></li>
+            <li class="second-level"><a href="#best-practices-and-examples-organizing-entities-in-elitea">Best Practices and Examples: Organizing Entities in ELITEA</a></li>
+                
+            <li class="second-level"><a href="#useful-links-and-materials">Useful Links and Materials</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="collections-and-organizing-entities-in-elitea">Collections and Organizing Entities in ELITEA</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This guide provides a comprehensive overview of <strong>Collections</strong> and <strong>Tags</strong> in ELITEA, powerful features designed to help you organize and manage your <strong>Entities</strong> effectively. In ELITEA, <strong>Entities</strong> refer to <strong>Prompts, Datasources, and Agents</strong> – the core building blocks of ELITEA and your AI-powered workflows. Whether you are working in your <strong>Private</strong> workspace, collaborating within a <strong>Team</strong> project, or contributing to the <strong>Public</strong> project, mastering these organizational tools is key to maximizing your efficiency and leveraging the full potential of ELITEA. This guide will walk you through the concepts, configuration, usage, and best practices for utilizing <strong>Tags</strong> and <strong>Collections</strong>.</p>
+<p><img alt="Collections-Menu" src="../../img/how-tos/collections/Collections-Menu.png" /></p>
+<p><strong>Understanding Project Scopes:</strong></p>
+<ul>
+<li><strong>Private Workspace:</strong> Your personal and private area within ELITEA to create and manage your Entities and Collections. Only you have access to your <strong>Private</strong> workspace.</li>
+<li><strong>Team Projects:</strong> Collaborative spaces for teams to work together on projects, sharing and managing Entities and Collections. Access to Team projects is controlled by project roles and permissions.</li>
+<li><strong>Public Project:</strong> A shared, community space within ELITEA where published Prompts and Collections are available for all users to discover and utilize.</li>
+</ul>
+<h2 id="importance-of-organizing-entities-in-elitea">Importance of Organizing Entities in ELITEA</h2>
+<p>As you build and utilize more Entities within ELITEA, effective organization becomes paramount. Without a robust organizational system, managing a growing number of entities can become challenging, leading to:</p>
+<ul>
+<li><strong>Difficulty in Finding Entities:</strong> Spending excessive time searching for the right Prompt, Datasource, or Agent among a long, unorganized list.</li>
+<li><strong>Reduced Efficiency:</strong> Slower workflows and decreased productivity due to the time wasted on searching and managing entities.</li>
+<li><strong>Inconsistent Naming and Duplication:</strong> Lack of a clear organizational structure can lead to inconsistent naming conventions and accidental duplication of entities, creating clutter and confusion.</li>
+<li><strong>Hindered Collaboration:</strong> Sharing and collaborating on entities becomes difficult when they are not properly categorized and grouped, hindering team efficiency and knowledge sharing.</li>
+</ul>
+<p><strong>Tags</strong> and <strong>Collections</strong> in ELITEA directly address these challenges by providing intuitive and flexible ways to categorize, group, and manage your AI artifacts, ensuring you can quickly find, utilize, and share the resources you need, when you need them.</p>
+<h2 id="overview-of-tags">Overview of Tags</h2>
+<p>In ELITEA, <strong>Tags</strong> are your essential tool for categorizing and labeling individual Entities. Think of tags as keywords or labels that you attach to each Entity, allowing you to create a flexible and searchable organizational system. Tags are designed to:</p>
+<ul>
+<li><strong>Categorize Entities:</strong> Assign Entities to relevant categories based on topic, function, project, team, or any other criteria that makes sense for your workflow.</li>
+<li><strong>Improve Searchability:</strong> Make it easy to find specific Entities by filtering and searching based on assigned tags.</li>
+<li><strong>Enable Flexible Grouping:</strong> Group Entities based on multiple criteria by assigning multiple tags to each item.</li>
+</ul>
+<p><strong>Configuring Tags for Entities:</strong></p>
+<ol>
+<li><strong>Access Entity Configuration:</strong> Open the configuration settings for the Entity you want to tag.</li>
+<li><strong>Locate "Tags" Input Box:</strong> Within the <strong>Configuration</strong> tab, find the <strong>Tags</strong> input box.</li>
+<li><strong>Add Tags:</strong><ul>
+<li><strong>Type a Tag Name:</strong> Begin typing the desired tag name.</li>
+<li><strong>Select or Create:</strong> Select a suggested tag or create a new one by pressing <strong>Enter</strong>.</li>
+</ul>
+</li>
+<li><strong>Save Configuration:</strong> Click the <strong>Save</strong> button to save the Entity with the selected tags.</li>
+</ol>
+<p><img alt="Tags-Select_Tag" src="../../img/how-tos/collections/Tags-Select_Tag.png" /></p>
+<p><strong>Note on 'code' Tag:</strong></p>
+<p>The tag named <code>code</code> is reserved for integration with the Alita Code extension. If you create and assign the tag <code>code</code> to Prompts, Agents, or Datasources within your ELITEA project, it enables a special synchronization feature.</p>
+<p><strong>Functionality of the <code>code</code> Tag:</strong></p>
+<ul>
+<li><strong>Alita Code Extension Connection</strong>: When you set up the Alita Code extension and connect it to your ELITEA project, the extension will recognize and utilize Entities that are tagged with code.</li>
+<li><strong>Synchronization and Usage in Code Editor</strong>: Entities tagged with code become accessible and usable directly within your IDE through the Alita Code extension. This allows you to seamlessly integrate your ELITEA-managed AI artifacts into your local coding workflows.</li>
+</ul>
+<p><strong>Key Features of Tags:</strong></p>
+<ul>
+<li><strong>Multi-Dimensional Labeling:</strong> Assign multiple tags to each Entity for flexible categorization.</li>
+<li><strong>Free-Form Text:</strong> Create custom tags relevant to your specific needs.</li>
+<li><strong>Searchable and Filterable:</strong> Easily locate Entities using tag-based search and filtering.</li>
+<li><strong>Visual Identification:</strong> Tags are displayed as labels for quick identification.</li>
+</ul>
+<p><strong>Searching and Filtering Entities by Tags:</strong></p>
+<ul>
+<li><strong>Search by Tags:</strong> Use the <strong>Search</strong> bar in any Entity menu (Prompts, Datasources, Agents) and type a tag name to filter the list.</li>
+<li><strong>Filter by Tags:</strong> Use the <strong>Tags"</strong> section in entity menus to select tags and narrow down the displayed list.</li>
+</ul>
+<p><img alt="Tags_Search_and_Filter" src="../../img/how-tos/collections/Tags_Search_and_Filter.png" /></p>
+<h2 id="overview-of-collections">Overview of Collections</h2>
+<p><strong>Collections</strong> in ELITEA offer a higher level of organization, grouping related Entities into logical units. Collections are designed to:</p>
+<ul>
+<li><strong>Group Related Entities:</strong> Organize Entities by theme, project, or use case.</li>
+<li><strong>Enhance Discoverability:</strong> Improve the discoverability of related sets of Entities.</li>
+<li><strong>Facilitate Sharing and Export:</strong> Enable batch export and sharing of grouped Entities.</li>
+<li><strong>Promote Thematic Organization:</strong> Create curated sets of resources for specific topics or workflows.</li>
+</ul>
+<p><strong>Configuration and Usage of Collections:</strong></p>
+<p><strong>Creating Collections:</strong></p>
+<ol>
+<li><strong>Navigate to Collections Menu:</strong> Access the <strong>Collections</strong> menu in your <strong>Private</strong> or <strong>Team</strong> project.</li>
+<li><strong>Create New Collection:</strong> Click the <strong>"+ Collection"</strong> button.</li>
+<li><strong>Define Collection Details:</strong><ul>
+<li><strong>Name:</strong> Enter a descriptive <strong>Name</strong> for the collection.</li>
+<li><strong>Description:</strong> Write a concise <strong>Description</strong> explaining the collection's purpose.</li>
+</ul>
+</li>
+<li><strong>Create Collection:</strong> Click <strong>Create</strong> to create the collection.</li>
+</ol>
+<p><img alt="Collection-Create_Collection" src="../../img/how-tos/collections/Collection-Create_Collection.png" /></p>
+<p><strong>Exploring Collections:</strong></p>
+<ol>
+<li><strong>Access Collections Menu:</strong> Navigate to the <strong>Collections</strong> menu.</li>
+<li><strong>Open Collection:</strong> Click on a <strong>Collection Card</strong> or <strong>Name</strong> to view its contents.</li>
+<li><strong>View Entities:</strong> Explore the list of Prompts, Datasources, and Agents within the collection.</li>
+<li><strong>Interact with Entities:</strong> Within a collection, you can:<ul>
+<li><strong>View and Open Entities</strong></li>
+<li><strong>Modify Collection Details</strong></li>
+<li><strong>Filter Collection by Tags</strong></li>
+<li><strong>Publish Collection</strong></li>
+<li><strong>Delete Collection</strong></li>
+<li><strong>Export Collection</strong></li>
+</ul>
+</li>
+</ol>
+<p><img alt="Collection-Available_Actions" src="../../img/how-tos/collections/Collection-Available_Actions.png" /></p>
+<p><strong>Filtering Entities within a Collection by Tabs and Tags:</strong></p>
+<p>Within the <strong>Collection Detail View</strong>, you can filter Entities by <strong>Type</strong> using tabs and further refine the list using <strong>Tags</strong>:</p>
+<ul>
+<li><strong>Filter by Type using Tabs:</strong> Use the <strong>All</strong>, <strong>Prompts</strong>, <strong>Datasources</strong>, and <strong>Agents</strong> tabs to view specific entity types within the collection.</li>
+<li><strong>Filter by Tags:</strong> Use the <strong>"Tags"</strong> filter section to narrow down the displayed list to Entities with specific tags.</li>
+</ul>
+<p><img alt="Collection-Filtering" src="../../img/how-tos/collections/Collection-Filtering.png" /></p>
+<p><strong>Modifying a Collection:</strong></p>
+<ol>
+<li><strong>Open Collection Detail View:</strong> Navigate to the Collections menu and open the desired collection.</li>
+<li><strong>Edit Collection Details:</strong> Click the <strong>"Edit" icon</strong>.</li>
+<li><strong>Update Information:</strong> Modify the <strong>Name</strong> and/or <strong>Description</strong>.</li>
+<li><strong>Saving Changes:</strong> Click the <strong>"Save"</strong> button.</li>
+</ol>
+<p>Here's the enhanced "Publishing a Collection (Public Project)" section with the added note clarifying the publishing requirements and behavior:</p>
+<p><strong>Publishing a Collection (Public Project):</strong></p>
+<ol>
+<li><strong>Open Collection Detail View:</strong> Navigate to the Collections menu and open the detail view of the collection you want to publish.</li>
+<li><strong>Review Collection Contents:</strong> Ensure that the collection is complete, relevant, and contains <strong>at least one published entity from that collection</strong> before publishing the collection itself.</li>
+<li><strong>Publishing Collection:</strong> Click the <strong>"Publish collection" icon</strong> within the collection detail view. This will submit the collection for review by ELITEA moderators.</li>
+<li><strong>Moderation and Approval:</strong> The collection will be reviewed to ensure it meets ELITEA's quality and relevance guidelines. Once approved by a moderator, the collection will be published and become available in the Public project's Collections menu for community use.</li>
+</ol>
+<p><img alt="Collection-Publishing" src="../../img/how-tos/collections/Collection-Publishing.png" /></p>
+<p><strong>Important Notes on Publishing Collections:</strong></p>
+<ul>
+<li><strong>Minimum Requirement - Published Entity:</strong> <strong>A Collection cannot be published unless it contains at least one <em>already published</em> Entity (Prompt, Datasource, or Agent).</strong> Ensure that your collection includes at least one published entity before attempting to publish the collection itself.</li>
+<li><strong>Separate Entity Publication is Necessary:</strong> <strong>Publishing a Collection does <em>not<em> automatically publish the individual entities (Prompts, Datasources, Agents) contained within it.</em><em>  If you intend to include specific entities in your published Collection in the Public project, you must </em><em>publish each of those entities </em>separately</em></strong> in their respective menus (Prompts, Datasources, Agents) <em>before</em> publishing the Collection.</li>
+<li><strong>Collection Duplication in Public Project:</strong> Publishing a Collection essentially <strong>creates a <em>duplicate</em> of your Collection in the Public project.</strong> This published copy will include all the <em>already published</em> entities that were part of your original Collection at the time of publishing.  Changes made to the original Collection in your Private or Team project <em>after</em> publishing will <strong>not</strong> automatically be reflected in the published Collection in the <strong>Public</strong> project.</li>
+<li><strong>Currently Supported Entity Type for Public Collections - Prompts:</strong>  <strong>Currently, publishing Collections primarily focuses on sharing <em>Prompts</em> within the collection to the Public project.</strong> While Collections can contain Datasources and Agents, the publishing mechanism for Collections is primarily designed for sharing groups of Prompts within the community.  Functionality for publishing Collections with Datasources and Agents will be expanded in future updates.</li>
+</ul>
+<p><strong>Deleting a Collection:</strong></p>
+<ol>
+<li><strong>Open Collections Menu:</strong> Navigate to the Collections menu.</li>
+<li><strong>Locate Collection:</strong> Find the collection you want to delete.</li>
+<li><strong>Delete Collection:</strong> Click the <strong>Delete</strong> icon.</li>
+<li><strong>Confirmation:</strong> Confirm the deletion when prompted.</li>
+</ol>
+<p><strong>Exporting Collections:</strong></p>
+<ol>
+<li><strong>Open Collection Detail View:</strong> Navigate to the Collections menu and open the collection you want to export.</li>
+<li><strong>Export Collection:</strong> Click the <strong>Export Collection</strong> icon.</li>
+<li><strong>Download JSON File:</strong> A JSON file containing the collection data will be downloaded.</li>
+</ol>
+<p><strong>Importing Collections:</strong></p>
+<ol>
+<li><strong>Import Collection:</strong> Click the <strong>Import</strong> button in the Collections menu.</li>
+<li><strong>Select Collection File:</strong> In the "Import Wizard," select the <strong>JSON file</strong> from your device.</li>
+<li><strong>Configure Import Options:</strong> Choose the target project and select Entities to import.</li>
+<li><strong>Start Import:</strong> Click the <strong>"Import"</strong> button.</li>
+<li><strong>Locate Imported Entities:</strong> Find imported Entities in their respective menus (Prompts, Datasources, Agents).</li>
+</ol>
+<p><strong>Important Note on Collection Entity Recreation:</strong> The Collection entity itself is not automatically recreated during import.</p>
+<p>For more information about importing collections and entities, please refer to the <a href="../../feature-guides/core-features/export-import/">Export and Import Guide</a>.</p>
+<h3 id="how-to-add-an-entity-to-a-collection">How to Add an Entity to a Collection</h3>
+<p>ELITEA offers a convenient way to add Prompts, Datasources, and Agents to your Collections, allowing you to build and curate your organized sets of entities efficiently.</p>
+<p><strong>Adding Entities from within the Entity Menus (Prompts, Datasources, Agents)</strong></p>
+<p>To add Entities to Collections from the Prompts, Datasources, or Agents menus as you are browsing or managing your individual entities.</p>
+<ol>
+<li><strong>Navigate to Entity Menu:</strong> Go to the <strong>Prompts</strong>, <strong>Datasources</strong>, or <strong>Agents</strong> menu, depending on the type of entity you want to add to a Collection.</li>
+<li><strong>Locate the Entity to Add:</strong> Find the specific Entity (Prompt, Datasource, or Agent) that you want to add to a Collection within the list. ELITEA offers two view options, and the process is similar in both:<ul>
+<li><strong>Card list view</strong>: If you are viewing your entities in a card format, locate the desired entity card.</li>
+<li><strong>Table view</strong>: If you are viewing your entities in a table format, locate the entity you want to add in the list.</li>
+</ul>
+</li>
+<li>
+<p><strong>To add entity to collection</strong>  For the chosen Entity, locate and click the <strong>Bookmark</strong> icon.</p>
+<ul>
+<li>
+<p><strong>Card list view</strong>: On the top right corner of the Entity's card.</p>
+<p><img alt="CardView_Add_to_Collection" src="../../img/how-tos/collections/CardView_Add_to_Collection.png" /></p>
+</li>
+<li>
+<p><strong>Table view</strong>: In the <strong>Actions</strong> column, which is usually the last column in the table, click on the ellipsis icon (<code>...</code>) next to the entity. A dropdown menu will appear. Hover over or click on the <strong>"Add to collection"</strong> option.</p>
+<p><img alt="TableView_Add_to_Collection" src="../../img/how-tos/collections/TableView_Add_to_Collection.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Select Target Collection:</strong> After clicking the Bookmark icon, a pop-up window will appear, displaying a list of your existing Collections.</p>
+<ul>
+<li><strong>Choose a Collection:</strong> Select the <strong>Collection</strong> to which you want to add the current Entity from the list.</li>
+</ul>
+</li>
+<li><strong>Entity Added to Collection:</strong> Once you select a Collection, the Entity will be automatically added to that Collection.</li>
+</ol>
+<h2 id="best-practices-and-examples-organizing-entities-in-elitea">Best Practices and Examples: Organizing Entities in ELITEA</h2>
+<p>Effective organization with <strong>Tags</strong> and <strong>Collections</strong> is crucial for managing your AI assets in ELITEA. Here are some best practices and examples to guide you:</p>
+<p><strong>Tagging Strategies:</strong></p>
+<ul>
+<li><strong>Tag by Topic or Subject Area:</strong> Examples: <code>#UserStories</code>, <code>#CodeDocumentation</code>, <code>#CompetitiveAnalysis</code>.</li>
+<li><strong>Tag by Function or Purpose:</strong> Examples: <code>#Drafting</code>, <code>#Summarization</code>, <code>#DataRetrieval</code>.</li>
+<li><strong>Tag by Project or Team:</strong> Examples: <code>#ProjectAlpha</code>, <code>#TeamBeta</code>, <code>#MarketingDepartment</code>.</li>
+<li><strong>Tag by User Skill Level:</strong> Examples: <code>#BeginnerFriendly</code>, <code>#AdvancedUsers</code>.</li>
+<li><strong>Maintain Consistency:</strong> Establish and document a consistent tagging system.</li>
+<li><strong>Combine General and Specific Tags:</strong> Use a mix of tag granularity for effective categorization.</li>
+</ul>
+<p><strong>Example Tagging Scenarios:</strong></p>
+<ul>
+<li><strong>Prompt: "Draft User Story for Checkout Feature"</strong>: Tags: <code>#UserStories</code>, <code>#Jira</code>, <code>#Drafting</code>, <code>#BeginnerFriendly</code>, <code>#ProjectAlpha</code>.</li>
+<li><strong>Agent: "Confluence Page Publisher"</strong>: Tags: <code>#Confluence</code>, <code>#Publishing</code>, <code>#Documentation</code>, <code>#TeamBeta</code>.</li>
+<li><strong>Datasource: "Competitor Pricing Data - Web Scraper"</strong>: Tags: <code>#CompetitiveAnalysis</code>, <code>#DataRetrieval</code>, <code>#MarketingDepartment</code>.</li>
+</ul>
+<p><strong>Collection Strategies:</strong></p>
+<ul>
+<li><strong>Group by Use Case or Workflow:</strong> Example: "User Story Management Toolkit."</li>
+<li><strong>Group by Project or Client:</strong> Example: "Project Alpha - AI Assets Collection."</li>
+<li><strong>Group by Theme or Topic:</strong> Example: "Code Documentation Prompts Collection."</li>
+<li><strong>Create "Starter Kits" or Template Collections:</strong> Develop template collections for common tasks.</li>
+<li><strong>Curate "Best Practices" Collections:</strong> Share collections showcasing best practices within your organization.</li>
+</ul>
+<p><strong>Example Collection Scenarios:</strong></p>
+<ul>
+<li><strong>Collection: "User Story Management Toolkit"</strong>: Contains Prompts, Agents, and Datasources for user story management.</li>
+<li><strong>Collection: "Code Documentation Automation"</strong>: Contains Prompts and Agents for code documentation.</li>
+<li><strong>Collection: "Marketing Content Generation - Social Media"</strong>: Contains Prompts and Datasources for social media marketing content.</li>
+</ul>
+<p><strong>Combining Tags and Collections for Optimal Organization:</strong></p>
+<ul>
+<li><strong>Collections for High-Level Grouping:</strong> Use Collections as thematic folders.</li>
+<li><strong>Tags for Granular Filtering:</strong> Use Tags for detailed categorization within Collections.</li>
+<li><strong>Example:</strong> "Marketing Content Generation" Collection with tags like <code>#SocialMedia</code>, <code>#BlogPosts</code>, <code>#EmailMarketing</code>.</li>
+</ul>
+<h2 id="useful-links-and-materials">Useful Links and Materials</h2>
+<p>To further expand your knowledge and skills in organizing Entities and utilizing Collections within ELITEA, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="../../platform-documentation/menus/collections/">Collections Menu</a></strong>:  Access the dedicated Collections Menu Guide for a comprehensive walkthrough of the Collections menu interface, features, and functionalities within ELITEA.</li>
+<li><strong><a href="../../feature-guides/core-features/public-project/">ELITEA Public Project Guide</a></strong>:  Explore the ELITEA Public Project to discover and utilize community-shared Prompts and Collections. Learn more about the purpose and guidelines of the Public project.</li>
+<li><strong><a href="../../platform-documentation/menus/publishing.md">Publishing Prompts and Collections Guide</a></strong>:  Consult this guide for step-by-step instructions and best practices on publishing your Prompts and Collections to the ELITEA Public Project, making them available to the wider community.</li>
+<li><strong><a href="../../feature-guides/core-features/export-import/">Export and Import Guide</a></strong>:  Refer to the detailed Export and Import Guide for in-depth instructions on exporting and importing individual Entities and entire Collections within ELITEA.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../.."</script>
+    
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

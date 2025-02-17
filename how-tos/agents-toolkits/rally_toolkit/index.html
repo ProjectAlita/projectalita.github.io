@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/rally_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Rally Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../zephyr_scale_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../xray_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-rally-integration">ELITEA Toolkit Guide: Rally Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-this-guide">Purpose of this Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-rally">Brief Overview of Rally</a></li>
+            <li class="second-level"><a href="#toolkits-account-setup-and-configuration-in-rally">Toolkit's Account Setup and Configuration in Rally</a></li>
+                
+                <li class="third-level"><a href="#account-setup">Account Setup</a></li>
+                <li class="third-level"><a href="#tokenapi-key-generation-creating-an-api-key-in-rally">Token/API Key Generation: Creating an API Key in Rally</a></li>
+            <li class="second-level"><a href="#system-integration-with-elitea">System Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#agent-creationconfiguration">Agent Creation/Configuration</a></li>
+                <li class="third-level"><a href="#toolkit-configuration">Toolkit Configuration</a></li>
+                <li class="third-level"><a href="#tool-overview-rally-toolkit-functionalities">Tool Overview: Rally Toolkit Functionalities</a></li>
+            <li class="second-level"><a href="#instructions-and-prompts-for-using-the-rally-toolkit">Instructions and Prompts for Using the Rally Toolkit</a></li>
+                
+            <li class="second-level"><a href="#best-practices-and-use-cases-for-rally-integration">Best Practices and Use Cases for Rally Integration</a></li>
+                
+                <li class="third-level"><a href="#best-practices-for-efficient-integration">Best Practices for Efficient Integration</a></li>
+                <li class="third-level"><a href="#use-cases-for-rally-toolkit-integration">Use Cases for Rally Toolkit Integration</a></li>
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting-common-issues">Troubleshooting Common Issues</a></li>
+                <li class="third-level"><a href="#faqs">FAQs</a></li>
+                <li class="third-level"><a href="#support-and-contact-information">Support and Contact Information</a></li>
+            <li class="second-level"><a href="#useful-links">Useful Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<p>Here is the enhanced User Guide for ELITEA Toolkit integration with Rally, incorporating your feedback and requirements:</p>
+<h1 id="elitea-toolkit-guide-rally-integration">ELITEA Toolkit Guide: Rally Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-this-guide">Purpose of this Guide</h3>
+<p>This guide is your definitive resource for integrating and effectively utilizing the <strong>Rally toolkit</strong> within ELITEA. It provides a detailed, step-by-step walkthrough, from setting up your Rally API Key to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated Agile project management, streamlined workflows, and enhanced team collaboration, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your Rally-driven workflows, enhance project visibility, and improve team productivity within your Agile development environment.</p>
+<h3 id="brief-overview-of-rally">Brief Overview of Rally</h3>
+<p>Rally, by Broadcom, is a leading Agile project management platform designed to support and streamline Agile software development methodologies. It provides a comprehensive suite of tools for planning, tracking, and managing Agile projects at scale. Rally is widely used by Agile teams to:</p>
+<ul>
+<li><strong>Agile Project and Portfolio Management:</strong> Rally provides robust features for managing Agile projects and portfolios, supporting various Agile frameworks like Scrum and Kanban, and enabling organizations to scale Agile practices across multiple teams and projects.</li>
+<li><strong>Backlog and Iteration Planning:</strong> Enables efficient backlog management, sprint planning, and iteration management, allowing Agile teams to effectively plan and prioritize work, manage sprint backlogs, and track progress against sprint goals.</li>
+<li><strong>User Story and Task Management:</strong> Facilitates the creation, management, and tracking of user stories, tasks, and other work items, providing a central repository for managing all aspects of project work and ensuring clear task ownership and accountability.</li>
+<li><strong>Real-time Progress Tracking and Reporting:</strong> Offers real-time dashboards, customizable reports, and visual progress tracking tools, providing Agile teams and stakeholders with up-to-date visibility into project status, sprint progress, team velocity, and other key Agile metrics, enabling data-driven decision-making and continuous improvement.</li>
+<li><strong>Collaborative Agile Environment:</strong> Rally promotes collaboration and communication within Agile teams by providing a shared platform for project planning, task management, issue tracking, and team communication, fostering transparency and alignment across the development team and stakeholders.</li>
+</ul>
+<p>Integrating Rally with ELITEA brings these powerful Agile project management capabilities directly into your AI-driven workflows. Your ELITEA Agents can then intelligently interact with your Rally workspaces and projects to automate Agile task management, enhance project tracking, improve team collaboration, and leverage AI to optimize your entire Agile development lifecycle within Rally.</p>
+<h2 id="toolkits-account-setup-and-configuration-in-rally">Toolkit's Account Setup and Configuration in Rally</h2>
+<h3 id="account-setup">Account Setup</h3>
+<p>Rally is a commercial Agile project management platform. To create a Rally account, follow these steps:</p>
+<ol>
+<li><strong>Visit Broadcom Rally Website:</strong> Open your web browser and navigate to the official Broadcom Rally website (e.g., <code>rallydev.com</code> or your organization's specific Rally URL).</li>
+<li><strong>Sign Up or Request Access:</strong> Click on the <strong>"Sign Up"</strong>, <strong>"Free Trial"</strong>, or <strong>"Request Demo"</strong> button, depending on your organization's access and trial requirements.</li>
+<li><strong>Follow Registration Process:</strong> Follow the on-screen instructions to create an account or request access. You will typically need to provide your business email address and other required information.</li>
+<li><strong>Email Verification and Account Setup:</strong> After submitting the registration form, you should receive a confirmation email from the Rally team. This email may include instructions on how to verify your email address and set up your Rally account. Follow the instructions in the email to complete the account creation process.</li>
+<li><strong>Log In to Rally:</strong> Once your account is set up and verified, log in to Rally using your newly created credentials.</li>
+</ol>
+<h3 id="tokenapi-key-generation-creating-an-api-key-in-rally">Token/API Key Generation: Creating an API Key in Rally</h3>
+<p>For secure integration with ELITEA, it is essential to use a Rally <strong>API Key</strong> for authentication. This method is more secure than using your primary Rally account password directly and allows you to control access permissions for ELITEA.</p>
+<p><strong>Follow these steps to generate an API Key in Rally:</strong></p>
+<p>For secure integration with ELITEA, it is essential to use a Rally <strong>API Key</strong> for authentication. This method is more secure than using your primary Rally account password directly and allows you to control access permissions for ELITEA.</p>
+<p><strong>Follow these steps to generate an API Key in Rally:</strong></p>
+<ol>
+<li>
+<p><strong>Sign in to Rally and Access Setup Icon:</strong> Begin by <strong>signing in to your Rally workspace</strong>. Once logged in, locate and click on the <strong>Setup icon</strong> (⚙️). This icon is typically found in the top right corner of the Rally interface and provides access to user and workspace settings.</p>
+<p><img alt="Rally-Setup" src="../../../img/how-tos/rally/Rally-Setup.png" /></p>
+</li>
+<li>
+<p><strong>Access My Settings via Avatar:</strong> After clicking the Setup icon, click on your <strong>Avatar</strong> (your profile picture or initials), located in the top right corner of the Rally interface, next to the Setup icon. From the dropdown menu that appears, select <strong>"My Settings"</strong>.</p>
+<p><img alt="Rally-Workspaces_Projects" src="../../../img/how-tos/rally/Rally-Workspaces_Projects.png" /></p>
+</li>
+<li>
+<p><strong>Locate API Keys Section in Top Banner:</strong> On the "My Settings" page, look for the <strong>"API Keys"</strong> section. This section is prominently displayed in a <strong>banner at the top</strong> of the "My Settings" page, making it easily accessible.</p>
+</li>
+<li>
+<p><strong>Create API Key:</strong> Once you have located the "API Keys" section, click on the <strong>"Create"</strong> button. This button will initiate the generation of a new API key for your Rally account.</p>
+<p><img alt="Rally-Create_API_Key" src="../../../img/how-tos/rally/Rally-Create_API_Key.png" /></p>
+</li>
+<li>
+<p><strong>Securely Copy and Store Your API Key:</strong>  A new API Key will be generated and displayed. <strong>Immediately copy the newly generated API Key</strong>. <strong>This is the only time you will see the full API Key value.</strong> It is crucial to store it securely in a password manager or, preferably, ELITEA's built-in Secrets feature for enhanced security within ELITEA. You will need this API Key to configure the Rally toolkit in ELITEA.</p>
+</li>
+</ol>
+<h2 id="system-integration-with-elitea">System Integration with ELITEA</h2>
+<h3 id="agent-creationconfiguration">Agent Creation/Configuration</h3>
+<p>To integrate Rally functionalities into your workflows, you will need to configure the Rally toolkit within an ELITEA Agent. You can either create a new Agent specifically for Rally interactions or modify an existing Agent to incorporate Rally tools.</p>
+<ol>
+<li><strong>Navigate to Agents Menu:</strong> In ELITEA, go to the <strong>Agents</strong> menu from the main navigation panel.</li>
+<li><strong>Create or Edit Agent:</strong><ul>
+<li><strong>Create a New Agent:</strong> Click on the <strong>"+ Agent"</strong> button to create a new Agent. Follow the on-screen prompts to define essential Agent attributes such as Agent name, a descriptive Agent description, the desired Agent type, and initial instructions for the Agent.</li>
+<li><strong>Edit an Existing Agent:</strong> Select the Agent you intend to integrate with Rally from your list of Agents. Click on the Agent's name to open its configuration settings for editing.</li>
+</ul>
+</li>
+<li><strong>Access Tools Section:</strong> Within the Agent configuration interface, scroll down until you locate the <strong>"Tools"</strong> section. This section is where you will add and configure toolkits, including the Rally toolkit.</li>
+</ol>
+<h3 id="toolkit-configuration">Toolkit Configuration</h3>
+<p>This section provides detailed instructions on how to configure the Rally toolkit within your ELITEA Agent.</p>
+<ol>
+<li><strong>Add Toolkit:</strong> In the "Tools" section of the Agent configuration, click on the <strong>"+" icon</strong>. This action will display a dropdown list of available toolkits that can be integrated with your Agent.</li>
+<li><strong>Select Rally Toolkit:</strong> From the dropdown list of available toolkits, choose <strong>"Rally"</strong>. Selecting "Rally" will open the "New Rally tool" configuration panel, where you will specify the settings for your Rally integration.</li>
+<li>
+<p><strong>Configure Rally Toolkit Settings:</strong> Carefully fill in the following configuration fields within the "New Rally tool" section:</p>
+<ul>
+<li><strong>Name:</strong>  Enter a descriptive <strong>Name</strong> for your Rally toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions (e.g., "ProjectRally", "AgileManagementAccess", "RallyIntegration").</li>
+<li><strong>Description:</strong> Provide a concise <strong>Description</strong> for the toolkit. This description should clarify the toolkit's purpose or the specific Rally workspace or project it is intended to access (e.g., "Toolkit for accessing and managing user stories in Rally", "Integration for Rally Workspace 'Project Alpha'").</li>
+<li><strong>Rally Server URL:</strong> Enter the base URL of your Rally instance. <strong>Ensure you use the correct format</strong>, including <code>https://</code> or <code>http://</code> and the full workspace URL (e.g., <code>https://rally1.rallydev.com</code>). For Epam Rally, use <code>https://rally.epam.com</code>.</li>
+<li><strong>Workspace Name:</strong> Enter the <strong>Workspace Name</strong> in Rally that you want to access with this toolkit. The Workspace Name is the name of your Rally workspace (e.g., "My Workspace").</li>
+<li><strong>Project Name:</strong> Enter the <strong>Project Name</strong> within your Rally workspace that you want to access with this toolkit. The Project Name is the name of your Rally project (e.g., "Project Alpha").</li>
+<li><strong>Authentication Options - API Key:</strong> Select the <strong>"API Key"</strong> authentication option.<ul>
+<li><strong>Password/Secret:</strong> Choose <strong>"Password"</strong> and paste the <strong>API Key</strong> you generated in Rally (during the "Software-Specific Setup" section of this guide) into the <strong>"Password"</strong> field.</li>
+<li><strong>Enhanced Security with Secrets (Recommended):</strong> For enhanced security, it is strongly recommended to use ELITEA's <strong>Secrets Management</strong> feature to store your Rally API Key securely. Instead of directly pasting the token into the "Password" field, select the <strong>"Secret"</strong> option and choose the pre-configured secret containing your Rally API Key from the dropdown list. This prevents hardcoding sensitive credentials in your toolkit configuration.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Rally-Toolkit_Configuration" src="../../../img/how-tos/rally/Rally-Toolkit_Configuration.png" /></p>
+</li>
+<li>
+<p><strong>Enable Desired Tools:</strong> In the "Tools" section within the Rally toolkit configuration panel, <strong>select the checkboxes next to the specific Rally tools</strong> that you want to enable for your Agent. <strong>It is crucial to enable only the tools that your Agent will actually need to use</strong> to adhere to the principle of least privilege and minimize potential security risks. Available tools include:</p>
+<ul>
+<li><strong>Get types</strong> - Retrieves the types of artifacts available in Rally.</li>
+<li><strong>Get entities</strong> - Fetches specific entities from Rally based on provided criteria.</li>
+<li><strong>Create artifact</strong> - Allows the Agent to create new artifacts (e.g., user stories, tasks) in Rally.</li>
+<li><strong>Update artifact</strong> - Enables the Agent to update existing artifacts in Rally.</li>
+<li><strong>Get project</strong> - Allows the Agent to retrieve details of a specific project in Rally.</li>
+<li><strong>Get workspace</strong> - Fetches information about the workspace in Rally.</li>
+<li><strong>Get user</strong> - Retrieves user details from Rally.</li>
+<li><strong>Get context</strong> - Provides context-specific information from Rally.    </li>
+</ul>
+</li>
+<li><strong>Complete Setup:</strong> After configuring all the necessary settings and enabling the desired tools, click the <strong>arrow icon</strong> (typically located at the top right of the toolkit configuration section) to finalize the Rally toolkit setup and return to the main Agent configuration menu.</li>
+<li>Click <strong>Save</strong> in the Agent configuration to save all changes and activate the Rally toolkit integration for your Agent.</li>
+</ol>
+<h3 id="tool-overview-rally-toolkit-functionalities">Tool Overview: Rally Toolkit Functionalities</h3>
+<p>Once the Rally toolkit is successfully configured and added to your Agent, you can leverage the following tools within your Agent's instructions to enable intelligent interaction with your Rally workspaces and projects:</p>
+<ul>
+<li>
+<p><strong>Get types:</strong>  <strong>Tool Name:</strong> <code>get_types</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of artifact types available in Rally. Returns a list of artifact type names (e.g., "UserStory", "Task", "Defect").</li>
+<li><strong>Purpose:</strong> Enables Agents to dynamically discover and list available artifact types in Rally, allowing for dynamic workflow creation, user guidance on artifact creation, or automated reporting on artifact types within a Rally project or workspace.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get entities:</strong>  <strong>Tool Name:</strong> <code>get_entities</code></p>
+<ul>
+<li><strong>Functionality:</strong> Fetches specific entities (artifacts) from Rally based on provided criteria, such as artifact type, query parameters, and fetch parameters. Returns a list of Rally artifacts matching the specified criteria.</li>
+<li><strong>Purpose:</strong> Enables advanced and flexible data retrieval from Rally, allowing Agents to query and retrieve specific sets of artifacts based on various filters and parameters, facilitating data extraction for reporting, analysis, or workflow automation based on Rally data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create artifact:</strong>  <strong>Tool Name:</strong> <code>create_artifact</code></p>
+<ul>
+<li><strong>Functionality:</strong> Automates the creation of new artifacts (e.g., User Stories, Tasks, Defects) in Rally within a specified project and workspace. Requires parameters such as Artifact Type and a JSON object containing artifact fields and values.</li>
+<li><strong>Purpose:</strong> Streamlines artifact creation and project planning by enabling Agents to automatically generate new artifacts in Rally directly from ELITEA workflows, based on user input, workflow triggers, or automated analysis, ensuring timely and consistent artifact creation and improving project management efficiency.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update artifact:</strong>  <strong>Tool Name:</strong> <code>update_artifact</code></p>
+<ul>
+<li><strong>Functionality:</strong> Allows Agents to modify and update fields of existing artifacts in Rally. Requires the Artifact Reference (e.g., US12345, DE56789) and a JSON object containing the fields to update and their new values.</li>
+<li><strong>Purpose:</strong> Enables automated artifact lifecycle management by allowing Agents to update artifact statuses, priorities, assignees, custom fields, or any other artifact attributes based on workflow progress, user actions, or external events, ensuring Rally artifacts are always up-to-date and accurately reflect project status and changes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get project:</strong>  <strong>Tool Name:</strong> <code>get_project</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves detailed information about a specific project in Rally, identified by its Project Name. Returns comprehensive project details, including project description, start date, end date, and project owner.</li>
+<li><strong>Purpose:</strong> Allows Agents to access project-level information from Rally, providing context for project-related workflows, enabling automated reporting on project details, or incorporating project information into ELITEA conversations and dashboards, facilitating project monitoring and awareness.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get workspace:</strong>  <strong>Tool Name:</strong> <code>get_workspace</code></p>
+<ul>
+<li><strong>Functionality:</strong> Fetches information about a specific workspace in Rally, identified by its Workspace Name. Returns workspace details, including workspace description, owner, and creation date.</li>
+<li><strong>Purpose:</strong> Enables Agents to retrieve workspace-level information from Rally, providing context for workspace-related workflows, enabling automated reporting on workspace details, or providing users with workspace information within ELITEA, facilitating workspace management and understanding.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get user:</strong>  <strong>Tool Name:</strong> <code>get_user</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves user details from Rally based on a provided query (e.g., username, email address, user ID). Returns user information, including username, display name, and email address.</li>
+<li><strong>Purpose:</strong> Allows Agents to retrieve user information from Rally, enabling user identification, automated task assignment to specific users, user-based reporting, or incorporating user details into ELITEA workflows, facilitating user-centric automation and workflow personalization.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get context:</strong>  <strong>Tool Name:</strong> <code>get_context</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves context-specific information from Rally based on a provided context type and context tag. Returns context-specific data, such as iteration details, release information, or workspace context.</li>
+<li><strong>Purpose:</strong> Enables Agents to access dynamic and context-aware information from Rally, allowing for retrieval of iteration details for sprint planning, release information for release management workflows, or workspace context for workspace-specific operations, facilitating context-aware automation and dynamic workflow execution.</li>
+</ul>
+</li>
+</ul>
+<h2 id="instructions-and-prompts-for-using-the-rally-toolkit">Instructions and Prompts for Using the Rally Toolkit</h2>
+<p>To effectively utilize the Rally toolkit within your ELITEA Agents, you need to provide clear and precise instructions within the Agent's "Instructions" field, telling the Agent <em>how</em> and <em>when</em> to use these tools.</p>
+<p><strong>General Instruction Structure:</strong></p>
+<p>When instructing your Agent to use a Rally tool, you will typically follow this pattern:</p>
+<pre><code>Use the &quot;[tool_name]&quot; tool to [describe the action you want to perform] in Rally.
+Provide the following parameters:
+- Parameter 1: &lt;value or description of value&gt;
+- Parameter 2: &lt;value or description of value&gt;
+- ...
+</code></pre>
+<p><strong>Example Agent Instructions for Rally Toolkit Tools:</strong></p>
+<ul>
+<li>
+<p><strong>Agent Instructions for Getting Artifact Types:</strong></p>
+<p><code>Use the "get_types" tool to retrieve a list of artifact types available in Rally.
+No parameters are needed for this tool.</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Getting Entities (User Stories):</strong></p>
+<p><code>Use the "get_entities" tool to retrieve a list of User Stories from Rally Project "Project Alpha".
+Provide the following parameters:
+- Artifact Type: "UserStory"
+- Query: "(Project.Name = \"Project Alpha\")"
+- Fetch: "Name,FormattedID,ScheduleState"</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Creating a New User Story:</strong></p>
+<p><code>Use the "create_artifact" tool to create a new User Story in Rally Project "Project Alpha".
+Provide the following parameters:
+- Artifact Type: "UserStory"
+- Fields (JSON):
+  {
+    "Name": "Implement User Authentication Feature",
+    "Description": "As a user, I want to be able to log in using my username and password.",
+    "Project": "/project/123456789"  // Replace with actual Project Ref
+  }</code></p>
+</li>
+</ul>
+<p><strong>Important Considerations for Agent Instructions:</strong></p>
+<ul>
+<li><strong>Tool Name Accuracy:</strong> Ensure you use the correct <strong>Tool Name</strong> (e.g., <code>"get_types"</code>, <code>"get_entities"</code>, <code>"create_artifact"</code>) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the toolkit correctly.</li>
+<li><strong>Parameter Clarity:</strong> Clearly specify the <strong>parameters</strong> required for each tool and provide instructions on where the Agent should obtain the values for these parameters (e.g., from user input, from previous steps in the workflow, or hardcoded values).</li>
+<li><strong>Context and Examples:</strong> Provide sufficient context and examples within your Agent's "Instructions" to guide the LLM in understanding <em>when</em> and <em>how</em> to use the Rally toolkit tools effectively within your desired workflow.</li>
+<li><strong>Rally Artifact Types, Field Names, and Values:</strong> Ensure that you use the correct Rally Artifact Types (e.g., "UserStory", "Task", "Defect"), Field Names (e.g., "Name", "Description", "ScheduleState"), and valid values for those fields as defined in your Rally workspace and project configuration. Incorrect artifact types or field names will cause errors during tool execution.</li>
+<li><strong>Rally API Query Syntax:</strong> When using the "Get Entities" tool with a Query parameter, ensure that you provide valid Rally API query strings that adhere to Rally's WSAPI query syntax. Incorrect query syntax will result in search errors. Refer to Rally WSAPI documentation for query syntax details and examples.</li>
+</ul>
+<h2 id="best-practices-and-use-cases-for-rally-integration">Best Practices and Use Cases for Rally Integration</h2>
+<h3 id="best-practices-for-efficient-integration">Best Practices for Efficient Integration</h3>
+<ul>
+<li><strong>Test Integration Thoroughly:</strong> After setting up the Rally toolkit and incorporating it into your Agents, <strong>thoroughly test each tool</strong> you intend to use to ensure seamless connectivity, correct authentication, and accurate execution of Rally actions.</li>
+<li><strong>Monitor Agent Performance and Usage:</strong>  Regularly <strong>monitor the performance of Agents</strong> utilizing Rally toolkits. Track metrics such as task completion success rate, execution time, and error rates to identify any potential issues or areas for optimization in Agent instructions or toolkit configurations.</li>
+<li><strong>Follow Security Best Practices:</strong><ul>
+<li><strong>Use API Keys:</strong> Always use Rally API Keys instead of your main account password for integrations.</li>
+<li><strong>Grant Least Privilege:</strong> While Rally API Keys have limited scope control, ensure you are generating tokens specifically for ELITEA integration and not reusing tokens with broader access.</li>
+<li><strong>Securely Store Credentials:</strong> Utilize ELITEA's Secrets Management feature to securely store and manage your Rally API Keys instead of hardcoding them directly in Agent configurations.</li>
+</ul>
+</li>
+<li><strong>Provide Clear Instructions and Prompts:</strong>  Craft clear and unambiguous instructions within your ELITEA Agents to guide them in using the Rally toolkit effectively. Use the prompt examples provided in this guide as a starting point and adapt them to your specific use cases.</li>
+<li><strong>Start with Simple Use Cases:</strong> Begin by implementing Rally integration for simpler automation tasks, such as retrieving artifact lists or reading project details, and gradually progress to more complex workflows as you gain experience and confidence with the toolkit.</li>
+</ul>
+<h3 id="use-cases-for-rally-toolkit-integration">Use Cases for Rally Toolkit Integration</h3>
+<p>The Rally toolkit opens up a wide range of automation possibilities for Agile project management, workflow automation, and reporting within ELITEA. Here are some compelling use cases:</p>
+<ul>
+<li>
+<p><strong>Automated Backlog Analysis and Task Prioritization Suggestions:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Project managers or product owners can use ELITEA Agents to analyze the project backlog in Rally, identify high-priority user stories or tasks based on criteria like urgency, business value, or dependencies, and suggest a prioritized backlog for sprint planning.</li>
+<li><strong>Tools Used:</strong> <code>get_entities</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_entities' tool to retrieve a list of User Stories from Rally Project 'Project Alpha' that are currently in 'Backlog' state. Analyze the 'Priority' and 'Blocked' fields for each user story and suggest a prioritized backlog list based on these factors."</li>
+<li><strong>Benefit:</strong> Improves sprint planning efficiency by automating backlog analysis and prioritization, providing project managers and product owners with AI-driven recommendations for backlog prioritization, and ensuring sprint planning is data-driven and aligned with project goals.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Task Assignment Based on Team Capacity and Skills:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> ELITEA Agents can dynamically assign new tasks or defects in Rally to team members based on their current workload, skills, availability, and project role, optimizing resource allocation and workload balancing within Agile teams.</li>
+<li><strong>Tools Used:</strong> <code>create_artifact</code>, <code>get_user</code>, <code>get_entities</code> (to assess workload)</li>
+<li><strong>Example Instruction:</strong> "Use the 'get_user' tool to retrieve a list of available developers in Rally Project 'Project Alpha'. Analyze their current workload by retrieving their assigned 'Task' entities using 'get_entities'. Create a new 'Task' artifact using 'create_artifact' and automatically assign it to the developer with the lowest current workload and relevant skills based on user profile data."</li>
+<li><strong>Benefit:</strong> Enables intelligent and automated task assignment, optimizing resource allocation, balancing workload across team members, and improving team efficiency by ensuring tasks are assigned to the most appropriate and available resources.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Project Status Reporting and Progress Updates:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Project managers or stakeholders can use ELITEA Agents to generate automated project status reports directly from Rally data, providing real-time visibility into project progress, sprint burndown, and key Agile metrics without manual report generation.</li>
+<li><strong>Tools Used:</strong> <code>get_project</code>, <code>get_entities</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_project' tool to retrieve details for Rally Project 'Project Beta'. Use 'get_entities' to retrieve lists of User Stories and Tasks in the current sprint. Generate a project status report summarizing sprint progress, completed user stories, remaining tasks, and sprint burndown chart data. Send the report to project stakeholders daily."</li>
+<li><strong>Benefit:</strong> Provides automated and up-to-date project status reporting, improving project visibility for stakeholders, reducing manual effort in report generation, and enabling proactive project monitoring and risk identification.</li>
+</ul>
+</li>
+<li>
+<p><strong>Contextual Information Retrieval for User Stories and Tasks:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Developers or testers can use ELITEA Agents to quickly retrieve detailed information about specific user stories or tasks in Rally, providing them with immediate access to requirements, acceptance criteria, and related documentation directly within ELITEA.</li>
+<li><strong>Tools Used:</strong> <code>get_entities</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_entities' tool to retrieve details for User Story with FormattedID 'US-98765' from Rally Project 'Project Gamma'. Display the 'Name', 'Description', 'Acceptance Criteria', and 'Tasks' associated with this user story to the user."</li>
+<li><strong>Benefit:</strong> Improves team efficiency by providing instant access to relevant artifact details directly within ELITEA, streamlining information retrieval, reducing context switching, and ensuring team members have all necessary information at their fingertips for task execution and collaboration.</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting-common-issues">Troubleshooting Common Issues</h3>
+<ul>
+<li>
+<p><strong>Connection Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> ELITEA Agent fails to connect to Rally, resulting in errors during toolkit execution.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify Rally Server URL:</strong> Double-check that you have entered the correct Rally Server URL in the toolkit configuration, including <code>https://</code> or <code>http://</code> and the full workspace URL (e.g., <code>https://rally1.rallydev.com</code> or <code>https://rally.epam.com</code>).</li>
+<li><strong>Check API Key:</strong> Ensure that the <strong>API Key</strong> you provided is correct and valid for your Rally account and workspace. Carefully re-enter or copy-paste the API Key to rule out typos.</li>
+<li><strong>Verify Workspace and Project Names:</strong> Double-check that you have entered the correct <strong>Workspace Name</strong> and <strong>Project Name</strong> in the toolkit configuration. Workspace and Project Names are case-sensitive and must exactly match the names in your Rally instance.</li>
+<li><strong>Network Connectivity:</strong> Confirm that both your ELITEA environment and your Rally instance are connected to the internet and that there are no network connectivity issues blocking the integration.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization Errors (Permission Denied/Unauthorized):</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify Rally resources.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify API Key Validity:</strong> Ensure that the Rally API Key you are using is valid and has not been revoked in your Rally user settings. Generate a new API Key if necessary.</li>
+<li><strong>Check Rally User Permissions:</strong> Confirm that the Rally user account associated with the API Key has the necessary permissions within Rally to access and modify the specific workspaces and projects your Agent is trying to interact with. Verify user roles and permissions within Rally workspace and project settings.</li>
+<li><strong>Workspace and Project Access:</strong> Double-check that the Workspace Name and Project Name specified in the toolkit configuration are correct and that the API Key is valid for that specific Rally workspace and project.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Tool-Specific Parameter Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails for specific Rally tools due to incorrect parameter values or formats.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Verify Workspace and Project Names:</strong> Ensure that you are using the correct Rally Workspace Names and Project Names in your Agent's instructions when specifying workspace or project-related parameters for Rally tools. Workspace and Project Names are case-sensitive and must match the names in Rally exactly.</li>
+<li><strong>Verify Artifact Types and Field Names:</strong> Double-check that you are using the correct Rally Artifact Types (e.g., "UserStory", "Task", "Defect") and Field Names (e.g., "Name", "Description", "ScheduleState") in your Agent's instructions. Artifact Types and Field Names are case-sensitive and must match the Rally API schema. Use the "Get Types" tool to verify available Artifact Types and Field Names if needed.</li>
+<li><strong>Parameter Format:</strong> Verify that you are providing parameters in the correct format expected by each Rally tool (e.g., string values for names, JSON format for artifact fields). Refer to the "Instructions and Prompts for Using the Toolkit" section for parameter details and examples.</li>
+<li><strong>WSAPI Query Syntax Errors:</strong> When using the "Get Entities" tool with a Query parameter, ensure that you provide valid Rally WSAPI query strings that adhere to Rally's WSAPI query syntax. Incorrect query syntax will result in search errors. Refer to Rally WSAPI documentation for query syntax details and examples.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="faqs">FAQs</h3>
+<ol>
+<li><strong>Q: Can I use my regular Rally username and password for the ELITEA integration?</strong><ul>
+<li><strong>A:</strong> No, it is <strong>mandatory to use a Rally API Key</strong> instead of your main account password for secure integration with ELITEA. Direct password authentication is not supported. API Keys provide a more secure and controlled way to grant access to external applications like ELITEA.</li>
+</ul>
+</li>
+<li><strong>Q: What permissions should I grant to the Rally API Key?</strong><ul>
+<li><strong>A:</strong> Rally API Keys, when generated through the user profile, inherently provide access based on the user's permissions within Rally. Ensure that the Rally user account associated with the API Key has the necessary permissions within Rally to access and modify the workspaces and projects your Agent will be interacting with. You do not need to configure specific scopes during API Key generation as permissions are managed through Rally user roles and project access control.</li>
+</ul>
+</li>
+<li><strong>Q: What is the correct format for the Rally Server URL in the toolkit configuration?</strong><ul>
+<li><strong>A:</strong>  The Rally Server URL should be entered in the full format, including <code>https://</code> or <code>http://</code> and the complete workspace URL (e.g., <code>https://rally1.rallydev.com</code> or <code>https://rally.epam.com</code>). Ensure there are no typos or missing parts in the URL.</li>
+</ul>
+</li>
+<li><strong>Q: How do I find the Workspace Name and Project Name for my Rally project?</strong><ul>
+<li><strong>A:</strong> The Workspace Name and Project Name are typically displayed in the Rally web interface when you are logged in and viewing your Rally project. The Workspace Name is usually visible in the top navigation bar, and the Project Name is displayed on the project dashboard or project selection menus. You can also find these names in the URL when you are within your Rally workspace or project.</li>
+</ul>
+</li>
+<li><strong>Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?</strong><ul>
+<li><strong>A:</strong> Double-check the following:<ul>
+<li><strong>API Key Validity:</strong> Ensure that the API Key is valid and has not been revoked in your Rally user settings.</li>
+<li><strong>Rally Account Permissions:</strong> Verify that the Rally account associated with the API Key has the necessary permissions to access the specific workspaces and projects your Agent is trying to interact with.</li>
+<li><strong>Workspace and Project Names Accuracy:</strong> Double-check that you have entered the correct Workspace Name and Project Name in the toolkit configuration and that they correspond to the Rally workspace and project you intend to access.</li>
+<li><strong>Server URL Accuracy:</strong> Ensure that the Server URL is correctly entered and points to the base URL of your Rally instance.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="support-and-contact-information">Support and Contact Information</h3>
+<p>If you encounter any issues, have questions, or require further assistance beyond what is covered in this guide regarding the Rally integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.</p>
+<p><strong>How to Reach ELITEA Support:</strong></p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p><strong>Best Practices for Effective Support Requests:</strong></p>
+<p>To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> Clearly specify the ELITEA environment you are using (e.g., "Nexus," "Alita Lab," "EYE").</li>
+<li><strong>Project Details:</strong>  Indicate the <strong>Project Name</strong> and whether you are working in your <strong>Private</strong> workspace or a <strong>Team</strong> project.</li>
+<li><strong>Detailed Issue Description:</strong> Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.</li>
+<li><strong>Relevant Configuration Information:</strong>  To help us diagnose the issue, please include relevant configuration details, such as:<ul>
+<li><strong>Agent Instructions (Screenshot or Text):</strong> If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.</li>
+<li><strong>Toolkit Configurations (Screenshots):</strong> If the issue involves the Rally toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.</li>
+</ul>
+</li>
+<li><strong>Error Messages (Full Error Text):</strong> If you are encountering an error message, please provide the <strong>complete error text</strong>. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.</li>
+<li><strong>Your Query/Prompt (Exact Text):</strong> If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p>
+<h2 id="useful-links">Useful Links</h2>
+<p>To further enhance your understanding and skills in integrating Rally with ELITEA, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="https://www.broadcom.com/products/agile-operations-software/valueops-platform/rally-software">Broadcom Rally Website</a></strong>: Access the main Broadcom Rally product website for product information and documentation.</li>
+<li><strong><a href="https://help.rallydev.com/">Rally Help and Documentation</a></strong>: Explore the official Rally documentation for detailed information on Rally features, functionalities, and API.</li>
+<li><strong><a href="https://help.rallydev.com/api/webservice/dev/">Rally WSAPI Documentation</a></strong>: Refer to the Rally Web Services API (WSAPI) documentation for detailed information on Rally API endpoints, query syntax, and data models.</li>
+<li><strong><a href="../../../platform-documentation/menus/settings/#secrets">ELITEA Secrets Management</a></strong>: Learn how to securely store your Rally API Key using ELITEA's Secrets management feature for enhanced security.</li>
+<li><strong><a href="../../../platform-documentation/menus/agents/">ELITEA Agents Configuration</a></strong>:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Rally toolkit to automate your workflows.</li>
+<li><strong><a href="mailto:SupportAlita@epam.com">ELITEA Support Email</a></strong>: Contact the ELITEA support team for direct assistance with Rally integration or any other questions and issues you may encounter.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/qtest_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>qTest Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../jira_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../zephyr_scale_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-qtest-integration">ELITEA Toolkit Guide: qTest Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-this-guide">Purpose of this Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-qtest">Brief Overview of qTest</a></li>
+            <li class="second-level"><a href="#toolkits-account-setup-and-configuration-in-qtest">Toolkit's Account Setup and Configuration in qTest</a></li>
+                
+                <li class="third-level"><a href="#account-setup">Account Setup</a></li>
+                <li class="third-level"><a href="#tokenapi-key-generation-finding-api-token-in-qtest">Token/API Key Generation: Finding API Token in qTest</a></li>
+            <li class="second-level"><a href="#system-integration-with-elitea">System Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#agent-creationconfiguration">Agent Creation/Configuration</a></li>
+                <li class="third-level"><a href="#toolkit-configuration">Toolkit Configuration</a></li>
+                <li class="third-level"><a href="#tool-overview-qtest-toolkit-functionalities">Tool Overview: qTest Toolkit Functionalities</a></li>
+            <li class="second-level"><a href="#instructions-and-prompts-for-using-the-qtest-toolkit">Instructions and Prompts for Using the qTest Toolkit</a></li>
+                
+            <li class="second-level"><a href="#best-practices-and-use-cases-for-qtest-integration">Best Practices and Use Cases for qTest Integration</a></li>
+                
+                <li class="third-level"><a href="#best-practices-for-efficient-integration">Best Practices for Efficient Integration</a></li>
+                <li class="third-level"><a href="#use-cases-for-qtest-toolkit-integration">Use Cases for qTest Toolkit Integration</a></li>
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting-common-issues">Troubleshooting Common Issues</a></li>
+                <li class="third-level"><a href="#faqs">FAQs</a></li>
+                <li class="third-level"><a href="#support-and-contact-information">Support and Contact Information</a></li>
+            <li class="second-level"><a href="#useful-links">Useful Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-qtest-integration">ELITEA Toolkit Guide: qTest Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-this-guide">Purpose of this Guide</h3>
+<p>This guide is your definitive resource for integrating and effectively utilizing the <strong>qTest toolkit</strong> within ELITEA. It provides a detailed, step-by-step walkthrough, from setting up your qTest API token to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated test management, streamlined QA workflows, and enhanced collaboration between development and testing teams, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your qTest-driven workflows, enhance QA productivity, and improve software quality within your projects.</p>
+<h3 id="brief-overview-of-qtest">Brief Overview of qTest</h3>
+<p>qTest, by Tricentis, is a leading cloud-based test management platform designed to centralize and streamline all aspects of software testing. It is widely used by QA teams to manage test cases, execute test runs, track defects, and generate comprehensive reports. qTest offers a wide array of functionalities, including:</p>
+<ul>
+<li><strong>Centralized Test Case Management:</strong> qTest provides a centralized repository for creating, organizing, and managing test cases, ensuring a structured and easily accessible test library for your QA team.</li>
+<li><strong>Efficient Test Execution and Tracking:</strong> Enables efficient test execution and real-time tracking of test runs, allowing QA teams to monitor progress, identify bottlenecks, and ensure timely test completion.</li>
+<li><strong>Requirement and Defect Traceability:</strong> qTest facilitates traceability by linking test cases to requirements and defects, providing a clear audit trail and ensuring comprehensive test coverage and issue tracking throughout the testing lifecycle.</li>
+<li><strong>Comprehensive Reporting and Analytics:</strong> Offers robust reporting and analytics capabilities, allowing QA teams to generate detailed reports on testing progress, quality metrics, defect trends, and test coverage, providing valuable insights for decision-making and continuous improvement.</li>
+<li><strong>Agile and DevOps Integration:</strong> qTest is designed to integrate seamlessly with Agile and DevOps workflows, supporting iterative testing, continuous testing practices, and integration with CI/CD pipelines and development tools, enabling efficient and agile QA processes.</li>
+</ul>
+<p>Integrating qTest with ELITEA brings these powerful test management capabilities directly into your AI-driven workflows. Your ELITEA Agents can then intelligently interact with your qTest projects and test assets to automate test management tasks, enhance QA processes, improve test coverage, and leverage AI to optimize your entire software testing lifecycle within qTest.</p>
+<h2 id="toolkits-account-setup-and-configuration-in-qtest">Toolkit's Account Setup and Configuration in qTest</h2>
+<h3 id="account-setup">Account Setup</h3>
+<p>qTest is a commercial test management tool and is available as a trial version for a limited period. To create a qTest account, follow these steps:</p>
+<ol>
+<li><strong>Visit Tricentis Website:</strong> Open your web browser and navigate to the official Tricentis qTest website: <a href="https://www.tricentis.com/">https://www.tricentis.com/</a>.</li>
+<li><strong>Navigate to Trials &amp; Demos:</strong> Click on <strong>"Trials &amp; demos"</strong> in the main navigation menu to begin the trial registration process.</li>
+<li><strong>Find qTest and Start Free Trial:</strong> On the "Trials &amp; demos" page, locate the qTest section and click the <strong>"Free trial"</strong> button.</li>
+<li><strong>Fill in Registration Form:</strong> The "Start your free 14-day Tricentis qTest Trial" message should be displayed, and a registration form will appear on the right side of the page. Provide the following basic information in the registration form:<ul>
+<li><strong>Business email address:</strong> Enter your business email address (preferably your company email). QTest typically provides free trials for business email IDs.</li>
+<li><strong>First Name:</strong> Enter your first name.</li>
+<li><strong>Last Name:</strong> Enter your last name.</li>
+<li><strong>Country:</strong> Select your country from the dropdown menu.</li>
+<li><strong>Phone:</strong> Enter your phone number.</li>
+<li><strong>Job Title:</strong> Enter your job title.</li>
+</ul>
+</li>
+<li><strong>Submit Registration Form:</strong> After filling out the registration form, click the <strong>"Next Page"</strong> button to submit the form.</li>
+<li><strong>Create QTest Web Address and Account Details:</strong> A new window will open, prompting you to fill in the details to create your new qTest web address and account credentials:<ul>
+<li><strong>Username:</strong> Your username is prefilled based on your account registration. You can modify it if needed.</li>
+<li><strong>Create Your QTest Web Address:</strong> Enter a unique subdomain name in the field provided (e.g., <code>alitatest</code>). This subdomain will be used as part of your unique QTest web address to access your qTest trial account (e.g., <code>alitatest.qtestnet.com</code>).</li>
+<li><strong>Password:</strong> Create a strong password for your QTest account. Use a combination of uppercase letters, lowercase letters, numbers, and special characters to create a secure password.</li>
+<li><strong>Confirm Password:</strong> Re-enter the same password to confirm it.</li>
+<li><strong>qTest Data Storage Location:</strong> Select a preferred data storage location from the dropdown menu. Choose a location that complies with your organization's data storage and compliance requirements (e.g., United States, Europe).</li>
+<li><strong>Privacy Policy Review:</strong> Read the note regarding the data center location and compliance with jurisdictional laws. Review the Privacy Policy if necessary.</li>
+</ul>
+</li>
+<li><strong>Start My Trial:</strong> Once all fields are correctly filled, click the orange <strong>"Start My Trial"</strong> button to proceed and create your qTest trial account.</li>
+<li><strong>Check Your Email for Confirmation:</strong> After submitting the form, you should receive a confirmation email from Tricentis qTest. This email may include a link to set up your qTest account and verify your email address. Follow the instructions in the email to complete the registration and activate your free trial.</li>
+<li><strong>Access qTest:</strong> After verifying your email, you will be directed to the qTest platform. Log in using the username, password, and QTest web address you provided during registration.</li>
+</ol>
+<h3 id="tokenapi-key-generation-finding-api-token-in-qtest">Token/API Key Generation: Finding API Token in qTest</h3>
+<p>To securely integrate ELITEA with qTest, you need to obtain your qTest API token. This token will be used by ELITEA to authenticate and access your qTest projects and test data.</p>
+<p><strong>Follow these steps to find your API token in qTest:</strong></p>
+<ol>
+<li><strong>Log in to qTest:</strong> Access your qTest instance by navigating to your qTest web address (e.g., <code>alitatest.qtestnet.com</code>) and logging in with your qTest credentials.</li>
+<li>
+<p><strong>Access API &amp; Webhooks Settings:</strong> Once logged in, navigate to your user profile settings. The exact location may vary slightly depending on your qTest version, but it is typically found under your profile menu or user settings. Look for options like <strong>"Integration Settings"</strong>, <strong>"API Access"</strong>, or <strong>"Webhooks"</strong>. In newer versions of qTest, you can find it under <strong>"Manager"</strong> -&gt; <strong>"API &amp; SDK"</strong>.</p>
+<p><img alt="qTest-API_Token_Location_1" src="../../img/how-tos/qtest/QTest-API_Token_Location_1.png" /></p>
+<p><img alt="qTest-API_Token_Location_2" src="../../img/how-tos/qtest/QTest-API_Token_Location_2.png" /></p>
+</li>
+<li>
+<p><strong>Locate API Key/Token:</strong> In the "API &amp; SDK" settings, you should find your Token or Bearer Token. It may be labeled as <strong>"Token"</strong>, or <strong>"Brstrt Token"</strong>.</p>
+</li>
+<li><strong>Copy and Store Your API Token:</strong>  <strong>Copy the API token</strong> displayed on the page. <strong>Store it securely</strong> in a password manager or, preferably, ELITEA's built-in Secrets feature for enhanced security within ELITEA. You will need this API token to configure the qTest toolkit in ELITEA.</li>
+</ol>
+<p><img alt="qTest-API_Token_Location_3" src="../../img/how-tos/qtest/QTest-API_Token_Location_3.png" /></p>
+<h2 id="system-integration-with-elitea">System Integration with ELITEA</h2>
+<h3 id="agent-creationconfiguration">Agent Creation/Configuration</h3>
+<p>To integrate qTest functionalities into your workflows, you will need to configure the qTest toolkit within an ELITEA Agent. You can either create a new Agent specifically for qTest interactions or modify an existing Agent to incorporate qTest tools.</p>
+<ol>
+<li><strong>Navigate to Agents Menu:</strong> In ELITEA, go to the <strong>Agents</strong> menu from the main navigation panel.</li>
+<li><strong>Create or Edit Agent:</strong><ul>
+<li><strong>Create a New Agent:</strong> Click on the <strong>"+ Agent"</strong> button to create a new Agent. Follow the on-screen prompts to define essential Agent attributes such as Agent name, a descriptive Agent description, the desired Agent type, and initial instructions for the Agent.</li>
+<li><strong>Edit an Existing Agent:</strong> Select the Agent you intend to integrate with qTest from your list of Agents. Click on the Agent's name to open its configuration settings for editing.</li>
+</ul>
+</li>
+<li><strong>Access Tools Section:</strong> Within the Agent configuration interface, scroll down until you locate the <strong>"Tools"</strong> section. This section is where you will add and configure toolkits, including the qTest toolkit.</li>
+</ol>
+<h3 id="toolkit-configuration">Toolkit Configuration</h3>
+<p>This section provides detailed instructions on how to configure the qTest toolkit within your ELITEA Agent.</p>
+<ol>
+<li><strong>Add Toolkit:</strong> In the "Tools" section of the Agent configuration, click on the <strong>"+" icon</strong>. This action will display a dropdown list of available toolkits that can be integrated with your Agent.</li>
+<li><strong>Select qTest Toolkit:</strong> From the dropdown list of available toolkits, choose <strong>"qTest"</strong>. Selecting "qTest" will open the "New qTest tool" configuration panel, where you will specify the settings for your qTest integration.</li>
+<li>
+<p><strong>Configure qTest Toolkit Settings:</strong> Carefully fill in the following configuration fields within the "New qTest tool" section:</p>
+<ul>
+<li><strong>Name:</strong>  Enter a descriptive <strong>Name</strong> for your qTest toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions (e.g., "ProjectQTest", "TestManagementAccess", "QTestIntegration").</li>
+<li><strong>Description:</strong> Provide a concise <strong>Description</strong> for the toolkit. This description should clarify the toolkit's purpose or the specific qTest project it is intended to access (e.g., "Toolkit for accessing and managing test cases in qTest", "Integration for qTest Project 'Project Alpha'").</li>
+<li><strong>Base URL:</strong> Enter the base URL of your qTest instance API endpoint. <strong>Ensure you use the correct format</strong>: <code>https://qtest.example.com</code> (Replace <code>qtest.example.com</code> with your actual qTest subdomain).</li>
+<li><strong>Project ID:</strong> Enter the <strong>Project ID</strong> of the specific qTest project you want to connect to with this toolkit. The Project ID is a numerical identifier for your qTest project. You can typically find the Project ID in your qTest project settings or in the URL when you are within your qTest project.</li>
+<li><strong>Authentication Options - API Token:</strong> Select the <strong>"API Token"</strong> authentication option.<ul>
+<li><strong>Password/Secret:</strong> Choose <strong>"Password"</strong> and paste the <strong>Bearer token</strong> you obtained from qTest (during the "Software-Specific Setup" section of this guide) into the <strong>"Password"</strong> field.</li>
+<li><strong>Enhanced Security with Secrets (Recommended):</strong> For enhanced security, it is strongly recommended to use ELITEA's <strong>Secrets Management</strong> feature to store your qTest API token securely. Instead of directly pasting the token into the "Password" field, select the <strong>"Secret"</strong> option and choose the pre-configured secret containing your qTest API token from the dropdown list. This prevents hardcoding sensitive credentials in your toolkit configuration.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="qTest-Toolkit_Configuration" src="../../img/how-tos/qtest/QTest-Toolkit_Configuration.png" /></p>
+</li>
+<li>
+<p><strong>Enable Desired Tools:</strong> In the "Tools" section within the qTest toolkit configuration panel, <strong>select the checkboxes next to the specific qTest tools</strong> that you want to enable for your Agent. <strong>It is crucial to enable only the tools that your Agent will actually need to use</strong> to adhere to the principle of least privilege and minimize potential security risks. Available tools include:</p>
+<ul>
+<li><strong>Search by DQL</strong> - Allows searching for test cases using qTest DQL queries.</li>
+<li><strong>Create test cases</strong> - Enables the Agent to create new test cases in qTest.</li>
+<li><strong>Update test case</strong> - Allows the Agent to update existing test cases in qTest.</li>
+<li><strong>Find test case by ID</strong> - Enables the Agent to retrieve a specific test case by its ID.</li>
+<li><strong>Delete test case</strong> - Allows the Agent to delete test cases from qTest.</li>
+</ul>
+</li>
+<li><strong>Complete Setup:</strong> After configuring all the necessary settings and enabling the desired tools, click the <strong>arrow icon</strong> (located at the top right of the toolkit configuration section) to finalize the qTest toolkit setup and return to the main Agent configuration menu.</li>
+<li>Click <strong>Save</strong> in the Agent configuration to save all changes and activate the qTest toolkit integration for your Agent.</li>
+</ol>
+<h3 id="tool-overview-qtest-toolkit-functionalities">Tool Overview: qTest Toolkit Functionalities</h3>
+<p>Once the qTest toolkit is successfully configured and added to your Agent, you can leverage the following tools within your Agent's instructions to enable intelligent interaction with your qTest projects and test assets:</p>
+<ul>
+<li>
+<p><strong>Search by DQL:</strong>  <strong>Tool Name:</strong> <code>search_by_dql</code></p>
+<ul>
+<li><strong>Functionality:</strong> Allows Agents to search for test cases in qTest using Data Query Language (DQL) queries. Returns a list of test cases matching the DQL query.</li>
+<li><strong>Purpose:</strong> Enables advanced and flexible test case searching based on complex criteria defined using DQL, allowing Agents to retrieve specific sets of test cases for reporting, analysis, test planning, or workflow automation based on qTest data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create test cases:</strong>  <strong>Tool Name:</strong> <code>create_test_cases</code></p>
+<ul>
+<li><strong>Functionality:</strong> Automates the creation of new test cases in qTest within a specified project and test suite. Allows for bulk creation of test cases using a list of test case details.</li>
+<li><strong>Purpose:</strong> Streamlines test case authoring and test plan creation by enabling Agents to automatically generate new test cases in qTest directly from ELITEA workflows, based on requirements, user stories, or automated test generation processes, improving test coverage and reducing manual test case creation effort.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update test case:</strong>  <strong>Tool Name:</strong> <code>update_test_case</code></p>
+<ul>
+<li><strong>Functionality:</strong> Allows Agents to modify and update fields of existing test cases in qTest. Requires the Test Case ID and a JSON object containing the fields to update and their new values.</li>
+<li><strong>Purpose:</strong> Enables automated test case maintenance, allowing Agents to update test case steps, expected results, statuses, custom fields, or any other test case attributes based on changing requirements, test feedback, or workflow progress, ensuring test cases are always up-to-date and accurately reflect current testing needs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Find test case by ID:</strong>  <strong>Tool Name:</strong> <code>find_test_case_by_id</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves detailed information about a specific test case from qTest using its unique Test Case ID. Returns comprehensive test case details, including steps, parameters, and custom fields.</li>
+<li><strong>Purpose:</strong> Provides Agents with a quick and precise way to access detailed information for specific test cases, enabling efficient retrieval of test case details for test execution guidance, reporting, analysis, or incorporating test case information into ELITEA workflows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Delete test case:</strong>  <strong>Tool Name:</strong> <code>delete_test_case</code></p>
+<ul>
+<li><strong>Functionality:</strong> Automates the deletion of a specific test case from qTest, identified by its Test Case ID.</li>
+<li><strong>Purpose:</strong> Enables automated test case cleanup and test data management by allowing Agents to delete obsolete or redundant test cases from qTest, helping maintain a clean, organized, and efficient test case repository and reducing test data clutter.</li>
+</ul>
+</li>
+</ul>
+<h2 id="instructions-and-prompts-for-using-the-qtest-toolkit">Instructions and Prompts for Using the qTest Toolkit</h2>
+<p>To effectively utilize the qTest toolkit within your ELITEA Agents, you need to provide clear and precise instructions within the Agent's "Instructions" field, telling the Agent <em>how</em> and <em>when</em> to use these tools.</p>
+<p><strong>General Instruction Structure:</strong></p>
+<p>When instructing your Agent to use a qTest tool, you will typically follow this pattern:</p>
+<pre><code>Use the &quot;[tool_name]&quot; tool to [describe the action you want to perform] in qTest.
+Provide the following parameters:
+- Parameter 1: &lt;value or description of value&gt;
+- Parameter 2: &lt;value or description of value&gt;
+- ...
+</code></pre>
+<p><strong>Example Agent Instructions for qTest Toolkit Tools:</strong></p>
+<ul>
+<li>
+<p><strong>Agent Instructions for Searching Test Cases using DQL:</strong></p>
+<p><code>Use the "search_by_dql" tool to search for test cases in qTest using a DQL query.
+Provide the following parameters:
+- DQL Query: "Project = 'Project Alpha' AND Status = 'Ready for Automation' AND Priority = 'High'"</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Creating New Test Cases:</strong></p>
+<p><code>Use the "create_test_cases" tool to create new test cases in qTest.
+Provide the following parameters:
+- Project ID: "12345"
+- Test Suite ID: "67890"
+- Test Cases Data (JSON Array):
+  [
+    {
+      "Name": "Test Login Functionality - Positive Case",
+      "Description": "Verify user login with valid credentials.",
+      "Steps": "1. Open Login Page\n2. Enter valid username\n3. Enter valid password\n4. Click Login",
+      "Expected Result": "User should be logged in successfully."
+    },
+    {
+      "Name": "Test Login Functionality - Negative Case",
+      "Description": "Verify user login with invalid credentials.",
+      "Steps": "1. Open Login Page\n2. Enter invalid username\n3. Enter invalid password\n4. Click Login",
+      "Expected Result": "Error message should be displayed."
+    }
+  ]</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Updating an Existing Test Case:</strong></p>
+<p><code>Use the "update_test_case" tool to update the description and status of an existing test case in qTest.
+Provide the following parameters:
+- Test Case ID: "7"
+- Fields to Update (JSON):
+    {
+      "description": "Updated description: Added more detailed steps for test execution.",
+      "properties": {
+        "Status": "Ready for Review"
+      }
+    }</code></p>
+</li>
+</ul>
+<p><strong>Important Considerations for Agent Instructions:</strong></p>
+<ul>
+<li><strong>Tool Name Accuracy:</strong> Ensure you use the correct <strong>Tool Name</strong> (e.g., <code>"search_by_dql"</code>, <code>"create_test_cases"</code>, <code>"update_test_case"</code>) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the toolkit correctly.</li>
+<li><strong>Parameter Clarity:</strong> Clearly specify the <strong>parameters</strong> required for each tool and provide instructions on where the Agent should obtain the values for these parameters (e.g., from user input, from previous steps in the workflow, or hardcoded values).</li>
+<li><strong>Context and Examples:</strong> Provide sufficient context and examples within your Agent's "Instructions" to guide the LLM in understanding <em>when</em> and <em>how</em> to use the qTest toolkit tools effectively within your desired workflow.</li>
+<li><strong>qTest IDs and Names:</strong> Ensure that you use the correct Project IDs, Test Suite IDs, Test Case IDs, Field Names, and other identifiers that accurately correspond to your qTest project and test assets. Incorrect IDs or names will lead to errors or incorrect tool execution.</li>
+<li><strong>DQL Query Syntax:</strong> When using the "Search by DQL" tool, ensure that you provide valid Data Query Language (DQL) query strings that adhere to qTest DQL syntax. Incorrect DQL syntax will result in search errors. Refer to qTest documentation for DQL syntax details. Use DWL to pre-filter data retrieved from qTest before it is processed by ELITEA Agents. Enter a valid DQL query string to filter test cases based on specific criteria. This ensures that only relevant data is fetched and processed, improving efficiency and reducing noise. Leave this field empty if no pre-filtering is needed.</li>
+</ul>
+<h2 id="best-practices-and-use-cases-for-qtest-integration">Best Practices and Use Cases for qTest Integration</h2>
+<h3 id="best-practices-for-efficient-integration">Best Practices for Efficient Integration</h3>
+<ul>
+<li><strong>Test Integration Thoroughly:</strong> After setting up the qTest toolkit and incorporating it into your Agents, <strong>thoroughly test each tool</strong> you intend to use to ensure seamless connectivity, correct authentication, and accurate execution of qTest actions.</li>
+<li><strong>Monitor Agent Performance and Usage:</strong>  Regularly <strong>monitor the performance of Agents</strong> utilizing qTest toolkits. Track metrics such as task completion success rate, execution time, and error rates to identify any potential issues or areas for optimization in Agent instructions or toolkit configurations.</li>
+<li><strong>Follow Security Best Practices:</strong><ul>
+<li><strong>Use API Tokens:</strong> Always use qTest API tokens instead of your main account password for integrations.</li>
+<li><strong>Grant Least Privilege:</strong> While qTest API tokens have limited scope control, ensure you are generating tokens specifically for ELITEA integration and not reusing tokens with broader access.</li>
+<li><strong>Securely Store Credentials:</strong> Utilize ELITEA's Secrets Management feature to securely store and manage your qTest API tokens instead of hardcoding them directly in Agent configurations.</li>
+</ul>
+</li>
+<li><strong>Provide Clear Instructions and Prompts:</strong>  Craft clear and unambiguous instructions within your ELITEA Agents to guide them in using the qTest toolkit effectively. Use the prompt examples provided in this guide as a starting point and adapt them to your specific use cases.</li>
+<li><strong>Start with Simple Use Cases:</strong> Begin by implementing qTest integration for simpler automation tasks, such as searching for test cases or retrieving test case details, and gradually progress to more complex workflows as you gain experience and confidence with the toolkit.</li>
+<li><strong>Optimize Performance with Advanced Settings:</strong>  Leverage the "Advanced Settings" in the toolkit configuration, specifically "Test Cases per Page" and "DQL for qTest", to fine-tune data fetching parameters and optimize performance, especially when working with large qTest projects or complex queries.</li>
+</ul>
+<h3 id="use-cases-for-qtest-toolkit-integration">Use Cases for qTest Toolkit Integration</h3>
+<p>The qTest toolkit opens up a wide range of automation possibilities for test management, QA workflows, and reporting within ELITEA. Here are some compelling use cases:</p>
+<ul>
+<li>
+<p><strong>Automated Test Case Retrieval for Test Execution Guidance:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Testers can use ELITEA Agents to quickly retrieve detailed steps and expected results for specific test cases from qTest, providing them with immediate access to test execution guidance directly within ELITEA.</li>
+<li><strong>Tools Used:</strong> <code>find_test_case_by_id</code>, <code>read_file</code> (if test data is in external files)</li>
+<li><strong>Example Instruction:</strong> "Use the 'find_test_case_by_id' tool to retrieve the test case with ID 'TC-12345'. Display the 'Name', 'Description', 'Steps', and 'Expected Result' fields to the tester."</li>
+<li><strong>Benefit:</strong> Improves tester efficiency by providing instant access to test case details, eliminating the need to switch between ELITEA and qTest interfaces, streamlining test execution and reducing context switching.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Test Case Creation from Requirements or User Stories:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When new requirements or user stories are created in ELITEA or linked systems, automatically generate corresponding test case stubs in qTest, pre-populated with basic information extracted from the requirements, streamlining test planning and ensuring test coverage from the outset.</li>
+<li><strong>Tools Used:</strong> <code>create_test_cases</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_test_cases' tool to create new test cases in qTest Project 'Project Alpha' and Test Suite 'New Feature Tests' based on the following data extracted from the new user story: <code>[{\"Name\": \"Test User Story [User Story ID] - Scenario 1\", \"Description\": \"Test scenario 1 for user story [User Story ID]\"}, {\"Name\": \"Test User Story [User Story ID] - Scenario 2\", \"Description\": \"Test scenario 2 for user story [User Story ID]\"}]</code>."</li>
+<li><strong>Benefit:</strong> Automates test case creation, streamlining test planning and ensuring comprehensive test coverage from the initial stages of development. Reduces manual effort in test case authoring and improves alignment between requirements and test cases.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Test Case Updates Based on Test Feedback or Requirements Changes:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When test execution reveals issues or requirements change, ELITEA Agents can automatically update existing test cases in qTest with new steps, expected results, or status changes, ensuring test cases remain current and accurate.</li>
+<li><strong>Tools Used:</strong> <code>update_test_case</code>, <code>read_document</code> (if updates are based on external documents)</li>
+<li><strong>Example Instruction:</strong> "Use the 'update_test_case' tool to update test case with ID 'TC-56789'. Update the 'Steps' field with the following new steps: '1. Open application\n2. Navigate to updated UI element\n3. ...' and set the 'Status' field to 'Draft' for review."</li>
+<li><strong>Benefit:</strong> Automates test case maintenance, ensuring test cases are always up-to-date with the latest requirements and test feedback. Reduces manual effort in test case updates and improves test case accuracy and relevance over time.</li>
+</ul>
+</li>
+<li>
+<p><strong>Reporting on Test Case Coverage and Status using DQL Queries:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> QA managers can use ELITEA Agents to generate custom reports on test case coverage, execution status, or other test metrics by leveraging the "Search by DQL" tool to query qTest and extract specific test case data based on DQL queries.</li>
+<li><strong>Tools Used:</strong> <code>search_by_dql</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'search_by_dql' tool to search for test cases in qTest using the DQL query: 'Project = 'Project Alpha' AND Test Suite = 'Regression Tests' AND Status IN ('Passed', 'Failed')'. Generate a report summarizing the number of passed and failed test cases and calculate the test pass rate."</li>
+<li><strong>Benefit:</strong> Enables automated and customized test reporting and analysis, providing QA managers and stakeholders with real-time visibility into test coverage, test execution progress, and quality metrics directly within ELITEA, improving test management and reporting efficiency.</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting-common-issues">Troubleshooting Common Issues</h3>
+<ul>
+<li>
+<p><strong>Connection Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> ELITEA Agent fails to connect to qTest, resulting in errors during toolkit execution.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify qTest Base URL:</strong> Double-check that you have entered the correct qTest Base URL in the toolkit configuration, including <code>https://</code> or <code>http://</code> (e.g., <code>https://qtest.example.com/</code>).</li>
+<li><strong>Check API Token:</strong> Ensure that the <strong>API Token</strong> you provided is correct and valid for your qTest account and project. Carefully re-enter or copy-paste the token to rule out typos.</li>
+<li><strong>Verify Project ID:</strong> Double-check that you have entered the correct <strong>Project ID</strong> for your qTest project in the toolkit configuration. Ensure the Project ID is a numerical value and corresponds to an existing qTest project.</li>
+<li><strong>Network Connectivity:</strong> Confirm that both your ELITEA environment and your qTest instance are connected to the internet and that there are no network connectivity issues blocking the integration.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization Errors (Permission Denied/Unauthorized):</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify qTest resources.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify API Token Validity:</strong> Ensure that the qTest API token you are using is valid and has not been revoked in your qTest user settings. Generate a new token if necessary.</li>
+<li><strong>Check qTest Permissions:</strong> Confirm that the qTest account associated with the API token has the necessary permissions within qTest to access and modify the specific projects and test assets your Agent is trying to interact with. Verify user roles and permissions within qTest project settings.</li>
+<li><strong>Project ID Accuracy:</strong> Double-check that you have entered the correct <strong>Project ID</strong> in the toolkit configuration and that the API token is valid for that specific qTest project.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Tool-Specific Parameter Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails for specific qTest tools due to incorrect parameter values or formats.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Verify Project ID:</strong> Ensure that you are using the correct qTest Project ID in your Agent's instructions when specifying project-related parameters for qTest tools. Project IDs are numerical and must match the Project ID in qTest exactly.</li>
+<li><strong>Verify Test Suite and Test Case IDs:</strong> Double-check that you are using the correct Test Suite IDs and Test Case IDs when referencing specific test assets in your Agent's instructions. Test Suite and Test Case IDs are numerical and must match the IDs in qTest exactly.</li>
+<li><strong>Parameter Format:</strong> Verify that you are providing parameters in the correct format expected by each qTest tool (e.g., string values for names, numerical values for IDs, JSON format for test case data). Refer to the "Instructions and Prompts for Using the Toolkit" section for parameter details and examples.</li>
+<li><strong>DQL Query Syntax Errors:</strong> When using the "Search by DQL" tool, ensure that you provide valid DQL query strings that adhere to qTest DQL syntax. Incorrect DQL syntax will result in search errors. Refer to qTest documentation for DQL syntax details and examples.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="faqs">FAQs</h3>
+<ul>
+<li><strong>Q: Can I use my regular qTest username and password for the ELITEA integration?</strong><ul>
+<li><strong>A:</strong> No, it is <strong>mandatory to use a qTest API token</strong> for secure integration with ELITEA. Direct password authentication is not supported. API tokens provide a more secure and controlled way to grant access to external applications like ELITEA.</li>
+</ul>
+</li>
+<li><strong>Q: What permissions should I grant to the qTest API Token?</strong><ul>
+<li><strong>A:</strong> qTest API tokens, when generated through the user profile, inherently provide access based on the user's permissions within qTest. Ensure that the qTest user account associated with the API token has the necessary permissions to access and modify the specific projects and test assets your Agent will be interacting with. You do not need to configure specific scopes during token generation.</li>
+</ul>
+</li>
+<li><strong>Q: What is the correct format for the qTest Base URL in the toolkit configuration?</strong><ul>
+<li><strong>A:</strong>  The qTest Base URL should be entered in the format <code>https://qtest.example.com/api/v1</code>. Replace <code>qtest.example.com</code> with your actual qTest subdomain and ensure you include the <code>/api/v1</code> API endpoint path.</li>
+</ul>
+</li>
+<li><strong>Q: How do I find the Project ID for my qTest project?</strong><ul>
+<li><strong>A:</strong> The Project ID is a numerical identifier for your qTest project. You can typically find the Project ID in your qTest project settings, project URL, or by inspecting the browser's address bar when you are within your qTest project. It is usually a numerical value that is unique to each project.</li>
+</ul>
+</li>
+<li><strong>Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?</strong><ul>
+<li><strong>A:</strong> Double-check the following:<ul>
+<li><strong>API Token Validity:</strong> Ensure that the API token is valid and has not been revoked.</li>
+<li><strong>qTest Account Permissions:</strong> Verify that the qTest account associated with the API token has the necessary permissions to access the specific projects and test assets your Agent is trying to use.</li>
+<li><strong>Project ID Accuracy:</strong> Double-check that you have entered the correct Project ID in the toolkit configuration and that it corresponds to the qTest project you intend to access.</li>
+<li><strong>Base URL Accuracy:</strong> Ensure that the Base URL is correctly entered and points to the API endpoint of your qTest instance.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="support-and-contact-information">Support and Contact Information</h3>
+<p>If you encounter any issues, have questions, or require further assistance beyond what is covered in this guide regarding the qTest integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.</p>
+<p><strong>How to Reach ELITEA Support:</strong></p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p><strong>Best Practices for Effective Support Requests:</strong></p>
+<p>To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> Clearly specify the ELITEA environment you are using (e.g., "Nexus," "Alita Lab," "EYE").</li>
+<li><strong>Project Details:</strong>  Indicate the <strong>Project Name</strong> and whether you are working in your <strong>Private</strong> workspace or a <strong>Team</strong> project.</li>
+<li><strong>Detailed Issue Description:</strong> Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.</li>
+<li><strong>Relevant Configuration Information:</strong>  To help us diagnose the issue, please include relevant configuration details, such as:<ul>
+<li><strong>Agent Instructions (Screenshot or Text):</strong> If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.</li>
+<li><strong>Toolkit Configurations (Screenshots):</strong> If the issue involves the qTest toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.</li>
+</ul>
+</li>
+<li><strong>Error Messages (Full Error Text):</strong> If you are encountering an error message, please provide the <strong>complete error text</strong>. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.</li>
+<li><strong>Your Query/Prompt (Exact Text):</strong> If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p>
+<h2 id="useful-links">Useful Links</h2>
+<p>To further enhance your understanding and skills in integrating qTest with ELITEA, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="https://www.tricentis.com/software/test-management/qtest/">Tricentis qTest Website</a></strong>: Access the main Tricentis qTest product website for product information and documentation.</li>
+<li><strong><a href="https://support.tricentis.com/community/manuals_qtest.do">Tricentis qTest Documentation</a></strong>: Explore the official qTest documentation for detailed information on qTest features, functionalities, and API.</li>
+<li><strong><a href="../../../platform-documentation/menus/settings/#secrets">ELITEA Secrets Management</a></strong>: Learn how to securely store your qTest API Token using ELITEA's Secrets management feature for enhanced security.</li>
+<li><strong><a href="../../../platform-documentation/menus/agents/">ELITEA Agents Configuration</a></strong>:  Find out more about creating and configuring Agents in ELITEA, where you integrate the qTest toolkit to automate your workflows.</li>
+<li><strong><a href="mailto:SupportAlita@epam.com">ELITEA Support Email</a></strong>: Contact the ELITEA support team for direct assistance with qTest integration or any other questions and issues you may encounter.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

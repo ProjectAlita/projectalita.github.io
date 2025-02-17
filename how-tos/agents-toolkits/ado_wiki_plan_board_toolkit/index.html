@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/ado_wiki_plan_board_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>ADO Wiki, Boards, and Test Plans Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../ado_repos_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../sharepoint_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-azure-devops-wiki-boards-and-plans-integration">ELITEA Toolkit Guide: Azure DevOps Wiki, Boards, and Plans Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-the-guide">Purpose of the Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-azure-devops-ado-services-for-wiki-boards-and-plans">Brief Overview of Azure DevOps (ADO) Services for Wiki, Boards, and Plans</a></li>
+            <li class="second-level"><a href="#toolkits-account-setup-and-configuration">Toolkit's Account Setup and Configuration</a></li>
+                
+                <li class="third-level"><a href="#account-creation-and-access">Account Creation and Access</a></li>
+                <li class="third-level"><a href="#account-setup">Account Setup</a></li>
+                <li class="third-level"><a href="#tokenapi-key-generation-creating-a-personal-access-token-in-azure-devops">Token/API Key Generation: Creating a Personal Access Token in Azure DevOps</a></li>
+            <li class="second-level"><a href="#system-integration-with-elitea">System Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#overview-and-usage-of-azure-devops-ado-toolkits-integration-with-elitea">Overview and Usage of Azure DevOps (ADO) Toolkits Integration with ELITEA</a></li>
+                <li class="third-level"><a href="#integration-steps-configuring-azure-devops-ado-toolkits-in-elitea">Integration Steps: Configuring Azure DevOps (ADO) Toolkits in ELITEA</a></li>
+                <li class="third-level"><a href="#33-tool-overview-azure-devops-ado-toolkit-functionalities">3.3 Tool Overview: Azure DevOps (ADO) Toolkit Functionalities</a></li>
+            <li class="second-level"><a href="#4-instructions-and-prompts-for-using-the-azure-devops-ado-toolkits">4. Instructions and Prompts for Using the Azure DevOps (ADO) Toolkits</a></li>
+                
+            <li class="second-level"><a href="#best-practices-and-use-cases-for-azure-devops-ado-integration">Best Practices and Use Cases for Azure DevOps (ADO) Integration</a></li>
+                
+                <li class="third-level"><a href="#best-practices-for-efficient-integration">Best Practices for Efficient Integration</a></li>
+                <li class="third-level"><a href="#use-cases">Use Cases</a></li>
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting-common-issues">Troubleshooting Common Issues</a></li>
+                <li class="third-level"><a href="#faqs">FAQs</a></li>
+                <li class="third-level"><a href="#support-and-contact-information">Support and Contact Information</a></li>
+            <li class="second-level"><a href="#useful-links">Useful Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-azure-devops-wiki-boards-and-plans-integration">ELITEA Toolkit Guide: Azure DevOps Wiki, Boards, and Plans Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-the-guide">Purpose of the Guide</h3>
+<p>This guide is your comprehensive resource for integrating and utilizing the <strong>Azure DevOps (ADO) Wiki, Boards, and Plans toolkits</strong> within ELITEA. It provides detailed, step-by-step instructions, from setting up your Azure DevOps Personal Access Token to configuring these toolkits in ELITEA and seamlessly incorporating them into your Agents. By following this guide, you will unlock the power of automated knowledge management, streamlined project planning, and enhanced workflow automation within Azure DevOps, all directly from the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your DevOps processes, enhance team collaboration, and improve overall project visibility within the Azure DevOps ecosystem.</p>
+<h3 id="brief-overview-of-azure-devops-ado-services-for-wiki-boards-and-plans">Brief Overview of Azure DevOps (ADO) Services for Wiki, Boards, and Plans</h3>
+<p>ELITEA's integration with Azure DevOps focuses on empowering users to leverage key Azure DevOps services for enhanced project management, knowledge sharing, and workflow automation. This guide specifically covers integration with:</p>
+<ul>
+<li><strong>Azure Wiki (ADO Wiki):</strong> A collaborative, team-based wiki service within Azure DevOps that allows teams to create, share, and manage project documentation, knowledge bases, release notes, meeting minutes, and other essential project information directly within Azure DevOps. Azure Wiki promotes knowledge sharing and collaboration by providing a central, version-controlled repository for project documentation.</li>
+<li><strong>Azure Boards (ADO Boards):</strong> A powerful work tracking and project management service within Azure DevOps that enables teams to plan, organize, track, and manage project tasks, user stories, bugs, features, and epics. Azure Boards provides agile planning tools, customizable dashboards, and workflow automation capabilities to streamline project execution and improve team collaboration.</li>
+<li><strong>Azure Test Plans (ADO Test Plans):</strong> A comprehensive test management solution within Azure DevOps that provides tools for planning, executing, and tracking software testing efforts. Azure Test Plans enables teams to define test plans, create test suites, author test cases, execute manual and automated tests, and track test results, ensuring software quality and release readiness.</li>
+</ul>
+<p>ELITEA's integration with ADO Wiki, Boards, and Plans allows you to bring these powerful Azure DevOps services directly into your AI-driven workflows, enabling agents to:</p>
+<ul>
+<li><strong>Centralize Project Information Access:</strong> Retrieve and utilize up-to-date information directly from ADO Wiki pages, Boards work items, and Test Plans within ELITEA Agents, providing a unified view of project knowledge and status.</li>
+<li><strong>Automate Key DevOps Tasks:</strong> Automate routine and time-consuming DevOps tasks such as creating and updating wiki pages, managing work items in Boards (creating, updating, searching), and interacting with Test Plans (creating test plans, suites, cases, retrieving test details), freeing up valuable team time for more strategic activities.</li>
+<li><strong>Enhance Collaboration and Communication:</strong> Streamline team collaboration and communication by enabling agents to automatically update work item statuses, add comments to work items and pull requests, and generate reports based on data from Azure DevOps services, ensuring all stakeholders are informed and aligned.</li>
+<li><strong>Improve Project Visibility and Reporting:</strong> Generate insightful reports and extract key metrics from Azure DevOps data using ELITEA Agents, providing data-driven visibility into project status, progress, testing efforts, and overall project health, enabling better decision-making and proactive project management.</li>
+</ul>
+<h2 id="toolkits-account-setup-and-configuration">Toolkit's Account Setup and Configuration</h2>
+<h3 id="account-creation-and-access">Account Creation and Access</h3>
+<h3 id="account-setup">Account Setup</h3>
+<p>If you do not yet have an Azure DevOps account and organization, please follow these steps to create one, ensuring you have access to Azure DevOps Wiki, Boards, and Plans services:</p>
+<ol>
+<li><strong>Visit Azure DevOps Website:</strong> Open your web browser and navigate to the Azure DevOps website: <a href="https://dev.azure.com/">https://azure.devops.com/</a>.</li>
+<li><strong>Start Free or Sign In:</strong> Click on the <strong>"Start free"</strong> button to create a new Azure DevOps organization, or click <strong>"Sign in to Azure DevOps"</strong> if you already have an organization and wish to sign in.</li>
+<li><strong>Create an Organization (If Needed):</strong><ul>
+<li>If you are creating a new organization, click <strong>"Create an Organization"</strong> and follow the prompts to set up your new Azure DevOps organization. You will typically need to provide an organization name, choose a hosting region, and link it to an Azure account (if you have one).</li>
+<li>If you are signing into an existing organization, click <strong>"Sign in to Azure DevOps"</strong> and log in using your Microsoft account credentials.</li>
+</ul>
+</li>
+<li><strong>Enter Account Details:</strong> Provide the required details as prompted during the organization creation or sign-in process. This may include your email address, organization name, and region for hosting your Azure DevOps organization.</li>
+<li><strong>Email Verification (If Prompted):</strong> Verify your email address if prompted by the Azure DevOps signup process. This usually involves clicking a confirmation link sent to your email inbox.</li>
+<li><strong>Log In to Azure DevOps:</strong> Log in to the Azure DevOps dashboard using your newly created or existing Microsoft account credentials.</li>
+<li><strong>Enable Basic Subscription (Essential for Boards, Plans and Wiki):</strong> Ensure that you have a <strong>Basic Azure DevOps subscription</strong> enabled for your account. The Basic subscription is required to access Azure Boards, Azure Repos, Azure Pipelines, Azure Test Plans, and Azure Artifacts. For new organizations, the Basic subscription is typically enabled by default. For existing organizations, you may need to verify or enable it in the organization settings to ensure access to all required services.</li>
+<li><strong>Add Users and Assign Basic Subscription (If Needed):</strong> To grant access to other users within your organization who will be using ELITEA integrations with Azure DevOps Wiki, Boards, and Plans, navigate to your organization settings:<ul>
+<li>Go to <code>https://dev.azure.com/{YourOrganizationName}/_settings/users</code> (replace <code>{YourOrganizationName}</code> with your actual Azure DevOps organization name).</li>
+<li>Click <strong>"Add users"</strong>.</li>
+<li>Enter the user's email address or Microsoft account.</li>
+<li>Select <strong>"Basic"</strong> from the "Access level" dropdown to assign a Basic subscription to the user, granting them access to Boards, Plans and Wiki services.</li>
+<li>Choose the relevant project(s) to grant the user access to.</li>
+<li>Click <strong>"Add"</strong> to add the user to your Azure DevOps organization.</li>
+</ul>
+</li>
+<li><strong>Add User to Project Member Group (If Needed):</strong> To ensure newly added users have the necessary permissions within a specific project to access and utilize Wiki, Boards, and Plans:<ul>
+<li>Navigate to <strong>"Project settings"</strong> for your desired project (located at the bottom left of the Azure DevOps interface).</li>
+<li>Select <strong>"Groups"</strong> under "Security" in the Project settings menu.</li>
+<li>Locate the <strong>"Project Valid Users"</strong> group (or a relevant group for your project's members) and click on the group name.</li>
+<li>Click on the <strong>"Members"</strong> tab within the group details.</li>
+<li>Click <strong>"Add users or groups"</strong>.</li>
+<li>Enter the email address or name of the user you want to add to the project member group and click <strong>"Add"</strong>.</li>
+</ul>
+</li>
+<li><strong>Verify Wiki, Boards and Plans Access:</strong> After completing user setup, refresh the Azure DevOps page and ensure that the <strong>"Boards"</strong>, <strong>"Wiki"</strong> and <strong>"Test Plans"</strong> features are now enabled and visible for your account within your Azure DevOps project. You should see "Boards", "Repos", "Pipelines", "Test Plans", and "Wiki" in the left-hand sidebar of your project. This confirms that you have successfully set up your Azure DevOps account and have access to Azure DevOps Services required for ELITEA integration.</li>
+</ol>
+<p><strong>Note:</strong> If the "Boards", "Wiki", or "Test Plans" features are not available, you may need to create a new project within your Azure DevOps organization or verify that these services are enabled for your organization and project in the Azure DevOps organization settings under "General" -&gt; "Services".</p>
+<h3 id="tokenapi-key-generation-creating-a-personal-access-token-in-azure-devops">Token/API Key Generation: Creating a Personal Access Token in Azure DevOps</h3>
+<p>For secure integration with ELITEA, it is essential to use an Azure DevOps <strong>Personal Access Token (PAT)</strong>. This method is significantly more secure than using your primary Azure DevOps account password directly and allows you to precisely control the permissions granted to ELITEA for accessing Azure DevOps Wiki, Boards, and Plans services.</p>
+<p><strong>Follow these steps to generate a Personal Access Token (PAT) in Azure DevOps:</strong></p>
+<ol>
+<li><strong>Log in to Azure DevOps:</strong> Access your Azure DevOps organization by navigating to <code>https://dev.azure.com/</code> and logging in with your credentials.</li>
+<li><strong>Access User Settings:</strong> Click on the <strong>User settings</strong> icon, typically located in the top right corner of the Azure DevOps interface, next to your profile picture. From the dropdown menu, select <strong>"Personal access tokens"</strong>.</li>
+<li><strong>Generate New Token:</strong> On the "Personal Access Tokens" page, click the <strong>"+ New Token"</strong> button to create a new PAT.</li>
+<li>
+<p><strong>Configure Token Details:</strong> In the "Create a new personal access token" panel, configure the following settings:</p>
+<ul>
+<li><strong>Name:</strong> In the "Name" field, enter a descriptive label for your token. For example, use "ELITEA Wiki Boards Plans Token" or "ELITEA Agent Access for ADO Services." This label will help you easily identify the purpose of this token in the future.</li>
+<li><strong>Organization (Optional):</strong> Select the Azure DevOps organization for which this token will be valid. In most cases, you will select "All accessible organizations" to allow the token to access resources across your organizations.</li>
+<li><strong>Expiration (Recommended):</strong> For enhanced security, it is highly recommended to set an <strong>Expiration date</strong> for your token. Choose a reasonable validity period that aligns with your security policies. Shorter expiration periods are generally more secure.</li>
+<li>
+<p><strong>Scopes - Grant Least Privilege (Crucial for Security):</strong> Carefully and deliberately select the <strong>scopes</strong> or permissions you grant to this token. <strong>It is paramount to grant only the minimum necessary permissions</strong> required for your ELITEA Agent's intended interactions with Azure DevOps Wiki, Boards, and Plans. Overly permissive tokens pose a significant security risk. For typical ELITEA integration with ADO Wiki, Boards, and Plans, consider these minimal scopes, selecting <strong>"Custom defined"</strong> and then choosing granular scopes:</p>
+<ul>
+<li>
+<p><strong>Minimal Scopes for Common Use Cases:</strong></p>
+<ul>
+<li><strong>Work items:</strong> Expand the "Work items" section and select:<ul>
+<li><strong>Read:</strong> (If your Agent only needs to retrieve information from Azure Boards, select "Read")</li>
+<li><strong>Write:</strong> (If your Agent needs to create, update, or manage work items in Azure Boards, select "Write". Only include this if your Agent needs to modify Boards content.)</li>
+</ul>
+</li>
+<li><strong>Wiki:</strong> Expand the "Wiki" section and select:<ul>
+<li><strong>Read &amp; write:</strong> (Grants read and write access to Azure DevOps Wiki, allowing Agents to both retrieve and modify wiki content. If your Agent only needs to read Wiki content, you can select "Read" for tighter security.)</li>
+</ul>
+</li>
+<li><strong>Test Management:</strong> Expand the "Test Management" section and select:<ul>
+<li><strong>Read:</strong> (If your Agent only needs to retrieve information from Azure Test Plans, select "Read")</li>
+<li><strong>Read &amp; write:</strong> (If your Agent needs to create, update, or manage test plans, test suites, or test cases in Azure Test Plans, select "Read &amp; write". Only include write access if your Agent needs to modify Test Plans content.)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Important Scope Considerations:</strong></p>
+<ul>
+<li><strong>Granular Scopes:</strong> Whenever possible, opt for granular scopes (e.g., "Work items - Read", "Wiki - Read") over broader scopes (e.g., "Work items - Full access", "Wiki - Read &amp; write") to adhere to the principle of least privilege.</li>
+<li><strong>Tool-Specific Scopes:</strong>  Select scopes based on the specific Azure DevOps toolkits you intend to use in ELITEA. If you are only using the ADO Wiki toolkit, you only need to grant Wiki scopes, and so on. Avoid granting scopes for toolkits you are not using.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Important Security Best Practices:</strong></p>
+<ul>
+<li><strong>Principle of Least Privilege:</strong> <strong>Strictly adhere to the principle of least privilege.</strong> Grant only the absolute minimum set of scopes necessary for your ELITEA Agent to perform its specific, intended tasks with Azure DevOps Wiki, Boards, and Plans. Avoid granting broad or unnecessary permissions.</li>
+<li><strong>Avoid Full Access Scopes:</strong> <strong>Avoid granting full access scopes like "Full access" unless absolutely necessary and with a clear and thorough understanding of the significant security implications.</strong> Full access scopes provide extensive administrative privileges and should be avoided for integration purposes whenever possible.</li>
+<li><strong>Regular Token Review and Rotation:</strong> Implement a process for regularly reviewing the Personal Access Tokens you have generated, their associated scopes, and their usage. Rotate tokens periodically (generate new tokens and revoke older ones) as a proactive security measure, especially for integrations that handle sensitive data or critical operations within Azure DevOps.</li>
+<li><strong>Secure Storage:</strong> Store the generated Personal Access Token securely, preferably using ELITEA's built-in Secrets Management feature, rather than hardcoding it directly in Agent configurations or less secure storage locations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create Token:</strong> Click the <strong>"Create"</strong> button at the bottom of the panel to generate your Personal Access Token.</p>
+</li>
+<li><strong>Securely Copy and Store the Token:</strong> <strong>Immediately copy the generated token</strong> that is displayed in the "Success!" pop-up window. <strong>This is the only time you will be able to view and copy the full token value.</strong> Store it securely using a robust password manager or, ideally, ELITEA's built-in Secrets feature for enhanced security within the ELITEA platform. You will require this token to configure the Azure DevOps Wiki, Boards, and Plans toolkits within ELITEA.</li>
+</ol>
+<h2 id="system-integration-with-elitea">System Integration with ELITEA</h2>
+<h3 id="overview-and-usage-of-azure-devops-ado-toolkits-integration-with-elitea">Overview and Usage of Azure DevOps (ADO) Toolkits Integration with ELITEA</h3>
+<p>ELITEA's integration with Azure DevOps provides a suite of toolkits that allow your AI Agents to seamlessly interact with various Azure DevOps services, including Wiki, Boards, and Test Plans. This integration empowers your Agents to:</p>
+<ul>
+<li><strong>Access Azure DevOps Data:</strong> Retrieve and utilize information from Azure DevOps Wiki pages, Boards work items, and Test Plans directly within ELITEA workflows.</li>
+<li><strong>Automate DevOps Tasks:</strong> Automate tasks such as creating and updating wiki pages, managing work items in Boards, and interacting with Test Plans, streamlining your DevOps processes.</li>
+<li><strong>Enhance Project Management:</strong> Integrate AI-powered automation into your project management workflows, improving efficiency and collaboration within Azure DevOps projects.</li>
+<li><strong>Improve Reporting and Insights:</strong> Generate reports and extract insights from Azure DevOps data using ELITEA Agents, providing data-driven visibility into project status and progress.</li>
+</ul>
+<h3 id="integration-steps-configuring-azure-devops-ado-toolkits-in-elitea">Integration Steps: Configuring Azure DevOps (ADO) Toolkits in ELITEA</h3>
+<p>To integrate Azure DevOps Wiki, Boards, and Test Plans with ELITEA and enable your Agents to interact with these services, follow these configuration steps within ELITEA:</p>
+<ol>
+<li><strong>Navigate to Agents Menu:</strong> In ELITEA, go to the <strong>Agents</strong> menu and either <strong>create a new Agent</strong> or <strong>edit an existing Agent</strong> that you want to integrate with Azure DevOps services.</li>
+<li><strong>Access Toolkits Section:</strong> Within the Agent configuration, scroll down to the <strong>"Tools"</strong> section.</li>
+<li><strong>Add Toolkit:</strong> Click the <strong>"+" icon</strong> under the "TOOLS" section to add a new toolkit.</li>
+<li><strong>Select Azure DevOps Toolkit:</strong> From the dropdown list of available toolkits, choose the specific Azure DevOps toolkit you want to configure:<ul>
+<li><strong>"Azure Wiki (ADO Wiki)"</strong> (for Azure DevOps Wiki)</li>
+<li><strong>"Azure Boards (ADO Board)"</strong> (for Azure DevOps Boards)</li>
+<li><strong>"Azure Test Plans (ADO Test Plan)"</strong> (for Azure DevOps Test Plans)</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure Azure DevOps Toolkit Settings:</strong>  Fill in the configuration fields for the selected Azure DevOps toolkit. The configuration steps are similar for all ADO toolkits:</p>
+<ul>
+<li><strong>Name:</strong>  Enter a descriptive <strong>Name</strong> for your Azure DevOps toolkit instance. This name will be used to reference the toolkit within your Agent's instructions (e.g., "MyAzureWiki", "ProjectBoardAccess", "TestPlanManager").</li>
+<li><strong>Description:</strong> Provide a brief <strong>Description</strong> of the toolkit's purpose or the specific Azure DevOps service it will access (e.g., "Access to Project Alpha Wiki", "Work item management for Project Beta").</li>
+<li><strong>ADO Organization URL:</strong> Enter your Azure DevOps organization URL. <strong>Ensure you use the correct format</strong>, including your organization name: <code>https://dev.azure.com/{YourOrganizationName}</code> (Replace <code>{YourOrganizationName}</code> with your actual Azure DevOps organization name).</li>
+<li><strong>Project Name:</strong> Enter the <strong>Project Name</strong> within your Azure DevOps organization that contains the Wiki, Boards, or Test Plans you want to access (e.g., <code>MyProject</code>).</li>
+<li><strong>Personal Access Token:</strong> Paste the <strong>Personal Access Token</strong> you generated in Azure DevOps (during the "Software-Specific Setup" section of this guide) into the <strong>"Personal Access Token"</strong> field.  <strong>Important Security Note:</strong> For enhanced security, consider using the <strong>"Secret"</strong> option instead and storing your Personal Access Token securely as a Secret within <a href="../../../platform-documentation/menus/settings/#secrets">Secrets</a> feature.</li>
+</ul>
+<p><img alt="ADO-Wiki_Configuration_Toolkit" src="../../../img/how-tos/ado/ADO-Wiki_Configuration_Toolkit.png" /></p>
+<p><img alt="ADO-Board_Configuration_Toolkit" src="../../../img/how-tos/ado/ADO-Board_Configuration_Toolkit.png" /></p>
+<p><img alt="ADO-Plan_Configuration_Toolkit" src="../../../img/how-tos/ado/ADO-Plan_Configuration_Toolkit.png" /></p>
+</li>
+<li>
+<p><strong>Enable Desired Tools:</strong> In the <strong>"Tools"</strong> section within the Azure DevOps toolkit configuration, <strong>check the boxes next to the specific Azure DevOps tools</strong> you want to enable for your Agent. Select only the tools that your Agent will actually need to use to minimize unnecessary permissions and maintain security.  The available tools vary depending on the specific Azure DevOps toolkit you are configuring (Wiki, Boards, or Test Plans). Refer to the "Tool Overview" section below for details on the tools available for each toolkit type.</p>
+</li>
+<li>
+<p><strong>Complete Setup:</strong> Click the <strong>arrow icon</strong> (located at the top right of the toolkit configuration section) to complete the Azure DevOps toolkit setup and return to the main Agent configuration menu.</p>
+</li>
+</ol>
+<h3 id="33-tool-overview-azure-devops-ado-toolkit-functionalities">3.3 Tool Overview: Azure DevOps (ADO) Toolkit Functionalities</h3>
+<p>Once the Azure DevOps toolkits are configured and added to your Agent, you can leverage the following tools within your Agent's instructions to interact with Azure DevOps services:</p>
+<h4 id="ado-wiki-tools">ADO Wiki Tools:</h4>
+<ul>
+<li><strong>Get Wiki:</strong>  <strong>Tool Name:</strong> <code>get_wiki</code><ul>
+<li><strong>Functionality:</strong> Retrieves the list of all wikis available in the Azure DevOps Wiki for the specified project.</li>
+<li><strong>Purpose:</strong> Enables Agents to list available wikis for navigation, reporting, or to provide users with a choice of wikis to interact with.</li>
+</ul>
+</li>
+<li><strong>Get Wiki Page by Path:</strong>  <strong>Tool Name:</strong> <code>get_wiki_page_by_path</code><ul>
+<li><strong>Functionality:</strong> Fetches a specific wiki page from Azure DevOps Wiki using its path within the wiki.</li>
+<li><strong>Purpose:</strong> Retrieve content from specific wiki pages to provide context, answer user questions, or incorporate wiki content into ELITEA workflows.</li>
+</ul>
+</li>
+<li><strong>Get Wiki Page by ID:</strong>  <strong>Tool Name:</strong> <code>get_wiki_page_by_id</code><ul>
+<li><strong>Functionality:</strong> Fetches a specific wiki page from Azure DevOps Wiki using its unique page ID.</li>
+<li><strong>Purpose:</strong> Retrieve content from specific wiki pages when you have the Page ID available, ensuring accurate retrieval of the intended wiki page.</li>
+</ul>
+</li>
+<li><strong>Delete Wiki Page by Path:</strong>  <strong>Tool Name:</strong> <code>delete_wiki_page_by_path</code><ul>
+<li><strong>Functionality:</strong> Deletes a specific wiki page from Azure DevOps Wiki using its path.</li>
+<li><strong>Purpose:</strong> Automate wiki page cleanup tasks, removing obsolete or outdated documentation pages based on workflow triggers or user requests.</li>
+</ul>
+</li>
+<li><strong>Delete Wiki Page by ID:</strong>  <strong>Tool Name:</strong> <code>delete_wiki_page_by_id</code><ul>
+<li><strong>Functionality:</strong> Deletes a specific wiki page from Azure DevOps Wiki using its unique page ID.</li>
+<li><strong>Purpose:</strong> Automate precise wiki page deletion when you have the Page ID, ensuring accurate removal of specific wiki pages.</li>
+</ul>
+</li>
+<li><strong>Modify Wiki Page:</strong>  <strong>Tool Name:</strong> <code>modify_wiki_page</code><ul>
+<li><strong>Functionality:</strong> Allows modifications to the content of an existing wiki page in Azure DevOps Wiki.</li>
+<li><strong>Purpose:</strong> Automate wiki updates, allowing Agents to dynamically update documentation, add meeting notes, or modify wiki content based on workflow events or user interactions.</li>
+</ul>
+</li>
+</ul>
+<h4 id="ado-board-tools">ADO Board Tools:</h4>
+<ul>
+<li><strong>Search Work Item:</strong>  <strong>Tool Name:</strong> <code>search_work_item</code><ul>
+<li><strong>Functionality:</strong> Allows users to search for specific work items within Azure DevOps Boards based on various criteria such as keywords, status, and assigned user.</li>
+<li><strong>Purpose:</strong> Enable Agents to search for work items based on user queries, keywords, or specific criteria, facilitating efficient work item retrieval and information access within ELITEA workflows.</li>
+</ul>
+</li>
+<li><strong>Get Work Item:</strong>  <strong>Tool Name:</strong> <code>get_work_item</code><ul>
+<li><strong>Functionality:</strong> Retrieves detailed information about a specific work item from Azure DevOps Boards, including its status, description, and associated tasks.</li>
+<li><strong>Purpose:</strong> Allow Agents to fetch detailed work item information to provide context, summarize task status, or incorporate work item details into ELITEA conversations or reports.</li>
+</ul>
+</li>
+<li><strong>Create Work Item:</strong>  <strong>Tool Name:</strong> <code>create_work_item</code><ul>
+<li><strong>Functionality:</strong> Enables users to create new work items directly within Azure DevOps Boards, specifying details such as title, description, priority, and assigned user.</li>
+<li><strong>Purpose:</strong> Automate work item creation based on ELITEA workflow triggers or user requests, streamlining task management and issue reporting processes.</li>
+</ul>
+</li>
+<li><strong>Update Work Item:</strong> <strong>Tool Name:</strong> <code>update_work_item</code><ul>
+<li><strong>Functionality:</strong> Enables users to update fields of existing work items directly within Azure DevOps Boards, specifying fields and values.</li>
+<li><strong>Purpose:</strong> Automate work item updates based on ELITEA workflow triggers or user requests, streamlining task management and issue resolution processes.</li>
+</ul>
+</li>
+<li><strong>Link Work Item:</strong> <strong>Tool Name:</strong> <code>link_work_item</code><ul>
+<li><strong>Functionality:</strong> Enables users to create links between two existing work items in Azure DevOps Boards, specifying the target and source work items and link type.</li>
+<li><strong>Purpose:</strong> Automate linking work items to represent relationships between tasks, user stories, bugs, or other work items, enhancing traceability and project management within ELITEA workflows.</li>
+</ul>
+</li>
+<li><strong>Get Relation Types:</strong> <strong>Tool Name:</strong> <code>get_relation_types</code><ul>
+<li><strong>Functionality:</strong> Retrieves a list of available relation types for work items in Azure DevOps Boards.</li>
+<li><strong>Purpose:</strong> Allows Agents to dynamically retrieve valid relation types for work items, enabling dynamic link creation and providing users with valid linking options within ELITEA workflows.</li>
+</ul>
+</li>
+</ul>
+<h4 id="ado-test-plan-tools">ADO Test Plan Tools:</h4>
+<ul>
+<li><strong>Create Test Plan:</strong>  <strong>Tool Name:</strong> <code>create_test_plan</code><ul>
+<li><strong>Functionality:</strong> Allows users to create new test plans within Azure DevOps Test Plans.</li>
+<li><strong>Use Case:</strong> Automate the creation of test plans for new features, releases, or testing cycles directly from ELITEA workflows.</li>
+</ul>
+</li>
+<li><strong>Delete Test Plan:</strong>  <strong>Tool Name:</strong> <code>delete_test_plan</code><ul>
+<li><strong>Functionality:</strong> Enables users to delete existing test plans from Azure DevOps Test Plans.</li>
+<li><strong>Use Case:</strong> Automate the removal of obsolete or outdated test plans, keeping your test management environment clean and organized.</li>
+</ul>
+</li>
+<li><strong>Get Test Plan:</strong>  <strong>Tool Name:</strong> <code>get_test_plan</code><ul>
+<li><strong>Functionality:</strong> Retrieves detailed information about a specific test plan from Azure DevOps Test Plans.</li>
+<li><strong>Use Case:</strong> Allow Agents to fetch test plan details for reporting, analysis, or to provide users with summaries of test plan status and progress within ELITEA.</li>
+</ul>
+</li>
+<li><strong>Create Test Suite:</strong>  <strong>Tool Name:</strong> <code>create_test_suite</code><ul>
+<li><strong>Functionality:</strong> Allows users to create new test suites within a specific test plan in Azure DevOps Test Plans.</li>
+<li><strong>Use Case:</strong> Automate the creation of test suites to organize test cases logically within test plans, streamlining test planning and management.</li>
+</ul>
+</li>
+<li><strong>Delete Test Suite:</strong>  <strong>Tool Name:</strong> <code>delete_test_suite</code><ul>
+<li><strong>Functionality:</strong> Enables users to delete existing test suites from Azure DevOps Test Plans.</li>
+<li><strong>Use Case:</strong> Automate the removal of obsolete test suites, keeping your test plans organized and focused on relevant test cases.</li>
+</ul>
+</li>
+<li><strong>Get Test Suite:</strong>  <strong>Tool Name:</strong> <code>get_test_suite</code><ul>
+<li><strong>Functionality:</strong> Retrieves detailed information about a specific test suite from Azure DevOps Test Plans.</li>
+<li><strong>Use Case:</strong> Enable Agents to fetch test suite details for reporting, analysis, or to provide users with summaries of test suite contents and status within ELITEA.</li>
+</ul>
+</li>
+<li><strong>Add Test Case:</strong>  <strong>Tool Name:</strong> <code>add_test_case</code><ul>
+<li><strong>Functionality:</strong> Allows users to add new test cases to a specific test suite in Azure DevOps Test Plans.</li>
+<li><strong>Use Case:</strong> Automate the creation of test cases based on requirements, user stories, or other triggers within ELITEA workflows, streamlining test case authoring.</li>
+</ul>
+</li>
+<li><strong>Get Test Case:</strong>  <strong>Tool Name:</strong> <code>get_test_case</code><ul>
+<li><strong>Functionality:</strong> Retrieves detailed information about a specific test case from Azure DevOps Test Plans.</li>
+<li><strong>Use Case:</strong> Allow Agents to fetch test case details for test execution guidance, reporting, or to provide users with specific test case information within ELITEA.</li>
+</ul>
+</li>
+<li><strong>Get Test Cases:</strong>  <strong>Tool Name:</strong> <code>get_test_cases</code><ul>
+<li><strong>Functionality:</strong> Retrieves a list of test cases from Azure DevOps Test Plans, allowing for filtering and retrieval of test cases based on various criteria.</li>
+<li><strong>Use Case:</strong> Enables Agents to fetch test case lists for test management, reporting, or to provide users with a selection of test cases within ELITEA workflows.</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-instructions-and-prompts-for-using-the-azure-devops-ado-toolkits">4. Instructions and Prompts for Using the Azure DevOps (ADO) Toolkits</h2>
+<p>To effectively utilize the Azure DevOps toolkits within your ELITEA Agents, you need to provide clear instructions within the Agent's "Instructions" field, telling the Agent <em>how</em> and <em>when</em> to use these tools.</p>
+<p><strong>General Instruction Structure:</strong></p>
+<p>When instructing your Agent to use an Azure DevOps toolkit, you will typically follow this pattern:</p>
+<pre><code>Use the &quot;[tool_name]&quot; tool to [describe the action you want to perform] in ADO [Wiki/Boards/Test Plans].
+Provide the following parameters:
+- Parameter 1: &lt;value or description of value&gt;
+- Parameter 2: &lt;value or description of value&gt;
+- ...
+</code></pre>
+<p><strong>Example Agent Instructions for Azure DevOps (ADO) Toolkits Tools:</strong></p>
+<ul>
+<li>
+<p><strong>Agent Instructions for Getting a Wiki Page by Path:</strong></p>
+<p><code>Use the "get_wiki_page_by_path" tool to retrieve content from a specific wiki page in Azure DevOps Wiki.
+Provide the following parameters:
+- Organization Name: "your-azure-devops-organization-name"
+- Project Name: "your-azure-devops-project-name"
+- Wiki Path: "/path/to/your/wiki/page"
+- Wiki Name or ID: "your-wiki-name-or-id"</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Creating a Work Item in Azure Boards:</strong></p>
+<p><code>Use the "create_work_item" tool to create a new User Story work item in Azure Boards.
+Provide the following parameters:
+- Organization Name: "your-azure-devops-organization-name"
+- Project Name: "your-azure-devops-project-name"
+- Title: "Implement new user authentication flow"
+- Work Item Type: "User Story"
+- Description: "As a user, I want to be able to log in using my social media account..."</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Creating a Test Plan in Azure Test Plans:</strong></p>
+<p><code>Use the "create_test_plan" tool to create a new test plan in Azure Test Plans.
+Provide the following parameters:
+- Organization Name: "your-azure-devops-organization-name"
+- Project Name: "your-azure-devops-project-name"
+- Test Plan Name: "Regression Tests - Release 1.5"
+- Area Path: "ProjectAlpha\\Release 1.5"</code></p>
+</li>
+</ul>
+<p><strong>Important Considerations for Agent Instructions:</strong></p>
+<ul>
+<li><strong>Tool Name Accuracy:</strong> Ensure you use the correct <strong>Tool Name</strong> (e.g., <code>"get_wiki_page_by_path"</code>, <code>"create_work_item"</code>, <code>"create_test_plan"</code>) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the toolkit correctly.</li>
+<li><strong>Parameter Clarity:</strong> Clearly specify the <strong>parameters</strong> required for each tool and provide instructions on where the Agent should obtain the values for these parameters (e.g., from user input, from previous steps in the workflow, or hardcoded values).</li>
+<li><strong>Context and Examples:</strong> Provide sufficient context and examples within your Agent's "Instructions" to guide the LLM in understanding <em>when</em> and <em>how</em> to use the Azure DevOps toolkit tools effectively within your desired workflow.</li>
+<li><strong>Azure DevOps Hierarchy:</strong> Be mindful of the Azure DevOps organization, project, and Wiki/Boards/Test Plans hierarchy when providing parameters like "Organization Name," "Project Name," "Wiki Name or ID," etc. Ensure these parameters accurately reflect the location of the resource you are trying to access or modify.</li>
+</ul>
+<h2 id="best-practices-and-use-cases-for-azure-devops-ado-integration">Best Practices and Use Cases for Azure DevOps (ADO) Integration</h2>
+<h3 id="best-practices-for-efficient-integration">Best Practices for Efficient Integration</h3>
+<ul>
+<li><strong>Test Integration Thoroughly:</strong> After setting up the Azure DevOps toolkits and incorporating them into your Agents, <strong>thoroughly test each tool</strong> you intend to use to ensure seamless connectivity, correct authentication, and accurate execution of Azure DevOps actions.</li>
+<li><strong>Monitor Agent Performance and Usage:</strong>  Regularly <strong>monitor the performance of Agents</strong> utilizing Azure DevOps toolkits. Track metrics such as task completion success rate, execution time, and error rates to identify any potential issues or areas for optimization in Agent instructions or toolkit configurations.</li>
+<li><strong>Follow Security Best Practices:</strong><ul>
+<li><strong>Use Personal Access Tokens:</strong> Always use Azure DevOps Personal Access Tokens instead of your main account password for integrations.</li>
+<li><strong>Grant Least Privilege:</strong> Grant only the minimum necessary scopes/permissions to the Personal Access Token to limit potential security risks.</li>
+<li><strong>Securely Store Credentials:</strong> Utilize ELITEA's Secrets Management feature to securely store and manage your Azure DevOps Personal Access Tokens instead of hardcoding them directly in Agent configurations.</li>
+</ul>
+</li>
+<li><strong>Provide Clear Instructions and Prompts:</strong>  Craft clear and unambiguous instructions within your ELITEA Agents to guide them in using the Azure DevOps toolkits effectively. Use the prompt examples provided in this guide as a starting point and adapt them to your specific use cases.</li>
+<li><strong>Start with Simple Use Cases:</strong> Begin by implementing Azure DevOps integration for simpler automation tasks, such as retrieving information or updating work item statuses, and gradually progress to more complex workflows as you gain experience and confidence with the toolkits.</li>
+</ul>
+<h3 id="use-cases">Use Cases</h3>
+<p>The Azure DevOps toolkits open up a wide range of automation possibilities for project management, documentation, and testing workflows within ELITEA. Here are some compelling use cases categorized by toolkit type:</p>
+<p><strong>ADO Wiki Toolkit Use Cases:</strong></p>
+<ul>
+<li>
+<p><strong>Automated Retrieval of Release Notes for Support:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> During a support interaction, an Agent can automatically retrieve the latest release notes from the project wiki to provide users with up-to-date information on new features and bug fixes.</li>
+<li><strong>Tools Used:</strong> <code>get_wiki_page_by_path</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_wiki_page_by_path' tool to read the content of the wiki page at path '/Release Notes/Latest Release' and display it to the user."</li>
+<li><strong>Benefit:</strong> Enhances support interactions by providing agents with immediate access to current release information, improving support efficiency and user satisfaction.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Content Creation for Project Dashboards:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Agents can dynamically generate content for project dashboards within ELITEA by retrieving data from various sources and formatting it into wiki pages for display.</li>
+<li><strong>Tools Used:</strong> <code>modify_wiki_page</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'modify_wiki_page' tool to update the wiki page 'Project Dashboard' with the latest build status and test results summarized from other ELITEA workflows."</li>
+<li><strong>Benefit:</strong> Enables dynamic and automated dashboard updates, ensuring project dashboards within ELITEA always display the most current information, improving project visibility and awareness.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Wiki Cleanup for Content Management:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Implement a workflow to automatically delete outdated meeting minutes or temporary documentation pages from the project wiki after a certain period to maintain wiki cleanliness.</li>
+<li><strong>Tools Used:</strong> <code>delete_wiki_page_by_path</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'delete_wiki_page_by_path' tool to delete wiki pages in the '/Meeting Minutes/Archive' path that are older than 90 days."</li>
+<li><strong>Benefit:</strong> Automates wiki maintenance tasks, ensuring the project wiki remains organized, relevant, and easy to navigate by automatically removing outdated content.</li>
+</ul>
+</li>
+</ul>
+<p><strong>ADO Board Tools Use Cases:</strong></p>
+<ul>
+<li>
+<p><strong>Intelligent Work Item Search for Task Prioritization:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Developers can use ELITEA Agents to quickly search for work items assigned to them, filtered by priority or status, to efficiently prioritize their tasks for the day.</li>
+<li><strong>Tools Used:</strong> <code>search_work_item</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'search_work_item' tool to find all 'Task' work items assigned to me that are currently in 'Active' state and sorted by 'Priority'."</li>
+<li><strong>Benefit:</strong> Improves developer efficiency by providing a fast and intelligent way to find and prioritize their work items directly within ELITEA, streamlining daily task management.</li>
+</ul>
+</li>
+<li>
+<p><strong>Contextual Work Item Details for Team Discussions:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> During team meetings or project discussions within ELITEA, Agents can provide immediate access to detailed information about specific work items to provide context and facilitate informed decision-making.</li>
+<li><strong>Tools Used:</strong> <code>get_work_item</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_work_item' tool to get details for work item with ID [work_item_id] and display the 'Title', 'Description', and 'Status' to the team."</li>
+<li><strong>Benefit:</strong> Enhances team collaboration by providing immediate access to relevant work item details within ELITEA, improving context and facilitating more focused and productive discussions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Bug Logging from ELITEA Workflows:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When automated tests within ELITEA workflows detect a bug, automatically create a new Bug work item in Azure Boards, pre-populated with error details and relevant context from the test execution.</li>
+<li><strong>Tools Used:</strong> <code>create_work_item</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_work_item' tool to create a new 'Bug' work item with the title 'Automated Test Failure Detected' and description containing the error logs and test details from the failed workflow step."</li>
+<li><strong>Benefit:</strong> Streamlines bug reporting and issue tracking by automating bug logging directly from ELITEA workflows, ensuring timely and consistent bug reporting and accelerating the bug triage process.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Work Item Updates Based on Workflow Progress:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> As tasks progress through ELITEA workflows, automatically update the status of linked work items in Azure Boards to reflect the current progress and keep project status up-to-date.</li>
+<li><strong>Tools Used:</strong> <code>update_work_item</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'update_work_item' tool to update work item with ID [work_item_id]. Set the 'Status' field to 'In Progress' when the workflow reaches the 'Development' stage."</li>
+<li><strong>Benefit:</strong> Automates work item status management, ensuring work item statuses are always synchronized with the actual project progress. Reduces manual status updates and improves project tracking accuracy and real-time visibility.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Linking of Related Work Items:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When a new feature request work item is created in ELITEA, automatically link it to related User Story work items in Azure Boards to establish clear relationships and dependencies between features and user stories.</li>
+<li><strong>Tools Used:</strong> <code>link_work_item</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'link_work_item' tool to link work item with ID [feature_work_item_id] to work item with ID [user_story_work_item_id] using the 'Relates to' link type."</li>
+<li><strong>Benefit:</strong> Enhances work item traceability and project management by automating the creation of links between related work items, providing a clear view of dependencies and relationships between different aspects of the project.</li>
+</ul>
+</li>
+</ul>
+<p><strong>ADO Test Plan Tools Use Cases:</strong></p>
+<ul>
+<li>
+<p><strong>Automated Test Plan Creation for Release Cycles:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> At the start of each release cycle, automatically create a new test plan in Azure Test Plans, pre-populated with a predefined set of test suites and test cases, to streamline test planning for new releases.</li>
+<li><strong>Tools Used:</strong> <code>create_test_plan</code>, <code>create_test_suite</code>, <code>add_test_case</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_test_plan' tool to create a new test plan named 'Regression Tests - Release [release_version]'. Then, use 'create_test_suite' and 'add_test_case' to populate the test plan with standard regression test suites and test cases."</li>
+<li><strong>Benefit:</strong> Automates test planning and setup for each release cycle, saving significant time and effort in test planning and ensuring consistent test coverage for every release.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Test Suite Creation Based on Feature Scope:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When a new feature is developed, automatically create a dedicated test suite within the project's test plan in Azure Test Plans to organize test cases specific to that feature.</li>
+<li><strong>Tools Used:</strong> <code>create_test_suite</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_test_suite' tool to create a new test suite named 'Feature [feature_name] Tests' within the test plan 'Regression Test Plan'."</li>
+<li><strong>Benefit:</strong> Enables dynamic and organized test case management by automatically creating test suites tailored to specific features, improving test organization and focus.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Test Case Updates from Requirements Changes:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When requirements for a specific feature change, automatically update the corresponding test cases in Azure Test Plans to ensure test cases remain aligned with the latest requirements.</li>
+<li><strong>Tools Used:</strong> <code>get_test_case</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_test_case' tool to retrieve the test case with ID [test_case_id].</li>
+<li><strong>Benefit:</strong> Automates test case maintenance, ensuring test cases are always up-to-date with the latest requirements, reducing manual effort in test case updates and improving test accuracy.</li>
+</ul>
+</li>
+<li>
+<p><strong>Reporting on Test Plan Status and Progress:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Project managers can use ELITEA Agents to generate reports summarizing the status and progress of test execution within specific test plans, providing real-time visibility into testing efforts.</li>
+<li><strong>Tools Used:</strong> <code>get_test_plan</code>, <code>get_test_suite</code>, <code>get_test_case</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_test_plan' tool to get details for test plan 'Regression Test Plan'. Summarize the overall test execution status and progress for each test suite within the plan and present a report to the project manager."</li>
+<li><strong>Benefit:</strong> Provides project managers with automated and up-to-date reports on test plan status and progress directly within ELITEA, improving project visibility and enabling data-driven decision-making regarding release readiness.</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting-common-issues">Troubleshooting Common Issues</h3>
+<ul>
+<li>
+<p><strong>Connection Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> ELITEA Agent fails to connect to Azure DevOps services (Wiki, Boards, Test Plans), resulting in errors during toolkit execution.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify Azure DevOps URL:</strong> Double-check that you have entered the correct Azure DevOps organization URL in the toolkit configuration, including <code>https://dev.azure.com/{YourOrganizationName}</code> format.</li>
+<li><strong>Check Personal Access Token:</strong> Ensure that the <strong>Personal Access Token</strong> you provided is correct, has not expired, and is valid for your Azure DevOps account and project.</li>
+<li><strong>Verify Token Scopes:</strong> Review the <strong>scopes/permissions</strong> granted to your Personal Access Token. Ensure it has the necessary scopes (e.g., <code>vso.work_full</code>, <code>vso.wiki_full</code>, <code>vso.test_full</code>) for the Azure DevOps tools your Agent is trying to use.</li>
+<li><strong>Network Connectivity:</strong> Confirm that both your ELITEA environment and your Azure DevOps instance are connected to the internet and that there are no network connectivity issues blocking the integration.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Permission Denied Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify Azure DevOps resources.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify Token Scopes:</strong>  Double-check the <strong>scopes/permissions</strong> granted to your Azure DevOps Personal Access Token. Ensure it has the necessary scopes for the specific Azure DevOps actions your Agent is trying to perform (e.g., <code>vso.work_write</code> scope for creating work items, <code>vso.wiki_write</code> for modifying wiki pages, <code>vso.test_write</code> for managing test plans).</li>
+<li><strong>Project and User Permissions:</strong> Confirm that the Azure DevOps account associated with the Personal Access Token has the required access to the specified project and the specific Azure DevOps services (Wiki, Boards, Test Plans). Verify that the account is a member of the project and has the necessary roles or permissions within Azure DevOps project settings.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Incorrect Organization or Project Names:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent tools fail to operate on the intended Azure DevOps organization or project.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Double-Check Organization Name:</strong> Carefully verify that you have entered the correct Azure DevOps Organization Name in the toolkit configuration, ensuring it matches your Azure DevOps organization URL (e.g., <code>AlitaTest</code> in <code>https://dev.azure.com/AlitaTest/</code>). Pay attention to capitalization and spelling.</li>
+<li><strong>Verify Project Name:</strong> Ensure that you are using the correct Azure DevOps Project Name in the toolkit configuration. Project names are case-sensitive in Azure DevOps.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="faqs">FAQs</h3>
+<ol>
+<li><strong>Q: Can I use my regular Azure DevOps password for the ELITEA integration?</strong><ul>
+<li><strong>A:</strong> No, it is <strong>strongly recommended to use an Azure DevOps Personal Access Token</strong> instead of your main account password for security reasons. Personal Access Tokens provide a more secure and controlled way to grant access to external applications like ELITEA.</li>
+</ul>
+</li>
+<li><strong>Q: What scopes/permissions should I grant to the Azure DevOps Personal Access Token?</strong><ul>
+<li><strong>A:</strong> Grant only the <strong>minimum necessary scopes</strong> required for your ELITEA Agent's intended interactions with Azure DevOps services. For typical integration with ADO Wiki, Boards, and Test Plans, the <code>vso.work_full</code>, <code>vso.wiki_full</code>, and <code>vso.test_full</code> scopes are commonly needed. Avoid granting "Full access" or unnecessary permissions.</li>
+</ul>
+</li>
+<li><strong>Q: What is the correct format for the Azure DevOps Organization URL in the toolkit configuration?</strong><ul>
+<li><strong>A:</strong>  The Azure DevOps URL should be entered in the format <code>https://dev.azure.com/{YourOrganizationName}</code>. Replace <code>{YourOrganizationName}</code> with your actual Azure DevOps organization name.</li>
+</ul>
+</li>
+<li><strong>Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?</strong><ul>
+<li><strong>A:</strong> Double-check the <strong>scopes/permissions</strong> granted to your Azure DevOps Personal Access Token. Ensure that the token has the specific scopes required for the Azure DevOps tools your Agent is trying to use (e.g., <code>vso.work_write</code> scope for creating work items, <code>vso.wiki_write</code> for modifying wiki pages, <code>vso.test_write</code> for managing test plans). Also, verify that the Azure DevOps account associated with the token has the necessary access to the target project and the specific Azure DevOps services (Wiki, Boards, Test Plans).</li>
+</ul>
+</li>
+</ol>
+<h3 id="support-and-contact-information">Support and Contact Information</h3>
+<p>If you encounter any issues, have questions, or require further assistance beyond what is covered in this guide regarding the Azure DevOps integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.</p>
+<p><strong>How to Reach ELITEA Support:</strong></p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p><strong>Best Practices for Effective Support Requests:</strong></p>
+<p>To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> Clearly specify the ELITEA environment you are using (e.g., "Nexus," "Alita Lab," "EYE").</li>
+<li><strong>Project Details:</strong>  Indicate the <strong>Project Name</strong> and whether you are working in your <strong>Private</strong> workspace or a <strong>Team</strong> project.</li>
+<li><strong>Detailed Issue Description:</strong> Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.</li>
+<li><strong>Relevant Configuration Information:</strong>  To help us diagnose the issue, please include relevant configuration details, such as:<ul>
+<li><strong>Agent Instructions (Screenshot or Text):</strong> If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.</li>
+<li><strong>Toolkit Configurations (Screenshots):</strong> If the issue involves the Azure DevOps toolkits or other toolkits, include screenshots of the toolkit configuration settings within your Agent.</li>
+</ul>
+</li>
+<li><strong>Error Messages (Full Error Text):</strong> If you are encountering an error message, please provide the <strong>complete error text</strong>. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.</li>
+<li><strong>Your Query/Prompt (Exact Text):</strong> If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p>
+<h2 id="useful-links">Useful Links</h2>
+<p>To further enhance your understanding and skills in integrating Azure DevOps with ELITEA, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="https://azure.devops.com/">Azure DevOps Website</a></strong>: Access the main Azure DevOps platform to create an account or log in.</li>
+<li><strong><a href="https://azure.devops.com/">Azure DevOps Login Page</a></strong>: Directly access the login page for Azure DevOps.</li>
+<li><strong><a href="../../../platform-documentation/menus/settings/#secrets">ELITEA Secrets Management</a></strong>: Learn how to securely store your Azure DevOps Personal Access Token using ELITEA's Secrets management feature for enhanced security.</li>
+<li><strong><a href="../../../platform-documentation/menus/agents/">ELITEA Agents Configuration</a></strong>:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Azure DevOps toolkits to automate your workflows.</li>
+<li><strong><a href="../ado_repos_toolkit/#ELITEA-Toolkit-Guide-Azure-Repos-ADO-Repo-Integration">ELITEA Toolkit Guide: Azure Repos (ADO Repo) Integration</a></strong>: Refer to the Azure Repos Integration Guide for detailed information on setting up Azure DevOps accounts, organizations, and Personal Access Tokens.</li>
+<li><strong><a href="mailto:SupportAlita@epam.com">ELITEA Support Email</a></strong>: Contact the ELITEA support team for direct assistance with Azure DevOps integration or any other questions and issues you may encounter.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

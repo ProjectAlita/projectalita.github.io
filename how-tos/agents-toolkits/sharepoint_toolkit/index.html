@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/sharepoint_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>SharePoint Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../ado_wiki_plan_board_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../confluence_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-sharepoint-integration">ELITEA Toolkit Guide: SharePoint Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-the-guide">Purpose of the Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-microsoft-sharepoint">Brief Overview of Microsoft SharePoint</a></li>
+            <li class="second-level"><a href="#toolkits-account-setup-and-configuration-in-sharepoint">Toolkit's Account Setup and Configuration in SharePoint</a></li>
+                
+                <li class="third-level"><a href="#registering-an-app-in-azure-active-directory-azure-ad">Registering an App in Azure Active Directory (Azure AD)</a></li>
+                <li class="third-level"><a href="#configure-api-permissions-for-the-registered-app">Configure API Permissions for the Registered App</a></li>
+                <li class="third-level"><a href="#configure-the-client-secret">Configure the Client Secret</a></li>
+                <li class="third-level"><a href="#granting-access-scope-to-sharepoint-site-app-only-access">Granting Access Scope to SharePoint Site (App-Only Access)</a></li>
+            <li class="second-level"><a href="#system-integration-with-elitea">System Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#overview-and-usage-of-sharepoint-integration-with-elitea">Overview and Usage of SharePoint Integration with ELITEA</a></li>
+                <li class="third-level"><a href="#integration-steps-configuring-the-sharepoint-toolkit-in-elitea">Integration Steps: Configuring the SharePoint Toolkit in ELITEA</a></li>
+                <li class="third-level"><a href="#tool-overview-sharepoint-toolkit-functionalities">Tool Overview: SharePoint Toolkit Functionalities</a></li>
+            <li class="second-level"><a href="#instructions-and-prompts-for-using-the-sharepoint-toolkit">Instructions and Prompts for Using the SharePoint Toolkit</a></li>
+                
+            <li class="second-level"><a href="#best-practices-and-use-cases-for-sharepoint-integration">Best Practices and Use Cases for SharePoint Integration</a></li>
+                
+                <li class="third-level"><a href="#best-practices-for-efficient-integration">Best Practices for Efficient Integration</a></li>
+            <li class="second-level"><a href="#use-cases">Use Cases</a></li>
+                
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting-common-issues">Troubleshooting Common Issues</a></li>
+                <li class="third-level"><a href="#faqs">FAQs</a></li>
+                <li class="third-level"><a href="#support-and-contact-information">Support and Contact Information</a></li>
+            <li class="second-level"><a href="#useful-links">Useful Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-sharepoint-integration">ELITEA Toolkit Guide: SharePoint Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-the-guide">Purpose of the Guide</h3>
+<p>This guide is your definitive resource for integrating and effectively utilizing the <strong>SharePoint toolkit</strong> within ELITEA. It provides a detailed, step-by-step walkthrough, from registering your SharePoint application in Azure Active Directory to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated document management, streamlined collaboration workflows, and enhanced information access, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your SharePoint-driven workflows, enhance team productivity, and improve information management within your organization.</p>
+<h3 id="brief-overview-of-microsoft-sharepoint">Brief Overview of Microsoft SharePoint</h3>
+<p>Microsoft SharePoint is a powerful web-based collaboration and document management platform that enables organizations to create websites, document libraries, lists, and other collaborative resources. It is a cornerstone of modern digital workplaces, facilitating teamwork, information sharing, and workflow automation. Key features of SharePoint include:</p>
+<ul>
+<li><strong>Centralized Document Management:</strong> SharePoint provides a central repository for storing, organizing, and managing documents, ensuring version control, secure access, and efficient document retrieval. Document libraries in SharePoint offer features like check-in/check-out, version history, and metadata tagging for robust document lifecycle management.</li>
+<li><strong>Collaborative Workspaces and Team Sites:</strong> SharePoint enables the creation of team sites and collaboration workspaces, providing teams with a shared platform for communication, document sharing, task management, and project collaboration. Team sites facilitate teamwork and information sharing within project teams and departments.</li>
+<li><strong>Customizable Lists and Libraries:</strong> SharePoint lists and libraries are highly customizable and can be tailored to meet specific business needs. Lists can be used to track tasks, manage contacts, or create custom data tables, while libraries can be structured to organize various types of documents and media.</li>
+<li><strong>Workflow Automation:</strong> SharePoint supports workflow automation through Power Automate and SharePoint workflows, allowing organizations to automate business processes, streamline approvals, and automate document-centric workflows, improving efficiency and reducing manual tasks.</li>
+<li><strong>Enterprise Search Capabilities:</strong> SharePoint offers robust enterprise search capabilities, enabling users to quickly find relevant information across SharePoint sites, document libraries, lists, and other content sources, improving information discovery and knowledge sharing.</li>
+</ul>
+<p>Integrating SharePoint with ELITEA brings these powerful collaboration and document management capabilities directly into your AI-driven workflows. Your ELITEA Agents can then intelligently interact with your SharePoint sites, lists, and libraries to automate document-related tasks, enhance collaboration processes, and improve information accessibility through AI-powered automation.</p>
+<h2 id="toolkits-account-setup-and-configuration-in-sharepoint">Toolkit's Account Setup and Configuration in SharePoint</h2>
+<h3 id="registering-an-app-in-azure-active-directory-azure-ad">Registering an App in Azure Active Directory (Azure AD)</h3>
+<p>To enable secure integration between ELITEA and SharePoint, you need to register an application in Azure Active Directory (Azure AD). This app registration will represent ELITEA and allow it to authenticate and access SharePoint resources.</p>
+<ol>
+<li><strong>Access Azure Portal:</strong> Open your web browser and navigate to the <a href="https://portal.azure.com/">Azure Portal</a> and log in using an account with sufficient permissions to register applications in Azure AD.</li>
+<li><strong>Navigate to App Registrations:</strong> In the Azure portal, use the search bar at the top to search for "App registrations" and select <strong>"App registrations"</strong> from the search results under "Services".</li>
+<li>
+<p><strong>Create New Registration:</strong> On the "App registrations" page, click on <strong>"+ New registration"</strong>.</p>
+<p><img alt="SharePoint-App_Registration_New_Registration" src="../../../img/how-tos/sharepoint/SharePoint-App_Registration_New_Registration.png" /></p>
+</li>
+<li>
+<p><strong>Configure App Registration Details:</strong> On the "Register an application" page, provide the following information:</p>
+<ul>
+<li><strong>Name:</strong> Enter a meaningful and descriptive name for your application registration. For example, use "ELITEA SharePoint Integration" or "ELITEA Agent Access to SharePoint". This name will help you identify the purpose of this app registration later.</li>
+<li><strong>Supported account types:</strong> Select the appropriate account type based on your organization's requirements. In most cases, <strong>"Accounts in this organizational directory only ([Your Organization Name] only - Single tenant)"</strong> is the recommended option for internal organizational use. If you need to access SharePoint resources across multiple organizations, you may need to select a different option.</li>
+<li><strong>Redirect URI (Optional):</strong> You do not need to configure a Redirect URI for this integration as ELITEA will be authenticating as an application without user interaction. Leave the "Redirect URI" field blank.</li>
+</ul>
+</li>
+<li>
+<p><strong>Register Application:</strong> After providing the application details, click the <strong>"Register"</strong> button at the bottom of the page to create the app registration.</p>
+<p><img alt="SharePoint-Register_an_Application" src="../../../img/how-tos/sharepoint/SharePoint-Register_an_Application.png" /></p>
+</li>
+<li>
+<p><strong>Note Application Credentials:</strong> Once the app registration is created successfully, you will be redirected to the application's "Overview" page. <strong>Note down the following credentials from this page, as you will need them to configure the SharePoint toolkit in ELITEA:</strong></p>
+<ul>
+<li><strong>Application (client) ID:</strong> This is the unique identifier for your registered application. Copy and store this value securely.</li>
+<li><strong>Directory (tenant) ID:</strong> This is the unique identifier for your Azure AD tenant (your organization's Azure AD instance). Copy and store this value securely.</li>
+</ul>
+<p><img alt="SharePoint-App_Registration_Overview" src="../../../img/how-tos/sharepoint/SharePoint-App_Registration_Overview.png" /></p>
+</li>
+</ol>
+<h3 id="configure-api-permissions-for-the-registered-app">Configure API Permissions for the Registered App</h3>
+<p>To allow ELITEA to access SharePoint resources, you need to configure API permissions for your registered application. This involves granting the application the necessary permissions to interact with Microsoft Graph and SharePoint APIs.</p>
+<ol>
+<li>
+<p><strong>Navigate to API Permissions:</strong> In your registered app within the Azure portal, navigate to the left-hand menu and click on <strong>"API permissions"</strong>.</p>
+<p><img alt="SharePoint-API_Permissions_tab" src="../../../img/how-tos/sharepoint/SharePoint-API_Permissions_tab.png" /></p>
+</li>
+<li>
+<p><strong>Add Permissions:</strong> On the "API permissions" page, click on <strong>"+ Add a permission"</strong>.</p>
+<p><img alt="SharePoint-Add_a_Permission" src="../../../img/how-tos/sharepoint/SharePoint-Add_a_Permission.png" /></p>
+</li>
+<li>
+<p><strong>Select API Type - Microsoft Graph:</strong> In the "Request API permissions" panel, select the <strong>"Microsoft Graph"</strong> API tile. Microsoft Graph provides access to various Microsoft 365 services, including SharePoint.</p>
+</li>
+<li><strong>Select Permission Type - Application permissions:</strong> Choose <strong>"Application permissions"</strong> as the permission type. Application permissions are used when the application acts without a signed-in user, which is the case for ELITEA's SharePoint integration.</li>
+<li>
+<p><strong>Add Microsoft Graph Scopes:</strong> In the "Application permissions" section, use the search bar to search for and select the following scopes. These scopes grant ELITEA Agents the necessary permissions to access SharePoint resources through Microsoft Graph:</p>
+<ul>
+<li><strong><code>Sites.Read.All</code></strong>: Allows the application to read site collections and list all sites, lists, and libraries in all site collections without a signed-in user.</li>
+<li><strong><code>Sites.ReadWrite.All</code></strong>: Allows the application to read and write site collections and list all sites, lists, and libraries in all site collections without a signed-in user. <strong>Note:</strong> Grant this scope only if your ELITEA Agents need to modify SharePoint content (e.g., create or update files). If you only need read-only access, only grant <code>Sites.Read.All</code>.</li>
+</ul>
+<p><img alt="SharePoint-API_Permissions_Microsoft_Graph" src="../../../img/how-tos/sharepoint/SharePoint-API_Permissions_Microsoft_Graph.png" /></p>
+</li>
+<li>
+<p><strong>Add Permissions - SharePoint API:</strong> Click <strong>"+ Add a permission"</strong> again to add SharePoint-specific permissions. This time, in the "Request API permissions" panel, select the <strong>"SharePoint"</strong> API tile (you may need to scroll down to find it).</p>
+</li>
+<li><strong>Select Permission Type - Application permissions:</strong> Choose <strong>"Application permissions"</strong> as the permission type again.</li>
+<li>
+<p><strong>Add SharePoint Scopes:</strong> In the "Application permissions" section for SharePoint API, use the search bar to search for and select the following scopes. These scopes grant ELITEA Agents direct SharePoint-specific access:</p>
+<ul>
+<li><strong><code>Sites.FullControl.All</code></strong>: Allows the application to have full control of all site collections without a signed-in user. <strong>Important Security Note:</strong> Grant this scope with caution and only if absolutely necessary, as it provides extensive permissions. For most use cases, more granular scopes through Microsoft Graph are sufficient and recommended for better security.</li>
+</ul>
+<p><img alt="SharePoint-Microsoft_APIs" src="../../../img/how-tos/sharepoint/SharePoint-Microsoft_APIs.png" /></p>
+<p><img alt="SharePoint-Request_API_Permissions" src="../../../img/how-tos/sharepoint/SharePoint-Request_API_Permissions.png" /></p>
+</li>
+<li>
+<p><strong>Add Permissions:</strong> After selecting the necessary scopes for both Microsoft Graph and SharePoint APIs, click the <strong>"Add permissions"</strong> button at the bottom of the "Request API permissions" panel to add the selected permissions to your application registration.</p>
+</li>
+<li><strong>Grant Admin Consent:</strong> On the "API permissions" page, you will see the newly added permissions listed. Click the <strong>"Grant admin consent for [Your Organization Name]"</strong> button and then click <strong>"Yes"</strong> to grant admin consent for these permissions. <strong>Admin consent is required for application permissions to take effect.</strong></li>
+</ol>
+<p><img alt="SharePoint-Grant_Admin_Consent" src="../../../img/how-tos/sharepoint/SharePoint-Grant_Admin_Consent.png" /></p>
+<h3 id="configure-the-client-secret">Configure the Client Secret</h3>
+<p>To securely authenticate your ELITEA Agents with SharePoint, you need to create a Client Secret for your registered application. The Client Secret acts as a password for your application when authenticating with Azure AD.</p>
+<ol>
+<li>
+<p><strong>Navigate to Certificates &amp; secrets:</strong> In your registered app within the Azure portal, navigate to the left-hand menu and click on <strong>"Certificates &amp; secrets"</strong>.</p>
+<p><img alt="SharePoint-Certificates_Secrets_page" src="../../../img/how-tos/sharepoint/SharePoint-Certificates_Secrets_page.png" /></p>
+</li>
+<li>
+<p><strong>Create New Client Secret:</strong> On the "Certificates &amp; secrets" page, click on <strong>"Client secrets"</strong> tab (if not already selected) and then click <strong>"+ New client secret"</strong>.</p>
+<p><img alt="SharePoint-New_Client_Secret" src="../../../img/how-tos/sharepoint/SharePoint-New_Client_Secret.png" /></p>
+</li>
+<li>
+<p><strong>Configure Client Secret Details:</strong> In the "Add a client secret" panel:</p>
+<ul>
+<li><strong>Description:</strong> Enter a descriptive name for your client secret. For example, use "ELITEA Integration Client Secret" or "SharePoint Access Secret." This description will help you identify the purpose of this client secret later.</li>
+<li><strong>Expiration:</strong> Choose an appropriate expiration period for the client secret from the "Expires" dropdown. For security best practices, it is recommended to set an expiration period and rotate client secrets regularly.</li>
+</ul>
+</li>
+<li><strong>Add Client Secret:</strong> Click the <strong>"Add"</strong> button at the bottom of the "Add a client secret" panel to create the client secret.</li>
+<li><strong>Securely Copy and Store Client Secret Value:</strong> <strong>Immediately copy the generated Client Secret Value</strong> that is displayed in the "Client secrets" page. <strong>This is the only time you will see the full Client Secret Value.</strong>  <strong>Important Security Note:</strong> Store the Client Secret Value securely in a password manager or, preferably, ELITEA's built-in Secrets Management feature. <strong>Do not store the Client Secret Value in plain text or in insecure locations.</strong> You will need this Client Secret Value to configure the SharePoint toolkit in ELITEA.  <strong>Note:</strong> Take note of the <strong>"Value"</strong> column, not the "Secret ID" column. The "Value" is the actual client secret, while "Secret ID" is just an identifier for the secret itself.</li>
+</ol>
+<h3 id="granting-access-scope-to-sharepoint-site-app-only-access">Granting Access Scope to SharePoint Site (App-Only Access)</h3>
+<p>To enable ELITEA Agents to access and interact with your SharePoint site and its content, you need to grant specific access permissions to your registered application at the SharePoint site collection level. This is done using the SharePoint App-Only Access via the <code>AppInv.aspx</code> page in the SharePoint Admin Center.</p>
+<ol>
+<li>
+<p><strong>Navigate to SharePoint Site AppInv.aspx Page:</strong> Open your web browser and navigate to the following URL, replacing <code>{your-tenant}</code> and <code>{site}</code> with your actual SharePoint tenant name and site name:</p>
+<p><img alt="SharePoint-Create_Site" src="../../../img/how-tos/sharepoint/SharePoint-Create_Site.png" /></p>
+<p><code>https://{your-tenant}.sharepoint.com/sites/{site}/_layouts/15/appinv.aspx</code></p>
+<ul>
+<li><strong><code>{your-tenant}</code>:</strong> Replace this with your SharePoint tenant name (e.g., <code>epam</code> in <code>epam.sharepoint.com</code>).</li>
+<li><strong><code>{site}</code>:</strong> Replace this with the URL-encoded name of the specific SharePoint site collection you want to grant access to (e.g., <code>EPAMAlitaDoc</code> for a site named "EPAMAlitaDoc").</li>
+</ul>
+<p><strong>Example URL:</strong></p>
+<p><code>https://epam.sharepoint.com/sites/EPAMAlitaDoc/_layouts/15/appinv.aspx</code></p>
+</li>
+<li>
+<p><strong>Enter Client ID:</strong> On the "App permissions request page," in the "App Id" field, enter the <strong>Application (client) ID</strong> of your registered application that you noted down in Step 1.3. Click <strong>"Lookup"</strong>.</p>
+</li>
+<li><strong>Verify App Information:</strong> After clicking "Lookup," SharePoint will retrieve information about your registered application. Verify that the "Title," "App Domain," and "Redirect URL" fields are populated correctly based on your app registration details.</li>
+<li>
+<p><strong>Define Permissions using XML:</strong> In the "Permission Request XML" field, define the permissions you want to grant to your application for the SharePoint site collection. Use XML format to specify the permission scopes.</p>
+<p><strong>Example XML Permission Request (Full Control at Site Collection Level):</strong></p>
+<p><code>xml
+&lt;AppPermissionRequests AllowAppOnlyPolicy="true"&gt;
+ &lt;AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="FullControl" /&gt;
+&lt;/AppPermissionRequests&gt;</code></p>
+<p><strong>Explanation of Example XML:</strong></p>
+<ul>
+<li><strong><code>&lt;AppPermissionRequests AllowAppOnlyPolicy="true"&gt;</code></strong>: This element indicates that you are requesting app-only access, meaning the application will access SharePoint without a signed-in user context.</li>
+<li><strong><code>&lt;AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="FullControl" /&gt;</code></strong>: This element defines the permission scope and right:<ul>
+<li><strong><code>Scope="http://sharepoint/content/sitecollection"</code></strong>: Specifies that the permission scope is the entire site collection.</li>
+<li><strong><code>Right="FullControl"</code></strong>: Grants the application Full Control permissions over the site collection. <strong>Important Security Note:</strong> Grant FullControl only if absolutely necessary. For most use cases, more limited permissions like "Read" or "Write" might be sufficient and are recommended for better security.</li>
+</ul>
+</li>
+</ul>
+<p><strong>More Granular Permission Scopes (Example - Read Only at Site Collection Level):</strong></p>
+<p>If you only need read-only access, you can use the following XML:</p>
+<p><code>xml
+&lt;AppPermissionRequests AllowAppOnlyPolicy="true"&gt;
+ &lt;AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="Read" /&gt;
+&lt;/AppPermissionRequests&gt;</code></p>
+<p><strong>Important Security Practice:</strong>  <strong>Grant Least Privilege.</strong> Carefully consider the necessary permissions and grant only the minimum required permissions for your ELITEA Agent's intended interactions with SharePoint. Avoid granting "FullControl" or overly broad permissions unless absolutely necessary.</p>
+</li>
+<li>
+<p><strong>Create and Grant Permissions:</strong> After entering the XML permission request, click the <strong>"Create"</strong> button.</p>
+</li>
+<li><strong>Trust the App:</strong> A confirmation page will appear asking if you trust the application. Click <strong>"Trust It"</strong> to grant the requested permissions to your registered application for the specified SharePoint site collection.</li>
+</ol>
+<p><img alt="SharePoint-AppInv_Permissions" src="../../../img/how-tos/sharepoint/SharePoint-AppInv_Permissions.png" /></p>
+<h2 id="system-integration-with-elitea">System Integration with ELITEA</h2>
+<h3 id="overview-and-usage-of-sharepoint-integration-with-elitea">Overview and Usage of SharePoint Integration with ELITEA</h3>
+<p>The SharePoint toolkit integration in ELITEA provides a powerful bridge between your AI Agents and your Microsoft SharePoint Online environment. This integration empowers your Agents to:</p>
+<ul>
+<li><strong>Access SharePoint Content:</strong> Retrieve and analyze content from SharePoint document libraries and lists, including documents, list items, and metadata.</li>
+<li><strong>Automate Document Management Tasks:</strong> Automate routine document management tasks such as retrieving files, reading document content, and listing files within document libraries, streamlining document workflows.</li>
+<li><strong>Enhance Collaboration Workflows:</strong> Integrate AI-powered automation into your SharePoint-based collaboration workflows, improving efficiency and information sharing within teams and projects.</li>
+<li><strong>Extract Data from SharePoint Lists:</strong> Access and process data stored in SharePoint lists, enabling agents to utilize list data for analysis, reporting, or integration with other systems.</li>
+</ul>
+<h3 id="integration-steps-configuring-the-sharepoint-toolkit-in-elitea">Integration Steps: Configuring the SharePoint Toolkit in ELITEA</h3>
+<p>To integrate SharePoint with ELITEA and enable your Agents to interact with your SharePoint sites, lists, and libraries, follow these configuration steps within ELITEA:</p>
+<ol>
+<li><strong>Navigate to Agents Menu:</strong> In ELITEA, go to the <strong>Agents</strong> menu and either <strong>create a new Agent</strong> or <strong>edit an existing Agent</strong> that you want to integrate with SharePoint.</li>
+<li><strong>Access Toolkits Section:</strong> Within the Agent configuration, scroll down to the <strong>"Tools"</strong> section.</li>
+<li><strong>Add Toolkit:</strong> Click the <strong>"+" icon</strong> under the "TOOLS" section to add a new toolkit.</li>
+<li><strong>Select SharePoint Toolkit:</strong> From the dropdown list of available toolkits, choose <strong>"SharePoint"</strong>. This will open the "New SharePoint tool" configuration section.</li>
+<li>
+<p><strong>Configure SharePoint Toolkit Settings:</strong>  Fill in the following configuration fields in the "New SharePoint tool" section:</p>
+<ul>
+<li><strong>Name:</strong>  Enter a descriptive <strong>Name</strong> for your SharePoint toolkit instance. This name will be used to reference the toolkit within your Agent's instructions (e.g., "MySharePointSite", "DocumentLibraryAccess").</li>
+<li><strong>Description:</strong> Provide a brief <strong>Description</strong> of the toolkit's purpose or the specific SharePoint site it will access (e.g., "Access to Project Marketing SharePoint Site").</li>
+<li><strong>SharePoint Site URL:</strong> Enter the full URL of your SharePoint site collection that you want to access with this toolkit. <strong>Ensure you use the correct format</strong>, including <code>https://</code> and the full site URL (e.g., <code>https://your-tenant.sharepoint.com/sites/YourSiteName</code>).</li>
+<li><strong>Client ID:</strong> Paste the <strong>Application (client) ID</strong> of your registered Azure AD application that you noted down in Step 1.3 (during the "Software-Specific Setup" section of this guide) into the <strong>"Client Id"</strong> field.</li>
+<li><strong>Client Secret:</strong> Paste the <strong>Client Secret Value</strong> of your registered Azure AD application that you generated in Step 1.4 (during the "Software-Specific Setup" section of this guide) into the <strong>"Client Secret"</strong> field.  <strong>Important Security Note:</strong> For enhanced security, consider using the <strong>"Secret"</strong> option instead and storing your Client Secret securely as a Secret within <a href="../../../platform-documentation/menus/settings/#secrets">Secrets</a> feature.</li>
+</ul>
+<p><img alt="SharePoint-Toolkit_Configuration" src="../../../img/how-tos/sharepoint/SharePoint-Toolkit_Configuration.png" /></p>
+</li>
+<li>
+<p><strong>Enable Desired Tools:</strong> In the <strong>"Tools"</strong> section within the SharePoint toolkit configuration, <strong>check the boxes next to the specific SharePoint tools</strong> you want to enable for your Agent. Select only the tools that your Agent will actually need to use to minimize unnecessary permissions and maintain security. Available tools include:</p>
+<ul>
+<li><strong>Get All Files</strong></li>
+<li><strong>Read Document</strong></li>
+<li><strong>Read List</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Complete Setup:</strong> Click the <strong>arrow icon</strong> (located at the top right of the toolkit configuration section) to complete the SharePoint toolkit setup and return to the main Agent configuration menu.</p>
+</li>
+</ol>
+<h3 id="tool-overview-sharepoint-toolkit-functionalities">Tool Overview: SharePoint Toolkit Functionalities</h3>
+<p>Once the SharePoint toolkit is configured and added to your Agent, you can leverage the following tools within your Agent's instructions to interact with your SharePoint sites, lists, and libraries:</p>
+<ul>
+<li>
+<p><strong>Get all files:</strong>  <strong>Tool Name:</strong> <code>get_all_files</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of all files from a specified SharePoint document library.</li>
+<li><strong>Purpose:</strong> Enables Agents to access and manage documents within SharePoint document libraries directly from ELITEA, facilitating document retrieval, reporting, or automated file processing workflows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Read document:</strong> <strong>Tool Name:</strong> <code>read_document</code></p>
+<ul>
+<li><strong>Functionality:</strong> Reads the content of a specific document from a specified SharePoint document library. Supports various document formats including <code>.txt</code>, <code>.csv</code>, <code>.docx</code>, <code>.xlsx</code>, and <code>.pptx</code>.</li>
+<li><strong>Purpose:</strong> Allows Agents to extract content from SharePoint documents for analysis, information extraction, content summarization, or to provide document content to users within ELITEA conversations, enabling AI-powered document processing and information retrieval.</li>
+</ul>
+</li>
+<li>
+<p><strong>Read list:</strong> <strong>Tool Name:</strong> <code>read_list</code></p>
+<ul>
+<li><strong>Functionality:</strong> Reads items from a specified SharePoint list. Returns list items with their fields and values in JSON format.</li>
+<li><strong>Purpose:</strong> Enables Agents to access and process data stored in SharePoint lists, allowing for data extraction, reporting, list item analysis, or integration of SharePoint list data into ELITEA workflows, facilitating data-driven automation and insights from SharePoint lists.</li>
+</ul>
+</li>
+</ul>
+<h2 id="instructions-and-prompts-for-using-the-sharepoint-toolkit">Instructions and Prompts for Using the SharePoint Toolkit</h2>
+<p>To effectively utilize the SharePoint toolkit within your ELITEA Agents, you need to provide clear instructions within the Agent's "Instructions" field, telling the Agent <em>how</em> and <em>when</em> to use these tools.</p>
+<p><strong>General Instruction Structure:</strong></p>
+<p>When instructing your Agent to use a SharePoint tool, you will typically follow this pattern:</p>
+<pre><code>Use the &quot;[tool_name]&quot; tool to [describe the action you want to perform] in SharePoint.
+Provide the following parameters:
+- Parameter 1: &lt;value or description of value&gt;
+- Parameter 2: &lt;value or description of value&gt;
+- ...
+</code></pre>
+<p><strong>Example Agent Instructions for SharePoint Toolkit Tools:</strong></p>
+<ul>
+<li>
+<p><strong>Agent Instructions for Getting All Files from a Document Library:</strong></p>
+<p><code>Use the "get_all_files" tool to retrieve a list of all files from a SharePoint document library.
+Provide the following parameters:
+- SharePoint Site URL: "your-sharepoint-site-url"
+- Library Name: "Marketing Documents"</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Reading a Document:</strong></p>
+<p><code>Use the "read_document" tool to read the content of a specific document from SharePoint.
+Provide the following parameters:
+- SharePoint Site URL: "your-sharepoint-site-url"
+- Library Name: "Financial Reports"
+- File Name: "Q3 Financial Report.xlsx"</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Reading a SharePoint List:</strong></p>
+<p><code>Use the "read_list" tool to read items from a SharePoint list.
+Provide the following parameters:
+- SharePoint Site URL: "your-sharepoint-site-url"
+- List Name: "Project Tasks"</code></p>
+</li>
+</ul>
+<p><strong>Important Considerations for Agent Instructions:</strong></p>
+<ul>
+<li><strong>Tool Name Accuracy:</strong> Ensure you use the correct <strong>Tool Name</strong> (e.g., <code>"get_all_files"</code>, <code>"read_document"</code>, <code>"read_list"</code>) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the toolkit correctly.</li>
+<li><strong>Parameter Clarity:</strong> Clearly specify the <strong>parameters</strong> required for each tool and provide instructions on where the Agent should obtain the values for these parameters (e.g., from user input, from previous steps in the workflow, or hardcoded values).</li>
+<li><strong>Context and Examples:</strong> Provide sufficient context and examples within your Agent's "Instructions" to guide the LLM in understanding <em>when</em> and <em>how</em> to use the SharePoint toolkit tools effectively within your desired workflow.</li>
+<li><strong>SharePoint Element Names:</strong> Ensure that you use the correct SharePoint Site URL, Library Name, File Name, and List Name in your Agent instructions. These names are case-sensitive and must exactly match the names in your SharePoint site.</li>
+</ul>
+<h2 id="best-practices-and-use-cases-for-sharepoint-integration">Best Practices and Use Cases for SharePoint Integration</h2>
+<h3 id="best-practices-for-efficient-integration">Best Practices for Efficient Integration</h3>
+<ul>
+<li><strong>Test Integration Regularly:</strong>  After setting up the SharePoint toolkit and incorporating it into your Agents, <strong>thoroughly test the integration</strong> to ensure it is functioning as expected. Test each tool you intend to use to verify connectivity, authentication, and correct execution of SharePoint actions.</li>
+<li><strong>Monitor Agent Performance:</strong>  After deploying Agents with SharePoint integration, <strong>monitor their performance</strong> regularly. Track metrics like task completion success rate, execution time, and error rates to identify any potential issues or areas for optimization in your Agent's instructions or toolkit configurations.</li>
+<li><strong>Follow Security Best Practices:</strong><ul>
+<li><strong>Use App Registration and Client Secrets:</strong> Always use Azure AD App Registrations and Client Secrets for secure authentication instead of user credentials.</li>
+<li><strong>Grant Least Privilege:</strong> Grant only the minimum necessary scopes/permissions to the App Registration to limit potential security risks.</li>
+<li><strong>Securely Store Credentials:</strong> Utilize ELITEA's Secrets Management feature to securely store and manage your SharePoint Client IDs and Client Secrets instead of hardcoding them directly in Agent configurations.</li>
+</ul>
+</li>
+<li><strong>Provide Clear Instructions and Prompts:</strong>  Craft clear and unambiguous instructions within your ELITEA Agents to guide them in using the SharePoint toolkit effectively. Use the prompt examples provided in this guide as a starting point and adapt them to your specific use cases.</li>
+<li><strong>Start with Simple Use Cases:</strong> Begin by implementing SharePoint integration for simpler automation tasks, such as retrieving document lists or reading document content, and gradually progress to more complex workflows as you gain experience and confidence with the toolkit.</li>
+</ul>
+<h2 id="use-cases">Use Cases</h2>
+<p>The SharePoint toolkit unlocks numerous automation possibilities for document management, collaboration, and information retrieval workflows within ELITEA. Here are some compelling use cases, demonstrating how each tool can be applied, formatted to match the Bitbucket and GitHub guide style:</p>
+<ul>
+<li>
+<p><strong>Automated Document Library File Listing and Reporting:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Project managers need regular reports on the project documentation stored in SharePoint, including summaries of document types and sizes within specific libraries.</li>
+<li><strong>Tools Used:</strong> <code>get_all_files</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_all_files' tool to retrieve a list of all files from the 'Project Documentation' library in SharePoint. Generate a summary report showing the count of each document type (e.g., .docx, .pdf, .xlsx) and the total size of documents in the library. Send the report to the project manager weekly."</li>
+<li><strong>Benefit:</strong> Provides project managers with automated, regular visibility into project documentation stored in SharePoint, improving document management oversight, enabling proactive monitoring of document storage, and facilitating better resource planning.</li>
+</ul>
+</li>
+<li>
+<p><strong>AI-Powered Document Content Extraction and Summarization:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Stakeholders need a quick summary of key information from lengthy project proposals or reports stored as documents in SharePoint, such as project goals, timelines, and budget.</li>
+<li><strong>Tools Used:</strong> <code>read_document</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'read_document' tool to read the content of the 'Project Proposal.docx' document from the 'Financial Reports' library in SharePoint. Extract key information related to project goals, timelines, and budget. Summarize this information into a concise report for stakeholders."</li>
+<li><strong>Benefit:</strong> Enables AI-powered document analysis and information extraction from SharePoint documents, providing valuable insights and summaries directly within ELITEA workflows. Improves efficiency by automating information extraction, speeds up decision-making, and enhances stakeholder communication with readily available document summaries.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Project Task Progress Reporting from SharePoint Lists:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Project teams require regular progress reports on project tasks managed within SharePoint lists for team meetings and status updates.</li>
+<li><strong>Tools Used:</strong> <code>read_list</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'read_list' tool to retrieve items from the 'Project Tasks' list in SharePoint. Analyze the 'Status', 'Due Date', and 'Assigned To' fields for each task. Generate a project task progress report summarizing tasks by status, highlighting overdue tasks, and listing tasks assigned to each team member. Send the report to the project team before each weekly meeting."</li>
+<li><strong>Benefit:</strong> Provides automated reporting and analysis of SharePoint list data, enabling project managers and teams to track progress, identify potential bottlenecks, and improve task management directly within ELITEA. Reduces manual effort in report generation, ensures timely and accurate progress updates, and facilitates data-driven project management.</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting-common-issues">Troubleshooting Common Issues</h3>
+<ul>
+<li>
+<p><strong>Connection Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> ELITEA Agent fails to connect to SharePoint, resulting in errors during toolkit execution.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify SharePoint Site URL:</strong> Double-check that you have entered the correct SharePoint Site URL in the toolkit configuration, including <code>https://</code> and the full site URL (e.g., <code>https://your-tenant.sharepoint.com/sites/YourSiteName</code>).</li>
+<li><strong>Check Client ID and Client Secret:</strong> Ensure that the <strong>Client ID</strong> and <strong>Client Secret</strong> you provided are correct and valid for your registered Azure AD application. Carefully re-enter or copy-paste these credentials to rule out typos.</li>
+<li><strong>Verify App Registration Permissions:</strong> Review the API permissions configured for your registered Azure AD application. Ensure it has the necessary permissions (e.g., <code>Sites.Read.All</code>, <code>Sites.ReadWrite.All</code>) for the SharePoint tools your Agent is trying to use.</li>
+<li><strong>Network Connectivity:</strong> Confirm that both your ELITEA environment and your SharePoint Online instance are connected to the internet and that there are no network connectivity issues blocking the integration.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization Errors (Permission Denied/Unauthorized):</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify SharePoint resources.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify App Registration Permissions:</strong> Double-check the <strong>API permissions</strong> granted to your registered Azure AD application. Ensure it has the necessary scopes for the specific SharePoint actions your Agent is trying to perform (e.g., <code>Sites.ReadWrite.All</code> for modifying documents).</li>
+<li><strong>SharePoint Site Collection Permissions:</strong> Confirm that the registered Azure AD application has been granted access to the specific SharePoint site collection using the <code>AppInv.aspx</code> page and that the granted permissions are sufficient for the actions your Agent is trying to perform.</li>
+<li><strong>Client ID and Client Secret Validity:</strong> Ensure that the Client ID and Client Secret you are using are still valid and have not expired or been revoked in Azure AD.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Incorrect SharePoint Element Names:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent tools fail to operate on the intended SharePoint document library or list.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Double-Check Library Name:</strong> Carefully verify that you have entered the correct SharePoint Document Library Name in your Agent's instructions, ensuring it exactly matches the library name in SharePoint. Library names are case-sensitive.</li>
+<li><strong>Verify List Name:</strong> Ensure that you are using the correct SharePoint List Name in your Agent's instructions. List names are also case-sensitive and must match the list name in SharePoint exactly.</li>
+<li><strong>SharePoint Site URL Accuracy:</strong> Double-check that the SharePoint Site URL in the toolkit configuration is correct and points to the root site collection where your target libraries and lists are located.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="faqs">FAQs</h3>
+<ol>
+<li><strong>Q: Can I use my regular SharePoint username and password for the ELITEA integration?</strong><ul>
+<li><strong>A:</strong> No, it is <strong>strongly recommended to use Azure AD App Registration and Client Secrets</strong> instead of user credentials for secure integration. App registration provides a more secure and controlled way to grant access to external applications like ELITEA without exposing user accounts.</li>
+</ul>
+</li>
+<li><strong>Q: What permissions should I grant to the Azure AD App Registration for SharePoint integration?</strong><ul>
+<li><strong>A:</strong> Grant only the <strong>minimum necessary scopes</strong> required for your ELITEA Agent's intended interactions with SharePoint. For read-only access, <code>Sites.Read.All</code> scope in Microsoft Graph might be sufficient. If your Agent needs to modify SharePoint content, you might need to grant <code>Sites.ReadWrite.All</code> in Microsoft Graph or more granular SharePoint-specific permissions via <code>AppInv.aspx</code>. Avoid granting "FullControl" or unnecessary permissions.</li>
+</ul>
+</li>
+<li><strong>Q: What is the correct format for the SharePoint Site URL in the toolkit configuration?</strong><ul>
+<li><strong>A:</strong>  The SharePoint Site URL should be entered in the full format, including <code>https://</code> and the complete site URL (e.g., <code>https://your-tenant.sharepoint.com/sites/YourSiteName</code>). Ensure there are no typos or missing parts in the URL.</li>
+</ul>
+</li>
+<li><strong>Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?</strong><ul>
+<li><strong>A:</strong> Double-check the following:<ul>
+<li><strong>App Registration Permissions:</strong> Verify that the API permissions granted to your Azure AD App Registration include the necessary scopes for the SharePoint tools your Agent is trying to use (e.g., <code>Sites.ReadWrite.All</code> for modifying documents).</li>
+<li><strong>SharePoint Site Collection Permissions:</strong> Ensure that you have granted access to your registered App for the specific SharePoint site collection using <code>AppInv.aspx</code> and that the granted permissions are sufficient.</li>
+<li><strong>Client ID and Client Secret Validity:</strong> Double-check that the Client ID and Client Secret are correct, valid, and have not expired or been revoked in Azure AD.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="support-and-contact-information">Support and Contact Information</h3>
+<p>If you encounter any issues, have questions, or require further assistance beyond what is covered in this guide regarding the SharePoint integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.</p>
+<p><strong>How to Reach ELITEA Support:</strong></p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p><strong>Best Practices for Effective Support Requests:</strong></p>
+<p>To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> Clearly specify the ELITEA environment you are using (e.g., "Nexus," "Alita Lab," "EYE").</li>
+<li><strong>Project Details:</strong>  Indicate the <strong>Project Name</strong> and whether you are working in your <strong>Private</strong> workspace or a <strong>Team</strong> project.</li>
+<li><strong>Detailed Issue Description:</strong> Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.</li>
+<li><strong>Relevant Configuration Information:</strong>  To help us diagnose the issue, please include relevant configuration details, such as:<ul>
+<li><strong>Agent Instructions (Screenshot or Text):</strong> If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.</li>
+<li><strong>Toolkit Configurations (Screenshots):</strong> If the issue involves the SharePoint toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.</li>
+</ul>
+</li>
+<li><strong>Error Messages (Full Error Text):</strong> If you are encountering an error message, please provide the <strong>complete error text</strong>. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.</li>
+<li><strong>Your Query/Prompt (Exact Text):</strong> If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p>
+<h2 id="useful-links">Useful Links</h2>
+<p>To further enhance your understanding and skills in integrating SharePoint with ELITEA, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration">Microsoft SharePoint Website</a></strong>: Access the main Microsoft SharePoint website for product information and documentation.</li>
+<li><strong><a href="https://portal.azure.com/">Azure Portal</a></strong>: Access the Azure portal to manage your Azure AD App Registrations and configure API permissions.</li>
+<li><strong><a href="../../../platform-documentation/menus/settings/#secrets">ELITEA Secrets Management</a></strong>: Learn how to securely store your SharePoint Client ID and Client Secret using ELITEA's Secrets management feature for enhanced security.</li>
+<li><strong><a href="../../../platform-documentation/menus/agents/">ELITEA Agents Configuration</a></strong>:  Find out more about creating and configuring Agents in ELITEA, where you integrate the SharePoint toolkit to automate your workflows.</li>
+<li><strong><a href="mailto:SupportAlita@epam.com">ELITEA Support Email</a></strong>: Contact the ELITEA support team for direct assistance with SharePoint integration or any other questions and issues you may encounter.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

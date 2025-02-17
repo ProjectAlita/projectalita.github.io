@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/confluence_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Confluence Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../../faqs.md">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../sharepoint_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../jira_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-confluence-integration">ELITEA Toolkit Guide: Confluence Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-this-guide">Purpose of this Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-confluence">Brief Overview of Confluence</a></li>
+            <li class="second-level"><a href="#toolkits-account-setup-and-configuration-in-confluence">Toolkit's Account Setup and Configuration in Confluence</a></li>
+                
+                <li class="third-level"><a href="#account-setup">Account Setup</a></li>
+                <li class="third-level"><a href="#tokenapi-key-generation-creating-an-api-token-in-confluence">Token/API Key Generation: Creating an API Token in Confluence</a></li>
+            <li class="second-level"><a href="#system-integration-with-elitea">System Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#agent-creationconfiguration">Agent Creation/Configuration</a></li>
+                <li class="third-level"><a href="#toolkit-configuration">Toolkit Configuration</a></li>
+                <li class="third-level"><a href="#tool-overview-confluence-toolkit-functionalities">Tool Overview: Confluence Toolkit Functionalities</a></li>
+            <li class="second-level"><a href="#instructions-and-prompts-for-using-the-confluence-toolkit">Instructions and Prompts for Using the Confluence Toolkit</a></li>
+                
+            <li class="second-level"><a href="#best-practices-and-use-cases-for-confluence-integration">Best Practices and Use Cases for Confluence Integration</a></li>
+                
+                <li class="third-level"><a href="#best-practices-for-efficient-integration">Best Practices for Efficient Integration</a></li>
+                <li class="third-level"><a href="#use-cases-for-confluence-toolkit-integration">Use Cases for Confluence Toolkit Integration</a></li>
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting-common-issues">Troubleshooting Common Issues</a></li>
+                <li class="third-level"><a href="#faqs">FAQs</a></li>
+                <li class="third-level"><a href="#support-and-contact-information">Support and Contact Information</a></li>
+            <li class="second-level"><a href="#useful-links">Useful Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-confluence-integration">ELITEA Toolkit Guide: Confluence Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-this-guide">Purpose of this Guide</h3>
+<p>This guide is your definitive resource for integrating and effectively utilizing the <strong>Confluence toolkit</strong> within ELITEA. It provides a detailed, step-by-step walkthrough, from setting up your Confluence API token to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated knowledge management, streamlined collaboration workflows, and enhanced information access, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your Confluence-driven workflows, enhance team productivity, and improve knowledge sharing within your organization.</p>
+<h3 id="brief-overview-of-confluence">Brief Overview of Confluence</h3>
+<p>Confluence, by Atlassian, is a leading team collaboration and knowledge management platform widely used by organizations to create, organize, and share information. It serves as a central hub for teams to collaborate on projects, document knowledge, and build a comprehensive knowledge base. Confluence offers a wide array of functionalities, including:</p>
+<ul>
+<li><strong>Centralized Knowledge Base:</strong> Confluence provides a centralized platform for creating, storing, and organizing all types of project and organizational knowledge, including project plans, meeting notes, documentation, how-to guides, and best practices.</li>
+<li><strong>Collaborative Page Editing:</strong> Enables real-time collaborative editing of pages, allowing teams to work together simultaneously on documents, plans, and other content, fostering teamwork and co-creation.</li>
+<li><strong>Organized Spaces and Pages:</strong> Confluence uses a structured hierarchy of Spaces and Pages to organize information logically. Spaces can represent teams, projects, or departments, while Pages within spaces hold specific content, making it easy to navigate and find information.</li>
+<li><strong>Rich Content Creation and Formatting:</strong> Confluence provides a rich text editor with various formatting options, templates, and macros, allowing users to create visually appealing and informative pages with diverse content types, including text, images, tables, and multimedia.</li>
+<li><strong>Powerful Search Capabilities:</strong> Confluence offers robust search functionality, enabling users to quickly find relevant information across all spaces and pages based on keywords, labels, and content, improving information discovery and knowledge retrieval.</li>
+</ul>
+<p>Integrating Confluence with ELITEA brings these powerful collaboration and knowledge management capabilities directly into your AI-driven workflows. Your ELITEA Agents can then intelligently interact with your Confluence spaces and pages to automate knowledge-related tasks, enhance collaboration processes, and improve information accessibility through AI-powered automation.</p>
+<h2 id="toolkits-account-setup-and-configuration-in-confluence">Toolkit's Account Setup and Configuration in Confluence</h2>
+<h3 id="account-setup">Account Setup</h3>
+<p>If you do not yet have a Confluence account, please follow these steps to create one:</p>
+<ol>
+<li><strong>Visit Atlassian Website:</strong> Open your web browser and navigate to the official <a href="https://www.atlassian.com/software/confluence">Atlassian website</a>.</li>
+<li><strong>Sign Up for Confluence:</strong> Click on the <strong>"Try Confluence free"</strong> or <strong>"Get it free"</strong> button to start the sign-up process.</li>
+<li><strong>Create an Atlassian Account:</strong> Follow the prompts to create an Atlassian account. You can sign up using your email address, Google account, or Apple account. For professional use, it's recommended to use your company email address.</li>
+<li><strong>Choose a Workspace Name:</strong> During the signup process, you will be asked to choose a workspace name for your Confluence site. Enter a suitable name for your workspace.</li>
+<li><strong>Set Up Your Workspace:</strong> Follow the remaining onboarding steps to set up your Confluence workspace, including defining its purpose and inviting team members if needed.</li>
+<li><strong>Explore Confluence Features:</strong> Once your workspace is set up, explore the onboarding tips and familiarize yourself with Confluence features, spaces, pages, and navigation.</li>
+</ol>
+<p><img alt="Confluence-Workspace_Creation" src="../../../img/how-tos/confluence/Confluence-Workspace_Creation.png" /></p>
+<h3 id="tokenapi-key-generation-creating-an-api-token-in-confluence">Token/API Key Generation: Creating an API Token in Confluence</h3>
+<p>For secure integration with ELITEA, it is essential to use a Confluence <strong>API token</strong> for authentication. This method is more secure than using your primary Confluence account password directly and allows you to control access permissions.</p>
+<p><strong>Follow these steps to generate an API token in Confluence:</strong></p>
+<ol>
+<li><strong>Log in to Confluence:</strong> Access your Confluence workspace by navigating to your Confluence URL (e.g., <code>your-workspace.atlassian.net/wiki</code>) and logging in with your credentials.</li>
+<li><strong>Access Account Settings:</strong> Click on your profile avatar in the top right corner of the Confluence interface. From the dropdown menu, select <strong>"Manage account"</strong>.</li>
+</ol>
+<p><img alt="Confluence-Settings" src="../../../img/how-tos/confluence/Confluence-Settings.png" /></p>
+<ol>
+<li><strong>Navigate to Security Settings:</strong> In the Atlassian account settings page, navigate to the <strong>"Security"</strong> section in the left-hand sidebar.</li>
+</ol>
+<p><img alt="Confluence-Security_tab" src="../../../img/how-tos/confluence/Confluence-Security_tab.png" /></p>
+<ol>
+<li><strong>Access API Tokens:</strong> Within the "Security" settings, locate the <strong>"API tokens"</strong> section and click on <strong>"Create and manage API tokens"</strong>.</li>
+<li><strong>Create API Token:</strong> On the "API tokens" page, click the <strong>"Create API token"</strong> button.</li>
+</ol>
+<p><img alt="Confluence-API_Token_Creation" src="../../../img/how-tos/confluence/Confluence-API_Token_Creation.png" /></p>
+<ol>
+<li><strong>Name Your Token:</strong> In the "Create API token" dialog, enter a descriptive <strong>Label</strong> for your token, such as "ELITEA Integration Token" or "ELITEA Agent Access." This label will help you identify the purpose of this token later. You can also set an optional expiration date if needed.</li>
+<li><strong>Create Token:</strong> Click the <strong>"Create"</strong> button to generate the API token.</li>
+<li><strong>Securely Copy and Store Your API Token:</strong>  <strong>Immediately copy the generated API token</strong> that is displayed in the pop-up window. <strong>This is the only time you will see the full token value.</strong> Store it securely in a password manager or, preferably, ELITEA's built-in Secrets feature for enhanced security within ELITEA. You will need this API token to configure the Confluence toolkit in ELITEA.</li>
+</ol>
+<p><img alt="Confluence-Copy_Token" src="../../../img/how-tos/confluence/Confluence-Copy_Token.png" /></p>
+<p><img alt="Confluence-Created_Token" src="../../../img/how-tos/confluence/Confluence-Created_Token.png" /></p>
+<h2 id="system-integration-with-elitea">System Integration with ELITEA</h2>
+<h3 id="agent-creationconfiguration">Agent Creation/Configuration</h3>
+<p>To integrate Confluence functionalities into your workflows, you will need to configure the Confluence toolkit within an ELITEA Agent. You can either create a new Agent specifically for Confluence interactions or modify an existing Agent to incorporate Confluence tools.</p>
+<ol>
+<li><strong>Navigate to Agents Menu:</strong> In ELITEA, go to the <strong>Agents</strong> menu from the main navigation panel.</li>
+<li><strong>Create or Edit Agent:</strong><ul>
+<li><strong>Create a New Agent:</strong> Click on the <strong>"+ Agent"</strong> button to create a new Agent. Follow the on-screen prompts to define essential Agent attributes such as Agent name, a descriptive Agent description, the desired Agent type, and initial instructions for the Agent.</li>
+<li><strong>Edit an Existing Agent:</strong> Select the Agent you intend to integrate with Confluence from your list of Agents. Click on the Agent's name to open its configuration settings for editing.</li>
+</ul>
+</li>
+<li><strong>Access Tools Section:</strong> Within the Agent configuration interface, scroll down until you locate the <strong>"Tools"</strong> section. This section is where you will add and configure toolkits, including the Confluence toolkit.</li>
+</ol>
+<h3 id="toolkit-configuration">Toolkit Configuration</h3>
+<p>This section provides detailed instructions on how to configure the Confluence toolkit within your ELITEA Agent.</p>
+<ol>
+<li><strong>Add Toolkit:</strong> In the "Tools" section of the Agent configuration, click on the <strong>"+" icon</strong>. This action will display a dropdown list of available toolkits that can be integrated with your Agent.</li>
+<li><strong>Select Confluence Toolkit:</strong> From the dropdown list of available toolkits, choose <strong>"Confluence"</strong>. Selecting "Confluence" will open the "New Confluence tool" configuration panel, where you will specify the settings for your Confluence integration.</li>
+<li>
+<p><strong>Configure Confluence Toolkit Settings:</strong> Carefully fill in the following configuration fields within the "New Confluence tool" section:</p>
+<ul>
+<li><strong>Name:</strong>  Enter a descriptive <strong>Name</strong> for this specific Confluence toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions (e.g., "ProjectConfluence", "KnowledgeBaseAccess", "ConfluenceIntegration").</li>
+<li><strong>Description:</strong> Provide a concise <strong>Description</strong> for the toolkit. This description should clarify the toolkit's purpose or the specific Confluence space it is intended to access (e.g., "Toolkit for accessing and managing project documentation in Confluence", "Integration for Confluence Space 'Project Documentation'").</li>
+<li><strong>URL:</strong> Enter the base URL of your Confluence instance. <strong>Ensure you use the correct format</strong>, including <code>https://</code> or <code>http://</code> and the full workspace URL (e.g., <code>https://your-workspace.atlassian.net/wiki</code>).</li>
+<li><strong>Username:</strong> Enter the <strong>Username</strong> associated with your Confluence account for which you generated the API token. This is typically your email address used for Confluence login.</li>
+<li><strong>Authentication Options - API Key:</strong> Select the <strong>"API Key"</strong> authentication option.<ul>
+<li><strong>Password/Secret:</strong> Choose <strong>"Password"</strong> and paste the <strong>API token</strong> you generated in Confluence (during the "Software-Specific Setup" section of this guide) into the <strong>"Password"</strong> field.</li>
+<li><strong>Enhanced Security with Secrets (Recommended):</strong> For enhanced security, it is strongly recommended to use ELITEA's <strong>Secrets Management</strong> feature to store your Confluence API token securely. Instead of directly pasting the token into the "Password" field, select the <strong>"Secret"</strong> option and choose the pre-configured secret containing your Confluence API token from the dropdown list. This prevents hardcoding sensitive credentials in your toolkit configuration.</li>
+</ul>
+</li>
+<li><strong>Space:</strong> Enter the <strong>Space name</strong> in Confluence that you want to access with this toolkit. This is the Space Key, which is typically found in the URL of your Confluence space (e.g., for URL <code>https://your-workspace.atlassian.net/wiki/spaces/DOCS/overview</code>, the Space Key is <code>DOCS</code>).</li>
+<li><strong>Hosting Option:</strong> Select the appropriate <strong>"Hosting option"</strong> for your Confluence instance:<ul>
+<li><strong>Cloud:</strong> Select "Cloud" if you are using Confluence Cloud (e.g., accessed via <code>atlassian.net</code>).</li>
+<li><strong>Server:</strong> Select "Server" if you are using a self-hosted Confluence Server or Data Center instance. <strong>Note:</strong> When connecting to an Epam Confluence instance, ensure you select "Server" as the Hosting option.</li>
+</ul>
+</li>
+<li><strong>Advanced Settings:</strong> Configure additional settings to control data fetching and presentation:<ul>
+<li><strong>Pages limit per request</strong>: Set the maximum number of pages to retrieve per request (e.g., <code>5</code>).</li>
+<li><strong>Max total pages</strong>: Define the maximum number of pages to retrieve in total (e.g., <code>10</code>).</li>
+<li><strong>Number of retries</strong>: Specify how many times the tool should retry after a failure (e.g., <code>2</code>).</li>
+<li><strong>Min retry, sec</strong>: Set the minimum number of seconds to wait before retrying (e.g., <code>10</code>).</li>
+<li><strong>Max retry, sec</strong>: Set the maximum number of seconds to wait before retrying (e.g., <code>60</code>).</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Confluence-Toolkit_Configuration" src="../../../img/how-tos/confluence/Confluence-Toolkit_Configuration.png" /></p>
+</li>
+<li>
+<p><strong>Enable Desired Tools:</strong> In the "Tools" section within the Confluence toolkit configuration panel, <strong>select the checkboxes next to the specific Confluence tools</strong> that you want to enable for your Agent. <strong>It is crucial to enable only the tools that your Agent will actually need to use</strong> to adhere to the principle of least privilege and minimize potential security risks. Available tools include:</p>
+<ul>
+<li><strong>Get pages with label</strong> - Retrieves all pages that have a specific label.</li>
+<li><strong>List pages with label</strong> - Lists all pages that contain a specific label.</li>
+<li><strong>Search pages</strong> - Searches for pages based on keywords or phrases.</li>
+<li><strong>Create page</strong> - Creates a single new page in Confluence.</li>
+<li><strong>Create pages</strong> - Creates multiple pages in Confluence.</li>
+<li><strong>Get page tree</strong> - Retrieves the hierarchical structure of pages.</li>
+<li><strong>Delete page</strong> - Deletes a specific page.</li>
+<li><strong>Update page by id</strong> - Updates the content of a page identified by its ID.</li>
+<li><strong>Update page by title</strong> - Updates the content of a page identified by its title.</li>
+<li><strong>Update labels</strong> - Adds or removes labels from a page.</li>
+<li><strong>Update pages</strong> - Updates multiple pages at once.</li>
+<li><strong>Site search</strong> - Performs a search across the entire Confluence site.</li>
+<li><strong>Search by title</strong> - Searches for pages based on their title.</li>
+<li><strong>Read page by id</strong> - Retrieves the content of a page using its unique ID.</li>
+<li><strong>Generic request</strong> - Allows to send custom HTTP requests to Confluence API.</li>
+</ul>
+</li>
+<li>
+<p><strong>Complete Setup:</strong> After configuring all the necessary settings and enabling the desired tools, click the <strong>arrow icon</strong> (typically located at the top right of the toolkit configuration section) to finalize the Confluence toolkit setup and return to the main Agent configuration menu.</p>
+</li>
+<li>Click <strong>Save</strong> in the Agent configuration to save all changes and activate the Confluence toolkit integration for your Agent.</li>
+</ol>
+<h3 id="tool-overview-confluence-toolkit-functionalities">Tool Overview: Confluence Toolkit Functionalities</h3>
+<p>Once the Confluence toolkit is successfully configured and added to your Agent, you can leverage the following tools within your Agent's instructions to enable intelligent interaction with your Confluence workspace:</p>
+<ul>
+<li>
+<p><strong>Get Pages with Label:</strong>  <strong>Tool Name:</strong> <code>get_pages_with_label</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of Confluence pages within a specified space that are tagged with a specific label.</li>
+<li><strong>Purpose:</strong> Enables Agents to quickly access and retrieve related content based on labels, facilitating content organization, topic-based information retrieval, and automated content aggregation for specific projects or topics.</li>
+</ul>
+</li>
+<li>
+<p><strong>List Pages with Label:</strong>  <strong>Tool Name:</strong> <code>list_pages_with_label</code></p>
+<ul>
+<li><strong>Functionality:</strong> Lists the titles of all Confluence pages within a specified space that have a specific label. Returns a simple list of page titles.</li>
+<li><strong>Purpose:</strong> Provides Agents with a concise overview of pages categorized by labels, enabling efficient content discovery, quick identification of relevant pages for review or further action, and streamlined content management based on labels.</li>
+</ul>
+</li>
+<li>
+<p><strong>Search Pages:</strong>  <strong>Tool Name:</strong> <code>search_pages</code></p>
+<ul>
+<li><strong>Functionality:</strong> Searches for Confluence pages across a specified space based on keywords or phrases provided in a query.</li>
+<li><strong>Purpose:</strong> Enables Agents to perform targeted searches for information within a Confluence space, allowing for efficient retrieval of relevant pages based on user queries, keywords, or specific information needs, improving information discovery and access.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create Page:</strong>  <strong>Tool Name:</strong> <code>create_page</code></p>
+<ul>
+<li><strong>Functionality:</strong> Creates a new Confluence page within a specified space with a given title and content.</li>
+<li><strong>Purpose:</strong> Automates page creation in Confluence, allowing Agents to automatically generate new documentation pages, meeting notes, project plans, or any other type of Confluence page directly from ELITEA workflows, streamlining content creation and collaboration.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create Pages:</strong>  <strong>Tool Name:</strong> <code>create_pages</code></p>
+<ul>
+<li><strong>Functionality:</strong> Creates multiple Confluence pages within a specified space based on a list of page titles and content. Allows for bulk creation of pages.</li>
+<li><strong>Purpose:</strong> Enables efficient bulk creation of Confluence pages, saving time and effort when setting up new project spaces, creating documentation sets, or generating multiple pages with similar structures, improving content creation efficiency for large-scale documentation efforts.</li>
+</ul>
+</li>
+<li>
+<p><strong>Get Page Tree:</strong>  <strong>Tool Name:</strong> <code>get_page_tree</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves the hierarchical structure of pages within a Confluence space, showing parent-child relationships between pages.</li>
+<li><strong>Purpose:</strong> Allows Agents to understand and visualize the organization of content within a Confluence space, facilitating navigation, content management, and analysis of information architecture within Confluence.</li>
+</ul>
+</li>
+<li>
+<p><strong>Delete Page:</strong>  <strong>Tool Name:</strong> <code>delete_page</code></p>
+<ul>
+<li><strong>Functionality:</strong> Deletes a specific Confluence page identified by its page ID.</li>
+<li><strong>Purpose:</strong> Enables automated deletion of outdated or obsolete Confluence pages, helping maintain a clean and up-to-date knowledge base, removing irrelevant content, and ensuring the Confluence workspace remains organized and efficient.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update Page by ID:</strong>  <strong>Tool Name:</strong> <code>update_page_by_id</code></p>
+<ul>
+<li><strong>Functionality:</strong> Updates the content of an existing Confluence page, identified by its unique Page ID, with new content.</li>
+<li><strong>Purpose:</strong> Allows for precise and automated updates to specific Confluence pages based on their Page ID, ensuring accurate content modification, enabling dynamic content updates, and streamlining the process of keeping critical information current.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update Page by Title:</strong>  <strong>Tool Name:</strong> <code>update_page_by_title</code></p>
+<ul>
+<li><strong>Functionality:</strong> Updates the content of a Confluence page, identified by its title, with new content. Useful when you know the page title but not the Page ID.</li>
+<li><strong>Purpose:</strong> Provides flexibility in updating Confluence pages by allowing content updates based on page titles, simplifying content maintenance when page titles are readily available, and enabling user-friendly page updates within automated workflows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update Labels:</strong>  <strong>Tool Name:</strong> <code>update_labels</code></p>
+<ul>
+<li><strong>Functionality:</strong> Adds or removes labels from a specific Confluence page, identified by its Page ID. Allows for automated label management.</li>
+<li><strong>Purpose:</strong> Enables automated categorization and tagging of Confluence pages, improving content organization, searchability, and discoverability through automated label management, streamlining content classification and information retrieval.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update Pages:</strong>  <strong>Tool Name:</strong> <code>update_pages</code></p>
+<ul>
+<li><strong>Functionality:</strong> Updates the content of multiple Confluence pages at once, based on a list of Page IDs and their corresponding new content. Enables bulk content updates.</li>
+<li><strong>Purpose:</strong> Facilitates efficient bulk updates of Confluence pages, saving time and effort when applying changes to multiple pages simultaneously, ensuring consistency across related documentation, and streamlining large-scale content updates.</li>
+</ul>
+</li>
+<li>
+<p><strong>Site Search:</strong>  <strong>Tool Name:</strong> <code>site_search</code></p>
+<ul>
+<li><strong>Functionality:</strong> Performs a search across the entire Confluence site for content matching specific keywords or phrases. Searches across all spaces and pages within the Confluence instance.</li>
+<li><strong>Purpose:</strong> Enables broad, site-wide searches for information across Confluence, allowing Agents to locate content that matches specific keywords or user queries, even when the location of the information is unknown, improving information discovery across the entire Confluence knowledge base.</li>
+</ul>
+</li>
+<li>
+<p><strong>Search by Title:</strong>  <strong>Tool Name:</strong> <code>search_by_title</code></p>
+<ul>
+<li><strong>Functionality:</strong> Searches for Confluence pages specifically by their titles within a specified space. Filters search results to only include pages matching the provided title.</li>
+<li><strong>Purpose:</strong> Allows for targeted searches for specific pages when you know the title, enabling quick and precise retrieval of pages based on their names, improving search accuracy and efficiency when looking for pages with known titles.</li>
+</ul>
+</li>
+<li>
+<p><strong>Read Page by ID:</strong>  <strong>Tool Name:</strong> <code>read_page_by_id</code></p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves and returns the content of a Confluence page, identified by its unique Page ID.</li>
+<li><strong>Purpose:</strong> Enables Agents to access and utilize content from specific Confluence pages, allowing retrieval of documentation, meeting notes, project information, or any page content to provide context, data, or instructions within ELITEA workflows and conversations, facilitating dynamic and context-aware automation.</li>
+</ul>
+</li>
+<li><strong>Generic request</strong>: <strong>Tool Name:</strong> <code>generic_request</code><ul>
+<li><strong>Functionality:</strong> Allows to send custom HTTP requests to Confluence API.</li>
+<li><strong>Purpose:</strong> Enables advanced users to interact with Confluence API directly and perform actions that are not covered by other tools.</li>
+</ul>
+</li>
+</ul>
+<h2 id="instructions-and-prompts-for-using-the-confluence-toolkit">Instructions and Prompts for Using the Confluence Toolkit</h2>
+<p>To effectively utilize the Confluence toolkit within your ELITEA Agents, you need to provide clear and precise instructions within the Agent's "Instructions" field, telling the Agent <em>how</em> and <em>when</em> to use these tools.</p>
+<p><strong>General Instruction Structure:</strong></p>
+<p>When instructing your Agent to use a Confluence tool, you will typically follow this pattern:</p>
+<pre><code>Use the &quot;[tool_name]&quot; tool to [describe the action you want to perform] in Confluence.
+Provide the following parameters:
+- Parameter 1: &lt;value or description of value&gt;
+- Parameter 2: &lt;value or description of value&gt;
+- ...
+</code></pre>
+<p><strong>Example Agent Instructions for Confluence Toolkit Tools:</strong></p>
+<ul>
+<li>
+<p><strong>Agent Instructions for Getting Pages with a Label:</strong></p>
+<p><code>Use the "get_pages_with_label" tool to retrieve all Confluence pages labeled with "project-alpha" in the "Project Documentation" space.
+Provide the following parameters:
+- Space Name: "Project Documentation"
+- Label Name: "project-alpha"</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Searching Pages:</strong></p>
+<p><code>Use the "search_pages" tool to search for Confluence pages containing the keyword "ELITEA Agents" in the "ELITEA Knowledge Base" space.
+Provide the following parameters:
+- Space Name: "ELITEA Knowledge Base"
+- Query: "ELITEA Agents"</code></p>
+</li>
+<li>
+<p><strong>Agent Instructions for Creating a New Page:</strong></p>
+<p><code>Use the "create_page" tool to create a new Confluence page in the "Meeting Notes" space.
+Provide the following parameters:
+- Space Name: "Meeting Notes"
+- Title: "Project Alpha - Weekly Meeting - [Current Date]"
+- Content: "Meeting notes will be added here..."</code></p>
+</li>
+</ul>
+<p><strong>Important Considerations for Agent Instructions:</strong></p>
+<ul>
+<li><strong>Tool Name Accuracy:</strong> Ensure you use the correct <strong>Tool Name</strong> (e.g., <code>"get_pages_with_label"</code>, <code>"search_pages"</code>, <code>"create_page"</code>) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the toolkit correctly.</li>
+<li><strong>Parameter Clarity:</strong> Clearly specify the <strong>parameters</strong> required for each tool and provide instructions on where the Agent should obtain the values for these parameters (e.g., from user input, from previous steps in the workflow, or hardcoded values).</li>
+<li><strong>Context and Examples:</strong> Provide sufficient context and examples within your Agent's "Instructions" to guide the LLM in understanding <em>when</em> and <em>how</em> to use the Confluence toolkit tools effectively within your desired workflow.</li>
+<li><strong>Space and Page Identifiers:</strong> Ensure that you use the correct Space Names, Page Titles, and Page IDs in your Agent instructions. Space Names and Page Titles are case-sensitive and must exactly match the names in your Confluence workspace. When using Page IDs, ensure you are using the correct numerical ID for the intended page.</li>
+</ul>
+<h2 id="best-practices-and-use-cases-for-confluence-integration">Best Practices and Use Cases for Confluence Integration</h2>
+<h3 id="best-practices-for-efficient-integration">Best Practices for Efficient Integration</h3>
+<ul>
+<li><strong>Test Integration Thoroughly:</strong> After setting up the Confluence toolkit and incorporating it into your Agents, <strong>thoroughly test each tool</strong> you intend to use to ensure seamless connectivity, correct authentication, and accurate execution of Confluence actions.</li>
+<li><strong>Monitor Agent Performance and Usage:</strong>  Regularly <strong>monitor the performance of Agents</strong> utilizing Confluence toolkits. Track metrics such as task completion success rate, execution time, and error rates to identify any potential issues or areas for optimization in Agent instructions or toolkit configurations.</li>
+<li><strong>Follow Security Best Practices:</strong><ul>
+<li><strong>Use API Tokens:</strong> Always use Confluence API tokens instead of your main account password for integrations.</li>
+<li><strong>Grant Least Privilege:</strong> Grant only the minimum necessary scopes/permissions to the API token to limit potential security risks. While Confluence API tokens have limited scope control, ensure you are generating tokens specifically for ELITEA integration and not reusing tokens with broader access.</li>
+<li><strong>Securely Store Credentials:</strong> Utilize ELITEA's Secrets Management feature to securely store and manage your Confluence API tokens instead of hardcoding them directly in Agent configurations.</li>
+</ul>
+</li>
+<li><strong>Provide Clear Instructions and Prompts:</strong>  Craft clear and unambiguous instructions within your ELITEA Agents to guide them in using the Confluence toolkit effectively. Use the prompt examples provided in this guide as a starting point and adapt them to your specific use cases.</li>
+<li><strong>Start with Simple Use Cases:</strong> Begin by implementing Confluence integration for simpler automation tasks, such as retrieving page content or listing pages with labels, and gradually progress to more complex workflows as you gain experience and confidence with the toolkit.</li>
+<li><strong>Utilize Advanced Settings for Performance Tuning:</strong>  Leverage the "Advanced Settings" in the toolkit configuration to fine-tune data fetching parameters like "Pages limit per request" and "Max total pages" to optimize performance and avoid overloading the Confluence API, especially when working with large Confluence workspaces.</li>
+</ul>
+<h3 id="use-cases-for-confluence-toolkit-integration">Use Cases for Confluence Toolkit Integration</h3>
+<p>The Confluence toolkit opens up a wide range of automation possibilities for knowledge management, documentation workflows, and information retrieval within ELITEA. Here are some compelling use cases:</p>
+<ul>
+<li>
+<p><strong>Automated Meeting Notes Archival and Summarization:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> After team meetings, ELITEA Agents can automatically archive meeting notes pages in Confluence by adding a "meeting-minutes-archive" label and create a summary of key discussion points and action items to share with stakeholders.</li>
+<li><strong>Tools Used:</strong> <code>get_pages_with_label</code>, <code>update_labels</code>, <code>read_page_by_id</code>, <code>create_page</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_pages_with_label' tool to find pages labeled 'meeting-notes-pending-archive'. For each page, use 'update_labels' to add the 'meeting-minutes-archive' label and remove 'meeting-notes-pending-archive'. Then, use 'read_page_by_id' to read the content of each archived page and generate a summary of key discussion points and action items. Finally, use 'create_page' to create a new page named 'Meeting Minutes Summary - [Date]' with the generated summary in the 'Meeting Minutes Summaries' space."</li>
+<li><strong>Benefit:</strong> Automates meeting notes archival and summarization, saving time on manual documentation tasks, ensuring meeting notes are properly archived and key insights are readily accessible in summarized form.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic FAQ Generation from Confluence Knowledge Base:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> ELITEA Agents can dynamically generate FAQs for user support by searching Confluence for pages labeled "faq" and extracting question-answer pairs to create a dynamic FAQ resource within ELITEA.</li>
+<li><strong>Tools Used:</strong> <code>get_pages_with_label</code>, <code>read_page_by_id</code>, <code>site_search</code>, <code>search_pages</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'get_pages_with_label' tool to retrieve all Confluence pages labeled 'faq' in the 'Knowledge Base' space. For each page, use 'read_page_by_id' to extract question-answer pairs from the page content. Compile these pairs to generate a dynamic FAQ resource within ELITEA. If no 'faq' labeled pages are found in the 'Knowledge Base' space, use 'site_search' to search for pages containing 'Frequently Asked Questions' across the entire Confluence site and extract FAQ content from those pages instead."</li>
+<li><strong>Benefit:</strong> Enables dynamic and automated FAQ generation, ensuring users always have access to the most up-to-date FAQ information from Confluence, improving self-service support and reducing the workload on support teams.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Content Updates Based on External Data Sources:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> ELITEA Agents can automatically update Confluence pages with information retrieved from external data sources, such as real-time metrics, reports, or database information, ensuring Confluence pages always display the latest data.</li>
+<li><strong>Tools Used:</strong> <code>read_page_by_id</code>, <code>update_page_by_id</code>, <code>generic_request</code> (for external data retrieval)</li>
+<li><strong>Example Instruction:</strong> "Use the 'generic_request' tool to retrieve the latest sales metrics from the external sales database API. Then, use 'read_page_by_id' to get the current content of the 'Sales Dashboard' Confluence page. Update the 'Sales Metrics' section of the page with the newly retrieved sales data using 'update_page_by_id'."</li>
+<li><strong>Benefit:</strong> Enables dynamic and data-driven Confluence pages, ensuring that critical dashboards, reports, and information pages always display the most current data, improving data accuracy and real-time visibility for stakeholders.</li>
+</ul>
+</li>
+<li>
+<p><strong>Streamlined Content Migration and Bulk Updates:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> When migrating content to Confluence or performing bulk updates across multiple pages, ELITEA Agents can automate the creation or updating of numerous Confluence pages based on structured data or templates.</li>
+<li><strong>Tools Used:</strong> <code>create_pages</code>, <code>update_pages</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_pages' tool to create new Confluence pages in the 'Project Documentation' space based on the following JSON data: <code>[{\"page1_name\": \"Page 1 Content\"}, {\"page2_name\": \"Page 2 Content\"}, ...]</code>. For bulk updates, use 'update_pages' tool with the following JSON data: <code>[{\"page_id_1\": \"new content for page 1\"}, {\"page_id_2\": \"new content for page 2\"}, ...]</code>."</li>
+<li><strong>Benefit:</strong> Streamlines content migration and bulk update tasks, saving significant time and effort when managing large Confluence workspaces, ensuring consistency across content, and improving efficiency for large-scale content operations.</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting-common-issues">Troubleshooting Common Issues</h3>
+<ul>
+<li>
+<p><strong>Connection Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> ELITEA Agent fails to connect to Confluence, resulting in errors during toolkit execution.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify Confluence URL:</strong> Double-check that you have entered the correct Confluence workspace URL in the toolkit configuration, including <code>https://</code> or <code>http://</code> and the full workspace URL (e.g., <code>https://your-workspace.atlassian.net/wiki</code>).</li>
+<li><strong>Check Username and API Token:</strong> Ensure that the <strong>Username</strong> and <strong>API Token</strong> you provided are correct and valid for your Confluence account and workspace. Carefully re-enter or copy-paste these credentials to rule out typos.</li>
+<li><strong>Verify Hosting Option:</strong> Double-check that you have selected the correct <strong>Hosting option</strong> (Cloud or Server) in the Confluence toolkit configuration, especially when connecting to Epam's Confluence (use "Server").</li>
+<li><strong>Network Connectivity:</strong> Confirm that both your ELITEA environment and your Confluence instance are connected to the internet and that there are no network connectivity issues blocking the integration.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization Errors (Permission Denied/Unauthorized):</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify Confluence resources.</li>
+<li><strong>Possible Solutions:</strong><ol>
+<li><strong>Verify API Token Validity:</strong> Ensure that the Confluence API token you are using is still valid and has not been revoked in your Atlassian account settings. Generate a new token if necessary.</li>
+<li><strong>Check Confluence Permissions:</strong> Confirm that the Confluence account associated with the Username and API Token has the necessary permissions to access and modify the specific Confluence space and pages your Agent is trying to interact with. Verify space and page permissions within Confluence.</li>
+<li><strong>Hosting Option Mismatch:</strong> Double-check that you have selected the correct "Hosting option" (Cloud or Server) in the Confluence toolkit configuration. Using the wrong hosting option can lead to authentication and connection errors.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Tool-Specific Parameter Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails for specific Confluence tools due to incorrect parameter values.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Verify Space Name:</strong> Ensure that you are using the correct Confluence Space Name in your Agent's instructions and toolkit configuration. Space Names are case-sensitive and must exactly match the space name in Confluence.</li>
+<li><strong>Verify Page Titles and IDs:</strong> Double-check that you are using the correct Page Titles or Page IDs when referencing Confluence pages in your Agent's instructions. Page Titles are case-sensitive and must match the page titles in Confluence exactly. When using Page IDs, ensure you are using the correct numerical ID for the intended page.</li>
+<li><strong>Parameter Format:</strong> Verify that you are providing parameters in the correct format expected by each Confluence tool (e.g., string values for names, numerical values for IDs, JSON format for bulk updates). Refer to the "Instructions and Prompts for Using the Toolkit" section for parameter details and examples.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="faqs">FAQs</h3>
+<ol>
+<li><strong>Q: Can I use my regular Confluence password for the ELITEA integration?</strong><ul>
+<li><strong>A:</strong> No, it is <strong>strongly recommended to use a Confluence API token</strong> instead of your main account password for security reasons. API tokens provide a more secure and controlled way to grant access to external applications like ELITEA.</li>
+</ul>
+</li>
+<li><strong>Q: What permissions should I grant to the Confluence API Token?</strong><ul>
+<li><strong>A:</strong> Confluence API tokens have a fixed scope (access to Confluence REST API). You don't need to select specific scopes when generating the token. However, ensure that the Confluence account associated with the API token has the necessary permissions within Confluence to access and modify the spaces and pages your Agent will be interacting with.</li>
+</ul>
+</li>
+<li><strong>Q: What is the correct format for the Confluence URL in the toolkit configuration?</strong><ul>
+<li><strong>A:</strong>  The Confluence URL should be entered in the full format, including <code>https://</code> or <code>http://</code> and the complete workspace URL (e.g., <code>https://your-workspace.atlassian.net/wiki</code>). Ensure there are no typos or missing parts in the URL. For Epam Confluence, use <code>https://kb.epam.com/</code>.</li>
+</ul>
+</li>
+<li><strong>Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?</strong><ul>
+<li><strong>A:</strong> Double-check the following:<ul>
+<li><strong>API Token Validity:</strong> Ensure that the API token is valid and has not been revoked.</li>
+<li><strong>Confluence Account Permissions:</strong> Verify that the Confluence account associated with the API token has the necessary permissions to access the specific spaces and pages your Agent is trying to interact with.</li>
+<li><strong>Hosting Option:</strong> Double-check that you have selected the correct "Hosting option" (Cloud or Server) in the toolkit configuration, especially for self-hosted or Epam Confluence instances.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="support-and-contact-information">Support and Contact Information</h3>
+<p>If you encounter any issues, have questions, or require further assistance beyond what is covered in this guide regarding the Confluence integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.</p>
+<p><strong>How to Reach ELITEA Support:</strong></p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p><strong>Best Practices for Effective Support Requests:</strong></p>
+<p>To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> Clearly specify the ELITEA environment you are using (e.g., "Nexus," "Alita Lab," "EYE").</li>
+<li><strong>Project Details:</strong>  Indicate the <strong>Project Name</strong> and whether you are working in your <strong>Private</strong> workspace or a <strong>Team</strong> project.</li>
+<li><strong>Detailed Issue Description:</strong> Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.</li>
+<li><strong>Relevant Configuration Information:</strong>  To help us diagnose the issue, please include relevant configuration details, such as:<ul>
+<li><strong>Agent Instructions (Screenshot or Text):</strong> If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.</li>
+<li><strong>Toolkit Configurations (Screenshots):</strong> If the issue involves the Confluence toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.</li>
+</ul>
+</li>
+<li><strong>Error Messages (Full Error Text):</strong> If you are encountering an error message, please provide the <strong>complete error text</strong>. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.</li>
+<li><strong>Your Query/Prompt (Exact Text):</strong> If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p>
+<h2 id="useful-links">Useful Links</h2>
+<p>To further enhance your understanding and skills in integrating Confluence with ELITEA, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="https://www.atlassian.com/software/confluence">Atlassian Confluence Website</a></strong>: Access the main Confluence product website for product information and documentation.</li>
+<li><strong><a href="https://id.atlassian.com/manage-profile/security">Atlassian Account Settings</a></strong>: Access your Atlassian account settings to manage your profile and API tokens.</li>
+<li><strong><a href="../../../platform-documentation/menus/settings/#secrets">ELITEA Secrets Management</a></strong>: Learn how to securely store your Confluence API Token using ELITEA's Secrets management feature for enhanced security.</li>
+<li><strong><a href="../../../platform-documentation/menus/agents/">ELITEA Agents Configuration</a></strong>:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Confluence toolkit to automate your workflows.</li>
+<li><strong><a href="mailto:SupportAlita@epam.com">ELITEA Support Email</a></strong>: Contact the ELITEA support team for direct assistance with Confluence integration or any other questions and issues you may encounter.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
