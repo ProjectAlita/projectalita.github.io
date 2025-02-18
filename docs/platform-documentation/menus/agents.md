@@ -613,33 +613,3 @@ Upon creating a new version of the agent, several options become available to yo
 
 
 By following these steps, you can effectively manage the lifecycle and iterations of your agents, ensuring that each version is appropriately saved, published, and utilized as per your requirements.
-
-## Agents Menu
-
-The **Agents** menu showcases a collection of published and shared agents within the community. By default, upon logging in, the user is directed to the **Latest** page of the Agents menu, which presents newly published agents.
-
-### Layout of the Agents Menu
-
-The Agents menu is organized into three distinct pages, each designed to offer a unique perspective on the available agents:
-
-* **Latest**: Displays all recently published agents, providing a fresh look at the newest contributions to the community.
-* **My Likes**: Highlights the agents that you have liked. This personalized page allows you to revisit favorites effortlessly.
-* **Trending**: Showcases the agents with the highest number of likes, serving as a valuable resource for discovering top-rated agents that hold significant value and popularity within the community.
-
-### Engaging with Published Agents
-
-Interaction within the community is highly encouraged to recognize and appreciate valuable agents. The following actions enable active participation:
-
-### Liking Published Agents
-
-Upon publication, an agent becomes a crucial resource for the community. To support and acknowledge an agent, use the **Like** functionality:
-
-* To like an agent, click on the **Heart** icon associated with it.
-* If you wish to withdraw your like, simply click the **Heart** icon again to Unlike the agent.
-
-### Other Actions for Published Agents
-
-**Using Published Agent**:
-
-* View and run agent by clicking on the agent card or name. Refer to the [How to Execute Agent](#how-to-execute-agent) section for guidance on using agent.
-* **Note**: Modifications to a published agent cannot be saved for future use.
