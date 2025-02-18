@@ -103,7 +103,7 @@ Selecting the right Agent type in ELITEA is essential for optimizing the perform
 * **Description**: Similar to OpenAI, Pipeline Agents are also based on the LangChain backend and work exclusively with Azure OpenAI Service integrations. They are designed to handle complex workflows and data processing tasks. Instructions must be written in YAML format.
 * **Best For**: Scenarios that require structured workflows and data processing capabilities, leveraging the power of Azure OpenAI Service.
 
-Each Agent type in ELITEA is crafted to maximize the strengths of its underlying models and frameworks. Selecting the appropriate Agent type based on your specific task requirements and desired outcomes will ensure optimal performance and efficiency. For more detailed guidance on selecting the right Agent type and crafting effective instructions, please refer to the [Agent Frameworks](../agents/agents-examples.md) document.
+Each Agent type in ELITEA is crafted to maximize the strengths of its underlying models and frameworks. Selecting the appropriate Agent type based on your specific task requirements and desired outcomes will ensure optimal performance and efficiency. For more detailed guidance on selecting the right Agent type and crafting effective instructions, please refer to the [Agent Frameworks](../../how-tos/agents-toolkits/pipeline-agent-framework.md) document.
 
 
 ### How to select and configure Toolkits
