@@ -24,32 +24,90 @@ Integrating SQL with ELITEA brings these robust data management capabilities dir
 Before integrating your SQL database with ELITEA, ensure the following prerequisites are met:
 
 1.  **Running SQL Database Instance:** You need an operational SQL database instance. This could be MySQL, PostgreSQL, SQL Server, or another supported SQL database. The database server must be running and accessible.
-2.  **Database Access Credentials:** You must have valid credentials (username and password) that ELITEA can use to connect to your database.  It's recommended to use a dedicated database user with restricted permissions, granting only the necessary privileges for ELITEA's intended operations.
+2.  **Database Access Credentials:** You must have valid credentials (username and password) that ELITEA can use to connect to your database.  
 3.  **Database Server Accessibility:** ELITEA needs to be able to communicate with your SQL server.  Consider the following network accessibility requirements:
     *   **Public Accessibility (for externally hosted ELITEA):** If your ELITEA instance is hosted externally (e.g., in the cloud) and your SQL server is on a private network, your SQL server must be accessible from the public internet or through a secure tunnel (like a VPN) that ELITEA can connect to.  For locally hosted SQL servers, assigning a Public IP address might be necessary. **Security Note:** Exposing your database directly to the public internet is generally discouraged for security reasons. Consider using secure methods like VPNs or allowing access only from specific IP ranges.
     *   **Same Network Environment (for internally hosted ELITEA):** If you are hosting ELITEA within the same network environment as your SQL server (e.g., behind a corporate firewall), ensure that there are no firewall rules blocking communication between the ELITEA instance and the SQL server on the designated port (e.g., 3306 for MySQL, 5432 for PostgreSQL).
 
-### Database User Permissions (Best Practice)
+### Database Connection
+This section describes how to connect to your database server using a database client application.
 
-For enhanced security, it is highly recommended to create a dedicated database user specifically for ELITEA integration. This user should be granted the **least privilege** necessary to perform the intended tasks.
+1. **Launch Your Database Client:** Open either pgAdmin (for PostgreSQL), MySQL Workbench (for MySQL), or DBeaver (which supports multiple database types).
 
-*   **Read-Only Access:** If your ELITEA Agents only need to retrieve data from the database (using `list_tables_and_columns` and `execute_sql` with `SELECT` queries), grant only `SELECT` privileges on the relevant tables and database.
-*   **Write Access:** If your Agents need to modify data (e.g., using `execute_sql` with `INSERT`, `UPDATE`, `DELETE` queries), grant the necessary `INSERT`, `UPDATE`, `DELETE` privileges in addition to `SELECT`.
-*   **Avoid `admin` or `SUPERUSER` Roles:**  Do not grant administrative or superuser roles to the dedicated ELITEA user unless absolutely necessary. Limiting permissions minimizes potential security risks.
+2. **Initiate a New Connection:**
+    *   **pgAdmin:** Expand "Servers" in the object browser, right-click, and select "Create" -> "Server".  A server creation dialog will appear.
+    *   **MySQL Workbench:** Navigate to "Database" -> "Manage Connections" -> "New".  This opens the connection management window.
+    *   **DBeaver:** Go to "Database" -> "New Database Connection".  A wizard for selecting the database type will appear.
 
-Consult your specific SQL database documentation (MySQL, PostgreSQL, SQL Server, etc.) for detailed instructions on creating users and granting permissions.
+3. **Configure the Connection Settings:**  Carefully enter the following information.
+
+    *   **Host/Server Address:** `dbserver.company.com` (This may also be an IP address like `192.168.1.100` if you know the server's IP.) This is the network address where your database server is located.
+    *   **Port:** The port number your database server is listening on.  Use the correct port for your database type:
+        *   PostgreSQL: `5432`
+        *   MySQL: `3306`
+        *   SQL Server: `1433`
+    *   **Database Name:** `test_db` (The specific database you want to access.)
+    *   **Username:** `test_user` (The username you've been assigned to access the database.)
+    *   **Password:** `Test@123` (The password associated with the username.)
+
+4. **Test the Connection:**  Click the "Test Connection" button (or its equivalent) within the connection configuration window.
+    *   **Successful Test:**  You should receive a confirmation message.  Proceed to step 5.
+    *   **Unsuccessful Test:**  If the test fails, carefully review the following:
+        *   **Typographical Errors:** Double-check the host address, port, username, and password for any typos.
+        *   **Server Availability:**  Ensure the database server is running and accessible from your network.  (You may need to contact your system administrator.)
+        *   **Firewall Rules:**  Confirm that your firewall is not blocking connections to the database server on the specified port.
+
+5. **Establish the Connection:**  If the connection test was successful, click "OK" (or "Save") and then "Connect" to establish the connection to the database.  You should now be able to browse the database schema and execute queries.
+![Database Connection](../../img/how-tos/sql/Database_Connection.png)
+
+
 
 ## SQL Integration with ELITEA
+
+### Overview of SQL Toolkit
+The SQL integration within the ELITEA platform enhances data management by enabling seamless access to structured database information. This integration allows users to query, retrieve, and analyze SQL databases directly from ELITEA, ensuring that critical business data remains synchronized and readily available. By eliminating the need to switch between database management tools, teams can improve efficiency and maintain a single source of truth for key operational and analytical data.
+With this integration, users can pull real-time structured data from SQL databases into ELITEA, enhancing workflows with up-to-date records, analytical insights, and system-generated reports. The integration supports automated query execution, data visualization, ensuring that the latest database information is always accessible within the ELITEA environment. 
 
 ### Agent Creation/Configuration
 
 To integrate SQL, you'll need to configure it within an ELITEA Agent. You can either create a new Agent or modify an existing one.
 
-1.  **Navigate to Agents:** In ELITEA, go to the **Agents** menu.
-2.  **Create or Edit Agent:**
-    *   **New Agent:** Click **"+ Agent"** to create a new Agent. Follow the steps to define Agent details like name, description, type, and instructions.
-    *   **Existing Agent:** Select the Agent you want to integrate with SQL and click on its name to edit.
-3.  **Access Tools Section:** In the Agent configuration, scroll down to the **"Tools"** section.
+**Creating a New Agent**
+
+To create a new agent within the system:
+
+1. **Click the "+ Agent" Button:** Locate and click the **+ Agent** button, typically found in the top right corner of the application.  This will initiate the agent creation process.
+
+2. **Fill Out Basic Information (Name and Description):**
+   *   **Name:** Enter a descriptive and easily identifiable name for the agent in the "Name" field.
+   *   **Description:** Provide a brief description of the agent's purpose and functionality in the "Description" field.  This helps other users understand the agent's intended use.
+
+3. **Add Tags (Optional):** The "Tags" input box allows you to categorize and organize agents.
+   *   **Add a New Tag:** Type the desired tag name in the "Tags" input box.
+   *   **Select from Existing Tags:** If there are pre-existing tags, you can select them from a dropdown or list of available tags presented in the "Tags" input box.  Using consistent tagging helps with searching and filtering agents.
+
+4. **Select the Agent Type:**  Choose the appropriate agent type from the available options (e.g., OpenAI, ReAct, Pipeline).
+
+5. **Instructions:**  Provide Instructions for selected Agent Type in the Instarction field.
+
+6. **Configure Conversation Starters and Welcome Message (Optional):**
+   *   **Conversation Starter:**  Define phrases or questions that users can click on to initiate a conversation with the agent. This provides users with guidance and examples of how to interact with the agent.
+   *   **Welcome Message:** Create a welcome message that the agent displays when a user first interacts with it. This provides context and sets expectations for the interaction.  A good welcome message might introduce the agent's purpose and capabilities.
+   ![Agent Creation](../../img/how-tos/sql/Agent_Creation.png)
+
+
+  **Modifying an Existing Agent**
+
+To modify an existing agent within the system:
+
+1. **Locate the Agent:** Find the agent you want to modify in the agent list or using search.
+
+2. **Open for Editing:** Click the agent's name to open its configuration page.
+
+3. **Modify Settings:**  Change the Name, Description, Tags, Agent Type, Instructions, Conversation Starters, or Welcome Message as needed. 
+
+4. **Save Changes:** Click the "Save" button.
+
 
 ### Toolkit Configuration
 
@@ -70,24 +128,28 @@ This section details how to configure the SQL toolkit within your ELITEA Agent.
     *   **Database name:** Enter the **Name of the Database** you want to connect to. For example: `mydatabase`.
     *   **Username:** Provide the **Username** for database authentication. This should be the username of the dedicated database user you configured for ELITEA.
     *   **Password:** Choose the authentication method for the password:
-        *   **Secret (Recommended):** Select **"Secret"** and choose a pre-configured secret from the dropdown list. You must first create and securely store your database password as a Secret in ELITEA's [Secrets](../../atform-documentation/menus/settings.md#secrets) feature. Using Secrets is highly recommended for enhanced security.
+        *   **Secret (Recommended):** Select **"Secret"** and choose a pre-configured secret from the dropdown list. You must first create and securely store your database password as a Secret in ELITEA's Secret section. Using Secrets is highly recommended for enhanced security.
+        ![Secrets](../../img/how-tos/sql/Secrets.png)
         *   **Password:** Select **"Password"** and directly enter the **Password** associated with the provided username in the **"Password"** field. **Caution:** While convenient, directly entering the password is less secure than using Secrets.
 
-    ![SQL-Toolkit_Configuration](../../img/how-tos/sql/SQL-Toolkit_Configuration.png) *[**Note:** Replace with actual screenshot of SQL Toolkit Configuration in ELITEA if available]*
-
-4.  **Enable Tools:** In the "Tools" section of the SQL toolkit configuration, **select the checkboxes next to the SQL tools** you want to enable for your Agent. **Enable only the tools your Agent will actually use** to adhere to the principle of least privilege and enhance security. Available tools are:
-    *   **List tables and columns:** Allows the Agent to retrieve database schema information.
-    *   **Execute SQL:** Enables the Agent to execute custom SQL queries.
-
+4.  **Enable Tools:** In the "Tools" section of the SQL toolkit configuration, **select the checkboxes next to the SQL tools** you want to enable for your Agent. **Enable only the tools your Agent will actually use** to adhere to the principle of least privilege and enhance security.
 5.  **Complete Configuration:** Click the **arrow icon** (at the top right of the toolkit configuration) to save the SQL toolkit setup and return to the main Agent configuration.
 6.  Click **Save** to apply configuration and changes to the Agent.
+![SQL Tool configuration](../../img/how-tos/sql/SQL_tool_configuration.png)
+
+**NOTE:** **Database Server Accessibility:** Elitea must be able to communicate with your SQL server. Please ensure the following requirements are met:
+
+*   **Public Accessibility:** If your SQL server is hosted locally, it *must* be assigned a Public IP address. This allows Elitea to access the database from outside your local network.
+*   **Environment Configuration:** If your SQL server is in a closed environment (e.g., behind corporate firewalls or exclusively accessible via VPN), you *must* deploy the Elitea instance within the *same* environment. This ensures direct access to the database.
+
+
 
 ### Tool Overview
 
-The SQL toolkit provides the following tools for your ELITEA Agents:
+The SQL toolkit provides the following tools for ELITEA SQL Agents:
 
-*   **List tables and columns:** `list_tables_and_columns` - Retrieves a list of tables and their columns from the connected database. This is useful for understanding the database schema and available data.
-*   **Execute SQL:** `execute_sql` - Executes a custom SQL query against the connected database. This tool allows for flexible data retrieval and manipulation based on your specific needs.
+*   **`list_tables_and_columns`** - Retrieves a list of tables and their columns from the connected database. This is useful for understanding the database schema and available data.
+*    **`execute_sql`** - Executes a custom SQL query against the connected database. This tool allows for flexible data retrieval and manipulation based on your specific needs.
 
 ## Instructions and Prompts for Using the Toolkit
 
@@ -147,17 +209,18 @@ Use these conversation starters to interact with your SQL-integrated Agent.
 These starters are designed to verify if the SQL toolkit is correctly configured and connected to your database.
 
 *   "List all tables and columns." - *This tests basic connectivity and schema retrieval.*
-*   "Show me the tables in the database." - *Another way to test table listing.*
-*   "Execute SQL query: SELECT 1;" - *Tests basic query execution.*
+*   "Show the tables in the database." - *Another way to test table listing.*
+    ![table_names](../../img/how-tos/sql/table_names.png)
 
 **2. For General Agent Usage Scenarios:**
 
 These starters demonstrate how to initiate agent execution for common SQL-related tasks.
 
 *   "What are the columns in the 'customers' table?" - *Uses `list_tables_and_columns` to get table schema.*
-*   "Get me the names and order dates of all orders placed in the last month." - *Uses `execute_sql` with a more complex query.*
+
 *   "Find all products with a price greater than $50 and list their names and prices." - *Uses `execute_sql` with filtering.*
-*   "Show me the structure of the 'products' table." - *Uses `list_tables_and_columns` for a specific table.*
+*   "Retrieve the structure of the users table, including column names and data types." - *Uses `list_tables_and_columns` for a specific table.*
+    ![users_table](../../img/how-tos/sql/users_table.png)
 
 These conversation starters provide a starting point for interacting with your SQL-integrated ELITEA Agent and can be customized further based on your specific use cases and workflows.
 
@@ -180,14 +243,9 @@ The SQL toolkit unlocks numerous automation possibilities for data-driven workfl
 *   **Data Validation and Monitoring:**
     *   **Scenario:**  Regularly check data integrity or monitor specific data conditions within the database.
     *   **Tools Used:** `execute_sql`
-    *   **Example Instruction:** "Use the 'execute_sql' tool to run the query: 'SELECT COUNT(*) FROM orders WHERE order_date < DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND status = \'pending\';' and tell me the count of pending orders older than 7 days."
+    *   **Example Instruction:** "Use the 'execute_sql' tool to run the query: 'SELECT COUNT(*) FROM orders WHERE order_date < DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND status = 'pending';' and tell me the count of pending orders older than 7 days."
     *   **Benefit:** Enables proactive data monitoring and validation. Agents can automatically execute checks and alert users to anomalies or data quality issues.
 
-*   **Data Integration and Workflow Automation:**
-    *   **Scenario:** Integrate data from SQL databases into ELITEA workflows for various automation tasks, such as updating external systems or triggering actions based on database events.
-    *   **Tools Used:** `execute_sql`
-    *   **Example Instruction:** "Use the 'execute_sql' tool to get the email addresses of all new users registered today: 'SELECT email FROM users WHERE registration_date = CURDATE();' and then use these emails to send welcome messages (using another ELITEA tool)."
-    *   **Benefit:** Facilitates seamless data integration between SQL databases and ELITEA workflows. Agents can act as bridges, enabling data-driven automation across different systems.
 
 ## Troubleshooting and Support
 
@@ -207,23 +265,15 @@ The SQL toolkit unlocks numerous automation possibilities for data-driven workfl
         1.  **Verify Database User Permissions:** Re-examine the permissions granted to the database user you are using for ELITEA integration. Ensure the user has sufficient privileges (e.g., `SELECT`, `EXECUTE`) for the database and tables you are trying to access.
         2.  **Incorrect Credentials:** Double-check the Username and Password in the toolkit configuration for typos or errors. If using Secrets, ensure the Secret is correctly configured and contains the right password.
 
-*   **SQL Query Errors:**
-    *   **Problem:** Agent returns errors when executing SQL queries using the `execute_sql` tool.
-    *   **Troubleshooting Steps:**
-        1.  **Syntax Errors:** Carefully review your SQL query for syntax errors. Use a database client to test and validate your SQL query directly against the database to ensure it is syntactically correct and logically sound.
-        2.  **Database Compatibility:** Ensure that your SQL query is compatible with the SQL dialect you selected in the toolkit configuration (MySQL or PostgreSQL). SQL syntax can vary slightly between different database systems.
-        3.  **Table/Column Names:** Verify that the table and column names used in your SQL query are correct and exist in the database schema. Use the `list_tables_and_columns` tool to confirm the schema if needed.
 
 ### FAQ
 
 1.  **Q: Can I use this toolkit with other SQL databases besides MySQL and PostgreSQL?**
     *   **A:** Currently, the ELITEA SQL toolkit officially supports **MySQL** and **PostgreSQL** dialects. Support for other SQL databases might be added in future updates. If you require integration with a different SQL database, please contact ELITEA support to discuss your needs.
-2.  **Q: How do I secure my database credentials when using the SQL toolkit?**
-    *   **A:** For enhanced security, it is **highly recommended to use ELITEA Secrets** to store your database password. Instead of directly entering the password in the toolkit configuration, create a Secret in ELITEA and reference that Secret in the toolkit. This prevents hardcoding sensitive credentials and improves security.
-3.  **Q: Why is my Agent taking a long time to execute SQL queries?**
-    *   **A:** Query execution time depends on the complexity of your SQL query and the size of your database. For complex queries or large datasets, execution might take longer. Optimize your SQL queries for performance (e.g., using indexes, efficient filtering). Also, consider the performance of your database server and network connection.
-4.  **Q: Can I perform database schema modifications (DDL operations) using the `execute_sql` tool?**
-    *   **A:** Yes, the `execute_sql` tool can execute any valid SQL statement, including DDL (Data Definition Language) statements like `CREATE TABLE`, `ALTER TABLE`, `DROP TABLE`, etc., provided that the database user configured for ELITEA has the necessary permissions to perform these operations. However, exercise caution when using Agents to perform DDL operations, as unintended schema changes can have significant consequences. Always test and validate DDL operations in a non-production environment first.
+2.  **Q: Why can't Elitea connect to my SQL server?**
+    *   **A:** Elitea requires direct access to your SQL server. If you're experiencing connectivity issues, check the following:
+        1.  **Public IP:** Ensure that your local-hosted SQL server has a Public IP address if it needs to be accessed from outside your local network. Without this, ELITEA cannot initiate a connection to your database.
+        2.  **Network Environment:** If your SQL server operates within a closed network or a VPN-restricted environment, deploy ELITEA within the same network. This ensures that ELITEA can reach the SQL server without external network barriers.
 
 ### Support Contact
 
