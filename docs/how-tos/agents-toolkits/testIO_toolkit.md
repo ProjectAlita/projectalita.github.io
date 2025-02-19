@@ -6,7 +6,7 @@
 
 This guide is your comprehensive resource for integrating and effectively using the **TestIO toolkit** within ELITEA. It provides a detailed, step-by-step walkthrough, from configuration in TestIO platform to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated test result analysis, streamlined QA workflows, and enhanced insights into your testing process, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your TestIO-driven quality assurance, enhance test visibility, and improve QA team productivity within your software development lifecycle.
 
-### Brief Overview of Products
+### Brief Overview
 
 *   **ELITEA:** ELITEA is an AI-powered task management and workflow automation platform designed to enhance team productivity. Key features include intelligent task analysis, real-time updates, and comprehensive reporting.
 
@@ -22,18 +22,8 @@ Integrating TestIO with ELITEA allows users and AI agents to directly access and
 
 This integration streamlines the analysis of test execution status, bug trends, and overall test coverage, providing valuable insights for QA teams, development management, and stakeholders.
 
-### Target Audience
 
-This guide is intended for:
-
-*   **QA Engineers and Test Managers:** To streamline test results analysis and bug tracking.
-*   **Development Team Leads and Managers:** To gain insights into software quality and testing progress.
-*   **ELITEA Administrators and Agent Configurers:** Responsible for setting up and maintaining integrations within ELITEA.
-*   **Support Staff:** Assisting users with the TestIO integration and troubleshooting related issues.
-
-Users are expected to have an intermediate level of technical understanding, including familiarity with ELITEA agent configuration and knowledge TestIO platform and its terminology. Knowledge of the basic API concepts is beneficial.
-
-## Toolkit Account Setup and Configuration in TestIO
+## Account Setup and Configuration in TestIO
 
 ### Account Setup
 
@@ -55,7 +45,7 @@ For secure integration with ELITEA, it is essential to use a TestIO **Personal A
 
 5.  **Securely Copy the Token:** **Important:** Copy the generated Personal Access Token and store it securely. You will need this token to configure the TestIO Toolkit in ELITEA. Treat this token like a password – keep it confidential.
 
-## System Integration with ELITEA: TestIO Toolkit Configuration
+## TestIO Integration with ELITEA
 
 ### Integration Steps
 
@@ -68,11 +58,11 @@ Follow these steps to integrate the TestIO Toolkit into an ELITEA agent:
 3.  **Agent Configuration:** Configure the agent with a relevant **Agent Name**, **Description**, **Instructions**, and **Agent Type** suitable for your intended use case (e.g., an "OpenAI Agent" type for general-purpose interaction).
     *   **Crucial: Agent Instructions:** Within the agent's instructions, clearly define any required parameters that the agent will need, to use the TestIO tools, such as `productId` and `testCaseTestId`. Provide examples of how to obtain these IDs from TestIO.
 
-    ![TestIO-Create_agent](../../img/how-tos/testio/Agent_creation.png)
+    ![TestIO-Agent_creation](../../img/how-tos/testio/Agent_creation.png)
 
 4.  **Add a New Tool:** In the Agent configuration, locate the "Tools" section and click the **"+" (Add Tool)** icon.
 
-    ![TestIO-Create_agent](../../img/how-tos/testio/tool_selection.png)
+    ![TestIO-tool_selection](../../img/how-tos/testio/tool_selection.png)
 
 5.  **Select TestIO Toolkit:** From the dropdown list of available toolkits, choose **"TestIO"**.
 
@@ -89,13 +79,12 @@ Follow these steps to integrate the TestIO Toolkit into an ELITEA agent:
     *   **Test Cases Statuses for Test**
     *   **List Bugs for Test with Filter**
 
-    ![TestIO-Create_agent](../../img/how-tos/testio/tool_configs.png)
+    ![TestIO-tool_configs](../../img/how-tos/testio/tool_configs.png)
 
 8.  **Save Configuration:** Click the **"Save"** button to save the TestIO Toolkit configuration for your agent.
 
-## Tools of the TestIO Toolkit
 
-### Available Tools
+### Tools Overview
 
 The TestIO Toolkit provides the following tools (actions) for interacting with the TestIO API:
 
@@ -116,8 +105,6 @@ The TestIO Toolkit provides the following tools (actions) for interacting with t
     *   **Use Case Example:** To get a list of bugs reported in a specific test run, or to filter bugs based on a filter parameter.
 
 ## Use Cases
-
-### Tool Use Cases
 
 Here are practical use cases demonstrating how to leverage the TestIO Toolkit within ELITEA agents to enhance QA workflows:
 
@@ -149,9 +136,9 @@ Here are practical use cases demonstrating how to leverage the TestIO Toolkit wi
         4.  "Compile a summary report including test case counts, pass/fail metrics, and a list of reported bugs."
     *   **Benefit:** Creates automated test summary reports, saving time and effort in manual report compilation and providing stakeholders with timely insights into test results and quality metrics.
 
-## Integration Helpdesk and Troubleshooting
+# Troubleshooting and Support
 
-### Troubleshooting Common Issues
+## Troubleshooting
 
 1.  **Integration Failure - Connection or Authentication Errors:**
     *   **Problem:** ELITEA agent fails to connect to TestIO or encounters authentication errors when using TestIO tools.
@@ -175,7 +162,7 @@ Here are practical use cases demonstrating how to leverage the TestIO Toolkit wi
     *   **Problem:** If you are using a specific agent type in ELITEA (beyond a general "OpenAI Agent"), and the TestIO Toolkit is not functioning as expected, consider if there are any agent-type-specific limitations or compatibility issues.
     *   **Troubleshooting Step:** As a general troubleshooting step, especially when initially setting up the integration, **try using "OpenAI Agent" type**. This can help rule out issues related to more specialized agent types. If it works with a basic agent, then investigate if there are specific configurations needed for other agent types.
 
-### Frequently Asked Questions (FAQs)
+## FAQs
 
 **Q: Can I use my regular TestIO username and password for the ELITEA integration?**
 
@@ -212,3 +199,7 @@ To help us assist you efficiently, please provide the following details in your 
     *   Error Messages (full error text from chat window details)
 *   **Your Query/Prompt:** Exact text used to trigger the issue.
 *   **TestIO Product ID and Test Run ID (if relevant to the issue):**
+
+**Before Contacting Support:**
+
+We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
