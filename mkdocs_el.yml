@@ -50,7 +50,8 @@ nav:
           - Rally Integration: how-tos/agents-toolkits/rally_toolkit.md 
           - XRAY Cloud Integration: how-tos/agents-toolkits/xray_toolkit.md
           - TestRail Integration: how-tos/agents-toolkits/testrail_toolkit.md     
-          - SQL Integration: how-tos/agents-toolkits/sql_toolkit.md               
+          - SQL Integration: how-tos/agents-toolkits/sql_toolkit.md  
+          - Openapi Integration: how-tos/agents-toolkits/openapi_toolkit.md             
       - General How-Tos:
           - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
           - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md
