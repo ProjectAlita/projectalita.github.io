@@ -37,24 +37,24 @@ nav:
   - How TOs:
       - Agents & Toolkits:
           - Pipeline Agent Framework: how-tos/agents-toolkits/pipeline-agent-framework.md
+          - ADO Repos Integration: how-tos/agents-toolkits/ado_repos_toolkit.md
+          - ADO Wiki, Boards, and Test Plans Integration: how-tos/agents-toolkits/ado_wiki_plan_board_toolkit.md
+          - Artifact Toolkit: how-tos/agents-toolkits/artifact_toolkit.md 
           - BitBucket Integration: how-tos/agents-toolkits/bitbucket_toolkit.md
+          - Confluence Integration: how-tos/agents-toolkits/confluence_toolkit.md
           - GitHub Integration: how-tos/agents-toolkits/github_toolkit.md
           - GitLab Integration: how-tos/agents-toolkits/gitlab_toolkit.md
           - GitLab Org Integration: how-tos/agents-toolkits/gitlab_org_toolkit.md
-          - ADO Repos Integration: how-tos/agents-toolkits/ado_repos_toolkit.md
-          - ADO Wiki, Boards, and Test Plans Integration: how-tos/agents-toolkits/ado_wiki_plan_board_toolkit.md
-          - SharePoint Integration: how-tos/agents-toolkits/sharepoint_toolkit.md
-          - Confluence Integration: how-tos/agents-toolkits/confluence_toolkit.md
           - Jira Integration: how-tos/agents-toolkits/jira_toolkit.md
+          - OpenAPI Integration: how-tos/agents-toolkits/openapi_toolkit.md  
           - qTest Integration: how-tos/agents-toolkits/qtest_toolkit.md
-          - Zephyr Scale Integration: how-tos/agents-toolkits/zephyr_scale_toolkit.md
-          - Rally Integration: how-tos/agents-toolkits/rally_toolkit.md 
+          - Rally Integration: how-tos/agents-toolkits/rally_toolkit.md
+          - SharePoint Integration: how-tos/agents-toolkits/sharepoint_toolkit.md 
           - XRAY Cloud Integration: how-tos/agents-toolkits/xray_toolkit.md
-          - TestRail Integration: how-tos/agents-toolkits/testrail_toolkit.md     
-          - OpenAPI Integration: how-tos/agents-toolkits/openapi_toolkit.md             
-          - SQL Integration: how-tos/agents-toolkits/sql_toolkit.md 
-          - TestIO Integration: how-tos/agents-toolkits/testio_toolkit.md 
-          - Artifact toolkit usage: how-tos/agents-toolkits/artifact_toolkit.md 
+          - SQL Integration: how-tos/agents-toolkits/sql_toolkit.md
+          - TestIO Integration: how-tos/agents-toolkits/testIO_toolkit.md 
+          - TestRail Integration: how-tos/agents-toolkits/testrail_toolkit.md
+          - Zephyr Scale Integration: how-tos/agents-toolkits/zephyr_scale_toolkit.md
       - General How-Tos:
           - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
           - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md

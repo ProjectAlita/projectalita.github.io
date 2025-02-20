@@ -6,11 +6,9 @@
 
 This guide is your comprehensive resource for integrating and effectively using the **TestIO toolkit** within ELITEA. It provides a detailed, step-by-step walkthrough, from configuration in TestIO platform to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated test result analysis, streamlined QA workflows, and enhanced insights into your testing process, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your TestIO-driven quality assurance, enhance test visibility, and improve QA team productivity within your software development lifecycle.
 
-### Brief Overview
+### Brief Overview of TestIO
 
-*   **ELITEA:** ELITEA is an AI-powered task management and workflow automation platform designed to enhance team productivity. Key features include intelligent task analysis, real-time updates, and comprehensive reporting.
-
-*   **TestIO:** TestIO is a leading crowdtesting platform that connects businesses with a global community of testers. Clients submit their software products and request test runs for specific features or applications. During test runs, testers report bugs and provide test results directly on the TestIO platform. Analyzing the large volume of bug reports, identifying duplicates, and standardizing varied report styles can be time-consuming.
+TestIO is a leading crowdtesting platform that connects businesses with a global community of testers. Clients submit their software products and request test runs for specific features or applications. During test runs, testers report bugs and provide test results directly on the TestIO platform. Analyzing the large volume of bug reports, identifying duplicates, and standardizing varied report styles can be time-consuming.
 
 ### Value of Integration
 
@@ -186,7 +184,7 @@ Here are practical use cases demonstrating how to leverage the TestIO Toolkit wi
 
 If you encounter persistent issues, have questions not covered in this guide, or require further assistance with the TestIO Toolkit or ELITEA Agents, please contact the ELITEA Support Team:
 
-*   **Email:** SupportAlita@epam.com
+*   **Email:**  **[SupportAlita@epam.com](mailto:SupportAlita@epam.com)**
 
 To help us assist you efficiently, please provide the following details in your support request:
 

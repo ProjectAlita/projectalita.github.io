@@ -1,16 +1,10 @@
 # ELITEA Agent Toolkit: Artifact Toolkit Guide
 
-
+## Introduction
 
 ## Purpose and Overview
 
-### Key Terms:
-
 This guide is designed to assist users in setting up and utilizing the Artifact Toolkit within the ELITEA application. It provides detailed instructions on configuring the toolkit and integrating it into ELITEA agents. This integration empowers agents to leverage artifacts for temporary data storage, context management, and inter-agent data sharing, enhancing the efficiency of data handling within AI-driven workflows.
-
-*   **Artifact:** In the context of the Artifact Toolkit, an artifact refers to a text-based file stored within a project-specific bucket. These are used for temporary data storage and context management during agent operations.
-*   **Bucket (Folder):** A project-specific storage container within the Artifact system where artifacts (files) are organized. Buckets act like folders to group related files.
-*   **Retention Period:** The duration for which artifacts are automatically stored before being deleted. The default retention period is 30 days, but it can be modified.
 
 ## Brief Overview of the Artifact Toolkit
 
@@ -21,6 +15,12 @@ The Artifact Toolkit within ELITEA provides a simple yet powerful data storage m
 *   **Data Sharing Between Agents:** Enabling different agents within the same project to share data by accessing and modifying files within a common bucket.
 
 **Important Note:** Artifact storage is designed for *temporary* data and operational context. It is *not* intended for long-term data archival or as a primary database. Files are subject to retention policies and potential manual deletion.
+
+### Key Terms
+
+*   **Artifact:** In the context of the Artifact Toolkit, an artifact refers to a text-based file stored within a project-specific bucket. These are used for temporary data storage and context management during agent operations.
+*   **Bucket (Folder):** A project-specific storage container within the Artifact system where artifacts (files) are organized. Buckets act like folders to group related files.
+*   **Retention Period:** The duration for which artifacts are automatically stored before being deleted. The default retention period is 30 days, but it can be modified.
 
 
 ## Setup and Configuration
@@ -82,14 +82,15 @@ To configure the Artifact Toolkit for use with an ELITEA agent, follow these ste
 
 7.  **Save Configuration:** Click the **"Save"** button to save the Artifact Toolkit configuration for your agent.
 
-## File Types Supported
+### File Types Supported
 
 The Artifact Toolkit is designed to work with **plain text files**. It supports various text-based file formats, including:
 
-*   `.txt` (Plain Text)
-*   `.csv` (Comma Separated Values)
-*   `.json` (JSON Data)
-*   `.yaml` or `.yml` (YAML Data)
+*   **`.txt`** (Plain Text)
+*   **`.md`** (Markdown)  
+*   **`.csv`** (Comma Separated Values)
+*   **`.json`** (JSON Data)
+*   **`.yaml`** or **`.yml`** (YAML Data)
 *   Other file extensions containing unformatted plain text.
 
 **Unsupported File Types:**
@@ -97,7 +98,7 @@ The Artifact Toolkit is designed to work with **plain text files**. It supports 
 The toolkit **does not support** binary files or formatted document types that contain complex structures and formatting beyond plain text. Examples of unsupported file types include:
 `.docx` `.pdf` `.xlsx`, Images like `.jpg`, `.png`, etc.
 
-## Bucket Accessibility and Security
+### Bucket Accessibility and Security
 
 *   **Project-Specific Buckets:** Buckets created using the Artifact Toolkit are specific to the ELITEA project in which they are created. Buckets and files within one project cannot be directly accessed from another separate ELITEA project.
 *   **Project Member Access using agents** Within a project, all project members who have access to agents using the Artifact Toolkit can potentially access the files within the buckets configured for those agents.
@@ -106,18 +107,18 @@ The toolkit **does not support** binary files or formatted document types that c
     *   **Recommendation:** For agents performing independent tasks, use unique bucket names to avoid unintended data interference. If agents are designed to collaborate and share data, using a shared bucket is intentional and acceptable.
 *   **Security Considerations:** Be aware that within a project, users with access to agent configurations can potentially access and manipulate data in Artifact buckets. Avoid storing highly sensitive or confidential information in Artifact storage without appropriate security measures and understanding the access controls within your ELITEA project environment.
 
-## Artifact Retention
+### Artifact Retention
 
 *   **Default Retention:** Files created in Artifact buckets have a default retention period of **30 days**. After 30 days, files are automatically deleted and cannot be recovered.
 *   **Retention Management:** You can view and potentially modify the retention period for artifacts within the "Artifacts" section of the ELITEA application.(More details on managing retention can be found in [ELITEA Artifacts page](../../platform-documentation/menus/artifacts.md#artifacts)).
 *   **Manual Deletion:** Files and entire buckets can also be manually deleted at any time from the [ELITEA Artifacts page](../../platform-documentation/menus/artifacts.md#artifacts).
 
- ![artifact-artifacts_pade](../../img/how-tos/artifact/artifacts_page.png)
+ ![artifact-artifacts_page](../../img/how-tos/artifact/artifacts_page.png)
 
  
-### Artifact Functionality Section
+## Artifact Functionality Section
 
-## Use Cases
+### Use Cases
 
 The Artifact Toolkit provides a versatile set of tools to enhance agent workflows within ELITEA. Below are key use cases, illustrating how each tool can be applied to streamline data handling and improve agent capabilities:
 
@@ -159,8 +160,6 @@ The Artifact Toolkit provides a versatile set of tools to enhance agent workflow
         *   **Tools Used:** `list_files`, `read_file`
         *   **Example Instruction:** "First, use 'list_files' to see available data files. Then, use 'read_file' to read the content of 'data_file_1.txt' from the 'input_data' bucket for processing."
         *   **Benefit:** Allows agents to readily integrate with and process existing text-based data, making them more versatile and adaptable to different data sources and workflows.
-
----
 
 ## Troubleshooting and Support
 
@@ -211,11 +210,6 @@ The Artifact Toolkit provides a versatile set of tools to enhance agent workflow
 **Q: How do I access and download files stored in Artifacts?**
 
 **A:** You can access and manage artifact files through the [ELITEA Artifacts page](../../platform-documentation/menus/artifacts.md#artifacts) within the ELITEA application. Refer to the "Artifact Functionality Section" of the main ELITEA documentation for detailed instructions on browsing buckets, viewing file lists, downloading files, and managing artifact retention.
-
----
-## Useful Links
-
-*    [**ELITEA Artifacts page:**](../../platform-documentation/menus/artifacts.md#artifacts) Find out more details how to manage and interact with buckets and  artifacts within the ELITEA.
 
 ## Support and Contact Information
 

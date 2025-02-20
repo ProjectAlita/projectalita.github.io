@@ -6,11 +6,9 @@
 
 This guide is your comprehensive resource for integrating and effectively utilizing the **OpenAPI toolkit** within ELITEA. It provides a detailed, step-by-step walkthrough, from obtaining your OpenAPI specification file to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of universal API integration, streamlined workflows, and enhanced data accessibility, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to interact with virtually any API, optimize data retrieval, and extend ELITEA's capabilities across diverse services.
 
-### Brief Overview of Products
+### Brief Overview of OpenAPI
 
-*   **ELITEA:** ELITEA is a cutting-edge web application designed to enhance productivity through the power of Generative AI. Key features include intelligent task management, real-time updates, and detailed reporting, all aimed at streamlining workflows.
-
-*   **OpenAPI Toolkit:** The **OpenAPI Toolkit** is a powerful toolkit of ELITEA, providing a universal interface for seamless integration with a vast range of APIs. By utilizing OpenAPI specifications, this toolkit allows ELITEA agents to understand and interact with diverse API endpoints, unlocking the potential to automate tasks and extend ELITEA's functionality across different platforms and services.
+The **OpenAPI Toolkit** is a powerful toolkit of ELITEA, providing a universal interface for seamless integration with a vast range of APIs. By utilizing OpenAPI specifications, this toolkit allows ELITEA agents to understand and interact with diverse API endpoints, unlocking the potential to automate tasks and extend ELITEA's functionality across different platforms and services.
 
 
 ## Toolkit Data Setup and Configuration
@@ -206,7 +204,7 @@ The use cases for the OpenAPI toolkit are virtually limitless, constrained only 
 
         ![openapi-description_issue.png](../../img/how-tos/openapi/description_issue.png)
 
-## FAQs
+### FAQs
 
 
 **Q: Can I use OpenAPI specifications in YAML or JSON format?**
@@ -221,7 +219,7 @@ The use cases for the OpenAPI toolkit are virtually limitless, constrained only 
 
 **A:** The "action names" (tool names) presented in the OpenAPI Toolkit are automatically derived from the `operationId` values defined within your OpenAPI specification file. When you successfully upload and parse your OpenAPI schema into the toolkit, the "Actions table" in the toolkit configuration interface will populate, listing these action names. Use these names directly and precisely in your agent instructions to refer to specific API endpoints. If the `operationId` is not explicitly defined in the OpenAPI specification for a particular endpoint, the "Name" column in the Actions table might be empty or auto-generated based on the HTTP method and path.
 
-## Support Contact
+### Support Contact
 
 If you encounter persistent issues, have questions not covered in this guide, or require further assistance with the OpenAPI Toolkit or ELITEA Agents, please do not hesitate to contact the dedicated ELITEA Support Team.
 
@@ -243,11 +241,7 @@ To ensure efficient and effective support, please include the following details 
 
 We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
 
----
-
 ## Useful Links
-
-### External Resources
 
 To further enhance your understanding and skills in using the OpenAPI Toolkit with ELITEA, here are some helpful external resources:
 
