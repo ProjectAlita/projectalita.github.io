@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/artifact_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Artifact Toolkit - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/artifacts/">Artifacts</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Artifact Toolkit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../custom_toolkit/">Custom Toolkit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../openapi_toolkit/">OpenAPI Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sql_toolkit/">SQL Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testIO_toolkit/">TestIO Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../faqs/">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../ado_wiki_plan_board_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../bitbucket_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-agent-toolkit-artifact-toolkit-guide">ELITEA Agent Toolkit: Artifact Toolkit Guide</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+            <li class="second-level"><a href="#purpose-and-overview">Purpose and Overview</a></li>
+                
+            <li class="second-level"><a href="#brief-overview-of-the-artifact-toolkit">Brief Overview of the Artifact Toolkit</a></li>
+                
+                <li class="third-level"><a href="#key-terms">Key Terms</a></li>
+            <li class="second-level"><a href="#setup-and-configuration">Setup and Configuration</a></li>
+                
+                <li class="third-level"><a href="#integration-with-elitea">Integration with ELITEA</a></li>
+                <li class="third-level"><a href="#file-types-supported">File Types Supported</a></li>
+                <li class="third-level"><a href="#bucket-accessibility-and-security">Bucket Accessibility and Security</a></li>
+                <li class="third-level"><a href="#artifact-retention">Artifact Retention</a></li>
+            <li class="second-level"><a href="#artifact-functionality-section">Artifact Functionality Section</a></li>
+                
+                <li class="third-level"><a href="#use-cases">Use Cases</a></li>
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting">Troubleshooting</a></li>
+            <li class="second-level"><a href="#faqs">FAQs</a></li>
+                
+            <li class="second-level"><a href="#support-and-contact-information">Support and Contact Information</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-agent-toolkit-artifact-toolkit-guide">ELITEA Agent Toolkit: Artifact Toolkit Guide</h1>
+<h2 id="introduction">Introduction</h2>
+<h2 id="purpose-and-overview">Purpose and Overview</h2>
+<p>This guide is designed to assist users in setting up and utilizing the Artifact Toolkit within the ELITEA application. It provides detailed instructions on configuring the toolkit and integrating it into ELITEA agents. This integration empowers agents to leverage artifacts for temporary data storage, context management, and inter-agent data sharing, enhancing the efficiency of data handling within AI-driven workflows.</p>
+<h2 id="brief-overview-of-the-artifact-toolkit">Brief Overview of the Artifact Toolkit</h2>
+<p>The Artifact Toolkit within ELITEA provides a simple yet powerful data storage mechanism for AI agents. It allows agents to create, read, update, and delete text-based files within project-specific buckets. Think of buckets as folders where agents can store temporary data files. This toolkit is particularly useful for:</p>
+<ul>
+<li><strong>Temporary Data Storage:</strong> Storing intermediate results, generated content, or data retrieved during agent operations.</li>
+<li><strong>Context Management:</strong> Preserving context across multiple agent actions or workflow steps by storing and retrieving relevant information from artifacts.</li>
+<li><strong>Data Sharing Between Agents:</strong> Enabling different agents within the same project to share data by accessing and modifying files within a common bucket.</li>
+</ul>
+<p><strong>Important Note:</strong> Artifact storage is designed for <em>temporary</em> data and operational context. It is <em>not</em> intended for long-term data archival or as a primary database. Files are subject to retention policies and potential manual deletion.</p>
+<h3 id="key-terms">Key Terms</h3>
+<ul>
+<li><strong>Artifact:</strong> In the context of the Artifact Toolkit, an artifact refers to a text-based file stored within a project-specific bucket. These are used for temporary data storage and context management during agent operations.</li>
+<li><strong>Bucket (Folder):</strong> A project-specific storage container within the Artifact system where artifacts (files) are organized. Buckets act like folders to group related files.</li>
+<li><strong>Retention Period:</strong> The duration for which artifacts are automatically stored before being deleted. The default retention period is 30 days, but it can be modified.</li>
+</ul>
+<h2 id="setup-and-configuration">Setup and Configuration</h2>
+<p>To configure the Artifact Toolkit for use with an ELITEA agent, follow these steps:</p>
+<h3 id="integration-with-elitea">Integration with ELITEA</h3>
+<ol>
+<li>
+<p><strong>Navigate to ELITEA Agents:</strong> Access the Agent configuration section within your ELITEA instance.</p>
+</li>
+<li>
+<p><strong>Configure a New Agent (or Edit Existing):</strong></p>
+<ul>
+<li>Create a new agent or modify an existing one.</li>
+<li>Define the <strong>Agent Name</strong>, <strong>Description</strong>, and <strong>Instructions</strong> that guide the agent's behavior when using the Artifact Toolkit.</li>
+<li>Select the appropriate <strong>Agent Type</strong> for your workflow ( e.g. OpenAI ) .</li>
+</ul>
+<p><img alt="artifact-Create_agent" src="../../../img/how-tos/artifact/create_agent.png" /></p>
+</li>
+<li>
+<p><strong>Add Artifact Tool:</strong> Within the Agent configuration, locate the "Tools" section and click the <strong>"+" (Add Tool)</strong> icon.</p>
+</li>
+<li>
+<p><strong>Select Artifact Toolkit:</strong> From the dropdown list of available toolkits, choose <strong>"Artifact"</strong>.</p>
+</li>
+<li>
+<p><strong>Artifact Tool Configuration:</strong> The "New artifact tool configuration" section will appear. Configure the following:</p>
+<ul>
+<li><strong>Name:</strong>  Enter a descriptive name for your Artifact Toolkit instance (e.g., "My Temporary Storage", "Context Artifacts"). This name is for your internal reference within the agent configuration.</li>
+<li><strong>Description:</strong> Provide a brief description outlining the intended purpose of this specific Artifact Toolkit instance. For example, "Used for storing intermediate test case generation results."</li>
+<li><strong>Folder (Bucket):</strong>  Specify the name of the bucket (folder) you want to use.<ul>
+<li><strong>Creating a New Bucket:</strong> If you enter a bucket name that does not already exist within the project, a new bucket with that name will be automatically created when the tool is first used by the agent. The bucket will initially be empty.</li>
+<li><strong>Using an Existing Bucket:</strong> If you enter the name of an existing bucket, the toolkit will connect to and use that bucket.</li>
+<li><strong>Default Bucket:</strong> If you leave this field blank or enter "test", it will use a bucket named "test". However, for better organization and to avoid potential conflicts, it is highly recommended to use descriptive and unique bucket names.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="artifact-Create_toolkit" src="../../../img/how-tos/artifact/create_toolkit.png" /></p>
+</li>
+<li>
+<p><strong>Select Tools:</strong> Choose the specific tools you want to enable within this Artifact Toolkit instance. You can select all tools or only the ones your agent will need:</p>
+<p>The Artifact Toolkit provides the following tools (actions) that your agent can use:</p>
+<ul>
+<li>
+<p><strong>List Files:</strong>  </p>
+<ul>
+<li><strong>Functionality:</strong> Retrieves a list of all files currently stored within the specified bucket (folder).</li>
+<li><strong>Purpose:</strong> To check which files are available in the bucket before reading or processing them.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create File:</strong> </p>
+<ul>
+<li><strong>Functionality:</strong> Creates a new text file within the specified bucket.</li>
+<li><strong>Parameters:</strong> The desired name for the new file (e.g., <code>test_cases.txt</code>) and the initial text content to be written into the file.</li>
+<li><strong>Purpose:</strong> To store initial data, generated content, or start a new log file.</li>
+</ul>
+</li>
+<li>
+<p><strong>Read File:</strong> </p>
+<ul>
+<li><strong>Functionality:</strong> Reads and retrieves the text content of a specified file from the bucket.</li>
+<li><strong>Parameters:</strong> The name of the file to read (e.g., <code>report_data.json</code>).</li>
+<li><strong>Purpose:</strong> To access and process data previously stored in an artifact file.</li>
+</ul>
+</li>
+<li>
+<p><strong>Delete File:</strong> </p>
+<ul>
+<li><strong>Functionality:</strong> Permanently deletes a specified file from the bucket.</li>
+<li><strong>Parameters:</strong> The name of the file to delete (e.g., <code>temp_data.csv</code>).</li>
+<li><strong>Purpose:</strong> To remove temporary files that are no longer needed, or to clean up artifact storage. <strong>Caution:</strong> Deletion is permanent and files cannot be recovered.</li>
+</ul>
+</li>
+<li>
+<p><strong>Append Data:</strong> </p>
+<ul>
+<li><strong>Functionality:</strong> Adds (appends) text data to the end of an existing file in the bucket. If the file does not exist, it might create the file (behavior depends on specific ELITEA implementation, check documentation).</li>
+<li><strong>Parameters:</strong> The name of the file to append data to (e.g., <code>log_entries.txt</code>) and the text content to append to the file.</li>
+<li><strong>Purpose:</strong> To incrementally build up a file, such as adding log entries, accumulating test cases, or expanding a dataset over time.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Save Configuration:</strong> Click the <strong>"Save"</strong> button to save the Artifact Toolkit configuration for your agent.</p>
+</li>
+</ol>
+<h3 id="file-types-supported">File Types Supported</h3>
+<p>The Artifact Toolkit is designed to work with <strong>plain text files</strong>. It supports various text-based file formats, including:</p>
+<ul>
+<li><strong><code>.txt</code></strong> (Plain Text)</li>
+<li><strong><code>.md</code></strong> (Markdown)  </li>
+<li><strong><code>.csv</code></strong> (Comma Separated Values)</li>
+<li><strong><code>.json</code></strong> (JSON Data)</li>
+<li><strong><code>.yaml</code></strong> or <strong><code>.yml</code></strong> (YAML Data)</li>
+<li>Other file extensions containing unformatted plain text.</li>
+</ul>
+<p><strong>Unsupported File Types:</strong></p>
+<p>The toolkit <strong>does not support</strong> binary files or formatted document types that contain complex structures and formatting beyond plain text. Examples of unsupported file types include:
+<code>.docx</code> <code>.pdf</code> <code>.xlsx</code>, Images like <code>.jpg</code>, <code>.png</code>, etc.</p>
+<h3 id="bucket-accessibility-and-security">Bucket Accessibility and Security</h3>
+<ul>
+<li><strong>Project-Specific Buckets:</strong> Buckets created using the Artifact Toolkit are specific to the ELITEA project in which they are created. Buckets and files within one project cannot be directly accessed from another separate ELITEA project.</li>
+<li><strong>Project Member Access using agents</strong> Within a project, all project members who have access to agents using the Artifact Toolkit can potentially access the files within the buckets configured for those agents.</li>
+<li><strong>Project Member Access:</strong> Within a project, all project members who have access to artifacts page can potentially access the files within the buckets download and delete them.</li>
+<li><strong>Shared Bucket Usage (Caution):</strong> If multiple agents or users within a project configure Artifact Toolkits to use the <em>same</em> bucket name, they will be sharing the same storage space. While the toolkit aims to prevent accidental data corruption, it's crucial to be mindful of potential conflicts.<ul>
+<li><strong>Recommendation:</strong> For agents performing independent tasks, use unique bucket names to avoid unintended data interference. If agents are designed to collaborate and share data, using a shared bucket is intentional and acceptable.</li>
+</ul>
+</li>
+<li><strong>Security Considerations:</strong> Be aware that within a project, users with access to agent configurations can potentially access and manipulate data in Artifact buckets. Avoid storing highly sensitive or confidential information in Artifact storage without appropriate security measures and understanding the access controls within your ELITEA project environment.</li>
+</ul>
+<h3 id="artifact-retention">Artifact Retention</h3>
+<ul>
+<li><strong>Default Retention:</strong> Files created in Artifact buckets have a default retention period of <strong>30 days</strong>. After 30 days, files are automatically deleted and cannot be recovered.</li>
+<li><strong>Retention Management:</strong> You can view and potentially modify the retention period for artifacts within the "Artifacts" section of the ELITEA application.(More details on managing retention can be found in <a href="../../../platform-documentation/menus/artifacts/#artifacts">ELITEA Artifacts page</a>).</li>
+<li><strong>Manual Deletion:</strong> Files and entire buckets can also be manually deleted at any time from the <a href="../../../platform-documentation/menus/artifacts/#artifacts">ELITEA Artifacts page</a>.</li>
+</ul>
+<p><img alt="artifact-artifacts_page" src="../../img/how-tos/artifact/artifacts_page.png" /></p>
+<h2 id="artifact-functionality-section">Artifact Functionality Section</h2>
+<h3 id="use-cases">Use Cases</h3>
+<p>The Artifact Toolkit provides a versatile set of tools to enhance agent workflows within ELITEA. Below are key use cases, illustrating how each tool can be applied to streamline data handling and improve agent capabilities:</p>
+<ul>
+<li>
+<p><strong>Automated Retrieval of High-Priority Issues:</strong></p>
+<ul>
+<li>
+<p><strong>1. Storing Large Generated Outputs:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> An agent generates a large volume of text data, such as a detailed report, a long list of items, or extensive test cases, that exceeds the LLM's context window or is too large to be efficiently managed in memory.</li>
+<li><strong>Tools Used:</strong> <code>create_file</code>, <code>append_data</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'create_file' tool to create a file named 'detailed_report.txt' to store the generated report data. Append each section of the report to this file using the 'append_data' tool as it is generated."</li>
+<li><strong>Benefit:</strong> Enables agents to handle and persist large outputs that would otherwise be impractical to manage directly within the agent's memory or context, allowing for later retrieval, download, or further processing.</li>
+</ul>
+</li>
+<li>
+<p><strong>2. Managing Workflow Context and State:</strong></p>
+<ul>
+<li><strong>Scenario:</strong>  An agent needs to maintain state or context across multiple interactions or steps within a workflow execution. For example, tracking progress in a multi-stage process, remembering user preferences, or managing temporary variables.</li>
+<li><strong>Tools Used:</strong> <code>create_file</code>, <code>read_file</code>, <code>append_data</code>, <code>delete_file</code></li>
+<li><strong>Example Instruction:</strong> "At the beginning of the workflow, use 'create_file' to create 'workflow_state.json' to store the initial workflow state as JSON. In subsequent steps, use 'read_file' to retrieve and update this state using 'append_data', and 'delete_file' at the end of workflow if state is no longer needed."</li>
+<li><strong>Benefit:</strong> Provides a persistent yet temporary storage mechanism for agents to maintain and access workflow context, enabling more complex, stateful interactions and workflows.</li>
+</ul>
+</li>
+<li>
+<p><strong>3. Facilitating Data Sharing Between Agents:</strong></p>
+<ul>
+<li><strong>Scenario:</strong>  A workflow involves multiple agents that need to collaborate and exchange data. For example, one agent might generate data, and another agent needs to analyze or process it.</li>
+<li><strong>Tools Used:</strong> <code>create_file</code>, <code>append_data</code> (by Agent 1), <code>read_file</code> (by Agent 2)</li>
+<li><strong>Example Instruction (Agent 1 - Data Creator):</strong> "Use 'create_file' to save the processed data into 'shared_data.json' for the analysis agent to access."</li>
+<li><strong>Example Instruction (Agent 2 - Data Analyzer):</strong> "Use 'read_file' to retrieve the data from 'shared_data.json' to perform analysis on it."</li>
+<li><strong>Benefit:</strong> Enables seamless data exchange and collaboration between different agents within a project, allowing for the creation of more sophisticated multi-agent workflows.</li>
+</ul>
+</li>
+<li>
+<p><strong>4. Implementing Extended Clipboard Functionality:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Agents need to manage and access multiple text snippets or pieces of information beyond the limitations of a single system clipboard.</li>
+<li><strong>Tools Used:</strong> <code>create_file</code>, <code>append_data</code>, <code>read_file</code>, <code>list_files</code></li>
+<li><strong>Example Instruction:</strong> "When the user copies text, use 'create_file' with a filename like 'clipboard_item_1.txt' to save it. Use 'list_files' to show available clipboard items and 'read_file' to retrieve a specific item based on filename."</li>
+<li><strong>Benefit:</strong> Extends the agent's ability to handle and recall multiple pieces of textual information, improving flexibility in tasks involving text manipulation and data reuse.</li>
+</ul>
+</li>
+<li>
+<p><strong>5. Storing Temporary Logs and Audit Trails:</strong></p>
+<ul>
+<li><strong>Scenario:</strong>  Agents need to record execution logs, audit trails, or debugging information during their operation for monitoring, troubleshooting, or compliance purposes.</li>
+<li><strong>Tools Used:</strong> <code>create_file</code>, <code>append_data</code></li>
+<li><strong>Example Instruction:</strong> "Use 'create_file' to create a log file named 'agent_log.txt' at the start of the agent execution. Use 'append_data' to add timestamped log entries to this file throughout the agent's operation."</li>
+<li><strong>Benefit:</strong> Provides a simple way to automatically generate and persist execution logs, improving traceability, debugging capabilities, and auditability of agent actions.</li>
+</ul>
+</li>
+<li>
+<p><strong>6. Utilizing Pre-existing Data Files:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Agents need to process data that is already available as text files, perhaps uploaded by a user or generated by an external system.</li>
+<li><strong>Tools Used:</strong> <code>list_files</code>, <code>read_file</code></li>
+<li><strong>Example Instruction:</strong> "First, use 'list_files' to see available data files. Then, use 'read_file' to read the content of 'data_file_1.txt' from the 'input_data' bucket for processing."</li>
+<li><strong>Benefit:</strong> Allows agents to readily integrate with and process existing text-based data, making them more versatile and adaptable to different data sources and workflows.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ol>
+<li>
+<p><strong>File Not Found Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent execution fails with "File Not Found" errors when attempting to use <code>read_file</code>, <code>delete_file</code>, or <code>append_data</code> tools.</li>
+<li><strong>Troubleshooting Steps:</strong><ul>
+<li><strong>Verify Filename:</strong> Double-check the filename specified in the agent instruction. Ensure it exactly matches the filename of the artifact in the bucket.</li>
+<li><strong>Check Bucket Name:</strong> Confirm that the correct bucket name is configured for the Artifact Toolkit.</li>
+<li><strong>List Files:</strong> Use the <code>list_files</code> tool to list the contents of the bucket and verify if the file actually exists and if the filename is spelled correctly.</li>
+<li><strong>File Deletion or Retention:</strong> Ensure the file has not been accidentally deleted by another agent/user or automatically deleted due to exceeding the retention period. Check the <a href="../../../platform-documentation/menus/artifacts/#artifacts">ELITEA Artifacts page</a> fore more details about files and retention settings.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Bucket Not Found or Access Issues:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Bucket is empty.</li>
+<li><strong>Troubleshooting Steps:</strong><ul>
+<li><strong>Verify Bucket Name:</strong> Double-check the bucket name configured in the Artifact Toolkit settings. Ensure it is spelled correctly and matches the intended bucket name.</li>
+<li><strong>Project Scope:</strong> Remember that buckets are project-specific. Ensure you are trying to access a bucket within the correct ELITEA project. Buckets from other projects are not directly accessible.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Not Appending or Creating as Expected:</strong></p>
+<ul>
+<li><strong>Problem:</strong>  <code>append_data</code> or <code>create_file</code> tools do not seem to be creating or modifying files correctly. Data is missing, incomplete, or not being saved.</li>
+<li><strong>Troubleshooting Steps:</strong><ul>
+<li><strong>Check Tool Output/Errors:</strong> Carefully examine the agent's execution logs or chat output for any error messages or warnings related to the <code>append_data</code> or <code>create_file</code> tool calls. Errors can provide clues about why the operation failed.</li>
+<li><strong>File Type Limitations:</strong> Confirm that you are working with supported text file types. The Artifact Toolkit is designed for plain text files. Attempting to write binary data or complex formatted files might lead to unexpected results.</li>
+<li><strong>Instructions provided to LLM:</strong> Verify that the instructions given to the language model are clear and capable of effectively carrying out the intended operations. Ensure that commands are precise and aligned with tool capabilities.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="faqs">FAQs</h2>
+<p><strong>Q: Can I work with binary files e.g. excel or images in Artifacts?</strong></p>
+<p><strong>A:</strong> No, the Artifact Toolkit is designed for plain text files only. It does not support binary files, images, or formatted document types like <code>.docx</code> or <code>.pdf</code>. You can store text-based data in formats like <code>.txt</code>, <code>.csv</code>, <code>.json</code>, <code>.yaml</code>, etc.</p>
+<p><strong>Q: What is the maximum file size for artifacts?</strong></p>
+<p><strong>A:</strong> While there isn't a strict file size limit documented for individual artifacts, there is a project-wide storage limit of <strong>9 GB</strong> for all artifacts within a project. It is best practice to keep individual artifact files reasonably sized for optimal performance. Extremely large files might impact agent performance and processing efficiency.</p>
+<p><strong>Q: How long are files stored in Artifacts?</strong></p>
+<p><strong>A:</strong> By default, files stored in Artifact buckets have a retention period of <strong>30 days</strong>. After 30 days, they are automatically deleted. You can potentially modify the retention period from the <a href="../../../platform-documentation/menus/artifacts/#artifacts">ELITEA Artifacts page</a>.</p>
+<p><strong>Q: Can I recover deleted files from Artifacts?</strong></p>
+<p><strong>A:</strong> No, files deleted from Artifact buckets (either manually or due to retention) are permanently deleted and cannot be recovered. It is important to download and back up any important data stored in artifacts if you need to retain it beyond the retention period. More information how to download artifacs can be found in <a href="../../../platform-documentation/menus/artifacts/#artifacts">ELITEA Artifacts page</a></p>
+<p><strong>Q: How do I access and download files stored in Artifacts?</strong></p>
+<p><strong>A:</strong> You can access and manage artifact files through the <a href="../../../platform-documentation/menus/artifacts/#artifacts">ELITEA Artifacts page</a> within the ELITEA application. Refer to the "Artifact Functionality Section" of the main ELITEA documentation for detailed instructions on browsing buckets, viewing file lists, downloading files, and managing artifact retention.</p>
+<h2 id="support-and-contact-information">Support and Contact Information</h2>
+<p>If you encounter any persistent issues, have questions not covered in this guide, or require further assistance with the Artifact Toolkit or ELITEA Agents, please contact the ELITEA Support Team:</p>
+<ul>
+<li><strong>Email:</strong> SupportAlita@epam.com</li>
+</ul>
+<p>Please provide the following details in your support request to help us assist you efficiently:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> (e.g., "Nexus," "Alita Lab," "EYE")</li>
+<li><strong>Project Details:</strong> Project Name, Private or Team project.</li>
+<li><strong>Detailed Issue Description:</strong> Clear explanation of the problem, steps to reproduce, expected vs. actual behavior.</li>
+<li><strong>Relevant Configuration Information:</strong><ul>
+<li>Agent Instructions (screenshot or text)</li>
+<li>Artifact Toolkit Configuration (screenshots)</li>
+<li>Error Messages (full error text from chat window details)</li>
+</ul>
+</li>
+<li><strong>Your Query/Prompt:</strong> Exact text used to trigger the issue.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

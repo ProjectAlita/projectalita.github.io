@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/sql_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>SQL Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/artifacts/">Artifacts</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../artifact_toolkit/">Artifact Toolkit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../custom_toolkit/">Custom Toolkit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../openapi_toolkit/">OpenAPI Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">SQL Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testIO_toolkit/">TestIO Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../faqs/">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../xray_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../testIO_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-sql-integration">ELITEA Toolkit Guide: SQL Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-this-guide">Purpose of this Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-sql">Brief Overview of SQL</a></li>
+            <li class="second-level"><a href="#sql-database-prerequisites-and-configuration">SQL Database Prerequisites and Configuration</a></li>
+                
+                <li class="third-level"><a href="#preconditions">Preconditions</a></li>
+                <li class="third-level"><a href="#database-connection">Database Connection</a></li>
+            <li class="second-level"><a href="#sql-integration-with-elitea">SQL Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#overview-of-sql-toolkit">Overview of SQL Toolkit</a></li>
+                <li class="third-level"><a href="#agent-creationconfiguration">Agent Creation/Configuration</a></li>
+                <li class="third-level"><a href="#toolkit-configuration">Toolkit Configuration</a></li>
+                <li class="third-level"><a href="#tool-overview">Tool Overview</a></li>
+            <li class="second-level"><a href="#instructions-and-prompts-for-using-the-toolkit">Instructions and Prompts for Using the Toolkit</a></li>
+                
+                <li class="third-level"><a href="#instruction-creation-for-openai-agents">Instruction Creation for OpenAI Agents</a></li>
+                <li class="third-level"><a href="#conversation-starters">Conversation Starters</a></li>
+            <li class="second-level"><a href="#use-cases">Use Cases</a></li>
+                
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting">Troubleshooting</a></li>
+                <li class="third-level"><a href="#faq">FAQ</a></li>
+                <li class="third-level"><a href="#support-contact">Support Contact</a></li>
+            <li class="second-level"><a href="#useful-links">Useful Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-sql-integration">ELITEA Toolkit Guide: SQL Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-this-guide">Purpose of this Guide</h3>
+<p>This guide is your definitive resource for integrating and utilizing the <strong>SQL toolkit</strong> within ELITEA. It provides a step-by-step walkthrough, from understanding SQL database prerequisites to configuring the toolkit in ELITEA and effectively using it within your Agents. By following this guide, you will unlock the power of automated data interaction, streamlined database workflows, and enhanced data-driven decision making, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your workflows that rely on structured data stored in SQL databases, using the combined strengths of ELITEA and SQL.</p>
+<h3 id="brief-overview-of-sql">Brief Overview of SQL</h3>
+<p>SQL (Structured Query Language) is the standard language for interacting with relational database management systems (RDBMS). It's designed for managing and manipulating structured data held in databases. SQL provides a powerful and efficient way to:</p>
+<ul>
+<li><strong>Query Data:</strong> Retrieve specific information from databases based on defined criteria. SQL queries allow you to filter, sort, and join data from multiple tables to get the exact insights you need.</li>
+<li><strong>Manipulate Data:</strong> Insert, update, and delete data within databases. SQL enables you to modify database content to keep it accurate and up-to-date.</li>
+<li><strong>Define Data Structures:</strong> Create, modify, and delete database objects like tables, views, and indexes. SQL allows you to structure your data effectively for optimal storage and retrieval.</li>
+<li><strong>Control Data Access:</strong> Manage user permissions and access rights to ensure data security and integrity. SQL provides mechanisms to control who can access and modify specific parts of the database.</li>
+</ul>
+<p>Integrating SQL with ELITEA brings these robust data management capabilities directly into your AI-powered workflows. Your ELITEA Agents can then interact with your SQL databases to automate data-related tasks, enhance data processing, and improve data accessibility through intelligent automation.</p>
+<h2 id="sql-database-prerequisites-and-configuration">SQL Database Prerequisites and Configuration</h2>
+<h3 id="preconditions">Preconditions</h3>
+<p>Before integrating your SQL database with ELITEA, ensure the following prerequisites are met:</p>
+<ol>
+<li><strong>Running SQL Database Instance:</strong> You need an operational SQL database instance. This could be MySQL, PostgreSQL, SQL Server, or another supported SQL database. The database server must be running and accessible.</li>
+<li><strong>Database Access Credentials:</strong> You must have valid credentials (username and password) that ELITEA can use to connect to your database.  </li>
+<li><strong>Database Server Accessibility:</strong> ELITEA needs to be able to communicate with your SQL server.  Consider the following network accessibility requirements:<ul>
+<li><strong>Public Accessibility (for externally hosted ELITEA):</strong> If your ELITEA instance is hosted externally (e.g., in the cloud) and your SQL server is on a private network, your SQL server must be accessible from the public internet or through a secure tunnel (like a VPN) that ELITEA can connect to.  For locally hosted SQL servers, assigning a Public IP address might be necessary. <strong>Security Note:</strong> Exposing your database directly to the public internet is generally discouraged for security reasons. Consider using secure methods like VPNs or allowing access only from specific IP ranges.</li>
+<li><strong>Same Network Environment (for internally hosted ELITEA):</strong> If you are hosting ELITEA within the same network environment as your SQL server (e.g., behind a corporate firewall), ensure that there are no firewall rules blocking communication between the ELITEA instance and the SQL server on the designated port (e.g., 3306 for MySQL, 5432 for PostgreSQL).</li>
+</ul>
+</li>
+</ol>
+<h3 id="database-connection">Database Connection</h3>
+<p>This section describes how to connect to your database server using a database client application.</p>
+<ol>
+<li>
+<p><strong>Launch Your Database Client:</strong> Open either pgAdmin (for PostgreSQL), MySQL Workbench (for MySQL), or DBeaver (which supports multiple database types).</p>
+</li>
+<li>
+<p><strong>Initiate a New Connection:</strong></p>
+<ul>
+<li><strong>pgAdmin:</strong> Expand "Servers" in the object browser, right-click, and select "Create" -&gt; "Server".  A server creation dialog will appear.</li>
+<li><strong>MySQL Workbench:</strong> Navigate to "Database" -&gt; "Manage Connections" -&gt; "New".  This opens the connection management window.</li>
+<li><strong>DBeaver:</strong> Go to "Database" -&gt; "New Database Connection".  A wizard for selecting the database type will appear.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure the Connection Settings:</strong>  Carefully enter the following information.</p>
+<ul>
+<li><strong>Host/Server Address:</strong> <code>dbserver.company.com</code> (This may also be an IP address like <code>192.168.1.100</code> if you know the server's IP.) This is the network address where your database server is located.</li>
+<li><strong>Port:</strong> The port number your database server is listening on.  Use the correct port for your database type:<ul>
+<li>PostgreSQL: <code>5432</code></li>
+<li>MySQL: <code>3306</code></li>
+<li>SQL Server: <code>1433</code></li>
+</ul>
+</li>
+<li><strong>Database Name:</strong> <code>test_db</code> (The specific database you want to access.)</li>
+<li><strong>Username:</strong> <code>test_user</code> (The username you've been assigned to access the database.)</li>
+<li><strong>Password:</strong> <code>Test@123</code> (The password associated with the username.)</li>
+</ul>
+</li>
+<li>
+<p><strong>Test the Connection:</strong>  Click the "Test Connection" button (or its equivalent) within the connection configuration window.</p>
+<ul>
+<li><strong>Successful Test:</strong>  You should receive a confirmation message.  Proceed to step 5.</li>
+<li><strong>Unsuccessful Test:</strong>  If the test fails, carefully review the following:<ul>
+<li><strong>Typographical Errors:</strong> Double-check the host address, port, username, and password for any typos.</li>
+<li><strong>Server Availability:</strong>  Ensure the database server is running and accessible from your network.  (You may need to contact your system administrator.)</li>
+<li><strong>Firewall Rules:</strong>  Confirm that your firewall is not blocking connections to the database server on the specified port.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Establish the Connection:</strong>  If the connection test was successful, click "OK" (or "Save") and then "Connect" to establish the connection to the database.  You should now be able to browse the database schema and execute queries.
+<img alt="Database Connection" src="../../../img/how-tos/sql/Database_Connection.png" /></p>
+</li>
+</ol>
+<h2 id="sql-integration-with-elitea">SQL Integration with ELITEA</h2>
+<h3 id="overview-of-sql-toolkit">Overview of SQL Toolkit</h3>
+<p>The SQL integration within the ELITEA platform enhances data management by enabling seamless access to structured database information. This integration allows users to query, retrieve, and analyze SQL databases directly from ELITEA, ensuring that critical business data remains synchronized and readily available. By eliminating the need to switch between database management tools, teams can improve efficiency and maintain a single source of truth for key operational and analytical data.
+With this integration, users can pull real-time structured data from SQL databases into ELITEA, enhancing workflows with up-to-date records, analytical insights, and system-generated reports. The integration supports automated query execution, data visualization, ensuring that the latest database information is always accessible within the ELITEA environment. </p>
+<h3 id="agent-creationconfiguration">Agent Creation/Configuration</h3>
+<p>To integrate SQL, you'll need to configure it within an ELITEA Agent. You can either create a new Agent or modify an existing one.</p>
+<p><strong>Creating a New Agent</strong></p>
+<p>To create a new agent within the system:</p>
+<ol>
+<li>
+<p><strong>Click the "+ Agent" Button:</strong> Locate and click the <strong>+ Agent</strong> button, typically found in the top right corner of the application.  This will initiate the agent creation process.</p>
+</li>
+<li>
+<p><strong>Fill Out Basic Information (Name and Description):</strong></p>
+</li>
+<li><strong>Name:</strong> Enter a descriptive and easily identifiable name for the agent in the "Name" field.</li>
+<li>
+<p><strong>Description:</strong> Provide a brief description of the agent's purpose and functionality in the "Description" field.  This helps other users understand the agent's intended use.</p>
+</li>
+<li>
+<p><strong>Add Tags (Optional):</strong> The "Tags" input box allows you to categorize and organize agents.</p>
+</li>
+<li><strong>Add a New Tag:</strong> Type the desired tag name in the "Tags" input box.</li>
+<li>
+<p><strong>Select from Existing Tags:</strong> If there are pre-existing tags, you can select them from a dropdown or list of available tags presented in the "Tags" input box.  Using consistent tagging helps with searching and filtering agents.</p>
+</li>
+<li>
+<p><strong>Select the Agent Type:</strong>  Choose the appropriate agent type from the available options (e.g., OpenAI, ReAct, Pipeline).</p>
+</li>
+<li>
+<p><strong>Instructions:</strong>  Provide Instructions for selected Agent Type in the Instarction field.</p>
+</li>
+<li>
+<p><strong>Configure Conversation Starters and Welcome Message (Optional):</strong></p>
+</li>
+<li><strong>Conversation Starter:</strong>  Define phrases or questions that users can click on to initiate a conversation with the agent. This provides users with guidance and examples of how to interact with the agent.</li>
+<li><strong>Welcome Message:</strong> Create a welcome message that the agent displays when a user first interacts with it. This provides context and sets expectations for the interaction.  A good welcome message might introduce the agent's purpose and capabilities.
+   <img alt="Agent Creation" src="../../../img/how-tos/sql/Agent_Creation.png" /></li>
+</ol>
+<p><strong>Modifying an Existing Agent</strong></p>
+<p>To modify an existing agent within the system:</p>
+<ol>
+<li>
+<p><strong>Locate the Agent:</strong> Find the agent you want to modify in the agent list or using search.</p>
+</li>
+<li>
+<p><strong>Open for Editing:</strong> Click the agent's name to open its configuration page.</p>
+</li>
+<li>
+<p><strong>Modify Settings:</strong>  Change the Name, Description, Tags, Agent Type, Instructions, Conversation Starters, or Welcome Message as needed. </p>
+</li>
+<li>
+<p><strong>Save Changes:</strong> Click the "Save" button.</p>
+</li>
+</ol>
+<h3 id="toolkit-configuration">Toolkit Configuration</h3>
+<p>This section details how to configure the SQL toolkit within your ELITEA Agent.</p>
+<ol>
+<li><strong>Add Toolkit:</strong> In the "Tools" section, click the <strong>"+" icon</strong>.</li>
+<li><strong>Select SQL:</strong> Choose <strong>"SQL"</strong> from the dropdown list of available toolkits. This opens the "New SQL tool" configuration panel.</li>
+<li>
+<p><strong>Configure Toolkit Details:</strong> Fill in the following fields:</p>
+<ul>
+<li><strong>Name:</strong> Enter a <strong>Name</strong> for this SQL toolkit instance. Choose a descriptive name that helps you identify its purpose within your Agent's instructions (e.g., "DataQueryTool", "CustomerDatabase").</li>
+<li><strong>Description:</strong> Provide a <strong>Description</strong> for the toolkit, clarifying its purpose or the specific database it connects to (e.g., "Toolkit to query the main customer database").</li>
+<li><strong>Dialect:</strong> Select the <strong>SQL Dialect</strong> of your database from the dropdown menu. Choose either <strong>"MySQL"</strong> or <strong>"PostgreSQL"</strong> based on your database type.</li>
+<li><strong>Host:</strong> Enter the <strong>Hostname or IP Address</strong> of your SQL server. For example: <code>dbserver.example.com</code> or <code>192.168.1.100</code>.</li>
+<li><strong>Port:</strong> Specify the <strong>Port Number</strong> used to connect to your SQL server. The default ports are:<ul>
+<li><strong>PostgreSQL:</strong> <code>5432</code></li>
+<li><strong>MySQL:</strong> <code>3306</code></li>
+<li>If your database uses a non-default port, enter that port number here.</li>
+</ul>
+</li>
+<li><strong>Database name:</strong> Enter the <strong>Name of the Database</strong> you want to connect to. For example: <code>mydatabase</code>.</li>
+<li><strong>Username:</strong> Provide the <strong>Username</strong> for database authentication. This should be the username of the dedicated database user you configured for ELITEA.</li>
+<li><strong>Password:</strong> Choose the authentication method for the password:<ul>
+<li><strong>Secret (Recommended):</strong> Select <strong>"Secret"</strong> and choose a pre-configured secret from the dropdown list. You must first create and securely store your database password as a Secret in ELITEA's Secret section. Using Secrets is highly recommended for enhanced security.
+<img alt="Secrets" src="../../../img/how-tos/sql/Secrets.png" /></li>
+<li><strong>Password:</strong> Select <strong>"Password"</strong> and directly enter the <strong>Password</strong> associated with the provided username in the <strong>"Password"</strong> field. <strong>Caution:</strong> While convenient, directly entering the password is less secure than using Secrets.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Enable Tools:</strong> In the "Tools" section of the SQL toolkit configuration, <strong>select the checkboxes next to the SQL tools</strong> you want to enable for your Agent. <strong>Enable only the tools your Agent will actually use</strong> to adhere to the principle of least privilege and enhance security.</p>
+</li>
+<li><strong>Complete Configuration:</strong> Click the <strong>arrow icon</strong> (at the top right of the toolkit configuration) to save the SQL toolkit setup and return to the main Agent configuration.</li>
+<li>Click <strong>Save</strong> to apply configuration and changes to the Agent.
+<img alt="SQL Tool configuration" src="../../../img/how-tos/sql/SQL_tool_configuration.png" /></li>
+</ol>
+<p><strong>NOTE:</strong> <strong>Database Server Accessibility:</strong> Elitea must be able to communicate with your SQL server. Please ensure the following requirements are met:</p>
+<ul>
+<li><strong>Public Accessibility:</strong> If your SQL server is hosted locally, it <em>must</em> be assigned a Public IP address. This allows Elitea to access the database from outside your local network.</li>
+<li><strong>Environment Configuration:</strong> If your SQL server is in a closed environment (e.g., behind corporate firewalls or exclusively accessible via VPN), you <em>must</em> deploy the Elitea instance within the <em>same</em> environment. This ensures direct access to the database.</li>
+</ul>
+<h3 id="tool-overview">Tool Overview</h3>
+<p>The SQL toolkit provides the following tools for ELITEA SQL Agents:</p>
+<ul>
+<li><strong><code>list_tables_and_columns</code></strong> - Retrieves a list of tables and their columns from the connected database. This is useful for understanding the database schema and available data.</li>
+<li><strong><code>execute_sql</code></strong> - Executes a custom SQL query against the connected database. This tool allows for flexible data retrieval and manipulation based on your specific needs.</li>
+</ul>
+<h2 id="instructions-and-prompts-for-using-the-toolkit">Instructions and Prompts for Using the Toolkit</h2>
+<p>To instruct your ELITEA Agent to use the SQL toolkit, you need to provide clear instructions within the Agent's "Instructions" field. These instructions guide the Agent on <em>when</em> and <em>how</em> to use the available tools.</p>
+<h3 id="instruction-creation-for-openai-agents">Instruction Creation for OpenAI Agents</h3>
+<p>When creating instructions for the SQL toolkit for OpenAI-based Agents, focus on clear, action-oriented language. Break down tasks into simple steps and explicitly state the parameters required for each tool. OpenAI Agents respond best to instructions that are:</p>
+<ul>
+<li><strong>Direct and Imperative:</strong> Use action verbs and clear commands (e.g., "Use the 'list_tables_and_columns' tool...", "Execute the following SQL query...").</li>
+<li><strong>Parameter-Focused:</strong> Clearly list each parameter and how the Agent should determine its value.</li>
+<li><strong>Context-Aware:</strong> Provide enough context so the Agent understands the overall goal and when to use specific tools within a workflow.</li>
+</ul>
+<p>When instructing your Agent to use a SQL toolkit, use this pattern:</p>
+<pre><code class="language-markdown">1. Identify the goal: [State the objective, e.g., &quot;To list all tables in the database&quot;].
+2. Tool Selection: Use the &quot;[tool_name]&quot; tool.
+3. Parameter Specification: Provide the following parameters:
+    - Parameter Name 1: &lt;value or description of value&gt;
+    - Parameter Name 2: &lt;value or description of value&gt;
+    - ...
+4. Expected Outcome: [Optionally, describe what should happen after the tool is used].
+</code></pre>
+<p><strong>Example Agent Instructions for SQL Toolkit Tools (OpenAI Agent Friendly):</strong></p>
+<ul>
+<li><strong>Agent Instructions for Listing Tables and Columns:</strong></li>
+</ul>
+<pre><code class="language-markdown">1. Goal: To get a list of all tables and their columns in the database.
+2. Tool: Use the &quot;list_tables_and_columns&quot; tool.
+3. Parameters:
+    - Include Data Types: &quot;true&quot; (to include data types in the output)
+    - Output Format: &quot;table&quot; (to display output in tabular format)
+4. Outcome: The Agent will list all tables and their columns, including data types, in a table format.
+</code></pre>
+<ul>
+<li><strong>Agent Instructions for Executing a SQL Query:</strong></li>
+</ul>
+<pre><code class="language-markdown">1. Goal: To retrieve the names and emails of all users from the 'users' table.
+2. Tool: Use the &quot;execute_sql&quot; tool.
+3. Parameters:
+    - Query: &quot;SELECT name, email FROM users;&quot;
+    - Output Format: &quot;JSON&quot; (to get output in JSON format)
+    - Limit: &quot;100&quot; (to limit the output to the first 100 rows)
+4. Outcome: The Agent will execute the SQL query and return a JSON formatted list of user names and emails, limited to 100 entries.
+</code></pre>
+<h3 id="conversation-starters">Conversation Starters</h3>
+<p>Use these conversation starters to interact with your SQL-integrated Agent.</p>
+<p><strong>1. For Testing and Troubleshooting Connection:</strong></p>
+<p>These starters are designed to verify if the SQL toolkit is correctly configured and connected to your database.</p>
+<ul>
+<li>"List all tables and columns." - <em>This tests basic connectivity and schema retrieval.</em></li>
+<li>"Show the tables in the database." - <em>Another way to test table listing.</em>
+    <img alt="table_names" src="../../../img/how-tos/sql/table_names.png" /></li>
+</ul>
+<p><strong>2. For General Agent Usage Scenarios:</strong></p>
+<p>These starters demonstrate how to initiate agent execution for common SQL-related tasks.</p>
+<ul>
+<li>
+<p>"What are the columns in the 'customers' table?" - <em>Uses <code>list_tables_and_columns</code> to get table schema.</em></p>
+</li>
+<li>
+<p>"Find all products with a price greater than $50 and list their names and prices." - <em>Uses <code>execute_sql</code> with filtering.</em></p>
+</li>
+<li>"Retrieve the structure of the users table, including column names and data types." - <em>Uses <code>list_tables_and_columns</code> for a specific table.</em>
+    <img alt="users_table" src="../../../img/how-tos/sql/users_table.png" /></li>
+</ul>
+<p>These conversation starters provide a starting point for interacting with your SQL-integrated ELITEA Agent and can be customized further based on your specific use cases and workflows.</p>
+<h2 id="use-cases">Use Cases</h2>
+<p>The SQL toolkit unlocks numerous automation possibilities for data-driven workflows within ELITEA. Here are some key use cases, demonstrating how each tool can be applied:</p>
+<ul>
+<li>
+<p><strong>Database Schema Exploration:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Quickly understand the structure of a database, especially when working with unfamiliar databases.</li>
+<li><strong>Tools Used:</strong> <code>list_tables_and_columns</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'list_tables_and_columns' tool to show me all tables and their columns in the 'sales_db' database."</li>
+<li><strong>Benefit:</strong>  Reduces the time spent manually exploring database schemas using database clients. Agents can quickly provide schema information, enabling faster query construction and data analysis.</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Retrieval for Reporting and Analysis:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Generate reports or perform data analysis by retrieving specific data sets from the database.</li>
+<li><strong>Tools Used:</strong> <code>execute_sql</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'execute_sql' tool to execute the query: 'SELECT category, AVG(price) FROM products GROUP BY category;' and show the results in a table."</li>
+<li><strong>Benefit:</strong> Automates data extraction for reporting and analysis. Agents can fetch real-time data based on complex queries, eliminating manual data export and manipulation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Validation and Monitoring:</strong></p>
+<ul>
+<li><strong>Scenario:</strong>  Regularly check data integrity or monitor specific data conditions within the database.</li>
+<li><strong>Tools Used:</strong> <code>execute_sql</code></li>
+<li><strong>Example Instruction:</strong> "Use the 'execute_sql' tool to run the query: 'SELECT COUNT(*) FROM orders WHERE order_date &lt; DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND status = 'pending';' and tell me the count of pending orders older than 7 days."</li>
+<li><strong>Benefit:</strong> Enables proactive data monitoring and validation. Agents can automatically execute checks and alert users to anomalies or data quality issues.</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ul>
+<li>
+<p><strong>Connection Issues:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent fails to connect to the SQL database, resulting in errors during toolkit execution.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Verify Connection Details:</strong> Double-check the Host, Port, Database name, Username, and Password in the toolkit configuration. Ensure they are accurate and match your database credentials.</li>
+<li><strong>Database Server Status:</strong> Confirm that your SQL server is running and accessible. Try connecting to the database using a database client (like MySQL Workbench, pgAdmin, DBeaver) from the same network where ELITEA is running to isolate network issues.</li>
+<li><strong>Network Connectivity:</strong> Verify network connectivity between ELITEA and your SQL server. Check firewall rules, network configurations, and ensure that the SQL server port is open for incoming connections from ELITEA's IP address (if applicable).</li>
+<li><strong>Database Dialect:</strong> Ensure you have selected the correct SQL Dialect ("MySQL" or "PostgreSQL") in the toolkit configuration that matches your database type.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization Errors (Access Denied):</strong></p>
+<ul>
+<li><strong>Problem:</strong> Agent receives "Access Denied" or "Unauthorized" errors when trying to access the database or execute queries.</li>
+<li><strong>Troubleshooting Steps:</strong><ol>
+<li><strong>Verify Database User Permissions:</strong> Re-examine the permissions granted to the database user you are using for ELITEA integration. Ensure the user has sufficient privileges (e.g., <code>SELECT</code>, <code>EXECUTE</code>) for the database and tables you are trying to access.</li>
+<li><strong>Incorrect Credentials:</strong> Double-check the Username and Password in the toolkit configuration for typos or errors. If using Secrets, ensure the Secret is correctly configured and contains the right password.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="faq">FAQ</h3>
+<ol>
+<li><strong>Q: Can I use this toolkit with other SQL databases besides MySQL and PostgreSQL?</strong><ul>
+<li><strong>A:</strong> Currently, the ELITEA SQL toolkit officially supports <strong>MySQL</strong> and <strong>PostgreSQL</strong> dialects. Support for other SQL databases might be added in future updates. If you require integration with a different SQL database, please contact ELITEA support to discuss your needs.</li>
+</ul>
+</li>
+<li><strong>Q: Why can't Elitea connect to my SQL server?</strong><ul>
+<li><strong>A:</strong> Elitea requires direct access to your SQL server. If you're experiencing connectivity issues, check the following:<ol>
+<li><strong>Public IP:</strong> Ensure that your local-hosted SQL server has a Public IP address if it needs to be accessed from outside your local network. Without this, ELITEA cannot initiate a connection to your database.</li>
+<li><strong>Network Environment:</strong> If your SQL server operates within a closed network or a VPN-restricted environment, deploy ELITEA within the same network. This ensures that ELITEA can reach the SQL server without external network barriers.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="support-contact">Support Contact</h3>
+<p>For any issues, questions, or further assistance with the SQL integration or ELITEA Agents, please reach out to our dedicated ELITEA Support Team. We are committed to providing prompt and effective support to ensure your success with ELITEA.</p>
+<p><strong>Contact ELITEA Support:</strong></p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p><strong>Best Practices for Effective Support Requests:</strong></p>
+<p>To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> Clearly specify the ELITEA environment you are using (e.g., "Nexus," "Alita Lab," "EYE").</li>
+<li><strong>Project Details:</strong>  Indicate the <strong>Project Name</strong> and whether you are working in your <strong>Private</strong> workspace or a <strong>Team</strong> project.</li>
+<li><strong>Detailed Issue Description:</strong> Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.</li>
+<li><strong>Relevant Configuration Information:</strong>  To help us diagnose the issue, please include relevant configuration details, such as:<ul>
+<li><strong>Agent Instructions (Screenshot or Text):</strong> If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.</li>
+<li><strong>Toolkit Configurations (Screenshots):</strong> If the issue involves the SQL toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.</li>
+</ul>
+</li>
+<li><strong>Error Messages (Full Error Text):</strong> If you are encountering an error message, please provide the <strong>complete error text</strong>. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.</li>
+<li><strong>Your Query/Prompt (Exact Text):</strong> If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p>
+<h2 id="useful-links">Useful Links</h2>
+<p>To further enhance your understanding and skills in integrating SQL with ELITEA, here are some helpful resources:</p>
+<ul>
+<li><strong><a href="https://www.mysql.com/">MySQL Official Website</a></strong>: Access the official website for MySQL documentation, downloads, and community resources.</li>
+<li><strong><a href="https://www.postgresql.org/">PostgreSQL Official Website</a></strong>: Access the official website for PostgreSQL documentation, downloads, and community resources.</li>
+<li><strong><a href="https://www.w3schools.com/sql/">SQL Tutorial (W3Schools)</a></strong>: A comprehensive SQL tutorial for learning SQL syntax and concepts.</li>
+<li><strong><a href="../../atform-documentation/menus/settings.md#secrets">ELITEA Secrets</a></strong>: Learn how to securely store your database credentials using ELITEA's Secrets management feature for enhanced security.</li>
+<li><strong><a href="../../../platform-documentation/menus/agents/">ELITEA Agents Configuration</a></strong>:  Find out more about creating and configuring Agents in ELITEA, where you integrate the SQL toolkit to automate your workflows.</li>
+<li><strong><a href="mailto:SupportAlita@epam.com">ELITEA Support Email</a></strong>: Contact the ELITEA support team for direct assistance with SQL integration or any other questions and issues you may encounter.</li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

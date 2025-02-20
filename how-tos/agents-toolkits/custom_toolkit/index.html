@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/custom_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Custom Toolkit - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/artifacts/">Artifacts</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../artifact_toolkit/">Artifact Toolkit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Custom Toolkit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../openapi_toolkit/">OpenAPI Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sql_toolkit/">SQL Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testIO_toolkit/">TestIO Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../faqs/">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../confluence_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../github_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-elitea-custom-toolkit">ELITEA Toolkit Guide: ELITEA Custom Toolkit</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-and-overview">Purpose and Overview</a></li>
+                <li class="third-level"><a href="#important-considerations">Important Considerations</a></li>
+            <li class="second-level"><a href="#toolkit-creation-and-configuration">Toolkit Creation and Configuration</a></li>
+                
+                <li class="third-level"><a href="#configuration-steps">Configuration Steps</a></li>
+            <li class="second-level"><a href="#use-cases">Use Cases</a></li>
+                
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting">Troubleshooting</a></li>
+                <li class="third-level"><a href="#support-contact">Support Contact</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-elitea-custom-toolkit">ELITEA Toolkit Guide: ELITEA Custom Toolkit</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-and-overview">Purpose and Overview</h3>
+<p>The ELITEA Custom Toolkit is a specialized development tool designed to implement custom solutions by <strong>ELITEA Development team</strong> . It provides capability to provide certain users with non standard solutions also it is a streamlined way to build, test, and iterate on the backend components of ELITEA toolkits <strong>before</strong> the corresponding frontend user interface is fully developed. This toolkit enables controlled access and rapid backend development cycles within the ELITEA platform.</p>
+<h3 id="important-considerations">Important Considerations</h3>
+<ul>
+<li>
+<p><strong>Backend Dependency:</strong>  The Custom Toolkit <strong>requires</strong> a fully functional backend implementation within ELITEA to operate. Without a corresponding backend service ready to handle requests, this toolkit <strong>cannot</strong> be configured or used effectively. Configurations entered in the Custom Toolkit will have <strong>no effect</strong> if there is no backend component designed to process them.</p>
+</li>
+<li>
+<p><strong>Not for General API Integrations:</strong>  This toolkit is <strong>not</strong> intended for general-purpose integrations with external applications or APIs. For integrating ELITEA with external APIs (like REST APIs, SOAP APIs, etc.), you should use the <strong>"OpenAPI Toolkit"</strong>.</p>
+</li>
+</ul>
+<h2 id="toolkit-creation-and-configuration">Toolkit Creation and Configuration</h2>
+<h3 id="configuration-steps">Configuration Steps</h3>
+<p>To create and configure an ELITEA Custom Toolkit for testing your backend components, follow these steps:</p>
+<ol>
+<li>
+<p><strong>Navigate to ELITEA Agents:</strong> Access the Agent configuration section within your ELITEA instance.</p>
+</li>
+<li>
+<p><strong>Configure a New Agent (or Edit Existing):</strong> Select an existing agent or create a new agent by clicking "Create Agent". Configure the agent by specifying the <strong>Agent Name</strong>, <strong>Description</strong>, <strong>Instructions</strong>, and <strong>Agent Type</strong> as needed for your testing purposes. <em>(Note: The specific Agent Type must be selected depending on toolkits backend configurations.)</em></p>
+<p><img alt="custom-create_agent" src="../../../img/how-tos/custom/create_agent.png" /></p>
+</li>
+<li>
+<p><strong>Add a New Tool:</strong> In the Agent configuration, locate the "Tools" section and click the <strong>"+" (Add Tool)</strong> icon.</p>
+</li>
+<li>
+<p><strong>Select Custom Toolkit:</strong> From the dropdown list of available toolkits, choose <strong>"Custom"</strong>.</p>
+</li>
+<li>
+<p><strong>Enter JSON Configuration:</strong> In the "Schema" (or Configuration) field provided for the Custom Toolkit, enter the required configuration parameters in <strong>JSON format</strong>. The specific JSON structure and parameters will be dictated by the backend component that was  developed.</p>
+<p><img alt="custom-tool_config" src="../../../img/how-tos/custom/tool_config.png" /></p>
+<h4 id="crucial-configuration-note">Crucial Configuration Note</h4>
+<ul>
+<li><strong>Backend Component Documentation:</strong> Refer to the documentation or specifications for your <strong>backend component</strong> to understand the exact JSON configuration schema it expects.</li>
+</ul>
+</li>
+<li>
+<p><strong>Save Configuration:</strong> Click the <strong>"Save"</strong> button to save the Custom Toolkit configuration.</p>
+</li>
+</ol>
+<h2 id="use-cases">Use Cases</h2>
+<ol>
+<li>
+<p><strong>Leveraging User-Requested Custom Toolkits:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> You have a specific and unique business need that isn't met by standard ELITEA toolkits. You request the ELITEA team to develop a custom toolkit tailored precisely to your requirements. This custom toolkit is designed for your exclusive use and may not be intended for general release.</li>
+<li><strong>How the Custom Toolkit Enables This:</strong> The ELITEA Custom Toolkit is the primary way to integrate and utilize these user-requested, bespoke toolkits within ELITEA agents. The ELITEA team develops the backend service for your custom toolkit. You, as the user, then employ the Custom Toolkit in ELITEA to connect to and interact with this backend. You'll use JSON configurations within the Custom Toolkit to send instructions and data to your custom backend service and receive results.</li>
+<li><strong>Example:</strong> Your organization needs to integrate ELITEA with a highly specific, internal legacy database for a niche workflow. You request a custom toolkit. The ELITEA team builds a backend service that bridges ELITEA to your legacy database. They provide you with documentation detailing the JSON configuration schema for interacting with this service. You then use the ELITEA Custom Toolkit to configure ELITEA agents. By crafting specific JSON payloads within the Custom Toolkit, your agents can now query, update, or manage data within your legacy database, directly through the custom toolkit's backend.</li>
+</ul>
+</li>
+<li>
+<p><strong>Implementing Specialized and Niche Workflows:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> You need to implement highly specialized or niche workflows within ELITEA that are not addressed by publicly available or general-purpose toolkits. These workflows might involve unique data processing, interactions with internal systems not exposed via standard APIs, or very specific business logic.</li>
+<li><strong>How the Custom Toolkit Enables This:</strong> The Custom Toolkit allows you to directly connect to and utilize custom-built backend services within ELITEA. This is ideal for implementing workflows that require unique functionality or integrations that go beyond the scope of standard toolkits. You have full control over the backend logic and define how your agents interact with it through JSON configurations within the Custom Toolkit.</li>
+<li><strong>Example:</strong> You are building an agent to automate a complex, multi-step internal compliance process. This process requires specialized data validation, custom rule engines, and interactions with internal audit systems. You develop a custom backend service to encapsulate this complex logic. Within ELITEA, you use the Custom Toolkit to create agents that send specific compliance-related data (as JSON) to your backend service. The backend then executes the complex compliance checks and returns results back to the agent, all orchestrated via the Custom Toolkit.</li>
+</ul>
+</li>
+<li>
+<p><strong>Controlled Testing and Internal Access to Toolkits:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> You need to test a toolkit's backend functionality in a controlled environment before broader deployment or frontend UI development. You might want to provide access to the toolkit's backend capabilities to a limited group, such as internal QA, beta testers, or a specific team, without making it widely available.</li>
+<li><strong>How the Custom Toolkit Enables This:</strong> By configuring the Custom Toolkit within agents and controlling access to the ELITEA projects or workspaces containing these agents, you can effectively restrict who can interact with the toolkit's backend. This allows for focused testing, internal validation, and feedback gathering in a secure and controlled manner.</li>
+<li><strong>Example:</strong> You are developing a new, sensitive data processing toolkit. Before releasing it broadly, you want your internal security team to audit its backend logic and data handling. You deploy the toolkit's backend, configure a Custom Toolkit in an ELITEA agent, and grant access to the ELITEA project containing this agent only to your security team. They can then use the agent and Custom Toolkit to send test data (via JSON configurations) to the backend, examine its behavior, and perform security assessments in a safe, isolated environment.</li>
+</ul>
+</li>
+</ol>
+<p>These use cases highlight the ELITEA Custom Toolkit's role in enabling specialized, tailored, and controlled toolkit functionalities within ELITEA, particularly when dealing with user-requested custom solutions, niche workflows, and scenarios requiring restricted access for testing or internal use.</p>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ol>
+<li>
+<p><strong>Toolkit Not Saved:</strong></p>
+<ul>
+<li><strong>Problem:</strong> You attempt to save the Custom Toolkit configuration, but it fails to save, and you may see an error message or the configuration is discarded.</li>
+<li><strong>Possible Cause:</strong> The JSON configuration you entered in the "Schema" field is not valid JSON.</li>
+<li><strong>Troubleshooting Steps:</strong><ul>
+<li><strong>Validate JSON:</strong> Use a JSON validator tool (online or within your code editor) to check if the JSON you entered is syntactically correct. Ensure proper formatting, brackets, quotes, and data types are used.</li>
+<li><strong>Check Required Fields:</strong> Refer to the backend component's documentation to see if there are any <em>required</em> fields in the JSON configuration. Ensure all mandatory fields are present and correctly formatted.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Custom Tool Converted to Another Tool on UI:</strong></p>
+<ul>
+<li><strong>Problem:</strong> After entering the JSON configuration and saving, the Custom Toolkit in the UI appears to have been converted to a different toolkit type.</li>
+<li><strong>Possible Cause:</strong> There is an existing toolkit within the ELITEA system that has been configured with the <em>same</em> combination of toolkit type and configuration parameters as what you entered. ELITEA might be designed to reuse existing toolkit configurations to avoid duplication.</li>
+<li><strong>Troubleshooting Steps:</strong><ul>
+<li><strong>Check for Existing Toolkits:</strong> Carefully review the list of available toolkits in your ELITEA environment. Look for toolkits that might have a similar name or description to what you were trying to create.</li>
+<li><strong>Reuse Existing Toolkit (if appropriate):</strong> If you find an existing toolkit that matches your intended configuration, consider reusing it instead of creating a duplicate.</li>
+<li><strong>Create a Unique Configuration:</strong> If you need a <em>distinct</em> Custom Toolkit configuration, ensure that the JSON you enter is truly unique and does not conflict with any existing toolkit configurations in the system. You might need to adjust parameter names or values to make it distinct. If the system logic is matching based on toolkit type <em>and</em> JSON configuration, you might need to ensure even minor variations in JSON structure. (Consult ELITEA documentation or support for details on how toolkit uniqueness is determined).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="support-contact">Support Contact</h3>
+<p>For any issues, questions, or further assistance with the Bitbucket integration or ELITEA Agents, please reach out to our dedicated ELITEA Support Team. We are committed to providing prompt and effective support to ensure your success with ELITEA.</p>
+<p><strong>Contact ELITEA Support:</strong></p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p>To help us assist you efficiently, please provide the following details in your support request:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> (e.g., "Development," "Testing," "Production")</li>
+<li><strong>Project Details:</strong> Project Name, Workspace (if applicable).</li>
+<li><strong>Detailed Issue Description:</strong> Clear explanation of the problem, steps to reproduce, expected vs. actual behavior.</li>
+<li><strong>Custom Toolkit Configuration (JSON Payload):</strong> Provide the JSON configuration you are using with the Custom Toolkit.</li>
+<li><strong>Error Messages (if any):</strong> Full error messages or logs observed.</li>
+<li><strong>Details of Backend Component:</strong> (If relevant and known) Information about the backend service you are testing with the Custom Toolkit.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

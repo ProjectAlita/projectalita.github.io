@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/testIO_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>TestIO Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/artifacts/">Artifacts</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../artifact_toolkit/">Artifact Toolkit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../custom_toolkit/">Custom Toolkit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../openapi_toolkit/">OpenAPI Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sql_toolkit/">SQL Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">TestIO Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../faqs/">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../sql_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../testrail_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-testio-integration">ELITEA Toolkit Guide: TestIO Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-this-guide">Purpose of this Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-testio">Brief Overview of TestIO</a></li>
+                <li class="third-level"><a href="#value-of-integration">Value of Integration</a></li>
+            <li class="second-level"><a href="#account-setup-and-configuration-in-testio">Account Setup and Configuration in TestIO</a></li>
+                
+                <li class="third-level"><a href="#account-setup">Account Setup</a></li>
+                <li class="third-level"><a href="#tokenapi-key-generation-obtaining-a-testio-personal-access-token">Token/API Key Generation: Obtaining a TestIO Personal Access Token</a></li>
+            <li class="second-level"><a href="#testio-integration-with-elitea">TestIO Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#integration-steps">Integration Steps</a></li>
+                <li class="third-level"><a href="#tools-overview">Tools Overview</a></li>
+            <li class="second-level"><a href="#use-cases">Use Cases</a></li>
+                
+        <li class="first-level "><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+            <li class="second-level"><a href="#troubleshooting">Troubleshooting</a></li>
+                
+            <li class="second-level"><a href="#faqs">FAQs</a></li>
+                
+            <li class="second-level"><a href="#support-and-contact-information">Support and Contact Information</a></li>
+                
+                <li class="third-level"><a href="#elitea-support-team">ELITEA Support Team</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-testio-integration">ELITEA Toolkit Guide: TestIO Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-this-guide">Purpose of this Guide</h3>
+<p>This guide is your comprehensive resource for integrating and effectively using the <strong>TestIO toolkit</strong> within ELITEA. It provides a detailed, step-by-step walkthrough, from configuration in TestIO platform to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated test result analysis, streamlined QA workflows, and enhanced insights into your testing process, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your TestIO-driven quality assurance, enhance test visibility, and improve QA team productivity within your software development lifecycle.</p>
+<h3 id="brief-overview-of-testio">Brief Overview of TestIO</h3>
+<p>TestIO is a leading crowdtesting platform that connects businesses with a global community of testers. Clients submit their software products and request test runs for specific features or applications. During test runs, testers report bugs and provide test results directly on the TestIO platform. Analyzing the large volume of bug reports, identifying duplicates, and standardizing varied report styles can be time-consuming.</p>
+<h3 id="value-of-integration">Value of Integration</h3>
+<p>Integrating TestIO with ELITEA allows users and AI agents to directly access and process data from TestIO within the ELITEA environment. This integration provides:</p>
+<ul>
+<li><strong>Retrieving Test Cases:</strong> Obtain details of test cases designed for specific TestIO test runs.</li>
+<li><strong>Fetching Test Case Statuses:</strong> Get real-time statuses of test case executions (e.g., Passed, Failed, Pending).</li>
+<li><strong>Listing Bugs with Filters:</strong> Access detailed bug reports associated with test runs, with options to apply filters for focused analysis.</li>
+</ul>
+<p>This integration streamlines the analysis of test execution status, bug trends, and overall test coverage, providing valuable insights for QA teams, development management, and stakeholders.</p>
+<h2 id="account-setup-and-configuration-in-testio">Account Setup and Configuration in TestIO</h2>
+<h3 id="account-setup">Account Setup</h3>
+<p>TestIO is a commercial crowdtesting platform. To use the TestIO Toolkit, you will need an active TestIO account. If you do not have a TestIO account, you will need to obtain one through your organization or directly with TestIO.</p>
+<h3 id="tokenapi-key-generation-obtaining-a-testio-personal-access-token">Token/API Key Generation: Obtaining a TestIO Personal Access Token</h3>
+<p>For secure integration with ELITEA, it is essential to use a TestIO <strong>Personal Access Token</strong> for authentication. This method is more secure than using your primary TestIO account password directly and allows you to control access permissions for ELITEA.</p>
+<p><strong>Follow these steps to obtain a Personal Access Token in TestIO:</strong></p>
+<ol>
+<li>
+<p><strong>Request Access (if needed):</strong> If you do not already have access to generate Personal Access Tokens, consult the TestIO documentation or contact TestIO support (or your TestIO Customer Success Manager/development team contact) to request access.</p>
+</li>
+<li>
+<p><strong>Generate Personal Access Token:</strong> Once access is granted, navigate to the TestIO API Integrations page using the following URL (you may need to be logged into TestIO via SSO):  <a href="https://epamglobal.test.io/api_integrations">https://epamglobal.test.io/api_integrations</a> <em>(Note: This URL may vary depending on your specific TestIO environment. Confirm with your TestIO contact if needed.)</em></p>
+</li>
+<li>
+<p><strong>Sign in with SSO:</strong> Log in to TestIO using your Single Sign-On credentials if prompted.</p>
+</li>
+<li>
+<p><strong>Create a New Token:</strong> Follow the instructions on the TestIO API Integrations page to generate a new Personal Access Token. Give the token a descriptive name (e.g., "ELITEA Integration Token").</p>
+</li>
+<li>
+<p><strong>Securely Copy the Token:</strong> <strong>Important:</strong> Copy the generated Personal Access Token and store it securely. You will need this token to configure the TestIO Toolkit in ELITEA. Treat this token like a password – keep it confidential.</p>
+</li>
+</ol>
+<h2 id="testio-integration-with-elitea">TestIO Integration with ELITEA</h2>
+<h3 id="integration-steps">Integration Steps</h3>
+<p>Follow these steps to integrate the TestIO Toolkit into an ELITEA agent:</p>
+<ol>
+<li>
+<p><strong>Navigate to Alitea Agents:</strong> Access the Agent section within your ELITEA instance.</p>
+</li>
+<li>
+<p><strong>Create or Edit an Agent:</strong> Select an existing agent or create a new agent by clicking "Create Agent".</p>
+</li>
+<li>
+<p><strong>Agent Configuration:</strong> Configure the agent with a relevant <strong>Agent Name</strong>, <strong>Description</strong>, <strong>Instructions</strong>, and <strong>Agent Type</strong> suitable for your intended use case (e.g., an "OpenAI Agent" type for general-purpose interaction).</p>
+<ul>
+<li><strong>Crucial: Agent Instructions:</strong> Within the agent's instructions, clearly define any required parameters that the agent will need, to use the TestIO tools, such as <code>productId</code> and <code>testCaseTestId</code>. Provide examples of how to obtain these IDs from TestIO.</li>
+</ul>
+<p><img alt="TestIO-Agent_creation" src="../../../img/how-tos/testio/Agent_creation.png" /></p>
+</li>
+<li>
+<p><strong>Add a New Tool:</strong> In the Agent configuration, locate the "Tools" section and click the <strong>"+" (Add Tool)</strong> icon.</p>
+<p><img alt="TestIO-tool_selection" src="../../../img/how-tos/testio/tool_selection.png" /></p>
+</li>
+<li>
+<p><strong>Select TestIO Toolkit:</strong> From the dropdown list of available toolkits, choose <strong>"TestIO"</strong>.</p>
+</li>
+<li>
+<p><strong>TestIO Toolkit Configuration:</strong> The "New TestIO tool configuration" section will appear. Configure the following:</p>
+<ul>
+<li><strong>Tool Name:</strong> Enter a descriptive name for this TestIO Toolkit instance (e.g., "TestIO Integration", "QA Data Retriever").</li>
+<li><strong>Description:</strong> Provide a brief description outlining the purpose of this toolkit integration (e.g., "Retrieves test results and bug data from TestIO").</li>
+<li><strong>API Endpoint:</strong> Verify that the <strong>"API Endpoint"</strong> field is pre-filled with the correct TestIO API endpoint URL: <code>https://api.test.io</code>. <em>(Note: This endpoint URL may vary depending on your specific TestIO environment. Confirm with your TestIO contact if needed.)</em></li>
+<li><strong>API Key:</strong> This field is for your TestIO Personal Access Token. <strong>Recommended Security Practice:</strong><ul>
+<li><strong>Use Secrets (Preferred):</strong> Click the "Secrets" icon to create or select a securely stored secret within ELITEA to hold your TestIO Personal Access Token. This is the most secure method.</li>
+<li><strong>Direct Input (Less Secure):</strong> You can directly paste your Personal Access Token into the "API Key" field. However, using secrets is strongly recommended for enhanced security.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Select Tools:</strong> Choose the specific tools from the TestIO Toolkit that you want to enable for this agent. Select all necessary tools:</p>
+<ul>
+<li><strong>Get Test Cases for Test</strong></li>
+<li><strong>Test Cases Statuses for Test</strong></li>
+<li><strong>List Bugs for Test with Filter</strong></li>
+</ul>
+<p><img alt="TestIO-tool_configs" src="../../../img/how-tos/testio/tool_configs.png" /></p>
+</li>
+<li>
+<p><strong>Save Configuration:</strong> Click the <strong>"Save"</strong> button to save the TestIO Toolkit configuration for your agent.</p>
+</li>
+</ol>
+<h3 id="tools-overview">Tools Overview</h3>
+<p>The TestIO Toolkit provides the following tools (actions) for interacting with the TestIO API:</p>
+<ol>
+<li>
+<p><strong>Get Test Cases for Test:</strong></p>
+<ul>
+<li><strong>Description:</strong> Retrieves a list of test cases defined for a specific TestIO test run (launch). Provides detailed information about each test case.</li>
+<li><strong>e.g. Parameters Required:</strong><ul>
+<li><code>productId</code> (string): The ID of the product in TestIO.</li>
+</ul>
+</li>
+<li><strong>API Endpoint Used:</strong> <code>GET /customer/v2/products/{productId}/test_case_tests/{testCaseTestId}</code></li>
+<li><strong>Use Case Example:</strong> To get a detailed list of test cases to understand the scope of a particular test launch.</li>
+</ul>
+</li>
+<li>
+<p><strong>Test Cases Statuses for Test:</strong></p>
+<ul>
+<li><strong>Description:</strong> Retrieves the execution statuses of test cases for a specific TestIO test run. Provides information on whether each test case Passed, Failed, is Pending, etc.</li>
+<li><strong>API Endpoint:</strong> <code>GET /customer/v2/products/{productId}/test_case_tests/{testCaseTestId}/results</code></li>
+<li><strong>Use Case Example:</strong> To analyze the overall pass/fail rate of a test run, identify failing test cases, and understand test execution progress.</li>
+</ul>
+</li>
+<li>
+<p><strong>List Bugs for Test with Filter:</strong></p>
+<ul>
+<li><strong>Description:</strong> Retrieves a list of bug reports submitted by testers for a specific TestIO test run. Allows filtering of bugs based on various criteria </li>
+<li><strong>Use Case Example:</strong> To get a list of bugs reported in a specific test run, or to filter bugs based on a filter parameter.</li>
+</ul>
+</li>
+</ol>
+<h2 id="use-cases">Use Cases</h2>
+<p>Here are practical use cases demonstrating how to leverage the TestIO Toolkit within ELITEA agents to enhance QA workflows:</p>
+<ol>
+<li>
+<p><strong>Detailed Test Case Review:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> A QA lead wants to review the specific test cases included in a recent TestIO test launch to understand the test scope and coverage.</li>
+<li><strong>Tool:</strong> Get Test Cases for Test</li>
+<li><strong>Example Agent Instruction:</strong> "Use the 'Get Test Cases for Test' tool to retrieve the test cases for product ID 'YOUR_PRODUCT_ID' and test run ID 'YOUR_TEST_CASE_TEST_ID'. Provide a summary of the test case descriptions to the user."</li>
+<li><strong>Benefit:</strong> Provides detailed insights into test case design and scope for better test planning and understanding.</li>
+</ul>
+</li>
+<li>
+<p><strong>Real-time Test Execution Monitoring:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> A project manager needs to track the progress of a TestIO test run in real-time, specifically focusing on the status of test cases (passed, failed, pending).</li>
+<li><strong>Tool:</strong> Test Cases Statuses for Test</li>
+<li><strong>Example Agent Instruction:</strong> "Use the 'Test Cases Statuses for Test' tool to get the execution statuses for product ID 'YOUR_PRODUCT_ID' and test run ID 'YOUR_TEST_CASE_TEST_ID'. Summarize the number of passed, failed, and pending test cases and present a progress report."</li>
+<li><strong>Benefit:</strong> Enables proactive monitoring of test execution progress, allowing for timely intervention if issues arise.</li>
+</ul>
+</li>
+<li>
+<p><strong>Bug Triage and Analysis:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> A QA engineer needs to analyze bugs reported in a specific TestIO test run, potentially filtering bugs related to a specific product area or component for focused triage and defect management.</li>
+<li><strong>Tool:</strong> List Bugs for Test with Filter</li>
+<li><strong>Example Agent Instruction:</strong> "Use the 'List Bugs for Test with Filter' tool for product ID 'YOUR_PRODUCT_ID'. <em>(If filtering by specific product IDs is supported, add:)</em> Filter for bugs related to product IDs 'COMPONENT_A_PRODUCT_ID,COMPONENT_B_PRODUCT_ID'. Provide a list of bug titles and severities to the QA team."</li>
+<li><strong>Benefit:</strong> Streamlines bug analysis and triage by providing filtered bug lists, allowing QA teams to focus on specific areas and manage defects efficiently.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Test Summary Report Generation:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> An agent can automatically retrieve test case details, statuses, and bug lists for a TestIO test run and compile a comprehensive test summary report for stakeholders.</li>
+<li><strong>Tools Used:</strong> Get Test Cases for Test, Test Cases Statuses for Test, List Bugs for Test with Filter</li>
+<li><strong>Example Agent Instructions:</strong><ol>
+<li>"Use 'Get Test Cases for Test' to get test case details."</li>
+<li>"Use 'Test Cases Statuses for Test' to get test case statuses."</li>
+<li>"Use 'List Bugs for Test with Filter' to get bug information."</li>
+<li>"Compile a summary report including test case counts, pass/fail metrics, and a list of reported bugs."</li>
+</ol>
+</li>
+<li><strong>Benefit:</strong> Creates automated test summary reports, saving time and effort in manual report compilation and providing stakeholders with timely insights into test results and quality metrics.</li>
+</ul>
+</li>
+</ol>
+<h1 id="troubleshooting-and-support">Troubleshooting and Support</h1>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ol>
+<li>
+<p><strong>Integration Failure - Connection or Authentication Errors:</strong></p>
+<ul>
+<li><strong>Problem:</strong> ELITEA agent fails to connect to TestIO or encounters authentication errors when using TestIO tools.</li>
+<li><strong>Troubleshooting Steps:</strong><ul>
+<li><strong>Check API Key:</strong> Verify that the Personal Access Token entered in the "API Key" field (or secret) is correct, has been copied accurately, and is valid.</li>
+<li><strong>API Endpoint URL:</strong> Confirm that the "API Endpoint" URL is correctly set to <code>https://api.test.io</code> (or the correct environment-specific URL if applicable).</li>
+<li><strong>Token Validity and Permissions:</strong> Ensure the Personal Access Token is still valid in TestIO and has not been revoked. While TestIO Personal Access Tokens generally have broad access, confirm with TestIO documentation if specific scopes are required for the API endpoints used by the toolkit.</li>
+<li><strong>Network Connectivity:</strong> Check network connectivity between ELITEA and the TestIO API endpoint. Ensure there are no firewall rules or network issues blocking the connection.</li>
+<li><strong>ELITEA Error Logs:</strong> Examine ELITEA's error logs for any specific error messages related to the TestIO Toolkit integration. These logs can provide more detailed clues about the failure.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Errors or Empty Data Retrieval:</strong></p>
+<ul>
+<li><strong>Problem:</strong> Integration is successful (no connection errors), but the agent retrieves incorrect data, incomplete data, or empty datasets from TestIO.</li>
+<li><strong>Troubleshooting Steps:</strong><ul>
+<li><strong>Verify Product ID and Test Run ID:</strong> Double-check that the <code>productId</code> and <code>testCaseTestId</code> values being used in agent instructions and tool calls are absolutely correct and correspond to valid, <em>active</em> test runs and products in your TestIO project. Incorrect IDs are a common cause of data retrieval issues.</li>
+<li><strong>Test Run Status in TestIO:</strong> Verify that the TestIO test run (specified by <code>testCaseTestId</code>) is not archived or in a state where data is no longer accessible via the API.</li>
+<li><strong>Instruction Accuracy:</strong> Review the agent's instructions to ensure they are correctly using the TestIO tools and providing the required parameters (<code>productId</code>, <code>testCaseTestId</code>, filter parameters if applicable).</li>
+<li><strong>Tool Parameter Requirements:</strong> Re-examine the documentation for each TestIO tool (<code>Get Test Cases for Test</code>, <code>Test Cases Statuses for Test</code>, <code>List Bugs for Test with Filter</code>) to confirm you are providing all <em>required</em> parameters and in the correct format.</li>
+<li><strong>Example Instructions and Testing:</strong> Start with the example instruction provided in this guide and test it to ensure basic data retrieval works. Gradually increase complexity as needed.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Agent Type Compatibility:</strong></p>
+<ul>
+<li><strong>Problem:</strong> If you are using a specific agent type in ELITEA (beyond a general "OpenAI Agent"), and the TestIO Toolkit is not functioning as expected, consider if there are any agent-type-specific limitations or compatibility issues.</li>
+<li><strong>Troubleshooting Step:</strong> As a general troubleshooting step, especially when initially setting up the integration, <strong>try using "OpenAI Agent" type</strong>. This can help rule out issues related to more specialized agent types. If it works with a basic agent, then investigate if there are specific configurations needed for other agent types.</li>
+</ul>
+</li>
+</ol>
+<h2 id="faqs">FAQs</h2>
+<p><strong>Q: Can I use my regular TestIO username and password for the ELITEA integration?</strong></p>
+<p><strong>A:</strong> No, you should <strong>not</strong> use your regular TestIO username and password directly. For secure API access, you <strong>must</strong> use a TestIO Personal Access Token as described in the "Account Setup" section of this guide. Personal Access Tokens are designed for secure application integrations.</p>
+<p><strong>Q: Where do I find the <code>productId</code> and <code>testCaseTestId</code> in TestIO?</strong></p>
+<p><strong>A:</strong> The <code>productId</code> and <code>testCaseTestId</code> are associated with your product and tests within TestIO. You can usually find them in the TestIO CSM portal (e.g., in the URL path). You may also find them in TestIO project settings or by contacting your TestIO CSM or project team.</p>
+<p><strong>Q: What if I don't have access to generate a Personal Access Token in TestIO?</strong></p>
+<p><strong>A:</strong> If you do not have access to generate Personal Access Tokens in TestIO, you will need to request access. Contact TestIO support, your TestIO Customer Success Manager, or your internal project team/TestIO administrator to request the necessary permissions.</p>
+<p><strong>Q: Is there a limit to the amount of data I can retrieve from TestIO using this toolkit?</strong></p>
+<p><strong>A:</strong> The TestIO API itself might have limitations on data retrieval volume or rate limits. While the ELITEA Toolkit itself doesn't impose specific limits, be mindful of potentially large data retrievals, especially for bug lists or test case details for very large test runs. LLM models also have limitations on data (tokens).</p>
+<h2 id="support-and-contact-information">Support and Contact Information</h2>
+<h3 id="elitea-support-team">ELITEA Support Team</h3>
+<p>If you encounter persistent issues, have questions not covered in this guide, or require further assistance with the TestIO Toolkit or ELITEA Agents, please contact the ELITEA Support Team:</p>
+<ul>
+<li><strong>Email:</strong>  <strong><a href="mailto:SupportAlita@epam.com">SupportAlita@epam.com</a></strong></li>
+</ul>
+<p>To help us assist you efficiently, please provide the following details in your support request:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> (e.g., "Nexus," "Alita Lab," "EYE")</li>
+<li><strong>Project Details:</strong> Project Name, Private or Team project.</li>
+<li><strong>Detailed Issue Description:</strong> Clear explanation of the problem, steps to reproduce, expected vs. actual behavior.</li>
+<li><strong>Relevant Configuration Information:</strong><ul>
+<li>Agent Instructions (screenshot or text)</li>
+<li>TestIO Toolkit Configuration (screenshots, especially of API Key and Endpoint settings)</li>
+<li>Error Messages (full error text from chat window details)</li>
+</ul>
+</li>
+<li><strong>Your Query/Prompt:</strong> Exact text used to trigger the issue.</li>
+<li><strong>TestIO Product ID and Test Run ID (if relevant to the issue):</strong></li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

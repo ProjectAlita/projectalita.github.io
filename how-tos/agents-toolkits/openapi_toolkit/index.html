@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://projectalita.ai/how-tos/agents-toolkits/openapi_toolkit/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>OpenAPI Integration - ELITEA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+    <link href="../../../extra_css/cinder.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">ELITEA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../home/introduction/">Introduction</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Release Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../release-notes/rn_current/">RN 1.4.0</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Archive</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn5/">RN 1.3.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn4/">RN 1.2.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn3/">RN 1.1.0</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn2/">RN 1.0.1</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../release-notes/archived/rn1/">RN 1.0.0</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Menus & Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/overview/">Overview</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/settings/">Settings</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/chat/">Chat</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/prompts/">Prompts</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/datasources/">Datasources</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/agents/">Agents</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/collections/">Collections</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/menus/artifacts/">Artifacts</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Extensions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-code/">Alita Code</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../platform-documentation/extensions/alita-chat/">Alita Code Chat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features Guides <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Core Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/export-import/">Export and Import Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/forking/">Forking Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/integrations/">Integrations Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/prompt-magic-assistant/">Prompt Magic Assistant Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/public-project/">Public Project Guide</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../feature-guides/core-features/monitoring/">Monitoring Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">ELITEA Advanced Features</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../feature-guides/advanced-features/roles/">Roles Management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">How TOs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Agents & Toolkits</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../pipeline-agent-framework/">Pipeline Agent Framework</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_repos_toolkit/">ADO Repos Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ado_wiki_plan_board_toolkit/">ADO Wiki, Boards, and Test Plans Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../artifact_toolkit/">Artifact Toolkit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../bitbucket_toolkit/">BitBucket Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../confluence_toolkit/">Confluence Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../custom_toolkit/">Custom Toolkit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../github_toolkit/">GitHub Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_toolkit/">GitLab Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../gitlab_org_toolkit/">GitLab Org Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../jira_toolkit/">Jira Integration</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">OpenAPI Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../qtest_toolkit/">qTest Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../rally_toolkit/">Rally Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sharepoint_toolkit/">SharePoint Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../xray_toolkit/">XRAY Cloud Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sql_toolkit/">SQL Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testIO_toolkit/">TestIO Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../testrail_toolkit/">TestRail Integration</a>
+</li>
+
+        
+            
+<li >
+    <a href="../zephyr_scale_toolkit/">Zephyr Scale Integration</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">General How-Tos</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../creating-prompts/">How to Create and Publish Useful Prompts for Testing and QA Activities</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../collections-and-organizing-entities/">Collections and Organizing Entities in ELITEA</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="../../faqs/">FAQs</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support & Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../support-resources/contact-support/">Contact Us</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../support-resources/additional-resources/">Resources & Materials</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../jira_toolkit/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../qtest_toolkit/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#elitea-toolkit-guide-openapi-integration">ELITEA Toolkit Guide: OpenAPI Integration</a></li>
+            <li class="second-level"><a href="#introduction">Introduction</a></li>
+                
+                <li class="third-level"><a href="#purpose-of-this-guide">Purpose of this Guide</a></li>
+                <li class="third-level"><a href="#brief-overview-of-openapi">Brief Overview of OpenAPI</a></li>
+            <li class="second-level"><a href="#toolkit-data-setup-and-configuration">Toolkit Data Setup and Configuration</a></li>
+                
+                <li class="third-level"><a href="#data-requirements">Data Requirements</a></li>
+                <li class="third-level"><a href="#important-considerations-for-openapi-specification">Important Considerations for OpenAPI Specification</a></li>
+            <li class="second-level"><a href="#integration-with-elitea">Integration with ELITEA</a></li>
+                
+                <li class="third-level"><a href="#openapi-toolkit-configuration">OpenAPI Toolkit Configuration</a></li>
+            <li class="second-level"><a href="#tools-of-the-openapi-toolkit">Tools of the OpenAPI Toolkit</a></li>
+                
+                <li class="third-level"><a href="#using-actions-in-instructions-and-messages">Using Actions in Instructions and Messages</a></li>
+            <li class="second-level"><a href="#use-cases">Use Cases</a></li>
+                
+            <li class="second-level"><a href="#troubleshooting-and-support">Troubleshooting and Support</a></li>
+                
+                <li class="third-level"><a href="#troubleshooting">Troubleshooting</a></li>
+                <li class="third-level"><a href="#faqs">FAQs</a></li>
+                <li class="third-level"><a href="#support-contact">Support Contact</a></li>
+            <li class="second-level"><a href="#useful-links">Useful Links</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="elitea-toolkit-guide-openapi-integration">ELITEA Toolkit Guide: OpenAPI Integration</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose-of-this-guide">Purpose of this Guide</h3>
+<p>This guide is your comprehensive resource for integrating and effectively utilizing the <strong>OpenAPI toolkit</strong> within ELITEA. It provides a detailed, step-by-step walkthrough, from obtaining your OpenAPI specification file to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of universal API integration, streamlined workflows, and enhanced data accessibility, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to interact with virtually any API, optimize data retrieval, and extend ELITEA's capabilities across diverse services.</p>
+<h3 id="brief-overview-of-openapi">Brief Overview of OpenAPI</h3>
+<p>The <strong>OpenAPI Toolkit</strong> is a powerful toolkit of ELITEA, providing a universal interface for seamless integration with a vast range of APIs. By utilizing OpenAPI specifications, this toolkit allows ELITEA agents to understand and interact with diverse API endpoints, unlocking the potential to automate tasks and extend ELITEA's functionality across different platforms and services.</p>
+<h2 id="toolkit-data-setup-and-configuration">Toolkit Data Setup and Configuration</h2>
+<h3 id="data-requirements">Data Requirements</h3>
+<p>To use the OpenAPI toolkit, you need an OpenAPI specification file in <strong>JSON format</strong> for the API you wish to integrate.</p>
+<ol>
+<li><strong>Obtain OpenAPI Specification (JSON):</strong><ul>
+<li><strong>Conversion from YAML (if needed):</strong> If you have a YAML OpenAPI specification, convert it to JSON format. You can use online tools like <a href="https://editor.swagger.io/">Swagger Editor</a> or other OpenAPI specification converters.</li>
+<li><strong>Validation:</strong> Ensure the JSON file is valid and adheres to OpenAPI specifications. This file defines the API's endpoints, parameters, request bodies, and security schemes, enabling ELITEA to understand how to interact with the API.</li>
+</ul>
+</li>
+</ol>
+<h3 id="important-considerations-for-openapi-specification">Important Considerations for OpenAPI Specification</h3>
+<ul>
+<li><strong>Comprehensive Definition:</strong> The OpenAPI file should be as complete as possible, including descriptions, parameter types, required fields, and security schemes. This ensures the Large Language Model (LLM) powering ELITEA agents has sufficient information to construct correct API requests.</li>
+<li><strong>Security Schemas:</strong> Properly define security schemes (API Key, OAuth, etc.) in your OpenAPI file. This is crucial for configuring authentication within ELITEA.</li>
+<li><strong>Toolkit Limits:</strong> While the OpenAPI toolkit is powerful, extremely large OpenAPI definitions with hundreds of endpoints might encounter processing limitations. If you experience issues, consider using a more focused OpenAPI definition or contact support.</li>
+</ul>
+<h2 id="integration-with-elitea">Integration with ELITEA</h2>
+<h3 id="openapi-toolkit-configuration">OpenAPI Toolkit Configuration</h3>
+<ol>
+<li>
+<p><strong>Navigate to Alitea Agents:</strong> Navigate to the Agents page within your ELITEA instance.</p>
+</li>
+<li>
+<p><strong>Configure a New Agent (or Edit Existing):</strong></p>
+<ul>
+<li>Create a new agent or modify an existing one.</li>
+<li>Define the <strong>Agent Name</strong>, <strong>Description</strong>, and relevant <strong>Instructions</strong> that guide the agent's behavior when using the OpenAPI toolkit.</li>
+<li>Select the appropriate <strong>Agent Type</strong> (e.g., consider an "OpenAI Agent" type for general API interaction, or a more specialized type if applicable within Alitea).</li>
+</ul>
+<h4 id="agent-instructions-guidance">Agent Instructions Guidance</h4>
+<ul>
+<li><strong>Clarity is Key:</strong> Provide clear and specific instructions to the agent. Instruct the agent on <em>what</em> API actions to perform and <em>how</em> to use the available tools (actions defined in your OpenAPI spec).</li>
+<li><strong>Parameter Handling:</strong> If your API has specific requirements for parameter formats (e.g., numeric values as strings, specific date formats, required properties), explicitly mention these in the instructions. This helps the LLM generate valid requests.</li>
+<li>
+<p><strong>Example Instructions:</strong></p>
+<p><code>...
+    1. To create a new task, use the "CreateTask" tool. Ensure you include a 'title' and 'description' for the task.
+    2. To get details of a task, use the "GetTaskById" tool, providing the 'taskId' as input.
+    3. If the user asks to update a task, use the "UpdateTask" tool. You will need the 'taskId' and the fields to update (e.g., 'status', 'dueDate').</code>
+    ..... rest of the instructions</p>
+</li>
+</ul>
+<p><img alt="openapi-Create_agent" src="../../../img/how-tos/openapi/agent_creation.png" /></p>
+</li>
+<li>
+<p><strong>Create an OpenAPI Toolkit Tool:</strong> Within the Agent configuration, create a new tool and select the "OpenAPI Toolkit" type.</p>
+</li>
+<li>
+<p><strong>Tool Configuration:</strong></p>
+<ul>
+<li><strong>Tool Name:</strong> Enter a descriptive name for your OpenAPI toolkit tool (e.g., "Task Management API", "Pet Store API").</li>
+<li>
+<p><strong>Description (Schema):</strong> This is where you provide the OpenAPI specification:</p>
+<ul>
+<li><strong>Copy and Paste:</strong> Copy the entire JSON content of your OpenAPI specification file and paste it into the "Schema" field.</li>
+<li><strong>Drag and Drop:</strong> Drag and drop your OpenAPI JSON file directly into the "Schema" field.</li>
+<li><strong>Choose File Link/Button:</strong> Click the "Choose File" button and select your OpenAPI JSON file from your local system.</li>
+</ul>
+<p><img alt="openapi-toolkit_creation" src="../../../img/how-tos/openapi/toolkit_creation.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Actions Table Verification:</strong> Once a valid OpenAPI schema is provided, the "Actions" table below the schema field will be populated. This table lists all the API endpoints (actions) defined in your OpenAPI specification.</p>
+<p><img alt="openapi-actions_table" src="../../../img/how-tos/openapi/actions_table.png" /></p>
+</li>
+<li>
+<p><strong>Authentication Configuration:</strong> Navigate to the "Authentication" section of the toolkit configuration. Choose the appropriate authentication method based on your API's requirements:</p>
+<p><img alt="openapi-auth_type" src="../../../img/how-tos/openapi/auth_type.png" /></p>
+<ul>
+<li><strong>None:</strong> Select "None" if the API does not require authentication (rare for production APIs).</li>
+<li><strong>API Key:</strong><ul>
+<li><strong>API Key Field:</strong> Enter your API key directly or, for enhanced security, select "From Secrets" to reference a securely stored secret within Alitea.</li>
+<li><strong>Auth Type:</strong> Choose the API Key authentication type from the dropdown:
+     <img alt="openapi-auth_type_1" src="../../../img/how-tos/openapi/auth_type_1.png" /><ul>
+<li><strong>Basic Auth:</strong> For APIs using Basic Authentication.</li>
+<li><strong>Bearer:</strong> For APIs using Bearer tokens (e.g., JWT).</li>
+<li><strong>Custom Header:</strong> For APIs requiring an API key in a custom header. If selected, an additional field will appear to enter the <strong>Header Name</strong> (e.g., <code>X-API-Key</code>).
+<img alt="openapi-auth_type_2" src="../../../img/how-tos/openapi/auth_type_2.png" /></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>OAuth:</strong> Select "OAuth" if your API uses OAuth 2.0. You will need to fill in the OAuth-specific fields according to your API's OAuth configuration (e.g., Client ID, Client Secret, Token URL, Authorization URL, Scopes, Token exchange method). Consult your API's documentation for the required OAuth settings.</p>
+<p><img alt="openapi-auth_type_3" src="../../../img/how-tos/openapi/auth_type_3.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Save Toolkit:</strong> Click the "Save" button to save the OpenAPI toolkit configuration.</p>
+</li>
+</ol>
+<h2 id="tools-of-the-openapi-toolkit">Tools of the OpenAPI Toolkit</h2>
+<p>After successfully loading your OpenAPI specification, the "Actions" table displays the available API operations as "tools" that your ELITEA agent can utilize.</p>
+<ul>
+<li><strong>Name:</strong> This column shows the name of each action, typically derived from the <code>operationId</code> in your OpenAPI specification. These names are how you refer to specific API endpoints in your agent instructions and user messages.</li>
+<li><strong>Description:</strong> Provides a brief description of the action, taken from the <code>description</code> field of the corresponding operation in your OpenAPI specification.</li>
+<li><strong>Method:</strong> Indicates the HTTP method (GET, POST, PUT, DELETE, etc.) for the API endpoint.</li>
+<li><strong>Path:</strong> Shows the API endpoint path.</li>
+</ul>
+<p><img alt="openapi-actions_table" src="../../../img/how-tos/openapi/actions_table.png" /></p>
+<h3 id="using-actions-in-instructions-and-messages">Using Actions in Instructions and Messages</h3>
+<p>To instruct your agent to use a specific API endpoint, refer to the <strong>Name</strong> from the Actions table as a "tool" in your agent instructions or in user messages.</p>
+<ul>
+<li><strong>Example:</strong> If the Actions table lists an action named "AddPet" (from a Pet Store API), you can instruct the agent like this: "Use the <code>AddPet</code> tool to create a new pet with the following properties: ...".</li>
+<li>The LLM will then identify the "AddPet" action from the OpenAPI toolkit and attempt to use the corresponding API endpoint based on the provided OpenAPI specification and your instructions.</li>
+</ul>
+<h2 id="use-cases">Use Cases</h2>
+<p>The use cases for the OpenAPI toolkit are virtually limitless, constrained only by the capabilities of the integrated API and the LLM's ability to interact with it. Here are some common use cases:</p>
+<ol>
+<li>
+<p><strong>Data Retrieval and Analysis:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Agents can fetch data from a wide range of external services like databases, CRM systems, weather APIs, financial APIs, and more. This retrieved data can then be analyzed, summarized, or used to generate reports within ELITEA.</li>
+<li><strong>Tools Used:</strong> API actions (defined in your OpenAPI spec) that perform GET requests to retrieve data. Examples include actions to list records, get details, search data, etc.</li>
+<li><strong>Example Instruction:</strong> "Fetch the latest sales data from the CRM API using the 'getSalesData' tool and summarize the key trends for the past quarter." (Assuming 'getSalesData' is defined in your CRM API's OpenAPI spec).</li>
+<li><strong>Benefit:</strong> Empowers agents to leverage external data sources for informed decision-making, insightful reporting, and data-driven task completion, enhancing the intelligence and utility of ELITEA workflows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Resource Management:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Agents can automate the creation, updating, and deletion of resources in external systems. This includes managing tasks in project management tools, customer records in CRM systems, controlling smart devices, and managing cloud infrastructure resources.</li>
+<li><strong>Tools Used:</strong> API actions (defined in your OpenAPI spec) that perform POST, PUT, PATCH, and DELETE requests to manage resources. Examples include actions to create tasks, update records, start/stop services, etc.</li>
+<li><strong>Example Instruction:</strong> "Create a new task in the project management system using the 'createTask' tool with the following details: task name 'Implement User Authentication', project 'Project Alpha', due date 'Next Friday'." (Assuming 'createTask' is defined in your Project Management API's OpenAPI spec).</li>
+<li><strong>Benefit:</strong> Streamlines operations by automating resource management tasks across various systems, reducing manual effort, improving efficiency, and ensuring consistent resource states.</li>
+</ul>
+</li>
+<li>
+<p><strong>Workflow Automation and Orchestration:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Agents can orchestrate complex workflows by interacting with multiple APIs in a sequence. This allows for automating end-to-end processes that span across different services and platforms, creating powerful and integrated automation solutions.</li>
+<li><strong>Tools Used:</strong> Combinations of API actions from different OpenAPI specifications or from a single OpenAPI spec with multiple related actions. Agents can use sequences of tool calls to perform multi-step workflows.</li>
+<li><strong>Example Instruction:</strong> "First, use the 'getNewOrders' tool from the Order Management API. Then, for each new order, use the 'updateInventory' tool from the Inventory API and the 'sendOrderConfirmationEmail' tool from the Email API." (Assuming these actions are defined in relevant OpenAPI specs).</li>
+<li><strong>Benefit:</strong> Enables sophisticated automation of complex business processes by connecting different systems and automating multi-step workflows, significantly enhancing efficiency and reducing manual intervention.</li>
+</ul>
+</li>
+<li>
+<p><strong>Reporting and Visualization Generation:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Agents can generate reports and visualizations based on data retrieved from APIs. This can involve creating summaries, charts, graphs, or dashboards using data from external services, potentially leveraging tools within ELITEA or external visualization services.</li>
+<li><strong>Tools Used:</strong> API actions for data retrieval (GET requests), potentially combined with actions to trigger report generation or visualization creation in external services (if the API offers such actions). Agents might also use ELITEA's capabilities or external tools to process and visualize retrieved data.</li>
+<li><strong>Example Instruction:</strong> "Retrieve website traffic data for the last month using the 'getWebsiteTraffic' tool from the Analytics API. Generate a report summarizing the key metrics and create a chart visualizing the traffic trends." (Assuming 'getWebsiteTraffic' is defined in your Analytics API's OpenAPI spec, and ELITEA or external tools can handle report generation and visualization).</li>
+<li><strong>Benefit:</strong> Transforms raw API data into actionable insights through automated report generation and visualization, providing users with clear and understandable summaries of complex information.</li>
+</ul>
+</li>
+<li>
+<p><strong>Testing and Validation Automation:</strong></p>
+<ul>
+<li><strong>Scenario:</strong> Agents can interact with APIs to perform automated testing and validation of external systems. This can involve sending test requests, validating API responses against expected outcomes, and ensuring the reliability and functionality of external services.</li>
+<li><strong>Tools Used:</strong> API actions for sending requests (GET, POST, PUT, DELETE) and actions for retrieving data to validate responses. Agents can use assertions and logic within ELITEA to perform validation checks.</li>
+<li><strong>Example Instruction:</strong> "Use the 'createAsset' tool from the User API to create a new test user. Then, use the 'getAsset' tool to get the asset.Validate if the asset details are ..." (Assuming 'getAsset' and 'createAsset' are defined in your User API's OpenAPI spec).</li>
+<li><strong>Benefit:</strong> Automates API smoke testing and validation processes, improving software quality, reducing manual testing effort, and ensuring the robustness and reliability of integrated systems.</li>
+</ul>
+</li>
+</ol>
+<h2 id="troubleshooting-and-support">Troubleshooting and Support</h2>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ol>
+<li>
+<p><strong>"Description of schema is required" Error During Save:</strong></p>
+<ul>
+<li><strong>Problem:</strong> ELITEA displays a "Description of schema is required" error in red when attempting to save the OpenAPI Toolkit configuration.</li>
+<li>
+<p><strong>Troubleshooting Steps:</strong></p>
+<ul>
+<li><strong>Invalid JSON:</strong> The OpenAPI schema you pasted or uploaded is not valid JSON. Verify the JSON syntax using a JSON validator tool online.</li>
+<li><strong>Missing Description (Misleading Error):</strong> While the error message suggests a missing description, it often indicates a more general parsing error due to an invalid OpenAPI structure. Double-check your OpenAPI JSON file against the OpenAPI specification standards.</li>
+</ul>
+<p><img alt="openapi-not_valid_json" src="../../../img/how-tos/openapi/not_valid_json.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>"JSON Schema cannot be parsed" Error During Tool Execution:</strong></p>
+<ul>
+<li><strong>Problem:</strong> When executing an agent that uses the OpenAPI toolkit, you receive an error message indicating "JSON Schema cannot be parsed."</li>
+<li>
+<p><strong>Troubleshooting Steps:</strong></p>
+<ul>
+<li><strong>Invalid JSON (Again!):</strong> Even if the schema was initially accepted during toolkit creation, there might be subtle JSON errors that only surface during runtime parsing. Re-validate your JSON schema meticulously.</li>
+<li><strong>YAML Instead of JSON:</strong> Ensure you are providing a JSON file, and not a YAML file. The ELITEA OpenAPI Toolkit primarily supports JSON.</li>
+</ul>
+<p><img alt="openapi-not_json" src="../../../img/how-tos/openapi/not_json.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Authentication Errors (403 Forbidden, 401 Unauthorized):</strong></p>
+<ul>
+<li><strong>Problem:</strong> API requests consistently fail with "403 Forbidden" or "401 Unauthorized" errors.</li>
+<li><strong>Troubleshooting Steps:</strong><ul>
+<li><strong>Incorrect Credentials:</strong> Double-check your API key, OAuth tokens, or other authentication credentials. Ensure they are entered correctly in the toolkit configuration.</li>
+<li><strong>Expired Tokens:</strong> OAuth tokens have expiration dates. Ensure your tokens are still valid and refresh them if necessary (depending on your OAuth flow).</li>
+<li><strong>Incorrect Authentication Type:</strong> Verify that the authentication type configured in ELITEA (API Key, OAuth, etc.) precisely matches the API's authentication requirements as documented in the API's documentation and OpenAPI specification.</li>
+<li><strong>Missing Headers:</strong> Some APIs require specific headers beyond basic authentication. Review the API documentation to see if you need to configure custom headers in ELITEA (Note: Custom header configuration for authentication might have limitations; contact support for advanced header needs).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>API Request Errors (400 Bad Request, 500 Internal Server Error, etc.):</strong></p>
+<ul>
+<li><strong>Problem:</strong> API requests are sent, but the API returns errors like "400 Bad Request," "500 Internal Server Error," or other HTTP error codes indicating issues with the request itself.</li>
+<li><strong>Troubleshooting Steps:</strong><ul>
+<li><strong>Incorrect Parameters/Request Body:</strong> The LLM might be generating API requests with incorrect parameters or request body formats. Thoroughly review the API documentation for the specific endpoint being used. Refine your agent instructions to explicitly guide the LLM to construct requests that precisely match the API's requirements (e.g., specify data types, required fields, allowed values, example values).</li>
+<li><strong>API Service Issues:</strong> The external API itself might be temporarily experiencing issues, outages, or errors. Test the API endpoint directly using API testing tools like Postman or <code>curl</code> outside of ELITEA to isolate whether the problem originates from ELITEA's integration or the external API service.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>"Definition contains too many actions (endpoints)" Error:</strong></p>
+<ul>
+<li><strong>Problem:</strong> When attempting to execute a request, you receive an error message stating "The definition contains too many actions (endpoints). Please reduce the amount of endpoints so that they can be able to handle them."</li>
+<li>
+<p><strong>Troubleshooting Steps:</strong></p>
+<ul>
+<li><strong>Reduce Endpoints in Schema:</strong> The ELITEA OpenAPI Toolkit has a limitation on the number of endpoints it can process within a single OpenAPI specification.  <strong>Currently, this limit is 128 endpoints.</strong> Your OpenAPI definition exceeds this limit (e.g., your file contains 216 endpoints). You will need to reduce the number of endpoints in your OpenAPI specification.</li>
+<li><strong>Create Focused Schemas:</strong> If possible, create smaller, more focused OpenAPI specifications that only include the specific API endpoints your agent needs to use for a particular workflow. Instead of using one large schema for an entire API, break it down into smaller schemas focused on specific functional areas.</li>
+<li><strong>Contact Support for Large Schemas:</strong> If you have a legitimate need to use a very large OpenAPI schema and cannot reduce the endpoint count below the limit, contact ELITEA support to discuss potential solutions or optimizations.</li>
+</ul>
+<p><img alt="openapi-endpoint_limit" src="../../../img/how-tos/openapi/endpoint_limit.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Unexpected or Empty Data from Agent:</strong></p>
+<ul>
+<li><strong>Problem:</strong> The integration appears to be working without errors, but the agent returns unexpected data, incomplete data, or empty responses when interacting with the API.</li>
+<li><strong>Troubleshooting Steps:</strong><ul>
+<li><strong>Incorrect Instructions:</strong> Carefully review your agent instructions. Are they sufficiently clear, precise, and detailed for the LLM to accurately understand <em>which</em> API actions to use and <em>how</em> to use them to achieve the desired data retrieval or action? Ambiguous instructions can lead to the LLM making incorrect API calls or misinterpreting API responses.</li>
+<li><strong>API Behavior Verification:</strong> The external API itself might be returning empty or unexpected data, even for requests that are technically valid. Directly verify the API's behavior using tools like Postman by sending the <em>same</em> API requests that your agent <em>intends</em> to send. This helps determine if the issue lies with ELITEA's integration or the external API's response patterns.</li>
+<li><strong>Parameter Data Type and Mismatches:</strong> Double-check that the parameters and data the LLM is providing to the API tools are of the <em>exact</em> data type, format, and structure that the API endpoint <em>expects</em>. Even subtle data type mismatches (e.g., sending a number as a string when the API expects an integer) can lead to API errors or unexpected responses. Refer to the API documentation for precise parameter requirements.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>"Description is required" Error During Agent Execution:</strong></p>
+<ul>
+<li><strong>Problem:</strong> When executing an agent that utilizes the OpenAPI toolkit, you encounter an error message indicating "Action description is required."</li>
+<li>
+<p><strong>Troubleshooting Steps:</strong></p>
+<ul>
+<li><strong>Add Descriptions to OpenAPI Specification:</strong>  This error indicates that your OpenAPI specification is missing descriptions for one or more API endpoints (actions).  LLMs rely on these descriptions to understand the purpose and functionality of each API endpoint.</li>
+<li><strong>Review OpenAPI Definition:</strong> Carefully review your OpenAPI specification file (JSON). Ensure that <em>every</em> endpoint (path and method combination) within your <code>paths</code> section has a <code>description</code> field provided within its operation definition (e.g., under <code>get:</code>, <code>post:</code>, etc.).</li>
+<li><strong>Add Missing Descriptions:</strong> For any endpoint lacking a <code>description</code>, add a concise and informative description explaining what that API endpoint does.</li>
+<li><strong>Update Toolkit Schema:</strong> After adding descriptions to your OpenAPI specification, re-upload or re-paste the updated schema into the OpenAPI Toolkit configuration within ELITEA and save the toolkit.</li>
+<li><strong>Re-run Agent:</strong> Try executing your agent again after updating the OpenAPI schema with descriptions.</li>
+</ul>
+<p><img alt="openapi-description_issue.png" src="../../../img/how-tos/openapi/description_issue.png" /></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="faqs">FAQs</h3>
+<p><strong>Q: Can I use OpenAPI specifications in YAML or JSON format?</strong></p>
+<p><strong>A:</strong>  The ELITEA OpenAPI Toolkit primarily supports OpenAPI specifications in <strong>JSON format</strong>. While YAML <em>might</em> be accepted in some limited cases, <strong>JSON is the recommended and most reliable format</strong> for optimal compatibility and parsing robustness within ELITEA.</p>
+<p><strong>Q: How do I find the OpenAPI specification for an API?</strong></p>
+<p><strong>A:</strong> API providers often publish their OpenAPI specifications (also sometimes called Swagger files) within their API documentation. Look for sections typically labeled "API Reference," "Developer Documentation," or "Integration Guides." The specification file is usually linked for download as a <code>swagger.json</code>, <code>openapi.json</code>, <code>swagger.yaml</code>, or <code>openapi.yaml</code> file. If the OpenAPI specification is not publicly available in the API documentation, you may need to request it directly from the API provider or generate it from the API's codebase if you have access to the API implementation.</p>
+<p><strong>Q: How do I determine which "action name" to use in my agent instructions?</strong></p>
+<p><strong>A:</strong> The "action names" (tool names) presented in the OpenAPI Toolkit are automatically derived from the <code>operationId</code> values defined within your OpenAPI specification file. When you successfully upload and parse your OpenAPI schema into the toolkit, the "Actions table" in the toolkit configuration interface will populate, listing these action names. Use these names directly and precisely in your agent instructions to refer to specific API endpoints. If the <code>operationId</code> is not explicitly defined in the OpenAPI specification for a particular endpoint, the "Name" column in the Actions table might be empty or auto-generated based on the HTTP method and path.</p>
+<h3 id="support-contact">Support Contact</h3>
+<p>If you encounter persistent issues, have questions not covered in this guide, or require further assistance with the OpenAPI Toolkit or ELITEA Agents, please do not hesitate to contact the dedicated ELITEA Support Team.</p>
+<ul>
+<li><strong>Email:</strong> SupportAlita@epam.com</li>
+</ul>
+<p>To ensure efficient and effective support, please include the following details in your support request:</p>
+<ul>
+<li><strong>ELITEA Environment:</strong> (e.g., "Nexus," "Alita Lab," "EYE")</li>
+<li><strong>Project Details:</strong> Project Name, Private or Team project.</li>
+<li><strong>Detailed Issue Description:</strong> Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.</li>
+<li><strong>Relevant Configuration Information:</strong><ul>
+<li>Agent Instructions (Screenshot or Text): If the issue is related to an Agent, please provide a screenshot or copy the text of your Agent's "Instructions" field.</li>
+<li>OpenAPI Toolkit Configuration (Screenshots): If the issue involves the OpenAPI toolkit, please include screenshots of the toolkit configuration settings within your Agent, especially the "Schema" and "Authentication" sections.</li>
+<li>Error Messages (Full Error Text): If you are encountering an error message, please provide the complete error text. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.</li>
+</ul>
+</li>
+<li><strong>Your Query/Prompt:</strong> If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.</li>
+<li><strong>OpenAPI Specification (if applicable and safe to share):</strong> If you suspect the issue might be related to your OpenAPI schema itself, providing your OpenAPI specification file (or a sanitized version if it contains sensitive information) can be exceptionally helpful for diagnosing schema-related problems.</li>
+</ul>
+<p><strong>Before Contacting Support:</strong></p>
+<p>We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.</p>
+<h2 id="useful-links">Useful Links</h2>
+<p>To further enhance your understanding and skills in using the OpenAPI Toolkit with ELITEA, here are some helpful external resources:</p>
+<ul>
+<li><strong>OpenAPI Specification Official Website:</strong> <a href="https://swagger.io/specification/">https://swagger.io/specification/</a> - <em>The official source for the OpenAPI Specification documentation, versions, and updates, providing in-depth information on the OpenAPI standard.</em></li>
+<li><strong>Swagger Editor:</strong> <a href="https://editor.swagger.io/">https://editor.swagger.io/</a> - <em>Swagger Editor is a valuable online tool for creating, validating, and visualizing OpenAPI specifications in both JSON and YAML formats. It's highly useful for crafting and debugging your OpenAPI schemas before integrating them into ELITEA.</em></li>
+<li><strong>Swagger UI:</strong> <a href="https://swagger.io/tools/swagger-ui/">https://swagger.io/tools/swagger-ui/</a> - <em>Swagger UI is a powerful tool for visually exploring and interacting with APIs that are defined by OpenAPI specifications. It allows you to examine API endpoints, understand API structure, and even make test calls to APIs directly from your browser, aiding in API comprehension and testing.</em></li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/yaml.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
