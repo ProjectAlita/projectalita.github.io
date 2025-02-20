@@ -53,6 +53,7 @@ nav:
           - Openapi Integration: how-tos/agents-toolkits/openapi_toolkit.md             
           - SQL Integration: how-tos/agents-toolkits/sql_toolkit.md 
           - TestIO Integration: how-tos/agents-toolkits/testIO_toolkit.md 
+          - Custom toolkit usage: how-tos/agents-toolkits/custom_toolkit.md 
       - General How-Tos:
           - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
           - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md
