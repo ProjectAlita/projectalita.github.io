@@ -1,5 +1,7 @@
 # ELITEA Toolkit Guide: ELITEA Custom Toolkit
 
+## Introduction
+
 ### Purpose and Overview
 
 The ELITEA Custom Toolkit is a specialized development tool designed to implement custom solutions by **ELITEA Development team** . It provides capability to provide certain users with non standard solutions also it is a streamlined way to build, test, and iterate on the backend components of ELITEA toolkits **before** the corresponding frontend user interface is fully developed. This toolkit enables controlled access and rapid backend development cycles within the ELITEA platform.
@@ -79,13 +81,13 @@ These use cases highlight the ELITEA Custom Toolkit's role in enabling specializ
         *   **Reuse Existing Toolkit (if appropriate):** If you find an existing toolkit that matches your intended configuration, consider reusing it instead of creating a duplicate.
         *   **Create a Unique Configuration:** If you need a *distinct* Custom Toolkit configuration, ensure that the JSON you enter is truly unique and does not conflict with any existing toolkit configurations in the system. You might need to adjust parameter names or values to make it distinct. If the system logic is matching based on toolkit type *and* JSON configuration, you might need to ensure even minor variations in JSON structure. (Consult ELITEA documentation or support for details on how toolkit uniqueness is determined).
 
-## Support and Contact Information
+### Support Contact
 
-### ELITEA Support Team
+For any issues, questions, or further assistance with the Bitbucket integration or ELITEA Agents, please reach out to our dedicated ELITEA Support Team. We are committed to providing prompt and effective support to ensure your success with ELITEA.
 
-As the ELITEA Custom Toolkit is primarily intended for internal ELITEA Developers, support and specific documentation beyond this guide may be available through internal ELITEA development channels. For general ELITEA platform issues or questions, please contact the ELITEA Support Team:
+**Contact ELITEA Support:**
 
-*   **Email:** SupportELITEA@epam.com
+*   **Email:**  **[SupportAlita@epam.com](mailto:SupportAlita@epam.com)**
 
 To help us assist you efficiently, please provide the following details in your support request:
 

@@ -42,7 +42,7 @@ nav:
           - Artifact Toolkit: how-tos/agents-toolkits/artifact_toolkit.md 
           - BitBucket Integration: how-tos/agents-toolkits/bitbucket_toolkit.md
           - Confluence Integration: how-tos/agents-toolkits/confluence_toolkit.md
-          - Custom toolkit usage: how-tos/agents-toolkits/custom_toolkit.md
+          - Custom Toolkit: how-tos/agents-toolkits/custom_toolkit.md
           - GitHub Integration: how-tos/agents-toolkits/github_toolkit.md
           - GitLab Integration: how-tos/agents-toolkits/gitlab_toolkit.md
           - GitLab Org Integration: how-tos/agents-toolkits/gitlab_org_toolkit.md
