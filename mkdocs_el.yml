@@ -20,6 +20,7 @@ nav:
           - Datasources: platform-documentation/menus/datasources.md
           - Agents: platform-documentation/menus/agents.md    
           - Collections: platform-documentation/menus/collections.md
+          - Artifacts: platform-documentation/menus/artifacts.md
       - ELITEA Extensions:
           - Alita Code: platform-documentation/extensions/alita-code.md
           - Alita Code Chat: platform-documentation/extensions/alita-chat.md
@@ -50,9 +51,10 @@ nav:
           - Rally Integration: how-tos/agents-toolkits/rally_toolkit.md 
           - XRAY Cloud Integration: how-tos/agents-toolkits/xray_toolkit.md
           - TestRail Integration: how-tos/agents-toolkits/testrail_toolkit.md     
-          - Openapi Integration: how-tos/agents-toolkits/openapi_toolkit.md             
+          - OpenAPI Integration: how-tos/agents-toolkits/openapi_toolkit.md             
           - SQL Integration: how-tos/agents-toolkits/sql_toolkit.md 
-          - TestIO Integration: how-tos/agents-toolkits/testIO_toolkit.md 
+          - TestIO Integration: how-tos/agents-toolkits/testio_toolkit.md 
+          - Artifact toolkit usage: how-tos/agents-toolkits/artifact_toolkit.md 
       - General How-Tos:
           - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
           - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md
