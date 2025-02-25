@@ -6,15 +6,10 @@
 
 This guide is your comprehensive resource for integrating and effectively utilizing the **OpenAPI toolkit** within ELITEA. It provides a detailed, step-by-step walkthrough, from obtaining your OpenAPI specification file to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of universal API integration, streamlined workflows, and enhanced data accessibility, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to interact with virtually any API, optimize data retrieval, and extend ELITEA's capabilities across diverse services.
 
-### Brief Overview of Products
+### Brief Overview of OpenAPI
 
-*   **ELITEA:** ELITEA is a cutting-edge web application designed to enhance productivity through the power of Generative AI. Key features include intelligent task management, real-time updates, and detailed reporting, all aimed at streamlining workflows.
+The **OpenAPI Toolkit** is a powerful toolkit of ELITEA, providing a universal interface for seamless integration with a vast range of APIs. By utilizing OpenAPI specifications, this toolkit allows ELITEA agents to understand and interact with diverse API endpoints, unlocking the potential to automate tasks and extend ELITEA's functionality across different platforms and services.
 
-*   **OpenAPI Toolkit:** The **OpenAPI Toolkit** is a powerful toolkit of ELITEA, providing a universal interface for seamless integration with a vast range of APIs. By utilizing OpenAPI specifications, this toolkit allows ELITEA agents to understand and interact with diverse API endpoints, unlocking the potential to automate tasks and extend ELITEA's functionality across different platforms and services.
-
-### Target Audience
-
-This guide is intended for ELITEA users, administrators, and support staff responsible for configuring and using the OpenAPI toolkit. Users are expected to have an intermediate level of technical understanding, including familiarity with APIs and basic API request concepts. Prior experience with OpenAPI specifications is helpful but not required.
 
 ## Toolkit Data Setup and Configuration
 
@@ -32,9 +27,9 @@ To use the OpenAPI toolkit, you need an OpenAPI specification file in **JSON for
 *   **Security Schemas:** Properly define security schemes (API Key, OAuth, etc.) in your OpenAPI file. This is crucial for configuring authentication within ELITEA.
 *   **Toolkit Limits:** While the OpenAPI toolkit is powerful, extremely large OpenAPI definitions with hundreds of endpoints might encounter processing limitations. If you experience issues, consider using a more focused OpenAPI definition or contact support.
 
-## System Integration with ELITEA: OpenAPI Toolkit Configuration
+## Integration with ELITEA
 
-### Integration Steps
+### OpenAPI Toolkit Configuration
 
 1.  **Navigate to Alitea Agents:** Navigate to the Agents page within your ELITEA instance.
 
@@ -48,16 +43,16 @@ To use the OpenAPI toolkit, you need an OpenAPI specification file in **JSON for
     *   **Clarity is Key:** Provide clear and specific instructions to the agent. Instruct the agent on *what* API actions to perform and *how* to use the available tools (actions defined in your OpenAPI spec).
     *   **Parameter Handling:** If your API has specific requirements for parameter formats (e.g., numeric values as strings, specific date formats, required properties), explicitly mention these in the instructions. This helps the LLM generate valid requests.
     *   **Example Instructions:**
-        `
-        ### INSTRUCTIONS:
-        1.  To create a new task, use the "CreateTask" tool. Ensure you include a 'title' and 'description' for the task.
-        2.  To get details of a task, use the "GetTaskById" tool, providing the 'taskId' as input .
-        3.  If the user asks to update a task, use the "UpdateTask" tool.  You will need the 'taskId' and the fields to update (e.g., 'status', 'dueDate').
 
-        ### CONSTRAINTS:
-        -  Assume the user has provided necessary IDs and information. If information is missing, politely ask the user for clarification.
-         ..... rest of the instructions
-        `
+        ```
+           ...
+            1. To create a new task, use the "CreateTask" tool. Ensure you include a 'title' and 'description' for the task.
+            2. To get details of a task, use the "GetTaskById" tool, providing the 'taskId' as input.
+            3. If the user asks to update a task, use the "UpdateTask" tool. You will need the 'taskId' and the fields to update (e.g., 'status', 'dueDate').
+        ```
+    ..... rest of the instructions
+
+    
     ![openapi-Create_agent](../../img/how-tos/openapi/agent_creation.png)
 
 3.  **Create an OpenAPI Toolkit Tool:** Within the Agent configuration, create a new tool and select the "OpenAPI Toolkit" type.
@@ -78,7 +73,8 @@ To use the OpenAPI toolkit, you need an OpenAPI specification file in **JSON for
 
 6.  **Authentication Configuration:** Navigate to the "Authentication" section of the toolkit configuration. Choose the appropriate authentication method based on your API's requirements:
 
-        ![openapi-auth_type_0](../../img/how-tos/openapi/auth_type_0.png)
+    ![openapi-auth_type](../../img/how-tos/openapi/auth_type.png)
+
     *   **None:** Select "None" if the API does not require authentication (rare for production APIs).
     *   **API Key:**
         *   **API Key Field:** Enter your API key directly or, for enhanced security, select "From Secrets" to reference a securely stored secret within Alitea.
@@ -96,8 +92,6 @@ To use the OpenAPI toolkit, you need an OpenAPI specification file in **JSON for
 
 ## Tools of the OpenAPI Toolkit
 
-### Available Tools (Actions Table)
-
 After successfully loading your OpenAPI specification, the "Actions" table displays the available API operations as "tools" that your ELITEA agent can utilize.
 
 *   **Name:** This column shows the name of each action, typically derived from the `operationId` in your OpenAPI specification. These names are how you refer to specific API endpoints in your agent instructions and user messages.
@@ -114,8 +108,6 @@ To instruct your agent to use a specific API endpoint, refer to the **Name** fro
 *   The LLM will then identify the "AddPet" action from the OpenAPI toolkit and attempt to use the corresponding API endpoint based on the provided OpenAPI specification and your instructions.
 
 ## Use Cases
-
-### Toolkit Use Cases
 
 The use cases for the OpenAPI toolkit are virtually limitless, constrained only by the capabilities of the integrated API and the LLM's ability to interact with it. Here are some common use cases:
 
@@ -149,9 +141,9 @@ The use cases for the OpenAPI toolkit are virtually limitless, constrained only 
     *   **Example Instruction:** "Use the 'createAsset' tool from the User API to create a new test user. Then, use the 'getAsset' tool to get the asset.Validate if the asset details are ..." (Assuming 'getAsset' and 'createAsset' are defined in your User API's OpenAPI spec).
     *   **Benefit:** Automates API smoke testing and validation processes, improving software quality, reducing manual testing effort, and ensuring the robustness and reliability of integrated systems.
 
-## Integration Helpdesk and Troubleshooting
+## Troubleshooting and Support
 
-### Troubleshooting Common Issues
+### Troubleshooting
 
 1.  **"Description of schema is required" Error During Save:**
     *   **Problem:** ELITEA displays a "Description of schema is required" error in red when attempting to save the OpenAPI Toolkit configuration.
@@ -212,9 +204,8 @@ The use cases for the OpenAPI toolkit are virtually limitless, constrained only 
 
         ![openapi-description_issue.png](../../img/how-tos/openapi/description_issue.png)
 
-## Frequently Asked Questions (FAQs)
+### FAQs
 
-### Common Questions
 
 **Q: Can I use OpenAPI specifications in YAML or JSON format?**
 
@@ -228,21 +219,7 @@ The use cases for the OpenAPI toolkit are virtually limitless, constrained only 
 
 **A:** The "action names" (tool names) presented in the OpenAPI Toolkit are automatically derived from the `operationId` values defined within your OpenAPI specification file. When you successfully upload and parse your OpenAPI schema into the toolkit, the "Actions table" in the toolkit configuration interface will populate, listing these action names. Use these names directly and precisely in your agent instructions to refer to specific API endpoints. If the `operationId` is not explicitly defined in the OpenAPI specification for a particular endpoint, the "Name" column in the Actions table might be empty or auto-generated based on the HTTP method and path.
 
----
-
-## Useful Links
-
-### External Resources
-
-To further enhance your understanding and skills in using the OpenAPI Toolkit with ELITEA, here are some helpful external resources:
-
-*   **OpenAPI Specification Official Website:** [https://swagger.io/specification/](https://swagger.io/specification/) - *The official source for the OpenAPI Specification documentation, versions, and updates, providing in-depth information on the OpenAPI standard.*
-*   **Swagger Editor:** [https://editor.swagger.io/](https://editor.swagger.io/) - *Swagger Editor is a valuable online tool for creating, validating, and visualizing OpenAPI specifications in both JSON and YAML formats. It's highly useful for crafting and debugging your OpenAPI schemas before integrating them into ELITEA.*
-*   **Swagger UI:** [https://swagger.io/tools/swagger-ui/](https://swagger.io/tools/swagger-ui/) - *Swagger UI is a powerful tool for visually exploring and interacting with APIs that are defined by OpenAPI specifications. It allows you to examine API endpoints, understand API structure, and even make test calls to APIs directly from your browser, aiding in API comprehension and testing.*
-
-## Support and Contact Information
-
-### ELITEA Support Team
+### Support Contact
 
 If you encounter persistent issues, have questions not covered in this guide, or require further assistance with the OpenAPI Toolkit or ELITEA Agents, please do not hesitate to contact the dedicated ELITEA Support Team.
 
@@ -259,3 +236,15 @@ To ensure efficient and effective support, please include the following details 
     *   Error Messages (Full Error Text): If you are encountering an error message, please provide the complete error text. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.
 *   **Your Query/Prompt:** If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.
 *   **OpenAPI Specification (if applicable and safe to share):** If you suspect the issue might be related to your OpenAPI schema itself, providing your OpenAPI specification file (or a sanitized version if it contains sensitive information) can be exceptionally helpful for diagnosing schema-related problems.
+
+**Before Contacting Support:**
+
+We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
+
+## Useful Links
+
+To further enhance your understanding and skills in using the OpenAPI Toolkit with ELITEA, here are some helpful external resources:
+
+*   **OpenAPI Specification Official Website:** [https://swagger.io/specification/](https://swagger.io/specification/) - *The official source for the OpenAPI Specification documentation, versions, and updates, providing in-depth information on the OpenAPI standard.*
+*   **Swagger Editor:** [https://editor.swagger.io/](https://editor.swagger.io/) - *Swagger Editor is a valuable online tool for creating, validating, and visualizing OpenAPI specifications in both JSON and YAML formats. It's highly useful for crafting and debugging your OpenAPI schemas before integrating them into ELITEA.*
+*   **Swagger UI:** [https://swagger.io/tools/swagger-ui/](https://swagger.io/tools/swagger-ui/) - *Swagger UI is a powerful tool for visually exploring and interacting with APIs that are defined by OpenAPI specifications. It allows you to examine API endpoints, understand API structure, and even make test calls to APIs directly from your browser, aiding in API comprehension and testing.*
