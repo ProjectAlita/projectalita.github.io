@@ -51,13 +51,13 @@ nav:
           - OpenAPI Integration: how-tos/agents-toolkits/openapi_toolkit.md  
           - qTest Integration: how-tos/agents-toolkits/qtest_toolkit.md
           - Rally Integration: how-tos/agents-toolkits/rally_toolkit.md
-          - SharePoint Integration: how-tos/agents-toolkits/sharepoint_toolkit.md 
-          - XRAY Cloud Integration: how-tos/agents-toolkits/xray_toolkit.md
+          - SharePoint Integration: how-tos/agents-toolkits/sharepoint_toolkit.md
+          - Sonar Integration: how-tos/agents-toolkits/sonar_toolkit.md 
           - SQL Integration: how-tos/agents-toolkits/sql_toolkit.md
           - TestIO Integration: how-tos/agents-toolkits/testIO_toolkit.md 
           - TestRail Integration: how-tos/agents-toolkits/testrail_toolkit.md
-          - Zephyr Scale Integration: how-tos/agents-toolkits/zephyr_scale_toolkit.md
-          - Sonar Integration: how-tos/agents-toolkits/sonar_toolkit.md
+          - XRAY Cloud Integration: how-tos/agents-toolkits/xray_toolkit.md
+          - Zephyr Scale Integration: how-tos/agents-toolkits/zephyr_scale_toolkit.md          
       - General How-Tos:
           - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
           - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md

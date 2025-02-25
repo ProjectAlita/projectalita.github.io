@@ -145,8 +145,6 @@ Once the Browser toolkit is successfully configured and added to your Agent, you
 
 ## Use Cases
 
-### Toolkit Use Cases
-
 Here are practical use cases demonstrating how to leverage the Browser Toolkit within ELITEA agents for various business needs:
 
 1.  **Market Research and Competitive Analysis:**
@@ -187,7 +185,7 @@ Here are practical use cases demonstrating how to leverage the Browser Toolkit w
 
 ## Troubleshooting and Support
 
-### Troubleshooting Common Issues
+### Troubleshooting
 
 *   **Web Page Protected Against Non-Human Access:**
     *   **Problem:**  Tools like `single_url_crawler` or `get_html_content` fail to retrieve content from a webpage, and you may encounter errors indicating that the page is protected against automated access (e.g., CAPTCHA requirements, bot detection).
@@ -236,20 +234,7 @@ Here are practical use cases demonstrating how to leverage the Browser Toolkit w
 *   **Q: I am getting an error that the page is protected. Can I overcome this issue?**
     *   **A:** No, in most cases, you cannot directly overcome website protections against robots or programmatic access from within the ELITEA Browser Toolkit. If a website is intentionally blocking automated access, you will need to respect those restrictions. Contacting the website administrator to request permission for programmatic access might be an option in specific scenarios, but there is no guarantee they will grant it.
 
-## Useful Links
-
-### External Resources
-
-To further enhance your understanding and skills in using the Browser Toolkit with ELITEA, here are some helpful external resources:
-
-*   **[Programmable Search Engine Help](https://support.google.com/programmable-search/#topic=4513742)**: - *Official Google Programmable Search Engine documentation and help resources.*
-*   **[Programmable Search Engine Setup](https://programmablesearchengine.google.com/u/1/controlpanel/all)**: - *Direct link to the Google Programmable Search Engine control panel to set up and manage your custom search engines.*
-*   **[ELITEA Secrets Management](../../platform-documentation/menus/settings.md#secrets)**: Learn how to securely store your Zephyr Scale API Token using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../platform-documentation/menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Zephyr Scale toolkit to automate your workflows.
-
-## Support and Contact Information
-
-### ELITEA Support Team
+### Support and Contact Information
 
 If you encounter persistent issues, have questions not covered in this guide, or require further assistance with the Browser Toolkit or ELITEA Agents, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.
 
@@ -274,3 +259,13 @@ To help us understand and resolve your issue as quickly as possible, please ensu
 **Before Contacting Support:**
 
 We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
+
+
+## Useful Links
+
+To further enhance your understanding and skills in using the Browser Toolkit with ELITEA, here are some helpful external resources:
+
+*   **[Programmable Search Engine Help](https://support.google.com/programmable-search/#topic=4513742)**: - *Official Google Programmable Search Engine documentation and help resources.*
+*   **[Programmable Search Engine Setup](https://programmablesearchengine.google.com/u/1/controlpanel/all)**: - *Direct link to the Google Programmable Search Engine control panel to set up and manage your custom search engines.*
+*   **[ELITEA Secrets Management](../../platform-documentation/menus/settings.md#secrets)**: Learn how to securely store your Zephyr Scale API Token using ELITEA's Secrets management feature for enhanced security.
+*   **[ELITEA Agents Configuration](../../platform-documentation/menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Zephyr Scale toolkit to automate your workflows.
