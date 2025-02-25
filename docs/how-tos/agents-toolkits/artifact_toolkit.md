@@ -113,8 +113,26 @@ The toolkit **does not support** binary files or formatted document types that c
 *   **Retention Management:** You can view and potentially modify the retention period for artifacts within the "Artifacts" section of the ELITEA application.(More details on managing retention can be found in [ELITEA Artifacts page](../../platform-documentation/menus/artifacts.md#artifacts)).
 *   **Manual Deletion:** Files and entire buckets can also be manually deleted at any time from the [ELITEA Artifacts page](../../platform-documentation/menus/artifacts.md#artifacts).
 
- ![artifact-artifacts_page](../../img/how-tos/artifact/artifacts_page.png)
+ ![artifact-artifacts_page](../../img/how-tos/artifact/Artifacts_page.png)
 
+ ![artifact-artifacts_retention](../../img/how-tos/artifact/Artifacts_retention.png)
+
+### Deduplication Artifacts
+
+After the first execution of the [Datasource deduplication](../../platform-documentation/menus/datasources.md#deduplicate) functionality, an Artifact bucket named **"datasource-deduplicate"** is automatically created.  The result files from each deduplication process of current project are saved within this bucket.
+
+It is possible to:
+
+*   **Download Results:** Download the Excel (.xlsx) files containing the deduplication results for further analysis or record-keeping.
+*   **Delete Results:** Delete individual result files or clear out older deduplication results from the bucket as needed.
+
+**Bucket Management:**
+
+*   **Automatic Creation:** The **"datasource-deduplicate"** bucket is created automatically the first time the Datasource deduplication feature is used within the project.
+*   **Recreation after Deletion:** If **"datasource-deduplicate"** bucket will be deleted manually from the Artifacts menu, it will be automatically recreated the next time you perform a datasource deduplication operation. 
+
+
+![artifact-deduplication](../../img/how-tos/artifact/deduplication-artifact.png)
  
 ## Artifact Functionality Section
 
