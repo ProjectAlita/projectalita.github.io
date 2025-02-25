@@ -327,12 +327,16 @@ By using these features, you’re equipped to enhance your dataset, making it a 
 
 **Post-Output Actions:**
 
-* **View Selection**:  A tool for quickly switching between **Code view** and **List view** views.
-* **Show differences**: An option allowing to quickly show/hide differences.
-* **Download result**: Allows you to save the deduplication results directly in an Excel spreadsheet format, facilitating easy data manipulation and analysis. 
-* **Copy the Output**: Click the **Copy to clipboard** icon to copy the generated text for use elsewhere.
-* **Full Screen Mode**: Increase the size of the output window for better visibility and focus. This mode can be activated to expand the output interface to the full screen.
-* **Purge Chat History**: For a fresh start or to clear sensitive data, click the **Clean** icon to erase the chat history.
+*   **View Selection**:  Quickly switch between **Code view** and **List view** to visualize the output in your preferred format.
+*   **Show Differences**: Toggle the **Show differences** option to easily highlight or hide changes and modifications in the output.
+*   **Copy Output to Clipboard**: Click the **Copy to clipboard** icon (<icon placeholder - copy icon>) to instantly copy the generated text output for use in other applications or documents.
+*   **Full Screen Mode**:  Maximize the output window for improved readability and focus. Activate **Full Screen Mode** to expand the output interface to occupy the entire screen.
+*   **Purge Chat History**:  Start fresh or remove sensitive information by clicking the **Clean** icon (<icon placeholder - clean icon>) to erase the current chat history.
+*   **Download Results**:
+    *   **Download via Post-Output Icon**: Save the results in an Excel spreadsheet format (.xlsx) directly using the **Download** icon located in the post-output section, facilitating easy data manipulation and analysis.
+    *   **Download from Artifacts Menu**: Access and download current and **previous** results from the **"datasource-deduplicate"** bucket within the **Artifacts menu**.  This method allows you to retrieve current and historical deduplication results if needed. For more details, see the [ELITEA Artifacts page](../../platform-documentation/menus/artifacts.md#artifacts).
+
+  ![Datasources-Artifact](../../img/platform/menus/datasources/Datasources-artifact.png)
 
 ## Public project - Datasources menu
 
