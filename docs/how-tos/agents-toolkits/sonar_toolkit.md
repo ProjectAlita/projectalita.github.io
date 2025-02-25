@@ -178,9 +178,9 @@ Here are practical use cases demonstrating how to leverage the Sonar Toolkit wit
         ```
     *   **Benefit:** Significantly accelerates the remediation of critical code quality issues. Automates the entire fix generation and submission process, reducing developer effort in addressing common and critical SonarQube findings. Improves code quality and security by proactively fixing issues and ensuring adherence to code quality standards.
 
-## Integration Helpdesk and Troubleshooting
+## Troubleshooting
 
-### Troubleshooting Common Issues
+### Troubleshooting
 
 1.  **General Connection Errors:**
     *   **Problem:** ELITEA Agent fails to connect to SonarQube (Cloud or Server), resulting in connection-related errors during toolkit execution.
@@ -234,26 +234,7 @@ Here are practical use cases demonstrating how to leverage the Sonar Toolkit wit
     *   **A:**  **SonarQube Cloud:** For SonarQube Cloud, the URL currently is **`https://sonarcloud.io`**.
         *   **SonarQube Server:** For SonarQube Server (self-hosted), the URL is the base URL of your organization's SonarQube Server web interface. This will vary depending on your organization's specific setup. Examples include: `http://your-sonarqube-server:9000` or `https://your-sonarqube-domain.com`. If you are unsure of your SonarQube Server URL, please contact your SonarQube administrator within your organization.
 
-## Useful Links
-
-### External Resources
-
-To further enhance your understanding and skills in integrating SonarQube with ELITEA, here are some helpful external resources:
-
-*   **[SonarQube Website:](https://www.sonarqube.org/)** - *Access the main SonarQube product website for product information, documentation, and downloads for SonarQube Server.*
-*   **[SonarQube Cloud Website:](https://sonarcloud.io/)** - *Access the SonarQube Cloud website for product information, documentation, and sign-up for the cloud-hosted version.*
-*   **[SonarQube Documentation:](https://docs.sonarsource.com/sonarqube/latest/)** - *Explore the official SonarQube documentation for detailed information on both SonarQube Cloud and SonarQube Server features, functionalities, API, and best practices.*
-*   **[SonarQube API Documentation (Web API):](https://sonarcloud.io/web_api/api/issues)** - *Direct link to the SonarQube Cloud API documentation, specifically for the `/api/issues/search` endpoint used by the ELITEA Sonar Toolkit.  For SonarQube Server API documentation, refer to your SonarQube Server instance's web API documentation*
-*   **[ELITEA Secrets Management](../../platform-documentation/menus/settings.md#secrets)**: Learn how to securely store your GitHub Personal Access Token using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../platform-documentation/menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the GitHub toolkit to automate your workflows.
-*   **[ELITEA Toolkit Guide: GitHub Integration](../../how-tos/github_toolkit.md)**  Learn how to integrate GitHub toolkit with ELITEA agents
-*   **[ELITEA Toolkit Guide: GitLab Integration](../../how-tos/gitlab_toolkit.md)**  Learn how to integrate GitLab toolkit with ELITEA agents
-*   **[ELITEA Toolkit Guide: Bitbucket Integration](../../how-tos/bitbucket_toolkit.md)** Learn how to integrate Bitbucket toolkit with ELITEA agents
-
-
-## Support and Contact Information
-
-### ELITEA Support Team
+### Support and Contact Information
 
 If you encounter persistent issues, have questions not covered in this guide, or require further assistance with the Sonar Toolkit or ELITEA Agents, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.
 
@@ -279,3 +260,18 @@ To help us understand and resolve your issue as quickly as possible, please ensu
 **Before Contacting Support:**
 
 We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
+
+
+## Useful Links
+
+To further enhance your understanding and skills in integrating SonarQube with ELITEA, here are some helpful external resources:
+
+*   **[SonarQube Website:](https://www.sonarqube.org/)** - *Access the main SonarQube product website for product information, documentation, and downloads for SonarQube Server.*
+*   **[SonarQube Cloud Website:](https://sonarcloud.io/)** - *Access the SonarQube Cloud website for product information, documentation, and sign-up for the cloud-hosted version.*
+*   **[SonarQube Documentation:](https://docs.sonarsource.com/sonarqube/latest/)** - *Explore the official SonarQube documentation for detailed information on both SonarQube Cloud and SonarQube Server features, functionalities, API, and best practices.*
+*   **[SonarQube API Documentation (Web API):](https://sonarcloud.io/web_api/api/issues)** - *Direct link to the SonarQube Cloud API documentation, specifically for the `/api/issues/search` endpoint used by the ELITEA Sonar Toolkit.  For SonarQube Server API documentation, refer to your SonarQube Server instance's web API documentation*
+*   **[ELITEA Secrets Management](../../platform-documentation/menus/settings.md#secrets)**: Learn how to securely store your GitHub Personal Access Token using ELITEA's Secrets management feature for enhanced security.
+*   **[ELITEA Agents Configuration](../../platform-documentation/menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the GitHub toolkit to automate your workflows.
+*   **[ELITEA Toolkit Guide: GitHub Integration](../../how-tos/github_toolkit.md)**  Learn how to integrate GitHub toolkit with ELITEA agents.
+*   **[ELITEA Toolkit Guide: GitLab Integration](../../how-tos/gitlab_toolkit.md)**  Learn how to integrate GitLab toolkit with ELITEA agents.
+*   **[ELITEA Toolkit Guide: Bitbucket Integration](../../how-tos/bitbucket_toolkit.md)** Learn how to integrate Bitbucket toolkit with ELITEA agents.
