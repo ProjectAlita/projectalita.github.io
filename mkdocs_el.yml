@@ -41,6 +41,7 @@ nav:
           - ADO Wiki, Boards, and Test Plans Integration: how-tos/agents-toolkits/ado_wiki_plan_board_toolkit.md
           - Artifact Toolkit: how-tos/agents-toolkits/artifact_toolkit.md 
           - BitBucket Integration: how-tos/agents-toolkits/bitbucket_toolkit.md
+          - Browser toolkit: how-tos/agents-toolkits/browser_toolkit.md
           - Confluence Integration: how-tos/agents-toolkits/confluence_toolkit.md
           - Custom Toolkit: how-tos/agents-toolkits/custom_toolkit.md
           - GitHub Integration: how-tos/agents-toolkits/github_toolkit.md
