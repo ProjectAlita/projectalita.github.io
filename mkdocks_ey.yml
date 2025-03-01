@@ -52,6 +52,7 @@ nav:
           - OpenAPI Integration: how-tos/agents-toolkits/openapi_toolkit.md  
           - qTest Integration: how-tos/agents-toolkits/qtest_toolkit.md
           - Rally Integration: how-tos/agents-toolkits/rally_toolkit.md
+          - ReportPortal Integration: how-tos/agents-toolkits/reportportal_toolkit.md
           - SharePoint Integration: how-tos/agents-toolkits/sharepoint_toolkit.md
           - Sonar Integration: how-tos/agents-toolkits/sonar_toolkit.md 
           - SQL Integration: how-tos/agents-toolkits/sql_toolkit.md

@@ -386,7 +386,7 @@ Let's consider a scenario where you are analyzing the Acceptance Rate for a spec
 
 *   **Acceptance Rate Calculation:** (75 Accepted Interactions / 150 Total Interactions) * 100% = **50%**
 
-*   **Interpretation:** An Acceptance Rate of 50% for the "Code Summary Prompt" suggests that this particular prompt is only meeting user needs in half of its executions. This warrants a focused investigation into the prompt's design, output quality, and user expectations. You should review the prompt's instructions, analyze user feedback related to code summarization tasks, and potentially refine the prompt to improve its accuracy, clarity, and usefulness, aiming to increase its Acceptance Rate and ensure it effectively serves its intended purpose within ELITEA.
+*   **Interpretation:** An Acceptance Rate of 50% for the "User Story Creator  Prompt" suggests that this particular prompt is only meeting user needs in half of its executions. This warrants a focused investigation into the prompt's design, output quality, and user expectations. You should review the prompt's instructions, analyze user feedback related to code summarization tasks, and potentially refine the prompt to improve its accuracy, clarity, and usefulness, aiming to increase its Acceptance Rate and ensure it effectively serves its intended purpose within ELITEA.
 
 This enhanced "Acceptance Rate" section now provides a much broader and more practical understanding of how to utilize this metric to assess the effectiveness of ELITEA's AI capabilities across Use Cases, Prompts, Datasources, and Agents, whether used in conversations or directly executed. Let me know if you have any further refinements!
 

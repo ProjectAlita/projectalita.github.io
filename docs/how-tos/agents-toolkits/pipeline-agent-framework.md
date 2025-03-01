@@ -410,53 +410,56 @@ The **`function`** node provides a more advanced and efficient way to interact w
 * **`input`**: A list of state variables that will be used to prepare the input for the ELITEA entity. This is mandatory.
 * **`output`**: A list of names for the information that will be returned by the ELITEA entity. This is mandatory.
 * **`input_mapping`**: Defines how the `input` variables from the agent's `state` are mapped to the input parameters of the ELITEA entity being called.
-    *   **For Agent as Function:** If calling an ELITEA agent as a function node, `input_mapping` typically includes:
-        * **`input_mapping`**:
-            **`task`**: # 'task' is a common input parameter for agents
-                **`type`**: <type> # variable, fstring, string, fixed
-                **`value`**: <value> # state variable, formatted string, text, constant value
-            **`chat_history`**: # 'chat_history' is another common input parameter for agents
-                **`type`**: <type> # variable, fixed
-                **`value`**: <value> # 'messages' state variable, [] for empty history
-        *   **`task`**: Represents the main instruction or task for the agent being called.
-            *   **`type: string`**: Provides instructions directly as a string without using state variables.
-            *   **`type: fstring`**: Provides parametrized instructions using variables from the agent's `state`.
-            *   **`type: variable`**: Uses the value of a state variable as the task instruction.
-            *   **`type: fixed`**: Uses a constant, hardcoded value as the task instruction.
-        *   **`chat_history`**:  Defines how chat history is passed to the agent being called.
-            *   **`type: fixed`**:  `value: []` -  Passes an empty chat history, effectively starting a new conversation with the child agent.
-            *   **`type: variable`**: `value: messages` - Passes the entire current chat history to the child agent.
-    *   **For Prompt as Function:** If calling an ELITEA prompt as a function node, `input_mapping` might look like:
-        ```yaml
-        input_mapping:
-          input: # 'input' is a common input parameter for prompts (for prompts without variables)
-            type: variable
-            value: <state_variable_name> # The state variable containing the input for the prompt
-          variable_name: # 'variable_name' -  Use this if the prompt has variables, replace 'variable_name' with the actual variable name in the prompt
-            type: variable
-            value: <state_variable_name> # The state variable providing value for the prompt's variable
-        ```
-        *   **`input`**: Used when calling a prompt that doesn't use variables in its instructions.
-            *   **`type: variable`**:  Uses a state variable as input to the prompt.
-        *   **`variable_name`**: Used when calling a prompt that *does* use variables in its instructions. Replace `variable_name` with the actual name of the variable used in the prompt.
-            *   **`type: variable`**: Uses a state variable to provide the value for the prompt's variable.
-            *   **`type: fixed`**: Uses a fixed, constant value for the prompt's variable. Useful when a variable's value is not crucial and can be a default value (e.g., "n/a").
-    *   **For Datasource as Function:** If calling an ELITEA datasource as a function node, `input_mapping` typically includes:
-        ```yaml
-        input_mapping:
-          query: # 'query' is a common input parameter for datasources
-            type: <type> # variable, string, fstring, fixed
-            value: <value> # state variable, formatted query string, query text, constant query
-        ```
-        *   **`query`**: Defines the query to be executed against the datasource.
-            *   **`type: variable`**: Uses a state variable as the query.
-            *   **`type: string`**: Provides the query directly as a string.
-            *   **`type: fstring`**: Creates a dynamic query using variables from the agent's `state`.
-            *   **`type: fixed`**: Uses a constant, hardcoded query.
-
-        **Important Note:** When using a datasource as a function node, remember to specify the correct `tool` name in your YAML instructions. Use `[ToolNamewithoutspacesPredict]` for prediction datasources and `[ToolNamewithoutspacesSearch]` for search datasources (replace `ToolNamewithoutspaces` with the actual tool name without spaces).
-
 * **`transition`**: The `id` of the next node to execute after the function call.
+    
+**For Agent as Function:** If calling an ELITEA agent as a function node, `input_mapping` typically includes:
+        
+```yaml
+input_mapping:
+  task: # 'task' is a common input parameter for agents
+    type: <type> # variable, fstring, fixed
+    value: <value> # state variable, formatted string, constant value
+  chat_history: # 'chat_history' is another common input parameter for agents
+    type: <type> # variable, fixed
+    value: <value> # 'messages' state variable, [] for empty history
+```    
+* `task`: Represents the main instruction or task for the agent being called.
+    * `type: fstring`: Provides parametrized instructions using variables from the agent's `state`.
+    * `type: variable`: Uses the value of a state variable as the task instruction.
+    * `type: fixed`: Uses a constant, hardcoded value as the task instruction.
+* `chat_history`: Defines how chat history is passed to the agent being called.
+    * `type: fixed`: `value: []` - Passes an empty chat history, effectively starting a new conversation with the child agent.
+    * `type: variable`: `value: messages` - Passes the entire current chat history to the child agent.
+
+
+**For Prompt as Function:** If calling an ELITEA prompt as a function node, `input_mapping` might look like:
+
+```yaml
+input_mapping:
+  input: # 'input' is a common input parameter for prompts (for prompts without variables)
+    type: <type> # variable, fstring, fixed
+    value: <value> # state variable, formatted string, constant value
+```
+* **`input`**: Used when calling a prompt that doesn't use variables in its instructions.
+    * `type: fstring`: Provides parametrized instructions using variables from the prompt's `state`.
+    * `type: variable`: Uses the value of a state variable as the task instruction.
+    * `type: fixed`: Uses a constant, hardcoded value as an input.
+
+
+**For Datasource as Function:** If calling an ELITEA datasource as a function node, `input_mapping` typically includes:
+        
+```yaml
+input_mapping:
+  query: # 'query' is a common input parameter for datasources
+    type: <type> # variable, string, fstring, fixed
+    value: <value> # state variable, formatted query string, query text, constant query
+```
+*   **`query`**: Defines the query to be executed against the datasource.
+    * **`type: variable`**: Uses a state variable as the query.
+    * **`type: fstring`**: Creates a dynamic query using variables from the agent's `state`.
+    * **`type: fixed`**: Uses a constant, hardcoded query.
+
+**Important Note:** When using a datasource as a function node, remember to specify the correct `tool` name in your YAML instructions. Use `[ToolNamewithoutspacesPredict]` for prediction datasources and `[ToolNamewithoutspacesSearch]` for search datasources (replace `ToolNamewithoutspaces` with the actual tool name without spaces).
 
 **Example 1: `function` node - Calling an Agent (variable input mapping)**
 
@@ -553,9 +556,7 @@ The **`loop_from_tool`** node is a more advanced loop type that gets the list of
 * **`type`**: Always set this to `loop_from_tool`.
 * **`tool`**: The name of the ELITEA entity (agent, prompt, or datasource) that will be executed *first* to generate the list of inputs for the loop.
 * **`loop_tool`**: The name of the ELITEA entity (agent, prompt, or other tool) that will be executed *for each item* in the list generated by the `tool`. **Recommendation:** Use an ELITEA agent as the `loop_tool` for more complex processing within the loop.
-* **`variables_mapping`**: **(Mandatory)** Defines how to map the variables from the `output` of the `tool` (which generates the input list) to the required input parameters of the `loop_tool` (which processes each item in the list).
-    *   **For Agent `loop_tool`**: If the `loop_tool` is an agent, `variables_mapping` typically includes mapping to `task` and `chat_history` input parameters of the agent.
-    *   **For Other `loop_tool` Types**: If the `loop_tool` is a prompt or another type of tool, you need to map the output variables of the `tool` to the input parameters expected by the specific `loop_tool`. Refer to the documentation of the `loop_tool` to understand its required input parameters.
+* **`variables_mapping`**: **(Mandatory)** Defines how to map the variables from the `output` of the `tool` (which generates the input list) to the required input parameters of the `loop_tool` (which processes each item in the list). **Note:** The **loop_tool** response is currently accumulated into a single string, similar to the loop_tool. There is no handling of the output as a dictionary or list.
 * **`input` (optional)**: A list of state variables that might be needed as input for the `tool` (the entity that generates the input list).
 * **`output` (optional)**: A list of names for the information produced by the `loop_tool` in each iteration.
 * **`structured_output` (optional)**: Indicates whether the output of the `loop_tool` is expected to be structured. Defaults to `false`.
@@ -1479,6 +1480,13 @@ To further enhance your understanding and skills in building Pipeline Agents, he
 
 * **[ELITEA Agents Configuration](../../platform-documentation/menus/agents.md)**: Learn more about configuring and managing agents within ELITEA.
 * **[Public Agents in Nexus](https://nexus.elitea.ai/alita_ui/agents/latest)**: Discover and study real-world examples of Pipeline Agents created by the ELITEA community. This is a great source of inspiration and practical learning.
+    * [MQA - Test Case Generation Workflow Manager](https://nexus.elitea.ai/alita_ui/1/agents/all/77?viewMode=public)
+    * [User Story Review Workflow Manager](https://nexus.elitea.ai/alita_ui/1/agents/all/74?viewMode=public)
+    * [User Story Creation Workflow Manager](https://nexus.elitea.ai/alita_ui/1/agents/all/65?viewMode=public)
+    * [Elitea Support Bot](https://nexus.elitea.ai/alita_ui/1/agents/all/63?viewMode=public)
+    * [Release risk identification and collaborations](https://nexus.elitea.ai/alita_ui/1/agents/all/50?viewMode=public)
+    * [Onboarding Buddy](https://nexus.elitea.ai/alita_ui/1/agents/all/22?viewMode=public)
+    * [Technical interviewer](https://nexus.elitea.ai/alita_ui/1/agents/all/8?viewMode=public)
 * **[Alita SDK GitHub Repository](https://github.com/ProjectAlita/alita-sdk/tree/main)**: Explore the codebase behind the Pipeline Agent Framework and its nodes. This is a valuable resource for understanding the inner workings and extending its capabilities.
 * **[YAML Specification](https://yaml.org/spec/)**: Gain a comprehensive understanding of YAML syntax and structure.
 * **[Jinja Templating Engine Documentation](https://jinja.palletsprojects.com/en/3.1.x/)** Master the syntax and features of Jinja2, the templating language used for defining conditions in Pipeline Agents.
