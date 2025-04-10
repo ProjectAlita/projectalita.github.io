@@ -19,7 +19,7 @@ Introducing **Pipelines**, a new separate entity in ELITEA designed to create "m
 
 * **Flow View**: A visual designer for intuitive pipeline setup, allowing users to drag and drop components to build workflows effortlessly.
 * **YAML Editor**: For advanced users, pipelines can be configured using YAML, providing granular control over pipeline behavior and execution.
-* **Mermaid Flow Diagram Support**: Added support for presenting and displaying pipelines as **Mermaid flow diagrams**, offering enhanced visibility and making complex workflows more understandable for users. This feature provides a clear and structured representation of pipeline logic.
+* **Mermaid Flow Diagram Support**: Added support for presenting and displaying pipelines as **Mermaid flow diagrams**, offering enhanced visibility and making complex workflows more understandable for users. This feature provides a clear and strgituctured representation of pipeline logic.
 
 ![RN-Pipeline_Flow_View](<../img/release-notes/RN-Pipeline_Flow_View.png>) ![RN-Pipeline_Diagram](<../img/release-notes/RN-Pipeline_Diagram.png>) 
 
