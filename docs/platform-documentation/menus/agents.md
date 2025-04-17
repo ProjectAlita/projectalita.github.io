@@ -220,13 +220,13 @@ The **Confluence** toolkit seamlessly integrates Confluence, a widely-used platf
       * **Description**: Provide a detailed description of the Confluence toolkit's purpose.
       * **URL**: Enter the URL to your Confluence instance (e.g., `https://www.kb.epam.com/`). The URL should be the base link as detailed handling is managed via the instructions.
       * **Authentication Options**: Choose your preferred method for secure connection: 
-        * **API Key**: Select this option if you are using an API key for authentication. You have two choices for providing the necessary credentials:
-            * **Password**: Enter your API key value directly into the provided field.
+        * **Basic**: Select this option if you are using Basic authentication. You have two choices for providing the necessary credentials:
+            * **Password**: Enter your password or app password directly into the provided field.
             * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
-        * **Username**: Additionally, you will need to input the **Username** associated with your Confluence account to complete the authentication process. 
-        * **Token**: Select this option if you are using a token for authentication. Similar to the API key, you have two choices for providing the necessary credentials:
-            * **Password**: Enter the your token value directly into the provided field.
+        * **Bearer**: Select this option if you are using a Bearer token for authentication. You have two choices for providing the necessary credentials:
+            * **Password**: Enter your Bearer token directly into the provided field.
             * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
+        * **Username**: Additionally, you will need to input the **Username** associated with your account to complete the authentication process. 
       * **Hosting Option**: Select the appropriate hosting type for your Jira setup:
         * **Cloud**: If your Confluence is hosted on Atlassian’s cloud.
         * **Server**: If your Confluence is hosted on your own servers or an enterprise environment. **Important Note**: When connecting to Epam's Confluence, ensure you select the **Server** option to establish the correct configuration.
@@ -270,13 +270,13 @@ The **Jira** toolkit enables a direct integration with Jira, allowing users to m
       * **Description**: Offer a concise description of what the integration is intended for.
       * **URL**: Enter the URL to your Jira instance (e.g., `https://www.jira.epam.com/jira/`).
       * **Authentication Options**: Choose your preferred method for secure connection: 
-        * **API Key**: Select this option if you are using an API key for authentication. You have two choices for providing the necessary credentials:
-            * **Password**: Enter your API key value directly into the provided field.
+        * **Basic**: Select this option if you are using Basic authentication. You have two choices for providing the necessary credentials:
+            * **Password**: Enter your password or app password directly into the provided field.
             * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
-        * **Username**: Additionally, you will need to input the **Username** associated with your Jira account to complete the authentication process. 
-        * **Token**: Select this option if you are using a token for authentication. Similar to the API key, you have two choices for providing the necessary credentials:
-            * **Password**: Enter the your token value directly into the provided field.
+        * **Bearer**: Select this option if you are using a Bearer token for authentication. You have two choices for providing the necessary credentials:
+            * **Password**: Enter your Bearer token directly into the provided field.
             * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
+        * **Username**: Additionally, you will need to input the **Username** associated with your account to complete the authentication process. 
       * **Hosting Option**: Select the appropriate hosting type for your Jira setup:
         * **Cloud**: If your Jira is hosted on Atlassian’s cloud.
         * **Server**: If your Jira is hosted on your own servers or an enterprise environment. **Important Note**: When connecting to Epam's Jira, ensure you select the **Server** option to establish the correct configuration.
