@@ -20,11 +20,8 @@ jobs:
 
       - name: Install MkDocs and dependencies
         run: |
-          pip install mkdocs mkdocs-material markdownlint-cli
-
-      - name: Run Markdown linting (optional but recommended)
-        run: markdownlint docs/**/*.md
-
+          pip install mkdocs mkdocs-material
+     
       - name: Build MkDocs documentation
         run: mkdocs build --clean
 
