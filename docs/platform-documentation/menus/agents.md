@@ -4,7 +4,7 @@
 
 ELITEA Agents are a cornerstone feature within the ELITEA platform, designed to significantly enhance and expand the capabilities of AI technologies. By leveraging the advanced natural language processing capabilities of GPT models, ELITEA Agents serve as virtual assistants or "agents" that automate tasks and streamline workflows, providing users with a more efficient and effective way to interact with AI models.
 
-![Agents-Menu_Private](<../../img/platform/menus/agents/Agents-Menu_Private.png>)
+![Agents-Menu_Interface](<../../img/platform/menus/agents/Agents-Menu_Interface.png>)
 
 ## What are ELITEA Agents?
 
@@ -59,8 +59,16 @@ To set up a new agent:
 4. Select the **Agent type**.
 5. Provide instructions for selected **Agent type** in the Instructions field.
 6. Add and setup selected toolkits that agent must use.
+
+![Agents-ToolkitConfig](<../../img/platform/menus/agents/Agents_ToolkitConfig.png>)
+
 7. Optionally, add and configure **Conversation Starter** and **Welcome Message**. 
 8. Click **Save**.
+
+Your newly created agent will subsequently appear on the **Agents** page for your project.
+
+![Agents-Create](<../../img/platform/menus/agents/Agents-Menu_Create.png>)
+
 
 When configuring Agents, you can further personalize their profiles by adding a custom image along with the **Name** and **Description**. This feature allows you to create a unique, visually distinct identity for each Agent, making them easier to recognize and manage.
 
@@ -70,9 +78,8 @@ To add an image:
 2. Click the **Upload a Custom Image** icon to upload a custom image from your local system to personalize the Agent's profile.
 3. **Use Default Images** from a set of default images provided by the platform.
 
-![Agents-New_Agent](<../../img/platform/menus/agents/Agents-New_Agent.png>)
+![Agents-icon](<../../img/platform/menus/agents/Agents_icon.png>)
 
-Your newly created agent will subsequently appear on the **Agents** page for your project.
 
 ### How to Create Instructions
 
@@ -84,7 +91,7 @@ The **Instructions** field in Agent is a crucial component where users input the
 * **Enter the Details**: In the Instructions field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the agent's focus and efficiency.
 * **Using toolkits**: For enhancing agent's capabilities, you can integrate toolkits and provide instructions how to use them and in which order. The name of toolkit can be denoted by "", (e.g. "Access_JIRA" toolkit).
 
-![Agents-Instructions](<../../img/platform/menus/agents/Agents-Instructions.png>)
+![Agents-Instructions](<../../img/platform/menus/agents/Agents_Instructions.png>)
 
 
 ### How to Select an Agent Type
@@ -126,7 +133,11 @@ Below is the list of toolkits supported by the platform. For detailed instructio
 | **Version Control**     | [GitHub](../../how-tos/agents-toolkits/github_toolkit.md), [GitLab](../../how-tos/agents-toolkits/gitlab_toolkit.md), [GitLab Org](../../how-tos/agents-toolkits/gitlab_org_toolkit.md), [Bitbucket](../../how-tos/agents-toolkits/bitbucket_toolkit.md) |
 | **Testing Tools**       | [TestRail](../../how-tos/agents-toolkits/testrail_toolkit.md), [QTest](../../how-tos/agents-toolkits/qtest_toolkit.md), [XRAY Cloud](../../how-tos/agents-toolkits/xraycloud_toolkit.md), [Zephyr Enterprise](../../how-tos/agents-toolkits/zephyr_enterprise_toolkit.md), [Zephyr Scale](../../how-tos/agents-toolkits/zephyr_scale_toolkit.md), [TestIO](../../how-tos/agents-toolkits/testio_toolkit.md) |
 | **EPAM Tools**          | [Report Portal](../../how-tos/agents-toolkits/reportportal_toolkit.md), [TEST IO](../../how-tos/agents-toolkits/testio_toolkit.md) |
-| **Other Tools**         | [Browser](../../how-tos/agents-toolkits/browser_toolkit.md), [Google Places](../../how-tos/agents-toolkits/googleplaces_toolkit.md), [Open API](../../how-tos/agents-toolkits/openapi_toolkit.md), [Custom](../../how-tos/agents-toolkits/custom_toolkit.md), [SQL](../../how-tos/agents-toolkits/sql_toolkit.md), [Pandas](../../how-tos/agents-toolkits/pandas_toolkit.md), [Sonar](../../how-tos/agents-toolkits/sonar_toolkit.md), [Figma](../../how-tos/agents-toolkits/figma_toolkit.md), [Salesforce](../../how-tos/agents-toolkits/salesforce_toolkit.md), [Carrier](../../how-tos/agents-toolkits/carrier_toolkit.md) |
+| **Other Tools**         | [Browser](../../how-tos/agents-toolkits/browser_toolkit.md), [Google Places](../../how-tos/agents-toolkits/googleplaces_toolkit.md), [Open API](../../how-tos/agents-toolkits/openapi_toolkit.md), [Custom](../../how-tos/agents-toolkits/custom_toolkit.md), [SQL](../../how-tos/agents-toolkits/sql_toolkit.md), [Pandas](../../how-tos/agents-toolkits/pandas_toolkit.md), [Sonar](../../how-tos/agents-toolkits/sonar_toolkit.md), [Figma](../../how-tos/agents-toolkits/figma_toolkit.md), [Salesforce](../../how-tos/agents-toolkits/salesforce_toolkit.md), **Carrier**
+
+
+![Agents-Toolkits](<../../img/platform/menus/agents/Agents_Toolkits.png>)
+
 
 ### WELCOME MESSAGE
 
@@ -137,6 +148,9 @@ The **Welcome Message** feature allows you to provide additional context for pip
 1. **Add the Welcome Message**: Type the welcome message text in the input field.
 2. **Save the Configuration**: After entering the desired text, ensure to save the changes to the agent. This action makes the configured welcome message available to user in the **Chat** section.
 
+![Agents-WelcomeMessage](<../../img/platform/menus/agents/Agents_WelcomeMessage.png>)
+
+
 **Using the Welcome Message**:
 
  Go to the **Chat** section of the agent. Here, you will see the configured **Welcome Message**. It will provide additional notification, instruction to the user.
@@ -145,8 +159,6 @@ The **Welcome Message** feature allows you to provide additional context for pip
 
 * "Use this agent for generating manual test cases"
 * "Don't forget to double-check the generated test cases"
-
-![Agents-Welcome_Message](<../../img/platform/menus/agents/Agents-Welcome_Message.png>)
 
 ### CONVERSATION STARTERS
 
@@ -167,7 +179,7 @@ The **Conversation Starter** feature enables you to configure and add predefined
 * "Generate test cases for provided Acceptance Criteria."
 * "Generate automatic test cases for selected [Test_Case_ID]."
 
-![Agents-Conversation_Starter](<../../img/platform/menus/agents/Agents-Conversation_Starter.png>)
+![Agents-Conversation_Starter](<../../img/platform/menus/agents/Agents_ConversationStarter.png>)
 
 By setting up conversation starters, you streamline the process of initiating specific tasks or queries, making your interactions with the agent more efficient and standardized.
 
@@ -211,7 +223,7 @@ To execute the agent and get the output you have to:
   * Click the **Like** icon if the output meets your expectations.
   * Click the **Dislike** icon if the output is unsatisfactory. Upon disliking, you will have the option to leave a comment explaining why the output did not meet your expectations. This feedback helps improve the system's performance and relevance.
 
-![Agents-Execution](<../../img/platform/menus/agents/Agents-Execution.png>)
+![Agents-Execution](<../../img/platform/menus/agents/Agents_Execution.png>)
 
 ### Managing Agent Versions: Save, Create Versions, Publish and Manage
 
@@ -254,6 +266,9 @@ The **Publish** functionality allows you to make a specific version of your agen
 3. **Submit for Approval**:
    - Once you click **Publish**, the version will be sent to a moderator for review.
    - The moderator will evaluate the agent version and either approve or reject the request.
+
+![Agents-Publish](<../../img/platform/menus/agents/Agents_Publish.png>)
+
 
 #### What Happens After Publishing:
 

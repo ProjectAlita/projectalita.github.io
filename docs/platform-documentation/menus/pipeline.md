@@ -4,6 +4,20 @@
 
 **Pipelines** in ELITEA provide a powerful way to automate workflows by visually designing and executing sequences of states and actions. This feature is ideal for managing complex processes, integrating toolkits, and ensuring seamless data flow across various tasks.
 
+![Pipeline_Main_Interface](<../../img/platform/menus/pipeline/pipeline_Main_Interface.png>)
+
+## What are ELITEA Pipelines?
+
+ELITEA Pipelines are customizable workflows that you can create within the ELITEA interface to automate complex processes. Each pipeline is designed to handle specific tasks or sequences of tasks by connecting various nodes such as conditions, decisions, loops, and tool integrations. Pipelines enable seamless interaction with external services, toolkits, and data sources, allowing users to design workflows that automate tasks like data processing, decision-making, and integration with tools like Jira, GitHub, or Salesforce. The flexibility of ELITEA Pipelines makes them powerful tools for streamlining operations and reducing manual effort.
+
+## Purpose of ELITEA Pipelines
+
+The primary purpose of ELITEA Pipelines is to provide a structured and efficient way to automate workflows for diverse use cases. Unlike manual task execution, pipelines are designed to handle repetitive, multi-step, or intricate processes that require coordination between various tools and data sources. This is particularly beneficial in scenarios where tasks involve conditional logic, iterative operations, or integration with multiple external systems. By automating these workflows, ELITEA Pipelines help reduce errors, save time, and increase productivity.
+
+## How do Pipelines Work?
+
+Creating a Pipeline involves defining a sequence of nodes, each representing a specific action, decision, or condition. These nodes can include operations like looping through data, making decisions based on conditions, or interacting with external toolkits. Users can visually design the workflow using the Flow Designer or configure it programmatically using the YAML Editor for advanced customization. Once configured, the pipeline executes the defined steps autonomously, leveraging integrated toolkits and external services to complete tasks. This allows users to automate complex workflows, adapt to dynamic conditions, and achieve their goals with minimal manual intervention.
+
 ## Key Features of ELITEA Pipelines
 
 * **Automation**: ELITEA Pipelines enable seamless automation of workflows by connecting states and actions, reducing manual effort and streamlining complex processes.
@@ -25,6 +39,9 @@ To set up a new Pipeline:
    - **Welcome Message**: Define a welcome message to guide users interacting with the pipeline.
    - **Conversation Starters**: Add predefined commands or prompts to initiate interactions with the pipeline.
 6. Click **Save**.
+
+![Pipeline_Create](<../../img/platform/menus/pipeline/pipeline_create.png>)
+
    
 When configuring Pipelines, you can further personalize their profiles by adding a custom image along with the **Name** and **Description**. This feature allows you to create a unique, visually distinct identity for each Pipeline, making them easier to recognize and manage.
 
@@ -34,10 +51,18 @@ To add an image:
 2. Click the **Upload a Custom Image** icon to upload a custom image from your local system to personalize the Pipeline's profile.
 3. **Use Default Images** from a set of default images provided by the platform.
 
+![Pipeline_Change_Icon](<../../img/platform/menus/pipeline/pipeline_change_icon.png>)
+
 
 ### **Flow Designer**:
    - Use the **Flow** tab to visually design your pipeline by connecting various nodes, such as **Condition**, **Decision**, **Function**, **LLM**, **Loop**, **Loop from Tool**, and **Tool**.
+
+![Pipeline_Flow](<../../img/platform/menus/pipeline/pipeline_flow.png>)
+
    - Add new nodes by clicking the **+** icon and selecting the desired node type from the dropdown menu.
+
+![Pipeline_Nodes](<../../img/platform/menus/pipeline/pipeline_nodes.png>)
+
    - Use the **End** node to define the completion of the pipeline.
    - Drag and drop connections between nodes to establish the workflow's logic and transitions.
    - Zoom in or out and adjust the view for better navigation and management of complex workflows.
@@ -60,6 +85,8 @@ By following best practices and leveraging the available nodes, you can design e
    - Use the YAML editor to fine-tune node configurations, set advanced parameters, and integrate custom logic.
    - Validate your YAML syntax to ensure the pipeline runs smoothly without errors.
 
+![Pipeline_Yaml](<../../img/platform/menus/pipeline/pipeline_yaml.png>)
+
 * This is particularly useful for users who prefer a code-first approach, need to implement intricate logic, or want to replicate and modify existing pipelines efficiently.
 
 ### WELCOME MESSAGE
@@ -71,6 +98,8 @@ The **Welcome Message** feature allows you to provide additional context for pip
 1. **Add the Welcome Message**: Type the welcome message text in the input field.
 2. **Save the Configuration**: After entering the desired text, ensure to save the changes to the agent. This action makes the configured welcome message available to user in the **Chat** section.
 
+![Pipeline_Welcome_Message](<../../img/platform/menus/pipeline/pipeline_welcome_message.png>)
+
 **Using the Welcome Message**:
 
  Go to the **Chat** section of the Pipeline. Here, you will see the configured **Welcome Message**. It will provide additional notification, instruction to the user.
@@ -79,8 +108,6 @@ The **Welcome Message** feature allows you to provide additional context for pip
 
 * "Use this pipeline for generating manual test cases"
 * "Don't forget to double-check the generated test cases"
-
-![Agents-Welcome_Message](<../../img/platform/menus/agents/Agents-Welcome_Message.png>)
 
 ### CONVERSATION STARTERS
 
@@ -92,6 +119,8 @@ The **Conversation Starter** feature enables you to configure and add predefined
 2. **Add a Conversation Starter**: Click the `+` icon to open the text input field where you can type the text you wish to use as a conversation starter.
 3. **Save the Configuration**: After entering the desired text, ensure to save the changes to the pipeline. This action makes the configured conversation starter available for use.
 
+![Pipeline_Conversation_Starter](<../../img/platform/menus/pipeline/pipeline_conversation_starter.png>)
+
 **Using a Conversation Starter**:
 
 **Initiate a Conversation**: Go to the **Chat** section of the pipeline. Here, you will find the saved conversation starters listed. Click on the desired starter to automatically populate the chat input and execute the agent.
@@ -100,8 +129,6 @@ The **Conversation Starter** feature enables you to configure and add predefined
 
 * "Generate test cases for provided Acceptance Criteria."
 * "Generate automatic test cases for selected [Test_Case_ID]."
-
-![Agents-Conversation_Starter](<../../img/platform/menus/agents/Agents-Conversation_Starter.png>)
 
 By setting up conversation starters, you streamline the process of initiating specific tasks or queries, making your interactions with the pipeline more efficient and standardized.
 
@@ -117,11 +144,14 @@ By setting up conversation starters, you streamline the process of initiating sp
 * **Regenerate Response**: If the output isn't satisfactory, click the **Regenerate** icon to prompt the Gen AI to produce a new response.
 * **Delete Output**: To remove the current output from the chat, click the **Delete** icon.
 * **Purge Chat History**: For a fresh start or to clear sensitive data, click the **Clean** icon to erase the chat history.
+
+![Pipeline-Execution](<../../img/platform/menus/pipeline/pipeline_execution.png>)
+
 * **Like or Dislike the Output**: 
   * Click the **Like** icon if the output meets your expectations.
   * Click the **Dislike** icon if the output is unsatisfactory. Upon disliking, you will have the option to leave a comment explaining why the output did not meet your expectations. This feedback helps improve the system's performance and relevance.
 
-![Agents-Execution](<../../img/platform/menus/agents/Agents-Execution.png>)
+![Pipeline-like_dislike](<../../img/platform/menus/pipeline/pipeline_like_dislike.png>)
 
 ### Managing Pipeline Versions: Save, Create Versions, Publish and Manage
 
@@ -166,6 +196,8 @@ The **Publish** functionality allows you to make a specific version of your pipe
 3. **Submit for Approval**:
    - Once you click **Publish**, the version will be sent to a moderator for review.
    - The moderator will evaluate the pipeline version and either approve or reject the request.
+
+![Pipeline-Publish](<../../img/platform/menus/pipeline/pipeline_publish.png>)
 
 #### What Happens After Publishing:
 
