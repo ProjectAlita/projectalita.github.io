@@ -96,13 +96,15 @@ This section details how to configure the GitHub toolkit within your ELITEA Agen
     *   **Name:**  Enter a descriptive **Name** for your GitHub toolkit instance. This name will be used to reference the toolkit within your Agent's instructions (e.g., "MyGitHubRepo", "CodeRepoAccess"). Choose a name that clearly indicates its purpose.
     *   **Description:** Provide a concise **Description** of the toolkit's purpose or the specific GitHub repository it will access (e.g., "Access to the main development code repository").
     *   **URL:**  This field is pre-filled with the standard GitHub API URL: `https://api.github.com`. **In the vast majority of cases, you should not modify this URL.** Only change it if you are connecting to a self-hosted **GitHub Enterprise Server** instance, in which case you should enter the specific API URL for your Enterprise Server.
-    *   **Repository:** Enter the **Repository name** that you want to access with this toolkit. Use the format: `repository_owner/repository_name` (e.g., `MyOrganization/my-project-repo`). Ensure you use the correct owner/organization and repository name.
+    *   **Repository:** Enter the **Repository name** that you want to access with this toolkit. Use the format: `repository_owner/repository_name` (e.g., `MyOrganization/my-project-repo`). Ensure you use the correct owner/organization and repository name. You don't need to add ".git" at the end of the repo.
     *   **Main branch:** Specify the **Main branch** of your repository. This is typically `main` or `master`.
     *   **Authentication Options - Token:** Select the **"Token"** authentication option.
         *   **Password/Secret:** Choose **"Password"** and then paste the **Personal Access Token (Classic)** you generated in GitHub (during the "Software-Specific Setup" section of this guide) into the **"Password"** field.
         *   **Enhanced Security with Secrets (Recommended):** For significantly enhanced security, it is strongly recommended to use the **"Secret"** option. Select **"Secret"** and then choose a pre-configured secret from the dropdown list. You must first securely store your Personal Access Token as a Secret within ELITEA's [Secrets Management](../../platform-documentation/menus/settings.md#secrets) feature. Using Secrets is a critical security best practice that prevents hardcoding sensitive credentials directly in the toolkit configuration, reducing the risk of exposure.
 
     ![GitHub-Toolkit_Configuration.png](..//..//img/how-tos/github/GitHub-Toolkit_Configuration.png)
+
+    ![GitHub-Toolkit_Configuration.png](..//..//img/how-tos/github/GitHub-setup.png)
 
 4.  **Enable Desired Tools:** In the **"Tools"** section within the GitHub toolkit configuration, **carefully select the checkboxes next to only the specific GitHub tools** that your Agent will actually need to use. **Enable only the tools that are absolutely necessary** to adhere to the principle of least privilege and minimize potential security risks. Available tools include:
     *   **Get issues** - Retrieves a list of issues.

@@ -87,7 +87,7 @@ This section details how to configure the TestRail toolkit within your ELITEA Ag
     *   **Password/API token:** Select **"API token"** as the authentication method.
         *   **Password/Secret:** Choose **"Secret"** and select a pre-configured secret from the dropdown. You must first create and securely store your **API Key** as a Secret in ELITEA's [Secrets](../../atform-documentation/menus/settings.md#secrets) feature. Using Secrets prevents hardcoding sensitive credentials directly in the toolkit configuration and enhances security. Alternatively, you can choose **"Password"** and paste the **API Key** you generated in TestRail into the **"Password"** field, but using Secrets is highly recommended for security best practices.
 
-    ![TestRail-Toolkit_Configuration](../../img/how-tos/testrail/TestRail-Toolkit_Configuration.png) *[**Note:** Replace with actual screenshot of TestRail Toolkit Configuration in ELITEA if available]*
+       ![TestRail-Toolkit_Configuration](../../img/how-tos/testrail/TestRail-Toolkit_Configuration.png) 
 
 4.  **Enable Tools:** In the "Tools" section of the TestRail toolkit configuration, **select the checkboxes next to the TestRail tools** you want to enable for your Agent. **Enable only the tools your Agent will actually use** to adhere to the principle of least privilege and enhance security. Available tools are:
     *   **Get case:** Retrieves a specific test case from TestRail.
