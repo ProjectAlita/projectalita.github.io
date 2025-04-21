@@ -254,97 +254,19 @@ By following these steps, you can successfully create and configure a new deploy
 
 ## Integrations
 
-The **Integrations** menu in ELITEA is designed to enhance the platform's functionality and flexibility by allowing users to connect with essential external tools such as Jira, Confluence, Testrail, and GitHub. These integrations enable seamless data flow and collaboration across different platforms, enhancing productivity and efficiency. Once configured, these integrations can be selected as configurations in the Agent's tool setup for each corresponding tool, allowing for streamlined operations within ELITEA. You can create integrations in both **Private** workspaces and **Team** projects, providing versatility in managing your connections.
+The **Integrations** menu in ELITEA allows you to connect your workspace or project to external tools such as Jira, Confluence, TestRail, GitHub, QTest, and more. Integrations enable seamless data flow and collaboration across platforms, and can be used in Agent toolkits and other features throughout ELITEA.
 
-### Confluence Integration Setup
+**Setting up an Integration:**
 
-To set up a Confluence integration, follow these step-by-step instructions:
+1. In the Integrations menu, click the **+** icon to create a new integration.
+2. A pop-up window will appear, prompting you to **Select Integration Type**. Choose the service you want to integrate with (e.g., Confluence, GitHub, Jira, TestRail, QTest, etc.).
+3. You will be presented with a configuration form specific to the selected integration type. Fill in the required fields (such as name, URL, authentication credentials, etc.).
+4. Configure the integration parameters as needed.
+5. Click the **Save** button to finalize the integration setup.
 
-1. **Initiate New Integration**: Click the `+` icon to start the process of creating a new integration. A pop-up window will appear, prompting you to select the type of integration you wish to create.
-2. **Select Confluence**: From the available options, select **Confluence**. This will open a new pop-up window where you can enter the necessary details for the integration.
-3. **Enter Integration Details**:
-      * **Name**: Provide a descriptive name for the integration, such as "Conf_Integration".
-      * **URL**: Enter the Confluence URL for your organization, e.g., `https://kb.epam.com/`.
-      * **Authentication Options**: Choose your preferred method for secure connection: 
-           * **API Key**: Select this option if you are using an API key for authentication. You have two choices for providing the necessary credentials:
-               * **Password**: Enter your API key value directly into the provided field.
-               * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
-           * **Username**: Additionally, you will need to input the **Username** associated with your Confluence account to complete the authentication process. 
-           * **Token**: Select this option if you are using a token for authentication. Similar to the API key, you have two choices for providing the necessary credentials:
-               * **Password**: Enter the your token value directly into the provided field.
-               * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
-         * **Hosting Option**: Select the appropriate hosting type for your Jira setup:
-           * **Cloud**: If your Confluence is hosted on Atlassian’s cloud.
-           * **Server**: If your Confluence is hosted on your own servers or an enterprise environment. **Important Note**: When connecting to Epam's Confluence, ensure you select the **Server** option to establish the correct configuration.
-      * **Set as Default**: Check the checkbox to set this integration as the default.
-4. **Save the Integration**: Click the **Save** button to finalize the integration setup. Your Confluence integration is now configured and ready to use.
+Once saved, your integration will be available for use in Agent toolkits and other features. You can manage, edit, or delete integrations from the Integrations menu at any time.
 
-### GitHub Integration Setup
-
-For GitHub integration, choose from the following authentication options:
-
-1. **Initiate New Integration**: Click the `+` icon to start the process of creating a new integration. A pop-up window will appear, prompting you to select the type of integration you wish to create.
-2. **Select Confluence**: From the available options, select **GitHub**. This will open a new pop-up window where you can enter the necessary details for the integration.
-3. **Enter Integration Details**:
-      * **Name**: Provide a descriptive name for the integration, such as "GitHub_Integration".
-      * **Authentication Options**: Choose your preferred method for secure connection: 
-           * **Private Key**: Select this option if you are using an Private key for authentication. 
-             * **App ID**: Enter the **App ID** associated with your GitHub integration.
-             * **Private Key**: Enter the configured Private key. You have two choices for providing the necessary credentials:
-                 * **Password**: Enter your Private key value directly into the provided field.
-                 * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.        
-           * **Token**: Select this option if you are using a token for authentication. Similar to the Private key, you have two choices for providing the necessary credentials:
-               * **Password**: Enter the your token value directly into the provided field.
-               * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
-           * **Password**: Select this option if you are using your GitHub account password for authentication.
-               * **Password**: Enter the password associated with your GitHub account. Similar to previous options, you have two choices for providing the necessary credentials:
-                   * **Password**: Enter your password value directly into the provided field.
-                   * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval. 
-               * **Username**: Additionally, you will need to input the **Username** associated with your GitHub account to complete the authentication process. 
-           * **Anonymous**: Select this option, if no anuthentication is required.
-       * **Set as Default**: Check the checkbox to set this integration as the default.
-4. **Save the Integration**: Click the **Save** button to finalize the integration setup. Your GitHub integration is now configured and ready to use.
-
-### Jira Integration Setup
-
-To set up a Jira integration, follow these step-by-step instructions:
-
-1. **Initiate New Integration**: Click the `+` icon to start the process of creating a new integration. A pop-up window will appear, prompting you to select the type of integration you wish to create.
-2. **Select Jira**: From the available options, select **Jira**. This will open a new pop-up window where you can enter the necessary details for the integration.
-3. **Enter Integration Details**:
-      * **Name**: Provide a descriptive name for the integration, such as "Jira_Integration".
-      * **URL**: Enter the Jira URL for your organization, e.g., `https://jiraeu.epam.com/`.
-      * **Authentication Options**: Choose your preferred method for secure connection: 
-           * **API Key**: Select this option if you are using an API key for authentication. You have two choices for providing the necessary credentials:
-               * **Password**: Enter your API key value directly into the provided field.
-               * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
-           * **Username**: Additionally, you will need to input the **Username** associated with your Jira account to complete the authentication process. 
-           * **Token**: Select this option if you are using a token for authentication. Similar to the API key, you have two choices for providing the necessary credentials:
-               * **Password**: Enter the your token value directly into the provided field.
-               * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
-      * **Hosting Option**: Select the appropriate hosting type for your Jira setup:
-           * **Cloud**: If your Jira is hosted on Atlassian’s cloud.
-           * **Server**: If your Jira is hosted on your own servers or an enterprise environment. **Important Note**: When connecting to Epam's Jira, ensure you select the **Server** option to establish the correct configuration.
-      * **Set as Default**: Check the checkbox to set this integration as the default.
-4. **Save the Integration**: Click the **Save** button to finalize the integration setup. Your Jira integration is now configured and ready to use.
-
-### TestRail Integration Setup
-
-To set up a Testrail integration, provide the following details:
-
-1. **Initiate New Integration**: Click the `+` icon to start the process of creating a new integration. A pop-up window will appear, prompting you to select the type of integration you wish to create.
-2. **Select Jira**: From the available options, select **TestRail**. This will open a new pop-up window where you can enter the necessary details for the integration.
-3. **Enter Integration Details**:
-      * **Name**: Provide a descriptive name for the integration, such as "TestRail_Integration".
-      * **URL**: Enter the TestRail URL for your organization, e.g., `https://testrail.epam.com/`.
-      * **Email**: Enter the email used for authentication.
-      * **Authentication Options**: Choose your preferred method for secure connection: 
-        * **Password**: Enter your password value directly into the provided field.
-        * **Secret**: Select a pre-configured secret from the dropdown list. This secret should have been set up previously in **Secrets** page for secure storage and retrieval.
-      * **Set as Default**: Check the checkbox to set this integration as the default.
-4. **Save the Integration**: Click the **Save** button to finalize the integration setup. Your TestRail integration is now configured and ready to use. 
-
-By setting up these integrations, you can streamline workflows and enhance collaboration across different platforms, making ELITEA a more powerful tool for your projects.
+For detailed instructions and best practices for each integration type, see the [Integrations and Configurations Guide](../../feature-guides/core-features/integrations.md).
 
 ## Projects
 

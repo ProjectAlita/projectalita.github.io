@@ -55,14 +55,14 @@ To securely integrate ELITEA with qTest, you need to obtain your qTest API token
 1.  **Log in to qTest:** Access your qTest instance by navigating to your qTest web address (e.g., `alitatest.qtestnet.com`) and logging in with your qTest credentials.
 2.  **Access API & Webhooks Settings:** Once logged in, navigate to your user profile settings. The exact location may vary slightly depending on your qTest version, but it is typically found under your profile menu or user settings. Look for options like **"Integration Settings"**, **"API Access"**, or **"Webhooks"**. In newer versions of qTest, you can find it under **"Manager"** -> **"API & SDK"**.
 
-    ![qTest-API_Token_Location_1](../../img/how-tos/qtest/QTest-API_Token_Location_1.png)
+    ![qTest-API_Token_Location_1](../../img/how-tos/qtest/qTest-API_Token_Location_1.png)
 
-    ![qTest-API_Token_Location_2](../../img/how-tos/qtest/QTest-API_Token_Location_2.png)
+    ![qTest-API_Token_Location_2](../../img/how-tos/qtest/qTest-API_Token_Location_2.png)
 
 3.  **Locate API Key/Token:** In the "API & SDK" settings, you should find your Token or Bearer Token. It may be labeled as **"Token"**, or **"Brstrt Token"**.
 4.  **Copy and Store Your API Token:**  **Copy the API token** displayed on the page. **Store it securely** in a password manager or, preferably, ELITEA's built-in Secrets feature for enhanced security within ELITEA. You will need this API token to configure the qTest toolkit in ELITEA.
 
-![qTest-API_Token_Location_3](../../img/how-tos/qtest/QTest-API_Token_Location_3.png)
+![qTest-API_Token_Location_3](../../img/how-tos/qtest/qTest-API_Token_Location_3.png)
 
 ## System Integration with ELITEA
 
@@ -92,7 +92,7 @@ This section provides detailed instructions on how to configure the qTest toolki
         *   **Password/Secret:** Choose **"Password"** and paste the **Bearer token** you obtained from qTest (during the "Software-Specific Setup" section of this guide) into the **"Password"** field.
         *   **Enhanced Security with Secrets (Recommended):** For enhanced security, it is strongly recommended to use ELITEA's **Secrets Management** feature to store your qTest API token securely. Instead of directly pasting the token into the "Password" field, select the **"Secret"** option and choose the pre-configured secret containing your qTest API token from the dropdown list. This prevents hardcoding sensitive credentials in your toolkit configuration.
 
-    ![qTest-Toolkit_Configuration](../../img/how-tos/qtest/QTest-Toolkit_Configuration.png)
+    ![qTest-Toolkit_Configuration](../../img/how-tos/qtest/qTest-Toolkit_Configuration.png)
 
 4.  **Enable Desired Tools:** In the "Tools" section within the qTest toolkit configuration panel, **select the checkboxes next to the specific qTest tools** that you want to enable for your Agent. **It is crucial to enable only the tools that your Agent will actually need to use** to adhere to the principle of least privilege and minimize potential security risks. Available tools include:
     *   **Search by DQL** - Allows searching for test cases using qTest DQL queries.
