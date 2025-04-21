@@ -31,6 +31,7 @@ By leveraging ELITEA Pipelines, users can automate and optimize their workflows,
 ## Creating a Pipeline
 
 To set up a new Pipeline:
+
 1. Click the **+ Pipeline** button located at the top right corner.
 2. Fill out the **Name** and **Description** fields.
 3. Optionally, add tags by typing a tag name or selecting from pre-existing tags in the **Tags** input box.
