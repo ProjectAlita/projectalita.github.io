@@ -34,12 +34,12 @@ By understanding and utilizing ELITEA Agents, users can unlock the full potentia
 ELITEA Agents are designed to be highly versatile, capable of integrating with a wide array of external toolkits, services, and APIs. This capability allows agents to extend their functionality beyond the core ELITEA platform, enabling them to perform complex and specialized tasks across various domains. By leveraging these integrations, Agents can act as powerful virtual assistants, automating and streamlining workflows to enhance productivity and efficiency.
 
 * **Internal Toolkits**: - **Agents, Datasources, Prompts, and Artifacts**: These are the foundational components within ELITEA that agents can utilize to perform tasks, manage data, and execute workflows. By integrating these internal toolkits, agents can seamlessly coordinate actions and decisions within the ELITEA environment.
-* **Management Tools**: - **Jira, Confluence, Rally**: Agents can integrate with these project management and collaboration tools to manage tasks, track issues, and facilitate team collaboration. This integration allows agents to automate project updates, issue tracking, and documentation management, ensuring that teams remain aligned and informed.
-* **Test Management Tools** - **XRAY Cloud, TestRail, Zephyr Scale, QTest**: By connecting with test management platforms, agents can assist in managing test cases, executing tests, and generating reports. This integration streamlines the software testing lifecycle, improving accuracy and efficiency in quality assurance processes.
-* **Coding Tools**: - **GitHub, GitLab, GitLab Org, Sonar**: Integration with version control and code quality tools enables agents to manage code repositories, facilitate pull requests, and conduct code reviews. This helps streamline the development process, ensuring code integrity and facilitating collaboration among developers.
-* **EPAM Tools**: - **Report Portal, TEST IO**: Agents can leverage EPAM-specific tools to enhance reporting and testing capabilities. This integration allows for automated data collection and analysis, providing insights that drive informed decision-making.
+* **Management Tools**: - **Jira, Confluence, Rally, Salesforce, Sharepoint**: Agents can integrate with these project management and collaboration tools to manage tasks, track issues, and facilitate team collaboration. This integration allows agents to automate project updates, issue tracking, and documentation management, ensuring that teams remain aligned and informed.
+* **Test Management Tools** - **XRAY Cloud, TestRail, Zephyr Scale, QTest, Sonar**: By connecting with test management platforms, agents can assist in managing test cases, executing tests, and generating reports. This integration streamlines the software testing lifecycle, improving accuracy and efficiency in quality assurance processes.
+* **Coding Tools**: - **GitHub, GitLab, GitLab Org**: Integration with version control and code quality tools enables agents to manage code repositories, facilitate pull requests, and conduct code reviews. This helps streamline the development process, ensuring code integrity and facilitating collaboration among developers.
+* **EPAM Tools**: - **Report Portal, TEST IO, Carrier**: Agents can leverage EPAM-specific tools to enhance reporting and testing capabilities. This integration allows for automated data collection and analysis, providing insights that drive informed decision-making.
 * **Azure Tools**: - **ADO wiki, ADO repos, ADO plans, ADO boards**: By integrating with Azure DevOps tools, agents can manage documentation, project plans, and work items. This ensures that development and operations teams can collaborate effectively, maintaining alignment with project goals and timelines.
-* **Other Tools**: - 	**Browser**, **Google Places**, **Open API**, **Custom**, **SQL**, **Pandas**, **Sonar**, **Figma**, **Salesforce**, **Carrier**: ELITEA Agents can interact with databases, perform web searches, access location data, connect with custom APIs, and integrate with platforms like SharePoint. These integrations empower agents to retrieve data, automate web-based workflows, manage documents, and access external data sources, significantly reducing manual effort and enhancing data-driven decision-making.
+* **Other Tools**: - 	**Browser**, **Google Places**, **Open API**, **Custom**, **SQL**, **Pandas**, **Figma**: ELITEA Agents can interact with databases, perform web searches, access location data, connect with custom APIs, and integrate with platforms like SharePoint. These integrations empower agents to retrieve data, automate web-based workflows, manage documents, and access external data sources, significantly reducing manual effort and enhancing data-driven decision-making.
 
 ### Setting Up Integrations
 
@@ -60,14 +60,14 @@ To set up a new agent:
 5. Provide instructions for selected **Agent type** in the Instructions field.
 6. Add and setup selected toolkits that agent must use.
 
-![Agents-ToolkitConfig](<../../img/platform/menus/agents/Agents_ToolkitConfig.png>)
+![Agents-ToolkitConfiguration](<../../img/platform/menus/agents/Agents_ToolkitConfiguration.png>)
 
 7. Optionally, add and configure **Conversation Starter** and **Welcome Message**. 
 8. Click **Save**.
 
 Your newly created agent will subsequently appear on the **Agents** page for your project.
 
-![Agents-Create](<../../img/platform/menus/agents/Agents-Menu_Create.png>)
+![Agents-Menu_Create](<../../img/platform/menus/agents/Agents-Menu_Create.png>)
 
 
 When configuring Agents, you can further personalize their profiles by adding a custom image along with the **Name** and **Description**. This feature allows you to create a unique, visually distinct identity for each Agent, making them easier to recognize and manage.
@@ -78,7 +78,7 @@ To add an image:
 2. Click the **Upload a Custom Image** icon to upload a custom image from your local system to personalize the Agent's profile.
 3. **Use Default Images** from a set of default images provided by the platform.
 
-![Agents-icon](<../../img/platform/menus/agents/Agents_icon.png>)
+![Agents_icon](<../../img/platform/menus/agents/Agents_icon.png>)
 
 
 ### How to Create Instructions
@@ -128,15 +128,16 @@ Below is the list of toolkits supported by the platform. For detailed instructio
 | **Category**           | **Toolkits**                                                                                     |
 |-------------------------|-------------------------------------------------------------------------------------------------|
 | **Azure DevOps Tools**  | [ADO boards](../../how-tos/agents-toolkits/ado_wiki_plan_board_toolkit.md), [ADO plans](../../how-tos/agents-toolkits/ado_wiki_plan_board_toolkit.md), [ADO wiki](../../how-tos/agents-toolkits/ado_wiki_plan_board_toolkit.md), [ADO repos](../../how-tos/agents-toolkits/ado_repos_toolkit.md) |
-| **Internal Toolkits**   | [Agent](../../how-tos/agents-toolkits/agent_toolkit.md), [Datasource](../../how-tos/agents-toolkits/datasource_toolkit.md), [Prompt](../../how-tos/agents-toolkits/prompt_toolkit.md), [Artifact](../../how-tos/agents-toolkits/artifact_toolkit.md) |
-| **Project Management**  | [Jira](../../how-tos/agents-toolkits/jira_toolkit.md), [Confluence](../../how-tos/agents-toolkits/confluence_toolkit.md), [Rally](../../how-tos/agents-toolkits/rally_toolkit.md) |
+| **Internal Toolkits**   | [Agent](../../platform_documentation/menus/agents.md), [Datasource](../../platform_documentation/menus/datasources), [Prompt](../../platform_documentation/menus/prompts.md), [Artifact](../../how-tos/agents-toolkits/artifact_toolkit.md) |
+| **Project Management**  | [Jira](../../how-tos/agents-toolkits/jira_toolkit.md), [Confluence](../../how-tos/agents-toolkits/confluence_toolkit.md), [Rally](../../how-tos/agents-toolkits/rally_toolkit.md), [Salesforce](../../how-tos/agents-toolkits/salesforce_toolkit.md), [Sharepoint](../../how-tos/agents-toolkits/sharepoint_toolkit.md) |
 | **Version Control**     | [GitHub](../../how-tos/agents-toolkits/github_toolkit.md), [GitLab](../../how-tos/agents-toolkits/gitlab_toolkit.md), [GitLab Org](../../how-tos/agents-toolkits/gitlab_org_toolkit.md), [Bitbucket](../../how-tos/agents-toolkits/bitbucket_toolkit.md) |
-| **Testing Tools**       | [TestRail](../../how-tos/agents-toolkits/testrail_toolkit.md), [QTest](../../how-tos/agents-toolkits/qtest_toolkit.md), [XRAY Cloud](../../how-tos/agents-toolkits/xraycloud_toolkit.md), [Zephyr Enterprise](../../how-tos/agents-toolkits/zephyr_enterprise_toolkit.md), [Zephyr Scale](../../how-tos/agents-toolkits/zephyr_scale_toolkit.md), [TestIO](../../how-tos/agents-toolkits/testio_toolkit.md) |
-| **EPAM Tools**          | [Report Portal](../../how-tos/agents-toolkits/reportportal_toolkit.md), [TEST IO](../../how-tos/agents-toolkits/testio_toolkit.md) |
-| **Other Tools**         | [Browser](../../how-tos/agents-toolkits/browser_toolkit.md), [Google Places](../../how-tos/agents-toolkits/googleplaces_toolkit.md), [Open API](../../how-tos/agents-toolkits/openapi_toolkit.md), [Custom](../../how-tos/agents-toolkits/custom_toolkit.md), [SQL](../../how-tos/agents-toolkits/sql_toolkit.md), [Pandas](../../how-tos/agents-toolkits/pandas_toolkit.md), [Sonar](../../how-tos/agents-toolkits/sonar_toolkit.md), [Figma](../../how-tos/agents-toolkits/figma_toolkit.md), [Salesforce](../../how-tos/agents-toolkits/salesforce_toolkit.md), **Carrier**
+| **Testing Tools**       | [TestRail](../../how-tos/agents-toolkits/testrail_toolkit.md), [QTest](../../how-tos/agents-toolkits/qtest_toolkit.md), [XRAY Cloud](../../how-tos/agents-toolkits/xray_toolkit.md), [Zephyr Enterprise](../../how-tos/agents-toolkits/zephyr_enterprise_toolkit.md), [Zephyr Scale](../../how-tos/agents-toolkits/zephyr_scale_toolkit.md), [TestIO](../../how-tos/agents-toolkits/testIO_toolkit.md) | [Sonar](../../how-tos/agents-toolkits/sonar_toolkit.md)|
+| **EPAM Tools**          | [Report Portal](../../how-tos/agents-toolkits/reportportal_toolkit.md), [TEST IO](../../how-tos/agents-toolkits/testIO_toolkit.md), **Carrier** |
+| **Other Tools**         | [Browser](../../how-tos/agents-toolkits/browser_toolkit.md), [Google Places](../../how-tos/agents-toolkits/google_places_toolkit.md), [Open API](../../how-tos/agents-toolkits/openapi_toolkit.md), [Custom](../../how-tos/agents-toolkits/custom_toolkit.md), [SQL](../../how-tos/agents-toolkits/sql_toolkit.md), [Pandas](../../how-tos/agents-toolkits/pandas_toolkit.md), [Figma](../../how-tos/agents-toolkits/figma_toolkit.md) |
 
 
 ![Agents-Toolkits](<../../img/platform/menus/agents/Agents_Toolkits.png>)
+
 
 ### WELCOME MESSAGE
 
