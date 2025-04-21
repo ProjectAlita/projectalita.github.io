@@ -47,12 +47,15 @@ nav:
           - Browser toolkit: how-tos/agents-toolkits/browser_toolkit.md
           - Confluence Integration: how-tos/agents-toolkits/confluence_toolkit.md
           - Custom Toolkit: how-tos/agents-toolkits/custom_toolkit.md
+          - Figma Integration: how-tos/agents-toolkits/figma_toolkit.md   
           - GitHub Integration: how-tos/agents-toolkits/github_toolkit.md
           - GitLab Integration: how-tos/agents-toolkits/gitlab_toolkit.md
           - GitLab Org Integration: how-tos/agents-toolkits/gitlab_org_toolkit.md
+          - Google Places Integration: how-tos/agents-toolkits/google_places_toolkit.md
           - Jira Integration: how-tos/agents-toolkits/jira_toolkit.md
-          - OpenAPI Integration: how-tos/agents-toolkits/openapi_toolkit.md  
-          - qTest Integration: how-tos/agents-toolkits/qtest_toolkit.md
+          - OpenAPI Integration: how-tos/agents-toolkits/openapi_toolkit.md
+          - Pandas Integration: how-tos/agents-toolkits/pandas_toolkit.md   
+          - qTest Integration: how-tos/agents-toolkits/qtest_toolkit.md          
           - Rally Integration: how-tos/agents-toolkits/rally_toolkit.md
           - ReportPortal Integration: how-tos/agents-toolkits/reportportal_toolkit.md
           - SharePoint Integration: how-tos/agents-toolkits/sharepoint_toolkit.md
@@ -61,7 +64,7 @@ nav:
           - TestIO Integration: how-tos/agents-toolkits/testIO_toolkit.md 
           - TestRail Integration: how-tos/agents-toolkits/testrail_toolkit.md
           - XRAY Cloud Integration: how-tos/agents-toolkits/xray_toolkit.md
-          - Zephyr Scale Integration: how-tos/agents-toolkits/zephyr_scale_toolkit.md          
+          - Zephyr Scale Integration: how-tos/agents-toolkits/zephyr_scale_toolkit.md       
       - General How-Tos:
           - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
           - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md
