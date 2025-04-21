@@ -138,7 +138,6 @@ Below is the list of toolkits supported by the platform. For detailed instructio
 
 ![Agents-Toolkits](<../../img/platform/menus/agents/Agents_Toolkits.png>)
 
-
 ### WELCOME MESSAGE
 
 The **Welcome Message** feature allows you to provide additional context for pipeline, prompts, datasources, and agents. Currently, the Welcome Message is sent to LLM along with other instructions.
