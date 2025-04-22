@@ -89,8 +89,6 @@ This section provides detailed instructions on how to configure the GitLab Org t
 2.  **Select GitLab Org Toolkit:** From the dropdown list of available toolkits, choose **"GitLab Org"**. Selecting "GitLab Org" will open the "New GitLab Org tool" configuration panel, where you will specify the settings for your GitLab Org integration.
 3.  **Configure GitLab Org Toolkit Settings:** Carefully fill in the following configuration fields within the "New GitLab Org tool" section:
 
-    *   **Name:**  Enter a descriptive **Name** for this specific GitLab Org toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions. For example, you might use names like "OrgCodeAccess", "GitLabOrgIntegration", or "EnterpriseGitLab".
-    *   **Description:** Provide a concise **Description** for the toolkit. This description should clarify the toolkit's purpose or the GitLab Organization it is intended to access. For example, you could describe it as "Toolkit for accessing and managing repositories across the GitLab Organization" or "Integration for the entire GitLab Enterprise Organization".
     *   **GitLab URL:** Enter the base URL of your GitLab instance.
         *   For **GitLab.com (Cloud)**: Use the standard GitLab.com URL: `https://gitlab.com`.
         *   For **Self-Hosted GitLab Instances**: If your organization uses a self-hosted GitLab instance (GitLab Enterprise Edition), enter the specific URL of your GitLab server. For example, `https://gitlab.yourcompany.com`. **Ensure you include `https://` or `http://` at the beginning of the URL.**
@@ -115,6 +113,11 @@ This section provides detailed instructions on how to configure the GitLab Org t
     *   **Set active branch** - Enables the Agent to set a specific branch as the active branch for subsequent operations.
     *   **Update file** - Allows the Agent to update the content of existing files within the repository.
     *   **Append file** - Allows the Agent to append content to existing files within the repository.
+    *   **Get Issue** - Allows the Agent to fetch details of a specific issue and its initial comments.
+    *   **Get Issues** - Allows the Agent to retrieve a list of all open issues in the repository.
+    *   **Comment on Issue** - Allows the Agent to add comments to existing issues in the repository.
+    *   **List Folders** - Allows the Agent to list folders within a specified path in the repository.
+
 
 5.  **Complete Setup:** After configuring all the necessary settings and enabling the desired tools, click the **arrow icon** (located at the top right of the toolkit configuration section) to finalize the GitLab Org toolkit setup and return to the main Agent configuration menu.
 6.  Click **Save** in the Agent configuration to save all changes and activate the GitLab Org toolkit integration for your Agent.
@@ -170,6 +173,24 @@ Once the GitLab Org toolkit is successfully configured and added to your Agent, 
 *   **Append file:** **Tool Name:** `append_file`
     *   **Functionality:** Appends content to the end of an existing file within the GitLab repository. Requires the file path, branch name, and content to append as parameters.
     *   **Purpose:** Enables automated appending of data to log files, documentation files, or other files where incremental content addition is needed. Useful for adding timestamps, generating audit trails, or accumulating data within repository files through automated workflows.
+
+
+*   **Get Issue:** **Tool Name:** `get_issue`
+    *   **Functionality:** Fetches a specific issue and its first 10 comments from the GitLab repository. Requires the issue number and repository name as parameters.
+    *   **Purpose:** Allows retrieval of detailed information about a specific issue, including its description and initial comments. Useful for tracking issue progress, understanding the context of the issue, and facilitating communication among team members.
+
+*   **Get Issues:** **Tool Name:** `get_issues`
+    *   **Functionality:** Fetches all open issues from the GitLab repository. Requires the repository name as a parameter.
+    *   **Purpose:** Provides a comprehensive list of all open issues within the repository. Useful for project management, tracking outstanding tasks, and prioritizing work based on issue status.
+
+*   **Comment on Issue:** **Tool Name:** `comment_on_issue`
+    *   **Functionality:** Adds a comment to a GitLab issue. Requires the issue number, comment text, and repository name as parameters.
+    *   **Purpose:** Facilitates communication and collaboration by allowing team members to add comments to issues. Useful for providing updates, asking questions, and sharing information related to the issue.
+
+*   **List Folders:** **Tool Name:** `list_folders`
+    *   **Functionality:** Lists folders within a specified path in the GitLab repository. Requires the repository path, branch name, and an optional recursive flag as parameters.
+    *   **Purpose:** Enables navigation and exploration of the repository's folder structure. Useful for understanding the organization of files and directories, locating specific folders, and managing repository contents.
+
 
 
 ## Use Cases

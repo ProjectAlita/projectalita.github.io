@@ -119,8 +119,6 @@ To integrate Azure DevOps Wiki, Boards, and Test Plans with ELITEA and enable yo
     *   **"Azure Test Plans (ADO Test Plan)"** (for Azure DevOps Test Plans)
 5.  **Configure Azure DevOps Toolkit Settings:**  Fill in the configuration fields for the selected Azure DevOps toolkit. The configuration steps are similar for all ADO toolkits:
 
-    *   **Name:**  Enter a descriptive **Name** for your Azure DevOps toolkit instance. This name will be used to reference the toolkit within your Agent's instructions (e.g., "MyAzureWiki", "ProjectBoardAccess", "TestPlanManager").
-    *   **Description:** Provide a brief **Description** of the toolkit's purpose or the specific Azure DevOps service it will access (e.g., "Access to Project Alpha Wiki", "Work item management for Project Beta").
     *   **ADO Organization URL:** Enter your Azure DevOps organization URL. **Ensure you use the correct format**, including your organization name: `https://dev.azure.com/{YourOrganizationName}` (Replace `{YourOrganizationName}` with your actual Azure DevOps organization name).
     *   **Project Name:** Enter the **Project Name** within your Azure DevOps organization that contains the Wiki, Boards, or Test Plans you want to access (e.g., `MyProject`).
     *   **Personal Access Token:** Paste the **Personal Access Token** you generated in Azure DevOps (during the "Software-Specific Setup" section of this guide) into the **"Personal Access Token"** field.  **Important Security Note:** For enhanced security, consider using the **"Secret"** option instead and storing your Personal Access Token securely as a Secret within [Secrets](../../platform-documentation/menus/settings.md#secrets) feature.
@@ -159,6 +157,9 @@ Once the Azure DevOps toolkits are configured and added to your Agent, you can l
 *   **Modify Wiki Page:**  **Tool Name:** `modify_wiki_page`
     *   **Functionality:** Allows modifications to the content of an existing wiki page in Azure DevOps Wiki.
     *   **Purpose:** Automate wiki updates, allowing Agents to dynamically update documentation, add meeting notes, or modify wiki content based on workflow events or user interactions.
+*   **Rename Wiki Page:**  **Tool Name:** `Rename_Wiki_Page`
+    *   **Functionality:** Allows renaming of the wiki pages.
+    *   **Purpose:** Automate wiki updates, allowing Agents to dynamically update documentation, or modify wiki content based on workflow events or user interactions.
 
 #### ADO Board Tools:
 
@@ -180,6 +181,9 @@ Once the Azure DevOps toolkits are configured and added to your Agent, you can l
 *   **Get Relation Types:** **Tool Name:** `get_relation_types`
     *   **Functionality:** Retrieves a list of available relation types for work items in Azure DevOps Boards.
     *   **Purpose:** Allows Agents to dynamically retrieve valid relation types for work items, enabling dynamic link creation and providing users with valid linking options within ELITEA workflows.
+*   **Get Comments:** **Tool Name:** `get_comments`
+    *   **Functionality:** Retrieves comments from Azure DevOps Boards.
+    *   **Purpose:** Allow Agents to fetch work item information to provide context, summarize task status, or incorporate work item details into ELITEA conversations or reports.
 
 #### ADO Test Plan Tools:
 

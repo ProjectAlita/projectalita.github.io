@@ -84,8 +84,6 @@ This section provides detailed instructions on how to configure the qTest toolki
 2.  **Select qTest Toolkit:** From the dropdown list of available toolkits, choose **"qTest"**. Selecting "qTest" will open the "New qTest tool" configuration panel, where you will specify the settings for your qTest integration.
 3.  **Configure qTest Toolkit Settings:** Carefully fill in the following configuration fields within the "New qTest tool" section:
 
-    *   **Name:**  Enter a descriptive **Name** for your qTest toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions (e.g., "ProjectQTest", "TestManagementAccess", "QTestIntegration").
-    *   **Description:** Provide a concise **Description** for the toolkit. This description should clarify the toolkit's purpose or the specific qTest project it is intended to access (e.g., "Toolkit for accessing and managing test cases in qTest", "Integration for qTest Project 'Project Alpha'").
     *   **Base URL:** Enter the base URL of your qTest instance API endpoint. **Ensure you use the correct format**: `https://qtest.example.com` (Replace `qtest.example.com` with your actual qTest subdomain).
     *   **Project ID:** Enter the **Project ID** of the specific qTest project you want to connect to with this toolkit. The Project ID is a numerical identifier for your qTest project. You can typically find the Project ID in your qTest project settings or in the URL when you are within your qTest project.
     *   **Authentication Options - API Token:** Select the **"API Token"** authentication option.
@@ -100,6 +98,8 @@ This section provides detailed instructions on how to configure the qTest toolki
     *   **Update test case** - Allows the Agent to update existing test cases in qTest.
     *   **Find test case by ID** - Enables the Agent to retrieve a specific test case by its ID.
     *   **Delete test case** - Allows the Agent to delete test cases from qTest.
+    *   **Link tests to requirement** - Allows the Agent to Link tests to requirement in qTest.
+    
 5.  **Complete Setup:** After configuring all the necessary settings and enabling the desired tools, click the **arrow icon** (located at the top right of the toolkit configuration section) to finalize the qTest toolkit setup and return to the main Agent configuration menu.
 6.  Click **Save** in the Agent configuration to save all changes and activate the qTest toolkit integration for your Agent.
 
@@ -126,6 +126,10 @@ Once the qTest toolkit is successfully configured and added to your Agent, you c
 *   **Delete test case:**  **Tool Name:** `delete_test_case`
     *   **Functionality:** Automates the deletion of a specific test case from qTest, identified by its Test Case ID.
     *   **Purpose:** Enables automated test case cleanup and test data management by allowing Agents to delete obsolete or redundant test cases from qTest, helping maintain a clean, organized, and efficient test case repository and reducing test data clutter.
+ 
+*   **Link tests to Jira requirements:**  **Tool Name:** `link_tests_to_requirement`
+    *   **Functionality:** Automates the linking of test cases to Jira requirements by specifying the Jira issue ID and a list of test case IDs.
+    *   **Purpose:** Facilitates seamless integration between Jira and qTest by allowing Agents to link test cases to specific Jira requirements, ensuring traceability and alignment between test cases and project requirements. This helps in maintaining a clear connection between testing activities and project goals, improving overall project management and tracking.
 
 ## Instructions and Prompts for Using the qTest Toolkit
 

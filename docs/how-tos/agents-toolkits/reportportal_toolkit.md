@@ -110,8 +110,6 @@ This section provides detailed instructions on how to configure the ReportPortal
 2.  **Select ReportPortal Toolkit:** From the dropdown list of available toolkits, choose **"ReportPortal"**. Selecting "ReportPortal" will open the "New ReportPortal tool" configuration panel.
 3.  **Configure ReportPortal Toolkit Settings:** Carefully fill in the following configuration fields within the "New ReportPortal tool" section:
 
-    *   **Tool Name:** Enter a descriptive **Tool Name** for your ReportPortal toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions (e.g., "ReportPortalReporting", "TestAnalyticsAccess", "RPIntegration").
-    *   **Description:** Provide a concise **Description** for the toolkit. This description should clarify the toolkit's purpose or the specific ReportPortal project it is intended to access (e.g., "Toolkit for accessing and managing test reports in ReportPortal", "Integration for ReportPortal Project 'QA Dashboard'").
     *   **ReportPortal URL:** Enter your ReportPortal instance **URL**. Ensure you use the correct format, including `https://` or `http://` and the full workspace URL (e.g., `https://your-reportportal.example.com/`).
     *   **Project Name:** Specify the exact **Project Name** in ReportPortal that you want to integrate with. This name must match the project name as it appears in ReportPortal.
     *   **API Key:** Enter your ReportPortal **API Key**. You can find this in your ReportPortal profile settings under the "API Keys" section (generated during the ‘Token/API Key Generation’ part of the "ReportPortal Account Setup and Configuration" section of this guide above). Choose **"Secret"** and select a pre-configured secret from the dropdown. You must first create and securely store your **API Key** as a Secret in ELITEA's [Secrets](../../platform-documentation/menus/settings.md#secrets) feature. Using Secrets prevents hardcoding sensitive credentials directly in the toolkit configuration and enhances security.
@@ -164,6 +162,16 @@ Once the ReportPortal toolkit is successfully configured and added to your Agent
     *   **Description:** Fetches data from ReportPortal dashboards.
     *   **Use Case:** Visualize key project metrics and performance trends from ReportPortal dashboards directly within ELITEA for real-time monitoring and reporting.
     *   **Parameters:** `dashboard_id` (ID of the dashboard to get data from)
+
+*   **Get extended launch data as raw:** `get_extended_launch_data_as_raw`
+    *   **Description:** Retrieves extended launch data in raw format from ReportPortal.
+    *   **Use Case:** Export launch data in a specified format (HTML or PDF) for detailed analysis and reporting.
+    *   **Parameters:** `launch_id` (Launch ID of the launch to export), `format` (Format of the exported data, may be one of 'pdf' or 'html', default is "html")
+
+*   **Get extended launch data:** `get_extended_launch_data`
+    *   **Description:** Uses the exported data from a specific launch to generate a comprehensive test report for management.
+    *   **Use Case:** Analyze the results, highlight key metrics, and provide insights into test coverage, defect density, and test execution trends.
+    *   **Parameters:** `launch_id` (Launch ID of the launch to export)
 
 ## Instructions for Using the Toolkit
 

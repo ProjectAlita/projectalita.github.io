@@ -104,6 +104,8 @@ This section provides detailed instructions on how to configure the Browser Tool
     *   **multi\_url\_crawler** - Crawl multiple URLs.
     *   **get\_html\_content** - Get HTML content of a page.
     *   **google** - Use Google Programmable Search Engine.
+    *   **get\_pdf\_content** - Extract content from PDF files.
+    
 
 5.  **Complete Setup:** After configuring all the necessary settings and enabling the desired tools, click the **arrow icon** to finalize the Browser toolkit setup and return to the main Agent configuration menu  or 
 6.  **Click Save** in the Agent configuration to save all changes and activate the Browser toolkit integration for your Agent.
@@ -142,6 +144,13 @@ Once the Browser toolkit is successfully configured and added to your Agent, you
     *   **Parameters:**
         *   `query` : The search query text.
     *   **Use Case Example:** To quickly access and retrieve factual information from Wikipedia for knowledge augmentation, fact-checking, or providing definitions and background information.
+
+
+*   **6. Get PDF Content:**  **Tool Name:** `Get_PDF_Content`
+    *   **Description:** Useful for getting content of the PDF files that are accessible via URL.
+    *   **Parameters:**
+        *   `URL` : The URL of the file.
+    *   **Use Case Example:** To get the contents and other information about a file available on the Internet.
 
 ## Use Cases
 

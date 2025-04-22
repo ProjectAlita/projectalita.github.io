@@ -91,8 +91,6 @@ This section provides detailed instructions on how to configure the GitLab toolk
 2.  **Select GitLab Toolkit:** From the dropdown list of available toolkits, choose **"GitLab"**. Selecting "GitLab" will open the "New GitLab tool" configuration panel, where you will specify the settings for your GitLab integration.
 3.  **Configure GitLab Toolkit Settings:** Carefully fill in the following configuration fields within the "New GitLab tool" section:
 
-    *   **Name:**  Enter a descriptive **Name** for this specific GitLab toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions. For example, you might use names like "ProjectGitLab", "CodeRepositoryAccess", or "GitLabIntegration".
-    *   **Description:** Provide a concise **Description** for the toolkit. This description should clarify the toolkit's purpose or the specific GitLab repository or project it is intended to access. For example, you could describe it as "Toolkit for accessing and managing the main project code repository on GitLab" or "Integration for GitLab project 'MyProject'".
     *   **GitLab URL:** Enter the base URL of your GitLab instance.
         *   For **GitLab.com (Cloud)**: Use the standard GitLab.com URL: `https://gitlab.com`.
         *   For **Self-Hosted GitLab Instances**: If you are using a self-hosted GitLab instance (GitLab Community Edition or GitLab Enterprise Edition), enter the specific URL of your GitLab server. For example, `https://your-gitlab-instance.com`. **Ensure you include `https://` or `http://` at the beginning of the URL.**
@@ -117,6 +115,8 @@ This section provides detailed instructions on how to configure the GitLab toolk
     *   **Set active branch** - Enables the Agent to set a specific branch as the active branch for subsequent operations.
     *   **Update file** - Allows the Agent to update the content of existing files within the repository.
     *   **Append file** - Allows the Agent to append content to existing files within the repository.
+    *   **List Folders** - Allows to List Folders for better navigation within repositories.
+    List Folders
 
 5.  **Complete Setup:** After configuring all the necessary settings and enabling the desired tools, click the **arrow icon** (located at the top right of the toolkit configuration section) to finalize the GitLab toolkit setup and return to the main Agent configuration menu.
 6.  Click **Save** in the Agent configuration to save all changes and activate the GitLab toolkit integration for your Agent.
@@ -172,6 +172,12 @@ Once the GitLab toolkit is successfully configured and added to your Agent, you 
 *   **Append file:** **Tool Name:** `append_file`
     *   **Functionality:** Appends content to the end of an existing file within the GitLab repository. Requires the file path, branch name, and content to append as parameters.
     *   **Purpose:** Enables automated appending of data to log files, documentation files, or other files where incremental content addition is needed. Useful for adding timestamps, generating audit trails, or accumulating data within repository files through automated workflows.
+
+
+*   **List folders:** **Tool Name:** `list_folders`
+    *   **Functionality:** Retrieves a list of folders from a GitLab repository. Allows specifying a path, branch, and whether to list folders recursively.
+    *   **Purpose:** Enables exploration of the repository's folder structure, identification of specific directories, or retrieval of all folders in a directory or branch. Useful for automating tasks that require knowledge of the repository's directory organization.
+
 
 ## Instructions and Prompts for Using the Toolkit
 
