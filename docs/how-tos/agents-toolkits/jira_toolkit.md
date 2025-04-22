@@ -99,7 +99,8 @@ This section provides detailed instructions on how to configure the Jira toolkit
          * **Additional Fields**: Enumeration of custom fields which can be used (e.g. `customfield_100450`). Enter a comma-separated list of custom field IDs that you want to be accessible within the toolkit. This allows you to interact with custom fields specific to your Jira projects.
         * **Verify SSL**: Check this box to enable SSL verification for secure connections to your Jira instance. It is generally recommended to keep SSL verification enabled for enhanced security.
 
-    ![Jira-Toolkit_Configuration](../../img/how-tos/jira/Jira-Toolkit_Configuration.png)
+    ![Jira-Toolkit_Configuration](../../img/how-tos/jira/Jira-Toolkit_Configuration1.png)
+    ![Jira-Toolkit_Configuration](../../img/how-tos/jira/Jira-Toolkit_Configuration2.png)
 
 4.  **Enable Desired Tools:** In the "Tools" section within the Jira toolkit configuration panel, **select the checkboxes next to the specific Jira tools** that you want to enable for your Agent. **It is crucial to enable only the tools that your Agent will actually need to use** to adhere to the principle of least privilege and minimize potential security risks. Available tools include:
     *   **Search using JQL** - Allows searching for Jira issues using Jira Query Language (JQL).
@@ -115,6 +116,7 @@ This section provides detailed instructions on how to configure the Jira toolkit
     *   **Link issues** - Enables the Agent to create links between Jira issues.
     *   **Modify labels** - Allows the Agent to add or remove labels from a Jira issue.
     *   **Generic request** - Allows to send custom HTTP requests to Jira API.
+    *   **Loader** - Extracts content of jira issue and attachments related to Jira issue.
 
 5.  **Complete Setup:** After configuring all the necessary settings and enabling the desired tools, click the **arrow icon** (typically located at the top right of the toolkit configuration section) to finalize the Jira toolkit setup and return to the main Agent configuration menu.
 6.  Click **Save** in the Agent configuration to save all changes and activate the Jira toolkit integration for your Agent.
@@ -174,6 +176,12 @@ Once the Jira toolkit is successfully configured and added to your Agent, you ca
 *   **Generic request:**  **Tool Name:** `generic_request`
     *   **Functionality:** Allows sending custom HTTP requests to the Jira API endpoint. Provides advanced users with the flexibility to interact with the Jira API directly for actions not covered by other pre-built tools.
     *   **Purpose:** Enables advanced and customized interactions with the Jira API, allowing experienced users to extend the toolkit's capabilities, access specific Jira API endpoints, and perform actions beyond the scope of the standard Jira tools, providing maximum flexibility for complex or specialized Jira integrations.
+
+
+*   **Loader:**  **Tool Name:** `Loader`
+    *   **Functionality:** Extracts content of all attachments related to specified Jira issue key. NOTE: only parsable attachments will be considered.
+    *   **Purpose:** Enables users to retrieve and analyze the content of attachments associated with a Jira issue, providing insights and information that may be contained within the attached files. This tool is useful for accessing detailed data and documentation that are linked to specific issues.
+
 
 ## Instructions and Prompts for Using the Jira Toolkit
 

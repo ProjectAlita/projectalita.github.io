@@ -80,8 +80,7 @@ This section details how to configure the Bitbucket toolkit within your ELITEA A
 2.  **Select Bitbucket:** Choose **"Bitbucket"** from the dropdown list of available toolkits. This opens the "New Bitbucket tool" configuration panel.
 3.  **Configure Toolkit Details:** Fill in the following fields:
 
-    *   **Name:**  Enter a **Name** for this Bitbucket toolkit instance. Choose a descriptive name that helps you identify its purpose within your Agent's instructions (e.g., "ProjectCodeRepo", "BitbucketAccess").
-    *   **Description:** Provide a **Description** for the toolkit, clarifying its purpose or the specific Bitbucket repository it accesses (e.g., "Toolkit to access and manage the main project repository").
+
     *   **URL:**  Enter the Bitbucket API URL. **It is crucial to use the correct format:** `https://api.bitbucket.org/`. This is the base URL for the Bitbucket API endpoint.
     *   **Username:** Enter your Bitbucket **Username**. This is the username associated with the Bitbucket account for which you created the App Password.
     *   **Project / Workspace:**  Specify the **Project or Workspace** in Bitbucket where your repository is located.
@@ -106,6 +105,8 @@ This section details how to configure the Bitbucket toolkit within your ELITEA A
     *   **List branches in repo:** Enables the Agent to list branches in the repository.
     *   **Set active branch:** Allows the Agent to set a specific branch as active.
     *   **Create branch:** Enables the Agent to create new branches.
+    *   **Get Files:**  Allows the Agent to get file from the repository.
+    *   **Loader:**  Allows the Agent to load repository data.
 
 5.  **Complete Configuration:** Click the **arrow icon** (at the top right of the toolkit configuration) to save the Bitbucket toolkit setup and return to the main Agent configuration.
 6.  Click **Save** to apply configuration and changes.
@@ -121,6 +122,8 @@ The Bitbucket toolkit provides the following tools for your ELITEA Agents:
 *   **List branches in repo:** `list_branches_in_repo` - Provides a list of all branches in the repository for branch management tasks.
 *   **Set active branch:** `set_active_branch` - Sets a specific branch as the target for subsequent repository operations.
 *   **Create branch:** `create_branch` -  Automates the creation of new branches for feature development or bug fixes.
+*   **Get Files:** `get_files`  Allows the Agent to get file from the repository.
+*   **Loader:**  `loader` Allows the Agent to load repository data.
 
 ## Instructions and Prompts for Using the Toolkit
 

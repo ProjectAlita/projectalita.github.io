@@ -93,16 +93,12 @@ This section details how to configure the GitHub toolkit within your ELITEA Agen
 2.  **Select GitHub Toolkit:** From the dropdown list of available toolkits, choose **"GitHub"**. This will open the "New GitHub tool" configuration section.
 3.  **Configure GitHub Toolkit Settings:** Fill in the following configuration fields in the "New GitHub tool" section:
 
-    *   **Name:**  Enter a descriptive **Name** for your GitHub toolkit instance. This name will be used to reference the toolkit within your Agent's instructions (e.g., "MyGitHubRepo", "CodeRepoAccess"). Choose a name that clearly indicates its purpose.
-    *   **Description:** Provide a concise **Description** of the toolkit's purpose or the specific GitHub repository it will access (e.g., "Access to the main development code repository").
     *   **URL:**  This field is pre-filled with the standard GitHub API URL: `https://api.github.com`. **In the vast majority of cases, you should not modify this URL.** Only change it if you are connecting to a self-hosted **GitHub Enterprise Server** instance, in which case you should enter the specific API URL for your Enterprise Server.
     *   **Repository:** Enter the **Repository name** that you want to access with this toolkit. Use the format: `repository_owner/repository_name` (e.g., `MyOrganization/my-project-repo`). Ensure you use the correct owner/organization and repository name. You don't need to add ".git" at the end of the repo.
     *   **Main branch:** Specify the **Main branch** of your repository. This is typically `main` or `master`.
     *   **Authentication Options - Token:** Select the **"Token"** authentication option.
         *   **Password/Secret:** Choose **"Password"** and then paste the **Personal Access Token (Classic)** you generated in GitHub (during the "Software-Specific Setup" section of this guide) into the **"Password"** field.
         *   **Enhanced Security with Secrets (Recommended):** For significantly enhanced security, it is strongly recommended to use the **"Secret"** option. Select **"Secret"** and then choose a pre-configured secret from the dropdown list. You must first securely store your Personal Access Token as a Secret within ELITEA's [Secrets Management](../../platform-documentation/menus/settings.md#secrets) feature. Using Secrets is a critical security best practice that prevents hardcoding sensitive credentials directly in the toolkit configuration, reducing the risk of exposure.
-
-    ![GitHub-Toolkit_Configuration.png](..//..//img/how-tos/github/GitHub-Toolkit_Configuration.png)
 
     ![GitHub-Toolkit_Configuration.png](..//..//img/how-tos/github/GitHub-setup.png)
 
@@ -126,6 +122,9 @@ This section details how to configure the GitHub toolkit within your ELITEA Agen
     *   **Set active branch** - Sets the active branch.
     *   **Create branch** - Creates a new branch.
     *   **Get files from directory** - Retrieves files from a directory.
+    *   **Create Issue on Project** - Creates a new issue for given project.
+    *   **Update Issue on Project** - Update issue for given project.
+    *   **Loader** - Load repository to get general information..
 
 5.  **Complete Setup:** Click the **arrow icon** (usually located at the top right of the toolkit configuration section) to finalize the GitHub toolkit setup and return to the main Agent configuration menu.
 6.  Click **Save** in the Agent configuration to save all changes.
@@ -146,12 +145,12 @@ Once the GitHub toolkit is configured and added to your Agent, you can utilize t
     *   **Functionality:** Searches for issues across the specified GitHub repository based on a query string. Supports advanced search syntax and filters to refine search results by keywords, authors, labels, state, and more.
     *   **Purpose:** Enables Agents to perform targeted searches for issues matching specific criteria, facilitating efficient retrieval of relevant issues based on keywords, user queries, or workflow requirements. Useful for finding issues related to specific topics, bugs, or feature areas.
 
-*   **Create Issue:** **Tool Name:** `create_issue`
+*   **Create Issue:** **Tool Name:** `create_issue` and **Create Issue on project:** **Tool Name:** `update_issue_on_project`
     *   **Functionality:** Creates a new issue in the specified GitHub repository. Requires parameters such as issue title and body, and optionally supports setting assignees, labels, and milestones during issue creation.
     *   **Purpose:** Automates the process of issue creation directly from ELITEA workflows. Allows Agents to automatically log bugs, feature requests, or tasks based on user input, workflow triggers, or analysis results, streamlining issue reporting and task management.
 
-*   **Update Issue:** **Tool Name:** `update_issue`
-    *   **Functionality:** Updates an existing issue in the specified GitHub repository. Allows modification of issue attributes such as title, body, status (open/closed), assignees, and labels. Requires the issue number to identify the issue to be updated.
+*   **Update Issue:** **Tool Name:** `update_issue` and **Update Issue on project:** **Tool Name:** `update_issue_on_project`
+    *   **Functionality:** Updates an existing issue in the specified GitHub repository and project. Allows modification of issue attributes such as title, body, status (open/closed), assignees, and labels. Requires the issue number to identify the issue to be updated.
     *   **Purpose:** Enables Agents to automate issue status updates, assignment changes, priority adjustments, or content modifications based on workflow progress, user actions, or external events. Facilitates dynamic issue management and keeps issue tracking information current and accurate.
 
 *   **Comment on Issue:**  **Tool Name:** `comment_on_issue`
@@ -210,6 +209,9 @@ Once the GitHub toolkit is configured and added to your Agent, you can utilize t
     *   **Functionality:** Retrieves a list of files located within a specific directory in a GitHub repository. Allows retrieval of files from a specified subdirectory path within a branch.
     *   **Purpose:** Enables Agents to retrieve file listings from specific directories, facilitating focused navigation within complex repositories, targeting relevant files within a directory structure for processing, or automating directory-specific file management tasks within ELITEA workflows, improving efficiency when working with organized file sets.
 
+*   **Loader:** **Tool Name:** `Loader`
+    *   **Functionality:** A generator that yields content from files matching the whitelist but not the blacklist.
+    *   **Purpose:** The Loader Tool generates file content from a specific branch in the repository, while respecting whitelist and blacklist patterns. It is useful for processing or analyzing specific files in a repository by filtering the files based on the specified criteria.Paramets : branch, whitelist, blacklist.
 
 ## Instructions and Prompts for Using the GitHub Toolkit
 
