@@ -116,6 +116,7 @@ For users who rely on Confluence pages to manage their information, documents, o
 
 * **Advanced Settings** - these settings offer additional controls over how your Confluence content is fetched and presented:
     * **Include Attachment** - check this if you want to include page attachments in your data fetch. Useful for cases where documents or images are integral to your content.
+    * **Include restricted content** - check this if you want to include not only public but private pages that are accessible with the provided token.
     * **Content Format** - select the format in which you wish to view or receive the content. Options include:
         * **View** - the page content as displayed in Confluence.
         * **Storage** - the raw storage format (HTML/XML) used by Confluence.
@@ -125,6 +126,93 @@ For users who rely on Confluence pages to manage their information, documents, o
     * **Max Total Pages** - set the maximum number of pages the system should fetch, defaulting to 1000. Useful for limiting data scope and ensuring performance.
 
 ![Datasources-Dataset_Confluence](../../img/platform/menus/datasources/Datasources-Dataset_Confluence.png)
+
+
+#### Source type - Jira
+
+Integrating Jira with ELITEA allows you to connect directly to your Jira instance and leverage issues as a data source. This integration enables you to index Jira issues for various purposes, such as knowledge retrieval, issue analysis, and more. Below, we detail the configuration options, settings, and parameters available for the Jira source type.
+
+* **Name** - specify a unique name for dataset configuration. This helps in easily identifying and managing multiple sources.
+* **URL** - the base URL of your Jira instance.
+    * For **Server** Jira instances, provide the base URL, e.g., `https://jiraeu.epam.com`.
+    * For **Cloud** Jira instances, provide the base URL, e.g., `https://yourproject.atlassian.net`.
+* **API Key** -  Required for Jira dataset.
+    * Input your Jira API Key manually or select a pre-configured secret from the **[ELITEA Secrets Management](../../platform-documentation/menus/settings.md#secrets)**
+* **Username** - Enter your Jira username, which is used to authenticate with your Jira instance.
+* **Hosting Option** - Choose the appropriate hosting type for your Jira setup:
+    * **Cloud** - Select this option if your Jira instance is hosted on Atlassian’s cloud.
+    * **Server** - Select this option if your Jira instance is a self-hosted server version, like `https://jiraeu.epam.com`.
+
+* **Filter** - This section allows you to filter Jira issues to be indexed. You must select one of the following filter options:
+    1. **Project Key** - To index all issues from a specific Jira project, select this option and input the **Project Key**.  The Project Key is typically a short code used to identify your Jira project (e.g., "CRM", "EPMXYZ").
+
+      ![Datasources-Dataset_Jira_ProjectKey](../../img/platform/menus/datasources/Datasources-Dataset_Jira_ProjectKey.png)
+
+      ![Datasources-Dataset_Jira_ProjectKey](../../img/platform/menus/datasources/Datasources-Dataset_Jira_ProjectKey2.png)
+
+    2. **Epic ID** - To index issues linked to a specific Epic, select this option and input the **Epic ID**. This will include all issues that are children of the specified Epic. ( e.g. CRM-1 , or EPMSPAI-252)
+    
+       **Important**: JQL syntax and functionality can vary between Jira Cloud and Server versions. With the Epic ID filter, Alita will include issues that are retrieved using the following JQL.Verify your JQL query within your Jira instance to ensure it selects the desired issues.
+      **Jira Cloud**: `parentEpic = CRM-4`, 
+      **Jira Server**: `"Parent Link" = EPMXYZ-39`
+          
+
+    3. **JQL** - For more advanced filtering, select **JQL** and input a custom Jira Query Language (JQL) query. This allows you to define complex criteria to select specific issues.
+
+        **Note**: You can use JQL within your Jira instance to test and refine your query before copying it to ELITEA. 
+          
+
+* **Fields to extract** and  **Fields to Index** - Specify a comma-separated list of Jira field IDs that you want to extract and store in the dataset. These fields will be available for analysis, to create embeddings and facilitate information retrieval.
+
+    **Note**: Field IDs can be distinct from the field names displayed in the Jira user interface. Use your browser's developer tools or consult your Jira administrator to obtain the correct Field IDs, especially for custom fields. If you specify non-existent or invalid field IDs, they will be ignored.
+
+    **Note**:  A default set of fields will always be indexed, even if not explicitly mentioned here: **status,summary,reporter,description**.
+
+* **Advanced Settings** - These settings offer further customization for Jira data ingestion.
+    * **Include Attachment** - Enable this checkbox to include attachments from Jira issues in the indexing process. ELITEA supports indexing text-based attachments, images with text and e.g. diagrams, and PDF files with text and images.
+    * **Skip attachment** -  If **Include Attachment** is enabled, use this field to specify a comma-separated list of file extensions to exclude from attachment indexing (e.g., `.mp4, .ico, .avi, .xlsx`). This can help reduce indexing time and resource consumption by skipping irrelevant or large file types like videos or non-text images.
+    * **Max total issue number** -  Set a limit on the maximum number of Jira issues to be indexed. This is useful to control dataset size and indexing time, especially when your filter might include a large number of issues.
+
+   ![Datasources-Dataset_Jira](../../img/platform/menus/datasources/Datasources-Dataset_Jira.png)
+
+### TRANSFORMERS
+
+Transformers enhance your documents by extracting significant keywords, summarizing content, and improving searchability. *Please note if you don't clearly understand the purpose of the parameters and options available here than leave them as is. Don't make any changes.*
+
+* **Extract Keywords** - options include:
+    * **For Document** - analyses the entire document for keyword extraction.
+    * **For Chunks** - processes document sections independently for more granular insights.
+* **Keyword Extractor** - the only available option is **KeyBert**, designed for efficient keyword extraction.
+* **Keyword Strategy** - choices range from **Max Sum**, to **Max MMR High**, and **Max MMR Low**, each offering different focuses on relevance and diversity.
+* **Maximum Keyword Count** - defines the limit on the number of keywords to be extracted.
+* **Split By** - determines how the document is sectioned for analysis, with options like Chunks, Lines, Paragraphs, Sentences, or Nothing.
+
+![Datasources-Dataset_Transformers](../../img/platform/menus/datasources/Datasources-Jira-Dataset_Transformers.png)
+
+### SUMMARIZATION
+    
+Summarization utilizes LLMs to condense documents into their core messages. Due to the high computational demand, use of this feature incurs additional costs. Please note if you don't clearly understand the purpose of the parameters and options available here than leave them as is. Don't make any changes.
+
+1. * **Summarization model** - select from available LLMs based on your document’s complexity.
+2. * **Document summarization** - enables summarization of the entire document.
+3. * **Process Binary Files with LLM** - enables summarization of non text files like images 
+3. * **Extract metadata** - enables summarization for metadata.
+
+
+* If you have enabled **Include Attachment**, ensure you select a **Multi-model summarization model** in the Summarization section. Multi-model models, such as **GPT-4o**, are required to process and index attachments that may contain images.
+
+![Datasources-Dataset_Jira](../../img/platform/menus/datasources/Datasources-Dataset_Jira_summarization.png)
+
+
+**Important Notes:**
+
+* **Skipped Issues**: Jira issues with an empty **Description** field will be skipped and not indexed.
+* **Field IDs**: Ensure you are using Field IDs and not Field Names when specifying "Fields to extract" and "Fields to Index".
+
+Click **Create** to begin the Jira dataset indexing process. The processing time will depend on the number of issues and attachments being indexed and overall load on system.
+
+
+
 
 #### Source type - QTest
 
