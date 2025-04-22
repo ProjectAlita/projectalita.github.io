@@ -34,25 +34,25 @@ Here’s a step-by-step guide based on the provided screenshots to create a Conn
     *   Click the **Gear icon** (Setup menu) in the top right corner of your Sales Force org. 
     *   From the dropdown menu, click **"Setup"**. 
 
-        [SalesForce_setup](../../img/how-tos/salesforces/SalesForce_Setup.png)
+        ![SalesForce_setup](../../img/how-tos/salesforces/SalesForce_Setup.png)
 
 2.  **Navigate to App Manager:**
     *   Once in Setup Home, use the **"Quick Find"** search bar on the left sidebar.
     *   Type "App Manager" in the search bar.
 
-        [SalesForce_AppManager](../../img/how-tos/salesforces/SalesForce_App_Manager.png)
+        ![SalesForce_AppManager](../../img/how-tos/salesforces/SalesForce_App_Manager.png)
 
     *   Under "Apps" (or potentially "External Client Apps"), click the **"App Manager"** link.
     *   You will see a list of existing apps. 
 
-        [SalesForce_ApplicationsList](../../img/how-tos/salesforces/SlesForce_ApplicationsList.png)
+        ![SalesForce_ApplicationsList](../../img/how-tos/salesforces/SlesForce_ApplicationsList.png)
 
 3.  **Initiate New Connected App Creation:**
     *   In the top right corner of the Lightning Experience App Manager page, click the **"New Connected App"** button. 
     *   A modal might appear asking to choose between "Create a Connected App" and "Create an External Client App". Select **"Create a Connected App"** 
     *   Click **"Continue"** (labeled '3').
 
-        [SalesForce_Create_a_New_Connected App](../../img/how-tos/salesforces/SalesForce_Create_a_connected_App.png)
+        ![SalesForce_Create_a_New_Connected_App](../../img/how-tos/salesforces/SalesForce_Create_a_connected_App.png)
 
 4.  **Enter Basic Information:**
     *   Fill in the required "Basic Information" fields for your new Connected App:
@@ -61,14 +61,14 @@ Here’s a step-by-step guide based on the provided screenshots to create a Conn
         *   **Contact Email:** Enter your email address or a relevant contact email.
             Fill in any other optional fields as needed (e.g., Description). 
 
-        [SalesForce_AppData](../../img/how-tos/salesforces/SalesForce_AppData.png)
+        ![SalesForce_AppData](../../img/how-tos/salesforces/SalesForce_AppData.png)
 
 5.  **Enable OAuth Settings:**
     *   Scroll down to the "API (Enable OAuth Settings)" section.
     *   Check the **"Enable OAuth Settings"** checkbox. (Refer to Screenshots 6 and 7)
     *   Checking this box will reveal more fields, including "Callback URL" and "Available OAuth Scopes".
 
-        [SalesForce_EnableOAuthSettings](../../img/how-tos/salesforces/SalesForce_EnableOAuthSettings.png)
+        ![SalesForce_EnableOAuthSettings](../../img/how-tos/salesforces/SalesForce_EnableOAuthSettings.png)
 
 6.  **Configure Callback URL:**
     *   The **"Callback URL"** field is required when enabling OAuth, even if you primarily use a flow like Client Credentials that doesn't use a callback. Enter a placeholder URL or, if your ELITEA instance provides a specific callback URL for OAuth flows, use that. A common placeholder might be `https://login.salesforce.com/services/oauth2/success` or a generic secure URL related to your application. 
@@ -79,13 +79,13 @@ Here’s a step-by-step guide based on the provided screenshots to create a Conn
         *   **"Access the identity URL service (id, profile, email, address, phone)"**: Often useful for identifying the connecting user.
     *   Select the desired scopes from the "Available OAuth Scopes" list and click the **right arrow** button to move them to the "Selected OAuth Scopes" list. 
 
-        [SalesForce_EnableOAuth_Scope](../../img/how-tos/salesforces/SalesForce_OAuthScope.png)
+        ![SalesForce_EnableOAuth_Scope](../../img/how-tos/salesforces/SalesForce_OAuthScope.png)
 
 8.  **Enable Client Credentials Flow (Recommended for Server-to-Server):**
     *   Scroll down further in the "API (Enable OAuth Settings)" section.
     *   Check the **"Enable Client Credentials Flow"** checkbox. 
 
-        [SalesForce_Enable_ClientCredentials](../../img/how-tos/salesforces/SalesForce_Enable_Client_Credentials.png)
+        ![SalesForce_Enable_ClientCredentials](../../img/how-tos/salesforces/SalesForce_Enable_Client_Credentials.png)
         
     *   This flow allows server-to-server authentication using only the Consumer Key and Consumer Secret.
     * Get Client ID and Secret
@@ -98,36 +98,36 @@ Follow these steps after saving your Connected App and waiting a few minutes:
 * Go back to **App Manager**.
 * Find your app in the list ➝ click the **▼ arrow** on the right ➝ choose **View**.
 
-    [SalesForce_ViewApp](../../img/how-tos/salesforces/SalesForce_ViewApp.png)
+    ![SalesForce_ViewApp](../../img/how-tos/salesforces/SalesForce_ViewApp.png)
         
 * From the connected app detail page, click "Manage".
 
-    [SalesForce_ManageApp](../../img/how-tos/salesforces/SalesForce_manageApp.png)
+    ![SalesForce_ManageApp](../../img/how-tos/salesforces/SalesForce_manageApp.png)
 
 * Click Edit Policies.
 
-    [SalesForce_EditPolicies](../../img/how-tos/salesforces/SalesForce_EditPolicy.png)
+    ![SalesForce_EditPolicies](../../img/how-tos/salesforces/SalesForce_EditPolicy.png)
 
 * Under **Client Credentials Flow**, for **Run As**, select the user that you want to assign to the client credentials flow.
 
-    [SalesForce_ClientCrendentialAssignement](../../img/how-tos/salesforces/SalesForce_ClientCredentialAssingnement.png)
+    ![SalesForce_ClientCrendentialAssignement](../../img/how-tos/salesforces/SalesForce_ClientCredentialAssingnement.png)
 
 *  Click **Save**.
 * Go back to **App Manager**.
 11. **Retrieve Consumer Key and Secret:**
     *   Once saved, you will be taken to the Connected App Detail page.
 
-        [SalesForce_AppListView](../../img/how-tos/salesforces/SalesForce_AppListView.png)
+        ![SalesForce_AppListView](../../img/how-tos/salesforces/SalesForce_AppListView.png)
 
     *   To get the credentials, look for the "API (Enable OAuth Settings)" section again.
     *   Click the **"Manage Consumer Details"** button. 
 
-        [SalesForce_ManageCustomerDetails](../../img/how-tos/salesforces/SalesForce_manageCustomerDetails.png)
+        ![SalesForce_ManageCustomerDetails](../../img/how-tos/salesforces/SalesForce_manageCustomerDetails.png)
 
     *   After verification your Consumer Details will be displayed
     *   A new page or modal will display your **"Consumer Key"** (Client ID) and **"Consumer Secret"**      (Client Secret). 
 
-        [SalesForce_CustomerSecretAndKey](../../img/how-tos/salesforces/SalesForce_CustomerSecretAndKey.png)
+        ![SalesForce_CustomerSecretAndKey](../../img/how-tos/salesforces/SalesForce_CustomerSecretAndKey.png)
 
     *   **Securely Copy and Store these credentials.** You will need the Consumer Key and Consumer Secret to configure the Sales Force toolkit in ELITEA, preferably using ELITEA's Secrets feature.
 
@@ -177,7 +177,7 @@ This section details how to configure the Salesforce toolkit within your ELITEA 
         *   **Enhanced Security with Secrets:** Similar to the Client ID, it's highly recommended to store your **Consumer Secret** as a Secret in ELITEA's feature and use it.
     *   **Api Version:** Enter the desired Salesforce **API Version** (e.g., `v59.0`). You can find the current API versions in Salesforce Developer documentation. Use a version supported by your Salesforce instance.
 
-   [SalesForce_EliteaConfiguration](../../img/how-tos/salesforces/SalesForce_EliteaConfiguration.png)
+   ![SalesForce_EliteaConfiguration](../../img/how-tos/salesforces/SalesForce_EliteaConfiguration.png)
     
 4.  **Enable Tools:** In the "Tools" section of the Salesforce toolkit configuration, **select the checkboxes next to the Salesforce tools** you want to enable for your Agent. **Enable only the tools your Agent will actually use** to adhere to the principle of least privilege and enhance security. The specific tools available depend on the ELITEA Salesforce toolkit implementation, but commonly include actions like:
 5.  **Complete Configuration:** Click the **arrow icon** (at the top right of the toolkit configuration) to save the Salesforce toolkit setup and return to the main Agent configuration.
