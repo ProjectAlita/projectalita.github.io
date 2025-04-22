@@ -64,7 +64,8 @@ nav:
           - TestIO Integration: how-tos/agents-toolkits/testIO_toolkit.md 
           - TestRail Integration: how-tos/agents-toolkits/testrail_toolkit.md
           - XRAY Cloud Integration: how-tos/agents-toolkits/xray_toolkit.md
-          - Zephyr Scale Integration: how-tos/agents-toolkits/zephyr_scale_toolkit.md     
+          - Zephyr Scale Integration: how-tos/agents-toolkits/zephyr_scale_toolkit.md
+          - Zephyr Enterprise Integration: how-tos/agents-toolkits/zephyr_enterprise_toolkit.md    
       - General How-Tos:
           - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
           - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md
