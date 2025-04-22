@@ -77,6 +77,7 @@ This section describes the functionalities available within the Artifacts page:
 *   **Select Target Bucket:** Ensure you have selected the bucket in the Bucket List where you want to upload files.
 *   **Drag and Drop Files:** Drag and drop files directly from your computer's file explorer into the File List area on the right side of the Artifacts page.
 *   **Upload Progress:** After dragging and dropping, a file upload process will begin. ELITEA will provide visual feedback or notifications regarding the upload status. Once the upload is complete, the newly uploaded files will appear in the File List.
+**Note:** If a file with the same name and extension is dropped into the bucket, it will be replaced automatically without any prompt or confirmation. Please be cautious.
 
 ###  Deleting a File from a Bucket
 

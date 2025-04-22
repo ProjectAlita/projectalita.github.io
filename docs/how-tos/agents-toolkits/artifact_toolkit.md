@@ -80,6 +80,11 @@ To configure the Artifact Toolkit for use with an ELITEA agent, follow these ste
         *   **Parameters:** The name of the file to append data to (e.g., `log_entries.txt`) and the text content to append to the file.
         *   **Purpose:** To incrementally build up a file, such as adding log entries, accumulating test cases, or expanding a dataset over time.
 
+    *   **Create New Bucket:** 
+        *   **Functionality:** Creates new buckets within the project. It can also create a new file in the bucket for better organization of completed tasks.
+        *   **Parameters:** The name of the bucket to create (e.g., Results).
+        *   **Purpose:** To create buckets during task execution, dedicated to organizing different file groups.
+
 7.  **Save Configuration:** Click the **"Save"** button to save the Artifact Toolkit configuration for your agent.
 
 ### File Types Supported

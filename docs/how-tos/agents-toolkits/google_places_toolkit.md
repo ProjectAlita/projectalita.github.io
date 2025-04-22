@@ -27,7 +27,7 @@ If you don't have a Google Cloud account with the Places API enabled yet, hereâ€
 2.  **Sign In or Create an Account:** Sign in with your existing Google account, or create a new one if needed.
 3.  **Create a Project (if needed):** If you don't have an existing project, create a new one. Click on the project dropdown at the top, and select "New Project". Give your project a name and click "Create".
 
-![create project](../../img/how-tos/google_places/create_project.png)
+![create project](../../img/how-tos/google_places/create_project_new.png)
 ![new project](../../img/how-tos/google_places/new_project.png)
 ![save project](../../img/how-tos/google_places/save_project.png)
 
