@@ -12,9 +12,10 @@ Conversations support the following functionality:
 * **Participants**: Add various participants to the conversation, including other users in public conversations, prompts, data sources, agents, and language models, making them part of the conversation.
 * **Interactions**: Interact with added participants, copy generated responses, and more.
 * **Managing Conversations**: Save conversations, pin the most important ones at the top of the screen, make private conversations public, delete conversations, clean the content of the conversation, and export the context of the conversation.
+* **Folders**: Organize your conversations into folders for better management. You can create folders, move conversations to folders, edit folder names, or delete folders.
 * **Playback**: During playback, you can move backward and forward through the playback process or stop the conversation by simulating the current conversation without any engagement with models.
 
-![Chat](<../../img/platform/menus/chat/Chat.png>)
+![Chat_New](<../../img/platform/menus/chat/Chat_New.png>)
 
 ## Creating a Conversation
 
@@ -23,17 +24,50 @@ Conversations support the following functionality:
 3. After creating Conversation add partiicpants to the conversation by clicking the **PARTICIPANTS +** button.
 4. Start the conversation by typing your text (be it a question or a command) into the chat box. Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the **Send** icon to begin.
 
-![Chat-New_Conversation](<../../img/platform/menus/chat/Chat-New_Conversation.png>)
+![Chat_Create_Conversation](<../../img/platform/menus/chat/Chat_Create_Conversation.png>)
 
 Your newly created conversation will subsequently appear on the Conversation's list.
 
-## Private and Public Conversations
 
-Private conversations are only visible to the user who created them. You can add all available participants to your project and use this conversation. You can also make private conversations public later.
-**Note**: By default, all conversations created in a Private project will be Private as you can't invite/share such conversations with other users.
+## Creating a Folder
 
-Public conversations are visible to all users of the same project. Those users can also interact in the public conversations, add/remove their participants, delete conversations, copy messages, etc.
-**Note**: Users can't convert public conversations back to private.
+1. Click the **+ Folder** button located at the top of the **CONVERSATIONS** sidebar.
+2. Provide a **Name** for the folder.
+3. Click **Save** to create the folder. The new folder will appear in the **CONVERSATIONS** sidebar.
+
+![Chat_Create_Folder](<../../img/platform/menus/chat/Chat_Create_Folder.png>)
+
+### How to Move Conversations to a Folder
+
+1. Right-click on the conversation you want to move.
+2. Select **Move to** from the contextual menu.
+3. Choose the target folder from the list. If no folder exists, you can create one by clicking **+ New Folder**.
+
+![Chat_MoveTo_Folder](<../../img/platform/menus/chat/Chat_MoveTo_Folder.png>)
+
+
+## Private and Public Conversations/Folders
+
+### Private Conversations and Folders
+
+- When creating a folder in a private project, you can add all types of participants, except users.
+- These folders and their contents are only accessible to you.
+
+### Team Project Conversations and Folders
+
+If you are part of a team project:
+
+- You can view all folders within the project.
+- You can only see conversations inside folders if you are a member of those conversations.
+- If you are a member of a conversation, you can move the conversation into a folder or remove it from the folder using the **Back to the list** option.
+- You cannot delete a folder created by others, but you can move conversations inside the folder if you are a member of those conversations.
+
+### Public Conversations and Folders
+
+- Public folders are accessible to all members of the project.
+- Conversations within public folders can be viewed and interacted with by all project members.
+- Any member of the project can move conversations into public folders or remove them, depending on their permissions.
+- Public folders cannot be converted to private folders.
 
 ## Participants
 
@@ -56,9 +90,11 @@ To add a participant to a conversation:
 4. As soon as you see the participant that you need from the proposed list, click the **Chat Now** button on the participant card.
 5. The participant will be immediately added to your conversation and become visible in the **PARTICIPANTS** section.
 
+**Note**: Users will receive notifications when they are added as participants in a conversation. 
+
 **Note**: You can also add several participants at once (by clicking in the cards) and then click the **Add Participants** button.
 
-![Chat-Add_Participants](<../../img/platform/menus/chat/Chat-Add_Participants.png>)
+![Chat_Add_Participant](<../../img/platform/menus/chat/Chat_Add_Participant.png>)
 
 ### How to Use a Participant
 
@@ -69,7 +105,7 @@ To add a participant to a conversation:
 3. After adding the active participant to the conversation, you can use it by typing simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the **Send** icon to execute the participant.
 4. To remove the participant from the conversation's active participant list, click the X icon. Note: This will not remove the participant from the Conversation entirely. You can call it again.
 
-![Chat-Use_Participants](<../../img/platform/menus/chat/Chat-Use_Participants.png>)
+![Chat_Use_Participant](<../../img/platform/menus/chat/Chat_Use_Participant.png>)
 
 ### How to Configure/Modify Participants
 
@@ -83,7 +119,17 @@ For **Models**:
 4. To apply changes, click the **< SETTINGS** button.
 5. You can also restore back to default settings by clicking the **Restore** icon.
 
-![Chat-Participants_Model_Settings](<../../img/platform/menus/chat/Chat-Participants_Model_Settings.png>)
+![Chat_Model](<../../img/platform/menus/chat/Chat_Model.png>)
+
+## Display Configured Conversation Starter
+
+When you add a participant to a conversation, the configured conversation starter for that participant will automatically display in the chat. This feature helps guide the conversation and ensures that the participant's functionality is clear.
+
+For example:
+- Adding a prompt participant will display its configured starter message.
+- Adding an agent participant will display its predefined instructions.
+
+This feature improves usability and ensures a smooth start to conversations.
 
 For **Prompts**:
 
@@ -94,7 +140,7 @@ For **Prompts**:
 5. To apply changes, click the **< SETTINGS** button.
 6. You can also restore back to default settings by clicking the **Restore** icon.
 
-![Chat-Participants_Prompt_Settings](<../../img/platform/menus/chat/Chat-Participants_Prompt_Settings.png>)
+![Chat_Prompts](<../../img/platform/menus/chat/Chat_Prompts.png>)
 
 For **Datasources**:
 
@@ -106,7 +152,7 @@ For **Datasources**:
 4. To apply changes, click the **< SETTINGS** button.
 5. You can also restore back to default settings by clicking the **Restore** icon.
 
-![Chat-Participants_Datasource_Settings](<../../img/platform/menus/chat/Chat-Participants_Datasource_Settings.png>)
+![Chat_Datasources](<../../img/platform/menus/chat/Chat_Datasources.png>)
 
 For **Agents**:
 
@@ -117,7 +163,7 @@ For **Agents**:
 5. To apply changes, click the **< SETTINGS** button.
 6. You can also restore back to default settings by clicking the **Restore** icon.
 
-![Chat-Participants_Agent_Settings](<../../img/platform/menus/chat/Chat-Participants_Agent_Settings.png>)
+![Chat_Agents](<../../img/platform/menus/chat/Chat_Agents.png>)
 
 ### Actions for Conversation
 
@@ -125,9 +171,42 @@ The following actions are available for created conversations from **CONVERSATIO
 
 * **Delete**: To delete a single conversation, on the left panel, in the conversation contextual menu, select **Delete** and confirm your action.
 * **Edit**: To rename a conversation, on the left panel, in the conversation contextual menu, select **Edit** and confirm your action.
+* **Move To**: To move a conversation to a folder, on the left panel, in the conversation contextual menu, select **Move To** and choose the desired folder. If no folder exists, you can create one by clicking **+ New Folder**.
 * **Export**: To export a single conversation, on the left panel, in the conversation contextual menu, point to Export. **Note**: Not applicable now.
 * **Make Public**: To make a private conversation public, on the left panel, in the conversation contextual menu, click the **Make Public** icon. Note: You will not be able to convert it back to Private.
 * **Playback**: The **Playback** mode can be used to simulate the current conversation without any engagement with models. This mode accurately reproduces the conversation like a recording. It's well designed for demo purposes.
 * **Pin**: To pin a single conversation, on the left panel, in the conversation contextual menu, select **Pin**. Your conversation will be pinned at the top of your conversation's list. **Note**: You can unpin the conversation by clicking the **Unpin** action.
 
-![Chat-Conversation_Actions](<../../img/platform/menus/chat/Chat-Conversation_Actions.png>)
+![Chat_Conversation_Actions](<../../img/platform/menus/chat/Chat_Conversation_Actions.png>)
+
+### Actions for Folders
+
+The following actions are available for managing folders in the **CONVERSATIONS** sidebar:
+
+* **Edit Folder**: Select **Edit** in the folder contextual menu, update the folder name and click the **✔** button to save your changes.
+* **Delete Folder**: Select **Delete** in the folder contextual menu and confirm the deletion. **Note**: Deleting a folder will not delete the conversations inside it; they will be moved back to the main **CONVERSATIONS** list.
+
+![Chat_Folder_Actions](<../../img/platform/menus/chat/Chat_Folder_Actions.png>)
+
+
+## Like/Dislike, Comment, and Regenerate Outputs
+
+To engage with the generated outputs in conversations, utilize the **Like/Dislike** actions, add comments, or use the **Regenerate** option for refinement or feedback.
+
+### How to Like/Dislike and Comment an Output
+
+1. After generating an output in the conversation, **Thumbs Up** and **Thumbs Down** buttons displayed alongside the output.
+2. Click the **Thumbs Up** icon to like the output or the **Thumbs Down** icon to dislike it.
+3. After clicking the **Thumbs Down** icon, a **Leave comment** field will appear. Click on it, type your feedback in the input box, and press **Send** to save it.
+
+![Chat_Like_Dislike](<../../img/platform/menus/chat/Chat_Like_Dislike.png>)
+
+
+### How to Regenerate the Last Output
+
+The **Regenerate Last Output** option becomes available only after initiating a conversation. This feature allows you to refine or correct the last generated output.
+
+1. After generating an output in the conversation, click the **Regenerate** icon 🔄 
+2. The system will regenerate the output based on the same input, providing a refined or corrected response.
+
+![Chat_Regenerate](<../../img/platform/menus/chat/Chat_Regenerate.png>)
