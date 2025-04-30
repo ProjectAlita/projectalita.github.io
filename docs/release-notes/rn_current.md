@@ -17,14 +17,14 @@ Discover **ELITEA** — your all-in-one platform for working with Generative AI 
 Meet the new **Smart Drawer**! Effortlessly move through ELITEA with a sleek, collapsible menu that adapts to your workflow. Collapse the Drawer to see only intuitive icons with helpful tooltips, or expand it to reveal full menu names and options. Seamlessly switch between **Private/Public** workspaces and **Team** projects - all from this modern, space-saving navigation hub.  
 This enhancement makes navigation faster, more intuitive, and visually engaging.
 
-[RN-Smart_Drawer](../img/release-notes/RN-Smart_Drawer.png)
+![RN-Smart_Drawer](../img/release-notes/RN-Smart_Drawer.png)
 
 ### CodeMirror Syntax Highlighting Everywhere
 
 All relevant input fields and code boxes in ELITEA now feature **CodeMirror** support. Enjoy syntax highlighting, improved readability, and a modern editing experience. You can dynamically switch the syntax highlighting mode directly within each input field, making it easier to work with different content types.  
 **Currently supported languages:** Text, YAML, Jinja2, JSON, Markdown, and Mermaid.
 
-[CodeMirror_Support](../img/release-notes/RN-CodeMirror_Support.png)
+![CodeMirror_Support](../img/release-notes/RN-CodeMirror_Support.png)
 
 ### Remove Pipelines from Collections in Table View
 
