@@ -43,12 +43,11 @@ To configure the Artifact Toolkit for use with an ELITEA agent, follow these ste
 4.  **Select Artifact Toolkit:** From the dropdown list of available toolkits, choose **"Artifact"**.
 
 5.  **Artifact Tool Configuration:** The "New artifact tool configuration" section will appear. Configure the following:
-    *   **Name:**  Enter a descriptive name for your Artifact Toolkit instance (e.g., "My Temporary Storage", "Context Artifacts"). This name is for your internal reference within the agent configuration.
-    *   **Description:** Provide a brief description outlining the intended purpose of this specific Artifact Toolkit instance. For example, "Used for storing intermediate test case generation results."
-    *   **Folder (Bucket):**  Specify the name of the bucket (folder) you want to use.
+    
+    *   **Bucket:**  Specify the name of the bucket (folder) you want to use.
         *   **Creating a New Bucket:** If you enter a bucket name that does not already exist within the project, a new bucket with that name will be automatically created when the tool is first used by the agent. The bucket will initially be empty.
         *   **Using an Existing Bucket:** If you enter the name of an existing bucket, the toolkit will connect to and use that bucket.
-        *   **Default Bucket:** If you leave this field blank or enter "test", it will use a bucket named "test". However, for better organization and to avoid potential conflicts, it is highly recommended to use descriptive and unique bucket names.
+        *   **Default Bucket:** Re Enter "test", if you want to leave the bucket name as "test". However, for better organization and to avoid potential conflicts, it is highly recommended to use descriptive and unique bucket names.
 
     ![artifact-Create_toolkit](../../img/how-tos/artifact/create_toolkit.png)
 
@@ -82,8 +81,13 @@ To configure the Artifact Toolkit for use with an ELITEA agent, follow these ste
 
     *   **Create New Bucket:** 
         *   **Functionality:** Creates new buckets within the project. It can also create a new file in the bucket for better organization of completed tasks.
-        *   **Parameters:** The name of the bucket to create (e.g., Results).
+        *   **Parameters:** The name of the bucket to create (e.g., Results), expiration_measure tring or null (optional) e.g. days, months , and expiration_value integer or null, optional e.g  1, 10
         *   **Purpose:** To create buckets during task execution, dedicated to organizing different file groups.
+
+    *   **Overwrite Data:**  
+        *   **Functionality:** Replaces all the content of a specified file with new content.  
+        *   **Parameters:**  filename - The name of the file you want to overwrite (e.g., `example.txt`), filedata - The new content that will replace the existing content in the file.  bucket_name string or null (optional) - The name of the bucket where the file is located. If not provided, it will be taken from the chat history or tool configuration.  
+        *   **Purpose:** To completely update a file with new information. For example, if a file has "Hello World" and you overwrite it with "Goodbye World," the file will only show "Goodbye World" after the operation.
 
 7.  **Save Configuration:** Click the **"Save"** button to save the Artifact Toolkit configuration for your agent.
 
