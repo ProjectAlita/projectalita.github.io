@@ -339,3 +339,56 @@ Playback mode allows you to step through an existing conversation turn by turn, 
 - **Purpose**: Excellent for demonstrating a workflow, reviewing a complex interaction, or debugging without incurring processing costs or waiting for live responses.
 - **Activation**: Access this via the conversation's context menu in the sidebar (**Right-click conversation -> Playback**).
 - **Controls**: During playback, you typically have controls to move forward to the next message, go back to the previous message, or stop the playback simulation.
+
+### Example: Using Playback Mode for a Demo
+
+**Scenario**:  
+A Product Manager is preparing a demo for stakeholders to showcase how the team collaborated on a new feature. They use Playback Mode to simulate the conversation and highlight key decisions and actions.
+
+**Steps to Use Playback Mode**:
+
+**Access the Conversation**:  
+   The Product Manager navigates to the conversation in the **CONVERSATIONS** sidebar where the team discussed the feature.
+
+**Activate Playback Mode**:  
+   The Product Manager right-clicks on the conversation and selects **Playback** from the context menu.
+
+**Simulate the Conversation**:  
+   - The playback starts with the BA's initial message outlining the feature requirements.  
+     Example:  
+     ```
+     @BA: "The new feature should allow users to upload files up to 10MB in size. The system must validate file types and provide error messages for unsupported formats."
+     ```
+   - The PM uses the **Next** control to move to the next message, where they set the timeline for development and testing.  
+     Example:  
+     ```
+     @PM: "The development team will complete the implementation by May 15th. QA can start testing on May 16th, and we aim to release the feature by May 20th."
+     ```
+   - The QA's message about testing strategies is reviewed next.  
+     Example:  
+     ```
+     @QA: "I will create test cases for file uploads, including valid and invalid file types, file size limits, and error handling."
+     ```
+
+**Highlight Key Decisions**:  
+   - The Product Manager pauses playback to explain the rationale behind certain decisions, such as the timeline or testing strategy.
+   - They resume playback to show the BA's clarification about drag-and-drop uploads.  
+     Example:  
+     ```
+     @BA: "Yes, drag-and-drop uploads should be supported. Additionally, the system should display a progress bar during uploads."
+     ```
+
+**Conclude the Demo**:  
+   - The Product Manager stops playback after showcasing the final message tracking progress.  
+     Example:  
+     ```
+     @PM: "QA, please share the test results by May 18th so we can review them before the release."
+     ```
+
+### Benefits of Playback Mode for Demos
+
+- **Polished Presentations**: Playback Mode ensures a smooth and professional demo without interruptions or delays.
+- **Clarity**: Stakeholders can see the exact flow of discussions and decisions.
+- **Engagement**: The step-by-step simulation keeps the audience engaged and focused on key points.
+
+By using Playback Mode, teams can effectively demonstrate their collaboration and decision-making processes to stakeholders, ensuring transparency and alignment.
