@@ -111,7 +111,7 @@ For the **Raw** agent type, adhere to these specific guidelines to ensure the ag
 You must answer with only JSON and it could be parsed by Python json.loads
 ```
 
-![Agents-Raw](<../../img/user-guide/agents/Agents-Raw.png>)
+![Agents-Raw](<../../img/platform/menus/agents/Agents-Raw.png>)
 
 By following these guidelines and including the necessary code snippet, you ensure that the Raw Agent functions correctly and integrates seamlessly with the intended processes.
 

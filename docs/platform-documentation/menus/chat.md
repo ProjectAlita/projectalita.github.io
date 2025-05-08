@@ -15,6 +15,9 @@ Conversations support the following functionality:
 * **Folders**: Organize your conversations into folders for better management. You can create folders, move conversations to folders, edit folder names, or delete folders.
 * **Playback**: During playback, you can move backward and forward through the playback process or stop the conversation by simulating the current conversation without any engagement with models.
 
+
+For more details see [Chat Examples](../../how-tos/chat-examples.md).
+
 ![Chat_New](<../../img/platform/menus/chat/Chat_New.png>)
 
 ## Creating a Conversation
