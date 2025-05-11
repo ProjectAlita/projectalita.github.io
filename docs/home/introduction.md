@@ -1,33 +1,36 @@
 # Overview of ELITEA Platform
 
-Welcome to the ELITEA platform, an innovative web application that revolutionizes how you interact with Generative AI. ELITEA is not just a repository but a dynamic workspace designed to empower you to create, organize, and collaborate on prompts, datasources and agents like never before.
+Step into ELITEA – where creativity meets AI power. More than just another tool, ELITEA transforms how teams work with generative AI technology. We've built a vibrant workspace where your ideas take shape through prompts, datasources, intelligent agents and pipelines that automate complex workflows.
 
 **Key Features:**
 
-* **Prompt Management**: Effortlessly create, modify, and manage prompts. Keep track of different versions to ensure you always have access to your best work.
-* **Datasources**: Play a pivotal role in enhancing the functionalities of ELITEA by integrating user-specific or project-specific data. This not only broadens the LLM's context but also enriches it with tailored information, making your interactions more relevant and insightful.
-* **Agents**: Customize and create virtual assistants within ELITEA to handle specific tasks or sets of tasks. These agents integrate prompts, datasources, and external toolkits into a cohesive mechanism, enabling actions such as online searches or creating Jira tickets based on decisions made by LLMs.
-* **Chat**: Combine all ELITEA features in one place with ELITEA Chat, an ultimate feature that allows for dynamic interaction and optimal results. Engage in conversations that utilize natural language to interact with human users and seamlessly integrate feedback from various participants like language models, datasources, and agents.
-* **Extensions**: Transform your coding workflow with Alita Code and Alita Code Chat the ultimate AI-powered IDE extensions. Integrated seamlessly with VS Code and IntelliJ, these extensions offers intelligent suggestions, automates routine tasks, and provides unmatched adaptability to elevate your coding experience.
-* **Collection Integration**: Organize your prompts, datasources and agents into Collections for better workflow management or to concentrate on specific themes or projects.
-* **Execution with Precision**: Tailor the execution of prompts using various models and parameters to meet your specific needs, ensuring a customized experience.
-* **Advanced Creation Tools**: Craft complex prompts, datasources and agents with precision using tools like variables, system prompts, Assistant Messages, and advanced tools.
-* **Powerful Search**: Employ a robust search functionality to easily locate prompts, datasources and agents by tags, names, or descriptions.
-* **Community Engagement**: Engage with the community by creating, modifying, and publishing prompts, datasources and agents. Enhance collaboration through sharing and liking content.
+* **[Agents](../platform-documentation/menus/agents.md)**: Build virtual assistants that handle specific tasks with precision. These digital teammates combine prompts, datasources, and external tools to perform complex actions - from searching the web to creating tickets in Jira - all driven by powerful language models.
+* **[Pipelines](../platform-documentation/menus/pipelines.md)**: Connect the dots with visual workflows that automate repetitive tasks. Design sequences of actions that handle decisions and integrate with your favorite toolkits, bringing consistency and efficiency to complex processes.
+* **[Prompts](../platform-documentation/menus/prompts.md)**: Craft instructions that guide AI models to deliver exactly what you need. With version tracking built in, you'll always have access to your most effective prompts when inspiration strikes.
+* **[Datasources](../platform-documentation/menus/datasources.md)**: Feed your AI what matters most by connecting your own specialized data. Enrich language model responses with context that's relevant to your projects, making every interaction more precise and valuable.
+* **[Chat](../platform-documentation/menus/chat.md)**: Experience AI conversations that just work. ELITEA Chat brings everything together - your agents, pipelines, prompts and datasources, and language models - in a natural interface where complex ideas flow effortlessly between human and machine.
+* **[Collections](../platform-documentation/menus/collections.md)**: Keep your digital workspace organized with custom collections. Group related prompts, agents, pipelines and datasources to focus on specific projects or themes without the clutter.
+* **[Artifacts](../platform-documentation/menus/artifacts.md)**: Share and store important files between agents with temporary storage buckets. Create, read, update, and delete text-based files that preserve context across operations, making your workflows smarter and more connected.
+* **[Extensions](../platform-documentation/extensions/alita-code.md)**: Transform how you write code with Elitea extensions for VS Code and IntelliJ. Get intelligent suggestions, automate routine coding tasks, and adapt your development environment to your unique style.
+* **[Execution with Precision](../how-tos/creating-prompts.md)**: Take control of how your prompts run with fine-tuned model selection and parameters. Adjust temperature, tokens, and other settings to match exactly what your task demands.
+* **[Advanced Creation Tools](../feature-guides/core-features/prompt-magic-assistant.md)**: Build sophisticated solutions using variables, system prompts, assistant messages, and specialized tools that extend what's possible with AI.
+* **[Powerful Search](..//how-tos/how-to-search.md)**: Find exactly what you need with robust search capabilities. Locate prompts, agents, data sources, and pipelines by tags, names, or descriptions in seconds.
+* **[Platform Management](../platform-documentation/menus/settings.md)**: Handle the practical side of AI deployment with tools for [importing/exporting](../feature-guides/core-features/export-import.md), managing secrets, setting up [integrations](../feature-guides/core-features/integrations.md), and organizing [users and projects](../feature-guides/advanced-features/roles.md) - all through an intuitive interface.
+* **[Community Engagement](../feature-guides/core-features/public-project.md)**: Share your best work and discover what others have created. Publish, modify, and collaborate on prompts, agents, and pipelines to build a vibrant ecosystem of AI solutions.
 
-ELITEA is designed to be a versatile and powerful tool, enhancing how you interact with AI technologies and manage data-driven projects. Whether you're coding, creating content, or managing complex data sets, ELITEA provides the tools you need to succeed.
+ELITEA puts powerful AI capabilities in your hands without the complexity. Whether you're developing code, creating content, or managing data-driven projects, you'll find the tools you need to succeed right here.
 
-Let's embark on this journey to unlock the full potential of your ideas. Our user guide will walk you through every feature, ensuring you maximize your ELITEA experience.
+Ready to see what's possible? Let's dive in. This guide will walk you through each feature so you can make the most of your ELITEA experience.
 
 ## Accessing ELITEA
 
-To access and navigate through ELITEA, follow these steps:
+Getting started with ELITEA is straightforward:
 
-1. **Open Your Browser**: Launch your preferred web browser.
-2. **Enter URL**: Type `https://nexus.elitea.ai` into the address bar and press Enter.
-3. **Login**: Use your EPAM account credentials to log in. **Note**: Registration is not required.
-4. **Initial Navigation**: Upon successful login, you will be directed to the **Chat** menu. **Note**: If this is your first time logging into ELITEA, please allow up to 5 minutes for the private project initialization to complete before you start creating prompts.
-5. **Switch Projects**: After the **Private** project is initialized, you can switch from the **Public** project to your **Private** project using the Project dropdown list, located at the top right next to your avatar.
-6. **Explore ELITEA**: Click on the ELITEA icon on the top left side to navigate among the available menus. Here, you can create and manage prompts, datasources, agents, and collections.
+1. **Open Your Browser**: Use any modern web browser.
+2. **Enter URL**: Navigate to `https://nexus.elitea.ai`
+3. **Login**: Sign in with your EPAM account credentials (no registration needed).
+4. **Initial Navigation**: You'll land in the **Chat** menu. First-time users should allow about **5** minutes for private project initialization.
+5. **Switch Projects**: Once your **Private** project is ready, switch from **Public** to **Private** using the **Smart Drawer's Project Switcher** in the top left.
+6. **Explore ELITEA**: Click the ELITEA icon on the top left to access all available menus, where you can create and manage prompts, datasources, agents, pipelines and collections.
 
-By following these steps, you will be able to effectively utilize the features and functionalities offered by ELITEA.
+With these simple steps, you'll be up and running with all the features ELITEA has to offer.

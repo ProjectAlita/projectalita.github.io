@@ -32,3 +32,6 @@ settings.json
 mkdocs.yml
 
 docs/admin-guide/
+
+# Ignore VSCode settings
+.vscode/
