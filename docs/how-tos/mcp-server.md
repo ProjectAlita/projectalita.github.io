@@ -85,8 +85,7 @@ If you choose **Workspace Settings**, VS Code will create a `.vscode/mcp.json` f
 
 1. **Open `.vscode/mcp.json`**  
    Navigate to the file in your workspace and open it.  
-
-1. **Add Your Token**  
+2. **Add Your Token**  
    After the `"url"` entry for your server, add the `"headers"` section exactly as shown below. Make sure to keep the word `Bearer` (with a space after it) and replace `[Your Token]` with your actual authentication token. Do not remove `Bearer`—it is required for authorization to work correctly.
    ```json
    "headers": {
@@ -101,7 +100,16 @@ If you choose **Workspace Settings**, VS Code will create a `.vscode/mcp.json` f
    ```
    ![Add Token to mcp.json](../img/how-tos/mcp_server/add-token-mcp-json.png)
 
-1. **Save and Start**  
+      > **Important:** If you are using VS Code version 1.100.1 or higher, you'll also need to manually add `"type": "sse"` to your configuration  file, as shown below:
+      > ```json
+      > "type": "sse",
+      > "url": "https://nexus.elitea.ai/mcp_sse/1/sse",
+      > "headers": {
+      >     "Authorization": "Bearer abc123"
+      > }
+      > ```
+
+3. **Save and Start**  
    Save the file, then click the **Start** button in the Copilot Chat interface to activate the server.
    ![Start Server mcp.json](../img/how-tos/mcp_server/start-server-mcp-json.png)
 
@@ -130,6 +138,15 @@ If you choose **User Settings**, your MCP server configuration will be added to 
    }
    ```
    ![Add Token to settings.json](../img/how-tos/mcp_server/add-token-settings-json.png)
+   
+   > **Important:** If you are using VS Code version 1.100.1 or higher, you'll also need to manually add `"type": "sse"` to your configuration file, as shown below:
+   > ```json
+   > "type": "sse",
+   > "url": "https://nexus.elitea.ai/mcp_sse/1/sse",
+   > "headers": {
+   >     "Authorization": "Bearer abc123"
+   > }
+   > ```
 
 1. **Save and Start**  
    Save the file, then click the **Start** button in the Copilot Chat interface to activate the server.
