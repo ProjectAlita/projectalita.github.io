@@ -4,8 +4,9 @@ nav:
   - Home:
       - Introduction: home/introduction.md
   - Release Notes:
-      - RN 1.5.1: release-notes/rn_current.md
+      - RN 1.5.2: release-notes/rn_current.md
       - Archive:
+          - RN 1.5.1: release-notes/archived/rn8.md
           - RN 1.5.0: release-notes/archived/rn7.md
           - RN 1.4.0: release-notes/archived/rn6.md
           - RN 1.3.0: release-notes/archived/rn5.md
