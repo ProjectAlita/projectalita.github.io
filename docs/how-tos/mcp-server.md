@@ -159,6 +159,8 @@ To use Elitea agents and pipelines as tools in VS Code via MCP, they must be tag
 
 > **Note:** Only the "**latest**" version of each agent or pipeline tagged with `mcp` will be pulled and used. If you have multiple versions of the same agent/pipeline, ensure the version you want to use is the "**latest**".
 
+> **Important:** If you have several agents with the same name, only one will be fetched and shown in VS Code. Please consider renaming your agents with unique names if you need them all to be fetched and used.
+
 ---
 
 ### Using MCP Tools in Agent Mode

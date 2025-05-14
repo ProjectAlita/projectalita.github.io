@@ -39,7 +39,8 @@ nav:
           - Roles Management: feature-guides/advanced-features/roles.md
   - How TOs:
       - Agents & Toolkits:
-          - Elitea MCP Server Integration: how-tos/mcp-server.md
+          - Elitea MCP Server Integration via SSE Transport: how-tos/mcp-server.md
+          - Elitea MCP Server Integration via STDIO: how-tos/mcp-server-stdio.md
           - Pipeline Agent Framework: how-tos/agents-toolkits/pipeline-agent-framework.md
           - ADO Repos Integration: how-tos/agents-toolkits/ado_repos_toolkit.md
           - ADO Wiki, Boards, and Test Plans Integration: how-tos/agents-toolkits/ado_wiki_plan_board_toolkit.md
