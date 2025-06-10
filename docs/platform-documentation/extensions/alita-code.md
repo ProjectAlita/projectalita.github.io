@@ -25,7 +25,6 @@ ELITEA Code comes packed with features designed to streamline your development p
 * Project-specific external prompts, agents and datasources powered by ELITEA Backend
 * Code explanation and optimization recommendations
 * Seamless native IDE integration
-* Playback Mode to step through conversations turn by turn for demos, debugging, or workflow reviews.
 * Folder Sharing with team members or groups for collaborative work.
 * Regular updates and enhancements
 * Comprehensive documentation and dedicated support
