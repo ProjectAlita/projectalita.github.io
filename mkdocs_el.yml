@@ -74,6 +74,7 @@ nav:
           - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
           - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md
           - How to Use Chat Functionality: how-tos/how-to-use-chat-functionality.md
+          - Canvas: how-tos/canvas.md
           - How to Use Search Functionality: how-tos/how-to-search.md
           - How to Automate JIRA Issue Review with Elitea: how-tos/JIRA_automation_with_Elitea.md
       - FAQs: how-tos/faqs.md
