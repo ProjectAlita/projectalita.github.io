@@ -58,6 +58,7 @@ nav:
           - Jira Integration: how-tos/agents-toolkits/jira_toolkit.md
           - OpenAPI Integration: how-tos/agents-toolkits/openapi_toolkit.md
           - Pandas Integration: how-tos/agents-toolkits/pandas_toolkit.md
+          - PPTX Integration: how-tos/agents-toolkits/pptx_toolkit.md
           - qTest Integration: how-tos/agents-toolkits/qtest_toolkit.md
           - Rally Integration: how-tos/agents-toolkits/rally_toolkit.md
           - ReportPortal Integration: how-tos/agents-toolkits/reportportal_toolkit.md
