@@ -10,6 +10,7 @@ Conversations support the following functionality:
 
 * **Public and Private Conversations**: Share your conversation with other users from your project, involve them in the same conversation, or keep it private and visible only to you.
 * **Participants**: Add various participants to the conversation, including other users in public conversations, prompts, data sources, agents, and language models, making them part of the conversation.
+* **Canvas Mode**: Visualize and interact with conversation flows using a graphical canvas interface. 
 * **Interactions**: Interact with added participants, copy generated responses, and more.
 * **Managing Conversations**: Save conversations, pin the most important ones at the top of the screen, make private conversations public, delete conversations, clean the content of the conversation, and export the context of the conversation.
 * **Folders**: Organize your conversations into folders for better management. You can create folders, move conversations to folders, edit folder names, or delete folders.
@@ -213,3 +214,78 @@ The **Regenerate Last Output** option becomes available only after initiating a 
 2. The system will regenerate the output based on the same input, providing a refined or corrected response.
 
 ![Chat_Regenerate](<../../img/platform/menus/chat/Chat_Regenerate.png>)
+
+### Editing Generated Content with Canvas
+ 
+The Canvas feature allows you to directly edit code, tables, and Mermaid diagrams generated during a conversation. This powerful tool enhances your ability to refine and customize outputs without leaving the chat interface.
+ 
+Canvas becomes automatically available when a generated response is:
+- Code
+- A Table
+- A Mermaid Diagram
+ 
+When available, a **Pencil** icon ✏️ will appear alongside the generated output. Clicking this icon opens the Canvas editor for that specific content type.
+ 
+The Canvas feature is supported when interacting with the following participants:
+- Agents
+- Pipelines
+- LLM Models (direct interaction)
+ 
+#### Editing Code with Canvas
+ 
+1.  Click the **Pencil** icon ✏️ next to a code block to open the Canvas Code Editor.
+2.  The editor will display the code, and the currently selected code language will be shown.
+3.  You can directly edit the code within this view.
+4.  Use the following actions:
+    *   **Copy to clipboard**: Click the copy icon to copy the entire code block.
+    *   **Undo/Redo**: Click the respective icons to revert or reapply changes.
+    *   **Save**: Click the **X** icon to save your changes and close the Canvas editor. *(Placeholder for actual save icon/mechanism if 'X' is incorrect)*
+ 
+![Canvas_Code_Editor](<../../img/platform/menus/chat/Canvas_Code_Editor.png>)
+
+![Canvas_Code_Editor_Updates](<../../img/platform/menus/chat/Canvas_Code_Editor_Updates.png>)
+
+ 
+#### Editing Tables with Canvas
+ 
+1.  Click the **Pencil** icon ✏️ next to a table to open the Canvas Table Editor. Tables are presented in Markdown format within the editor but rendered as interactive tables.
+2.  You can directly edit the table content and structure.
+3.  Use the following actions:
+    *   **Manual Editing**: Modify text directly in table cells and column headings.
+    *   **Delete Rows**: Select the checkbox(es) next to the rows you wish to remove, then click the delete row icon.
+    *   **Add Columns/Rows**: Click the **Add column** or **Add row** icons to expand the table.
+    *   **Copy to clipboard**: Click the copy icon to copy the table data.
+    *   **Import CSV**: Click the **Import table** icon to upload data from a CSV file.
+    *   **Download as XLSX**: Click the **Download as xlsx** button to save the table data as an Excel file.
+    *   **Undo/Redo**: Click the respective icons to revert or reapply changes.
+    *   **Save**: Click the **X** icon to save your changes and close the Canvas editor. *(Placeholder for actual save icon/mechanism if 'X' is incorrect)*
+
+    ![Canvas_Table_Editor](<../../img/platform/menus/chat/Canvas_Table_Editor.png>)
+
+    ![Canvas_Table_Editor_Updates](<../../img/platform/menus/chat/Canvas_Table_Editor_Updates.png>)
+
+ 
+**Table Manipulations:**
+ 
+*   **Sorting**: Click the sorting icons (e.g., ▲▼) next to each column heading to sort the data in ascending or descending order for that column.
+*   **Filtering**: Click the **...** (ellipsis) icon next to a column heading and select the **Filter** option to apply filters to the data in that column.
+*   **Hiding Columns**: Click the **...** (ellipsis) icon next to a column heading and select the **Hide column** option to remove the column from view.
+ 
+![Canvas_Table_Editor_Filtering](<../../img/platform/menus/chat/Canvas_Table_Editor_Filtering.png>)
+ 
+#### Editing Mermaid Diagrams with Canvas
+ 
+1.  Click the **Pencil** icon ✏️ next to a Mermaid diagram to open the Canvas Mermaid Diagram Editor.
+2.  You can directly edit the Mermaid diagram code in the editor view.
+3.  A live **Preview** of the diagram will be displayed below the editor, updating as you make changes to the code.
+4.  Use the following actions:
+    *   **Copy to clipboard**: Click the copy icon to copy the Mermaid diagram code.
+    *   **Download**: Download the rendered diagram in JPG, PNG, or SVG formats using the respective download button.
+    *   **Undo/Redo**: Click the respective icons to revert or reapply changes.
+    *   **Save**: Click the **X** icon to save your changes and close the Canvas editor. *(Placeholder for actual save icon/mechanism if 'X' is incorrect)*
+ 
+![Canvas_Mermaid_Editor](<../../img/platform/menus/chat/Canvas_Mermaid_Editor.png>)
+
+![Canvas_Mermaid_Editor_Updates](<../../img/platform/menus/chat/Canvas_Mermaid_Editor_Updates.png>)
+
+ 
