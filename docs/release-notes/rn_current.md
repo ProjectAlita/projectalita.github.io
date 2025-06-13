@@ -22,7 +22,7 @@ Canvas is now available in ELITEA, providing a seamless way to edit, refine, and
  
 Canvas is designed to support a wide range of SDLC activities, including requirements documentation, test case management, automation script development, and process visualization. Whether you’re a BA, QA, AQA, or developer, Canvas helps you turn ideas into actionable deliverables—without ever leaving the conversation.
  
-For more details and practical examples, see the [Canvas User Guide](..//how-tos/how-to-canvas.md).
+For more details and practical examples, see the [Canvas User Guide](../how-tos/Canvas.md).
  
 ### MCP Client Integration: Use Tools from Any MCP Server
  
