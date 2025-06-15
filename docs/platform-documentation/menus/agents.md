@@ -113,7 +113,7 @@ Selecting the right Agent type in ELITEA is essential for optimizing the perform
 * **Description**: OpenAI Agents are built on the LangChain backend and are specifically designed for integrations with Azure OpenAI Service. These agents excel in generating human-like text and handling a wide range of conversational tasks.
 * **Best For**: Tasks requiring high-quality natural language understanding and generation, such as customer support, content creation, and complex query resolution.
 
-**Note**: The **Pipeline Agent** type has been moved to a separate module. For more information on configuring and using Pipeline Agents, please refer to the [Pipeline Agent Configuration](../../menus/pipeline.md).
+**Note**: The **Pipeline Agent** type has been moved to a separate module. For more information on configuring and using Pipeline Agents, please refer to the [Pipeline Agent Configuration](../menus/pipelines.md).
 
 
 Each Agent type in ELITEA is crafted to maximize the strengths of its underlying models and frameworks. Selecting the appropriate Agent type based on your specific task requirements and desired outcomes will ensure optimal performance and efficiency. For more detailed guidance on selecting the right Agent type and crafting effective instructions, please refer to the [Agent Frameworks](../../how-tos/agents-toolkits/pipeline-agent-framework.md) document.
