@@ -44,7 +44,7 @@ Integrating Confluence with ELITEA allows you to seamlessly connect and utilize 
 7. **Data Filtering**: Choose how you wish to filter the data. You can select by **Space Key**, **Page IDs**, or **Labels**. This step is crucial for refining the data ELITEA accesses, ensuring only relevant content is included in your dataset.
 8. **Save**: After configuring all settings, click **Save** to finalize the dataset creation.
 
-**For more information**: please check [Datasources - Confluence setup](user-guide/datasources.md#source-type---confluence).
+**For more information**: please check [Datasources - Confluence setup](../user-guide/datasources.md#source-type---confluence).
 
 #### Example
 

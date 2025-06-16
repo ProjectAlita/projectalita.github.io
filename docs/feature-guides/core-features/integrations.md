@@ -6,7 +6,7 @@ This user guide provides a comprehensive overview of the **Integrations** featur
 
 The ability to integrate with external services and manage their configurations within ELITEA offers significant benefits, including:
 
-* **Enhanced Workflow Efficiency:** Connect ELITEA with your existing tools like Jira, Confluence, GitHub, and TestRail to automate tasks, share information, and reduce manual data entry.
+* **Enhanced Workflow Efficiency:** Connect ELITEA with your existing tools like Jira, Confluence, GitHub, GitLab, and TestRail to automate tasks, share information, and reduce manual data entry.
 * **Centralized Management:** Manage connections to various external services from a single location within ELITEA, simplifying administration and improving visibility.
 * **Customized Authentication:** Configure authentication settings for external tools at different levels (personal or project-specific) to meet various security and access requirements.
 * **Flexibility and Reusability:** Create reusable integration configurations that can be easily applied to multiple Agent toolkits, saving time and effort.
@@ -31,7 +31,7 @@ The **Integrations** menu in ELITEA serves as a central hub for establishing con
 **Key Aspects of the Integration Feature:**
 
 * **Centralized Connection Management:** The Integrations menu provides a single point of control for managing connections to various external services.
-* **Supported Platforms:** ELITEA currently supports integrations with **Jira**, **Confluence**, **GitHub**, **QTest** and **TestRail**, with plans to add more services in future releases.
+* **Supported Platforms:** ELITEA currently supports integrations with **Jira**, **Confluence**, **GitHub**, **GitLab**, **QTest** and **TestRail**, with plans to add more services in future releases.
 * **Reusable Configurations:** Once an integration is configured, it can be reused across multiple Agent toolkits within the **same project** or your **Private** workspace.
 * **Private and Project Level Integrations:** You can create integrations within your **Private** workspace for personal use or within **Team** projects for shared access among project members.
 * **Secure Authentication:** ELITEA offers various secure authentication methods for connecting to external platforms, including Basic, Bearer, Passwords, and Private Keys, with the option to store sensitive credentials securely using **[Secrets](../admin-guide/settings.md#secrets)**.
@@ -65,8 +65,8 @@ After saving, the newly created integration will be added to the **Integrations*
 When setting up integrations in ELITEA, it's important to understand the following constraints and best practices:
 
 * **Uniqueness per Integration Type:**
-    * **Jira, Confluence, QTest and TestRail:** Within your Private workspace or a Team project, you can create multiple integrations for Jira, Confluence, and TestRail. The uniqueness of these integrations is determined by the **URL** of the respective service. This means you can connect to different Jira instances, Confluence spaces, or TestRail accounts by creating separate integrations for each unique URL.
-    * **GitHub:**  In contrast to Jira, Confluence, and TestRail, you can create **only one** GitHub integration within your **Private** workspace or a **Team** project. This single integration will serve as the connection point for all your GitHub interactions within that space.
+    * **Jira, Confluence, QTest, GitLab and TestRail:** Within your Private workspace or a Team project, you can create multiple integrations for Jira, Confluence, QTest, GitLab, and TestRail. The uniqueness of these integrations is determined by the **URL** of the respective service. This means you can connect to different Jira instances, Confluence spaces, QTest, GitLab, or TestRail accounts by creating separate integrations for each unique URL.
+    * **GitHub:**  In contrast to Jira, Confluence, QTest, and TestRail, you can create **only one** GitHub integration within your **Private** workspace or a **Team** project. This single integration will serve as the connection point for all your GitHub interactions within that space.
 
 * **Authentication Verification:**  Always double-check the authentication details you provide for each integration. Incorrect credentials will prevent ELITEA from successfully connecting to the external service. Ensure that the Basic credentials, Bearer tokens, passwords, or private keys you enter are accurate and have the necessary permissions to access the desired resources on the external platform. Verifying the authentication setup is **crucial** for ensuring your integrations (and the configurations that use them) function correctly.
 
@@ -109,13 +109,27 @@ To connect with your **GitHub** repositories:
     * **Authentication Options:**
         * **Private Key:** Provide your GitHub App ID and private key.
         * **Token:** Provide your GitHub Personal Access Token.
-        * **Password:** Provide your GitHub username and password.
-        * **Anonymous:** No authentication required (for public repositories).
+        * **Password:** Provide your GitHub username and password.        
       For each credential, you may enter it manually or select a Secret as described [above](#important-considerations-for-integrations).
     * **Set as Default:** Optionally, check this box to make this integration the default **GitHub** connection for the **Private** workspace or **Team** project.
 3. **Save the Integration:** Click the **Save** button.
 
 ![Integrations-GitHub](<../../img/guides/integrations/Integrations-GitHub.png>)
+
+### GitLab Integration Setup
+
+To enable connection with your **GitLab** instance:
+
+1. **Initiate New Integration:** Click the `+` icon in the Integrations menu and select **GitLab**.
+2. **Enter Integration Details:**
+    * **Name:** Provide a descriptive name for this integration (e.g., "GitLab - Project Name").
+    * **URL:** Enter the base URL of your GitLab instance (e.g., `https://gitlab.com/`).
+    * **Authentication Options:**
+        * **Token:** Provide your GitLab Personal Access Token.
+      For the token, you may enter it manually or select a Secret as described [above](#important-considerations-for-integrations).
+3. **Save the Integration:** Click the **Save** button.
+
+![Integrations-GitLab](<../../img/guides/integrations/Integrations-GitLab.png>)
 
 ### Jira Integration Setup
 
@@ -172,7 +186,7 @@ To connect with your **TestRail** instance:
 
 ## Configurations: Applying Integrations to Agent Toolkits
 
-**Configurations** provide the mechanism to utilize the integrations you've set up within your Agent toolkits. When configuring a toolkit for Jira, Confluence, GitHub, or TestRail within an Agent, you have the option to select a **pre-configured integration**, eliminating the need to enter authentication details directly into the toolkit settings.
+**Configurations** provide the mechanism to utilize the integrations you've set up within your Agent toolkits. When configuring a toolkit for Jira, Confluence, GitHub, GitLab, or TestRail within an Agent, you have the option to select a **pre-configured integration**, eliminating the need to enter authentication details directly into the toolkit settings.
 
 **Configuration Options:**
 
@@ -189,7 +203,7 @@ When configuring a toolkit, you will typically find a dropdown menu or a selecti
 
 1. Click the **+ Agent** button located at the top right corner or open already created Agent.
 2. Click the **+ icon** or open already created toolkit under **TOOLS** section.
-3. Select the desired tool (Confluence, Jira, GitHub, TestRail) from the dropdown list. The **New tool** configuration section is opened.
+3. Select the desired tool (Confluence, Jira, GitHub, GitLab, QTest, TestRail) from the dropdown list. The **New tool** configuration section is opened.
 4. Select the **Manual configuration** under the **Configuration** option.
 5. Depending on the selected toolkit fill all **required fields** and **options**.
 6. Click the **Save** button to apply changes.
@@ -200,7 +214,7 @@ When configuring a toolkit, you will typically find a dropdown menu or a selecti
 
 1. Click the **+ Agent** button located at the top right corner or open already created Agent.
 2. Click the **+ icon** or open already created toolkit under **TOOLS** section.
-3. Select the desired tool (Confluence, Jira, GitHub, TestRail) from the dropdown list. The **New tool** configuration section is opened.
+3. Select the desired tool (Confluence, Jira, GitHub, GitLab, QTest, TestRail) from the dropdown list. The **New tool** configuration section is opened.
 4. Select the **Create private configuration** under the **Configuration** option.
 5. Provide the **Configuration Name**.
 6. Depending on the selected toolkit fill all **required fields** and **options**.
@@ -212,7 +226,7 @@ When configuring a toolkit, you will typically find a dropdown menu or a selecti
 
 1. Click the **+ Agent** button located at the top right corner or open already created Agent.
 2. Click the **+ icon** or open already created toolkit under **TOOLS** section.
-3. Select the desired tool (Confluence, Jira, GitHub, TestRail) from the dropdown list. The **New tool** configuration section is opened.
+3. Select the desired tool (Confluence, Jira, GitHub, GitLab, QTest, TestRail) from the dropdown list. The **New tool** configuration section is opened.
 4. Select the **Create project configuration** under the **Configuration** option.
 5. Provide the **Configuration Name**.
 6. Depending on the selected toolkit fill all **required fields** and **options**.
@@ -224,7 +238,7 @@ When configuring a toolkit, you will typically find a dropdown menu or a selecti
 
 Once you have configured integrations in your **Private** workspace or within a **Team** project, these integrations become available for selection when configuring toolkits in your Agents. This allows you to easily reuse established connections to external platforms.
 
-When adding or editing a Jira, Confluence, GitHub, or TestRail toolkit in an Agent, you will find a **Configuration** dropdown list. This list displays all the available integrations of the corresponding type that you can use for that specific toolkit.
+When adding or editing a Jira, Confluence, GitHub, GitLab, or TestRail toolkit in an Agent, you will find a **Configuration** dropdown list. This list displays all the available integrations of the corresponding type that you can use for that specific toolkit.
 
 **Identifying Integration Scope:**
 
@@ -241,8 +255,8 @@ To help you distinguish between integrations configured in your Private workspac
 
 The naming convention for integrations in the dropdown list also helps you identify the specific connection:
 
-* **Jira**, **Confluence**, **QTest** and **TestRail** Integrations: These integrations are listed using their configured URL. This ensures you can easily differentiate between connections to different instances of these tools (e.g., different Jira servers or Confluence spaces).
-* **GitHub** Integrations: Since only one **GitHub** integration is allowed per workspace or project, these integrations are simply listed as **GitHub**.
+* **Jira**, **Confluence**, **QTest**, **GitLab** and **TestRail** Integrations: These integrations are listed using their configured URL. This ensures you can easily differentiate between connections to different instances of these tools (e.g., different Jira servers or Confluence spaces).
+* **GitHub** Integrations: Since only one **GitHub** integration is allowed per workspace or project, these integrations are simply listed as **https://api.github.com**.
 
 **Toolkit-Specific Integration Filtering**:
 
@@ -277,5 +291,12 @@ Here are some examples of how to effectively utilize Integrations and Configurat
     3. When configuring the agent:
         * For the Confluence toolkit, use already created **Project configuration** and choose the service account integration.
         * For the TestRail toolkit, use already created **Private configuration** option, allowing each QA to use their own TestRail integration.
+
+### Use Case 4: GitLab Integration for CI/CD Automation
+
+* **Scenario:** You are building an agent workflow to trigger CI/CD pipelines in GitLab and fetch pipeline statuses. You want to use a service account for consistent access.
+* **Solution:**
+    1. The team manager configures a GitLab integration in the **Team** project Integrations page using the service account's token.
+    2. When configuring the GitLab toolkit in the agent, select already created **Project configuration** option and choose the integration configured with the service account.
 
 By strategically using **Integrations** and **Configurations**, you can create flexible and secure agent workflows that cater to various authentication needs and enhance collaboration within your ELITEA environment.

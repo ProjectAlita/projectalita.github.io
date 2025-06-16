@@ -51,7 +51,7 @@ Start by asking ELITEA to create something for you.
 
 Once ELITEA generates the content, look for the pencil icon (✏️) in the top-right corner of the content block. This icon indicates that Canvas is available.
 
-![Canvas_Edit](../../img/how-tos/Canvas/Canvas_Edit.png)
+![Canvas_Edit](../img/how-tos/canvas/Canvas_Edit.png)
 
 Click the pencil icon to launch the Canvas editor for that content block.*
 
@@ -70,7 +70,7 @@ All Canvas editors share a set of universal controls:
 | **Save**       | Save Changes        | Saves your current progress. Remember to save often!                           |
 | **Export**     | Export/Download     | Allows you to download the content in various formats (e.g., `.py`, `.xlsx`, `.png`). |
  
-![Canvas_Actions](../../img/how-tos/Canvas/Canvas_Actions.png)
+![Canvas_Actions](../img/how-tos/canvas/Canvas_Actions.png)
 
 ### A Deep Dive into Canvas Editors
 

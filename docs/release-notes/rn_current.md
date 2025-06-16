@@ -22,7 +22,7 @@ Canvas is now available in ELITEA, providing a seamless way to edit, refine, and
  
 Canvas is designed to support a wide range of SDLC activities, including requirements documentation, test case management, automation script development, and process visualization. Whether you’re a BA, QA, AQA, or developer, Canvas helps you turn ideas into actionable deliverables—without ever leaving the conversation.
  
-For more details and practical examples, see the [Canvas User Guide](../how-tos/Canvas.md).
+For more details and practical examples, see the [Canvas User Guide](../how-tos/canvas.md).
  
 ### MCP Client Integration: Use Tools from Any MCP Server
  
@@ -33,6 +33,16 @@ ELITEA now empowers you to connect with external Model Context Protocol (MCP) se
 * See new tools from integrated MCP servers appear automatically under your Agents toolkits in the ELITEA platform UI
  
 This opens up a world of possibilities for cross-platform collaboration and tool sharing—no matter where your MCP server is hosted. Easily extend your ELITEA project with specialized tools from other teams, organizations, or even your own custom MCP deployments. 
+
+For more details and practical examples, see the [Elitea MCP Client Integration via STDIO](../how-tos/mcp/mcp-client.md).
+
+### Integration Support for GitLab
+
+Enhanced Integration Support for GitLab, allowing users to configure authentication parameters:
+
+* **Private Workspace Configuration**: Each user can set up their own GitLab authentication parameters for personalized access.
+* **Project Configuration**: Configure GitLab service accounts for the entire project, enabling centralized management.
+* **Personal and Project Configurations**: Added support for both personal and project-level configurations within the GitLab Toolkit and Integration.
 
 ### SubGraphs in Pipelines: Modular Workflow Building
  
@@ -108,6 +118,10 @@ The API for posting messages to Chat has been updated for improved simplicity an
 - **Previous behavior:** Users needed to provide the chat ID in the URL and the conversation ID in the body of the POST request.
 - **Current behavior:** Users now only need to provide the conversation UID in the URL. The chat ID is no longer required. 
 
+### GitHub Integrations Visibility Change
+
+* **GitHub** Integrations: To make it clearer which connection is being used, GitHub integrations are now displayed as **https://api.github.com** in selection lists. (Previously, it appeared simply as "GitHub.") Only one GitHub integration is allowed per workspace or project, so this change helps you easily identify the integration endpoint. For more details, check [Integrations and Configurations Guide](../feature-guides/core-features/integrations.md).
+ 
 ## Fixed Issues
  
 * **Chat Messages to Other Users**: When sending a message to an invited user in a conversation, the system may get stuck on "Assistant to Message" with an endless Thinking state.

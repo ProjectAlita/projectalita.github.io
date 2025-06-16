@@ -12,7 +12,7 @@ Welcome to the user-friendly manual on using [ELITEA](https://alita.lab.epam.com
 2. **Choose Format**: Select the **`[DIAL] format`** format when prompted. This format is specially designed for compatibility with EPAM AI Dial.
 3. **Download**: After selecting the format, the file will be downloaded automatically to your device in JSON format.
 
-![Prompt-Export_Prompt_Dial](<../img/manuals/Prompt-Export_Prompt_Dial.png>)
+![Prompt-Export_Prompt_Dial](../img/manuals/Prompt-Export_Prompt_Dial.png)
 
 ### Import Prompts to EPAM AI Dial
 
@@ -25,7 +25,7 @@ Once you have the JSON file from ELITEA, you can easily import it into AI Dial.
 3. **Complete Import**: The platform will automatically add the prompt to the **Prompts** section.
 4. **Usage**: You can now select and use the prompt within AI Dial.
 
-![Prompt-Import_Dial](<../img/manuals/Prompt-Import_Dial.png>)
+![Prompt-Import_Dial](../img/manuals/Prompt-Import_Dial.png)
 
 ## Export Prompts from EPAM AI Dial
 
@@ -35,7 +35,7 @@ If you have developed or customized prompts in EPAM AI Dial, you can easily expo
 2. **Export**: Click the **`...`** icon next to your selected prompt and choose the **Export** option.
 3. **File Download**: The prompt will be exported and downloaded in JSON format, ready for ELITEA.
 
-![Dial-Prompt_Export](<../img/manuals/Dial-Prompt_Export.png>)
+![Dial-Prompt_Export](../img/manuals/Dial-Prompt_Export.png)
 
 ### Import Prompts to ELITEA
 
@@ -46,7 +46,7 @@ To use the prompts created or exported from EPAM AI Dial in ELITEA, follow these
 3. **Complete Process**: The prompt will be added under the **Prompts** page in ELITEA.
 4. **Use Prompt**: You can now access and utilize the imported prompt.
 
-![Prompt-Import_Alita](<../img/manuals//Prompt-Import_Alita.png>)
+![Prompt-Import_Alita](../img/manuals/Prompt-Import_Alita.png)
 
 ## Exporting and Importing Collections from ELITEA to EPAM AI Dial
 

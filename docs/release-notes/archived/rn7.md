@@ -21,7 +21,7 @@ Introducing **Pipelines**, a new separate entity in ELITEA designed to create "m
 * **YAML Editor**: For advanced users, pipelines can be configured using YAML, providing granular control over pipeline behavior and execution.
 * **Mermaid Flow Diagram Support**: Added support for presenting and displaying pipelines as **Mermaid flow diagrams**, offering enhanced visibility and making complex workflows more understandable for users. This feature provides a clear and structured representation of pipeline logic.
 
-![RN-Pipeline_Flow_View](<../img/release-notes/RN-Pipeline_Flow_View.png>) ![RN-Pipeline_Diagram](<../img/release-notes/RN-Pipeline_Diagram.png>) 
+![RN-Pipeline_Flow_View](<../../img/release-notes/RN-Pipeline_Flow_View.png>) ![RN-Pipeline_Diagram](<../../img/release-notes/RN-Pipeline_Diagram.png>) 
 
 ### Icons Support for ELITEA Entities
 
@@ -32,7 +32,7 @@ Users can either:
 * **Select Icons from the Existing Library**: Choose from a curated list of pre-existing icons to quickly customize your entities.
 * **Upload Custom Icons**: Upload your own icons to add a personal touch. Supported formats include `.jpeg`, `.jpg`, `.png`, `.gif`, `.bmp`, `.tiff`, and `.webp`, ensuring flexibility and compatibility with a wide range of image types.
 
-![RN-Icons](<../img/release-notes/RN-Icons.png>) 
+![RN-Icons](<../../img/release-notes/RN-Icons.png>) 
 
 ### Chat Enhancements
 
@@ -44,7 +44,7 @@ Enhancements to the Chat functionality to improve organization, collaboration, a
 * **Display Configured Conversation Starter**: Automatically display the configured conversation starter for selected participants in conversations.
 * **Participant Notifications**: Users will receive notifications when added as a participant in a conversation.
 
-![RN-Chat_Folders](<../img/release-notes/RN-Chat_Folders.png>)
+![RN-Chat_Folders](<../../img/release-notes/RN-Chat_Folders.png>)
 
 ### Integration Support for QTest
 

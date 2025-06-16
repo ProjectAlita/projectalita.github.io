@@ -6,7 +6,7 @@ A Conversation in ELITEA represents a dynamic dialogue involving multiple partic
 
 All your conversations are securely stored on the ELITEA server, making them accessible from any device where you log in. You can find all your conversations listed under the Chat menu in the sidebar.
 
-![Chat_New](<../../img/platform/menus/chat/Chat_New.png>)
+![Chat_New](../../img/platform/menus/chat/Chat_New.png)
 
 
 ## 2. Key Features
@@ -31,7 +31,7 @@ All your conversations are securely stored on the ELITEA server, making them acc
 
 Your new conversation will now be listed in the **CONVERSATIONS** sidebar on the left.  
 
-![Chat_Create_Conversation](<../../img/platform/menus/chat/Chat_Create_Conversation.png>)
+![Chat_Create_Conversation](../../img/platform/menus/chat/Chat_Create_Conversation.png)
 
 
 ### 3.2 Creating a New Folder
@@ -44,7 +44,7 @@ Organize your conversations by grouping them into folders.
 
 The new folder will appear in your **CONVERSATIONS** sidebar.  
 
-![Chat_Create_Folder](<../../img/platform/menus/chat/Chat_Create_Folder.png>)
+![Chat_Create_Folder](../../img/platform/menus/chat/Chat_Create_Folder.png)
 
 ## 4. Managing Conversations
 
@@ -57,7 +57,7 @@ To organize conversations into folders:
 3. Choose the desired destination folder from the list.
 4. If no suitable folder exists, you can click **+New Folder** directly from this menu to create one on the fly.
 
-![Chat_MoveTo_Folder](<../../img/platform/menus/chat/Chat_MoveTo_Folder.png>)
+![Chat_MoveTo_Folder](../../img/platform/menus/chat/Chat_MoveTo_Folder.png)
 
 ### 4.2 Conversation Actions (Sidebar)
 
@@ -72,7 +72,7 @@ You can manage conversations directly from the **CONVERSATIONS** sidebar by righ
 - **Playback**: Enter Playback mode for this conversation (See [Playback Mode](#9-playback-mode)).
 - **Export**: *(Note: Currently mentioned as "Not applicable now",  this functionality may be introduced in future updates)* Export the conversation content.
 
-![Chat_Conversation_Actions](<../../img/platform/menus/chat/Chat_Conversation_Actions.png>)
+![Chat_Conversation_Actions](../../img/platform/menus/chat/Chat_Conversation_Actions.png)
 
 
 ## 5. Managing Folders
@@ -85,7 +85,7 @@ Folders can be managed directly from the **CONVERSATIONS** sidebar. Right-click 
 - **Delete Folder**: Remove the folder.  
   **Important**: Deleting a folder does not delete the conversations inside it. Conversations within a deleted folder are automatically moved back to the main conversation list (root level). You will be asked to confirm deletion.
 
-![Chat_Folder_Actions](<../../img/platform/menus/chat/Chat_Folder_Actions.png>)
+![Chat_Folder_Actions](../../img/platform/menus/chat/Chat_Folder_Actions.png)
 
 
 ## 6. Understanding Conversation/Folder Visibility
@@ -207,7 +207,7 @@ Selected participants will appear in the **PARTICIPANTS** list within your conve
 
 **Note**: Users will receive notifications if they are added to a public conversation implicitly through interaction.
 
-![Chat_Add_Participant](<../../img/platform/menus/chat/Chat_Add_Participant.png>)
+![Chat_Add_Participant](../../img/platform/menus/chat/Chat_Add_Participant.png)
 
 
 ### 7.3 Using Participants in a Conversation
@@ -226,7 +226,7 @@ Once added, you need to specify which participant(s) should handle your next mes
 3. **Send Message/Command**: Type your message or a simple command (like "Go", "Execute", "Run it") and press **Send**. The active participant(s) will process your input.
 4. To remove a participant from the active list for the next message (without removing it from the conversation entirely), click the **X** icon next to its name above the input box.
 
-![Chat_Use_Participant](<../../img/platform/menus/chat/Chat_Use_Participant.png>)
+![Chat_Use_Participant](../../img/platform/menus/chat/Chat_Use_Participant.png)
 
 ### Example Usage
 
@@ -261,7 +261,7 @@ You can fine-tune the behavior of added participants directly within the convers
 3. **Apply**: Click the **< SETTINGS** button (or similar) to save changes for this conversation.
 4. **Restore Defaults**: Click the **Restore** icon (often a circular arrow) to revert to default settings.
 
-![Chat_Model](<../../img/platform/menus/chat/Chat_Model.png>)
+![Chat_Model](../../img/platform/menus/chat/Chat_Model.png)
 
 
 #### 7.4.2 Configuring Prompts
@@ -274,7 +274,7 @@ You can fine-tune the behavior of added participants directly within the convers
 3. **Apply**: Click the **< SETTINGS** button.
 4. **Restore Defaults**: Click the **Restore** icon.
 
-![Chat_Prompts](<../../img/platform/menus/chat/Chat_Prompts.png>)
+![Chat_Prompts](../../img/platform/menus/chat/Chat_Prompts.png)
 
 
 #### 7.4.3 Configuring Datasources
@@ -289,7 +289,7 @@ You can fine-tune the behavior of added participants directly within the convers
 3. **Apply**: Click the **< SETTINGS** button.
 4. **Restore Defaults**: Click the **Restore** icon.
 
-![Chat_Datasources](<../../img/platform/menus/chat/Chat_Datasources.png>)
+![Chat_Datasources](../../img/platform/menus/chat/Chat_Datasources.png)
 
 
 #### 7.4.4 Configuring Agents
@@ -302,7 +302,7 @@ You can fine-tune the behavior of added participants directly within the convers
 3. **Apply**: Click the **< SETTINGS** button.
 4. **Restore Defaults**: Click the **Restore** icon.
 
-![Chat_Agents](<../../img/platform/menus/chat/Chat_Agents.png>)
+![Chat_Agents](../../img/platform/menus/chat/Chat_Agents.png)
 
 
 ### 7.5 Displaying Configured Conversation Starters
@@ -319,7 +319,7 @@ When you add a participant (like a Prompt or Agent) that has a pre-configured "c
 3. Click **Thumbs Down** to indicate dissatisfaction.
 4. After clicking **Thumbs Down**, a **Leave comment** field appears. Click it, type your specific feedback or reason for disliking, and press **Send** (or **Enter**). This feedback is valuable for improving models and prompts.
 
-![Chat_Like_Dislike](<../../img/platform/menus/chat/Chat_Like_Dislike.png>)
+![Chat_Like_Dislike](../../img/platform/menus/chat/Chat_Like_Dislike.png)
 
 
 ### 8.2 Regenerating the Last Output
@@ -329,7 +329,7 @@ When you add a participant (like a Prompt or Agent) that has a pre-configured "c
 3. Click the **Regenerate** icon 🔄 usually located near the last message or the input box.
 4. The system will use the same input/prompt that generated the last response and attempt to create a new, potentially improved, output.
 
-![Chat_Regenerate](<../../img/platform/menus/chat/Chat_Regenerate.png>)
+![Chat_Regenerate](../../img/platform/menus/chat/Chat_Regenerate.png)
 
 
 ## 9. Playback Mode

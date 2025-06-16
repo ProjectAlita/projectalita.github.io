@@ -117,7 +117,7 @@ Importing collections allows you to add pre-built collections from JSON files:
 
 **Important Note:** The Collection entity itself is not automatically recreated during import.
 
-For more information about importing collections and entities, please refer to the [Export and Import Guide](../feature-guides/core-features/export-import.md).
+For more information about importing collections and entities, please refer to the [Export and Import Guide](../../feature-guides/core-features/export-import.md).
 
 ## How to Add an Entity to a Collection
 

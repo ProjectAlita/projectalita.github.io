@@ -396,8 +396,8 @@ Upon publication, a prompt becomes a crucial resource for the community. To supp
 
 **Adding Published Prompts to Collections**:
 
-Enhance your collections by including published prompts. Visit the [How to Add Prompt into Collection](#how-to-add-prompt-into-collection) section for instructions on incorporation.
+Enhance your collections by including published prompts. Visit the [How to Add Prompt into Collection](#Prompt-Actions) section for instructions on incorporation.
 
 **Exporting Published Prompts**:
 
-For external use or backup, published prompts can be exported. Details on this process are found in the [How to Export a Prompt](#how-to-export-a-prompt) section.
+For external use or backup, published prompts can be exported. Details on this process are found in the [How to Export a Prompt](#Prompt-Actions) section.

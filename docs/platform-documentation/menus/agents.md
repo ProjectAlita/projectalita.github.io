@@ -113,10 +113,10 @@ Selecting the right Agent type in ELITEA is essential for optimizing the perform
 * **Description**: OpenAI Agents are built on the LangChain backend and are specifically designed for integrations with Azure OpenAI Service. These agents excel in generating human-like text and handling a wide range of conversational tasks.
 * **Best For**: Tasks requiring high-quality natural language understanding and generation, such as customer support, content creation, and complex query resolution.
 
-**Note**: The **Pipeline Agent** type has been moved to a separate module. For more information on configuring and using Pipeline Agents, please refer to the [Pipeline Agent Configuration](../../menus/pipeline.md).
+**Note**: The **Pipeline Agent** type has been moved to a separate module. For more information on configuring and using Pipeline Agents, please refer to the [Pipeline Agent Configuration](../menus/pipelines.md).
 
 
-Each Agent type in ELITEA is crafted to maximize the strengths of its underlying models and frameworks. Selecting the appropriate Agent type based on your specific task requirements and desired outcomes will ensure optimal performance and efficiency. For more detailed guidance on selecting the right Agent type and crafting effective instructions, please refer to the [Agent Frameworks](../../how-tos/agents-toolkits/pipeline-agent-framework.md) document.
+Each Agent type in ELITEA is crafted to maximize the strengths of its underlying models and frameworks. Selecting the appropriate Agent type based on your specific task requirements and desired outcomes will ensure optimal performance and efficiency.
 
 
 ### How to select and configure Toolkits
@@ -127,13 +127,13 @@ Below is the list of toolkits supported by the platform. For detailed instructio
 
 | **Category**           | **Toolkits**                                                                                     |
 |-------------------------|-------------------------------------------------------------------------------------------------|
-| **Azure DevOps Tools**  | [ADO boards](../../how-tos/agents-toolkits/ado_wiki_plan_board_toolkit.md), [ADO plans](../../how-tos/agents-toolkits/ado_wiki_plan_board_toolkit.md), [ADO wiki](../../how-tos/agents-toolkits/ado_wiki_plan_board_toolkit.md), [ADO repos](../../how-tos/agents-toolkits/ado_repos_toolkit.md) |
-| **Internal Toolkits**   | [Agent](../../platform-documentation/menus/agents.md), [Datasource](../../platform-documentation/menus/datasources.md), [Prompt](../../platform-documentation/menus/prompts.md), [Artifact](../../how-tos/agents-toolkits/artifact_toolkit.md) |
-| **Project Management**  | [Jira](../../how-tos/agents-toolkits/jira_toolkit.md), [Confluence](../../how-tos/agents-toolkits/confluence_toolkit.md), [Rally](../../how-tos/agents-toolkits/rally_toolkit.md), [Salesforce](../../how-tos/agents-toolkits/salesforce_toolkit.md), [Sharepoint](../../how-tos/agents-toolkits/sharepoint_toolkit.md) |
-| **Version Control**     | [GitHub](../../how-tos/agents-toolkits/github_toolkit.md), [GitLab](../../how-tos/agents-toolkits/gitlab_toolkit.md), [GitLab Org](../../how-tos/agents-toolkits/gitlab_org_toolkit.md), [Bitbucket](../../how-tos/agents-toolkits/bitbucket_toolkit.md) |
-| **Testing Tools**       | [TestRail](../../how-tos/agents-toolkits/testrail_toolkit.md), [QTest](../../how-tos/agents-toolkits/qtest_toolkit.md), [XRAY Cloud](../../how-tos/agents-toolkits/xray_toolkit.md), [Zephyr Enterprise](../../how-tos/agents-toolkits/zephyr_enterprise_toolkit.md), [Zephyr Scale](../../how-tos/agents-toolkits/zephyr_scale_toolkit.md), [TestIO](../../how-tos/agents-toolkits/testIO_toolkit.md) | [Sonar](../../how-tos/agents-toolkits/sonar_toolkit.md)|
-| **EPAM Tools**          | [Report Portal](../../how-tos/agents-toolkits/reportportal_toolkit.md), [TEST IO](../../how-tos/agents-toolkits/testIO_toolkit.md), **Carrier** |
-| **Other Tools**         | [Browser](../../how-tos/agents-toolkits/browser_toolkit.md), [Google Places](../../how-tos/agents-toolkits/google_places_toolkit.md), [Open API](../../how-tos/agents-toolkits/openapi_toolkit.md), [Custom](../../how-tos/agents-toolkits/custom_toolkit.md), [SQL](../../how-tos/agents-toolkits/sql_toolkit.md), [Pandas](../../how-tos/agents-toolkits/pandas_toolkit.md), [Figma](../../how-tos/agents-toolkits/figma_toolkit.md) |
+| **Azure DevOps Tools**  | [ADO boards](../../how-tos/toolkits/ado_wiki_plan_board_toolkit.md), [ADO plans](../../how-tos/toolkits/ado_wiki_plan_board_toolkit.md), [ADO wiki](../../how-tos/toolkits/ado_wiki_plan_board_toolkit.md), [ADO repos](../../how-tos/toolkits/ado_repos_toolkit.md) |
+| **Internal Toolkits**   | [Agent](../../platform-documentation/menus/agents.md), [Datasource](../../platform-documentation/menus/datasources.md), [Prompt](../../platform-documentation/menus/prompts.md), [Artifact](../../how-tos/toolkits/artifact_toolkit.md) |
+| **Project Management**  | [Jira](../../how-tos/toolkits/jira_toolkit.md), [Confluence](../../how-tos/toolkits/confluence_toolkit.md), [Rally](../../how-tos/toolkits/rally_toolkit.md), [Salesforce](../../how-tos/toolkits/salesforce_toolkit.md), [Sharepoint](../../how-tos/toolkits/sharepoint_toolkit.md) |
+| **Version Control**     | [GitHub](../../how-tos/toolkits/github_toolkit.md), [GitLab](../../how-tos/toolkits/gitlab_toolkit.md), [GitLab Org](../../how-tos/toolkits/gitlab_org_toolkit.md), [Bitbucket](../../how-tos/toolkits/bitbucket_toolkit.md) |
+| **Testing Tools**       | [TestRail](../../how-tos/toolkits/testrail_toolkit.md), [QTest](../../how-tos/toolkits/qtest_toolkit.md), [XRAY Cloud](../../how-tos/toolkits/xray_toolkit.md), [Zephyr Enterprise](../../how-tos/toolkits/zephyr_enterprise_toolkit.md), [Zephyr Scale](../../how-tos/toolkits/zephyr_scale_toolkit.md), [TestIO](../../how-tos/toolkits/testIO_toolkit.md) | [Sonar](../../how-tos/toolkits/sonar_toolkit.md)|
+| **EPAM Tools**          | [Report Portal](../../how-tos/toolkits/reportportal_toolkit.md), [TEST IO](../../how-tos/toolkits/testIO_toolkit.md), **Carrier** |
+| **Other Tools**         | [Browser](../../how-tos/toolkits/browser_toolkit.md), [Google Places](../../how-tos/toolkits/google_places_toolkit.md), [Open API](../../how-tos/toolkits/openapi_toolkit.md), [Custom](../../how-tos/toolkits/custom_toolkit.md), [SQL](../../how-tos/toolkits/sql_toolkit.md), [Pandas](../../how-tos/toolkits/pandas_toolkit.md), [Figma](../../how-tos/toolkits/figma_toolkit.md) |
 
 
 ![Agents-Toolkits](<../../img/platform/menus/agents/Agents_Toolkits.png>)

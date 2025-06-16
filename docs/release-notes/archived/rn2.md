@@ -9,7 +9,7 @@
 * **Release Version**: 1.0.1
 * **Released on**: 27-May-2024
 * **Access**: [Alita Platform](https://alita.lab.epam.com). **Note**: You need to enable Epam VPN to access Alita.
-* **User Guide**: [Alita - User Guide](../user-guide/intro.md) 
+* **User Guide**: [Alita - User Guide](../../home/introduction.md)
 
 ## New Features
 
