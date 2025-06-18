@@ -82,6 +82,7 @@ nav:
           - How to Automate JIRA Issue Review with Elitea: how-tos/jira-automation-with-elitea.md
           - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
           - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md
+          - How to Use Webhook Functionality: how-tos/webhook.md
       - FAQs: how-tos/faqs.md
   - Support & Resources:
       - Contact Us: support-resources/contact-support.md
