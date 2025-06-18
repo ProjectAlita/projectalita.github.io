@@ -78,6 +78,9 @@ To allow ELITEA to access SharePoint resources, you need to configure API permis
 
 ![SharePoint-Grant_Admin_Consent](../../img/how-tos/toolkits/sharepoint/SharePoint-Grant_Admin_Consent.png)
 
+**Note:** If you are unable to obtain admin consent for application permissions, you can use **delegated permissions** instead. This allows ELITEA to access SharePoint resources on behalf of the signed-in user. For example, this approach can be used when integrating with EPAM SharePoint pages.
+
+
 ### Configure the Client Secret
 
 To securely authenticate your ELITEA Agents with SharePoint, you need to create a Client Secret for your registered application. The Client Secret acts as a password for your application when authenticating with Azure AD.

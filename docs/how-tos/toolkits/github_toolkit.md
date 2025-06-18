@@ -73,6 +73,43 @@ For secure integration with ELITEA, it is essential to use a GitHub **Personal A
 ![GitHub-Generate_Token3](../../img/how-tos/toolkits/github/GitHub-Generate_Token3.png)
 ![GitHub-Generate_Token4](../../img/how-tos/toolkits/github/GitHub-Generate_Token4.png)
 
+
+### Authentication Using a GitHub App (Private Key)
+
+For more granular control and enhanced security, especially in organizational or automated contexts, using a GitHub App for authentication is the recommended approach. This method authenticates as the app itself, not as a user, and its permissions are precisely defined within the app's settings.
+
+#### Step 1: Create and Configure a GitHub App
+
+1.  **Navigate to Developer Settings:** Log in to your GitHub account, click your profile photo in the top-right corner, and go to **Settings** > **Developer settings**.
+2.  **Register a New App:** Select **GitHub Apps** from the left-hand menu and click **New GitHub App**.
+3.  **Fill in App Details:**
+    *   **App Name:** Enter a unique name for your application (e.g., "ELITEA Integration App").
+    *   **Homepage URL:** Provide a valid URL. A placeholder like `https://www.example.com` is sufficient if you don't have a dedicated homepage.
+4.  **Configure Permissions:** This is the most critical step. Scroll down to the **"Permissions"** section. For the toolkit to function correctly, you must grant the following permissions. Under **Repository permissions**, set the following:
+    *   **Actions:** Read & Write
+    *   **Contents:** Read & Write
+    *   **Issues:** Read & Write
+    *   **Metadata:** Read-only (This is a minimum requirement)
+    *   **Pull requests:** Read & Write
+    *   **Projects:** Read & Write
+5.  **Set Installation Options:** Under **"Where can this GitHub App be installed?"**, choose **"Only on this account"** for private use.
+6.  **Create the App:** Click **Create GitHub App** at the bottom of the page.
+
+#### Step 2: Generate Private Key and Install the App
+
+After creating the app, you will be redirected to its settings page.
+
+1.  **Generate a Private Key:**
+    *   Scroll down to the **"Private keys"** section.
+    *   Click **Generate a private key**.
+    *   A `.pem` file will be immediately downloaded to your computer. **This is your private key. Treat it like a password and store it securely.** You will only be able to download it once.
+
+2.  **Install the App:**
+    *   In your GitHub App's settings, click the **Install App** tab in the left sidebar.
+    *   Click **Install** next to your organization or personal account.
+    *   On the next screen, you can choose to install the app on **All repositories** or **Only select repositories**.
+    *   Click **Install** to complete the process. The app can now interact with the selected repositories.
+
 ## GitHub Integration with ELITEA
 
 ### Agent Creation/Configuration
@@ -96,13 +133,30 @@ This section details how to configure the GitHub toolkit within your ELITEA Agen
     *   **URL:**  This field is pre-filled with the standard GitHub API URL: `https://api.github.com`. **In the vast majority of cases, you should not modify this URL.** Only change it if you are connecting to a self-hosted **GitHub Enterprise Server** instance, in which case you should enter the specific API URL for your Enterprise Server( e.g. https://github.tools.test/api/v3/ ).
     *   **Repository:** Enter the **Repository name** that you want to access with this toolkit. Use the format: `repository_owner/repository_name` (e.g., `MyOrganization/my-project-repo`). Ensure you use the correct owner/organization and repository name. You don't need to add ".git" at the end of the repo.
     *   **Main branch:** Specify the **Main branch** of your repository. This is typically `main` or `master`.
-    *   **Authentication Options - Token:** Select the **"Token"** authentication option.
+    *   **Authentication Options:**
+        *   **Token:** Select this option to authenticate using a GitHub Personal Access Token (recommended for most use cases).
+        *   **Anonymous:** Use this option if you only need to access public repositories and do not require authentication.
+        *   **Password:** Choose this option if you need to authenticate with your GitHub password (not recommended; use tokens for better security).
+        *   **App Private Key:** Select this if you have a GitHub App installed on the repository and want to authenticate using the app's private key.
+
         *   **Password/Secret:** Choose **"Password"** and then paste the **Personal Access Token (Classic)** you generated in GitHub (during the "Software-Specific Setup" section of this guide) into the **"Password"** field.
         *   **Enhanced Security with Secrets (Recommended):** For significantly enhanced security, it is strongly recommended to use the **"Secret"** option. Select **"Secret"** and then choose a pre-configured secret from the dropdown list. You must first securely store your Personal Access Token as a Secret within ELITEA's [Secrets Management](../../platform-documentation/menus/settings.md#secrets) feature. Using Secrets is a critical security best practice that prevents hardcoding sensitive credentials directly in the toolkit configuration, reducing the risk of exposure.
 
 
 
     ![GitHub-Toolkit_Configuration.png](../../img/how-tos/toolkits/github/GitHub-setup.png)
+
+#### Usage of App Private Key
+
+1.  Return to your GitHub App's main settings page (**General** tab). You will find the **App ID** at the top of the page. Copy this value.
+2.  In the ELITEA GitHub toolkit configuration, select **"App private key"** as the authentication option.
+3.  Fill in the required fields:
+    *   **App ID:** Paste the App ID you copied from your GitHub App's settings page.
+    *   **Private Key / Secret:**
+        * Open the `.pem` file you downloaded in a plain text editor. Copy the **entire content**, excluding the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` lines, and paste it into the **"Password"** field.
+
+      ![GitHub-private_key](../../img/how-tos/toolkits/github/private_key.png)
+      ![GitHub-private_key1](../../img/how-tos/toolkits/github/private_key1.png)
 
 4.  **Enable Desired Tools:** In the **"Tools"** section within the GitHub toolkit configuration, **carefully select the checkboxes next to only the specific GitHub tools** that your Agent will actually need to use. **Enable only the tools that are absolutely necessary** to adhere to the principle of least privilege and minimize potential security risks. Available tools include:
     *   **Get issues** - Retrieves a list of issues.
@@ -461,6 +515,29 @@ The GitHub toolkit unlocks numerous automation possibilities for software develo
         1.  **Double-Check Repository Name:** Carefully and meticulously verify that you have entered the correct GitHub Repository name in the toolkit configuration within ELITEA. Pay close attention to capitalization, spelling, and the `repository_owner/repository_name` format. Even minor typos can cause errors.
         2.  **Verify Branch Name Spelling and Case:** Ensure that you are using the correct branch name (e.g., `main`, `develop`, `feature-branch`) in your Agent's instructions when specifying branch-related parameters for GitHub tools. Branch names in Git are case-sensitive. Double-check the spelling and capitalization of branch names against your repository in GitHub.
         3.  **Branch Existence:** Confirm that the specified branch actually exists in your GitHub repository. It's possible the branch name is correct but the branch was deleted or renamed.
+
+*   **Error Updating Multiple Files (LLM Context Loss):**
+    *   **Problem:** This issue occurs because the LLM (Agent) loses context between file operations. It can be fixed by instructing the LLM to process files one by one, completing all steps for a single file before moving to the next.
+
+    **Example Agent Instructions:**
+
+     
+          You will be given a list of files, but you need to process them one by one, completing operations with a single file before moving to the next.
+
+         Update file guidelines:
+        - Read the file's initial content.
+        - Review what must be updated.
+        - Use the update_file tool to apply the changes to that single file.
+        - ONLY after you have processed a file can you move to the next.
+
+         Constraints:
+        - IMPORTANT: Start processing the next file ONLY after you have updated the previous one.
+        - Process file by file and per flow: read - decide - update.
+     
+
+    This approach ensures the Agent maintains the necessary context for each file operation, preventing update failures due to missing or outdated file content.
+
+       ![GitHub-Toolkit_issue.png](../../img/how-tos/toolkits/github/context_issue.png)
 
 ### FAQ
 
