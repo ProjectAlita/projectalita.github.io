@@ -257,7 +257,8 @@ The SQL toolkit unlocks numerous automation possibilities for data-driven workfl
         1.  **Verify Connection Details:** Double-check the Host, Port, Database name, Username, and Password in the toolkit configuration. Ensure they are accurate and match your database credentials.
         2.  **Database Server Status:** Confirm that your SQL server is running and accessible. Try connecting to the database using a database client (like MySQL Workbench, pgAdmin, DBeaver) from the same network where ELITEA is running to isolate network issues.
         3.  **Network Connectivity:** Verify network connectivity between ELITEA and your SQL server. Check firewall rules, network configurations, and ensure that the SQL server port is open for incoming connections from ELITEA's IP address (if applicable).
-        4.  **Database Dialect:** Ensure you have selected the correct SQL Dialect ("MySQL" or "PostgreSQL") in the toolkit configuration that matches your database type.
+        4.  **Database Dialect:** Ensure that the correct SQL Dialect ("MySQL" or "PostgreSQL") is selected in the toolkit configuration to match your database type.
+      
 
 *   **Authorization Errors (Access Denied):**
     *   **Problem:** Agent receives "Access Denied" or "Unauthorized" errors when trying to access the database or execute queries.
@@ -274,6 +275,9 @@ The SQL toolkit unlocks numerous automation possibilities for data-driven workfl
     *   **A:** Elitea requires direct access to your SQL server. If you're experiencing connectivity issues, check the following:
         1.  **Public IP:** Ensure that your local-hosted SQL server has a Public IP address if it needs to be accessed from outside your local network. Without this, ELITEA cannot initiate a connection to your database.
         2.  **Network Environment:** If your SQL server operates within a closed network or a VPN-restricted environment, deploy ELITEA within the same network. This ensures that ELITEA can reach the SQL server without external network barriers.
+
+3. **Q: Can I use my locally deployed SQL server to connect ELITEA to it?**  
+    * **A:** No, your SQL server must be accessible from the web. This means the server should be hosted in a way that allows ELITEA to connect to it over the internet. If your SQL server is only available on your local network, ELITEA will not be able to access it unless you configure public accessibility or set up a secure connection such as a VPN.
 
 ### Support Contact
 
