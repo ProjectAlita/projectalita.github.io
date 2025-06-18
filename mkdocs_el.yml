@@ -67,6 +67,7 @@ nav:
           - Rally Integration: how-tos/toolkits/rally_toolkit.md
           - ReportPortal Integration: how-tos/toolkits/reportportal_toolkit.md
           - SalesForce Integration: how-tos/toolkits/salesfores_toolkit.md
+          - ServiceNow Integration: how-tos/toolkits/servicenow_toolkit.md
           - SharePoint Integration: how-tos/toolkits/sharepoint_toolkit.md
           - Sonar Integration: how-tos/toolkits/sonar_toolkit.md
           - SQL Integration: how-tos/toolkits/sql_toolkit.md
@@ -74,8 +75,7 @@ nav:
           - TestRail Integration: how-tos/toolkits/testrail_toolkit.md
           - XRAY Cloud Integration: how-tos/toolkits/xray_toolkit.md
           - Zephyr Scale Integration: how-tos/toolkits/zephyr_scale_toolkit.md
-          - Zephyr Enterprise Integration: how-tos/toolkits/zephyr_enterprise_toolkit.md
-          - ServiceNow Integration: how-tos/toolkits/servicenow_toolkit.md
+          - Zephyr Enterprise Integration: how-tos/toolkits/zephyr_enterprise_toolkit.md          
       - General How-Tos:
           - How to Use Chat Functionality: how-tos/how-to-use-chat-functionality.md
           - How to Use Canvas: how-tos/how-to-canvas.md
