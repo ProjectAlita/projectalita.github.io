@@ -62,6 +62,7 @@ nav:
           - Jira Integration: how-tos/toolkits/jira_toolkit.md
           - OpenAPI Integration: how-tos/toolkits/openapi_toolkit.md
           - Pandas Integration: how-tos/toolkits/pandas_toolkit.md
+          - Postman Integration: how-tos/toolkits/postman_toolkit.md
           - PowerPoint Integration: how-tos/toolkits/powerpoint_toolkit.md
           - qTest Integration: how-tos/toolkits/qtest_toolkit.md
           - Rally Integration: how-tos/toolkits/rally_toolkit.md
