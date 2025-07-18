@@ -70,6 +70,7 @@ nav:
           - SalesForce Integration: how-tos/toolkits/salesfores_toolkit.md
           - ServiceNow Integration: how-tos/toolkits/servicenow_toolkit.md
           - SharePoint Integration: how-tos/toolkits/sharepoint_toolkit.md
+          - Slack Integration: how-tos/toolkits/slack_toolkit.md
           - Sonar Integration: how-tos/toolkits/sonar_toolkit.md
           - SQL Integration: how-tos/toolkits/sql_toolkit.md
           - TestIO Integration: how-tos/toolkits/testIO_toolkit.md
