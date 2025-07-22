@@ -153,8 +153,7 @@ This section provides detailed instructions on how to configure the Xray Cloud t
 
 3.  **Configure Xray Cloud Toolkit Settings:** Carefully fill in the following configuration fields within the "New Xray cloud tool" section:
 
-    *   **Name:**  Enter a descriptive **Name** for your Xray Cloud toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions (e.g., "ProjectXrayCloud", "TestManagementAccess", "XrayCloudIntegration").
-    *   **Description:** Provide a concise **Description** for the toolkit. This description should clarify the toolkit's purpose or the specific Jira project with Xray Cloud it is intended to access (e.g., "Toolkit for accessing and managing test cases in Xray Cloud", "Integration for Xray Cloud in Jira Project 'Project Alpha'").
+
 
     *   **Base URL:**
         - Enter the **Xray Cloud API base URL** for your region. The correct endpoint depends on where your Xray Cloud instance is hosted. Use the table below to select the appropriate base URL:
