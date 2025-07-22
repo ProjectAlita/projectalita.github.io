@@ -150,11 +150,25 @@ This section provides detailed instructions on how to configure the Xray Cloud t
 
 1.  **Add Toolkit:** In the "Tools" section of the Agent configuration, click on the **"+" icon**. This action will display a dropdown list of available toolkits that can be integrated with your Agent.
 2.  **Select Xray Cloud Toolkit:** From the dropdown list of available toolkits, choose **"Xray Cloud"**. Selecting "Xray Cloud" will open the "New Xray cloud tool" configuration panel, where you will specify the settings for your Xray Cloud integration.
+
 3.  **Configure Xray Cloud Toolkit Settings:** Carefully fill in the following configuration fields within the "New Xray cloud tool" section:
 
     *   **Name:**  Enter a descriptive **Name** for your Xray Cloud toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions (e.g., "ProjectXrayCloud", "TestManagementAccess", "XrayCloudIntegration").
     *   **Description:** Provide a concise **Description** for the toolkit. This description should clarify the toolkit's purpose or the specific Jira project with Xray Cloud it is intended to access (e.g., "Toolkit for accessing and managing test cases in Xray Cloud", "Integration for Xray Cloud in Jira Project 'Project Alpha'").
-    *   **Base URL:** Enter the base URL of your Jira Cloud instance where Xray Cloud is installed. **Ensure you use the correct format**, including `https://` or `http://` and the full workspace URL (e.g., `https://your-workspace.atlassian.net`). For Epam Jira, use `https://jira.epam.com`. **Important Note:** Use the base URL of your Jira Cloud instance, not the Xray Cloud-specific API endpoint. The toolkit automatically constructs the API endpoint URL.
+
+    *   **Base URL:**
+        - Enter the **Xray Cloud API base URL** for your region. The correct endpoint depends on where your Xray Cloud instance is hosted. Use the table below to select the appropriate base URL:
+
+        | Location   | Region Description                  | Endpoint                                 |
+        |------------|-------------------------------------|------------------------------------------|
+        | Global     | All Xray Cloud across regions       | https://xray.cloud.getxray.app/          |
+        | USA        | USA region                          | https://us.xray.cloud.getxray.app/       |
+        | EU         | Europe (Frankfurt) region           | https://eu.xray.cloud.getxray.app/       |
+        | Australia  | Australia (Sydney) region           | https://au.xray.cloud.getxray.app/       |
+
+        - **Important:** Use the correct base URL for your Xray Cloud region. If unsure, check your Xray Cloud account or contact your administrator.
+        - Do **not** use your Jira Cloud workspace URL as the base URL for Xray Cloud toolkit configuration. The toolkit requires the Xray Cloud API endpoint as shown above.
+
     *   **Client ID:** Paste the **Client ID** of your registered Xray Cloud API Keys that you noted down into the **"Client ID"** field.
     *   **Client Secret:** Paste the **Client Secret** of your registered Xray Cloud API Keys that you generated in previous section into the **"Client Secret"** field.  **Important Security Note:** For enhanced security, it is strongly recommended to use ELITEA's **Secrets Management** feature to store your Xray Cloud Client ID and Client Secret securely. Instead of directly pasting them into the corresponding fields, select the **"Secret"** option and choose the pre-configured secrets containing your Xray Cloud credentials from the dropdown list. This prevents hardcoding sensitive credentials in your toolkit configuration.
 
