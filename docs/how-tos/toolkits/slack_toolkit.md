@@ -39,12 +39,18 @@ There are two main options for authenticating your ELITEA integration with Slack
 
 
 **Option 1: Get a Bot User OAuth Token**
+
 1. Log in to Slack and go to [Slack API: Your Apps](https://api.slack.com/apps).
 2. Click "Create New App" and select your workspace.
+
    ![app_create](../../img/how-tos/toolkits/slack/app_create.png)
-![name and workspace](../../img/how-tos/toolkits/slack/name&workspace.png)
+
+   ![name and workspace](../../img/how-tos/toolkits/slack/name&workspace.png)
+
 3. In your app settings, go to "OAuth & Permissions".
+
    ![OAuth](../../img/how-tos/toolkits/slack/oauth.png)
+
 4. Under "Scopes", add the required bot scopes. For the available toolkit functionality, the following scopes are mandatory:
    - `channels:read` (List workspace conversations, List channel users)
    - `groups:read` (List workspace conversations for private channels)
@@ -55,15 +61,22 @@ There are two main options for authenticating your ELITEA integration with Slack
    - `groups:write` (Create private channel)
    - `conversations:read` (Read messages)
    - `conversations:write` (Send message, Invite to conversation)
+
    ![Bot-Scopes](../../img/how-tos/toolkits/slack/bot_scopes.png)
+
 5. Click "Install App to Workspace" and authorize the app.
-   ![Install](../../img/how-tos/toolkits/slack/install.png)
+
+   ![Install](../../img/how-tos/toolkits/slack/Install.png)
+
 6. After installation, copy the **Bot User OAuth Token** (starts with `xoxb-`).
+
    ![Bot-Scopes](../../img/how-tos/toolkits/slack/token.png)
+
 7. Store the token securely (recommended: ELITEA Secrets).
    
 
 **Option 2: Get a User OAuth Token**
+
 1. Log in to Slack and go to [Slack API: Your Apps](https://api.slack.com/apps).
 2. Click "Create New App" and select your workspace.
 3. In your app settings, go to "OAuth & Permissions".
@@ -79,6 +92,7 @@ There are two main options for authenticating your ELITEA integration with Slack
    - `conversations:write` (Send message, Invite to conversation)
     
     ![User OAuth](../../img/how-tos/toolkits/slack/user.png)
+
 5. Click "Install App to Workspace" and authorize the app.
 6. After installation, copy the **User OAuth Token** (starts with `xoxp-`).
 7. Store the token securely (recommended: ELITEA Secrets).
@@ -99,6 +113,7 @@ To configure the Slack toolkit in ELITEA, you will need the Channel ID. Here’s
 3. **Example:**
     - URL: `https://app.slack.com/client/T12345678/C87654321`
     - Channel ID: `C87654321`
+
     ![Slack-Channel-Id](../../img/how-tos/toolkits/slack/channel_Id.png)
 
 > **Note:** For ELITEA Slack toolkit configuration, you only need to provide the Channel ID. Workspace ID is not required.
@@ -109,13 +124,15 @@ To configure the Slack toolkit in ELITEA, you will need the Channel ID. Here’s
 Your Slack app (bot) must be a member of the channel to send and read messages, create channels, and perform other actions. Inviting the app ensures it has the necessary access to interact with the channel via the API.
 
 **Steps to Invite the App:**
-1. In Slack, go to the channel you want your app to access.
-2. In the message input box, type `/invite @<your-app-name>` and press Enter.
-   - Replace `<your-app-name>` with the name of your Slack app/bot (e.g., `/invite @MyBot`).
-3. You should see a confirmation that the app has been added to the channel.
-4. The app can now send and read messages, and perform other permitted actions in this channel.
+
+ 1. In Slack, go to the channel you want your app to access.
+ 2. In the message input box, type `/invite @<your-app-name>` and press Enter.
+    - Replace `<your-app-name>` with the name of your Slack app/bot (e.g., `/invite @MyBot`).
+ 3. You should see a confirmation that the app has been added to the channel.
+ 4. The app can now send and read messages, and perform other permitted actions in this channel.
 
 > If you do not invite the app to the channel, API requests to post or read messages may fail with a "not_in_channel" error.
+
    ![Invite](../../img/how-tos/toolkits/slack/invite.png)
 
 ## Slack Integration with ELITEA
@@ -135,23 +152,32 @@ To integrate Slack, you'll need to configure it within an ELITEA Agent. You can 
 This section details how to configure the Slack toolkit within your ELITEA Agent.
 
 1. **Add Toolkit:** In the "Toolkits" section, click the **"+ Toolkit" button**.
-   - Select **"Create new"**. You will be redirected to the new toolkit creation page.
-      ![Add toolkits](../../img/how-tos/toolkits/slack/Add_toolkit.png)
-   - Select **Slack** from the toolkits list.
-     ![Select toolkit](../../img/how-tos/toolkits/slack/select_toolkit.png)
-   - Set the name of your toolkit.
-   - Open the **Credentials** dropdown and click **"Create new credentials"** to add your Slack OAuth token securely.
-    ![toolkit](../../img/how-tos/toolkits/slack/toolkit_configs.png)
+   *   Select **"Create new"**. You will be redirected to the new toolkit creation page.
+
+       ![Add toolkits](../../img/how-tos/toolkits/slack/add_toolkit.png)
+
+   *    Select **Slack** from the toolkits list.
+
+      ![Select toolkit](../../img/how-tos/toolkits/slack/select_toolkit.png)
+
+   *   Set the name of your toolkit.
+   *   Open the **Credentials** dropdown and click **"Create new credentials"** to add your Slack  OAuth token securely.
+
+    ![New toolkit](../../img/how-tos/toolkits/slack/new_toolkit.png)
+
 2. **Configure Toolkit Credentials:** Fill in the following fields:
 
-    * **Name:** Set a name for your credential (e.g., "Slack Bot Credentials").
-    * **Slack Token:** Enter your Slack Bot/User OAuth Token. For best security, store your token as a Secret in ELITEA and select it from the dropdown. Alternatively, you can paste the token directly, but using Secrets is recommended.
-    * **Channel ID:** The unique identifier of the Slack channel you want the Agent to access or post messages to.
-    * **Save Credentials :** Click **"Save Credentials"** button (at the top right of the toolkit configuration) to save the Slack credentials
- ![toolkit](../../img/how-tos/toolkits/slack/toolkit_configs.png)
+    *  **Name:** Set a name for your credential (e.g., "Slack Bot Credentials").
+    *  **Slack Token:** Enter your Slack Bot/User OAuth Token. For best security, store your token as a Secret in ELITEA and select it from the dropdown. Alternatively, you can paste the token directly, but using Secrets is recommended.
+    *  **Channel ID:** The unique identifier of the Slack channel you want the Agent to access or post messages to.
+    *  **Save Credentials :** Click **"Save Credentials"** button (at the top right of the toolkit configuration) to save the Slack credentials
+
+   ![toolkit](../../img/how-tos/toolkits/slack/toolkit_configs.png)
 
 3. **Enable Tools:** In the "Tools" section of the Slack toolkit configuration, select the checkboxes next to the Slack tools you want to enable for your Agent. Enable only the tools your Agent will actually use to adhere to the principle of least privilege and enhance security. Available tools may include:
-    * **Create slack channel:** Create a new channel in your workspace.
+
+    *  **Create slack channel:** Create a new channel in your workspace.
+
     * **Invite to conversation:** Invite a user to a channel or conversation.
     * **List channel users:** Retrieve a list of users in a specific channel.
     * **List workspace users:** Retrieve a list of all users in your workspace.
@@ -161,6 +187,7 @@ This section details how to configure the Slack toolkit within your ELITEA Agent
 
 4. **Complete Toolkit Configuration:** Click the **Save** (at the top right of the toolkit configuration) to save the Slack toolkit setup and return to the main Agent configuration.
 5. Click **Save** to apply configuration and changes to the Agent.
+
    ![toolkit](../../img/how-tos/toolkits/slack/save_toolkit.png)
 
 ### Tool Overview
@@ -191,11 +218,15 @@ When creating instructions for the Slack toolkit for OpenAI-based Agents, focus 
 
 When instructing your Agent to use a Slack toolkit, use this pattern:
 
-```markdown
+```
 1. Identify the goal: [State the objective, e.g., "To send a message to a specific channel"].
 2. Tool Selection: Use the "[tool_name]" tool.
 3. Parameter Specification: Provide the following parameters:
     - Parameter Name 1: <value or description of value>
+    - Parameter Name 2: <value or description of value>
+    - ...
+4. Expected Outcome: [Optionally, describe what should happen after the tool is used].
+```
     - Parameter Name 2: <value or description of value>
     - ...
 4. Expected Outcome: [Optionally, describe what should happen after the tool is used].
@@ -205,7 +236,8 @@ When instructing your Agent to use a Slack toolkit, use this pattern:
 
 * **Send a message to a channel:**
 
-```markdown
+
+```
 1. Goal: To send a message to channel ID "C87654321".
 2. Tool: Use the "Send message" tool.
 3. Parameters:
@@ -216,7 +248,8 @@ When instructing your Agent to use a Slack toolkit, use this pattern:
 
 * **Create a new channel:**
 
-```markdown
+
+```
 1. Goal: To create a new channel named "project-updates".
 2. Tool: Use the "Create slack channel" tool.
 3. Parameters:
@@ -227,7 +260,8 @@ When instructing your Agent to use a Slack toolkit, use this pattern:
 
 * **Invite a user to a channel:**
 
-```markdown
+
+```
 1. Goal: To invite user ID "U12345678" to channel ID "C87654321".
 2. Tool: Use the "Invite to conversation" tool.
 3. Parameters:
@@ -238,7 +272,8 @@ When instructing your Agent to use a Slack toolkit, use this pattern:
 
 * **List users in a channel:**
 
-```markdown
+
+```
 1. Goal: To list all users in channel ID "C87654321".
 2. Tool: Use the "List channel users" tool.
 3. Parameters:
@@ -248,7 +283,8 @@ When instructing your Agent to use a Slack toolkit, use this pattern:
 
 * **List all users in the workspace:**
 
-```markdown
+
+```
 1. Goal: To list all users in the workspace.
 2. Tool: Use the "List workspace users" tool.
 3. Parameters: None
@@ -257,7 +293,8 @@ When instructing your Agent to use a Slack toolkit, use this pattern:
 
 * **Read messages from a channel:**
 
-```markdown
+
+```
 1. Goal: To read the last 10 messages from channel ID "C87654321".
 2. Tool: Use the "Read messages" tool.
 3. Parameters:
