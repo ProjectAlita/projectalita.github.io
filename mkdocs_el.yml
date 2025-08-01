@@ -39,6 +39,12 @@ nav:
           - Monitoring Guide: feature-guides/core-features/monitoring.md
       - ELITEA Advanced Features:
           - Roles Management: feature-guides/advanced-features/roles.md
+  - Quick Start Guides:
+      - Create Secrets: quick-start\secrets.md
+      - Create Credentials: quick-start\credentials.md
+      - Create Toolkits: quick-start\toolkits.md
+      - Create Personal Access Tokens: quick-start\personal-access-token.md
+      - Create Artifacts using an Agent: quick-start\artifacts.md       
   - How TOs:
       - MCP:
           - Elitea MCP Server Integration via STDIO: how-tos/mcp/mcp-server-stdio.md
