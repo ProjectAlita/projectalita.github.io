@@ -185,6 +185,26 @@ You can edit this file manually for advanced setups.
   - **Linux:** Copy `.desktop` file to `~/.config/autostart/`.
   - **Windows:** Copy `launch-tray-windows.bat` to the Startup folder (`Win+R`, type `shell:startup`).
 
+
+After "alita-mcp tray",  the terminal will look like following
+
+![Tray application running in terminal](../../img/how-tos/mcp/mcp-tray-terminal.png)
+
+Now you need to interact with the application through your system's tray menu to **start MCP server**:
+
+- **On Windows:**  
+  Go to the system tray in the bottom-right corner of your desktop. Find the application with the Alita icon and right-click on it. Click the **Start MCP Server** option to start the server.
+
+  ![Windows tray menu](../../img/how-tos/mcp/mcp-tray-windows.png)
+
+- **On macOS:**  
+  Go to the menu bar in the top-right corner of your screen and find the application with the Alita icon. Click on it to open the menu.
+
+  ![macOS tray menu](../../img/how-tos/mcp/mcp-tray-macos.png)
+
+**Troubleshooting on macOS:**  
+In some cases, the tray app icon may not be visible on the macOS menu bar, especially if you have many other applications running. Go to **System Settings > Control Center** and check the settings for menu bar icons to ensure the ELITEA tray app is not hidden.
+
 **Tray Menu Features:**  
 - Start/stop, restart MCP servers, open/view config, run bootstrap, view status, quit.
 
@@ -295,6 +315,41 @@ Empower Elitea agents to interact with GitHub repositories—creating issues, ma
 * Ideal for product owners, QA, or anyone managing GitHub workflows within Elitea.
 
 ---
+
+## Troubleshooting
+
+### "MCP server not found" error
+
+**Problem:**
+After clicking the **Start MCP Server** option in tray app to start the server. you encounter an error stating that the MCP server is not found or could not be started.
+     ![Incorrect config.json](../../img/how-tos/mcp/mcp-config-empty-terminal.png)
+
+**Solution:**
+This issue typically occurs when the `servers` configuration is missing or empty in your `config.json` file. This can happen if the `bootstrap` process was interrupted or conflicted with another program (like Visual Studio Code) that had the file open.
+
+   ![Incorrect config.json](../../img/how-tos/mcp/mcp-config-empty.png)
+
+1.  **Locate your `config.json` file.** (See "Configuration File Locations" section for paths).
+2.  **Open the file** and inspect the `"servers"` object. If it's empty (`"servers": {}`) or missing, you need to add the server configuration manually.
+3.  **Add the server configuration.** You can re-run `alita-mcp bootstrap` or copy the server object manually. The configuration for a server should look like this:
+
+    ![Correct config.json](../../img/how-tos/mcp/mcp-config-filled.png)
+
+    Here is an example of a correctly filled-in `playwright` server configuration:
+
+```json
+"playwright": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "@playwright/mcp@latest"
+     ],
+     "stateful": true
+ }
+```
+
+ **Save the `config.json` file** and try running the MCP client again.
+
 
 ## Additional Resources and Support
 
