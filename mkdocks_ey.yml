@@ -40,6 +40,10 @@ nav:
           - Monitoring Guide: feature-guides/core-features/monitoring.md
       - ELITEA Advanced Features:
           - Roles Management: feature-guides/advanced-features/roles.md
+  - Quick Start Guides:
+      - Adding Teammates to Chat : quick-start\add_user.md
+      - Using Canvas in Chat: quick-start\canvas_in_chat.md
+      - Creating Conversations and Using AI Assistants in Chat: quick-start\create_conversation.md 
   - How TOs:
       - MCP:
           - Elitea MCP Server Integration via STDIO: how-tos/mcp/mcp-server-stdio.md
