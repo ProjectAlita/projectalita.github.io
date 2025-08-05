@@ -46,7 +46,7 @@ When you create or edit a Credential in ELITEA (for example, for GitHub, Jira, o
 5. **Choose the Secret:** Select your stored secret from the dropdown.
 6. **Save the Credential:** The credential will now use the referenced secret for authentication.
 
-> **Note:**  For detailed instructions on creating credentials, refer to the  [Create Credentials](https://elitea.ai/docs\quick-start\credentials.md) document. 
+> **Note:**  For detailed instructions on creating credentials, refer to the  [Create Credentials](credentials.md) document. 
 
 #### Example
 

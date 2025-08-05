@@ -39,7 +39,7 @@ Personal access tokens are used to authorize API calls, extensions, or scripts. 
    - Click these icons to download ready-to-use configuration files for integrating ELITEA with the Alita Code extension in VSCode or JetBrains IDEs.
 
 3. **Configure Your Environment:**
-   - Follow the [Alita Code Documentation](../user-guide/extensions/alita-code.md) for detailed instructions on adding your personal access token to your development environment.
+   - Follow the [Alita Code Documentation](../platform-documentation/extensions/elitea-code.md) for detailed instructions on adding your personal access token to your development environment.
 
 ---
 
@@ -57,7 +57,7 @@ Personal access tokens are used to authorize API calls, extensions, or scripts. 
 
 - **Token not working?** Ensure you are using the correct project configuration and the token has not expired or been revoked.
 - **Lost token?** If you didn’t copy your token, delete it and generate a new one.
-- **Integration setup issues?** Refer to the [Alita Code Documentation](../user-guide/extensions/alita-code.md) or contact your administrator.
+- **Integration setup issues?** Refer to the [Alita Code Documentation](../platform-documentation/extensions/elitea-code.md) or contact your administrator.
 
 ---
 

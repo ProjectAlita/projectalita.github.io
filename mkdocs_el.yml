@@ -41,13 +41,13 @@ nav:
       - ELITEA Advanced Features:
           - Roles Management: feature-guides/advanced-features/roles.md
   - Quick Start Guides:
-      - Adding Teammates to Chat: quick-start/add_user.md
-      - Using Canvas in Chat: quick-start/canvas_in_chat.md
-      - Creating Conversations and Using AI Assistants in Chat: quick-start/create_conversation.md
+      - Create Personal Access Tokens: quick-start/personal-access-token.md
       - Create Secrets: quick-start/secrets.md
       - Create Credentials: quick-start/credentials.md
       - Create Toolkits: quick-start/toolkits.md
-      - Create Personal Access Tokens: quick-start/personal-access-token.md
+      - Creating Conversations and Using AI Assistants in Chat: quick-start/create_conversation.md
+      - Adding Teammates to Chat: quick-start/add_user.md
+      - Using Canvas in Chat: quick-start/canvas_in_chat.md
       - Create Artifacts using an Agent: quick-start/artifacts.md
 
   - How TOs:

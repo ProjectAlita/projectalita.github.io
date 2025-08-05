@@ -51,6 +51,6 @@
 ## 5. More Resources
  
 - [ELITEA Chat Documentation](../platform-documentation/menus/chat.md)
-- [How to Use Chat Functionality](how-to-use-chat-functionality.md)
+- [How to Use Chat Functionality](../how-tos/how-to-use-chat-functionality.md)
 
 ---
