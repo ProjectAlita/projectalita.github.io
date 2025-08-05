@@ -20,6 +20,7 @@ nav:
           - Overview: platform-documentation/menus/overview.md
           - Settings: platform-documentation/menus/settings.md
           - Chat: platform-documentation/menus/chat.md
+          - Credentials: platform-documentation/menus/credentials.md
           - Prompts: platform-documentation/menus/prompts.md
           - Datasources: platform-documentation/menus/datasources.md
           - Collections: platform-documentation/menus/collections.md
@@ -43,6 +44,12 @@ nav:
       - Adding Teammates to Chat : quick-start\add_user.md
       - Using Canvas in Chat: quick-start\canvas_in_chat.md
       - Creating Conversations and Using AI Assistants in Chat: quick-start\create_conversation.md                
+      - Create Secrets: quick-start\secrets.md
+      - Create Credentials: quick-start\credentials.md
+      - Create Toolkits: quick-start\toolkits.md
+      - Create Personal Access Tokens: quick-start\personal-access-token.md
+      - Create Artifacts using an Agent: quick-start\artifacts.md       
+
   - How TOs:
       - MCP:
           - Elitea MCP Server Integration via STDIO: how-tos/mcp/mcp-server-stdio.md
