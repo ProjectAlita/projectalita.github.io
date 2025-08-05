@@ -1,0 +1,12 @@
+```mermaid
+graph TD
+    A[Login Screen] --> B[Dashboard/Home Screen]
+    B --> C[Applications Section]
+    C --> D[Create New Application/Agent]
+    D --> E[Application Details Screen]
+    E --> F[Version Configuration Screen]
+    F --> G[Tools Configuration Screen]
+    G --> H[LLM Settings Screen]
+    H --> I[Review and Confirm Screen]
+    I --> J[Agent Created Successfully]
+```
