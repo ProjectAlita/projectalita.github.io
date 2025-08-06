@@ -2,6 +2,7 @@ site_name: ELITEA Documentation
 site_url: https://elitea.ai/docs/
 nav:
   - Home:
+      - Glossary: home/glossary.md
       - Introduction: home/introduction.md
   - Release Notes:
       - RN 1.6.0: release-notes/rn_current.md
