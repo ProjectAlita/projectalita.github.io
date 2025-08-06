@@ -65,7 +65,7 @@ Follow these steps to add authentication details to the platform:
    - **Name:** Provide a clear, descriptive name for your credential.
    - **Parameters:** Enter the required fields such as API keys, tokens, usernames, passwords, or service URLs. Field requirements vary by integration.
    
-   > **Security Recommendation:** When prompted for sensitive information like API keys, passwords, or tokens, it's recommended to use **Secrets** instead of entering plain text values. Secrets provide enhanced security for your sensitive data. For more information on creating and managing secrets, see the [Secrets documentation](quick-start/secrets.md).
+   > **Security Recommendation:** When prompted for sensitive information like API keys, passwords, or tokens, it's recommended to use **Secrets** instead of entering plain text values. Secrets provide enhanced security for your sensitive data. For more information on creating and managing secrets, see the [Secrets documentation](../../quick-start/secrets.md).
   
 5. **Save the Credential:** Click **Save** (top right) to add the credential to your dashboard. It will now appear in the list, ready for assignment to toolkits.
 
@@ -101,7 +101,7 @@ Once a credential is created, it is available for assignment when configuring to
 2. Select an existing credential from the list or create a new one.
 3. Save your changes to apply the credential to your toolkit or agent.
 
-> For more information on creating and managing Toolkits, see the [Toolkits documentation](toolkits.md)
+> For more information on creating and managing Toolkits, see the [Toolkits documentation](../../quick-start/toolkits.md)
 
 > **Tip:** Use project-scoped credentials for team integrations, and personal credentials for individual agent tasks.
 

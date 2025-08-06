@@ -191,7 +191,7 @@ This feature enables comprehensive inspection of file contents directly within t
 
 **Q: What types of files can I upload?**
 
-**A:** All file types are supported for upload. For optimal agent workflow integration, plain text files are recommended. The preview feature supports 50+ file types including programming languages, configuration files, documentation formats, data files (CSV/TSV), images, and Mermaid diagrams. See the [Artifact Toolkit](../../how-tos/agents-toolkits/artifact_toolkit.md#artifacts) for agent-specific usage details.
+**A:** All file types are supported for upload. For optimal agent workflow integration, plain text files are recommended. The preview feature supports 50+ file types including programming languages, configuration files, documentation formats, data files (CSV/TSV), images, and Mermaid diagrams. See the [Artifact Toolkit](../../how-tos/toolkits/artifact_toolkit.md#artifacts) for agent-specific usage details.
 
 **Q: How can I preview files?**
 

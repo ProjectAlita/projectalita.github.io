@@ -66,7 +66,7 @@ Artifacts are accessible for 30 days by default and are shared among agents and 
 
 ## Learn More
 
-- See the [full Artifact Toolkit Guide](https://elitea.ai/docs/how-tos/toolkits/artifact_toolkit/) for advanced details and use cases.
+- See the [full Artifact Toolkit Guide](../how-tos/toolkits/artifact_toolkit.md) for advanced details and use cases.
 - Get help from the [ELITEA documentation](https://elitea.ai/docs).
 
 ---
