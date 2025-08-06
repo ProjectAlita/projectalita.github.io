@@ -41,6 +41,7 @@ nav:
       - ELITEA Advanced Features:
           - Roles Management: feature-guides/advanced-features/roles.md
   - Quick Start Guides:
+      - Very Quick Start: quick-start/very_quickstart_guide.md
       - Create Personal Access Tokens: quick-start/personal-access-token.md
       - Create Secrets: quick-start/secrets.md
       - Create Credentials: quick-start/credentials.md
