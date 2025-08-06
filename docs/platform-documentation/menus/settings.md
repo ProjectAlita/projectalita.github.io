@@ -1,313 +1,156 @@
 # Settings
 
-The **Settings** is designed to offer you a centralized space to manage vital aspects of your account and configurations. This centralized space is accessible by clicking on your avatar located at the top right corner of the page.
+The **Settings** is designed to offer you a centralized space to manage vital aspects of your account and configurations. This centralized space is accessible by clicking on  **Settings** icon in the main navigation sidebar.
 
-The **Settings** consists of several tabs and settings each dedicated to specific functionalities:
+The **Settings** consists of several sections organized in a vertical navigation drawer, each dedicated to specific functionalities:
 
-* **Profile**: Customize your user profile within ELITEA.
+* **AI Configuration**: Manage essential technical settings crucial for the smooth operation of ELITEA's features like Alita Code or Alita Code Chat.
+* **Personal tokens**: Create and manage personal access tokens for API access and IDE integrations.
+* **Secrets**: Securely store and manage API keys, passwords, and other authentication credentials.
+* **Projects**: Manage users within a project. This section is only available for users with admin permissions within the project.
 * **Monitoring**: Keep track of usage statistics by selecting different metrics and timeframes.
-* **Configuration**: Manage essential technical settings crucial for the smooth operation of ELITEA's features like Alita Code or Alita Code Chat.
-* **Deployments**: Handle the management and launching of AI models or services linked to your ELITEA project.
-* **Projects**: Manage users within project. This tab is only available for the user within admin permissions within the project.
-* **Theme**: Switch between **Dark** and **Light** theme for the whole application.
-* **Log out**: Securely log out from the ELITEA.
+
 
 **Navigation**:
 
-To navigate through the **Settings** menus, follow these steps:
+To navigate through the **Settings** sections, follow these steps:
 
-1. Click on the **Your Avatar** icon located at the top right corner of the page to open the **Sidebar** menu.
-2. Select the desired tab by clicking on its name to navigate to that specific section.
+1. Click on the **Settings** icon in the main navigation sidebar or access it through your user menu.
+2. Use the vertical navigation drawer on the left to select the desired section by clicking on its name.
 
-## Profile
+   ![Settings menu](../../img/platform/menus/settings/settings.png)
 
-In the **Profile**, you’re presented with options to personalize your account within ELITEA.
+## AI Configuration
 
-**About me** - fill in or update your personal details to ensure your ELITEA profile remains current. **Note**: Markdown is supported.
+The **AI Configuration** section serves as the central hub for managing essential technical settings that enable the smooth operation of ELITEA's features, such as Alita Code or Alita Code Chat. This section provides configuration details and management for AI models and related services within your project environment.
 
-![Intro-Settings_Profile](../../img/platform/menus/settings/Intro-Settings_Profile.png)
+**Note**: The available settings and configurations may vary depending on the project selected. It's important to select the appropriate project from the project dropdown menu to access specific configurations relevant to that project.
 
-## Monitoring
+### Key Configuration Fields
 
-The **Monitoring** feature in ELITEA is designed to provide a comprehensive overview of the application's usage and performance. This feature is essential for administrators and users who want to gain insights into various aspects of the application, from user engagement to the effectiveness of configured artifacts like prompts, datasources, and agents. By leveraging the detailed charts and statistics available within the Monitoring feature, you can make informed decisions to optimize the performance and user experience of your ELITEA application.
+**Server Configuration:**
 
-This section will guide you through the various components of the Monitoring feature, including configuration options, key metrics, adoption and usage statistics, sentiment analysis, accuracy metrics, prompt topics, and topics summary. Each of these components offers valuable insights that can help you understand how the application is being used and how it can be improved.
+* **Server URL** - The base server URL for your ELITEA instance (e.g., `https://nexus.elitea.ai`)
+* **Project ID** - The unique identifier for your current project, used for API calls and service requests
+* **OpenAI-BaseURL** - The API endpoint URL for OpenAI-compatible services, typically formatted as `{server_url}/llm/v1`
+* **OpenAI-Project** - The project identifier used for OpenAI API compatibility (displayed when a model is selected)
 
-### Configuration Options
+**Copy Configuration Features:**
 
-At the top of the **Monitoring** page, you have several options and settings to configure the charts and metrics you wish to monitor:
+All configuration fields in the AI Configuration section include convenient copy functionality:
 
-* **Projects**: A dropdown lits allowing you to select the project. **Note**: For your Private project, you can only see your private project data. If you have an admin role in another projects, you can select other projects to monitor.
-* **From and To Date Fields**: These fields are used to select the time period for which you want to see the data.
-* **Aggregation**: A dropdown list providing options to view aggregated data over different time periods. You can choose from `Hour`, `Day`, `Week`, `Two Weeks`, `Three Weeks`, and `Month` to tailor the data aggregation to your specific needs.
-* **Type**: A dropdown list allowing you to select among `Prompt`, `Datasource`, `Agent`, and `Conversation` to focus your monitoring on specific elements.
-* **Name**: A dropdown list to select specific items by name, such as created prompts, datasources, agents, or conversations.
-* **Users**: A dropdown list to select which users' data you want to monitor. **Note**: For your private project, you can only see your own user data. If you have an admin role in another project, you can select other users to monitor.
+* **Individual Field Copy** - Each configuration field displays a copy button (📋) when you hover over it
+* **Click to Copy** - Simply click the copy button next to any field to copy its value to your clipboard
+* **Copy All Configuration** - Use the copy icon (📋) in the top-right corner to copy all configuration details at once
+* **Automatic Feedback** - A toast notification confirms when values are successfully copied
+* **Code Examples** - Generated code snippets include copy buttons for easy integration into your projects
 
-To apply any changes or selections, click the **Apply** button. Use the **Refresh** button to update the monitoring data based on the latest activities and configurations.
+This copy functionality makes it easy to transfer configuration values between different environments, share settings with team members, or integrate values into your development workflow.
+   ![Settings menu](../../img/platform/menus/settings/copy_config.png)
 
-### Key Metrics
+### Integration Options
 
-Below the configuration options, you'll find an overview of key metrics that give you a snapshot of the current state of the system:
+The **Integration Options** section allows you to select and configure AI models from your available integrations:
 
-* **Users**: The total number of users interacting with the ELITEA application.
-* **Tokens In**: The number of tokens consumed by the ELITEA application.
-* **Tokens Out**: The number of tokens generated by the ELITEA application.
-* **Engagement**: The percentage of active users out of all users who logged into ELITEA for the selected period, indicating the level of interaction with the application.
-* **Acceptance rate**: The percentage of interactions during the selected period where users accepted the generated output by copying, downloading, or saving it, reflecting user satisfaction and utility of the results.
-* **Prompts**: The total number of prompts created.
-* **Agents**: The total number of agents created.
-* **Conversations**: The total number of conversations created.
+* **Model Selection Dropdown** - Choose from configured LLM models available in your project
+* **Model Capabilities Display** - View supported capabilities of the selected model (Chat, Completion, Embeddings, Function Calling, etc.)
+* **Configuration Details** - Access technical details and settings for the selected model
+* **IDE Configuration Generation** - Download configuration files for VS Code and JetBrains IDEs
 
-These metrics are accompanied by a date range selector, allowing you to filter the data for a specific period.
+**Download Configuration Files:**
 
-![Intro-Settings_Monitoring(Part1)](../../img/platform/menus/settings/Intro-Settings_Monitoring(Part1).png)
+After selecting a model from the Integration Options, you can download code examples in three different formats:
 
-### Adoption and Usage
+* **cURL Example** - Download `api_example.sh` file with command-line API usage examples
+* **Node.js Example** - Download `api_example.js` file with JavaScript/Node.js integration code
+* **Python Example** - Download `api_example.py` file with Python API integration examples
+* **Pre-configured Parameters** - Downloaded files include server URL, project ID, model settings, and authentication details
+* **Ready-to-Use Code** - Each example contains complete, functional code that you can immediately use in your projects
+* **Multiple Language Support** - Choose the programming language that best fits your development environment
 
-Below the key metrics, you'll find the **Adoption and Usage** section, which includes:
+These downloadable code examples provide ready-to-use integration templates, eliminating the need to write API integration code from scratch.
 
-* **Active Users**: A bar chart displaying the number of active users over time.
-* **Token Usage**: A line chart showing the tokens consumed (In) and generated (Out) over time.
+![Download config example](../../img/platform/menus/settings/download_config.png)
 
-These charts provide insights into user engagement and the application's token economy.
+### Available Configurations
 
+The lower section displays organized categories of your configured integrations:
 
-### Acceptance Rate
+**LLM Providers**
+* Lists configured Large Language Model providers and their associated models
+* Shows both personal and shared configurations within the project
+* Displays model configurations with status indicators (OK • Shared)
 
-The **Acceptance Rate** section provides a comprehensive view of user interactions with the ELITEA application, focusing on how often users accept the generated outputs. This section includes visualizations that help you understand user satisfaction and the effectiveness of the system's responses.
+**Vector Storage**
+* Displays configured vector database connections for embeddings and similarity search
+* Includes providers like PGVector and other supported vector stores
 
-**Acceptance Rate Chart**
+**Embedding Models**
+* Shows configured embedding model integrations for text processing and similarity calculations
+* Lists available embedding providers and their specific models
 
-The Acceptance Rate Chart displays the number of accepted and not accepted interactions for the selected period and filter options. This chart helps you assess how frequently users find the generated outputs useful enough to accept by copying, downloading, or saving them.
+**AI Credentials**
+* Manages authentication credentials for AI service providers
+* Securely stores API keys and tokens for various AI platforms
 
-* **Accepted Interactions**: This metric shows the count of interactions where user(s) have accepted the generated output, indicating satisfaction and utility.
-* **Not Accepted Interactions**: This metric reflects the number of interactions where user(s) did not accept the output, suggesting areas for potential improvement in response quality.
+Each configuration section displays the configuration name, type, and sharing status (personal vs. shared). You can create new configurations using the `+` button in the Available Configurations header.
 
-By analyzing the Acceptance Rate Chart, you can gain insights into user satisfaction levels and identify opportunities to enhance the effectiveness of the ELITEA application, ultimately improving the overall user experience.
+  ![Settings menu](../../img/platform/menus/settings/config_fields.png)
 
-### Sentiments
+### Creating Model Credentials
 
-The **Sentiments** section provides a visual representation of the emotional tone of both user inputs and the outputs generated by LLMs. Understanding sentiment is crucial for tailoring responses to better meet user needs and improve overall interaction quality.
+To create new model credentials for AI service providers:
 
-#### Sentiment Analysis Overview
+1. **Access Credential Creation:** Click the `+` button in the Available Configurations section or navigate to Credentials menu and select **+ Create**
 
-Sentiment analysis categorizes text into three primary emotional states:
+2. **Choose Credential Type:** Select from the following options:
+   * **AzureOpenAI** - For Azure OpenAI service integrations
+   * **LlmModel** - For general Large Language Model configurations 
+   * **PgvectorConfig** - For PostgreSQL vector database connections
 
-* **Positive**: Indicates a favorable or happy emotional tone.
-* **Negative**: Indicates an unfavorable or unhappy emotional tone.
-* **Neutral**: Indicates a neutral or indifferent emotional tone.
+   ![Settings menu](../../img/platform/menus/settings/new_model_cred.png)
 
-ELITEA performs sentiment analysis on user inputs to gauge the user's emotional state. This capability is particularly important for providing high-quality customer service, as the LLM can adjust its response tone and content based on the user's emotions.
+3. **Configure Credential Details:** Enter a descriptive name for the credential, provide required authentication information (API keys, endpoints, tokens), and configure service-specific parameters based on the selected type
 
-#### Visual Representation
+4. **Save:** Click **Save** to make the credential available for use
 
-The **Sentiments** section includes two pie charts that offer a clear visual representation of sentiment distribution:
+5. **Integration Usage:** Once saved, credentials appear in relevant configuration sections. Use the credentials when setting up agents, toolkits, or other integrations, and generate code examples showing how to use the configured endpoints
 
-* **Human Input**: This pie chart shows the sentiment distribution of user inputs. It helps you understand how users are feeling when they interact with the LLMs.
-* **LLM Output**: This pie chart displays the sentiment distribution of LLM's outputs. It helps you ensure that the responses generated by the LLM are appropriate and aligned with user emotions.
 
-#### Practical Applications
+## Personal Tokens
 
-Understanding sentiment can significantly enhance the user experience in several ways:
+The **Personal Tokens** section allows you to create and manage personal access tokens that are essential for API access and IDE integrations. These tokens enable secure communication between your applications, scripts, and development environments with ELITEA's backend services.
+ ![Personal Token](../../img/platform/menus/settings/personal_token.png)
 
-* **Customer Service**: By analyzing the sentiment of user inputs, LLMs can adjust its responses to be more empathetic and supportive, thereby improving customer satisfaction.
-* **User Engagement**: Monitoring sentiment trends over time can help you identify patterns in user behavior and adjust your strategies accordingly.
-* **Content Moderation**: Sentiment analysis can be used to flag potentially harmful or inappropriate content, ensuring a safer and more positive interaction environment.
+**Creating a Personal Token:**
 
-![Intro-Settings_Monitoring(Part2)](../../img/platform/menus/settings/Intro-Settings_Monitoring(Part2).png)
+1. Navigate to the **Personal Tokens** section in Settings.
+2. Click the `+` icon to create a new token.
+3. Enter a descriptive **name** for the token and set an **expiration date**.
+4. Click **Generate** to create the token.
+5. **Important**: Immediately copy and securely store the generated token - it will not be visible again once you close the dialog.
 
-### Accuracy
+![New Token](../../img/platform/menus/settings/new_token.png)
+![Copy Token](../../img/platform/menus/settings/copy_token.png)
 
-The **Accuracy** section provides detailed insights into the performance and reliability of the ELITEA application. This section includes various metrics and visualizations that help you understand how well the system is responding to user inputs and how effective your configured artifacts (prompts, datasources, agents, conversations) are.
 
-#### Relevance
+**Managing Personal Tokens:**
 
-The **Relevance** metric is divided into two key lines:
+* **Token Security**: Once a token is generated, it cannot be viewed again. Make sure to copy and store it securely during creation.
+* **Token Expiration**: Monitor token expiration dates and renew tokens before they expire to avoid service interruptions.
+* **Deleting Tokens**: Click the delete icon (🗑️) in the Actions column to permanently remove a token. This action cannot be undone, so ensure the token is no longer needed before deletion.
 
-* **Input vs Context**: This line measures the relevance of the user's input (question or query) against the context of the artifact (prompt, datasource, agent or conversation). In the ELITEA, "context" refers to the configured instructions for the artifact. A higher relevance score indicates that the user's input closely matches the context, making it easier for the LLM to provide accurate responses.
-* **Output vs Input**: This line measures the relevance of the generated output by the LLM against the user's input. A higher relevance score here indicates that the output is closely aligned with the user's query, ensuring that the response is appropriate and useful.
+![Delete Token](../../img/platform/menus/settings/delete_token.png)
 
-**Note**: The maximum value for relevance is 6. The higher the score, the better the relevance, indicating a more accurate and contextually appropriate interaction.
-
-#### Reliability
-
-The **Reliability Score** answers the question of whether there is enough context to respond accurately to the user's questions or queries. This metric helps you gauge the confidence level of the LLM's responses. **Note**: The maximum reliability score is 10. A higher score indicates that there is sufficient context to provide a correct and reliable response to the user's query.
-
-#### Instruction Quality vs Usage
-
-The **Instruction Quality vs Usage** is a 2x2 matrix that helps you evaluate the effectiveness and utilization of your artifacts (prompts, agents, datasources or conversations):
-
-* **Low Quality, Low Usage**: Artifacts in this box have low quality scores and are rarely used. These artifacts may need to be re-evaluated or improved.
-* **High Quality, Low Usage**: Artifacts in this box have high quality scores but are not frequently used. Efforts should be made to promote these high-quality artifacts to increase their usage.
-* **High Quality, High Usage**: Artifacts in this box have high quality scores and are frequently used. These are your most effective artifacts and should be maintained.
-* **Low Quality, High Usage**: Artifacts in this box have low quality scores but are frequently used. These artifacts should be improved in quality or their usage should be reduced in favor of higher-quality alternatives.
-
-**Matrix legend**:
-
-* **Quality Score**: The maximum quality score is 4. A higher score indicates better quality.
-* **Calls**: This metric shows how many times an artifact has been used. Depending on the context (matrix box), a higher number of calls can be either positive or negative.
-
-By analyzing these metrics, you can make informed decisions to improve the accuracy and reliability of your Alita AI application, ensuring a better user experience.
-
-### Prompt Topics
-
-The **Prompt Topics** section provides an automatic classification of the available artifacts (prompts, datasources, and agents) within the Alita AI application. This section helps you understand the distribution and focus areas of your artifacts, enabling you to identify trends and gaps in your content.
-
-#### Chart Components
-
-The **Prompt Topics** section displays a clustered column chart that categorizes your artifacts by topic. This visual representation allows you to quickly see how many prompts, datasources, or agents are associated with each topic. The clustered column chart includes the following components:
-
-* **Items**: Indicates the number of artifacts associated with each topic.
-* **Topic Name**: Displays the name of each topic, helping you identify the subject matter of your artifacts.
-
-#### Practical Applications
-
-Understanding the distribution of your artifacts across different topics can provide several benefits:
-
-* **Content Gaps**: Identify topics with fewer artifacts, indicating potential areas where additional content may be needed.
-* **Content Focus**: Recognize topics with a high number of artifacts, helping you understand the primary focus areas of your users.
-* **Resource Allocation**: Allocate resources more effectively by focusing on topics that require more attention or improvement.
-
-![Intro-Settings_Monitoring(Part3)](../../img/platform/menus/settings/Intro-Settings_Monitoring(Part3).png)
-
-By leveraging the insights provided by the **Prompt Topics** section, you can ensure that your application covers a comprehensive range of topics, enhancing the overall user experience and effectiveness of the application.
-
-### Topics Summary
-
-The **Topics Summary** section provides an automatic classification of user inputs, categorizing the topics that users have queried or questioned about. This section helps you understand user interests and the most frequently discussed topics within ELITEA.
-
-#### Chart Components
-
-The **Topics Summary** section displays a clustered column chart that categorizes user inputs by topic. This visual representation allows you to quickly see how many times users have queried information for each topic within a selected timeframe. The clustered column chart includes the following components:
-
-* **Items**: Indicates the number of user queries associated with each topic.
-* **Topic Name**: Displays the name of each topic, helping you identify the subject matter of user queries.
-
-#### Practical Applications
-
-Understanding the distribution of user queries across different topics can provide several benefits:
-
-* **User Interests**: Identify the topics that users are most interested in, allowing you to tailor your content and responses to better meet their needs.
-* **Content Gaps**: Recognize topics with fewer user queries, indicating potential areas where additional content or promotion may be needed.
-* **Trend Analysis**: Monitor how user interests evolve over time, helping you stay ahead of emerging trends and adjust your strategies accordingly.
-
-By leveraging the insights provided by the **Topics Summary** section, you can ensure that ELITEA is aligned with user interests, enhancing the overall user experience and effectiveness of the application.
-
-![Intro-Settings_Monitoring(Part4)](../../img/platform/menus/settings/Intro-Settings_Monitoring(Part4).png)
-
-The **Monitoring** feature in ELITEA offers a robust set of tools and metrics to help you understand the performance and usage of your application. By utilizing the various charts and statistics available, you can gain valuable insights into user engagement, sentiment, accuracy, and the distribution of topics within your project. These insights are crucial for making data-driven decisions that can enhance the overall user experience and effectiveness of your ELITEA application.
-
-Whether you are looking to improve customer's experience through sentiment analysis, optimize the relevance and reliability of LLM responses, or identify content gaps and user interests, the Monitoring feature provides the necessary data to guide your efforts. By regularly reviewing and analyzing these metrics, you can ensure that your project remains aligned with user needs and continues to perform at its best.
-By leveraging the comprehensive monitoring capabilities of ELITEA, you can create a more responsive, efficient, and user-friendly application, ultimately leading to higher user satisfaction and better overall performance.
-
-## Configuration
-
-The **Configuration** page serves as the nucleus for managing essential technical settings that enable the smooth operation of ELITEA's features, such as Alita Code or Alita Code Chat. **Note**: The available settings and configurations may vary depending on the project selected. It's important to select the appropriate project from the project dropdown menu to access specific configurations relevant to that project.
-
-* **URL** - this is the base web address through which you interact with ELITEA’s services. It's a crucial link for all your API calls or web requests.
-* **Project ID & Integration UID** - unique identifiers for your project and integration instances. These are required when setting up or customizing ELITEA’s services to work within your specific project environment.
-* **Integration Options** - allows to select and display available LLMs and Embeddings integrated with your deployments.
-* **Model Name** - displays the correct name of selected integration option
-* **Personal Tokens** - access tokens are your key to secure communication with ELITEA's backend. Here, you can generate tokens that authorize your applications or scripts to perform operations on behalf of your account. Treat these tokens with care and keep them confidential.
-
-**To create a token:**
-
-1. Click the `+` icon to create a new token.
-   * Enter a **name** and set an **expiration date** for the token.
-   * Click **Generate** to create the token.
-   * Immediately copy and securely store the generated token; it will not be visible again once you close the pop-up window.
-3. From the Integration Option dropdown list, select the desired LLM model (e.g., gpt-4, gpt-4o, gpt-4-0125-preview, etc.).
-4. Once the LLM model is selected, the **Download VS Code Settings** and the **Download Jetbrains Settings** icons will appear next to the created token. This allows you to download the configuration files to integrate and configure the ELITEA project with Alita Code extensions on VSCode and IntelliJ respectively. For more information about how to setup it, please refer to the [Alita Code Documentation](../user-guide/extensions/alita-code.md).
-
-
-![Intro-Settings_Configuration](../../img/platform/menus/settings/Intro-Settings_Configuration.png)
-
-## Deployments
-
-The **Deployments** page is all about managing and launching AI models or services that you’ve connected to your ELITEA project. **Note**: The available settings and configurations may vary depending on the project selected. It's important to select the appropriate project from the project dropdown menu to access specific configurations relevant to that project.
-
-* **Available Deployments** - view a list of current AI deployments, such as AI Dial or Hugging Face, that have been linked to your project. This snapshot gives you quick access to manage these integrations.
-* **Creating New Deployments** - while the possibility exists to set up new deployments, it’s a process that requires coordination with the ELITEA team. This is to ensure seamless integration and avoid potential conflicts with existing configurations.
-
-#### Creating a New Deployment for EPAM AI Dial
-
-To set up a new deployment for EPAM AI Dial within your system, follow these detailed steps:
-
-1. **Obtain API Key**: **Important**: Before proceeding, you must obtain a separate [API Key](https://chat.lab.epam.com/#requestApiKey) from the EPAM DIAL team. This key is essential for authenticating and enabling communication with the AI Dial services.   
-2. **API Key Retrieval**: Once you have received the API Key and any additional required information via email, return to this page to input these details.
-3. **Initiate Deployment Creation**:  Click the `+` icon to start creating a new deployment.
-4. **Select Deployment Type**: From the list of available deployment types, select `AI Dial`.
-5. **Configure Deployment Details**: In the configuration window, fill in the following information:
-     * **Name**: Enter a descriptive name for the deployment. This name will be displayed alongside LLM models configured with this deployment.
-     * **API Base**: For EPAM AI Dial, use `https://ai-proxy.lab.epam.com` as the API Base.
-     * **Secret API Key**: Paste the API Key that you received from the AI Dial team.
-     * **API Version**: Enter the API version information provided by the AI Dial team.
-6. **Add Models to Deployment**:
-     * Click the `+` icon to add one or more models associated with this deployment. For each model, provide the model's name, maximum input tokens, and capabilities.
-     * **Important**: Ensure that you enter the correct model name as used in EPAM AI DIAL. For detailed information on model specifications and configurations, refer to the [EPAM AI Dial documentation](https://github.com/epam/ai-dial-core).
-7. Click **Save** to complete the creation of the deployment.
-
-By following these steps, you can successfully create and configure a new deployment for EPAM AI Dial, enabling you to leverage advanced  capabilities within your projects.
-
-![Intro-Settings_Deployments](../../img/platform/menus/settings/Intro-Settings_Deployments.png)
-
-## Integrations
-
-The **Integrations** menu in ELITEA allows you to connect your workspace or project to external tools such as Jira, Confluence, TestRail, GitHub, QTest, and more. Integrations enable seamless data flow and collaboration across platforms, and can be used in Agent toolkits and other features throughout ELITEA.
-
-**Setting up an Integration:**
-
-1. In the Integrations menu, click the **+** icon to create a new integration.
-2. A pop-up window will appear, prompting you to **Select Integration Type**. Choose the service you want to integrate with (e.g., Confluence, GitHub, Jira, TestRail, QTest, etc.).
-3. You will be presented with a configuration form specific to the selected integration type. Fill in the required fields (such as name, URL, authentication credentials, etc.).
-4. Configure the integration parameters as needed.
-5. Click the **Save** button to finalize the integration setup.
-
-Once saved, your integration will be available for use in Agent toolkits and other features. You can manage, edit, or delete integrations from the Integrations menu at any time.
-
-For detailed instructions and best practices for each integration type, see the [Integrations and Configurations Guide](../../feature-guides/core-features/integrations.md).
-
-## Projects
-
-The **Projects** menu is specifically designed for administrators and becomes accessible when you hold administrative privileges in any project other than your private project within ELITEA. **Note**: It's important to select the appropriate project from the project dropdown menu to access specific configurations relevant to that project.
-
-### Groups
-
-The **Groups** feature in ELITEA is designed to facilitate efficient management and monitoring of multiple projects by admins or managers. This feature allows you to consolidate several projects under a single group, making it easier to oversee and coordinate activities across these projects.
-If you are an admin of two or more projects, you can leverage the Groups feature to organize and monitor your projects collectively:
-
-* **Create a New Group**: Click the **Pencil** icon to initiate the creation of a new group. You will be prompted to name the group and select the projects you wish to include.
-* **Add Projects to Existing Group**: If you already have established groups, you can add additional projects to these groups.
-
-This grouping functionality not only simplifies the administrative workload but also enhances the visibility and control over multiple projects, enabling more effective management and monitoring.
-
-#### Teammates
-
-The **Teammates** feature in ELITEA is specifically crafted to streamline the process of collaborating within projects by allowing you to invite new users (teammates) and assign them appropriate roles. These roles include system, admin, editor, and viewer, each providing different levels of access and control within the project. **Note**: Only users with an admin role are empowered to invite new members. This ensures that the invitation and role assignment process is managed by users with appropriate authority and understanding of the project’s needs.
-
-**Inviting New Teammates**:
-
-1. Enter the prospective member's email address in the **Email Address** input field.
-2. Select their role from the **Role** dropdown menu. 
-3. Click the **Invite** button. 
-4. An invitation will be sent, and upon their first login, their details will be added to the **Teammates**, activating their account.
-
-![Intro-Settings_Projects](../../img/platform/menus/settings/Intro-Settings_Projects.png)
-
-**Notes**
-
-* Multiple users can be invited simultaneously by separating email addresses with a comma.
-* For Epam projects, use the invitee's Epam email. For customer projects, the customer's Active Directory is utilized for invitations.
-
-**Managing Teammates**:
-
-The **Teammates** table displays all members, their roles, and their last login information. Admins can modify a user's role or revoke access by clicking the respective **Edit** or **Delete** icons next to a user's name.
-
+For detailed IDE setup instructions, refer to the [Alita Code Documentation](../extensions/elitea-code.md).
 
 ## Secrets
 
+**Note**: The **Secrets** section is not available for public projects. This feature is only accessible in private and organization projects where enhanced security controls are required.
+
 The **Secrets** feature in ELITEA serves as a secure vault designed to store and manage sensitive information such as passwords, tokens, API keys, and other authentication details. This centralized system allows you to configure secrets once and utilize them across various components, such as Agent's toolkits within ELITEA.
+
+  ![Secrets](../../img/platform/menus/settings/secrets.png)
 
 **Creating a Secret**:
 
@@ -317,6 +160,8 @@ To add a new secret to the vault, follow these steps:
 2. Enter a descriptive name for the secret to help you identify its use.
 3. In the Value field, input the token, password, API key, or any other authentication details.
 4. Once configured, this secret can now be selected and used within various components of ELITEA.
+
+  ![New Secrets](../../img/platform/menus/settings/new_secret.png)
 
 **Managing Secrets**:
 
@@ -330,4 +175,157 @@ The management of secrets is straightforward and secure, facilitated by the **Se
 
 This feature enhances the security and efficiency of managing sensitive information within ELITEA, ensuring that authentication details are handled in a secure, centralized manner.
 
-![Intro-Settings_Secrets](../../img/platform/menus/settings/Intro-Settings_Secrets.png)
+![Manage Secrets](../../img/platform/menus/settings/manage_secret.png)
+
+## Projects
+
+The **Projects** section is specifically designed for administrators and becomes accessible when you hold administrative privileges in any project other than your private project within ELITEA. **Note**: It's important to select the appropriate project from the project dropdown menu to access specific configurations relevant to that project.
+
+![Projects](../../img/platform/menus/settings/projects.png)
+
+### Groups
+
+The **Groups** feature in ELITEA is designed to facilitate efficient management and monitoring of multiple projects by admins or managers. This feature allows you to consolidate several projects under a single group, making it easier to oversee and coordinate activities across these projects.
+If you are an admin of two or more projects, you can leverage the Groups feature to organize and monitor your projects collectively:
+
+* **Create a New Group**: Click the **Pencil** icon to initiate the creation of a new group. You will be prompted to name the group and select the projects you wish to include.
+
+![Groups](../../img/platform/menus/settings/new_group.png)
+
+* **Add Projects to Existing Group**: If you already have established groups, you can add additional projects to these groups.
+
+This grouping functionality not only simplifies the administrative workload but also enhances the visibility and control over multiple projects, enabling more effective management and monitoring.
+
+### Teammates
+
+The **Teammates** feature in ELITEA is specifically crafted to streamline the process of collaborating within projects by allowing you to invite new users (teammates) and assign them appropriate roles. These roles include system, admin, editor, and viewer, each providing different levels of access and control within the project. 
+
+**Note**: Only users with an admin role are empowered to invite new members. This ensures that the invitation and role assignment process is managed by users with appropriate authority and understanding of the project's needs.
+
+**Inviting New Teammates**:
+
+1. Enter the prospective member's email address in the **Email Address** input field.
+2. Select their role from the **Role** dropdown menu. 
+3. Click the **Invite** button. 
+4. An invitation will be sent, and upon their first login, their details will be added to the **Teammates**, activating their account.
+
+![Invite User](../../img/platform/menus/settings/group_invite.png)
+
+**Notes**
+
+* Multiple users can be invited simultaneously by separating email addresses with a comma.
+* For Epam projects, use the invitee's Epam email. For customer projects, the customer's Active Directory is utilized for invitations.
+
+**Managing Teammates**:
+
+The **Teammates** table displays all members, their roles, and their last login information. Admins can modify a user's role or revoke access by clicking the respective **Edit** or **Delete** icons next to a user's name.
+![Manage User](../../img/platform/menus/settings/manage_users.png)
+
+
+## Monitoring
+
+The **Monitoring** feature in ELITEA is designed to provide a comprehensive overview of the application's usage and performance. This feature is essential for administrators and users who want to gain insights into various aspects of the application, from user engagement to the effectiveness of configured artifacts like agents and conversations. By leveraging the detailed charts and statistics available within the Monitoring feature, you can make informed decisions to optimize the performance and user experience of your ELITEA application.
+
+### Configuration Options
+
+At the top of the **Monitoring** page, you have several options and settings to configure the charts and metrics you wish to monitor:
+
+* **Projects**: A dropdown list allowing you to select the project. **Note**: For your Private project, you can only see your private project data. If you have an admin role in other projects, you can select other projects to monitor.
+* **From and To Date Fields**: These fields are used to select the time period for which you want to see the data.
+* **Aggregation**: A dropdown list providing options to view aggregated data over different time periods. You can choose from `Hour`, `Day`, `Week`, `Two Weeks`, `Three Weeks`, and `Month` to tailor the data aggregation to your specific needs.
+* **Type**: A dropdown list allowing you to select between `Agents` and `Conversations` to focus your monitoring on specific elements.
+* **Name**: A dropdown list to select specific items by name, such as created agents or conversations.
+* **Users**: A dropdown list to select which users' data you want to monitor. **Note**: For your private project, you can only see your own user data. If you have an admin role in another project, you can select other users to monitor.
+
+To apply any changes or selections, click the **Apply** button. Use the **Refresh** button to update the monitoring data based on the latest activities and configurations.
+
+![Monitoring](../../img/platform/menus/settings/monitoring.png)
+
+### Key Metrics
+
+Below the configuration options, you'll find an overview of key metrics that give you a snapshot of the current state of the system:
+
+* **Users**: The total number of users interacting with the ELITEA application.
+* **Tokens In**: The number of tokens consumed by the ELITEA application.
+* **Tokens Out**: The number of tokens generated by the ELITEA application.
+* **Engagement**: The percentage of active users out of all users who logged into ELITEA for the selected period, indicating the level of interaction with the application.
+* **Acceptance rate**: The percentage of interactions during the selected period where users accepted the generated output by copying, downloading, or saving it, reflecting user satisfaction and utility of the results.
+* **Agents**: The total number of agents created.
+* **Conversations**: The total number of conversations created.
+
+These metrics are accompanied by a date range selector, allowing you to filter the data for a specific period.
+
+![Key metrics](../../img/platform/menus/settings/key_metrics.png)
+
+### Available Charts
+
+The Monitoring feature provides several chart types to help you analyze different aspects of ELITEA usage:
+
+#### Adoption and Usage
+
+* **Active Users**: A bar chart displaying the number of active users over time.
+* **Token Usage**: A line chart showing the tokens consumed (In) and generated (Out) over time.
+
+![Adoption and Usage](../../img/platform/menus/settings/adoption_usage.png)
+
+These charts provide insights into user engagement and the application's token economy.
+
+#### Acceptance Rate
+
+The **Acceptance Rate** chart provides a comprehensive view of user interactions with the ELITEA application, focusing on how often users accept the generated outputs. This chart helps you assess how frequently users find the generated outputs useful enough to accept by copying, downloading, or saving them.
+
+* **Accepted Interactions**: Shows the count of interactions where users have accepted the generated output, indicating satisfaction and utility.
+* **Not Accepted Interactions**: Reflects the number of interactions where users did not accept the output, suggesting areas for potential improvement in response quality.
+
+![Acceptance Rate](../../img/platform/menus/settings/acceptance_rate.png)
+
+### Project Group Support
+
+When you have administrative access to multiple projects, the Monitoring feature supports project grouping:
+
+* **Project Treemap**: Visual representation of projects within a selected group, allowing you to drill down into individual project metrics.
+* **Portfolio-Level Monitoring**: Aggregate metrics across multiple projects for high-level oversight.
+
+### Data Export
+
+The Monitoring feature includes comprehensive export capabilities to help you create reports and share insights with stakeholders. Two main export options are available in the top-right corner of the Monitoring interface:
+
+#### Export Raw Data
+
+The **Export raw data** option allows you to export comprehensive monitoring data based on your current filter selections. This export includes:
+
+* All metrics data for the selected time period
+* User activity information
+* Token usage statistics
+* Agent and conversation performance data
+* Chart data points and trends
+
+#### Export Acceptance Data
+
+The **Export acceptance data** option provides focused export of user acceptance metrics, including:
+
+* Acceptance rate statistics
+* User interaction data showing accepted vs. not accepted outputs
+* Detailed acceptance trends over time
+* Performance indicators related to user satisfaction
+
+#### Export Formats
+
+Both export options support multiple file formats to accommodate different analysis needs:
+
+* **JSON**: Machine-readable format ideal for data processing and integration with other tools
+* **Excel**: Spreadsheet format perfect for detailed analysis, pivot tables, and business reporting
+* **CSV**: Comma-separated values format for compatibility with various data analysis tools and databases
+
+#### Using Export Features
+
+1. Configure your monitoring filters (Projects, Date Range, Type, Name, Users, Aggregation)
+2. Click **Refresh** to apply your filter settings
+3. Choose either **Export raw data** or **Export acceptance data** from the export dropdown
+4. Select your preferred format (JSON, Excel, or CSV)
+5. The file will be downloaded to your device for further analysis
+
+![Export](../../img/platform/menus/settings/acceptance_export.png)
+![Export](../../img/platform/menus/settings/export_raw_data.png)
+
+These export capabilities enable you to perform deeper analysis, create custom reports, share data with stakeholders, and integrate monitoring insights into your existing reporting workflows.
