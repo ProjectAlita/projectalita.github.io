@@ -2,8 +2,8 @@ site_name: ELITEA Documentation
 site_url: https://elitea.ai/docs/
 nav:
   - Home:
-      - Glossary: home/glossary.md
       - Introduction: home/introduction.md
+      - Glossary: home/glossary.md
   - Release Notes:
       - RN 1.6.0: release-notes/rn_current.md
       - Archive:
@@ -16,31 +16,6 @@ nav:
           - RN 1.1.0: release-notes/archived/rn3.md
           - RN 1.0.1: release-notes/archived/rn2.md
           - RN 1.0.0: release-notes/archived/rn1.md
-  - Platform Documentation:
-      - ELITEA Menus & Settings:
-          - Overview: platform-documentation/menus/overview.md
-          - Settings: platform-documentation/menus/settings.md
-          - Chat: platform-documentation/menus/chat.md
-          - Credentials: platform-documentation/menus/credentials.md
-          - Prompts: platform-documentation/menus/prompts.md
-          - Datasources: platform-documentation/menus/datasources.md
-          - Collections: platform-documentation/menus/collections.md
-          - Artifacts: platform-documentation/menus/artifacts.md
-          - Agents: platform-documentation/menus/agents.md
-          - Pipelines: platform-documentation/menus/pipelines.md
-      - ELITEA Extensions:
-          - Elitea Code: platform-documentation/extensions/elitea-code.md
-          - Elitea Code Chat: platform-documentation/extensions/elitea-code-chat.md
-  - Features Guides:
-      - ELITEA Core Features:
-          - Export and Import Guide: feature-guides/core-features/export-import.md
-          - Forking Guide: feature-guides/core-features/forking.md
-          - Integrations Guide: feature-guides/core-features/integrations.md
-          - Prompt Magic Assistant Guide: feature-guides/core-features/prompt-magic-assistant.md
-          - Public Project Guide: feature-guides/core-features/public-project.md
-          - Monitoring Guide: feature-guides/core-features/monitoring.md
-      - ELITEA Advanced Features:
-          - Roles Management: feature-guides/advanced-features/roles.md
   - Quick Start Guides:
       - Very Quick Start: quick-start/very_quickstart_guide.md
       - Create Personal Access Tokens: quick-start/personal-access-token.md
@@ -50,7 +25,29 @@ nav:
       - Creating Conversations and Using AI Assistants in Chat: quick-start/create_conversation.md
       - Adding Teammates to Chat: quick-start/add_user.md
       - Using Canvas in Chat: quick-start/canvas_in_chat.md
-      - Create Artifacts using an Agent: quick-start/artifacts.md
+      - Create Artifacts using an Agent: quick-start/artifacts.md          
+  - Platform Documentation:
+      - ELITEA Menus & Settings:
+          - Overview: platform-documentation/menus/overview.md
+          - Chat: platform-documentation/menus/chat.md
+          - Agents: platform-documentation/menus/agents.md
+          - Pipelines: platform-documentation/menus/pipelines.md
+          - Credentials: platform-documentation/menus/credentials.md
+          - Collections: platform-documentation/menus/collections.md
+          - Artifacts: platform-documentation/menus/artifacts.md
+          - Settings: platform-documentation/menus/settings.md         
+      - ELITEA Extensions:
+          - Elitea Code: platform-documentation/extensions/elitea-code.md
+          - Elitea Code Chat: platform-documentation/extensions/elitea-code-chat.md
+  - Features Guides:
+      - ELITEA Core Features:
+          - Export and Import Guide: feature-guides/core-features/export-import.md
+          - Forking Guide: feature-guides/core-features/forking.md
+          - Integrations Guide: feature-guides/core-features/integrations.md
+          - Public Project Guide: feature-guides/core-features/public-project.md
+          - Monitoring Guide: feature-guides/core-features/monitoring.md
+      - ELITEA Advanced Features:
+          - Roles Management: feature-guides/advanced-features/roles.md
 
   - How TOs:
       - MCP:
@@ -96,7 +93,6 @@ nav:
           - How to Use Canvas: how-tos/how-to-canvas.md
           - How to Use Search Functionality: how-tos/how-to-search.md
           - How to Automate JIRA Issue Review with Elitea: how-tos/jira-automation-with-elitea.md
-          - How to Create and Publish Useful Prompts for Testing and QA Activities: how-tos/creating-prompts.md
           - Collections and Organizing Entities in ELITEA: how-tos/collections-and-organizing-entities.md
           - How to Use Webhook Functionality: how-tos/webhook.md
       - FAQs: how-tos/faqs.md
