@@ -6,21 +6,23 @@ Agent versioning in ELITEA allows you to create, manage, and track different ite
 
 ## Key Concepts
 
-**Latest Version**: The initial version created when you first save an agent. This version can be continuously updated without creating new versions.
+**Latest Version**: The initial version created when you first save an agent. This version can be continuously updated and saved without creating new versions.
 
-**Named Versions**: Specific snapshots of your agent configuration that are saved with custom names for easy identification and management.
+**Named Versions**: Specific snapshots of your agent configuration that are saved with custom names for easy identification and management. Named versions can also be edited and saved independently when selected.
 
 **Version History**: A complete record of all versions created for an agent, including creation dates, status, and author information.
 
 ## Creating and Managing Agent Versions
 
-### Initial Save (Latest Version)
+### Initial Save ("Latest" Version)
 
-1. **Create Your Agent**: Configure instructions, tools, settings, and other parameters
-2. **Click Save**: This creates the "latest" version of your agent
-3. **Continue Editing**: You can modify and save changes to the "latest" version without creating new versions
+1. **Create Your Agent**: Configure instructions, tools, settings, and other parameters.
+2. **Click Save**: This creates the initial "latest" version of your agent.
+3. **Continue Editing**: You can modify and save changes to the currently selected version ("latest" or any named version) without creating a new version.
 
-**Note:** The "latest" version represents your working draft and can be updated continuously.
+**Save Behavior:** Saving applies to the currently selected version. If you switch to a named version, any edits you make and save will update that named version.
+
+**Note:** The "latest" version represents your working draft and can be updated continuously. Named versions are also editable and savable when selected.
 
 ### Creating New Versions
 
@@ -50,6 +52,11 @@ When you want to preserve a specific configuration:
  - Version ID and name
  - Creation date and time
  - Author information (in public projects)
+
+### Editing and Saving Changes
+
+- All versions (including "latest" and named versions) are editable. Click **Save** to persist changes to the version that is currently selected.
+- To branch off without modifying the current version, use **Save As Version** to create a new version instead of overwriting the selected one.
 
 
 ### Version Management Actions
