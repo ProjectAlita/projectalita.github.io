@@ -34,6 +34,7 @@ nav:
           - Agents: platform-documentation/menus/agents.md
           - Pipelines: platform-documentation/menus/pipelines.md
           - Credentials: platform-documentation/menus/credentials.md
+          - Toolkits: platform-documentation/menus/toolkits.md
           - Collections: platform-documentation/menus/collections.md
           - Artifacts: platform-documentation/menus/artifacts.md
           - Settings: platform-documentation/menus/settings.md         
