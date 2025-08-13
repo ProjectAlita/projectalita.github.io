@@ -30,7 +30,7 @@ This allows for:
 *   **`{{issue.key}}` (JIRA Smart Value):** A placeholder used in JIRA Automation that JIRA replaces with the actual key of the issue being processed (e.g., "PROJECT-123").
 *   **`ProjectID` (Elitea):** A unique identifier for your project within the Elitea platform.
 *   **`ApplicationVersionID` (Elitea):** A unique identifier for a specific version of your configured Elitea agent.
-*   **JIRA Toolkit (Elitea):** A set of tools within an Elitea agent that allows it to interact with JIRA (More about  **[Jira toolkit](../toolkits/jira_toolkit.md)** here)
+*   **JIRA Toolkit (Elitea):** A set of tools within an Elitea agent that allows it to interact with JIRA (More about  **[Jira toolkit](../integrations/toolkits/jira_toolkit.md)** here)
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ Follow these steps to set up the automated JIRA review:
     *   Create a new agent or modify an existing one.
     *   Define an **Agent Name** (e.g., "JIRA Story Reviewer"), **Description**, and crucial **Instructions**.
         *   **Agent Instructions:** The instructions must guide the agent on how to process the input (which will be the `issue key`) and what to do. For example: "You will receive a JIRA issue key as user input. Use the JIRA toolkit to fetch the details of this issue. Review the user story based on INVEST principles. Then, immediately post a comment on the same JIRA issue with your review, including a summary, context, identified gaps, and clarifying questions."
-    *   **Add JIRA Toolkit:** If not already present, add the "JIRA" toolkit to your agent and configure it with your JIRA instance ( More about  **[Jira toolkit](../toolkits/jira_toolkit.md)** here).
+    *   **Add JIRA Toolkit:** If not already present, add the "JIRA" toolkit to your agent and configure it with your JIRA instance ( More about  **[Jira toolkit](../integrations/toolkits/jira_toolkit.md)** here).
 
 3.  **Note `ProjectID` and `ApplicationVersionID`:**
     *   **ProjectID:** Find this in your Elitea "Settings" -> "Configuration" page.
@@ -282,6 +282,6 @@ Please ensure you have reviewed the troubleshooting steps in this guide and cons
 *   **Elitea API Public Collection (Postman):** [https://www.postman.com/projectalita/elitea-api-public](https://www.postman.com/projectalita/elitea-api-public)
     *   The specific request for prediction: [Elitea API predict endpoint](https://www.postman.com/projectalita/elitea-api-public/request/ac6fj06/predict)
 *   **JIRA Automation Documentation (Cloud):** [https://support.atlassian.com/cloud-automation/docs/jira-cloud-automation/](https://support.atlassian.com/cloud-automation/docs/jira-cloud-automation/)
-*   **Example Elitea Agent Instructions for JIRA Story Review:** [Agent Instructions](../../img/how-tos/jira_automation/instructions.txt)
+*   **Example Elitea Agent Instructions for JIRA Story Review:** [Agent Instructions](../img/how-tos/jira_automation/instructions.txt)
 
 
