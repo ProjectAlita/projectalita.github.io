@@ -105,7 +105,7 @@ nav:
           - Zephyr Enterprise: integrations/toolkits/zephyr_enterprise_toolkit.md
 
   - Release Notes:
-      - RN 1.6.0: release-notes/rn_current.md
+      - RN 1.6.1: release-notes/rn_current.md
       - Archive:
           - RN 1.6.0: release-notes/archived/rn10.md
           - RN 1.5.2: release-notes/archived/rn9.md
