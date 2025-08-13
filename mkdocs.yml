@@ -1,0 +1,190 @@
+site_name: ELITEA Documentation
+site_url: https://elitea.ai/docs/
+
+nav:
+  - Home:
+      - Elitea Values: index.md
+      - Introduction: home/introduction.md
+      - Glossary: home/glossary.md
+      - Key Concepts:
+          - What is an agent?: home/key-concepts/what-is-an-agent.md
+
+  - Getting Started:
+      - Quick Starts:
+          - Very Quick Start: getting-started/quick-start.md
+      - Initial Setup:
+          - Create a Personal Access Token: getting-started/create-personal-access-token.md
+          - Create a Secret: getting-started/create-secret.md
+          - Create a Credential: getting-started/create-credential.md
+          - Create a Toolkit: getting-started/create-toolkit.md
+      - Create Your First Entities:
+          - Create first Agent: getting-started/create-agent.md
+          - Create first Artifact: getting-started/create-artifact.md
+          - Create first Pipeline: getting-started/create-pipeline.md
+          - Create first Conversation: getting-started/create-conversation.md
+      - Enhanced Usage:
+          - Canvas in Conversation: getting-started/canvas-in-conversation.md
+          - Add Teammates to Conversation: getting-started/add-teammates-to-conversation.md
+
+  - Menus:
+      - Overview: menus/overview.md
+      - Chat: menus/chat.md
+      - Agents: menus/agents.md
+      - Pipelines: menus/pipelines.md
+      - Credentials: menus/credentials.md
+      - Toolkits: menus/toolkits.md
+      - Collections: menus/collections.md
+      - Artifacts: menus/artifacts.md
+      - Settings:
+          - Settings Overview: menus/settings/settings-overview.md
+          - AI Configuration: menus/settings/ai-configuration.md
+          - Personal Tokens: menus/settings/personal-tokens.md
+          - Secrets: menus/settings/secrets.md
+          - Projects: menus/settings/projects.md
+          - Monitoring: menus/settings/monitoring.md
+
+  - Features:
+      - Export & Import Entities: features/export-import.md
+      - Fork Entities: features/forking.md
+      - Entity Versioning: features/entity-versioning.md
+      - Search Entities: features/search-entities.md
+      - Organizing Entities: features/organizing-entities.md
+      - Public Project: features/public-project.md
+      - Monitoring: features/monitoring.md
+      - Manage Users & Roles: features/roles.md
+      - Pipelines:
+          - Pipelines Architecture: features/pipelines/pipeline-agent-framework.md
+
+  - How-To Guides:
+      - Automate JIRA Issue Review: how-tos/jira-automation-with-elitea.md
+      - Use Webhooks: how-tos/how-to-use-webhooks.md
+      - Use Credentials: how-tos/how-to-use-credentials.md
+      - Chat & Conversations:
+          - Chat - Advanced Usage: how-tos/how-to-use-chat-functionality.md
+          - Canvas - Advanced Usage: how-tos/how-to-canvas.md
+
+  - Integrations:
+      - Extensions:
+          - Elitea Code: integrations/extensions/elitea-code.md
+          - Elitea Code Chat: integrations/extensions/elitea-code-chat.md
+      - MCP:
+          - Server (STDIO): integrations/mcp/mcp-server-stdio.md
+          - Server (SSE): integrations/mcp/mcp-server-sse.md
+          - Client (STDIO): integrations/mcp/mcp-client.md
+      - Toolkits:
+          - ADO Repos: integrations/toolkits/ado_repos_toolkit.md
+          - ADO Wiki / Boards / Test Plans: integrations/toolkits/ado_wiki_plan_board_toolkit.md
+          - Artifact: integrations/toolkits/artifact_toolkit.md
+          - BitBucket: integrations/toolkits/bitbucket_toolkit.md
+          - Browser: integrations/toolkits/browser_toolkit.md
+          - Confluence: integrations/toolkits/confluence_toolkit.md
+          - Custom: integrations/toolkits/custom_toolkit.md
+          - Figma: integrations/toolkits/figma_toolkit.md
+          - GitHub: integrations/toolkits/github_toolkit.md
+          - GitLab: integrations/toolkits/gitlab_toolkit.md
+          - GitLab Org: integrations/toolkits/gitlab_org_toolkit.md
+          - Google Places: integrations/toolkits/google_places_toolkit.md
+          - Jira: integrations/toolkits/jira_toolkit.md
+          - OpenAPI: integrations/toolkits/openapi_toolkit.md
+          - Pandas: integrations/toolkits/pandas_toolkit.md
+          - Postman: integrations/toolkits/postman_toolkit.md
+          - PowerPoint: integrations/toolkits/powerpoint_toolkit.md
+          - qTest: integrations/toolkits/qtest_toolkit.md
+          - Rally: integrations/toolkits/rally_toolkit.md
+          - ReportPortal: integrations/toolkits/reportportal_toolkit.md
+          - SalesForce: integrations/toolkits/salesforce_toolkit.md
+          - ServiceNow: integrations/toolkits/servicenow_toolkit.md
+          - SharePoint: integrations/toolkits/sharepoint_toolkit.md
+          - Slack: integrations/toolkits/slack_toolkit.md
+          - Sonar: integrations/toolkits/sonar_toolkit.md
+          - SQL: integrations/toolkits/sql_toolkit.md
+          - TestIO: integrations/toolkits/testIO_toolkit.md
+          - TestRail: integrations/toolkits/testrail_toolkit.md
+          - Xray Cloud: integrations/toolkits/xray_toolkit.md
+          - Zephyr Scale: integrations/toolkits/zephyr_scale_toolkit.md
+          - Zephyr Enterprise: integrations/toolkits/zephyr_enterprise_toolkit.md
+
+  - Release Notes:
+      - RN 1.6.0: release-notes/rn_current.md
+      - Archive:
+          - RN 1.6.0: release-notes/archived/rn10.md
+          - RN 1.5.2: release-notes/archived/rn9.md
+          - RN 1.5.1: release-notes/archived/rn8.md
+          - RN 1.5.0: release-notes/archived/rn7.md
+          - RN 1.4.0: release-notes/archived/rn6.md
+          - RN 1.3.0: release-notes/archived/rn5.md
+          - RN 1.2.0: release-notes/archived/rn4.md
+          - RN 1.1.0: release-notes/archived/rn3.md
+          - RN 1.0.1: release-notes/archived/rn2.md
+          - RN 1.0.0: release-notes/archived/rn1.md
+  - Support:
+      - FAQs: support/faqs.md
+      - Contact Support: support/contact-support.md
+      - Additional Resources: support/additional-resources.md
+  - Archive:
+      - Prompt Magic Assistant: archive/prompt-magic-assistant.md
+      - Alita Dial: archive/alita-dial.md
+      - Creating Prompts: archive/creating-prompts.md
+      - Prompts: archive/prompts.md
+      - Datasources: archive/datasources.md
+      - Agents Examples: archive/agents-examples.md
+      - Prompts Examples: archive/prompts-examples.md
+
+theme:
+  name: material
+  logo: img/favicon.ico # Uses existing favicon file as header logo (replace with your logo file path if different)
+  favicon: img/favicon.ico
+  features:
+    - navigation.footer # Built-in previous/next navigation in footer
+    # - header.autohide # Automatically hide header when scrolling down
+    - navigation.path # Enable breadcrumb navigation path
+    - navigation.tabs # Enable tabbed navigation for sections
+    - navigation.tabs.sticky # Enable sticky tab navigation
+    - navigation.sections # Enable section navigation
+    # - navigation.top # Enable top navigation
+  palette:
+    # # Palette toggle for automatic mode
+    # - media: "(prefers-color-scheme)"
+    #   toggle:
+    #     icon: material/brightness-auto
+    #     name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+extra_css:
+  - extra_css/material.css
+
+extra_javascript: # Custom scripts appended to every page
+  - extra_js/fullscreen.js
+
+markdown_extensions:
+  # Core Material / formatting enhancements
+  - admonition # Enables !!! blocks
+  - pymdownx.details # Enables collapsible ??? blocks
+  - pymdownx.superfences # Needed for nested code blocks / tabs
+  - pymdownx.tabbed # Enables content tabs (=== "Tab")
+  - attr_list # Attribute lists for images (width, etc.)
+  - def_list # Definition lists (useful for glossary style)
+  - footnotes # Footnote support when needed
+  - toc:
+      permalink: true # Adds anchor links to headings
+
+# plugins:
+#   - htmlproofer:
+#       validate_external_urls: false # set true later if desired
+#       ignore_urls:
+#         - https://localhost
+#         - https://alita.lab.epam.com
+#       raise_error: true
