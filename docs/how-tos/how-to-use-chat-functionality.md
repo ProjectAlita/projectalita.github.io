@@ -6,7 +6,7 @@ A Conversation in ELITEA represents a dynamic dialogue involving multiple partic
 
 All your conversations are securely stored on the ELITEA server, making them accessible from any device where you log in. You can find all your conversations listed under the Chat menu in the sidebar.
 
-![Chat_New](../../img/platform/menus/chat/Chat_New.png)
+![Create Conversation](../img/menus/chat/create_conversation.png)
 
 
 ## 2. Key Features
@@ -31,7 +31,7 @@ All your conversations are securely stored on the ELITEA server, making them acc
 
 Your new conversation will now be listed in the **CONVERSATIONS** sidebar on the left.  
 
-![Chat_Create_Conversation](../../img/platform/menus/chat/Chat_Create_Conversation.png)
+![Create_Conversation](../img/menus/chat/create_conversation.png)
 
 
 ### 3.2 Creating a New Folder
@@ -44,7 +44,7 @@ Organize your conversations by grouping them into folders.
 
 The new folder will appear in your **CONVERSATIONS** sidebar.  
 
-![Chat_Create_Folder](../../img/platform/menus/chat/Chat_Create_Folder.png)
+![Create Folder](../img/menus/chat/create_folder.png)
 
 ## 4. Managing Conversations
 
@@ -57,7 +57,7 @@ To organize conversations into folders:
 3. Choose the desired destination folder from the list.
 4. If no suitable folder exists, you can click **+New Folder** directly from this menu to create one on the fly.
 
-![Chat_MoveTo_Folder](../../img/platform/menus/chat/Chat_MoveTo_Folder.png)
+![Move to Folder](../img/menus/chat/moveto_folder.png)
 
 ### 4.2 Conversation Actions (Sidebar)
 
@@ -72,7 +72,7 @@ You can manage conversations directly from the **CONVERSATIONS** sidebar by righ
 - **Playback**: Enter Playback mode for this conversation (See [Playback Mode](#9-playback-mode)).
 - **Export**: *(Note: Currently mentioned as "Not applicable now",  this functionality may be introduced in future updates)* Export the conversation content.
 
-![Chat_Conversation_Actions](../../img/platform/menus/chat/Chat_Conversation_Actions.png)
+![Conversation_Action](../img/menus/chat/conversation_action.png)
 
 
 ## 5. Managing Folders
@@ -85,7 +85,7 @@ Folders can be managed directly from the **CONVERSATIONS** sidebar. Right-click 
 - **Delete Folder**: Remove the folder.  
   **Important**: Deleting a folder does not delete the conversations inside it. Conversations within a deleted folder are automatically moved back to the main conversation list (root level). You will be asked to confirm deletion.
 
-![Chat_Folder_Actions](../../img/platform/menus/chat/Chat_Folder_Actions.png)
+![Folder_Actions](../img/menus/chat/folder_actions.png)
 
 
 ## 6. Understanding Conversation/Folder Visibility
@@ -96,7 +96,7 @@ Access and permissions depend on the project type (Private vs. Team) and the con
 
 - Created within your private workspace or designated as private within a team project.
 - Only visible and accessible to you, the creator.
-- You can add **Models**, **Prompts**, **Datasources**, and **Agents** as participants.
+- You can add **Agents**, **Pipelines** and **Toolkits** as AI Assistants.
 - You cannot add other **Users** as participants to private conversations.
 
 ### 6.2 Team Project Conversations and Folders
@@ -207,7 +207,7 @@ Selected participants will appear in the **PARTICIPANTS** list within your conve
 
 **Note**: Users will receive notifications if they are added to a public conversation implicitly through interaction.
 
-![Chat_Add_Participant](../../img/platform/menus/chat/Chat_Add_Participant.png)
+![Add_User](../img/menus/chat/add_user.png)
 
 
 ### 7.3 Using Participants in a Conversation
@@ -218,15 +218,12 @@ Once added, you need to specify which participant(s) should handle your next mes
 2. **Select Active Participant(s)**: If the chat prompts "Select from the list or mention participant...", you must choose who to engage:
    - **Click**: Click the participant's name/icon in the **PARTICIPANTS** list.
    - **Mention**: In the chat input box, type a specific prefix followed by the participant's name (autocomplete suggestions will appear):
-     - `/` for Prompts (e.g., `/Summarize Document`)
-     - `#` for Datasources (e.g., `#Project Knowledge Base`)
      - `@` for Agents (e.g., `@Data Analysis Agent`)
      - `>` for Models (e.g., `>GPT-4`)
    - The selected participant(s) will appear above the input box, indicating they are active for the next interaction.
 3. **Send Message/Command**: Type your message or a simple command (like "Go", "Execute", "Run it") and press **Send**. The active participant(s) will process your input.
 4. To remove a participant from the active list for the next message (without removing it from the conversation entirely), click the **X** icon next to its name above the input box.
 
-![Chat_Use_Participant](../../img/platform/menus/chat/Chat_Use_Participant.png)
 
 ### Example Usage
 
@@ -261,38 +258,10 @@ You can fine-tune the behavior of added participants directly within the convers
 3. **Apply**: Click the **< SETTINGS** button (or similar) to save changes for this conversation.
 4. **Restore Defaults**: Click the **Restore** icon (often a circular arrow) to revert to default settings.
 
-![Chat_Model](../../img/platform/menus/chat/Chat_Model.png)
+![Model](../img/menus/chat/model.png)
 
 
-#### 7.4.2 Configuring Prompts
-
-1. **Access Settings**: Click the ⚙️ icon on the Prompt participant.
-2. **Adjustable Parameters**:
-   - **Version**: Select the desired version of the prompt (default is "latest").
-   - **Model Parameters**: Temperature, Top P, Top K, Maximum Length (overrides default model settings for this prompt).
-   - **Variables**: If the prompt includes variables (e.g., `[Customer Name]`, `[Topic]`), you can input or modify their values here for the current conversation context.
-3. **Apply**: Click the **< SETTINGS** button.
-4. **Restore Defaults**: Click the **Restore** icon.
-
-![Chat_Prompts](../../img/platform/menus/chat/Chat_Prompts.png)
-
-
-#### 7.4.3 Configuring Datasources
-
-1. **Access Settings**: Click the ⚙️ icon on the Datasource participant.
-2. **Adjustable Parameters**:
-   - **Embedding Settings**:
-     - **Initial Lookup Result (1-50)**: How many initial chunks to retrieve.
-     - **Pages Per Document (1-30)**: Max chunks per source document.
-     - **Expected Search Result (1-40)**: How many final results to consider for the answer.
-   - **Model Parameters**: Temperature, Top P, Top K, Maximum Length (for the synthesis/answering model).
-3. **Apply**: Click the **< SETTINGS** button.
-4. **Restore Defaults**: Click the **Restore** icon.
-
-![Chat_Datasources](../../img/platform/menus/chat/Chat_Datasources.png)
-
-
-#### 7.4.4 Configuring Agents
+#### 7.4.2 Configuring Agents
 
 1. **Access Settings**: Click the ⚙️ icon on the Agent participant.
 2. **Adjustable Parameters**:
@@ -302,7 +271,7 @@ You can fine-tune the behavior of added participants directly within the convers
 3. **Apply**: Click the **< SETTINGS** button.
 4. **Restore Defaults**: Click the **Restore** icon.
 
-![Chat_Agents](../../img/platform/menus/chat/Chat_Agents.png)
+![Agent](../img/menus/chat/agent.png)
 
 
 ### 7.5 Displaying Configured Conversation Starters
@@ -319,7 +288,7 @@ When you add a participant (like a Prompt or Agent) that has a pre-configured "c
 3. Click **Thumbs Down** to indicate dissatisfaction.
 4. After clicking **Thumbs Down**, a **Leave comment** field appears. Click it, type your specific feedback or reason for disliking, and press **Send** (or **Enter**). This feedback is valuable for improving models and prompts.
 
-![Chat_Like_Dislike](../../img/platform/menus/chat/Chat_Like_Dislike.png)
+![Like_Dislike](../img/menus/chat/like_dislike.png)
 
 
 ### 8.2 Regenerating the Last Output
@@ -329,7 +298,7 @@ When you add a participant (like a Prompt or Agent) that has a pre-configured "c
 3. Click the **Regenerate** icon 🔄 usually located near the last message or the input box.
 4. The system will use the same input/prompt that generated the last response and attempt to create a new, potentially improved, output.
 
-![Chat_Regenerate](../../img/platform/menus/chat/Chat_Regenerate.png)
+![Regenerate](../img/menus/chat/regenerate.png)
 
 
 ## 9. Playback Mode

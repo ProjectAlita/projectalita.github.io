@@ -170,13 +170,13 @@ The Mermaid Diagram Editor allows you to edit the simple text-based syntax of a 
 
 ## More Resources
  
-- [ELITEA Chat Documentation](../platform-documentation/menus/chat.md)
+- [ELITEA Chat Documentation](../menus/chat.md)
 - [How to Use Chat Functionality](how-to-use-chat-functionality.md)
-- [Creating Prompts](creating-prompts.md)
+- [Creating Prompts](../archive/creating-prompts.md)
 - [Markdown Table Guide](https://www.markdownguide.org/extended-syntax/#tables)
 - [Mermaid.js Documentation](https://mermaid-js.github.io/)
-- [ELITEA Support](../support-resources/contact-support.md)
+- [ELITEA Support](../support/contact-support.md)
  
 ## Conclusion
  
-Canvas makes it easy to turn AI-generated content into real, actionable deliverables—without ever leaving ELITEA. Use it to collaborate, refine, and perfect your work, whether you’re building requirements, test cases, automation scripts, or diagrams. For more help, check out the resources above or reach out to the [ELITEA support team](../support-resources/contact-support.md).
+Canvas makes it easy to turn AI-generated content into real, actionable deliverables—without ever leaving ELITEA. Use it to collaborate, refine, and perfect your work, whether you’re building requirements, test cases, automation scripts, or diagrams. For more help, check out the resources above or reach out to the [ELITEA support team](../support/contact-support.md).

@@ -1,12 +1,497 @@
+/* =============================================================================
+   ELITEA DOCUMENTATION THEME
+   Custom Material for MkDocs theme with ELITEA branding
+   Based on ELITEA application color palettes (lightPalette.js & darkPalette.js)
+   ============================================================================= */
+
+/* =============================================================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ============================================================================= */
+
+/* Light Mode Color Scheme */
+[data-md-color-scheme="default"] {
+  /* Primary Brand Colors */
+  --md-primary-fg-color: #C428DD;              /* magentaDefault - Primary brand color */
+  --md-primary-fg-color--light: #F47CFF;       /* magentaHover - Lighter variant */
+  --md-primary-fg-color--dark: #C428DD;        /* magentaDefault - Darker variant */
+  
+  /* Accent Colors */
+  --md-accent-fg-color: #6390FE;               /* blue03 - Accent color */
+  --md-accent-fg-color--transparent: rgba(99, 144, 254, 0.1);
+  
+  /* Background Colors */
+  --md-default-bg-color: #F8FCFF;              /* blue01 - Main background */
+  --md-default-fg-color: #4f4e4e;              /* light10 - Primary text */
+  --md-default-fg-color--light: #ADAFB7;       /* light20 - Secondary text */
+  --md-default-fg-color--lighter: #CBD6E2;     /* light30 - Tertiary text */
+  --md-default-fg-color--lightest: #E1E5E9;    /* light40 - Quaternary text */
+  
+  /* Header & Footer Colors */
+  --md-header-bg-color: #484a68;               /* Light purple/lavender */
+  --md-header-fg-color: #ffffff;               /* White text on header */
+  --md-footer-bg-color: #E4F0FF;               /* Footer gradient start */
+  --md-footer-bg-color--dark: #FDEAFF;         /* Footer gradient end */
+  --md-footer-fg-color: #757575;               /* Footer text */
+  
+  /* Code & Pre Blocks */
+  --md-code-bg-color: #FFFFFF;                 /* Code background */
+  --md-code-fg-color: #0E131D;                 /* Code text */
+  
+  /* UI Elements */
+  --md-admonition-bg-color: rgba(255, 255, 255, 0.05); /* Admonition background */
+  --md-typeset-a-color: #C428DD;               /* Link color */
+  --md-typeset-table-color: rgba(0, 0, 0, 0.12);       /* Table border */
+  --md-typeset-table-color--light: rgba(0, 0, 0, 0.05); /* Table row hover */
+  
+  /* Custom Admonition Icons */
+  --md-admonition-icon--note: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z' fill='%236390FE'/></svg>");
+  --md-admonition-icon--tip: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Zm1 9q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.137 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.137T12 22Z' fill='%232AB37A'/></svg>");
+  --md-admonition-icon--warning: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2 1 21Z' fill='%23ED6C02'/></svg>");
+}
+
+/* Dark Mode Color Scheme */
+[data-md-color-scheme="slate"] {
+  /* Primary Brand Colors */
+  --md-primary-fg-color: #5488e8;              /* primaryDefault - Primary brand color */
+  --md-primary-fg-color--light: #83EFFF;       /* primaryHover - Lighter variant */
+  --md-primary-fg-color--dark: #2ABDD2;        /* primaryPressed - Darker variant */
+  
+  /* Accent Colors */
+  --md-accent-fg-color: #29B8F5;               /* skyBlue - Accent color */
+  --md-accent-fg-color--transparent: rgba(41, 184, 245, 0.1);
+  
+  /* Background Colors */
+  --md-default-bg-color: #1A1F28;              /* Dark gray background */
+  --md-default-fg-color: #A9B7C1;              /* gray10 - Primary text */
+  --md-default-fg-color--light: #686C76;       /* gray20 - Secondary text */
+  --md-default-fg-color--lighter: #3B3E46;     /* gray30 - Tertiary text */
+  --md-default-fg-color--lightest: #262B34;    /* gray40 - Quaternary text */
+  
+  /* Header & Footer Colors */
+  --md-header-bg-color: #0F1C29;               /* Dark blue/teal */
+  --md-header-fg-color: #A9B7C1;               /* Light gray text on header */
+  --md-footer-bg-color: #101721;               /* Footer background */
+  --md-footer-bg-color--dark: #0E131D;         /* Footer darker variant */
+  --md-footer-fg-color: #A9B7C1;               /* Footer text */
+  
+  /* Code & Pre Blocks */
+  --md-code-bg-color: #262B34;                 /* Code background */
+  --md-code-fg-color: #A9B7C1;                 /* Code text */
+  
+  /* UI Elements */
+  --md-admonition-bg-color: rgba(41, 184, 245, 0.05); /* Admonition background */
+  --md-typeset-a-color: #6AE8FA;               /* Link color */
+  --md-typeset-table-color: rgba(255, 255, 255, 0.12);       /* Table border */
+  --md-typeset-table-color--light: rgba(255, 255, 255, 0.05); /* Table row hover */
+  
+  /* Custom Admonition Icons */
+  --md-admonition-icon--note: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z' fill='%2329B8F5'/></svg>");
+  --md-admonition-icon--tip: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Zm1 9q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.137 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.137T12 22Z' fill='%232BD48D'/></svg>");
+  --md-admonition-icon--warning: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2 1 21Z' fill='%23F2994A'/></svg>");
+}
+
+/* =============================================================================
+   HEADER STYLING
+   ============================================================================= */
+
+.md-header,
+.md-header__inner {
+  background-color: var(--md-header-bg-color);
+  color: var(--md-header-fg-color);
+}
+
+.md-header__button,
+.md-header__title,
+.md-header__source {
+  color: var(--md-header-fg-color);
+}
+
+/* Custom Site Title - Always Show "ELITEA Documentation" */
+.md-header__title .md-header__ellipsis,
+.md-header__title .md-ellipsis {
+  display: none; /* Hide dynamic page title */
+}
+
+.md-header__title::before {
+  content: "ELITEA Documentation";
+  color: var(--md-header-fg-color);
+  font-weight: 700;
+}
+
+/* =============================================================================
+   NAVIGATION TABS
+   ============================================================================= */
+
+.md-tabs,
+.md-tabs__list,
+.md-tabs__item {
+  background-color: var(--md-header-bg-color);
+}
+
+.md-tabs__link {
+  opacity: 0.75;
+  transition: color 0.15s ease, opacity 0.15s ease;
+  font-size: 0.85rem;
+  font-weight: 400;
+  background: transparent;
+  color: #ffffff; /* White text for all color schemes */
+}
+
+/* Active Tab Styling */
+.md-tabs__item--active > .md-tabs__link,
+.md-tabs__item--active > .md-tabs__link[aria-current],
+.md-tabs__link[aria-current="page"] {
+  color: #ffffff;
+  font-weight: 550;
+  opacity: 1;
+}
+
+/* Tab Hover State (Non-active Only) */
+.md-tabs__item:not(.md-tabs__item--active) > .md-tabs__link:hover {
+  opacity: 1;
+  color: #ffffff;
+}
+
+/* =============================================================================
+   SIDEBAR NAVIGATION
+   ============================================================================= */
+
+/* Navigation Active State */
+.md-nav__link--active,
+.md-nav__link[aria-current],
+.md-nav__link[aria-current="page"],
+.md-nav__link[aria-current="true"] {
+  color: var(--md-primary-fg-color);
+  font-weight: 500;
+}
+
+/* Navigation Title Styling */
+[data-md-color-scheme="default"] .md-nav__title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #555555;
+}
+
+[data-md-color-scheme="slate"] .md-nav__title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* Primary Navigation Section Titles (Features, Pipelines, etc.) */
+[data-md-color-scheme="default"] .md-nav--primary .md-nav__item--section > .md-nav__link > .md-ellipsis {
+  font-weight: 600;
+  font-size: 16px;
+  color: #555555;
+  border-radius: 4px;
+  display: block;
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav__item--section > .md-nav__link > .md-ellipsis {
+  font-weight: 600;
+  font-size: 16px;
+  color: #ffffff;
+  border-radius: 4px;
+  display: block;
+}
+
+/* Navigation Hover States */
+.md-nav__link--active:hover,
+.md-nav__link[aria-current]:hover,
+.md-nav__link[aria-current="page"]:hover,
+.md-nav__link[aria-current="true"]:hover {
+  color: var(--md-primary-fg-color) !important;
+  background-color: transparent !important;
+}
+
+/* Non-active Navigation Hover */
+[data-md-color-scheme="default"] .md-nav__link:not(.md-nav__link--active):hover {
+  color: #000000;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link:not(.md-nav__link--active):hover {
+  color: #ffffff;
+}
+
+/* Table of Contents (TOC) Hover States */
+.md-nav--secondary .md-nav__link--active:hover,
+.md-nav--secondary .md-nav__link[aria-current]:hover,
+.md-nav--secondary .md-nav__link[aria-current="page"]:hover,
+.md-nav--secondary .md-nav__link[aria-current="true"]:hover {
+  color: var(--md-primary-fg-color) !important;
+  background-color: transparent !important;
+}
+
+/* Non-active TOC Hover */
+[data-md-color-scheme="default"] .md-nav--secondary .md-nav__link:not(.md-nav__link--active):hover {
+  color: #000000;
+}
+
+[data-md-color-scheme="slate"] .md-nav--secondary .md-nav__link:not(.md-nav__link--active):hover {
+  color: #ffffff;
+}
+
+/* =============================================================================
+   MAIN CONTENT STYLING
+   ============================================================================= */
+
+/* Light Mode Content Colors */
+[data-md-color-scheme="default"] .md-content,
+[data-md-color-scheme="default"] .md-content h1,
+[data-md-color-scheme="default"] .md-content h2,
+[data-md-color-scheme="default"] .md-content h3,
+[data-md-color-scheme="default"] .md-content h4,
+[data-md-color-scheme="default"] .md-content h5,
+[data-md-color-scheme="default"] .md-content h6,
+[data-md-color-scheme="default"] .md-content p,
+[data-md-color-scheme="default"] .md-content li,
+[data-md-color-scheme="default"] .md-content td,
+[data-md-color-scheme="default"] .md-content th,
+[data-md-color-scheme="default"] .md-content blockquote,
+[data-md-color-scheme="default"] .md-content .md-typeset {
+  color: #000000;
+}
+
+/* Dark Mode Content Colors */
+[data-md-color-scheme="slate"] .md-content,
+[data-md-color-scheme="slate"] .md-content h1,
+[data-md-color-scheme="slate"] .md-content h2,
+[data-md-color-scheme="slate"] .md-content h3,
+[data-md-color-scheme="slate"] .md-content h4,
+[data-md-color-scheme="slate"] .md-content h5,
+[data-md-color-scheme="slate"] .md-content h6,
+[data-md-color-scheme="slate"] .md-content p,
+[data-md-color-scheme="slate"] .md-content li,
+[data-md-color-scheme="slate"] .md-content td,
+[data-md-color-scheme="slate"] .md-content th,
+[data-md-color-scheme="slate"] .md-content blockquote,
+[data-md-color-scheme="slate"] .md-content .md-typeset {
+  color: #ffffff;
+}
+
+/* Link Styling - Prevent Color Change on Hover */
+[data-md-color-scheme="default"] .md-content a,
+[data-md-color-scheme="default"] .md-typeset a {
+  color: #C428DD; /* magentaDefault */
+}
+
+[data-md-color-scheme="default"] .md-content a:hover,
+[data-md-color-scheme="default"] .md-typeset a:hover {
+  color: #C428DD; /* Keep same color on hover */
+  opacity: 0.8; /* Subtle hover effect */
+}
+
+[data-md-color-scheme="slate"] .md-content a,
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: #6AE8FA; /* primaryDefault */
+}
+
+[data-md-color-scheme="slate"] .md-content a:hover,
+[data-md-color-scheme="slate"] .md-typeset a:hover {
+  color: #6AE8FA; /* Keep same color on hover */
+  opacity: 0.8; /* Subtle hover effect */
+}
+
+/* =============================================================================
+   FOOTER STYLING
+   ============================================================================= */
+
+.md-footer,
+.md-footer__inner,
+.md-footer-nav,
+.md-footer-nav__inner {
+  background-color: var(--md-header-bg-color);
+}
+
+.md-footer,
+.md-footer__inner,
+.md-footer__title,
+.md-footer-nav__link {
+  color: var(--md-header-fg-color);
+}
+
+.md-footer__link,
+.md-footer-social__link {
+  color: var(--md-header-fg-color);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.md-footer__link:hover,
+.md-footer-social__link:hover {
+  opacity: 1;
+}
+
+.md-footer__direction,
+.md-footer-nav__direction {
+  color: var(--md-header-fg-color);
+  opacity: 0.7;
+}
+
+/* Light Mode Footer Overrides */
+[data-md-color-scheme="default"] .md-footer,
+[data-md-color-scheme="default"] .md-footer__inner,
+[data-md-color-scheme="default"] .md-footer__title,
+[data-md-color-scheme="default"] .md-footer__link,
+[data-md-color-scheme="default"] .md-footer__direction,
+[data-md-color-scheme="default"] .md-footer-nav__title,
+[data-md-color-scheme="default"] .md-footer-nav__direction {
+  color: #ffffff !important;
+}
+
+[data-md-color-scheme="default"] .md-footer__link:hover {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+[data-md-color-scheme="default"] .md-footer-nav__link {
+  color: #000000 !important;
+}
+
+[data-md-color-scheme="default"] .md-footer-nav__direction {
+  opacity: 0.8;
+}
+
+/* Footer Social Links */
+[data-md-color-scheme="default"] .md-footer-social__link {
+  color: #000000;
+  opacity: 0.8;
+}
+
+[data-md-color-scheme="default"] .md-footer-social__link:hover {
+  color: #000000;
+  opacity: 1;
+}
+
+/* Copyright Section (Bottom Footer) */
+[data-md-color-scheme="default"] .md-footer-meta,
+[data-md-color-scheme="default"] .md-footer-meta__inner,
+[data-md-color-scheme="default"] .md-footer-copyright {
+  background-color: #000000 !important;
+  color: #ffffff;
+}
+
+[data-md-color-scheme="default"] .md-footer-copyright {
+  opacity: 0.8;
+}
+
+[data-md-color-scheme="default"] .md-footer-copyright__highlight {
+  color: #ffffff;
+}
+
+/* =============================================================================
+   SEARCH STYLING
+   ============================================================================= */
+
+.md-search__input {
+  border-radius: 6px;
+}
+
+/* Search Z-Index Fix */
+.md-search {
+  z-index: 5 !important; /* Above tabs and header */
+}
+
+.md-search__overlay {
+  z-index: 5 !important;
+}
+
+.md-search__form {
+  z-index: 6 !important; /* Above overlay */
+}
+
+.md-search__output {
+  z-index: 6 !important; /* Above everything else */
+}
+
+/* =============================================================================
+   UI COMPONENTS
+   ============================================================================= */
+
+/* Button Styling */
+.md-button {
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.md-button--primary {
+  background-color: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color);
+}
+
+.md-button--primary:hover {
+  background-color: var(--md-primary-fg-color--light);
+  border-color: var(--md-primary-fg-color--light);
+}
+
+/* Breadcrumb Styling */
+.md-path {
+  color: var(--md-default-fg-color--light);
+}
+
+.md-path__link {
+  color: var(--md-primary-fg-color);
+}
+
+.md-path__link:hover {
+  color: var(--md-primary-fg-color); /* Keep same color on hover */
+  opacity: 0.8; /* Subtle hover effect without color change */
+}
+
+/* =============================================================================
+   CODE BLOCKS & FORMATTING
+   ============================================================================= */
+
 pre code {
-    white-space: pre-wrap;
-    /* Since CSS 2.1 */
-    white-space: -moz-pre-wrap;
-    /* Mozilla, since 1999 */
-    white-space: -pre-wrap;
-    /* Opera 4-6 */
-    white-space: -o-pre-wrap;
-    /* Opera 7 */
-    word-wrap: break-word;
-    /* Internet Explorer 5.5+ */
+  white-space: pre-wrap;           /* CSS 2.1 */
+  white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
+  white-space: -pre-wrap;          /* Opera 4-6 */
+  white-space: -o-pre-wrap;        /* Opera 7 */
+  word-wrap: break-word;           /* Internet Explorer 5.5+ */
+}
+
+/* =============================================================================
+   FULLSCREEN MODE
+   ============================================================================= */
+
+/* Hide Sidebars in Fullscreen */
+body.fullscreen-docs .md-sidebar--primary,
+body.fullscreen-docs .md-sidebar--secondary,
+body.fullscreen-docs .md-header__source {
+  display: none !important;
+}
+
+body.fullscreen-docs .md-main__inner {
+  grid-template-columns: 1fr !important;
+}
+
+body.fullscreen-docs .md-content {
+  max-width: 100% !important;
+}
+
+body.fullscreen-docs .md-header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Fullscreen Toggle Button */
+.fullscreen-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  border-radius: 4px;
+  padding: 0;
+  margin: 0;
+}
+
+.fullscreen-toggle:hover,
+.fullscreen-toggle[aria-pressed="true"],
+.fullscreen-toggle:focus {
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
+  opacity: 0.85;
 }

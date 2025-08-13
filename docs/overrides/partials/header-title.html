@@ -1,0 +1,15 @@
+{#-
+  Header title override - always show site name
+-#}
+<div class="md-header__title" data-md-component="header-title">
+  <div class="md-header__ellipsis">
+    <div class="md-header__topic md-ellipsis">
+      <span class="md-header__topic md-ellipsis">
+        {{ config.site_name }}
+      </span>
+    </div>
+    <div class="md-header__topic md-ellipsis" style="display: none;">
+      {{ page.title if page else config.site_name }}
+    </div>
+  </div>
+</div>
