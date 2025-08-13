@@ -8,7 +8,7 @@ ELITEA Agents are a cornerstone feature within the ELITEA platform, designed to 
 
 ## What are ELITEA Agents?
 
-ELITEA Agents are customizable virtual assistants or bots that you can create within the ELITEA interface. Each agent is tailored to handle specific tasks or sets of tasks, based on the instructions and capabilities you define. These agents integrate various components such as prompts, datasources, and external toolkits, allowing them to make informed decisions and perform actions like searching on Google, creating Jira tickets, interacting with your code in GitHub. The flexibility of ELITEA Agents enables them to work with a wide range of external toolkits, making them versatile tools for automating complex workflows.
+ELITEA Agents are customizable virtual assistants or bots that you can create within the ELITEA interface. Each agent is tailored to handle specific tasks or sets of tasks, based on the instructions and capabilities you define. These agents integrate various components and external toolkits, allowing them to make informed decisions and perform actions like searching on Google, creating Jira tickets, interacting with your code in GitHub. The flexibility of ELITEA Agents enables them to work with a wide range of external toolkits, making them versatile tools for automating complex workflows.
 
 ## Purpose of ELITEA Agents
 
@@ -22,7 +22,7 @@ Creating an Agent involves defining a set of instructions, toolkits, or goals th
 
 * **Autonomy**: ELITEA Agents operate independently, making decisions and taking actions based on predefined goals and instructions.
 * **Proactivity**: Agents can proactively determine the next steps needed to achieve their objectives, even in the absence of explicit instructions.
-* **Integration**: By combining prompts, datasources, and external toolkits, agents can seamlessly integrate decision-making processes with actionable tasks.
+* **Integration**: By combining external toolkits and internal capabilities, agents can seamlessly integrate decision-making processes with actionable tasks.
 * **Customization**: Users can tailor agents to meet specific needs, defining the scope and complexity of tasks they are designed to handle.
 * **Scalability**: ELITEA Agents can be scaled to manage a wide array of tasks across different domains, enhancing their utility and effectiveness.
 
@@ -33,13 +33,23 @@ By understanding and utilizing ELITEA Agents, users can unlock the full potentia
 
 ELITEA Agents are designed to be highly versatile, capable of integrating with a wide array of external toolkits, services, and APIs. This capability allows agents to extend their functionality beyond the core ELITEA platform, enabling them to perform complex and specialized tasks across various domains. By leveraging these integrations, Agents can act as powerful virtual assistants, automating and streamlining workflows to enhance productivity and efficiency.
 
-* **Internal Toolkits**: - **Agents, Datasources, Prompts, and Artifacts**: These are the foundational components within ELITEA that agents can utilize to perform tasks, manage data, and execute workflows. By integrating these internal toolkits, agents can seamlessly coordinate actions and decisions within the ELITEA environment.
-* **Management Tools**: - **Jira, Confluence, Rally, Salesforce, Sharepoint**: Agents can integrate with these project management and collaboration tools to manage tasks, track issues, and facilitate team collaboration. This integration allows agents to automate project updates, issue tracking, and documentation management, ensuring that teams remain aligned and informed.
-* **Test Management Tools** - **XRAY Cloud, TestRail, Zephyr Scale, QTest, Sonar**: By connecting with test management platforms, agents can assist in managing test cases, executing tests, and generating reports. This integration streamlines the software testing lifecycle, improving accuracy and efficiency in quality assurance processes.
-* **Coding Tools**: - **GitHub, GitLab, GitLab Org**: Integration with version control and code quality tools enables agents to manage code repositories, facilitate pull requests, and conduct code reviews. This helps streamline the development process, ensuring code integrity and facilitating collaboration among developers.
-* **EPAM Tools**: - **Report Portal, TEST IO, Carrier**: Agents can leverage EPAM-specific tools to enhance reporting and testing capabilities. This integration allows for automated data collection and analysis, providing insights that drive informed decision-making.
-* **Azure Tools**: - **ADO wiki, ADO repos, ADO plans, ADO boards**: By integrating with Azure DevOps tools, agents can manage documentation, project plans, and work items. This ensures that development and operations teams can collaborate effectively, maintaining alignment with project goals and timelines.
-* **Other Tools**: - 	**Browser**, **Google Places**, **Open API**, **Custom**, **SQL**, **Pandas**, **Figma**: ELITEA Agents can interact with databases, perform web searches, access location data, connect with custom APIs, and integrate with platforms like SharePoint. These integrations empower agents to retrieve data, automate web-based workflows, manage documents, and access external data sources, significantly reducing manual effort and enhancing data-driven decision-making.
+* **Analysis Tools**: **Pandas** - Agents can integrate with data analysis tools to process, analyze, and manipulate datasets, enabling data-driven decision making and automated reporting capabilities.
+
+* **Code Repositories**: **ADO Repos, Bitbucket, GitHub, GitLab, GitLab Org** - Integration with version control systems enables agents to manage code repositories, facilitate pull requests, conduct code reviews, and automate development workflows. This helps streamline the development process, ensuring code integrity and facilitating collaboration among developers.
+
+* **Development Tools**: **Sonar, SQL** - Agents can connect with code quality and database tools to perform code analysis, execute database queries, and maintain development standards throughout the software development lifecycle.
+
+* **Documentation Platforms**: **ADO Wiki, Confluence** - By integrating with documentation tools, agents can automate content creation, update documentation, and manage knowledge bases, ensuring that teams have access to up-to-date information.
+
+* **Office and Productivity**: **PPTX, Sharepoint** - Agents can work with office applications and collaboration platforms to create presentations, manage documents, and facilitate team collaboration across different departments.
+
+* **Project Management**: **ADO Boards, Jira, Rally** - Agents can integrate with project management tools to manage tasks, track issues, update project status, and facilitate team collaboration. This integration allows agents to automate project updates, issue tracking, and workflow management, ensuring that teams remain aligned and informed.
+
+* **Test Management**: **ADO Plans, QTest, Testrail, XRAY Cloud, Zephyr Enterprise, Zephyr Essential, Zephyr Scale, Zephyr Squad** - By connecting with test management platforms, agents can assist in managing test cases, test plans, executing tests, and generating reports. This integration streamlines the software testing lifecycle, improving accuracy and efficiency in quality assurance processes.
+
+* **Testing and Quality Assurance**: **Browser, Carrier, Open API, Report Portal, TestIO** - Agents can leverage testing tools to perform automated testing, browser automation, API testing, and quality assurance reporting, enhancing the overall testing strategy and execution.
+
+* **Other Specialized Tools**: **Agent, Artifact, Custom, Figma, Google Places, Postman, Salesforce, ServiceNow, Slack** - ELITEA Agents can interact with a variety of specialized tools including design platforms, location services, API testing tools, CRM systems, enterprise service management, and communication platforms. These integrations empower agents to perform diverse tasks across different business domains.
 
 ### Setting Up Integrations
 
@@ -47,23 +57,25 @@ To set up these integrations, users may need to perform additional configuration
 
 By harnessing the power of these integrations, ELITEA Agents can automate a wide range of tasks, from project management and software testing to code management and data processing. This not only enhances the capabilities of the ELITEA platform but also empowers users to achieve greater efficiency and productivity in their workflows.
 
-**Note**: For more information, please check [Alita Tools](https://github.com/ProjectAlita/application-tools) and [Alita SDK](https://github.com/ProjectAlita/alita-sdk) git repos.
+
+## Navigating the Agents Menu
+
+The Agents menu is accessible from the main platform navigation. Upon entering the Agents section, you'll see a dashboard listing all created agents for your project.
+
+  ![Agents-Menu_Navigation](../../img/platform/menus/agents/Agents-Menu_Navigation.png)
 
 ## Creating an Agent
 
 To set up a new agent:
 
-1. Click the **+ Agent** button located at the top right corner.
-2. Fill out the **Name** and **Description** fields.
-3. Optionally, add tags by typing a tag name or selecting from pre-existing tags in the **Tags** input box.
-4. Select the **Agent type**.
-5. Provide instructions for selected **Agent type** in the Instructions field.
-6. Add and setup selected toolkits that agent must use.
-
-![Agents-ToolkitConfiguration](<../../img/platform/menus/agents/Agents_ToolkitConfiguration.png>)
-
-7. Optionally, add and configure **Conversation Starter** and **Welcome Message**. 
-8. Click **Save**.
+1. Click the **+ Create** button located at the top of the main sidebar.
+2. In the **General** section, fill out the required fields:
+   - **Name**: Enter a unique name for your agent
+   - **Description**: Provide a clear description of the agent's purpose
+   - **Tags** (optional): Add tags by typing a tag name or selecting from pre-existing tags
+3. In the **Instructions** section, provide detailed guidelines for the AI agent that specify how it should behave and what tasks it should perform.
+4. Optionally, add and configure **Welcome Message** and **Conversation Starter**. 
+5. Click **Save**.
 
 Your newly created agent will subsequently appear on the **Agents** page for your project.
 
@@ -83,7 +95,7 @@ To add an image:
 
 ### How to Create Instructions
 
-The **Instructions** field in Agent is a crucial component where users input the necessary background information or instructions that guide the LLM in executing agent and generating accurate and relevant responses. This section serves as the foundational knowledge base for the model to understand and process your specific requests.
+The **Instructions** section is the core component where you define how your agent should behave and what tasks it should perform. This field serves as the foundational knowledge base that guides the AI model in understanding and processing your specific requests.
 
 #### How to Input Instructions
 
@@ -94,46 +106,35 @@ The **Instructions** field in Agent is a crucial component where users input the
 ![Agents-Instructions](<../../img/platform/menus/agents/Agents_Instructions.png>)
 
 
-### How to Select an Agent Type
-
-Selecting the right Agent type in ELITEA is essential for optimizing the performance and effectiveness of your AI-driven tasks. Each Agent type is designed to leverage specific capabilities and frameworks, catering to different use cases and operational needs. Below is a detailed overview of the available Agent types and their ideal applications:
-
-#### ReAct
-
-* **Description**: The ReAct Agent type is designed for straightforward, linear tasks that require minimal context. Users can specify the desired actions and add necessary toolkits using fields such as Actor, Goals, Instructions, and Constraints to clearly define the agent's behavior.
-* **Best For**: Simple tasks with clear, direct instructions where the agent's actions are well-defined and do not require extensive context or interaction history.
-
-#### XMLChat
-
-* **Description**: Similar to ReAct, but utilizes XML for tool integration instead of JSON. This makes XMLChat more suitable for models like LLama and Anthropic, which may benefit from XML's structured format.
-* **Best For**: Scenarios where XML is preferred for tool integration, particularly with LLama and Anthropic models.
-
-#### OpenAI
-
-* **Description**: OpenAI Agents are built on the LangChain backend and are specifically designed for integrations with Azure OpenAI Service. These agents excel in generating human-like text and handling a wide range of conversational tasks.
-* **Best For**: Tasks requiring high-quality natural language understanding and generation, such as customer support, content creation, and complex query resolution.
-
-**Note**: The **Pipeline Agent** type has been moved to a separate module. For more information on configuring and using Pipeline Agents, please refer to the [Pipeline Agent Configuration](../menus/pipelines.md).
-
-
-Each Agent type in ELITEA is crafted to maximize the strengths of its underlying models and frameworks. Selecting the appropriate Agent type based on your specific task requirements and desired outcomes will ensure optimal performance and efficiency.
-
-
 ### How to select and configure Toolkits
 
-Toolkits are integrations with external or ELITEA's internal services, toolkits and APIs which allows to enhance Agents to use various resources and do the tasks.
+Toolkits are integrations with external or ELITEA's internal services that enhance your agent's capabilities by allowing it to interact with various resources and perform specific tasks. You can add toolkits to your agent during the creation process or edit them later.
+
+**Adding Toolkits to Your Agent**:
+
+1. In the agent creation or editing interface, navigate to the toolkits section
+2. Click the **+Toolkit** button to browse available toolkits
+3. You can either:
+   - Select an existing toolkit from the list of available toolkits, or
+   - Click **"+ Create New"** to create a new toolkit, which will redirect you to the toolkit creation page
+4. If using an existing toolkit, configure any additional settings as required
+5. Save your agent configuration
+
+> **Note:** For detailed instructions on creating and configuring toolkits, refer to the [How to Create a Toolkit](../../platform-documentation/menus/toolkits.md) guide.
 
 Below is the list of toolkits supported by the platform. For detailed instructions on how to configure each toolkit, please refer to the corresponding section by clicking on the respective toolkit link:
 
-| **Category**           | **Toolkits**                                                                                     |
-|-------------------------|-------------------------------------------------------------------------------------------------|
-| **Azure DevOps Tools**  | [ADO boards](../../how-tos/toolkits/ado_wiki_plan_board_toolkit.md), [ADO plans](../../how-tos/toolkits/ado_wiki_plan_board_toolkit.md), [ADO wiki](../../how-tos/toolkits/ado_wiki_plan_board_toolkit.md), [ADO repos](../../how-tos/toolkits/ado_repos_toolkit.md) |
-| **Internal Toolkits**   | [Agent](../../platform-documentation/menus/agents.md), [Datasource](../../platform-documentation/menus/datasources.md), [Prompt](../../platform-documentation/menus/prompts.md), [Artifact](../../how-tos/toolkits/artifact_toolkit.md) |
-| **Project Management**  | [Jira](../../how-tos/toolkits/jira_toolkit.md), [Confluence](../../how-tos/toolkits/confluence_toolkit.md), [Rally](../../how-tos/toolkits/rally_toolkit.md), [Salesforce](../../how-tos/toolkits/salesforce_toolkit.md), [Sharepoint](../../how-tos/toolkits/sharepoint_toolkit.md) |
-| **Version Control**     | [GitHub](../../how-tos/toolkits/github_toolkit.md), [GitLab](../../how-tos/toolkits/gitlab_toolkit.md), [GitLab Org](../../how-tos/toolkits/gitlab_org_toolkit.md), [Bitbucket](../../how-tos/toolkits/bitbucket_toolkit.md) |
-| **Testing Tools**       | [TestRail](../../how-tos/toolkits/testrail_toolkit.md), [QTest](../../how-tos/toolkits/qtest_toolkit.md), [XRAY Cloud](../../how-tos/toolkits/xray_toolkit.md), [Zephyr Enterprise](../../how-tos/toolkits/zephyr_enterprise_toolkit.md), [Zephyr Scale](../../how-tos/toolkits/zephyr_scale_toolkit.md), [TestIO](../../how-tos/toolkits/testIO_toolkit.md) | [Sonar](../../how-tos/toolkits/sonar_toolkit.md)|
-| **EPAM Tools**          | [Report Portal](../../how-tos/toolkits/reportportal_toolkit.md), [TEST IO](../../how-tos/toolkits/testIO_toolkit.md), **Carrier** |
-| **Other Tools**         | [Browser](../../how-tos/toolkits/browser_toolkit.md), [Google Places](../../how-tos/toolkits/google_places_toolkit.md), [Open API](../../how-tos/toolkits/openapi_toolkit.md), [Custom](../../how-tos/toolkits/custom_toolkit.md), [SQL](../../how-tos/toolkits/sql_toolkit.md), [Pandas](../../how-tos/toolkits/pandas_toolkit.md), [Figma](../../how-tos/toolkits/figma_toolkit.md) |
+| **Category**           | **Available Toolkits**                                                                                 |
+|------------------------|------------------------------------------------------------------------------------------------------|
+| **Analysis**           | [Pandas](../../how-tos/toolkits/pandas_toolkit.md)                                                  |
+| **Code Repositories**  | [ADO Repos](../../how-tos/toolkits/ado_repos_toolkit.md), [Bitbucket](../../how-tos/toolkits/bitbucket_toolkit.md), [GitHub](../../how-tos/toolkits/github_toolkit.md), [GitLab](../../how-tos/toolkits/gitlab_toolkit.md), [GitLab Org](../../how-tos/toolkits/gitlab_org_toolkit.md) |
+| **Development**        | [Sonar](../../how-tos/toolkits/sonar_toolkit.md), [SQL](../../how-tos/toolkits/sql_toolkit.md)     |
+| **Documentation**      | [ADO Wiki](../../how-tos/toolkits/ado_wiki_plan_board_toolkit.md), [Confluence](../../how-tos/toolkits/confluence_toolkit.md) |
+| **Office**             | PPTX, [Sharepoint](../../how-tos/toolkits/sharepoint_toolkit.md)                                     |
+| **Other**              | [Agent](../../platform-documentation/menus/agents.md), [Artifact](../../how-tos/toolkits/artifact_toolkit.md), [Custom](../../how-tos/toolkits/custom_toolkit.md), [Figma](../../how-tos/toolkits/figma_toolkit.md), [Google Places](../../how-tos/toolkits/google_places_toolkit.md), [Postman](../../how-tos/toolkits/postman_toolkit.md), [Salesforce](../../how-tos/toolkits/salesforce_toolkit.md), [ServiceNow](../../how-tos/toolkits/servicenow_toolkit.md), [Slack](../../how-tos/toolkits/slack_toolkit.md) |
+| **Project Management** | [ADO Boards](../../how-tos/toolkits/ado_wiki_plan_board_toolkit.md), [Jira](../../how-tos/toolkits/jira_toolkit.md), [Rally](../../how-tos/toolkits/rally_toolkit.md) |
+| **Test Management**    | [ADO Plans](../../how-tos/toolkits/ado_wiki_plan_board_toolkit.md), [QTest](../../how-tos/toolkits/qtest_toolkit.md), [Testrail](../../how-tos/toolkits/testrail_toolkit.md), [XRAY Cloud](../../how-tos/toolkits/xray_toolkit.md), [Zephyr Enterprise](../../how-tos/toolkits/zephyr_enterprise_toolkit.md), Zephyr Essential, [Zephyr Scale](../../how-tos/toolkits/zephyr_scale_toolkit.md), Zephyr Squad |
+| **Testing**            | [Browser](../../how-tos/toolkits/browser_toolkit.md), Carrier, [Open API](../../how-tos/toolkits/openapi_toolkit.md), [Report Portal](../../how-tos/toolkits/reportportal_toolkit.md), [TestIO](../../how-tos/toolkits/testIO_toolkit.md) |
 
 
 ![Agents-Toolkits](<../../img/platform/menus/agents/Agents_Toolkits.png>)
@@ -141,43 +142,47 @@ Below is the list of toolkits supported by the platform. For detailed instructio
 
 ### WELCOME MESSAGE
 
-The **Welcome Message** feature allows you to provide additional context for pipeline, prompts, datasources, and agents. Currently, the Welcome Message is sent to LLM along with other instructions.
+The **Welcome Message** feature allows you to provide additional context and instructions that appear when users interact with your agent in the chat interface. This message helps set expectations and guide users on how to best utilize the agent.
 
 **How to Add the Welcome Message**:
 
-1. **Add the Welcome Message**: Type the welcome message text in the input field.
-2. **Save the Configuration**: After entering the desired text, ensure to save the changes to the agent. This action makes the configured welcome message available to user in the **Chat** section.
+1. **Access the Welcome Message Section**: In the agent creation or editing interface, navigate to the Welcome Message section.
+2. **Add the Welcome Message**: Type the welcome message text in the input field.
+3. **Save the Configuration**: After entering the desired text, ensure to save the changes to the agent. This action makes the configured welcome message available to users in the **Chat** section.
 
 ![Agents-WelcomeMessage](<../../img/platform/menus/agents/Agents_WelcomeMessage.png>)
 
 
 **Using the Welcome Message**:
 
- Go to the **Chat** section of the agent. Here, you will see the configured **Welcome Message**. It will provide additional notification, instruction to the user.
+When users go to the **Chat** section of the agent, they will see the configured **Welcome Message**. It provides helpful context and instructions to guide their interaction with the agent.
 
 **Examples of Welcome Message**:
 
 * "Use this agent for generating manual test cases"
 * "Don't forget to double-check the generated test cases"
+* "I can help you analyze code, write documentation, and review pull requests"
 
 ### CONVERSATION STARTERS
 
-The **Conversation Starter** feature enables you to configure and add predefined text that can be used to initiate a conversation when executing an agent. This feature is particularly useful for setting a consistent starting point for interactions facilitated by the agent.
+The **Conversation Starter** feature enables you to configure predefined prompts that help users quickly initiate specific types of interactions with your agent. These starters appear as clickable buttons in the chat interface, making it easy for users to get started.
 
 **How to Add a Conversation Starter**:
 
-1. **Access the Configuration Panel**: Navigate to the **Conversation Starter**  section.
+1. **Access the Configuration Panel**: Navigate to the **Conversation Starter** section in the agent creation or editing interface.
 2. **Add a Conversation Starter**: Click the `+` icon to open the text input field where you can type the text you wish to use as a conversation starter.
 3. **Save the Configuration**: After entering the desired text, ensure to save the changes to the agent. This action makes the configured conversation starter available for use.
 
 **Using a Conversation Starter**:
 
-**Initiate a Conversation**: Go to the **Chat** section of the agent. Here, you will find the saved conversation starters listed. Click on the desired starter to automatically populate the chat input and execute the agent.
+**Initiate a Conversation**: Go to the **Chat** section of the agent. Here, you will find the saved conversation starters displayed as clickable options. Click on the desired starter to automatically populate the chat input and execute the agent.
 
 **Examples of Conversation Starters**:
 
 * "Generate test cases for provided Acceptance Criteria."
 * "Generate automatic test cases for selected [Test_Case_ID]."
+* "Review this code and suggest improvements."
+* "Help me write documentation for this feature."
 
 ![Agents-Conversation_Starter](<../../img/platform/menus/agents/Agents_ConversationStarter.png>)
 
@@ -186,25 +191,29 @@ By setting up conversation starters, you streamline the process of initiating sp
 
 ### How to Execute Agent
 
-To execute the agent and get the output you have to:
+To execute the agent and get the output:
 
-1. **Configure the Agent**: Initialize by providing the necessary instructions, and defining tools (if applicable).
-2. **Select the AI Model**: Choose the appropriate AI model (e.g., gpt-40-2024-11-20, gpt-40-2024-08-06, etc.).
-3. **Set the Temperature Parameter**: Adjust this parameter to control the level of creativity or unpredictability in responses.
-4. **Advanced Parameters** (Optional): For finer control over response generation, you may adjust these optional settings:
+1. **Configure the Agent**: Ensure your agent is properly configured with clear instructions and any necessary toolkits.
+2. **Navigate to Chat**: Access the agent's chat interface by clicking on the agent from your agents list.
+3. **Select the AI Model**: In the chat interface, choose the appropriate AI model (e.g., gpt-4o-2024-11-20, gpt-4o-2024-08-06, etc.) from the model selection dropdown.
+   ![Agents-Ai-Model](<../../img/platform/menus/agents/Agents-Model_select.png>)
+4. **Adjust Parameters** (Optional): Fine-tune the response generation with these settings:
     * **Temperature (0.1-1.0)** - adjusts the level of creativity or unpredictability in responses.
         * **Higher values**: Responses are more creative and varied, but may be less consistent and more unpredictable.
         * **Lower values**: Responses are more consistent and predictable, but may be less creative and varied.
       * **Top P (0-1)** - determines the cumulative probability threshold for selecting words, balancing between creativity and consistency.
         * **Higher values**: A wider range of words is considered, leading to more creative and diverse responses.
         * **Lower values**: A narrower range of words is considered, leading to more consistent and predictable responses.
-      * **Top K** - limits the choice of words to the K most probable, affecting the response's diversity and predictability.
-        * **Higher values**: More words are considered, leading to more diverse and potentially creative responses.
-        * **Lower values**: Fewer words are considered, leading to more predictable and focused responses.
-      * **Maximum Length** - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.
+      * **Max Completion Tokens** - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.
         * **Higher values**: Responses can be longer and more detailed.
         * **Lower values**: Responses are shorter and more concise.
-5. **Initiate Interaction**: Once all instructions for the agent are set in the **Instructions** and/or **Tools** sections, you can start the execution by typing your text (be it a question or a command)  into the chat box or initate it by selecting the **Conversation Starter** message (if you have configured it). Use simple commands like "Go", "Start Generating", "Execute", or "Run it" and click the **Send** icon to begin. These commands signal the Gen AI to process the information and generate the desired output based on the configured settings.
+
+    ![Agents-Model- Settings](<../../img/platform/menus/agents/Agents-Model_settings.png>)   
+
+5. **Start Interaction**: Begin your conversation by either:
+   - Clicking on a **Conversation Starter** (if configured) to use a predefined prompt
+   - Typing your question or command directly into the chat input field
+   - Using simple commands like "Go", "Start Generating", "Execute", or "Run it" followed by clicking the **Send** button
 
 
 **Additional Interaction Features:**
@@ -231,7 +240,7 @@ To optimally manage your agent, understanding how to save and create versions is
 
 #### How to Save an Agent:
 
-* To save your work on an agent for the first time, simply click the **Save** button. This action creates what's known as the "**latest**" version of your prompt.
+* To save your work on an agent for the first time, simply click the **Save** button. This action creates what's known as the "**latest**" version of your agent.
 * You can continue to modify your agent and save the changes to the "**latest**" version at any time by clicking the **Save** button again. If you wish to discard any changes made, you have the option to click the **Discard** button before saving.
 
 **Remember**: The "**latest**" version represents the initial version you create. You can keep updating this version with your changes by saving them, without the need to create additional versions for your agent.
@@ -286,5 +295,15 @@ By following these steps, you can effectively manage the lifecycle and iteration
 
 The **Monitoring** menu allows you to track the performance and activity of your agents in real-time. By accessing this feature, you can view detailed logs, analyze execution metrics, and identify potential issues or bottlenecks in your agent's workflows.
 For detailed instructions on how to use the Monitoring feature, please refer to the **[Monitoring User Guide](../../feature-guides/core-features/monitoring.md)**
+
+---
+
+## References
+
+For more detailed information on related topics, please refer to the following documentation:
+
+- **[Credentials](../../platform-documentation/menus/credentials.md)** - Learn how to create and manage credentials for toolkit integrations
+- **[Toolkits](../../platform-documentation/menus/toolkits.md)** - Comprehensive guide on creating and configuring toolkits
+- **[Glossary](../../home/glossary.md)** - Definitions of key terms and concepts used in the ELITEA platform
 
 
