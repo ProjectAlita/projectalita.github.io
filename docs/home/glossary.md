@@ -64,6 +64,9 @@ This glossary provides definitions for key terms, components, and features used 
 **Entity**
 : A general term for the main components in ELITEA: Agents, Pipelines, Collections, and Artifacts. Entities can be organized, shared, and managed within projects.
 
+**Entrypoint**
+: The initial configuration or starting point for agents and pipelines that defines how they begin execution. Entrypoints specify the entry conditions, parameters, and initial state when an agent or pipeline is triggered, providing the foundation for automated workflows and interactions.
+
 **Export**
 : A feature that allows users to download and save ELITEA entities (agents, pipelines, collections) as files for backup, sharing, or migration purposes. Exported entities can be imported into other ELITEA projects or instances, enabling portability and collaboration across different environments.
 
@@ -186,6 +189,9 @@ This glossary provides definitions for key terms, components, and features used 
 
 **Toolkit**
 : Sets of tools and integrations that extend the capabilities of agents and pipelines. Toolkits can include internal ELITEA components (other agents) or external service integrations (Jira, GitHub, Confluence, etc.).
+
+**Tool**
+: Individual functions or capabilities within a toolkit that perform specific actions or operations. Tools are the building blocks that make up toolkits, providing discrete functionality such as creating tickets, reading files, sending messages, or executing API calls. Each tool typically corresponds to a specific operation that can be performed on an external service or within ELITEA.
 
 **Top K**
 : A parameter that limits the AI model's word selection to the K most likely next tokens at each step. For example, Top K = 40 means the model only considers the 40 most probable next words. Lower values create more focused responses, while higher values allow for more diversity in word choice.
