@@ -11,7 +11,9 @@ nav:
           - What is a toolkit?: home/key-concepts/what-is-a-toolkit.md
           - What is a credential?: home/key-concepts/what-is-a-credential.md
           - What is a conversation?: home/key-concepts/what-is-a-conversation.md
+          - What is a pipeline?: home/key-concepts/what-is-a-pipeline.md
           - What is a collection?: home/key-concepts/what-is-a-collection.md
+          - What is an artifact?: home/key-concepts/what-is-an-artifact.md
 
   - Getting Started:
       - Quick Starts:
