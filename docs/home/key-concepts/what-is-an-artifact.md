@@ -20,7 +20,6 @@ ELITEA supports various types of artifacts for different workflow outputs. Here 
 
 - **Document Artifacts**: Reports, summaries, documentation, and formatted content
 - **Data Artifacts**: Processed datasets, analysis results, and extracted information
-- **Media Artifacts**: Generated images, charts, presentations, and multimedia content
 - **Code Artifacts**: Generated scripts, configurations, and automated code outputs
 - **Communication Artifacts**: Email templates, notifications, and messaging content
 
