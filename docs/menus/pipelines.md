@@ -147,6 +147,8 @@ Click the **+ Pipeline** button to nest other pipelines within your current pipe
 - **Purpose**: Create complex workflows by chaining multiple pipelines together
 - **Selection Process**: Select from existing pipelines in your workspace
 
+![Add Toolkit](<../img/menus/pipeline/add-toolkit.png>)
+
 !!! tip "Integration Best Practices"
     - **Toolkit Integration**: Ensure you have proper credentials configured before adding toolkits
     - **Agent Integration**: Test agent responses and adjust parameters for optimal performance
