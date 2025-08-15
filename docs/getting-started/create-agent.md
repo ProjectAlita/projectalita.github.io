@@ -69,10 +69,12 @@ Toolkits enhance your agent's capabilities by connecting it to external services
 
 ---
 
-## Step 4: Execute Your Agent
+## Step 4: Test and Manage Your Agent
 
-1. **Access the Chat Interface:**
-      * Click on your agent from the Agents list to open its chat interface.
+For testing and fine-tuning purposes, you can interact with your agent directly through its dedicated chat interface.
+
+1. **Access the Agent's Chat Interface:**
+      * Click on your agent from the Agents list to open its dedicated chat interface.
 
 2. **Select AI Model:**
       * Choose an appropriate AI model from the dropdown (e.g., gpt-4o-2024-11-20).
@@ -82,26 +84,51 @@ Toolkits enhance your agent's capabilities by connecting it to external services
       * **Top P**: Adjust word selection diversity.
       * **Max Completion Tokens**: Set response length limit.
 
-4. **Start Interacting:**
+4. **Test Your Agent:**
       * Use a **Conversation Starter** (if configured), or
       * Type your question or command directly.
       * Click **Send** or use simple commands like "Go", "Start", or "Execute".
 
 ![Agent Execution Interface](../img/getting-started/create-agent/agent-execution.png)
 
----
-
-## Step 5: Manage Your Agent
-
 **Continue the Conversation:**
 * Keep chatting by typing follow-up questions or commands.
 
 **Version Management:**
-
 * **Save**: Update the current "latest" version or the current named version
 * **Save As Version**: Create a new named version
 * **Publish**: Submit for approval to make publicly available
 
+---
+
+## Step 5: Add Your Agent to Conversations
+
+The primary way to use your agent is by adding it to conversations for collaborative work.
+
+1. **Navigate to Chat Menu:**
+      * Go to the **Chat** section from the main sidebar.
+
+2. **Start a New Conversation:**
+      * Click **`+ Create`** to start a new conversation.
+      * Or select an existing conversation where you want to add your agent.
+
+3. **Add Your Agent:**
+      * At the bottom of the chat, you can see the switch to assistant icon.
+      * To switch assistants (e.g., select an Agent):
+         - Click the Switch assistant icon.
+         - In the opened "Frequently Used" list, click on the your agent name (e.g., Code Review Assistant) to select it.
+         - Alternatively, type # followed by the your agent name (e.g., #Code Review Assistant) in the input box to quickly select an assistant
+4. **Interact with Your Agent:**
+      * Type your question or request and send it.
+      * Your agent will respond based on its instructions and available toolkits.
+
+!!! tip "Conversation Benefits"
+      Using agents in conversations allows for collaborative workflows where human team members and AI agents work together, maintaining context and continuity throughout the discussion.
+
+![Add to Conversation](../img/getting-started/create-agent/agent-add-to-conversation.png)
+
+!!! note "Reference"
+      For detailed instructions on creating conversation, refer to the [Create first Conversation](create-conversation.md) guide.
 ---
 
 ## Next Steps
@@ -127,4 +154,5 @@ Now that you've created your first agent, consider:
     * **[Agents Menu Guide](../menus/agents.md)** - Comprehensive agent documentation
     * **[Create a Toolkit](create-toolkit.md)** - Learn to integrate external services
     * **[Create Credentials](create-credential.md)** - Set up secure authentication
+    * **[Chat Menu Guide](../menus/chat.md)** - Comprehensive chat documentation
     * **[Glossary](../home/glossary.md)** - Definitions of key terms and concepts
