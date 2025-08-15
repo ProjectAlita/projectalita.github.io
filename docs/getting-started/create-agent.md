@@ -92,12 +92,14 @@ For testing and fine-tuning purposes, you can interact with your agent directly 
 ![Agent Execution Interface](../img/getting-started/create-agent/agent-execution.png)
 
 **Continue the Conversation:**
-* Keep chatting by typing follow-up questions or commands.
+
+  * Keep chatting by typing follow-up questions or commands.
 
 **Version Management:**
-* **Save**: Update the current "latest" version or the current named version
-* **Save As Version**: Create a new named version
-* **Publish**: Submit for approval to make publicly available
+
+   * **Save**: Update the current "latest" version or the current named version
+   * **Save As Version**: Create a new named version
+   * **Publish**: Submit for approval to make publicly available
 
 ---
 
