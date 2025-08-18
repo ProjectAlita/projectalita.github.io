@@ -10,10 +10,10 @@ nav:
           - What is an agent?: home/key-concepts/what-is-an-agent.md
           - What is a pipeline?: home/key-concepts/what-is-a-pipeline.md
           - What is a credential?: home/key-concepts/what-is-a-credential.md
-          - What is a toolkit?: home/key-concepts/what-is-a-toolkit.md          
+          - What is a toolkit?: home/key-concepts/what-is-a-toolkit.md
           - What is a conversation?: home/key-concepts/what-is-a-conversation.md
           - What is an artifact?: home/key-concepts/what-is-an-artifact.md
-          - What is a collection?: home/key-concepts/what-is-a-collection.md     
+          - What is a collection?: home/key-concepts/what-is-a-collection.md
 
   - Getting Started:
       - Quick Starts:
@@ -112,8 +112,9 @@ nav:
           - Zephyr Enterprise: integrations/toolkits/zephyr_enterprise_toolkit.md
 
   - Release Notes:
-      - RN 1.6.1: release-notes/rn_current.md
-      - Archive:
+      - Current version:
+          - RN 1.7.0: release-notes/rn_current.md
+      - Previous versions:
           - RN 1.6.0: release-notes/archived/rn10.md
           - RN 1.5.2: release-notes/archived/rn9.md
           - RN 1.5.1: release-notes/archived/rn8.md

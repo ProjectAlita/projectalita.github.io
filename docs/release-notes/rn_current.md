@@ -6,8 +6,9 @@ Discover **ELITEA** — your all-in-one platform for working with Generative AI 
  
 ## Information
  
-* **Release Version**: 1.6.1
-* **Released on**: 18-Aug-2025
+* **Release Version**: 1.7.0
+* **Released on**: 31-Aug-2025
+* **Preview Access**: [For checking new features and changes](https://next.elitea.ai)
 * **Access**: [ELITEA Platform](https://nexus.elitea.ai)
  
 ## New Features
