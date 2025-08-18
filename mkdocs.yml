@@ -17,7 +17,8 @@ nav:
 
   - Getting Started:
       - Quick Starts:
-          - Very Quick Start: getting-started/quick-start.md
+          - Very Quick Start: getting-started/very-quick-start.md
+          - Quick Start: getting-started/quick-start.md
       - Initial Setup:
           - Create a Personal Access Token: getting-started/create-personal-access-token.md
           - Create a Secret: getting-started/create-secret.md
