@@ -1,302 +1,649 @@
-# Integrations and Configurations Guide
+# Credentials User Guide
 
 ## Introduction
 
-This user guide provides a comprehensive overview of the **Integrations** feature in ELITEA and how to leverage these integrations through **Configurations** within Agent toolkits. These powerful functionalities enable seamless connections with external platforms, streamlining workflows and enhancing collaboration across different tools.
+This user guide provides a comprehensive overview of the **Credentials** feature in ELITEA and how to use these credentials when configuring toolkits. The Credentials feature enables secure authentication with external platforms, streamlining workflows and enhancing collaboration across different tools.
 
-The ability to integrate with external services and manage their configurations within ELITEA offers significant benefits, including:
+The ability to manage authentication credentials centrally within ELITEA offers significant benefits, including:
 
-* **Enhanced Workflow Efficiency:** Connect ELITEA with your existing tools like Jira, Confluence, GitHub, GitLab, and TestRail to automate tasks, share information, and reduce manual data entry.
-* **Centralized Management:** Manage connections to various external services from a single location within ELITEA, simplifying administration and improving visibility.
-* **Customized Authentication:** Configure authentication settings for external tools at different levels (personal or project-specific) to meet various security and access requirements.
-* **Flexibility and Reusability:** Create reusable integration configurations that can be easily applied to multiple Agent toolkits, saving time and effort.
+* **Enhanced Security:** Store sensitive authentication information like API keys, tokens, and passwords securely using ELITEA's credential management system.
+* **Centralized Management:** Manage authentication details for various external services from a single location within ELITEA, simplifying administration and improving visibility.
+* **Reusability:** Create reusable credentials that can be easily applied to multiple Agent toolkits, saving time and effort.
+* **Flexibility:** Configure credentials at different levels (personal or project-specific) to meet various security and access requirements.
 
-This guide will detail the process of setting up Integrations and utilizing Configurations within Agent toolkits, along with best practices and practical use cases to help you effectively leverage these features. 
+This guide will detail the process of creating and managing Credentials, along with best practices and practical use cases to help you effectively leverage this feature. 
 
 **Important Note:**
 
 In ELITEA, your work is organized within three distinct types of spaces:
 
-* **Private Workspace:** This is your personal area within ELITEA. You have exclusive access to all the content you create and manage here. Think of it as your individual sandbox where you can experiment and build your AI solutions. This includes your personal Chats, Agents, Prompts, Datasources, Collections and Artifacts.
-* **Team Project:** These are collaborative spaces where multiple users are added as team members. Within a Team project, all members have access to the project's content, fostering collaboration and shared development. This shared content includes Chats, Agents, Prompts, Datasources, Collections and Artifacts that belong to that specific project.
+* **Private Workspace:** This is your personal area within ELITEA. You have exclusive access to all the content you create and manage here. Think of it as your individual sandbox where you can experiment and build your AI solutions. This includes your personal Chats, Agents, Prompts, Datasources, Collections, Artifacts, and Credentials.
+* **Team Project:** These are collaborative spaces where multiple users are added as team members. Within a Team project, all members have access to the project's content, fostering collaboration and shared development. This shared content includes Chats, Agents, Prompts, Datasources, Collections, Artifacts, and Credentials that belong to that specific project.
 * **Public Project:** This space allows you to engage with the wider ELITEA community and explore content shared by other users. This shared content includes Chats, Agents, Prompts, Datasources, and Collections.
 
-Understanding the distinction between your **Private Workspace**, where you have exclusive access to your content, and **Team Projects**, which are collaborative spaces where team members share access to project resources, is crucial for effectively managing **Integrations** and **Configurations** within ELITEA.
+Understanding the distinction between your **Private Workspace**, where you have exclusive access to your credentials, and **Team Projects**, which are collaborative spaces where team members can share access to project credentials, is crucial for effectively managing **Credentials** within ELITEA.
 
 
-## Integration Feature: Connecting ELITEA with External Platforms
+## Credentials Feature: Secure Authentication Management
 
-The **Integrations** menu in ELITEA serves as a central hub for establishing connections with external platforms. By configuring integrations, you make these external services available for use within your Agent toolkits.
+The **Credentials** menu in ELITEA serves as a centralized hub for securely managing authentication details needed to connect your toolkits to external services. By configuring credentials, you make these external services available for use within your toolkits with proper authentication.
 
-**Key Aspects of the Integration Feature:**
+**Key Aspects of the Credentials Feature:**
 
-* **Centralized Connection Management:** The Integrations menu provides a single point of control for managing connections to various external services.
-* **Supported Platforms:** ELITEA currently supports integrations with **Jira**, **Confluence**, **GitHub**, **GitLab**, **QTest** and **TestRail**, with plans to add more services in future releases.
-* **Reusable Configurations:** Once an integration is configured, it can be reused across multiple Agent toolkits within the **same project** or your **Private** workspace.
-* **Private and Project Level Integrations:** You can create integrations within your **Private** workspace for personal use or within **Team** projects for shared access among project members.
-* **Secure Authentication:** ELITEA offers various secure authentication methods for connecting to external platforms, including Basic, Bearer, Passwords, and Private Keys, with the option to store sensitive credentials securely using **[Secrets](../menus/settings/secrets.md)**.
+* **Centralized Authentication Management:** The Credentials menu provides a single point of control for managing authentication details for various external services.
+* **Supported Platforms:** ELITEA currently supports credentials for multiple platforms:
 
-**Accessing the Integrations Menu:**
+| Platform | Description | Authentication Methods |
+|----------|-------------|----------------------|
+| **ADO (Azure DevOps)** | Microsoft Azure DevOps platform | Personal Access Token |
+| **ADO Repos** | Azure DevOps repository integration | ADO Configuration reference |
+| **Bitbucket** | Git repository hosting service | Username/Password |
+| **Confluence** | Atlassian knowledge management | Basic Auth, Bearer Token |
+| **Figma** | Design collaboration platform | Personal Access Token, OAuth2 |
+| **GitHub** | Git repository hosting service | Token, Password, App Private Key, Anonymous |
+| **GitLab** | Git repository and DevOps platform | Private Token |
+| **Jira** | Atlassian project management | Basic Auth, Bearer Token |
+| **Postman** | API development platform | API Key |
+| **QTest** | Test management platform | API Token |
+| **Rally** | Agile project management | Username/Password, API Key |
+| **ServiceNow** | IT service management platform | Username/Password |
+| **Slack** | Team communication platform | Bot/User Token |
+| **TestRail** | Test case management | Email/Password |
+| **Xray** | Test management for Jira | Client Credentials |
+| **Zephyr Enterprise** | Test management platform | API Token |
+| **Zephyr Scale** | Test management for Jira | Token, Username/Password, Cookies |
+
+* **Reusable Configurations:** Once a credential is configured, it can be reused across multiple toolkits within the **same project** or your **Private** workspace.
+* **Private and Project Level Credentials:** You can create credentials within your **Private** workspace for personal use or within **Team** projects for shared access among project members.
+* **Secure Storage:** ELITEA securely stores sensitive information such as API keys, tokens, and passwords, with the option to use **[Secrets](../menus/settings/secrets.md)** for enhanced security.
+
+**Accessing the Credentials Menu:**
 
 1. Log in to ELITEA.
-2. Navigate to either your **Private** workspace or the specific **Team** project where you want to configure the integration.
-3. Click on the **Your Avatar** icon located at the top right corner of the page to open the **Settings** sidebar menu.
-4. Click the **Integrations** to navigate to that section.
+2. Navigate to either your **Private** workspace or the specific **Team** project where you want to configure credentials.
+3. Click on **Credentials** in the main navigation menu.
 
-![Settings-Integrations](<../img/how-tos/integrations/Settings-Integrations.png>)
+![Credentials-Menu](../img/how-tos/how-to-use-credentials/cred-menu.png)
 
-![Integrations-Menu](<../img/how-tos/integrations/Integrations-Menu.png>)
+**Creating a New Credential:**
 
-**Setting up an Integration:**
+1. In the Credentials menu, click the **+ Create** button.
+2. A dialog will appear prompting you to **Select Credential Type**. Choose the service you want to create credentials for (e.g., Confluence, GitHub, Jira, Slack).
+   ![Credentials-Create](../img/how-tos/how-to-use-credentials/cred-new.png)
 
-1. In the Integrations menu, click the **+** icon to create a new integration.
-2. A pop-up window will appear, prompting you to **Select Integration Type**. Choose the service you want to integrate with (e.g., Confluence, GitHub, Jira, TestRail).
-3. You will be presented with a configuration form specific to the selected integration type. Follow the detailed steps below for each service.
-4. Configure the Integration parameters.
-5. Click the **Save** button to finalize the integration setup.
+3. You will be presented with a configuration form specific to the selected credential type. Follow the detailed steps below for each service.
+4. Configure the credential parameters including name and authentication details.
+5. **Shared Credential Option:** Use the **Shared** checkbox to control credential visibility:
+   - **Checked:** The credential will be accessible by all team members in the current project
+   - **Unchecked:** The credential will be private to you only
+6. Click the **Save** button to create the credential.
 
-![Integrations-Create_New_Integration](<../img/how-tos/integrations/Integrations-Create_New_Integration.png>)
 
-After saving, the newly created integration will be added to the **Integrations** table, making it available for selection and reuse in the Configurations section of your Agent toolkits. You can manage your saved integrations directly from the **Integrations** table. In the **Actions** column, click on the ellipsis icon (`...`) next to a specific integration, you will reveal options to **Edit** the integration details, **Set as Default** to make it the default one for that Integration type, or **Delete** the integration if it's no longer needed.
+After saving, the newly created credential will be added to your **Credentials** dashboard, making it available for selection when configuring toolkits. You can manage your saved credentials directly from the dashboard. Click on a credential to edit its details, set it as default, or delete it if it's no longer needed.
 
 
-### Important Considerations for Integrations
+### Important Considerations for Credentials
 
-When setting up integrations in ELITEA, it's important to understand the following constraints and best practices:
+When setting up credentials in ELITEA, it's important to understand the following considerations and best practices:
 
-* **Uniqueness per Integration Type:**
-    * **Jira, Confluence, QTest, GitLab and TestRail:** Within your Private workspace or a Team project, you can create multiple integrations for Jira, Confluence, QTest, GitLab, and TestRail. The uniqueness of these integrations is determined by the **URL** of the respective service. This means you can connect to different Jira instances, Confluence spaces, QTest, GitLab, or TestRail accounts by creating separate integrations for each unique URL.
-    * **GitHub:**  In contrast to Jira, Confluence, QTest, and TestRail, you can create **only one** GitHub integration within your **Private** workspace or a **Team** project. This single integration will serve as the connection point for all your GitHub interactions within that space.
+* **Credential Scope:**
+    * **Private Credentials:** Created in your **Private** workspace and only accessible to you.
+    * **Project Credentials:** Created within a **Team** project and accessible to all project members.
+    * **Shared Checkbox:** Available in Team projects to control whether credentials are shared with all team members or kept private.
 
-* **Authentication Verification:**  Always double-check the authentication details you provide for each integration. Incorrect credentials will prevent ELITEA from successfully connecting to the external service. Ensure that the Basic credentials, Bearer tokens, passwords, or private keys you enter are accurate and have the necessary permissions to access the desired resources on the external platform. Verifying the authentication setup is **crucial** for ensuring your integrations (and the configurations that use them) function correctly.
+* **Authentication Verification:** Always double-check the authentication details you provide for each credential. Incorrect credentials will prevent ELITEA from successfully connecting to the external service. Ensure that the API keys, tokens, usernames, or passwords you enter are accurate and have the necessary permissions to access the desired resources on the external platform.
 
-**Credential Entry Options for Integrations**
+**Security Options for Sensitive Information**
 
-For any integration that requires credentials (such as API Key, Basic, Bearer, Token, Password, etc.), you have two secure options for providing the value:
+For any credential field that requires sensitive information (such as API keys, passwords, or tokens), you have secure options:
 
-* **Manual Entry (Password):** When you select the **Password** option for any authentication field (such as Basic, Bearer, API Token, etc.), you can enter the credential directly into the provided field. Use this if you want to input the value each time or for quick, one-off integrations.
-* **Using a Secret (Recommended):** For enhanced security and easier management, select the **Secret** option from the dropdown. This allows you to choose a pre-configured secret from the Secrets page. To use this option, you must first create and store the required credential (API Key, Bearer token, password, etc.) as a secret in the **Secrets** section of ELITEA. Once configured, simply select the secret from the dropdown when setting up your integration. This approach avoids exposing sensitive information in configuration forms and makes it easier to update credentials in the future.
+* **Using Secrets (Highly Recommended):** For enhanced security, always use pre-configured secrets from the **[Secrets](../menus/settings/secrets.md)** section. This approach avoids exposing sensitive information in configuration forms, provides better security through encryption, and makes it easier to update credentials in the future.
+* **Manual Entry:** Enter the sensitive value directly into the provided field. Use this only for testing or temporary setups when secrets are not available.
 
-Whenever you see a credential field in any integration setup, you may use either method above. For more details on managing secrets, see the [Secrets documentation](../menus/settings/secrets.md).
 
-### Confluence Integration Setup
+## Supported Credential Types and Setup Guides
 
-To enable connection with your **Confluence** instance:
+Below are the supported credential types in ELITEA, with step-by-step instructions for each:
 
-1. **Initiate New Integration:** Click the `+` icon in the Integrations menu and select **Confluence**.
-2. **Enter Integration Details:**
-    * **Name:** Provide a descriptive name for this integration (e.g., "Confluence - KB Name").
-    * **URL:** Enter the base URL of your Confluence instance (e.g., `https://kb.epam.com/`).
-    * **Authentication Options:**
-        * **Basic:** Provide your Confluence Token and username.
-        * **Bearer:** Provide your Confluence API token.        
-      For each credential, you may enter it manually or select a Secret as described [above](#important-considerations-for-integrations).
-    * **Hosting Option:** Select the appropriate hosting type:
-        * **Cloud:** For Confluence instances hosted on Atlassian's cloud.
-        * **Server:** For self-hosted or enterprise Confluence instances. **Important Note:** For connecting to Epam's Confluence, select **Server**.
-    * **Set as Default:** Optionally, check this box to make this integration the default **Confluence** connection for the **Private** workspace or **Team** project.
-3. **Save the Integration:** Click the **Save** button.
+### ADO (Azure DevOps) Credential Setup
 
-![Integrations-Confluence](<../img/how-tos/integrations/Integrations-Confluence.png>)
+To create an **ADO (Azure DevOps)** credential:
 
-### GitHub Integration Setup
+**Required Fields:**
 
-To connect with your **GitHub** repositories:
+- **Name:** A descriptive name for your credential
+- **Organization URL:** The base API URL of your ADO organization
+- **Project:** Your ADO project name
+- **Token:** Your ADO Personal Access Token
 
-1. **Initiate New Integration:** Click the `+` icon in the Integrations menu and select **GitHub**.
-2. **Enter Integration Details:**
-    * **Name:** Provide a descriptive name for this integration (e.g., "GitHub - Repo Name").
-    * **Authentication Options:**
-        * **Private Key:** Provide your GitHub App ID and private key.
-        * **Token:** Provide your GitHub Personal Access Token.
-        * **Password:** Provide your GitHub username and password.        
-      For each credential, you may enter it manually or select a Secret as described [above](#important-considerations-for-integrations).
-    * **Set as Default:** Optionally, check this box to make this integration the default **GitHub** connection for the **Private** workspace or **Team** project.
-3. **Save the Integration:** Click the **Save** button.
+**Step-by-step Instructions:**
 
-![Integrations-GitHub](<../img/how-tos/integrations/Integrations-GitHub.png>)
+1. Click **+ Create** in the Credentials menu.
+2. Select **ADO** as the credential type.
+3. Enter a descriptive name (e.g., "ADO - Project Management").
+4. Enter your organization URL (e.g., `https://dev.azure.com/yourorg`).
+5. Enter your ADO project name.
+6. Enter your ADO Personal Access Token.
+7. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+8. Click **Save**.
 
-### GitLab Integration Setup
+![ADO Credential Setup](../img/how-tos/how-to-use-credentials/cred-ado.png)
 
-To enable connection with your **GitLab** instance:
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the token instead of entering it directly.
 
-1. **Initiate New Integration:** Click the `+` icon in the Integrations menu and select **GitLab**.
-2. **Enter Integration Details:**
-    * **Name:** Provide a descriptive name for this integration (e.g., "GitLab - Project Name").
-    * **URL:** Enter the base URL of your GitLab instance (e.g., `https://gitlab.com/`).
-    * **Authentication Options:**
-        * **Token:** Provide your GitLab Personal Access Token.
-      For the token, you may enter it manually or select a Secret as described [above](#important-considerations-for-integrations).
-3. **Save the Integration:** Click the **Save** button.
+### ADO Repos Credential Setup
 
-![Integrations-GitLab](<../img/how-tos/integrations/Integrations-GitLab.png>)
+To create an **ADO Repos** credential:
 
-### Jira Integration Setup
+**Required Fields:**
 
-To enable connection with your **Jira** instance:
+- **Name:** A descriptive name for your credential
+- **Repository ID:** Your ADO repository ID
+- **ADO Configuration:** Reference to an existing ADO credential
 
-1. **Initiate New Integration:** Click the `+` icon in the Integrations menu and select **Jira**.
-2. **Enter Integration Details:**
-    * **Name:** Provide a descriptive name for this integration (e.g., "Jira - Project Name").
-    * **URL:** Enter the base URL of your Jira instance (e.g., `https://jiraeu.epam.com/`).
-    * **Authentication Options:**
-        * **Basic:** Provide your Jira Token and username.
-        * **Bearer:** Provide your Jira API token.        
-      For each credential, you may enter it manually or select a Secret as described [above](#important-considerations-for-integrations).
-    * **Hosting Option:** Select the appropriate hosting type:
-        * **Cloud:** For Jira instances hosted on Atlassian's cloud.
-        * **Server:** For self-hosted or enterprise Jira instances. **Important Note:** For connecting to Epam's Jira, select **Server**.
-    * **Set as Default:** Optionally, check this box to make this integration the default **Jira** connection for the **Private** workspace or **Team** project.
-3. **Save the Integration:** Click the **Save** button.
+**Step-by-step Instructions:**
 
-![Integrations-Jira](<../img/how-tos/integrations/Integrations-Jira.png>)
+1. Click **+ Create** in the Credentials menu.
+2. Select **ADO Repos** as the credential type.
+3. Enter a descriptive name (e.g., "ADO Repos - Source Code").
+4. Enter your repository ID.
+5. Select an existing ADO configuration or create a new one.
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
 
-### QTest Integration Setup
+![ADO Repos Credential Setup](../img/how-tos/how-to-use-credentials/cred-ado-repo.png)
 
-To enable connection with your **QTest** instance:
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for sensitive configuration data instead of entering it directly.
 
-1. **Initiate New Integration:** Click the `+` icon in the Integrations menu and select **QTest**.
-2. **Enter Integration Details:**
-    * **Name:** Provide a descriptive name for this integration (e.g., "QTest - Project Name").
-    * **Base URL:** Enter the base URL of your QTest instance (e.g., `https://qtest.yourcompany.com/`).
-    * **Authentication Options:**
-        * **API Token:** Provide your QTest API token.
-      For the API token, you may enter it manually or select a Secret as described [above](#important-considerations-for-integrations).
-3. **Save the Integration:** Click the **Save** button.
+### Bitbucket Credential Setup
 
-![Integrations-QTest](<../img/how-tos/integrations/Integrations-QTest.png>)
+To create a **Bitbucket** credential:
 
-### TestRail Integration Setup
+**Required Fields:**
 
-To connect with your **TestRail** instance:
+- **Name:** A descriptive name for your credential
+- **URL:** The URL of your Bitbucket instance
+- **Authentication:** Username and Password
 
-1. **Initiate New Integration:** Click the `+` icon in the Integrations menu and select **TestRail**.
-2. **Enter Integration Details:**
-    * **Name:** Provide a descriptive name for this integration (e.g., "TestRail - Project Name").
-    * **URL:** Enter the base URL of your TestRail instance (e.g., `https://testrail.epam.com/`).
-    * **Email:** Enter the email address associated with your TestRail account.
-    * **Authentication Options:**
-        * **Password:** Provide your TestRail account password.
-      For the password, you may enter it manually or select a Secret as described [above](#important-considerations-for-integrations).
-    * **Set as Default:** Optionally, check this box to make this integration the default **TestRail** connection for the **Private** workspace or **Team** project.
-3. **Save the Integration:** Click the **Save** button.
+**Step-by-step Instructions:**
 
-![Integrations-TestRail](<../img/how-tos/integrations/Integrations-TestRail.png>)
+1. Click **+ Create** in the Credentials menu.
+2. Select **Bitbucket** as the credential type.
+3. Enter a descriptive name (e.g., "Bitbucket - Repository Access").
+4. Enter your Bitbucket URL (e.g., `https://bitbucket.org`).
+5. Enter your Bitbucket username.
+6. Enter your Bitbucket password or app password.
+7. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+8. Click **Save**.
 
+![Bitbucket Credential Setup](../img/how-tos/how-to-use-credentials/cred-bitbucket.png)
 
-## Configurations: Applying Integrations to Agent Toolkits
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the password instead of entering it directly.
 
-**Configurations** provide the mechanism to utilize the integrations you've set up within your Agent toolkits. When configuring a toolkit for Jira, Confluence, GitHub, GitLab, or TestRail within an Agent, you have the option to select a **pre-configured integration**, eliminating the need to enter authentication details directly into the toolkit settings.
+### Confluence Credential Setup
 
-**Configuration Options:**
+To create a **Confluence** credential:
 
-When configuring a toolkit, you will typically find a dropdown menu or a selection field related to "Configuration" or "Integration." This section offers three primary options:
+**Required Fields:**
 
-* **Create manual configuration:** This option allows you to enter all the necessary connection details (URL, authentication credentials) directly within the toolkit settings. This is useful for one-off connections or when you don't want to create a reusable integration.
-* **Create private configuration:** Selecting this option will create a new integration configuration specifically for this toolkit. The entered details will be used for this toolkit and will also be saved as a reusable integration in your **Private** workspace's Integrations page. This allows you to reuse this configuration in other toolkits within your **Private** workspace or **Team** projects.
-* **Create project configuration:** Similar to the private configuration, this option creates a new integration configuration for the toolkit. The details will be used for this toolkit and will also be saved as a reusable integration in the current **Team** project's Integrations page, making it available for other agents and toolkits within **that project**.
-* **Select existing integration:** This option allows you to choose from the list of integrations that have already been configured in your **Private** workspace or the current **Team** project's Integrations page. Selecting an existing integration automatically populates the toolkit's connection details, simplifying the setup process.
+- **Name:** A descriptive name for your credential
+- **Base URL:** The URL of your Confluence instance
+- **Authentication Options (choose one):**
+  - **Basic:** Username and API Key
+  - **Bearer:** Token
 
-![Configuration-Options](<../img/how-tos/integrations/Configuration-Options.png>)
+**Step-by-step Instructions:**
 
-### Create manual configuration
+1. Click **+ Create** in the Credentials menu.
+2. Select **Confluence** as the credential type.
+3. Enter a descriptive name (e.g., "Confluence - Knowledge Base").
+4. Enter the base URL of your Confluence instance (e.g., `https://yourcompany.atlassian.net/wiki`).
+5. Choose your authentication method:
+   - For **Basic:** Enter your username and API key
+   - For **Bearer:** Enter your token
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
 
-1. Click the **+ Agent** button located at the top right corner or open already created Agent.
-2. Click the **+ icon** or open already created toolkit under **TOOLS** section.
-3. Select the desired tool (Confluence, Jira, GitHub, GitLab, QTest, TestRail) from the dropdown list. The **New tool** configuration section is opened.
-4. Select the **Manual configuration** under the **Configuration** option.
-5. Depending on the selected toolkit fill all **required fields** and **options**.
-6. Click the **Save** button to apply changes.
+![Confluence Credential Setup](../img/how-tos/how-to-use-credentials/cred-confluence.png)
 
-![Configuration-Manual_Configuration](<../img/how-tos/integrations/Configuration-Manual_Configuration.png>)
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for API keys and tokens instead of entering them directly.
 
-### Create private configuration
+### Figma Credential Setup
 
-1. Click the **+ Agent** button located at the top right corner or open already created Agent.
-2. Click the **+ icon** or open already created toolkit under **TOOLS** section.
-3. Select the desired tool (Confluence, Jira, GitHub, GitLab, QTest, TestRail) from the dropdown list. The **New tool** configuration section is opened.
-4. Select the **Create private configuration** under the **Configuration** option.
-5. Provide the **Configuration Name**.
-6. Depending on the selected toolkit fill all **required fields** and **options**.
-7. Click the **Save configuration** button to save the changes and add this configuration as reusable integration in your **Private** workspace's Integrations page.
+To create a **Figma** credential:
 
-![Configuration-Private_Configuration](<../img/how-tos/integrations/Configuration-Private_Configuration.png>)
+**Required Fields:**
 
-### Create project configuration
+- **Name:** A descriptive name for your credential
+- **Authentication Options (choose one):**
+  - **Token:** Personal Access Token
+  - **OAuth2:** OAuth2 Token
 
-1. Click the **+ Agent** button located at the top right corner or open already created Agent.
-2. Click the **+ icon** or open already created toolkit under **TOOLS** section.
-3. Select the desired tool (Confluence, Jira, GitHub, GitLab, QTest, TestRail) from the dropdown list. The **New tool** configuration section is opened.
-4. Select the **Create project configuration** under the **Configuration** option.
-5. Provide the **Configuration Name**.
-6. Depending on the selected toolkit fill all **required fields** and **options**.
-7. Click the **Save configuration** button to save the changes and add this configuration as reusable integration in your **Team** project's Integrations page.
+**Step-by-step Instructions:**
 
-![Configuration-Project_Configuration](<../img/how-tos/integrations/Configuration-Project_Configuration.png>)
+1. Click **+ Create** in the Credentials menu.
+2. Select **Figma** as the credential type.
+3. Enter a descriptive name (e.g., "Figma - Design Assets").
+4. Choose your authentication method:
+   - For **Token:** Enter your Figma Personal Access Token (starts with `figd_`)
+   - For **OAuth2:** Enter your OAuth2 token
+5. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+6. Click **Save**.
 
-### Configurations: Selecting existing Integrations
+![Figma Credential Setup](../img/how-tos/how-to-use-credentials/cred-figma.png)
 
-Once you have configured integrations in your **Private** workspace or within a **Team** project, these integrations become available for selection when configuring toolkits in your Agents. This allows you to easily reuse established connections to external platforms.
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for tokens instead of entering them directly.
 
-When adding or editing a Jira, Confluence, GitHub, GitLab, or TestRail toolkit in an Agent, you will find a **Configuration** dropdown list. This list displays all the available integrations of the corresponding type that you can use for that specific toolkit.
+### GitHub Credential Setup
 
-**Identifying Integration Scope:**
+To create a **GitHub** credential:
 
-To help you distinguish between integrations configured in your Private workspace and those configured within the current Team project, ELITEA uses distinct icons:
+**Required Fields:**
 
-* **Private Integration**: Integrations configured in your **Private** workspace are indicated by a person icon (👤) at the beginning of the integration URL or name in the dropdown list.
-* **Project Integration**: Integrations configured within the current **Team** project are indicated by a folder icon (📁) at the beginning of the integration URL or name.
+- **Name:** A descriptive name for your credential
+- **Base URL:** Base API URL (optional, defaults to `https://api.github.com`)
+- **Authentication Options (choose one or leave blank for anonymous):**
+  - **Token:** Access Token
+  - **Password:** Username and Password
+  - **App Private Key:** App ID and Private Key
+  - **Anonymous:** No authentication (for public repositories)
 
-![Configuration-Select_Private_Integration](<../img/how-tos/integrations/Configuration-Select_Private_Integration.png>)
+**Step-by-step Instructions:**
 
-![Configuration-Select_Project_Integration](<../img/how-tos/integrations/Configuration-Select_Project_Integration.png>)
+1. Click **+ Create** in the Credentials menu.
+2. Select **GitHub** as the credential type.
+3. Enter a descriptive name (e.g., "GitHub - Project Repository").
+4. Optionally modify the base URL (default: `https://api.github.com`).
+5. Choose your authentication method:
+   - For **Token:** Enter your GitHub Personal Access Token
+   - For **Password:** Enter your username and password
+   - For **App Private Key:** Enter your GitHub App ID and private key
+   - For **Anonymous:** Leave all authentication fields blank (suitable for public repositories)
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
 
-**Integration Naming Convention:**
+![GitHub Credential Setup](../img/how-tos/how-to-use-credentials/cred-github.png)
 
-The naming convention for integrations in the dropdown list also helps you identify the specific connection:
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for sensitive information like tokens, passwords, and private keys instead of entering them directly.
 
-* **Jira**, **Confluence**, **QTest**, **GitLab** and **TestRail** Integrations: These integrations are listed using their configured URL. This ensures you can easily differentiate between connections to different instances of these tools (e.g., different Jira servers or Confluence spaces).
-* **GitHub** Integrations: Since only one **GitHub** integration is allowed per workspace or project, these integrations are simply listed as **https://api.github.com**.
+### GitLab Credential Setup
 
-**Toolkit-Specific Integration Filtering**:
+To create a **GitLab** credential:
 
-The **Configuration** dropdown list is context-aware. When configuring a specific type of toolkit (e.g., a Jira toolkit), only integrations of that specific type (Jira integrations) will be displayed for selection. This prevents you from accidentally selecting an integration intended for a different tool.
+**Required Fields:**
 
-By understanding these visual cues and naming conventions, you can easily select the appropriate pre-configured integration for your Agent toolkit, simplifying the setup process and ensuring consistent authentication.
+- **Name:** A descriptive name for your credential
+- **URL:** The URL of your GitLab instance
+- **Authentication:** GitLab private token
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **GitLab** as the credential type.
+3. Enter a descriptive name (e.g., "GitLab - Development").
+4. Enter the URL of your GitLab instance (e.g., `https://gitlab.com`).
+5. Enter your GitLab private token.
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![GitLab Credential Setup](../img/how-tos/how-to-use-credentials/cred-gitlab.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the token instead of entering it directly.
+
+### Jira Credential Setup
+
+To create a **Jira** credential:
+
+**Required Fields:**
+
+- **Name:** A descriptive name for your credential
+- **Base URL:** The URL of your Jira instance
+- **Authentication Options (choose one):**
+  - **Basic:** Username and API Key
+  - **Bearer:** Token
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Jira** as the credential type.
+3. Enter a descriptive name (e.g., "Jira - Project Management").
+4. Enter the base URL of your Jira instance (e.g., `https://yourcompany.atlassian.net`).
+5. Choose your authentication method:
+   - For **Basic:** Enter your username and API key
+   - For **Bearer:** Enter your token
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![Jira Credential Setup](../img/how-tos/how-to-use-credentials/cred-jira.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for API keys and tokens instead of entering them directly.
+
+### Postman Credential Setup
+
+To create a **Postman** credential:
+
+**Required Fields:**
+
+- **Name:** A descriptive name for your credential
+- **Base URL:** Postman API base URL
+- **Workspace ID:** Default workspace ID
+- **Authentication:** API Key
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Postman** as the credential type.
+3. Enter a descriptive name (e.g., "Postman - API Collections").
+4. Enter the Postman API base URL.
+5. Enter your default workspace ID.
+6. Enter your Postman API key.
+7. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+8. Click **Save**.
+
+![Postman Credential Setup](../img/how-tos/how-to-use-credentials/cred-postman.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the API key instead of entering it directly.
+
+### QTest Credential Setup
+
+To create a **QTest** credential:
+
+**Required Fields:**
+
+- **Name:** A descriptive name for your credential
+- **Base URL:** The URL of your QTest instance
+- **API Token:** Your QTest API token
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **QTest** as the credential type.
+3. Enter a descriptive name (e.g., "QTest - Quality Management").
+4. Enter the base URL of your QTest instance.
+5. Enter your QTest API token.
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![QTest Credential Setup](../img/how-tos/how-to-use-credentials/cred-qtest.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the token instead of entering it directly.
+
+### Rally Credential Setup
+
+To create a **Rally** credential:
+
+**Required Fields:**
+
+- **Name:** A descriptive name for your credential
+- **Server:** Rally server URL
+- **Authentication Options (choose one):**
+  - **Password:** Username and Password
+  - **API Key:** API Key
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Rally** as the credential type.
+3. Enter a descriptive name (e.g., "Rally - Agile Management").
+4. Enter your Rally server URL.
+5. Choose your authentication method:
+   - For **Password:** Enter your username and password
+   - For **API Key:** Enter your Rally API key
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![Rally Credential Setup](../img/how-tos/how-to-use-credentials/cred-rally.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for passwords and API keys instead of entering them directly.
+
+### ServiceNow Credential Setup
+
+To create a **ServiceNow** credential:
+
+**Required Fields:**
+
+- **Name:** A descriptive name for your credential
+- **Base URL:** The URL of your ServiceNow instance
+- **Authentication:** Username and Password
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **ServiceNow** as the credential type.
+3. Enter a descriptive name (e.g., "ServiceNow - IT Service Management").
+4. Enter the base URL of your ServiceNow instance (e.g., `https://yourinstance.service-now.com`).
+5. Enter your ServiceNow username.
+6. Enter your ServiceNow password.
+7. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+8. Click **Save**.
+
+![ServiceNow Credential Setup](../img/how-tos/how-to-use-credentials/cred-servicenow.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the password instead of entering it directly.
+
+### Slack Credential Setup
+
+To create a **Slack** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive name for your credential
+- **Slack Token:** Your Slack authentication token (format: XOXB-*****-*****-*****-*****)
+- **Name:** Slack workspace name (optional)
+- **Channel ID:** Default channel ID (optional)
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Slack** as the credential type.
+3. Enter a descriptive name (e.g., "Slack - Team Communication").
+4. Enter your Slack Bot Token or User Token (starts with `xoxb-` or `xoxp-`).
+5. Optionally enter a Slack workspace name in the **Name (Slack)** field and default channel ID.
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![Slack Credential Setup](../img/how-tos/how-to-use-credentials/cred-slack.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the Slack token instead of entering it directly.
+
+### TestRail Credential Setup
+
+To create a **TestRail** credential:
+
+**Required Fields:**
+
+- **Name:** A descriptive name for your credential
+- **URL:** The URL of your TestRail instance
+- **Email:** Your TestRail account email
+- **Password:** Your TestRail account password
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **TestRail** as the credential type.
+3. Enter a descriptive name (e.g., "TestRail - Test Management").
+4. Enter the URL of your TestRail instance (e.g., `https://yourcompany.testrail.net`).
+5. Enter your TestRail email address.
+6. Enter your TestRail password.
+7. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+8. Click **Save**.
+
+![TestRail Credential Setup](../img/how-tos/how-to-use-credentials/cred-testrail.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the password instead of entering it directly.
+
+### Xray Credential Setup
+
+To create an **Xray** credential:
+
+**Required Fields:**
+
+- **Name:** A descriptive name for your credential
+- **Base URL:** The URL of your Xray instance
+- **Authentication:** Client Credentials
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Xray** as the credential type.
+3. Enter a descriptive name (e.g., "Xray - Test Automation").
+4. Enter the base URL of your Xray instance.
+5. Enter your Client ID.
+6. Enter your Client Secret.
+7. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+8. Click **Save**.
+
+![Xray Credential Setup](../img/how-tos/how-to-use-credentials/cred-xray.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the client secret instead of entering it directly.
+
+### Zephyr Enterprise Credential Setup
+
+To create a **Zephyr Enterprise** credential:
+
+**Required Fields:**
+
+- **Name:** A descriptive name for your credential
+- **Base URL:** The URL of your Zephyr Enterprise instance
+- **Token:** API token
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Zephyr Enterprise** as the credential type.
+3. Enter a descriptive name (e.g., "Zephyr Enterprise - Test Management").
+4. Enter the base URL of your Zephyr Enterprise instance.
+5. Enter your API token.
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![Zephyr Enterprise Credential Setup](../img/how-tos/how-to-use-credentials/cred-zephyr-enterprise.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the token instead of entering it directly.
+
+### Zephyr Scale Credential Setup
+
+To create a **Zephyr Scale** credential:
+
+**Required Fields:**
+
+- **Name:** A descriptive name for your credential
+- **Base URL:** The URL of your Zephyr Scale instance
+- **Authentication Options (choose one):**
+  - **Token:** API Token
+  - **Username & Password:** Username and Password
+  - **Cookies:** Cookie-based authentication
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Zephyr Scale** as the credential type.
+3. Enter a descriptive name (e.g., "Zephyr Scale - Test Planning").
+4. Enter the base URL of your Zephyr Scale instance.
+5. Choose your authentication method:
+   - For **Token:** Enter your API token
+   - For **Username & Password:** Enter your username and password
+   - For **Cookies:** Enter your authentication cookies
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![Zephyr Scale Credential Setup](../img/how-tos/how-to-use-credentials/cred-zephyr-scale.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for tokens, passwords, and cookies instead of entering them directly.
+
+
+## Using Credentials in Toolkits
+
+Once you have created credentials, you can assign them to toolkits to enable secure access to external services.
+
+**How to Assign a Credential:**
+
+1. When creating or editing a toolkit, locate the **configuration** dropdown.
+2. Choose an existing credential from the list, or create a new one if needed.
+3. Save your changes to apply the credential to your toolkit.
+
+![Credentials-Config](../img/how-tos/how-to-use-credentials/new-toolkit-configs.png)
+
+**Credential Scope and Access:**
+
+* **Private Credentials:** These are created in your **Private** workspace and are only visible to you. They appear in the dropdown when configuring toolkits in your private workspace.
+* **Project Credentials:** These are created within a **Team** project and are visible to all team members. They appear in the dropdown when configuring toolkits within that project.
+
+**Best Practices:**
+
+* Use **project-scoped credentials** for team integrations and shared toolkits.
+* Use **personal credentials** for individual agent tasks and private toolkits.
+* Regularly rotate and update credentials to maintain security.
+* Use Secrets for storing sensitive authentication information.
+
+For more information on creating and managing Toolkits, see the [Toolkits documentation](../getting-started/create-toolkit.md).
 
 ## Best Practices and Use Cases
 
-Here are some examples of how to effectively utilize Integrations and Configurations in your ELITEA workflows:
+Here are some examples of how to effectively utilize Credentials in your ELITEA workflows:
 
 ### Use Case 1: Individual Jira Credentials for User Story Management
 
 * **Scenario:** You are building an agent workflow to create and publish user stories in Jira. You want each Business Analyst (BA) using the agent to authenticate with their own Jira credentials to ensure traceability of who created which user story.
 * **Solution:**
-    1. Instruct each BA to configure their personal Jira integration in their **Private** workspace's Integrations page.
-    2. In the project where the agent is being configured, when setting up the Jira toolkit for publishing user stories, select already created **Private configuration** option. This will allow each BA running the agent to use their own private Jira integration, using their personal credentials for authentication.
+    1. Instruct each BA to create their personal Jira credential in their **Private** workspace.
+    2. When configuring the Jira toolkit in the agent, each BA can select their own private Jira credential from the dropdown, ensuring personal authentication.
 
 ### Use Case 2: Service Account for GitHub Code Access
 
 * **Scenario:** You are creating an agent workflow to read code from a GitHub repository to generate automation test cases. You have a dedicated service account for accessing the GitHub repository and want to use these credentials consistently for this purpose.
 * **Solution:**
-    1. The team manager or a designated member configures a GitHub integration in the **Team** project Integrations page using the service account's credentials.
-    2. When configuring the GitHub toolkit in the agent for reading code, select already created **Project configuration** option and choose the integration configured with the service account.
+    1. The team manager creates a GitHub credential in the **Team** project using the service account's access token.
+    2. When configuring the GitHub toolkit, team members can select the shared project credential.
 
 ### Use Case 3: Mixed Authentication for Confluence and TestRail Workflow
 
 * **Scenario:** You are building an agent workflow to read information from Confluence pages and then publish manual test cases in TestRail. You want to use a service account for accessing Confluence but require each Quality Assurance (QA) engineer to use their own TestRail credentials for publishing test cases.
 * **Solution:**
-    1. The team manager configures a Confluence integration in the **Team** project Integrations page using the service account's credentials.
-    2. Instruct each QA engineer to configure their personal TestRail integration in their **Private** workspace's Integrations page.
+    1. The team manager creates a Confluence credential in the **Team** project using the service account's credentials.
+    2. Each QA engineer creates their personal TestRail credential in their **Private** workspace.
     3. When configuring the agent:
-        * For the Confluence toolkit, use already created **Project configuration** and choose the service account integration.
-        * For the TestRail toolkit, use already created **Private configuration** option, allowing each QA to use their own TestRail integration.
+        * For the Confluence toolkit, select the shared project Confluence credential.
+        * For the TestRail toolkit, each QA uses their own private TestRail credential.
 
 ### Use Case 4: GitLab Integration for CI/CD Automation
 
 * **Scenario:** You are building an agent workflow to trigger CI/CD pipelines in GitLab and fetch pipeline statuses. You want to use a service account for consistent access.
 * **Solution:**
-    1. The team manager configures a GitLab integration in the **Team** project Integrations page using the service account's token.
-    2. When configuring the GitLab toolkit in the agent, select already created **Project configuration** option and choose the integration configured with the service account.
+    1. The team manager creates a GitLab credential in the **Team** project using the service account's token.
+    2. When configuring the GitLab toolkit, select the shared project credential.
 
-By strategically using **Integrations** and **Configurations**, you can create flexible and secure agent workflows that cater to various authentication needs and enhance collaboration within your ELITEA environment.
+### Security Best Practices
+
+* **Use Secrets:** For enhanced security, store sensitive authentication information (API keys, tokens, passwords) as Secrets and reference them in your credentials.
+* **Regular Rotation:** Regularly rotate and update your credentials to maintain security compliance.
+* **Principle of Least Privilege:** Ensure that each credential has only the minimum permissions necessary for its intended use.
+* **Audit and Review:** Regularly review and audit your credentials to remove unused or outdated ones.
+
+By strategically using **Credentials**, you can create flexible and secure agent workflows that cater to various authentication needs and enhance collaboration within your ELITEA environment.
+
+
+!!! info "Related Documentation"
+    For more detailed information, refer to:
+    
+    - **[Credentials Menu](../menus/credentials.md)** - Comprehensive guide to the Credentials interface and management
+    - **[Toolkits Menu](../menus/toolkits.md)** - Learn how to integrate credentials with toolkits
+    - **[Secrets](../menus/settings/secrets.md)** - Enhanced security through the Secrets management system
+    - **[Glossary](../home/glossary.md)** - Definitions of key terms and concepts used in ELITEA
