@@ -20,11 +20,15 @@ Toolkits in ELITEA are the building blocks that empower your agents to interact 
       * **Configure Credentials or Settings:**
         * In the CONFIGURATION section, select a credential from the “Credentials” dropdown, or create a new one if necessary.
         * Fill out any additional configuration fields as prompted (such as API endpoints, project keys, etc.).
-      * **Enable Tools:** In the “Tools” section, select only the tools your agent will use for security and clarity.
-
+      * **Configure Advanced Options (Optional):**
+        * **PgVector Configuration:** Many toolkits now support vector database integration through PgVector. If available, select or configure a PgVector connection from the configuration dropdown to enable vector storage capabilities for document indexing and similarity search.
+        * **Embedding Model:** For toolkits that support text processing and semantic search, select an appropriate embedding model configuration from the dropdown. This enables the toolkit to process and understand text content for advanced search and analysis features.
 3. **Save the Toolkit:**
       * Click **Save** to add the toolkit to your dashboard.
       * The new toolkit will now appear in your list of available toolkits.
+4. **Enable Tools:** 
+     * Open the newly created toolkit.
+     * Configure which specific tools are enabled for this toolkit. In the "Tools" section, check only the tools your agent will use. Enabling only necessary tools improves security (principle of least privilege) and optimizes performance.      
 
 !!! note "Reference"
       For detailed instructions on creating credentials, refer to the [Create Credentials](../menus/credentials.md) document.
@@ -67,6 +71,10 @@ To integrate Slack or any other toolkit, you'll need to configure it within an E
      * Ensure the toolkit was created and saved successfully.
 * **Agent actions failing?**  
      * Double-check toolkit credentials and configuration, and ensure the agent has the correct toolkits assigned.
+     * Verify that the required tools are enabled in the toolkit's tool selection.
+* **PgVector or Embedding Model options not available?**
+     * Ensure your toolkit type supports these advanced features (available in document/content processing toolkits).
+     * Verify that PgVector database and embedding model configurations are set up in your project's AI Configuration.
 * **Permission errors?**  
      * Make sure you have the necessary permissions to assign toolkits and agents.
 
@@ -79,3 +87,11 @@ To integrate Slack or any other toolkit, you'll need to configure it within an E
 By following these steps, you can create a toolkit and assign it to an agent, enabling automated, secure, and powerful interactions with your enterprise tools through ELITEA agents.
 
 ---
+
+!!! info "Additional Resources"
+    
+    * **[Glossary](../home/glossary.md)** — Definitions of common terms used across the platform
+    * **[Toolkits](../menus/toolkits.md)** — Complete guide to the Toolkits menu interface and advanced configuration options
+    * **[Agents](../menus/agents.md)** — Configure agents and assign toolkits to enable automated workflows
+    * **[Credentials](../menus/credentials.md)** — Learn how to create and manage credentials used by toolkits
+    

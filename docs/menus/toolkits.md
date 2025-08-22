@@ -48,13 +48,16 @@ Follow these steps to add a new integration to the platform:
 5. **Configure Credentials or Settings:**
        * If the toolkit requires credentials, open the Credentials dropdown and either create new credentials or select an existing one. Enter any required parameters (API keys, tokens, service URLs, etc.) as prompted.
        * For toolkits that do not require credentials, configuration fields will be shown directly on the create toolkit page. Fill in the necessary settings as prompted for that toolkit type.
-6. **Enable Tools:** In the "Tools" section, check only the tools your agent will use. Enabling only necessary tools improves security (principle of least privilege).
-7. **Save the Toolkit:** Click **Save** (top right) to add the toolkit to your dashboard. It will now appear in the list, ready for assignment or testing.
+6. **Configure Advanced Options (Optional):**
+       * **PgVector Configuration:** Many toolkits now support vector database integration through PgVector. If available, select or configure a PgVector connection from the configuration dropdown to enable vector storage capabilities for document indexing and similarity search.
+       * **Embedding Model:** For toolkits that support text processing and semantic search, select an appropriate embedding model configuration from the dropdown. This enables the toolkit to process and understand text content for advanced search and analysis features.
+7. **Save the Toolkit:** Click **Save** (top right) to create the toolkit. It will now appear in your toolkits dashboard, where you can access its detailed configuration page to manage tool selection and other settings.
 
  ![Toolkits-Create](../img/menus/toolkits/new_configs.png)
 
-!!! note "Note"
-    Only users with the necessary permissions can create or configure toolkits. If the `+ Create` button is disabled for you, please contact your platform administrator.
+!!! note "Important Notes"
+    * After creating a toolkit, you'll need to configure which specific tools are enabled by visiting the toolkit's detailed page. Tool selection is managed post-creation for better organization and security.
+    * Only users with the necessary permissions can create or configure toolkits. If the `+ Create` button is disabled for you, please contact your platform administrator.
 
 ---
 
@@ -80,6 +83,37 @@ The platform supports a wide range of toolkits, organized by category. Below is 
 
 ---
 
+## Advanced Configuration Options
+
+Many toolkits in the ELITEA platform now support advanced configuration options that enhance their capabilities for document processing, search, and AI-powered features:
+
+### PgVector Configuration
+
+**PgVector Configuration** enables vector database integration for toolkits that support document indexing and similarity search capabilities.
+
+* **Purpose:** Provides vector storage for embedding-based search and document retrieval
+* **Configuration:** Requires a connection string to your PgVector database instance
+* **Supported Toolkits:** Available in toolkits such as Figma, Jira, TestRail, ADO, Sharepoint, Zephyr variants, and others that handle document or content processing
+* **Benefits:** Enables semantic search, document similarity analysis, and improved content discovery within integrated platforms
+
+### Embedding Model Configuration
+
+**Embedding Model Configuration** allows toolkits to process and understand text content for advanced search and analysis features.
+
+* **Purpose:** Converts text content into vector representations for semantic understanding
+* **Configuration:** Select from available embedding model configurations in your project
+* **Supported Toolkits:** Available in the same toolkits that support PgVector configuration
+* **Benefits:** Enables natural language queries, content similarity matching, and AI-powered content analysis
+
+!!! tip "Configuration Requirements"
+    To use these advanced features, ensure that:
+    
+    * PgVector database is properly configured and accessible
+    * Embedding model credentials are set up in your project's AI Configuration
+    * Both configurations are created before toolkit setup for seamless integration
+
+---
+
 ## Editing and Configuring a Toolkit
 
 
@@ -87,7 +121,9 @@ The platform supports a wide range of toolkits, organized by category. Below is 
 
 To edit a toolkit, open its detailed page from the Toolkits dashboard. On this page, you can:
 
-* **Edit Toolkit Details:** Update the name, description, credentials (API keys, tokens, service URLs), enabled tools, and any custom or advanced options directly in the configuration panel.
+* **Edit Toolkit Details:** Update the name, description, credentials (API keys, tokens, service URLs), and any custom or advanced options directly in the configuration panel.
+* **Manage Tool Selection:** Configure which specific tools are enabled for this toolkit. In the "Tools" section, check only the tools your agent will use. Enabling only necessary tools improves security (principle of least privilege) and optimizes performance.
+* **Update Advanced Configurations:** Modify PgVector configuration settings or change embedding model selections to optimize performance or adapt to new requirements.
 * **Save Changes:** Click **Save** to apply your updates. Changes are applied immediately and reflected in the dashboard.
 * **Remove Toolkit:** Click the **Remove** (trash) icon to delete the toolkit. Confirm the removal in the dialog.
 * **Copy Link:** Click the copy link icon to copy a direct link to the toolkit’s detailed page—useful for sharing with teammates who have access.
@@ -95,8 +131,18 @@ To edit a toolkit, open its detailed page from the Toolkits dashboard. On this p
 
  ![Toolkits-Manage](../img/menus/toolkits/config_toolkit.png)
 
+### Tool Selection Best Practices
+
+When selecting tools for your toolkit:
+    
+* **Review available tools** carefully and enable only those needed for your specific use case
+* **Test each enabled tool** using the Test Settings panel to ensure proper functionality
+* **Update tool selection** as your requirements change or new tools become available
+
+    ![Toolkits-Create](../img/menus/toolkits/select-tools.png)
+
 !!! tip "Tip"
-    Regularly use the edit function to rotate credentials or update toolkit capabilities as your needs change.
+    Regularly use the edit function to rotate credentials, update tool selections, or modify toolkit capabilities as your needs change.
 
 ---
 
@@ -176,8 +222,12 @@ The Toolkits menu is your gateway to extending agent capabilities across a range
 
 ---
 
-## Related Documentation
 
-* Agents: Configure agents and assign toolkits — see [Agents](./agents.md).
-* Credentials: Learn how to create and manage credentials used by toolkits — see [Credentials](./credentials.md).
-* Glossary: Definitions of common terms used across the platform — see [Glossary](../home/glossary.md).
+!!! info "Additional Resources"
+    Explore these related guides to maximize your toolkit usage:
+
+    * **[Glossary](../home/glossary.md)** — Definitions of common terms used across the platform
+    * **[Agents](./agents.md)** — Configure agents and assign toolkits to enable automated workflows
+    * **[Credentials](./credentials.md)** — Learn how to create and manage credentials used by toolkits
+    * **[AI Configuration](./settings/ai-configuration.md)** — Set up embedding models and vector configurations
+    * **[Secrets Management](./secrets.md)** — Secure credential storage best practices
