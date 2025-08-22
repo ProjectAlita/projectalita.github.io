@@ -32,19 +32,23 @@ The ELITEA platform currently supports the following credential types, allowing 
 
 | **Credential Type**             | **Typical Use Case**                 |
 |---------------------------------|--------------------------------------|
-| **Azure DevOps**                | Project management, CI/CD, code      |
-| **Azure DevOps Repositories**   | Code repositories, version control   |
+| **Ado**                         | Project management, CI/CD, code      |
+| **ADO Repos**                   | Code repositories, version control   |
 | **Bitbucket**                   | Code repositories, CI/CD             |
 | **Confluence**                  | Documentation, wiki management       |
+| **Figma**                       | Design collaboration, prototyping    |
 | **GitHub**                      | Code repositories, automation        |
 | **GitLab**                      | Code repositories, CI/CD             |
 | **Jira**                        | Issue and project tracking           |
 | **Postman**                     | API management, integration testing  |
 | **QTest**                       | Test management                      |
-| **S3Config**                    | AWS S3 storage, file management      |
+| **Rally**                       | Agile project management             |
 | **ServiceNow**                  | IT service management, workflow      |
 | **Slack**                       | Team messaging, notifications        |
-| **Testrail**                    | Test management                      |
+| **TestRail**                    | Test management                      |
+| **Xray**                        | Test management for Jira             |
+| **Zephyr Enterprise**           | Test management, enterprise scale    |
+| **Zephyr Scale**                | Test management for Jira Cloud      |
 
 
 ---
@@ -125,3 +129,11 @@ For further assistance, contact your platform administrator.
 The **Credentials** menu provides a secure and efficient way to manage authentication details for all your ELITEA platform integrations. By following this guide, you can easily add, edit, and assign credentials to toolkits and agents—enabling secure, automated workflows across your enterprise.
 
 ---
+
+!!! info "Additional Resources"
+    Explore these related guides to enhance your credential management experience:
+
+    * **[Glossary](../home/glossary.md)** — Definitions of common terms used across the platform
+    * **[Toolkits](../menus/toolkits.md)** — Complete guide to the Toolkits menu interface and advanced configuration options
+    * **[Credentials](./credentials.md)** — Learn how to create and manage credentials used by toolkits
+    * **[Secrets Management](./settings/secrets.md)** — Secure credential storage best practices
