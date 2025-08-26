@@ -17,6 +17,7 @@ nav:
 
   - Getting Started:
       - Quick Starts:
+          - Next Env - Quick Start: getting-started/next-quick-start.md
           - Very Quick Start: getting-started/very-quick-start.md
           - Quick Start: getting-started/quick-start.md
       - Initial Setup:
@@ -63,9 +64,14 @@ nav:
           - Pipelines Architecture: features/pipelines/pipeline-agent-framework.md
 
   - How-To Guides:
+      - Use Credentials: how-tos/how-to-use-credentials.md
       - Automate JIRA Issue Review: how-tos/jira-automation-with-elitea.md
       - Use Webhooks: how-tos/how-to-use-webhooks.md
-      - Use Credentials: how-tos/how-to-use-credentials.md
+      - Indexing:
+          - Github Indexing: how-tos/indexing/index-github-data.md
+          - Confluence Indexing: how-tos/indexing/index-confluence-data.md
+          - Jira Indexing: how-tos/indexing/index-jira-data.md
+          - SharePoint Indexing: how-tos/indexing/index-sharepoint-data.md
       - Chat & Conversations:
           - Chat - Advanced Usage: how-tos/how-to-use-chat-functionality.md
           - Canvas - Advanced Usage: how-tos/how-to-canvas.md
