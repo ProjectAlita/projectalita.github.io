@@ -40,17 +40,32 @@ The **Credentials** menu in ELITEA serves as a centralized hub for securely mana
 | **Bitbucket** | Git repository hosting service | Username/Password |
 | **Confluence** | Atlassian knowledge management | Basic Auth, Bearer Token |
 | **Figma** | Design collaboration platform | Personal Access Token, OAuth2 |
+| **ADO (Azure DevOps)** | Microsoft Azure DevOps platform | Personal Access Token |
+| **ADO Repos** | Azure DevOps repository integration | ADO Configuration reference |
+| **Bitbucket** | Git repository hosting service | Username/Password |
+| **Browser** | Web automation, browser testing | Google API Key, Search Engine ID |
+| **Carrier** | Communication services, messaging | Private Token |
+| **Confluence** | Atlassian knowledge management | Basic Auth, Bearer Token |
+| **Figma** | Design collaboration platform | Personal Access Token, OAuth2 |
 | **GitHub** | Git repository hosting service | Token, Password, App Private Key, Anonymous |
 | **GitLab** | Git repository and DevOps platform | Private Token |
+| **Google Places** | Location services, mapping APIs | API Key |
 | **Jira** | Atlassian project management | Basic Auth, Bearer Token |
 | **Postman** | API development platform | API Key |
 | **QTest** | Test management platform | API Token |
 | **Rally** | Agile project management | Username/Password, API Key |
+| **Report Portal** | Test reporting, analytics | API Key |
+| **Salesforce** | CRM, customer relationship management | Client Credentials (OAuth2) |
 | **ServiceNow** | IT service management platform | Username/Password |
+| **SharePoint** | Document management, collaboration | Client Credentials |
 | **Slack** | Team communication platform | Bot/User Token |
+| **Sonar** | Code quality analysis, security | API Token |
+| **SQL** | Database connections, data queries | Username/Password, Connection String |
+| **TestIO** | Crowdsourced testing platform | API Key |
 | **TestRail** | Test case management | Email/Password |
 | **Xray** | Test management for Jira | Client Credentials |
 | **Zephyr Enterprise** | Test management platform | API Token |
+| **Zephyr Essential** | Test management, essential features | Token |
 | **Zephyr Scale** | Test management for Jira | Token, Username/Password, Cookies |
 
 * **Reusable Configurations:** Once a credential is configured, it can be reused across multiple toolkits within the **same project** or your **Private** workspace.
@@ -111,7 +126,7 @@ To create an **ADO (Azure DevOps)** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Organization URL:** The base API URL of your ADO organization
 - **Project:** Your ADO project name
 - **Token:** Your ADO Personal Access Token
@@ -138,7 +153,7 @@ To create an **ADO Repos** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Repository ID:** Your ADO repository ID
 - **ADO Configuration:** Reference to an existing ADO credential
 
@@ -163,7 +178,7 @@ To create a **Bitbucket** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **URL:** The URL of your Bitbucket instance
 - **Authentication:** Username and Password
 
@@ -189,7 +204,7 @@ To create a **Confluence** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Base URL:** The URL of your Confluence instance
 - **Authentication Options (choose one):**
   - **Basic:** Username and API Key
@@ -218,7 +233,7 @@ To create a **Figma** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Authentication Options (choose one):**
   - **Token:** Personal Access Token
   - **OAuth2:** OAuth2 Token
@@ -245,7 +260,7 @@ To create a **GitHub** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Base URL:** Base API URL (optional, defaults to `https://api.github.com`)
 - **Authentication Options (choose one or leave blank for anonymous):**
   - **Token:** Access Token
@@ -278,7 +293,7 @@ To create a **GitLab** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **URL:** The URL of your GitLab instance
 - **Authentication:** GitLab private token
 
@@ -303,7 +318,7 @@ To create a **Jira** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Base URL:** The URL of your Jira instance
 - **Authentication Options (choose one):**
   - **Basic:** Username and API Key
@@ -332,7 +347,7 @@ To create a **Postman** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Base URL:** Postman API base URL
 - **Workspace ID:** Default workspace ID
 - **Authentication:** API Key
@@ -359,7 +374,7 @@ To create a **QTest** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Base URL:** The URL of your QTest instance
 - **API Token:** Your QTest API token
 
@@ -384,7 +399,7 @@ To create a **Rally** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Server:** Rally server URL
 - **Authentication Options (choose one):**
   - **Password:** Username and Password
@@ -413,7 +428,7 @@ To create a **ServiceNow** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Base URL:** The URL of your ServiceNow instance
 - **Authentication:** Username and Password
 
@@ -465,7 +480,7 @@ To create a **TestRail** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **URL:** The URL of your TestRail instance
 - **Email:** Your TestRail account email
 - **Password:** Your TestRail account password
@@ -492,7 +507,7 @@ To create an **Xray** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Base URL:** The URL of your Xray instance
 - **Authentication:** Client Credentials
 
@@ -518,7 +533,7 @@ To create a **Zephyr Enterprise** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Base URL:** The URL of your Zephyr Enterprise instance
 - **Token:** API token
 
@@ -543,7 +558,7 @@ To create a **Zephyr Scale** credential:
 
 **Required Fields:**
 
-- **Name:** A descriptive name for your credential
+- **Display Name:** A descriptive name for your credential
 - **Base URL:** The URL of your Zephyr Scale instance
 - **Authentication Options (choose one):**
   - **Token:** API Token
@@ -568,6 +583,290 @@ To create a **Zephyr Scale** credential:
 !!! tip "Security Recommendation"
     It's highly recommended to use **Secrets** for tokens, passwords, and cookies instead of entering them directly.
 
+---
+
+### Browser Credential Setup
+
+To create a **Browser** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive name for your credential
+- **Google API Key:** API key for Google Programmable Search Engine
+- **Search Engine ID:** Custom Search Engine ID
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Browser** as the credential type.
+3. Enter a descriptive name (e.g., "Browser - Web Search").
+4. Enter your Google API Key.
+5. Enter your Custom Search Engine ID(Google Cse Id).
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![Browser Credential Setup](../img/how-tos/how-to-use-credentials/cred-browser.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the API key instead of entering it directly.
+
+
+---
+
+### Carrier Credential Setup
+
+To create a **Carrier** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive display name for your credential
+- **ID:** Unique identifier for the carrier configuration
+- **Organization:** Your Carrier organization name
+- **URL:** Carrier service endpoint URL
+- **Private Token:** Carrier platform private token
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Carrier** as the credential type.
+3. Enter a descriptive display name (e.g., "Carrier - Communication Service").
+4. Enter a unique ID for this configuration.
+5. Enter your organization name.
+6. Enter the carrier service URL.
+7. Enter your private token.
+8. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+9. Click **Save**.
+
+![Carrier Credential Setup](../img/how-tos/how-to-use-credentials/cred-carrier.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the private token instead of entering it directly.
+
+---
+
+### Google Places Credential Setup
+
+To create a **Google Places** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive name for your credential
+- **API Key:** Google Places API key
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Google Places** as the credential type.
+3. Enter a descriptive name (e.g., "Google Places - Location Services").
+4. Enter your Google Places API key.
+5. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+6. Click **Save**.
+
+![Google Places Credential Setup](../img/how-tos/how-to-use-credentials/cred-google-places.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the API key instead of entering it directly.
+
+---
+
+### Report Portal Credential Setup
+
+To create a **Report Portal** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive name for your credential
+- **Base URL:** The URL of your Report Portal instance
+- **Authentication:** API Key
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Report Portal** as the credential type.
+3. Enter a descriptive name (e.g., "Report Portal - Test Analytics").
+4. Enter the base URL of your Report Portal instance(Endpoint *).
+5. Enter your API key.
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![Report Portal Credential Setup](../img/how-tos/how-to-use-credentials/cred-report-portal.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the API key instead of entering it directly.
+
+---
+
+### Salesforce Credential Setup
+
+To create a **Salesforce** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive name for your credential
+- **Instance URL:** Your Salesforce instance URL
+- **Client ID:** Consumer Key from your Connected App
+- **Client Secret:** Consumer Secret from your Connected App
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Salesforce** as the credential type.
+3. Enter a descriptive name (e.g., "Salesforce - CRM Integration").
+4. Enter your Salesforce instance URL (e.g., `https://your-domain.my.salesforce.com`).
+5. Enter your Client ID (Consumer Key).
+6. Enter your Client Secret (Consumer Secret).
+7. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+8. Click **Save**.
+
+![Salesforce Credential Setup](../img/how-tos/how-to-use-credentials/cred-salesforce.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the Client ID and Client Secret instead of entering them directly.
+
+
+---
+
+### SharePoint Credential Setup
+
+To create a **SharePoint** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive name for your credential
+- **Site URL:** SharePoint site URL
+- **Client ID:** Application Client ID
+- **Client Secret:** Application Client Secret
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **SharePoint** as the credential type.
+3. Enter a descriptive name (e.g., "SharePoint - Document Management").
+4. Enter your SharePoint site URL.
+5. Enter your Client ID.
+6. Enter your Client Secret.
+7. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+8. Click **Save**.
+
+![SharePoint Credential Setup](../img/how-tos/how-to-use-credentials/cred-sharepoint.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the Client Secret instead of entering them directly.
+
+---
+
+### Sonar Credential Setup
+
+To create a **Sonar** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive name for your credential
+- **Base URL:** SonarQube/SonarCloud instance URL
+- **Token:** API token
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Sonar** as the credential type.
+3. Enter a descriptive name (e.g., "Sonar - Code Quality").
+4. Enter the base URL of your SonarQube/SonarCloud instance.
+5. Enter your API token.
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![Sonar Credential Setup](../img/how-tos/how-to-use-credentials/cred-sonar.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the token instead of entering it directly.
+
+---
+
+### SQL Credential Setup
+
+To create a **SQL** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive name for your credential
+- **Host:** Database server hostname or IP
+- **Port:** Database port number
+- **Username:** Database username
+- **Password:** Database password
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **SQL** as the credential type.
+3. Enter a descriptive name (e.g., "SQL - Production Database").
+4. Enter the database host address.
+5. Enter the port number.
+6. Enter your username.
+7. Enter your password.
+8. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+9. Click **Save**.
+
+![SQL Credential Setup](../img/how-tos/how-to-use-credentials/cred-sql.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the username and password instead of entering them directly.
+
+!!! warning "Database Security"
+    Ensure your database credentials have only the minimum permissions required for your intended operations.
+
+---
+
+### TestIO Credential Setup
+
+To create a **TestIO** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive name for your credential
+- **API Key:** TestIO platform API key
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **TestIO** as the credential type.
+3. Enter a descriptive name (e.g., "TestIO - Crowdsourced Testing").
+4. Enter your TestIO API key.
+5. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+6. Click **Save**.
+
+![TestIO Credential Setup](../img/how-tos/how-to-use-credentials/cred-testio.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the API key instead of entering it directly.
+
+---
+
+### Zephyr Essential Credential Setup
+
+To create a **Zephyr Essential** credential:
+
+**Required Fields:**
+
+- **Display Name:** A descriptive name for your credential
+- **Base URL:** The URL of your Zephyr Essential instance
+- **Token:** API Token
+
+**Step-by-step Instructions:**
+
+1. Click **+ Create** in the Credentials menu.
+2. Select **Zephyr Essential** as the credential type.
+3. Enter a descriptive name (e.g., "Zephyr Essential - Test Management").
+4. Enter the base URL of your Zephyr Essential instance.
+5. Enter your API token.
+6. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
+7. Click **Save**.
+
+![Zephyr Essential Credential Setup](../img/how-tos/how-to-use-credentials/cred-zephyr-essential.png)
+
+!!! tip "Security Recommendation"
+    It's highly recommended to use **Secrets** for the token instead of entering it directly.
+
+---
 
 ## Using Credentials in Toolkits
 
