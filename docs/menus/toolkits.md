@@ -230,4 +230,4 @@ The Toolkits menu is your gateway to extending agent capabilities across a range
     * **[Agents](./agents.md)** — Configure agents and assign toolkits to enable automated workflows
     * **[Credentials](./credentials.md)** — Learn how to create and manage credentials used by toolkits
     * **[AI Configuration](./settings/ai-configuration.md)** — Set up embedding models and vector configurations
-    * **[Secrets Management](./secrets.md)** — Secure credential storage best practices
+    * **[Secrets Management](./settings/secrets.md)** — Secure credential storage best practices
