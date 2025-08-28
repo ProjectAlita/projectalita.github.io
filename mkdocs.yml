@@ -75,6 +75,7 @@ nav:
       - Chat & Conversations:
           - Chat - Advanced Usage: how-tos/how-to-use-chat-functionality.md
           - Canvas - Advanced Usage: how-tos/how-to-canvas.md
+          - Canvas Agent & Pipeline Editing: how-tos/how-to-canvas-agent-pipeline-editing.md
 
   - Integrations:
       - Extensions:
