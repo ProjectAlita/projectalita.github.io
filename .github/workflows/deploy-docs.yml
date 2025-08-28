@@ -21,7 +21,7 @@ jobs:
           pip install mkdocs mkdocs-material
      
       - name: Build MkDocs documentation
-        run: mkdocs build --clean --config-file mkdocs_el.yml
+        run: mkdocs build --clean --config-file mkdocs.yml
 
       - name: Deploy built site to landing repository
         uses: peaceiris/actions-gh-pages@v3
