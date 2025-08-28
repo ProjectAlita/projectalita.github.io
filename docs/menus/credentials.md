@@ -30,25 +30,35 @@ The Credentials menu is accessible from the main platform navigation. Upon enter
 
 The ELITEA platform currently supports the following credential types, allowing you to integrate with a wide variety of services and toolkits:
 
-| **Credential Type**             | **Typical Use Case**                 |
-|---------------------------------|--------------------------------------|
-| **Ado**                         | Project management, CI/CD, code      |
-| **ADO Repos**                   | Code repositories, version control   |
-| **Bitbucket**                   | Code repositories, CI/CD             |
-| **Confluence**                  | Documentation, wiki management       |
-| **Figma**                       | Design collaboration, prototyping    |
-| **GitHub**                      | Code repositories, automation        |
-| **GitLab**                      | Code repositories, CI/CD             |
-| **Jira**                        | Issue and project tracking           |
-| **Postman**                     | API management, integration testing  |
-| **QTest**                       | Test management                      |
-| **Rally**                       | Agile project management             |
-| **ServiceNow**                  | IT service management, workflow      |
-| **Slack**                       | Team messaging, notifications        |
-| **TestRail**                    | Test management                      |
-| **Xray**                        | Test management for Jira             |
-| **Zephyr Enterprise**           | Test management, enterprise scale    |
-| **Zephyr Scale**                | Test management for Jira Cloud      |
+| **Credential Type**             | **Typical Use Case**                    |
+|---------------------------------|-----------------------------------------|
+| **Ado**                         | Project management, CI/CD, code         |
+| **ADO Repos**                   | Code repositories, version control      |
+| **Bitbucket**                   | Code repositories, CI/CD                |
+| **Browser**                     | Web automation, browser testing         |
+| **Carrier**                     | Communication services, messaging       |
+| **Confluence**                  | Documentation, wiki management          |
+| **Figma**                       | Design collaboration, prototyping       |
+| **GitHub**                      | Code repositories, automation           |
+| **GitLab**                      | Code repositories, CI/CD                |
+| **Google Places**               | Location services, mapping APIs         |
+| **Jira**                        | Issue and project tracking              |
+| **Postman**                     | API management, integration testing     |
+| **QTest**                       | Test management                         |
+| **Rally**                       | Agile project management                |
+| **Report Portal**               | Test reporting, analytics               |
+| **Salesforce**                  | CRM, customer relationship management   |
+| **ServiceNow**                  | IT service management, workflow         |
+| **SharePoint**                  | Document management, collaboration      |
+| **Slack**                       | Team messaging, notifications           |
+| **Sonar**                       | Code quality analysis, security         |
+| **SQL**                         | Database connections, data queries      |
+| **TestIO**                      | Crowdsourced testing platform           |
+| **TestRail**                    | Test management                         |
+| **Xray Cloud**                  | Test management for Jira Cloud          |
+| **Zephyr Enterprise**           | Test management, enterprise scale       |
+| **Zephyr Essential**            | Test management, essential features     |
+| **Zephyr Scale**                | Test management for Jira Cloud          |
 
 
 ---
@@ -135,5 +145,5 @@ The **Credentials** menu provides a secure and efficient way to manage authentic
 
     * **[Glossary](../home/glossary.md)** — Definitions of common terms used across the platform
     * **[Toolkits](../menus/toolkits.md)** — Complete guide to the Toolkits menu interface and advanced configuration options
-    * **[Credentials](./credentials.md)** — Learn how to create and manage credentials used by toolkits
+    * **[How to Use Credentials](../how-tos/how-to-use-credentials.md)** — Step-by-step guide for creating and managing credentials
     * **[Secrets Management](./settings/secrets.md)** — Secure credential storage best practices
