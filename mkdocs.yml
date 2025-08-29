@@ -17,7 +17,8 @@ nav:
 
   - Getting Started:
       - Quick Starts:
-          - Next Env - Quick Start: getting-started/next-quick-start.md
+          - Quick Start (Next env): getting-started/next-quick-start.md
+          - Configure Epam AI Dial key (Next env): getting-started/configure-epam-ai-dial-key.md
           - Very Quick Start: getting-started/very-quick-start.md
           - Quick Start: getting-started/quick-start.md
       - Initial Setup:

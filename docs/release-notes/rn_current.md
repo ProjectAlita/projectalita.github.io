@@ -19,6 +19,7 @@ Discover **ELITEA** — your all-in-one platform for working with Generative AI 
 - **Integrations replaced by Credentials**: Integrations are deprecated and replaced by Credentials as a standalone entity. Existing Integrations are not auto-migrated; recreate them as **Credentials** manually. See: [How to Use Credentials](../how-tos/how-to-use-credentials.md).
 - **Toolkits separated**: Toolkits are now a standalone entity under the Toolkits menu. Agents and Pipelines that previously had connected toolkits still keep those links; you can also reuse Toolkits across multiple entities. See: [How to create a toolkit](../getting-started/create-toolkit.md).
 - **Temporary limitations (Next environment)**: Exporting agents/pipelines from Nexus and importing them into Next is not supported due to compatibility differences. **Forking** functionality may not work fully in **Next**. Both will be redesigned and enhanced in the upcoming release.
+- **Shared LLM models (Next environment)**: The LLM models provided in **Next** are shared and intended for evaluation only and have daily limits. For any production workload, request your own EPAM AI DIAL keys and configure them in Settings → [AI Configuration](../menus/settings/ai-configuration.md). For a quick walkthrough, see the: [How to configure and use Epam AI Dial keys](../getting-started/create-credential.md).
 
 !!! Reference
     For a short walkthrough of working in the **Next** environment, see the [Next - Quick Start Guide](../getting-started/next-quick-start.md).

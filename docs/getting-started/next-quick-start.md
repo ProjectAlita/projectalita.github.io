@@ -57,6 +57,10 @@ Within projects, the following content was included:
 	- Use Tool Testing → Index Data to recreate datasets; parameters vary by toolkit.
 	- See: [Index data for a toolkit](#index-data-for-a-toolkit) · Example: [Index GitHub data](../how-tos/indexing/index-github-data.md)
 
+6. Configure EPAM AI DIAL keys (strongly recommended)
+	- Shared LLM models in Next are evaluation-only with daily limits. For sustained or production use, configure your own DIAL keys.
+	- See: [Configure EPAM AI DIAL Keys](./configure-epam-ai-dial-key.md) · Settings → [AI Configuration](../menus/settings/ai-configuration.md)
+
 ---
 
 ## How to create a credential and attach it to the toolkit
@@ -110,6 +114,19 @@ Steps:
 !!! tip "Tips"
       - You can also trigger indexing from an Agent or from Chat by selecting an Agent/Toolkit that has the Index Data tool available, then instructing it to index the target (provide repo/site/project and scope).
       - Example guide: [Index GitHub data](../how-tos/indexing/index-github-data.md). Additional indexing guides will be added for other toolkits.
+
+## Configure EPAM AI DIAL keys (recommended)
+
+!!! warning "Why this matters"
+	The LLM models available in the Next environment are shared and have daily limits. To avoid being throttled, configure your own EPAM AI DIAL keys.
+
+Quick steps:
+
+- Request a key from EPAM AI DIAL (see the guide below).
+- In Next env: Settings → AI Configuration → + Create → choose “AI DIAL” → enter API Base, Key, Version → Save.
+- Create LLM models: + Create → LLM Model → set exact model name from EPAM catalog, context window, max output tokens → select your DIAL credential → Save.
+
+Full how-to: [Configure EPAM AI DIAL Keys](./configure-epam-ai-dial-key.md)
 
 ## Questions or issues? Contact Support
 
