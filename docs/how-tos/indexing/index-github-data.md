@@ -1,13 +1,23 @@
-# Index GitHub Data
+# Index Repository Data
 
 !!! warning "Availability"
     Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets) and the [Indexing Overview](./indexing-overview.md).
 
-This guide provides a complete step-by-step walkthrough for indexing GitHub data and then searching or chatting with the indexed content using ELITEA's AI-powered tools.
+This guide provides a complete step-by-step walkthrough for indexing repository data and then searching or chatting with the indexed content using ELITEA's AI-powered tools.
+
+**Repository Support:**
+
+This guide is applicable to all supported repository platforms:
+
+- **GitHub** - Git repository hosting and DevOps platform
+- **Azure DevOps Repos** - Microsoft's Git repository hosting
+- **Bitbucket** - Atlassian's Git and Mercurial repository management
+- **GitLab** - DevOps platform with integrated Git repository management
+- **Other Git-based platforms** - Any Git repository accessible via standard protocols
 
 ## Overview
 
-GitHub indexing allows you to create searchable indexes from various GitHub resources:
+Repository indexing allows you to create searchable indexes from various repository resources:
 
 - **Repository Content**: Code files, documentation, configuration files, and project assets
 - **Issues & Discussions**: Bug reports, feature requests, support tickets, and community discussions  
@@ -15,13 +25,13 @@ GitHub indexing allows you to create searchable indexes from various GitHub reso
 - **Project Workflows**: GitHub Actions logs, workflow configurations, and CI/CD data
 - **Organization Data**: Team repositories, project structures, and collaborative content
 
-**What you can do with indexed GitHub data:**
+**What you can do with indexed repository data:**
 
 - **Semantic Search**: Find code patterns, documentation, or discussions using natural language queries
-- **Context-Aware Chat**: Get AI-generated answers from your GitHub content with citations
+- **Context-Aware Chat**: Get AI-generated answers from your repository content with citations
 - **Cross-Repository Discovery**: Search across multiple repositories and project resources
 - **Development Insights**: Analyze issues, PRs, and workflows for project intelligence
-- **Knowledge Extraction**: Transform GitHub content into searchable organizational knowledge
+- **Knowledge Extraction**: Transform repository content into searchable organizational knowledge
 
 **Common use cases:**
 
@@ -32,6 +42,18 @@ GitHub indexing allows you to create searchable indexes from various GitHub reso
 - Support ticket resolution using indexed issue discussions and solutions
 
 ---
+
+## GitHub Example Walkthrough
+
+!!! example "GitHub as Primary Example"
+    The following sections demonstrate the complete indexing workflow using **GitHub** as the example repository platform. This includes:
+    
+    - Creating GitHub credentials
+    - Configuring GitHub toolkit
+    - Indexing GitHub repository data
+    - Searching and using the indexed content
+    
+    **For other repository platforms** (Azure DevOps, Bitbucket, GitLab), the process is identical - simply replace "GitHub" with your platform name and use the appropriate credential type and toolkit.
 
 ## Prerequisites
 
