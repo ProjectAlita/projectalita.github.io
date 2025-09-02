@@ -22,7 +22,7 @@ Create or update an index from your source system.
 
 Where to run it: Open your Toolkit → TEST SETTINGS → select “Index data” → configure → RUN TOOL.
 
-![Index Data – form](../../img/how-tos/indexing/indexing-tools-index-data-form.png){ width="900" }
+![Index Data – form](../../img/how-tos/indexing/index-data-github.png){ width="900" }
 
 ### Purpose
 - Build a new index collection or update an existing one for later search and Q&A.
@@ -105,7 +105,7 @@ Search your indexed content using natural language.
 
 Where to run it: Toolkit → TEST SETTINGS → select “Search index” → configure → RUN TOOL.
 
-![Search Index – form](../../img/how-tos/indexing/indexing-tools-search-index-form.png){ width="900" }
+![Search Index – form](../../img/how-tos/indexing/search-index.png){ width="900" }
 
 ### Purpose
 - Retrieve relevant chunks from one or more index collections.
@@ -136,7 +136,7 @@ Advanced search that first “simplifies” your query for better matches and ca
 
 Where to run it: Toolkit → TEST SETTINGS → “Stepback search index”.
 
-![Stepback Search – form](../../img/how-tos/indexing/indexing-tools-stepback-search-form.png){ width="900" }
+![Stepback Search – form](../../img/how-tos/indexing/stepback-search.png){ width="900" }
 
 ### Purpose
 - Improve retrieval by transforming your question (e.g., “How do I configure GitHub auth?” → “configure GitHub authentication”). Returns raw results.
@@ -169,7 +169,7 @@ Contextual search plus an AI‑generated answer, with optional citations.
 
 Where to run it: Toolkit → TEST SETTINGS → “Stepback summary index”.
 
-![Stepback Summary – form](../../img/how-tos/indexing/indexing-tools-stepback-summary-form.png){ width="900" }
+![Stepback Summary – form](../../img/how-tos/indexing/stepback-summary.png){ width="900" }
 
 ### Purpose
 - Combine stepback search with a concise, human‑readable answer. Good for end‑users who want a direct response.
@@ -204,7 +204,7 @@ Delete an existing collection (index) when it’s no longer needed.
 
 Where to run it: Toolkit → TEST SETTINGS → “Remove index”.
 
-![Remove Index – form](../../img/how-tos/indexing/indexing-tools-remove-index-form.png){ width="900" }
+![Remove Index – form](../../img/how-tos/indexing/remove-index.png){ width="900" }
 
 ### Purpose
 - Clean up test data or retire outdated collections.
@@ -229,7 +229,7 @@ List all available collections for the toolkit.
 
 Where to run it: Toolkit → TEST SETTINGS → “List collections”.
 
-![List Collections – output](../../img/how-tos/indexing/indexing-tools-list-collections-output.png){ width="900" }
+![List Collections – output](../../img/how-tos/indexing/list-collection-github.png){ width="900" }
 
 ### Purpose
 - Quickly verify what indexes exist and their names (suffixes).
@@ -260,8 +260,7 @@ Where to run it: Toolkit → TEST SETTINGS → “List collections”.
 - For better Q&A, consider Proposal chunking when indexing (enables titles/summaries/propositions).
 - Known limitations and workarounds: see [Release Notes 1.7.0](../../release-notes/rn_current.md#known-issues).
 
-## Related guides
-
-- [Indexing Overview](./indexing-overview.md)
-- Per‑toolkit examples: [GitHub](./index-github-data.md), [Confluence](./index-confluence-data.md), [Jira](./index-jira-data.md), [SharePoint](./index-sharepoint-data.md)
-- [AI Configuration](../../menus/settings/ai-configuration.md)
+!!! info "Related guides"
+    - [Indexing Overview](./indexing-overview.md)
+    - Per‑toolkit examples: [GitHub](./index-github-data.md), [Confluence](./index-confluence-data.md), [Jira](./index-jira-data.md), [SharePoint](./index-sharepoint-data.md)
+    - [AI Configuration](../../menus/settings/ai-configuration.md)

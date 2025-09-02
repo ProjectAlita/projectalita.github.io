@@ -35,7 +35,14 @@ ELITEA provides six standardized tools available across supported toolkits:
 
 Currently supported toolkits include:
 
-ADO Repos, ADO Wiki, ADO Plans, ADO Boards, Bitbucket, GitHub, GitLab, Confluence, Jira, SharePoint, Artifact, Figma, TestRail, Xray Cloud, Zephyr Enterprise, Zephyr Essential, Zephyr Scale.
+| Category | Toolkits |
+|----------|----------|
+| **Repos** | ADO Repos, Bitbucket, GitHub, GitLab |
+| **Wikis** | ADO Wiki, Confluence, SharePoint |
+| **Issues** | ADO Boards, ADO Plans, Jira |
+| **Files** | Artifact, SharePoint |
+| **Designs** | Figma |
+| **Tests** | TestRail, Xray Cloud, Zephyr Enterprise, Zephyr Essential, Zephyr Scale |
 
 For setup of a specific toolkit, see Integrations → Toolkits (e.g., [GitHub Toolkit](../../integrations/toolkits/github_toolkit.md), [Confluence Toolkit](../../integrations/toolkits/confluence_toolkit.md), [Jira Toolkit](../../integrations/toolkits/jira_toolkit.md)).
 
@@ -49,53 +56,56 @@ Use these steps to prepare your project and toolkit before running **Index data*
 * A valid Credential for that toolkit (all toolkits except Artifact require credentials).
 * Project-level AI configuration for Vector Storage (PgVector) and Embedding Model.
 
-![Indexing prerequisites overview](../../img/how-tos/indexing/indexing-prereqs-overview.png){ width="900" }
-
 ### Steps
 
 1) Configure Credentials (required for all except Artifact)
-	* Create or select a Credential for the target system (e.g., GitHub, Confluence, Jira, SharePoint, ADO, Bitbucket, GitLab).
-	* Assign it to your toolkit when creating or editing the toolkit.
-	* See: [Create a Credential](../../getting-started/create-credential.md) and specific toolkit pages under Integrations → Toolkits.
 
-	![Toolkit credential selection](../../img/how-tos/indexing/toolkit-credential-selection.png){ width="900" }
+   * Create or select a Credential for the target system (e.g., GitHub, Confluence, Jira, SharePoint, ADO, Bitbucket, GitLab).
+   * Assign it to your toolkit when creating or editing the toolkit.
+   * See: [Create a Credential](../../getting-started/create-credential.md) and specific toolkit pages under Integrations → Toolkits.
+
+	![Toolkit credential selection](../../img/how-tos/indexing/new-creds.png){ width="900" }
 
 2) Configure PgVector (required storage for indexed data)
-	* By default, both **Private** and **Team** projects have a shared PgVector configuration you can select.
-	* To configure a new PgVector configuration:
-		* Click the **New private pgvector credentials** or **New project pgvector credentials** option, regarding what type of credential you need.
-		* Fill the information for the PgVector (Display Name, Connection String).
-		* Save it to use configuration to use for indexing.
-		* Click Refresh icon to update the configuration and have it in the PgVector Configuration dropdown to select.
 
-	![AI Configuration – Vector Storage (PgVector)](../../img/how-tos/indexing/ai-config-pgvector.png){ width="900" }
+   * By default, both **Private** and **Team** projects have a shared PgVector configuration you can select.
+   * To configure a new PgVector configuration:
+     * Click the **New private pgvector credentials** or **New project pgvector credentials** option, regarding what type of credential you need.
+     * Fill the information for the PgVector (Display Name, Connection String).
+     * Save it to use configuration to use for indexing.
+     * Click Refresh icon to update the configuration and have it in the PgVector Configuration dropdown to select.
+
+	![AI Configuration – Vector Storage (PgVector)](../../img/how-tos/indexing/new-pgvector.png){ width="900" }
 
 3) Configure Embedding Model (required for indexing)
-	* Default available models in Private and Team projects:
-	  * **text-embedding-ada-002** — improved, performant version of the ada embedding model
-	  * **text-embedding-3-small** — improved, performant successor in the 3-series
-	  * **text-embedding-3-large** — the most capable model for English and non‑English tasks
-	* **Practical notes**:
-	  * For cost/speed, ada-002 and 3-small are similar; test with your data.
-	  * Some reports suggest ada can work better in certain cases—ada is a solid “go-to” if you just need embeddings.
 
-	![AI Configuration – Embedding model](../../img/how-tos/indexing/ai-config-embeddings.png){ width="900" }
+   * Default available models in Private and Team projects:
+       * **text-embedding-ada-002** — improved, performant version of the ada embedding model
+       * **text-embedding-3-small** — improved, performant successor in the 3-series
+       * **text-embedding-3-large** — the most capable model for English and non‑English tasks
+	  
+   * **Practical notes**:
+       * For cost/speed, ada-002 and 3-small are similar; test with your data.
+       * Some reports suggest ada can work better in certain cases—ada is a solid “go-to” if you just need embeddings.
+
+	![AI Configuration – Embedding model](../../img/how-tos/indexing/new-model.png){ width="900" }
 
 4) Select Indexing tools on the Toolkit
-	* When creating a new toolkit, all Indexing tools are selected by default.
-	* You can later enable/disable specific tools from the toolkit’s details page.
-	* Recommended minimum for creating and using indexes: Index Data, Search Index, Stepback Summary Index.
 
-	![Toolkit – indexing tools selection](../../img/how-tos/indexing/toolkit-indexing-tools.png){ width="900" }
+   * When creating a new toolkit, all Indexing tools are selected by default.
+   * You can later enable/disable specific tools from the toolkit’s details page.
+   * Recommended minimum for creating and using indexes: Index Data, Search Index, Stepback Summary Index.
+
+	![Toolkit – indexing tools selection](../../img/how-tos/indexing/overview-tools.png){ width="900" }
 
 5) Fill toolkit-required fields (vary by toolkit)
-	* Examples of mandatory fields by type:
+
+   * Examples of mandatory fields by type:
 	  * **Repositories**: organization/project, repository name, branch, path filters, blacklist/allowlist
 	  * **Confluence/Wikis**: site URL, space key, labels, CQL filters
 	  * **Project Management (Jira/ADO Boards)**: project key/ID, issue filters (JQL/queries), include attachments
 	  * **SharePoint**: site/drive, library/folder path, include file types
 
-	![Toolkit – required fields examples](../../img/how-tos/indexing/toolkit-required-fields.png){ width="900" }
 
 6) Save the toolkit, if you created a new one.
 
@@ -125,9 +135,7 @@ This section shows how to run indexing and validate results using the **Toolkit'
 6. Click **RUN TOOL** to start indexing.
 7. Progress and completion details appear in the main panel; scroll if needed to view messages.
 
-![Artifact toolkit – details](../../img/how-tos/indexing/artifact-toolkit-details.png){ width="900" }
-![Artifact toolkit – Test Settings](../../img/how-tos/indexing/artifact-toolkit-test-settings.png){ width="900" }
-![Toolkit Test – Index Data](../../img/how-tos/indexing/toolkit-test-index-data.png){ width="900" }
+![Toolkit Test – Index Data](../../img/how-tos/indexing/index-data-github.png){ width="900" }
 
 ### List Collections tool
 
@@ -137,7 +145,7 @@ Use this to view the indexes (collections) created for the toolkit.
 2. Click **RUN TOOL**.
 3. Review the output in the main panel for available collections.
 
-![Toolkit Test – List Collections output](../../img/how-tos/indexing/list-collections-output.png){ width="900" }
+![Toolkit Test – List Collections output](../../img/how-tos/indexing/list-collection-github.png){ width="900" }
 
 ### Search Index tool
 
@@ -149,7 +157,7 @@ Query your indexed data and review matched results.
 4. Leave other options at defaults for a first try.
 5. Click **RUN TOOL** and review results in the main panel.
 
-![Toolkit Test – Search Index output](../../img/how-tos/indexing/search-index-output.png){ width="900" }
+![Toolkit Test – Search Index output](../../img/how-tos/indexing/search-index.png){ width="900" }
 
 !!! reference "Reference"
     For detailed information about each indexing tool and configuration:
@@ -170,7 +178,7 @@ You can trigger indexing and search directly from Chat using an Agent or a Toolk
 	 * "Index Confluence space 'ABC' for pages with label docs."
 4. Wait for confirmation in the thinking steps. If an error appears, refine your instruction or reconfigure the attached toolkit/credential.
 
-![Chat – trigger indexing](../../img/how-tos/indexing/chat-indexing-example.png){ width="900" }
+![Chat – trigger indexing](../../img/how-tos/indexing/indexing-from-chat.png){ width="900" }
 
 Once indexes exist, you can use Search Index or Stepback search tools through Chat as well (e.g., "Search the index for onboarding guidelines").
 
@@ -183,7 +191,7 @@ You can also prepare an Agent with the required toolkit(s) and run indexing via 
 3. Save the Agent.
 4. From Chat, select the Agent and instruct it to index the desired scope (repo/site/project, branch/filters, etc.).
 
-![Agent – toolkits section](../../img/how-tos/indexing/agent-toolkits-section.png){ width="900" }
+![Agent – toolkits section](../../img/how-tos/indexing/indexing-agent-chat.png){ width="900" }
 
 
 ## FAQs
