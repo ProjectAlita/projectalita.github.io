@@ -101,6 +101,38 @@ Your Figma credential needs appropriate permissions based on what you want to in
 
 ---
 
+## Finding Required Figma IDs
+
+Before indexing, you'll need to identify the specific Figma resources you want to index. Here's how to find the required IDs:
+
+### Project ID
+**Web:** Extract from project URL: `https://www.figma.com/files/project/[PROJECT_ID]/[PROJECT_NAME]`
+**Desktop:** Use **File → Show in browser** or **Share** → copy project link
+
+  ![Figma Project Id](../../img/how-tos/indexing/figma/figma-projectid.png) 
+
+### File Key  
+**Web:** Extract from file URL: `https://www.figma.com/file/[FILE_KEY]/[FILE_NAME]`
+**Desktop:** Use **File → Copy link** or **Share** button
+
+  ![Figma File key](../../img/how-tos/indexing/figma/figm-file-key.png) 
+
+### Node IDs
+**Web:** Right-click any design element → **Copy link** → extract from URL parameter `node-id=[NODE_ID]`
+**Desktop:** Right-click element → **Copy link** or select multiple elements (Ctrl/Cmd) → **Copy link**
+
+  ![Figma Node Id](../../img/how-tos/indexing/figma/figma-node-id.png) 
+
+!!! tip "ID Format"
+    - **Project ID**: Numeric (e.g., `123456789`)
+    - **File Key**: Alphanumeric string (e.g., `ABC123DEF456`)  
+    - **Node ID**: Colon-separated format (e.g., `123:456`)
+
+!!! info "Detailed ID Finding Instructions"
+    For comprehensive step-by-step instructions including additional methods and troubleshooting tips, see the [Figma Toolkit Functionalities](../../integrations/toolkits/figma_toolkit.md#figma-toolkit-functionalities) section in the Figma Integration Guide.
+
+---
+
 ## Step-by-Step: Index Figma Data
 
 ### Content Indexing (from Toolkit)
