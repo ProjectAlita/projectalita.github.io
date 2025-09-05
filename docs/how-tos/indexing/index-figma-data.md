@@ -111,9 +111,9 @@ For tools that require a **Project ID**, you can obtain it in the following ways
 
 1. **From Project URL (If You Are Project Admin) - Web & Desktop:**
    
-   **Web:** Extract from project URL: `https://www.figma.com/files/project/[PROJECT_ID]/[PROJECT_NAME]`
+    * **Web:** Extract from project URL: `https://www.figma.com/files/project/[PROJECT_ID]/[PROJECT_NAME]`
    
-   **Desktop:** Use **File → Show in browser** or **Share** → copy project link, then extract from project URL
+    * **Desktop:** Use **File → Show in browser** or **Share** → copy project link, then extract from project URL
 
 2. **Request from Project Administrator:** If you don't have admin access to the project, contact the project administrator or team owner to provide you with the **Project ID**.
 
@@ -123,14 +123,16 @@ For tools that require a **Project ID**, you can obtain it in the following ways
     Providing Project ID for indexing is optional. It's generally better to use **File Keys** for targeted indexing instead, because projects may contain many files which could result in large indexes. Use Project ID only when you specifically need to index all files in a project or create comprehensive project-level indexes.
 
 ### File Key  
-**Web:** Extract from file URL: `https://www.figma.com/file/[FILE_KEY]/[FILE_NAME]`
-**Desktop:** Use **File → Copy link** or **Share** button, then extract from URL 
+
+* **Web:** Extract from file URL: `https://www.figma.com/file/[FILE_KEY]/[FILE_NAME]`
+* **Desktop:** Use **File → Copy link** or **Share** button, then extract from URL 
 
   ![Figma File key](../../img/how-tos/indexing/figma/figm-file-key.png) 
 
 ### Node IDs
-**Web:** Right-click any design element → **Copy link** → extract from URL parameter `node-id=[NODE_ID]`
-**Desktop:** Right-click element → **Copy link** or select multiple elements (Ctrl/Cmd) → **Copy link**, then extract from URL
+
+* **Web:** Right-click any design element → **Copy link** → extract from URL parameter `node-id=[NODE_ID]`
+* **Desktop:** Right-click element → **Copy link** or select multiple elements (Ctrl/Cmd) → **Copy link**, then extract from URL
 
   ![Figma Node Id](../../img/how-tos/indexing/figma/figma-node-id.png) 
 
