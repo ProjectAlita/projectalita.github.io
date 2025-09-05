@@ -71,6 +71,7 @@ nav:
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
+          - Artifacts Indexing: how-tos/indexing/index-artifacts-data.md
           - Repository Indexing: how-tos/indexing/index-github-data.md
           - Confluence Indexing: how-tos/indexing/index-confluence-data.md
           - Jira Indexing: how-tos/indexing/index-jira-data.md
