@@ -75,6 +75,7 @@ nav:
           - Confluence Indexing: how-tos/indexing/index-confluence-data.md
           - Jira Indexing: how-tos/indexing/index-jira-data.md
           - SharePoint Indexing: how-tos/indexing/index-sharepoint-data.md
+          - Figma Indexing: how-tos/indexing/index-figma-data.md
       - Chat & Conversations:
           - Chat - Advanced Usage: how-tos/how-to-use-chat-functionality.md
           - Canvas - Advanced Usage: how-tos/how-to-canvas.md
