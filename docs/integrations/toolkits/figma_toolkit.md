@@ -40,7 +40,7 @@ To use the Figma Toolkit, you will need an active Figma account. To set up your 
 
 ### Token/API Key Generation: Creating a Figma Personal Access Token
 
-For secure integration with ELITEA, user will need to use a Figma **Personal Access Token**.
+For secure integration with ELITEA, users will need to use a Figma **Personal Access Token**.
 
 **Follow these steps to generate a Figma Personal Access Token:**
 
@@ -55,49 +55,20 @@ For secure integration with ELITEA, user will need to use a Figma **Personal Acc
 
     ![Figma-SecurityTab](../../img/integrations/toolkits/figma/Figma-SecurityTab.png)
 
-4.  **Configure Token Permissions (If Required):** In the "New personal access token" window, enter a **Token name** to identify the token (e.g., "ELITEA Integration Token").  **Note:** While the documentation mentions selecting permissions for comment posting, the Figma Personal Access Tokens currently have broad access and specific permission scopes are not configurable during token creation through the UI. Ensure you understand the access granted by Personal Access Tokens.  You can set an **Expiration date** for the token if desired for security best practices.
+4.  **Configure Token Permissions (If Required):** In the "New personal access token" window, enter a **Token name** to identify the token (e.g., "ELITEA Integration Token").  
+**Note:** While the documentation mentions selecting permissions for comment posting, the Figma Personal Access Tokens currently have broad access and specific permission scopes are not configurable during token creation through the UI. Ensure you understand the access granted by Personal Access Tokens.  You can set an **Expiration date** for the token if desired for security best practices.
 
     ![Figma-NewPersonalAccessToken](../../img/integrations/toolkits/figma/Figma-NewPersonalAccessToken.png)
 
 5.  **Create Token:** Click the **"Generate token"** button to create the Personal Access Token.
 
-6.  **Securely Copy and Store Your API Token:**  A dialog box will appear displaying your newly generated Personal Access Token. **Immediately copy the generated API token**. **This is the only time you will see the full token value.** Store it securely in a password manager or, preferably, ELITEA's built-in Secrets feature for enhanced security within ELITEA. You will need this API token to configure the Figma toolkit in ELITEA.
+6.  **Securely Copy and Store Your API Token:**  A dialog box will appear displaying your newly generated Personal Access Token. **Immediately copy the generated API token**. **This is the only time you will see the full token value.** Store it securely in a password manager or, preferably, ELITEA's built-in [Secrets](../../menus/settings/secrets.md) feature for enhanced security within ELITEA. You will need this API token to configure the Figma toolkit in ELITEA.
 
 **Additional Information on Figma Access Tokens:**
 
 !!! info "Additional Information"
     For more detailed information on managing Figma Personal Access Tokens, refer to the official Figma documentation: [figma.com/Manage-personal-access-tokens](https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens)
 
-### OAuth 2.0 Setup for Figma (Application-Specific Authentication)
-
-For more secure and application-specific authentication, you can also configure OAuth 2.0 for the Figma Toolkit. This method is generally recommended for applications and integrations that require more granular control over access and user authorization.
-
-**Follow these steps to set up OAuth 2.0 for Figma:**
-
-1.  **Access Figma Developers Apps Page:** Open your web browser and navigate to the Figma Developers Apps page: [figma.com/developers/apps](https://www.figma.com/developers/apps). Ensure you are logged in with the correct Figma account.
-
-
-2.  **Create a New App:** Click on the **"Create new app"** button.
-
-    ![Figma-CreateNewAppButton](../../img/integrations/toolkits/figma/CreateNewAppButton.png)
-
-3.  **Configure App Details:** In the "Create a new app" dialog:
-      *   **App name:** Enter a descriptive name for your application (e.g., "ELITEA Figma Integration").
-      *   **Website URL:** Enter the website URL of your ELITEA instance or a placeholder URL if you don't have a specific website for your integration.
-      *   **Logo:** Upload a logo for your application.
-      *   Click **"Create"**.
-
-    ![Figma-CreateAppDetails](../../img/integrations/toolkits/figma/Figma-CreateAppDetails.png)
-
-4.  **Obtain Client ID and Client Secret:** After creating the app, you will be provided with a **Client ID** and **Client Secret**. **Securely keep these credentials.** You will need them to configure OAuth 2.0 authentication in ELITEA.
-
-    ![Figma-AppCredentials](../../img/integrations/toolkits/figma/Figma-AppCredentials.png)
-
-5.  **Configure Redirect URL:** Click on the name of your newly created app to access its settings. Navigate to the **"OAuth 2.0 redirect URLs"** section and click **"Add redirect URL"**. Enter the appropriate **Redirect URL** for your instance.  **Note:** The Redirect URL depends on how your third-party app handles OAuth 2.0 flows and might require specific configuration within your third-party app.
-
-    ![Figma-OAuthRedirectURL](../../img/integrations/toolkits/figma/Figma-OAuthRedirectURL.png)
-
-6.  **Obtain OAuth 2.0 Token (through ELITEA):** To obtain an OAuth 2.0 token, you will typically need to initiate the OAuth 2.0 flow from within your third-party app using your configured Client ID, Client Secret, and Redirect URL. The exact steps for obtaining the OAuth 2.0 token will depend on your integration implementation with Figma. Refer to [figma.com/oauth-with-plugins](https://www.figma.com/plugin-docs/oauth-with-plugins/) for instructions on completing the OAuth 2.0 authorization flow and obtaining the OAuth 2.0 token for Figma.
 
 ## System Integration with ELITEA
 
@@ -112,9 +83,7 @@ Before creating a toolkit, you must first create Figma credentials in ELITEA:
 3. **Select Figma:** Choose **Figma** as the credential type.
 4. **Configure Credential Details:**
      * **Display Name:** Enter a descriptive name (e.g., "Figma - Design Team Access")
-     * **Authentication Method:** Choose your preferred authentication method:
-         * **Token:** Enter your Figma Personal Access Token (starts with `figd_`)
-         * **OAuth2:** Enter your OAuth2 token obtained through the OAuth 2.0 flow
+     * **Token:** Enter your Figma Personal Access Token (starts with `figd_`)
      * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project
 5. **Save Credential:** Click **Save** to create the credential.
 
@@ -144,7 +113,7 @@ Once your credentials are configured, create the Figma toolkit:
 6. **Configure Advanced Options (Optional):**
      * **Global Regexp:** Enter a Regular Expression to filter results from Figma API responses (leave blank for no filtering)
      * **Global Limit:** Set a character limit for API responses to ensure manageable content size
-     * **PgVector Configuration:** If available, select a PgVector connection for vector database integration
+     * **PgVector Configuration:** Select a PgVector connection for vector database integration
      * **Embedding Model:** Select an embedding model for text processing and semantic search capabilities
 7. * **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific Figma tools you want to enable. **Enable only the tools your agents will actually use** to follow the principle of least privilege
 8. **Save Toolkit:** Click **Save** to create the toolkit.
@@ -189,7 +158,7 @@ Now you can add the configured Figma toolkit to your agents, pipelines, or use i
 
 ![Figma-Agent](../../img/integrations/toolkits/figma/figma-add-agent.png)
 
-Your agent now interact with Figma using the configured toolkit and enabled tools.
+Your agent can now interact with Figma using the configured toolkit and enabled tools.
 
 !!! note "Reference"
     For more information on toolkit configuration and management, see the [Agent Guide](../../menus/agents.md).
@@ -200,7 +169,7 @@ Your agent now interact with Figma using the configured toolkit and enabled tool
 1. **Navigate to Chat:** Open the sidebar and select **Chat** or use the main chat interface.
 2. **Start New Conversation:** Click **+Create** or open an existing conversation.
 3. **Add Toolkit to Conversation:**
-     * In the chat Partisipants section, look for the **Toolkits** element
+     * In the chat Participants section, look for the **Toolkits** element
      * Click the **"Add Tools"** Icon to open the tools selection dropdown
      * Select your configured Figma toolkit from the dropdown list
      * The toolkit will be added to your conversation with all previously configured tools enabled
@@ -223,7 +192,7 @@ You can now interact with Figma using the configured toolkit and enabled tools.
     For more information on toolkit configuration and management, see the [Chat Guide](../../menus/chat.md).
 
 
-### Key Parameters
+### Figma Key Parameters
 
 **Common Parameters Used Across Tools:**
 
@@ -235,47 +204,30 @@ You can now interact with Figma using the configured toolkit and enabled tools.
 - **`query`** *(string, required for search tools)*: Search terms and criteria
 
 
-### Figma Toolkit Functionalities
+ **Figma Toolkit Functionalities**
 
 Once the Figma toolkit is successfully configured and added to your Agent, you can leverage the following tools within your Agent's instructions to enable intelligent interaction with Figma design files:
 
-**How to Find Figma Project ID:**
+### How to Find Figma Project ID:
 
-For tools that require a **Project ID**, you can find it using both web and desktop versions:
+For tools that require a **Project ID**, you can obtain the following ways:
 
-**Web Version:**
+1. **From Project URL (If You Are Project Admin) - Web & Desktop:** When viewing a project in Figma (web or desktop app), the Project ID is in the URL:
+    ```
+    https://www.figma.com/files/project/[PROJECT_ID]/[PROJECT_NAME]
+    ```
+    For example, from `https://www.figma.com/files/project/123456789/Design-System`, the Project ID is `123456789`.
+   
+    **Desktop App:** Use **File → Copy link** or **Share** to get the project URL with the same format.
 
-1. **From Project URL:** When viewing a project in Figma, the Project ID is in the URL:
-   ```
-   https://www.figma.com/files/project/[PROJECT_ID]/[PROJECT_NAME]
-   ```
-   For example, from `https://www.figma.com/files/project/123456789/Design-System`, the Project ID is `123456789`.
+     ![Figma-url](../../img/integrations/toolkits/figma/figma-projectid.png)
 
-2. **Using Browser Developer Tools:**
-     * Open your browser's developer tools (F12)
-     * Go to the Network tab
-     * Navigate to your Figma project
-     * Look for API calls that include the project ID in the URL
+2. **Request from Project Administrator:** If you don't have admin access to the project, contact the project administrator or team owner to provide you with the **Project ID**.
 
-3. **From View Page Source:**
-     * Right-click on the Figma project page and select "View Page Source"
-     * Search for "projectId" or "project_id"(or folder_id) in the page source (Ctrl+F)
-     * The Project ID(or folder_id) will appear in various JavaScript objects and API endpoint URLs within the page source
+!!! info "Project ID Usage Note"
+    Providing Project ID in tools is optional. It's generally better to filter results using **File Key** instead, because projects may contain many files. Use Project ID only when you specifically need to work with all files in a project or get project-level information.
 
-**Desktop App:**
-
-1. **From File Location:** When you open a file in the desktop app, go to **File → Show in browser** to open the web version with the full URL containing project information
-2. **From Project Navigation:** Navigate to your team/project view in the desktop app, then use **File → Copy link** or **Share** to get the project URL
-3. **From File Properties:** Right-click on a file within a project and select **Copy link**, which may include project context in the URL
-4. **Using Share Feature:** In project view, click **Share** and copy the project link to extract the Project ID
-
-**Team-based Discovery:**
-
-4. **From Figma API:** Use the `get_team_projects` tool to list all projects in a team, which will return project IDs along with project names.
-
-    ![Figma-url](../../img/integrations/toolkits/figma/figma-projectid.png)
-
-**How to Find Figma File Key:**
+### How to Find Figma File Key:
 
 To use the Figma tools, you'll need the **File Key** from your Figma file. You can extract it using either the web version or desktop app:
 
@@ -295,15 +247,14 @@ For example, from `https://www.figma.com/file/ABC123DEF456/My-Design-File`, the 
       ![Figma-url](../../img/integrations/toolkits/figma/Figma-url.png)
 
 
-**How to Find Node IDs:**
+### How to Find Node IDs:
 
 Node IDs are required for tools that target specific design elements. Here's how to find them:
 
 **Web Version:**
 
-1. **Right-click Method:** Right-click on any design element (frame, component, layer) and select **Copy link**
-2. **Extract from URL:** The copied URL contains the node ID: `https://www.figma.com/file/[FILE_KEY]/[FILE_NAME]?node-id=[NODE_ID]`
-3. **From Layers Panel:** Select an element and use **Copy as** → **Copy link**
+1. **Extract from URL:** The copied URL contains the node ID: `https://www.figma.com/file/[FILE_KEY]/[FILE_NAME]?node-id=[NODE_ID]`
+2. **From Layers Panel:** Select an element and use **Copy as** → **Copy link**
 
 **Desktop App:**
 
@@ -315,8 +266,8 @@ Node IDs are required for tools that target specific design elements. Here's how
 **Node ID Format:** Node IDs typically appear as `123:456` in the URL parameter `node-id=123%3A456` (where `%3A` is the URL-encoded colon).
  
   ![Figma-url](../../img/integrations/toolkits/figma/figma-node-id.png)
-s
-**How to Find Figma Team ID:**
+
+### How to Find Figma Team ID:
 
 For the `get_team_projects` tool, you need a **Team ID**:
 
@@ -335,7 +286,7 @@ For the `get_team_projects` tool, you need a **Team ID**:
 2. **From Share Team:** In team view, use the **Share** feature to get a team link containing the Team ID
 3. **From Account Settings:** Access your account settings in the desktop app and navigate to team management where Team IDs may be displayed
 
-
+ ![Figma-url](../../img/integrations/toolkits/figma//figma-team-id.png)
 
 ## Instructions and Prompts for Using the Figma Toolkit
 
@@ -477,6 +428,7 @@ Analyze team projects for:
 ```
 Use the "index_data" tool to create searchable indexes of Figma content.
 Parameters:
+- Collection Suffix: abc123
 - File Key: ABC123DEF456
 - Content types: components, text, styles (specify what to index)
 
@@ -491,9 +443,9 @@ Create indexes to enable:
 
 **Purpose:** Access design system libraries and collections
 ```
-Use the "list_collections" tool to retrieve available design collections and libraries.
+Use the "list_collections" tool to retrieve available indexed design collections and libraries.
 Parameters:
-- Team ID: 987654321
+- No specific parameters required (retrieves all indexed collections)
 
 Review collections for:
 - Design system components
@@ -526,7 +478,7 @@ Use for automated:
 ```
 Use the "remove_index" tool to clean up previously created indexes.
 Parameters:
-- Index ID: index_abc123 (specify which index to remove)
+- Collection Suffix: abc123 (specify which index to remove)
 
 Remove indexes when:
 - Data is outdated
@@ -542,8 +494,7 @@ Remove indexes when:
 Use the "search_index" tool to search through indexed Figma content.
 Parameters:
 - Query: "button primary blue" (search terms)
-- Index ID: index_abc123 (which index to search)
-- Limit: 10 (optional - number of results)
+- Collection Suffix: abc123 (which index to search)
 
 Search for:
 - Specific design components
@@ -559,7 +510,7 @@ Search for:
 Use the "stepback_search_index" tool for sophisticated contextual searches.
 Parameters:
 - Query: "navigation components with accessibility features"
-- Index ID: index_abc123
+- Collection Suffix: abc123
 - Context depth: 3 (optional - search context expansion)
 
 Use for complex searches requiring:
@@ -575,7 +526,7 @@ Use for complex searches requiring:
 ```
 Use the "stepback_summary_index" tool to create comprehensive summaries.
 Parameters:
-- Index ID: index_abc123
+- Collection Suffix: abc123
 - Summary type: "component_usage" (specify summary focus)
 - Depth: detailed (optional - summary detail level)
 
@@ -676,7 +627,7 @@ We encourage you to first explore the resources available within this guide and 
 
 The Figma toolkit integration with ELITEA follows a streamlined three-step workflow:
 
-1. **🔐 Create Credentials** - Set up secure authentication with your Figma Personal Access Token or OAuth2 token
+1. **🔐 Create Credentials** - Set up secure authentication with your Figma Personal Access Token
 2. **🔧 Create Toolkit** - Configure the Figma toolkit using your credentials and enable the tools you need
 3. **🚀 Use in Modules** - Add the toolkit to Agents, Pipelines, and use them directly in Chat for automated design workflows
 
