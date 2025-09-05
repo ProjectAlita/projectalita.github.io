@@ -3,6 +3,19 @@
 !!! warning "Availability"
     Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets) and the [Indexing Overview](./indexing-overview.md).
 
+!!! info "Migration from Datasources"
+    In previous releases, there was a **Source type: File** option in Datasources. Now, Datasources have been removed from ELITEA, and users can perform the same action through SharePoint Toolkit indexing.
+    
+    **How to migrate from Datasources to SharePoint Toolkit:**
+    
+    1. **Add files to SharePoint**: Upload your documents to SharePoint document libraries or sites (if not already there)
+    2. **Set up credentials**: Configure your SharePoint credentials in **Settings** → **Credentials** 
+    3. **Create SharePoint Toolkit**: Go to **Toolkits** → **+ Create** → **SharePoint** and configure with your site details
+    4. **Index your data**: Use the "Index Data" tool from the SharePoint Toolkit to create searchable indexes
+    5. **Search and chat**: Use the toolkit in conversations or agents to query your indexed SharePoint content
+    
+    This provides the same SharePoint indexing capabilities as the previous Datasources system with improved performance and integration.
+
 This guide provides a complete step-by-step walkthrough for indexing SharePoint data and then searching or chatting with the indexed content using ELITEA's AI-powered tools.
 
 ## Overview
@@ -238,7 +251,6 @@ Let's walk through a complete example of indexing and using a company's SharePoi
    
    *Sources: Project_Charter_Template_v3.2.docx, Sprint_Planning_Template.xlsx, Risk_Management_Matrix.xlsx*"
 
-   ![SharePoint Search](../../img/how-tos/indexing/sharepoint-index-search1.png)
 
 ## Troubleshooting & Tips
 
