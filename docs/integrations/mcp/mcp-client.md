@@ -80,7 +80,7 @@ Before setting up Elitea as an MCP Client, ensure you have the following:
 
 ### 1. Installation
 
-#### macOS (Recommended)
+#### macOS
 
 ```bash
 brew install pipx
@@ -92,6 +92,13 @@ If needed, add to your shell profile:
 echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.zprofile
 source ~/.zprofile
 ```
+#### Windows
+
+```powershell
+pip install --user pipx
+python -m pipx ensurepath
+pipx install alita-mcp
+```
 
 #### Linux
 
@@ -101,13 +108,6 @@ pipx ensurepath
 pipx install alita-mcp
 ```
 
-#### Windows
-
-```powershell
-pip install --user pipx
-python -m pipx ensurepath
-pipx install alita-mcp
-```
 
 #### Alternative: pip (all platforms)
 
@@ -127,7 +127,8 @@ Run the bootstrap wizard to set up your Elitea connection and MCP servers:
 alita-mcp bootstrap
 ```
 You’ll be prompted for:
-- Deployment URL (e.g., https://nexus.elitea.ai)
+
+- Deployment URL (e.g., https://next.elitea.ai)
 - Authentication Token
 - Host/Port (accept defaults unless needed)
 - Project ID
@@ -136,11 +137,23 @@ You’ll be prompted for:
 **Example:**  
 For Playwright:
 ```
-Server Name: Playwright
-Server Type: 2 (stdio)
-Command: npx
-Args: @playwright/mcp@latest
-Keep connection alive? y
+{
+  "deployment_url": "https://next.elitea.ai",
+  "auth_token": "eyJhbGciOi.....",
+  "host": "0.0.0.0",
+  "port": 8000,
+  "project_id": 6,
+  "servers": {
+    "Playwright_MCP": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "stateful": true
+    }
+  }
+}
 ```
 
 #### Configuration File Locations
@@ -219,18 +232,38 @@ The tray app is the easiest way to manage your MCP client, especially for non-te
 
 Once your MCP server is set up and running, you can connect it to your Elitea agents directly from the Elitea web interface. This allows you to use powerful external tools as part of your agent workflows.
 
+### How to Create an MCP in Elitea
+
+Create the MCP entry in the ELITEA UI so your project can reference and use the external server.
+
+1. Ensure the **Elitea MCP Client** is installed and started.
+2. Open the **MCPs** menu.
+3. Select the **available MCP servers** you want to add after they are running locally and connected to your project.
+4. Click **`+ Create`**.
+5. Fill in details:
+      * **Name:** Clear, descriptive label (e.g., "Playwright Browser Automation").
+      * **Description:** Optional purpose note.
+6. Review the **Tools** list and unselect anything not needed (least privilege).
+7. Click **Save**.
+
+![Create MCP Placeholder](../../img/menus/mcps/mcps_create.png)
+
+!!! tip "Disconnected Creation"
+  If the MCP Client is not running at creation time, tool discovery may be empty. Start the client and refresh the MCP entry to load tools.
+
+For more UI details, see the [MCPs menu guide](../../menus/mcps.md).
+
 ### How to Add MCP Server as a Toolkit to an Agent
 
 1. **Navigate to Elitea** and select the project where you have configured MCP servers.
 2. **Create a new agent** or select an existing one.
       1. Go to the **Configuration** tab of the agent.
       2. Scroll down to the **Toolkits** section.
-      3. Click **Add Toolkit**.
+      3. Click **+MCP**.
       4. Your configured MCP server(s) will appear in the list, using the names you set during setup.
           ![Select MCP Server Toolkit](../../img/integrations/mcp/select-mcp-toolkit.png)
       5. Select the desired MCP server as a toolkit.
-      6. Provide a **Name** and **Description** for the toolkit.
-      7. Review and select the suggested tools for that toolkit. By default, all tools are selected.
+      6. Review and select the suggested tools for that toolkit. By default, all tools are selected.
          ![Select Tools for Toolkit](../../img/integrations/mcp/select-mcp-tools.png)
 3.  Click **Save** to apply the toolkit to the agent.
 4.  Configure the agent’s settings, instructions, etc., and save your changes.
@@ -239,12 +272,14 @@ You can now use the MCP server’s tools directly from Elitea—triggering actio
 
 ### Project and User Scope Notes
 
-* **Private Project Setup:**
-  - If you set up an MCP server in your Private project, it becomes available in your Private project and in all "Team" projects where you are a member. However, only you will see and be able to use these MCP servers.
-* **Team Project Setup:**
-  - If you set up an MCP server in a Team project, it becomes available to all users of that Team project, as well as in your Private project and any other Team projects you are involved in. Still, only you will see and be able to use the MCP servers you configured.
 
-> **Tip:** This ensures your MCP integrations are both flexible and secure—available where you need them, but only visible to you unless shared in a Team project.
+* **Private Project Setup:**
+     * If you set up an MCP server in your Private project, it becomes available in your Private project and in all "Team" projects where you are a member. However, only you will see and be able to use these MCP servers.
+* **Team Project Setup:**
+     * If you set up an MCP server in a Team project, it becomes available to all users of that Team project, as well as in your Private project and any other Team projects you are involved in. Still, only you will see and be able to use the MCP servers you configured.
+
+!!! tip "Tip"
+    This ensures your MCP integrations are both flexible and secure—available where you need them, but only visible to you unless shared in a Team project.
 
 ---
 
@@ -258,14 +293,14 @@ You can now use the MCP server’s tools directly from Elitea—triggering actio
 Automate browser-based testing of a web application directly from Elitea, enabling agents to perform UI checks, capture screenshots, and validate workflows without writing code.
 
 #### Setup Steps
+
 1. **Ensure Playwright MCP Server is running** and configured in your Elitea MCP Client (see earlier setup instructions).
 2. **In Elitea UI:**
     * Select your project.
     * Create a new agent (e.g., "Web Tester") or select an existing one.
     * Go to the agent's **Configuration** tab.
-    * In the **Toolkits** section, click **Add Toolkit**.
+    * In the **Toolkits** section, click **+MCP**.
     * Select your Playwright MCP server from the list (named as you configured it).
-    * Provide a descriptive name (e.g., "Playwright Browser Automation") and description.
     * Review the available Playwright tools (e.g., navigate, click, fill, screenshot) and select those you want to enable (all are selected by default).
     * Click **Save** to add the toolkit to your agent.
     * Configure the agent's instructions (e.g., "Test the login page and capture a screenshot after login.").
@@ -290,14 +325,14 @@ Automate browser-based testing of a web application directly from Elitea, enabli
 Empower Elitea agents to interact with GitHub repositories—creating issues, managing pull requests, or tracking project status—without leaving the Elitea UI.
 
 #### Setup Steps
+
 1. **Ensure GitHub MCP Server is running** and configured in your Elitea MCP Client (see earlier setup instructions).
 2. **In Elitea UI:**
     * Select your project.
     * Create a new agent (e.g., "GitHub Manager") or select an existing one.
     * Go to the agent's **Configuration** tab.
-    * In the **Toolkits** section, click **Add Toolkit**.
+    * In the **Toolkits** section, click **+MCP**.
     * Select your GitHub MCP server from the list (named as you configured it).
-    * Provide a descriptive name (e.g., "GitHub Automation Toolkit") and description.
     * Review the available GitHub tools (e.g., create issue, list repositories, manage pull requests) and select those you want to enable (all are selected by default).
     * Click **Save** to add the toolkit to your agent.
     * Configure the agent's instructions (e.g., "Create a new issue in the selected repository with the provided details.").
@@ -338,14 +373,23 @@ This issue typically occurs when the `servers` configuration is missing or empty
     Here is an example of a correctly filled-in `playwright` server configuration:
 
 ```json
-"playwright": {
-    "type": "stdio",
-    "command": "npx",
-    "args": [
-      "@playwright/mcp@latest"
-     ],
-     "stateful": true
- }
+{
+  "deployment_url": "https://next.elitea.ai",
+  "auth_token": "eyJhbGciOi.....",
+  "host": "0.0.0.0",
+  "port": 8000,
+  "project_id": 6,
+  "servers": {
+    "Playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "stateful": true
+    }
+  }
+}
 ```
 
  **Save the `config.json` file** and try running the MCP client again.

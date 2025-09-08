@@ -23,6 +23,7 @@ nav:
           - Quick Start (Next env): getting-started/next-quick-start.md
           - Configure Epam AI Dial key (Next env): getting-started/configure-epam-ai-dial-key.md
           - Migrate Datasources to Indexing: how-tos/indexing/migrate-datasources-to-indexing.md
+          - Configure and Use MCP Server from Elitea: getting-started/configure-and-use-mcp.md
       - Initial Setup:
           - Create a Personal Access Token: getting-started/create-personal-access-token.md
           - Create a Secret: getting-started/create-secret.md
@@ -44,6 +45,7 @@ nav:
       - Pipelines: menus/pipelines.md
       - Credentials: menus/credentials.md
       - Toolkits: menus/toolkits.md
+      - MCPs: menus/mcps.md
       - Collections: menus/collections.md
       - Artifacts: menus/artifacts.md
       - Settings:
