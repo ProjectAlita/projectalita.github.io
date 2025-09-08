@@ -76,6 +76,7 @@ nav:
           - Confluence Indexing: how-tos/indexing/index-confluence-data.md
           - Jira Indexing: how-tos/indexing/index-jira-data.md
           - SharePoint Indexing: how-tos/indexing/index-sharepoint-data.md
+          - TestRail Indexing: how-tos/indexing/index-testrail-data.md
           - Figma Indexing: how-tos/indexing/index-figma-data.md
       - Chat & Conversations:
           - Chat - Advanced Usage: how-tos/how-to-use-chat-functionality.md
