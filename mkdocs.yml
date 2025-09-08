@@ -17,10 +17,12 @@ nav:
 
   - Getting Started:
       - Quick Starts:
-          - Quick Start (Next env): getting-started/next-quick-start.md
-          - Configure Epam AI Dial key (Next env): getting-started/configure-epam-ai-dial-key.md
           - Very Quick Start: getting-started/very-quick-start.md
           - Quick Start: getting-started/quick-start.md
+      - Migration to Next Environment:
+          - Quick Start (Next env): getting-started/next-quick-start.md
+          - Configure Epam AI Dial key (Next env): getting-started/configure-epam-ai-dial-key.md
+          - Migrate Datasources to Indexing: how-tos/indexing/migrate-datasources-to-indexing.md
       - Initial Setup:
           - Create a Personal Access Token: getting-started/create-personal-access-token.md
           - Create a Secret: getting-started/create-secret.md
