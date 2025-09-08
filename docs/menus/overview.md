@@ -16,22 +16,23 @@ The ELITEA's main interface encompasses several sections, including the Discover
 7. **Pipelines**: Menu, allowing you to access and manage all the pipelines you have created, design and automate workflows by connecting various nodes, such as conditions, decisions, loops, and tool integrations.
 8. **Credentials**: Menu, allowing you to manage authentication credentials for external services and integrations used by your agents and pipelines.
 9. **Toolkits**: Menu, allowing you to create and manage custom toolkits that can be used across different agents and pipelines to extend functionality. 
-10. **Collections**: Menu, allowing you to manage your collections of agents and pipelines, organized for specific projects or themes.
-11. **Artifacts**: Menu, allowing you to utilize the Artifacts feature to create Buckets in ELITEA for saving, updating (appending), reading, and deleting files. Artifacts serve as a temporary file storage solution, enhancing your project's data management capabilities.
-12. **Import**: Functionality, allowing users to import agents and pipelines from JSON files.
-13. **Socket Connected**: Status indicator showing the real-time connection status to the ELITEA servers, displayed at the bottom of the sidebar.
-14. **Settings**: Menu, here, you can configure various project and user-specific settings.
-15. **Notifications**: Notification bell allowing users to get notified about various events such as agent publishing status within ELITEA.
-16. **User Profile**: User account section displaying the current user's name and avatar, accessible at the bottom of the sidebar for account management.
-17. **Status**: Status indicators and filters showing the current state of agents and other entities (e.g., "All", "Draft", "Published" states). 
-18. **View Modes**: Cards are displayed in responsive grid layouts that automatically adjust based on screen size and content.
-19. **Search**: A Search box available to find agents, pipelines, collections, toolkits, and credentials by their names and descriptions.
+10. **MCPs**: Menu, allowing you to manage external Model Context Protocol (MCP) servers connected via the Elitea MCP Client. Create MCP entries, view their Connected/Disconnected state, enable specific tools, and use them with agents, pipelines, and conversations.
+11. **Collections**: Menu, allowing you to manage your collections of agents and pipelines, organized for specific projects or themes.
+12. **Artifacts**: Menu, allowing you to utilize the Artifacts feature to create Buckets in ELITEA for saving, updating (appending), reading, and deleting files. Artifacts serve as a temporary file storage solution, enhancing your project's data management capabilities.
+13. **Import**: Functionality, allowing users to import agents and pipelines from JSON files.
+14. **Socket Connected**: Status indicator showing the real-time connection status to the ELITEA servers, displayed at the bottom of the sidebar.
+15. **Settings**: Menu, here, you can configure various project and user-specific settings.
+16. **Notifications**: Notification bell allowing users to get notified about various events such as agent publishing status within ELITEA.
+17. **User Profile**: User account section displaying the current user's name and avatar, accessible at the bottom of the sidebar for account management.
+18. **Status**: Status indicators and filters showing the current state of agents and other entities (e.g., "All", "Draft", "Published" states). 
+19. **View Modes**: Cards are displayed in responsive grid layouts that automatically adjust based on screen size and content.
+20. **Search**: A Search box available to find agents, pipelines, collections, toolkits, and credentials by their names and descriptions.
 
     !!! note "Scope"
         The **Search** functionality operates within the selected menu and is not universal across the entire platform.
 
-20. **Tags**: This section displays the tags (categories) associated with the content being viewed. The tags vary depending on the selected menu.
-21. **Trending Authors**: Shows the authors who have recently contributed or shared the most trending agents and collections with the community.
+21. **Tags**: This section displays the tags (categories) associated with the content being viewed. The tags vary depending on the selected menu.
+22. **Trending Authors**: Shows the authors who have recently contributed or shared the most trending agents and collections with the community.
 
 ![Intro_Main_Interface_Numbered_New](../img/menus/overview/main_interface_numbered_new.png)
 
@@ -45,6 +46,7 @@ ELITEA platform consists of the following main menus:
 * **Pipelines**
 * **Credentials**
 * **Toolkits**
+* **MCPs**
 * **Collections**
 * **Artifacts**
 
@@ -71,6 +73,7 @@ In **Private** and **Team** projects you work with the same core menus listed be
 * **Pipelines** menu: Access and manage all the pipelines you have created, design and automate workflows by connecting various nodes, such as conditions, decisions, loops, and tool integrations.
 * **Credentials** menu: Manage authentication credentials for external services and integrations used by your agents and pipelines.
 * **Toolkits** menu: Create and manage custom toolkits that can be used across different agents and pipelines to extend functionality.
+* **MCPs** menu: Manage external MCP servers connected to your project via the Elitea MCP Client. Create MCP entries, monitor their Connected/Disconnected state, enable the tools you need, and use them across agents, pipelines, and conversations.
 * **Collections** menu: Manage your collections of agents and pipelines, organized for specific projects or themes.
 * **Artifacts** menu: Utilize the Artifacts feature to create Buckets in ELITEA for saving, updating (appending), reading, and deleting files. Artifacts serve as a temporary file storage solution, enhancing your project's data management capabilities.
 
