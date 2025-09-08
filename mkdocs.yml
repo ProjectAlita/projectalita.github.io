@@ -71,13 +71,14 @@ nav:
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
-          - Artifacts Indexing: how-tos/indexing/index-artifacts-data.md
           - Repository Indexing: how-tos/indexing/index-github-data.md
           - Confluence Indexing: how-tos/indexing/index-confluence-data.md
           - Jira Indexing: how-tos/indexing/index-jira-data.md
           - SharePoint Indexing: how-tos/indexing/index-sharepoint-data.md
-          - TestRail Indexing: how-tos/indexing/index-testrail-data.md
+          - Artifacts Indexing: how-tos/indexing/index-artifacts-data.md
           - Figma Indexing: how-tos/indexing/index-figma-data.md
+          - TestRail Indexing: how-tos/indexing/index-testrail-data.md
+          - ADO Wiki Indexing: how-tos/indexing/index-ado-wiki-data.md
       - Chat & Conversations:
           - Chat - Advanced Usage: how-tos/how-to-use-chat-functionality.md
           - Canvas - Advanced Usage: how-tos/how-to-canvas.md
