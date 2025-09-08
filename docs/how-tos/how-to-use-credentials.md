@@ -35,38 +35,33 @@ The **Credentials** menu in ELITEA serves as a centralized hub for securely mana
 
 | Platform | Description | Authentication Methods |
 |----------|-------------|----------------------|
-| **ADO (Azure DevOps)** | Microsoft Azure DevOps platform | Personal Access Token |
-| **ADO Repos** | Azure DevOps repository integration | ADO Configuration reference |
-| **Bitbucket** | Git repository hosting service | Username/Password |
-| **Confluence** | Atlassian knowledge management | Basic Auth, Bearer Token |
-| **Figma** | Design collaboration platform | Personal Access Token, OAuth2 |
-| **ADO (Azure DevOps)** | Microsoft Azure DevOps platform | Personal Access Token |
-| **ADO Repos** | Azure DevOps repository integration | ADO Configuration reference |
-| **Bitbucket** | Git repository hosting service | Username/Password |
-| **Browser** | Web automation, browser testing | Google API Key, Search Engine ID |
-| **Carrier** | Communication services, messaging | Private Token |
-| **Confluence** | Atlassian knowledge management | Basic Auth, Bearer Token |
-| **Figma** | Design collaboration platform | Personal Access Token, OAuth2 |
-| **GitHub** | Git repository hosting service | Token, Password, App Private Key, Anonymous |
-| **GitLab** | Git repository and DevOps platform | Private Token |
-| **Google Places** | Location services, mapping APIs | API Key |
-| **Jira** | Atlassian project management | Basic Auth, Bearer Token |
-| **Postman** | API development platform | API Key |
-| **QTest** | Test management platform | API Token |
-| **Rally** | Agile project management | Username/Password, API Key |
-| **Report Portal** | Test reporting, analytics | API Key |
-| **Salesforce** | CRM, customer relationship management | Client Credentials (OAuth2) |
-| **ServiceNow** | IT service management platform | Username/Password |
-| **SharePoint** | Document management, collaboration | Client Credentials |
-| **Slack** | Team communication platform | Bot/User Token |
-| **Sonar** | Code quality analysis, security | API Token |
-| **SQL** | Database connections, data queries | Username/Password, Connection String |
-| **TestIO** | Crowdsourced testing platform | API Key |
-| **TestRail** | Test case management | Email/Password |
-| **Xray** | Test management for Jira | Client Credentials |
-| **Zephyr Enterprise** | Test management platform | API Token |
-| **Zephyr Essential** | Test management, essential features | Token |
-| **Zephyr Scale** | Test management for Jira | Token, Username/Password, Cookies |
+| **[ADO (Azure DevOps)](#ado-azure-devops-credential-setup)** | Microsoft Azure DevOps platform | Personal Access Token |
+| **[ADO Repos](#ado-repos-credential-setup)** | Azure DevOps repository integration | ADO Configuration reference |
+| **[Bitbucket](#bitbucket-credential-setup)** | Git repository hosting service | Username/Password |
+| **[Browser](#browser-credential-setup)** | Web automation, browser testing | Google API Key, Search Engine ID |
+| **[Carrier](#carrier-credential-setup)** | Communication services, messaging | Private Token |
+| **[Confluence](#confluence-credential-setup)** | Atlassian knowledge management | Basic Auth, Bearer Token |
+| **[Figma](#figma-credential-setup)** | Design collaboration platform | Personal Access Token, OAuth2 |
+| **[GitHub](#github-credential-setup)** | Git repository hosting service | Token, Password, App Private Key, Anonymous |
+| **[GitLab](#gitlab-credential-setup)** | Git repository and DevOps platform | Private Token |
+| **[Google Places](#google-places-credential-setup)** | Location services, mapping APIs | API Key |
+| **[Jira](#jira-credential-setup)** | Atlassian project management | Basic Auth, Bearer Token |
+| **[Postman](#postman-credential-setup)** | API development platform | API Key |
+| **[QTest](#qtest-credential-setup)** | Test management platform | API Token |
+| **[Rally](#rally-credential-setup)** | Agile project management | Username/Password, API Key |
+| **[Report Portal](#report-portal-credential-setup)** | Test reporting, analytics | API Key |
+| **[Salesforce](#salesforce-credential-setup)** | CRM, customer relationship management | Client Credentials (OAuth2) |
+| **[ServiceNow](#servicenow-credential-setup)** | IT service management platform | Username/Password |
+| **[SharePoint](#sharepoint-credential-setup)** | Document management, collaboration | Client Credentials |
+| **[Slack](#slack-credential-setup)** | Team communication platform | Bot/User Token |
+| **[Sonar](#sonar-credential-setup)** | Code quality analysis, security | API Token |
+| **[SQL](#sql-credential-setup)** | Database connections, data queries | Username/Password, Connection String |
+| **[TestIO](#testio-credential-setup)** | Crowdsourced testing platform | API Key |
+| **[TestRail](#testrail-credential-setup)** | Test case management | Email/Password |
+| **[Xray](#xray-credential-setup)** | Test management for Jira | Client Credentials |
+| **[Zephyr Enterprise](#zephyr-enterprise-credential-setup)** | Test management platform | API Token |
+| **[Zephyr Essential](#zephyr-essential-credential-setup)** | Test management, essential features | Token |
+| **[Zephyr Scale](#zephyr-scale-credential-setup)** | Test management for Jira | Token, Username/Password, Cookies |
 
 * **Reusable Configurations:** Once a credential is configured, it can be reused across multiple toolkits within the **same project** or your **Private** workspace.
 * **Private and Project Level Credentials:** You can create credentials within your **Private** workspace for personal use or within **Team** projects for shared access among project members.
