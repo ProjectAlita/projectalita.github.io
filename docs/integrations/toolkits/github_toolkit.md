@@ -78,6 +78,9 @@ For secure integration with ELITEA, it is essential to use a GitHub **Personal A
 
 For more granular control and enhanced security, especially in organizational or automated contexts, using a GitHub App for authentication is the recommended approach. This method authenticates as the app itself, not as a user, and its permissions are precisely defined within the app's settings.
 
+!!! note "Integration with ELITEA"
+    Once you create a GitHub App and generate its private key, you'll use these credentials when creating your GitHub credential in ELITEA (Step 1 of the integration process).
+
 #### Step 1: Create and Configure a GitHub App
 
 1.  **Navigate to Developer Settings:** Log in to your GitHub account, click your profile photo in the top-right corner, and go to **Settings** > **Developer settings**.
@@ -104,170 +107,170 @@ After creating the app, you will be redirected to its settings page.
     *   Click **Generate a private key**.
     *   A `.pem` file will be immediately downloaded to your computer. **This is your private key. Treat it like a password and store it securely.** You will only be able to download it once.
 
-2.  **Install the App:**
+2.  **Get the App ID:**
+    *   Note the **App ID** displayed at the top of your GitHub App's settings page. You'll need this along with the private key when creating your ELITEA credential.
+
+3.  **Install the App:**
     *   In your GitHub App's settings, click the **Install App** tab in the left sidebar.
     *   Click **Install** next to your organization or personal account.
     *   On the next screen, you can choose to install the app on **All repositories** or **Only select repositories**.
     *   Click **Install** to complete the process. The app can now interact with the selected repositories.
 
-## GitHub Integration with ELITEA
+!!! note "Next Steps"
+    Once you have created your GitHub App and generated the private key, you can use these credentials when creating your GitHub credential in ELITEA. Choose the **App Private Key** authentication method in Step 1 of the System Integration process.
 
-### Agent Creation/Configuration
+## System Integration with ELITEA
 
-To integrate GitHub, you'll need to configure it within an ELITEA Agent. You can integrate GitHub with a new Agent or modify an existing one.
+To integrate GitHub with ELITEA, you need to follow a three-step process: **Create Credentials → Create Toolkit → Use in Agents**. This workflow ensures secure authentication and proper configuration.
 
-1.  **Navigate to Agents Menu:** In ELITEA, go to the **Agents** menu.
-2.  **Create or Edit Agent:**
-    *   **New Agent:** Click **"+ Agent"** to create a new Agent. Follow the steps to define Agent details such as name, description, type, and instructions.
-    *   **Existing Agent:** Select the Agent you wish to integrate with GitHub and click on its name to edit its configuration.
-3.  **Access Toolkits Section:** Within the Agent configuration, scroll down to the **"Tools"** section.
+### Step 1: Create GitHub Credentials
 
-### Toolkit Configuration
+Before creating a toolkit, you must first create GitHub credentials in ELITEA:
 
-This section details how to configure the GitHub toolkit within your ELITEA Agent.
+1. **Navigate to Credentials Menu:** Open the sidebar and select **Credentials**.
+2. **Create New Credential:** Click the **`+ Create`** button.
+3. **Select GitHub:** Choose **GitHub** as the credential type.
+4. **Configure Credential Details:**
+     * **Display Name:** Enter a descriptive name (e.g., "GitHub - Development Team Access")
+     * **Base URL:** Usually `https://api.github.com` (only change for GitHub Enterprise Server)
+     * **Authentication Method:** Choose your preferred authentication method:
+         * **Anonymous:** No authentication required (limited to public repositories and rate-limited)
+         * **Token:** Enter your GitHub Personal Access Token (recommended)
+         * **Password:** Enter your GitHub username and password (not recommended)
+         * **App Private Key:** Enter GitHub App ID and private key for app-based authentication
+5. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project
+6. **Save Credential:** Click **Save** to create the credential. After saving, your GitHub credential will be added to the credentials dashboard and will be ready to use in toolkit configurations. You can view, edit, or delete it from the **Credentials** menu at any time.
 
-1.  **Add Toolkit:** In the "Tools" section, click the **"+" icon**.
-2.  **Select GitHub Toolkit:** From the dropdown list of available toolkits, choose **"GitHub"**. This will open the "New GitHub tool" configuration section.
-3.  **Configure GitHub Toolkit Settings:** Fill in the following configuration fields in the "New GitHub tool" section:
+![GitHub Credential](../../img/integrations/toolkits/github/github-credential-create.png)
 
-    *   **URL:**  This field is pre-filled with the standard GitHub API URL: `https://api.github.com`. **In the vast majority of cases, you should not modify this URL.** Only change it if you are connecting to a self-hosted **GitHub Enterprise Server** instance, in which case you should enter the specific API URL for your Enterprise Server( e.g. https://github.tools.test/api/v3/ ).
-    *   **Repository:** Enter the **Repository name** that you want to access with this toolkit. Use the format: `repository_owner/repository_name` (e.g., `MyOrganization/my-project-repo`). Ensure you use the correct owner/organization and repository name. You don't need to add ".git" at the end of the repo.
-    *   **Main branch:** Specify the **Main branch** of your repository. This is typically `main` or `master`.
-    *   **Authentication Options:**
-        *   **Token:** Select this option to authenticate using a GitHub Personal Access Token (recommended for most use cases).
-        *   **Anonymous:** Use this option if you only need to access public repositories and do not require authentication.
-        *   **Password:** Choose this option if you need to authenticate with your GitHub password (not recommended; use tokens for better security).
-        *   **App Private Key:** Select this if you have a GitHub App installed on the repository and want to authenticate using the app's private key.
+!!! tip "Security Recommendation"
+    It's highly recommended to use **[Secrets](../../menus/settings/secrets.md)** for sensitive authentication data (tokens, passwords, and private keys) instead of entering them directly. Create a secret first, then reference it in your credential configuration.
 
-        *   **Password/Secret:** Choose **"Password"** and then paste the **Personal Access Token (Classic)** you generated in GitHub (during the "Software-Specific Setup" section of this guide) into the **"Password"** field.
-        *   **Enhanced Security with Secrets (Recommended):** For significantly enhanced security, it is strongly recommended to use the **"Secret"** option. Select **"Secret"** and then choose a pre-configured secret from the dropdown list. You must first securely store your Personal Access Token as a Secret within ELITEA's [Secrets Management](../../menus/settings/secrets.md) feature. Using Secrets is a critical security best practice that prevents hardcoding sensitive credentials directly in the toolkit configuration, reducing the risk of exposure.
+### Step 2: Create GitHub Toolkit
+
+Once your credentials are configured, create the GitHub toolkit:
+
+1. **Navigate to Toolkits Menu:** Open the sidebar and select **Toolkits**.
+2. **Create New Toolkit:** Click the **`+ Create`** button.
+3. **Select GitHub:** Choose **GitHub** from the list of available toolkit types.
+4. **Configure Credentials:** 
+     * In the **Configuration** section, select your previously created GitHub credential from the **Credentials** dropdown
+5. **Configure Advanced Options:**
+     * **PgVector Configuration:** Select a PgVector connection for vector database integration
+     * **Embedding Model:** Select an embedding model for text processing and semantic search capabilities
+6. **Configure Repository Settings:**
+     * **Repository:** Enter the repository name in the format `owner/repository-name` (e.g., `MyOrg/my-project`)
+     * **Main Branch:** Specify the main branch name (typically `main` or `master`)
+     * **Active Branch:** Set the active working branch (defaults to `main`)
+7. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific GitHub tools you want to enable. **Enable only the tools your agents will actually use** to follow the principle of least privilege
+8. **Save Toolkit:** Click **Save** to create the toolkit.
+
+![GitHub Toolkit](../../img/integrations/toolkits/github/github-toolkit-create.png)
+
+#### Available Tools:
+
+The GitHub toolkit provides the following tools for interacting with GitHub repositories and managing development workflows, organized by functional categories:
+
+| **Tool Category** | **Tool Name** | **Description** | **Primary Use Case** |
+|:-----------------:|---------------|-----------------|----------------------|
+| **Issue Management** | | | |
+| | **Get issues** | Retrieves a list of issues from the repository | View all issues for project management and task tracking |
+| | **Get issue** | Retrieves details of a specific issue by number | Access detailed information about a particular issue |
+| | **Search issues** | Searches for issues based on keywords and criteria | Find issues related to specific topics, bugs, or features |
+| | **Create issue** | Creates a new issue in the repository | Automate bug reporting and task creation |
+| | **Update issue** | Updates an existing issue's properties | Modify issue status, labels, assignees, and other attributes |
+| | **Comment on issue** | Adds a comment to an existing issue | Provide automated updates and feedback on issues |
+| **Pull Request Management** | | | |
+| | **List open pull requests** | Lists all currently open pull requests | Monitor pending code changes and review requests |
+| | **Get pull request** | Retrieves details of a specific pull request | Access comprehensive information about a PR |
+| | **List pull request diffs** | Lists files changed in a pull request | Review code changes and assess impact of modifications |
+| | **Create pull request** | Creates a new pull request | Automate the code review and integration process |
+| **File Operations** | | | |
+| | **Create file** | Creates a new file in the repository | Generate code files, documentation, or configuration files |
+| | **Read file** | Reads the content of a specific file | Access file content for analysis or processing |
+| | **Update file** | Updates the content of an existing file | Modify code, documentation, or configuration files |
+| | **Delete file** | Deletes a file from the repository | Remove obsolete or unnecessary files |
+| | **List files in main branch** | Lists all files in the main branch | Browse repository structure and discover files |
+| | **List files in bot branch** | Lists files in the active working branch | View files in the current development branch |
+| | **Get files from directory** | Retrieves files from a specific directory | Access files within particular folder structures |
+| **Branch Management** | | | |
+| | **List branches in repo** | Lists all branches in the repository | Manage and overview repository branching structure |
+| | **Set active branch** | Sets the active working branch for operations | Control which branch file operations target |
+| | **Create branch** | Creates a new branch from a base branch | Set up new development branches for features or fixes |
+| **Version Control** | | | |
+| | **Get commits** | Retrieves commit history and information | Analyze repository history and track changes |
+| | **Get commit changes** | Gets detailed changes for a specific commit | Review what was modified in a particular commit |
+| | **Get commits diff** | Compares changes between two commits | Analyze differences between code versions |
+| | **Apply git patch** | Applies a git patch to the repository | Automate code changes using patch format |
+| | **Apply git patch from file** | Applies a git patch from an artifact file | Apply pre-generated patches from stored files |
+| **Workflow Automation** | | | |
+| | **Trigger workflow** | Triggers a GitHub Actions workflow | Automate CI/CD and other repository workflows |
+| | **Get workflow status** | Retrieves the status of a workflow run | Monitor automated workflow execution |
+| | **Get workflow logs** | Gets logs from a workflow execution | Debug and analyze workflow performance |
+| **Project Management** | | | |
+| | **Create issue on project** | Creates an issue within a GitHub project board | Manage project-specific issue creation with custom fields |
+| | **Update issue on project** | Updates an issue within a GitHub project board | Modify project-specific issue properties and custom fields |
+| | **List project issues** | Lists all issues in a GitHub project | View project-specific issue collections with custom fields |
+| | **Search project issues** | Searches for issues within a GitHub project | Find specific issues within project contexts |
+| **Indexing & Search** | | | |
+| | **Index data** | Creates searchable indexes of GitHub repository content | Enable advanced search and discovery across repository files |
+| | **List collections** | Lists available indexed collections in the repository | View and manage indexed data collections |
+| | **Remove index** | Removes previously created search indexes | Clean up and manage indexed repository data |
+| | **Search index** | Performs searches across indexed repository content | Find specific code, comments, or content across the repository |
+| | **Stepback search index** | Performs advanced contextual searches with broader scope | Execute sophisticated searches with expanded context |
+| | **Stepback summary index** | Creates comprehensive summaries of indexed repository content | Generate intelligent summaries of code and repository information |
+| **Advanced Operations** | | | |
+| | **Generic github api call** | Makes custom calls to the GitHub API | Access any GitHub API endpoint not covered by specific tools |
+
+### Step 3: Use Toolkit in Agents, Pipelines, or Chat
+
+Now you can add the configured GitHub toolkit to your agents, pipelines, or use it directly in chat:
+
+**For Agents:**
+
+1. **Navigate to Agents:** Open the sidebar and select **[Agents](../../menus/agents.md)**.
+2. **Create or Edit Agent:** Either create a new agent or select an existing agent to edit.
+3. **Add GitHub Toolkit:** 
+     * In the **"Tools"** section of the agent configuration, click the **"+Toolkit"** icon
+     * Select your configured GitHub toolkit from the dropdown list
+     * The toolkit will be added to your agent with the previously configured tools enabled
+
+Your agent can now interact with GitHub using the configured toolkit and enabled tools.
+
+![GitHub to Agent](../../img/integrations/toolkits/github/github-agent.png)
 
 
+**For Pipelines:**
 
-    ![GitHub-Toolkit_Configuration.png](../../img/integrations/toolkits/github/GitHub-setup.png)
+1. **Navigate to Pipelines:** Open the sidebar and select **[Pipelines](../../menus/pipelines.md)**.
+2. **Create or Edit Pipeline:** Either create a new pipeline or select an existing pipeline to edit.
+3. **Add GitHub Toolkit:** 
+     * In the **"Tools"** section of the pipeline configuration, click the **"+Toolkit"** icon
+     * Select your configured GitHub toolkit from the dropdown list
+     * The toolkit will be added to your pipeline with the previously configured tools enabled
 
-#### Usage of App Private Key
+     ![GitHub to Pipeline](../../img/integrations/toolkits/github/git-pipeline.png)
 
-1.  Return to your GitHub App's main settings page (**General** tab). You will find the **App ID** at the top of the page. Copy this value.
-2.  In the ELITEA GitHub toolkit configuration, select **"App private key"** as the authentication option.
-3.  Fill in the required fields:
-    *   **App ID:** Paste the App ID you copied from your GitHub App's settings page.
-    *   **Private Key / Secret:**
-        * Open the `.pem` file you downloaded in a plain text editor. Copy the **entire content**, excluding the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` lines, and paste it into the **"Password"** field.
 
-      ![GitHub-private_key](../../img/integrations/toolkits/github/private_key.png)
-      ![GitHub-private_key1](../../img/integrations/toolkits/github/private_key1.png)
+**For Chat:**
 
-4.  **Enable Desired Tools:** In the **"Tools"** section within the GitHub toolkit configuration, **carefully select the checkboxes next to only the specific GitHub tools** that your Agent will actually need to use. **Enable only the tools that are absolutely necessary** to adhere to the principle of least privilege and minimize potential security risks. Available tools include:
-    *   **Get issues** - Retrieves a list of issues.
-    *   **Get issue** - Retrieves details of a specific issue.
-    *   **Search issues** - Searches for issues based on provided criteria.
-    *   **Create issue** - Creates a new issue.
-    *   **Update issue** - Updates an existing issue.
-    *   **Comment on issue** - Adds a comment to an issue.
-    *   **List open pull requests (PRs)** - Lists open pull requests.
-    *   **Get pull request** - Retrieves details of a specific pull request.
-    *   **List pull request files** - Lists files changed in a pull request.
-    *   **Create pull request** - Creates a new pull request.
-    *   **Create file** - Creates a new file.
-    *   **Read file** - Reads the content of a file.
-    *   **Update file** - Updates the content of an existing file.
-    *   **Delete file** - Deletes a file.
-    *   **List files in branch** - Lists files in a branch.
-    *   **List branches in repo** - Lists branches in the repository.
-    *   **Set active branch** - Sets the active branch.
-    *   **Create branch** - Creates a new branch.
-    *   **Get files from directory** - Retrieves files from a directory.
-    *   **Create Issue on Project** - Creates a new issue for given project.
-    *   **Update Issue on Project** - Update issue for given project.
-    *   **Loader** - Load repository to get general information.
+1. **Navigate to Chat:** Open the sidebar and select **[Chat](../../menus/chat.md)**.
+2. **Start New Conversation:** Click **+Create** or open an existing conversation.
+3. **Add Toolkit to Conversation:**
+     * In the chat Participants section, look for the **Toolkits** element
+     * Click the **"Add Tools"** Icon to open the tools selection dropdown
+     * Select your configured GitHub toolkit from the dropdown list
+     * The toolkit will be added to your conversation with all previously configured tools enabled
+4. **Use Toolkit in Chat:** You can now directly interact with your GitHub repositories by asking questions or requesting actions that will trigger the GitHub toolkit tools.
+    * **Example Chat Usage:**
+        - Please list all open issues in the repository that are labeled as 'bug' and 'high-priority'."
+        - Create a new branch called 'feature-user-authentication' from the main branch."
+        - Show me the recent commits in the main branch and summarize what changes were made."
+        - Create a pull request to merge the 'feature-login' branch into 'develop' with the title 'Add user login functionality'."
 
-5.  **Complete Setup:** Click the **arrow icon** (usually located at the top right of the toolkit configuration section) to finalize the GitHub toolkit setup and return to the main Agent configuration menu.
-6.  Click **Save** in the Agent configuration to save all changes.
+![GitHub to Chat](../../img/integrations/toolkits/github/git-conversation.png)
 
-### Tool Overview
 
-Once the GitHub toolkit is configured and added to your Agent, you can utilize the following tools within your Agent's instructions to enable interaction with your GitHub repositories:
-
-*   **Get Issues:**  **Tool Name:** `get_issues`
-    *   **Functionality:** Retrieves a list of issues from the specified GitHub repository. Supports filtering and sorting based on various criteria like state, labels, assignees, and creation date.
-    *   **Purpose:** Enables Agents to efficiently fetch and organize issue lists for task management, prioritization of bug fixes and feature requests, generating reports on project issues, or providing users with summarized views of project issues directly within ELITEA workflows.
-
-*   **Get Issue:**  **Tool Name:** `get_issue`
-    *   **Functionality:** Retrieves detailed information about a specific issue from a GitHub repository using its issue number. Includes comprehensive details such as issue title, description, status, labels, assignees, creation and update dates, and all associated comments and metadata.
-    *   **Purpose:** Allows Agents to access in-depth issue details for providing rich context during problem-solving, summarizing the complete status of a particular issue, or incorporating comprehensive issue information into ELITEA conversations, reports, and automated workflows.
-
-*   **Search Issues:** **Tool Name:** `search_issues`
-    *   **Functionality:** Searches for issues across the specified GitHub repository based on a query string. Supports advanced search syntax and filters to refine search results by keywords, authors, labels, state, and more.
-    *   **Purpose:** Enables Agents to perform targeted searches for issues matching specific criteria, facilitating efficient retrieval of relevant issues based on keywords, user queries, or workflow requirements. Useful for finding issues related to specific topics, bugs, or feature areas.
-
-*   **Create Issue:** **Tool Name:** `create_issue` and **Create Issue on project:** **Tool Name:** `update_issue_on_project`
-    *   **Functionality:** Creates a new issue in the specified GitHub repository. Requires parameters such as issue title and body, and optionally supports setting assignees, labels, and milestones during issue creation.
-    *   **Purpose:** Automates the process of issue creation directly from ELITEA workflows. Allows Agents to automatically log bugs, feature requests, or tasks based on user input, workflow triggers, or analysis results, streamlining issue reporting and task management.
-
-*   **Update Issue:** **Tool Name:** `update_issue` and **Update Issue on project:** **Tool Name:** `update_issue_on_project`
-    *   **Functionality:** Updates an existing issue in the specified GitHub repository and project. Allows modification of issue attributes such as title, body, status (open/closed), assignees, and labels. Requires the issue number to identify the issue to be updated.
-    *   **Purpose:** Enables Agents to automate issue status updates, assignment changes, priority adjustments, or content modifications based on workflow progress, user actions, or external events. Facilitates dynamic issue management and keeps issue tracking information current and accurate.
-
-*   **Comment on Issue:**  **Tool Name:** `comment_on_issue`
-    *   **Functionality:** Adds a new comment to a specific issue in a GitHub repository. Requires the issue number and the comment text as parameters.
-    *   **Purpose:** Automates communication and updates within issue tracking workflows by allowing Agents to add comments to GitHub issues directly from ELITEA. Streamlines providing status updates, asking for clarifications, notifying stakeholders, or logging automated actions related to specific issues.
-
-*   **List Open Pull Requests (PRs):**  **Tool Name:** `list_open_pull_requests`
-    *   **Functionality:** Retrieves a list of currently open pull requests from the specified GitHub repository. Provides an overview of pending code changes and code review activities.
-    *   **Purpose:** Enables Agents to fetch lists of open pull requests for code review management, generating reminders for pending reviews, creating reports on code changes in progress, or providing users with summaries of open PRs within ELITEA, improving code review workflow efficiency.
-
-*   **Get Pull Request:**  **Tool Name:** `get_pull_request`
-    *   **Functionality:** Retrieves detailed information about a specific pull request from a GitHub repository using its pull request number. Includes details like PR title, description, status, associated commits, comments, reviewers, and merge status.
-    *   **Purpose:** Allows Agents to access comprehensive pull request details for in-depth code review assistance, providing complete context on specific pull requests, facilitating informed decision-making during code merging, or incorporating detailed PR information into ELITEA workflows and reports.
-
-*   **List Pull Request Files:**  **Tool Name:** `list_pull_request_files`
-    *   **Functionality:** Retrieves a list of files that have been changed within a specific pull request in a GitHub repository. Highlights the specific code modifications introduced by the pull request.
-    *   **Purpose:** Enables Agents to provide concise summaries of files changed in a pull request, facilitate efficient code review by quickly listing modified files for reviewers, or analyze the scope and potential impact of code changes introduced by a PR within ELITEA workflows, aiding in impact assessment and review focus.
-
-*   **Create Pull Request:**  **Tool Name:** `create_pull_request`
-    *   **Functionality:** Creates a new pull request in the specified GitHub repository. Requires parameters such as the source branch, target branch, pull request title, and body.
-    *   **Purpose:** Automates the pull request creation process for code contributions, feature branches, or bug fixes directly from ELITEA. Significantly streamlines the code review and merging process, reduces manual effort for developers, and accelerates development cycles by automating the initiation of code integration.
-
-*   **Create File:**  **Tool Name:** `create_file`
-    *   **Functionality:** Creates a new file within the specified GitHub repository at a specified path with provided content.
-    *   **Purpose:** Automates the creation of new code files, documentation files, configuration files, or any other type of file within your repository directly from ELITEA workflows. Ensures consistency in file creation, reduces manual file creation tasks, and enables automated generation of project assets.
-
-*   **Read File:**  **Tool Name:** `read_file`
-    *   **Functionality:** Reads and retrieves the content of a specific file from the specified GitHub repository, based on the file path and branch name.
-    *   **Purpose:** Enables Agents to dynamically retrieve code snippets, configuration parameters, documentation content, or any file content from your repository. Provides context, data, or instructions to your ELITEA Agent or to users within ELITEA conversations, facilitating dynamic, data-driven, and context-aware workflows.
-
-*   **Update File:**  **Tool Name:** `update_file`
-    *   **Functionality:** Updates the content of a specific, existing file within a GitHub repository. Replaces the entire file content with the provided new content.
-    *   **Purpose:** Automates the process of updating code files, documentation, configuration files, or any file content within your repository based on ELITEA workflow outputs, user requests, or external triggers. Ensures configurations are synchronized, documentation is kept up-to-date, and codebase modifications are automated.
-
-*   **Delete File:**  **Tool Name:** `delete_file`
-    *   **Functionality:** Deletes a specific file from a GitHub repository, based on the file path and branch name.
-    *   **Purpose:** Automates file deletion tasks within your repository, such as removing obsolete files, cleaning up temporary files generated by ELITEA workflows, or enforcing codebase cleanup policies. Helps maintain a clean, organized, and efficient codebase by automating file lifecycle management.
-
-*   **List Files in Branch:**  **Tool Name:** `list_files_in_branch`
-    *   **Functionality:** Retrieves a list of files present in a specific branch of a GitHub repository. Provides a flat list of file paths within the branch.
-    *   **Purpose:** Allows Agents to programmatically browse repository contents, provide users with file lists for navigation and file selection within ELITEA, or analyze file structures within automated workflows, facilitating file-based operations and repository exploration.
-
-*   **List Branches in Repo:**  **Tool Name:** `list_branches_in_repo`
-    *   **Functionality:** Retrieves a list of all branches available in the specified GitHub repository. Provides a simple list of branch names.
-    *   **Purpose:** Enables Agents to get a comprehensive list of branches for branch management automation, generating reports on repository branching structure, providing users with branch selection options within ELITEA workflows, or automating branch-related decision-making processes.
-
-*   **Set Active Branch:**  **Tool Name:** `set_active_branch`
-    *   **Functionality:** Sets a specific branch as the currently active branch within the GitHub toolkit's context. Affects subsequent file-related operations to target the specified branch.
-    *   **Purpose:** Ensures that subsequent file operations (like `read_file`, `update_file`, `create_file`, `delete_file`) performed by the Agent are directed to the correct branch. Improves workflow accuracy, prevents unintended modifications to incorrect branches, and provides branch context for file actions.
-
-*   **Create Branch:**  **Tool Name:** `create_branch`
-    *   **Functionality:** Creates a new branch in the specified GitHub repository, branching off from a specified base branch. Requires the new branch name and the base branch name as parameters.
-    *   **Purpose:** Automates the creation of new branches for feature development, bug fixes, experimental code changes, or any branching requirement directly from ELITEA. Streamlines branch management, speeds up development workflows by automating branch setup, and reduces manual steps for initiating new development work streams.
-
-*   **Get files from directory:** **Tool Name:** `get_files_from_directory`
-    *   **Functionality:** Retrieves a list of files located within a specific directory in a GitHub repository. Allows retrieval of files from a specified subdirectory path within a branch.
-    *   **Purpose:** Enables Agents to retrieve file listings from specific directories, facilitating focused navigation within complex repositories, targeting relevant files within a directory structure for processing, or automating directory-specific file management tasks within ELITEA workflows, improving efficiency when working with organized file sets.
-
-*   **Loader:** **Tool Name:** `Loader`
-    *   **Functionality:** A generator that yields content from files matching the whitelist but not the blacklist.
-    *   **Purpose:** The Loader Tool generates file content from a specific branch in the repository, while respecting whitelist and blacklist patterns. It is useful for processing or analyzing specific files in a repository by filtering the files based on the specified criteria.Paramets : branch, whitelist, blacklist.
 
 ## Instructions and Prompts for Using the GitHub Toolkit
 
@@ -278,27 +281,35 @@ To effectively instruct your ELITEA Agent to use the GitHub toolkit, you need to
 When crafting instructions for the GitHub toolkit, especially for OpenAI-based Agents, clarity and precision are paramount. Break down complex tasks into a sequence of simple, actionable steps. Explicitly define all parameters required for each tool and guide the Agent on how to obtain or determine the values for these parameters. OpenAI Agents respond best to instructions that are:
 
 *   **Direct and Action-Oriented:** Employ strong action verbs and clear commands to initiate actions. For example, "Use the 'read_file' tool...", "Create a branch named...", "List all open pull requests...".
+
 *   **Parameter-Centric:** Clearly enumerate each parameter required by the tool. For each parameter, specify:
-    *   Its name (exactly as expected by the tool).
-    *   The format or type of value expected.
-    *   How the Agent should obtain the value – whether from user input, derived from previous steps in the conversation, retrieved from an external source, or a predefined static value.
+    *   Its name (exactly as expected by the tool)
+    *   The format or type of value expected
+    *   How the Agent should obtain the value – whether from user input, derived from previous steps in the conversation, retrieved from an external source, or a predefined static value
+
 *   **Contextually Rich:** Provide sufficient context so the Agent understands the overarching objective and the specific scenario in which each GitHub tool should be applied within the broader workflow. Explain the desired outcome or goal for each tool invocation.
+
 *   **Step-by-Step Structure:** Organize instructions into a numbered or bulleted list of steps for complex workflows. This helps the Agent follow a logical sequence of actions.
+
+*   **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Show me the README file', 'What's in the README.md?', 'Display the project documentation'"
 
 When instructing your Agent to use a GitHub toolkit tool, adhere to this structured pattern:
 
-```markdown
 1. **State the Goal:** Begin by clearly stating the objective you want to achieve with this step. For example, "Goal: To retrieve the content of the 'README.md' file."
+
 2. **Specify the Tool:** Clearly indicate the specific GitHub tool to be used for this step. For example, "Tool: Use the 'read_file' tool."
+
 3. **Define Parameters:** Provide a detailed list of all parameters required by the selected tool. For each parameter:
-    - Parameter Name: `<Parameter Name as defined in tool documentation>`
-    - Value or Source: `<Specify the value or how to obtain the value. Examples: "user input", "from previous step", "hardcoded value 'main'", "value of variable X">`
+   - **Parameter Name:** `<Parameter Name as defined in tool documentation>`
+   - **Value or Source:** `<Specify the value or how to obtain the value. Examples: "user input", "from previous step", "hardcoded value 'main'", "value of variable X">`
+
 4. **Describe Expected Outcome (Optional but Recommended):** Briefly describe the expected result or outcome after the tool is successfully executed. For example, "Outcome: The Agent will provide the content of the 'README.md' file."
-```
 
-**Example Agent Instructions for GitHub Toolkit Tools (Optimized for OpenAI Agents):**
+5. **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Show me the README file', 'What's in the README.md?', 'Display the project documentation'"
 
-*   **Agent Instructions for Updating a File:**
+#### Example Agent Instructions
+
+**Agent Instructions for Updating a File:**
 
 ```markdown
 1. Goal: Update the 'config.json' file in the 'settings' branch with new configuration values provided by the user.
@@ -311,193 +322,255 @@ When instructing your Agent to use a GitHub toolkit tool, adhere to this structu
 4. Outcome: The 'config.json' file in the 'settings' branch will be updated with the user-provided JSON configuration. Confirm the update to the user.
 ```
 
-*   **Agent Instructions for Creating a New Feature Branch:**
 
-```markdown
-1. Goal: Create a new feature branch for implementing user authentication, named 'feature-user-auth', branching from the 'develop' branch.
-2. Tool: Use the "create_branch" tool.
-3. Parameters:
-    - Repository Name: "Specify the repository name in 'owner/repo' format. Use the repository configured in the GitHub toolkit."
-    - New Branch Name: "feature-user-auth"
-    - Base Branch: "develop"
-4. Outcome: A new branch named 'feature-user-auth' will be created in the repository, based on the 'develop' branch. Inform the user that the branch has been created.
+### Chat Usage Examples by Tool Category
+
+The following examples demonstrate how to interact with the GitHub toolkit in ELITEA Chat, organized by functional categories. Each example shows the user request and the expected agent behavior.
+
+#### Issue Management - Create Issue
+
+**Chat Example:**
+```
+User: "I found a bug in the login system where users can't reset their passwords. Can you create an issue for this?"
+
+Agent Response: I'll create a GitHub issue for the password reset bug you've identified.
+
+[Agent uses create_issue tool]
+
+✅ Issue created successfully!
+- **Issue #47**: "Bug: Password reset not working in login system"
+- **Description**: User reported that the password reset functionality is not working properly in the login system
+- **Labels**: bug, login, high-priority
+- **Status**: Open
+- **URL**: https://github.com/yourorg/yourrepo/issues/47
+
+The development team will be notified and can begin investigating this issue.
 ```
 
-*   **Agent Instructions for Listing Branches in a Repository:**
+#### Pull Request Management - List Open Pull Requests
 
-```markdown
-1. Goal: Provide the user with a list of all branches in the repository to help them understand the project's branch structure.
-2. Tool: Use the "list_branches_in_repo" tool.
-3. Parameters:
-    - Repository Name: "Specify the repository name in 'owner/repo' format. Use the repository configured in the GitHub toolkit."
-4. Outcome: Present the list of branches to the user in a clear and readable format.
+**Chat Example:**
+```
+User: "What pull requests are currently open and waiting for review?"
+
+Agent Response: Let me check the open pull requests in the repository.
+
+
+Here are the currently open pull requests awaiting review:
+
+📋 **Open Pull Requests** (3 total):
+
+1. **PR #23**: "Add user authentication middleware"
+   - **Author**: @johndev
+   - **Branch**: feature/auth-middleware → main
+   - **Created**: 2 days ago
+   - **Status**: Ready for review
+
+2. **PR #24**: "Fix database connection timeout"
+   - **Author**: @sarah-engineer
+   - **Branch**: bugfix/db-timeout → develop
+   - **Created**: 1 day ago
+   - **Status**: Draft
+
+Would you like me to provide more details about any specific pull request?
 ```
 
-*   **Agent Instructions for Reading a File from a Repository:**
+#### File Operations - Read File
+
+**Chat Example:**
+```
+User: "Can you show me the contents of the README.md file?"
+
+Agent Response: I'll retrieve the README.md file from the repository for you.
+
+[Agent uses read_file tool]
+
+📄 **README.md Contents**:
 
 ```markdown
-1. Goal: Retrieve the content of the 'README.md' file from the 'main' branch to provide the user with a project overview.
-2. Tool: Use the "read_file" tool.
-3. Parameters:
-    - Repository Name: "Specify the repository name in 'owner/repo' format. Use the repository configured in the GitHub toolkit."
-    - File Path: "README.md"
-    - Branch Name: "main"
-4. Outcome: Display the content of the 'README.md' file to the user.
+# Project Name
+
+A comprehensive web application for managing user accounts and data.
+
+## Features
+- User authentication and authorization
+- Data visualization dashboard
+- RESTful API endpoints
+- Real-time notifications
+
+## Installation
+```bash
+npm install
+npm start
 ```
 
-### Conversation Starters
+#### Branch Management - Create Branch
 
-Utilize these conversation starters to initiate interactions with your GitHub-integrated Agent. These are useful for both testing the integration and for common usage scenarios.
+**Chat Example:**
+```
+User: "I need to create a new feature branch called 'user-profile-enhancement' based on the develop branch."
 
-**1. For Testing and Troubleshooting Connection & Configuration:**
+Agent Response: I'll create the new feature branch for you.
 
-These conversation starters are specifically designed to verify if the GitHub toolkit is correctly configured, authenticated, and successfully connected to your GitHub repository. They test basic functionalities to ensure the integration is working as expected.
+[Agent uses create_branch tool]
 
-*   "List branches in the repository." - *This starter tests basic connectivity to GitHub and verifies read permissions for branch listing.*
-*   "Read the file 'README.md' from the main branch." - *This starter further tests read permissions and the ability to access and retrieve file content from the repository.*
-*   "Create a new branch named 'test-connection' based on main." - *This starter tests write permissions (if enabled in your token scopes) and the branch creation functionality. **Important:** Remember to manually delete the 'test-connection' branch from your repository after successful testing to maintain repository hygiene.*
-*   "List open pull requests." - *Tests the ability to retrieve pull request data, verifying permissions for PR access.*
-*   "Get issues." - *Tests the ability to retrieve issue data, verifying permissions for issue access.*
+🌟 **Branch created successfully!**
+- **Branch Name**: user-profile-enhancement
+- **Based on**: develop branch
 
-**2. For General Agent Usage Scenarios & Workflow Initiation:**
+Would you like me to help you with any initial setup or file creation in this new branch?
+```
 
-These conversation starters demonstrate how to initiate agent execution for common, practical GitHub-related tasks and workflows. They represent typical user requests and showcase the agent's ability to perform useful actions within GitHub.
+#### Version Control - Get Commits
 
-*   "I need to update the documentation file 'user_guide.md' with details about the new API endpoints. Can you help me update it in GitHub?" - *This starter could trigger a workflow involving `read_file` to get the current documentation content, potentially some content modification steps, and then `update_file` to save the updated documentation back to the repository.*
-*   "Create a pull request to merge my 'feature-x' branch into 'develop' for code review and integration." - *This starter directly initiates the `create_pull_request` tool to automate the pull request creation process.*
-*   "What are the currently open feature branches in the repository that need code review?" - *This starter would utilize the `list_branches_in_repo` tool (potentially combined with issue or PR data) to provide a project status overview, specifically focusing on feature branches awaiting review.*
-*   "I want to add a new configuration file named 'deployment.config' to the 'config' directory in the main branch with these settings: [provide configuration settings here]. Can you create this file for me?" - *This starter would use the `create_file` tool to automate the creation of a new configuration file with user-specified content in the designated repository location.*
-*   "Comment on issue #123 with 'I have completed the code changes and addressed the feedback.'" - *This starter directly uses the `comment_on_issue` tool to add a comment to a specific GitHub issue, automating communication within issue tracking.*
+**Chat Example:**
+```
+User: "Show me the recent commits from the last week and summarize what changes were made."
 
-These conversation starters offer a solid foundation for interacting with your GitHub-integrated ELITEA Agent. They can be further customized and expanded upon to precisely match your specific use cases, workflows, and the unique automation needs of your software development projects.
+Agent Response: Let me retrieve the recent commit history for you.
 
-## Use Cases
+[Agent uses get_commits tool]
 
-The GitHub toolkit unlocks numerous automation possibilities for software development workflows within ELITEA. Here are key use cases, demonstrating how each tool can be applied, formatted to match the Bitbucket guide style:
+📈 **Recent Commits (Last 7 Days)**:
 
-*   **Automated Retrieval of High-Priority Issues:**
-    *   **Scenario:** At the start of each workday, development teams need to be aware of critical, high-priority bug issues requiring immediate attention.
-    *   **Tools Used:** `get_issues`
-    *   **Example Instruction:** "Use the 'get_issues' tool to retrieve a list of issues from the repository that are labeled 'priority:high'. Present the issue titles and descriptions."
-    *   **Benefit:** Proactively informs developers about critical issues, enabling them to focus on high-priority bug fixes, improve issue resolution times, and minimize potential disruptions.
+1. **Latest**: `a7b3f2c` - "Fix user login validation" 
+   - **Author**: @johndev
+   - **Date**: 2 hours ago
+   - **Changes**: Updated authentication logic to handle edge cases
 
-*   **Contextual Issue Details for Support and Troubleshooting:**
-    *   **Scenario:** During a troubleshooting session or support interaction, quick access to detailed information about a specific GitHub issue is needed to understand the problem and provide context.
-    *   **Tools Used:** `get_issue`
-    *   **Example Instruction:** "Use the 'get_issue' tool to get details for issue number [issue_number]. Summarize the issue title, description, and the latest comments for the user."
-    *   **Benefit:** Provides users with quick, contextual access to detailed issue information directly within ELITEA, improving understanding, facilitating faster problem-solving, and enhancing communication around specific issues.
+2. `9d4e1a8` - "Add responsive design for mobile devices"
+   - **Author**: @ui-designer
+   - **Date**: Yesterday
+   - **Changes**: Implemented mobile-first CSS and responsive breakpoints
 
-*   **Intelligent Issue Search for Targeted Information Retrieval:**
-    *   **Scenario:** Project managers or developers need to find issues related to a specific topic or keyword within the repository to track progress or identify related tasks.
-    *   **Tools Used:** `search_issues`
-    *   **Example Instruction:** "Use the 'search_issues' tool to find all open issues in the repository that contain the keywords '[search_keywords]' in their title or description. List the titles and issue numbers."
-    *   **Benefit:** Enables efficient and targeted issue discovery based on keywords and search criteria. Allows users to quickly locate relevant issues, track progress on specific features or bug areas, and identify related tasks or discussions.
+**Summary**: The team has been focusing on stability improvements, performance optimization, and mobile user experience enhancements this week.
+```
 
-*   **Automated Bug Reporting from User Feedback:**
-    *   **Scenario:** When users report bugs through ELITEA-integrated support channels, automatically create corresponding issues in the GitHub repository for the development team to address.
-    *   **Tools Used:** `create_issue`
-    *   **Example Instruction:** "Use the 'create_issue' tool to create a new issue in the repository with the title '[issue_title]' and body '[issue_description]'. Add labels 'bug' and 'reported-by-user'."
-    *   **Benefit:** Streamlines bug reporting by automating issue creation directly from user feedback. Reduces manual effort, ensures consistent bug report formatting, and accelerates the process of logging and triaging new issues.
+#### Workflow Automation - Trigger Workflow
 
-*   **Dynamic Issue Status Updates Based on Workflow Events:**
-    *   **Scenario:** Automatically update the status of a GitHub issue to 'closed' when a linked code change (e.g., pull request merge) is completed in ELITEA, reflecting the issue resolution in the tracking system.
-    *   **Tools Used:** `update_issue`
-    *   **Example Instruction:** "Use the 'update_issue' tool to update issue number [issue_number]. Set the issue status to 'closed' and add a comment 'Issue resolved by commit [commit_hash]'."
-    *   **Benefit:** Automates issue lifecycle management, ensuring issue statuses are always synchronized with the actual development progress. Reduces manual status updates, improves issue tracking accuracy, and provides a clear audit trail of issue resolution.
+**Chat Example:**
+```
+User: "Please trigger the deployment workflow to push the latest changes to the staging environment."
 
-*   **Real-time Issue Commenting for Enhanced Collaboration:**
-    *   **Scenario:** Allow ELITEA Agents to automatically add comments to GitHub issues to provide updates, request information, or log actions taken within ELITEA workflows, keeping issue discussions current.
-    *   **Tools Used:** `comment_on_issue`
-    *   **Example Instruction:** "Use the 'comment_on_issue' tool to add a comment to issue number [issue_number] with the text '[comment_text]'."
-    *   **Benefit:** Streamlines communication within issue tracking, enabling automated updates and feedback directly within GitHub issues. Keeps all stakeholders informed, reduces manual communication overhead, and centralizes issue-related discussions.
+Agent Response: I'll trigger the deployment workflow for the staging environment.
 
-*   **Proactive Pull Request Review Reminders:**
-    *   **Scenario:** Automatically remind developers about open pull requests awaiting their review to expedite code reviews and maintain a smooth development pipeline.
-    *   **Tools Used:** `list_open_pull_requests`
-    *   **Example Instruction:** "Use the 'list_open_pull_requests' tool to get a list of open pull requests assigned to [developer_username]. Send a summary of these PRs to the developer as a reminder."
-    *   **Benefit:** Improves code review workflow efficiency by providing automated reminders. Helps developers prioritize code reviews, reduces bottlenecks in the code integration process, and promotes timely code integration.
+[Agent uses trigger_workflow tool]
 
-*   **Quick Access to Pull Request Details for Code Review:**
-    *   **Scenario:** During code review discussions within ELITEA, provide reviewers with immediate access to the full details of a specific pull request to facilitate informed and efficient reviews.
-    *   **Tools Used:** `get_pull_request`
-    *   **Example Instruction:** "Use the 'get_pull_request' tool to get details for pull request number [pr_number]. Display the PR title, description, status, and reviewer information."
-    *   **Benefit:** Provides code reviewers with immediate access to comprehensive pull request information directly within ELITEA, facilitating informed and efficient code reviews without context switching.
+🚀 **Deployment Workflow Triggered**:
+- **Workflow**: "Deploy to Staging"
+- **Trigger**: Manual (via ELITEA)
+- **Branch**: main
+- **Status**: Running
+- **Workflow Run ID**: #12345
 
-*   **Efficient Code Review Preparation with File Lists:**
-    *   **Scenario:** Before starting a code review, provide reviewers with a list of files changed in a pull request to help them understand the scope of changes and plan their review approach.
-    *   **Tools Used:** `list_pull_request_files`
-    *   **Example Instruction:** "Use the 'list_pull_request_files' tool to get a list of files changed in pull request number [pr_number]. Present this list to the code reviewers before the review meeting."
-    *   **Benefit:** Enhances code review preparation and efficiency by providing reviewers with a clear overview of the files modified in a pull request beforehand, enabling better planning and focused review efforts.
+The deployment process has started and typically takes 3-5 minutes to complete. You can monitor the progress at:
+https://github.com/yourorg/yourrepo/actions/runs/12345
 
-*   **Automated Pull Request Creation for Code Contributions:**
-    *   **Scenario:** After a developer completes a code modification task within ELITEA, automatically initiate the code review process by creating a pull request for their changes in GitHub.
-    *   **Tools Used:** `create_pull_request`
-    *   **Example Instruction:** "Use the 'create_pull_request' tool to create a pull request from branch '[source_branch]' to branch '[target_branch]' with the title '[pr_title]' and description '[pr_description]'."
-    *   **Benefit:** Automates the pull request creation process, significantly reducing manual effort for developers and streamlining the code contribution workflow. Ensures code changes are promptly submitted for review and integration.
+I'll notify you once the deployment is complete. Would you like me to check the workflow status in a few minutes?
+```
 
-*   **Templated File Creation for Code Consistency:**
-    *   **Scenario:** When creating new code components or modules, automatically generate template files in the repository to enforce coding standards and project conventions.
-    *   **Tools Used:** `create_file`
-    *   **Example Instruction:** "Use the 'create_file' tool to create a new file at path '[file_path]' with the content from the template '[template_content]'. Ensure the file extension is '.js'."
-    *   **Benefit:** Automates file creation using templates, enforcing coding standards and consistency across the codebase. Reduces manual file creation effort and ensures adherence to project conventions for new files.
+#### Project Management - List Project Issues
 
-*   **Dynamic Configuration Loading from Repository Files:**
-    *   **Scenario:** Dynamically load application configuration settings from a configuration file stored in the GitHub repository to ensure ELITEA workflows are always using the latest configurations.
-    *   **Tools Used:** `read_file`
-    *   **Example Instruction:** "Use the 'read_file' tool to read the content of the file '[config_file_path]' from the 'main' branch. Parse the content as JSON and use the configuration values in the workflow."
-    *   **Benefit:** Enables dynamic configuration management, allowing ELITEA to adapt its behavior based on configuration files stored in GitHub. Ensures configurations are centrally managed, version-controlled, and consistently applied.
+**Chat Example:**
+```
+User: "Show me all the issues in our 'Sprint 23' project board."
 
-*   **Automated Documentation Updates for Code Changes:**
-    *   **Scenario:** When code changes are merged that affect API documentation, automatically update the corresponding documentation files in the repository to keep documentation synchronized with the codebase.
-    *   **Tools Used:** `read_file`, `update_file`
-    *   **Example Instruction:** "Use 'read_file' to get the current content of '[docs_file_path]'. Update the content with the new API documentation and use 'update_file' to save the updated content back to '[docs_file_path]' in the 'main' branch."
-    *   **Benefit:** Keeps documentation synchronized with the latest codebase, reducing manual effort and errors in documentation maintenance. Ensures accurate and up-to-date documentation for users and developers.
+Agent Response: Let me retrieve all issues from the Sprint 23 project board.
 
-*   **Automated Cleanup of Obsolete Code Files:**
-    *   **Scenario:** Periodically delete obsolete or unused code files from designated directories in the repository to maintain codebase cleanliness and reduce technical debt.
-    *   **Tools Used:** `delete_file`
-    *   **Example Instruction:** "Use the 'delete_file' tool to delete the file at path '[obsolete_file_path]' from the 'cleanup' branch. Verify the file is no longer needed before deletion."
-    *   **Benefit:** Helps maintain a clean and organized codebase by automating the removal of unnecessary files. Reduces repository clutter, improves code navigability, and enhances long-term project maintainability.
+[Agent uses list_project_issues tool]
 
-*   **Codebase Exploration and File Navigation within ELITEA:**
-    *   **Scenario:** Allow users to easily browse the file structure of a specific branch in the GitHub repository directly within ELITEA to explore code or locate specific files.
-    *   **Tools Used:** `list_files_in_branch`
-    *   **Example Instruction:** "Use the 'list_files_in_branch' tool to list all files in the branch '[branch_name]'. Present the file list to the user in a tree-like structure if possible."
-    *   **Benefit:** Provides users with a convenient way to browse repository contents directly within ELITEA, enabling easy navigation and file selection for further actions without switching to GitHub.
+📊 **Sprint 23 Project Issues** (8 total):
 
-*   **Project Overview with Branch Listing and Summaries:**
-    *   **Scenario:** Provide project managers with an automated overview of all active branches in the repository, including their last commit dates, to monitor development activity and branch management.
-    *   **Tools Used:** `list_branches_in_repo`
-    *   **Example Instruction:** "Use the 'list_branches_in_repo' tool to list all branches in the repository. For each branch, retrieve the date of the last commit and present a summary to the project manager."
-    *   **Benefit:** Provides project managers with an automated overview of repository branches, facilitating project monitoring, branch management, and understanding of the current development landscape within the repository.
+**🔴 To Do** (3 issues):
+- **Issue #45**: Implement user profile editing
+  - **Assignee**: @frontend-dev
+  - **Priority**: High
+  - **Story Points**: 5
+**🟡 In Progress** (3 issues):
+- **Issue #42**: Database migration for user tables
+- **Issue #43**: Integration tests for payment system
+- **Issue #44**: Performance optimization
 
-*   **Branch Context Management for Workflow Reliability:**
-    *   **Scenario:** Ensure that a series of automated code modification operations are performed within the correct branch context to prevent unintended changes and maintain workflow integrity.
-    *   **Tools Used:** `set_active_branch`
-    *   **Example Instruction:** "First, use 'set_active_branch' to set the active branch to '[target_branch]'. Then, proceed with the file modification operations within this active branch context."
-    *   **Benefit:** Ensures operations are performed on the intended branch, reducing the risk of errors and unintended modifications to the wrong branch. Improves the reliability and accuracy of automated workflows involving file operations.
+**🟢 Done** (2 issues):
+- **Issue #40**: User authentication bug fix ✅
+- **Issue #41**: Mobile responsive layout ✅
 
-*   **Automated Sprint Branch Creation for Agile Development:**
-    *   **Scenario:** At the beginning of each sprint, automatically create a new sprint branch in the repository to provide a dedicated space for sprint-related development activities, following agile development practices.
-    *   **Tools Used:** `create_branch`
-    *   **Example Instruction:** "Use the 'create_branch' tool to create a new branch named 'sprint-[sprint_number]' based on the 'develop' branch. Notify the development team about the new sprint branch."
-    *   **Benefit:** Automates branch creation for sprint-based development, streamlining sprint setup and ensuring organized code management for each sprint cycle. Reduces manual branch creation steps and promotes branch-based development best practices.
+**Sprint Progress**: 25% complete (2/8 issues done)
+```
 
-*   **Directory-Specific File Retrieval for Focused Operations:**
-    *   **Scenario:** Retrieve a list of all configuration files located within the 'config' directory of the repository to enable centralized access and management of project configurations within ELITEA workflows.
-    *   **Tools Used:** `get_files_from_directory`
-    *   **Example Instruction:** "Use the 'get_files_from_directory' tool to get a list of files from the 'config' directory in the 'main' branch. Present the list of configuration files to the user."
-    *   **Benefit:** Provides a focused way to access and manage files within specific directories, enabling efficient retrieval of configuration files, documentation sets, or other organized file groups within the repository structure, improving workflow efficiency when working with structured file sets.
+#### Indexing & Search - Search Index
 
+**Chat Example:**
+```
+User: "Search the codebase for any references to 'authentication' and 'security' to help me understand our current security implementation."
+
+Agent Response: I'll search through the indexed repository content for authentication and security references.
+
+[Agent uses search_index tool]
+
+🔍 **Search Results for "authentication" and "security"**:
+
+**📁 Authentication Files** (5 matches):
+1. `src/auth/authentication.js` - Main authentication module
+2. `src/middleware/auth.middleware.js` - Authentication middleware
+3. `tests/auth.test.js` - Authentication unit tests
+4. `docs/AUTH.md` - Authentication documentation
+5. `config/auth.config.js` - Authentication configuration
+
+**🔒 Security References** (8 matches):
+1. `src/security/validation.js` - Input validation and sanitization
+2. `src/security/encryption.js` - Password hashing and encryption
+3. `src/middleware/security.headers.js` - Security headers middleware
+4. `package.json` - Security-related dependencies
+5. `docs/SECURITY.md` - Security guidelines and policies
+
+**🔑 Key Implementation Patterns Found**:
+- JWT token-based authentication
+- bcrypt password hashing
+- Rate limiting for login attempts
+- CORS configuration
+- Input validation middleware
+- Security headers (CSRF, XSS protection)
+
+Would you like me to read the contents of any specific files to dive deeper into the security implementation?
+```
+
+#### Advanced Operations - Generic GitHub API Call
+
+**Chat Example:**
+```
+User: "Can you check the repository's current rate limit status using the GitHub API?"
+
+Agent Response: I'll check the current GitHub API rate limit status for this repository.
+
+[Agent uses generic_github_api_call tool]
+
+📊 **GitHub API Rate Limit Status**:
+
+**Core API**:
+- **Limit**: 5,000 requests per hour
+- **Used**: 1,247 requests
+- **Remaining**: 3,753 requests
+- **Reset Time**: 42 minutes from now
+
+✅ **Status**: All APIs are within normal usage limits. You have plenty of requests remaining for continued GitHub operations.
+```
 
 ## Troubleshooting and Support
 
 ### Troubleshooting
 
+*   **Credential Not Appearing in Toolkit Configuration:**
+    *   **Problem:** When creating a toolkit, your GitHub credential doesn't appear in the credentials dropdown.
+    *   **Troubleshooting Steps:**
+        *   **Check Credential Scope:** Ensure you're working in the same workspace/project where the credential was created. Private credentials are only visible in your Private workspace, while project credentials are visible within the specific team project.
+        *   **Verify Credential Creation:** Go to the Credentials menu and confirm that your GitHub credential was successfully saved.
+        *   **Credential Type Match:** Ensure you selected "GitHub" as the credential type when creating the credential.
+
 *   **Connection Errors:**
     *   **Problem:** ELITEA Agent fails to establish a connection with GitHub, resulting in errors during toolkit execution.
     *   **Troubleshooting Steps:**
-        1.  **Verify GitHub API URL:** Ensure that the **URL** field in the toolkit configuration is correctly set to the standard GitHub API URL: `https://api.github.com`. Avoid modifying this URL unless you are using GitHub Enterprise Server.
+        1.  **Verify GitHub API URL:** Ensure that the **Base URL** field in the credential configuration is correctly set to the standard GitHub API URL: `https://api.github.com`. Avoid modifying this URL unless you are using GitHub Enterprise Server.
         2.  **Check Personal Access Token (PAT):** Double-check that the **Personal Access Token (Classic)** you have provided is accurate, has not expired, and is valid for your GitHub account and the target repository. Carefully re-enter or copy-paste the token to rule out typos.
         3.  **Verify Token Scopes:** Review the **scopes/permissions** granted to your Personal Access Token in GitHub. Ensure that the token has the necessary scopes (e.g., `repo`, `workflow`, `issues`, `pull_request`) for the specific GitHub tools your Agent is attempting to use. Insufficient scopes are a common cause of connection and permission errors.
         4.  **Network Connectivity:** Confirm that both your ELITEA environment and the GitHub service are connected to the internet and that there are no network connectivity issues, firewalls, or proxies blocking the integration. Test network connectivity to `api.github.com` from your ELITEA environment if possible.
@@ -516,46 +589,37 @@ The GitHub toolkit unlocks numerous automation possibilities for software develo
         2.  **Verify Branch Name Spelling and Case:** Ensure that you are using the correct branch name (e.g., `main`, `develop`, `feature-branch`) in your Agent's instructions when specifying branch-related parameters for GitHub tools. Branch names in Git are case-sensitive. Double-check the spelling and capitalization of branch names against your repository in GitHub.
         3.  **Branch Existence:** Confirm that the specified branch actually exists in your GitHub repository. It's possible the branch name is correct but the branch was deleted or renamed.
 
-*   **Error Updating Multiple Files (LLM Context Loss):**
-    *   **Problem:** This issue occurs because the LLM (Agent) loses context between file operations. It can be fixed by instructing the LLM to process files one by one, completing all steps for a single file before moving to the next.
+*   **Toolkit Configuration Issues:**
+    *   **Problem:** The toolkit fails to load or shows configuration errors after creation.
+    *   **Troubleshooting Steps:**
+        1.  **Verify Repository Format:** Ensure the repository name follows the correct format: `owner/repository-name`. Do not include the full GitHub URL or `.git` extension.
+        2.  **Check Main Branch Name:** Verify that the main branch name matches the actual main branch in your repository (commonly `main` or `master`).
+        3.  **Credential Selection:** Ensure you have selected the correct credential from the dropdown in the toolkit configuration.
 
-    **Example Agent Instructions:**
-
-     
-          You will be given a list of files, but you need to process them one by one, completing operations with a single file before moving to the next.
-
-         Update file guidelines:
-        - Read the file's initial content.
-        - Review what must be updated.
-        - Use the update_file tool to apply the changes to that single file.
-        - ONLY after you have processed a file can you move to the next.
-
-         Constraints:
-        - IMPORTANT: Start processing the next file ONLY after you have updated the previous one.
-        - Process file by file and per flow: read - decide - update.
-     
-
-    This approach ensures the Agent maintains the necessary context for each file operation, preventing update failures due to missing or outdated file content.
-
-       ![GitHub-Toolkit_issue.png](../../img/integrations/toolkits/github/context_issue.png)
 
 ### FAQ
 
 1.  **Q: Can I use my regular GitHub password directly for the ELITEA integration instead of a Personal Access Token?**
-    *   **A:** **No, using a GitHub Personal Access Token (Classic) is mandatory and strongly recommended for security.**  Direct password authentication is not supported for ELITEA's GitHub toolkit integration. Personal Access Tokens provide a significantly more secure and controlled method for granting access to external applications like ELITEA, without exposing your primary account credentials.
+    *   **A:** **While ELITEA supports password authentication, using a GitHub Personal Access Token (Classic) is strongly recommended for security.** Personal Access Tokens provide a significantly more secure and controlled method for granting access to external applications like ELITEA, without exposing your primary account credentials. You can configure this in the credential's authentication method selection.
 
 2.  **Q: What scopes/permissions are absolutely necessary and minimally sufficient for the GitHub Personal Access Token to work with ELITEA?**
-    *   **A:** The minimum required scopes depend on the specific GitHub tools your ELITEA Agent will be using. For basic read-only access to repositories (e.g., using `read_file`, `list_files_in_branch`), the `repo:status` and `public_repo` scopes might suffice. However, for most common integration scenarios involving modifications (e.g., `create_file`, `update_file`, `create_pull_request`), you will need the broader `repo` scope or more granular `repo` write scopes. For issue and pull request management, include `issues` and `pull_request` scopes respectively. **Always adhere to the principle of least privilege and grant only the scopes that are strictly necessary for your Agent's intended functionalities.** Refer to the GitHub documentation for detailed scope descriptions.
+    *   **A:** The minimum required scopes depend on the specific GitHub tools your ELITEA Agent will be using. For basic read-only access to repositories (e.g., using `read_file`, `list_files_in_main_branch`), the `repo:status` and `public_repo` scopes might suffice. However, for most common integration scenarios involving modifications (e.g., `create_file`, `update_file`, `create_pull_request`), you will need the broader `repo` scope or more granular `repo` write scopes. For issue and pull request management, include `issues` and `pull_request` scopes respectively. **Always adhere to the principle of least privilege and grant only the scopes that are strictly necessary for your Agent's intended functionalities.** Refer to the GitHub documentation for detailed scope descriptions.
 
 3.  **Q: What is the correct format for specifying the GitHub Repository name in the ELITEA toolkit configuration?**
     *   **A:** The GitHub Repository name must be entered in the format `repository_owner/repository_name` (e.g., `MyOrganization/my-project-repo`). Ensure you include both the repository owner's username or organization name and the repository name, separated by a forward slash `/`. This format is crucial for ELITEA to correctly identify and access your repository on GitHub.
 
-4.  **Q: Why am I consistently encountering "Permission Denied" errors, even though I believe I have configured everything correctly and granted the necessary permissions?**
+4.  **Q: How do I switch from the old Agent-based configuration to the new Credentials + Toolkit workflow?**
+    *   **A:** The new workflow is: (1) Create a GitHub credential with your authentication details, (2) Create a GitHub toolkit that uses this credential, and (3) Add the toolkit to your agents, pipelines, or chat. This provides better security, reusability, and organization compared to configuring authentication directly in agents.
+
+5.  **Q: Can I use the same GitHub credential across multiple toolkits and agents?**
+    *   **A:** Yes! This is one of the key benefits of the new workflow. Once you create a GitHub credential, you can reuse it across multiple GitHub toolkits, and each toolkit can be used by multiple agents, pipelines, and chat sessions. This promotes better credential management and reduces duplication.
+
+6.  **Q: Why am I consistently encountering "Permission Denied" errors, even though I believe I have configured everything correctly and granted the necessary permissions?**
     *   **A:** If you are still facing "Permission Denied" errors despite careful configuration, systematically re-examine the following:
         *   **Token Scope Accuracy:** Double and triple-check the **scopes/permissions** granted to your GitHub Personal Access Token in your GitHub Developer Settings. Ensure that the token possesses the *exact* scopes required for *each* GitHub tool your Agent is attempting to use. Pay close attention to write vs. read permissions.
         *   **Repository Access Verification:** Explicitly verify that the GitHub account associated with the Personal Access Token has the necessary access rights to the *specific target repository* within GitHub itself. Confirm repository membership, collaborator status, and assigned roles/permissions within the GitHub repository settings.
         *   **Token Validity and Revocation:** Double-check that the Personal Access Token is still valid, has not expired, and has not been accidentally revoked in your GitHub settings. Generate a new token as a test if unsure.
-        *   **Typographical Errors:** Carefully review all configuration fields in ELITEA, especially the Repository name, Username (though less relevant for token auth), and the Token itself for any hidden typographical errors or accidental whitespace.
+        *   **Credential Configuration:** Carefully review the credential configuration in ELITEA, especially the authentication method selection and token/password fields for any hidden typographical errors or accidental whitespace.
 
 If, after meticulously checking all of these points, you still encounter "Permission Denied" errors, please reach out to ELITEA Support with detailed information for further assistance.
 
@@ -584,14 +648,33 @@ To enable our support team to understand and resolve your issue as efficiently a
 
 Before contacting support, we strongly encourage you to first thoroughly explore the resources available within this comprehensive guide and the broader ELITEA documentation. You may find readily available answers to common questions, solutions to known issues, or configuration guidance within these resources, potentially resolving your issue more quickly.
 
-## Useful Links
+---
 
-To further enhance your understanding and skills in integrating GitHub with ELITEA, here are some helpful resources:
+## Summary
 
-*   **[GitHub Website](https://github.com)**: Access the main GitHub platform to create an account or log in.
-*   **[GitHub Developer Settings](https://github.com/settings/developers)**: Navigate to the Developer settings in your GitHub account to manage Personal Access Tokens and other developer-related configurations.
-*   **[GitHub Personal Access Tokens (Classic)](https://github.com/settings/tokens)**: Directly access the section in GitHub settings to manage your Personal Access Tokens (Classic) for secure integrations.
-*   **[GitHub API URL](https://api.github.com)**: Access the base URL for the GitHub API endpoint, necessary for configuring the GitHub toolkit in ELITEA.
-*   **[ELITEA Secrets Management](../../menus/settings/secrets.md)**: Learn how to securely store your GitHub Personal Access Token using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the GitHub toolkit to automate your workflows.
-*   **[ELITEA Support Email](mailto:SupportAlita@epam.com)**: Contact the ELITEA support team for direct assistance with GitHub integration or any other questions and issues you may encounter.
+The GitHub toolkit integration with ELITEA follows a streamlined three-step workflow:
+
+1. **🔐 Create Credentials** - Set up secure authentication with your GitHub Personal Access Token, password, or GitHub App credentials
+2. **🔧 Create Toolkit** - Configure the GitHub toolkit using your credentials and enable the tools you need
+3. **🚀 Use in Modules** - Add the toolkit to Agents, Pipelines, and use them directly in Chat for automated development workflows
+
+This integration enables your AI agents to interact intelligently with GitHub repositories, automate development-related tasks, and enhance collaboration within your software development workflows. By following the principle of least privilege and enabling only the tools you need, you maintain both security and performance while unlocking powerful development automation capabilities.
+
+!!! reference "Useful ELITEA Resources"
+    To further enhance your understanding and skills in using the GitHub toolkit with ELITEA, here are helpful internal resources:
+
+      * **[ELITEA Credentials Management](../../how-tos/how-to-use-credentials.md)** - *Learn how to securely store your GitHub tokens using ELITEA's Credentials management feature for enhanced security within ELITEA.*
+      * **[ELITEA Toolkits Guide](../../menus/toolkits.md)** - *Comprehensive guide on creating and managing toolkits in ELITEA, including advanced configuration options.*
+      * **[ELITEA Agents Configuration](../../menus/agents.md)** - *Find out more about creating and configuring Agents in ELITEA, where you integrate the GitHub toolkit to automate your development workflows.*
+      * **[ELITEA Chat Guide](../../menus/chat.md)** - *Learn how to use the GitHub toolkit directly in Chat conversations for interactive repository management and development assistance.*
+      * **[ELITEA Secrets Management](../../menus/settings/secrets.md)** - *Learn how to securely store sensitive information like API tokens using ELITEA's Secrets management feature.*
+      * **[Create a Credential and Add It to a Toolkit](../../getting-started/create-credential.md)** - *Step-by-step guide for the credentials and toolkit creation workflow.*
+      * **[Indexing Overview](../../how-tos/indexing/indexing-overview.md)** - *Comprehensive guide to understanding ELITEA's indexing capabilities and how to leverage them for enhanced search and discovery.*
+      * **[Index GitHub Data](../../how-tos/indexing/index-github-data.md)** - *Detailed instructions for indexing GitHub repository data to enable advanced search, analysis, and AI-powered insights across your codebase.*
+
+!!! reference "External Resources"
+    *   **GitHub Website:** [https://github.com](https://github.com) - *Access the main GitHub platform to create an account or log in.*
+    *   **GitHub Developer Settings:** [https://github.com/settings/developers](https://github.com/settings/developers) - *Navigate to the Developer settings in your GitHub account to manage Personal Access Tokens and other developer-related configurations.*
+    *   **GitHub Personal Access Tokens (Classic):** [https://github.com/settings/tokens](https://github.com/settings/tokens) - *Directly access the section in GitHub settings to manage your Personal Access Tokens (Classic) for secure integrations.*
+    *   **GitHub API Documentation:** [https://docs.github.com/en/rest](https://docs.github.com/en/rest) - *Explore the official GitHub API documentation for detailed information on GitHub API endpoints, authentication, data structures, and developer guides.*
+    *   **GitHub Help Center:** [https://docs.github.com](https://docs.github.com) - *Access the official GitHub documentation for comprehensive articles, FAQs, and troubleshooting guides on all aspects of GitHub usage.*
