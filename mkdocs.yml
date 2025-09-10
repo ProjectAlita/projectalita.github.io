@@ -110,6 +110,7 @@ nav:
           - GitLab Org: integrations/toolkits/gitlab_org_toolkit.md
           - Google Places: integrations/toolkits/google_places_toolkit.md
           - Jira: integrations/toolkits/jira_toolkit.md
+          - Memory: integrations/toolkits/memory_toolkit.md
           - OpenAPI: integrations/toolkits/openapi_toolkit.md
           - Pandas: integrations/toolkits/pandas_toolkit.md
           - Postman: integrations/toolkits/postman_toolkit.md
