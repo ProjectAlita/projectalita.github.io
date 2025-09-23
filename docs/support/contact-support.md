@@ -21,7 +21,7 @@ Here's a breakdown of the information we need, categorized by the type of issue 
 
 Regardless of the specific issue, please include the following in your email:
 
-1.  **ELITEA Environment:** Specify the ELITEA environment where you are encountering the problem (e.g., "Nexus," "Alita Lab," "EYE").
+1.  **ELITEA Environment:** Specify the ELITEA environment where you are encountering the problem (e.g., "Next" or the specific name of your ELITEA instance).
 2.  **Project Details:**
     *   **Project Name:** Provide the name of the specific project within the ELITEA environment where the issue occurs.
     *   **Workspace Type:** Indicate whether this is your "Private" workspace or a "Team" project.
@@ -71,7 +71,7 @@ If you are experiencing issues with a specific prompt, please include:
 For issues related to the Alita Code or Alita Code Chat extensions, please provide the following:
 
 1.  **Environment Connection:**
-    *   **ELITEA Environment:** Specify the ELITEA environment to which you are connecting the Alita Code extension (e.g., "Nexus," "Alita Lab," "EYE")..
+    *   **ELITEA Environment:** Specify the ELITEA environment to which you are connecting the Alita Code extension (e.g., "Next" or the specific name of your ELITEA instance).
 2.  **Extension Version:**
     *   **IDE Type:** Indicate whether you are using the VSCode or JetBrains version of the extension.
 3.  **Alita Code Configuration:**

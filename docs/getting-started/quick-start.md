@@ -22,7 +22,7 @@ By the end of this guide, you'll have a fully functional AI agent connected to e
 ## Step 1: Access the Platform
 
 1. **Open Your Browser**: Use any modern web browser (Chrome, Firefox, Safari, Edge).
-2. **Navigate to ELITEA**: Enter `https://nexus.elitea.ai` in your address bar.
+2. **Navigate to ELITEA**: Enter `https://next.elitea.ai` in your address bar.
 3. **Login**: Sign in with your account credentials
 4. **Initial Navigation**: You'll land in the **Chat** menu automatically.
 

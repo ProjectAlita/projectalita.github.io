@@ -136,7 +136,7 @@ Port (default: 8000): [Press Enter to accept default or specify a port]
 **Example Configuration:**
 
 ```
-Deployment URL: https://nexus.elitea.ai
+Deployment URL: https://next.elitea.ai
 Authentication token: abcD123
 Host (default: 0.0.0.0): [Press Enter]
 Port (default: 8000): [Press Enter]
@@ -178,7 +178,7 @@ Port (default: 8000): [Press Enter to accept default or specify a port]
 **Example Configuration:**
 
 ```
-Deployment URL: https://nexus.elitea.ai
+Deployment URL: https://next.elitea.ai
 Authentication token: abcD123
 Host (default: 0.0.0.0): [Press Enter]
 Port (default: 8000): [Press Enter]

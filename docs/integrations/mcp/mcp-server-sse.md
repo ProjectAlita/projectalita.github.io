@@ -25,7 +25,7 @@ Before you begin integrating with the Elitea MCP Server via SSE, ensure you have
   ```
   For example:
   ```
-  https://nexus.elitea.ai/mcp_sse/1/sse
+  https://next.elitea.ai/mcp_sse/1/sse
   ```
   You can find your Server Endpoint and Project ID in the [Settings Configuration section](../../menus/settings/ai-configuration.md) of the Elitea web interface.
 
@@ -66,7 +66,7 @@ You can add and configure an Elitea MCP Server in VS Code using either **Workspa
       ![Add MCP Server](../../img/integrations/mcp/add-mcp-server.png)
     - Select **HTTP (Server Sent Events)**.
       ![Select HTTP SSE](../../img/integrations/mcp/select-http-sse.png)
-    - Enter your Server URL (e.g., `https://nexus.elitea.ai/mcp_sse/1/sse`).
+    - Enter your Server URL (e.g., `https://next.elitea.ai/mcp_sse/1/sse`).
       ![Add ServerURL](../../img/integrations/mcp/add-server-url.png)
     - Enter a Server ID (use the default generated one or provide a descriptive name).
       ![Add Server ID](../../img/integrations/mcp/add-server-id.png)
@@ -103,7 +103,7 @@ If you choose **Workspace Settings**, VS Code will create a `.vscode/mcp.json` f
       > **Important:** If you are using VS Code version 1.100.1 or higher, you'll also need to manually add `"type": "sse"` to your configuration  file, as shown below:
       > ```json
       > "type": "sse",
-      > "url": "https://nexus.elitea.ai/mcp_sse/1/sse",
+      > "url": "https://next.elitea.ai/mcp_sse/1/sse",
       > "headers": {
       >     "Authorization": "Bearer abc123"
       > }
@@ -142,7 +142,7 @@ If you choose **User Settings**, your MCP server configuration will be added to 
    > **Important:** If you are using VS Code version 1.100.1 or higher, you'll also need to manually add `"type": "sse"` to your configuration file, as shown below:
    > ```json
    > "type": "sse",
-   > "url": "https://nexus.elitea.ai/mcp_sse/1/sse",
+   > "url": "https://next.elitea.ai/mcp_sse/1/sse",
    > "headers": {
    >     "Authorization": "Bearer abc123"
    > }

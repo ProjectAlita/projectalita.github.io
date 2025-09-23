@@ -387,7 +387,7 @@ For any issues, questions, or further assistance with the Salesforce integration
 
 To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:
 
-*   **ELITEA Environment:** Clearly specify the ELITEA environment you are using (e.g., "Nexus," "Alita Lab," "EYE").
+*   **ELITEA Environment:** Clearly specify the ELITEA environment you are using (e.g., "Next" or the specific name of your ELITEA instance).
 *   **Project Details:** Indicate the **Project Name** and whether you are working in your **Private** workspace or a **Team** project.
 *   **Detailed Issue Description:** Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.
 *   **Relevant Configuration Information:** To help us diagnose the issue, please include relevant configuration details, such as:

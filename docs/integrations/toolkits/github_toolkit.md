@@ -132,7 +132,9 @@ Before creating a toolkit, you must first create GitHub credentials in ELITEA:
 3. **Select GitHub:** Choose **GitHub** as the credential type.
 4. **Configure Credential Details:**
      * **Display Name:** Enter a descriptive name (e.g., "GitHub - Development Team Access")
-     * **Base URL:** Usually `https://api.github.com` (only change for GitHub Enterprise Server)
+     * **Base URL:**
+         - GitHub.com: leave empty to use the default `https://api.github.com`.
+         - GitHub Enterprise Server: set your REST v3 endpoint, for example `https://<your-ghes-domain>/api/v3`.
      * **Authentication Method:** Choose your preferred authentication method:
          * **Anonymous:** No authentication required (limited to public repositories and rate-limited)
          * **Token:** Enter your GitHub Personal Access Token (recommended)
@@ -141,10 +143,23 @@ Before creating a toolkit, you must first create GitHub credentials in ELITEA:
 5. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project
 6. **Save Credential:** Click **Save** to create the credential. After saving, your GitHub credential will be added to the credentials dashboard and will be ready to use in toolkit configurations. You can view, edit, or delete it from the **Credentials** menu at any time.
 
+!!! info "GitHub.com vs GitHub Enterprise (Endpoints)"
+    When configuring GitHub credentials, the Base URL depends on whether you use GitHub.com or a self‑hosted GitHub Enterprise Server (GHES).
+
+    | API | Enterprise | GitHub.com |
+    | --- | --- | --- |
+    | v3 (REST) | `https://[YOUR_HOST]/api/v3` | `https://api.github.com` |
+    | v4 (GraphQL) | `https://[YOUR_HOST]/api/graphql` | `https://api.github.com/graphql` |
+
+    - For **GitHub.com**: Leave the Base URL blank to use the default `https://api.github.com`.
+    - For **GitHub Enterprise Server**: Set the Base URL to your REST v3 endpoint (example: `https://ghe.company.com/api/v3`). GraphQL requests use `https://ghe.company.com/api/graphql`.
+    - Ensure your token scopes match your use case (e.g., `repo`, `workflow`, `read:org`) and that your GHES certificate is trusted by your environment.
+
+
 ![GitHub Credential](../../img/integrations/toolkits/github/github-credential-create.png)
 
 !!! tip "Security Recommendation"
-    It's highly recommended to use **[Secrets](../../menus/settings/secrets.md)** for sensitive authentication data (tokens, passwords, and private keys) instead of entering them directly. Create a secret first, then reference it in your credential configuration.
+    Use **[Secrets](../../menus/settings/secrets.md)** for sensitive authentication data (tokens, passwords, and private keys) instead of entering values directly. Create a secret first, then reference it in your credential configuration.
 
 ### Step 2: Create GitHub Toolkit
 
@@ -635,7 +650,7 @@ If you encounter any persistent issues, have further questions, or require addit
 
 To enable our support team to understand and resolve your issue as efficiently as possible, please include the following critical information in your support email:
 
-*   **ELITEA Environment Details:** Clearly specify the ELITEA environment you are currently using (e.g., "Nexus," "Alita Lab," "EYE," or the specific name of your ELITEA instance).
+*   **ELITEA Environment Details:** Clearly specify the ELITEA environment you are currently using (e.g., "Next" or the specific name of your ELITEA instance).
 *   **Project Context:**  Indicate the **Project Name** within ELITEA where you are experiencing the issue and specify whether you are working in your **Private** workspace or a **Team** project.
 *   **Detailed Issue Description:** Provide a clear, concise, and comprehensive description of the problem you are encountering. Articulate precisely what you were attempting to do, what behavior you expected to observe, and what actually occurred (the unexpected behavior or error). Step-by-step descriptions are highly valuable.
 *   **Relevant Configuration Information (Screenshots Preferred):** To facilitate efficient diagnosis, please include relevant configuration details, ideally as screenshots:
