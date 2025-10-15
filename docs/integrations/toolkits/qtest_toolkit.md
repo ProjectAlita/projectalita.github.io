@@ -93,12 +93,20 @@ This section provides detailed instructions on how to configure the qTest toolki
     ![qTest-Toolkit_Configuration](../../img/integrations/toolkits/qtest/qTest-Toolkit_Configuration.png)
 
 4.  **Enable Desired Tools:** In the "Tools" section within the qTest toolkit configuration panel, **select the checkboxes next to the specific qTest tools** that you want to enable for your Agent. **It is crucial to enable only the tools that your Agent will actually need to use** to adhere to the principle of least privilege and minimize potential security risks. Available tools include:
-    *   **Search by DQL** - Allows searching for test cases using qTest DQL queries.
+    *   **Search by DQL** - Allows searching for test cases using qTest DQL queries. Includes an "Extract Images" property that can be enabled to retrieve embedded images from test case steps and expected results.
     *   **Create test cases** - Enables the Agent to create new test cases in qTest.
     *   **Update test case** - Allows the Agent to update existing test cases in qTest.
     *   **Find test case by ID** - Enables the Agent to retrieve a specific test case by its ID.
     *   **Delete test case** - Allows the Agent to delete test cases from qTest.
     *   **Link tests to requirement** - Allows the Agent to Link tests to requirement in qTest.
+    *   **Get modules** - Retrieves module IDs and names from the qTest project.
+
+    **DQL Search Limit Configuration:** The toolkit includes a "Number of tests shown in DQL search" setting that controls the maximum number of test cases retrieved when using DQL queries. This setting is crucial for:
+    *   **Performance Optimization:** Limiting the number of results helps prevent LLM context limits from being exceeded
+    *   **Response Time:** Smaller result sets improve query response times and Agent processing speed
+    *   **Resource Management:** Controls the amount of data transferred and processed during DQL operations
+    
+    **Important:** If this value is not set or is set too low, you may experience issues with incomplete data retrieval or no results being returned from your DQL queries.
     
 5.  **Complete Setup:** After configuring all the necessary settings and enabling the desired tools, click the **arrow icon** (located at the top right of the toolkit configuration section) to finalize the qTest toolkit setup and return to the main Agent configuration menu.
 6.  Click **Save** in the Agent configuration to save all changes and activate the qTest toolkit integration for your Agent.
@@ -108,8 +116,11 @@ This section provides detailed instructions on how to configure the qTest toolki
 Once the qTest toolkit is successfully configured and added to your Agent, you can leverage the following tools within your Agent's instructions to enable intelligent interaction with your qTest projects and test assets:
 
 *   **Search by DQL:**  **Tool Name:** `search_by_dql`
-    *   **Functionality:** Allows Agents to search for test cases in qTest using Data Query Language (DQL) queries. Returns a list of test cases matching the DQL query.
-    *   **Purpose:** Enables advanced and flexible test case searching based on complex criteria defined using DQL, allowing Agents to retrieve specific sets of test cases for reporting, analysis, test planning, or workflow automation based on qTest data.
+    *   **Functionality:** Allows Agents to search for test cases in qTest using Data Query Language (DQL) queries. Returns a list of test cases matching the DQL query. Includes an "Extract Images" property that can be enabled to retrieve images that are embedded in test case steps and expected results (images pasted within the step text, not attached as separate files).
+    *   **Purpose:** Enables advanced and flexible test case searching based on complex criteria defined using DQL, allowing Agents to retrieve specific sets of test cases for reporting, analysis, test planning, or workflow automation based on qTest data. When image extraction is enabled, provides comprehensive test case data including visual elements for enhanced analysis.
+      **Image Analysis Configuration:** When the "Extract Images" property is enabled for the "Search by DQL" tool, you can also configure a custom image analysis prompt. If not specified, a default prompt will be used to describe the extracted images. You can provide your own image analysis prompt either in the toolkit configuration or when interacting with the Agent to customize how images are analyzed and described.
+
+ ![qTest-dql](../../img/integrations/toolkits/qtest/dql.png)
 
 *   **Create test cases:**  **Tool Name:** `create_test_cases`
     *   **Functionality:** Automates the creation of new test cases in qTest within a specified project and test suite. Allows for bulk creation of test cases using a list of test case details.
@@ -122,6 +133,9 @@ Once the qTest toolkit is successfully configured and added to your Agent, you c
 *   **Find test case by ID:**  **Tool Name:** `find_test_case_by_id`
     *   **Functionality:** Retrieves detailed information about a specific test case from qTest using its unique Test Case ID. Returns comprehensive test case details, including steps, parameters, and custom fields.
     *   **Purpose:** Provides Agents with a quick and precise way to access detailed information for specific test cases, enabling efficient retrieval of test case details for test execution guidance, reporting, analysis, or incorporating test case information into ELITEA workflows.
+      **Image Analysis Configuration:** When the "Extract Images" property is enabled for the "Search by DQL" tool, you can also configure a custom image analysis prompt. If not specified, a default prompt will be used to describe the extracted images. You can provide your own image analysis prompt either in the toolkit configuration or when interacting with the Agent to customize how images are analyzed and described.
+
+      ![qTest-id](../../img/integrations/toolkits/qtest/id.png)
 
 *   **Delete test case:**  **Tool Name:** `delete_test_case`
     *   **Functionality:** Automates the deletion of a specific test case from qTest, identified by its Test Case ID.
@@ -130,6 +144,10 @@ Once the qTest toolkit is successfully configured and added to your Agent, you c
 *   **Link tests to Jira requirements:**  **Tool Name:** `link_tests_to_requirement`
     *   **Functionality:** Automates the linking of test cases to Jira requirements by specifying the Jira issue ID and a list of test case IDs.
     *   **Purpose:** Facilitates seamless integration between Jira and qTest by allowing Agents to link test cases to specific Jira requirements, ensuring traceability and alignment between test cases and project requirements. This helps in maintaining a clear connection between testing activities and project goals, improving overall project management and tracking.
+
+*   **Get Modules:**  **Tool Name:** `get_modules`
+    *   **Functionality:** Retrieves a list of all modules within the qTest project, including their module IDs and full module names.
+    *   **Purpose:** Enables Agents to discover and reference the complete module structure of a qTest project, providing the necessary module identifiers and full names required for accurate DQL queries and module-specific operations.
 
 ## Instructions and Prompts for Using the qTest Toolkit
 
@@ -196,6 +214,13 @@ Provide the following parameters:
         }
     ```
 
+*   **Agent Instructions for Retrieving Module Information:**
+
+    ```
+    Use the "get_modules" tool to retrieve all available modules from the qTest project.
+    This will provide you with the complete module structure including module IDs and full module names that can be used in subsequent DQL queries.
+    ```
+
 **Important Considerations for Agent Instructions:**
 
 *   **Tool Name Accuracy:** Ensure you use the correct **Tool Name** (e.g., `"search_by_dql"`, `"create_test_cases"`, `"update_test_case"`) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the toolkit correctly.
@@ -216,7 +241,10 @@ Provide the following parameters:
     *   **Securely Store Credentials:** Utilize ELITEA's Secrets Management feature to securely store and manage your qTest API tokens instead of hardcoding them directly in Agent configurations.
 *   **Provide Clear Instructions and Prompts:**  Craft clear and unambiguous instructions within your ELITEA Agents to guide them in using the qTest toolkit effectively. Use the prompt examples provided in this guide as a starting point and adapt them to your specific use cases.
 *   **Start with Simple Use Cases:** Begin by implementing qTest integration for simpler automation tasks, such as searching for test cases or retrieving test case details, and gradually progress to more complex workflows as you gain experience and confidence with the toolkit.
-*   **Optimize Performance with Advanced Settings:**  Leverage the "Advanced Settings" in the toolkit configuration, specifically "Test Cases per Page" and "DQL for qTest", to fine-tune data fetching parameters and optimize performance, especially when working with large qTest projects or complex queries.
+*   **Optimize Performance with Advanced Settings:**  Leverage the toolkit configuration settings to fine-tune data fetching parameters and optimize performance:
+    *   **"Number of tests shown in DQL search":** Set an appropriate limit that balances comprehensive data retrieval with LLM context limitations. Start with 100-200 for most use cases and adjust based on your specific needs.
+    *   **"Extract Images" property:** Enable only when visual analysis is necessary, as images significantly increase response size and processing time.
+    *   Use these settings especially when working with large qTest projects or complex queries to maintain optimal performance.
 
 ### Use Cases for qTest Toolkit Integration
 
@@ -246,6 +274,14 @@ The qTest toolkit opens up a wide range of automation possibilities for test man
     *   **Example Instruction:** "Use the 'search_by_dql' tool to search for test cases in qTest using the DQL query: 'Project = 'Project Alpha' AND Test Suite = 'Regression Tests' AND Status IN ('Passed', 'Failed')'. Generate a report summarizing the number of passed and failed test cases and calculate the test pass rate."
     *   **Benefit:** Enables automated and customized test reporting and analysis, providing QA managers and stakeholders with real-time visibility into test coverage, test execution progress, and quality metrics directly within ELITEA, improving test management and reporting efficiency.
 
+*   **Module-Specific Test Case Retrieval with Image Analysis:**
+    *   **Scenario:** QA teams need to analyze test cases from specific modules, including any images embedded in test steps, to understand visual requirements and expected UI behaviors.
+    *   **Tools Used:** `get_modules`, `search_by_dql` (with Extract Images enabled)
+    *   **Example Workflow:** 
+        1. "Use the 'get_modules' tool to retrieve all available modules and their full names."
+        2. "Use the 'search_by_dql' tool with Extract Images enabled to search for test cases using: 'Module = 'MD-1 MD-6 Company page' AND Status = 'Ready for Testing''. Analyze any embedded images to provide insights on UI testing requirements."
+    *   **Benefit:** Provides comprehensive test case analysis including visual elements, enabling better understanding of UI requirements and more effective test execution guidance. Helps teams identify visual regression testing needs and understand expected UI behaviors.
+
 ## Troubleshooting and Support
 
 ### Troubleshooting Common Issues
@@ -272,6 +308,36 @@ The qTest toolkit opens up a wide range of automation possibilities for test man
         2.  **Verify Test Suite and Test Case IDs:** Double-check that you are using the correct Test Suite IDs and Test Case IDs when referencing specific test assets in your Agent's instructions. Test Suite and Test Case IDs are numerical and must match the IDs in qTest exactly.
         3.  **Parameter Format:** Verify that you are providing parameters in the correct format expected by each qTest tool (e.g., string values for names, numerical values for IDs, JSON format for test case data). Refer to the "Instructions and Prompts for Using the Toolkit" section for parameter details and examples.
         4.  **DQL Query Syntax Errors:** When using the "Search by DQL" tool, ensure that you provide valid DQL query strings that adhere to qTest DQL syntax. Incorrect DQL syntax will result in search errors. Refer to qTest documentation for DQL syntax details and examples.
+
+*   **Response Exceeds LLM Context or Performance Issues:**
+    *   **Problem:** When retrieving test cases through DQL queries, the response becomes too large for the LLM context window, or the process becomes slow due to excessive data being retrieved.
+    *   **Possible Solutions:**
+        1.  **Disable Image Extraction:** If you have enabled the "Extract Images" property in the "Search by DQL" tool, consider disabling it to reduce the amount of data retrieved. Images can significantly increase response size and processing time.
+        2.  **Refine DQL Queries:** Use more specific DQL queries to limit the number of test cases returned. Add additional filters to narrow down the search results.
+        3.  **Paginate Results:** Consider implementing pagination in your queries to retrieve test cases in smaller batches.
+        4.  **Check Extract Images Status:** Verify the current status of the "Extract Images" property and disable it if not necessary for your current use case.
+
+*   **Module Reference Issues in DQL Queries:**
+    *   **Problem:** DQL queries targeting specific modules fail or return unexpected results when using partial module names.
+    *   **Cause and Solution:** When querying test cases from a specific module, you must provide the **full module name** in your DQL query, not just the last part of the module name.
+        *   **Incorrect:** `Module = 'MD-6 Company page'`
+        *   **Correct:** `Module = 'MD-1 MD-6 Company page'`
+
+         ![qTest](../../img/integrations/toolkits/qtest/qTest-modul.png)
+
+
+    *   **Recommendation:** Use the "Get Modules" tool first to retrieve the complete list of module IDs and full module names, then use the exact full module name in your DQL queries to ensure accurate results.
+
+*   **No Data or Insufficient Data Retrieved from DQL Queries:**
+    *   **Problem:** DQL searches return no results or fewer test cases than expected, even when you know matching test cases exist in qTest.
+    *   **Possible Causes and Solutions:**
+        1.  **DQL Search Limit Too Low:** Check the "Number of tests shown in DQL search" setting in the toolkit configuration. If this value is set too low (e.g., 5 or 10), it will limit the number of test cases returned regardless of how many actually match your query.
+        2.  **Setting Not Configured:** If the "Number of tests shown in DQL search" setting is not set or is blank, it may default to a very low limit or cause the query to fail entirely.
+        3.  **Solution:** Adjust the "Number of tests shown in DQL search" setting to an appropriate value that balances your needs:
+            *   For small datasets: 50-100 test cases
+            *   For larger datasets: 200-500 test cases (be mindful of LLM context limits)
+  
+        4.  **Verification:** After adjusting the setting, test your DQL query again to ensure the expected number of results are returned.
 
 ### FAQs
 
