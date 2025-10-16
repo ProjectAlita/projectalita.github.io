@@ -4,7 +4,7 @@
 
 ### Purpose of this Guide
 
-This guide serves as your definitive resource for integrating and effectively utilizing the **GitLab toolkit** within ELITEA. It provides a detailed, step-by-step walkthrough, from setting up your GitLab Personal Access Token to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the full potential of automated code management, streamlined development workflows, and enhanced team collaboration, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your software development lifecycle, harnessing the combined strengths of ELITEA and GitLab.
+This guide serves as your definitive resource for integrating and effectively utilizing the **GitLab toolkit** within ELITEA. It provides a comprehensive, step-by-step walkthrough, from generating a GitLab Personal Access Token to configuring the toolkit in ELITEA and effectively using it within your Agents. By following this guide, you will unlock the power of automated code management, streamlined development workflows, and enhanced team collaboration, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your software development lifecycle using the combined strengths of ELITEA and GitLab.
 
 ### Brief Overview of GitLab
 
@@ -39,7 +39,7 @@ For secure integration with ELITEA, it is highly recommended to utilize a GitLab
 
 1.  **Log in to GitLab:** Access your GitLab account by navigating to [gitlab.com](https://gitlab.com/) and logging in with your credentials.
 2.  **Access User Settings:** Click on your profile avatar, located in the top right corner of the GitLab interface. From the dropdown menu, select **"Edit profile"**.
-3.  **Navigate to Access Tokens:** In the left-hand sidebar of your profile settings, click on **"Access Tokens"**.
+3.  **Navigate to Access Tokens:** In the left-hand sidebar of your profile settings, click on **"Personal access tokens"**.
 4.  **Generate New Token:** Click the **"Add new token"** button to begin the process of creating a new Personal Access Token.
 5.  **Configure Token Details:**
     *   **Token name:** In the "Token name" field, provide a descriptive and easily recognizable label for your token. For example, you could use "ELITEA Integration Token" or "ELITEA Agent Access." This label will help you identify the purpose of this token in the future and manage your tokens effectively.
@@ -73,343 +73,443 @@ For secure integration with ELITEA, it is highly recommended to utilize a GitLab
 
 ## System Integration with ELITEA
 
-### Agent Creation/Configuration
+To integrate GitLab with ELITEA, you need to follow a three-step process: **Create Credentials → Create Toolkit → Use in Agents**. This workflow ensures secure authentication and proper configuration.
 
-To integrate GitLab functionalities into your workflows, you will need to configure the GitLab toolkit within an ELITEA Agent. You can either create a new Agent specifically for GitLab interactions or modify an existing Agent to incorporate GitLab tools.
+### Step 1: Create GitLab Credentials
 
-1.  **Navigate to Agents Menu:** In ELITEA, access the **Agents** menu from the main navigation panel.
-2.  **Create or Edit Agent:**
-    *   **Create a New Agent:** Click on the **"+ Agent"** button to initiate the creation of a new Agent. Follow the on-screen prompts to define essential Agent attributes such as Agent name, a descriptive Agent description, the desired Agent type, and initial instructions for the Agent.
-    *   **Edit an Existing Agent:** Select the Agent you intend to integrate with GitLab from your list of Agents. Click on the Agent's name to open its configuration settings for editing.
-3.  **Access Tools Section:** Within the Agent configuration interface, scroll down until you locate the **"Tools"** section. This section is where you will add and configure toolkits, including the GitLab toolkit.
+Before creating a toolkit, you must first create GitLab credentials in ELITEA:
 
-### Toolkit Configuration
+1. **Navigate to Credentials Menu:** Open the sidebar and select **[Credentials](../../menus/credentials.md)**.
+2. **Create New Credential:** Click the **`+ Create`** button.
+3. **Select GitLab:** Choose **GitLab** as the credential type.
+4. **Configure Credential Details:**
+     * **Display Name:** Enter a descriptive name (e.g., "GitLab - Development Team Access")
+     * **URL:** Enter the base URL of your GitLab instance:
+         - GitLab.com: `https://gitlab.com`
+         - Self-hosted GitLab: `https://gitlab.yourcompany.com`
+     * **Authentication:** GitLab private token
+         * Enter your GitLab Personal Access Token that you generated in the previous steps
+5. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project
+6. **Save Credential:** Click **Save** to create the credential. After saving, your GitLab credential will be added to the credentials dashboard and will be ready to use in toolkit configurations. You can view, edit, or delete it from the **Credentials** menu at any time.
 
-This section provides detailed instructions on how to configure the GitLab toolkit within your ELITEA Agent.
+![GitLab Credential](../../img/integrations/toolkits/gitlab/gitlab-credential-create.png)
 
-1.  **Add Toolkit:** In the "Tools" section of the Agent configuration, click on the **"+" icon**. This action will display a dropdown list of available toolkits that can be integrated with your Agent.
-2.  **Select GitLab Toolkit:** From the dropdown list of available toolkits, choose **"GitLab"**. Selecting "GitLab" will open the "New GitLab tool" configuration panel, where you will specify the settings for your GitLab integration.
-3.  **Configure GitLab Toolkit Settings:** Carefully fill in the following configuration fields within the "New GitLab tool" section:
+!!! tip "Security Recommendation"
+    Use **[Secrets](../../menus/settings/secrets.md)** for sensitive authentication data (tokens, passwords, and private keys) instead of entering values directly. Create a secret first, then reference it in your credential configuration.
 
-    *   **GitLab URL:** Enter the base URL of your GitLab instance.
-        *   For **GitLab.com (Cloud)**: Use the standard GitLab.com URL: `https://gitlab.com`.
-        *   For **Self-Hosted GitLab Instances**: If you are using a self-hosted GitLab instance (GitLab Community Edition or GitLab Enterprise Edition), enter the specific URL of your GitLab server. For example, `https://your-gitlab-instance.com`. **Ensure you include `https://` or `http://` at the beginning of the URL.**
-    *   **API Token:** In the "API token" field, paste the **Personal Access Token** that you generated in GitLab during the "Software-Specific Setup" section of this guide.
-        *   **Enhanced Security with Secrets (Recommended):** For enhanced security, it is strongly recommended to use ELITEA's **Secrets Management** feature to store your GitLab Personal Access Token securely. Instead of directly pasting the token into the "API token" field, select the **"Secret"** option and choose the pre-configured secret containing your GitLab token from the dropdown list. This prevents hardcoding sensitive credentials in your toolkit configuration.
-    *   **Repository Name:** Specify the **Repository name** that you want to access with this toolkit. Use the format: `group_or_username/repository_name`.
-        *   For **Personal Repositories**: If the repository is under your personal GitLab account, use your username followed by the repository name (e.g., `your_username/my-repo`).
-        *   For **Group Repositories**: If the repository belongs to a GitLab group, use the group's path followed by the repository name (e.g., `my_group/project-repo`). **Ensure you use the correct group path, not just the group name.**
+### Step 2: Create GitLab Toolkit
 
-    ![GitLab-Toolkit_Configuration](../../img/integrations/toolkits/gitlab/GitLab-Toolkit_Configuration.png)
+Once your credentials are configured, create the GitLab toolkit:
 
-4.  **Enable Desired Tools:** In the "Tools" section within the GitLab toolkit configuration panel, **select the checkboxes next to the specific GitLab tools** that you want to enable for your Agent. **It is crucial to enable only the tools that your Agent will actually need to use** to adhere to the principle of least privilege and minimize potential security risks. Available tools include:
-    *   **Create branch** - Allows the Agent to create new branches in the repository.
-    *   **Create file** - Enables the Agent to create new files within the repository.
-    *   **Create PR change comment** - Allows the Agent to add comments to specific changes within a pull request (Merge Request in GitLab).
-    *   **Create pull request** - Enables the Agent to create new pull requests (Merge Requests) for code review.
-    *   **Delete file** - Allows the Agent to delete files from the repository.
-    *   **Get PR changes** - Enables the Agent to retrieve the changes introduced in a specific pull request (Merge Request).
-    *   **List branches in repo** - Allows the Agent to list all branches within the repository.
-    *   **List files** - Enables the Agent to list all files within the repository.
-    *   **Read file** - Allows the Agent to read the content of files within the repository.
-    *   **Set active branch** - Enables the Agent to set a specific branch as the active branch for subsequent operations.
-    *   **Update file** - Allows the Agent to update the content of existing files within the repository.
-    *   **Append file** - Allows the Agent to append content to existing files within the repository.
-    *   **List Folders** - Allows to List Folders for better navigation within repositories.
-    List Folders
+1. **Navigate to Toolkits Menu:** Open the sidebar and select **[Toolkits](../../menus/toolkits.md)**.
+2. **Create New Toolkit:** Click the **`+ Create`** button.
+3. **Select GitLab:** Choose **GitLab** from the list of available toolkit types.
+4. **Configure Credentials:** 
+     * In the **Configuration** section, select your previously created GitLab credential from the **Credentials** dropdown
+5. **Configure Advanced Options:**
+     * **PgVector Configuration:** Select a PgVector connection for vector database integration
+     * **Embedding Model:** Select an embedding model for text processing and semantic search capabilities
+6. **Configure Repository Settings:**
+     * **Repository:** Enter the repository name in the format `owner/repository-name` (e.g., `MyOrg/my-project`)
+     * **Main Branch:** Specify the main branch name (typically `main` or `master`)
+     * **Active Branch:** Set the active working branch (defaults to `main`)
+7. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific GitLab tools you want to enable. **Enable only the tools your agents will actually use** to follow the principle of least privilege
+8. **Save Toolkit:** Click **Save** to create the toolkit.
 
-5.  **Complete Setup:** After configuring all the necessary settings and enabling the desired tools, click the **arrow icon** (located at the top right of the toolkit configuration section) to finalize the GitLab toolkit setup and return to the main Agent configuration menu.
-6.  Click **Save** in the Agent configuration to save all changes and activate the GitLab toolkit integration for your Agent.
+![GitLab Toolkit](../../img/integrations/toolkits/gitlab/gitlab-toolkit-create.png)
 
-### Tool Overview: GitLab Toolkit Functionalities
+#### Available Tools:
 
-Once the GitLab toolkit is successfully configured and added to your Agent, you can leverage the following tools within your Agent's instructions to enable intelligent interaction with your GitLab repositories:
+The GitLab toolkit provides the following tools for interacting with GitLab repositories and managing development workflows, organized by functional categories:
 
-*   **Create branch:**  **Tool Name:** `create_branch`
-    *   **Functionality:** Automates the creation of a new branch within the specified GitLab repository. Requires parameters such as the new branch name and the base branch to branch from.
-    *   **Purpose:** Streamlines branch management by enabling Agents to automatically create new branches for feature development, bug fixes, or experimental code changes directly from ELITEA workflows, ensuring organized and efficient branching strategies.
+| **Tool Category** | **Tool Name** | **Description** | **Primary Use Case** |
+|:-----------------:|---------------|-----------------|----------------------|
+| **Branch Management** | | | |
+| | **Create branch** | Creates a new branch in the repository | Create feature branches, release branches, or hotfix branches |
+| | **List branches in repo** | Lists all branches in the repository with optional filtering | Monitor branch structure and manage branch lifecycle |
+| | **Set active branch** | Sets the active branch for subsequent operations | Ensure operations target the correct branch context |
+| **File Operations** | | | |
+| | **Create file** | Creates a new file in the repository | Generate new source code, documentation, or configuration files |
+| | **Read file** | Reads the content of a specific file | Access file content for analysis, review, or processing |
+| | **Update file** | Updates the content of an existing file | Modify source code, documentation, or configuration files |
+| | **Append file** | Appends content to an existing file | Add log entries, update changelog, or append data |
+| | **Delete file** | Deletes a file from the repository | Remove obsolete files or clean up temporary files |
+| | **List files** | Lists files in the repository with optional path filtering | Browse repository structure and locate specific files |
+| | **List folders** | Lists folders in the repository with optional recursive search | Explore directory structure and organize file operations |
+| **Issue Management** | | | |
+| | **Get issues** | Retrieves all open issues from the repository | Track project tasks, bugs, and feature requests |
+| | **Get issue** | Retrieves details of a specific issue by number | Access detailed information about a particular issue |
+| | **Comment on issue** | Adds a comment to an existing issue | Provide updates, feedback, or status changes on issues |
+| **Pull Request Management** | | | |
+| | **Create pull request** | Creates a new merge request in the repository | Automate code review process and facilitate collaboration |
+| | **Get PR changes** | Retrieves changes from a specific pull request | Analyze code modifications and review impact |
+| | **Create PR change comment** | Adds a comment to specific changes within a pull request | Provide targeted feedback on code modifications |
+| **Version Control** | | | |
+| | **Get commits** | Retrieves commit history with optional filtering | Track project history and analyze code changes over time |
+| **Data Indexing & Search** | | | |
+| | **Index data** | Indexes repository data for enhanced search capabilities | Enable AI-powered search and analysis across repository content |
+| | **Search index** | Searches through indexed repository data | Find relevant code, documentation, or files using semantic search |
+| | **Stepback search index** | Performs advanced stepback search on indexed data | Execute sophisticated search queries with context awareness |
+| | **Stepback summary index** | Generates summaries from stepback search results | Create concise summaries of search findings and analysis |
+| | **Remove index** | Removes indexed data from the search system | Clean up or reset indexed repository data |
+| | **List collections** | Lists available indexed collections | View and manage indexed data collections for the repository |
 
-*   **Create file:** **Tool Name:** `create_file`
-    *   **Functionality:** Automates the creation of a new file within the specified GitLab repository at a given path with specified content.
-    *   **Purpose:** Enables automated creation of new code files, documentation files, configuration files, or any other type of file within your repository directly from ELITEA workflows, ensuring consistency and reducing manual file creation tasks.
+### Step 3: Use GitLab Toolkit in Agents
 
-*   **Create PR change comment:** **Tool Name:** `create_pr_change_comment`
-    *   **Functionality:** Automates adding comments to specific changes within a GitLab Merge Request (Pull Request). Requires the Merge Request ID, the path to the changed file, the position within the file, and the comment text.
-    *   **Purpose:** Facilitates more granular and contextual code review feedback by allowing Agents to automatically add comments directly to specific lines or sections of code changes within Merge Requests, improving the clarity and efficiency of code reviews.
+Once your GitLab toolkit is created, you can use it in various ELITEA features:
 
-*   **Create pull request:** **Tool Name:** `create_pull_request`
-    *   **Functionality:** Automates the creation of a new Merge Request (Pull Request) in the specified GitLab repository. Requires parameters such as the source branch, target branch, Merge Request title, and description.
-    *   **Purpose:** Streamlines the code review and merging process by automating Merge Request creation for code contributions, feature branches, or bug fixes directly from ELITEA. Reduces manual effort for developers and accelerates code integration workflows.
+#### **In Agents:**
+1. **Navigate to Agents:** Open the sidebar and select **[Agents](../../menus/agents.md)**.
+2. **Create or Edit Agent:** Click **`+ Create`** for a new agent or select an existing agent to edit.
+3. **Add GitLab Toolkit:** 
+     * In the **"Tools"** section of the agent configuration, click the **"+Toolkit"** icon
+     * Select your configured GitLab toolkit from the dropdown list
+     * The toolkit will be added to your agent with the previously configured tools enabled
 
-*   **Delete file:** **Tool Name:** `delete_file`
-    *   **Functionality:** Automates the deletion of a specified file from the GitLab repository. Requires the file path and branch name as parameters.
-    *   **Purpose:** Enables automated file cleanup and codebase management by allowing Agents to delete obsolete files, remove temporary files, or enforce file lifecycle policies within your repository, helping maintain a clean and organized codebase.
-
-*   **Get PR changes:** **Tool Name:** `get_pr_changes`
-    *   **Functionality:** Retrieves the details of changes introduced within a specific GitLab Merge Request (Pull Request). Returns information about the files changed, additions, and deletions.
-    *   **Purpose:** Provides Agents with the ability to analyze code changes within Merge Requests, facilitating automated code review analysis, change impact assessment, or generating summaries of modifications for reviewers, enhancing code review automation and insights.
-
-*   **List branches in repo:** **Tool Name:** `list_branches_in_repo`
-    *   **Functionality:** Retrieves a list of all branches available in the specified GitLab repository. Provides a simple list of branch names.
-    *   **Purpose:** Enables Agents to obtain a comprehensive list of branches for branch management automation, generating reports on repository branching structure, providing users with branch selection options within ELITEA workflows, or automating branch-related decision-making processes.
-
-*   **List files:** **Tool Name:** `list_files`
-    *   **Functionality:** Retrieves a list of all files within the specified GitLab repository at the root level of the repository's default branch. Provides a flat list of file paths.
-    *   **Purpose:** Allows Agents to programmatically browse the top-level contents of a repository, providing a quick overview of the repository's structure, enabling basic file listing for navigation or automated file processing workflows.
-
-*   **Read file:** **Tool Name:** `read_file`
-    *   **Functionality:** Reads and retrieves the content of a specific file from the specified GitLab repository. Requires the file path and branch name as parameters.
-    *   **Purpose:** Enables Agents to dynamically access and utilize file contents from your GitLab repository, allowing retrieval of code snippets, configuration parameters, documentation content, or any other file data to provide context, data, or instructions within ELITEA workflows and conversations, facilitating dynamic and data-driven automation.
-
-*   **Set active branch:** **Tool Name:** `set_active_branch`
-    *   **Functionality:** Sets a specific branch as the currently active branch within the GitLab toolkit's context. Directs subsequent file-related operations to target this active branch.
-    *   **Purpose:** Ensures that file operations performed by the Agent are executed within the intended branch context, improving workflow accuracy and preventing unintended modifications to incorrect branches. Provides branch context management for reliable file-based automation.
-
-*   **Update file:** **Tool Name:** `update_file`
-    *   **Functionality:** Updates the content of a specific, existing file within the GitLab repository. Replaces the entire file content with the provided new content. Requires the file path, branch name, and new file content as parameters.
-    *   **Purpose:** Automates the process of updating code files, documentation, configuration files, or any file content within your repository based on ELITEA workflow outputs, user requests, or external triggers. Ensures configurations are synchronized, documentation is kept current, and codebase modifications are automated and version-controlled.
-
-*   **Append file:** **Tool Name:** `append_file`
-    *   **Functionality:** Appends content to the end of an existing file within the GitLab repository. Requires the file path, branch name, and content to append as parameters.
-    *   **Purpose:** Enables automated appending of data to log files, documentation files, or other files where incremental content addition is needed. Useful for adding timestamps, generating audit trails, or accumulating data within repository files through automated workflows.
+Your agent can now interact with GitLab using the configured toolkit and enabled tools.
 
 
-*   **List folders:** **Tool Name:** `list_folders`
-    *   **Functionality:** Retrieves a list of folders from a GitLab repository. Allows specifying a path, branch, and whether to list folders recursively.
-    *   **Purpose:** Enables exploration of the repository's folder structure, identification of specific directories, or retrieval of all folders in a directory or branch. Useful for automating tasks that require knowledge of the repository's directory organization.
+![GitLab Agent](../../img/integrations/toolkits/gitlab/gitlab-agent-create.png)
 
 
-## Instructions and Prompts for Using the Toolkit
+#### **In Pipelines:**
 
-To effectively instruct your ELITEA Agent to utilize the GitLab toolkit, you must provide clear and precise instructions within the Agent's "Instructions" field. These instructions are essential for guiding the Agent on *when* and *how* to use the available GitLab tools to achieve your desired automation outcomes.
+1. **Navigate to Pipelines:** Open the sidebar and select **[Pipelines](../../menus/pipelines.md)**.
+2. **Create or Edit Pipeline:** Either create a new pipeline or select an existing pipeline to edit.
+3. **Add GitLab Toolkit:** 
+     * In the **"Tools"** section of the pipeline configuration, click the **"+Toolkit"** icon
+     * Select your configured GitLab toolkit from the dropdown list
+     * The toolkit will be added to your pipeline with the previously configured tools enabled
+
+![GitLab Pipeline](../../img/integrations/toolkits/gitlab/gitlab-pipeline-create.png)
+
+
+#### **In Chat:**
+
+1. **Navigate to Chat:** Open the sidebar and select **[Chat](../../menus/chat.md)**.
+2. **Start New Conversation:** Click **+Create** or open an existing conversation.
+3. **Add Toolkit to Conversation:**
+     * In the chat Participants section, look for the **Toolkits** element
+     * Click the **"Add Tools"** Icon to open the tools selection dropdown
+     * Select your configured GitLab toolkit from the dropdown list
+     * The toolkit will be added to your conversation with all previously configured tools enabled
+4. **Use Toolkit in Chat:** You can now directly interact with your GitLab repositories by asking questions or requesting actions that will trigger the GitLab toolkit tools.
+    * **Example Chat Usage:**
+        - "Please list all open issues in the repository that are labeled as 'bug' and 'high-priority'."
+        - "Create a new branch called 'feature-user-authentication' from the main branch."
+        - "Show me the recent commits in the main branch and summarize what changes were made."
+        - "Create a merge request to merge the 'feature-login' branch into 'develop' with the title 'Add user login functionality'."
+
+![GitLab Chat](../../img/integrations/toolkits/gitlab/gitlab-chat-create.png)
+
+
+## Instructions and Prompts for Using the GitLab Toolkit
+
+To effectively instruct your ELITEA Agent to use the GitLab toolkit, you need to provide clear and precise instructions within the Agent's "Instructions" field. These instructions are crucial for guiding the Agent on *when* and *how* to utilize the available GitLab tools to achieve your desired automation goals.
 
 ### Instruction Creation for OpenAI Agents
 
 When crafting instructions for the GitLab toolkit, especially for OpenAI-based Agents, clarity and precision are paramount. Break down complex tasks into a sequence of simple, actionable steps. Explicitly define all parameters required for each tool and guide the Agent on how to obtain or determine the values for these parameters. OpenAI Agents respond best to instructions that are:
 
-*   **Direct and Action-Oriented:** Employ strong action verbs and clear commands to initiate actions. For example, "Use the 'read_file' tool...", "Create a branch named...", "List all open merge requests...".
+*   **Direct and Action-Oriented:** Employ strong action verbs and clear commands to initiate actions. For example, "Use the 'read_file' tool...", "Create a branch named...", "List all open issues...".
+
 *   **Parameter-Centric:** Clearly enumerate each parameter required by the tool. For each parameter, specify:
-    *   Its name (exactly as expected by the tool).
-    *   The format or type of value expected.
-    *   How the Agent should obtain the value – whether from user input, derived from previous steps in the conversation, retrieved from an external source, or a predefined static value.
+    *   Its name (exactly as expected by the tool)
+    *   Its expected data type and format
+    *   How the Agent should obtain the value – whether from user input, derived from previous steps in the conversation, retrieved from an external source, or a predefined static value
+
 *   **Contextually Rich:** Provide sufficient context so the Agent understands the overarching objective and the specific scenario in which each GitLab tool should be applied within the broader workflow. Explain the desired outcome or goal for each tool invocation.
+
 *   **Step-by-Step Structure:** Organize instructions into a numbered or bulleted list of steps for complex workflows. This helps the Agent follow a logical sequence of actions.
+
+*   **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Show me the README file', 'What's in the README.md?', 'Display the project documentation'"
 
 When instructing your Agent to use a GitLab toolkit tool, adhere to this structured pattern:
 
-```markdown
 1. **State the Goal:** Begin by clearly stating the objective you want to achieve with this step. For example, "Goal: To retrieve the content of the 'README.md' file."
+
 2. **Specify the Tool:** Clearly indicate the specific GitLab tool to be used for this step. For example, "Tool: Use the 'read_file' tool."
+
 3. **Define Parameters:** Provide a detailed list of all parameters required by the selected tool. For each parameter:
-    - Parameter Name: `<Parameter Name as defined in tool documentation>`
-    - Value or Source: `<Specify the value or how to obtain the value. Examples: "user input", "from previous step", "hardcoded value 'main'", "value of variable X">`
+   - **Parameter Name:** `<Parameter Name as defined in tool documentation>`
+   - **Value or Source:** `<Specify the value or how to obtain the value. Examples: "user input", "from previous step", "hardcoded value 'main'", "value of variable X">`
+
 4. **Describe Expected Outcome (Optional but Recommended):** Briefly describe the expected result or outcome after the tool is successfully executed. For example, "Outcome: The Agent will provide the content of the 'README.md' file."
-```
 
-**Example Agent Instructions for GitLab Toolkit Tools (Optimized for OpenAI Agents):**
+5. **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Show me the README file', 'What's in the README.md?', 'Display the project documentation'"
 
-*   **Agent Instructions for Updating a File:**
+#### Example Agent Instructions
+
+**Agent Instructions for Updating a File:**
 
 ```markdown
-1. Goal: Update the content of the 'config.json' file in the 'settings' branch with new configuration values provided by the user.
+1. Goal: Update the 'config.json' file in the 'settings' branch with new configuration values provided by the user.
 2. Tool: Use the "update_file" tool.
 3. Parameters:
-    - Repository Name: "Specify the repository name in 'group/repo' format. Use the repository configured in the GitLab toolkit."
+    - Repository Name: "Specify the repository name in 'owner/repo' format. Use the repository configured in the GitLab toolkit."
+    - Branch Name: "settings" (or ask user for specific branch)
     - File Path: "config.json"
-    - Branch Name: "settings"
     - New Content: "Ask the user for the new JSON configuration content. Ensure it is valid JSON format. Example: {\"setting\": \"new_value\"}"
 4. Outcome: The 'config.json' file in the 'settings' branch will be updated with the user-provided JSON configuration. Confirm the update to the user.
 ```
 
-*   **Agent Instructions for Creating a New Branch:**
+### Chat Usage Examples by Tool Category
 
-```markdown
-1. Goal: To create a new feature branch for user authentication, named 'feature-user-auth', branching from the 'develop' branch.
-2. Tool: Use the "create_branch" tool.
-3. Parameters:
-    - Repository Name: "Specify the repository name in 'group/repo' format. Use the repository configured in the GitLab toolkit."
-    - New Branch Name: "feature-user-auth"
-    - Base Branch: "develop"
-4. Outcome: A new branch named 'feature-user-auth' will be created in the repository, based on the 'develop' branch. Inform the user that the branch has been created.
+The following examples demonstrate how to interact with the GitLab toolkit in ELITEA Chat, organized by functional categories. Each example shows the user request and the expected agent behavior.
+
+#### Issue Management - Create Issue
+
+**Chat Example:**
+```
+User: "I found a bug in the login system where users can't reset their passwords. Can you create an issue for this?"
+
+Agent Response: [Agent uses comment_on_issue tool after getting issues]
+
+✅ Issue created successfully!
+- **Issue #47**: "Bug: Password reset not working in login system"
+- **Description**: User reported that the password reset functionality is not working properly in the login system
+- **Labels**: bug, login, high-priority
+- **Status**: Open
+- **URL**: https://gitlab.com/yourorg/yourrepo/-/issues/47
+
+The development team will be notified and can begin investigating this issue.
 ```
 
-*   **Agent Instructions for Listing Branches in a Repository:**
+#### Pull Request Management - Create Merge Request
 
-```markdown
-1. Goal: To get a list of all branches in the repository to understand the current project structure.
-2. Tool: Use the "list_branches_in_repo" tool.
-3. Parameters:
-    - Repository Name: "Specify the repository name in 'group/repo' format. Use the repository configured in the GitLab toolkit."
-4. Outcome: The Agent will provide a list of all branches in the repository.
+**Chat Example:**
+```
+User: "Create a merge request to merge my 'feature-auth' branch into 'develop' with the title 'Add user authentication feature'."
+
+Agent Response: [Agent uses create_pull_request tool]
+
+✅ **Merge Request created successfully!**
+- **MR #15**: "Add user authentication feature"
+- **Source Branch**: feature-auth
+- **Target Branch**: develop
+- **Status**: Open
+- **URL**: https://gitlab.com/yourorg/yourrepo/-/merge_requests/15
+
+The merge request is now ready for review. Team members can review the code changes and provide feedback.
 ```
 
-*   **Agent Instructions for Reading a File from a Repository:**
+#### File Operations - Read File
 
-```markdown
-1. Goal: To read the content of the 'README.md' file to understand the project's overview.
-2. Tool: Use the "read_file" tool.
-3. Parameters:
-    - Repository Name: "Specify the repository name in 'group/repo' format. Use the repository configured in the GitLab toolkit."
-    - File Path: "README.md"
-    - Branch Name: "main"
-4. Outcome: The Agent will provide the content of the 'README.md' file from the 'main' branch.
+**Chat Example:**
+```
+User: "Can you show me the contents of the README.md file?"
+
+Agent Response: [Agent uses read_file tool]
+
+📄 **README.md Contents**:
+
+   markdown
+# Project Name
+
+A comprehensive web application for managing user accounts and data.
+
+## Features
+- User authentication and authorization
+- Data visualization dashboard
+- RESTful API endpoints
+- Real-time notifications
+
+## Installation
+   bash
+npm install
+npm start
+
+
+This file contains the project overview, features, and setup instructions for new developers joining the project.
 ```
 
-### Conversation Starters
+#### Branch Management - Create Branch
 
-Use these conversation starters to interact with your GitLab-integrated Agent. These are useful for both testing the integration and for common usage scenarios.
+**Chat Example:**
+```
+User: "I need to create a new feature branch called 'user-profile-enhancement' based on the main branch."
 
-**1. For Testing and Troubleshooting Connection & Configuration:**
+Agent Response: [Agent uses create_branch tool]
 
-These starters are specifically designed to verify if the GitLab toolkit is correctly configured, authenticated, and successfully connected to your GitLab repository. They test basic functionalities to ensure the integration is working as expected.
+🌟 **Branch created successfully!**
+- **Branch Name**: user-profile-enhancement
+- **Based on**: main branch
+- **URL**: https://gitlab.com/yourorg/yourrepo/-/tree/user-profile-enhancement
 
-*   "List branches in the repository." - *This starter tests basic connectivity to GitLab and verifies read permissions for branch listing.*
-*   "Read the file 'README.md' from the main branch." - *This starter further tests read permissions and the ability to access and retrieve file content from the repository.*
-*   "Create a new branch named 'test-connection' based on main." - *This starter tests write permissions (if enabled in your token scopes) and the branch creation functionality. **Important:** Remember to manually delete the 'test-connection' branch from your repository after successful testing to maintain repository hygiene.*
-*   "List open pull requests." - *Tests the ability to retrieve pull request data, verifying permissions for PR access.*
-*   "Get PR changes for the latest pull request." - *Tests the ability to retrieve pull request changes, verifying permissions for PR change access.*
+The branch is now ready for development. Would you like me to help you with any initial setup or file creation in this new branch?
+```
 
-**2. For General Agent Usage Scenarios & Workflow Initiation:**
+#### Version Control - Get Commits
 
-These conversation starters demonstrate how to initiate agent execution for common, practical GitLab-related tasks and workflows. They represent typical user requests and showcase the agent's ability to perform useful actions within GitLab.
+**Chat Example:**
+```
+User: "Show me the recent commits from the last week and summarize what changes were made."
 
-*   "I need to update the documentation file 'user_guide.md' with details about the new API endpoints. Can you help me update it in GitLab?" - *This starter could trigger a workflow involving `read_file` to get the current documentation content, potentially some content modification steps, and then `update_file` to save the updated documentation back to the repository.*
-*   "Create a merge request to merge my 'feature-x' branch into 'develop' for code review and integration." - *This starter directly initiates the `create_pull_request` tool to automate the merge request creation process.*
-*   "What are the active feature branches currently in the repository that need code review?" - *This starter would utilize the `list_branches_in_repo` tool (potentially combined with merge request data) to provide a project status overview, specifically focusing on feature branches awaiting review.*
-*   "I want to add a new configuration file named 'deployment.config' to the 'config' directory in the main branch with these settings: [provide configuration settings here]. Can you create this file for me?" - *This starter would use the `create_file` tool to automate the creation of a new configuration file with user-specified content in the designated repository location.*
-*   "Append a timestamp and 'Workflow execution completed' message to the 'workflow.log' file in the main branch." - *This starter directly uses the `append_file` tool to add a log entry to a file, automating logging within workflows.*
+Agent Response: [Agent uses get_commits tool]
 
-These conversation starters offer a solid foundation for interacting with your GitLab-integrated ELITEA Agent. They can be further customized and expanded upon to precisely match your specific use cases, workflows, and the unique automation needs of your software development projects.
+📈 **Recent Commits (Last 7 Days)**:
 
-## Use Cases
+1. **Latest**: `a7b3f2c` - "Fix user login validation" 
+   - **Author**: @johndev
+   - **Date**: 2 hours ago
+   - **Changes**: Updated authentication logic to handle edge cases
 
-The GitLab toolkit unlocks a vast array of automation possibilities for your software development workflows within ELITEA. Here are key use cases, presented in a structured format similar to the Bitbucket guide, illustrating how each tool can be effectively applied to streamline development processes and enhance productivity:
+2. `9d4e1a8` - "Add responsive design for mobile devices"
+   - **Author**: @ui-designer
+   - **Date**: Yesterday
+   - **Changes**: Implemented mobile-first CSS and responsive breakpoints
 
-*   **Automated Feature Branching:**
-    *   **Scenario:** When a new feature is planned, the Agent can automatically create a dedicated feature branch in GitLab.
-    *   **Tools Used:** `create_branch`
-    *   **Example Instruction:** "Use the 'create_branch' tool to create a new branch named 'feature-branch-name' based on the 'develop' branch."
-    *   **Benefit:** Streamlines branch management, ensures organized feature development.
+3. `f2a1b9e` - "Update API documentation"
+   - **Author**: @backend-dev
+   - **Date**: 3 days ago
+   - **Changes**: Added new endpoint documentation and examples
 
-*   **Contextual Code Retrieval for Support:**
-    *   **Scenario:** During a support conversation, an Agent can retrieve relevant code snippets from GitLab to provide context or examples to the user.
-    *   **Tools Used:** `read_file`
-    *   **Example Instruction:** "Use the 'read_file' tool to read the content of the file 'src/components/UserComponent.js' from the 'main' branch and show it to the user."
-    *   **Benefit:** Enhances support interactions with direct access to codebase information.
+**Summary**: The team has been focusing on stability improvements, performance optimization, and mobile user experience enhancements this week.
+```
 
-*   **Automated Documentation Updates:**
-    *   **Scenario:** When code changes are made, the Agent can automatically update related documentation files in the repository.
-    *   **Tools Used:** `read_file`, `update_file`
-    *   **Example Instruction:** "Use the 'read_file' tool to get the current content of 'docs/api.md'. Update it with the new API changes and use 'update_file' to save the updated content back to 'docs/api.md' in the 'main' branch."
-    *   **Benefit:** Keeps documentation synchronized with the latest codebase, reducing manual effort and errors.
+#### File Operations - Update File
 
-*   **Merge Request Automation for Code Review:**
-    *   **Scenario:** After a developer completes a task, the Agent can automatically create a merge request for code review.
-    *   **Tools Used:** `create_pull_request`
-    *   **Example Instruction:** "Use the 'create_pull_request' tool to create a merge request from branch 'feature-branch-name' to 'develop' branch with the title 'Feature Branch Review' and description 'Please review the changes for the new feature.'"
-    *   **Benefit:** Automates the merge request process, facilitating timely code reviews and improving code quality.
+**Chat Example:**
+```
+User: "Update the config.json file to change the API endpoint from 'api.dev.com' to 'api.prod.com'"
 
-*   **Listing Branches for Project Overview:**
-    *   **Scenario:** A project manager wants a quick overview of all active branches in the repository.
-    *   **Tools Used:** `list_branches_in_repo`
-    *   **Example Instruction:** "Use the 'list_branches_in_repo' tool to list all branches in the repository and present them to the user."
-    *   **Benefit:** Provides easy access to branch information for project management and monitoring.
+Agent Response: [Agent uses update_file tool]
 
-*   **Setting Active Branch for Focused Operations:**
-    *   **Scenario:** Before performing a series of file operations, ensure the Agent is working on the correct branch.
-    *   **Tools Used:** `set_active_branch`
-    *   **Example Instruction:** "First, use 'set_active_branch' to set the active branch to 'develop'. Then, use 'read_file' to read 'config.json' from the active branch."
-    *   **Benefit:** Ensures operations are performed in the intended branch context, reducing errors and improving workflow reliability.
+✅ **File updated successfully!**
+- **File**: config.json
+- **Branch**: main
+- **Change**: Updated API endpoint from 'api.dev.com' to 'api.prod.com'
+- **Commit**: "Update API endpoint to production URL"
 
-*   **Automated Logging with File Appending:**
-    *   **Scenario:**  In automated workflows, append execution logs to a designated log file in the repository for audit trails and debugging purposes.
-    *   **Tools Used:** `append_file`
-    *   **Example Instruction:** "Use the 'append_file' tool to append the text '[log_message]' to the file 'workflow.log' in the 'main' branch."
-    *   **Benefit:** Enables automated logging within workflows, providing a persistent record of workflow executions, facilitating debugging, auditing, and monitoring of automated processes.
+The configuration file has been updated. The new API endpoint will be used for all future API calls.
+```
 
-*   **Contextual Code Review Feedback with Change Comments:**
-    *   **Scenario:** During code reviews, allow Agents to automatically add comments to specific lines of code within merge requests to provide targeted feedback or suggestions.
-    *   **Tools Used:** `create_pr_change_comment`
-    *   **Example Instruction:** "Use the 'create_pr_change_comment' tool to add a comment to merge request [mr_id] at file '[file_path]', line [line_number], with the text '[comment_text]'."
-    *   **Benefit:** Facilitates more precise and actionable code review feedback by allowing comments to be directly associated with specific code changes, improving the clarity and effectiveness of the review process.
+#### File Operations - List Files
 
-*   **Retrieving Merge Request Changes for Analysis:**
-    *   **Scenario:**  Automate analysis of code changes introduced in a merge request to identify potential security vulnerabilities or code quality issues before merging.
-    *   **Tools Used:** `get_pr_changes`
-    *   **Example Instruction:** "Use the 'get_pr_changes' tool to get the changes for merge request [mr_id]. Analyze the changes for potential security risks and report any findings."
-    *   **Benefit:** Enables automated code analysis and security checks within merge request workflows, improving code quality and security posture by proactively identifying potential issues before code integration.
+**Chat Example:**
+```
+User: "Show me all the files in the src/components directory."
+
+Agent Response: [Agent uses list_files tool]
+
+📁 **Files in src/components/** (12 files):
+
+**📄 Component Files**:
+- `Header.vue` - Main header component
+- `Footer.vue` - Footer component
+- `Navigation.vue` - Navigation menu component
+- `UserProfile.vue` - User profile display component
+- `LoginForm.vue` - User login form component
+
+**📄 Utility Components**:
+- `Modal.vue` - Reusable modal component
+- `Button.vue` - Custom button component
+- `Input.vue` - Custom input component
+- `LoadingSpinner.vue` - Loading indicator component
+
+**📄 Layout Components**:
+- `Sidebar.vue` - Application sidebar
+- `MainLayout.vue` - Main page layout wrapper
+- `DashboardLayout.vue` - Dashboard-specific layout
+
+This directory contains the main UI components for the application. Would you like me to show you the contents of any specific component?
+```
 
 ## Troubleshooting and Support
 
-### Troubleshooting Common Issues
+### Troubleshooting
+
+*   **Credential Not Appearing in Toolkit Configuration:**
+    *   **Problem:** When creating a toolkit, your GitLab credential doesn't appear in the credentials dropdown.
+    *   **Troubleshooting Steps:**
+        *   **Check Credential Scope:** Ensure you're working in the same workspace/project where the credential was created. Private credentials are only visible in your Private workspace, while project credentials are visible within the specific team project.
+        *   **Verify Credential Creation:** Go to the Credentials menu and confirm that your GitLab credential was successfully saved.
+        *   **Credential Type Match:** Ensure you selected "GitLab" as the credential type when creating the credential.
 
 *   **Connection Errors:**
-    *   **Problem:** ELITEA Agent fails to connect to GitLab, resulting in errors during toolkit execution.
+    *   **Problem:** ELITEA Agent fails to establish a connection with GitLab, resulting in errors during toolkit execution.
     *   **Troubleshooting Steps:**
-        1.  **Verify GitLab URL:** Double-check that the **GitLab URL** field in the toolkit configuration is correctly set to your GitLab instance URL (e.g., `https://gitlab.com` or your self-hosted instance URL). Ensure it includes `https://` or `http://`.
-        2.  **Check Personal Access Token:** Ensure that the **Personal Access Token** you provided is correct, has not expired, and is valid for your GitLab account and repository. Carefully re-enter or copy-paste the token to rule out typos.
-        3.  **Verify Token Scopes:** Review the **scopes/permissions** granted to your Personal Access Token in GitLab. Ensure it has the necessary scopes (e.g., `api`, `read_repository`, `write_repository`, `read_user`) for the GitLab tools your Agent is trying to use. Insufficient scopes are a common cause of connection and permission errors.
-        4.  **Network Connectivity:** Confirm that both your ELITEA environment and the GitLab instance are connected to the internet and that there are no network connectivity issues, firewalls, or proxies blocking the integration. Test network connectivity to your GitLab URL from your ELITEA environment if possible.
+        1.  **Verify GitLab API URL:** Ensure that the **URL** field in the credential configuration is correctly set to your GitLab instance URL: `https://gitlab.com` for GitLab.com or `https://gitlab.yourcompany.com` for self-hosted instances. Avoid adding `/api/v4` to the URL as this is handled automatically.
+        2.  **Check Personal Access Token (PAT):** Double-check that the **Personal Access Token** you have provided is accurate, has not expired, and is valid for your GitLab account and the target repository. Carefully re-enter or copy-paste the token to rule out typos.
+        3.  **Verify Token Scopes:** Review the **scopes/permissions** granted to your Personal Access Token in GitLab. Ensure that the token has the necessary scopes (e.g., `api`, `read_repository`, `write_repository`, `read_issue`, `write_issue`) for the specific GitLab tools your Agent is attempting to use. Insufficient scopes are a common cause of connection and permission errors.
+        4.  **Network Connectivity:** Confirm that both your ELITEA environment and the GitLab service are connected to the internet and that there are no network connectivity issues, firewalls, or proxies blocking the integration. Test network connectivity to your GitLab instance from your ELITEA environment if possible.
 
 *   **Authorization Errors (Permission Denied/Unauthorized):**
-    *   **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify GitLab resources.
+    *   **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors when attempting to access or modify GitLab resources, even with a seemingly valid token.
     *   **Troubleshooting Steps:**
-        1.  **Re-verify Token Scopes:** Double-check the **scopes/permissions** granted to your GitLab Personal Access Token with extreme care. Ensure it grants sufficient access for the specific GitLab actions your Agent is trying to perform (e.g., `write_repository` scope for creating files or branches).
-        2.  **Repository Access Permissions:** Confirm that the GitLab account associated with the Personal Access Token has the required access to the specified repository. Verify that the account is a member of the project or group that owns the repository and has the necessary roles or permissions (e.g., Maintainer or Developer role for write access). Check project/group settings in GitLab to confirm access levels.
+        1.  **Re-verify Token Scopes:** Double-check the **scopes/permissions** granted to your Personal Access Token with extreme care. Ensure that the token possesses the precise scopes required for the specific GitLab actions your Agent is trying to perform. For example, creating files or merge requests requires scopes that grant write access (`api` scope or granular `write_repository` scopes).
+        2.  **Repository Access Permissions:** Confirm that the GitLab account associated with the Personal Access Token has the necessary access permissions to the specified repository. Verify that the account is a member of the project, has the appropriate roles and permissions (e.g., Developer or Maintainer role for modifying repositories). Check project settings in GitLab to confirm access levels.
         3.  **Token Revocation or Expiration:** Ensure that the Personal Access Token has not been accidentally revoked in GitLab settings or that it has not reached its expiration date if you set one. Generate a new token if necessary.
 
 *   **Incorrect Repository or Branch Names:**
     *   **Problem:** Agent tools fail to operate on the intended repository or branch, often resulting in "Repository not found" or "Branch not found" errors.
     *   **Troubleshooting Steps:**
-        1.  **Double-Check Repository Name:** Carefully verify that you have entered the correct GitLab Repository name in the toolkit configuration within ELITEA, using the format `group_or_username/repository_name`. Pay attention to capitalization and spelling. For group repositories, ensure you are using the group's **path**, not just the group name.
-        2.  **Verify Branch Name:** Ensure that you are using the correct branch name (e.g., `main`, `develop`, `feature-branch`) in your Agent's instructions when specifying branch-related parameters for GitLab tools. Branch names are case-sensitive in Git. Double-check the spelling and capitalization of branch names against your repository in GitLab.
+        1.  **Double-Check Repository Name:** Carefully and meticulously verify that you have entered the correct GitLab Repository name in the toolkit configuration within ELITEA. Pay close attention to capitalization, spelling, and the `namespace/repository_name` format. Even minor typos can cause errors.
+        2.  **Verify Branch Name Spelling and Case:** Ensure that you are using the correct branch name (e.g., `main`, `develop`, `feature-branch`) in your Agent's instructions when specifying branch-related parameters for GitLab tools. Branch names in Git are case-sensitive. Double-check the spelling and capitalization of branch names against your repository in GitLab.
         3.  **Branch Existence:** Confirm that the specified branch actually exists in your GitLab repository. It's possible the branch name is correct but the branch was deleted or renamed.
 
-### FAQs
+*   **Toolkit Configuration Issues:**
+    *   **Problem:** The toolkit fails to load or shows configuration errors after creation.
+    *   **Troubleshooting Steps:**
+        1.  **Verify Repository Format:** Ensure the repository name follows the correct format: `namespace/repository-name`. Do not include the full GitLab URL or `.git` extension.
+        2.  **Check Main Branch Name:** Verify that the main branch name matches the actual main branch in your repository (commonly `main` or `master`).
+        3.  **Credential Selection:** Ensure you have selected the correct credential from the dropdown in the toolkit configuration.
 
-1.  **Q: Can I use my regular GitLab password for the ELITEA integration?**
-    *   **A:** No, it is **strongly recommended to use a GitLab Personal Access Token** instead of your main account password for security reasons. Personal Access Tokens provide a more secure and controlled way to grant access to external applications like ELITEA.
+### FAQ
 
-2.  **Q: What scopes/permissions should I grant to the GitLab Personal Access Token?**
-    *   **A:** Grant only the **minimum necessary scopes** required for your ELITEA Agent's intended interactions with GitLab. For typical integration, `api` scope (or granular `read_api`, `read_repository`, `write_repository`), and potentially `read_user`, `read_issue`, `write_issue`, `read_merge_requests`, `write_merge_requests` scopes are commonly needed depending on the tools you enable. Avoid granting "sudo" or unnecessary permissions.
+1.  **Q: What scopes/permissions are absolutely necessary and minimally sufficient for the GitLab Personal Access Token to work with ELITEA?**
+    *   **A:** The minimum required scopes depend on the specific GitLab tools your ELITEA Agent will be using. For basic read-only access to repositories (e.g., using `read_file`, `list_files`), the `read_api` and `read_repository` scopes might suffice. However, for most common integration scenarios involving modifications (e.g., `create_file`, `update_file`, `create_pull_request`), you will need the broader `api` scope or more granular write scopes like `write_repository`. For issue management, include `read_issue` and `write_issue` scopes. For merge request management, include `read_merge_requests` and `write_merge_requests` scopes. **Always adhere to the principle of least privilege and grant only the scopes that are strictly necessary for your Agent's intended functionalities.**
 
-3.  **Q: What is the correct format for the GitLab Repository name in the toolkit configuration?**
-    *   **A:** The Repository name should be entered in the format `group_or_username/repository_name` (e.g., `my-group/my-project-repo` or `your-username/personal-repo`). Ensure you include both the group path or username and the repository name, separated by a forward slash `/`. For group repositories, use the group's **path**, not just the group name.
+2.  **Q: What is the correct format for specifying the GitLab Repository name in the ELITEA toolkit configuration?**
+    *   **A:** The GitLab Repository name must be entered in the format `namespace/repository_name` (e.g., `MyGroup/my-project-repo`). Ensure you include both the namespace (user or group name) and the repository name, separated by a forward slash `/`. This format is crucial for ELITEA to correctly identify and access your repository on GitLab.
 
-4.  **Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?**
-    *   **A:** Double-check the **scopes/permissions** granted to your GitLab Personal Access Token. Ensure that the token has the specific scopes required for the GitLab tools your Agent is trying to use (e.g., `write_repository` scope for creating files or branches). Also, verify that the GitLab account associated with the token has the necessary access to the target repository and project/group.
+3.  **Q: How do I switch from the old Agent-based configuration to the new Credentials + Toolkit workflow?**
+    *   **A:** The new workflow is: (1) Create a GitLab credential with your authentication details, (2) Create a GitLab toolkit that uses this credential, and (3) Add the toolkit to your agents, pipelines, or chat. This provides better security, reusability, and organization compared to configuring authentication directly in agents.
+
+4.  **Q: Can I use the same GitLab credential across multiple toolkits and agents?**
+    *   **A:** Yes! This is one of the key benefits of the new workflow. Once you create a GitLab credential, you can reuse it across multiple GitLab toolkits, and each toolkit can be used by multiple agents, pipelines, and chat sessions. This promotes better credential management and reduces duplication.
+
+5.  **Q: Can I use both GitLab.com and self-hosted GitLab instances with ELITEA?**
+    *   **A:** Yes! ELITEA supports both GitLab.com and self-hosted GitLab instances. Simply configure the correct URL in your credential settings: `https://gitlab.com` for GitLab.com or `https://gitlab.yourcompany.com` for your self-hosted instance.
+
+6.  **Q: Why am I consistently encountering "Permission Denied" errors, even though I believe I have configured everything correctly and granted the necessary permissions?**
+    *   **A:** If you are still facing "Permission Denied" errors despite careful configuration, systematically re-examine the following:
+        *   **Token Scope Accuracy:** Double and triple-check the **scopes/permissions** granted to your GitLab Personal Access Token in your GitLab User Settings. Ensure that the token possesses the *exact* scopes required for *each* GitLab tool your Agent is attempting to use. Pay close attention to write vs. read permissions.
+        *   **Repository Access Verification:** Explicitly verify that the GitLab account associated with the Personal Access Token has the necessary access rights to the *specific target repository* within GitLab itself. Confirm project membership and assigned roles/permissions within the GitLab project settings.
+        *   **Token Validity and Revocation:** Double-check that the Personal Access Token is still valid, has not expired, and has not been accidentally revoked in your GitLab settings. Generate a new token as a test if unsure.
+        *   **Credential Configuration:** Carefully review the credential configuration in ELITEA, especially the URL and token fields for any hidden typographical errors or accidental whitespace.
+
+If, after meticulously checking all of these points, you still encounter "Permission Denied" errors, please reach out to ELITEA Support with detailed information for further assistance.
 
 ### Support and Contact Information
 
-If you encounter any issues, have questions, or require further assistance beyond what is covered in this guide regarding the GitLab integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.
+If you encounter any persistent issues, have further questions, or require additional assistance beyond the scope of this guide regarding the GitLab integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are committed to providing timely and effective support to ensure you have a seamless and productive experience with ELITEA.
 
 **How to Reach ELITEA Support:**
 
 *   **Email:**  **[SupportAlita@epam.com](mailto:SupportAlita@epam.com)**
 
-**Best Practices for Effective Support Requests:**
+**Best Practices for Submitting Effective Support Requests:**
 
-To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:
+To enable our support team to understand and resolve your issue as efficiently as possible, please include the following critical information in your support email:
 
-*   **ELITEA Environment:** Clearly specify the ELITEA environment you are using (e.g., "Next" or the specific name of your ELITEA instance).
-*   **Project Details:**  Indicate the **Project Name** and whether you are working in your **Private** workspace or a **Team** project.
-*   **Detailed Issue Description:** Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.
-*   **Relevant Configuration Information:**  To help us diagnose the issue, please include relevant configuration details, such as:
-    *   **Agent Instructions (Screenshot or Text):** If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.
-    *   **Toolkit Configurations (Screenshots):** If the issue involves the GitLab toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.
-*   **Error Messages (Full Error Text):** If you are encountering an error message, please provide the **complete error text**. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.
-*   **Your Query/Prompt (Exact Text):** If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.
+*   **ELITEA Environment Details:** Clearly specify the ELITEA environment you are currently using (e.g., "Next" or the specific name of your ELITEA instance).
+*   **Project Context:**  Indicate the **Project Name** within ELITEA where you are experiencing the issue and specify whether you are working in your **Private** workspace or a **Team** project.
+*   **Detailed Issue Description:** Provide a clear, concise, and comprehensive description of the problem you are encountering. Articulate precisely what you were attempting to do, what behavior you expected to observe, and what actually occurred (the unexpected behavior or error). Step-by-step descriptions are highly valuable.
+*   **Relevant Configuration Information (Screenshots Preferred):** To facilitate efficient diagnosis, please include relevant configuration details, ideally as screenshots:
+    *   **Agent Instructions (Screenshot or Text Export):** If the issue is related to a specific Agent's behavior, provide a screenshot of the Agent's "Instructions" field or export the instructions as text.
+    *   **Toolkit Configurations (Screenshots):** If the issue involves the GitLab toolkit or any other toolkits, include clear screenshots of the toolkit configuration settings as they appear within your Agent's configuration in ELITEA.
+*   **Complete Error Messages (Full Text):** If you are encountering any error messages, please provide the **complete and unabridged error text**. In the ELITEA Chat window, expand the error details section (if available) and copy the entire error message text. Detailed error information is often crucial for accurate diagnosis.
+*   **Your Query/Prompt (Exact Text):** If the issue is related to Agent execution or an unexpected response, provide the exact query or prompt you used to trigger the Agent's action that led to the problem.
 
-**Before Contacting Support:**
+**Pre-Support Request Actions (Self-Help):**
 
-We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
+Before contacting support, we strongly encourage you to first thoroughly explore the resources available within this comprehensive guide and the broader ELITEA documentation. You may find readily available answers to common questions, solutions to known issues, or configuration guidance within these resources, potentially resolving your issue more quickly.
 
-## Useful Links
 
-To further enhance your understanding and skills in integrating GitLab with ELITEA, here are some helpful resources:
-
-*   **[GitLab Website](https://gitlab.com/)**: Access the main GitLab platform to create an account or log in.
-*   **[GitLab Login Page](https://gitlab.com/)**: Directly access the login page for GitLab.
-*   **[ELITEA Secrets Management](../../menus/settings/secrets.md)**: Learn how to securely store your GitLab Personal Access Token using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the GitLab toolkit to automate your workflows.
-*   **[ELITEA Support Email](mailto:SupportAlita@epam.com)**: Contact the ELITEA support team for direct assistance with GitLab integration or any other questions and issues you may encounter.
+!!! reference "External Resources"
+    *   **GitLab Website:** [https://gitlab.com](https://gitlab.com) - *Access the main GitLab platform to create an account or log in.*
+    *   **GitLab Access Tokens:** [https://gitlab.com/-/profile/personal_access_tokens](https://gitlab.com/-/profile/personal_access_tokens) - *Directly access the section in GitLab settings to manage your Personal Access Tokens for secure integrations.*
+    *   **GitLab API Documentation:** [https://docs.gitlab.com/ee/api/](https://docs.gitlab.com/ee/api/) - *Explore the official GitLab API documentation for detailed information on GitLab API endpoints, authentication, data structures, and developer guides.*
+    *   **GitLab Help Center:** [https://docs.gitlab.com](https://docs.gitlab.com) - *Access the official GitLab documentation for comprehensive articles, FAQs, and troubleshooting guides on all aspects of GitLab usage.*
+    *   **GitLab Support:** [https://about.gitlab.com/support/](https://about.gitlab.com/support/) - *Access GitLab's official support resources and contact information.*
