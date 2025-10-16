@@ -80,6 +80,13 @@ Before setting up Elitea as an MCP Client, ensure you have the following:
 
 ### 1. Installation
 
+#### pip (all platforms)
+
+```bash
+pip install alita-mcp
+```
+If the provided command faild try following 
+
 #### macOS
 
 ```bash
@@ -106,13 +113,6 @@ pipx install alita-mcp
 sudo apt install pipx   # or: sudo dnf install pipx
 pipx ensurepath
 pipx install alita-mcp
-```
-
-
-#### Alternative: pip (all platforms)
-
-```bash
-pip install alita-mcp
 ```
 
 ---
@@ -168,7 +168,26 @@ You can edit this file manually for advanced setups.
 
 ### 3. Execution & Usage
 
-#### Command Line
+#### System Tray Application (GUI, Recommended for Most Users)
+
+- **Start the tray app:**  
+  ```bash
+  alita-mcp tray
+  ```
+  or
+
+- **Run in background:**  
+  ```bash
+  alita-mcp tray --daemon
+  ```
+  or 
+
+- **Auto-start on login:**  
+  - **macOS:** Copy `scripts/launch-tray-macos.sh` to `~/Applications/` and add to Login Items.
+  - **Linux:** Copy `.desktop` file to `~/.config/autostart/`.
+  - **Windows:** Copy `launch-tray-windows.bat` to the Startup folder (`Win+R`, type `shell:startup`).
+
+#### Optional configurations using Command Line
 
 - **Run with all project agents:**  
   ```bash
@@ -182,21 +201,6 @@ You can edit this file manually for advanced setups.
   ```bash
   alita-mcp serve --daemon
   ```
-
-#### System Tray Application (GUI, Recommended for Most Users)
-
-- **Start the tray app:**  
-  ```bash
-  alita-mcp tray
-  ```
-- **Run in background:**  
-  ```bash
-  alita-mcp tray --daemon
-  ```
-- **Auto-start on login:**  
-  - **macOS:** Copy `scripts/launch-tray-macos.sh` to `~/Applications/` and add to Login Items.
-  - **Linux:** Copy `.desktop` file to `~/.config/autostart/`.
-  - **Windows:** Copy `launch-tray-windows.bat` to the Startup folder (`Win+R`, type `shell:startup`).
 
 
 After "alita-mcp tray",  the terminal will look like following
