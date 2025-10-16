@@ -66,7 +66,7 @@ Follow these steps to set up the automated JIRA review:
 The Elitea agent will be triggered via its public API.
 *   **API Endpoint:**
     ```
-    POST https://nexus.elitea.ai/api/v1/applications/predict/prompt_lib/{ProjectID}/{ApplicationVersionID}
+    POST https://next.elitea.ai/api/v1/applications/predict/prompt_lib/{ProjectID}/{ApplicationVersionID}
     ```
     Replace `{ProjectID}` with your Elitea Project ID and `{ApplicationVersionID}` with your agent's specific Application Version ID.
 
@@ -118,7 +118,7 @@ The Elitea agent will be triggered via its public API.
 
 5.  **Configure the Web Request:**
     *   **Webhook URL:** Enter the Elitea API endpoint from Step 2, with your actual `ProjectID` and `ApplicationVersionID`.
-        Example: `https://nexus.elitea.ai/api/v1/applications/predict/prompt_lib/your_project_id_here/your_app_version_id_here`
+        Example: `https://next.elitea.ai/api/v1/applications/predict/prompt_lib/your_project_id_here/your_app_version_id_here`
     *   **Headers:**
         *   `Content-Type`: `application/json`
         *   `Authorization`: `Bearer [Your_Eliea_API_Token]`
@@ -204,7 +204,7 @@ If you encounter issues, here are common areas to check:
         *   Manually run or test the agent by providing a JIRA issue key (e.g., "PROJECT-123") as the `user_input`.
         *   Check if the agent executes successfully and performs the intended action (e.g., tries to create a comment).
     *   **B. Test API Request:**
-        *   Use a tool like Postman or `curl` to send a direct HTTP POST request to your Elitea agent's API endpoint (`https://nexus.elitea.ai/api/v1/applications/predict/prompt_lib/{ProjectID}/{ApplicationVersionID}`).
+        *   Use a tool like Postman or `curl` to send a direct HTTP POST request to your Elitea agent's API endpoint (`https://next.elitea.ai/api/v1/applications/predict/prompt_lib/{ProjectID}/{ApplicationVersionID}`).
         *   Use the same headers (Authorization with Bearer token, Content-Type) and body (`{ "user_input": "YOUR-ISSUE-KEY" }`) as configured in JIRA Automation.
         *   This helps isolate whether the issue is with JIRA Automation or the Elitea agent/API itself.
     *   **C. Check JIRA Automation Audit Log:**
@@ -263,7 +263,7 @@ If you encounter persistent issues not covered in this guide, or require further
 
 Please provide the following details in your support request to help us assist you efficiently:
 
-*   **Elitea Environment:** (e.g., "Nexus," "Alita Lab," "EYE")
+*   **Elitea Environment:** (e.g., "Next" or the specific name of your ELITEA instance).
 *   **JIRA Version:** (e.g., JIRA Cloud, JIRA Server 8.x)
 *   **Project Details:** Project Name in Elitea and JIRA.
 *   **Detailed Issue Description:** Clear explanation of the problem, steps to reproduce, expected vs. actual behavior.

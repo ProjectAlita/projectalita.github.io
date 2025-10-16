@@ -157,7 +157,7 @@ If you encounter any persistent issues, have further questions, or require addit
 *   **Email:**  **[SupportAlita@epam.com](mailto:SupportAlita@epam.com)**
 
 To help us resolve your issue efficiently, please include the following in your support request:
-*   **ELITEA Environment Details** (e.g., "Nexus," "Alita Lab")
+*   **ELITEA Environment Details** (e.g., "Next" or the specific name of your ELITEA instance).
 *   **Project Name** and workspace type (**Private** or **Team**)
 *   A **detailed description** of the problem, including the steps to reproduce it.
 *   **Screenshots** of your Agent instructions and toolkit configuration.

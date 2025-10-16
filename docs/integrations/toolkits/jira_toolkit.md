@@ -20,6 +20,9 @@ Integrating Jira with ELITEA brings these powerful project management and issue 
 
 ## Toolkit's Account Setup and Configuration in Jira
 
+!!! note "Integration with ELITEA"
+    The credentials you create in this section will be used when creating your Jira credential in ELITEA (Step 1 of the integration process).
+
 ### Account Setup
 
 If you do not yet have a Jira account, please follow these steps to create one:
@@ -64,180 +67,285 @@ For secure integration with ELITEA, it is essential to use a Jira **API token** 
 
 ## System Integration with ELITEA
 
-### Agent Creation/Configuration
+To integrate Jira with ELITEA, you need to follow a three-step process: **Create Credentials → Create Toolkit → Use in Agents**. This workflow ensures secure authentication and proper configuration.
 
-To integrate Jira functionalities into your workflows, you will need to configure the Jira toolkit within an ELITEA Agent. You can either create a new Agent specifically for Jira interactions or modify an existing Agent to incorporate Jira tools.
+### Step 1: Create Jira Credentials
 
-1.  **Navigate to Agents Menu:** In ELITEA, go to the **Agents** menu from the main navigation panel.
-2.  **Create or Edit Agent:**
-    *   **Create a New Agent:** Click on the **"+ Agent"** button to initiate the creation of a new Agent. Follow the on-screen prompts to define essential Agent attributes such as Agent name, a descriptive Agent description, the desired Agent type, and initial instructions for the Agent.
-    *   **Edit an Existing Agent:** Select the Agent you intend to integrate with Jira from your list of Agents. Click on the Agent's name to open its configuration settings for editing.
-3.  **Access Tools Section:** Within the Agent configuration interface, scroll down until you locate the **"Tools"** section. This section is where you will add and configure toolkits, including the Jira toolkit.
+Before creating a toolkit, you must first create Jira credentials in ELITEA:
 
-### Toolkit Configuration
+1. **Navigate to Credentials Menu:** Open the sidebar and select **[Credentials](../../menus/credentials.md)**.
+2. **Create New Credential:** Click the **`+ Create`** button.
+3. **Select Jira:** Choose **Jira** as the credential type.
+4. **Configure Credential Details:**
+     * **Display Name:** Enter a descriptive name (e.g., "Jira - Project Management")
+     * **Base URL:** Enter the base URL of your Jira instance (e.g., `https://yourcompany.atlassian.net` for Jira Cloud or `https://jira.epam.com` for Epam Jira)
+     * **Authentication Method:** Choose your preferred authentication method:
+         * **Basic:** Enter your username and API key
+         * **Bearer:** Enter your token
+5. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project
+6. **Save Credential:** Click **Save** to create the credential
 
-This section provides detailed instructions on how to configure the Jira toolkit within your ELITEA Agent.
+![Jira create Credentials](../../img/integrations/toolkits/jira/jira-credential-create.png)
 
-1.  **Add Toolkit:** In the "Tools" section of the Agent configuration, click on the **"+" icon**. This action will display a dropdown list of available toolkits that can be integrated with your Agent.
-2.  **Select Jira Toolkit:** From the dropdown list of available toolkits, choose **"Jira"**. Selecting "Jira" will open the "New Jira tool" configuration panel, where you will specify the settings for your Jira integration.
-3.  **Configure Jira Toolkit Settings:** Carefully fill in the following configuration fields within the "New Jira tool" section:
+!!! tip "Security Recommendation"
+    It's highly recommended to use **[Secrets](../../menus/settings/secrets.md)** for API keys and tokens instead of entering them directly. Create a secret first, then reference it in your credential configuration.
 
-    *   **Name:**  Enter a descriptive **Name** for your Jira toolkit instance. Choose a name that is easily recognizable and helps you identify its purpose within your Agent's instructions (e.g., "ProjectJira", "IssueTrackerAccess", "JiraIntegration").
-    *   **Description:** Provide a concise **Description** for the toolkit. This description should clarify the toolkit's purpose or the specific Jira project it is intended to access (e.g., "Toolkit for accessing and managing issues in Jira", "Integration for Jira Project 'Project Alpha'").
-    *   **URL:** Enter the base URL of your Jira instance. **Ensure you use the correct format**, including `https://` or `http://` and the full workspace URL (e.g., `https://your-workspace.atlassian.net/jira` or `https://your-company.atlassian.net`). For Epam Jira, use `https://jira.epam.com/jira/`.
-    *   **Username:** Enter the **Username** associated with your Jira account for which you generated the API token. This is typically your email address used for Jira login.
-    *   **Authentication Options - Basic:** Select the **"Basic"** authentication option.
-        *   **Password/Secret:** Choose **"Password"** and paste your Jira password or app password in the **"Password"** field.
-        *   **Enhanced Security with Secrets (Recommended):** For enhanced security, use ELITEA's **Secrets Management** feature to store your Jira password securely. Instead of directly pasting the password, select the **"Secret"** option and choose the pre-configured secret containing your Jira password from the dropdown list. This prevents hardcoding sensitive credentials in your toolkit configuration.
-    *   **Authentication Options - Bearer:** Select the **"Bearer"** authentication option.
-        *   **Password/Secret:** Choose **"Password"** and paste your Jira Bearer token in the **"Password"** field.
-        *   **Enhanced Security with Secrets (Recommended):** For enhanced security, use ELITEA's **Secrets Management** feature to store your Jira Bearer token securely. Instead of directly pasting the token, select the **"Secret"** option and choose the pre-configured secret containing your Jira Bearer token from the dropdown list.
-    *   **Hosting Option:** Select the appropriate **"Hosting option"** for your Jira instance:
-        *   **Cloud:** Select "Cloud" if you are using Jira Cloud (e.g., accessed via `atlassian.net`).
-        *   **Server:** Select "Server" if you are using a self-hosted Jira Server or Data Center instance. **Note:** When connecting to an Epam Jira instance, ensure you select "Server" as the Hosting option.
-    *   **Advanced Settings:** Adjust the advanced settings to fine-tune the toolkit's operation:
-         * **Additional Fields**: Enumeration of custom fields which can be used (e.g. `customfield_100450`). Enter a comma-separated list of custom field IDs that you want to be accessible within the toolkit. This allows you to interact with custom fields specific to your Jira projects.
-        * **Verify SSL**: Check this box to enable SSL verification for secure connections to your Jira instance. It is generally recommended to keep SSL verification enabled for enhanced security.
+### Step 2: Create Jira Toolkit
 
-    ![Jira-Toolkit_Configuration](../../img/integrations/toolkits/jira/Jira-Toolkit_Configuration1.png)
-    ![Jira-Toolkit_Configuration](../../img/integrations/toolkits/jira/Jira-Toolkit_Configuration2.png)
+Once your credentials are configured, create the Jira toolkit:
 
-4.  **Enable Desired Tools:** In the "Tools" section within the Jira toolkit configuration panel, **select the checkboxes next to the specific Jira tools** that you want to enable for your Agent. **It is crucial to enable only the tools that your Agent will actually need to use** to adhere to the principle of least privilege and minimize potential security risks. Available tools include:
-    *   **Search using JQL** - Allows searching for Jira issues using Jira Query Language (JQL).
-    *   **Create issue** - Enables the Agent to create new Jira issues.
-    *   **Update issue** - Allows the Agent to update existing Jira issues.
-    *   **List comments** - Enables the Agent to list comments for a specific Jira issue.
-    *   **Add comments** - Allows the Agent to add new comments to a Jira issue.
-    *   **Get attachments content** - Enables the Agent to retrieve the content of attachments from a Jira issue.
-    *   **List projects** - Allows the Agent to list all projects in the Jira instance.
-    *   **Set issue status** - Allows the Agent to change the status of a Jira issue.
-    *   **Get specific field info** - Enables the Agent to retrieve information from a specific field of a Jira issue.
-    *   **Get remote links** - Allows the Agent to retrieve remote links associated with a Jira issue.
-    *   **Link issues** - Enables the Agent to create links between Jira issues.
-    *   **Modify labels** - Allows the Agent to add or remove labels from a Jira issue.
-    *   **Generic request** - Allows to send custom HTTP requests to Jira API.
-    *   **Loader** - Extracts content of jira issue and attachments related to Jira issue.
+1. **Navigate to Toolkits Menu:** Open the sidebar and select **[Toolkits](../../menus/toolkits.md)**.
+2. **Create New Toolkit:** Click the **`+ Create`** button.
+3. **Select Jira:** Choose **Jira** from the list of available toolkit types.
+4. **Configure Toolkit Details:**
+     * **Toolkit Name:** Enter a descriptive name for your toolkit (e.g., "Jira Project Management", "Development Team Jira")
+     * **Description:** Provide a brief description of the toolkit's purpose (e.g., "Jira integration for automated issue tracking and project management")
+5. **Configure Credentials:** 
+     * In the **Configuration** section, select your previously created Jira credential from the **Credentials** dropdown
+6. **Configure Advanced Options:**
+     * **PgVector Configuration:** Select a PgVector connection for vector database integration 
+     * **Embedding Model:** Select an embedding model for text processing and semantic search capabilities
+7. **Configure Jira Settings:**
+     * **Hosting Option:** Select the appropriate hosting option:
+         * **Cloud:** For Jira Cloud (e.g., `atlassian.net`)
+         * **Server:** For self-hosted Jira Server or Data Center instances (e.g., `https://jira.epam.com`)
+     * **Advanced Settings:**
+         * **Limit:** Set the maximum number of issues to retrieve per request (default: 5)
+         * **API version:** REST API version, optional (default: 2)
+         * **Labels:** Specify labels to apply to created or updated entities (comma-separated list e.g., `alita,elitea`)
+         * **Additional fields:** Custom field IDs accessible within the toolkit (e.g., `customfield_100450`)
+         * **Custom Headers:** Additional HTTP headers to include with API requests (JSON format e.g., `{"X-Custom-Header": "value"}`)
+         * **Verify SSL:** Enable SSL verification for secure connections (recommended: enabled)
+8. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific Jira tools you want to enable. **Enable only the tools your agents will actually use** to follow the principle of least privilege
+9. **Save Toolkit:** Click **Save** to create the toolkit
 
-5.  **Complete Setup:** After configuring all the necessary settings and enabling the desired tools, click the **arrow icon** (typically located at the top right of the toolkit configuration section) to finalize the Jira toolkit setup and return to the main Agent configuration menu.
-6.  Click **Save** in the Agent configuration to save all changes and activate the Jira toolkit integration for your Agent.
-
-### Tool Overview: Jira Toolkit Functionalities
-
-Once the Jira toolkit is successfully configured and added to your Agent, you can leverage the following tools within your Agent's instructions to enable intelligent interaction with your Jira projects and issues:
-
-*   **Search using JQL:**  **Tool Name:** `search_using_jql`
-    *   **Functionality:** Allows Agents to search for Jira issues using Jira Query Language (JQL) queries. Returns a list of Jira issues matching the JQL query.
-    *   **Purpose:** Enables advanced and flexible issue searching based on complex criteria defined using JQL, allowing Agents to retrieve specific sets of issues for reporting, analysis, or workflow automation based on Jira data.
-
-*   **Create issue:**  **Tool Name:** `create_issue`
-    *   **Functionality:** Automates the creation of new Jira issues within a specified Jira project. Requires parameters such as Summary, Description, Issue Type, and Priority.
-    *   **Purpose:** Streamlines issue reporting and task management by enabling Agents to automatically create new Jira issues directly from ELITEA workflows, based on user input, workflow triggers, or automated analysis, ensuring timely and consistent issue logging.
-
-*   **Update issue:**  **Tool Name:** `update_issue`
-    *   **Functionality:** Allows Agents to modify and update fields of existing Jira issues. Requires the Issue Key and a JSON object containing the fields to update and their new values.
-    *   **Purpose:** Enables automated issue lifecycle management by allowing Agents to update issue statuses, assignees, priorities, custom fields, or any other issue attributes based on workflow progress, user actions, or external events, ensuring Jira issues are always up-to-date and accurately reflect project status.
-
-*   **List comments:**  **Tool Name:** `list_comments`
-    *   **Functionality:** Retrieves a list of comments associated with a specific Jira issue, identified by its Issue Key. Returns a list of comment texts and author information.
-    *   **Purpose:** Enables Agents to access and summarize discussions and feedback related to specific Jira issues, facilitating efficient review of issue communication history, providing context for issue analysis, and enabling automated reporting on issue discussions.
-
-*   **Add comments:**  **Tool Name:** `add_comments`
-    *   **Functionality:** Adds a new comment to a specific Jira issue. Requires the Issue Key and the comment text as parameters.
-    *   **Purpose:** Automates communication and updates within Jira issue tracking workflows by allowing Agents to add comments to Jira issues directly from ELITEA. Streamlines providing status updates, asking for clarifications, notifying stakeholders, or logging automated actions related to specific issues.
-
-*   **Get attachments content:**  **Tool Name:** `get_attachments_content`
-    *   **Functionality:** Retrieves the content of attachments from a specific Jira issue. Requires the Issue Key as a parameter.
-    *   **Purpose:** Enables Agents to access and process attachments associated with Jira issues, allowing for automated analysis of attached files, extraction of data from attachments, or integration of attachment content into ELITEA workflows, enhancing data accessibility and processing for issue-related information.
-
-*   **List projects:**  **Tool Name:** `list_projects`
-    *   **Functionality:** Retrieves a list of all projects available in the connected Jira instance. Returns a list of project names and keys.
-    *   **Purpose:** Enables Agents to dynamically discover and list available Jira projects, allowing for dynamic project selection in workflows, automated reporting across projects, or providing users with a list of projects to choose from within ELITEA.
-
-*   **Set issue status:**  **Tool Name:** `set_issue_status`
-    *   **Functionality:** Updates the status of a specific Jira issue. Requires the Issue Key and the desired Status name (e.g., "In Progress", "Done") as parameters.
-    *   **Purpose:** Automates issue lifecycle management by allowing Agents to automatically transition Jira issues to different statuses based on workflow progress, events, or user actions, ensuring issue statuses are always aligned with the current state of work and streamlining issue workflow management.
-
-*   **Get specific field info:**  **Tool Name:** `get_specific_field_info`
-    *   **Functionality:** Retrieves information from a specific field of a Jira issue. Requires the Issue Key and the Field Name (or Field ID) as parameters.
-    *   **Purpose:** Enables Agents to extract specific data points from Jira issues, allowing for targeted retrieval of information from particular fields, facilitating data extraction for reporting, analysis, or integration with other systems, and providing access to granular issue data.
-
-*   **Get remote links:**  **Tool Name:** `get_remote_links`
-    *   **Functionality:** Retrieves remote links associated with a specific Jira issue. Returns a list of URLs and link titles.
-    *   **Purpose:** Enables Agents to access and utilize external web links associated with Jira issues, allowing for retrieval of related documentation, external resources, or linked information, providing a comprehensive view of issue context and related resources.
-
-*   **Link issues:**  **Tool Name:** `link_issues`
-    *   **Functionality:** Creates a link between two Jira issues. Requires the keys of the inward and outward issues and the Link Type (e.g., "Relates to", "Blocks").
-    *   **Purpose:** Automates the process of linking related Jira issues, establishing relationships between tasks, bugs, user stories, or other work items, improving issue traceability, dependency management, and providing a clear view of issue relationships within ELITEA workflows.
-
-*   **Modify labels:**  **Tool Name:** `modify_labels`
-    *   **Functionality:** Adds or removes labels from a specific Jira issue. Requires the Issue Key and lists of labels to add and remove.
-    *   **Purpose:** Enables automated categorization and tagging of Jira issues through label management, improving issue organization, searchability, and filtering based on labels, streamlining issue classification and enhancing issue discoverability.
-
-*   **Generic request:**  **Tool Name:** `generic_request`
-    *   **Functionality:** Allows sending custom HTTP requests to the Jira API endpoint. Provides advanced users with the flexibility to interact with the Jira API directly for actions not covered by other pre-built tools.
-    *   **Purpose:** Enables advanced and customized interactions with the Jira API, allowing experienced users to extend the toolkit's capabilities, access specific Jira API endpoints, and perform actions beyond the scope of the standard Jira tools, providing maximum flexibility for complex or specialized Jira integrations.
+![Jira create Toolkit](../../img/integrations/toolkits/jira/jira-toolkit-create.png)
 
 
-*   **Loader:**  **Tool Name:** `Loader`
-    *   **Functionality:** Extracts content of all attachments related to specified Jira issue key. NOTE: only parsable attachments will be considered.
-    *   **Purpose:** Enables users to retrieve and analyze the content of attachments associated with a Jira issue, providing insights and information that may be contained within the attached files. This tool is useful for accessing detailed data and documentation that are linked to specific issues.
+The Jira toolkit provides the following tools for interacting with Jira projects and issues, organized by functional categories:
+
+| **Tool Category** | **Tool Name** | **Description** | **Primary Use Case** |
+|:-----------------:|---------------|-----------------|----------------------|
+| **Search & Discovery** | | | |
+| | **Search using JQL** | Search for Jira issues using Jira Query Language (JQL) queries | Find issues based on complex criteria using JQL |
+| | **List projects** | Retrieve a list of all projects available in the Jira instance | Discover and list available Jira projects |
+| **Issue Management** | | | |
+| | **Create issue** | Create new Jira issues within a specified project | Automate issue creation from workflows |
+| | **Update issue** | Modify fields of existing Jira issues | Update issue status, assignees, priorities, and custom fields |
+| | **Set issue status** | Change the status of a specific Jira issue | Transition issues through workflow states |
+| | **Get specific field info** | Retrieve information from a specific field of a Jira issue | Extract specific data points from issues |
+| | **Get field with image descriptions** | Retrieve field information with enhanced image description support | Extract field data with visual content analysis |
+| | **Modify labels** | Add or remove labels from a specific Jira issue | Categorize and organize issues with labels |
+| **Communication** | | | |
+| | **List comments** | Retrieve comments associated with a specific Jira issue | Access discussion history for issues |
+| | **Add comments** | Add new comments to a Jira issue | Automate communication and updates |
+| | **Get comments with image descriptions** | Retrieve comments with enhanced image description support | Access comments with visual content analysis |
+| **Content & Attachments** | | | |
+| | **Get attachments content** | Retrieve content of attachments from a Jira issue | Access and process attached files |
+| | **Get remote links** | Retrieve remote links associated with a Jira issue | Access external resources linked to issues |
+| **Relationship Management** | | | |
+| | **Link issues** | Create links between Jira issues | Establish relationships and dependencies |
+| **Data Management & Indexing** | | | |
+| | **Index data** | Index Jira data for enhanced search and analytics | Create searchable indexes of project data |
+| | **Search index** | Search through indexed Jira data for enhanced discovery | Find indexed content and data across Jira projects |
+| | **Stepback search index** | Perform stepback search through indexed data | Advanced search with contextual stepback functionality |
+| | **List collections** | Retrieve available data collections | Access and manage data collection listings |
+| | **Remove index** | Remove existing data indexes | Clean up and manage index storage |
+| | **Stepback summary index** | Generate stepback summaries for indexed data | Create contextual summaries of indexed content |
+| **Advanced Operations** | | | |
+| | **Execute generic rq** | Send custom HTTP requests to Jira API | Access any Jira API endpoint not covered by specific tools |
+
+### Step 3: Use Toolkit in Agents, Pipelines, or Chat
+
+Now you can add the configured Jira toolkit to your agents, pipelines, or use it directly in chat:
+
+**For Agents:**
+
+1. **Navigate to Agents:** Open the sidebar and select **[Agents](../../menus/agents.md)**.
+2. **Create or Edit Agent:** Either create a new agent or select an existing agent to edit.
+3. **Add Jira Toolkit:** 
+     * In the **"Tools"** section of the agent configuration, click the **"+Toolkit"** icon
+     * Select your configured Jira toolkit from the dropdown list
+     * The toolkit will be added to your agent with the previously configured tools enabled
+
+Your agent can now interact with Jira using the configured toolkit.
+
+![Jira Agent](../../img/integrations/toolkits/jira/jira-agent.png)
+
+
+**For Pipelines:**
+
+1. **Navigate to Pipelines:** Open the sidebar and select **[Pipelines](../../menus/pipelines.md)**.
+2. **Create or Edit Pipeline:** Either create a new pipeline or select an existing pipeline to edit.
+3. **Add Jira Toolkit:** 
+     * In the **"Tools"** section of the pipeline configuration, click the **"+Toolkit"** icon
+     * Select your configured Jira toolkit from the dropdown list
+     * The toolkit will be added to your pipeline with the previously configured tools enabled
+
+ ![Jira Pipeline](../../img/integrations/toolkits/jira/jira-pipeline.png)
+
+
+**For Chat:**
+
+1. **Navigate to Chat:** Open the sidebar and select **[Chat](../../menus/chat.md)**.
+2. **Add Jira Toolkit:** 
+     * In the chat Participants section, look for the **Toolkits** element
+     * Click the **"Add Tools"** Icon to open the tools selection dropdown
+     * Select your configured Jira toolkit from the dropdown list
+     * The toolkit will be added to your conversation with all previously configured tools enabled
+
+![Jira Conversation](../../img/integrations/toolkits/jira/jira-chat.png)
+
 
 
 ## Instructions and Prompts for Using the Jira Toolkit
 
-To effectively utilize the Jira toolkit within your ELITEA Agents, you need to provide clear and precise instructions within the Agent's "Instructions" field, telling the Agent *how* and *when* to use these tools.
+To effectively instruct your ELITEA Agent to use the Jira toolkit, you need to provide clear and precise instructions within the Agent's "Instructions" field. These instructions are crucial for guiding the Agent on *when* and *how* to utilize the available Jira tools to achieve your desired automation goals.
 
-**General Instruction Structure:**
+### Instruction Creation for OpenAI Agents
 
-When instructing your Agent to use a Jira tool, you will typically follow this pattern:
+When crafting instructions for the Jira toolkit, especially for OpenAI-based Agents, clarity and precision are paramount. Break down complex tasks into a sequence of simple, actionable steps. Explicitly define all parameters required for each tool and guide the Agent on how to obtain or determine the values for these parameters. OpenAI Agents respond best to instructions that are:
+
+*   **Direct and Action-Oriented:** Employ strong action verbs and clear commands to initiate actions. For example, "Use the 'search_using_jql' tool...", "Create an issue with...", "Update issue with key...".
+
+*   **Parameter-Centric:** Clearly enumerate each parameter required by the tool. For each parameter, specify:
+    *   Its name (exactly as expected by the tool)
+    *   The format or type of value expected
+    *   How the Agent should obtain the value – whether from user input, derived from previous steps in the conversation, retrieved from an external source, or a predefined static value
+
+*   **Contextually Rich:** Provide sufficient context so the Agent understands the overarching objective and the specific scenario in which each Jira tool should be applied within the broader workflow. Explain the desired outcome or goal for each tool invocation.
+
+*   **Step-by-Step Structure:** Organize instructions into a numbered or bulleted list of steps for complex workflows. This helps the Agent follow a logical sequence of actions.
+
+*   **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Create a new bug issue', 'Search for issues assigned to me', 'What's the status of project tasks?'"
+
+When instructing your Agent to use a Jira toolkit tool, adhere to this structured pattern:
+
+1. **State the Goal:** Begin by clearly stating the objective you want to achieve with this step. For example, "Goal: To find all open issues assigned to the current user."
+
+2. **Specify the Tool:** Clearly indicate the specific Jira tool to be used for this step. For example, "Tool: Use the 'search_using_jql' tool."
+
+3. **Define Parameters:** Provide a detailed list of all parameters required by the selected tool. For each parameter:
+   - **Parameter Name:** `<Parameter Name as defined in tool documentation>`
+   - **Value or Source:** `<Specify the value or how to obtain the value. Examples: "user input", "from previous step", "hardcoded value 'PROJECT-123'", "value of variable X">`
+
+4. **Describe Expected Outcome (Optional but Recommended):** Briefly describe the expected result or outcome after the tool is successfully executed. For example, "Outcome: The Agent will provide a list of all open issues assigned to the user."
+
+5. **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality.
+
+#### Example Agent Instructions
+
+**Agent Instructions for Searching Issues using JQL:**
+
+```markdown
+1. Goal: Search for Jira issues using JQL to find specific issues based on user criteria.
+2. Tool: Use the "search_using_jql" tool.
+3. Parameters:
+    - JQL Query: "Ask the user for search criteria or use predefined JQL like 'project = PROJECT AND status = \"In Progress\" AND assignee = currentUser()'"
+4. Outcome: The Agent will provide a list of issues matching the JQL criteria.
+5. Conversation Starters: 'Show me my open issues', 'Find all bugs in the project', 'Search for high priority tasks'
+```
+
+**Agent Instructions for Creating a New Issue:**
+
+```markdown
+1. Goal: Create a new issue in Jira based on user requirements.
+2. Tool: Use the "create_issue" tool.
+3. Parameters:
+    - Issue JSON: "Collect required information from user (summary, description, issue type, priority) and format as JSON"
+4. Outcome: The Agent will create a new issue and provide the issue key and URL.
+5. Conversation Starters: 'Create a new bug report', 'Add a task to the project', 'Report a new issue'
 
 ```
-Use the "[tool_name]" tool to [describe the action you want to perform] in Jira.
-Provide the following parameters:
-- Parameter 1: <value or description of value>
-- Parameter 2: <value or description of value>
-- ...
+
+### Chat Usage Examples by Tool Category
+
+The following examples demonstrate how to interact with the Jira toolkit in ELITEA Chat, organized by functional categories. Each example shows the user request and the expected agent behavior.
+
+#### Search & Discovery - Search using JQL
+
+**Chat Example:**
+```
+User: "Find all open bugs assigned to me in the DEMO project."
+
+Agent Response: [Agent uses search_using_jql tool]
+
+🔍 **JQL Search Results**:
+
+**📋 Found 3 open bugs assigned to you**:
+
+1. **DEMO-456** - "Login button not responsive on mobile"
+   - **Status**: In Progress
+   - **Priority**: High
+   - **Assignee**: john.doe@company.com
+   - **URL**: https://yourcompany.atlassian.net/browse/DEMO-456
+
+2. **DEMO-789** - "Database connection timeout error"
+   - **Status**: Open
+   - **Priority**: Critical
+   - **Assignee**: john.doe@company.com
+   - **URL**: https://yourcompany.atlassian.net/browse/DEMO-789
+
+Would you like me to get more details about any specific issue?
 ```
 
-**Example Agent Instructions for Jira Toolkit Tools:**
+#### Issue Management - Create Issue
 
-*   **Agent Instructions for Searching Issues using JQL:**
+**Chat Example:**
+```
+User: "Create a new bug report for the checkout process failing on Safari browser."
 
-    ```
-    Use the "search_using_jql" tool to search for Jira issues using a JQL query.
-    Provide the following parameters:
-    - JQL Query: "project = 'Project Alpha' AND status = 'In Progress' AND assignee = currentUser()"
-    ```
+Agent Response: [Agent uses create_issue tool]
 
-*   **Agent Instructions for Creating a New Issue:**
+✅ **Issue Created Successfully!**
 
-    ```
-    Use the "create_issue" tool to create a new Bug issue in Jira.
-    Provide the following parameters:
-    - Summary: "User login failing after recent update"
-    - Description: "Users are reporting login failures on both web and mobile platforms after the latest update. Password reset does not resolve the issue."
-    - Issue Type: "Bug"
-    - Priority: "High"
-    ```
+**🐛 New Bug Report Details**:
+- **Issue Key**: DEMO-123
+- **Summary**: "Checkout process failing on Safari browser"
+- **Issue Type**: Bug
+- **Priority**: High
+- **Status**: Open
+- **URL**: https://yourcompany.atlassian.net/browse/DEMO-123
 
-*   **Agent Instructions for Updating an Existing Issue:**
+**📝 Issue Description**:
+Bug report for checkout process failure specifically occurring on Safari browser. Investigation needed to identify root cause and implement fix.
 
-    ```
-    Use the "update_issue" tool to update the description of an existing Jira issue.
-    Provide the following parameters:
-    - Issue Key: "PA-123"
-    - Fields to Update: 
-        {
-          "description": "Updated description: After further investigation, the login issue seems to be related to a database connection problem."
-        }
-    ```
+The issue is now ready for assignment and tracking!
+```
 
-**Important Considerations for Agent Instructions:**
+#### Communication - Add Comments
 
-*   **Tool Name Accuracy:** Ensure you use the correct **Tool Name** (e.g., `"search_using_jql"`, `"create_issue"`, `"update_issue"`) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the toolkit correctly.
-*   **Parameter Clarity:** Clearly specify the **parameters** required for each tool and provide instructions on where the Agent should obtain the values for these parameters (e.g., from user input, from previous steps in the workflow, or hardcoded values).
-*   **Context and Examples:** Provide sufficient context and examples within your Agent's "Instructions" to guide the LLM in understanding *when* and *how* to use the Jira toolkit tools effectively within your desired workflow.
-*   **Jira Field Names and Values:** Ensure that you use the correct Jira Field Names (e.g., "Summary", "Description", "Status", custom field IDs) and valid values for those fields as defined in your Jira project configuration. Incorrect field names or invalid values will cause errors during tool execution.
+**Chat Example:**
+```
+User: "Add a comment to issue DEMO-123 saying that I've started investigating the Safari compatibility issue."
+
+Agent Response: [Agent uses add_comments tool]
+
+💬 **Comment Added Successfully!**
+
+**Issue**: DEMO-123 - "Checkout process failing on Safari browser"
+**Comment Added**: "Started investigating the Safari compatibility issue. Will check browser-specific JavaScript errors and CSS rendering differences."
+
+You can view the updated issue at: https://yourcompany.atlassian.net/browse/DEMO-123
+```
+
+#### Relationship Management - Link Issues
+
+**Chat Example:**
+```
+User: "Link issue DEMO-123 to DEMO-456 with 'Relates to' relationship."
+
+Agent Response: [Agent uses link_issues tool]
+
+🔗 **Issues Linked Successfully!**
+
+**Link Created**:
+- **Inward Issue**: DEMO-123 (Checkout process failing on Safari browser)
+- **Outward Issue**: DEMO-456 (Login button not responsive on mobile)
+- **Link Type**: Relates to
+
+Both issues are now connected, showing their relationship in the issue view. This helps track related problems and their potential common solutions.
+```
 
 ## Best Practices and Use Cases for Jira Integration
 
@@ -291,43 +399,68 @@ The Jira toolkit opens up a wide range of automation possibilities for project m
 
 ### Troubleshooting Common Issues
 
+*   **Credential Not Appearing in Toolkit Configuration:**
+    *   **Problem:** When creating a toolkit, your Jira credential doesn't appear in the credentials dropdown.
+    *   **Troubleshooting Steps:**
+        *   **Check Credential Scope:** Ensure you're working in the same workspace/project where the credential was created. Private credentials are only visible in your Private workspace, while project credentials are visible within the specific team project.
+        *   **Verify Credential Creation:** Go to the Credentials menu and confirm that your Jira credential was successfully saved.
+        *   **Credential Type Match:** Ensure you selected "Jira" as the credential type when creating the credential.
+
 *   **Connection Errors:**
-    *   **Problem:** ELITEA Agent fails to connect to Jira, resulting in errors during toolkit execution.
-    *   **Possible Solutions:**
-        1.  **Verify Jira URL:** Double-check that you have entered the correct Jira workspace URL in the toolkit configuration, including `https://` or `http://` and the full workspace URL (e.g., `https://your-workspace.atlassian.net/jira` or `https://your-company.atlassian.net`). For Epam Jira, use `https://jira.epam.com/jira/`.
-        2.  **Check Username and API Token:** Ensure that the **Username** and **API Token** you provided are correct and valid for your Jira account and workspace. Carefully re-enter or copy-paste these credentials to rule out typos.
-        3.  **Verify Hosting Option:** Double-check that you have selected the correct **Hosting option** (Cloud or Server) in the Jira toolkit configuration, especially when connecting to Epam's Jira (use "Server").
-        4.  **Network Connectivity:** Confirm that both your ELITEA environment and your Jira instance are connected to the internet and that there are no network connectivity issues blocking the integration.
+    *   **Problem:** ELITEA Agent fails to establish a connection with Jira, resulting in errors during toolkit execution.
+    *   **Troubleshooting Steps:**
+        1.  **Verify Jira URL:** Ensure that the **Base URL** field in the credential configuration is correctly set to your Jira instance URL (e.g., `https://yourcompany.atlassian.net` for Cloud or `https://jira.epam.com` for Server). Avoid including `/jira` at the end unless necessary for your specific setup.
+        2.  **Check API Token:** Double-check that the **API Token** you have provided is accurate, has not expired, and is valid for your Jira account. Carefully re-enter or copy-paste the token to rule out typos.
+        3.  **Verify Authentication Method:** Review the **authentication method** selected in your credential configuration. Ensure it matches the type of credentials you've provided (Basic for username+API key, Bearer for token).
+        4.  **Network Connectivity:** Confirm that both your ELITEA environment and the Jira service are connected to the internet and that there are no network connectivity issues, firewalls, or proxies blocking the integration.
 
 *   **Authorization Errors (Permission Denied/Unauthorized):**
-    *   **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify Jira resources.
-    *   **Possible Solutions:**
-        1.  **Verify API Token Validity:** Ensure that the Jira API token you are using is still valid and has not been revoked in your Atlassian account settings. Generate a new token if necessary.
-        2.  **Check Jira Permissions:** Confirm that the Jira account associated with the Username and API Token has the necessary permissions within Jira to access and modify the specific projects and issues your Agent is trying to interact with. Verify project and issue permissions within Jira project settings.
-        3.  **Hosting Option Mismatch:** Double-check that you have selected the correct "Hosting option" (Cloud or Server) in the Jira toolkit configuration. Using the wrong hosting option can lead to authentication and connection errors.
+    *   **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors when attempting to access or modify Jira resources, even with a seemingly valid token.
+    *   **Troubleshooting Steps:**
+        1.  **Re-verify API Token Validity:** Ensure that the API token is valid and has not been revoked in your Atlassian account settings. Generate a new token if necessary.
+        2.  **Jira Account Permissions:** Confirm that the Jira account associated with the API token has the necessary access permissions within Jira to access and modify the specific projects and issues your Agent is trying to interact with. Verify project and issue permissions within Jira project settings.
+        3.  **Hosting Option Verification:** Double-check that you have selected the correct **Hosting option** (Cloud or Server) in the toolkit configuration. Using the wrong hosting option can lead to authentication and connection errors.
 
 *   **Tool-Specific Parameter Errors:**
     *   **Problem:** Agent execution fails for specific Jira tools due to incorrect parameter values or formats.
     *   **Troubleshooting Steps:**
-        1.  **Verify Project Keys:** Ensure that you are using the correct Jira Project Keys in your Agent's instructions and toolkit configuration. Project Keys are case-sensitive and must exactly match the project keys in your Jira instance. Use the "List projects" tool to verify project keys if needed.
-        2.  **Verify Issue Keys:** Double-check that you are using the correct Jira Issue Keys when referencing specific issues in your Agent's instructions. Issue Keys are case-sensitive and must match the issue keys in Jira exactly (e.g., "PA-123", "PROJECT-456").
+        1.  **Verify Project Keys:** Ensure that you are using the correct Jira Project Keys in your Agent's instructions. Project Keys are case-sensitive and must exactly match the project keys in your Jira instance. Use the "List projects" tool to verify project keys if needed.
+        2.  **Verify Issue Keys:** Double-check that you are using the correct Jira Issue Keys when referencing specific issues in your Agent's instructions. Issue Keys are case-sensitive and must match the issue keys in Jira exactly (e.g., "DEMO-123", "PROJECT-456").
         3.  **Parameter Format:** Verify that you are providing parameters in the correct format expected by each Jira tool (e.g., string values for names, numerical values for IDs, JSON format for issue updates). Refer to the "Instructions and Prompts for Using the Toolkit" section for parameter details and examples.
         4.  **Custom Fields:** If you are using custom fields in your Agent instructions, ensure that you have added the correct **Additional Fields** IDs in the toolkit's "Advanced Settings" and that you are using the correct custom field IDs and values in your Agent instructions. Use the "Get specific field info" tool to verify custom field IDs and values if needed.
 
-### FAQs
+*   **Toolkit Configuration Issues:**
+    *   **Problem:** The toolkit fails to load or shows configuration errors after creation.
+    *   **Troubleshooting Steps:**
+        1.  **Verify Credential Selection:** Ensure you have selected the correct credential from the dropdown in the toolkit configuration.
+        2.  **Check Hosting Option:** Verify that the hosting option matches your Jira instance type (Cloud for *.atlassian.net, Server for self-hosted instances).
+        3.  **Review Advanced Settings:** Check that custom field IDs and other advanced settings are properly formatted.
+
+### FAQ
 
 1.  **Q: Can I use my regular Jira password for the ELITEA integration?**
-    *   **A:** No, it is **strongly recommended to use a Jira API token** instead of your main account password for security reasons. API tokens provide a more secure and controlled way to grant access to external applications like ELITEA.
-2.  **Q: What permissions should I grant to the Jira API Token?**
-    *   **A:** Jira API tokens have a fixed scope (access to Jira REST API). You don't need to select specific scopes when generating the token. However, ensure that the Jira account associated with the API token has the necessary permissions within Jira to access and modify the projects and issues your Agent will be interacting with.
-3.  **Q: What is the correct format for the Jira URL in the toolkit configuration?**
-    *   **A:**  The Jira URL should be entered in the full format, including `https://` or `http://` and the complete workspace URL (e.g., `https://your-workspace.atlassian.net/jira` or `https://your-company.atlassian.net`). Ensure there are no typos or missing parts in the URL. For Epam Jira, use `https://jira.epam.com/jira/`.
-4.  **Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?**
-    *   **A:** Double-check the following:
-        *   **API Token Validity:** Ensure that the API token is valid and has not been revoked.
-        *   **Jira Account Permissions:** Verify that the Jira account associated with the API token has the necessary permissions to access the specific projects and issues your Agent is trying to interact with.
-        *   **Hosting Option:** Double-check that you have selected the correct "Hosting option" (Cloud or Server) in the Jira toolkit configuration, especially for self-hosted or Epam Jira instances.
-        *   **Verify SSL Setting:** If you are connecting to a Jira Server instance, try toggling the "Verify SSL" setting in the "Advanced Settings" of the toolkit configuration, as SSL verification issues can sometimes cause connection problems.
+    *   **A:** **While ELITEA supports password authentication, using a Jira API token is strongly recommended for security.** API tokens provide a significantly more secure and controlled method for granting access to external applications like ELITEA, without exposing your primary account credentials. You can configure this in the credential's authentication method selection.
+
+2.  **Q: What permissions are absolutely necessary for the Jira API token to work with ELITEA?**
+    *   **A:** Jira API tokens have a fixed scope and provide access to the Jira REST API. The specific permissions depend on what your ELITEA Agent will be doing. For basic read-only access (e.g., using `search_using_jql`, `list_projects`), standard API access is sufficient. For modifications (e.g., `create_issue`, `update_issue`), ensure your Jira account has write permissions to the target projects. **Always adhere to the principle of least privilege and grant only the permissions that are strictly necessary for your Agent's intended functionalities.**
+
+3.  **Q: What is the correct format for the Jira URL in the ELITEA credential configuration?**
+    *   **A:** The Jira URL should be entered as the base URL without the `/jira` suffix (e.g., `https://yourcompany.atlassian.net` for Cloud or `https://jira.epam.com` for Server). Ensure there are no typos or missing parts in the URL.
+
+4.  **Q: How do I switch from the old Agent-based configuration to the new Credentials + Toolkit workflow?**
+    *   **A:** The new workflow is: (1) Create a Jira credential with your authentication details, (2) Create a Jira toolkit that uses this credential, and (3) Add the toolkit to your agents, pipelines, or chat. This provides better security, reusability, and organization compared to configuring authentication directly in agents.
+
+5.  **Q: Can I use the same Jira credential across multiple toolkits and agents?**
+    *   **A:** Yes! This is one of the key benefits of the new workflow. Once you create a Jira credential, you can reuse it across multiple Jira toolkits, and each toolkit can be used by multiple agents, pipelines, and chat sessions. This promotes better credential management and reduces duplication.
+
+6.  **Q: Why am I consistently encountering "Permission Denied" errors, even though I believe I have configured everything correctly?**
+    *   **A:** If you are still facing "Permission Denied" errors despite careful configuration, systematically re-examine the following:
+        *   **API Token Validity:** Double-check that the **API token** is still valid and has not been revoked in your Atlassian account settings.
+        *   **Jira Account Permissions:** Explicitly verify that the Jira account associated with the API token has the necessary access rights to the *specific target projects* within Jira itself. Confirm project membership, permissions, and assigned roles within the Jira project settings.
+        *   **Hosting Option Match:** Double-check that you have selected the correct "Hosting option" (Cloud or Server) in the toolkit configuration, especially for self-hosted or enterprise Jira instances.
+        *   **Credential Configuration:** Carefully review the credential configuration in ELITEA, especially the authentication method selection and token/password fields for any hidden typographical errors or accidental whitespace.
+
+If, after meticulously checking all of these points, you still encounter "Permission Denied" errors, please reach out to ELITEA Support with detailed information for further assistance.
 
 ### Support and Contact Information
 
@@ -341,7 +474,7 @@ If you encounter any issues, have questions, or require further assistance beyon
 
 To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:
 
-*   **ELITEA Environment:** Clearly specify the ELITEA environment you are using (e.g., "Nexus," "Alita Lab," "EYE").
+*   **ELITEA Environment:** Clearly specify the ELITEA environment you are using (e.g., "Next" or the specific name of your ELITEA instance).
 *   **Project Details:**  Indicate the **Project Name** and whether you are working in your **Private** workspace or a **Team** project.
 *   **Detailed Issue Description:** Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.
 *   **Relevant Configuration Information:**  To help us diagnose the issue, please include relevant configuration details, such as:
@@ -354,13 +487,26 @@ To help us understand and resolve your issue as quickly as possible, please ensu
 
 We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
 
-## Useful Links
+---
 
-To further enhance your understanding and skills in integrating Jira with ELITEA, here are some helpful resources:
+## Summary
 
-*   **[Atlassian Jira Website](https://www.atlassian.com/software/jira)**: Access the main Jira product website for product information and documentation.
-*   **[Atlassian Account Settings](https://id.atlassian.com/manage-profile/security)**: Access your Atlassian account settings to manage your profile and API tokens.
-*   **[Jira Query Language (JQL) Documentation](https://confluence.atlassian.com/jirasoftwareserver/advanced-searching-jql-reference-765593971.html)**: Learn more about Jira Query Language (JQL) and how to construct advanced search queries in Jira.
-*   **[ELITEA Secrets Management](../../menus/settings/secrets.md)**: Learn how to securely store your Jira API Token using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Jira toolkit to automate your workflows.
-*   **[ELITEA Support Email](mailto:SupportAlita@epam.com)**: Contact the ELITEA support team for direct assistance with Jira integration or any other questions and issues you may encounter.
+The Jira toolkit integration with ELITEA follows a streamlined three-step workflow:
+
+1. **🔐 Create Credentials** - Set up secure authentication with your Jira API token
+2. **🔧 Create Toolkit** - Configure the Jira toolkit using your credentials and enable the tools you need
+3. **🚀 Use in Modules** - Add the toolkit to Agents, Pipelines, and use them directly in Chat for automated project management
+
+This integration enables your AI agents to interact intelligently with Jira projects and issues, automate issue tracking, enhance project management workflows, and improve team collaboration within your development processes. By following the principle of least privilege and enabling only the tools you need, you maintain both security and performance while unlocking powerful automation capabilities for project management.
+
+!!! reference "Useful ELITEA Resources"
+    *   **[How to Index Jira Data](../../how-tos/indexing/index-jira-data.md)** - *Complete guide for indexing your Jira projects and issues to enable advanced search and AI-powered analysis capabilities within ELITEA.*
+    *   **[AI Configuration](../../menus/settings/ai-configuration.md)** - *Essential settings and configurations for optimizing AI performance when working with Jira integrations and other ELITEA features.*
+
+!!! reference "External Resources"
+    *   **Jira Website:** [https://www.atlassian.com/software/jira](https://www.atlassian.com/software/jira) - *Access the main Jira product website for product information and documentation.*
+    *   **Atlassian Account Settings:** [https://id.atlassian.com/manage-profile/security](https://id.atlassian.com/manage-profile/security) - *Navigate to your Atlassian account settings to manage API tokens and other security configurations.*
+    *   **Jira API Tokens:** [https://id.atlassian.com/manage-profile/security/api-tokens](https://id.atlassian.com/manage-profile/security/api-tokens) - *Directly access the section in Atlassian settings to manage your API tokens for secure integrations.*
+    *   **Jira REST API Documentation:** [https://developer.atlassian.com/cloud/jira/platform/rest/v2/](https://developer.atlassian.com/cloud/jira/platform/rest/v2/) - *Explore the official Jira API documentation for detailed information on API endpoints, authentication, data structures, and developer guides.*
+    *   **Jira Query Language (JQL) Documentation:** [https://confluence.atlassian.com/jirasoftwareserver/advanced-searching-jql-reference-765593971.html](https://confluence.atlassian.com/jirasoftwareserver/advanced-searching-jql-reference-765593971.html) - *Learn more about Jira Query Language (JQL) and how to construct advanced search queries in Jira.*
+    *   **Atlassian Community:** [https://community.atlassian.com/t5/Jira/ct-p/jira](https://community.atlassian.com/t5/Jira/ct-p/jira) - *Access the official Atlassian Community for comprehensive articles, FAQs, best practices, and troubleshooting guides on all aspects of Jira usage.*

@@ -125,7 +125,7 @@ For any issues, questions, or further assistance with the PPTX integration or EL
 
 To help us understand and resolve your issue as quickly as possible, please provide the following information in your support email:
 
-*   **ELITEA Environment:** Specify the environment you are using (e.g., "Nexus,").
+*   **ELITEA Environment:** Specify the environment you are using (e.g., "Next" or the specific name of your ELITEA instance).
 *   **Project Details:** Indicate the Project Name and workspace type (Private or Team).
 *   **Detailed Issue Description:** Clearly describe the problem, what you expected, and what actually occurred.
 *   **Relevant Configuration Information:** Include the Agent's instructions, toolkit configuration, and template details.

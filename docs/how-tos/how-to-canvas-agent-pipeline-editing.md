@@ -173,7 +173,7 @@ When editing an agent or pipeline, you can modify various configuration aspects:
 
 **Solutions**:
 
-- **Use YAML Indentation Corrector**: Use the [YAML Indentation Corrector prompt](https://nexus.elitea.ai/alita_ui/1/prompts/all/31?viewMode=public) in ELITEA
+- **Use YAML Indentation Corrector**: Use the [YAML Indentation Corrector prompt](https://next.elitea.ai/alita_ui/1/prompts/all/31?viewMode=public) in ELITEA
 - **Validate Structure**: Check that all required fields are present
 - **Indentation Check**: Ensure consistent spacing and indentation
 - **Reference Examples**: Compare with working pipeline examples in the documentation
@@ -227,6 +227,6 @@ For additional support or advanced use cases, consult the linked resources or re
     - [Agents Configuration](../menus/agents.md) - Agent management and configuration
     - [Toolkits Documentation](../menus/toolkits.md) - Toolkit integration and management
     - [Chat Functionality](how-to-use-chat-functionality.md) - ELITEA Chat feature guide
-    - [Public Agents in Nexus](https://nexus.elitea.ai/alita_ui/agents/latest) - Community examples and inspiration
-    - [YAML Indentation Corrector](https://nexus.elitea.ai/alita_ui/1/prompts/all/31?viewMode=public) - Automatic YAML formatting tool
+    - [Public Agents in Next](https://next.elitea.ai/alita_ui/agents/latest) - Community examples and inspiration
+    - [YAML Indentation Corrector](https://next.elitea.ai/alita_ui/1/prompts/all/31?viewMode=public) - Automatic YAML formatting tool
     - [ELITEA Support](../support/contact-support.md) - Technical support and assistance

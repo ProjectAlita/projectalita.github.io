@@ -6,7 +6,7 @@ Get up and running in just a few minutes. Follow these minimal steps, then dive 
 
 ## Step 1: Access the Platform
 
-1. Open your browser and go to https://nexus.elitea.ai
+1. Open your browser and go to https://next.elitea.ai
 2. Sign in with your account credentials.
 3. If prompted, switch to your Private project using the project switcher (top left). If your Private project isn’t ready yet, wait up to 5 minutes.
 

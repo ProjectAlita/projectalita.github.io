@@ -87,7 +87,7 @@ The following settings are available in both tabs (which can either be prepopula
 
 **Main Settings**:
 
-* **Eliteacode: LLMServer Url**: Enter the URL of your LLM service provider. For connecting to ELITEA Nexus env., use `https://nexus.elitea.ai/`.
+* **Eliteacode: LLMServer Url**: Enter the URL of your LLM service provider. For connecting to ELITEA Next env., use `https://next.elitea.ai/`.
 * **Eliteacode: LLMAuth Token**: Provide your token for authentication with the LLM service provider. For ELITEA Prod env, input the generated Token.
 * **Eliteacode: Project ID**: Input the Project ID for the ELITEA backend.
 * **Eliteacode: Display Type**: Choose how the prediction results are displayed:
@@ -97,7 +97,7 @@ The following settings are available in both tabs (which can either be prepopula
   * **replace** - when you run `ELITEA Predict` the results will be displayed instead of the text or part that you have selected.
   * **prepend** -when you run `ELITEA predict` the results will be displayed before the text or part that you have selected.
 
-* **Eliteacode Verify Ssl**: Toggle this setting to verify the LLM service provider's SSL certificate. For [Nexus](https://nexus.elitea.ai/) env, keep this checkbox not selected.
+* **Eliteacode Verify Ssl**: Toggle this setting to verify the LLM service provider's SSL certificate. For [Next](https://next.elitea.ai/) env, keep this checkbox not selected.
 * **Eliteacode: Enable**: Toggle to enable or disable the ELITEA Code extension as needed.
 * **Eliteacode: Debug**: Toggle to enable or disable the debugging feature as needed.
 
@@ -260,7 +260,7 @@ Elitea Code includes the following settings:
 * * **LLM Auth Token**: Provide your Bearer token for the LLM service provider.
 * **Provide Settings**
     * **Project ID**: Enter the Project Id for ELITEA Backend, ignored for OpenAI.
-    * **LLM Server URL**: Enter the URL to your LLM service provider. (e.g. `https://nexus.elitea.ai`)
+    * **LLM Server URL**: Enter the URL to your LLM service provider. (e.g. `https://next.elitea.ai`)
     * **Integration Name**: Select the integration and integration model (e.g. alita-useast-openai gpt-4o-2024-11-20)
     * **Integration UID**: Enter the AI integration Id from ELITEA Backend, ignored for OpenAI.
     * **LLM Model Name**: Choose the LLM model from the dropdown list.

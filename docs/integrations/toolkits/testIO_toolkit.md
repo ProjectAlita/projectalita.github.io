@@ -188,7 +188,7 @@ If you encounter persistent issues, have questions not covered in this guide, or
 
 To help us assist you efficiently, please provide the following details in your support request:
 
-*   **ELITEA Environment:** (e.g., "Nexus," "Alita Lab," "EYE")
+*   **ELITEA Environment:** (e.g., "Next" or the specific name of your ELITEA instance).
 *   **Project Details:** Project Name, Private or Team project.
 *   **Detailed Issue Description:** Clear explanation of the problem, steps to reproduce, expected vs. actual behavior.
 *   **Relevant Configuration Information:**

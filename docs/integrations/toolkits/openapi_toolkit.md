@@ -227,7 +227,7 @@ If you encounter persistent issues, have questions not covered in this guide, or
 
 To ensure efficient and effective support, please include the following details in your support request:
 
-*   **ELITEA Environment:** (e.g., "Nexus," "Alita Lab," "EYE")
+*   **ELITEA Environment:** (e.g., "Next" or the specific name of your ELITEA instance).
 *   **Project Details:** Project Name, Private or Team project.
 *   **Detailed Issue Description:** Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.
 *   **Relevant Configuration Information:**

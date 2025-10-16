@@ -26,7 +26,7 @@ Ready to see what's possible? Let's dive in. This guide will walk you through ea
 Getting started with ELITEA is straightforward:
 
 1. **Open Your Browser**: Use any modern web browser.
-2. **Enter URL**: Navigate to `https://nexus.elitea.ai`
+2. **Enter URL**: Navigate to `https://next.elitea.ai`
 3. **Login**: Sign in with your EPAM account credentials (no registration needed).
 4. **Initial Navigation**: You'll land in the **Chat** menu. First-time users should allow about **5** minutes for private project initialization.
 5. **Switch Projects**: Once your **Private** project is ready, switch from **Public** to **Private** using the **Project Selector** in the sidebar.

@@ -5,6 +5,7 @@ nav:
   - Home:
       - Elitea Values: index.md
       - Introduction: home/introduction.md
+      - Quick Start: getting-started/quick-start.md
       - Glossary: home/glossary.md
       - Key Concepts:
           - What is an agent?: home/key-concepts/what-is-an-agent.md
@@ -19,11 +20,6 @@ nav:
       - Quick Starts:
           - Very Quick Start: getting-started/very-quick-start.md
           - Quick Start: getting-started/quick-start.md
-      - Migration to Next Environment:
-          - Quick Start (Next env): getting-started/next-quick-start.md
-          - Configure Epam AI Dial key (Next env): getting-started/configure-epam-ai-dial-key.md
-          - Migrate Datasources to Indexing: how-tos/indexing/migrate-datasources-to-indexing.md
-          - Configure and Use MCP Server from Elitea: getting-started/configure-and-use-mcp.md
       - Initial Setup:
           - Create a Personal Access Token: getting-started/create-personal-access-token.md
           - Create a Secret: getting-started/create-secret.md
@@ -37,6 +33,11 @@ nav:
       - Enhanced Usage:
           - Canvas in Conversation: getting-started/canvas-in-conversation.md
           - Add Teammates to Conversation: getting-started/add-teammates-to-conversation.md
+      - Migration to Next Environment:
+          - Quick Start (Next env): getting-started/next-quick-start.md
+          - Configure Epam AI Dial key (Next env): getting-started/configure-epam-ai-dial-key.md
+          - Migrate Datasources to Indexing: how-tos/indexing/migrate-datasources-to-indexing.md
+          - Configure and Use MCP Server from Elitea: getting-started/configure-and-use-mcp.md
 
   - Menus:
       - Overview: menus/overview.md
@@ -57,16 +58,10 @@ nav:
           - Monitoring: menus/settings/monitoring.md
 
   - Features:
-      - Export & Import Entities: features/export-import.md
-      - Fork Entities: features/forking.md
-      - Entity Versioning: features/entity-versioning.md
       - Search Entities: features/search-entities.md
       - Organizing Entities: features/organizing-entities.md
-      - Public Project: features/public-project.md
-      - Monitoring: features/monitoring.md
+      - Entity Versioning: features/entity-versioning.md
       - Manage Users & Roles: features/roles.md
-      - Pipelines:
-          - Pipelines Architecture: features/pipelines/pipeline-agent-framework.md
 
   - How-To Guides:
       - Use Credentials: how-tos/how-to-use-credentials.md
@@ -157,6 +152,12 @@ nav:
       - Datasources: archive/datasources.md
       - Agents Examples: archive/agents-examples.md
       - Prompts Examples: archive/prompts-examples.md
+      - Export & Import Entities: features/export-import.md
+      - Fork Entities: features/forking.md
+      - Public Project: features/public-project.md
+      - Monitoring: features/monitoring.md
+      - Pipelines:
+          - Pipelines Architecture: features/pipelines/pipeline-agent-framework.md
 
 theme:
   name: material

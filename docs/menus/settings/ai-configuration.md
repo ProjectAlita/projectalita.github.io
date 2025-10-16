@@ -11,7 +11,7 @@ The **AI Configuration** section serves as the central hub for managing essentia
 
 **Server Configuration:**
 
-* **Server URL** - The base server URL for your ELITEA instance (e.g., `https://nexus.elitea.ai`)
+* **Server URL** - The base server URL for your ELITEA instance (e.g., `https://next.elitea.ai`)
 * **Project ID** - The unique identifier for your current project, used for API calls and service requests
 * **OpenAI-BaseURL** - The API endpoint URL for OpenAI-compatible services, typically formatted as `{server_url}/llm/v1`
 * **OpenAI-Project** - The project identifier used for OpenAI API compatibility (displayed when a model is selected)
