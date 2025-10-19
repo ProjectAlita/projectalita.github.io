@@ -6,14 +6,14 @@ Discover **ELITEA** — your all-in-one platform for working with Generative AI 
  
 ## Information
  
-* **Release Version**: 1.7.0
-* **Released on**: 31-Aug-2025
-* **Preview Access for 1.7.0**: [Next environment](https://next.elitea.ai)
-* **Access**: [ELITEA Platform](https://nexus.elitea.ai)
+* **Release Version**: 1.7.1
+* **Released on**: 26-Sep-2025
+* **Preview Access for 1.7.1**: [Next environment](https://next.elitea.ai)
+
  
 ## Important
 
-- **Availability**: Version 1.7.0 is available in the [Next environment](https://next.elitea.ai) only. Nexus will remain on its current version for now. The **Next** environment contains a full copy of your projects, agents, pipelines, toolkits, and chats migrated from Nexus, plus all 1.7.0 features and updates. Use this safe transition window to review changes, configure new Indexes, set up Credentials, and verify your workflows before Nexus is upgraded.
+- **Availability**: Version 1.7.1 is available in the [Next environment](https://next.elitea.ai) only. Nexus will remain on its current version (1.6.0) for now. The **Next** environment contains a full copy of your projects, agents, pipelines, toolkits, and chats migrated from Nexus, plus all 1.7.1 features and updates. Use this safe transition window to review changes, configure new Indexes, set up Credentials, and verify your workflows before Nexus is upgraded.
 - **Prompts deprecated**: The **Prompts** entity is deprecated. All existing prompts were converted to Agents. You can create Agents without attaching a Toolkit (a lightweight replacement for Prompts) and use variables with these agents.
 - **Datasources deprecated**: The **Datasources** entity is deprecated. Your existing datasources remain available in this release so you can re-index and reconfigure them using the new **Index data** tool available in most Toolkits (e.g., GitHub, Confluence, Bitbucket, ADO Repos, Jira, etc.),  as even though they remain connected to agents, they cannot be used (as the datasets themselves are not migrated). **Note**: Creating new datasources or datasets is no longer supported.
 - **Integrations replaced by Credentials**: Integrations are deprecated and replaced by Credentials as a standalone entity. Existing Integrations are not auto-migrated; recreate them as **Credentials** manually. See: [How to Use Credentials](../how-tos/how-to-use-credentials.md).
@@ -26,149 +26,94 @@ Discover **ELITEA** — your all-in-one platform for working with Generative AI 
 
 ## New Features
  
-### Chat Redesign and Enhancements
  
-* Complete redesign of the Chat menu for a more intuitive and modern experience
-* Quickly select frequently used entities (agents, pipelines) at the start of a conversation or during an active chat
-* Instantly search and select any entity (agents, pipelines) by typing `#` followed by the first letters of the entity name
-* Drag & drop support for moving conversations between the ungrouped list and folders, and vice versa
-* Automatic grouping and sorting of conversations into date-based groups (Today, Yesterday, This Week, Older)
-* Redesigned workflow for adding users to a conversation from the Participants sidebar
-* Redesigned Conversations sidebar for improved navigation
-* Redesigned Participants sidebar for better user management
- 
-### Canvas: Agent and Pipeline Editing Support
+### Canvas: Toolkit and MCP Server Editing Support
 
-* Modify the selected agent or pipeline directly from a conversation via Canvas without leaving Chat.
-* Edit any selected version of an agent or pipeline.
-* From Canvas, add toolkits, agents, or pipelines to the selected agent/pipeline.
+* Modify the selected toolkit or MCP server directly from a conversation via Canvas without leaving Chat.
+* Edit any selected version of a toolkit or MCP server.
+* From Canvas, add toolkits, agents, pipelines, or MCP servers to the selected entity.
 
 For usage details, see [Canvas in Conversation](../getting-started/canvas-in-conversation.md).
 
-### Complete Redesign and Enhancement for Thinking Steps
- 
-* Redesigned and enhanced Thinking Steps for agents, pipelines, and LLM model execution—both in Conversations and within Entities
-* More informative step-by-step details, including which tools and LLMs participated, with their input and output data, for improved troubleshooting and debugging
-* Thinking Steps are now preserved in Conversations for agents and pipelines, allowing later analysis and investigation
-* Added support to display the duration of each agent and pipeline execution, giving users deeper insight into performance
+### Canvas: Create Agent from Chat
 
-### LiteLLM Proxy Support (Next environment)
-
-ELITEA now supports using a LiteLLM-compatible proxy as the LLM endpoint in the **Next** environment.
-
-* Unified API across providers: route to models from multiple vendors via one proxy.
-* Fast access to additional and reasoning-capable models as your proxy exposes them.
-* Improved observability and cost tracking when enabled on your LiteLLM instance.
-* Works with streaming and function/tool calling workflows.
+* Create a new agent directly from a conversation using Canvas, without leaving Chat.
+* Configure the agent’s basic details and attach toolkits during creation.
+* Start using the newly created agent immediately within the same conversation.
 
 
-### New Entity Type: Toolkits
+### Settings: Default LLM Model (Project-wide)
 
-Toolkits have been completely redesigned and are now a dedicated entity type in ELITEA, bringing major improvements to how you organize and reuse toolkits with Agents and Pipelines:
+You can now set a project-wide default LLM model from **Settings → [AI Configuration](../menus/settings/ai-configuration.md)**. The selected model becomes the default used across your project for:
 
-* A new Toolkits menu lets you view and manage all your created toolkits in one place.
-* Creating a toolkit is now a streamlined process: simply choose the toolkit type, then configure it with an improved, user-friendly interface.
-* You can now reuse the same toolkit across multiple agents and pipelines, eliminating the need to configure the same integration or logic repeatedly. This leads to better organization, consistency, and efficiency in your projects.
-* When building or editing an agent or pipeline, you can either create a new toolkit (which will take you to the New Toolkit page) or select from your existing toolkit library.
-* Note: When you add other agents or pipelines as components within an agent or pipeline, they are now also tracked and managed as toolkits, providing unified visibility and control.
+* Conversations
+* Agents
+* Pipelines
+* Toolkits
+
+This helps standardize execution behavior and reduces per-entity setup.
 
 ### Agents Enhancements
 
 * Agent types have been deprecated.
 * **Toolkits** section enhancements for Agents/Pipelines:
-  * +**Toolkit** button: Click to select from all available Toolkits or create a new toolkit.
-  * +**Agent** button: Click to select from all available Agents to add as a “toolkit”.
-  * +**Pipeline** button: Click to select from all available Pipelines to add as a “toolkit”. Note: you cannot add a Pipeline as a “toolkit” to an Agent if that pipeline contains interruptions or subgraphs.
+  * +**MCP** button: Click to select from all available MCP servers or create a new MCP server.
 
-### Pipelines: New Router and State Modifier Nodes
- 
-Two powerful new nodes have been added to Pipelines, expanding your pipelines capabilities:
 
-* **Router** node: A simple, rule-based decision node. The Router node evaluates a condition using your current state or data, then selects one of several possible routes (branches) for the pipeline to follow. This enables dynamic, conditional logic within your automation flows.
-* **State Modifier** node: A utility node that updates, transforms, or cleans up parts of the workflow’s state. Think of it as a “state editor”—you can use it to modify one or multiple variables, generate new content using templates, or reset portions of the state as needed.
+### Pipelines: Node Enhancements
 
-### Postman Toolkit Integration
+The following enhancements improve flexibility and control when building pipelines:
 
-A new Postman toolkit is now available, enabling seamless integration between ELITEA and the Postman. With this toolkit, you can:
+* **LLM node enhancements**: You can now select and use Toolkits directly from the LLM node.
+* **Function node changes**: The Function node now only allows selecting Toolkits and MCP Servers as toolkits, ensuring clearer, safer execution contexts.
+* **Agent node enhancements**: Added Input Mapping and variable support for Agents used inside the Agent node, enabling more precise data flow and configuration.
+* **Other fixes and improvements**: General stability, performance, and UX improvements across the pipeline builder.
 
-* **Automate API Testing**: Run and manage your Postman collections directly from ELITEA agents and pipelines.
-* **Retrieve and Update Collections**: Access, duplicate, or update your Postman collections and requests as part of your automated workflows.
-* **Leverage Postman Environments**: Use environment variables and configurations to make your API tests more dynamic and flexible.
+### Memory Toolkit Integration
 
-For setup and usage details, see the [Postman Toolkit Guide](../integrations/toolkits/postman_toolkit.md).
+A new Memory toolkit is now available, bringing long-term, persistent memory to your agents powered by PostgreSQL + PgVector and the langmem library.
 
-### Zephyr Squad Toolkit Integration
+* **Persistent context retention**: Store and recall information across conversations and sessions for continuity.
+* **Semantic memory search**: Retrieve relevant memories using meaning-based search over vectorized data.
+* **Namespace-based organization**: Isolate or share memories by namespace across agents or chat threads.
+* **Works across ELITEA**: Use in Agents, Pipelines, and Conversations.
 
-A new Zephyr Squad toolkit is now available, allowing you to connect ELITEA with Zephyr Squad for advanced test management. With this toolkit, you can:
-
-* **Manage Test Cases**: Create, update, and organize test cases within Zephyr Squad directly from ELITEA.
-* **Automate Test Execution**: Trigger and track test executions as part of your automated workflows.
-* **Synchronize Results**: Seamlessly sync test results and statuses between ELITEA and Zephyr Squad.
-
-This integration helps unify your test management and automation processes, making it easier to maintain quality and traceability across your projects.
+For setup and usage details, see the [Memory Toolkit Guide](../integrations/toolkits/memory_toolkit.md).
 
   
 ## Changed Features
  
-### Credentials: Formerly Integrations
- 
-* The feature previously known as "Integrations" has been renamed to Credentials and is now a dedicated entity in ELITEA.
-* Credentials allow you to configure authentication for different services at both the private (user) and project levels, supporting secure and flexible access management.
-* All functionality previously available under Integrations remains, but is now managed from the new Settings → Credentials page for easier access and organization.
-* Credentials can be reused in the toolkits, just as before.
-* Added support for new services, including ServiceNow, Postman, ADO Plans, ADO Repos, and Bitbucket, expanding the range of integrations you can securely manage.
-* This change improves clarity, centralizes credential management, and makes it easier to maintain secure connections to all your external tools.
- 
-### Indexing Tools: Replacement for Datasets
+### Save and Update Any Version of Agents or Pipelines
 
-ELITEA now provides six standardized indexing tools across supported toolkits, replacing legacy datasets:
+Previously, you could only save changes to the "**latest**" version of an Agent or Pipeline. Now, the **Save** action is available for any already created version, allowing you to continuously refine and update that version without having to create additional versions.
 
-* **Index Data**: Create an index of data for search and retrieval.
-* **Search Index**: Perform search operations against indexed data.
-* **Stepback Search Index**: Advanced search with stepback context for improved relevance.
-* **Stepback Summary Index**: Stepback search with on-the-fly summary generation.
-* **Remove Index**: Remove an existing data index.
-* **List Collections**: Display available collections in the indexing system.
+* Save edits on any existing version (not only the ""**latest**").
+* Reduce version sprawl by updating established versions directly.
+* Applies to both Agents and Pipelines.
 
-Currently supported toolkits include: 
-
-ADO Repos, ADO Wiki, ADO Plans, ADO Boards, Bitbucket, GitHub, GitLab, Confluence, Jira, SharePoint, Artifact, Figma, TestRail, Xray, Zephyr Enterprise, Zephyr Essential, Zephyr Scale.
-
-!!! tip 
-    You can also trigger indexing from an Agent or from Chat by selecting an Agent/Toolkit that has the Index Data tool, then instructing it to index the target (provide repo/site/project and scope). For an example, see [Index GitHub data](../how-tos/indexing/index-github-data.md).
-
-**Coming soon:** A dedicated menu to view created indexes across toolkits within a project, plus a per-toolkit tab showing useful index details.
-
-### Artifacts: Complete Redesign and Enhancements
- 
-* The Artifacts menu has been completely redesigned for a more intuitive and efficient experience.
-* The Buckets table has been enhanced for better organization and usability.
-* New Preview File support allows you to view and review files and images directly within ELITEA, without needing to download them first.
-* A new Buckets sidebar provides quick navigation between different storage buckets.
-* You can now manually upload files from your PC directly into ELITEA.
-* Added the ability to select and download multiple files at once for greater convenience.
-
-### Settings: Complete Redesign and Enhancements
-
-* **AI Configuration**: The former Configuration tab is now the dedicated [AI Configuration](../menus/settings/ai-configuration.md) subsection under Settings. From here you can configure LLM models and Embedding models, manage AI services credentials (e.g., EPAM AI Dial), review available configuration details, and download an example configuration if you want to connect and use ELITEA LLM models via API.
-* **Personal Access Tokens**: Now a separate subsection under Settings for easier management. See [Personal Tokens](../menus/settings/personal-tokens.md).
-* **Secrets** and **Projects**: Both subsections have been enhanced and improved for clarity and usability. See [Secrets](../menus/settings/secrets.md) and [Projects](../menus/settings/projects.md).
 
  
 ## Fixed Issues
  
-* **SQL Toolkit in Pipelines**: Fixed an issue where the SQL toolkit could not be used in pipelines. Previously, when using tools like list_tables_and_columns or execute_sql in a pipeline, the answer would appear in the steps but no LLM response was provided. Now, the LLM response containing the answer is correctly returned.
-* **Pressing Enter to Save a Secret Also Inserts a Newline in the Value**: Fixed an issue where pressing the "Enter" key to save a secret would also insert a newline character into the value. Now, pressing Enter saves the secret without adding a newline.
-* **Message Regenerate Function Fails After Agent or Pipeline Configuration Change**: Fixed a bug where the message regenerate function would fail with a 400 bad request error after making changes to an agent or pipeline configuration. Now, regenerating a message works as expected and reflects the updated configuration.
-* **Monitoring Export Fails When No Token Usage**: Fixed an issue where exporting monitoring data would fail with a 400 error if there was no token usage for the selected project or timeframe. Now, an empty file is downloaded as expected.
-* **Copy Secret Functionality Not Working on Safari Browser**: Fixed an issue where the "Copy Secret" feature in the Secrets table did not work on Safari browsers due to Clipboard API limitations. Now, copying secrets works in following way, Show value of the secret then click the Copy to clipboard icon.
-* **Existing GitHub Toolkits Not Functioning**: After a recent update, existing GitHub toolkits may not function properly when editing or executing agents. Workaround: Delete the toolkit, add it again, configure it with the same settings, and save the agent.
-* **General Usability Improvements**: Various general fixes and enhancements have been implemented across the platform to improve overall usability, responsiveness, and user experience.
+* **MCP Servers as Toolkits in LLM/Function Nodes**: Fixed an issue preventing MCP Servers from being added as toolkits to the LLM and Function nodes and used within pipelines.
+* **Participants Selection in Conversation**: Fixed an issue where you couldn’t search and select an agent, pipeline, or toolkit from +Agent / +Pipeline / +Toolkit when the list required scrolling in the Participants section of the Conversation.
+* **Confluence Space-Wide Indexing**: Fixed the inability to index an entire Confluence space using the Index Data tool.
+* **SharePoint Index Data Execution**: Fixed failures when running the Index Data tool in the SharePoint toolkit.
+* **Stepback Index Tools for Confluence and Artifacts**: Fixed Stepback Summary Index and Stepback Search Index tools not working for Confluence and Artifacts toolkits.
+* **Pipeline Configuration Run Button**: Fixed an issue where the “Run” button was not visible when opening the Pipeline Configuration tab.
+* **GPT-5/GPT-5 Mini Execution Errors**: Fixed errors when executing GPT-5 and GPT-5 Mini models from agents due to unsupported temperature and top-p values.
+* **OpenAPI Toolkit Tool Execution**: Fixed the inability to execute tools from the OpenAPI toolkit.
  
  
 ## Known Issues
  
-* **GIT Source Authentication**: SSH authentication for GIT sources fails. **Workaround**: Use HTTPS with Username and Password.
-* **Collections Import**: After importing Collections, new collections are not being created under the Collections section.
-* **Test Connection**: The test connection functionality for the toolkit is currently experiencing issues and may not operate correctly.
-  **Confluence Dataset Label Filtering**: When using multiple labels (two or more) as a filter while creating a dataset of Confluence type, an error occurs. The system raises an `ApiValueError`, indicating that the CQL (Confluence Query Language) is invalid or missing. **Workaround**: Use a single label as a filter to avoid this issue.
+* **Pipelines with Anthropic Models**: Unable to execute pipelines when agents which are configured to use Anthropic models. **Workaround**: Use GPT models in the agents.
+* **Message Regenerate with Anthropic**: Regenerate of the output fails if there are errors in conversation message history when using Anthropic models.
+* **Toolkit/Credentials Table Sorting**: Toolkit and Credentials lists are not displayed properly when sorted in table view.
+* **Thinking Steps in Canvas During Generation**: Thinking steps and output are not rendered correctly when opening Canvas for MCP, Toolkit, or Agent/Pipeline while output is being generated.
+* **Selecting Tools in Newly Added Toolkit**: Unable to select/unselect tools of a newly added toolkit in an agent and save the changes.
+* **Figma Toolkit Tools Not Working**: Figma toolkit operations (e.g., Get File, Get Team Projects, Index Data) may fail.
+* **TestRail Indexing with Multiple Suites**: Indexing fails when a project has multiple suites; Suite ID is required.
+* **Deleted LLM Model Still Used**: A deleted LLM model can continue to be used by agents instead of the new default in certain scenarios.
+* **Gemini/Claude via Dial API**: “Invalid structure” error when integrating Gemini or Claude models using a Dial API key.
+* **qTest Test Cases Default Folder**: Test cases default to the root folder in qTest when a parent folder ID is not specified.
