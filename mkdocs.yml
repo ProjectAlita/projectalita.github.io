@@ -38,6 +38,8 @@ nav:
           - Configure Epam AI Dial key (Next env): getting-started/configure-epam-ai-dial-key.md
           - Migrate Datasources to Indexing: how-tos/indexing/migrate-datasources-to-indexing.md
           - Configure and Use MCP Server from Elitea: getting-started/configure-and-use-mcp.md
+      - Indexing:
+          - Indexing Quick Start: getting-started/indexing-quick-start.md
 
   - Menus:
       - Overview: menus/overview.md
