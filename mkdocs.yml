@@ -139,8 +139,10 @@ nav:
 
   - Release Notes:
       - Current version:
-          - RN 1.7.0: release-notes/rn_current.md
+          - RN 1.7.2: release-notes/rn_current.md
       - Previous versions:
+          - RN 1.7.1: release-notes/archived/rn12.md
+          - RN 1.7.0: release-notes/archived/rn11.md
           - RN 1.6.0: release-notes/archived/rn10.md
           - RN 1.5.2: release-notes/archived/rn9.md
           - RN 1.5.1: release-notes/archived/rn8.md
