@@ -1,11 +1,13 @@
 # Indexing Overview
 
 !!! warning "Availability and migration"
-	**Indexing** feature and tools are available in the [Next environment](https://next.elitea.ai) as part of the 1.7.0 release. They replace the legacy **Datasources/Datasets** feature. Datasources are still available in the [Nexus environment](https://nexus.elitea.ai) for reference, but new datasets are not supported. See the [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets).
+	**Indexing** feature and tools are available in the [Next environment](https://next.elitea.ai) as part of the 1.7.0 release. They replace the legacy **Datasources/Datasets** feature. As of Release 1.7.2, a dedicated **Indexes Tab** interface is available within Toolkit Configuration for comprehensive index management. Datasources are still available in the [Nexus environment](https://nexus.elitea.ai) for reference, but new datasets are not supported. See the [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets).
 
 ## Introduction
 
 **Indexing** turns your external content (repos, wikis, issues, files, designs, tests) into searchable knowledge that Agents and Pipelines, as well as LLMs from Conversations can use. Instead of manually browsing systems, you create indexes once and then search or ask questions with natural language.
+
+The **Indexes Tab interface** provides a comprehensive, user-friendly way to create, manage, and search indexes directly within Toolkit Configuration, featuring visual status indicators, real-time progress monitoring, and integrated search capabilities.
 
 ## Purpose of Indexing
 
@@ -15,7 +17,7 @@
 * Replace legacy datasets with standardized tools across many toolkits.
 
 !!! tip "Quick start"
-	If you need a fast walkthrough, see the Next environment guide: [Next – Quick Start](../../getting-started/next-quick-start.md#index-data-for-a-toolkit).
+	For the recommended approach using the new Indexes Tab interface, see the [Create first Index](../../getting-started/indexing-quick-start.md) guide. For the legacy toolkit test section approach, see [Next – Quick Start](../../getting-started/next-quick-start.md#index-data-for-a-toolkit).
 
 ## Indexing Tools
 
@@ -52,7 +54,7 @@ Use these steps to prepare your project and toolkit before running **Index data*
 
 ### Prerequisites
 
-* A toolkit that supports Indexing (see list below) and is added to your project/agent.
+* A toolkit that supports Indexing (see list above) and is added to your project/agent.
 * A valid Credential for that toolkit (all toolkits except Artifact require credentials).
 * Project-level AI configuration for Vector Storage (PgVector) and Embedding Model.
 
@@ -93,8 +95,9 @@ Use these steps to prepare your project and toolkit before running **Index data*
 4) Select Indexing tools on the Toolkit
 
    * When creating a new toolkit, all Indexing tools are selected by default.
-   * You can later enable/disable specific tools from the toolkit’s details page.
-   * Recommended minimum for creating and using indexes: Index Data, Search Index, Stepback Summary Index.
+   * You can later enable/disable specific tools from the toolkit's details page.
+   * **Required for Indexes Tab**: Index Data tool must be enabled for the Indexes tab to appear.
+   * **Recommended minimum**: Index Data, Search Index, Stepback Summary Index for full Indexes Tab functionality.
 
 	![Toolkit – indexing tools selection](../../img/how-tos/indexing/overview-tools.png){ width="900" }
 
@@ -117,13 +120,49 @@ Use these steps to prepare your project and toolkit before running **Index data*
 
 ## Index data and verify
 
-This section shows how to run indexing and validate results using the **Toolkit's details page** -> **TEST SETTINGS** section. The example below uses the **Artifact** toolkit, but the flow is similar for other toolkits.
+**Recommended Approach: Indexes Tab Interface**
+
+The **Indexes Tab** provides a dedicated interface within Toolkit Configuration for comprehensive index management with visual status indicators, real-time progress monitoring, and integrated search capabilities. See the [How to create and use indexes](./using-indexes-tab-interface.md) guide for complete instructions.
+
+**Quick Steps:**
+
+1. Navigate to **Toolkits** → Select your toolkit → Click **Indexes** tab
+2. Click **+ Create New Index** to create indexes
+3. Monitor progress with visual indicators (🔄 In Progress, ✅ Completed, ❌ Failed)
+4. Use integrated search tools directly from the **Run** tab
+
+**Alternative: Toolkit Test Settings**
+
+For quick testing and validation, you can also use the TEST SETTINGS section. The example below uses the **Artifact** toolkit, but the flow is similar for other toolkits.
 
 ### Index Data tool
 
+**Primary Method: Use the Indexes Tab Interface**
+
 **Prerequisites:**
 
-* You’ve already configured an **Artifact** toolkit and have a bucket with files to index.
+* You've already configured an **Artifact** toolkit and have a bucket with files to index.
+
+
+**Steps:**
+
+1. Open **Toolkits** → select your toolkit that supports indexing.
+2. Click the **Indexes** tab in the toolkit detail view.
+3. Click the **+ Create New Index** button in the sidebar.
+4. In the new index creation form, provide a meaningful **Index Name (Collection Suffix)** (max 7 characters, for example: prod, test, v1).
+5. Leave other settings at defaults for a first run.
+6. Click **Index** button to start indexing (button activates when all required fields are filled).
+7. Progress and completion details appear with visual indicators (🔄 In Progress, ✅ Completed, ❌ Failed) in the interface.
+
+See the [How to create and use indexes](./using-indexes-tab-interface.md) guide for detailed instructions.
+
+![Index Tab - Create New Index](../../img/how-tos/indexing/index-tab/new-index.png){ width="900" }
+
+**Alternative: TEST SETTINGS Approach**
+
+**Prerequisites:**
+
+* You've already configured an **Artifact** toolkit and have a bucket with files to index.
 
 **Steps:**
 
@@ -139,6 +178,14 @@ This section shows how to run indexing and validate results using the **Toolkit'
 
 ### List Collections tool
 
+**Primary Method: Use the Indexes Tab Interface**
+
+All created indexes are automatically displayed in the **Indexes** tab sidebar with visual status indicators (🔄 In Progress, ✅ Completed, ❌ Failed), document counts, and last updated timestamps.
+
+![Index Tab - Indexes List](../../img/how-tos/indexing/index-tab/indexed-data.png){ width="900" }
+
+**Alternative: TEST SETTINGS Approach**
+
 Use this to view the indexes (collections) created for the toolkit.
 
 1. In **TEST SETTINGS**, choose **List Collections**.
@@ -149,10 +196,23 @@ Use this to view the indexes (collections) created for the toolkit.
 
 ### Search Index tool
 
+**Primary Method: Use the Indexes Tab Interface**
+
+1. Navigate to **Toolkits** → Select your toolkit → Click **Indexes** tab
+2. Select your completed index from the sidebar 
+3. Click the **Run** tab in the center panel
+4. Choose search tool from dropdown (Search Index, Stepback Search Index, or Stepback Summary Index)
+5. Enter your query and configure optional parameters
+6. Click **Run** button - results appear in the integrated chat interface on the right
+
+![Index Tab - Search Interface](../../img/how-tos/indexing/index-tab/Index-search.png){ width="900" }
+
+**Alternative: TEST SETTINGS Approach**
+
 Query your indexed data and review matched results.
 
 1. In **TEST SETTINGS**, choose **Search Index**.
-2. In the **Query** field, enter what you’re looking for.
+2. In the **Query** field, enter what you're looking for.
 3. (Optional) In **Collection Suffix**, specify a particular index name; otherwise, the search runs across all indexes for the toolkit.
 4. Leave other options at defaults for a first try.
 5. Click **RUN TOOL** and review results in the main panel.
@@ -160,16 +220,18 @@ Query your indexed data and review matched results.
 ![Toolkit Test – Search Index output](../../img/how-tos/indexing/search-index.png){ width="900" }
 
 !!! reference "Reference"
-    For detailed information about each indexing tool and configuration:
+    For detailed information about indexing tools and configuration:
 
-    * See the [Indexing Tools](#indexing-tools) section above for capabilities and purpose.
+    * **Primary Interface**: [How to create and use indexes](./using-indexes-tab-interface.md) - Comprehensive guide for the dedicated Indexes tab interface.
+    * **Quick Start**: [Create first Index](../../getting-started/indexing-quick-start.md) - Fast walkthrough using the recommended Indexes Tab approach.
+    * See the [Indexing Tools](#indexing-tools) section above for tool capabilities and purpose.
     * Review [AI Configuration](../../menus/settings/ai-configuration.md) for Embedding Models and Vector Storage (PgVector).
     * Check the Release Notes: [Indexing Tools: Replacement for Datasets](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets).
 
 
 ## How to configure and use Indexes from Chat
 
-You can trigger indexing and search directly from Chat using an Agent or a Toolkit that exposes indexing tools.
+While the **Indexes Tab interface is the recommended primary method** for index management, you can also trigger indexing and search directly from Chat using an Agent or a Toolkit that exposes indexing tools.
 
 1. Open Chat and start a new conversation or use an existing one. See [Chat](../../menus/chat.md).
 2. Select an Agent or Toolkit that has the **Index Data** tool available.
@@ -184,7 +246,7 @@ Once indexes exist, you can use Search Index or Stepback search tools through Ch
 
 ## How to configure and use Indexes from Agent
 
-You can also prepare an Agent with the required toolkit(s) and run indexing via Chat or within the Agent’s context.
+While the **Indexes Tab interface provides the most comprehensive index management experience**, you can also prepare an Agent with the required toolkit(s) and run indexing via Chat or within the Agent's context.
 
 1. Open your Agent. See [Agents](../../menus/agents.md).
 2. In the Toolkits section, add/select a toolkit that supports **Index Data** and configure it with the correct Credential.
@@ -197,13 +259,16 @@ You can also prepare an Agent with the required toolkit(s) and run indexing via 
 ## FAQs
 
 1. Where do I see my created indexes?
-	* A dedicated menu to review created indexes is planned. For now, use List Collections and Search Index via the toolkit Test section or through Chat.
+	* **Primary Method**: Navigate to Toolkits → Select your toolkit → Click the **Indexes** tab to view and manage all created indexes with visual status indicators, document counts, and last updated timestamps.
+	* **Alternative**: Use List Collections and Search Index via the toolkit Test section or through Chat.
 2. Can I keep using Datasources?
 	* Datasources remain in Nexus for reference, but indexing in Next replaces datasets. New datasets are not supported.
 3. How do I remove an index?
-	* Use Remove Index from the toolkit Test section or trigger it in Chat.
+	* **Primary Method**: Use the Indexes Tab - select the index from the sidebar and use the **Delete** button in the index information panel with confirmation modal.
+	* **Alternative**: Use Remove Index from the toolkit Test section or trigger it in Chat.
 4. Can I search without an Agent?
-	* Yes. In a toolkit’s Test section run Search Index, or in Chat address a Toolkit that exposes the search tools.
+	* **Primary Method**: Yes. Use the Indexes Tab interface - select your index and access search tools (Search Index, Stepback Search, Stepback Summary) directly from the **Run** tab with integrated chat interface for results.
+	* **Alternative**: In a toolkit's Test section run Search Index, or in Chat address a Toolkit that exposes the search tools.
 5. Are there usage limits?
 	* Next uses shared LLMs for evaluation and may have daily limits. For production, configure your own EPAM AI DIAL keys in Settings → [AI Configuration](../../menus/settings/ai-configuration.md) and see [Configure EPAM AI DIAL Key](../../getting-started/configure-epam-ai-dial-key.md).
 
@@ -215,7 +280,8 @@ You can also prepare an Agent with the required toolkit(s) and run indexing via 
 * Troubleshooting Chat and Canvas usage: [Chat – Advanced Usage](../how-to-use-chat-functionality.md) and [Canvas – Advanced Usage](../how-to-canvas.md)
 
 !!! success "Next steps"
-	* Index one system (e.g., a single repo or space) to validate settings.
-	* Try Search Index and Stepback Summary Index to compare results quality.
-	* Expand scope and schedule regular re-indexing as content changes.
+	* **Start with the Indexes Tab**: Use the [Create first Index](../../getting-started/indexing-quick-start.md) guide to create your first index via the dedicated interface.
+	* **Index one system** (e.g., a single repo or space) to validate settings using the Indexes Tab visual progress monitoring.
+	* **Try integrated search tools** from the Indexes Tab Run interface: Search Index and Stepback Summary Index to compare results quality.
+	* **Expand scope** and schedule regular re-indexing as content changes using the Indexes Tab management features.
 

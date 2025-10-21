@@ -30,6 +30,7 @@ nav:
           - Create first Artifact: getting-started/create-artifact.md
           - Create first Pipeline: getting-started/create-pipeline.md
           - Create first Conversation: getting-started/create-conversation.md
+          - Create first Index: getting-started/indexing-quick-start.md
       - Enhanced Usage:
           - Canvas in Conversation: getting-started/canvas-in-conversation.md
           - Add Teammates to Conversation: getting-started/add-teammates-to-conversation.md
@@ -38,8 +39,7 @@ nav:
           - Configure Epam AI Dial key (Next env): getting-started/configure-epam-ai-dial-key.md
           - Migrate Datasources to Indexing: how-tos/indexing/migrate-datasources-to-indexing.md
           - Configure and Use MCP Server from Elitea: getting-started/configure-and-use-mcp.md
-      - Indexing:
-          - Indexing Quick Start: getting-started/indexing-quick-start.md
+          
 
   - Menus:
       - Overview: menus/overview.md
@@ -73,7 +73,7 @@ nav:
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
-          - Indexes Tab Interface: how-tos/indexing/using-indexes-tab-interface.md
+          - How to create and use indexes: how-tos/indexing/using-indexes-tab-interface.md
           - Repository Indexing: how-tos/indexing/index-github-data.md
           - Confluence Indexing: how-tos/indexing/index-confluence-data.md
           - Jira Indexing: how-tos/indexing/index-jira-data.md
