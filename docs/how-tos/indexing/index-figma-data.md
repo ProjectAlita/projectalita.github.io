@@ -148,63 +148,89 @@ For tools that require a **Project ID**, you can obtain it in the following ways
 
 ## Step-by-Step: Index Figma Data
 
-### Content Indexing (from Toolkit)
+!!! info "Primary Interface"
+    All indexing operations are performed via the **Indexes Tab Interface**. This dedicated interface provides comprehensive index management with visual status indicators, real-time progress monitoring, and integrated search capabilities.
 
-1. **Open Toolkit Test Settings:**
-     - Navigate to your Figma toolkit's detail page
-     - In the **Test Settings** panel (right side), select a model (e.g., `gpt-4o`)
+!!! warning "Requirements"
+    Before proceeding, ensure your project has PgVector and Embedding Model configured in Settings → AI Configuration, and your Figma toolkit has the **Index Data** tool enabled.
 
-2. **Configure Index Data Tool:**
+### Step 1: Access the Interface
 
-     - From the tool dropdown, select **"Index Data"**
-     - Configure the following parameters:
+1. **Navigate to Toolkits**: Go to **Toolkits** in the main navigation
+2. **Select Your Figma Toolkit**: Choose your configured Figma toolkit from the list
+3. **Open Indexes Tab**: Click on the **Indexes** tab in the toolkit detail view
 
-     | Parameter | Description | Example Value |
-     |-----------|-------------|---------------|
-     | **Collection Suffix** * | Suffix for collection name (required) | `designs` or `ui` |
-     | **Progress Step (0 - 100)** | Step size for progress reporting during indexing | `10` or `25` |
-     | **Clean Index** | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
-     | **Chunking Config** | Configuration for document chunking | Default or custom settings |
-     | **Chunking Tool** | Method for splitting content into chunks | `markdown` (default) |
-     | **Project Id** | ID of the project to list files from | `55391681` |
-     | **File Keys Include** | List of file keys to include if Project Id not provided | `["Fp24FuzPwH0L74ODSrCnQo"]` |
-     | **File Keys Exclude** | List of file keys to exclude from indexing | `["OldDesignFile123"]` |
-     | **Node Ids Include** | List of top-level nodes (pages) to include | `["123-56", "7651-9230"]` |
-     | **Node Ids Exclude** | List of top-level nodes (pages) to exclude | `["Archive-Page"]` |
-     | **Node Types Include** | List of node types to include | `["FRAME", "COMPONENT"]` |
-     | **Node Types Exclude** | List of node types to exclude | `["VECTOR", "RECTANGLE"]` |
+If the tab is disabled or not visible, verify that:
+- PgVector and Embedding Model are configured in Settings → AI Configuration
+- The **Index Data** tool is enabled in your toolkit configuration
 
-3. **Run Figma Indexing:**
-     - Click **"Run Tool"** 
-     - Wait for completion (may take several minutes for large projects with many files)
-     - Check the output for success confirmation or error messages
+### Step 2: Create a New Index
 
-     ![Figma Index Configuration](../../img/how-tos/indexing/figma/figma-index-toolkit.png)
+1. **Click Create New Index**: In the Indexes sidebar, click the **+ Create New Index** button
+2. **New Index Form**: The center panel displays the new index creation form
 
----
+### Step 3: Configure Index Parameters
 
-## Verification: Confirm Index Success
+Fill in the required and optional parameters for your Figma indexing:
+
+| Parameter | Required | Description | Example Value |
+|-----------|----------|-------------|---------------|
+| Index Name | ✓ | Suffix for collection name (max 7 chars) | `designs` or `ui` |
+| Clean Index | ✗ | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
+| Progress Step (0 - 100) | ✗ | Step size for progress reporting during indexing | `10` or `25` |
+| Chunking Config | ✗ | Configuration for document chunking | Default or custom settings |
+| Chunking Tool | ✗ | Method for splitting content into chunks | `markdown` (default) |
+| file_or_page_url | ✗ | URL to file or page to index | `https://www.figma.com/design/[FILE_KEY]/Design?node-id=[PAGE_ID]` |
+| project_id | ✗ | ID of the project to list files from | `55391681` |
+| file_keys_include | ✗ | List of file keys to include if project_id not provided | `["Fp24FuzPwH0L74ODSrCnQo"]` |
+| file_keys_exclude | ✗ | List of file keys to exclude from indexing | `["OldDesignFile123"]` |
+| node_ids_include | ✗ | List of top-level nodes (pages) to include | `["123-56", "7651-9230"]` |
+| node_ids_exclude | ✗ | List of top-level nodes (pages) to exclude | `["Archive-Page"]` |
+| node_types_include | ✗ | List of node types to include | `["FRAME", "COMPONENT"]` |
+| node_types_exclude | ✗ | List of node types to exclude | `["VECTOR", "RECTANGLE"]` |
+
+### Step 4: Start Indexing
+
+1. **Form Validation**: The **Index** button remains inactive until all required fields are filled
+2. **Review Configuration**: Verify all parameters are correct
+3. **Click Index Button**: Start the indexing process
+4. **Monitor Progress**: Watch real-time updates with visual indicators:
+      - 🔄 **In Progress**: Indexing is currently running
+      - ✅ **Completed**: Indexing finished successfully
+      - ❌ **Failed**: Indexing encountered an error
+
+      ![Indexes](../../img/how-tos/indexing/figma/figma-index-tab.png)
+
+### Step 5: Verify Index Creation
 
 After indexing completes, verify the index was created successfully:
 
-### Method 1: Using Test Settings (Technical Verification)
+1. **Check Index Status**: Visual indicators show completion status
+2. **Review Index Details**: Click on the created index to see metadata and document count
+3. **Test Search**: Use the **Run** tab to test search functionality with sample queries
 
-1. **Use List Collections Tool:**
-     - In Test Settings, select **"List Collections"** tool
-     - Run tool to see all available collections
-     - Look for your collection with the specified suffix
-
-2. **Test Basic Search:**
-     - Select **"Search Index"** tool
-     - **Query**: e.g., `login screen design button`
-     - **Collection Suffix**: Your specified suffix
-     - Run tool and verify relevant results are returned
+!!! info "Alternative: Test Settings Method"
+    For quick testing and validation, you can also use the **Test Settings** panel on the right side of the toolkit detail page. Select a model, choose the **Index Data** tool from the dropdown, configure parameters, and click **Run Tool**. However, the Indexes Tab Interface is the recommended approach for comprehensive index management.
 
 ---
 
 ## Search and Chat with Indexed Data
 
-Once your Figma data is indexed, you can use the toolkit to search and interact with your content in multiple ways:
+Once your Figma data is indexed, you can use it in multiple ways:
+
+### Using the Indexes Interface
+
+**Direct Search via Indexes Tab:**
+
+1. **Access Indexes Tab**: Navigate to your Figma toolkit → **Indexes** tab
+2. **Select Index**: Click on your created index from the sidebar
+3. **Open Run Tab**: Click the **Run** tab in the center panel
+4. **Choose Search Tool**: Select from available search tools:
+      - **Search Index**: Basic semantic search
+      - **Stepback Search Index**: Advanced search with question breakdown
+      - **Stepback Summary Index**: Summarized insights from search results
+5. **Enter Query**: Type your natural language question
+6. **View Results**: See responses with citations to specific Figma files and components
 
 ### Using Toolkit in Conversations and Agents
 
@@ -302,6 +328,19 @@ Let's walk through a complete example of indexing and using a design team's Figm
 ## Troubleshooting & Tips
 
 ### Common Errors and Solutions
+
+**"Indexes tab not visible" or "Tab disabled":**
+
+- Verify PgVector and Embedding Model are configured in Settings → AI Configuration
+- Ensure the **Index Data** tool is enabled in your Figma toolkit configuration
+- Check that your toolkit supports indexing (Figma is supported)
+- Refresh the browser page and retry
+
+**"+ Create New Index button not working":**
+
+- Verify all project-level prerequisites are met (PgVector and Embedding Model)
+- Check that you have proper permissions for the toolkit
+- Ensure the toolkit is properly saved with credentials
 
 **"Authentication failed" or "Unauthorized access":**
 
