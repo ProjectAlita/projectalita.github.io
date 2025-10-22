@@ -6,6 +6,9 @@
 
 This guide provides a complete step-by-step walkthrough for indexing Artifacts data and then searching or chatting with the indexed content using ELITEA's AI-powered tools.
 
+!!! info "Primary Interface"
+    Indexing operations are performed through the **Indexes** interface within Toolkit Configuration. This interface provides comprehensive index management with visual status indicators, real-time progress monitoring, and integrated search capabilities. For detailed information, see [How to create and use indexes](./using-indexes-tab-interface.md).
+
 ## Overview
 
 Artifacts indexing allows you to create searchable indexes from files stored in your project's Artifact buckets:
@@ -53,8 +56,15 @@ Before indexing Artifacts data, ensure you have:
 1. **No Credential Required**: Unlike other toolkits, Artifacts indexing doesn't require external credentials
 2. **Vector Storage**: PgVector selected in Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 3. **Embedding Model**: Selected in AI Configuration (defaults available) → [AI Configuration](../../menus/settings/ai-configuration.md)
-4. **Artifact Toolkit**: Configured with your bucket name and files uploaded to your Artifact buckets
+4. **Artifact Toolkit**: Configured with your bucket name, files uploaded to your Artifact buckets, and **Index Data tool enabled**
 5. **Files in Bucket**: At least one file uploaded to the Artifact bucket you want to index
+
+!!! warning "Requirements"
+    The **Indexes** interface requires:
+    - PgVector and Embedding Model configured at the project level
+    - The **Index Data** tool enabled in your toolkit configuration
+    
+    Complete both project-level setup and toolkit configuration to access indexing functionality.
 
 ### File Types Supported
 
@@ -115,6 +125,9 @@ Before indexing, you need files in your Artifact buckets. You can upload files t
 3. **Enable Tools**: Select `Index Data`, `List Collections`, `Search Index`, `Stepback Search Index`, `Stepback Summary Index`, and `Remove Index` tools
 4. **Save Configuration**
 
+!!! warning "Required Tool"
+    The **Index Data** tool must be enabled for indexing functionality to be available. Without this tool, you cannot access the indexing interface.
+
 ### Tool Overview:
    - **Index Data**: Creates searchable indexes from files stored in your Artifact bucket
    - **List Collections**: Lists all available collections/indexes to verify what's been indexed
@@ -145,23 +158,36 @@ Before indexing, you need files in your Artifact buckets. You can upload files t
 
 ## Step-by-Step: Index Artifacts Data
 
-### File Content Indexing (from Toolkit)
+!!! note "Alternative Indexing Method"
+    While this guide focuses on the **Indexes** interface (recommended), you can also index data using the **Test Settings** panel in your toolkit configuration. The Indexes interface provides better visual feedback, progress monitoring, and index management capabilities.
 
-1. **Open Toolkit Test Settings:**
-     - Navigate to your Artifact toolkit's detail page
-     - In the **Test Settings** panel (right side), select a model (e.g., `gpt-4o`)
+### Step 1: Access the Interface
 
-2. **Configure Index Data Tool:**
+1. **Navigate to Toolkits**: Go to **Toolkits** in the main navigation
+2. **Select Your Artifact Toolkit**: Choose your configured Artifact toolkit from the list
+3. **Open Indexes Tab**: Click on the **Indexes** tab in the toolkit detail view
 
-     - From the tool dropdown, select **"Index Data"**
-     - Configure the following parameters:
+If the tab is disabled or not visible, verify that:
+- PgVector and Embedding Model are configured in Settings → AI Configuration
+- The **Index Data** tool is enabled in your toolkit configuration
 
-     | Parameter | Description | Example Value |
-     |-----------|-------------|---------------|
-     | **Collection Suffix** | Suffix for collection name (max 7 chars) | `docs` or `files` |
-     | **Clean Index** | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
-     | **Progress Step** | Step size for progress reporting during indexing | `10` (default) |
-     | **Chunking Config** | Configuration for how content is split into chunks | `{}` (default) or custom JSON config |
+### Step 2: Create a New Index
+
+1. **Click Create New Index**: In the Indexes sidebar, click the **+ Create New Index** button
+2. **New Index Form**: The center panel displays the new index creation form
+
+### Step 3: Configure Index Parameters
+
+Fill in the required and optional parameters for your Artifact bucket:
+
+| Parameter | Description | Example Value | Required |
+|-----------|-------------|---------------|----------|
+| Index Name | Suffix for collection name (max 7 chars) | `docs` or `files` | ✓ |
+| Clean Index | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) | ✗ |
+| Include Extensions | File extensions to include in indexing | `[".pdf", ".docx", ".txt", ".md"]` | ✗ |
+| Skip Extensions | File extensions to exclude from indexing | `[".png", ".jpg", ".zip", ".exe"]` | ✗ |
+| Progress Step | Progress reporting interval | `10` (default) | ✗ |
+| Chunking Config | Document chunking configuration | `{}` (default) | ✗ |
 
 !!! info "Chunking Configuration"
     **Chunking** determines how large files are split into smaller, searchable pieces. The default settings work well for most content, but you can customize chunking for specific needs:
@@ -180,10 +206,26 @@ Before indexing, you need files in your Artifact buckets. You can upload files t
       - **Technical content**: Adjust overlap to preserve code blocks or formulas
       - **Search precision**: Smaller chunks for more precise search results
 
-3. **Run File Indexing:**
-     - Click **"Run Tool"** 
-     - Wait for completion (time depends on number and size of files)
-     - Check the output for success confirmation or error messages
+### Step 4: Start Indexing
+
+1. **Form Validation**: The **Index** button remains inactive until all required fields are filled
+2. **Review Configuration**: Verify all parameters are correct
+3. **Click Index Button**: Start the indexing process
+4. **Monitor Progress**: Watch real-time updates with visual indicators:
+      - 🔄 **In Progress**: Indexing is currently running
+      - ✅ **Completed**: Indexing finished successfully
+      - ❌ **Failed**: Indexing encountered an error
+![Indexes tab](../../img/how-tos/indexing/artifacts/artifact-index-tab.png)
+
+### Step 5: Verify Index Creation
+
+Once indexing completes:
+
+1. **Check Index Status**: Verify the index shows ✅ **Completed** status in the sidebar
+2. **Review Index Information**: Click on your index to see:
+      - **Document Count**: Number of indexed files
+      - **Last Updated**: Timestamp of indexing completion
+      - **Index Name**: Your specified collection suffix
 
 
 
@@ -202,21 +244,22 @@ Before indexing, you need files in your Artifact buckets. You can upload files t
 **Indexing Steps:**
 
 1. **Configure Artifact Toolkit:**
-     - Bucket name: `research`
+     - Bucket name: `research-analysis`
      - Enable all indexing tools
 
 2. **Index the content:**
-     - Collection suffix: `q4` (for Q4 research)
-     - Clean index: ✓ (checked for fresh start)
-     - Run indexing tool
-
-   ![Artifact Indes Data](../../img/how-tos/indexing/artifacts/artifacts-index-toolkits.png)
+     - Navigate to **Toolkits** → Select your Artifact toolkit → Click **Indexes** tab
+     - Click **+ Create New Index** button
+     - Configure indexing parameters:
+         - **Index Name**: `q4` (for Q4 research)
+         - **Clean Index**: ✓ (checked for fresh start)
+     - Click **Index** button to start indexing
+     - Monitor progress with visual indicators (🔄 In Progress → ✅ Completed)
 
 3. **Verify indexing:**
-     - Use "List Collections" tool to confirm `research-analysis_q4` collection exists
-     - Check indexing output for file processing confirmation
-
-     ![Artifact Indes Data](../../img/how-tos/indexing/artifacts/artifacts-list-toolkit.png)
+     - Check that your index appears in the sidebar with ✅ **Completed** status
+     - Review document count and collection name
+     - Collection name: `q4`
 
 **After indexing, you can:**
 
@@ -224,6 +267,28 @@ Before indexing, you need files in your Artifact buckets. You can upload files t
 - Find specific data points: *"What percentage of survey respondents preferred our solution?"*
 - Get comprehensive insights: *"Summarize the key findings from the market analysis"*
 - Cross-reference information: *"How does the survey data support the competitive analysis conclusions?"*
+
+---
+
+## Using Search Tools with Indexed Data
+
+Once your Artifacts data is indexed, you can search and interact with it directly through the interface:
+
+### Accessing Search Functionality
+
+1. **Select Your Index**: Click on your completed index from the sidebar
+2. **Navigate to Run Tab**: Click the **Run** tab in the center panel
+3. **Choose Search Tool**: Select from available search tools in the dropdown:
+      - **Search Index**: Basic semantic search across indexed content
+      - **Stepback Search Index**: Advanced search that breaks down complex questions
+      - **Stepback Summary Index**: Search with automatic summarization of results
+
+### Running a Search
+
+1. **Enter Your Query**: Type your search query (e.g., "What are the key findings from the market research?")
+2. **Configure Parameters**: Adjust optional settings like filters and model configuration
+3. **Click Run**: Execute the search
+4. **View Results**: Results appear in the integrated chat interface on the right panel
 
 ---
 
@@ -368,43 +433,75 @@ Let's walk through a complete example of indexing and using a research team's Ar
 
 ## Common Issues and Troubleshooting
 
+### Common Issues and Solutions
+
+**"Indexing interface not visible" or "Tab disabled":**
+
+- Verify PgVector and Embedding Model are configured in Settings → AI Configuration
+- Ensure the **Index Data** tool is enabled in your Artifact toolkit configuration
+- Check that your toolkit supports indexing (Artifact is supported)
+- Refresh the browser page and retry
+
+**"+ Create New Index button not working":**
+
+- Verify all project-level prerequisites are met (PgVector and Embedding Model)
+- Check that you have proper permissions for the toolkit
+- Ensure the toolkit is properly saved with bucket configuration
+
 ### No Files Found During Indexing
 
 **Problem**: Index Data tool reports no files to process
 
 **Solutions:**
-  - Verify bucket name is spelled correctly in toolkit configuration
-  - Confirm files are uploaded and visible in the Artifacts menu
-  - Check that bucket contains supported file formats
+
+- Verify bucket name is spelled correctly in toolkit configuration
+- Confirm files are uploaded and visible in the Artifacts menu
+- Check that bucket contains supported file formats
 
 ### Poor Search Results
 
 **Problem**: Search queries return irrelevant results
 
 **Solutions:**
-  - Try more specific, detailed search queries
-  - Adjust the **Cut Off** score (lower for more results, higher for precision)
-  - Use Stepback Search Index for complex questions
-  - Verify the Collection Suffix targets the right dataset
+
+- Try more specific, detailed search queries
+- Adjust the **Cut Off** score (lower for more results, higher for precision)
+- Use Stepback Search Index for complex questions
+- Verify the Collection Suffix targets the right dataset
 
 ### Indexing Fails for Specific Files
 
 **Problem**: Some files fail to process during indexing
 
 **Solutions:**
-  - Check file formats are supported
-  - Verify files aren't corrupted or password-protected
-  - Review indexing output for specific error messages
-  - Try re-uploading problematic files
+
+ - Check file formats are supported
+ - Verify files aren't corrupted or password-protected
+ - Monitor the progress indicators for specific error messages
+- Try re-uploading problematic files
+
+**"Index creation failed" or "Indexing stuck in progress":**
+
+- Check that bucket contains files
+- Verify the repository has files matching your criteria
+- Monitor the progress indicators for specific error messages
+
+**"No search results returned":**
+
+- Verify the index shows ✅ **Completed** status
+- Check that your search query matches the type of content indexed
+- Try broader search terms or different search tools (Stepback Search, Stepback Summary)
+- Ensure the indexed content contains relevant information
 
 ### Collection Not Found
 
 **Problem**: Search tools can't find the specified collection
 
 **Solutions:**
-  - Use List Collections tool to see available collections
+
+  - Check the index status in the sidebar
   - Verify collection suffix matches what was used during indexing
-  - Confirm indexing completed successfully
+  - Confirm indexing completed successfully with ✅ **Completed** status
   - Check for typos in collection suffix
 
 ---
