@@ -5,6 +5,9 @@
 
 This guide provides a complete step-by-step walkthrough for indexing repository data and then searching or chatting with the indexed content using ELITEA's AI-powered tools.
 
+!!! info "Primary Interface"
+    Indexing operations are performed through the **Indexes** interface within Toolkit Configuration. This interface provides comprehensive index management with visual status indicators, real-time progress monitoring, and integrated search capabilities. For detailed information, see [How to create and use indexes](./using-indexes-tab-interface.md).
+
 **Repository Support:**
 
 This guide is applicable to all supported repository platforms:
@@ -62,7 +65,14 @@ Before indexing GitHub data, ensure you have:
 1. **GitHub Credential**: A Personal Access Token or [GitHub App credentials](../how-to-use-credentials.md#github-credential-setup) configured in ELITEA
 2. **Vector Storage**: PgVector selected in Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 3. **Embedding Model**: Selected in AI Configuration (defaults available) → [AI Configuration](../../menus/settings/ai-configuration.md)
-4. **GitHub Toolkit**: Configured with your repository details and credentials
+4. **GitHub Toolkit**: Configured with your repository details, credentials, and **Index Data tool enabled**
+
+!!! warning "Requirements"
+    The **Indexes** interface requires:
+    - PgVector and Embedding Model configured at the project level
+    - The **Index Data** tool enabled in your toolkit configuration
+    
+    Complete both project-level setup and toolkit configuration to access indexing functionality.
 
 ### Required Permissions
 
@@ -100,16 +110,18 @@ Your GitHub credential needs these minimum scopes based on what you want to inde
 
 1. **Create Toolkit**: Navigate to **Toolkits** → **+ Create** → **GitHub**
 2. **Configure Settings**: Set repository (`owner/repo-name`), branches, and assign your GitHub credential
-3. **Enable Tools**: Select `index_data`, `List collections`, `search_index`, `stepback_search_index`, `Stepback summary index`, and `"Remove index` tools
+3. **Enable Required Tools**: Select `index_data` tool (required for indexing functionality) and optionally `search_index`, `stepback_search_index`, `stepback_summary_index`, and `remove_index` tools
 4. **Save Configuration**
 
+!!! warning "Required Tool"
+    The **Index Data** tool must be enabled for indexing functionality to be available. Without this tool, you cannot access the indexing interface.
+
 ### Tool Overview:
-   - **Index_data**: Creates searchable indexes from GitHub repository content (files, documentation, code)
-   - **List collection**: Lists all available collections/indexes to verify what's been indexed
+   - **Index_data**: Creates searchable indexes from GitHub repository content (files, documentation, code) - **Required for indexing**
    - **Search_index**: Performs semantic search across indexed content using natural language queries
    - **Stepback_search_index**: Advanced search that breaks down complex questions into simpler parts for better results
-   - **Stepback summary index**: Generates summaries and insights from search results across indexed content
-   - **Remove index**: Deletes existing collections/indexes when you need to clean up or start fresh
+   - **Stepback_summary_index**: Generates summaries and insights from search results across indexed content
+   - **Remove_index**: Deletes existing collections/indexes when you need to clean up or start fresh
 
 !!! info "Detailed Instructions"
     For complete toolkit configuration including PgVector setup and embedding models, see:
@@ -122,54 +134,93 @@ Your GitHub credential needs these minimum scopes based on what you want to inde
 
 ## Step-by-Step: Index GitHub Data
 
-### Repository Content Indexing(from Toolkit)
+### Step 1: Access the Interface
 
-1. **Open Toolkit Test Settings:**
-     - Navigate to your GitHub toolkit's detail page
-     - In the **Test Settings** panel (right side), select a model (e.g., `gpt-4o`)
+1. **Navigate to Toolkits**: Go to **Toolkits** in the main navigation
+2. **Select Your GitHub Toolkit**: Choose your configured GitHub toolkit from the list
+3. **Open Indexes Tab**: Click on the **Indexes** tab in the toolkit detail view
 
-2. **Configure Index Data Tool:**
+If the tab is disabled or not visible, verify that:
+- PgVector and Embedding Model are configured in Settings → AI Configuration
+- The **Index Data** tool is enabled in your toolkit configuration
 
-     - From the tool dropdown, select **"Index Data"**
-     - Configure the following parameters:
+![Index Tab Access](../../img/how-tos/indexing/index-tab/access-index-tab.png)
 
-     | Parameter | Description | Example Value |
-     |-----------|-------------|---------------|
-     | **Collection Suffix** | Suffix for collection name (max 7 chars) | `docs` or `code` |
-     | **Branch** | Git branch to index (leave empty for default branch) | `main`, `develop`, or empty |
-     | **Whitelist** | File extensions/paths to include | `["*.md", "*.py", "*.js", "*.yml"]` |
-     | **Blacklist** | File extensions/paths to exclude | `["*.png", "*.jpg", "node_modules/*", ".git/*"]` |
-     | **Clean Index** | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
-     
+### Step 2: Create a New Index
 
-3. **Run Repository Indexing:**
-     - Click **"Run Tool"** 
-     - Wait for completion (may take several minutes for large repositories)
-     - Check the output for success confirmation or error messages
+1. **Click Create New Index**: In the Indexes sidebar, click the **+ Create New Index** button
+2. **New Index Form**: The center panel displays the new index creation form
+
+![New Index Form](../../img/how-tos/indexing/index-tab/new-index.png)
+
+### Step 3: Configure Index Parameters
+
+Fill in the required and optional parameters for your GitHub repository:
+
+| Parameter | Description | Example Value | Required |
+|-----------|-------------|---------------|----------|
+| Index Name | Suffix for collection name (max 7 chars) | `docs` or `code` | ✓ |
+| Branch | Git branch to index (leave empty for default branch) | `main`, `develop`, or empty | ✗ |
+| Whitelist | File extensions/paths to include | `["*.md", "*.py", "*.js", "*.yml"]` | ✗ |
+| Blacklist | File extensions/paths to exclude | `["*.png", "*.jpg", "node_modules/*", ".git/*"]` | ✗ |
+| Clean Index | Remove existing index data before re-indexing | ✗ (checked) or ✗ (unchecked) | ✗ |
+| Progress Step | Progress reporting interval | `10` (default) | ✗ |
+| Chunking Config | Document chunking configuration | `{}` (default) | ✗ |
+
+![Index Configuration](../../img/how-tos/indexing/index-tab/index-params.png)
+
+### Step 4: Start Indexing
+
+1. **Form Validation**: The **Index** button remains inactive until all required fields are filled
+2. **Review Configuration**: Verify all parameters are correct
+3. **Click Index Button**: Start the indexing process
+4. **Monitor Progress**: Watch real-time updates with visual indicators:
+   - 🔄 **In Progress**: Indexing is currently running
+   - ✅ **Completed**: Indexing finished successfully
+   - ❌ **Failed**: Indexing encountered an error
+
+### Step 5: Verify Index Creation
+
+Once indexing completes:
+
+1. **Check Index Status**: Verify the index shows ✅ **Completed** status in the sidebar
+2. **Review Index Information**: Click on your index to see:
+   - **Document Count**: Number of indexed files
+   - **Last Updated**: Timestamp of indexing completion
+   - **Index Name**: Your specified collection suffix
+
+![Indexed Data](../../img/how-tos/indexing/index-tab/indexed-data.png)
 
 ---
 
-## Verification: Confirm Index Success
+## Using Search Tools with Indexed Data
 
-After indexing completes, verify the index was created successfully:
+Once your GitHub data is indexed, you can search and interact with it directly through the interface:
 
-### Method 1: Using Test Settings (Technical Verification)
+### Accessing Search Functionality
 
-1. **Use List Collections Tool:**
-     - In Test Settings, select **"List Collections"** tool
-     - Run tool to see all available collections
-     - Look for your collection with the specified suffix
+1. **Select Your Index**: Click on your completed index from the sidebar
+2. **Navigate to Run Tab**: Click the **Run** tab in the center panel
+3. **Choose Search Tool**: Select from available search tools in the dropdown:
+   - **Search Index**: Basic semantic search across indexed content
+   - **Stepback Search Index**: Advanced search that breaks down complex questions
+   - **Stepback Summary Index**: Search with automatic summarization of results
 
-2. **Test Basic Search:**
-     - Select **"Search Index"** tool
-     - **Query**: e.g., `README documentation setup`
-     - **Collection Suffix**: Your specified suffix
-     - Run tool and verify relevant results are returned
+![Index Search Interface](../../img/how-tos/indexing/index-tab/index-run.png)
+
+### Running a Search
+
+1. **Enter Your Query**: Type your search query (e.g., "How to configure GitHub credentials?")
+2. **Configure Parameters**: Adjust optional settings like filters and model configuration
+3. **Click Run**: Execute the search
+4. **View Results**: Results appear in the integrated chat interface on the right panel
+
+![Index Search Results](../../img/how-tos/indexing/index-tab/Index-search.png)
 
 
 ---
 
-## Search and Chat with Indexed Data
+## Using Indexed Data in Conversations and Agents
 
 Once your GitHub data is indexed, you can use the toolkit to search and interact with your content in multiple ways:
 
@@ -192,66 +243,57 @@ Let's walk through a complete example of indexing and using the ELITEA documenta
 
 **Step 1: Setup GitHub Toolkit for projectalita.github.io**
 
- **Configure GitHub Toolkit:**
-
-   - Repository: `projectalita/projectalita.github.io`
-   - Branch: `main` (leave empty for default)
-   - Credential: Your GitHub Personal Access Token
-   - Tools enabled: `Index_data`, `List collection`, `Search_index`, `Stepback_search_index`, `Stepback summary index`, `Remove index`
+Configure GitHub Toolkit with:
+- Repository: `projectalita/projectalita.github.io`
+- Branch: `main` (leave empty for default)
+- Credential: Your GitHub Personal Access Token
+- Tools enabled: `index_data` (required), `search_index`, `stepback_search_index`, `stepback_summary_index`, `remove_index`
 
 **Step 2: Index the Repository**
 
- **Run Indexing with these parameters:**
-
-   - Collection Suffix: `docs`
-   - Branch: (empty - uses main branch)
-   - Whitelist: `["*.md"]`
-   - Blacklist: `["*.png"]`
-   - Clean Index: `✓ (checked)`
-
-    ![GitHub Index Data Configuration Example](../../img/how-tos/indexing/index-data-github.png)
+1. Navigate to **Toolkits** → Select your GitHub toolkit → Click **Indexes** tab
+2. Click **+ Create New Index** button
+3. Configure indexing parameters:
+   - **Index Name (Collection Suffix)**: `docs`
+   - **Branch**: (empty - uses main branch)
+   - **Whitelist**: `["*.md"]`
+   - **Blacklist**: `["*.png"]`
+   - **Clean Index**: ✓ (checked)
+4. Click **Index** button to start indexing
+5. Monitor progress with visual indicators (🔄 In Progress → ✅ Completed)
 
 **Step 3: Verify Index Creation**
 
- **Check that your collection was created successfully:**
+Check that your index appears in the sidebar with:
+- ✅ **Completed** status
+- Document count showing number of indexed markdown files
+- Collection name: `projectalita_projectalita_github_io_docs`
 
-  - In Test Settings, select **"List Collections"** tool from the dropdown
-  - Click **"Run Tool"** 
-  - Look for your collection in the output: `projectalita_projectalita_github_io_docs`
-  - This confirms the indexing completed successfully
+**Step 4: Test Search Functionality**
 
-    ![List Collections Tool Output](../../img/how-tos/indexing/list-collection-github.png)
+1. Select your completed index from the sidebar
+2. Click the **Run** tab in the center panel
+3. Choose **Search Index** from the tool dropdown
+4. Enter a test query: "How do I create credentials in ELITEA?"
+5. Click **Run** and review results in the chat interface
 
-**Step 4: Use in Conversations**
+**Step 5: Use in Conversations**
 
- **Add toolkit to a conversation and start asking questions:**
+1. Navigate to **Conversations** → **+ New Conversation**
+2. In the participants section, click + to add your GitHub toolkit
+3. Start asking questions about your indexed content
 
-   - Navigate to **Conversations** → **+ New Conversation**
-   - In the participants section click + to add Toolkit
-   - Select your GitHub toolkit from the available toolkits list
-   - Start the conversation and begin asking questions about your indexed content
+**Example Conversation:**
 
+**User:** "How do I create credentials in ELITEA?"
 
-   **User:** "How do I create credentials in ELITEA?"
-   
-   **GitHub Toolkit:** "Based on your indexed documentation, here are the steps to create credentials:
-   
-   1. Navigate to **Credentials** → **+ Create**
-   2. Select the credential type (GitHub, Jira, etc.)
-   3. Enter the required authentication details...
-   
-    ![Search index](../../img/how-tos/indexing/search-index-github.com.png)
+**GitHub Toolkit:** "Based on your indexed documentation, here are the steps to create credentials:
 
-   
-   **User:** "Show me how to configure Secrets in Elitea"
-   
-   **GitHub Toolkit:** "Here's how to configure Secrets in ELITEA:
-   
-   1. Go to **Settings** → **+ Secrets**
-   2. Click **+ Create** button to initiate the creation of a new secret
-   3. Enter the name and value...
-   
-![Search index](../../img/how-tos/indexing/search-index-github-v2.png)
+1. Navigate to **Credentials** → **+ Create**
+2. Select the credential type (GitHub, Jira, etc.)
+3. Enter the required authentication details..."
+
+![Search Results Example](../../img/how-tos/indexing/search-index-github.com.png)
 
 
 
@@ -259,80 +301,77 @@ Let's walk through a complete example of indexing and using the ELITEA documenta
 
 ### Common Errors and Solutions
 
+## Troubleshooting & Tips
+
+### Common Issues and Solutions
+
+**"Indexing interface not visible" or "Tab disabled":**
+- Verify PgVector and Embedding Model are configured in Settings → AI Configuration
+- Ensure the **Index Data** tool is enabled in your GitHub toolkit configuration
+- Check that your toolkit supports indexing (GitHub is supported)
+- Refresh the browser page and retry
+
+**"+ Create New Index button not working":**
+- Verify all project-level prerequisites are met (PgVector and Embedding Model)
+- Check that you have proper permissions for the toolkit
+- Ensure the toolkit is properly saved with credentials
+
 **"Repository not found" or "Authentication failed":**
+- Verify your GitHub credential has the correct token
+- Ensure the repository name format is `owner/repository`
+- Check that your token has appropriate permissions for the repository
 
-  - Verify your GitHub credential has the correct token
-  - Ensure the repository name format is `owner/repository`
-  - Check that your token has appropriate permissions for the repository
+**"Index creation failed" or "Indexing stuck in progress":**
+- Check your whitelist/blacklist patterns aren't too restrictive
+- Verify the repository has files matching your whitelist
+- Try indexing with broader patterns first, then add restrictions
+- Monitor the progress indicators for specific error messages
 
-**"Rate limit exceeded":**
+**"No search results returned":**
+- Verify the index shows ✅ **Completed** status
+- Check that your search query matches the type of content indexed
+- Try broader search terms or different search tools (Stepback Search, Stepback Summary)
+- Ensure the indexed content contains relevant information
 
-  - Large repositories may hit GitHub API limits
-  - Wait 1 hour and retry, or use more specific whitelist patterns
-  - Consider indexing smaller subsets of files
-
-**"No documents indexed":**
-
-  - Check your whitelist/blacklist patterns aren't too restrictive
-  - Verify the repository has files matching your whitelist
-  - Try indexing without filters first, then add restrictions
-
-**"Vector database connection failed" or "PgVector errors":**
-
-  - Ensure PgVector is properly configured in Settings → AI Configuration
-  - Verify the vector database is running and accessible
-  - Check connection credentials and database permissions
-  - Restart the vector database service if connection issues persist
-
-**"Embedding model not found" or "Embedding errors":**
-
-  - Verify an embedding model is selected in AI Configuration
-  - Check if the embedding model is properly downloaded/initialized
-  - Try switching to a different embedding model (e.g., sentence-transformers/all-MiniLM-L6-v2)
-  - Ensure sufficient system resources for the embedding model to load
+### Performance and Scope Considerations
 
 ### Performance and Scope Considerations
 
 **For Large Repositories:**
-
 - Use specific whitelist patterns: `["docs/*.md", "src/*.py"]`
 - Exclude binary files: `["*.png", "*.jpg", "*.zip", "*.exe"]`
 - Consider indexing specific directories: `["docs/*", "README.md"]`
+- Monitor the progress indicators and document count during indexing
 
-
-### Search Result Quality
-
-**If search returns few/no results:**
-
-- Lower the cut-off score from 0.5 to 0.35 or 0.3
-- Increase search_top from 10 to 20 or 30
-- Try rephrasing your query with different keywords
-- Verify the indexed content contains relevant information
-
-**For better search quality:**
-
-- Include both documentation and code files in your whitelist for comprehensive coverage
+**Search Result Quality:**
 - Use natural language queries rather than exact keyword matches
-- Leverage stepback search for complex questions that require reasoning
+- Try different search tools for complex questions (Stepback Search, Stepback Summary)
+- Leverage the integrated chat interface for follow-up questions
 - Create separate indexes for different content types (docs vs code vs configs)
+
+**Index Management Best Practices:**
+- Use descriptive collection suffixes (`docs`, `code`, `main`, `v1`)
+- Enable the **Clean Index** option when re-indexing to ensure fresh data
+- Monitor index status regularly through the visual indicators
+- Use the **Update** button for incremental updates when repository content changes
+- Delete unused indexes using the **Delete** button to free up resources
 
 ### Content-Specific Indexing Tips
 
-**For Issue & PR Data (Future Enhancement):**
-
-- Focus on repositories with active issue discussions
-- Consider date ranges for large, long-running projects
-- Include both open and closed issues for comprehensive coverage
-
 **For Documentation:**
-
 - Index README files, wiki content, and inline code documentation
 - Include changelog and release notes for version-specific information
+- Use whitelist patterns like `["*.md", "docs/**", "README*"]`
+
+**For Code Analysis:**
+- Include source code files with patterns like `["*.py", "*.js", "*.java"]`
+- Consider excluding test files if focusing on production code
+- Include configuration files for deployment and setup guidance
 
 **For Configuration Management:**
-
 - Index deployment configs, CI/CD pipelines, and environment settings
 - Be careful to exclude sensitive data (secrets, keys, credentials)
+- Use patterns like `["*.yml", "*.yaml", "*.json", "*.toml"]`
 
 ---
 
@@ -342,6 +381,8 @@ Let's walk through a complete example of indexing and using the ELITEA documenta
     For additional information and detailed setup instructions, see:
     
     - [Indexing Overview](./indexing-overview.md) - General indexing concepts and features
+    - [How to create and use indexes](./using-indexes-tab-interface.md) - Comprehensive guide for indexing functionality
+    - [Create first Index](../../getting-started/indexing-quick-start.md) - Quick start guide for creating indexes
     - [Create a Credential](../../getting-started/create-credential.md) - Step-by-step credential creation guide
     - [How to Use Credentials](../how-to-use-credentials.md) - Credential management and GitHub setup
     - [Toolkits Menu](../../menus/toolkits.md) - Toolkit configuration and management
