@@ -118,59 +118,85 @@ Your SharePoint credential needs appropriate permissions based on what you want 
 
 ## Step-by-Step: Index SharePoint Data
 
-### Content Indexing (from Toolkit)
+!!! info "Primary Interface"
+    All indexing operations are performed via the **Indexes Tab Interface**. This dedicated interface provides comprehensive index management with visual status indicators, real-time progress monitoring, and integrated search capabilities.
 
-1. **Open Toolkit Test Settings:**
-     - Navigate to your SharePoint toolkit's detail page
-     - In the **Test Settings** panel (right side), select a model (e.g., `gpt-4o`)
+!!! warning "Requirements"
+    Before proceeding, ensure your project has PgVector and Embedding Model configured in Settings → AI Configuration, and your SharePoint toolkit has the **Index Data** tool enabled.
 
-2. **Configure Index Data Tool:**
+### Step 1: Access the Interface
 
-     - From the tool dropdown, select **"Index Data"**
-     - Configure the following parameters:
+1. **Navigate to Toolkits**: Go to **Toolkits** in the main navigation
+2. **Select Your SharePoint Toolkit**: Choose your configured SharePoint toolkit from the list
+3. **Open Indexes Tab**: Click on the **Indexes** tab in the toolkit detail view
 
-     | Parameter | Description | Example Value |
-     |-----------|-------------|---------------|
-     | **Collection Suffix** * | Suffix for collection name (required) | `docs` or `files` |
-     | **Progress Step (0 - 100)** | Step size for progress reporting during indexing | `10` or `25` |
-     | **Clean Index** | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
-     | **Chunking Config** | Configuration for document chunking | Default or custom settings |
-     | **Chunking Tool** | Method for splitting content into chunks | `markdown` (default) |
-     | **Limit Files** | Maximum number of files to index | `1000` (default) |
-     | **Include Extensions** | File extensions to include in indexing | `["*.docx", "*.pdf", "*.xlsx"]` |
-     | **Skip Extensions** | File extensions to skip when processing | `["*.exe", "*.zip", "*.png"]` |
+If the tab is disabled or not visible, verify that:
+- PgVector and Embedding Model are configured in Settings → AI Configuration
+- The **Index Data** tool is enabled in your toolkit configuration
 
-3. **Run SharePoint Indexing:**
-     - Click **"Run Tool"** 
-     - Wait for completion (may take several minutes for large document libraries)
-     - Check the output for success confirmation or error messages
+### Step 2: Create a New Index
 
-     ![SharePoint Index Configuration](../../img/how-tos/indexing/sharepoint-index-toolkit.png)
+1. **Click Create New Index**: In the Indexes sidebar, click the **+ Create New Index** button
+2. **New Index Form**: The center panel displays the new index creation form
 
----
+### Step 3: Configure Index Parameters
 
-## Verification: Confirm Index Success
+Fill in the required and optional parameters for your SharePoint indexing:
+
+| Parameter | Required | Description | Example Value |
+|-----------|----------|-------------|---------------|
+| Index Name | ✓ | Suffix for collection name (max 7 chars) | `docs` or `files` |
+| Clean Index | ✗ | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
+| Progress Step (0 - 100) | ✗ | Step size for progress reporting during indexing | `10` or `25` |
+| Chunking Config | ✗ | Configuration for document chunking | Default or custom settings |
+| limit_files | ✗ | Maximum number of files to index | `1000` (default) |
+| include_extensions | ✗ | File extensions to include in indexing | `["*.docx", "*.pdf", "*.xlsx"]` |
+| skip_extensions | ✗ | File extensions to skip when processing | `["*.exe", "*.zip", "*.png"]` |
+
+### Step 4: Start Indexing
+
+1. **Form Validation**: The **Index** button remains inactive until all required fields are filled
+2. **Review Configuration**: Verify all parameters are correct
+3. **Click Index Button**: Start the indexing process
+4. **Monitor Progress**: Watch real-time updates with visual indicators:
+      - 🔄 **In Progress**: Indexing is currently running
+      - ✅ **Completed**: Indexing finished successfully
+      - ❌ **Failed**: Indexing encountered an error
+
+![Indexes tab](../../img/how-tos/indexing/sharepoint/sharepoint-index-tab.png)
+
+### Step 5: Verify Index Creation
 
 After indexing completes, verify the index was created successfully:
 
-### Method 1: Using Test Settings (Technical Verification)
+1. **Check Index Status**: Visual indicators show completion status
+2. **Review Index Details**: Click on the created index to see metadata and document count
+3. **Test Search**: Use the **Run** tab to test search functionality with sample queries
 
-1. **Use List Collections Tool:**
-     - In Test Settings, select **"List Collections"** tool
-     - Run tool to see all available collections
-     - Look for your collection with the specified suffix
-
-2. **Test Basic Search:**
-     - Select **"Search Index"** tool
-     - **Query**: e.g., `project budget report`
-     - **Collection Suffix**: Your specified suffix
-     - Run tool and verify relevant results are returned
+!!! info "Alternative: Test Settings Method"
+    For quick testing and validation, you can also use the **Test Settings** panel on the right side of the toolkit detail page. Select a model, choose the **Index Data** tool from the dropdown, configure parameters, and click **Run Tool**. However, the Indexes Tab Interface is the recommended approach for comprehensive index management.
 
 ---
 
 ## Search and Chat with Indexed Data
 
-Once your SharePoint data is indexed, you can use the toolkit to search and interact with your content in multiple ways:
+Once your SharePoint data is indexed, you can use it in multiple ways:
+
+### Using the Indexes Interface
+
+**Direct Search via Indexes Tab:**
+
+1. **Access Indexes Tab**: Navigate to your SharePoint toolkit → **Indexes** tab
+2. **Select Index**: Click on your created index from the sidebar
+3. **Open Run Tab**: Click the **Run** tab in the center panel
+4. **Choose Search Tool**: Select from available search tools:
+      - **Search Index**: Basic semantic search
+      - **Stepback Search Index**: Advanced search with question breakdown
+      - **Stepback Summary Index**: Summarized insights from search results
+5. **Enter Query**: Type your natural language question
+6. **View Results**: See responses with citations to specific SharePoint documents
+
+![Run search](../../img/how-tos/indexing/sharepoint/sharepoint-index-run.png)
 
 ### Using Toolkit in Conversations and Agents
 
@@ -205,7 +231,7 @@ Let's walk through a complete example of indexing and using a company's SharePoi
  
      > "Index all documents from our SharePoint site with suffix 'docs'. Include Word and PDF files but skip image files. Clean any existing index first."
 
-   ![SharePoint Index Chat](../../img/how-tos/indexing/sharepoint-index-chat.png)
+   ![SharePoint Index Chat](../../img/how-tos/indexing/sharepoint/sharepoint-index-chat.png)
 
 **Step 4: Verify Index Creation**
 
@@ -215,7 +241,7 @@ Let's walk through a complete example of indexing and using a company's SharePoi
 
  * **SharePoint Toolkit Response:**
 
-![SharePoint List](../../img/how-tos/indexing/sharepoint-list-collections.png)
+![SharePoint List](../../img/how-tos/indexing/sharepoint/sharepoint-list-collections.png)
 
  This confirms the indexing completed successfully and your document collection is available for searching.
 
@@ -231,7 +257,7 @@ Let's walk through a complete example of indexing and using a company's SharePoi
    
    *Source: Q3_Financial_Report.pdf (Created: 2024-10-15, Modified: 2024-10-20)*"
 
-   ![SharePoint Search](../../img/how-tos/indexing/sharepoint-index-search.png)
+   ![SharePoint Search](../../img/how-tos/indexing/sharepoint/sharepoint-index-search.png)
    
   * **User:** "Find me the latest project management templates"
    
@@ -255,6 +281,19 @@ Let's walk through a complete example of indexing and using a company's SharePoi
 ## Troubleshooting & Tips
 
 ### Common Errors and Solutions
+
+**"Indexes tab not visible" or "Tab disabled":**
+
+- Verify PgVector and Embedding Model are configured in Settings → AI Configuration
+- Ensure the **Index Data** tool is enabled in your SharePoint toolkit configuration
+- Check that your toolkit supports indexing (SharePoint is supported)
+- Refresh the browser page and retry
+
+**"+ Create New Index button not working":**
+
+- Verify all project-level prerequisites are met (PgVector and Embedding Model)
+- Check that you have proper permissions for the toolkit
+- Ensure the toolkit is properly saved with credentials
 
 **"Authentication failed" or "Unauthorized access":**
 
