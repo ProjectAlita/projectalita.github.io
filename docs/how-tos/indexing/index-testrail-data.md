@@ -112,34 +112,66 @@ Your TestRail credential needs appropriate permissions based on what you want to
 
 ## Step-by-Step: Index TestRail Data
 
-### Test Case Indexing (from Toolkit)
+!!! info "Primary Interface"
+    All indexing operations are performed via the **Indexes Tab Interface**. This dedicated interface provides comprehensive index management with visual status indicators, real-time progress monitoring, and integrated search capabilities.
 
-1. **Open Toolkit Test Settings:**
-     - Navigate to your TestRail toolkit's detail page
-     - In the **Test Settings** panel (right side), select a model (e.g., `gpt-4o`)
+!!! warning "Requirements"
+    Before proceeding, ensure your project has PgVector and Embedding Model configured in Settings → AI Configuration, and your TestRail toolkit has the **Index Data** tool enabled.
 
-2. **Configure Index Data Tool:**
+### Step 1: Access the Interface
 
-     - From the tool dropdown, select **"Index Data"**
-     - Configure the following parameters:
+1. **Navigate to Toolkits**: Go to **Toolkits** in the main navigation
+2. **Select Your TestRail Toolkit**: Choose your configured TestRail toolkit from the list
+3. **Open Indexes Tab**: Click on the **Indexes** tab in the toolkit detail view
 
-     | Parameter | Description | Example Value |
-     |-----------|-------------|---------------|
-     | **Project ID** * | TestRail project ID to index data from (required) | `1` or `5` |
-     | **Collection Suffix** * | Suffix for collection name (max 7 chars) | `cases` or `qa` |
-     | **Progress Step** | Step size for progress reporting during indexing | `10` (default) |
-     | **Clean Index** | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
-     | **Suite ID** | Optional TestRail suite ID to filter test cases | `3` or leave empty |
-     | **Section ID** | Optional section ID to filter test cases | `15` or leave empty |
-     | **Include Attachments** | Whether to include attachment content in indexing | ✓ (checked) or ✗ (unchecked) |
-     | **Skip Attachment Extensions** | File extensions to skip when processing attachments | `[".png", ".jpg"]` |
-     | **Chunking Tool** | Method for splitting content into chunks | `json` (default) |
-     | **Chunking Config** | Configuration settings for content chunking | `{"chunk_size": 4000, "chunk_overlap": 200}` |
+If the tab is disabled or not visible, verify that:
+- PgVector and Embedding Model are configured in Settings → AI Configuration
+- The **Index Data** tool is enabled in your toolkit configuration
 
-3. **Run TestRail Indexing:**
-     - Click **"Run Tool"** 
-     - Wait for completion (may take several minutes for large test suites)
-     - Check the output for success confirmation or error messages
+### Step 2: Create a New Index
+
+1. **Click Create New Index**: In the Indexes sidebar, click the **+ Create New Index** button
+2. **New Index Form**: The center panel displays the new index creation form
+
+### Step 3: Configure Index Parameters
+
+Fill in the required and optional parameters for your TestRail indexing:
+
+| Parameter | Required | Description | Example Value |
+|-----------|----------|-------------|---------------|
+| Index Name | ✓ | Suffix for collection name (max 7 chars) | `cases` or `qa` |
+| Clean Index | ✗ | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
+| Progress Step (0 - 100) | ✗ | Step size for progress reporting during indexing | `10` (default) |
+| Chunking Config | ✗ | Configuration settings for content chunking | `{"chunk_size": 4000, "chunk_overlap": 200}` |
+| Chunking Tool | ✗ | Method for splitting content into chunks | `json` (default) |
+| project_id | ✓ | TestRail project ID to index data from | `1` or `5` |
+| suite_id | ✗ | Optional TestRail suite ID to filter test cases | `3` or leave empty |
+| section_id | ✗ | Optional section ID to filter test cases | `15` or leave empty |
+| include_attachments | ✗ | Whether to include attachment content in indexing | ✓ (checked) or ✗ (unchecked) |
+| skip_attachment_extensions | ✗ | File extensions to skip when processing attachments | `[".png", ".jpg"]` |
+
+### Step 4: Start Indexing
+
+1. **Form Validation**: The **Index** button remains inactive until all required fields are filled
+2. **Review Configuration**: Verify all parameters are correct
+3. **Click Index Button**: Start the indexing process
+4. **Monitor Progress**: Watch real-time updates with visual indicators:
+      - 🔄 **In Progress**: Indexing is currently running
+      - ✅ **Completed**: Indexing finished successfully
+      - ❌ **Failed**: Indexing encountered an error
+
+![Indexing](../../img/how-tos/indexing/testrail/testrail-index-tab.png)
+
+### Step 5: Verify Index Creation
+
+After indexing completes, verify the index was created successfully:
+
+1. **Check Index Status**: Visual indicators show completion status
+2. **Review Index Details**: Click on the created index to see metadata and document count
+3. **Test Search**: Use the **Run** tab to test search functionality with sample queries
+
+!!! info "Alternative: Test Settings Method"
+    For quick testing and validation, you can also use the **Test Settings** panel on the right side of the toolkit detail page. Select a model, choose the **Index Data** tool from the dropdown, configure parameters, and click **Run Tool**. However, the Indexes Tab Interface is the recommended approach for comprehensive index management.
 
 ### Real-Life Example: Indexing QA Test Documentation
 
@@ -182,7 +214,7 @@ Your TestRail credential needs appropriate permissions based on what you want to
      - Expected collections: `ecom`, `auth`, `checkout`
      - Check indexing output for test case processing confirmation
 
-     ![TestRail List Collections](../../img/how-tos/indexing/testrail/testrail-list-collections.png)
+     ![TestRail List Collections](../../img/how-tos/indexing/testrail/testrail-collections.png)
 
 
 **After indexing, you can search for:**
@@ -197,7 +229,23 @@ Your TestRail credential needs appropriate permissions based on what you want to
 
 ## Search and Chat with Indexed Data
 
-Once your TestRail data is indexed, you can use the toolkit to search and interact with your test documentation in multiple ways:
+Once your TestRail data is indexed, you can use it in multiple ways:
+
+### Using the Indexes Interface
+
+**Direct Search via Indexes Tab:**
+
+1. **Access Indexes Tab**: Navigate to your TestRail toolkit → **Indexes** tab
+2. **Select Index**: Click on your created index from the sidebar
+3. **Open Run Tab**: Click the **Run** tab in the center panel
+4. **Choose Search Tool**: Select from available search tools:
+      - **Search Index**: Basic semantic search
+      - **Stepback Search Index**: Advanced search with question breakdown
+      - **Stepback Summary Index**: Summarized insights from search results
+5. **Enter Query**: Type your natural language question
+6. **View Results**: See responses with citations to specific test cases
+
+![Search](../../img/how-tos/indexing/testrail/testrail-run-search.png)
 
 ### Using Toolkit in Conversations and Agents
 
@@ -344,6 +392,21 @@ Let's walk through a complete example of querying indexed test documentation:
 ---
 
 ## Common Issues and Troubleshooting
+
+### Indexes Interface Issues
+
+**"Indexes tab not visible" or "Tab disabled":**
+
+- Verify PgVector and Embedding Model are configured in Settings → AI Configuration
+- Ensure the **Index Data** tool is enabled in your TestRail toolkit configuration
+- Check that your toolkit supports indexing (TestRail is supported)
+- Refresh the browser page and retry
+
+**"+ Create New Index button not working":**
+
+- Verify all project-level prerequisites are met (PgVector and Embedding Model)
+- Check that you have proper permissions for the toolkit
+- Ensure the toolkit is properly saved with credentials
 
 ### No Test Cases Found During Indexing
 
