@@ -87,6 +87,7 @@ nav:
           - Canvas - Advanced Usage: how-tos/how-to-canvas.md
           - Canvas - Create and Edit Toolkits: how-tos/how-to-create-and-edit-toolkits-from-canvas.md
           - Canvas - Create and Edit Agents: how-tos/how-to-create-and-edit-agents-from-canvas.md
+          - Canvas - Create and Edit Pipelines: how-tos/how-to-create-and-edit-pipelines-from-canvas.md
 
   - Integrations:
       - Extensions:
