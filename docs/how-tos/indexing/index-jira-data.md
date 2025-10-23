@@ -47,15 +47,18 @@ Before indexing Jira data, ensure you have:
 Your Jira credential needs appropriate permissions based on what you want to index:
 
 **For Content Access:**
+
 - Read access to Jira projects and issues
 - Permission to view the specific projects you want to index
 
 **For Comprehensive Indexing:**
+
 - Access to view attachments (if including attachments)
 - Permission to view comments and issue history
 - Access to both public and restricted projects (based on your requirements)
 
 **Authentication Methods:**
+
 - **Basic Authentication**: Username and API Key
 - **Bearer Token**: Jira API token
 
@@ -70,7 +73,7 @@ Your Jira credential needs appropriate permissions based on what you want to ind
     For complete credential setup steps including token generation and security best practices, see:
     
     - [Create a Credential](../../getting-started/create-credential.md)
-    - [Jira Credential Setup](../how-to-use-credentials.md#jira-credential-setup))
+    - [Jira Credential Setup](../how-to-use-credentials.md#jira-credential-setup)
 
 ---
 
@@ -99,62 +102,88 @@ Your Jira credential needs appropriate permissions based on what you want to ind
 
 ## Step-by-Step: Index Jira Data
 
-### Content Indexing (from Toolkit)
+!!! info "Primary Interface"
+    All indexing operations are performed via the **Indexes Tab Interface**. This dedicated interface provides comprehensive index management with visual status indicators, real-time progress monitoring, and integrated search capabilities.
 
-1. **Open Toolkit Test Settings:**
-     - Navigate to your Jira toolkit's detail page
-     - In the **Test Settings** panel (right side), select a model (e.g., `gpt-4o`)
+!!! warning "Requirements"
+    Before proceeding, ensure your project has PgVector and Embedding Model configured in Settings → AI Configuration, and your Jira toolkit has the **Index Data** tool enabled.
 
-2. **Configure Index Data Tool:**
+### Step 1: Access the Interface
 
-     - From the tool dropdown, select **"Index Data"**
-     - Configure the following parameters:
+1. **Navigate to Toolkits**: Go to **Toolkits** in the main navigation
+2. **Select Your Jira Toolkit**: Choose your configured Jira toolkit from the list
+3. **Open Indexes Tab**: Click on the **Indexes** tab in the toolkit detail view
 
-     | Parameter | Description | Example Value |
-     |-----------|-------------|---------------|
-     | **Collection Suffix** * | Suffix for collection name (required) | `issues` or `proj` |
-     | **Progress Step (0 - 100)** | Step size for progress reporting during indexing | `10` or `25` |
-     | **Clean Index** | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
-     | **Chunking Config** | Configuration for document chunking | Default or custom settings |
-     | **JQL** | JQL query to filter issues | `project=PROJ AND status=Open` |
-     | **Fields To Extract** | Additional fields to extract from issues | `customfield_10001,priority` |
-     | **Fields To Index** | Additional fields to include in indexed content | `reporter,assignee` |
-     | **Include Attachments** | Index attachment content | ✓ (checked) or ✗ (unchecked) |
-     | **Max Total Issues** | Maximum number of issues to index | `1000` (default) |
-     | **Skip Attachment Extensions** | File extensions to skip when processing attachments | `.png,.jpg,.gif` |
-     | **Chunking Tool** | Method for splitting content into chunks | `markdown` (default) |
+If the tab is disabled or not visible, verify that:
+- PgVector and Embedding Model are configured in Settings → AI Configuration
+- The **Index Data** tool is enabled in your toolkit configuration
 
-3. **Run Jira Indexing:**
-     - Click **"Run Tool"** 
-     - Wait for completion (may take several minutes for large projects)
-     - Check the output for success confirmation or error messages
+### Step 2: Create a New Index
 
-     ![Jira Index Configuration](../../img/how-tos/indexing/jira-index-toolkit.png)
+1. **Click Create New Index**: In the Indexes sidebar, click the **+ Create New Index** button
+2. **New Index Form**: The center panel displays the new index creation form
 
----
+### Step 3: Configure Index Parameters
 
-## Verification: Confirm Index Success
+Fill in the required and optional parameters for your Jira indexing:
+
+| Parameter | Required | Description | Example Value |
+|-----------|----------|-------------|---------------|
+| Index Name | ✓ | Suffix for collection name (max 7 chars) | `issues` or `proj` |
+| Clean Index | ✗ | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
+| Progress Step (0 - 100) | ✗ | Step size for progress reporting during indexing | `10` or `25` |
+| Chunking Tool | ✗ | Method for splitting content into chunks | `markdown` (default) or custom |
+| jql | ✗ | JQL query to filter issues | `project=PROJ AND status=Open` |
+| fields_to_extract | ✗ | Additional fields to extract from issues | `["customfield_10001", "priority"]` |
+| fields_to_index | ✗ | Additional fields to include in indexed content | `["reporter", "assignee"]` |
+| include_attachments | ✗ | Include attachment content in indexing | ✓ (checked) or ✗ (unchecked) |
+| max_total_issues | ✗ | Maximum number of issues to index | `1000` (default) |
+| skip_attachment_extensions | ✗ | File extensions to skip when processing attachments | `[".png", ".jpg", ".gif"]` |
+
+### Step 4: Start Indexing
+
+1. **Form Validation**: The **Index** button remains inactive until all required fields are filled
+2. **Review Configuration**: Verify all parameters are correct
+3. **Click Index Button**: Start the indexing process
+4. **Monitor Progress**: Watch real-time updates with visual indicators:
+      - 🔄 **In Progress**: Indexing is currently running
+      - ✅ **Completed**: Indexing finished successfully
+      - ❌ **Failed**: Indexing encountered an error
+
+      ![Index tab](../../img/how-tos/indexing/jira/jira-index-tab.png)
+
+### Step 5: Verify Index Creation
 
 After indexing completes, verify the index was created successfully:
 
-### Method 1: Using Test Settings (Technical Verification)
+1. **Check Index Status**: Visual indicators show completion status
+2. **Review Index Details**: Click on the created index to see metadata and document count
+3. **Test Search**: Use the **Run** tab to test search functionality with sample queries
 
-1. **Use List Collections Tool:**
-     - In Test Settings, select **"List Collections"** tool
-     - Run tool to see all available collections
-     - Look for your collection with the specified suffix
-
-2. **Test Basic Search:**
-     - Select **"Search Index"** tool
-     - **Query**: e.g., `bug login authentication`
-     - **Collection Suffix**: Your specified suffix
-     - Run tool and verify relevant results are returned
+!!! info "Alternative: Test Settings Method"
+    For quick testing and validation, you can also use the **Test Settings** panel on the right side of the toolkit detail page. Select a model, choose the **Index Data** tool from the dropdown, configure parameters, and click **Run Tool**. However, the Indexes Tab Interface is the recommended approach for comprehensive index management.
 
 ---
 
 ## Search and Chat with Indexed Data
 
-Once your Jira data is indexed, you can use the toolkit to search and interact with your content in multiple ways:
+Once your Jira data is indexed, you can use it in multiple ways:
+
+### Using the Indexes Interface
+
+**Direct Search via Indexes Tab:**
+
+1. **Access Indexes Tab**: Navigate to your Jira toolkit → **Indexes** tab
+2. **Select Index**: Click on your created index from the sidebar
+3. **Open Run Tab**: Click the **Run** tab in the center panel
+4. **Choose Search Tool**: Select from available search tools:
+      - **Search Index**: Basic semantic search
+      - **Stepback Search Index**: Advanced search with question breakdown
+      - **Stepback Summary Index**: Summarized insights from search results
+5. **Enter Query**: Type your natural language question
+6. **View Results**: See responses with citations to specific Jira issues
+
+![Run search](../../img/how-tos/indexing/jira/jira-run-search.png)
 
 ### Using Toolkit in Conversations and Agents
 
@@ -189,7 +218,7 @@ Let's walk through a complete example of indexing and using a software project's
  
      > "Index all issues from project EL with suffix 'issues'. Include comments but skip attachments and image files. Clean any existing index first."
 
-   ![Jira List](../../img/how-tos/indexing/Jira-index-chat.png)
+   ![Jira List](../../img/how-tos/indexing/jira/Jira-index-chat.png)
 
 
 **Step 4: Verify Index Creation**
@@ -201,7 +230,7 @@ Let's walk through a complete example of indexing and using a software project's
 
  * **Jira Toolkit Response:**
 
-![Jira List](../../img/how-tos/indexing/jira-list-collections.png)
+![Jira List](../../img/how-tos/indexing/jira/jira-list-collections.png)
 
  This confirms the indexing completed successfully and your project collection is available for searching.
 
@@ -217,7 +246,7 @@ Let's walk through a complete example of indexing and using a software project's
    
    *Sources: CALC-234 (Priority: High), CALC-287 (Status: Resolved), CALC-301 (Assignee: john.doe)*"
 
-   ![Jira Search](../../img/how-tos/indexing/jira-index-search.png)
+   ![Jira Search](../../img/how-tos/indexing/jira/jira-index-search.png)
    
   * **User:** "Retrieve from my collection tests related to profile setup"
    
@@ -235,11 +264,24 @@ Let's walk through a complete example of indexing and using a software project's
    
    *Sources: CALC-445 (Test: Profile Creation), CALC-446 (Test: Validation), CALC-447 (Test: Image Upload)*"
 
-   ![Jira Search](../../img/how-tos/indexing/jira-index-search1.png)
+   ![Jira Search](../../img/how-tos/indexing/jira/jira-index-search1.png)
 
 ## Troubleshooting & Tips
 
 ### Common Errors and Solutions
+
+**"Indexes tab not visible" or "Tab disabled":**
+
+- Verify PgVector and Embedding Model are configured in Settings → AI Configuration
+- Ensure the **Index Data** tool is enabled in your Jira toolkit configuration
+- Check that your toolkit supports indexing (Jira is supported)
+- Refresh the browser page and retry
+
+**"+ Create New Index button not working":**
+
+- Verify all project-level prerequisites are met (PgVector and Embedding Model)
+- Check that you have proper permissions for the toolkit
+- Ensure the toolkit is properly saved with credentials
 
 **"Authentication failed" or "Unauthorized access":**
 

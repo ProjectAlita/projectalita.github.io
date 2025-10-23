@@ -112,65 +112,94 @@ Your ADO credential needs appropriate permissions based on what you want to inde
 
 ## Step-by-Step: Index ADO Wiki Data
 
-### Wiki Page Indexing (from Toolkit)
+!!! info "Primary Interface"
+    All indexing operations are performed via the **Indexes Tab Interface**. This dedicated interface provides comprehensive index management with visual status indicators, real-time progress monitoring, and integrated search capabilities.
 
-1. **Open Toolkit Test Settings:**
-     - Navigate to your ADO Wiki toolkit's detail page
-     - In the **Test Settings** panel (right side), select a model (e.g., `gpt-4o`)
+!!! warning "Requirements"
+    Before proceeding, ensure your project has PgVector and Embedding Model configured in Settings → AI Configuration, and your ADO Wiki toolkit has the **Index Data** tool enabled.
 
-2. **Configure Index Data Tool:**
+### Step 1: Access the Interface
 
-     - From the tool dropdown, select **"Index Data"**
-     - Configure the following parameters:
+1. **Navigate to Toolkits**: Go to **Toolkits** in the main navigation
+2. **Select Your ADO Wiki Toolkit**: Choose your configured ADO Wiki toolkit from the list
+3. **Open Indexes Tab**: Click on the **Indexes** tab in the toolkit detail view
 
-     | Parameter | Description | Example Value |
-     |-----------|-------------|---------------|
-     | **Wiki Identifier** * | Wiki identifier to index data from (required) | `ProjectName.wiki` or `RepoName.wiki` |
-     | **Collection Suffix** * | Suffix for collection name (max 7 chars) | `docs` or `wiki` |
-     | **Progress Step** | Step size for progress reporting during indexing | `10` (default) |
-     | **Clean Index** | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
-     | **Title Contains** | Optional filter to include only pages with titles containing this string | `API` or leave empty |
-     | **Chunking Tool** | Method for splitting content into chunks | `markdown` (default) |
-     | **Chunking Config** | Configuration settings for content chunking | `{"chunk_size": 4000, "chunk_overlap": 200}` |
+If the tab is disabled or not visible, verify that:
+- PgVector and Embedding Model are configured in Settings → AI Configuration
+- The **Index Data** tool is enabled in your toolkit configuration
 
-3. **Run ADO Wiki Indexing:**
-     - Click **"Run Tool"** 
-     - Wait for completion (may take several minutes for large wikis)
-     - Check the output for success confirmation or error messages
+### Step 2: Create a New Index
 
-### Real-Life Example: Indexing Development Team Documentation
+1. **Click Create New Index**: In the Indexes sidebar, click the **+ Create New Index** button
+2. **New Index Form**: The center panel displays the new index creation form
+
+### Step 3: Configure Index Parameters
+
+Fill in the required and optional parameters for your ADO Wiki indexing:
+
+| Parameter | Required | Description | Example Value |
+|-----------|----------|-------------|---------------|
+| Index Name | ✓ | Suffix for collection name (max 7 chars) | `docs` or `wiki` |
+| Clean Index | ✗ | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
+| Progress Step (0 - 100) | ✗ | Step size for progress reporting during indexing | `10` (default) |
+| Chunking Config | ✗ | Configuration settings for content chunking | `{"chunk_size": 4000, "chunk_overlap": 200}` |
+| Chunking Tool | ✗ | Method for splitting content into chunks | `markdown` (default) |
+| wiki_identifier | ✓ | Wiki identifier to index, e.g., 'ABCProject.wiki' | `ProjectName.wiki` or `RepoName.wiki` |
+| title_contains | ✗ | Optional filter to include only pages with titles containing exact this string | `API` or leave empty |
+
+**Understanding the Parameters:**
+
+- **Index Name**: This will be used as the collection suffix for your indexed data. Keep it short and descriptive.
+- **wiki_identifier**: The identifier of the wiki you want to index (e.g., `MyProject.wiki` for project wikis or `MyRepo.wiki` for code wikis)
+- **title_contains**: Use this to filter and index only pages whose titles contain a specific string (case-sensitive exact match)
+- **Clean Index**: Enable this to remove existing indexed data for this collection before re-indexing
+- **Chunking Tool**: Set to `markdown` for optimal wiki content processing
+
+### Step 4: Start Indexing
+
+1. **Form Validation**: The **Index** button remains inactive until all required fields are filled
+2. **Review Configuration**: Verify all parameters are correct
+3. **Click Index Button**: Start the indexing process
+4. **Monitor Progress**: Watch real-time updates with visual indicators:
+      - 🔄 **In Progress**: Indexing is currently running
+      - ✅ **Completed**: Indexing finished successfully
+      - ❌ **Failed**: Indexing encountered an error
+
+      ![Indexes](../../img/how-tos/indexing/ado-wiki/ado-wiki-indexex.png)
+
+### Step 5: Verify Index Creation
+
+After indexing completes, verify the index was created successfully:
+
+1. **Check Index Status**: Visual indicators show completion status
+2. **Review Index Details**: Click on the created index to see metadata and document count
+3. **Test Search**: Use the **Run** tab to test search functionality with sample queries
+
+!!! info "Alternative: Test Settings Method"
+    For quick testing and validation, you can also use the **Test Settings** panel on the right side of the toolkit detail page. Select a model, choose the **Index Data** tool from the dropdown, configure parameters, and click **Run Tool**. However, the Indexes Tab Interface is the recommended approach for comprehensive index management.
+
+---
+
+## Real-Life Example: Indexing Development Team Documentation
 
 **Scenario**: You have a development team wiki in Azure DevOps containing project documentation, API guides, and troubleshooting information. You want to make this documentation searchable for your team.
 
-**Indexing Steps:**
+### Using Indexes Tab Interface (Recommended):
 
-1. **Configure ADO Wiki Toolkit:**
-     - Organization URL: `https://dev.azure.com/mycompany/`
-     - Project: `WebApp`
-     - Token: Your ADO Personal Access Token
-
-2. **Index the Project Wiki:**
-     - Wiki Identifier: `WebApp.wiki`
-     - Collection Suffix: `docs`
-     - Progress Step: `10`
-     - Clean Index: ✓ (checked for fresh start)
-     - Title Contains: (leave empty to index all pages)
-     - Chunking Tool: `markdown`
-     - Chunking Config: `{"chunk_size": 4000, "chunk_overlap": 200}`
-
-3. **Run the indexing:**
-     - Click **"Run Tool"**
-     - Wait for completion (progress reported every 10 pages)
-     - Verify success in output logs
-
- ![ADO Wiki Index Configuration](../../img/how-tos/indexing/ado-wiki/ado-wiki-index-toolkit.png)
-
-
-4. **Test your indexed data:**
-     - Use "List Collections" tool to confirm `docs` collection exists
-
- ![ADO Wiki Index Configuration](../../img/how-tos/indexing/ado-wiki/ado-wiki-list-collections.png)
-
+1. **Navigate to Toolkits** → Select your ADO Wiki toolkit
+2. **Click the Indexes tab**
+3. **Click + Create New Index** button
+4. **Configure parameters:**
+     - **Index Name**: `docs`
+     - **wiki_identifier**: `WebApp.wiki`
+     - **Clean Index**: ✓ (checked for fresh start)
+     - **Progress Step**: `10`
+     - **title_contains**: (leave empty to index all pages)
+     - **Chunking Tool**: `markdown`
+     - **Chunking Config**: `{"chunk_size": 4000, "chunk_overlap": 200}`
+5. **Click Index** button and monitor progress
+6. **Wait for ✅ Completed** status
+7. **Verify** using Run tab → Search Index tool with a test query
 
 **Result**: Your team can now ask natural language questions about your documentation and get instant answers with citations to specific wiki pages.
 
@@ -186,7 +215,21 @@ Your ADO credential needs appropriate permissions based on what you want to inde
 
 ## Search and Chat with Indexed Data
 
-Once your ADO Wiki data is indexed, you can use the toolkit to search and interact with your documentation in multiple ways:
+Once your ADO Wiki data is indexed, you can search and interact with your documentation using the **Run** tab or by adding the toolkit to conversations and agents.
+
+### Using the Run Tab (Quick Testing)
+
+In your ADO Wiki toolkit:
+
+1. **Click the Run tab** (next to Indexes tab)
+2. **Select search tools** from the dropdown:
+     - **Search Index**: Perform semantic search with natural language queries  
+     - **Stepback Search Index**: Complex multi-part questions
+     - **Stepback Summary Index**: Generate summaries from search results
+3. **Enter your query** and click Run Tool
+4. **Review results** with citations and relevance scores
+
+![Search](../../img/how-tos/indexing/ado-wiki/ado-wiki-search.png)
 
 ### Using Toolkit in Conversations and Agents
 
@@ -356,23 +399,20 @@ When your wiki content changes significantly:
 
 ### Common Issues
 
-**Authentication Errors:**
-
-- Verify ADO personal access token has wiki read permissions
-- Check organization URL format and project name accuracy
-- Ensure token hasn't expired
-
-**Wiki Not Found:**
-
-- Confirm wiki identifier format (`ProjectName.wiki` for project wikis)
-- Verify you have access to the specified project and wiki
-- Check if the wiki exists and contains pages
-
 **Indexing Failures:**
 
 - Review wiki content for formatting issues that might cause parsing errors
 - Check for very large pages that might exceed processing limits
 - Verify vector storage configuration and available space
+- Ensure the wiki_identifier format is correct (`ProjectName.wiki` for project wikis)
+- Check that the wiki exists and contains pages
+
+**Connection Issues:**
+
+- Verify ADO personal access token has wiki read permissions
+- Check organization URL format and project name accuracy in toolkit configuration
+- Ensure token hasn't expired and has appropriate permissions
+- Confirm you have access to the specified project and wiki
 
 
 ### Poor Search Results
@@ -382,9 +422,23 @@ When your wiki content changes significantly:
 **Solutions:**
 
   - Try more specific, detailed search queries related to your documentation content
-  - Adjust the **Cut Off** score (lower for more results, higher for precision)
-  - Use Stepback Search Index for complex documentation questions
-  - Verify the Collection Suffix targets the right dataset
+  - Adjust the **Cut Off** score parameter in search tools (lower for more results, higher for precision)
+  - Use **Stepback Search Index** tool for complex documentation questions
+  - Verify the **Index Name** (collection suffix) targets the right dataset
+  - Check if indexing completed successfully using **List Collections** tool in the Run tab
+
+### Interface Issues
+
+**Problem**: Indexes tab not loading or responding
+
+**Solutions:**
+
+  - Refresh the page and try accessing the Indexes tab again
+  - Verify your ADO Wiki toolkit is properly configured with valid credentials
+  - Check that PgVector and Embedding Model are configured in Settings → AI Configuration
+  - Ensure the **Index Data** tool is enabled in your toolkit configuration
+  - Check browser console for any JavaScript errors
+  - Use Test Settings as an alternative if interface issues persist
 
 ### Getting Help
 
