@@ -240,6 +240,11 @@ Where to run it: Toolkit → TEST SETTINGS → “List collections”.
 | --- | --- | --- | --- |
 | (none) | No input required; runs immediately. | — | All |
 
+!!! warning "Toolkit Name Dependency"
+    **Indexes are tied to toolkit names**. If you rename or delete a toolkit, all associated indexes will become inaccessible and appear to be lost. However, if you restore the original toolkit name or create a new toolkit with the same name, all previously created indexes will automatically become visible and accessible again. Plan toolkit names carefully to avoid unintended data access issues.
+
+
+
 ---
 
 ## Stepback tools: quick comparison

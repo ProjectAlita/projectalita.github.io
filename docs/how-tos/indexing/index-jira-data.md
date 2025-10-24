@@ -152,6 +152,10 @@ Fill in the required and optional parameters for your Jira indexing:
 
       ![Index tab](../../img/how-tos/indexing/jira/jira-index-tab.png)
 
+!!! info "Alternative: Test Settings Method"
+    For quick testing and validation, you can also use the **Test Settings** panel on the right side of the toolkit detail page. Select a model, choose the **Index Data** tool from the dropdown, configure parameters, and click **Run Tool**. However, the Indexes Tab Interface is the recommended approach for comprehensive index management.
+
+
 ### Step 5: Verify Index Creation
 
 After indexing completes, verify the index was created successfully:
@@ -160,8 +164,8 @@ After indexing completes, verify the index was created successfully:
 2. **Review Index Details**: Click on the created index to see metadata and document count
 3. **Test Search**: Use the **Run** tab to test search functionality with sample queries
 
-!!! info "Alternative: Test Settings Method"
-    For quick testing and validation, you can also use the **Test Settings** panel on the right side of the toolkit detail page. Select a model, choose the **Index Data** tool from the dropdown, configure parameters, and click **Run Tool**. However, the Indexes Tab Interface is the recommended approach for comprehensive index management.
+!!! warning "Toolkit Name Dependency"
+    **Indexes are tied to toolkit names**. If you rename or delete a toolkit, all associated indexes will become inaccessible and appear to be lost. However, if you restore the original toolkit name or create a new toolkit with the same name, all previously created indexes will automatically become visible and accessible again. Plan toolkit names carefully to avoid unintended data access issues.
 
 ---
 

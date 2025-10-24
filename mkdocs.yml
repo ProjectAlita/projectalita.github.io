@@ -67,6 +67,7 @@ nav:
 
   - How-To Guides:
       - Use Credentials: how-tos/how-to-use-credentials.md
+      - Test Toolkits Tools: how-tos/how-to-test-toolkit-tools.md
       - Automate JIRA Issue Review: how-tos/jira-automation-with-elitea.md
       - Use Webhooks: how-tos/how-to-use-webhooks.md
       - Attach Images and Files in Chat: how-tos/attach-images-and-files-in-chat.md

@@ -141,6 +141,17 @@ When selecting tools for your toolkit:
 
     ![Toolkits-Create](../img/menus/toolkits/select-tools.png)
 
+#### Make Tools Available by MCP
+
+When configuring toolkit tools, you may see a checkbox labeled **"Make tools available by MCP"** in the Tools section. This option controls whether the selected tools can be accessed through the Model Context Protocol (MCP) interface.
+
+* **Purpose:** Enables toolkit tools to be exposed and accessible via MCP servers
+* **Location:** Appears in the Tools configuration section when selecting toolkit tools
+* **When to Enable:** 
+     - You plan to use this toolkit's tools through an MCP server
+     - You want to make these tools available to external MCP clients
+     - You're building MCP-based integrations that need access to these tools
+
 !!! tip "Tip"
     Regularly use the edit function to rotate credentials, update tool selections, or modify toolkit capabilities as your needs change.
 
@@ -180,6 +191,32 @@ The toolkit configuration page includes a **Test Settings** panel on the right s
 
 ![Test Interface](../img/menus/toolkits/test_interface.png)
 
+---
+
+## Managing Toolkit Indexes
+
+Toolkits that support document processing and content indexing provide an **Indexes** tab for managing indexed data. 
+
+### Accessing the Indexes Tab
+
+The Indexes tab enabled in the toolkit detail page alongside the Run tab when:
+
+* The toolkit schema includes indexing tools (such as `index_data`, `search_index`, `remove_index`)
+* PgVector configuration is set
+* Embedding Model is configured
+* **index_data** tool is selected in the toolkit's tool selection
+
+### Using the Indexes Tab
+
+The Indexes tab provides a dedicated interface for:
+
+* **Creating new indexes:** Set up document indexing for the external service
+* **Managing existing indexes:** View, configure, and monitor active indexes
+* **Index configuration:** Configure indexing parameters specific to each index
+* **Index history:** Track indexing operations and their status
+* **Removing indexes:** Delete indexes that are no longer needed
+
+![Indexex Tab](../img/menus/toolkits/indexes-tab.png)
 ---
 
 ## Assigning Toolkits to Agents
