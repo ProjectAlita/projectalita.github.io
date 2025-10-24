@@ -194,6 +194,11 @@ Use this to view the indexes (collections) created for the toolkit.
 
 ![Toolkit Test – List Collections output](../../img/how-tos/indexing/list-collection-github.png){ width="900" }
 
+!!! warning "Toolkit Name Dependency"
+    **Indexes are tied to toolkit names**. If you rename or delete a toolkit, all associated indexes will become inaccessible and appear to be lost. However, if you restore the original toolkit name or create a new toolkit with the same name, all previously created indexes will automatically become visible and accessible again. Plan toolkit names carefully to avoid unintended data access issues.
+
+
+
 ### Search Index tool
 
 **Primary Method: Use the Indexes Tab Interface**
