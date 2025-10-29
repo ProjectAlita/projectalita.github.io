@@ -173,9 +173,6 @@ After indexing completes, verify the index was created successfully:
 2. **Review Index Details**: Click on the created index to see metadata and document count
 3. **Test Search**: Use the **Run** tab to test search functionality with sample queries
 
-!!! warning "Toolkit Name Dependency"
-    **Indexes are tied to toolkit names**. If you rename or delete a toolkit, all associated indexes will become inaccessible and appear to be lost. However, if you restore the original toolkit name or create a new toolkit with the same name, all previously created indexes will automatically become visible and accessible again. Plan toolkit names carefully to avoid unintended data access issues.
-
 ### Real-Life Example: Indexing QA Test Documentation
 
 **Scenario**: You have a QA team with comprehensive test documentation in TestRail for an e-commerce web application. You want to make all test cases, procedures, and testing knowledge searchable for team collaboration and knowledge sharing.
