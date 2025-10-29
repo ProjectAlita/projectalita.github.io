@@ -89,6 +89,25 @@ If the provided command faild try following
 
 #### macOS
 
+!!! info "Installing Homebrew"
+    If you don't have Homebrew installed on your Mac, you'll need to install it first:
+    
+    1. Open the Terminal app (you can find it in Applications > Utilities)
+    2. Copy and paste the following command into the Terminal, then press Enter:
+    
+    ```sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+    
+    3. Follow the on-screen instructions in the Terminal. You may be asked to enter your password
+    4. Once the installation is complete, verify it by running:
+    
+    ```sh
+    brew --version
+    ```
+    
+    For more information, see the [Homebrew installation guide](https://mac.install.guide/homebrew/3).
+
 ```bash
 brew install pipx
 pipx ensurepath
