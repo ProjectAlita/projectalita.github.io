@@ -19,14 +19,14 @@ Whether you're automating business processes, building AI assistants for special
  
 ## Information
  
-* **Release Version**: 1.7.2
-* **Released on**: 24-Oct-2025
-* **Access for 1.7.2**: [Next environment](https://next.elitea.ai)
+* **Release Version**: 2.0.0 Beta
+* **Released on**: 03-Nov-2025
+* **Access for 2.0.0 Beta**: [Next environment](https://next.elitea.ai)
 
  
 ## Important
 
-- **Availability**: Version 1.7.2 is available in the [Next environment](https://next.elitea.ai) only. Nexus will remain on its current version (1.6.0) for now. The **Next** environment contains a full copy of your projects, agents, pipelines, toolkits, and chats migrated from Nexus, plus all 1.7.2 features and updates. Use this safe transition window to review changes, configure new Indexes, set up Credentials, and verify your workflows before Nexus is upgraded.
+- **Availability**: Version 2.0.0 Beta is available in the [Next environment](https://next.elitea.ai) only. Nexus will remain on its current version (1.6.0) for now. The **Next** environment contains a full copy of your projects, agents, pipelines, toolkits, and chats migrated from Nexus, plus all 2.0.0 Beta features and updates. Use this safe transition window to review changes, configure new Indexes, set up Credentials, and verify your workflows before Nexus is upgraded.
 - **Prompts deprecated**: The **Prompts** entity is deprecated. All existing prompts were converted to Agents. You can create Agents without attaching a Toolkit (a lightweight replacement for Prompts) and use variables with these agents.
 - **Datasources deprecated**: The **Datasources** entity is deprecated. Your existing datasources remain available in this release so you can re-index and reconfigure them using the new **Index data** tool available in most Toolkits (e.g., GitHub, Confluence, Bitbucket, ADO Repos, Jira, etc.),  as even though they remain connected to agents, they cannot be used (as the datasets themselves are not migrated). **Note**: Creating new datasources or datasets is no longer supported.
 - **Integrations replaced by Credentials**: Integrations are deprecated and replaced by Credentials as a standalone entity. Existing Integrations are not auto-migrated; recreate them as **Credentials** manually. See: [How to Use Credentials](../how-tos/how-to-use-credentials.md).
