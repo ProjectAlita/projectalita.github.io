@@ -71,6 +71,7 @@ nav:
       - Automate JIRA Issue Review: how-tos/jira-automation-with-elitea.md
       - Use Webhooks: how-tos/how-to-use-webhooks.md
       - Attach Images and Files in Chat: how-tos/attach-images-and-files-in-chat.md
+      - Enable Internal Tools: how-tos/enable-internal-tools.md
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
