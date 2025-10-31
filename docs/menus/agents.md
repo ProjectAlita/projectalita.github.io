@@ -139,6 +139,20 @@ Below is the list of toolkits supported by the platform. For detailed instructio
 
 ![Agents-Toolkits](<../img/menus/agents/Agents_Toolkits.png>)
 
+### PYTHON SANDBOX (Internal Tool)
+
+The **Python Sandbox** enables secure Python code execution directly within your agent's conversations using Pyodide. When enabled, your agent can execute Python code, perform calculations, analyze data, and use compatible Python packages like numpy, pandas, and matplotlib.
+
+**How to Enable**:
+
+1. In the **TOOLKITS** section, find the **Python sandbox** toggle at the bottom
+2. Toggle the switch to enable it
+3. Click **Save**
+
+![Agent Python Sandbox](../img/menus/agents/agents-enable-python-sandbox.png)
+
+!!! info "Learn More"
+    For detailed information about capabilities, available packages, and troubleshooting, see the [Enable Internal Tools Guide](../how-tos/enable-internal-tools.md).
 
 ### WELCOME MESSAGE
 
@@ -295,6 +309,23 @@ By following these steps, you can effectively manage the lifecycle and iteration
 
 The **Monitoring** menu allows you to track the performance and activity of your agents in real-time. By accessing this feature, you can view detailed logs, analyze execution metrics, and identify potential issues or bottlenecks in your agent's workflows.
 For detailed instructions on how to use the Monitoring feature, please refer to the **[Monitoring User Guide](../features/monitoring.md)**
+
+### Viewing Agent History
+
+The **History** tab provides a complete audit trail of all past executions of your agent. This feature allows you to:
+
+- **Review past conversations**: View complete chat histories from previous agent runs
+- **Track performance**: Monitor execution duration across different versions
+- **Debug issues**: Replay conversations to identify where problems occurred
+- **Compare versions**: See how different agent versions performed with the same inputs
+- **Audit trail**: Maintain records of all agent interactions for compliance purposes
+
+The History tab displays runs in a two-panel layout with a list of all executions on the left (showing date, version, and duration) and the complete conversation replay on the right when you select a run.
+
+For detailed instructions on using the History tab, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines-history.md)**.
+
+![History Tab](../img/menus/agents/agent-history-tab.png)
+
 
 ---
 
