@@ -385,6 +385,22 @@ By following these steps, you can ensure a smooth publishing process and make yo
 The **Monitoring** menu allows you to track the performance and activity of your Pipeline in real-time. By accessing this feature, you can view detailed logs, analyze execution metrics, and identify potential issues or bottlenecks in your pipeline's workflows.
 For detailed instructions on how to use the Monitoring feature, please refer to the **[Monitoring User Guide](../features/monitoring.md)**
 
+### Viewing Pipeline History
+
+The **History** tab provides a complete audit trail of all past executions of your pipeline. This feature allows you to:
+
+- **Review past conversations**: View complete chat histories from previous pipeline runs
+- **Track performance**: Monitor execution duration across different versions
+- **Debug issues**: Replay conversations to identify where problems occurred in the workflow
+- **Compare versions**: See how different pipeline versions performed with the same inputs
+- **Audit trail**: Maintain records of all pipeline interactions for compliance purposes
+
+The History tab displays runs in a two-panel layout with a list of all executions on the left (showing date, version, and duration) and the complete conversation replay on the right when you select a run.
+
+For detailed instructions on using the History tab, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines-history.md)**.
+
+![History Tab](../img/menus/pipeline/pipeline-history-tab.png)
+
 
 ### Best Practices for Pipelines
 

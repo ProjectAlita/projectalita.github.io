@@ -296,6 +296,23 @@ By following these steps, you can effectively manage the lifecycle and iteration
 The **Monitoring** menu allows you to track the performance and activity of your agents in real-time. By accessing this feature, you can view detailed logs, analyze execution metrics, and identify potential issues or bottlenecks in your agent's workflows.
 For detailed instructions on how to use the Monitoring feature, please refer to the **[Monitoring User Guide](../features/monitoring.md)**
 
+### Viewing Agent History
+
+The **History** tab provides a complete audit trail of all past executions of your agent. This feature allows you to:
+
+- **Review past conversations**: View complete chat histories from previous agent runs
+- **Track performance**: Monitor execution duration across different versions
+- **Debug issues**: Replay conversations to identify where problems occurred
+- **Compare versions**: See how different agent versions performed with the same inputs
+- **Audit trail**: Maintain records of all agent interactions for compliance purposes
+
+The History tab displays runs in a two-panel layout with a list of all executions on the left (showing date, version, and duration) and the complete conversation replay on the right when you select a run.
+
+For detailed instructions on using the History tab, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines-history.md)**.
+
+![History Tab](../img/menus/agents/agent-history-tab.png)
+
+
 ---
 
 ## References
