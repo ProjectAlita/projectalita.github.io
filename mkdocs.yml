@@ -99,6 +99,7 @@ nav:
           - Server (STDIO): integrations/mcp/mcp-server-stdio.md
           - Server (SSE): integrations/mcp/mcp-server-sse.md
           - Client (STDIO): integrations/mcp/mcp-client.md
+          - Make Tools Available by MCP: integrations/mcp//make-tools-available-by-mcp.md
       - Toolkits:
           - ADO Repos: integrations/toolkits/ado_repos_toolkit.md
           - ADO Wiki / Boards / Test Plans: integrations/toolkits/ado_wiki_plan_board_toolkit.md
