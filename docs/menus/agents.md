@@ -139,6 +139,20 @@ Below is the list of toolkits supported by the platform. For detailed instructio
 
 ![Agents-Toolkits](<../img/menus/agents/Agents_Toolkits.png>)
 
+### PYTHON SANDBOX (Internal Tool)
+
+The **Python Sandbox** enables secure Python code execution directly within your agent's conversations using Pyodide. When enabled, your agent can execute Python code, perform calculations, analyze data, and use compatible Python packages like numpy, pandas, and matplotlib.
+
+**How to Enable**:
+
+1. In the **TOOLKITS** section, find the **Python sandbox** toggle at the bottom
+2. Toggle the switch to enable it
+3. Click **Save**
+
+![Agent Python Sandbox](../img/menus/agents/agents-enable-python-sandbox.png)
+
+!!! info "Learn More"
+    For detailed information about capabilities, available packages, and troubleshooting, see the [Enable Internal Tools Guide](../how-tos/enable-internal-tools.md).
 
 ### WELCOME MESSAGE
 
