@@ -39,7 +39,6 @@ nav:
           - Configure Epam AI Dial key (Next env): getting-started/configure-epam-ai-dial-key.md
           - Migrate Datasources to Indexing: how-tos/indexing/migrate-datasources-to-indexing.md
           - Configure and Use MCP Server from Elitea: getting-started/configure-and-use-mcp.md
-          
 
   - Menus:
       - Overview: menus/overview.md
@@ -139,7 +138,7 @@ nav:
 
   - Release Notes:
       - Current version:
-          - RN 1.7.2: release-notes/rn_current.md
+          - RN 2.0.0 Beta: release-notes/rn_current.md
       - Previous versions:
           - RN 1.7.1: release-notes/archived/rn12.md
           - RN 1.7.0: release-notes/archived/rn11.md
