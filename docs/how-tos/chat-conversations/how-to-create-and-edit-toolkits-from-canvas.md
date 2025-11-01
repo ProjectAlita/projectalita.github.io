@@ -27,7 +27,7 @@ The **Toolkit Canvas** interface in ELITEA serves as an integrated toolkit manag
 3. Click on the **+Add toolkit** icon.
 4. Click on **+ Create new Toolkit**.
 
-![Canvas Toolkit Access](../img/how-tos/canvas-toolkit/canvas-toolkit-access.png)
+![Canvas Toolkit Access](../../img/how-tos/chat-conversations/canvas-toolkit/canvas-toolkit-access.png)
 
 The "Choose the toolkit type" canvas interface will be displayed with all available toolkit categories.
 
@@ -61,7 +61,7 @@ The toolkit selection interface provides several ways to find and select the too
 - **Test Management:** Testing platforms like TestRail, Zephyr
 - **Testing:** Automation and testing frameworks
 
-![Canvas Toolkit type](../img/how-tos/canvas-toolkit/canvas-toolkit-chose-type.png)
+![Canvas Toolkit type](../../img/how-tos/chat-conversations/canvas-toolkit/canvas-toolkit-chose-type.png)
 
 ### Step 3: Configure Toolkit Settings
 
@@ -90,13 +90,13 @@ For **GitHub Toolkit** example:
 
 - The **TOOLS** section displays available tools within the selected toolkit:
 
-![Canvas Toolkit Configuration](../img/how-tos/canvas-toolkit/canvas-toolkit-configs.png)
+![Canvas Toolkit Configuration](../../img/how-tos/chat-conversations/canvas-toolkit/canvas-toolkit-configs.png)
 
 ### Step 4: Validate and Create Toolkit
 
 Once all required fields are completed and configuration is validated, click the **Create** button (top right) to create your toolkit. After successful creation, a confirmation message will appear. You can then click the **X** (close) button to return to the PARTICIPANTS section, where the new toolkit will appear in the **Toolkits** list and be immediately available for use in conversations.
 
-![Canvas Toolkit Configuration](../img/how-tos/canvas-toolkit/canvas-toolkit-added.png)
+![Canvas Toolkit Configuration](../../img/how-tos/chat-conversations/canvas-toolkit/canvas-toolkit-added.png)
 
 ## Editing Toolkits via Canvas Interface
 
@@ -108,7 +108,7 @@ Once all required fields are completed and configuration is validated, click the
 4. Hover over the toolkit to reveal action buttons.
 5. Click the pencil **Edit Toolkit** icon that appears.
 
-![Canvas Toolkit edit](../img/how-tos/canvas-toolkit/canvas-toolkit-edit-icon.png)
+![Canvas Toolkit edit](../../img/how-tos/chat-conversations/canvas-toolkit/canvas-toolkit-edit-icon.png)
 
 The toolkit configuration canvas will open with current settings pre-populated.
 
@@ -189,10 +189,10 @@ The Toolkit Canvas feature in ELITEA provides a powerful and intuitive way to ma
 !!! info "Related Documentation"
     For additional information and related functionality, refer to these helpful resources:
 
-    - **[Toolkit Menu](../menus/toolkits.md)** - Complete reference for toolkit management and configuration options
-    - **[Chat Menu](../menus/chat.md)** - Comprehensive guide to chat interface features and navigation
-    - **[Credential Menu](../menus/credentials.md)** - Detailed instructions for managing authentication credentials
-    - **[AI Configuration](../menus/settings/ai-configuration.md)** - Setup and configuration guide for AI models and settings
+    - **[Toolkit Menu](../../menus/toolkits.md)** - Complete reference for toolkit management and configuration options
+    - **[Chat Menu](../../menus/chat.md)** - Comprehensive guide to chat interface features and navigation
+    - **[Credential Menu](../../menus/credentials.md)** - Detailed instructions for managing authentication credentials
+    - **[AI Configuration](../../menus/settings/ai-configuration.md)** - Setup and configuration guide for AI models and settings
 
 
 

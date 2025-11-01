@@ -6,15 +6,15 @@ Finding what you need quickly is essential. ELITEA's robust search functionality
 
 The search functionality in ELITEA works consistently across the following menus:
 
-* [Prompts](../archive/prompts.md)
-* [Datasources](../archive/datasources.md)
-* [Agents](../menus/agents.md)
-* [Pipelines](../menus/pipelines.md)
-* [Collections](../menus/collections.md)
+* [Prompts](../../archive/prompts.md)
+* [Datasources](../../archive/datasources.md)
+* [Agents](../../menus/agents.md)
+* [Pipelines](../../menus/pipelines.md)
+* [Collections](../../menus/collections.md)
 
 Whether you're in your **Private** project, the **Public** project, or any **Team** project, the search feature operates the same way, providing a consistent experience throughout the platform.
 
-![Search_Bar_Overview](../img/features/search-entities/search_bar_overview.png)
+![Search_Bar_Overview](../../img/how-tos/entity-management/search-entities/search_bar_overview.png)
 
 ## How Search Works
 
@@ -31,7 +31,7 @@ As soon as you start typing in the search field, ELITEA's auto-filter immediatel
 1. **Tags** - Matching tags associated with entities
 2. **Entity Type** - Entities whose names or descriptions match your search term
 
-![Search_Dropdown_Results](../img/features/search-entities/search_dropdown_results.png)
+![Search_Dropdown_Results](../../img/how-tos/entity-management/search-entities/search_dropdown_results.png)
 
 > **Tip:** If you click on an entity name that appears in the Entity Type section of the dropdown, that entity will automatically open, saving you time.
 
@@ -44,7 +44,7 @@ As soon as you start typing in the search field, ELITEA's auto-filter immediatel
    - Click on a specific entity in the dropdown to open it directly
    - Press Enter to filter the current view to show all entities matching your search term
 
-![Search_Results_View](../img/features/search-entities/search_results_view.png)
+![Search_Results_View](../../img/how-tos/entity-management/search-entities/search_results_view.png)
 
 !!! note "Search Requirement"
     Search terms must be at least 3 letters long when you press Enter to perform a full search. If your search term is shorter, you'll see a message: "The search key word should be at least 3 letters long."
@@ -56,7 +56,7 @@ One of ELITEA's powerful features is that search respects your current context:
 - **Menu-Specific** - Search only looks within the current menu you're using (Prompts, Datasources, etc.)
 - **Status-Aware** - If you've filtered by status (e.g., "Published" items), search will only look within items that match that status
 
-![Search_Within_Status](../img/features/search-entities/search_within_status.png)
+![Search_Within_Status](../../img/how-tos/entity-management/search-entities/search_within_status.png)
 
 ### Clearing Search Results
 
@@ -65,7 +65,7 @@ To clear your search results and return to the full view, you can:
 * Click the X icon in the search field
 * Refresh the page
 
-![Clear_Search](../img/features/search-entities/clear_search.png)
+![Clear_Search](../../img/how-tos/entity-management/search-entities/clear_search.png)
 
 ## No Matching Results
 
@@ -74,7 +74,7 @@ If your search doesn't find any matching entities, you'll see:
 * A message indicating no results were found
 * While typing, the dropdown will show "No matches found" in both the Tags and Entity Type sections
 
-![No_Search_Results](../img/features/search-entities/no_search_results.png)
+![No_Search_Results](../../img/how-tos/entity-management/search-entities/no_search_results.png)
 
 ## Filtering by Tags
 
@@ -85,7 +85,7 @@ In addition to text search, ELITEA offers robust tag-based filtering:
 3. You can select multiple tags to further refine your results
 4. To clear tag filters, click the "Clear all" button at the top of the tags panel
 
-![Tag_Filtering](../img/features/search-entities/tag_filtering.png)
+![Tag_Filtering](../../img/how-tos/entity-management/search-entities/tag_filtering.png)
 
 !!! tip "Combining Search and Tags"
     For the most precise results, you can combine text search with tag filtering. First, filter by tags, then use the search field to find specific items within those tagged entities.
@@ -97,7 +97,7 @@ Unlike other menus, the search functionality in the Artifacts menu works differe
 * Search only works for bucket names (not file names within buckets)
 * Enter your search term to filter visible buckets to those matching your search
 
-![Artifacts_Search](../img/features/search-entities/artifacts_search.png)
+![Artifacts_Search](../../img/how-tos/entity-management/search-entities/artifacts_search.png)
 
 ## Search Tips and Best Practices
 

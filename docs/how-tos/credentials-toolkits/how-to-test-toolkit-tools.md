@@ -24,7 +24,7 @@ The Test Settings panel is located on the right side of the Toolkit detailed pag
 2. **Select a Toolkit**: Click on any configured toolkit from the list
 3. **View Test Settings**: The Test Settings panel appears on the right side of the page
 
-![Test Settings Panel](../img/how-tos/test-toolkit-tools/test-settings-panel.png)
+![Test Settings Panel](../../img/how-tos/credentials-toolkits/test-toolkit-tools/test-settings-panel.png)
 
 ---
 
@@ -40,7 +40,7 @@ Choose the Large Language Model (LLM) that will be used to execute the tool test
 * **Default Selection**: The system selects your project's default model automatically
 * **Model Options**: Displays model names (e.g., `gpt-4o`, `gpt-4o-mini`, `claude-3-5-sonnet`)
 
-![Model Selection](../img/menus/toolkits/LLM_model.png)
+![Model Selection](../../img/menus/toolkits/LLM_model.png)
 
 ### 2. Model Settings 
 
@@ -53,7 +53,7 @@ Fine-tune how the selected model generates responses using these controls:
 | **Top K** | 1 - 100 | Restricts choices to the top K most likely next words | Lower values (10-20) for more deterministic outputs; Higher values (50-100) for variety |
 | **Max Completion Tokens** | 1 - 4096+ | Sets the upper limit for the length of the model's output | Use higher values (1024-4096) for detailed responses; Lower values (256-512) for concise outputs |
 
-![alt text](../img/how-tos/test-toolkit-tools/model-settings.png)
+![alt text](../../img/how-tos/credentials-toolkits/test-toolkit-tools/model-settings.png)
 
 !!! tip "Recommended Settings for Testing"
     For toolkit tool testing, we recommend:
@@ -72,7 +72,7 @@ Choose which specific tool from your toolkit you want to test.
 * **Tool Grouping**: Tools are organized by their functionality type
 * **Enabled Tools Only**: Only shows tools that are enabled in the toolkit configuration
 
-![Tool Selection](../img/menus/toolkits/select_tool.png)
+![Tool Selection](../../img/menus/toolkits/select_tool.png)
 
 ### 4. Tool Parameters
 
@@ -128,7 +128,7 @@ Once a tool is selected, the parameter input fields appear below:
 3. **Monitor Execution**: Watch the chat interface for real-time tool execution updates
 4. **Review Results**: Examine the tool output displayed in the chat area
 
-![Run Tool](../img/menus/toolkits/run_tool.png)
+![Run Tool](../../img/menus/toolkits/run_tool.png)
 
 ---
 
@@ -205,7 +205,7 @@ Additional information about the execution:
   "status_code": 404
 }
 ```
-![Test Results](../img/how-tos/test-toolkit-tools/test_interface.png)
+![Test Results](../../img/how-tos/credentials-toolkits/test-toolkit-tools/test_interface.png)
 ---
 
 ## Advanced Testing Features
@@ -453,11 +453,11 @@ Understanding the differences between testing tools and using them in agents hel
 
 For more information on toolkit configuration and usage:
 
-* **[Toolkits Menu](../menus/toolkits.md)** — Complete guide to toolkit management and configuration
-* **[Create a Credential](../getting-started/create-credential.md)** — How to configure authentication credentials
-* **[AI Configuration](../menus/settings/ai-configuration.md)** — Set up LLM models and embedding configurations
-* **[Agents Menu](../menus/agents.md)** — Create agents that use your tested toolkits
-* **[Chat Menu](../menus/chat.md)** — Use toolkits in conversations
-* **[Indexing Overview](./indexing/indexing-overview.md)** — Learn about indexing tools and data processing
+* **[Toolkits Menu](../../menus/toolkits.md)** — Complete guide to toolkit management and configuration
+* **[Create a Credential](../../getting-started/create-credential.md)** — How to configure authentication credentials
+* **[AI Configuration](../../menus/settings/ai-configuration.md)** — Set up LLM models and embedding configurations
+* **[Agents Menu](../../menus/agents.md)** — Create agents that use your tested toolkits
+* **[Chat Menu](../../menus/chat.md)** — Use toolkits in conversations
+* **[Indexing Overview](../indexing/indexing-overview.md)** — Learn about indexing tools and data processing
 
 ---

@@ -1,4 +1,4 @@
-# Guide: Attaching Images and Files in Elitea
+# Attachements in Conversation
 
 ## Introduction
 
@@ -16,7 +16,7 @@ The attachment functionality is integrated with the **Artifact Toolkit**. When y
 *   **Access:** This allows the AI agent to access the image for analysis and also provides a centralized location for you to manage these files via the **Artifacts** section of the platform.
 *   **Retention:** Files are subject to the retention policy of the bucket they are stored in. By default, new buckets have a retention period of 30 days, after which files are automatically deleted. Retention period can be changed manually.
 
-For more information on how buckets and retention policies work, please refer to the [ELITEA Artifact Functionality](../menus/artifacts.md).
+For more information on how buckets and retention policies work, please refer to the [ELITEA Artifact Functionality](../../menus/artifacts.md).
 
 ### Key Terms
 
@@ -39,7 +39,7 @@ You can enable the attachment feature for Agent/Pipeline from the Agent/Pipeline
 1.  **Navigate to Configuration:** Go to the **Agents** or **Pipelines** list, select the desired item, and open its **Configuration** tab.
 2.  **Locate the Toggle:** Find the **Allow attachments** toggle under toolkit section. By default, it is disabled.
 
-    ![Agent Configuration Screen with Attachment Toggle](../img/how-tos/attachments/agent-config-attachments-ui.png)
+    ![Agent Configuration Screen with Attachment Toggle](../../img/how-tos/chat-conversations/attachments/agent-config-attachments-ui.png)
   
 
 3.  **Enable Attachments:** Click the toggle to enable it. An **Attachment settings** pop-up will appear.
@@ -47,13 +47,13 @@ You can enable the attachment feature for Agent/Pipeline from the Agent/Pipeline
     *   **Select an Existing Toolkit:** If you already have an Artifact Toolkit you wish to use for storing attachments, select it from the dropdown menu.
     *   **Create a New Toolkit:** Select the "Create new" option. You will be prompted to provide a **Bucket name**. You can use a new name to create a new bucket or enter an existing bucket name.
 
-    ![Attachment Settings Pop-up for Toolkit Selection](../img/how-tos/attachments/attachment-settings-popup.png)
+    ![Attachment Settings Pop-up for Toolkit Selection](../../img/how-tos/chat-conversations/attachments/attachment-settings-popup.png)
 
 5.  **Save and Confirm:** After selecting or creating a toolkit, click **Save**.
     *   The **Allow attachments** feature will now be active.
     *   The selected Artifact Toolkit will be added to your Agent/Pipeline's tool list, marked with a special paperclip icon to indicate it's designated for attachments.
 
-    ![Attachment Settings ](../img/how-tos/attachments/attachment-settings.png)
+    ![Attachment Settings ](../../img/how-tos/chat-conversations/attachments/attachment-settings.png)
 
 
 ### From a Chat Conversation
@@ -65,13 +65,13 @@ You can also enable attachments on-the-fly directly within a chat.
 3.  **Configure the Toolkit:** Follow the same steps as described above (Step 4) to select an existing Artifact Toolkit or create a new one.
 4.  **Activation:** Once saved, the attachment functionality will be enabled for this specific chat conversation.
 
-![Attachment Settings chat](../img/how-tos/attachments/attachment-settings-chat.png)
+![Attachment Settings chat](../../img/how-tos/chat-conversations/attachments/attachment-settings-chat.png)
 
 ## Using Attachments in Chat
 
 Once enabled, click on the paperclip icon and you will see "Attach files" and "Attachment settings" options. 
 
-![Attachment Settings chat1](../img/how-tos/attachments/attachment-settings-chat1.png)
+![Attachment Settings chat1](../../img/how-tos/chat-conversations/attachments/attachment-settings-chat1.png)
 
 ### How to Attach Images
 
@@ -87,14 +87,14 @@ You have three ways to add images to your message prompt both in conversation-ch
 *   **Text is Required:** You must type a text prompt to accompany your images. The "Send" button will remain disabled until text is added.
 *   Click the **Send** button. The message, along with the attached images, will be sent to the AI for processing.
 
-![Chat UI with Attached Image Thumbnails](../img/how-tos/attachments/chat-ui-with-attachments.png)
+![Chat UI with Attached Image Thumbnails](../../img/how-tos/chat-conversations/attachments/chat-ui-with-attachments.png)
 
 ### Viewing and Managing Attachments in the Chat
 
 *   **Thumbnails:** Sent images are displayed as clickable thumbnails within the chat history. When clicked, the image will be enlarged
 *   **Management Options:** When you hover over an image thumbnail in the chat, two icons will appear: **Download** and **Delete**.
 
-    ![Hovering over an Attachment Thumbnail](../img/how-tos/attachments/attachment-hover-options.png)
+    ![Hovering over an Attachment Thumbnail](../../img/how-tos/chat-conversations/attachments/attachment-hover-options.png)
 
 ### Deleting Attachments
 
@@ -103,7 +103,7 @@ When you click the **Delete** (trash can) icon on an attachment, a confirmation 
 *   **Delete from Chat Only:** If you simply confirm the deletion, the image thumbnail will be removed from the chat conversation, but the original file will remain in the Artifact bucket.
 *   **Delete from Chat and Artifacts:** Check the box that says **"Also delete from artifact toolkit"** before confirming. This will permanently delete the image from both the chat conversation and the underlying Artifact storage bucket.
 
-![Delete Attachment Confirmation Pop-up](../img/how-tos/attachments/delete-attachment-confirmation.png)
+![Delete Attachment Confirmation Pop-up](../../img/how-tos/chat-conversations/attachments/delete-attachment-confirmation.png)
 
 ## Advanced Configuration
 
@@ -117,7 +117,7 @@ If you need to change the Artifact Toolkit (and therefore the storage bucket) us
 2. Click the **gear icon** next to the **Allow attachments** toggle and select another attachment artifact toolkit.
 3.  Click save and the new toolkit will be added to the agent
 
-![change settings](../img/how-tos/attachments/attachment-config-agent.png)
+![change settings](../../img/how-tos/chat-conversations/attachments/attachment-config-agent.png)
 
 **Note:** The old Artifact Toolkit will *not* be automatically removed from the agent's tool list. You must manually delete it if it's no longer needed. Previously attached images will remain associated with their original bucket.
 
@@ -127,7 +127,7 @@ If you need to change the Artifact Toolkit (and therefore the storage bucket) us
 2.  Select the **Attachments Settings** option
 3.  In the pop-up, select a different Artifact Toolkit or create a new one.
 
-![change settings](../img/how-tos/attachments/attachment-settings-chat1.png)
+![change settings](../../img/how-tos/chat-conversations/attachments/attachment-settings-chat1.png)
 
 
 ### Disabling Attachments
@@ -142,6 +142,7 @@ If you need to change the Artifact Toolkit (and therefore the storage bucket) us
 4.  Confirm your choice. The paperclip icon in chats will become inactive, but previously attached images will remain visible in the chat history.
 
 **Option 2**
+
 1.  Navigate to the configuration tab where you enabled the feature.
 2.  Remove the artifact toolkit associated with the attachment functionality.
 
@@ -160,8 +161,6 @@ Currently, the following image formats are supported for direct analysis by LLMs
 *   `.png`
 *   `.gif` (Only the first frame of animated GIFs will be processed)
 *   `.webp`
-*   `.bmp`
-*   `.svg`
 
 
 ### File Size and Quantity Limits

@@ -47,9 +47,9 @@ Before setting up the webhook in GitHub or GitLab, you must configure your Elite
     *   Enter this secret string into the `webhook_secret` field in your Elitea agent's settings.
     *   Save your agent configuration.
 
-    ![Secret Configuration](../img/how-tos/webhook/webhook-secret1.png)
+    ![Secret Configuration](../../img/how-tos/credentials-toolkits/webhook/webhook-secret1.png)
     
-    ![Secret Configuration2](../img/how-tos/webhook/webhook-secret2.png)
+    ![Secret Configuration2](../../img/how-tos/credentials-toolkits/webhook/webhook-secret2.png)
 
 
 **Important:** The secret you set in the Elitea agent **must exactly match** the secret you configure in GitHub or GitLab.
@@ -80,7 +80,7 @@ When a valid webhook is received by Elitea:
     *   **Active:** Ensure this checkbox is checked.
 4.  Click **Add webhook**.
 
-    ![GitHub Webhook Configuration](../img/how-tos/webhook/github_webhook.png)
+    ![GitHub Webhook Configuration](../../img/how-tos/credentials-toolkits/webhook/github_webhook.png)
 
 
 > **Note:** GitHub uses the `X-Hub-Signature-256` header for the HMAC signature, calculated using your secret and the payload body. Elitea will use this header and your agent's `webhook_secret` to verify the request.
@@ -88,15 +88,15 @@ When a valid webhook is received by Elitea:
 To test the webhook integration, send a ping request. Then, click on the webhook to view the request details. Observe the status code and other details of the webhook request. Ideally, you should see a 200 response code.
 From this view, you can also inspect the exact payload sent to the agent, which helps in configuring the agent's instructions.
 
-![GitHub Webhook Configuration](../img/how-tos/webhook/github_webhook2.png)
+![GitHub Webhook Configuration](../../img/how-tos/credentials-toolkits/webhook/github_webhook2.png)
 
-![GitHub Webhook Configuration](../img/how-tos/webhook/github_webhook3.png)
+![GitHub Webhook Configuration](../../img/how-tos/credentials-toolkits/webhook/github_webhook3.png)
 
 ## Setting Up a Webhook in GitLab
 
 1.  **Navigate to Repository Settings:** Go to your GitLab project, then navigate to **Settings** > **Webhooks**.
 
-     ![GitLab Webhook Configuration](../img/how-tos/webhook/gitlab_webhook.png)
+     ![GitLab Webhook Configuration](../../img/how-tos/credentials-toolkits/webhook/gitlab_webhook.png)
 
 
 2.  **Configure the Webhook:**
@@ -109,15 +109,15 @@ From this view, you can also inspect the exact payload sent to the agent, which 
     *   **Enable SSL verification:** Ensure this is checked (recommended).
 3.  Click **Add webhook**.
    
-    ![GitLab Webhook Configuration2](../img/how-tos/webhook/gitlab_webhook2.png)
+    ![GitLab Webhook Configuration2](../../img/how-tos/credentials-toolkits/webhook/gitlab_webhook2.png)
 
 > **Note:** GitLab sends its authentication token in the `X-Gitlab-Token` header. Elitea will use this header and your agent's `webhook_secret` to verify the request.
 
 To test the configured webhook you can use test functionality on the created webhook , or click the edit button and observe the sent request details 
 
- ![GitLab Webhook Configuration3](../img/how-tos/webhook/gitlab_webhook3.png)
+ ![GitLab Webhook Configuration3](../../img/how-tos/credentials-toolkits/webhook/gitlab_webhook3.png)
  
- ![GitLab Webhook Configuration4](../img/how-tos/webhook/gitlab_webhook4.png)
+ ![GitLab Webhook Configuration4](../../img/how-tos/credentials-toolkits/webhook/gitlab_webhook4.png)
 
 ## Use Case Example
 
@@ -266,7 +266,7 @@ If you encounter issues setting up or using webhooks with your Elitea agent, ref
         1.  Confirm you are using the correct `agent_version_id` in the Payload URL. This is specific to a *saved version* of your agent. It is **not** the shorter, often numerical, `agent_id`.
         
         
-    ![Agent_version_id](../img/how-tos/webhook/version_id.png)
+    ![Agent_version_id](../../img/how-tos/credentials-toolkits/webhook/version_id.png)
 
 
 *   **Webhook Body Modified After Hash Generation (Primarily for GitHub):**

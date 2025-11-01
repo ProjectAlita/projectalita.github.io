@@ -30,7 +30,7 @@ This allows for:
 *   **`{{issue.key}}` (JIRA Smart Value):** A placeholder used in JIRA Automation that JIRA replaces with the actual key of the issue being processed (e.g., "PROJECT-123").
 *   **`ProjectID` (Elitea):** A unique identifier for your project within the Elitea platform.
 *   **`ApplicationVersionID` (Elitea):** A unique identifier for a specific version of your configured Elitea agent.
-*   **JIRA Toolkit (Elitea):** A set of tools within an Elitea agent that allows it to interact with JIRA (More about  **[Jira toolkit](../integrations/toolkits/jira_toolkit.md)** here)
+*   **JIRA Toolkit (Elitea):** A set of tools within an Elitea agent that allows it to interact with JIRA (More about  **[Jira toolkit](../../integrations/toolkits/jira_toolkit.md)** here)
 
 ## Prerequisites
 
@@ -52,14 +52,14 @@ Follow these steps to set up the automated JIRA review:
     *   Create a new agent or modify an existing one.
     *   Define an **Agent Name** (e.g., "JIRA Story Reviewer"), **Description**, and crucial **Instructions**.
         *   **Agent Instructions:** The instructions must guide the agent on how to process the input (which will be the `issue key`) and what to do. For example: "You will receive a JIRA issue key as user input. Use the JIRA toolkit to fetch the details of this issue. Review the user story based on INVEST principles. Then, immediately post a comment on the same JIRA issue with your review, including a summary, context, identified gaps, and clarifying questions."
-    *   **Add JIRA Toolkit:** If not already present, add the "JIRA" toolkit to your agent and configure it with your JIRA instance ( More about  **[Jira toolkit](../integrations/toolkits/jira_toolkit.md)** here).
+    *   **Add JIRA Toolkit:** If not already present, add the "JIRA" toolkit to your agent and configure it with your JIRA instance ( More about  **[Jira toolkit](../../integrations/toolkits/jira_toolkit.md)** here).
 
 3.  **Note `ProjectID` and `ApplicationVersionID`:**
     *   **ProjectID:** Find this in your Elitea "Settings" -> "Configuration" page.
     *   **ApplicationVersionID:** After configuring and saving your agent, locate its `ApplicationVersionID`. This ID is specific to this version of the agent configuration.
 
-    ![ApplicationVersionID](../img/how-tos/jira_automation/ApplicationVersionID.png)
-    ![ProjectID](../img/how-tos/jira_automation/ProjectID.png)
+    ![ApplicationVersionID](../../img/how-tos/credentials-toolkits/jira_automation/ApplicationVersionID.png)
+    ![ProjectID](../../img/how-tos/credentials-toolkits/jira_automation/ProjectID.png)
 
 ### Step 2: Understanding the Elitea API Trigger
 
@@ -86,20 +86,20 @@ The Elitea agent will be triggered via its public API.
 
     **Cloud**
 
-     ![Project_settings](../img/how-tos/jira_automation/Project_settings.png)
+     ![Project_settings](../../img/how-tos/credentials-toolkits/jira_automation/Project_settings.png)
 
-     ![Automation](../img/how-tos/jira_automation/Automation_c.png)
+     ![Automation](../../img/how-tos/credentials-toolkits/jira_automation/Automation_c.png)
 
 
 
     **Server**
 
 
-     ![Project_settings_s](../img/how-tos/jira_automation/Project_settings_s.png)
+     ![Project_settings_s](../../img/how-tos/credentials-toolkits/jira_automation/Project_settings_s.png)
 
-     ![Select_project](../img/how-tos/jira_automation/Select_project.png)
+     ![Select_project](../../img/how-tos/credentials-toolkits/jira_automation/Select_project.png)
 
-     ![Automation_s](../img/how-tos/jira_automation/Automation_s.png)
+     ![Automation_s](../../img/how-tos/credentials-toolkits/jira_automation/Automation_s.png)
 
 
 2.  **Create a New Rule:**
@@ -108,13 +108,13 @@ The Elitea agent will be triggered via its public API.
 3.  **Select a Trigger:**
     *   For a button-initiated review, choose the **Manual trigger**. You can customize the name of the button (e.g., "Eliea Review Story").
 
-    ![manual-trigger](../img/how-tos/jira_automation/manual-trigger.png)
+    ![manual-trigger](../../img/how-tos/credentials-toolkits/jira_automation/manual-trigger.png)
  
 
 4.  **Add "Send web request" Action:**
     *   Click on **New action** and select **Send web request**.
 
-    ![web_request](../img/how-tos/jira_automation/web_request.png)
+    ![web_request](../../img/how-tos/credentials-toolkits/jira_automation/web_request.png)
 
 5.  **Configure the Web Request:**
     *   **Webhook URL:** Enter the Elitea API endpoint from Step 2, with your actual `ProjectID` and `ApplicationVersionID`.
@@ -123,11 +123,11 @@ The Elitea agent will be triggered via its public API.
         *   `Content-Type`: `application/json`
         *   `Authorization`: `Bearer [Your_Eliea_API_Token]`
 
-          ![ELITEA_API_TOKEN](../img/how-tos/jira_automation/ELITEA_API_TOKEN.png)
+          ![ELITEA_API_TOKEN](../../img/how-tos/credentials-toolkits/jira_automation/ELITEA_API_TOKEN.png)
 
         *   **Important:** Instead of pasting your token directly, use JIRA's secret management if available. Create a secret (e.g., `ELITEA_API_TOKEN`) in JIRA's automation settings and reference it here like `Bearer {{secrets.ELITEA_API_TOKEN}}`. This keeps your token secure.
 
-         ![jira-automation-secrets](../img/how-tos/jira_automation/jira-automation-secrets.png)
+         ![jira-automation-secrets](../../img/how-tos/credentials-toolkits/jira_automation/jira-automation-secrets.png)
 
     *   **HTTP method:** `POST`
     *   **Webhook body:** Select `Custom data`.
@@ -141,11 +141,11 @@ The Elitea agent will be triggered via its public API.
 
     Cloud
 
-     ![webhook-setup-cloud](../img/how-tos/jira_automation/webhook-setup-cloud.png)
+     ![webhook-setup-cloud](../../img/how-tos/credentials-toolkits/jira_automation/webhook-setup-cloud.png)
 
     Server
 
-     ![webhook-setup-server](../img/how-tos/jira_automation/webhook-setup-server.png)
+     ![webhook-setup-server](../../img/how-tos/credentials-toolkits/jira_automation/webhook-setup-server.png)
 
 
 6.  **Save and Name the Rule:**
@@ -163,10 +163,10 @@ The Elitea agent will be triggered via its public API.
 3.  Click the button. This will trigger the JIRA Automation rule, which in turn calls the Elitea agent.
 
     Cloud 
-     ![Button_c](../img/how-tos/jira_automation/Button_c.png)
+     ![Button_c](../../img/how-tos/credentials-toolkits/jira_automation/Button_c.png)
 
     Server 
-     ![Button_s](../img/how-tos/jira_automation/Button_s.png)
+     ![Button_s](../../img/how-tos/credentials-toolkits/jira_automation/Button_s.png)
 
 ### Reviewing the Results
 
@@ -215,13 +215,13 @@ If you encounter issues, here are common areas to check:
         *   In the JIRA "Send web request" action configuration, there's often a button to validate the setup. Use this with a real issue key and review the request details.
 
 
-       ![validate-web-request](../img/how-tos/jira_automation/validate-web-request.png)
+       ![validate-web-request](../../img/how-tos/credentials-toolkits/jira_automation/validate-web-request.png)
 
 2.  **Your Teammates Can't See the Rule/Button (for Manual Triggers):**
     *   **Check Rule Scope/Permissions:** In the JIRA Automation rule settings, ensure the rule is enabled and that its scope or permissions allow other project members to see and execute manual triggers. Some JIRA versions have specific settings for manual trigger visibility.
 
 
-    ![permissions](../img/how-tos/jira_automation/permissions.png)
+    ![permissions](../../img/how-tos/credentials-toolkits/jira_automation/permissions.png)
 
 3.  **Elitea Agent Errors:**
     *   Ensure the agent's JIRA toolkit is correctly configured and can connect to your JIRA instance.
@@ -282,6 +282,6 @@ Please ensure you have reviewed the troubleshooting steps in this guide and cons
 *   **Elitea API Public Collection (Postman):** [https://www.postman.com/projectalita/elitea-api-public](https://www.postman.com/projectalita/elitea-api-public)
     *   The specific request for prediction: [Elitea API predict endpoint](https://www.postman.com/projectalita/elitea-api-public/request/ac6fj06/predict)
 *   **JIRA Automation Documentation (Cloud):** [https://support.atlassian.com/cloud-automation/docs/jira-cloud-automation/](https://support.atlassian.com/cloud-automation/docs/jira-cloud-automation/)
-*   **Example Elitea Agent Instructions for JIRA Story Review:** [Agent Instructions](../img/how-tos/jira_automation/instructions.txt)
+*   **Example Elitea Agent Instructions for JIRA Story Review:** [Agent Instructions](../../img/how-tos/credentials-toolkits/jira_automation/instructions.txt)
 
 

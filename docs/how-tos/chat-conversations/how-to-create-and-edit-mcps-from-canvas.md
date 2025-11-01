@@ -17,7 +17,7 @@ The **MCP Canvas** interface in ELITEA serves as an integrated MCP management sy
 * **Server Connection Management:** Connect to external MCP servers running locally or remotely through the Elitea MCP Client.
 
 !!! info "Prerequisites"
-    Before creating MCPs from canvas, ensure the **Elitea MCP Client** is installed and running with at least one MCP server configured. See the [MCP Client integration guide](../integrations/mcp/mcp-client.md) for setup instructions.
+    Before creating MCPs from canvas, ensure the **Elitea MCP Client** is installed and running with at least one MCP server configured. See the [MCP Client integration guide](../../integrations/mcp/mcp-client.md) for setup instructions.
 
 ## Creating MCPs via Canvas Interface
 
@@ -27,7 +27,7 @@ The **MCP Canvas** interface in ELITEA serves as an integrated MCP management sy
 2. In the **PARTICIPANTS** section, locate **MCP**.
 3. Click on the **Create new MCP** button.
 
-![Canvas MCP access](../img/how-tos/canvas-mcp/canvas-mcp-access.png)
+![Canvas MCP access](../../img/how-tos/chat-conversations/canvas-mcp/canvas-mcp-access.png)
 
 The "Create New MCP" canvas interface will be displayed showing available MCP server types discovered from your running Elitea MCP Client.
 
@@ -55,7 +55,7 @@ Available MCP servers are dynamically loaded based on:
 - **Figma:** Design file access and manipulation
 - **Custom MCP Servers:** Any MCP-compliant server configured in your client
 
-![MCP Type Selection](../img/how-tos/canvas-mcp/canvas-mcp-select-type.png)
+![MCP Type Selection](../../img/how-tos/chat-conversations/canvas-mcp/canvas-mcp-select-type.png)
 
 ### Step 3: Configure General Information
 
@@ -92,7 +92,7 @@ In the **TOOLS** section, select which tools from the MCP server you want to ena
 - **GitHub MCP:** `create_issue`, `list_repositories`, `get_file_contents`, `create_pull_request`
 - **Figma MCP:** `get_file`, `get_components`, `export_image`
 
-![MCP Basic Configuration](../img/how-tos/canvas-mcp/canvas-mcp-basic-config.png)
+![MCP Basic Configuration](../../img/how-tos/chat-conversations/canvas-mcp/canvas-mcp-basic-config.png)
 
 
 ### Step 5: Save MCP Configuration
@@ -107,7 +107,7 @@ Click the **Save** button to create your MCP connection.
 - The canvas closes and you return to the chat interface
 - Your newly created MCP appears in the **PARTICIPANTS** section under **MCP**
 
-![MCP Created](../img/how-tos/canvas-mcp/canvas-mcp-created.png)
+![MCP Created](../../img/how-tos/chat-conversations/canvas-mcp/canvas-mcp-created.png)
 
 The MCP is immediately available for:
 
@@ -129,7 +129,7 @@ There are two ways to access the MCP edit mode:
     - Hover over the MCP to reveal action buttons.
     - Click the pencil **Edit** icon that appears.
 
-![MCP Edit Access](../img/how-tos/canvas-mcp/canvas-mcp-edit-icon.png)
+![MCP Edit Access](../../img/how-tos/chat-conversations/canvas-mcp/canvas-mcp-edit-icon.png)
 
 The MCP configuration canvas will open with current settings pre-populated.
 
@@ -314,7 +314,7 @@ After creating MCPs from canvas, you can:
 !!! info "Related Documentation"
     For additional information and related functionality, refer to these helpful resources:
 
-    - **[MCP Menu](../menus/mcps.md)** - Complete reference for MCP management and testing options
-    - **[MCP Client Integration](../integrations/mcp/mcp-client.md)** - Setup and configuration guide for Elitea MCP Client
-    - **[Configure and Use MCP Servers](../getting-started/configure-and-use-mcp.md)** - Quick start guide for MCP setup
-    - **[Chat Menu](../menus/chat.md)** - Comprehensive guide to chat interface features and navigation
+    - **[MCP Menu](../../menus/mcps.md)** - Complete reference for MCP management and testing options
+    - **[MCP Client Integration](../../integrations/mcp/mcp-client.md)** - Setup and configuration guide for Elitea MCP Client
+    - **[Configure and Use MCP Servers](../../getting-started/configure-and-use-mcp.md)** - Quick start guide for MCP setup
+    - **[Chat Menu](../../menus/chat.md)** - Comprehensive guide to chat interface features and navigation

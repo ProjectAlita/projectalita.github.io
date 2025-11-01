@@ -39,7 +39,7 @@ Before accessing the History tab, ensure you have:
 2. Click on the agent you want to review
 3. In the agent detail view, click the **History** tab
 
-![Agent History](../img/how-tos/agents-pipelines-history/agent-history.png)
+![Agent History](../../img/how-tos/agents-pipelines/agents-pipelines-history/agent-history.png)
 
 ### For Pipelines
 
@@ -47,7 +47,7 @@ Before accessing the History tab, ensure you have:
 2. Click on the pipeline you want to review
 3. In the pipeline detail view, click the **History** tab
 
-![Pipeline History](../img/how-tos/agents-pipelines-history/pipeline-history.png)
+![Pipeline History](../../img/how-tos/agents-pipelines/agents-pipelines-history/pipeline-history.png)
 
 !!! tip "Quick Navigation"
     The History tab is located alongside other tabs like Run, Configuration, and Monitoring in the agent or pipeline detail page.
@@ -80,7 +80,7 @@ The right panel shows the complete conversation for the selected run:
 - **Formatting**: Messages retain their original formatting, including code blocks and lists
 - **Read-only**: This is a replay view—you cannot modify or continue the conversation
 
-![Hystory Tab View](../img/how-tos/agents-pipelines-history/history-tab-view.png)
+![Hystory Tab View](../../img/how-tos/agents-pipelines/agents-pipelines-history/history-tab-view.png)
 
 !!! info "Empty State"
     When no run is selected, the right panel remains empty. Select a run from the left panel to view its conversation.
@@ -132,7 +132,7 @@ If you need to remove a specific run from history:
 3. Confirm the deletion in the modal dialog
 4. The run is permanently removed from history
 
-![Deleting a Run](../img/how-tos/agents-pipelines-history/remove-run.png)
+![Deleting a Run](../../img/how-tos/agents-pipelines/agents-pipelines-history/remove-run.png)
 
 !!! warning "Permanent Deletion"
     Deleting a run from history is permanent and cannot be undone. Make sure you want to remove the record before confirming.
@@ -290,6 +290,6 @@ If you need to remove a specific run from history:
 ## Related Documentation
 
 !!! info "Related Resources"
-    - [Agents Menu](../menus/agents.md) - Learn about managing agents
-    - [Pipelines Menu](../menus/pipelines.md) - Learn about managing pipelines
-    - [Entity Versioning](../features/entity-versioning.md) - Understanding version management
+    - [Agents Menu](../../menus/agents.md) - Learn about managing agents
+    - [Pipelines Menu](../../menus/pipelines.md) - Learn about managing pipelines
+    - [Entity Versioning](../entity-management/entity-versioning.md) - Understanding version management

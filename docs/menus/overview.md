@@ -1,6 +1,6 @@
-# ELITEA Platform Overview
+# Platform Overview
 
-## ELITEA - Main Interface
+## Main Interface
 
 The ELITEA's main interface encompasses several sections, including the Discover Menu, Search feature, a Quick button for creating new items (conversation, agent, pipeline, collection, toolkit, credential, and bucket, importing entities), Project Selector, Settings, Tags, and Trending Authors.
 

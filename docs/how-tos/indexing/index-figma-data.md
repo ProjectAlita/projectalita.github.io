@@ -1,7 +1,7 @@
 # Index Figma Data
 
 !!! warning "Availability"
-    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets) and the [Indexing Overview](./indexing-overview.md).
+    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab) and the [Indexing Overview](./indexing-overview.md).
 
 This guide provides a complete step-by-step walkthrough for indexing Figma data and then searching or chatting with the indexed content using ELITEA's AI-powered tools.
 
@@ -37,7 +37,7 @@ Figma indexing allows you to create searchable indexes from your Figma design co
 
 Before indexing Figma data, ensure you have:
 
-1. **Figma Credential**: A Figma Personal Access Token or [authentication credentials](../how-to-use-credentials.md#figma-credential-setup) configured in ELITEA
+1. **Figma Credential**: A Figma Personal Access Token or [authentication credentials](../credentials-toolkits/how-to-use-credentials.md#figma-credential-setup) configured in ELITEA
 2. **Vector Storage**: PgVector selected in Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 3. **Embedding Model**: Selected in AI Configuration (defaults available) → [AI Configuration](../../menus/settings/ai-configuration.md)
 4. **Figma Toolkit**: Configured with your Figma authentication and project details
@@ -73,7 +73,7 @@ Your Figma credential needs appropriate permissions based on what you want to in
     For complete credential setup steps including token generation and security best practices, see:
     
     - [Create a Credential](../../getting-started/create-credential.md)
-    - [Figma Credential Setup](../how-to-use-credentials.md#figma-credential-setup)
+    - [Figma Credential Setup](../credentials-toolkits/how-to-use-credentials.md#figma-credential-setup)
     - [Figma Toolkit Integration Guide](../../integrations/toolkits/figma_toolkit.md)
 
 ---
@@ -431,7 +431,7 @@ Let's walk through a complete example of indexing and using a design team's Figm
     
     - [Indexing Overview](./indexing-overview.md) - General indexing concepts and features
     - [Create a Credential](../../getting-started/create-credential.md) - Step-by-step credential creation guide
-    - [How to Use Credentials](../how-to-use-credentials.md) - Credential management and Figma setup
+    - [How to Use Credentials](../credentials-toolkits/how-to-use-credentials.md) - Credential management and Figma setup
     - [Toolkits Menu](../../menus/toolkits.md) - Toolkit configuration and management
     - [Figma Toolkit Integration Guide](../../integrations/toolkits/figma_toolkit.md) - Complete Figma toolkit reference
     - [AI Configuration](../../menus/settings/ai-configuration.md) - Vector storage and embedding model setup

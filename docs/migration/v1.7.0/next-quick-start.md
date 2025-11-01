@@ -43,7 +43,7 @@ Within projects, the following content was included:
 
 1. Create and attach credentials
 	- See: [How to create a credential and attach it to the toolkit](#how-to-create-a-credential-and-attach-it-to-the-toolkit)
-	- Guides: [Create a Credential](../../getting-started/create-credential.md) · [Create a Toolkit](../../getting-started/create-toolkit.md) · [Use Credentials](../../how-tos/how-to-use-credentials.md)
+	- Guides: [Create a Credential](../../getting-started/create-credential.md) · [Create a Toolkit](../../getting-started/create-toolkit.md) · [Use Credentials](../../how-tos/credentials-toolkits/how-to-use-credentials.md)
 2. Check your Toolkit Configuration
 	- Verify tools enabled (e.g., Index data), correct Credential selected, PgVector and Embedding settings; Save, then test from Tool Testing.
 	- See: [Check your Toolkit Configuration](#check-your-toolkit-configuration)
@@ -59,7 +59,7 @@ Within projects, the following content was included:
 
 6. Configure EPAM AI DIAL keys (strongly recommended)
 	- Shared LLM models in Next are evaluation-only with daily limits. For sustained or production use, configure your own DIAL keys.
-	- See: [Configure EPAM AI DIAL Keys](./configure-epam-ai-dial-key.md) · Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
+	- See: [Configure EPAM AI DIAL Keys](../../getting-started/configure-epam-ai-dial-key.md) · Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 
 ---
 
@@ -70,7 +70,7 @@ Keep it simple: create the credential, then assign it inside your toolkit.
 1. **Create a credential**: Go to Credentials → + Create → pick type (e.g., GitHub, Jira) → fill fields → Save.
 2. **Attach to a toolkit**: Go to Toolkits → create or open a toolkit → in Configuration, choose the Credential you created → Save.
 
-See the detailed guide: [Create a Credential and Add It to a Toolkit](../../getting-started/create-credential.md). For broader concepts, see [Use Credentials](../../how-tos/how-to-use-credentials.md).
+See the detailed guide: [Create a Credential and Add It to a Toolkit](../../getting-started/create-credential.md). For broader concepts, see [Use Credentials](../../how-tos/credentials-toolkits/how-to-use-credentials.md).
 
 ## Check your Toolkit Configuration
 
@@ -126,7 +126,7 @@ Quick steps:
 - In Next env: Settings → AI Configuration → + Create → choose “AI DIAL” → enter API Base, Key, Version → Save.
 - Create LLM models: + Create → LLM Model → set exact model name from EPAM catalog, context window, max output tokens → select your DIAL credential → Save.
 
-Full how-to: [Configure EPAM AI DIAL Keys](./configure-epam-ai-dial-key.md)
+Full how-to: [Configure EPAM AI DIAL Keys](../../getting-started/configure-epam-ai-dial-key.md)
 
 ## Questions or issues? Contact Support
 

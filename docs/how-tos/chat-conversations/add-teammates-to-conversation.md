@@ -1,8 +1,7 @@
 # Adding Teammates and Collaborating in the Conversation
 
----
 
-## 1. Add Teammates to a Conversation
+## Add Teammates to a Conversation
 
 1. Navigate to your team's Project in ELITEA.
 2. Open your conversation in ELITEA Chat.
@@ -11,13 +10,13 @@
 5. Select one or more users from the list.
 6. Click **Add** to confirm. The selected users will be added as participants to your chat.
 
-   ![Add users panel](../img/getting-started/add-teammates-to-conversation/add_user.png)
+   ![Add users panel](../../img/how-tos/chat-conversations/add-teammates-to-conversation/add_user.png)
 
-   ![Select users](../img/getting-started/add-teammates-to-conversation/select_user.png)
+   ![Select users](../../img/how-tos/chat-conversations/add-teammates-to-conversation/select_user.png)
 
 ---
 
-## 2. Manage Participants
+## Manage Participants
 
 * **View Participants:**  
     * All added teammates are visible in the **PARTICIPANTS** section on the right.
@@ -28,11 +27,11 @@
 * **Mention Users:**  
     * Hover over user avatars in the participant list or type **@username** in the chat input to mention and notify teammates in the conversation. To mention everyone in the conversation, select the **All Users** option.
 
-   ![Mention users](../img/getting-started/add-teammates-to-conversation/mention.png)
+   ![Mention users](../../img/how-tos/chat-conversations/add-teammates-to-conversation/mention.png)
 
 ---
 
-## 3. Collaborative Features
+## Collaborative Features
 
 * All added users can send messages, interact with content, and use chat features together.
 * Participants can be mentioned for direct notifications.
@@ -40,7 +39,7 @@
 
 ---
 
-## 4. Tips
+## Tips
 
 * Use the search bar in the add users modal to quickly find teammates.
 * Mention users with **@** to get their attention on important updates.
@@ -48,9 +47,9 @@
 
 ---
 
-## 5. More Resources
+## More Resources
 
-* [ELITEA Chat Documentation](../menus/chat.md)
-* [How to Use Chat Functionality](../how-tos/how-to-use-chat-functionality.md)
+* [ELITEA Chat Documentation](../../menus/chat.md)
+* [How to Use Chat Functionality](how-to-use-chat-functionality.md)
 
 ---

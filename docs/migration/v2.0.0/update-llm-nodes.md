@@ -22,13 +22,13 @@ The LLM node structure has been updated with a new configuration format. If you 
 
 The previous LLM node configuration had a simpler structure with just a Prompt field:
 
-![Old LLM Node](<../../img/migration/v2.0/old-llm-node.png>)
+![Old LLM Node](<../../img/migration/v2.0.0/old-llm-node.png>)
 
 ### New LLM Node (Current format)
 
 The updated LLM node now requires System and Task fields:
 
-![New LLM Node](<../../img/migration/v2.0/new-llm-node.png>)
+![New LLM Node](<../../img/migration/v2.0.0/new-llm-node.png>)
 
 ## Symptoms
 

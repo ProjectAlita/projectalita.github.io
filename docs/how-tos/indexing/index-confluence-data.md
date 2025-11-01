@@ -1,7 +1,7 @@
 # Index Confluence Data
 
 !!! warning "Availability"
-    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets) and the [Indexing Overview](./indexing-overview.md).
+    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab) and the [Indexing Overview](./indexing-overview.md).
 
 This guide provides a complete step-by-step walkthrough for indexing Confluence data and then searching or chatting with the indexed content using ELITEA's AI-powered tools.
 
@@ -40,7 +40,7 @@ Confluence indexing allows you to create searchable indexes from your Confluence
 
 Before indexing Confluence data, ensure you have:
 
-1. **Confluence Credential**: A Confluence API token or [authentication credentials](../how-to-use-credentials.md#confluence-credential-setup) configured in ELITEA
+1. **Confluence Credential**: A Confluence API token or [authentication credentials](../credentials-toolkits/how-to-use-credentials.md#confluence-credential-setup) configured in ELITEA
 2. **Vector Storage**: PgVector selected in Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 3. **Embedding Model**: Selected in AI Configuration (defaults available) → [AI Configuration](../../menus/settings/ai-configuration.md)
 4. **Confluence Toolkit**: Configured with your Confluence instance details, credentials, and **Index Data tool enabled**
@@ -83,7 +83,7 @@ Your Confluence credential needs appropriate permissions based on what you want 
     For complete credential setup steps including token generation and security best practices, see:
     
     - [Create a Credential](../../getting-started/create-credential.md)
-    - [Confluence Credential Setup](../how-to-use-credentials.md#confluence-credential-setup)
+    - [Confluence Credential Setup](../credentials-toolkits/how-to-use-credentials.md#confluence-credential-setup)
     - [Confluence Toolkit Guide](../../integrations/toolkits/confluence_toolkit.md) (Token generation section)
 
 ---
@@ -417,7 +417,7 @@ Let's walk through a complete example of indexing and using a company knowledge 
     
     - [Indexing Overview](./indexing-overview.md) - General indexing concepts and features
     - [Create a Credential](../../getting-started/create-credential.md) - Step-by-step credential creation guide
-    - [How to Use Credentials](../how-to-use-credentials.md) - Credential management and Confluence setup
+    - [How to Use Credentials](../credentials-toolkits/how-to-use-credentials.md) - Credential management and Confluence setup
     - [Toolkits Menu](../../menus/toolkits.md) - Toolkit configuration and management
     - [Confluence Toolkit Integration Guide](../../integrations/toolkits/confluence_toolkit.md) - Complete Confluence toolkit reference
     - [AI Configuration](../../menus/settings/ai-configuration.md) - Vector storage and embedding model setup

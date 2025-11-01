@@ -1,4 +1,4 @@
-# ELITEA Glossary
+# Glossary
 
 This glossary provides definitions for key terms, components, and features used across the ELITEA platform. Understanding these terms will help you navigate and utilize ELITEA more effectively.
 

@@ -678,7 +678,7 @@ This integration enables your AI agents to interact intelligently with GitHub re
 !!! reference "Useful ELITEA Resources"
     To further enhance your understanding and skills in using the GitHub toolkit with ELITEA, here are helpful internal resources:
 
-      * **[ELITEA Credentials Management](../../how-tos/how-to-use-credentials.md)** - *Learn how to securely store your GitHub tokens using ELITEA's Credentials management feature for enhanced security within ELITEA.*
+      * **[ELITEA Credentials Management](../../how-tos/credentials-toolkits/how-to-use-credentials.md)** - *Learn how to securely store your GitHub tokens using ELITEA's Credentials management feature for enhanced security within ELITEA.*
       * **[ELITEA Toolkits Guide](../../menus/toolkits.md)** - *Comprehensive guide on creating and managing toolkits in ELITEA, including advanced configuration options.*
       * **[ELITEA Agents Configuration](../../menus/agents.md)** - *Find out more about creating and configuring Agents in ELITEA, where you integrate the GitHub toolkit to automate your development workflows.*
       * **[ELITEA Chat Guide](../../menus/chat.md)** - *Learn how to use the GitHub toolkit directly in Chat conversations for interactive repository management and development assistance.*

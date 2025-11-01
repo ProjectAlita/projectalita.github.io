@@ -65,7 +65,7 @@ The **Credentials** menu in ELITEA serves as a centralized hub for securely mana
 
 * **Reusable Configurations:** Once a credential is configured, it can be reused across multiple toolkits within the **same project** or your **Private** workspace.
 * **Private and Project Level Credentials:** You can create credentials within your **Private** workspace for personal use or within **Team** projects for shared access among project members.
-* **Secure Storage:** ELITEA securely stores sensitive information such as API keys, tokens, and passwords, with the option to use **[Secrets](../menus/settings/secrets.md)** for enhanced security.
+* **Secure Storage:** ELITEA securely stores sensitive information such as API keys, tokens, and passwords, with the option to use **[Secrets](../../menus/settings/secrets.md)** for enhanced security.
 
 **Accessing the Credentials Menu:**
 
@@ -73,13 +73,13 @@ The **Credentials** menu in ELITEA serves as a centralized hub for securely mana
 2. Navigate to either your **Private** workspace or the specific **Team** project where you want to configure credentials.
 3. Click on **Credentials** in the main navigation menu.
 
-![Credentials-Menu](../img/how-tos/how-to-use-credentials/cred-menu.png)
+![Credentials-Menu](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-menu.png)
 
 **Creating a New Credential:**
 
 1. In the Credentials menu, click the **+ Create** button.
 2. A dialog will appear prompting you to **Select Credential Type**. Choose the service you want to create credentials for (e.g., Confluence, GitHub, Jira, Slack).
-   ![Credentials-Create](../img/how-tos/how-to-use-credentials/cred-new.png)
+   ![Credentials-Create](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-new.png)
 
 3. You will be presented with a configuration form specific to the selected credential type. Follow the detailed steps below for each service.
 4. Configure the credential parameters including name and authentication details.
@@ -107,7 +107,7 @@ When setting up credentials in ELITEA, it's important to understand the followin
 
 For any credential field that requires sensitive information (such as API keys, passwords, or tokens), you have secure options:
 
-* **Using Secrets (Highly Recommended):** For enhanced security, always use pre-configured secrets from the **[Secrets](../menus/settings/secrets.md)** section. This approach avoids exposing sensitive information in configuration forms, provides better security through encryption, and makes it easier to update credentials in the future.
+* **Using Secrets (Highly Recommended):** For enhanced security, always use pre-configured secrets from the **[Secrets](../../menus/settings/secrets.md)** section. This approach avoids exposing sensitive information in configuration forms, provides better security through encryption, and makes it easier to update credentials in the future.
 * **Manual Entry:** Enter the sensitive value directly into the provided field. Use this only for testing or temporary setups when secrets are not available.
 
 
@@ -137,7 +137,7 @@ To create an **ADO (Azure DevOps)** credential:
       * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![ADO Credential Setup](../img/how-tos/how-to-use-credentials/cred-ado.png)
+![ADO Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-ado.png)
 
 
 ### ADO Repos Credential Setup
@@ -160,7 +160,7 @@ To create an **ADO Repos** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![ADO Repos Credential Setup](../img/how-tos/how-to-use-credentials/cred-ado-repo.png)
+![ADO Repos Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-ado-repo.png)
 
 
 ### Bitbucket Credential Setup
@@ -184,7 +184,7 @@ To create a **Bitbucket** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Bitbucket Credential Setup](../img/how-tos/how-to-use-credentials/cred-bitbucket.png)
+![Bitbucket Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-bitbucket.png)
 
 
 ### Confluence Credential Setup
@@ -211,7 +211,7 @@ To create a **Confluence** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Confluence Credential Setup](../img/how-tos/how-to-use-credentials/cred-confluence.png)
+![Confluence Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-confluence.png)
 
 
 ### Figma Credential Setup
@@ -236,7 +236,7 @@ To create a **Figma** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Figma Credential Setup](../img/how-tos/how-to-use-credentials/cred-figma.png)
+![Figma Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-figma.png)
 
 
 ### GitHub Credential Setup
@@ -269,7 +269,7 @@ To create a **GitHub** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![GitHub Credential Setup](../img/how-tos/how-to-use-credentials/cred-github.png)
+![GitHub Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-github.png)
 
 !!! info "GitHub.com vs GitHub Enterprise (Endpoints)"
     When configuring GitHub credentials, the Base URL depends on whether you use GitHub.com or a self‑hosted GitHub Enterprise Server (GHES).
@@ -304,7 +304,7 @@ To create a **GitLab** credential:
    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![GitLab Credential Setup](../img/how-tos/how-to-use-credentials/cred-gitlab.png)
+![GitLab Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-gitlab.png)
 
 
 ### Jira Credential Setup
@@ -331,7 +331,7 @@ To create a **Jira** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Jira Credential Setup](../img/how-tos/how-to-use-credentials/cred-jira.png)
+![Jira Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-jira.png)
 
 
 ### Postman Credential Setup
@@ -356,7 +356,7 @@ To create a **Postman** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Postman Credential Setup](../img/how-tos/how-to-use-credentials/cred-postman.png)
+![Postman Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-postman.png)
 
 
 ### QTest Credential Setup
@@ -379,7 +379,7 @@ To create a **QTest** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![QTest Credential Setup](../img/how-tos/how-to-use-credentials/cred-qtest.png)
+![QTest Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-qtest.png)
 
 
 ### Rally Credential Setup
@@ -406,7 +406,7 @@ To create a **Rally** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Rally Credential Setup](../img/how-tos/how-to-use-credentials/cred-rally.png)
+![Rally Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-rally.png)
 
 
 ### ServiceNow Credential Setup
@@ -430,7 +430,7 @@ To create a **ServiceNow** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![ServiceNow Credential Setup](../img/how-tos/how-to-use-credentials/cred-servicenow.png)
+![ServiceNow Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-servicenow.png)
 
 
 ### Slack Credential Setup
@@ -454,7 +454,7 @@ To create a **Slack** credential:
    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Slack Credential Setup](../img/how-tos/how-to-use-credentials/cred-slack.png)
+![Slack Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-slack.png)
 
 
 ### TestRail Credential Setup
@@ -479,7 +479,7 @@ To create a **TestRail** credential:
    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![TestRail Credential Setup](../img/how-tos/how-to-use-credentials/cred-testrail.png)
+![TestRail Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-testrail.png)
 
 
 ### Xray Credential Setup
@@ -503,7 +503,7 @@ To create an **Xray** credential:
    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Xray Credential Setup](../img/how-tos/how-to-use-credentials/cred-xray.png)
+![Xray Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-xray.png)
 
 
 ### Zephyr Enterprise Credential Setup
@@ -526,7 +526,7 @@ To create a **Zephyr Enterprise** credential:
    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Zephyr Enterprise Credential Setup](../img/how-tos/how-to-use-credentials/cred-zephyr-enterprise.png)
+![Zephyr Enterprise Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-zephyr-enterprise.png)
 
 
 ### Zephyr Scale Credential Setup
@@ -555,7 +555,7 @@ To create a **Zephyr Scale** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Zephyr Scale Credential Setup](../img/how-tos/how-to-use-credentials/cred-zephyr-scale.png)
+![Zephyr Scale Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-zephyr-scale.png)
 
 
 ---
@@ -580,7 +580,7 @@ To create a **Browser** credential:
       * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Browser Credential Setup](../img/how-tos/how-to-use-credentials/cred-browser.png)
+![Browser Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-browser.png)
 
 
 
@@ -610,7 +610,7 @@ To create a **Carrier** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 9. Click **Save**.
 
-![Carrier Credential Setup](../img/how-tos/how-to-use-credentials/cred-carrier.png)
+![Carrier Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-carrier.png)
 
 
 ---
@@ -633,7 +633,7 @@ To create a **Google Places** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Google Places Credential Setup](../img/how-tos/how-to-use-credentials/cred-google-places.png)
+![Google Places Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-google-places.png)
 
 
 ---
@@ -658,7 +658,7 @@ To create a **Report Portal** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Report Portal Credential Setup](../img/how-tos/how-to-use-credentials/cred-report-portal.png)
+![Report Portal Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-report-portal.png)
 
 
 ---
@@ -685,7 +685,7 @@ To create a **Salesforce** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Salesforce Credential Setup](../img/how-tos/how-to-use-credentials/cred-salesforce.png)
+![Salesforce Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-salesforce.png)
 
 
 
@@ -713,7 +713,7 @@ To create a **SharePoint** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![SharePoint Credential Setup](../img/how-tos/how-to-use-credentials/cred-sharepoint.png)
+![SharePoint Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-sharepoint.png)
 
 
 ---
@@ -738,7 +738,7 @@ To create a **Sonar** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Sonar Credential Setup](../img/how-tos/how-to-use-credentials/cred-sonar.png)
+![Sonar Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-sonar.png)
 
 
 ---
@@ -767,7 +767,7 @@ To create a **SQL** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 9. Click **Save**.
 
-![SQL Credential Setup](../img/how-tos/how-to-use-credentials/cred-sql.png)
+![SQL Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-sql.png)
 
 
 !!! warning "Database Security"
@@ -793,7 +793,7 @@ To create a **TestIO** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![TestIO Credential Setup](../img/how-tos/how-to-use-credentials/cred-testio.png)
+![TestIO Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-testio.png)
 
 
 ---
@@ -818,7 +818,7 @@ To create a **Zephyr Essential** credential:
     * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
-![Zephyr Essential Credential Setup](../img/how-tos/how-to-use-credentials/cred-zephyr-essential.png)
+![Zephyr Essential Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-zephyr-essential.png)
 
 
 ---
@@ -833,7 +833,7 @@ Once you have created credentials, you can assign them to toolkits to enable sec
 2. Choose an existing credential from the list, or create a new one if needed.
 3. Save your changes to apply the credential to your toolkit.
 
-![Credentials-Config](../img/how-tos/how-to-use-credentials/new-toolkit-configs.png)
+![Credentials-Config](../../img/how-tos/credentials-toolkits/how-to-use-credentials/new-toolkit-configs.png)
 
 **Credential Scope and Access:**
 
@@ -847,7 +847,7 @@ Once you have created credentials, you can assign them to toolkits to enable sec
 * Regularly rotate and update credentials to maintain security.
 * Use Secrets for storing sensitive authentication information.
 
-For more information on creating and managing Toolkits, see the [Toolkits documentation](../getting-started/create-toolkit.md).
+For more information on creating and managing Toolkits, see the [Toolkits documentation](../../getting-started/create-toolkit.md).
 
 ## Best Practices and Use Cases
 
@@ -897,7 +897,7 @@ By strategically using **Credentials**, you can create flexible and secure agent
 !!! info "Related Documentation"
     For more detailed information, refer to:
     
-    - **[Credentials Menu](../menus/credentials.md)** - Comprehensive guide to the Credentials interface and management
-    - **[Toolkits Menu](../menus/toolkits.md)** - Learn how to integrate credentials with toolkits
-    - **[Secrets](../menus/settings/secrets.md)** - Enhanced security through the Secrets management system
-    - **[Glossary](../home/glossary.md)** - Definitions of key terms and concepts used in ELITEA
+    - **[Credentials Menu](../../menus/credentials.md)** - Comprehensive guide to the Credentials interface and management
+    - **[Toolkits Menu](../../menus/toolkits.md)** - Learn how to integrate credentials with toolkits
+    - **[Secrets](../../menus/settings/secrets.md)** - Enhanced security through the Secrets management system
+    - **[Glossary](../../home/glossary.md)** - Definitions of key terms and concepts used in ELITEA

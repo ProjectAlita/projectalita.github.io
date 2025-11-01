@@ -1,7 +1,7 @@
 # Index ADO Wiki Data
 
 !!! warning "Availability"
-    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets) and the [Indexing Overview](./indexing-overview.md).
+    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab) and the [Indexing Overview](./indexing-overview.md).
 
 
 ## Overview
@@ -36,7 +36,7 @@ ADO Wiki indexing allows you to create searchable indexes from your Azure DevOps
 
 Before indexing ADO Wiki data, ensure you have:
 
-1. **ADO Credential**: An Azure DevOps personal access token with [authentication credentials](../how-to-use-credentials.md#ado-azure-devops-credential-setup) configured in ELITEA
+1. **ADO Credential**: An Azure DevOps personal access token with [authentication credentials](../credentials-toolkits/how-to-use-credentials.md#ado-azure-devops-credential-setup) configured in ELITEA
 2. **Vector Storage**: PgVector selected in Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 3. **Embedding Model**: Selected in AI Configuration (defaults available) → [AI Configuration](../../menus/settings/ai-configuration.md)
 4. **ADO Wiki Toolkit**: Configured with your Azure DevOps organization details and credentials
@@ -71,7 +71,7 @@ Your ADO credential needs appropriate permissions based on what you want to inde
     For complete credential setup steps including personal access token generation and security best practices, see:
     
     - [Create a Credential](../../getting-started/create-credential.md)
-    - [ADO Credential Setup](../how-to-use-credentials.md#ado-azure-devops-credential-setup)
+    - [ADO Credential Setup](../credentials-toolkits/how-to-use-credentials.md#ado-azure-devops-credential-setup)
     - [ADO Wiki Toolkit Integration Guide](../../integrations/toolkits/ado_wiki_plan_board_toolkit.md)
 
 ---
@@ -457,7 +457,7 @@ For additional support with ADO Wiki indexing:
     - **[Indexing Overview](./indexing-overview.md)** - *Complete guide to ELITEA's indexing system and capabilities*
     - **[Indexing Tools](./indexing-tools.md)** - *Detailed reference for all indexing tools and parameters*
     - **[ADO Wiki Toolkit Guide](../../integrations/toolkits/ado_wiki_plan_board_toolkit.md)** - *Comprehensive guide to the ADO Wiki Toolkit and its capabilities*
-    - **[How to Use Credentials](../how-to-use-credentials.md#ado-azure-devops-credential-setup)** - *ADO credential setup and management*    
+    - **[How to Use Credentials](../credentials-toolkits/how-to-use-credentials.md#ado-azure-devops-credential-setup)** - *ADO credential setup and management*    
     - **[AI Configuration](../../menus/settings/ai-configuration.md)** - *Set up vector storage and embedding models for indexing*
     - **[Toolkits Menu](../../menus/toolkits.md)** - *General toolkit configuration and management*
     - **[Chat Menu](../../menus/chat.md)** - *Create conversations and add toolkits as participants*

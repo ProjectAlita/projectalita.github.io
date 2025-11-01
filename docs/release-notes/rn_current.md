@@ -1,4 +1,4 @@
-# ELITEA Release Notes
+# Release Notes - 2.0.0 Beta
  
 ## Introduction
  
@@ -13,10 +13,10 @@ Welcome to **ELITEA** — your comprehensive platform for building, deploying, a
  
 ## Important
 
-- **Prompts deprecated**: The **Prompts** entity is deprecated. All existing prompts were converted to Agents. You can create Agents without attaching a Toolkit (a lightweight replacement for Prompts) and use variables with these agents.
-- **Datasources deprecated**: The **Datasources** entity is deprecated. Your existing datasources remain available in this release so you can re-index and reconfigure them using the new **Index data** tool available in most Toolkits (e.g., GitHub, Confluence, Bitbucket, ADO Repos, Jira, etc.),  as even though they remain connected to agents, they cannot be used (as the datasets themselves are not migrated). **Note**: Creating new datasources or datasets is no longer supported.
-- **Integrations replaced by Credentials**: Integrations are deprecated and replaced by Credentials as a standalone entity. Existing Integrations are not auto-migrated; recreate them as **Credentials** manually. See: [How to Use Credentials](../how-tos/how-to-use-credentials.md).
-- **Toolkits separated**: Toolkits are now a standalone entity under the Toolkits menu. Agents and Pipelines that previously had connected toolkits still keep those links; you can also reuse Toolkits across multiple entities. See: [How to create a toolkit](../getting-started/create-toolkit.md).
+* **Prompts deprecated**: The **Prompts** entity is deprecated. All existing prompts were converted to Agents. You can create Agents without attaching a Toolkit (a lightweight replacement for Prompts) and use variables with these agents.
+* **Datasources deprecated**: The **Datasources** entity is deprecated. Your existing datasources remain available in this release so you can re-index and reconfigure them using the new **Index data** tool available in most Toolkits (e.g., GitHub, Confluence, Bitbucket, ADO Repos, Jira, etc.),  as even though they remain connected to agents, they cannot be used (as the datasets themselves are not migrated). **Note**: Creating new datasources or datasets is no longer supported.
+* **Integrations replaced by Credentials**: Integrations are deprecated and replaced by Credentials as a standalone entity. Existing Integrations are not auto-migrated; recreate them as **Credentials** manually. See: [How to Use Credentials](../how-tos/credentials-toolkits/how-to-use-credentials.md).
+* **Toolkits separated**: Toolkits are now a standalone entity under the Toolkits menu. Agents and Pipelines that previously had connected toolkits still keep those links; you can also reuse Toolkits across multiple entities. See: [How to create a toolkit](../getting-started/create-toolkit.md).
 
 ## New Features
  
@@ -25,6 +25,7 @@ Welcome to **ELITEA** — your comprehensive platform for building, deploying, a
 You can now add images to a conversation and have agents or pipelines analyze them, plus receive AI‑generated images directly inline in the chat thread.
 
 **What you can do now:**
+
 * **Upload images** via drag & drop, file picker or copy-paste.
 * **Supported formats**: JPEG, PNG, WebP, and non‑animated GIF.
 * **Inline AI outputs**: Agents can return generated images as part of their response; they display inline just like user uploads.
@@ -33,13 +34,14 @@ You can now add images to a conversation and have agents or pipelines analyze th
 
 This feature unlocks visual analysis use cases (UI reviews, diagram interpretation, data screenshot extraction) and enables workflows combining text + vision + generated imagery in a single conversational flow.
 
-For detailed guidance, see [Attach Images and Files in Chat](../how-tos/attach-images-and-files-in-chat.md).
+For detailed guidance, see [Attach Images and Files in Chat](../how-tos/chat-conversations/attach-images-and-files-in-chat.md).
 
 ### Indexing: Dedicated Toolkit Indexes Tab
 
 A new Indexing tab is now available inside supported toolkits, giving you a consolidated workspace to manage and inspect all indexes created through that toolkit.
 
 **What you can do now:**
+
 * **View all indexes** associated with the toolkit in a single, paginated list (name, type/source, size, last updated, status).
 * **Create new indexes** directly from the tab without leaving the toolkit configuration screen.
 * **Reindex or refresh** an existing index to pull updated content (with clear in‑progress status feedback).
@@ -58,6 +60,7 @@ For detailed guidance, see [Using Indexes Tab Interface](../how-tos/indexing/usi
 Edit pipelines directly from chat conversations using Canvas, without leaving the active conversation context.
 
 **What you can do now:**
+
 * **Quick access**: Click the **Pencil icon** in Participants or the **Gear icon** when selecting a pipeline from chat input.
 * **Configuration tab**: Adjust LLM model, toolkits, conversation starters, welcome message, steps limit, attachment permissions, and Pyodide sandbox settings.
 * **Flow Editor tab**: Choose between visual drag-and-drop node configuration (Flow sub-tab) or direct YAML editing (YAML sub-tab).
@@ -67,7 +70,7 @@ Edit pipelines directly from chat conversations using Canvas, without leaving th
 
 This keeps you in the conversation flow, reduces context switching, and enables rapid iteration on pipeline logic with immediate testing in the same chat session.
 
-For detailed guidance, see [Create and Edit Pipelines from Canvas](../how-tos/how-to-create-and-edit-pipelines-from-canvas.md).
+For detailed guidance, see [Create and Edit Pipelines from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md).
 
 
 ### Canvas: Create Toolkit and MCP Server
@@ -75,13 +78,14 @@ For detailed guidance, see [Create and Edit Pipelines from Canvas](../how-tos/ho
 Create new toolkits and MCP servers directly from a conversation using Canvas, without leaving Chat.
 
 **What you can do now:**
+
 * **Create toolkits**: Build a new toolkit from scratch within the Canvas interface.
 * **Create MCP servers**: Set up new MCP servers using the same Canvas workflow.
 * **Configure during creation**: Set credentials, connection details (e.g., namespace), and select tools as you create.
 * **Immediate availability**: Newly created toolkits or MCP servers are automatically attached to the active conversation for instant use.
 * **Reusable resources**: Once created, reuse these toolkits or MCP servers across other agents, pipelines, and conversations.
 
-For detailed guidance, see [Create and Edit Toolkits from Canvas](../how-tos/how-to-create-and-edit-toolkits-from-canvas.md) and [Create and Edit MCPs from Canvas](../how-tos/how-to-create-and-edit-mcps-from-canvas.md).
+For detailed guidance, see [Create and Edit Toolkits from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md) and [Create and Edit MCPs from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md).
 
 
 ### Chat: Configurable Pyodide (Python) Sandbox Tool
@@ -89,6 +93,7 @@ For detailed guidance, see [Create and Edit Toolkits from Canvas](../how-tos/how
 Control Python code execution in conversations with a new toggle button for the Pyodide sandbox tool.
 
 **What you can do now:**
+
 * **Toggle button in chat input**: A new icon next to the Attachments button lets you enable or disable the Python sandbox tool (pyodide_sandbox) on demand.
 * **Default state**: Disabled by default to avoid unnecessary tool invocation for non-Python queries.
 * **Available everywhere**: The toggle is available in Conversations (Chat menu), Agents menu, and Pipelines menu chat inputs.
@@ -98,11 +103,14 @@ Control Python code execution in conversations with a new toggle button for the 
 
 This gives you precise control over when Python code execution is available, reducing unwanted tool calls and improving response accuracy for general queries.
 
+For detailed guidance, see [Using the Python Sandbox Tool in Chat](../how-tos/chat-conversations/enable-internal-tools.md).
+
 ### Agents & Pipelines: Usage History Tracking
 
 Track and review all agent and pipeline executions with a dedicated History tab that preserves run details and conversations for auditing and analysis.
 
 **What you can do now:**
+
 * **View execution history**: Access a dedicated **History** tab in both Agents and Pipelines menus to see all past runs.
 * **Run details at a glance**: Each history entry displays the execution date and time, version executed, and total run duration.
 * **Review preserved conversations**: Click any run to view the complete conversation that occurred during that execution.
@@ -112,11 +120,14 @@ Track and review all agent and pipeline executions with a dedicated History tab 
 
 This feature enables better debugging, performance analysis, and compliance tracking by maintaining a complete audit trail of all agent and pipeline executions.
 
+For detailed guidance, see [View Agents and Pipelines History](../how-tos/agents-pipelines/agents-pipelines-history.md).
+
 ### Jira: Atlassian API v3 Support
 
 Jira toolkit now supports Atlassian API v3, ensuring compatibility with the latest Jira Cloud instances that require the updated API version.
 
 **What changed:**
+
 * **API v3 compatibility**: JQL searches and other Jira operations now work seamlessly with new Jira Cloud versions that mandate API v3 (`/rest/api/3/search/jql`).
 * **Backward compatibility**: Existing Jira integrations using API v2 continue to work without modification.
 * **Automatic version selection**: The toolkit detects and uses the appropriate API version based on your Jira instance configuration.
@@ -137,6 +148,8 @@ ELITEA Toolkits are now accessible as local MCP tools in external clients like G
 
 This expands MCP capabilities beyond agents and pipelines, enabling direct toolkit execution from your preferred development environment.
 
+For detailed guidance, see [Using Toolkits via MCP](../integrations/mcp//make-tools-available-by-mcp.md).
+
   
 ## Changed Features
  
@@ -150,6 +163,9 @@ We redesigned the pipeline node model to make building, reading, and maintaining
 
 **Enhanced LLM node:** The LLM node has been redesigned with separate **System** and **Task** fields replacing the previous Prompt field, giving you clearer control over context and instructions. Each field supports three input types: F-String (dynamic variable interpolation), Variable (direct state reference), or Fixed (static text). The node now also supports adding multiple toolkits and MCPs directly, with granular control to enable or disable individual tools—expanding LLM capabilities without requiring additional Function nodes.
 
+!!! Important warning "Important"
+    For detailed guidance, see [Updating LLM Nodes in Pipelines](../migration/v2.0.0/update-llm-nodes.md).
+
 **Drag-and-drop node connections:** You can now drag connection leashes (connectors) from any node and release them in the canvas to trigger a smart dropdown menu. This menu lets you either connect to an existing node (with searchable list showing node names and icons) or create and connect a new node type in one fluid motion. The dropdown includes the already existing nodes and automatically connects the leash to your selected target—streamlining pipeline construction and reducing manual wiring steps.
 
 **New Code node:** A new Code node type enables secure Python code execution within pipelines using the Pyodide sandbox environment. The node features a code field with three input types (F-String for dynamic variable interpolation, Variable for state-sourced code, or Fixed for static blocks), full-screen editing with Python syntax highlighting, configurable input/output state variable mapping, and advanced options including Interrupt Before/After and Structured Output toggles. Code executes in an isolated sandbox with automatic pipeline state injection as `alita_state`, supporting Python standard library and dynamically installable packages—ideal for custom data processing, transformations, and computational tasks directly within pipeline flows.
@@ -160,6 +176,7 @@ We redesigned the pipeline node model to make building, reading, and maintaining
 Pipeline state management has been redesigned to provide a clearer, more intuitive workflow for configuring and managing state variables in Flow mode.
 
 **What changed:**
+
 * **States sidebar**: Click the new **States button** (located under the **+** node button in Flow mode) to open a resizable sidebar on the right displaying all states.
 * **Default states**: The default **input** and **messages** states are always visible with toggle switches to activate/deactivate them as needed.
 * **Icon-based visualization**: State types (string, list, JSON, number) are represented by icons instead of text for faster recognition.
@@ -169,6 +186,7 @@ Pipeline state management has been redesigned to provide a clearer, more intuiti
 * **Resizable sidebar**: Drag the left edge to adjust sidebar width to your preference; the size persists during your session.
 
 **Why this is better:**
+
 * More intuitive access and visual clarity for state configuration.
 * Reduces errors with validated state names and clear type indicators.
 * Instant save eliminates the risk of losing state configuration changes.

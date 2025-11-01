@@ -4,7 +4,7 @@
 
 This guide provides a comprehensive overview of **Collections** and **Tags** in ELITEA, powerful features designed to help you organize and manage your **Entities** effectively. In ELITEA, **Entities** refer to **Prompts, Datasources, and Agents** – the core building blocks of ELITEA and your AI-powered workflows. Whether you are working in your **Private** workspace, collaborating within a **Team** project, or contributing to the **Public** project, mastering these organizational tools is key to maximizing your efficiency and leveraging the full potential of ELITEA. This guide will walk you through the concepts, configuration, usage, and best practices for utilizing **Tags** and **Collections**.
 
-![Collections-Menu](../img/features/organizing-entities/Collections-Menu.png)
+![Collections-Menu](../../img/how-tos/entity-management/organizing-entities/Collections-Menu.png)
 
 **Understanding Project Scopes:**
 
@@ -40,7 +40,7 @@ In ELITEA, **Tags** are your essential tool for categorizing and labeling indivi
     *   **Select or Create:** Select a suggested tag or create a new one by pressing **Enter**.
 4.  **Save Configuration:** Click the **Save** button to save the Entity with the selected tags.
 
-![Tags-Select_Tag](../img/features/organizing-entities/Tags-Select_Tag.png)
+![Tags-Select_Tag](../../img/how-tos/entity-management/organizing-entities/Tags-Select_Tag.png)
 
 **Note on 'code' Tag:**
 
@@ -63,7 +63,7 @@ The tag named `code` is reserved for integration with the Alita Code extension. 
 *   **Search by Tags:** Use the **Search** bar in any Entity menu (Prompts, Datasources, Agents) and type a tag name to filter the list.
 *   **Filter by Tags:** Use the **Tags"** section in entity menus to select tags and narrow down the displayed list.
 
-![Tags_Search_and_Filter](../img/features/organizing-entities/Tags_Search_and_Filter.png)
+![Tags_Search_and_Filter](../../img/how-tos/entity-management/organizing-entities/Tags_Search_and_Filter.png)
 
 ## Overview of Collections
 
@@ -85,7 +85,7 @@ The tag named `code` is reserved for integration with the Alita Code extension. 
     *   **Description:** Write a concise **Description** explaining the collection's purpose.
 4.  **Create Collection:** Click **Create** to create the collection.
 
-![Collection-Create_Collection](../img/features/organizing-entities/Collection-Create_Collection.png)
+![Collection-Create_Collection](../../img/how-tos/entity-management/organizing-entities/Collection-Create_Collection.png)
 
 **Exploring Collections:**
 
@@ -100,7 +100,7 @@ The tag named `code` is reserved for integration with the Alita Code extension. 
     *   **Delete Collection**
     *   **Export Collection**
 
-![Collection-Available_Actions](../img/features/organizing-entities/Collection-Available_Actions.png)
+![Collection-Available_Actions](../../img/how-tos/entity-management/organizing-entities/Collection-Available_Actions.png)
 
 **Filtering Entities within a Collection by Tabs and Tags:**
 
@@ -109,7 +109,7 @@ Within the **Collection Detail View**, you can filter Entities by **Type** using
 *   **Filter by Type using Tabs:** Use the **All**, **Prompts**, **Datasources**, and **Agents** tabs to view specific entity types within the collection.
 *   **Filter by Tags:** Use the **"Tags"** filter section to narrow down the displayed list to Entities with specific tags.
 
-![Collection-Filtering](../img/features/organizing-entities/Collection-Filtering.png)
+![Collection-Filtering](../../img/how-tos/entity-management/organizing-entities/Collection-Filtering.png)
 
 **Modifying a Collection:**
 
@@ -127,7 +127,7 @@ Here's the enhanced "Publishing a Collection (Public Project)" section with the 
 3.  **Publishing Collection:** Click the **"Publish collection" icon** within the collection detail view. This will submit the collection for review by ELITEA moderators.
 4.  **Moderation and Approval:** The collection will be reviewed to ensure it meets ELITEA's quality and relevance guidelines. Once approved by a moderator, the collection will be published and become available in the Public project's Collections menu for community use.
 
-![Collection-Publishing](../img/features/organizing-entities/Collection-Publishing.png)
+![Collection-Publishing](../../img/how-tos/entity-management/organizing-entities/Collection-Publishing.png)
 
 **Important Notes on Publishing Collections:**
 
@@ -159,7 +159,7 @@ Here's the enhanced "Publishing a Collection (Public Project)" section with the 
 
 **Important Note on Collection Entity Recreation:** The Collection entity itself is not automatically recreated during import.
 
-For more information about importing collections and entities, please refer to the [Export and Import Guide](export-import.md).
+For more information about importing collections and entities, please refer to the [Export and Import Guide](../../features/export-import.md).
 
 ### How to Add an Entity to a Collection
 
@@ -176,11 +176,11 @@ To add Entities to Collections from the Prompts, Datasources, or Agents menus as
 3.  **To add entity to collection**  For the chosen Entity, locate and click the **Bookmark** icon.
     *   **Card list view**: On the top right corner of the Entity's card.
 
-        ![CardView_Add_to_Collection](../img/features/organizing-entities/CardView_Add_to_Collection.png)
+        ![CardView_Add_to_Collection](../../img/how-tos/entity-management/organizing-entities/CardView_Add_to_Collection.png)
 
     *   **Table view**: In the **Actions** column, which is usually the last column in the table, click on the ellipsis icon (`...`) next to the entity. A dropdown menu will appear. Hover over or click on the **"Add to collection"** option.
 
-        ![TableView_Add_to_Collection](../img/features/organizing-entities/TableView_Add_to_Collection.png)
+        ![TableView_Add_to_Collection](../../img/how-tos/entity-management/organizing-entities/TableView_Add_to_Collection.png)
 
 4.  **Select Target Collection:** After clicking the Bookmark icon, a pop-up window will appear, displaying a list of your existing Collections.
     *   **Choose a Collection:** Select the **Collection** to which you want to add the current Entity from the list.
@@ -231,6 +231,6 @@ Effective organization with **Tags** and **Collections** is crucial for managing
 
 To further expand your knowledge and skills in organizing Entities and utilizing Collections within ELITEA, here are some helpful resources:
 
-*   **[Collections Menu](../menus/collections.md)**:  Access the dedicated Collections Menu Guide for a comprehensive walkthrough of the Collections menu interface, features, and functionalities within ELITEA.
-*   **[ELITEA Public Project Guide](public-project.md)**:  Explore the ELITEA Public Project to discover and utilize community-shared Prompts and Collections. Learn more about the purpose and guidelines of the Public project.
-*   **[Export and Import Guide](../features/export-import.md)**:  Refer to the detailed Export and Import Guide for in-depth instructions on exporting and importing individual Entities and entire Collections within ELITEA.
+*   **[Collections Menu](../../menus/collections.md)**:  Access the dedicated Collections Menu Guide for a comprehensive walkthrough of the Collections menu interface, features, and functionalities within ELITEA.
+*   **[ELITEA Public Project Guide](../../features/public-project.md)**:  Explore the ELITEA Public Project to discover and utilize community-shared Prompts and Collections. Learn more about the purpose and guidelines of the Public project.
+*   **[Export and Import Guide](../../features/export-import.md)**:  Refer to the detailed Export and Import Guide for in-depth instructions on exporting and importing individual Entities and entire Collections within ELITEA.

@@ -1,7 +1,7 @@
 # Indexing Overview
 
 !!! warning "Availability and migration"
-	**Indexing** feature and tools are available in the [Next environment](https://next.elitea.ai) as part of the 1.7.0 release. They replace the legacy **Datasources/Datasets** feature. As of Release 1.7.2, a dedicated **Indexes Tab** interface is available within Toolkit Configuration for comprehensive index management. Datasources are still available in the [Nexus environment](https://nexus.elitea.ai) for reference, but new datasets are not supported. See the [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets).
+	**Indexing** feature and tools are available in the [Next environment](https://next.elitea.ai) as part of the 1.7.0 release. They replace the legacy **Datasources/Datasets** feature. As of Release 1.7.2, a dedicated **Indexes Tab** interface is available within Toolkit Configuration for comprehensive index management. Datasources are still available in the [Nexus environment](https://nexus.elitea.ai) for reference, but new datasets are not supported. See the [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab).
 
 ## Introduction
 
@@ -17,7 +17,7 @@ The **Indexes Tab interface** provides a comprehensive, user-friendly way to cre
 * Replace legacy datasets with standardized tools across many toolkits.
 
 !!! tip "Quick start"
-	For the recommended approach using the new Indexes Tab interface, see the [Create first Index](../../getting-started/indexing-quick-start.md) guide. For the legacy toolkit test section approach, see [Next – Quick Start](../../getting-started/next-quick-start.md#index-data-for-a-toolkit).
+	For the recommended approach using the new Indexes Tab interface, see the [Create first Index](../../getting-started/indexing-quick-start.md) guide. For the legacy toolkit test section approach, see [Next – Quick Start](../../migration/v1.7.0/next-quick-start.md#index-data-for-a-toolkit).
 
 ## Indexing Tools
 
@@ -226,7 +226,7 @@ Query your indexed data and review matched results.
     * **Quick Start**: [Create first Index](../../getting-started/indexing-quick-start.md) - Fast walkthrough using the recommended Indexes Tab approach.
     * See the [Indexing Tools](#indexing-tools) section above for tool capabilities and purpose.
     * Review [AI Configuration](../../menus/settings/ai-configuration.md) for Embedding Models and Vector Storage (PgVector).
-    * Check the Release Notes: [Indexing Tools: Replacement for Datasets](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets).
+    * Check the Release Notes: [Indexing Tools: Replacement for Datasets](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab).
 
 
 ## How to configure and use Indexes from Chat
@@ -276,8 +276,8 @@ While the **Indexes Tab interface provides the most comprehensive index manageme
 
 * Release details and changes: [Release Notes 1.7.0](../../release-notes/rn_current.md)
 * AI Configuration (models, embeddings, vector storage): [AI Configuration](../../menus/settings/ai-configuration.md)
-* Add Teammates to conversations: [Guide](../../getting-started/add-teammates-to-conversation.md)
-* Troubleshooting Chat and Canvas usage: [Chat – Advanced Usage](../how-to-use-chat-functionality.md) and [Canvas – Advanced Usage](../how-to-canvas.md)
+* Add Teammates to conversations: [Guide](../chat-conversations/add-teammates-to-conversation.md)
+* Troubleshooting Chat and Canvas usage: [Chat – Advanced Usage](../chat-conversations/how-to-use-chat-functionality.md) and [Canvas – Advanced Usage](../chat-conversations/how-to-canvas.md)
 
 !!! success "Next steps"
 	* **Start with the Indexes Tab**: Use the [Create first Index](../../getting-started/indexing-quick-start.md) guide to create your first index via the dedicated interface.

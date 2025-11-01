@@ -26,7 +26,7 @@ The **Agent Canvas** interface in ELITEA serves as an integrated agent managemen
 2. In the **PARTICIPANTS** section, locate **Agents**.
 3. Click on the **Create new agent** button.
 
-![Canvas Agent Access](../img/how-tos/canvas-agent/canvas-agent-access.png)
+![Canvas Agent Access](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-access.png)
 
 The "Create New Agent" canvas interface will be displayed with all available configuration sections.
 
@@ -70,7 +70,7 @@ In the **ADVANCED** section:
 - **Step limit**: Set the maximum number of steps the agent can take (default: 25)
 - This controls how many operations the agent can perform in a single conversation turn
 
-![Agent Basic Configuration](../img/how-tos/canvas-agent/canvas-agent-save-basic.png)
+![Agent Basic Configuration](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-save-basic.png)
 
 !!! info "Note"
     Required fields are marked with an asterisk * and must be completed before the agent can be created.
@@ -84,7 +84,7 @@ Click the **Save** button to create your agent with the basic configuration. Thi
 - Add toolkits, agents, pipelines, and MCP connections
 - Set additional parameters
 
-![Agent Basic Configuration](../img/how-tos/canvas-agent/canvas-agent-initial.png)
+![Agent Basic Configuration](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-initial.png)
 
 ## Advanced Agent Configuration
 
@@ -97,7 +97,7 @@ After saving the initial configuration, the advanced configuration interface ope
     - Choose from available LLM models in your project (e.g., "gpt-4o", "gpt-4o-mini")
     - The selected model will be displayed on the button
 
-![Agent Basic Configuration](../img/how-tos/canvas-agent/canvas-agent-select-model.png)
+![Agent Basic Configuration](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-select-model.png)
 
 2. **Model Settings:**
     - Click the **Model Settings** button (gear icon) next to the model selector
@@ -109,7 +109,7 @@ After saving the initial configuration, the advanced configuration interface ope
        - **Max Completion Tokens**: Maximum length of the response (e.g., 4096)
     - Click **Apply** to save the model settings
 
-![Agent Basic Configuration](../img/how-tos/canvas-agent/canvas-agent-model-settings.png)
+![Agent Basic Configuration](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-model-settings.png)
 
 ### Toolkits Configuration
 
@@ -119,7 +119,7 @@ In the **TOOLKITS** section, you can enhance your agent's capabilities by adding
     - Click **+ Toolkit** to select from available toolkits or create new ones
     - Browse and select toolkits like GitHub, Jira, Confluence, etc.
 
-![Agent Advanced Configuration](../img/how-tos/canvas-agent/canvas-agent-add-toolkit.png)
+![Agent Advanced Configuration](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-add-toolkit.png)
 
 2. **Adding MCP Connections:**
     - Click **+ MCP** to add Model Context Protocol connections
@@ -132,7 +132,7 @@ In the **TOOLKITS** section, you can enhance your agent's capabilities by adding
     - Choose specific versions from the version dropdown
     - Nested agents enhance your main agent's capabilities
 
-![Agent Advanced Configuration](../img/how-tos/canvas-agent/canvas-agent-nested-agent.png)
+![Agent Advanced Configuration](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-nested-agent.png)
 
 4. **Adding Pipelines:**
     - Click **+ Pipeline** to integrate pipeline workflows
@@ -142,13 +142,13 @@ In the **TOOLKITS** section, you can enhance your agent's capabilities by adding
 5. **Allow Attachments Toggle:**
     - Enable or disable file attachment support for the agent
 
-![Agent Advanced Configuration](../img/how-tos/canvas-agent/canvas-agent-advanced.png)
+![Agent Advanced Configuration](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-advanced.png)
 
 ### Step 8: Finalize Agent Creation
 
 Once you have completed configuring your agent, click the **X** button to close the canvas interface. Your newly created agent will appear in the **PARTICIPANTS** section under **Agents** and becomes immediately available for use in conversations.
 
-![Agent Created](../img/how-tos/canvas-agent/canvas-agent-created.png)
+![Agent Created](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-created.png)
 
 ## Editing Agents via Canvas Interface
 
@@ -163,13 +163,13 @@ There are two ways to access the agent edit mode:
     - Hover over the agent to reveal action buttons.
     - Click the pencil **Edit** icon that appears.
 
-![Agent Edit Access](../img/how-tos/canvas-agent/canvas-agent-edit-icon.png)
+![Agent Edit Access](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-edit-icon.png)
 
 2. From Chat Interface
     - When an agent is active in your conversation, click the **Agent Settings** button that appears in the chat interface.
     - This will open the agent configuration canvas directly.
 
-![Agent Edit Access](../img/how-tos/canvas-agent/canvas-agent-edit-settings.png)
+![Agent Edit Access](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-edit-settings.png)
 
 The agent configuration canvas will open with current settings pre-populated.
 
@@ -188,7 +188,7 @@ For example, if you have an agent configured for code review, you can easily upd
 
  Changes are reflected immediately in the interface. After making your desired configuration changes, use the **Save** button located in the top right corner to apply your modifications. The updated configuration becomes immediately applied.
 
-![Agent Edit Access](../img/how-tos/canvas-agent/canvas-agent-editing.png)
+![Agent Edit Access](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-editing.png)
 
 ## Troubleshooting Common Issues
 
@@ -251,7 +251,7 @@ The Agent Canvas feature in ELITEA provides a powerful and intuitive way to mana
 !!! info "Related Documentation"
     For additional information and related functionality, refer to these helpful resources:
 
-    - **[Agent Menu](../menus/agents.md)** - Complete reference for agent management and configuration options
-    - **[Chat Menu](../menus/chat.md)** - Comprehensive guide to chat interface features and navigation
-    - **[Credential Menu](../menus/credentials.md)** - Detailed instructions for managing authentication credentials
-    - **[AI Configuration](../menus/settings/ai-configuration.md)** - Setup and configuration guide for AI models and settings
+    - **[Agent Menu](../../menus/agents.md)** - Complete reference for agent management and configuration options
+    - **[Chat Menu](../../menus/chat.md)** - Comprehensive guide to chat interface features and navigation
+    - **[Credential Menu](../../menus/credentials.md)** - Detailed instructions for managing authentication credentials
+    - **[AI Configuration](../../menus/settings/ai-configuration.md)** - Setup and configuration guide for AI models and settings

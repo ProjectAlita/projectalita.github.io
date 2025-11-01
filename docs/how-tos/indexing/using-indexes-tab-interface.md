@@ -487,7 +487,7 @@ When an index is selected, the index card displays:
     
     - [Indexing Overview](./indexing-overview.md) - General concepts and getting started
     - [Indexing Tools](./indexing-tools.md) - Detailed tool documentation and parameters
-    - [Migrate Datasources to Indexing](./migrate-datasources-to-indexing.md) - Migration from legacy systems
+    - [Migrate Datasources to Indexing](../../migration/v1.7.0/migrate-datasources-to-indexing.md) - Migration from legacy systems
 
     **Toolkit-Specific Guides:**
     

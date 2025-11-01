@@ -91,7 +91,7 @@ Before creating a toolkit, you must first create Figma credentials in ELITEA:
     It's highly recommended to use **Secrets** for tokens instead of entering them directly. Create a secret first, then reference it in your credential configuration.
 
 !!! note "Reference"
-    For detailed instructions on creating credentials, refer to the [Credentials Guide](../../how-tos/how-to-use-credentials.md#figma-credential-setup).
+    For detailed instructions on creating credentials, refer to the [Credentials Guide](../../how-tos/credentials-toolkits/how-to-use-credentials.md#figma-credential-setup).
 
  ![Figma Credential](../../img/integrations/toolkits/figma/figma-cred-create.png)
 
@@ -636,7 +636,7 @@ This integration enables your AI agents to interact intelligently with Figma des
 !!! reference "Useful ELITEA Resources"
     To further enhance your understanding and skills in using the Figma toolkit with ELITEA, here are helpful internal resources:
 
-      * **[ELITEA Credentials Management](../../how-tos/how-to-use-credentials.md)** - *Learn how to securely store your Figma API Token using ELITEA's Credentials management feature for enhanced security within ELITEA.*
+      * **[ELITEA Credentials Management](../../how-tos/credentials-toolkits/how-to-use-credentials.md)** - *Learn how to securely store your Figma API Token using ELITEA's Credentials management feature for enhanced security within ELITEA.*
       * **[ELITEA Toolkits Guide](../../menus/toolkits.md)** - *Comprehensive guide on creating and managing toolkits in ELITEA, including advanced configuration options.*
       * **[ELITEA Agents Configuration](../../menus/agents.md)** - *Find out more about creating and configuring Agents in ELITEA, where you integrate the Figma toolkit to automate your design workflows.*
       * **[ELITEA Secrets Management](../../menus/settings/secrets.md)** - *Learn how to securely store sensitive information like API tokens using ELITEA's Secrets management feature.*

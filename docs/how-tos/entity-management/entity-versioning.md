@@ -37,7 +37,7 @@ When you want to preserve a specific configuration:
 !!! warning "Warning"
       Version names must be unique within the agent. The system will prevent duplicate names.
 
-![Creating a new version](../img/features/entity-versioning/new_version.png)
+![Creating a new version](../../img/how-tos/entity-management/entity-versioning/new_version.png)
 
 ### Version Selection and Navigation
 
@@ -76,7 +76,7 @@ When you want to preserve a specific configuration:
 
 **Note:** The "latest" version cannot be deleted as it serves as the primary working version.
 
- ![Managing a version](../img/features/entity-versioning/manage_version.png)
+ ![Managing a version](../../img/how-tos/entity-management/entity-versioning/manage_version.png)
 
 ## Publishing Versions
 
@@ -140,7 +140,7 @@ When you want to preserve a specific configuration:
 * Choose target project
 * Configure LLM models for each version
 
-![Version_import](../img/features/entity-versioning/version_import.png)
+![Version_import](../../img/how-tos/entity-management/entity-versioning/version_import.png)
 
 **Tip:** It's recommended to import the "latest" version to avoid validation errors.
 
@@ -166,4 +166,4 @@ When you want to preserve a specific configuration:
 
 ---
 
-*For detailed information about agent creation and configuration, see the [Agents documentation](../menus/agents.md). For terms and concepts, refer to the [ELITEA Glossary](../home/glossary.md).*
+*For detailed information about agent creation and configuration, see the [Agents documentation](../../menus/agents.md). For terms and concepts, refer to the [ELITEA Glossary](../../home/glossary.md).*

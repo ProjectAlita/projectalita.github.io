@@ -1,4 +1,4 @@
-# Enable Internal Tools
+# Internal Tools in Conversation
 
 ## Overview
 
@@ -6,17 +6,17 @@ Internal tools provide built-in capabilities that enhance your conversations and
 
 **Use cases:**
 
-- Execute Python code snippets during conversations
-- Perform calculations and data analysis
-- Test Python algorithms in a secure environment
-- Process data with Python libraries
-- Generate visualizations and reports
+* Execute Python code snippets during conversations
+* Perform calculations and data analysis
+* Test Python algorithms in a secure environment
+* Process data with Python libraries
+* Generate visualizations and reports
 
 ## Prerequisites
 
-- **Permission Level**: User role with conversation edit access
-- **Conversation**: An active conversation or agent configuration
-- **Backend**: Deno must be installed on the server (handled by system administrators)
+* **Permission Level**: User role with conversation edit access
+* **Conversation**: An active conversation or agent configuration
+* **Backend**: Deno must be installed on the server (handled by system administrators)
 
 ## Enabling Internal Tools in Conversations
 
@@ -35,7 +35,7 @@ Internal tools provide built-in capabilities that enhance your conversations and
 3. Click the toggle switch next to "Python sandbox" to enable it
 4. The tool description reads: "Enable Python code execution in a secure sandbox using [Pyodide](https://pyodide.org/en/stable/usage/packages-in-pyodide.html)"
 
-![Enable Python Sandbox](<../img/how-tos/internal tools/enable-python-sandbox.png>)
+![Enable Python Sandbox](<../../img/how-tos/chat-conversations/internal tools/enable-python-sandbox.png>)
 
 ### Step 3: Verify Enablement
 
@@ -68,7 +68,7 @@ You can also configure internal tools as part of an agent's default configuratio
 2. The Python sandbox will now be available in all new conversations using this agent
 3. Existing conversations are not affected and maintain their own internal tools settings
 
-![Agent Python Sandbox](<../img/how-tos/internal tools/enable-python-sandbox-agent.png>)
+![Agent Python Sandbox](<../../img/how-tos/chat-conversations/internal tools/enable-python-sandbox-agent.png>)
 
 ## Using the Python Sandbox
 
@@ -184,7 +184,7 @@ Great! Your improved email validation function passes all test cases. The enhanc
 - Proper multi-part domains (accepted)
 - Special characters in local part (accepted when appropriate)
 
-![Use Python Sandbox](<../img/how-tos/internal tools/executing-sandbox.png>)
+![Use Python Sandbox](<../../img/how-tos/chat-conversations/internal tools/executing-sandbox.png>)
 
 The assistant can:
 
@@ -213,16 +213,16 @@ The assistant can:
 
 **Immediate effects:**
 
-- The AI assistant gains the ability to execute Python code
-- Code runs in a secure, isolated WebAssembly environment
-- No access to your local file system or network (unless explicitly configured server-side)
-- Execution results are returned in the conversation
+* The AI assistant gains the ability to execute Python code
+* Code runs in a secure, isolated WebAssembly environment
+* No access to your local file system or network (unless explicitly configured server-side)
+* Execution results are returned in the conversation
 
 **Performance considerations:**
 
-- First code execution may take longer due to Pyodide initialization
-- Subsequent executions are faster due to caching
-- Complex computations or large data processing may have timeout limits
+* First code execution may take longer due to Pyodide initialization
+* Subsequent executions are faster due to caching
+* Complex computations or large data processing may have timeout limits
 
 ### Important Caveats
 
@@ -237,11 +237,11 @@ The assistant can:
 
 ### Limitations
 
-- **File I/O**: Limited file system access (no access to local files)
-- **Network**: Restricted network access depending on server configuration
-- **System Operations**: Cannot execute system-level commands
-- **Packages**: Limited to Pyodide-compatible packages
-- **Execution Time**: Long-running scripts may timeout
+* **File I/O**: Limited file system access (no access to local files)
+* **Network**: Restricted network access depending on server configuration
+* **System Operations**: Cannot execute system-level commands
+* **Packages**: Limited to Pyodide-compatible packages
+* **Execution Time**: Long-running scripts may timeout
 
 ## Troubleshooting
 
@@ -249,63 +249,63 @@ The assistant can:
 
 **Possible causes:**
 
-- You're on the Agents page (internal tools config is only available in conversations)
-- The conversation is loading
-- You're in a streaming response
+* You're on the Agents page (internal tools config is only available in conversations)
+* The conversation is loading
+* You're in a streaming response
 
 **Solution:**
 
-- Wait for the page to fully load
-- Wait for any streaming responses to complete
-- Ensure you're in a conversation view, not the Agents list
+* Wait for the page to fully load
+* Wait for any streaming responses to complete
+* Ensure you're in a conversation view, not the Agents list
 
 ### Issue: "Failed to update internal tools config" Error
 
 **Possible causes:**
 
-- Network connectivity issues
-- Backend API unavailable
-- Insufficient permissions
+* Network connectivity issues
+* Backend API unavailable
+* Insufficient permissions
 
 **Solution:**
 
-- Check your internet connection
-- Refresh the page and try again
-- Contact your administrator if the issue persists
+* Check your internet connection
+* Refresh the page and try again
+* Contact your administrator if the issue persists
 
 ### Issue: Python Code Fails to Execute
 
 **Possible causes:**
 
-- Deno not installed on the server
-- Package not available in Pyodide
-- Syntax errors in the code
-- Timeout exceeded
+* Deno not installed on the server
+* Package not available in Pyodide
+* Syntax errors in the code
+* Timeout exceeded
 
 **Solution:**
 
-- Contact system administrator about Deno installation
-- Use [Pyodide-compatible packages](https://pyodide.org/en/stable/usage/packages-in-pyodide.html)
-- Review error messages in the assistant's response
-- Break large computations into smaller chunks
+* Contact system administrator about Deno installation
+* Use [Pyodide-compatible packages](https://pyodide.org/en/stable/usage/packages-in-pyodide.html)
+* Review error messages in the assistant's response
+* Break large computations into smaller chunks
 
 ### Issue: Configuration Not Saving in Agent
 
 **Possible causes:**
 
-- Form validation errors
-- Missing required fields
-- Conflicting configuration
+* Form validation errors
+* Missing required fields
+* Conflicting configuration
 
 **Solution:**
 
-- Ensure all required agent fields are filled
-- Save the entire configuration form, not just the internal tools toggle
-- Check for any error messages at the top of the form
+* Ensure all required agent fields are filled
+* Save the entire configuration form, not just the internal tools toggle
+* Check for any error messages at the top of the form
 
 !!! info "Related Documentation"
     - [Pyodide Documentation](https://pyodide.org/en/stable/) - Learn about Python in WebAssembly
     - [Pyodide Packages](https://pyodide.org/en/stable/usage/packages-in-pyodide.html) - Available Python packages
-    - [Agent Configuration](../menus/agents.md) - Complete guide to agent configuration
-    - [Conversation Management](../menus/chat.md) - Managing conversations and settings
+    - [Agent Configuration](../../menus/agents.md) - Complete guide to agent configuration
+    - [Conversation Management](../../menus/chat.md) - Managing conversations and settings
 

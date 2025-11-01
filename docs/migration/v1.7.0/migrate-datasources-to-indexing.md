@@ -77,7 +77,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
      - Upload your files (documents, Excel, CSV, etc.) to your SharePoint site/library
      - Ensure files are accessible with your SharePoint credentials
 2. **Create SharePoint Credential**:
-     - Create credential in **Credentials** → **+ Create** → **[SharePoint](../../how-tos/how-to-use-credentials.md#sharepoint-credential-setup)**
+     - Create credential in **Credentials** → **+ Create** → **[SharePoint](../../how-tos/credentials-toolkits/how-to-use-credentials.md#sharepoint-credential-setup)**
 3. **Create SharePoint Toolkit** with your SharePoint credentials
 4. **Index SharePoint files** containing your data:
      - Select **Index Data** tool and specify indexing parameters (e.g., collection suffix, file type filters, etc.)
@@ -122,7 +122,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
 
 1. **Create Jira Credential**:
      - Use your existing Jira API token (or generate a new one if needed)
-     - Create credential in **[Credentials](../../how-tos/how-to-use-credentials.md#jira-credential-setup)** → **+ Create** → **Jira**
+     - Create credential in **[Credentials](../../how-tos/credentials-toolkits/how-to-use-credentials.md#jira-credential-setup)** → **+ Create** → **Jira**
 
 2. **Create Jira Toolkit**:
      - Navigate to **Toolkits** → **+ Create** → **Jira**
@@ -152,7 +152,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
 
 1. **Create Confluence Credential**:
      - Use your existing Confluence API token (or generate a new one if needed)
-     - Create credential in **Credentials** → **+ Create** → **[Confluence](../../how-tos/how-to-use-credentials.md#confluence-credential-setup)**
+     - Create credential in **Credentials** → **+ Create** → **[Confluence](../../how-tos/credentials-toolkits/how-to-use-credentials.md#confluence-credential-setup)**
 
 2. **Create Confluence Toolkit**:
      - Navigate to **Toolkits** → **+ Create** → **Confluence**
@@ -182,7 +182,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
 
 1. **Create Repository Credential**:
      - Use your existing GitHub Personal Access Token (or generate a new one if needed)
-     - Create credential in **Credentials** → **+ Create** → **[GitHub](../../how-tos/how-to-use-credentials.md#github-credential-setup)**
+     - Create credential in **Credentials** → **+ Create** → **[GitHub](../../how-tos/credentials-toolkits/how-to-use-credentials.md#github-credential-setup)**
 
 2. **Create Repository Toolkit**:
     - Navigate to **Toolkits** → **+ Create** → **GitHub**

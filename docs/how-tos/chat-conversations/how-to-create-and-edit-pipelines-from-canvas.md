@@ -26,7 +26,7 @@ The **Pipeline Canvas** interface in ELITEA serves as an integrated pipeline man
 2. In the **PARTICIPANTS** section, locate **Pipelines**.
 3. Click on the **Create new pipeline** button.
 
-![Canvas Pipeline Access](../img/how-tos/canvas-pipeline/canvas-pipeline-access.png)
+![Canvas Pipeline Access](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-access.png)
 
 The "Create New Pipeline" canvas interface will be displayed with all available configuration sections.
 
@@ -71,7 +71,7 @@ In the **ADVANCED** section:
     - Create a new artifact toolkit for file storage
   - Useful for pipelines that need to process documents, images, or other file types as input
 
-![Pipeline Basic Configuration](../img/how-tos/canvas-pipeline/canvas-pipeline-save-basic.png)
+![Pipeline Basic Configuration](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-save-basic.png)
 
 !!! info "Note"
     Required fields are marked with an asterisk * and must be completed before the pipeline can be created.
@@ -85,7 +85,7 @@ Click the **Save** button to create your pipeline with the basic configuration. 
 - Add toolkits, agents, pipelines, and MCP connections
 - Access the Flow Editor for visual workflow design
 
-![Pipeline Initial Configuration](../img/how-tos/canvas-pipeline/canvas-pipeline-initial.png)
+![Pipeline Initial Configuration](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-initial.png)
 
 ## Advanced Pipeline Configuration
 
@@ -100,7 +100,7 @@ After saving the initial configuration, the advanced configuration interface ope
     - Choose from available LLM models in your project (e.g., "gpt-4o", "gpt-4o-mini")
     - The selected model will be displayed on the button
 
-![Pipeline Model Selection](../img/how-tos/canvas-pipeline/canvas-pipeline-select-model.png)
+![Pipeline Model Selection](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-select-model.png)
 
 2. **Model Settings:**
     - Click the **Model Settings** button (gear icon) next to the model selector
@@ -112,7 +112,7 @@ After saving the initial configuration, the advanced configuration interface ope
        - **Max Completion Tokens**: Maximum length of the response (e.g., 4096)
     - Click **Apply** to save the model settings
 
-![Pipeline Model Settings](../img/how-tos/canvas-pipeline/canvas-pipeline-model-settings.png)
+![Pipeline Model Settings](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-model-settings.png)
 
 #### Toolkits Configuration
 
@@ -122,14 +122,14 @@ In the **TOOLKITS** section, you can enhance your pipeline's capabilities by add
     - Click **+ Toolkit** to select from available toolkits or create new ones
     - Browse and select toolkits like GitHub, Jira, Confluence, etc.
 
-![Pipeline Toolkit Configuration](../img/how-tos/canvas-pipeline/canvas-pipeline-add-toolkit.png)
+![Pipeline Toolkit Configuration](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-add-toolkit.png)
 
 2. **Adding MCP Connections:**
     - Click **+ MCP** to add Model Context Protocol connections
     - Select from available MCP configurations
     - MCP connections appear in the toolkits list with proper status indicators
 
-![Pipeline MCP Configuration](../img/how-tos/canvas-pipeline/canvas-pipeline-add-mcp.png)
+![Pipeline MCP Configuration](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-add-mcp.png)
 
 3. **Adding Nested Agents:**
     - Click **+ Agent** to add agents as pipeline components
@@ -137,7 +137,7 @@ In the **TOOLKITS** section, you can enhance your pipeline's capabilities by add
     - Choose specific versions from the version dropdown
     - Nested agents provide AI capabilities within pipeline nodes
 
-![Pipeline Advanced Configuration](../img/how-tos/canvas-pipeline/canvas-pipeline-nested-agent.png)
+![Pipeline Advanced Configuration](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-nested-agent.png)
 
 4. **Adding Nested Pipelines:**
     - Click **+ Pipeline** to integrate other pipeline workflows
@@ -147,7 +147,7 @@ In the **TOOLKITS** section, you can enhance your pipeline's capabilities by add
 5. **Allow Attachments Toggle:**
     - Enable or disable file attachment support for the pipeline
 
-![Pipeline Advanced Configuration](../img/how-tos/canvas-pipeline/canvas-pipeline-advanced.png)
+![Pipeline Advanced Configuration](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-advanced.png)
 
 ### Flow Editor Tab
 
@@ -181,7 +181,7 @@ The **Flow Editor** tab provides a visual interface for designing your pipeline 
     - **Flow mode**: Visual drag-and-drop interface
     - **YAML mode**: Direct YAML code editing
 
-![Pipeline Flow Editor](../img/how-tos/canvas-pipeline/canvas-pipeline-flow-editor.png)
+![Pipeline Flow Editor](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-flow-editor.png)
 
 ### Step 7: Finalize Pipeline Creation
 
@@ -192,7 +192,7 @@ Once you have completed configuring your pipeline:
 
 Your newly created pipeline will appear in the **PARTICIPANTS** section under **Pipelines** and becomes immediately available for use in conversations.
 
-![Pipeline Created](../img/how-tos/canvas-pipeline/canvas-pipeline-created.png)
+![Pipeline Created](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-created.png)
 
 ## Editing Pipelines via Canvas Interface
 
@@ -211,7 +211,7 @@ There are two ways to access the pipeline edit mode:
     - When a pipeline is active in your conversation, click the **Pipeline Settings** button (gear icon) that appears in the chat interface.
     - This will open the pipeline configuration canvas directly.
 
-![Pipeline Edit Access](../img/how-tos/canvas-pipeline/canvas-pipeline-edit-icon.png)
+![Pipeline Edit Access](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-edit-icon.png)
 
 The pipeline configuration canvas will open with current settings pre-populated.
 
@@ -234,7 +234,7 @@ Once in edit mode, you can modify any configuration parameters to update your pi
 - **Nested Agents**: Select and change specific versions from the version dropdown
 - **Nested Pipelines**: Select and change specific versions from the version dropdown
 
-![Edit nested TOOLKITS](../img/how-tos/canvas-pipeline/canvas-pipeline-toolkits-edit.png)
+![Edit nested TOOLKITS](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-toolkits-edit.png)
 
 #### Flow Editor Tab Modifications:
 
@@ -262,7 +262,7 @@ When editing pipelines from the chat interface:
     - **Draft versions**: Can be edited and modified
     - **Published versions**: Read-only, cannot be edited
 
-![Version Change](../img/how-tos/canvas-pipeline/canvas-pipeline-version.png)
+![Version Change](../../img/how-tos/chat-conversations/canvas-pipeline/canvas-pipeline-version.png)
 
 !!! warning "Published Version Limitations"
     Published versions are read-only and cannot be edited. To modify a published version, create a new version or edit an existing draft version.
@@ -348,8 +348,8 @@ The Pipeline Canvas feature in ELITEA provides a powerful and intuitive way to m
 !!! info "Related Documentation"
     For additional information and related functionality, refer to these helpful resources:
 
-    - **[Pipeline Menu](../menus/pipelines.md)** - Complete reference for pipeline management and configuration options
-    - **[Chat Menu](../menus/chat.md)** - Comprehensive guide to chat interface features and navigation
-    - **[Credential Menu](../menus/credentials.md)** - Detailed instructions for managing authentication credentials
-    - **[AI Configuration](../menus/settings/ai-configuration.md)** - Setup and configuration guide for AI models and settings
+    - **[Pipeline Menu](../../menus/pipelines.md)** - Complete reference for pipeline management and configuration options
+    - **[Chat Menu](../../menus/chat.md)** - Comprehensive guide to chat interface features and navigation
+    - **[Credential Menu](../../menus/credentials.md)** - Detailed instructions for managing authentication credentials
+    - **[AI Configuration](../../menus/settings/ai-configuration.md)** - Setup and configuration guide for AI models and settings
     - **[How to Create and Edit Agents from Canvas](how-to-create-and-edit-agents-from-canvas.md)** - Similar guide for agent management
