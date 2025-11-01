@@ -1,7 +1,7 @@
 # Index Repository Data
 
 !!! warning "Availability"
-    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets) and the [Indexing Overview](./indexing-overview.md).
+    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab) and the [Indexing Overview](./indexing-overview.md).
 
 This guide provides a complete step-by-step walkthrough for indexing repository data and then searching or chatting with the indexed content using ELITEA's AI-powered tools.
 
@@ -62,7 +62,7 @@ Repository indexing allows you to create searchable indexes from various reposit
 
 Before indexing GitHub data, ensure you have:
 
-1. **GitHub Credential**: A Personal Access Token or [GitHub App credentials](../how-to-use-credentials.md#github-credential-setup) configured in ELITEA
+1. **GitHub Credential**: A Personal Access Token or [GitHub App credentials](../credentials-toolkits/how-to-use-credentials.md#github-credential-setup) configured in ELITEA
 2. **Vector Storage**: PgVector selected in Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 3. **Embedding Model**: Selected in AI Configuration (defaults available) → [AI Configuration](../../menus/settings/ai-configuration.md)
 4. **GitHub Toolkit**: Configured with your repository details, credentials, and **Index Data tool enabled**
@@ -101,7 +101,7 @@ Your GitHub credential needs these minimum scopes based on what you want to inde
     For complete credential setup steps including token generation and security best practices, see:
     
     - [Create a Credential](../../getting-started/create-credential.md)
-    - [GitHub Credential Setup](../how-to-use-credentials.md#github-credential-setup)
+    - [GitHub Credential Setup](../credentials-toolkits/how-to-use-credentials.md#github-credential-setup)
     - [GitHub Toolkit Guide](../../integrations/toolkits/github_toolkit.md) (Token generation section)
 
 ---
@@ -384,7 +384,7 @@ Check that your index appears in the sidebar with:
     - [How to create and use indexes](./using-indexes-tab-interface.md) - Comprehensive guide for indexing functionality
     - [Create first Index](../../getting-started/indexing-quick-start.md) - Quick start guide for creating indexes
     - [Create a Credential](../../getting-started/create-credential.md) - Step-by-step credential creation guide
-    - [How to Use Credentials](../how-to-use-credentials.md) - Credential management and GitHub setup
+    - [How to Use Credentials](../credentials-toolkits/how-to-use-credentials.md) - Credential management and GitHub setup
     - [Toolkits Menu](../../menus/toolkits.md) - Toolkit configuration and management
     - [GitHub Toolkit Integration Guide](../../integrations/toolkits/github_toolkit.md) - Complete GitHub toolkit reference
     - [AI Configuration](../../menus/settings/ai-configuration.md) - Vector storage and embedding model setup

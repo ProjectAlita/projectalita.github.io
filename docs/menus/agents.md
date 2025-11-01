@@ -152,7 +152,7 @@ The **Python Sandbox** enables secure Python code execution directly within your
 ![Agent Python Sandbox](../img/menus/agents/agents-enable-python-sandbox.png)
 
 !!! info "Learn More"
-    For detailed information about capabilities, available packages, and troubleshooting, see the [Enable Internal Tools Guide](../how-tos/enable-internal-tools.md).
+    For detailed information about capabilities, available packages, and troubleshooting, see the [Enable Internal Tools Guide](../how-tos/chat-conversations/enable-internal-tools.md).
 
 ### WELCOME MESSAGE
 
@@ -322,7 +322,7 @@ The **History** tab provides a complete audit trail of all past executions of yo
 
 The History tab displays runs in a two-panel layout with a list of all executions on the left (showing date, version, and duration) and the complete conversation replay on the right when you select a run.
 
-For detailed instructions on using the History tab, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines-history.md)**.
+For detailed instructions on using the History tab, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines/agents-pipelines-history.md)**.
 
 ![History Tab](../img/menus/agents/agent-history-tab.png)
 

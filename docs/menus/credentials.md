@@ -145,5 +145,5 @@ The **Credentials** menu provides a secure and efficient way to manage authentic
 
     * **[Glossary](../home/glossary.md)** — Definitions of common terms used across the platform
     * **[Toolkits](../menus/toolkits.md)** — Complete guide to the Toolkits menu interface and advanced configuration options
-    * **[How to Use Credentials](../how-tos/how-to-use-credentials.md)** — Step-by-step guide for creating and managing credentials
+    * **[How to Use Credentials](../how-tos/credentials-toolkits/how-to-use-credentials.md)** — Step-by-step guide for creating and managing credentials
     * **[Secrets Management](./settings/secrets.md)** — Secure credential storage best practices

@@ -14,9 +14,9 @@ This quick guide shows how to request an EPAM AI DIAL API key and configure it i
 3. Fill in the required details to open a support request.
 4. Wait for the confirmation email with your API key and usage details.
 
-![Dial Home Page](../img/getting-started/configure-epam-ai-dial-key/Dial-home-page.png)
+![Dial Home Page](../img/migration/v2.0.0/Dial-home-page.png)
 
-![Dial Key Request Form](../img/getting-started/configure-epam-ai-dial-key/Dial-key-request-form.png)
+![Dial Key Request Form](../img/migration/v2.0.0/Dial-key-request-form.png)
 
 ---
 
@@ -34,9 +34,9 @@ This quick guide shows how to request an EPAM AI DIAL API key and configure it i
 
 **Result**: The DIAL credential is created and appears in AI Configuration as available to use.
 
-![AI Configuration](../img/getting-started/configure-epam-ai-dial-key/AI-configuration-page.png)
+![AI Configuration](../img/migration/v2.0.0/AI-configuration-page.png)
 
-![AI Dial Credential Form](../img/getting-started/configure-epam-ai-dial-key/AI-Dial-credential-form.png)
+![AI Dial Credential Form](../img/migration/v2.0.0/AI-Dial-credential-form.png)
 
 ---
 
@@ -44,7 +44,7 @@ This quick guide shows how to request an EPAM AI DIAL API key and configure it i
 After creating the DIAL credential, add the LLM models that your key can access.
 
 1. Go to Settings → [AI Configuration](../menus/settings/ai-configuration.md)
-2. Click **+ Create** → select “**LLM Model**”
+2. Click **+ Create** → select "**LLM Model**"
 3. Fill the fields:
       - **Display name**: a friendly label (e.g., “Dial Claude Sonnet”)
       - **Name**: the exact model name as listed here: [Available Models and Rate Limits](https://kb.epam.com/display/EPMGPT/Personal+API+Keys%3A+Available+Models+and+Rate+Limits)
@@ -58,9 +58,9 @@ After creating the DIAL credential, add the LLM models that your key can access.
 !!! tip
     The last added model becomes the default in New Conversation model selection.
 
-![LLM-model-creation-form](../img/getting-started/configure-epam-ai-dial-key/LLM-model-creation-form.png)
+![LLM-model-creation-form](../img/migration/v2.0.0/LLM-model-creation-form.png)
 
-![LLM-model-visible-in-new-conversation](../img/getting-started/configure-epam-ai-dial-key/LLM-model-visible-in-new-conversation.png)
+![LLM-model-visible-in-new-conversation](../img/migration/v2.0.0/LLM-model-visible-in-new-conversation.png)
 
 ---
 
@@ -73,5 +73,5 @@ After creating the DIAL credential, add the LLM models that your key can access.
 
 ## Related
 - [AI Configuration](../menus/settings/ai-configuration.md)
-- [Create a Credential](./create-credential.md)
-- [Quick Start (Next env)](./next-quick-start.md)
+- [Create a Credential](create-credential.md)
+- [Quick Start (Next env)](../migration/v1.7.0/next-quick-start.md)

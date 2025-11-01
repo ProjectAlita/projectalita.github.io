@@ -40,7 +40,7 @@ pipx install alita-mcp
 alita-mcp tray
 ```
 
-![Tray app (macOS)](../img/integrations/mcp/mcp-tray-macos.png)
+![Tray app (macOS)](../img/migration/v2.0.0/mcp-tray-macos.png)
 
 === "Windows"
 
@@ -58,7 +58,7 @@ pipx install alita-mcp
 alita-mcp tray
 ```
 
-![Tray app (Windows)](../img/integrations/mcp/mcp-tray-windows.png)
+![Tray app (Windows)](../img/migration/v2.0.0/mcp-tray-windows.png)
 
 !!! tip "Auto-start on login"
     You can set the tray app to start automatically. See details in the [MCP Client Integration Guide](../integrations/mcp/mcp-client.md).
@@ -82,7 +82,7 @@ Use your IDE's terminal to run the `alita-mcp bootstrap` command and start your 
 4. Run the `alita-mcp tray` command.
 5. In the tray app, click **Start MCP Server**.
 
-![Tray running](../img/integrations/mcp/mcp-tray-terminal.png)
+![Tray running](../img/migration/v2.0.0/mcp-tray-terminal.png)
 
 !!! info "No server listed?"
     If you don’t see your server after bootstrap, re-open the tray, or use the CLI `alita-mcp bootstrap` and try again.
@@ -94,7 +94,7 @@ Use your IDE's terminal to run the `alita-mcp bootstrap` command and start your 
 1. Open Elitea and sign in.
 2. Use the **Project Switcher** (top-left) and select **Private**.
 
-![Project Switcher](../img/getting-started/quick-start/project.png)
+![Project Switcher](../img/migration/v2.0.0/project.png)
 
 !!! info "First-time users"
     Private project provisioning can take up to 5 minutes.
@@ -112,7 +112,7 @@ Use your IDE's terminal to run the `alita-mcp bootstrap` command and start your 
 5. Review the **Tools** list and unselect anything not needed.
 6. Click **Save**.
 
-![Create MCP](../img/menus/mcps/mcps_creating_an_mcp.png)
+![Create MCP](../img/migration/v2.0.0/mcps_creating_an_mcp.png)
 
 !!! warning "Disconnected state"
     If the MCP shows **Disconnected**, start the tray app and server, then refresh the MCP page.
@@ -125,7 +125,7 @@ Use your IDE's terminal to run the `alita-mcp bootstrap` command and start your 
 * Use **Test Settings** to pick a model, select a tool, provide inputs, and **Run Tool**.
 * Review the chat-style output, use fullscreen, and clear results as needed.
 
-![Test Panel](../img/menus/mcps/mcps_test_panel.png)
+![Test Panel](../img/migration/v2.0.0/mcps_test_panel.png)
 
 ---
 
@@ -144,7 +144,7 @@ Use your IDE's terminal to run the `alita-mcp bootstrap` command and start your 
     5. Take a screenshot of the page and save it as index-github-credential.png
 
 
-![Start Conversation](../img/getting-started/configure-and-use-mcp/mcp-quick-conversation.png)
+![Start Conversation](../img/migration/v2.0.0/mcp-quick-conversation.png)
 
 ---
 

@@ -1,7 +1,7 @@
 # Index TestRail Data
 
 !!! warning "Availability"
-    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets) and the [Indexing Overview](./indexing-overview.md).
+    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab) and the [Indexing Overview](./indexing-overview.md).
 
 
 ## Overview
@@ -36,7 +36,7 @@ TestRail indexing allows you to create searchable indexes from your TestRail tes
 
 Before indexing TestRail data, ensure you have:
 
-1. **TestRail Credential**: A TestRail API key with [authentication credentials](../how-to-use-credentials.md#testrail-credential-setup) configured in ELITEA
+1. **TestRail Credential**: A TestRail API key with [authentication credentials](../credentials-toolkits/how-to-use-credentials.md#testrail-credential-setup) configured in ELITEA
 2. **Vector Storage**: PgVector selected in Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 3. **Embedding Model**: Selected in AI Configuration (defaults available) → [AI Configuration](../../menus/settings/ai-configuration.md)
 4. **TestRail Toolkit**: Configured with your TestRail instance details and credentials
@@ -71,7 +71,7 @@ Your TestRail credential needs appropriate permissions based on what you want to
     For complete credential setup steps including API key generation and security best practices, see:
     
     - [Create a Credential](../../getting-started/create-credential.md)
-    - [TestRail Credential Setup](../how-to-use-credentials.md#testrail-credential-setup)
+    - [TestRail Credential Setup](../credentials-toolkits/how-to-use-credentials.md#testrail-credential-setup)
     - [TestRail Toolkit Integration Guide](../../integrations/toolkits/testrail_toolkit.md)
 
 ---
@@ -469,7 +469,7 @@ Let's walk through a complete example of querying indexed test documentation:
     - **[Indexing Overview](./indexing-overview.md)** - *Complete guide to ELITEA's indexing system and capabilities*
     - **[Indexing Tools](./indexing-tools.md)** - *Detailed reference for all indexing tools and parameters*
     - **[TestRail Toolkit Guide](../../integrations/toolkits/testrail_toolkit.md)** - *Comprehensive guide to the TestRail Toolkit and its capabilities*
-    - **[How to Use Credentials](../how-to-use-credentials.md#testrail-credential-setup)** - *TestRail credential setup and management*    
+    - **[How to Use Credentials](../credentials-toolkits/how-to-use-credentials.md#testrail-credential-setup)** - *TestRail credential setup and management*    
     - **[AI Configuration](../../menus/settings/ai-configuration.md)** - *Set up vector storage and embedding models for indexing*
     - **[Toolkits Menu](../../menus/toolkits.md)** - *General toolkit configuration and management*
     - **[Chat Menu](../../menus/chat.md)** - *Create conversations and add toolkits as participants*

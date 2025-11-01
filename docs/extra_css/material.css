@@ -156,6 +156,11 @@
    SIDEBAR NAVIGATION
    ============================================================================= */
 
+/* Hide the duplicate section title in sidebar (already shown in tabs) */
+.md-nav--primary > .md-nav__list > .md-nav__item--active > .md-nav__link {
+  display: none;
+}
+
 /* Navigation Active State */
 .md-nav__link--active,
 .md-nav__link[aria-current],
@@ -163,6 +168,41 @@
 .md-nav__link[aria-current="true"] {
   color: var(--md-primary-fg-color);
   font-weight: 500;
+}
+
+/* Subsection Headers (e.g., "Indexing", "Chat & Conversations") - Subtle & Elegant */
+.md-nav__item--nested > .md-nav__link {
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-top: 0.75rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+[data-md-color-scheme="default"] .md-nav__item--nested > .md-nav__link {
+  color: #666666;
+  background-color: rgba(196, 40, 221, 0.03);
+  border-left: 2px solid rgba(196, 40, 221, 0.3);
+  padding-left: 0.75rem;
+}
+
+[data-md-color-scheme="default"] .md-nav__item--nested > .md-nav__link:hover {
+  background-color: rgba(196, 40, 221, 0.06);
+  border-left-color: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .md-nav__item--nested > .md-nav__link {
+  color: #A9B7C1;
+  background-color: rgba(41, 184, 245, 0.05);
+  border-left: 2px solid rgba(41, 184, 245, 0.3);
+  padding-left: 0.75rem;
+}
+
+[data-md-color-scheme="slate"] .md-nav__item--nested > .md-nav__link:hover {
+  background-color: rgba(41, 184, 245, 0.08);
+  border-left-color: var(--md-accent-fg-color);
 }
 
 /* Navigation Title Styling */

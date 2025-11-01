@@ -1,7 +1,7 @@
 # Index SharePoint Data
 
 !!! warning "Availability"
-    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-tools-replacement-for-datasets) and the [Indexing Overview](./indexing-overview.md).
+    Indexing tools are available in the [Next environment](https://next.elitea.ai) (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab) and the [Indexing Overview](./indexing-overview.md).
 
 !!! info "Migration from Datasources"
     In previous releases, there was a **Source type: File** option in Datasources. Now, Datasources have been removed from ELITEA, and users can perform the same action through SharePoint Toolkit indexing.
@@ -50,7 +50,7 @@ SharePoint indexing allows you to create searchable indexes from your SharePoint
 
 Before indexing SharePoint data, ensure you have:
 
-1. **SharePoint Credential**: An Azure AD app registration with [authentication credentials](../how-to-use-credentials.md#sharepoint-credential-setup) configured in ELITEA
+1. **SharePoint Credential**: An Azure AD app registration with [authentication credentials](../credentials-toolkits/how-to-use-credentials.md#sharepoint-credential-setup) configured in ELITEA
 2. **Vector Storage**: PgVector selected in Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 3. **Embedding Model**: Selected in AI Configuration (defaults available) → [AI Configuration](../../menus/settings/ai-configuration.md)
 4. **SharePoint Toolkit**: Configured with your SharePoint site details and credentials
@@ -88,7 +88,7 @@ Your SharePoint credential needs appropriate permissions based on what you want 
     For complete credential setup steps including Azure AD app registration, permissions, and security best practices, see:
     
     - [Create a Credential](../../getting-started/create-credential.md)
-    - [SharePoint Credential Setup](../how-to-use-credentials.md#sharepoint-credential-setup)
+    - [SharePoint Credential Setup](../credentials-toolkits/how-to-use-credentials.md#sharepoint-credential-setup)
     - [SharePoint Toolkit Integration Guide](../../integrations/toolkits/sharepoint_toolkit.md)
 
 ---
@@ -385,7 +385,7 @@ Let's walk through a complete example of indexing and using a company's SharePoi
     
     - [Indexing Overview](./indexing-overview.md) - General indexing concepts and features
     - [Create a Credential](../../getting-started/create-credential.md) - Step-by-step credential creation guide
-    - [How to Use Credentials](../how-to-use-credentials.md) - Credential management and SharePoint setup
+    - [How to Use Credentials](../credentials-toolkits/how-to-use-credentials.md) - Credential management and SharePoint setup
     - [Toolkits Menu](../../menus/toolkits.md) - Toolkit configuration and management
     - [SharePoint Toolkit Integration Guide](../../integrations/toolkits/sharepoint_toolkit.md) - Complete SharePoint toolkit reference
     - [AI Configuration](../../menus/settings/ai-configuration.md) - Vector storage and embedding model setup

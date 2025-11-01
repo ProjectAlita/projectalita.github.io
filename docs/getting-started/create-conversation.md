@@ -73,7 +73,7 @@ Your new conversation will appear in the conversation list on the left.
 ## More Resources
 
 * [ELITEA Chat Documentation](../menus/chat.md)
-* [How to Use Chat Functionality](../how-tos/how-to-use-chat-functionality.md)
+* [How to Use Chat Functionality](../how-tos/chat-conversations/how-to-use-chat-functionality.md)
 
 
 ---

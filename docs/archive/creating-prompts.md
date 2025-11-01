@@ -152,7 +152,7 @@ Once a prompt is published, it becomes an essential resource for the QA communit
 
 The "Trending" page serves as a quick reference for discovering highly valued prompts within the community. To like a prompt, simply click on the heart icon associated with the prompt in the Prompt Library. Your engagement helps in identifying the most impactful prompts, enriching our QA processes and driving a culture of continuous improvement and collaboration.
 
-![Prompts-Trending](../img/how-tos/publishing/Prompts-Trending.png)
+![Prompts-Trending](../img/how-tos/entity-management/publishing/Prompts-Trending.png)
 
 By understanding and participating in the review process, you are contributing to a shared knowledge base that benefits the entire QA community. Your efforts and interactions, including submitting, refining, and liking prompts, play a crucial role in enhancing our collective testing efficacy.
 

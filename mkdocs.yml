@@ -3,10 +3,11 @@ site_url: https://elitea.ai/docs/
 
 nav:
   - Home:
-      - Elitea Values: index.md
-      - Introduction: home/introduction.md
-      - Quick Start: getting-started/quick-start.md
-      - Glossary: home/glossary.md
+      - Welcome to Elitea:
+          - Elitea Values: index.md
+          - Introduction: home/introduction.md
+          - Quick Start: getting-started/quick-start.md
+          - Glossary: home/glossary.md
       - Key Concepts:
           - What is an agent?: home/key-concepts/what-is-an-agent.md
           - What is a pipeline?: home/key-concepts/what-is-a-pipeline.md
@@ -25,55 +26,45 @@ nav:
           - Create a Secret: getting-started/create-secret.md
           - Create a Credential: getting-started/create-credential.md
           - Create a Toolkit: getting-started/create-toolkit.md
-      - Create Your First Entities:
-          - Create first Agent: getting-started/create-agent.md
-          - Create first Artifact: getting-started/create-artifact.md
-          - Create first Pipeline: getting-started/create-pipeline.md
-          - Create first Conversation: getting-started/create-conversation.md
-          - Create first Index: getting-started/indexing-quick-start.md
-      - Enhanced Usage:
-          - Canvas in Conversation: getting-started/canvas-in-conversation.md
-          - Add Teammates to Conversation: getting-started/add-teammates-to-conversation.md
-      - Migration to Next Environment:
-          - Quick Start (Next env): getting-started/next-quick-start.md
-          - Configure Epam AI Dial key (Next env): getting-started/configure-epam-ai-dial-key.md
-          - Migrate Datasources to Indexing: how-tos/indexing/migrate-datasources-to-indexing.md
-          - Configure and Use MCP Server from Elitea: getting-started/configure-and-use-mcp.md
-          
+          - Configure EPAM AI DIAL Keys: getting-started/configure-epam-ai-dial-key.md
+      - Create Entities:
+          - Create an Agent: getting-started/create-agent.md
+          - Create an Artifact: getting-started/create-artifact.md
+          - Create a Pipeline: getting-started/create-pipeline.md
+          - Create a Conversation: getting-started/create-conversation.md
+          - Create an Index: getting-started/indexing-quick-start.md
+          - Configure and Use MCP Servers: getting-started/configure-and-use-mcp.md
 
   - Menus:
-      - Overview: menus/overview.md
-      - Chat: menus/chat.md
-      - Agents: menus/agents.md
-      - Pipelines: menus/pipelines.md
-      - Credentials: menus/credentials.md
-      - Toolkits: menus/toolkits.md
-      - MCPs: menus/mcps.md
-      - Collections: menus/collections.md
-      - Artifacts: menus/artifacts.md
-      - Settings:
-          - Settings Overview: menus/settings/settings-overview.md
-          - AI Configuration: menus/settings/ai-configuration.md
-          - Personal Tokens: menus/settings/personal-tokens.md
-          - Secrets: menus/settings/secrets.md
-          - Projects: menus/settings/projects.md
-          - Monitoring: menus/settings/monitoring.md
-
-  - Features:
-      - Search Entities: features/search-entities.md
-      - Organizing Entities: features/organizing-entities.md
-      - Entity Versioning: features/entity-versioning.md
-      - Manage Users & Roles: features/roles.md
+      - Main Menus:
+          - Overview: menus/overview.md
+          - Chat: menus/chat.md
+          - Agents: menus/agents.md
+          - Pipelines: menus/pipelines.md
+          - Credentials: menus/credentials.md
+          - Toolkits: menus/toolkits.md
+          - MCPs: menus/mcps.md
+          - Collections: menus/collections.md
+          - Artifacts: menus/artifacts.md
+          - Settings:
+              - Settings Overview: menus/settings/settings-overview.md
+              - AI Configuration: menus/settings/ai-configuration.md
+              - Personal Tokens: menus/settings/personal-tokens.md
+              - Secrets: menus/settings/secrets.md
+              - Projects: menus/settings/projects.md
+              - Monitoring: menus/settings/monitoring.md
 
   - How-To Guides:
-      - Use Credentials: how-tos/how-to-use-credentials.md
-      - Test Toolkits Tools: how-tos/how-to-test-toolkit-tools.md
-      - Automate JIRA Issue Review: how-tos/jira-automation-with-elitea.md
-      - Use Webhooks: how-tos/how-to-use-webhooks.md
-      - Attach Images and Files in Chat: how-tos/attach-images-and-files-in-chat.md
-      - Enable Internal Tools: how-tos/enable-internal-tools.md
-      - View Agents and Pipelines History: how-tos/agents-pipelines-history.md
-      - Update LLM Nodes in Pipelines: how-tos/update-llm-nodes.md
+      - Chat & Conversations:
+          - Chat Usage: how-tos/chat-conversations/how-to-use-chat-functionality.md
+          - Canvas in Conversation: how-tos/chat-conversations/how-to-canvas.md
+          - Add Teammates to Conversation: how-tos/chat-conversations/add-teammates-to-conversation.md
+          - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
+          - Internal Tools in Conversation: how-tos/chat-conversations/enable-internal-tools.md
+          - Canvas - Create and Edit Agents: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
+          - Canvas - Create and Edit Pipelines: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
+          - Canvas - Create and Edit Toolkits: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
+          - Canvas - Create and Edit MCPs: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
@@ -86,18 +77,20 @@ nav:
           - Figma Indexing: how-tos/indexing/index-figma-data.md
           - TestRail Indexing: how-tos/indexing/index-testrail-data.md
           - ADO Wiki Indexing: how-tos/indexing/index-ado-wiki-data.md
-      - Chat & Conversations:
-          - Chat - Advanced Usage: how-tos/how-to-use-chat-functionality.md
-          - Canvas - Advanced Usage: how-tos/how-to-canvas.md
-          - Canvas - Create and Edit Toolkits: how-tos/how-to-create-and-edit-toolkits-from-canvas.md
-          - Canvas - Create and Edit Agents: how-tos/how-to-create-and-edit-agents-from-canvas.md
-          - Canvas - Create and Edit Pipelines: how-tos/how-to-create-and-edit-pipelines-from-canvas.md
-          - Canvas - Create and Edit MCPs: how-tos/how-to-create-and-edit-mcps-from-canvas.md
+      - Agents & Pipelines:
+          - View Agents and Pipelines History: how-tos/agents-pipelines/agents-pipelines-history.md
+      - Credentials & Toolkits:
+          - Use Credentials: how-tos/credentials-toolkits/how-to-use-credentials.md
+          - Test Toolkits Tools: how-tos/credentials-toolkits/how-to-test-toolkit-tools.md
+          - Automate JIRA Issue Review: how-tos/credentials-toolkits/jira-automation-with-elitea.md
+          - Use Webhooks: how-tos/credentials-toolkits/how-to-use-webhooks.md
+      - Entity Management:
+          - Search Entities: how-tos/entity-management/search-entities.md
+          - Organizing Entities: how-tos/entity-management/organizing-entities.md
+          - Entity Versioning: how-tos/entity-management/entity-versioning.md
+          - Manage Users & Roles: how-tos/entity-management/manage-users-and-roles.md
 
   - Integrations:
-      - Extensions:
-          - Elitea Code: integrations/extensions/elitea-code.md
-          - Elitea Code Chat: integrations/extensions/elitea-code-chat.md
       - MCP:
           - Server (STDIO): integrations/mcp/mcp-server-stdio.md
           - Server (SSE): integrations/mcp/mcp-server-sse.md
@@ -136,11 +129,16 @@ nav:
           - Xray Cloud: integrations/toolkits/xray_toolkit.md
           - Zephyr Scale: integrations/toolkits/zephyr_scale_toolkit.md
           - Zephyr Enterprise: integrations/toolkits/zephyr_enterprise_toolkit.md
+      - Extensions:
+          - Elitea Code: integrations/extensions/elitea-code.md
+          - Elitea Code Chat: integrations/extensions/elitea-code-chat.md
 
   - Release Notes:
-      - Current version:
-          - RN 1.7.0: release-notes/rn_current.md
+      - Current Version:
+          - RN 2.0.0 Beta: release-notes/rn_current.md
       - Previous versions:
+          - RN 1.7.1: release-notes/archived/rn12.md
+          - RN 1.7.0: release-notes/archived/rn11.md
           - RN 1.6.0: release-notes/archived/rn10.md
           - RN 1.5.2: release-notes/archived/rn9.md
           - RN 1.5.1: release-notes/archived/rn8.md
@@ -151,10 +149,21 @@ nav:
           - RN 1.1.0: release-notes/archived/rn3.md
           - RN 1.0.1: release-notes/archived/rn2.md
           - RN 1.0.0: release-notes/archived/rn1.md
+
+  - Migration & Upgrade:
+      - Upgrading to v2.0.0:
+          - Migration Overview: migration/v2.0.0/migration-overview.md
+          - Update LLM Nodes in Pipelines: migration/v2.0.0/update-llm-nodes.md
+      - Upgrading from v1.7.0:
+          - Migration Overview: migration/v1.7.0/migration-overview.md
+          - Quick Start (Next env): migration/v1.7.0/next-quick-start.md
+          - Migrate Datasources to Indexing: migration/v1.7.0/migrate-datasources-to-indexing.md
+
   - Support:
       - FAQs: support/faqs.md
       - Contact Support: support/contact-support.md
       - Additional Resources: support/additional-resources.md
+
   - Archive:
       - Prompt Magic Assistant: archive/prompt-magic-assistant.md
       - Alita Dial: archive/alita-dial.md
@@ -180,7 +189,8 @@ theme:
     - navigation.path # Enable breadcrumb navigation path
     - navigation.tabs # Enable tabbed navigation for sections
     - navigation.tabs.sticky # Enable sticky tab navigation
-    - navigation.sections # Enable section navigation
+    # - navigation.sections # Enable section navigation (DISABLED to allow collapsible subsections)
+    # - navigation.expand # Expand navigation sections by default (COMMENTED OUT = sections collapsed by default)
     # - navigation.top # Enable top navigation
   palette:
     # # Palette toggle for automatic mode
