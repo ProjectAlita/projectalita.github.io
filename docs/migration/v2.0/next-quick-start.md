@@ -8,7 +8,7 @@ The **Next** environment is a separate preview space for Release 1.7.0. It lets 
 	 The **Next** environment contains migrated data from your **Private** and **Team** projects as of Aug-15-2025, plus all 1.7.0 changes. Use this safe period to review updates, reconfigure indexes, set up credentials, and validate flows before Nexus is upgraded.
 
 - **Access Next environment**: [https://next.elitea.ai](https://next.elitea.ai)
-- **Release Notes**: [Release 1.7.0](../release-notes/rn_current.md)
+- **Release Notes**: [Release 1.7.0](../../release-notes/rn_current.md)
 
 ## What was migrated from Nexus
 
@@ -43,7 +43,7 @@ Within projects, the following content was included:
 
 1. Create and attach credentials
 	- See: [How to create a credential and attach it to the toolkit](#how-to-create-a-credential-and-attach-it-to-the-toolkit)
-	- Guides: [Create a Credential](./create-credential.md) · [Create a Toolkit](./create-toolkit.md) · [Use Credentials](../how-tos/how-to-use-credentials.md)
+	- Guides: [Create a Credential](../../getting-started/create-credential.md) · [Create a Toolkit](../../getting-started/create-toolkit.md) · [Use Credentials](../../how-tos/how-to-use-credentials.md)
 2. Check your Toolkit Configuration
 	- Verify tools enabled (e.g., Index data), correct Credential selected, PgVector and Embedding settings; Save, then test from Tool Testing.
 	- See: [Check your Toolkit Configuration](#check-your-toolkit-configuration)
@@ -52,14 +52,14 @@ Within projects, the following content was included:
 	- See: [Check your agents and pipelines](#check-your-agents-and-pipelines)
 4. Check your conversations
 	- Add your agent/pipeline in Chat and send a simple prompt to validate end-to-end.
-	- See: [Check your conversations](#check-your-conversations) · [Create a conversation](./create-conversation.md)
+	- See: [Check your conversations](#check-your-conversations) · [Create a conversation](../../getting-started/create-conversation.md)
 5. Index data for a toolkit
 	- Use Tool Testing → Index Data to recreate datasets; parameters vary by toolkit.
-	- See: [Index data for a toolkit](#index-data-for-a-toolkit) · Example: [Index GitHub data](../how-tos/indexing/index-github-data.md)
+	- See: [Index data for a toolkit](#index-data-for-a-toolkit) · Example: [Index GitHub data](../../how-tos/indexing/index-github-data.md)
 
 6. Configure EPAM AI DIAL keys (strongly recommended)
 	- Shared LLM models in Next are evaluation-only with daily limits. For sustained or production use, configure your own DIAL keys.
-	- See: [Configure EPAM AI DIAL Keys](./configure-epam-ai-dial-key.md) · Settings → [AI Configuration](../menus/settings/ai-configuration.md)
+	- See: [Configure EPAM AI DIAL Keys](./configure-epam-ai-dial-key.md) · Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 
 ---
 
@@ -70,7 +70,7 @@ Keep it simple: create the credential, then assign it inside your toolkit.
 1. **Create a credential**: Go to Credentials → + Create → pick type (e.g., GitHub, Jira) → fill fields → Save.
 2. **Attach to a toolkit**: Go to Toolkits → create or open a toolkit → in Configuration, choose the Credential you created → Save.
 
-See the detailed guide: [Create a Credential and Add It to a Toolkit](./create-credential.md). For broader concepts, see [Use Credentials](../how-tos/how-to-use-credentials.md).
+See the detailed guide: [Create a Credential and Add It to a Toolkit](../../getting-started/create-credential.md). For broader concepts, see [Use Credentials](../../how-tos/how-to-use-credentials.md).
 
 ## Check your Toolkit Configuration
 
@@ -96,7 +96,7 @@ Add your working agents, pipelines, and toolkits to a conversation and test end-
 
 - Open Chat → add/select an Agent or Pipeline as a participant.
 - Send a simple instruction and confirm the response.
-- For details, see: [Creating a Conversation and Adding AI Assistants](./create-conversation.md).
+- For details, see: [Creating a Conversation and Adding AI Assistants](../../getting-started/create-conversation.md).
 
 ## Index data for a toolkit
 
@@ -113,7 +113,7 @@ Steps:
 
 !!! tip "Tips"
       - You can also trigger indexing from an Agent or from Chat by selecting an Agent/Toolkit that has the Index Data tool available, then instructing it to index the target (provide repo/site/project and scope).
-      - Example guide: [Index GitHub data](../how-tos/indexing/index-github-data.md). Additional indexing guides will be added for other toolkits.
+      - Example guide: [Index GitHub data](../../how-tos/indexing/index-github-data.md). Additional indexing guides will be added for other toolkits.
 
 ## Configure EPAM AI DIAL keys (recommended)
 
@@ -140,5 +140,5 @@ What to include so we can help quickly:
 - Chat/Conversations: exact instructions (queries), selected participant, (agent/pipeline/model), and any error banners.
 - General: relevant screenshots; send one issue per email when possible.
 
-See the full guidance: [How to Contact ELITEA Support](../support/contact-support.md).
+See the full guidance: [How to Contact ELITEA Support](../../support/contact-support.md).
 

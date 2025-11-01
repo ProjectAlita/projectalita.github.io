@@ -22,13 +22,13 @@ The LLM node structure has been updated with a new configuration format. If you 
 
 The previous LLM node configuration had a simpler structure with just a Prompt field:
 
-![Old LLM Node](<../img/how-tos/pipeline-llm-node-update/old-llm-node.png>)
+![Old LLM Node](<../../img/migration/v2.0/old-llm-node.png>)
 
 ### New LLM Node (Current format)
 
 The updated LLM node now requires System and Task fields:
 
-![New LLM Node](<../img/how-tos/pipeline-llm-node-update/new-llm-node.png>)
+![New LLM Node](<../../img/migration/v2.0/new-llm-node.png>)
 
 ## Symptoms
 
@@ -44,7 +44,7 @@ Follow these steps to update your LLM nodes manually:
 
 ### Step 1: Open Your Pipeline
 
-1. Navigate to **[Pipelines](../menus/pipelines.md)** in the main menu
+1. Navigate to **[Pipelines](../../menus/pipelines.md)** in the main menu
 2. Find and click on the pipeline that's experiencing issues
 3. Click the **Configuration** tab
 4. Select the **Flow** tab to view the pipeline flow diagram

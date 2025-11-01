@@ -77,7 +77,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
      - Upload your files (documents, Excel, CSV, etc.) to your SharePoint site/library
      - Ensure files are accessible with your SharePoint credentials
 2. **Create SharePoint Credential**:
-     - Create credential in **Credentials** → **+ Create** → **[SharePoint](../how-to-use-credentials.md#sharepoint-credential-setup)**
+     - Create credential in **Credentials** → **+ Create** → **[SharePoint](../../how-tos/how-to-use-credentials.md#sharepoint-credential-setup)**
 3. **Create SharePoint Toolkit** with your SharePoint credentials
 4. **Index SharePoint files** containing your data:
      - Select **Index Data** tool and specify indexing parameters (e.g., collection suffix, file type filters, etc.)
@@ -106,8 +106,8 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
 !!! info "Detailed Instructions"
     For complete step-by-step instructions, see: 
 
-       - **[Index SharePoint Data](./index-sharepoint-data.md)**
-       - **[Index Artifacts Data](./index-artifacts-data.md)**
+       - **[Index SharePoint Data](../../how-tos/indexing/index-sharepoint-data.md)**
+       - **[Index Artifacts Data](../../how-tos/indexing/index-artifacts-data.md)**
 
 ---
 
@@ -122,7 +122,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
 
 1. **Create Jira Credential**:
      - Use your existing Jira API token (or generate a new one if needed)
-     - Create credential in **[Credentials](../how-to-use-credentials.md#jira-credential-setup)** → **+ Create** → **Jira**
+     - Create credential in **[Credentials](../../how-tos/how-to-use-credentials.md#jira-credential-setup)** → **+ Create** → **Jira**
 
 2. **Create Jira Toolkit**:
      - Navigate to **Toolkits** → **+ Create** → **Jira**
@@ -137,7 +137,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
       - Search across multiple projects with natural language
 
 !!! info "Detailed Instructions"
-    For complete step-by-step instructions, see: **[Index Jira Data](./index-jira-data.md)**
+    For complete step-by-step instructions, see: **[Index Jira Data](../../how-tos/indexing/index-jira-data.md)**
 
 ---
 
@@ -152,7 +152,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
 
 1. **Create Confluence Credential**:
      - Use your existing Confluence API token (or generate a new one if needed)
-     - Create credential in **Credentials** → **+ Create** → **[Confluence](../how-to-use-credentials.md#confluence-credential-setup)**
+     - Create credential in **Credentials** → **+ Create** → **[Confluence](../../how-tos/how-to-use-credentials.md#confluence-credential-setup)**
 
 2. **Create Confluence Toolkit**:
      - Navigate to **Toolkits** → **+ Create** → **Confluence**
@@ -166,7 +166,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
      - Search across multiple spaces with semantic queries
 
 !!! info "Detailed Instructions"
-    For complete step-by-step instructions, see: **[Index Confluence Data](./index-confluence-data.md)**
+    For complete step-by-step instructions, see: **[Index Confluence Data](../../how-tos/indexing/index-confluence-data.md)**
 
 ---
 
@@ -182,7 +182,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
 
 1. **Create Repository Credential**:
      - Use your existing GitHub Personal Access Token (or generate a new one if needed)
-     - Create credential in **Credentials** → **+ Create** → **[GitHub](../how-to-use-credentials.md#github-credential-setup)**
+     - Create credential in **Credentials** → **+ Create** → **[GitHub](../../how-tos/how-to-use-credentials.md#github-credential-setup)**
 
 2. **Create Repository Toolkit**:
     - Navigate to **Toolkits** → **+ Create** → **GitHub**
@@ -198,7 +198,7 @@ Use the **Index Data** tool in each toolkit to recreate your indexed content wit
      - Find code patterns, documentation, and implementation examples
 
 !!! info "Detailed Instructions"
-    For complete step-by-step instructions, see: **[Index Repository Data](./index-github-data.md)**
+    For complete step-by-step instructions, see: **[Index Repository Data](../../how-tos/indexing/index-github-data.md)**
 
 ---
 
@@ -277,13 +277,13 @@ If you encounter issues during migration:
 !!! info "Related Documentation"
     For platform-specific guidance and detailed troubleshooting:
     
-    - **[Indexing Overview](./indexing-overview.md)** - *Complete guide to indexing system and capabilities*
-    - **[Indexing Tools](./indexing-tools.md)** - *Detailed reference for all indexing tools*
-    - **[Index Artifacts Data](./index-artifacts-data.md)** - *Index files and documents*
-    - **[Index Jira Data](./index-jira-data.md)** - *Index Jira issues and project data*
-    - **[Index Confluence Data](./index-confluence-data.md)** - *Index Confluence pages and spaces*
-    - **[Index SharePoint Data](./index-sharepoint-data.md)** - *Index SharePoint files and sites*
-    - **[Index Repository Data](./index-github-data.md)** - *Index code repositories*
+    - **[Indexing Overview](../../how-tos/indexing/indexing-overview.md)** - *Complete guide to indexing system and capabilities*
+    - **[Indexing Tools](../../how-tos/indexing/indexing-tools.md)** - *Detailed reference for all indexing tools*
+    - **[Index Artifacts Data](../../how-tos/indexing/index-artifacts-data.md)** - *Index files and documents*
+    - **[Index Jira Data](../../how-tos/indexing/index-jira-data.md)** - *Index Jira issues and project data*
+    - **[Index Confluence Data](../../how-tos/indexing/index-confluence-data.md)** - *Index Confluence pages and spaces*
+    - **[Index SharePoint Data](../../how-tos/indexing/index-sharepoint-data.md)** - *Index SharePoint files and sites*
+    - **[Index Repository Data](../../how-tos/indexing/index-github-data.md)** - *Index GitHub repositories*
     - **[AI Configuration](../../menus/settings/ai-configuration.md)** - *Configure vector storage and embedding models*
     - **[Create a Credential](../../getting-started/create-credential.md)** - *Set up authentication for data sources*
     - **[Toolkits Menu](../../menus/toolkits.md)** - *General toolkit configuration guide*
