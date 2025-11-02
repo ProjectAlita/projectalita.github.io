@@ -79,6 +79,21 @@ nav:
           - ADO Wiki Indexing: how-tos/indexing/index-ado-wiki-data.md
       - Agents & Pipelines:
           - View Agents and Pipelines History: how-tos/agents-pipelines/agents-pipelines-history.md
+          - Pipeline Building Blocks:
+              - Pipelines Overview: how-tos/pipelines/overview.md
+              - States: how-tos/pipelines/states.md
+              - Nodes:
+                  - Nodes Overview: how-tos/pipelines/nodes/overview.md
+                  - Interaction Nodes: how-tos/pipelines/nodes/interaction-nodes.md
+                  - Execution Nodes: how-tos/pipelines/nodes/execution-nodes.md
+                  - Control Flow Nodes: how-tos/pipelines/nodes/control-flow-nodes.md
+                  - Iteration Nodes: how-tos/pipelines/nodes/iteration-nodes.md
+                  - Utility Nodes: how-tos/pipelines/nodes/utility-nodes.md
+              - Nodes Connectors: how-tos/pipelines/nodes-connectors.md
+              - Entry Point: how-tos/pipelines/entry-point.md
+              - Flow Editor: how-tos/pipelines/flow-editor.md
+              - YAML Configuration: how-tos/pipelines/yaml.md
+              - Appendix - Comparison Tables: how-tos/pipelines/appendix-comparison-tables.md
       - Credentials & Toolkits:
           - Use Credentials: how-tos/credentials-toolkits/how-to-use-credentials.md
           - Test Toolkits Tools: how-tos/credentials-toolkits/how-to-test-toolkit-tools.md
