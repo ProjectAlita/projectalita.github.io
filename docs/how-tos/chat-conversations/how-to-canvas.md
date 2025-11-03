@@ -56,7 +56,7 @@ Start by asking ELITEA to create something for you.
 
 Once ELITEA generates the content, look for the pencil icon (✏️) in the top-right corner of the content block. This icon indicates that Canvas is available.
 
-![Canvas_Edit](../../img/how-tos/chat-conversations/canvas/Canvas_Edit.png)
+![Canvas_Edit](../../img/how-tos/chat-conversations/canvas/canvas-open.png)
 
 Click the pencil icon to launch the Canvas editor for that content block.*
 
@@ -93,10 +93,11 @@ The Code Editor is a robust environment for refining AI-generated code snippets 
 * **Find/Replace**: Quickly locate and update variables, function names, or other text strings.
 * **Code Folding**: Collapse functions or classes to focus on a specific part of the code.
 
-**Real-World Example: Refining an AQA Test Script**
+![Canvas-code Edit](../../img/how-tos/chat-conversations/canvas/canvas_code.png)
 
-* **Role**: Sarah, an AQA Engineer.  
-* **Goal**: Create a reliable Selenium test for a new checkout feature.
+**Real-World Example: Refining an AQA Test Script**
+   * **Role**: Sarah, an AQA Engineer.  
+   * **Goal**: Create a reliable Selenium test for a new checkout feature.
 
 1. **Generate**: Sarah asks ELITEA: "Write a Selenium Python script to add an item to the cart and proceed to checkout."
 2. **Activate Canvas**: The AI generates a functional but basic script. Sarah clicks the ✏️ icon to open it in the Code Editor.
@@ -118,6 +119,8 @@ The Table Editor transforms simple Markdown tables into a powerful, spreadsheet-
 * **Structural Changes**: Add or remove rows and columns with a single click.
 * **Sorting and Filtering**: Quickly organize your data to find what you need.
 * **Import/Export**: Export your table to formats like XLSX (Excel) or Markdown.
+
+![canvas-table](../../img/how-tos/chat-conversations/canvas/canvas_table.png)
 
 **Real-World Example: Test Case Documentation**
 
@@ -143,6 +146,8 @@ The Mermaid Diagram Editor allows you to edit the simple text-based syntax of a 
 * **Live Preview**: The diagram updates instantly as you type.
 * **Syntax Highlighting & Error Detection**: Quickly spots issues in your Mermaid code.
 * **Multiple Export Options**: Save your finished diagram as a PNG, JPG, or SVG image file.
+
+![Canvas-Mermaid](../../img/how-tos/chat-conversations/canvas/canvas_mermaid.png)
 
 **Real-World Example: Visualizing a Business Process**
 
@@ -178,14 +183,12 @@ The Mermaid Diagram Editor allows you to edit the simple text-based syntax of a 
 **A:** Check that the file format you're trying to export to is supported for that editor. If an issue persists, try a different web browser or contact support.
 
 
-## More Resources
- 
-* [ELITEA Chat Documentation](../../menus/chat.md)
-* [How to Use Chat Functionality](how-to-use-chat-functionality.md)
-* [Creating Prompts](../../archive/creating-prompts.md)
-* [Markdown Table Guide](https://www.markdownguide.org/extended-syntax/#tables)
-* [Mermaid.js Documentation](https://mermaid-js.github.io/)
-* [ELITEA Support](../../support/contact-support.md)
+!!! info "More Resources"
+    * [ELITEA Chat Documentation](../../menus/chat.md)
+    * [How to Use Chat Functionality](how-to-use-chat-functionality.md)
+    * [Markdown Table Guide](https://www.markdownguide.org/extended-syntax/#tables)
+    * [Mermaid.js Documentation](https://mermaid-js.github.io/)
+    * [ELITEA Support](../../support/contact-support.md)
  
 ## Conclusion
  
