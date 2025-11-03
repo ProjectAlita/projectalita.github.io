@@ -8,6 +8,8 @@ ELITEA Pipelines are customizable, automated workflows that help you streamline 
 
 Unlike traditional automation tools that require programming knowledge, ELITEA Pipelines can be created visually using a drag-and-drop interface, making powerful automation accessible to everyone—from business analysts to project managers.
 
+![Pipeline Overview](../../img/how-tos/agents-pipelines/pipeline-building-blocks/pipeline-overview.png)
+
 ### Key Characteristics
 
 **Visual Design**
@@ -100,62 +102,14 @@ Both Pipelines and Agents are powerful automation tools in ELITEA, but they serv
 
 Understanding pipelines requires familiarity with their core components. Each building block serves a specific purpose in creating effective workflows:
 
-### [States](states.md)
-
-**What**: The pipeline's memory system for storing and managing data
-
-**Why**: Track information collected during execution and pass data between nodes
-
-**Learn About**: State variables, data types, input vs messages, state initialization
-
----
-
-### [Nodes](nodes/overview.md)
-
-**What**: Individual actions or steps in your pipeline workflow
-
-**Why**: Perform specific tasks like interacting with users, calling services, making decisions, or processing data
-
-**Learn About**: 13 different node types organized into 5 categories (Interaction, Execution, Control Flow, Iteration, Utility)
-
----
-
-### [Connections](connections.md)
-
-**What**: Links between nodes that control execution flow
-
-**Why**: Define how the pipeline moves from one step to the next, including conditional branching
-
-**Learn About**: Simple transitions, conditional edges, decision edges, router outputs, data mapping
-
----
-
-### [Entry Point](entry-point.md)
-**What**: The designated starting node of your pipeline
-
-**Why**: Define where execution begins when the pipeline is triggered
-
-**Learn About**: Entry point syntax, validation rules, using different node types as starting points
-
----
-
-### [Flow Editor](flow-editor.md)
-
-**What**: Visual interface for designing pipelines graphically
-
-**Why**: Build complex workflows using drag-and-drop without writing code
-
-**Learn About**: Creating nodes visually, connecting nodes, configuring parameters, debugging
-
----
-
-### [YAML Configuration](yaml.md)
-
-**What**: Text-based format for defining pipelines programmatically
-
-**Why**: Enable advanced customization, version control, and programmatic pipeline generation
-
-**Learn About**: YAML schema, syntax rules, node configuration, complete examples
+| Building Block | Description | Purpose | Key Topics |
+|----------------|-------------|---------|------------|
+| **[States](states.md)** | Pipeline's memory system for storing and managing data | Track information collected during execution and pass data between nodes | State variables, data types, input vs messages, state initialization |
+| **[Nodes](nodes/overview.md)** | Individual actions or steps in your pipeline workflow | Perform specific tasks like interacting with users, calling services, making decisions, or processing data | 13 different node types organized into 5 categories (Interaction, Execution, Control Flow, Iteration, Utility) |
+| **[Connections](nodes-connectors.md)** | Links between nodes that control execution flow | Define how the pipeline moves from one step to the next, including conditional branching | Simple transitions, conditional edges, decision edges, router outputs, data mapping |
+| **[Entry Point](entry-point.md)** | Designated starting node of your pipeline | Define where execution begins when the pipeline is triggered | Entry point syntax, validation rules, using different node types as starting points |
+| **[Flow Editor](flow-editor.md)** | Visual interface for designing pipelines graphically | Build complex workflows using drag-and-drop without writing code | Creating nodes visually, connecting nodes, configuring parameters, debugging |
+| **[YAML Configuration](yaml.md)** | Text-based format for defining pipelines programmatically | Enable advanced customization, version control, and programmatic pipeline generation | YAML schema, syntax rules, node configuration, complete examples |
 
 ---
 
@@ -165,7 +119,7 @@ Ready to dive deeper? We recommend exploring the building blocks in this order:
 
 1. **Start with [States](states.md)** - Understand how pipelines store and manage data
 2. **Explore [Nodes](nodes/overview.md)** - Learn about the different actions and components available
-3. **Master [Connections](connections.md)** - Discover how to control the flow between nodes
+3. **Master [Connections](nodes-connectors.md)** - Discover how to control the flow between nodes
 4. **Understand [Entry Point](entry-point.md)** - Define where your pipeline begins
 5. **Choose Your Interface**:
       * [Flow Editor](flow-editor.md) for visual design
