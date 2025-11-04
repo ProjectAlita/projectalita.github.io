@@ -13,7 +13,10 @@ Interaction Nodes enable your pipeline to communicate with AI models and delegat
 
 The LLM Node provides direct access to Large Language Models (GPT-4, Claude, etc.) for text generation, analysis, extraction, and decision-making. It's the most versatile interaction node, supporting chat history, tool calling, and structured output extraction.
 
-![LLM Node Interface](../../../../img/how-tos/pipelines/nodes/interaction/llm-node-interface.png)
+!!! note "Migrating from v1.x LLM Nodes"
+    If you have existing pipelines with old LLM node format, see the [v2.0.0 Migration Guide](../../../migration/v2.0.0/update-llm-nodes.md) for updating to the new System/Task structure.
+
+![Add LLM](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/add-llm-node.png)
 
 ### Purpose
 
@@ -26,370 +29,78 @@ Use the LLM Node to:
 * **Call tools** via function calling
 * **Make intelligent decisions** based on context
 
-### Configuration
-
-#### Basic Configuration
-
-```yaml
-- id: "analyze_feedback"
-  type: "llm"
-  input: ["user_input", "messages"]
-  output: ["analysis", "sentiment"]
-  structured_output: true
-```
-
-![LLM Node Basic Configuration](../../../../img/how-tos/pipelines/nodes/interaction/llm-node-basic-config.png)
-
-#### Prompt Configuration
-
-The LLM Node supports three types of prompt configurations:
-
-**1. Fixed Prompt** (Type: `Fixed`)
-
-Simple static instructions:
-
-```yaml
-- id: "generate_summary"
-  type: "llm"
-  prompt:
-    type: "fixed"
-    value: "Summarize the following text in 3 bullet points."
-  input: ["messages"]
-```
-
-**2. F-String Prompt** (Type: `F-String`)
-
-Dynamic prompts using state variables:
-
-```yaml
-- id: "personalized_response"
-  type: "llm"
-  prompt:
-    type: "fstring"
-    value: "Create a response for user {user_name} about {topic}. Use {tone} tone."
-  input: ["user_name", "topic", "tone", "messages"]
-```
-
-**3. Variable Prompt** (Type: `Variable`)
-
-Use a state variable as the entire prompt:
-
-```yaml
-- id: "dynamic_prompt"
-  type: "llm"
-  prompt:
-    type: "variable"
-    value: "instruction_from_state"
-  input: ["instruction_from_state", "messages"]
-```
-
-![LLM Node Prompt Types](../../../../img/how-tos/pipelines/nodes/interaction/llm-node-prompt-types.png)
-
 ### Parameters
 
-#### System
+| Parameter | Purpose | Type Options & Examples |
+|-----------|---------|-------------------------|
+| **System** | Provide system-level instructions that set the LLM's behavior, role, or constraints | **`Fixed`** - Static system message<br>Example: "You are a helpful assistant."<br><br>**`F-String`** - System message with variables<br>Example: "You are a {role} expert."<br><br>**`Variable`** - System message from state<br>Example: custom_system_prompt |
+| **Task** | Define the specific task or user request the LLM should process | **`Fixed`** - Static task<br>Example: "Summarize the text."<br><br>**`F-String`** - Task with embedded variables<br>Example: "Analyze {user_story} and extract requirements."<br><br>**`Variable`** - Task from state variable<br>Example: task_instruction |
+| **Chat History** | Provide conversation context from previous interactions | **`Fixed`** - No history<br>Example: []<br><br>**`F-String`** - Formatted conversation history<br>Example: "Previous conversation: {messages}"<br><br>**`Variable`** - Use conversation history<br>Example: messages |
+| **Input** | Specify which state variables the LLM node reads from | **Default states:** `input`, `messages`<br>**Custom states:** Any defined state variables<br><br>Example:<br>`- input`<br>`- messages`<br>`- user_context` |
+| **Output** | Define which state variables the LLM's response should populate | **Default:** `messages`<br>**Custom states:** Define specific variables<br><br>Example:<br>`- extracted_title`<br>`- extracted_description`<br>`- messages` |
+| **Toolkits** | Bind external tools and MCPs to the LLM for function calling | **Toolkits** - Service integrations<br>**MCPs** - Model Context Protocol servers<br><br>Example:<br>`jira_toolkit:`<br>`  - create_issue`<br>`  - update_issue`<br>`slack_toolkit:`<br>`  - send_message` |
+| **Interrupt Before** | Pause pipeline execution before this node | **Enabled** / **Disabled**<br><br>Example: `enabled` or `disabled` |
+| **Interrupt After** | Pause pipeline execution after this node for inspection | **Enabled** / **Disabled**<br><br>Example: `enabled` or `disabled` |
+| **Structured Output** | Force LLM to return data in structured format matching output variables | **Enabled** - Response parsed into state variables<br>**Disabled** - Free-form text to `messages`<br><br>Example: `true` or `false` |
 
-**Purpose**: Provide system-level instructions that set the LLM's behavior, role, or constraints.
+![LLM Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/llm-node-interface.png)
 
-**Type Options**:
 
-* `Fixed` - Static system message
-* `F-String` - System message with variables
-* `Variable` - System message from state
-
-**Example**:
-```yaml
-System:
-  Type: Fixed
-  Value: "You are a helpful technical documentation assistant. Always provide clear, accurate information."
+**Yaml Configuration**
+```Yaml
+nodes:
+  - id: Analyze_feedback
+    type: llm
+    prompt:
+      type: string
+      value: ''
+    input:
+      - input
+      - user_context
+    output:
+      - extracted_title
+      - messages
+    structured_output: false
+    transition: END
+    input_mapping:
+      system:
+        type: fixed
+        value: You are a helpful assistant
+      task:
+        type: fstring
+        value: Analyze {user_story} and extract requirements.
+      chat_history:
+        type: variable
+        value: messages
+    tool_names:
+      JiraAssistant:
+        - create_issue
+        - update_issue
+interrupt_before:
+  - Analyze_feedback
+state:
+  messages:
+    type: list
+  input:
+    type: str
+  extracted_title:
+    type: str
+    value: ''
+  user_context:
+    type: str
+    value: ''
 ```
-
-#### Task
-
-**Purpose**: Define the specific task or user request the LLM should process.
-
-**Type Options**:
-
-* `Fixed` - Static task
-* `F-String` - Task with embedded variables
-* `Variable` - Task from state variable
-
-**Example**:
-
-```yaml
-Task:
-  Type: F-String
-  Value: "Analyze the user story: {user_story} and extract the requirements."
-```
-
-#### Chat History
-
-**Purpose**: Provide conversation context from previous interactions.
-
-**Type Options**:
-
-* `Fixed` - Empty array `[]` (no history)
-* `Variable` - Use `messages` state variable
-
-**Example**:
-```yaml
-Chat history:
-  Type: Variable
-  Value: messages
-Chat history:
-  Type: Fixed
-  Value: []  # No chat history
-```
-
-**With History**:
-```yaml
-Chat history:
-  Type: Variable
-  Value: messages  # Use conversation history from state
-```
-
-![LLM Node Parameters](../../../../img/how-tos/pipelines/nodes/interaction/llm-node-parameters.png)
-
-#### Input
-
-**Purpose**: Specify which state variables the LLM node reads from.
-
-**Options**:
-
-* Default states: `input`, `messages`
-* Custom states: Any state variables you've defined
-
-**Example**:
-
-```yaml
-Input:
-  - input
-  - messages
-  - user_context
-  - previous_results
-```
-
-![LLM Node Input Selection](../../../../img/how-tos/pipelines/nodes/interaction/llm-node-input-selection.png)
-
-#### Output
-
-**Purpose**: Define which state variables the LLM's response should populate.
-
-**Options**:
-
-* Default: `messages` (conversation history)
-* Custom states: Define specific variables to extract
 
 !!! warning "Important: Messages in Output for Interrupts"
-    If you want meaningful output from LLM nodes with **structured output** during **interrupts**, it is **mandatory** to include `messages` in the output variables. Without `messages`, interrupt output may be incomplete or unclear.
+    When using **structured output** with **interrupts**, include `messages` in the output variables for meaningful interrupt output.
 
-**Example**:
+!!! info "Toolkit Selection Process"
+    1. Select Toolkit/MCP from dropdown
+    2. Tool dropdown appears for that toolkit
+    3. Select specific tools to make available to the LLM
+    4. Repeat for multiple toolkits (each gets its own tool dropdown)
+    ![alt text](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/toolkit-tools.png)
 
-```yaml
-Output:
-  - extracted_title
-  - extracted_description
-  - messages  # Required for interrupts with structured output
-```yaml
-Output:
-  - extracted_title
-  - extracted_description
-  - messages  # Required for interrupts with structured output
-```
-
-![LLM Node Output Configuration](../../../../img/how-tos/pipelines/nodes/interaction/llm-node-output-config.png)
-
-#### Toolkits
-
-**Purpose**: Bind external tools and MCPs to the LLM for function calling.
-
-**Available Options**:
-
-* **Toolkits** - External service integrations (Jira, GitHub, Slack, etc.)
-* **MCPs** (Model Context Protocol servers) - Custom integrations
-
-**Selection Process**:
-
-1. **Select Toolkit/MCP**: Choose one or more toolkits or MCPs from the dropdown
-2. **Tool Dropdown Appears**: After selecting a toolkit, a corresponding "Tools" dropdown appears
-3. **Select Tools**: Choose specific tools from the toolkit to make available to the LLM
-4. **Multiple Toolkits**: You can select multiple toolkits; each gets its own tool selection dropdown
-
-![LLM Node Toolkit Selection](../../../../img/how-tos/pipelines/nodes/interaction/llm-node-toolkit-selection.png)
-
-**Example Configuration**:
-```yaml
-Toolkits:
-  EPMALTA:
-    - remove_index
-    - list_collections
-    - create_page
-```
-
-**How Tool Calling Works**:
-
-1. LLM receives user request
-2. LLM decides which tool(s) to call based on available tools
-3. LLM generates tool call with appropriate arguments
-4. Pipeline executes the tool
-5. Tool result is returned to LLM
-6. LLM formulates final response
-
-![LLM Node Tool Calling Flow](../../../../img/how-tos/pipelines/nodes/interaction/llm-node-tool-calling.png)
-
-#### Interrupt Before/After
-
-**Purpose**: Pause pipeline execution before or after this node for inspection or user intervention.
-
-**Use Cases**:
-
-* Debug LLM responses
-* Review extracted data before proceeding
-* Allow user approval before continuing
-* Inspect state at critical points
-
-**Configuration**:
-```yaml
-Interrupt before: [enabled/disabled]
-Interrupt after: [enabled/disabled]
-```
-
-#### Structured Output
-
-**Purpose**: Force the LLM to return data in a structured format matching your output variables.
-
-**When Enabled**:
-
-* LLM response is parsed into individual state variables
-* Output must match defined output variable types
-* More reliable data extraction
-
-**When Disabled**:
-
-* LLM returns free-form text
-* Response goes to `messages` state
-* More flexible but less structured
-
-**Example with Structured Output**:
-```yaml
-- id: "extract_user_story"
-  type: "llm"
-  structured_output: true
-  output: ["title", "description", "acceptance_criteria", "messages"]
-  prompt:
-    type: "fixed"
-    value: "Extract the title, description, and acceptance criteria from this user story."
-```
-
-**Result**: State variables `title`, `description`, and `acceptance_criteria` are populated with extracted values.
-
-![LLM Node Structured Output](../../../../img/how-tos/pipelines/nodes/interaction/llm-node-structured-output.png)
-
-### Examples
-
-#### Example 1: Simple Text Generation
-
-Generate a response based on user input:
-
-```yaml
-- id: "generate_response"
-  type: "llm"
-  input: ["input", "messages"]
-  output: ["messages"]
-  prompt:
-    type: "fixed"
-    value: "Provide a helpful response to the user's question."
-```
-
-#### Example 2: Structured Data Extraction
-
-Extract specific fields from text:
-
-```yaml
-- id: "extract_requirements"
-  type: "llm"
-  input: ["user_story", "messages"]
-  output: ["title", "description", "priority", "messages"]
-  structured_output: true
-  prompt:
-    type: "fstring"
-    value: |
-      Extract the following from this user story: {user_story}
-      - Title
-      - Description
-      - Priority (high/medium/low)
-```
-
-**Result**:
-
-* `title` = "User Authentication"
-* `description` = "Implement secure login..."
-* `priority` = "high"
-* `messages` = Full conversation with extraction details
-
-#### Example 3: LLM with Tool Calling
-
-LLM can search Confluence and create Jira tickets:
-
-```yaml
-- id: "research_and_create_ticket"
-  type: "llm"
-  input: ["task_description", "messages"]
-  output: ["ticket_id", "messages"]
-  prompt:
-    type: "fstring"
-    value: |
-      Task: {task_description}
-      
-      1. Search Confluence for relevant documentation
-      2. Create a Jira ticket with the findings
-  toolkits:
-    confluence_toolkit:
-      - search_by_title
-    jira_toolkit:
-      - create_issue
-```
-
-**Execution Flow**:
-
-1. LLM receives task description
-2. LLM calls `confluence_toolkit.search_by_title`
-3. LLM reviews search results
-4. LLM calls `jira_toolkit.create_issue` with extracted info
-5. LLM returns ticket ID
-
-#### Example 4: Conversational LLM
-
-Multi-turn conversation with context:
-
-```yaml
-- id: "conversation_partner"
-  type: "llm"
-  input: ["input", "messages", "user_preference"]
-  output: ["messages"]
-  prompt:
-    type: "fstring"
-    value: |
-      You are a friendly assistant helping with {user_preference}.
-      Maintain context from previous messages and provide personalized responses.
-```
-
-#### Example 5: Dynamic System Instructions
-
-System message from state variable:
-
-```yaml
-- id: "adaptive_assistant"
-  type: "llm"
-  system:
-    type: "variable"
-    value: "custom_system_prompt"
-  task:
-    type: "variable"
-    value: "user_request"
-  input: ["custom_system_prompt", "user_request", "messages"]
-  output: ["messages"]
-```
 
 ### Best Practices
 
@@ -504,7 +215,7 @@ prompt:
 
 The Agent Node allows you to delegate tasks to pre-configured AI agents that have been added to your pipeline. Instead of configuring LLM behavior from scratch, you leverage existing agents with specialized capabilities, prompts, and toolkits.
 
-![Agent Node Interface](../../../../img/how-tos/pipelines/nodes/interaction/agent-node-interface.png)
+![Add Agent](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/agent-node-add.png)
 
 ### Purpose
 
@@ -516,281 +227,75 @@ Use the Agent Node to:
 * **Simplify workflows** by avoiding duplicate LLM configuration
 * **Leverage agent-specific toolkits** and integrations
 
-### Configuration
-
-#### Basic Configuration
-
-```yaml
-- id: "content_reviewer"
-  type: "agent"
-  tool: "content_review_agent"
-  input: ["draft_content", "messages"]
-  output: ["review_result", "messages"]
-```
-
-![Agent Node Basic Configuration](../../../../img/how-tos/pipelines/nodes/interaction/agent-node-basic-config.png)
-
 ### Parameters
 
-#### Agent
+| Parameter | Purpose | Type Options & Examples |
+|-----------|---------|-------------------------|
+| **Agent** | Select which pre-configured agent to execute | Only agents added to the pipeline appear in dropdown<br><br>**How to Add:**<br>1. Go to Pipeline Configuration > Toolkits<br>2. Select agents<br>3. Added agents become available<br><br>Example: `jira_assistant_agent` |
+| **Input** | Specify which state variables the agent reads from | **Default states:** `input`, `messages`<br>**Custom states:** Any defined state variables<br><br>Example:<br>`- project_id`<br>`- input` |
+| **Output** | Define which state variables the agent's response should populate | **Default:** `messages`<br>**Custom states:** Specific variables<br><br>Example:<br>`- jira_ticket_id`<br>`- ticket_url`<br>`- messages` |
+| **Task (Input Mapping)** | Map the specific task instruction for the agent | **`Fixed`** - Static task<br>Example: "Create a Jira ticket for this issue."<br><br>**`F-String`** - Task with variables<br>Example: "Create Jira ticket in {project_id}: {user_story}"<br><br>**`Variable`** - Task from state<br>Example: task_instruction |
+| **Chat History (Input Mapping)** | Map conversation context to provide to the agent | **`Fixed`** - No history<br>Example: []<br><br>**`F-String`** - Formatted history<br>Example: "Previous context: {messages}"<br><br>**`Variable`** - Use conversation history<br>Example: messages |
+| **Custom Variables (Input Mapping)** | Map agent-specific custom variables if defined | **`Fixed`** - Static value<br>**`F-String`** - Value with variables<br>**`Variable`** - Value from state<br><br>Example (if agent has `jira_project`):<br>`jira_project: PROJ-123` |
+| **Interrupt Before** | Pause pipeline execution before this node | **Enabled** / **Disabled**<br><br>Example: `enabled` or `disabled` |
+| **Interrupt After** | Pause pipeline execution after this node for inspection | **Enabled** / **Disabled**<br><br>Example: `enabled` or `disabled` |
 
-**Purpose**: Select which pre-configured agent to execute.
+![Agent Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/agent-node-interface.png)
 
-**Options**: Only agents that have been **added to the pipeline** appear in the dropdown.
-
-**How to Add Agents**:
-
-1. In Pipeline Configuration, go to the **Toolkits** section
-2. Select agents from available agents
-3. Added agents then become available in Agent Node dropdown
-
-![Agent Node Agent Selection](../../../../img/how-tos/pipelines/nodes/interaction/agent-node-agent-selection.png)
-
-**Example**:
-```yaml
-Agent: content_review_agent
-```
-
-#### Input
-
-**Purpose**: Specify which state variables the agent reads from.
-
-**Options**:
-
-* Default states: `input`, `messages`
-* Custom states: Any state variables you've defined
-
-**Example**:
-```yaml
-Input:
-  - user_feedback
-  - draft_content
-  - messages
-```
-
-#### Output
-
-**Purpose**: Define which state variables the agent's response should populate.
-
-**Options**:
-- Default: `messages` (conversation history)
-- Custom states: Specific variables the agent should populate
-
-**Example**:
-```yaml
-Output:
-  - review_result
-  - approval_status
-  - messages
-```
-
-#### Input Mapping
-
-**Purpose**: Map pipeline state variables to the agent's expected input parameters.
-
-**When It Appears**: The Input Mapping section appears **after you select an agent** from the dropdown.
-
-**Default Mappings**:
-Every agent node includes these two default mappings:
-
-1. **TASK** - The specific task instruction for the agent
-2. **CHAT_HISTORY** - Conversation history to provide context
-
-![Agent Node Input Mapping Default](../../../../img/how-tos/pipelines/nodes/interaction/agent-node-input-mapping.png)
-
-**Additional Mappings**:
-If the selected agent has **custom variables** defined, those variables also appear as subsections under Input Mapping.
-
-**Type Options for Each Mapping**:
-
-* **F-String** - Formatted string with state variable placeholders
-* **Variable** - Direct reference to a state variable
-* **Fixed** - Static value
-
-![Agent Node Input Mapping Types](../../../../img/how-tos/pipelines/nodes/interaction/agent-node-input-mapping-types.png)
-
-**Example Configuration**:
-
-```yaml
-Input Mapping:
-  TASK:
-    Type: F-String
-    Value: "Review the following content: {draft_content}. Provide feedback on clarity and accuracy."
-  
-  CHAT_HISTORY:
-    Type: Fixed
-    Value: []  # No history needed
-```
-
-**With Agent Variables**:
-
-If the agent has a variable called `review_guidelines`:
-
-```yaml
-Input Mapping:
-  TASK:
-    Type: F-String
-    Value: "Review: {draft_content}"
-  
-  CHAT_HISTORY:
-    Type: Variable
-    Value: messages
-  
-  review_guidelines:
-    Type: Variable
-    Value: company_standards  # Map to pipeline state
-```
-
-#### Interrupt Before/After
-
-**Purpose**: Pause execution before or after the agent executes.
-
-**Use Cases**:
-
-* Verify agent selection
-* Review agent output before proceeding
-* Debug agent behavior
-
-**Configuration**:
-```yaml
-Interrupt before: [enabled/disabled]
-Interrupt after: [enabled/disabled]
-```
-
-### Examples
-
-#### Example 1: Simple Agent Delegation
-
-Delegate content review to a specialized agent:
-
-```yaml
-- id: "review_content"
-  type: "agent"
-  tool: "content_reviewer_agent"
-  input: ["draft_article", "messages"]
-  output: ["review_feedback", "messages"]
-  input_mapping:
-    task:
-      type: "fstring"
-      value: "Review this article: {draft_article}"
-    chat_history:
-      type: "fixed"
-      value: []
-```
-
-#### Example 2: Agent with Variable Task
-
-Task instruction comes from state:
-
-```yaml
-- id: "dynamic_task_agent"
-  type: "agent"
-  tool: "general_purpose_agent"
-  input: ["task_instruction", "context_data", "messages"]
-  output: ["agent_result", "messages"]
-  input_mapping:
-    task:
-      type: "variable"
-      value: "task_instruction"
-    chat_history:
-      type: "variable"
-      value: "messages"
-```
-
-#### Example 3: Agent with Custom Variables
-
-Agent has a custom `target_audience` variable:
-
-```yaml
-- id: "content_generator"
-  type: "agent"
-  tool: "content_creation_agent"
-  input: ["topic", "target_audience", "messages"]
-  output: ["generated_content", "messages"]
-  input_mapping:
-    task:
-      type: "fstring"
-      value: "Create content about {topic}"
-    chat_history:
-      type: "fixed"
-      value: []
-    target_audience:
-      type: "variable"
-      value: "target_audience"  # Map to pipeline state
-```
-
-#### Example 4: Sequential Agent Chain
-
-Use multiple agents in sequence:
+**Yaml Configuration**
 
 ```yaml
 nodes:
-  - id: "research_agent"
-    type: "agent"
-    tool: "research_assistant"
-    input: ["research_topic", "messages"]
-    output: ["research_findings", "messages"]
+  - id: Agent 1
+    type: agent
+    input:
+      - input
+      - project_id
+    output:
+      - jira_ticket_id
+      - ticket_url
+      - messages
+    transition: END
     input_mapping:
       task:
-        type: "fstring"
-        value: "Research: {research_topic}"
+        type: fstring
+        value: Create Jira ticket in {project_id}
       chat_history:
-        type: "fixed"
+        type: fixed
         value: []
-    transition: "writing_agent"
-  
-  - id: "writing_agent"
-    type: "agent"
-    tool: "content_writer"
-    input: ["research_findings", "messages"]
-    output: ["draft_article", "messages"]
-    input_mapping:
-      task:
-        type: "fstring"
-        value: "Write an article based on: {research_findings}"
-      chat_history:
-        type: "variable"
-        value: "messages"
-    transition: "review_agent"
-  
-  - id: "review_agent"
-    type: "agent"
-    tool: "content_reviewer"
-    input: ["draft_article", "messages"]
-    output: ["final_article", "messages"]
-    input_mapping:
-      task:
-        type: "fstring"
-        value: "Review and finalize: {draft_article}"
-      chat_history:
-        type: "variable"
-        value: "messages"
+      project_id:
+        type: variable
+        value: project_id
+    tool: Jiraepam
+interrupt_before:
+  - Agent 1
+state:
+  messages:
+    type: list
+  input:
+    type: str
+  project_id:
+    type: str
+    value: ''
+  jira_ticket_id:
+    type: str
+    value: ''
+  ticket_url:
+    type: str
+    value: ''
 ```
 
-#### Example 5: Agent with Conversation History
+!!! info "Agent Selection and Input Mapping"
+    The Input Mapping section appears **after** you select an agent. Every agent includes **TASK** and **CHAT_HISTORY** mappings. If the agent has custom variables, they also appear as mapping options.
 
-Maintain context across agent interactions:
-
-```yaml
-- id: "conversational_agent"
-  type: "agent"
-  tool: "chat_assistant"
-  input: ["user_question", "messages"]
-  output: ["agent_response", "messages"]
-  input_mapping:
-    task:
-      type: "fstring"
-      value: "User asks: {user_question}"
-    chat_history:
-      type: "variable"
-      value: "messages"  # Full conversation history
-```
+!!! warning "Add Agents to Pipeline First"
+    Before using Agent Node, ensure agents are added in **Pipeline Configuration > Toolkits** section. Only added agents appear in the dropdown.
 
 ### Best Practices
 
 #### 1. Add Agents to Pipeline First
 
-Before using Agent Node, ensure the agent is added in Pipeline Configuration > Toolkits section.
+Ensure the agent is added in Pipeline Configuration > Toolkits section before using Agent Node.
 
 #### 2. Map Task Clearly
 
@@ -800,7 +305,7 @@ Provide clear, specific task instructions:
 ```yaml
 task:
   type: "fstring"
-  value: "Analyze the user story '{user_story}' and extract requirements, acceptance criteria, and technical dependencies."
+  value: "Create Jira ticket in project {project_id} with title '{title}', description '{description}', and priority {priority}."
 ```
 
 ❌ **Avoid**:
@@ -817,23 +322,17 @@ task:
 
 #### 4. Map Custom Variables Correctly
 
-If agent has custom variables, ensure they're properly mapped to pipeline state:
+If agent has custom variables, map them to pipeline state:
 
+✅ **Good**:
 ```yaml
-# Agent has: project_id, sprint_number
 input_mapping:
-  task:
-    type: "fstring"
-    value: "Create sprint report"
-  chat_history:
-    type: "fixed"
-    value: []
-  project_id:
+  jira_project:
     type: "variable"
-    value: "jira_project_id"  # From pipeline state
+    value: "project_id"
   sprint_number:
     type: "variable"
-    value: "current_sprint"   # From pipeline state
+    value: "current_sprint"
 ```
 
 #### 5. Include `messages` in Output
@@ -914,10 +413,10 @@ Consider error handling in subsequent nodes:
 
 ---
 
-## Related
-
-* **[Nodes Overview](overview.md)** - Understand all available node types
-* **[Execution Nodes](execution-nodes.md)** - Call external tools and execute code
-* **[States](../states.md)** - Manage data flow through pipeline state
-* **[Connections](../connections.md)** - Link nodes together
-* **[YAML Configuration](../yaml.md)** - See complete node syntax examples
+!!! info "Related"
+    - **[Nodes Overview](overview.md)** - Understand all available node types
+    - **[Execution Nodes](execution-nodes.md)** - Call external tools and execute code
+    - **[States](../states.md)** - Manage data flow through pipeline state
+    - **[Connections](../nodes-connectors.md)** - Link nodes together
+    - **[YAML Configuration](../yaml.md)** - See complete node syntax examples
+    - **[Updating LLM Nodes (v2.0.0 Migration)](../../../migration/v2.0.0/update-llm-nodes.md)** - Guide for migrating old LLM nodes to new format
