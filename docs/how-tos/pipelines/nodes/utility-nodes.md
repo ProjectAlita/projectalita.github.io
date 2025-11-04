@@ -178,5 +178,5 @@ interrupt_before:
     - **[YAML Configuration](../yaml.md)** - Text-based pipeline definition
     - **[Control Flow Nodes](control-flow-nodes.md)** - Decision and routing nodes
     - **[Execution Nodes](execution-nodes.md)** - LLM, Tool, and Code nodes
-    - **[State Management](../state.md)** - Understanding state variables
+    - **[State Management](../states.md)** - Understanding state variables
 
