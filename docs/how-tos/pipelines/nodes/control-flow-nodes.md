@@ -4,9 +4,9 @@ Control Flow Nodes enable your pipeline to make decisions, route execution down 
 
 **Available Control Flow Nodes:**
 
-* **[Router Node](#router-node)** - Route execution based on condition matching with multiple named paths
-* **[Condition Node](#condition-node)** - Branch execution based on conditional logic with named outputs
-* **[Decision Node](#decision-node)** - LLM-powered intelligent routing based on natural language criteria
+- **[Router Node](#router-node)** - Route execution based on condition matching with multiple named paths
+- **[Condition Node](#condition-node)** - Branch execution based on conditional logic with named outputs
+- **[Decision Node](#decision-node)** - LLM-powered intelligent routing based on natural language criteria
 
 ---
 
@@ -14,417 +14,93 @@ Control Flow Nodes enable your pipeline to make decisions, route execution down 
 
 The Router Node evaluates a condition and routes pipeline execution to one of multiple named paths. It uses template-based conditions (similar to Jinja2 syntax) to determine which route to take, with a default fallback route if no conditions match.
 
-![Router Node Interface](../../../../img/how-tos/pipelines/nodes/control-flow/router-node-interface.png)
+![Router Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/router-node-add.png)
 
 ### Purpose
 
 Use the Router Node to:
 
-* **Route execution** to different paths based on state variable values
-* **Implement branching logic** with multiple named routes
-* **Evaluate complex conditions** using template syntax
-* **Provide fallback behavior** with default output
-* **Create multi-path workflows** based on data conditions
-
-### Configuration
-
-#### Basic Configuration
-
-```yaml
-- id: "route_by_status"
-  type: "router"
-  condition: |
-    {% if 'approved' in input|lower %}
-    ArticlePublisher
-    {% elif 'finish' in input|lower %}
-    END
-    {% endif %}
-  routes: ["ArticlePublisher", "END"]
-  input: ["input"]
-  default_output: "ArticleReviewer"
-```
-
-![Router Node Basic Configuration](../../../../img/how-tos/pipelines/nodes/control-flow/router-node-basic-config.png)
+- **Route execution** to different paths based on state variable values
+- **Implement branching logic** with multiple named routes
+- **Evaluate complex conditions** using template syntax
+- **Provide fallback behavior** with default output
+- **Create multi-path workflows** based on data conditions
 
 ### Parameters
 
-#### Condition
+| Parameter | Purpose | Type Options & Examples |
+|-----------|---------|-------------------------|
+| **Condition** | Define the conditional logic that determines which route to take | **Syntax:** Template syntax (Jinja2-like)<br>**Operators:**<br>`{% if condition %}` - Start conditional block<br>`{% elif condition %}` - Alternative condition<br>`{% else %}` - Fallback condition<br>`{% endif %}` - End conditional block<br><br>**State Variables:** Use variable names directly (e.g., `input`, `status`, `user_type`)<br>**Filters:** `\|lower`, `\|upper`, `in` operator for substring matching<br><br>**Example:**<br>{% if 'approved' in input\|lower %}<br>ArticlePublisher<br>{% elif 'finish' in input\|lower %}<br>END<br>{% endif %}<br> |
+| **Routes** | Define the named paths (node IDs) that the router can select | **Configuration:** List of node IDs that correspond to the route names returned by the condition<br><br>**Example:**<br>`- ArticlePublisher`<br>`- END`<br><br>**Important:** Route names in the condition must **exactly match** node IDs in the Routes list |
+| **Input** | Specify which state variables the Router node reads for condition evaluation | **Default states:** `input`, `messages`<br>**Custom states:** Any defined state variables<br><br>**Example:**<br>`- input`<br>`- status`<br>`- user_type` |
+| **Default Output** | Specify the fallback route if no conditions in the Router match | **Options:** Select a node ID from available nodes in the pipeline<br><br>**Example:** `ArticleReviewer`<br><br>**Fallback Behavior:** If the condition doesn't return any route name, execution goes to Default Output |
 
-**Purpose**: Define the conditional logic that determines which route to take.
-
-**Syntax**: Uses template syntax (Jinja2-like) with:
-
-* `{% if condition %}` - Start conditional block
-* `{% elif condition %}` - Alternative condition
-* `{% else %}` - Fallback condition
-* `{% endif %}` - End conditional block
-* State variable access: Use variable names directly (e.g., `input`, `status`, `user_type`)
-* Filters: `|lower`, `|upper`, `in` operator for substring matching
-
-![Router Node Condition](../../../../img/how-tos/pipelines/nodes/control-flow/router-node-condition.png)
-
-**Example Condition**:
-```jinja2
-{% if 'approved' in input|lower %}
-ArticlePublisher
-{% elif 'finish' in input|lower %}
-END
-{% endif %}
-```
-
-**How It Works**:
-
-1. Router evaluates the condition from top to bottom
-2. When a condition matches, it returns the associated route name
-3. Execution proceeds to the node specified in that route
-4. If no conditions match, execution goes to the default output
-
-**Template Features**:
-
-**String Operations**:
-
-```jinja2
-{% if 'error' in status|lower %}
-ErrorHandler
-{% elif status|upper == 'SUCCESS' %}
-SuccessPath
-{% endif %}
-```
-
-**Comparisons**:
-
-```jinja2
-{% if priority == 'high' %}
-UrgentPath
-{% elif priority == 'medium' %}
-NormalPath
-{% else %}
-LowPriorityPath
-{% endif %}
-```
-
-**Logical Operators**:
-
-```jinja2
-{% if status == 'approved' and user_type == 'admin' %}
-AdminApprovedPath
-{% elif status == 'approved' %}
-UserApprovedPath
-{% endif %}
-```
-
-#### Routes
-
-**Purpose**: Define the named paths (node IDs) that the router can select.
-
-**Configuration**: List of node IDs that correspond to the route names returned by the condition.
-
-![Router Node Routes](../../../../img/how-tos/pipelines/nodes/control-flow/router-node-routes.png)
-
-**Example**:
-```yaml
-Routes:
-  - ArticlePublisher
-  - END
-```
-
-**Route Mapping**:
-
-The condition returns a route name, which must match a node ID in the Routes list:
-
-```jinja2
-Condition returns: "ArticlePublisher"
-Routes contains: ["ArticlePublisher", "END"]
-Execution goes to: Node with ID "ArticlePublisher"
-```
-
-**Important**: Route names in the condition must **exactly match** node IDs in the pipeline.
-
-#### Input
-
-**Purpose**: Specify which state variables the Router node reads for condition evaluation.
-
-**Options**:
-
-* Default states: `input`, `messages`
-* Custom states: Any state variables you've defined
-
-**Example**:
-```yaml
-Input:
-  - input
-  - status
-  - user_type
-```
-
-**Usage in Condition**:
-```jinja2
-{% if 'approved' in input|lower and status == 'ready' %}
-ApprovedPath
-{% endif %}
-```
-
-#### Default Output
-
-**Purpose**: Specify the fallback route if no conditions in the Router match.
-
-**Options**: Select a node ID from available nodes in the pipeline.
-
-**Example**:
-```yaml
-Default Output: ArticleReviewer
-```
-
-**Fallback Behavior**:
-
-If the condition doesn't return any route name:
-```jinja2
-{% if 'approved' in input|lower %}
-ArticlePublisher
-{% elif 'finish' in input|lower %}
-END
-{% endif %}
-```
-
-And `input` contains "pending" (no match):
-→ Execution goes to `Default Output` ("ArticleReviewer")
-
-### Examples
-
-#### Example 1: Simple Status Router
-
-Route based on approval status:
+![Router Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/router-node-interface.png)
+**YAML Configuration**
 
 ```yaml
-- id: "approval_router"
-  type: "router"
-  condition: |
-    {% if 'approved' in input|lower %}
-    PublishArticle
-    {% elif 'rejected' in input|lower %}
-    NotifyAuthor
-    {% elif 'finish' in input|lower %}
-    END
-    {% endif %}
-  routes: ["PublishArticle", "NotifyAuthor", "END"]
-  input: ["input"]
-  default_output: "RequestReview"
+nodes:
+  - id: Router 1
+    type: router
+    default_output: ArticleReviewer
+    routes:
+      - ArticlePublisher
+      - END
+    input:
+      - input
+    condition: |2-
+          {% if 'approved' in input|lower %}
+          ArticlePublisher
+          {% elif 'finish' in input|lower %}
+          END
+          {% endif %}
+  - id: ArticlePublisher
+    type: tool
+    tool: ''
+    input: []
+    output: []
+    structured_output: false
+    transition: END
+  - id: ArticleReviewer
+    type: llm
+    prompt:
+      type: string
+      value: ''
+    input: []
+    output: []
+    structured_output: false
+    transition: END
+    input_mapping:
+      system:
+        type: fixed
+        value: ''
+      task:
+        type: fixed
+        value: ''
+      chat_history:
+        type: fixed
+        value: []
+
 ```
 
-**Execution Flow**:
+!!! info "Condition Evaluation"
+    The Router evaluates the condition from top to bottom. When a condition matches, it returns the associated route name and execution proceeds to that node. If no conditions match, execution goes to the default output.
 
-* Input contains "approved" → Go to `PublishArticle` node
-* Input contains "rejected" → Go to `NotifyAuthor` node
-* Input contains "finish" → Go to `END` node
-* Input contains "pending" → Go to `RequestReview` (default)
+!!! warning "Route Name Matching"
+    Route names in the condition must **exactly match** node IDs in the pipeline. Case sensitivity matters: "ArticlePublisher" ≠ "article_publisher".
 
-#### Example 2: Priority-Based Router
-
-Route tickets by priority level:
-
-```yaml
-- id: "priority_router"
-  type: "router"
-  condition: |
-    {% if priority|lower == 'critical' %}
-    UrgentHandler
-    {% elif priority|lower == 'high' %}
-    HighPriorityHandler
-    {% elif priority|lower == 'medium' %}
-    NormalHandler
-    {% else %}
-    LowPriorityHandler
-    {% endif %}
-  routes: ["UrgentHandler", "HighPriorityHandler", "NormalHandler", "LowPriorityHandler"]
-  input: ["priority"]
-  default_output: "NormalHandler"
-```
-
-#### Example 3: User Type Router
-
-Route based on user permissions:
-
-```yaml
-- id: "user_type_router"
-  type: "router"
-  condition: |
-    {% if user_role == 'admin' %}
-    AdminWorkflow
-    {% elif user_role == 'manager' %}
-    ManagerWorkflow
-    {% elif user_role == 'user' %}
-    UserWorkflow
-    {% endif %}
-  routes: ["AdminWorkflow", "ManagerWorkflow", "UserWorkflow"]
-  input: ["user_role"]
-  default_output: "GuestWorkflow"
-```
-
-#### Example 4: Multi-Condition Router
-
-Combine multiple conditions:
-
-```yaml
-- id: "complex_router"
-  type: "router"
-  condition: |
-    {% if status == 'approved' and user_type == 'premium' %}
-    PremiumApprovedPath
-    {% elif status == 'approved' %}
-    StandardApprovedPath
-    {% elif status == 'pending' and priority == 'high' %}
-    UrgentReviewPath
-    {% elif status == 'pending' %}
-    NormalReviewPath
-    {% endif %}
-  routes: ["PremiumApprovedPath", "StandardApprovedPath", "UrgentReviewPath", "NormalReviewPath"]
-  input: ["status", "user_type", "priority"]
-  default_output: "DefaultPath"
-```
-
-#### Example 5: String Matching Router
-
-Route based on keyword detection:
-
-```yaml
-- id: "keyword_router"
-  type: "router"
-  condition: |
-    {% if 'bug' in input|lower or 'error' in input|lower %}
-    BugFixWorkflow
-    {% elif 'feature' in input|lower or 'enhancement' in input|lower %}
-    FeatureWorkflow
-    {% elif 'documentation' in input|lower or 'docs' in input|lower %}
-    DocsWorkflow
-    {% endif %}
-  routes: ["BugFixWorkflow", "FeatureWorkflow", "DocsWorkflow"]
-  input: ["input"]
-  default_output: "GeneralWorkflow"
-```
+!!! note "Template Syntax Features"
+    **String Operations:** Use `|lower`, `|upper` filters and `in` operator<br>**Comparisons:** Use `==`, `!=`, `>`, `<` operators<br>**Logical Operators:** Use `and`, `or`, `not` for complex conditions
 
 ### Best Practices
-
-#### 1. Always Provide Default Output
-
-Ensure fallback behavior for unmatched conditions:
-
-✅ **Good**:
-```yaml
-default_output: "FallbackNode"
-```
-
-❌ **Avoid**:
-```yaml
-# Missing default_output - pipeline may fail
-```
-
-#### 2. Match Route Names Exactly
-
-Route names in condition must match node IDs:
-
-✅ **Good**:
-```jinja2
-{% if status == 'approved' %}
-ArticlePublisher  # Matches node ID exactly
-{% endif %}
-```
-
-❌ **Avoid**:
-```jinja2
-{% if status == 'approved' %}
-article_publisher  # Case mismatch
-{% endif %}
-```
-
-#### 3. Order Conditions by Specificity
-
-Place most specific conditions first:
-
-✅ **Good**:
-```jinja2
-{% if status == 'approved' and priority == 'high' %}
-UrgentApproved
-{% elif status == 'approved' %}
-NormalApproved
-{% endif %}
-```
-
-❌ **Avoid**:
-```jinja2
-{% if status == 'approved' %}  # Too broad, catches all approved
-NormalApproved
-{% elif status == 'approved' and priority == 'high' %}  # Never reached
-UrgentApproved
-{% endif %}
-```
-
-#### 4. Use Filters for String Comparisons
-
-Normalize strings for reliable matching:
-
-✅ **Good**:
-```jinja2
-{% if 'approved' in input|lower %}
-```
-
-❌ **Avoid**:
-```jinja2
-{% if 'approved' in input %}  # Case-sensitive, may miss "Approved"
-```
-
-#### 5. List All Routes
-
-Include all possible routes in the Routes list:
-
-✅ **Good**:
-```yaml
-routes: ["PathA", "PathB", "PathC", "END"]
-```
-
-#### 6. Test All Paths
-
-Ensure every condition path is reachable:
-
-```yaml
-# Test cases:
-# - status='approved' → PathA
-# - status='pending' → PathB
-# - status='rejected' → PathC
-# - status='unknown' → DefaultPath
-```
-
-#### 7. Use Descriptive Route Names
-
-Name routes clearly to indicate their purpose:
-
-✅ **Good**:
-```yaml
-routes: ["ApprovedWorkflow", "RejectedWorkflow", "PendingReview"]
-```
-
-❌ **Avoid**:
-```yaml
-routes: ["Path1", "Path2", "Path3"]
-```
-
-#### 8. Document Complex Conditions
-
-Add comments in YAML to explain routing logic:
-
-```yaml
-# Routes based on approval status and user type
-# - Admin + Approved → FastTrackPublish
-# - User + Approved → StandardPublish
-# - Any + Pending → ReviewQueue
-condition: |
-  {% if status == 'approved' and user_type == 'admin' %}
-  FastTrackPublish
-  {% elif status == 'approved' %}
-  StandardPublish
-  {% elif status == 'pending' %}
-  ReviewQueue
-  {% endif %}
-```
+   - Always Provide Default Output: Ensure fallback behavior for unmatched conditions to prevent pipeline failures.
+   - Match Route Names Exactly: Route names in condition must match node IDs exactly (case-sensitive).
+   - Order Conditions by Specificity: Place most specific conditions first to avoid unintended matches.
+   - Use Filters for String Comparisons: Normalize strings with `|lower` or `|upper` for reliable matching.
+   - List All Routes: Include all possible routes in the Routes list for clarity and validation.
+   - Test All Paths: Ensure every condition path is reachable and test edge cases.
+   - Use Descriptive Route Names: Name routes clearly to indicate their purpose (e.g., "ApprovedWorkflow" not "Path1").
+   - Document Complex Conditions: Add comments in YAML to explain routing logic for maintainability.
 
 ---
 
@@ -432,346 +108,90 @@ condition: |
 
 The Condition Node branches pipeline execution based on conditional logic, similar to the Router Node but with a focus on binary or multi-output branching. It evaluates template-based conditions and routes to named conditional outputs.
 
-![Condition Node Interface](../../../../img/how-tos/pipelines/nodes/control-flow/condition-node-interface.png)
+![Condition Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/condition-node-add.png)
 
 ### Purpose
 
 Use the Condition Node to:
 
-* **Branch execution** based on state variable conditions
-* **Create named output paths** for different conditions
-* **Implement if-else logic** in pipeline flow
-* **Route to specific nodes** based on evaluation results
-* **Provide multiple conditional branches** with named outputs
-
-### Configuration
-
-#### Basic Configuration
-
-```yaml
-- id: "approval_check"
-  type: "condition"
-  conditional_input: "input"
-  condition: |
-    {% if 'approved' in input|lower %}
-    Article Publisher
-    {% else %}
-    Article Reviewer
-    {% endif %}
-  conditional_outputs: ["Article Publisher"]
-  default_output: "END"
-```
-
-![Condition Node Basic Configuration](../../../../img/how-tos/pipelines/nodes/control-flow/condition-node-basic-config.png)
+- **Branch execution** based on state variable conditions
+- **Create named output paths** for different conditions
+- **Implement if-else logic** in pipeline flow
+- **Route to specific nodes** based on evaluation results
+- **Provide multiple conditional branches** with named outputs
 
 ### Parameters
 
-#### Conditional Input
+| Parameter | Purpose | Type Options & Examples |
+|-----------|---------|-------------------------|
+| **Conditional Input** | Specify which state variable to use for condition evaluation | **Default states:** `input`, `messages`<br>**Custom states:** Any defined state variables<br><br>**Example:** `input`|
+| **Condition** | Define the conditional logic that determines which output path to take | **Syntax:** Template syntax (Jinja2-like) similar to Router Node<br><br>**Example:**<br>{% if 'approved' in input\|lower %}<br>Article Publisher<br>{% else %}<br>Article Reviewer<br>{% endif %}<br><br>**Template Features:**<br>String matching, comparisons, multiple conditions with `{% elif %}` |
+| **Conditional Outputs** | Define the named output paths that the condition can route to | **Configuration:** List of node IDs or route names that correspond to the outputs returned by the condition<br><br>**Example:**<br>`- Article Publisher`<br>`- Article Reviewer`<br><br>**How It Works:** Condition returns a route name, which must be listed in Conditional Outputs |
+| **Default Output** | Specify the fallback route if the condition doesn't match any conditional outputs | **Options:** Select a node ID from available nodes in the pipeline<br><br>**Example:** `END`<br><br>**Fallback Behavior:** If condition doesn't match any conditional outputs or returns `{% endif %}` without a match, execution goes to Default Output |
 
-**Purpose**: Specify which state variable to use for condition evaluation.
+![Condition Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/condition-node-interface.png)
 
-**Options**:
-
-* Default states: `input`, `messages`
-* Custom states: Any state variables you've defined
-
-![Condition Node Conditional Input](../../../../img/how-tos/pipelines/nodes/control-flow/condition-node-conditional-input.png)
-
-**Example**:
-```yaml
-Conditional input: input
-```
-
-**Usage in Condition**:
-```jinja2
-{% if 'approved' in input|lower %}
-Article Publisher
-{% endif %}
-```
-
-#### Condition
-
-**Purpose**: Define the conditional logic that determines which output path to take.
-
-**Syntax**: Uses template syntax (Jinja2-like) similar to Router Node.
-
-![Condition Node Condition Field](../../../../img/how-tos/pipelines/nodes/control-flow/condition-node-condition.png)
-
-**Example Condition**:
-```jinja2
-{% if 'approved' in input|lower %}
-Article Publisher
-{% else %}
-Article Reviewer
-{% endif %}
-```
-
-**Template Syntax**:
-
-**String Matching**:
-```jinja2
-{% if 'approved' in input|lower %}
-ApprovedPath
-{% else %}
-RejectedPath
-{% endif %}
-```
-
-**Comparisons**:
-```jinja2
-{% if status == 'complete' %}
-CompletePath
-{% else %}
-IncompletePath
-{% endif %}
-```
-
-**Multiple Conditions**:
-```jinja2
-{% if 'urgent' in input|lower %}
-UrgentPath
-{% elif 'normal' in input|lower %}
-NormalPath
-{% else %}
-LowPriorityPath
-{% endif %}
-```
-
-#### Conditional Outputs
-
-**Purpose**: Define the named output paths that the condition can route to.
-
-**Configuration**: List of node IDs or route names that correspond to the outputs returned by the condition.
-
-![Condition Node Conditional Outputs](../../../../img/how-tos/pipelines/nodes/control-flow/condition-node-conditional-outputs.png)
-
-**Example**:
-```yaml
-Conditional outputs:
-  - Article Publisher
-```
-
-**How It Works**:
-
-The condition returns a route name, which must be listed in Conditional Outputs:
-
-```jinja2
-Condition returns: "Article Publisher"
-Conditional outputs contains: ["Article Publisher"]
-Execution goes to: Node "Article Publisher"
-```
-
-**Multiple Outputs**:
-```yaml
-Conditional outputs:
-  - Article Publisher
-  - Article Reviewer
-  - Urgent Reviewer
-```
-
-#### Default Output
-
-**Purpose**: Specify the fallback route if the condition doesn't match any conditional outputs or returns `{% endif %}` without a match.
-
-**Example**:
-```yaml
-Default output: END
-```
-
-### Examples
-
-#### Example 1: Binary Approval Check
-
-Simple approved/rejected branching:
+**YAML Configuration**
 
 ```yaml
-- id: "approval_check"
-  type: "condition"
-  conditional_input: "input"
-  condition: |
-    {% if 'approved' in input|lower %}
-    PublishNode
-    {% else %}
-    ReviewNode
-    {% endif %}
-  conditional_outputs: ["PublishNode"]
-  default_output: "ReviewNode"
+nodes:
+  - id: ArticlePublisher
+    type: tool
+    tool: ''
+    input: []
+    output: []
+    structured_output: false
+    transition: END
+  - id: ArticleReviewer
+    type: llm
+    prompt:
+      type: string
+      value: ''
+    input: []
+    output: []
+    structured_output: false
+    transition: END
+    input_mapping:
+      system:
+        type: fixed
+        value: ''
+      task:
+        type: fixed
+        value: ''
+      chat_history:
+        type: fixed
+        value: []
+state:
+  article:
+    type: str
+    value: ''
+  input:
+    type: str
+  messages:
+    type: list
+
 ```
 
-**Execution Flow**:
-- Input contains "approved" → Go to `PublishNode`
-- Input doesn't contain "approved" → Go to `ReviewNode` (default)
+!!! info "Condition Returns Route Name"
+    The condition must return a route name that matches one of the Conditional Outputs. The returned name determines which node to execute next.
 
-#### Example 2: Multi-Branch Status Check
+!!! warning "Output Name Matching"
+    Condition returns must **exactly match** conditional_outputs entries. Case sensitivity matters: "Article Publisher" ≠ "article publisher".
 
-Route based on multiple status values:
-
-```yaml
-- id: "status_check"
-  type: "condition"
-  conditional_input: "status"
-  condition: |
-    {% if status == 'approved' %}
-    ApprovedWorkflow
-    {% elif status == 'pending' %}
-    PendingWorkflow
-    {% elif status == 'rejected' %}
-    RejectedWorkflow
-    {% else %}
-    UnknownWorkflow
-    {% endif %}
-  conditional_outputs: ["ApprovedWorkflow", "PendingWorkflow", "RejectedWorkflow"]
-  default_output: "UnknownWorkflow"
-```
-
-#### Example 3: Keyword-Based Routing
-
-Route based on keyword detection:
-
-```yaml
-- id: "keyword_check"
-  type: "condition"
-  conditional_input: "input"
-  condition: |
-    {% if 'urgent' in input|lower or 'critical' in input|lower %}
-    UrgentHandler
-    {% elif 'normal' in input|lower %}
-    NormalHandler
-    {% else %}
-    LowPriorityHandler
-    {% endif %}
-  conditional_outputs: ["UrgentHandler", "NormalHandler"]
-  default_output: "LowPriorityHandler"
-```
-
-#### Example 4: Validation Check
-
-Validate data before proceeding:
-
-```yaml
-- id: "validation_check"
-  type: "condition"
-  conditional_input: "validation_status"
-  condition: |
-    {% if validation_status == 'valid' %}
-    ProcessData
-    {% else %}
-    ErrorHandler
-    {% endif %}
-  conditional_outputs: ["ProcessData"]
-  default_output: "ErrorHandler"
-```
-
-#### Example 5: User Permission Check
-
-Route based on user permissions:
-
-```yaml
-- id: "permission_check"
-  type: "condition"
-  conditional_input: "user_role"
-  condition: |
-    {% if user_role == 'admin' or user_role == 'manager' %}
-    PrivilegedWorkflow
-    {% else %}
-    StandardWorkflow
-    {% endif %}
-  conditional_outputs: ["PrivilegedWorkflow"]
-  default_output: "StandardWorkflow"
-```
+!!! note "Template Syntax"
+    Uses the same template syntax as Router Node with `{% if %}`, `{% elif %}`, `{% else %}`, and `{% endif %}` blocks. Supports filters like `|lower`, `|upper`, and operators like `in`, `==`, `and`, `or`.
 
 ### Best Practices
+   - Always Define Default Output: Provide fallback for unmatched conditions to prevent pipeline failures.
+   - List All Conditional Outputs: Include all possible output paths in the conditional_outputs list.
+   - Use Clear Output Names: Name outputs to indicate their purpose (e.g., "ApprovedWorkflow" not "Output1").
+   - Normalize Input for Comparisons: Use filters like `|lower` for case-insensitive matching.
+   - Match Output Names Exactly: Condition returns must match conditional_outputs exactly (case-sensitive).
+   - Test All Branches: Verify each conditional path with different test inputs.
+   - Use Descriptive Conditional Input: Name input variables clearly to indicate what's being evaluated.
+   - Document Branching Logic: Add comments explaining routing decisions for maintainability.
 
-#### 1. Always Define Default Output
 
-Provide fallback for unmatched conditions:
-
-✅ **Good**:
-```yaml
-default_output: "FallbackNode"
-```
-
-#### 2. List All Conditional Outputs
-
-Include all possible output paths:
-
-✅ **Good**:
-```yaml
-conditional_outputs: ["PathA", "PathB", "PathC"]
-```
-
-#### 3. Use Clear Output Names
-
-Name outputs to indicate their purpose:
-
-✅ **Good**:
-```yaml
-conditional_outputs: ["ApprovedWorkflow", "RejectedWorkflow"]
-```
-
-❌ **Avoid**:
-```yaml
-conditional_outputs: ["Output1", "Output2"]
-```
-
-#### 4. Normalize Input for Comparisons
-
-Use filters for case-insensitive matching:
-
-✅ **Good**:
-```jinja2
-{% if 'approved' in input|lower %}
-```
-
-#### 5. Match Output Names Exactly
-
-Condition returns must match conditional_outputs exactly:
-
-✅ **Good**:
-```jinja2
-{% if status == 'approved' %}
-ApprovedWorkflow  # Matches conditional_outputs
-{% endif %}
-```
-
-#### 6. Test All Branches
-
-Verify each conditional path:
-
-```yaml
-# Test cases:
-# - input='approved' → ApprovedWorkflow
-# - input='rejected' → RejectedWorkflow
-# - input='unknown' → DefaultWorkflow
-```
-
-#### 7. Use Descriptive Conditional Input
-
-Name input variables clearly:
-
-✅ **Good**:
-```yaml
-conditional_input: "approval_status"
-```
-
-❌ **Avoid**:
-```yaml
-conditional_input: "x"
-```
-
-#### 8. Document Branching Logic
-
-Add comments explaining routing:
-
-```yaml
-# Routes approved requests to fast-track, others to review
-condition: |
-  {% if 'approved' in input|lower %}
-  FastTrackPublish
-  {% else %}
-  ManualReview
-  {% endif %}
-```
 
 ---
 
@@ -779,407 +199,87 @@ condition: |
 
 The Decision Node uses LLM intelligence to make routing decisions based on natural language criteria. Unlike Router and Condition nodes that use template-based conditions, the Decision Node analyzes the decision input and description to intelligently select the appropriate output path.
 
-![Decision Node Interface](../../../../img/how-tos/pipelines/nodes/control-flow/decision-node-interface.png)
+![Decision Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/decision-node-add.png)
 
 ### Purpose
 
 Use the Decision Node to:
 
-* **Make intelligent routing decisions** using LLM reasoning
-* **Route based on natural language criteria** without writing conditions
-* **Handle complex decision logic** that's difficult to express in templates
-* **Leverage context and semantics** for routing decisions
-* **Simplify decision-making** with descriptive instructions
-
-### Configuration
-
-#### Basic Configuration
-
-```yaml
-- id: "intelligent_router"
-  type: "decision"
-  decision_input: "input"
-  description: |
-    Your task is to redirect a user to a proper node
-    - if users wants to save listed branches then redirect to "LLM 2" node;
-    - If the request is unclear, redirect to "END" node.
-  decision_outputs: ["LLM 2"]
-  default_output: "END"
-```
-
-![Decision Node Basic Configuration](../../../../img/how-tos/pipelines/nodes/control-flow/decision-node-basic-config.png)
+- **Make intelligent routing decisions** using LLM reasoning
+- **Route based on natural language criteria** without writing conditions
+- **Handle complex decision logic** that's difficult to express in templates
+- **Leverage context and semantics** for routing decisions
+- **Simplify decision-making** with descriptive instructions
 
 ### Parameters
 
-#### Decision Input
+| Parameter | Purpose | Type Options & Examples |
+|-----------|---------|-------------------------|
+| **Decision Input** | Specify which state variable the LLM analyzes to make the routing decision | **Default states:** `input`, `messages`<br>**Custom states:** Any defined state variables<br><br>**Example:** `article`<br><br>**Usage:** The LLM reads this state variable's content and analyzes it against the description criteria |
+| **Description** | Provide natural language instructions describing how the LLM should make routing decisions | **Format:** Clear, structured instructions with specific routing criteria<br><br>**Example:**<br>Your task is to redirect a user to a proper node<br>- if users wants to save listed branches then redirect to "LLM 2" node;<br>- If the request is unclear, redirect to "END" node.<br><br><br>**Best Practices:** Use clear criteria, specific examples, structured format |
+| **Decision Outputs** | Define the possible output paths the LLM can select from | **Configuration:** List of node IDs that the LLM can route execution to<br><br>**Example:**<br>`- LLM 1`<br>`- TechnicalSupport`<br>`- BillingSupport`<br><br>**How It Works:** LLM analyzes input, reviews description, selects appropriate output from list |
+| **Default Output** | Specify the fallback route if the LLM cannot make a confident decision | **Options:** Select a node ID from available nodes in the pipeline<br><br>**Example:** `END`<br><br>**Fallback Behavior:** If LLM can't decide confidently, execution goes to Default Output |
 
-**Purpose**: Specify which state variable the LLM analyzes to make the routing decision.
-
-**Options**:
-
-* Default states: `input`, `messages`
-* Custom states: Any state variables you've defined
-
-![Decision Node Decision Input](../../../../img/how-tos/pipelines/nodes/control-flow/decision-node-decision-input.png)
-
-**Example**:
-```yaml
-Decision input: input
-```
-
-**Usage**: The LLM reads this state variable's content and analyzes it against the description criteria.
-
-#### Description
-
-**Purpose**: Provide natural language instructions describing how the LLM should make routing decisions.
-
-**Format**: Clear, structured instructions with specific routing criteria.
-
-![Decision Node Description](../../../../img/how-tos/pipelines/nodes/control-flow/decision-node-description.png)
-
-**Example Description**:
-```yaml
-Description: |
-  Your task is to redirect a user to a proper node
-  - if users wants to save listed branches then redirect to "LLM 2" node;
-  - If the request is unclear, redirect to "END" node.
-```
-
-**Best Practices for Descriptions**:
-
-**Clear Criteria**:
-```yaml
-Description: |
-  Route user requests based on intent:
-  - Technical questions → TechnicalSupport
-  - Billing questions → BillingSupport
-  - General inquiries → GeneralSupport
-  - Unclear requests → HumanAgent
-```
-
-**Specific Examples**:
-```yaml
-Description: |
-  Analyze the user request and route accordingly:
-  
-  Route to "BugWorkflow" if:
-  - User reports an error or bug
-  - User describes unexpected behavior
-  - User mentions system failures
-  
-  Route to "FeatureWorkflow" if:
-  - User requests new functionality
-  - User suggests improvements
-  - User asks about capabilities
-  
-  Route to "HelpWorkflow" for all other cases.
-```
-
-**Structured Format**:
-```yaml
-Description: |
-  ## Task
-  Classify customer support requests
-  
-  ## Routing Rules
-  1. Urgent issues (system down, data loss) → UrgentSupport
-  2. Technical problems (bugs, errors) → TechnicalSupport
-  3. Account questions (billing, subscriptions) → AccountSupport
-  4. General questions → GeneralSupport
-  
-  ## Default
-  If unclear or ambiguous → HumanAgent
-```
-
-#### Decision Outputs
-
-**Purpose**: Define the possible output paths the LLM can select from.
-
-**Configuration**: List of node IDs that the LLM can route execution to.
-
-![Decision Node Decision Outputs](../../../../img/how-tos/pipelines/nodes/control-flow/decision-node-decision-outputs.png)
-
-**Example**:
-```yaml
-Decision outputs:
-  - LLM 2
-  - TechnicalSupport
-  - BillingSupport
-```
-
-**How It Works**:
-
-1. LLM analyzes `decision_input` content
-2. LLM reviews `description` for routing criteria
-3. LLM selects appropriate output from `decision_outputs`
-4. Execution proceeds to the selected node
-5. If LLM can't decide, execution goes to `default_output`
-
-#### Default Output
-
-**Purpose**: Specify the fallback route if the LLM cannot make a confident decision.
-
-**Example**:
-```yaml
-Default output: END
-```
-
-### Examples
-
-#### Example 1: Customer Support Router
-
-Route customer inquiries by intent:
+![Decision Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/decision-node-interface.png)
+**YAML Configuration**
 
 ```yaml
-- id: "support_router"
-  type: "decision"
-  decision_input: "customer_message"
-  description: |
-    Analyze the customer message and route to the appropriate support team:
-    
-    - Technical issues (bugs, errors, system problems) → TechnicalSupport
-    - Billing questions (invoices, payments, subscriptions) → BillingSupport
-    - Account issues (login, password, profile) → AccountSupport
-    - General questions (how-to, features, documentation) → GeneralSupport
-    
-    If the request is urgent or critical, route to UrgentSupport.
-    If unclear, route to HumanAgent for manual review.
-  decision_outputs: ["TechnicalSupport", "BillingSupport", "AccountSupport", "GeneralSupport", "UrgentSupport"]
-  default_output: "HumanAgent"
+nodes:
+  - id: LLM 1
+    type: llm
+    prompt:
+      type: string
+      value: ''
+    input: []
+    output: []
+    structured_output: false
+    transition: END
+    input_mapping:
+      system:
+        type: fixed
+        value: ''
+      task:
+        type: fixed
+        value: ''
+      chat_history:
+        type: fixed
+        value: []
+state:
+  article:
+    type: str
+    value: ''
+  input:
+    type: str
+  messages:
+    type: list
+
 ```
 
-#### Example 2: Content Moderation Router
+!!! info "LLM Decision Process"
+    The Decision Node uses LLM to:
 
-Route content based on moderation analysis:
+        1. Analyze decision_input content, 
+        2. Review description for routing criteria, 
+        3.Select appropriate output from decision_outputs, 
+        4. Return selected node ID. If uncertain, defaults to default_output.
 
-```yaml
-- id: "content_moderator"
-  type: "decision"
-  decision_input: "user_content"
-  description: |
-    Analyze user-submitted content and route appropriately:
-    
-    Route to "AutoApprove" if:
-    - Content is appropriate and safe
-    - No policy violations detected
-    - Content quality is acceptable
-    
-    Route to "ManualReview" if:
-    - Content is borderline or questionable
-    - Requires human judgment
-    - Contains sensitive topics
-    
-    Route to "AutoReject" if:
-    - Content clearly violates policies
-    - Contains prohibited material
-    - Is spam or malicious
-  decision_outputs: ["AutoApprove", "ManualReview"]
-  default_output: "AutoReject"
-```
+!!! warning "LLM Overhead"
+    Decision Nodes are slower than Router/Condition nodes due to LLM processing. Use for complex routing requiring semantic understanding, not simple condition matching.
 
-#### Example 3: Sentiment-Based Router
-
-Route based on customer sentiment:
-
-```yaml
-- id: "sentiment_router"
-  type: "decision"
-  decision_input: "customer_feedback"
-  description: |
-    Analyze customer feedback sentiment and route accordingly:
-    
-    - Very positive feedback → ThankYouResponse
-    - Positive feedback → StandardResponse
-    - Neutral feedback → FollowUpResponse
-    - Negative feedback → ConcernResponse
-    - Very negative or angry feedback → UrgentResponse
-  decision_outputs: ["ThankYouResponse", "StandardResponse", "FollowUpResponse", "ConcernResponse"]
-  default_output: "UrgentResponse"
-```
-
-#### Example 4: Task Priority Router
-
-Route tasks by priority assessment:
-
-```yaml
-- id: "priority_router"
-  type: "decision"
-  decision_input: "task_description"
-  description: |
-    Assess task priority and route to appropriate workflow:
-    
-    Critical Priority (route to CriticalWorkflow):
-    - System outages or failures
-    - Security vulnerabilities
-    - Data loss or corruption
-    - Immediate business impact
-    
-    High Priority (route to HighPriorityWorkflow):
-    - Important features or bugs
-    - Customer-facing issues
-    - Deadline-driven tasks
-    
-    Normal Priority (route to NormalWorkflow):
-    - Standard features or improvements
-    - Non-urgent bugs
-    - Maintenance tasks
-    
-    Low Priority (route to LowPriorityWorkflow):
-    - Nice-to-have features
-    - Minor improvements
-    - Backlog items
-  decision_outputs: ["CriticalWorkflow", "HighPriorityWorkflow", "NormalWorkflow"]
-  default_output: "LowPriorityWorkflow"
-```
-
-#### Example 5: Language Detection Router
-
-Route based on detected language:
-
-```yaml
-- id: "language_router"
-  type: "decision"
-  decision_input: "user_message"
-  description: |
-    Detect the language of the user message and route to appropriate language handler:
-    
-    - English messages → EnglishSupport
-    - Spanish messages → SpanishSupport
-    - French messages → FrenchSupport
-    - German messages → GermanSupport
-    - Other languages → TranslationService
-    
-    If language cannot be detected, route to EnglishSupport as default.
-  decision_outputs: ["EnglishSupport", "SpanishSupport", "FrenchSupport", "GermanSupport", "TranslationService"]
-  default_output: "EnglishSupport"
-```
+!!! note "Description Quality Matters"
+    Clear, specific descriptions with examples improve routing accuracy. Structure your description with routing rules, criteria, and examples for each output path.
 
 ### Best Practices
-
-#### 1. Write Clear Decision Criteria
-
-Provide specific, unambiguous routing rules:
-
-✅ **Good**:
-```yaml
-description: |
-  Route based on request type:
-  - "bug report" or "error" → BugWorkflow
-  - "feature request" → FeatureWorkflow
-  - "question" or "help" → SupportWorkflow
-```
-
-❌ **Avoid**:
-```yaml
-description: "Route the request appropriately"  # Too vague
-```
-
-#### 2. Provide Examples in Description
-
-Help the LLM understand with examples:
-
-✅ **Good**:
-```yaml
-description: |
-  Route customer requests:
-  
-  Technical Support (examples: "app crashed", "error 500", "can't login"):
-  → TechnicalSupport
-  
-  Billing Support (examples: "invoice question", "payment failed"):
-  → BillingSupport
-```
-
-#### 3. Always Define Default Output
-
-Provide fallback for unclear cases:
-
-✅ **Good**:
-```yaml
-default_output: "HumanReview"
-```
-
-#### 4. List All Decision Outputs
-
-Include all possible routing targets:
-
-✅ **Good**:
-```yaml
-decision_outputs: ["PathA", "PathB", "PathC", "PathD"]
-```
-
-#### 5. Structure Descriptions Clearly
-
-Use headings, lists, and clear formatting:
-
-✅ **Good**:
-```yaml
-description: |
-  ## Task
-  Route support tickets
-  
-  ## Rules
-  1. Urgent → UrgentSupport
-  2. Technical → TechnicalSupport
-  3. General → GeneralSupport
-```
-
-#### 6. Use Decision Node for Complex Routing
-
-Choose Decision Node when:
-- Routing logic is complex or nuanced
-- Requires semantic understanding
-- Template conditions are too rigid
-- Human-like judgment is needed
-
-#### 7. Test with Various Inputs
-
-Verify LLM routing across different scenarios:
-
-```yaml
-# Test cases:
-# - "app crashed" → TechnicalSupport
-# - "billing question" → BillingSupport
-# - "how do I..." → GeneralSupport
-# - "urgent: data loss!" → UrgentSupport
-```
-
-#### 8. Monitor Decision Quality
-
-Review LLM routing decisions periodically:
-
-```yaml
-# Enable interrupts during testing to review decisions
-interrupt_after: true
-```
-
-#### 9. Provide Context in Description
-
-Help the LLM make better decisions:
-
-✅ **Good**:
-```yaml
-description: |
-  Context: This is a customer support pipeline.
-  Users submit requests that need to be categorized.
-  
-  Route technical issues to TechnicalSupport.
-  Route billing questions to BillingSupport.
-```
-
-#### 10. Use Descriptive Output Names
-
-Name outputs clearly to match description:
-
-✅ **Good**:
-```yaml
-decision_outputs: ["TechnicalSupport", "BillingSupport", "GeneralSupport"]
-```
-
-❌ **Avoid**:
-```yaml
-decision_outputs: ["Output1", "Output2", "Output3"]
-```
+   - Write Clear Decision Criteria: Provide specific, unambiguous routing rules with examples for each path.
+   - Provide Examples in Description: Help the LLM understand expected routing with concrete examples.
+   - Always Define Default Output: Provide fallback for unclear cases to prevent pipeline failures.
+   - List All Decision Outputs: Include all possible routing targets in the decision_outputs list.
+   - Structure Descriptions Clearly: Use headings, lists, and clear formatting to organize routing criteria.
+   - Use Decision Node for Complex Routing: Choose when routing requires semantic understanding, not simple condition matching.
+   - Test with Various Inputs: Verify LLM routing across different scenarios and edge cases.
+   - Monitor Decision Quality: Review LLM routing decisions periodically and refine description if needed.
+   - Provide Context in Description: Help the LLM make better decisions by explaining the use case.
+   - Use Descriptive Output Names: Name outputs clearly to match description (e.g., "TechnicalSupport" not "Output1").
 
 ---
 
@@ -1236,41 +336,14 @@ decision_outputs: ["Output1", "Output2", "Output3"]
 * Require semantic understanding of input
 * Template conditions are too rigid or complex
 
-**Example**: Customer support routing by intent, sentiment-based routing, content moderation decisions.
-
-!!! tip "Choosing Between Router and Condition"
-    **Router Node** and **Condition Node** are very similar. The main differences:
-    
-    * **Router**: Uses `condition` + `routes` + `input` + `default_output`
-    * **Condition**: Uses `conditional_input` + `condition` + `conditional_outputs` + `default_output`
-    
-    Both support the same template syntax. Choose based on your preference or existing patterns in your pipeline.
-
-!!! tip "Combining Control Flow Nodes"
-    You can use multiple control flow node types in the same pipeline:
-    
-    ```yaml
-    nodes:
-      - id: "initial_router"
-        type: "router"  # Fast template-based routing
-        
-      - id: "approval_check"
-        type: "condition"  # Binary approval branching
-        
-      - id: "intelligent_classifier"
-        type: "decision"  # LLM-powered classification
-    ```
-
 ---
 
-## Related
-
-* **[Nodes Overview](overview.md)** - Understand all available node types
-* **[Interaction Nodes](interaction-nodes.md)** - LLM and Agent nodes for AI-powered tasks
-* **[Execution Nodes](execution-nodes.md)** - Function, Tool, Code, and Custom nodes
-* **[Iteration Nodes](iteration-nodes.md)** - Loop and Loop from Tool nodes
-* **[States](../states.md)** - Manage data flow through pipeline state
-* **[Connections](../connections.md)** - Link nodes together
-* **[YAML Configuration](../yaml.md)** - See complete node syntax examples
+!!! info "Related"
+    - **[Nodes Overview](overview.md)** - Understand all available node types
+    - **[Interaction Nodes](interaction-nodes.md)** - LLM and Agent nodes for AI-powered tasks
+    - **[Execution Nodes](execution-nodes.md)** - Function, Tool, Code, and Custom nodes
+    - **[States](../states.md)** - Manage data flow through pipeline state
+    - **[Connections](../nodes-connectors.md)** - Link nodes together
+    - **[YAML Configuration](../yaml.md)** - See complete node syntax examples
 
 
