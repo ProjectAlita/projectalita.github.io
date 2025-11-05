@@ -4,8 +4,8 @@ Node connectors link nodes together to define your pipeline's execution flow. Th
 
 **Key Concepts:**
 
-- **[Entry Point](#entry-point)** - Where pipeline execution begins
-- **[Transitions](#transitions)** - Connections between nodes
+- **[Entry Point](#entry-point-node)** - Where pipeline execution begins
+- **[Transitions](#yaml-connection-syntax)** - Connections between nodes
 - **[END Node](#end-node)** - Where pipeline execution stops
 - **[Connection Patterns](#connection-patterns)** - Common workflow structures
 
