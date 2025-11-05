@@ -166,4 +166,7 @@ When you want to preserve a specific configuration:
 
 ---
 
-*For detailed information about agent creation and configuration, see the [Agents documentation](../../menus/agents.md). For terms and concepts, refer to the [ELITEA Glossary](../../home/glossary.md).*
+!!! info "Additional Resources"
+     - [Agents](../../menus/agents.md) - Complete guide to creating and configuring agents
+     - [Pipelines](../../menus/pipelines.md) - Learn how to build and manage pipelines
+     - [ELITEA Glossary](../../home/glossary.md) - Definitions of key terms and concepts

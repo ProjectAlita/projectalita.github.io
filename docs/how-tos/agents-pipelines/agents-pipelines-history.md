@@ -292,4 +292,4 @@ If you need to remove a specific run from history:
 !!! info "Related Resources"
     - [Agents Menu](../../menus/agents.md) - Learn about managing agents
     - [Pipelines Menu](../../menus/pipelines.md) - Learn about managing pipelines
-    - [Entity Versioning](../entity-management/entity-versioning.md) - Understanding version management
+    - [Entity Versioning](entity-versioning.md) - Understanding version management
