@@ -1,35 +1,126 @@
 # Pipeline Nodes Overview
 
-Nodes are the **fundamental building blocks** of ELITEA Pipelines—individual steps that perform specific actions within your workflow. Think of nodes as specialized workers, each with a unique job, that combine together to create intelligent, automated processes.
+Nodes are the **fundamental building blocks** of ELITEA Pipelines—individual steps that perform specific actions within your workflow. Each node:
 
-## What are Nodes?
+* Performs one specific task (call an AI model, execute code, make a decision)
+* Reads input from pipeline state
+* Writes output back to state
+* Connects to other nodes to form a workflow
 
-A node represents a single, discrete action in your pipeline. Each node:
+Nodes execute sequentially or conditionally based on your configuration.
 
-* **Performs one specific task** (call an AI model, execute code, make a decision, etc.)
-* **Receives input** from pipeline state
-* **Produces output** that updates the state
-* **Connects to other nodes** to form a complete workflow
+![Node Concept Diagram](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/node-diagram.png)
 
-Nodes are configured with parameters that define their behavior, and they execute sequentially or conditionally based on the connections you define.
+``` Yaml
+nodes:
+  - id: LLM 1
+    type: llm
+    prompt:
+      type: string
+      value: ''
+    input: []
+    output: []
+    structured_output: false
+    transition: Agent 1
+    input_mapping:
+      system:
+        type: fixed
+        value: ''
+      task:
+        type: fixed
+        value: ''
+      chat_history:
+        type: fixed
+        value: []
+  - id: Agent 1
+    type: agent
+    input: []
+    output: []
+    transition: Tool 1
+    input_mapping: {}
+  - id: Tool 1
+    type: tool
+    tool: ''
+    input: []
+    output: []
+    structured_output: false
+    transition: Function 1
+  - id: Function 1
+    type: function
+    tool: ''
+    input: []
+    output: []
+    structured_output: false
+    input_mapping: {}
+    condition:
+      conditional_outputs:
+        - Custom 1
+  - id: Custom 1
+    type: custom
+    input_mapping: {}
+    transition: Router 1
+  - id: Router 1
+    type: router
+    default_output: ''
+    routes:
+      - Code 1
+    input: []
+    condition: ''
+  - id: Code 1
+    type: code
+    code:
+      type: fixed
+      value: ''
+    input: []
+    output: []
+    structured_output: false
+    transition: Pipeline 1
+  - id: Pipeline 1
+    type: pipeline
+    input: []
+    output: []
+    transition: StateModifier 1
+  - id: StateModifier 1
+    type: state_modifier
+    template: ''
+    variables_to_clean: []
+    input: []
+    output: []
+    transition: Loop 1
+  - id: Loop 1
+    type: loop
+    task: ''
+    tool: ''
+    input: []
+    output: []
+    structured_output: false
+    transition: Loop Tool 1
+  - id: Loop Tool 1
+    type: loop_from_tool
+    tool: ''
+    loop_tool: ''
+    input: []
+    output: []
+    structured_output: false
+    transition: END
+```
 
-![Node Concept Diagram](../../../img/how-tos/pipelines/nodes/node-concept-diagram.png)
 
-### Node Execution Flow
+## Execution Flow
 
 When a pipeline runs:
 
-1. **Entry Point**: Execution begins at the designated starting node
-2. **Node Execution**: The active node reads from state, performs its action, and writes results back to state
-3. **Transition**: Based on the node's configuration, execution moves to the next node
-4. **Iteration**: The process continues until reaching an END transition or completing all nodes
+1. **Entry Point** - Execution begins at the starting node
+2. **Node Execution** - The node reads from state, performs its action, and writes results
+3. **Transition** - Execution moves to the next node based on configuration
+4. **Iteration** - Process continues until reaching END or completing all nodes
 
 !!! tip "State is Shared"
-    All nodes in a pipeline share access to the same state. This means data written by one node is immediately available to all subsequent nodes.
+    All nodes share the same state. Data written by one node is immediately available to subsequent nodes.
 
 ## Common Node Attributes
 
-While each node type has unique capabilities, all nodes share several common configuration attributes:
+All nodes share these common configuration attributes:
 
 ### Core Attributes
 
@@ -41,7 +132,7 @@ id: "process_request"
 ```
 
 **`type`** (required)
-: Specifies the node type (llm, agent, function, tool, code, etc.). Determines the node's behavior and available parameters.
+: Node type (llm, agent, function, tool, code, etc.). Determines behavior and available parameters.
 
 ```yaml
 type: "llm"
@@ -49,7 +140,7 @@ type: "llm"
 
 ### Input/Output Attributes
 
-**`input`** (optional, default: `["messages"]`)
+**`input`** (optional, default: `["input"]`)
 : List of state variable names the node reads from. Defines which parts of the state the node can access.
 
 ```yaml
@@ -64,7 +155,7 @@ output: ["extracted_data", "confidence_score"]
 ```
 
 !!! note "Default Behavior"
-    If `output` is empty or not specified, results typically go to the `messages` state variable by default (varies by node type).
+    If `output` is not specified, results typically go to the `messages` state variable (varies by node type).
 
 ### Flow Control Attributes
 
@@ -76,7 +167,7 @@ transition: "next_step"
 ```
 
 **`condition`** (optional)
-: Conditional branching using Jinja2 template logic. Evaluates an expression and routes to different nodes based on the result.
+: Conditional branching using Jinja2 templates. Routes to different nodes based on expression evaluation.
 
 ```yaml
 condition:
@@ -101,9 +192,9 @@ decision:
 
 ### Node-Specific Attributes
 
-Each node type has additional parameters specific to its function. These are covered in detail in the individual node type guides.
+Each node type has additional parameters covered in the individual node type guides.
 
-![Common Node Attributes](../../../img/how-tos/pipelines/nodes/common-node-attributes.png)
+![Common Node Attributes](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/node-attributes.png)
 
 ## Node Categories
 
@@ -133,8 +224,6 @@ ELITEA Pipelines provide **13 different node types** organized into **5 function
 * Analyze content or extract information
 * Have contextual conversations
 * Delegate to specialized AI capabilities
-
-![Interaction Nodes Overview](../../../img/how-tos/pipelines/nodes/interaction/interaction-nodes-overview.png)
 
 ---
 
@@ -169,15 +258,13 @@ ELITEA Pipelines provide **13 different node types** organized into **5 function
       * Full control via JSON-based configuration
       * For advanced users with specific requirements
 
-**When to Use**:
+**Use Cases**:
 
 * Call external services or APIs
 * Execute custom business logic
 * Process or transform data
 * Integrate with third-party systems
 * Perform calculations or validations
-
-![Execution Nodes Overview](../../../img/how-tos/pipelines/nodes/execution/execution-nodes-overview.png)
 
 ---
 
@@ -205,7 +292,7 @@ ELITEA Pipelines provide **13 different node types** organized into **5 function
       * Define possible decision outcomes
       * Fallback to default if unclear
 
-**When to Use**:
+**Use Cases**:
 
 * Branch workflow based on data values
 * Implement business rules
@@ -213,13 +300,11 @@ ELITEA Pipelines provide **13 different node types** organized into **5 function
 * Route based on AI interpretation
 * Handle different scenarios dynamically
 
-![Control Flow Nodes Overview](../../../img/how-tos/pipelines/nodes/control-flow/control-flow-nodes-overview.png)
-
 ---
 
 ### Iteration Nodes
 
-**Purpose**: Repeat actions over collections of data or tool results.
+Repeat actions over collections of data or tool results.
 
 **Node Types**:
 
@@ -236,7 +321,7 @@ ELITEA Pipelines provide **13 different node types** organized into **5 function
     * Map variables between iterations
     * Aggregate loop outputs
 
-**When to Use**:
+**Use Cases**:
 
 * Process multiple items in batch
 * Generate reports for each item in a list
@@ -244,13 +329,11 @@ ELITEA Pipelines provide **13 different node types** organized into **5 function
 * Transform arrays of data
 * Aggregate results from multiple operations
 
-![Iteration Nodes Overview](../../../img/how-tos/pipelines/nodes/iteration/iteration-nodes-overview.png)
-
 ---
 
 ### Utility Nodes
 
-**Purpose**: Manage state, combine workflows, and perform pipeline utilities.
+Manage state and combine workflows.
 
 **Node Types**:
 
@@ -268,7 +351,7 @@ ELITEA Pipelines provide **13 different node types** organized into **5 function
     * Build modular, reusable workflows
     * Create complex multi-level pipelines
 
-**When to Use**:
+**Use Cases**:
 
 * Format output for specific purposes
 * Combine data from multiple sources
@@ -277,13 +360,11 @@ ELITEA Pipelines provide **13 different node types** organized into **5 function
 * Organize complex workflows
 - Create modular pipeline architectures
 
-![Utility Nodes Overview](../../../img/how-tos/pipelines/nodes/utility/utility-nodes-overview.png)
-
 ---
 
-## Choosing the Right Node Type
+## Choosing the Right Node
 
-Selecting the appropriate node depends on what action you need to perform. Use this decision guide:
+Use this guide to select the appropriate node:
 
 ### Decision Tree
 
@@ -326,8 +407,6 @@ Need to...
 | Process API response array | Loop from Tool Node | Loop Node |
 | Reuse existing pipeline | Pipeline (Subgraph) Node | Duplicate nodes |
 | Advanced custom configuration | Custom Node | Code Node |
-
-![Node Selection Guide](../../../img/how-tos/pipelines/nodes/node-selection-guide.png)
 
 ## Common Patterns
 
@@ -474,9 +553,9 @@ Use conditional nodes to check for errors:
 
 ### 5. Keep Nodes Focused
 
-Each node should do one thing well:
+Each node should have a single responsibility:
 
-✅ **Good**: Separate nodes for fetch → process → send
+✅ **Good**: Separate nodes for each step
 ```yaml
 - id: "fetch_data"
 - id: "process_data"
@@ -517,22 +596,12 @@ Use comments in YAML to explain non-obvious logic:
   output: ["title", "description", "acceptance_criteria"]
 ```
 
-## Comparison Quick View
 
-For detailed comparisons of nodes within each category, see:
+!!! info "Related Documentation"
 
-- **[Interaction Nodes Comparison](interaction-nodes.md#interaction-nodes-comparison)** - LLM vs Agent
-- **[Execution Nodes Comparison](execution-nodes.md#execution-nodes-comparison)** - Function vs Tool vs Code vs Custom
-- **[Control Flow Nodes Comparison](control-flow-nodes.md#control-flow-nodes-comparison)** - Router vs Condition vs Decision
-- **[Iteration Nodes Comparison](iteration-nodes.md#iteration-nodes-comparison)** - Loop vs Loop from Tool
-- **[Utility Nodes Comparison](utility-nodes.md#utility-nodes-comparison)** - State Modifier vs Pipeline
-
-Or view all comparisons together in the **[Appendix - Comparison Tables](../appendix-comparison-tables.md)**.
-
-## Related
-
-* **[States](../states.md)** - Understand how nodes read from and write to pipeline state
-* **[Connections](../connections.md)** - Learn how to link nodes together
-* **[Entry Point](../entry-point.md)** - Define where your pipeline begins
-* **[Flow Editor](../flow-editor.md)** - Build pipelines visually with drag-and-drop
-* **[YAML Configuration](../yaml.md)** - See complete node definition syntax
+    - **[States](../states.md)** - Understand how nodes read from and write to pipeline state
+    - **[Connections](../nodes-connectors.md)** - Learn how to link nodes together
+    - **[Entry Point](../entry-point.md)** - Define where your pipeline begins
+    - **[Flow Editor](../flow-editor.md)** - Build pipelines visually with drag-and-drop
+    - **[YAML Configuration](../yaml.md)** - See complete node definition syntax
+    - **[Appendix - Comparison Tables](../appendix-comparison-tables.md)**

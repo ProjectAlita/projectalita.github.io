@@ -26,15 +26,6 @@ Every pipeline automatically includes two special default states that are **alwa
 
 The `input` state represents short-term memory—it always contains the latest user message. When a user types something new, `input` is updated to reflect that new message.
 
-**Example Use Case:**
-```yaml
-- id: "process_request"
-  type: "llm"
-  input: ["input"]  # Access the user's latest message
-  prompt:
-    type: "fstring"
-    value: "Analyze this request: {input}"
-```
 
 ### `messages` State
 
@@ -43,15 +34,6 @@ The `input` state represents short-term memory—it always contains the latest u
 
 The `messages` state represents long-term memory—it contains the entire conversation between the user and the pipeline, including all user inputs and pipeline responses.
 
-**Example Use Case:**
-```yaml
-- id: "context_aware_response"
-  type: "llm"
-  input: ["messages"]  # Access full conversation history
-  prompt:
-    type: "string"
-    value: "Based on our conversation, provide a summary."
-```
 
 !!! tip "`input` vs `messages`"
     - Use `input` when you only need the current user message
@@ -59,8 +41,6 @@ The `messages` state represents long-term memory—it contains the entire conver
     - You can use both together: `input: ["input", "messages"]`
 
 ## Managing States in Flow Mode
-
-![States Sidebar](../../img/how-tos/pipelines/states/states-sidebar-overview.png)
 
 Starting with ELITEA 2.0.0 Beta, pipeline states are managed through an intuitive sidebar interface in Flow mode.
 
@@ -70,7 +50,7 @@ Starting with ELITEA 2.0.0 Beta, pipeline states are managed through an intuitiv
 2. **Click States Button**: Located under the **+** button for adding nodes
 3. **States Sidebar Opens**: A resizable panel appears on the right side
 
-![Opening States Sidebar](../../img/how-tos/pipelines/states/open-states-sidebar.png)
+![Opening States Sidebar](../../img/how-tos/agents-pipelines/pipeline-building-blocks/open-states-sidebar.png)
 
 !!! note "Flow Mode Only"
     The States button is only visible in Flow mode. In YAML mode, states are defined directly in the YAML configuration.
@@ -82,9 +62,7 @@ When you open the States sidebar, you'll see the two default states:
 * **input** - Toggle to activate/deactivate
 * **messages** - Toggle to activate/deactivate
 
-Both states are initially **disabled** when a pipeline is first created. Activate them using the toggle switches based on your needs.
-
-![Default States](../../img/how-tos/pipelines/states/default-states-toggles.png)
+![Default States](../../img/how-tos/agents-pipelines/pipeline-building-blocks/default-states-toggles.png)
 
 !!! warning "New Pipeline Behavior"
     When creating a new pipeline, `input` and `messages` states are **automatically added but disabled**. You must explicitly enable them if your pipeline needs to access user input or conversation history.
@@ -100,7 +78,6 @@ Both states are initially **disabled** when a pipeline is first created. Activat
 **Collapse Icon**
 : Click the collapse icon in the top-right corner to close the sidebar.
 
-![Resizing States Sidebar](../../img/how-tos/pipelines/states/resize-states-sidebar.png)
 
 ## Adding Custom States
 
@@ -115,7 +92,7 @@ Custom states allow you to store pipeline-specific data beyond the default `inpu
       * **Default Value** (optional): Enter initial value in 5-row text area
 3. **Auto-Save**: Changes are automatically saved
 
-![Adding Custom State](../../img/how-tos/pipelines/states/add-custom-state.png)
+![Adding Custom State]![alt text](../../img/how-tos/agents-pipelines/pipeline-building-blocks/add-custom-state.png)
 
 ### State Name Validation
 
@@ -147,11 +124,30 @@ State names must follow these rules:
 
 Real-time validation provides immediate feedback as you type.
 
-![State Name Validation](../../img/how-tos/pipelines/states/state-name-validation-error.png)
-
 ## State Variable Types
 
 ELITEA Pipelines support multiple data types for state variables:
+
+```Yaml
+nodes: []
+state:
+  jira_project_id:
+    type: str
+    value: ''
+  epic_id:
+    type: number
+    value: ''
+  file_listing:
+    type: list
+    value: ''
+  api_response:
+    type: dict
+    value: ''
+  input:
+    type: str
+  messages:
+    type: list
+```
 
 ### String (`str`)
 
@@ -166,13 +162,6 @@ ELITEA Pipelines support multiple data types for state variables:
 * Status messages
 * Extracted text content
 
-```yaml
-state:
-  jira_project_id: str
-  us_title: str
-  description: str
-```
-
 ### Number (`int`, `float`)
 
 **Icon**: 🔢 (displayed in sidebar)  
@@ -185,13 +174,6 @@ state:
 * Scores or ratings
 * Identifiers
 * Calculation results
-
-```yaml
-state:
-  epic_id: int
-  confidence_score: float
-  iteration_count: int
-```
 
 ### List (`list`)
 
@@ -206,18 +188,12 @@ state:
 * Conversation history
 * File listings
 
-```yaml
-state:
-  file_listing: list
-  test_cases: list
-  extracted_requirements: list
-```
-
 !!! tip "Special List Type: messages"
     The `messages` state is a special list type that stores `BaseMessage` objects (LangChain message format), not simple strings.
 
-### Dictionary (`dict`, `JSON`)
-**Icon**: 🗂️ (displayed in sidebar)  
+### JSON
+
+**Icon**: {i} (displayed in sidebar)  
 **Purpose**: Store key-value pairs and structured data  
 **Default Value Example**: `{"key": "value", "status": "active"}`
 
@@ -228,14 +204,7 @@ state:
 * Structured metadata
 * Complex data structures
 
-```yaml
-state:
-  api_response: dict
-  user_preferences: dict
-  metadata: dict
-```
-
-![State Type Icons](../../img/how-tos/pipelines/states/state-type-icons.png)
+![State types](../../img/how-tos/agents-pipelines/pipeline-building-blocks/state-types.png)
 
 ## State Initialization
 
@@ -249,40 +218,26 @@ When adding a custom state, you can optionally provide a default value. This val
 * Expands when sidebar is resized
 * Supports multi-line input for complex values
 
-![Default Value Input](../../img/how-tos/pipelines/states/default-value-input-expanded.png)
+![Default Value Input](../../img/how-tos/agents-pipelines/pipeline-building-blocks/default-value-input.png)
 
 **Examples:**
 
 ```yaml
-# String with default value
+nodes: []
 state:
-  status: str  # Default: "" (empty string)
-  
-# List with default value
-state:
-  pending_items: list  # Default: [] (empty list)
-  
-# Dict with default value
-state:
-  config: dict  # Default: {} (empty dictionary)
-  
-# Number with default value
-state:
-  retry_count: int  # Default: 0
+  jira_project_id:
+    type: str
+    value: CC-12345
+  epic_id:
+    type: number
+    value: 12356
+  input:
+    type: str
+  messages:
+    type: list
+
 ```
 
-### Automatic Initialization
-
-**New Pipelines:**
-
-* `input` and `messages` states are automatically added but **disabled**
-* Custom states have empty default values based on their type
-
-**During Execution:**
-
-* States are initialized when the pipeline starts
-* Values persist throughout the execution
-* States can be updated by nodes during the workflow
 
 ## State Modification
 
@@ -291,19 +246,9 @@ States can be modified in several ways during pipeline execution:
 ### 1. Node Output Variables
 
 Nodes can write to state variables using the `output` parameter:
-
-```yaml
-- id: "extract_info"
-  type: "llm"
-  input: ["input"]
-  output: ["jira_project_id", "epic_id", "us_title"]
-  structured_output: true
-  prompt:
-    type: "string"
-    value: "Extract Jira project ID, epic ID, and title from: {input}"
-```
-
 When this node executes, the LLM response will be parsed and the values will be stored in the specified state variables.
+[Output](../../img/how-tos/agents-pipelines/pipeline-building-blocks/output-parameter.png)
+
 
 ### 2. State Modifier Node
 
@@ -399,7 +344,6 @@ nodes:
         Description: {description}
 ```
 
-![User Story Pipeline State Flow](../../img/how-tos/pipelines/states/example-user-story-state-flow.png)
 
 ### Example 2: Data Processing with State
 
@@ -688,11 +632,11 @@ State management works identically in:
 
 The States sidebar behavior, validation rules, and auto-save functionality remain consistent across both modes.
 
-## Related
+!!! info "Related"
 
-* **[Nodes Overview](nodes/overview.md)** - Learn how different node types read from and write to state
-* **[State Modifier Node](nodes/utility-nodes.md#state-modifier-node)** - Advanced state manipulation with Jinja2 templates
-* **[Connections](connections.md)** - Understand how data flows between nodes through state
-* **[Entry Point](entry-point.md)** - Define pipeline starting point and initial state
-* **[YAML Configuration](yaml.md)** - See complete state definition syntax
-* **[Code Node](nodes/execution-nodes.md#code-node)** - Access state via `alita_state` in Python code
+    - **[Nodes Overview](nodes/overview.md)** - Learn how different node types read from and write to state
+    - **[State Modifier Node](nodes/utility-nodes.md#state-modifier-node)** - Advanced state manipulation with Jinja2 templates
+    - **[Connections](nodes-connectors.md)** - Understand how data flows between nodes through state
+    - **[Entry Point](entry-point.md)** - Define pipeline starting point and initial state
+    - **[YAML Configuration](yaml.md)** - See complete state definition syntax
+    - **[Code Node](nodes/execution-nodes.md#code-node)** - Access state via `alita_state` in Python code

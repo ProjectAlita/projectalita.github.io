@@ -58,7 +58,7 @@ This automatic time-based sorting helps you quickly locate recent conversations 
 !!! tip "Quick Organization"
       Alternatively, you can drag and drop conversations directly into folders in the sidebar for quick organization.
 
-![Chat_MoveTo_Folder](<../img/menus/chat/moveto_folder.png>)
+![Chat_MoveTo_Folder](../img/menus/chat/moveto-folder.png)
 
 ### How to Move Conversations Back to the Main List
 
