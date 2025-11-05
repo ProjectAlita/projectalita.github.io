@@ -79,6 +79,7 @@ nav:
           - ADO Wiki Indexing: how-tos/indexing/index-ado-wiki-data.md
       - Agents & Pipelines:
           - View Agents and Pipelines History: how-tos/agents-pipelines/agents-pipelines-history.md
+          - Entity Versioning: how-tos/agents-pipelines/entity-versioning.md
           - Pipeline Building Blocks:
               - Pipelines Overview: how-tos/pipelines/overview.md
               - States: how-tos/pipelines/states.md
@@ -102,7 +103,6 @@ nav:
       - Entity Management:
           - Search Entities: how-tos/entity-management/search-entities.md
           - Organizing Entities: how-tos/entity-management/organizing-entities.md
-          - Entity Versioning: how-tos/entity-management/entity-versioning.md
           - Manage Users & Roles: how-tos/entity-management/manage-users-and-roles.md
 
   - Integrations:
