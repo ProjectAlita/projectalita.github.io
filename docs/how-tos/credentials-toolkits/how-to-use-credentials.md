@@ -99,7 +99,6 @@ When setting up credentials in ELITEA, it's important to understand the followin
 * **Credential Scope:**
     * **Private Credentials:** Created in your **Private** workspace and only accessible to you.
     * **Project Credentials:** Created within a **Team** project and accessible to all project members.
-    * **Shared Checkbox:** Available in Team projects to control whether credentials are shared with all team members or kept private.
 
 * **Authentication Verification:** Always double-check the authentication details you provide for each credential. Incorrect credentials will prevent ELITEA from successfully connecting to the external service. Ensure that the API keys, tokens, usernames, or passwords you enter are accurate and have the necessary permissions to access the desired resources on the external platform.
 

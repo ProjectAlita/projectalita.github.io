@@ -417,6 +417,56 @@ This issue typically occurs when the `servers` configuration is missing or empty
 
  **Save the `config.json` file** and try running the MCP client again.
 
+### Playwright Toolkit Issues
+
+#### Node.js Not Installed Error
+
+**Problem:**
+You encounter an error when trying to use the Playwright toolkit, and the error message indicates that Node.js is not available on your system.
+
+  ![Correct config.json](../../img/integrations/mcp/nodejs.png)
+
+**Cause:**
+The Playwright MCP server requires Node.js to be installed on your computer to function properly. Without Node.js, the `npx` command cannot execute the Playwright toolkit.
+
+**Solution:**
+1. **Install Node.js** from the official website: [https://nodejs.org/](https://nodejs.org/)
+2. **Download and install** the LTS (Long Term Support) version for your operating system
+3. **Restart your terminal** or command prompt after installation
+4. **Verify installation** by running: `node --version` and `npm --version`
+5. **Retry** configuring and running the Playwright MCP server
+
+#### File Not Found on Windows
+
+**Problem:**
+You're getting an error in your terminal indicating that the `npx` command cannot be found or executed, particularly on Windows systems.
+
+ ![Correct config.json](../../img/integrations/mcp/npx.png)
+
+**Cause:**
+On some Windows systems, the `npx` command may not be properly recognized due to file extension handling or PATH configuration issues.
+
+**Solution:**
+1. **Open your `config.json` file** (see "Configuration File Locations" section for paths)
+2. **Change the command** from `"npx"` to `"npx.cmd"` in your Playwright server configuration:
+
+```json
+{
+  "servers": {
+    "Playwright": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "stateful": true
+    }
+  }
+}
+```
+
+3. **Save the file** and restart the MCP client
+4. **Test the configuration** to ensure the Playwright server starts correctly
 
 ## Additional Resources and Support
 

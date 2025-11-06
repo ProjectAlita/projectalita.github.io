@@ -102,9 +102,11 @@ The Available Configurations section displays organized categories of your confi
 
 ---
 
-## Creating Model Credentials
+## Creating Custom Model Credentials
 
-You can create new model credentials directly from the AI Configuration section.
+### Step 1: Create LLM provider credentials
+
+You can create new credentials directly from the AI Configuration section using the **+** button .
 
 **From AI Configuration:**
 
@@ -136,7 +138,39 @@ The system supports various credential types depending on your project configura
 3. **Service-Specific Parameters:** Configure parameters specific to the selected integration type
 4. **Save and Verify:** Click **Save** to create the credential and verify the connection
 
-**Integration Usage:**
+
+## Model Provider Credential Examples
+
+When creating model provider credentials, it's important to ensure that the detailse like "api version" corresponds exactly to the provider's recommendations to be used for needed model.
+
+![config example](../../img/menus/settings/ai-configurations/openai.png)
+
+![config example2](../../img/menus/settings/ai-configurations/dial.png)
+
+For Vertex AI integrations, you need to paste the JSON content in vertex credentials field that was downloaded during the Vertex AI configuration setup:
+
+![config example3](../../img/menus/settings/ai-configurations/vertex.png)
+
+Once the LLM Model Provider Credentials are created proseed with adding LLM model
+
+![config example4](../../img/menus/settings/ai-configurations/model_c.png)
+
+### Step 2: Add LLM Models
+
+1. After credentials are created, add LLM models in the Available Configurations section
+2. Select the credentials created in Step 1 from the dropdown
+3. Configure each model separately - you can add multiple models using the same credentials
+4. When creating models, it's important to ensure that the model name (not the display name) corresponds exactly to the provider's model name.
+
+![config example3](../../img/menus/settings/ai-configurations/model.png)
+
+!!! info "Multiple Models, Same Credentials"
+    You can configure several models with the same credentials. Each model will be configured as a separate LLM but use the same authentication credentials for efficiency.
+
+!!! warning "Project-Level Access Control"
+    If custom LLM configuration is done at the project level (not in private space), it will be accessible to all project members. Keep in mind cost control and usage monitoring when sharing configurations.
+
+  **Integration Usage:**
 
 Once saved, credentials become available throughout the platform for various integrations:
  
@@ -147,11 +181,73 @@ Once saved, credentials become available throughout the platform for various int
 * Set up vector storage connections for data retrieval tools
 * Set up LLM providers for agent reasoning and decision-making 
 
+![config example5](../../img/menus/settings/ai-configurations/usage.png)
+
+
 !!! tip "Best Practices"
-    - Regularly rotate API keys and tokens for security
     - Use descriptive names for credentials to easily identify their purpose
     - Test credentials after creation to ensure proper connectivity
-    - Organize credentials by project scope (personal vs shared) based on team needs
+
+---
+
+## Default Model Configuration
+
+### Setting the Default Model
+
+In the Available Configurations section, there is a **Default Model Selector** that allows you to set the default model for your project:
+
+- **Purpose**: This model will be automatically selected as the default for all new chats and agents created in your project
+- **Easy Configuration**: Simply select the desired model from the dropdown menu
+- **No Save Required**: Changes are applied immediately without needing to save
+
+
+![config example6](../../img/menus/settings/ai-configurations/default_llm.png)
+
+
+**Usage Impact**:
+
+- All new chat conversations will use this default model unless manually changed
+- New agents created will have this model pre-selected unless manually changed
+- Existing conversations and agents retain their previously configured models
+
+---
+
+## Important Warnings
+
+!!! danger "Do Not Modify Default Models"
+    Do not modify the default PG Vector or LLM models in the project, as this may cause improper project functionality and system instability.
+
+These default models are essential for core platform operations and should remain unchanged to ensure proper system behavior.
+
+---
+
+## Troubleshooting
+
+### Issue: "No Access to LLM" Message
+
+**Problem**: "No access to LLM" message is displayed when using custom LLM configurations.( Message is different for every LLM provider)
+
+**Solution Steps**:
+
+1. **Verify Provider Access**: Use your model provider's platform help center or documentation pages to confirm you have access to the specific LLM mentioned in your configuration
+2. **Test Credentials**: Ideally, use a CURL request to verify that your credentials can successfully access the model
+3. **Check Model Availability**: Ensure the model name exactly matches the provider's model identifier
+4. **Validate Authentication**: Confirm your API keys, tokens, or authentication credentials are valid and not expired
+
+### EPAM AI Dial Specific Troubleshooting
+
+**Issue**: EPAM AI Dial integration failures with personal tokens.
+
+**Specific Considerations**:
+- **Limited Model Access**: EPAM AI Dial personal tokens provided to EPAMers have access to a very limited model list
+- **Permission Verification**: Use the corresponding permission check requests provided in the AI Dial documentation to verify model accessibility via your token
+- **Token Scope**: Ensure your personal token has the necessary permissions for the specific model you're trying to configure
+
+**Resolution Steps**:
+1. Review the AI Dial documentation for permission check procedures
+2. Execute permission verification requests for your specific model
+3. Contact EPAM AI Dial administrators if additional model access is required
+4. Consider using project-level tokens if available for broader model access
 
 
 

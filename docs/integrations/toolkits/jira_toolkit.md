@@ -111,7 +111,7 @@ Once your credentials are configured, create the Jira toolkit:
          * **Server:** For self-hosted Jira Server or Data Center instances (e.g., `https://jira.epam.com`)
      * **Advanced Settings:**
          * **Limit:** Set the maximum number of issues to retrieve per request (default: 5)
-         * **API version:** REST API version, optional (default: 2)
+         * **API version:** REST API version, optional (default: 2) ( Currentl for jira cloud , you need to use 3 as api version)
          * **Labels:** Specify labels to apply to created or updated entities (comma-separated list e.g., `alita,elitea`)
          * **Additional fields:** Custom field IDs accessible within the toolkit (e.g., `customfield_100450`)
          * **Custom Headers:** Additional HTTP headers to include with API requests (JSON format e.g., `{"X-Custom-Header": "value"}`)

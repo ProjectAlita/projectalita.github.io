@@ -96,6 +96,7 @@ nav:
               - Appendix - Comparison Tables: how-tos/pipelines/appendix-comparison-tables.md
       - Credentials & Toolkits:
           - Use Credentials: how-tos/credentials-toolkits/how-to-use-credentials.md
+          - Individual User Credentials for Shared Toolkits: how-tos/credentials-toolkits/creating-toolkits-with-user-specific-credentials.md
           - Test Toolkits Tools: how-tos/credentials-toolkits/how-to-test-toolkit-tools.md
           - Automate JIRA Issue Review: how-tos/credentials-toolkits/jira-automation-with-elitea.md
           - Use Webhooks: how-tos/credentials-toolkits/how-to-use-webhooks.md
@@ -103,7 +104,7 @@ nav:
           - Search Entities: how-tos/entity-management/search-entities.md
           - Organizing Entities: how-tos/entity-management/organizing-entities.md
           - Entity Versioning: how-tos/entity-management/entity-versioning.md
-          - Manage Users & Roles: how-tos/entity-management/manage-users-and-roles.md
+          - Manage Roles and permissions: how-tos/entity-management/manage-users-and-roles.md
 
   - Integrations:
       - MCP:
@@ -169,7 +170,8 @@ nav:
       - Upgrading to v2.0.0:
           - Migration Overview: migration/v2.0.0/migration-overview.md
           - Update LLM Nodes in Pipelines: migration/v2.0.0/update-llm-nodes.md
-      - Upgrading from v1.7.0:
+          - Update Pipelines from Previous Versions: migration/v2.0.0/update-pipelines.md
+      - Upgrading to v1.7.0:
           - Migration Overview: migration/v1.7.0/migration-overview.md
           - Quick Start (Next env): migration/v1.7.0/next-quick-start.md
           - Migrate Datasources to Indexing: migration/v1.7.0/migrate-datasources-to-indexing.md

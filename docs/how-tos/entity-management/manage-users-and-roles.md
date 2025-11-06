@@ -1,10 +1,10 @@
-# Roles Management
+# Permission Management
 
 ## How to access Admin menu:
 
 To configure or modify the admin settings for a specific project:
 
-1. Navigate to `https://alita.lab.epam.com/-/configuration/users/`.
+1. Navigate to `{base_URL}/~/administration/~/configuration/roles/`.
 2. Select the project from the dropdown list for which you want to set up or adjust the admin settings.
 
 ![AlitaAdmin-Select](../../img/how-tos/entity-management/roles/AlitaAdmin-Select.png)

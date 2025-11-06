@@ -45,7 +45,7 @@ You can enable the attachment feature for Agent/Pipeline from the Agent/Pipeline
 3.  **Enable Attachments:** Click the toggle to enable it. An **Attachment settings** pop-up will appear.
 4.  **Configure the Artifact Toolkit:** You have two options:
     *   **Select an Existing Toolkit:** If you already have an Artifact Toolkit you wish to use for storing attachments, select it from the dropdown menu.
-    *   **Create a New Toolkit:** Select the "Create new" option. You will be prompted to provide a **Bucket name**. You can use a new name to create a new bucket or enter an existing bucket name.
+    *   **Create a New Toolkit:** Select the "Create new" option. You will be prompted to provide a **Bucket name**. You can use a new name to create a new bucket or enter an existing bucket name. (The bucket will be created automatically after the first attachment if it does not exist.)
 
     ![Attachment Settings Pop-up for Toolkit Selection](../../img/how-tos/chat-conversations/attachments/attachment-settings-popup.png)
 
@@ -80,7 +80,6 @@ You have three ways to add images to your message prompt both in conversation-ch
 1.  **Click the Icon:** Click the active paperclip icon in the message input area to open your system's file browser and select your images.
 2.  **Drag and Drop:** Drag image files directly from your computer and drop them into the chat window's text input area.
 3.  **Paste from Clipboard:** Copy an image to your clipboard and paste it directly into the text input area (using `Ctrl+V` or `Cmd+V`).
-
 ### Sending a Message with Attachments
 
 *   After attaching your images, you will see their thumbnails appear above the text input area.
@@ -196,6 +195,11 @@ Currently, the following image formats are supported for direct analysis by LLMs
     *   **Cause:** The associated artifact toolkit was changed after the file was uploaded, or the file was already deleted from the bucket earlier through the Artifacts page.
     *   **Solution:** Uncheck the "Also delete from artifact toolkit" option and delete only from chat, or verify the current artifact toolkit configuration matches where the file was originally stored.
 
+*   **"File Already Exists" Error when Pasting Multiple Images from Clipboard:**
+    *   **Problem:** When pasting multiple images using `Ctrl+V` into the chat, you receive a "file already exists" error message.
+    *   **Cause:** Windows stores clipboard images with generic names (like "image.png"), so when you copy and paste multiple images in succession, they all have the same filename, causing conflicts.
+    *   **Solution:** Instead of pasting multiple images directly from clipboard, save each image with a different filename first before attaching them to the chat. Alternatively, use the file browser option (paperclip icon → "Attach files") to select multiple images with unique names.
+
 ## FAQ
 
 **Q: Where are my attached images stored?**
@@ -216,6 +220,44 @@ Currently, the following image formats are supported for direct analysis by LLMs
 **Q: How many tokens are spent per image?**
 **A:** It depends on the LLM and LLM provider. Check their documentation for specific details. For example, for Claude it is a fixed number of tokens per image, while for GPT it depends on the image size and resolution.
 
-## A Note on Non-Image File Attachments
+## Non-Image File Attachments
 
-Attaching other files (like `.txt`, `.pdf`, `.csv`, `.pptx`, `.xlsx`, `.docx`, `.json`,`.yaml`, code file and more ) is in a demo stage. These files will be saved to the Artifact bucket similarly, but their analysis follows a different path. They are not sent directly to the LLM like images. Instead, they can be read using artifact tools, indexed into a vector database for searching, or processed according to your text prompt and the agent's capabilities.
+### Overview
+
+The attachment feature supports various non-image file types, including:
+- Text files (`.txt`, `.json`, `.yaml`, `.md`)
+- Documents (`.pdf`, `.docx`, `.pptx`, `.xlsx`)
+- Data files (`.csv`, `.xml`)
+- Code files (various programming language extensions)
+
+!!! warning "Demo Stage Feature"
+    Non-image file attachments are currently in demo stage. While functional, the feature may have limitations.
+
+### How Non-Image Files Are Processed
+
+Unlike images that are sent directly to the LLM for analysis, non-image files follow a different processing path:
+
+1. **Storage**: Files are saved to the Artifact bucket like images
+2. **Indexing**: File content is automatically indexed into a vector database collection named "attach"
+3. **Retrieval**: Content is retrieved through semantic search when relevant to your queries
+
+### Important Considerations
+
+**Query Effectiveness:**
+- ❌ **Less effective queries**: `"Summarize the file"`, `"Get key points"`
+- ✅ **More effective queries**: `"Get information about budget planning from the file"`, `"Find details about project timeline"`
+
+!!! tip "Query Best Practices"
+    Since the LLM doesn't initially know the file content, use specific queries that describe what information you're looking for rather than general summarization requests.
+
+**Shared Collection Behavior:**
+All non-image attachments using the same artifact toolkit are indexed in the same "attach" collection. This means:
+
+- Search results may include information from previously attached files with the same artifact toolkit
+- Be specific in your queries to avoid retrieving irrelevant content from other files
+- Consider using different artifact toolkits for different projects to maintain separation
+
+### Usage Tips
+
+1. **Be Specific**: Ask for particular information rather than general summaries
+2. **Context Matters**: Include relevant context in your queries to improve search accuracy
