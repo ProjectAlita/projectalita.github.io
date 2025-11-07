@@ -83,10 +83,7 @@ The **Credentials** menu in ELITEA serves as a centralized hub for securely mana
 
 3. You will be presented with a configuration form specific to the selected credential type. Follow the detailed steps below for each service.
 4. Configure the credential parameters including name and authentication details.
-5. **Shared Credential Option:** Use the **Shared** checkbox to control credential visibility:
-      * **Checked:** The credential will be accessible by all team members in the current project
-      * **Unchecked:** The credential will be private to you only
-6. Click the **Save** button to create the credential.
+5. Click the **Save** button to create the credential.
 
 
 After saving, the newly created credential will be added to your **Credentials** dashboard, making it available for selection when configuring toolkits. You can manage your saved credentials directly from the dashboard. Click on a credential to edit its details, set it as default, or delete it if it's no longer needed.
@@ -133,7 +130,6 @@ To create an **ADO (Azure DevOps)** credential:
       * Enter your organization URL (e.g., `https://dev.azure.com/yourorg`).
       * Enter your ADO project name.
       * Enter your ADO Personal Access Token.
-      * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![ADO Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-ado.png)
@@ -156,7 +152,6 @@ To create an **ADO Repos** credential:
     * Enter a descriptive name (e.g., "ADO Repos - Source Code").
     * Enter your repository ID.
     * Select an existing ADO configuration or create a new one.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![ADO Repos Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-ado-repo.png)
@@ -180,7 +175,6 @@ To create a **Bitbucket** credential:
     * Enter your Bitbucket URL (e.g., `https://bitbucket.org`).
     * Enter your Bitbucket username.
     * Enter your Bitbucket password or app password.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Bitbucket Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-bitbucket.png)
@@ -207,7 +201,6 @@ To create a **Confluence** credential:
     * Choose your authentication method:
         * For **Basic:** Enter your username and API key
         * For **Bearer:** Enter your token
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Confluence Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-confluence.png)
@@ -232,7 +225,6 @@ To create a **Figma** credential:
     * Choose your authentication method:
         * For **Token:** Enter your Figma Personal Access Token (starts with `figd_`)
         * For **OAuth2:** Enter your OAuth2 token
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Figma Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-figma.png)
@@ -265,7 +257,6 @@ To create a **GitHub** credential:
         * For **Password:** Enter your username and password
         * For **App Private Key:** Enter your GitHub App ID and private key
         * For **Anonymous:** Leave all authentication fields blank (suitable for public repositories)
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![GitHub Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-github.png)
@@ -300,7 +291,6 @@ To create a **GitLab** credential:
    * Enter a descriptive name (e.g., "GitLab - Development").
    * Enter the URL of your GitLab instance (e.g., `https://gitlab.com`).
    * Enter your GitLab private token.
-   * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![GitLab Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-gitlab.png)
@@ -327,7 +317,6 @@ To create a **Jira** credential:
     * Choose your authentication method:
         * For **Basic:** Enter your username and API key
         * For **Bearer:** Enter your token
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Jira Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-jira.png)
@@ -352,7 +341,6 @@ To create a **Postman** credential:
     * Enter the Postman API base URL.
     * Enter your default workspace ID.
     * Enter your Postman API key.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Postman Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-postman.png)
@@ -375,7 +363,6 @@ To create a **QTest** credential:
     * Enter a descriptive name (e.g., "QTest - Quality Management").
     * Enter the base URL of your QTest instance.
     * Enter your QTest API token.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![QTest Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-qtest.png)
@@ -402,7 +389,6 @@ To create a **Rally** credential:
     * Choose your authentication method:
         * For **Password:** Enter your username and password
         * For **API Key:** Enter your Rally API key
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Rally Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-rally.png)
@@ -426,7 +412,6 @@ To create a **ServiceNow** credential:
     * Enter the base URL of your ServiceNow instance (e.g., `https://yourinstance.service-now.com`).
     * Enter your ServiceNow username.
     * Enter your ServiceNow password.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![ServiceNow Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-servicenow.png)
@@ -450,7 +435,6 @@ To create a **Slack** credential:
    * Enter a descriptive name (e.g., "Slack - Team Communication").
    * Enter your Slack Bot Token or User Token (starts with `xoxb-` or `xoxp-`).
    * Optionally enter a Slack workspace name in the **Name (Slack)** field and default channel ID.
-   * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Slack Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-slack.png)
@@ -475,7 +459,6 @@ To create a **TestRail** credential:
    * Enter the URL of your TestRail instance (e.g., `https://yourcompany.testrail.net`).
    * Enter your TestRail email address.
    * Enter your TestRail password.
-   * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![TestRail Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-testrail.png)
@@ -499,7 +482,6 @@ To create an **Xray** credential:
    * Enter the base URL of your Xray instance.
    * Enter your Client ID.
    * Enter your Client Secret.
-   * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Xray Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-xray.png)
@@ -522,7 +504,6 @@ To create a **Zephyr Enterprise** credential:
    * Enter a descriptive name (e.g., "Zephyr Enterprise - Test Management").
    * Enter the base URL of your Zephyr Enterprise instance.
    * Enter your API token.
-   * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Zephyr Enterprise Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-zephyr-enterprise.png)
@@ -551,7 +532,6 @@ To create a **Zephyr Scale** credential:
         * For **Token:** Enter your API token
         * For **Username & Password:** Enter your username and password
         * For **Cookies:** Enter your authentication cookies
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Zephyr Scale Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-zephyr-scale.png)
@@ -576,7 +556,6 @@ To create a **Browser** credential:
       * Enter a descriptive name (e.g., "Browser - Web Search").
       * Enter your Google API Key.
       * Enter your Custom Search Engine ID(Google Cse Id).
-      * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Browser Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-browser.png)
@@ -606,8 +585,7 @@ To create a **Carrier** credential:
     * Enter your organization name.
     * Enter the carrier service URL.
     * Enter your private token.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
-9. Click **Save**.
+3. Click **Save**.
 
 ![Carrier Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-carrier.png)
 
@@ -629,7 +607,6 @@ To create a **Google Places** credential:
 2. Select **Google Places** as the credential type.
     * Enter a descriptive name (e.g., "Google Places - Location Services").
     * Enter your Google Places API key.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Google Places Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-google-places.png)
@@ -652,9 +629,8 @@ To create a **Report Portal** credential:
 1. Click **+ Create** in the Credentials menu.
 2. Select **Report Portal** as the credential type.
     * Enter a descriptive name (e.g., "Report Portal - Test Analytics").
-    * Enter the base URL of your Report Portal instance(Endpoint *).
+    * Enter the base URL of your Report Portal instance(Endpoint *).
     * Enter your API key.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Report Portal Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-report-portal.png)
@@ -681,7 +657,6 @@ To create a **Salesforce** credential:
     * Enter your Salesforce instance URL (e.g., `https://your-domain.my.salesforce.com`).
     * Enter your Client ID (Consumer Key).
     * Enter your Client Secret (Consumer Secret).
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Salesforce Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-salesforce.png)
@@ -709,7 +684,6 @@ To create a **SharePoint** credential:
     * Enter your SharePoint site URL.
     * Enter your Client ID.
     * Enter your Client Secret.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![SharePoint Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-sharepoint.png)
@@ -734,7 +708,6 @@ To create a **Sonar** credential:
     * Enter a descriptive name (e.g., "Sonar - Code Quality").
     * Enter the base URL of your SonarQube/SonarCloud instance.
     * Enter your API token.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Sonar Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-sonar.png)
@@ -763,8 +736,7 @@ To create a **SQL** credential:
     * Enter the port number.
     * Enter your username.
     * Enter your password.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
-9. Click **Save**.
+3. Click **Save**.
 
 ![SQL Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-sql.png)
 
@@ -789,7 +761,6 @@ To create a **TestIO** credential:
 2. Select **TestIO** as the credential type.
     * Enter a descriptive name (e.g., "TestIO - Crowdsourced Testing").
     * Enter your TestIO API key.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![TestIO Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-testio.png)
@@ -814,7 +785,6 @@ To create a **Zephyr Essential** credential:
     * Enter a descriptive name (e.g., "Zephyr Essential - Test Management").
     * Enter the base URL of your Zephyr Essential instance.
     * Enter your API token.
-    * **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project.
 3. Click **Save**.
 
 ![Zephyr Essential Credential Setup](../../img/how-tos/credentials-toolkits/how-to-use-credentials/cred-zephyr-essential.png)

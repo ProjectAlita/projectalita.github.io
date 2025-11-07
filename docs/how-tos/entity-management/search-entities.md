@@ -1,18 +1,19 @@
 # ELITEA Search Functionality
 
-Finding what you need quickly is essential. ELITEA's robust search functionality helps you locate your prompts, datasources, agents, pipelines, and collections efficiently. This guide will show you how to make the most of ELITEA's search capabilities across all platform.
+Finding what you need quickly is essential. ELITEA's search functionality helps you locate your agents, pipelines, collections, toolkits, credentials, and MCPs efficiently. This guide will show you how to make the most of ELITEA's search capabilities.
 
 ## Search Overview
 
-The search functionality in ELITEA works consistently across the following menus:
+The search functionality in ELITEA is available across the following menus:
 
-* [Prompts](../../archive/prompts.md)
-* [Datasources](../../archive/datasources.md)
 * [Agents](../../menus/agents.md)
 * [Pipelines](../../menus/pipelines.md)
 * [Collections](../../menus/collections.md)
+* [Toolkits](../../menus/toolkits.md)
+* [Credentials](../../menus/credentials.md)
+* [MCPs](../../menus/mcps.md)
 
-Whether you're in your **Private** project, the **Public** project, or any **Team** project, the search feature operates the same way, providing a consistent experience throughout the platform.
+Whether you're in your **Private** workspace or any **Team** project, the search feature operates consistently, providing a unified experience throughout the platform.
 
 ![Search_Bar_Overview](../../img/how-tos/entity-management/search-entities/search_bar_overview.png)
 
@@ -20,96 +21,95 @@ Whether you're in your **Private** project, the **Public** project, or any **Tea
 
 ### Basic Search Functionality
 
-ELITEA's search is designed to help you quickly find what you need by searching through:
+ELITEA's search helps you quickly find entities by searching their names and descriptions. You can also filter results by selecting tags.
 
-* Entity names
-* Entity descriptions
-* Associated tags
+As you type in the search field (minimum 3 characters for full search), ELITEA shows matching results in a dropdown grouped by:
 
-As soon as you start typing in the search field, ELITEA's auto-filter immediately begins showing matching results grouped by:
-
-1. **Tags** - Matching tags associated with entities
-2. **Entity Type** - Entities whose names or descriptions match your search term
+1. **Tags** - Tags matching your search term (appears on Agents, Pipelines, and Collections pages)
+2. **Entity Type** - Entities matching your search term (Agents, Pipelines, Collections, Toolkits, Credentials, or MCPs depending on the page)
 
 ![Search_Dropdown_Results](../../img/how-tos/entity-management/search-entities/search_dropdown_results.png)
 
-> **Tip:** If you click on an entity name that appears in the Entity Type section of the dropdown, that entity will automatically open, saving you time.
+!!! tip "Quick Navigation"
+    Click on an entity name in the dropdown to open it directly, saving you time.
 
 ### Search Process Step by Step
 
-1. Click in the search field located at the top of any menu (Prompts, Datasources, Agents, Pipelines, or Collections)
-2. Start typing your search term
-3. As you type, matching results will appear in a dropdown, categorized by Tags and Entity Type
+1. Click in the search field located in the right panel (placeholder text: "Let's find something amazing!")
+2. Start typing your search term (results appear after a 500ms delay as you type)
+3. As you type, matching results appear in a dropdown with sections:
+     - **Tags** (on Agents, Pipelines, and Collections pages only)
+     - **Entity Type** (Agents, Pipelines, Collections, Toolkits, Credentials, or MCPs depending on the current page)
 4. You can either:
-   - Click on a specific entity in the dropdown to open it directly
-   - Press Enter to filter the current view to show all entities matching your search term
+     - Click on a tag to add it as a filter chip
+     - Click on an entity name to open it directly
+     - Press Enter to execute the search and filter the current view
 
 ![Search_Results_View](../../img/how-tos/entity-management/search-entities/search_results_view.png)
 
-!!! note "Search Requirement"
+!!! note "Minimum Search Length"
     Search terms must be at least 3 letters long when you press Enter to perform a full search. If your search term is shorter, you'll see a message: "The search key word should be at least 3 letters long."
+
+### Tag-Based Filtering
+
+In addition to text search, you can filter by tags:
+
+1. As you type, matching tags appear in the dropdown under the "Tags" section (on Agents, Pipelines, and Collections pages)
+2. Click on a tag to add it as a filter chip in the search bar
+3. Selected tags appear as removable chips (first tag shown fully, additional tags shown as "+N")
+4. Click the "+N" chip to see all selected tags in an expanded view
+5. Remove individual tags by clicking the × icon on each chip
+6. Combine multiple tags to refine your search
+
+!!! info "Tag Availability"
+    Tag filtering is only available on Agents, Pipelines, and Collections pages. Toolkits, Credentials, and MCPs pages show only entity name results.
 
 ### Context-Aware Searching
 
-One of ELITEA's powerful features is that search respects your current context:
+Search respects your current context:
 
-- **Menu-Specific** - Search only looks within the current menu you're using (Prompts, Datasources, etc.)
-- **Status-Aware** - If you've filtered by status (e.g., "Published" items), search will only look within items that match that status
+- **Menu-Specific** - Search only looks within the current menu (Agents, Pipelines, Collections, Toolkits, Credentials, or MCPs)
 
 ![Search_Within_Status](../../img/how-tos/entity-management/search-entities/search_within_status.png)
 
 ### Clearing Search Results
 
-To clear your search results and return to the full view, you can:
+To clear your search results and return to the full view:
 
-* Click the X icon in the search field
-* Refresh the page
+* Click the X icon in the search field (appears when you have a search term or selected tags)
+* This will clear both the search text and all selected tag filters
 
 ![Clear_Search](../../img/how-tos/entity-management/search-entities/clear_search.png)
 
 ## No Matching Results
 
-If your search doesn't find any matching entities, you'll see:
+If your search doesn't find any matching entities:
 
-* A message indicating no results were found
-* While typing, the dropdown will show "No matches found" in both the Tags and Entity Type sections
+* While typing, the dropdown will show no items in the Tags or Entity Type sections
+* When you execute a search (press Enter), the main view will display no results
 
 ![No_Search_Results](../../img/how-tos/entity-management/search-entities/no_search_results.png)
 
-## Filtering by Tags
-
-In addition to text search, ELITEA offers robust tag-based filtering:
-
-1. Each menu displays available tags on the right side panel
-2. Click on any tag to instantly filter the view to show only entities with that tag
-3. You can select multiple tags to further refine your results
-4. To clear tag filters, click the "Clear all" button at the top of the tags panel
-
-![Tag_Filtering](../../img/how-tos/entity-management/search-entities/tag_filtering.png)
-
-!!! tip "Combining Search and Tags"
-    For the most precise results, you can combine text search with tag filtering. First, filter by tags, then use the search field to find specific items within those tagged entities.
-
-## Special Case: Artifacts Search
-
-Unlike other menus, the search functionality in the Artifacts menu works differently:
-
-* Search only works for bucket names (not file names within buckets)
-* Enter your search term to filter visible buckets to those matching your search
-
-![Artifacts_Search](../../img/how-tos/entity-management/search-entities/artifacts_search.png)
 
 ## Search Tips and Best Practices
 
 To make the most of ELITEA's search capabilities:
 
-* **Use specific, unique terms** - The more distinctive your search term, the more precise your results
-* **Leverage tags** - Adding descriptive tags to your entities will make them easier to find later
-* **Combine approaches** - Use status filters, tag filters, and text search together for the most refined results
-* **Check your context** - Remember that search only looks within your current menu and respects status filters
+* **Wait for suggestions** - Search suggestions appear after a 500ms delay as you type, allowing you to see real-time results
+* **Use specific terms** - The more distinctive your search term, the more precise your results
+* **Leverage tag filtering** - On Agents, Pipelines, and Collections pages, add tags from the dropdown to refine your search
+* **Combine multiple tags** - Select multiple tags to find entities that match all selected tags
+* **Click for quick navigation** - Click entity names in the dropdown to open them directly
+* **Use the search button** - Click the send icon or press Enter to execute the search and filter the main view
+* **Check your context** - Remember that search only looks within your current menu and tab
 
 ## Summary
 
-ELITEA's search functionality provides a powerful yet intuitive way to locate your AI assets across the platform. By understanding how search works across different menus and learning to combine it with filters and tags, you can quickly find exactly what you need, saving time and improving your workflow efficiency.
+ELITEA's search functionality provides an intuitive way to locate your AI assets across the platform. The search bar appears in the right panel on Agents, Pipelines, Collections, Toolkits, Credentials, and MCPs pages, offering:
 
-Whether you're managing hundreds of prompts, organizing complex agents, or sorting through datasources, mastering ELITEA's search capabilities will help you maintain control over your AI workspace.
+* Real-time search suggestions as you type
+* Tag-based filtering (on Agents, Pipelines, and Collections)
+* Quick navigation by clicking entity names
+* Context-aware results based on your current page and tab
+
+By mastering these search capabilities, you can quickly find exactly what you need and maintain an organized workspace.

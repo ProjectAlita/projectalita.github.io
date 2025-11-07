@@ -76,9 +76,12 @@ nav:
           - Artifacts Indexing: how-tos/indexing/index-artifacts-data.md
           - Figma Indexing: how-tos/indexing/index-figma-data.md
           - TestRail Indexing: how-tos/indexing/index-testrail-data.md
+          - Xray Indexing: how-tos/indexing/index-xray-data.md
+          - Zephyr Indexing: how-tos/indexing/index-zephyr-data.md
           - ADO Wiki Indexing: how-tos/indexing/index-ado-wiki-data.md
       - Agents & Pipelines:
           - View Agents and Pipelines History: how-tos/agents-pipelines/agents-pipelines-history.md
+          - Entity Versioning: how-tos/agents-pipelines/entity-versioning.md
           - Pipeline Building Blocks:
               - Pipelines Overview: how-tos/pipelines/overview.md
               - States: how-tos/pipelines/states.md
@@ -103,9 +106,7 @@ nav:
       - Entity Management:
           - Search Entities: how-tos/entity-management/search-entities.md
           - Organizing Entities: how-tos/entity-management/organizing-entities.md
-          - Entity Versioning: how-tos/entity-management/entity-versioning.md
-          - Manage Roles and permissions: how-tos/entity-management/manage-users-and-roles.md
-
+          - Manage Roles & Permissions: how-tos/entity-management/manage-users-and-roles.md
   - Integrations:
       - MCP:
           - Server (STDIO): integrations/mcp/mcp-server-stdio.md
