@@ -23,6 +23,9 @@ By integrating the Browser Toolkit, ELITEA Agents can access and process vast am
 
 The Google Tool within the Browser Toolkit leverages Google's Programmable Search Engine (CSE). To use this tool effectively, you need to set up a Custom Search Engine and obtain an API Key from Google. Follow these steps:
 
+!!! note "Google Tool Optional"
+    If you do not need the Google Programmable Search Engine (the "google" tool), you can skip the CSE setup. When creating the toolkit, simply deselect the "google" tool — the other Browser tools will work without Google API credentials.
+
 1.  **Access Google Programmable Search Engine:** Open your web browser and navigate to [https://programmablesearchengine.google.com/u/1/controlpanel/all](https://programmablesearchengine.google.com/u/1/controlpanel/all).
 
 2.  **Sign In with Google Account:** If you are not already logged in, sign in with your Google account. If you don't have a Google account, you will need to create one.

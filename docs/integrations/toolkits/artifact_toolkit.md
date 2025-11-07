@@ -82,6 +82,7 @@ To configure the Artifact Toolkit for use with an ELITEA agent, follow these ste
     *   **Create New Bucket:** 
         *   **Functionality:** Creates new buckets within the project. It can also create a new file in the bucket for better organization of completed tasks.
         *   **Parameters:** The name of the bucket to create (e.g., Results), expiration_measure tring or null (optional) e.g. days, months , and expiration_value integer or null, optional e.g  1, 10
+        *   **Retention period:** Default retention period is 30 days, but it can be changed if the corresponding parameter is sent during creation
         *   **Purpose:** To create buckets during task execution, dedicated to organizing different file groups.
 
     *   **Overwrite Data:**  
@@ -91,21 +92,83 @@ To configure the Artifact Toolkit for use with an ELITEA agent, follow these ste
 
 7.  **Save Configuration:** Click the **"Save"** button to save the Artifact Toolkit configuration for your agent.
 
-### File Types Supported
+## File Types Supported
 
-The Artifact Toolkit is designed to work with **plain text files**. It supports various text-based file formats, including:
+The Artifact Toolkit has different capabilities for reading and creating files, offering enhanced flexibility for various data processing needs.
 
+### File Types Supported for Reading
+
+The Artifact Toolkit can read and process a wide variety of file formats, organized by category:
+
+#### **Text and Document Files**
 *   **`.txt`** (Plain Text)
-*   **`.md`** (Markdown)  
+*   **`.md`** (Markdown)
+*   **`.rtf`** (Rich Text Format)
+*   **`.docx`** (Microsoft Word Documents)
+*   **`.pdf`** (Portable Document Format)
+
+#### **Data and Spreadsheet Files**
+*   **`.csv`** (Comma Separated Values)
+*   **`.xlsx`** (Microsoft Excel Spreadsheets)
+*   **`.json`** (JSON Data)
+*   **`.xml`** (XML Data)
+*   **`.yaml`** or **`.yml`** (YAML Data)
+
+#### **Presentation Files**
+*   **`.pptx`** (Microsoft PowerPoint Presentations)
+
+#### **Programming and Code Files**
+*   **`.py`** (Python)
+*   **`.js`** (JavaScript)
+*   **`.html`** (HTML)
+*   **`.css`** (CSS)
+*   **`.java`** (Java)
+*   **`.cpp`** (C++)
+*   **`.php`** (PHP)
+*   **`.sql`** (SQL)
+*   **`.sh`** (Shell Scripts)
+*   **`.bat`** (Batch Files)
+*   And other common programming language file extensions
+
+#### **Image Files**
+*   **`.jpg`** / **`.jpeg`** (JPEG Images)
+*   **`.png`** (PNG Images)
+*   **`.gif`** (GIF Images)
+*   **`.bmp`** (Bitmap Images)
+*   **`.webp`** (WebP Images)
+
+!!! note "Image Processing Requirements"
+    When reading image files, the image is sent to the LLM for analysis. The LLM describes the image content and provides the description in the context. **Important**: For image processing to work properly, the LLM must be multimodal with image reading capabilities (such as GPT-4 Vision, Claude 3, or Gemini Pro Vision).
+
+### File Types Supported for Creation
+
+The Artifact Toolkit can create **plain text files only**. Supported formats for file creation include:
+
+#### **Text-Based Files**
+*   **`.txt`** (Plain Text)
+*   **`.md`** (Markdown)
 *   **`.csv`** (Comma Separated Values)
 *   **`.json`** (JSON Data)
 *   **`.yaml`** or **`.yml`** (YAML Data)
-*   Other file extensions containing unformatted plain text.
+*   **`.html`** (HTML)
+*   **`.css`** (CSS)
+*   **`.js`** (JavaScript)
+*   **`.py`** (Python)
+*   **`.sql`** (SQL)
+*   Other file extensions containing unformatted plain text or code
 
-**Unsupported File Types:**
+#### **Unsupported File Types for Creation**
 
-The toolkit **does not support** binary files or formatted document types that contain complex structures and formatting beyond plain text. Examples of unsupported file types include:
-`.docx` `.pdf` `.xlsx`, Images like `.jpg`, `.png`, etc.
+The toolkit **cannot create** binary files or formatted document types. Examples of unsupported file types for creation include:
+*   **`.docx`** (Word Documents)
+*   **`.pdf`** (PDF Files)
+*   **`.xlsx`** (Excel Spreadsheets)
+*   **`.pptx`** (PowerPoint Presentations)
+*   **Images** (`.jpg`, `.png`, `.gif`, etc.)
+*   **Binary files** and other complex formatted documents
+
+!!! tip "File Processing Workflow"
+    Use the read capabilities to extract content from complex file formats (Excel, Word, PDF, images), process the information, and then create new plain text files with the processed results using the creation capabilities.
 
 ### Bucket Accessibility and Security
 
@@ -218,9 +281,10 @@ The Artifact Toolkit provides a versatile set of tools to enhance agent workflow
 
 ## FAQs
 
-**Q: Can I work with binary files e.g. excel or images in Artifacts?**
+**Q: Can I create binary files e.g. excel or images in Artifacts?**
 
-**A:** No, the Artifact Toolkit is designed for plain text files only. It does not support binary files, images, or formatted document types like `.docx` or `.pdf`. You can store text-based data in formats like `.txt`, `.csv`, `.json`, `.yaml`, etc.
+**A:** No, the Artifact Toolkit is designed for plain text files only. It does not support binary files creation, images, or formatted document types like `.docx` or `.pdf`. You can create text-based data in formats like `.txt`, `.csv`, `.json`, `.yaml`, etc.
+
 
 **Q: What is the maximum file size for artifacts?**
 

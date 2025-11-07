@@ -29,3 +29,56 @@ The management of secrets is straightforward and secure, facilitated by the **Se
 This feature enhances the security and efficiency of managing sensitive information within ELITEA, ensuring that authentication details are handled in a secure, centralized manner.
 
 ![Manage Secrets](../../img/menus/settings/manage_secret.png)
+
+## Default Secrets
+
+ELITEA automatically creates several default secrets that are critical for project functionality. These secrets are essential for current project operations and should not be modified or deleted by users.
+
+!!! warning "Critical System Secrets"
+    The following default secrets are automatically managed by ELITEA and are essential for proper platform operation. Do not modify or delete these secrets as it may cause your project functionality issues.
+
+The default secrets include:
+
+- **auth_token**: Authentication token used for secure communication between ELITEA components
+- **pgvector_project_password**: Password for the project's vector database connection
+- **pgvector_project_connstr**: Connection string for the project's vector database
+
+- **project_llm_key**: Authentication token used for utilizing LLMs in the project.
+
+
+These secrets are automatically provisioned when your project is created and are maintained by the ELITEA platform to ensure seamless operation of core features.
+
+  ![Manage Secrets](../../img/menus/settings/default.png)
+
+## Troubleshooting
+
+### Issue: Secret Works when provided directly to toolkit but toolkit will not work when referanced from secrets
+
+**Problem**: When using a secret in configurations, it works during testing but fails during actual execution.
+
+**Possible Causes**:
+- The secret was copied with additional leading or trailing spaces
+- Hidden newline characters were included when copying the secret
+- The secret value was not copied completely
+
+**Solution**:
+1. Copy the secret value again, ensuring no trailing spaces are included
+2. Paste the secret directly without any additional formatting
+3. Verify the complete secret value was copied by checking its length or content
+
+!!! tip "Copy Best Practice"
+    When copying secrets, use the copy button provided in the interface rather than manually selecting and copying text to avoid hidden characters.
+
+### Issue: Deleted Default Secrets
+
+**Problem**: One or more default secrets were accidentally deleted.
+
+**Resolution**:
+1. **Automatic Recovery**: Most default secrets will be automatically recreated within 24 hours
+2. **Manual Recovery**: If automatic recovery doesn't occur or immediate restoration is needed:
+   - Contact the support team via **SupportAlita@epam.com**
+   - Include your project details and specify which default secrets were deleted
+  
+
+!!! danger "Important"
+    Deleting default secrets may temporarily impact platform functionality until they are restored. Contact support immediately if you accidentally delete any default secrets.
