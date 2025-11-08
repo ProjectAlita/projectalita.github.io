@@ -8,6 +8,7 @@ nav:
           - Introduction: home/introduction.md
           - Quick Start: getting-started/quick-start.md
           - Glossary: home/glossary.md
+          - Onboarding Tips: home/onboarding-tips.md
       - Key Concepts:
           - What is an agent?: home/key-concepts/what-is-an-agent.md
           - What is a pipeline?: home/key-concepts/what-is-a-pipeline.md

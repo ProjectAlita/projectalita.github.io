@@ -4,10 +4,10 @@ Node connectors link nodes together to define your pipeline's execution flow. Th
 
 **Key Concepts:**
 
-- **[Entry Point](#entry-point-node)** - Where pipeline execution begins
-- **[Transitions](#yaml-connection-syntax)** - Connections between nodes
-- **[END Node](#end-node)** - Where pipeline execution stops
-- **[Connection Patterns](#connection-patterns)** - Common workflow structures
+* **[Entry Point](#entry-point-node)** - Where pipeline execution begins
+* **[Transitions](#yaml-connection-syntax)** - Connections between nodes
+* **[END Node](#end-node)** - Where pipeline execution stops
+* **[Connection Patterns](#connection-patterns)** - Common workflow structures
 
 !!! note "Essential Elements"
     Every pipeline requires: (1) Entry Point to start execution, (2) Transitions to connect nodes, (3) END to terminate execution
@@ -303,9 +303,9 @@ ELITEA provides multiple ways to create connections in Flow mode:
 
 Pauses **before** a node runs. Useful for:
 
-- Reviewing inputs before critical operations
-- Confirming decisions before irreversible actions
-- Manual data validation
+* Reviewing inputs before critical operations
+* Confirming decisions before irreversible actions
+* Manual data validation
 
 **YAML:**
 

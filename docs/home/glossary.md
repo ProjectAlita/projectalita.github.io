@@ -78,7 +78,7 @@ This glossary provides definitions for key terms, components, and features used 
 : A visual interface for creating and managing pipelines in ELITEA. The Flow Designer allows users to drag and drop nodes, connect workflows, and design complex automation processes without requiring code.
 
 **Fork**
-: The process of creating a personal copy of an existing entity (agent, pipeline, or collection) from the public project or another user's shared work. Forking allows users to customize and modify the copied entity without affecting the original, enabling experimentation and personalization while building upon existing work.
+: The process of creating a personal copy of an existing entity (agent, pipeline, or collection) from another user's shared work from the "Team" project. Forking allows users to customize and modify the copied entity without affecting the original, enabling experimentation and personalization while building upon existing work.
 
 ---
 
@@ -141,9 +141,6 @@ This glossary provides definitions for key terms, components, and features used 
 
 **Prompt**
 : Instructions, questions, or statements given to AI models to elicit specific responses or outputs. In ELITEA, prompts can include context, variables, welcome messages, conversation starters, and various configuration settings to guide AI behavior.
-
-**Public Project**
-: A shared community space in ELITEA where users can discover, access, and utilize agents, pipelines, and collections published by other community members.
 
 ---
 

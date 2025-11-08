@@ -4,9 +4,9 @@ Control Flow Nodes enable your pipeline to make decisions, route execution down 
 
 **Available Control Flow Nodes:**
 
-- **[Router Node](#router-node)** - Route execution based on condition matching with multiple named paths
-- **[Condition Node](#condition-node)** - Branch execution based on conditional logic with named outputs
-- **[Decision Node](#decision-node)** - LLM-powered intelligent routing based on natural language criteria
+* **[Router Node](#router-node)** - Route execution based on condition matching with multiple named paths
+* **[Condition Node](#condition-node)** - Branch execution based on conditional logic with named outputs
+* **[Decision Node](#decision-node)** - LLM-powered intelligent routing based on natural language criteria
 
 ---
 
@@ -20,11 +20,12 @@ The Router Node evaluates a condition and routes pipeline execution to one of mu
 
 Use the Router Node to:
 
-- **Route execution** to different paths based on state variable values
-- **Implement branching logic** with multiple named routes
-- **Evaluate complex conditions** using template syntax
-- **Provide fallback behavior** with default output
-- **Create multi-path workflows** based on data conditions
+* **Route execution** to different paths based on state variable values
+* **Implement branching logic** with multiple named routes
+* **Evaluate complex conditions** using template syntax
+* **Provide fallback behavior** with default output
+* **Create multi-path workflows** based on data conditions
+* **Create loops and iterative execution** by routing back to previous nodes
 
 ### Parameters
 
@@ -92,6 +93,15 @@ nodes:
 !!! note "Template Syntax Features"
     **String Operations:** Use `|lower`, `|upper` filters and `in` operator<br>**Comparisons:** Use `==`, `!=`, `>`, `<` operators<br>**Logical Operators:** Use `and`, `or`, `not` for complex conditions
 
+!!! tip "Router Node for Loops"
+    Router nodes can create loop structures by routing back to previous nodes. This enables iterative processing by:
+    
+    - Routing to an earlier node when a condition is met (e.g., counter < max_iterations)
+    - Routing to the next node or END when the loop should exit
+    - Using state variables to track iteration count and control loop termination
+    
+    This is an alternative to Loop and Loop from Tool nodes, offering more precise control over loop conditions and execution flow.
+
 ### Best Practices
    - Always Provide Default Output: Ensure fallback behavior for unmatched conditions to prevent pipeline failures.
    - Match Route Names Exactly: Route names in condition must match node IDs exactly (case-sensitive).
@@ -101,6 +111,7 @@ nodes:
    - Test All Paths: Ensure every condition path is reachable and test edge cases.
    - Use Descriptive Route Names: Name routes clearly to indicate their purpose (e.g., "ApprovedWorkflow" not "Path1").
    - Document Complex Conditions: Add comments in YAML to explain routing logic for maintainability.
+   - Use Router for Loop Control: When creating loops, use state variables (counters, flags) to control loop termination and prevent infinite loops.
 
 ---
 
@@ -114,11 +125,11 @@ The Condition Node branches pipeline execution based on conditional logic, simil
 
 Use the Condition Node to:
 
-- **Branch execution** based on state variable conditions
-- **Create named output paths** for different conditions
-- **Implement if-else logic** in pipeline flow
-- **Route to specific nodes** based on evaluation results
-- **Provide multiple conditional branches** with named outputs
+* **Branch execution** based on state variable conditions
+* **Create named output paths** for different conditions
+* **Implement if-else logic** in pipeline flow
+* **Route to specific nodes** based on evaluation results
+* **Provide multiple conditional branches** with named outputs
 
 ### Parameters
 
@@ -205,11 +216,11 @@ The Decision Node uses LLM intelligence to make routing decisions based on natur
 
 Use the Decision Node to:
 
-- **Make intelligent routing decisions** using LLM reasoning
-- **Route based on natural language criteria** without writing conditions
-- **Handle complex decision logic** that's difficult to express in templates
-- **Leverage context and semantics** for routing decisions
-- **Simplify decision-making** with descriptive instructions
+* **Make intelligent routing decisions** using LLM reasoning
+* **Route based on natural language criteria** without writing conditions
+* **Handle complex decision logic** that's difficult to express in templates
+* **Leverage context and semantics** for routing decisions
+* **Simplify decision-making** with descriptive instructions
 
 ### Parameters
 
@@ -270,16 +281,17 @@ state:
     Clear, specific descriptions with examples improve routing accuracy. Structure your description with routing rules, criteria, and examples for each output path.
 
 ### Best Practices
-   - Write Clear Decision Criteria: Provide specific, unambiguous routing rules with examples for each path.
-   - Provide Examples in Description: Help the LLM understand expected routing with concrete examples.
-   - Always Define Default Output: Provide fallback for unclear cases to prevent pipeline failures.
-   - List All Decision Outputs: Include all possible routing targets in the decision_outputs list.
-   - Structure Descriptions Clearly: Use headings, lists, and clear formatting to organize routing criteria.
-   - Use Decision Node for Complex Routing: Choose when routing requires semantic understanding, not simple condition matching.
-   - Test with Various Inputs: Verify LLM routing across different scenarios and edge cases.
-   - Monitor Decision Quality: Review LLM routing decisions periodically and refine description if needed.
-   - Provide Context in Description: Help the LLM make better decisions by explaining the use case.
-   - Use Descriptive Output Names: Name outputs clearly to match description (e.g., "TechnicalSupport" not "Output1").
+
+   * Write Clear Decision Criteria: Provide specific, unambiguous routing rules with examples for each path.
+   * Provide Examples in Description: Help the LLM understand expected routing with concrete examples.
+   * Always Define Default Output: Provide fallback for unclear cases to prevent pipeline failures.
+   * List All Decision Outputs: Include all possible routing targets in the decision_outputs list.
+   * Structure Descriptions Clearly: Use headings, lists, and clear formatting to organize routing criteria.
+   * Use Decision Node for Complex Routing: Choose when routing requires semantic understanding, not simple condition matching.
+   * Test with Various Inputs: Verify LLM routing across different scenarios and edge cases.
+   * Monitor Decision Quality: Review LLM routing decisions periodically and refine description if needed.
+   * Provide Context in Description: Help the LLM make better decisions by explaining the use case.
+   * Use Descriptive Output Names: Name outputs clearly to match description (e.g., "TechnicalSupport" not "Output1").
 
 ---
 

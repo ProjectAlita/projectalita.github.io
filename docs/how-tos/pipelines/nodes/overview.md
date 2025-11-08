@@ -52,12 +52,6 @@ nodes:
     output: []
     structured_output: false
     input_mapping: {}
-    condition:
-      conditional_outputs:
-        - Custom 1
-  - id: Custom 1
-    type: custom
-    input_mapping: {}
     transition: Router 1
   - id: Router 1
     type: router
@@ -198,7 +192,7 @@ Each node type has additional parameters covered in the individual node type gui
 
 ## Node Categories
 
-ELITEA Pipelines provide **13 different node types** organized into **5 functional categories**. Understanding these categories helps you quickly identify the right node for your needs.
+ELITEA Pipelines provide **12 different node types** organized into **5 functional categories**. Understanding these categories helps you quickly identify the right node for your needs.
 
 ### Interaction Nodes
 
@@ -252,12 +246,6 @@ ELITEA Pipelines provide **13 different node types** organized into **5 function
       * Integrate with external APIs
       * Return structured results
 
-4. **[Custom Node](execution-nodes.md#custom-node)** - Advanced manual JSON configuration
-      * Make manual and advanced configurations
-      * Use any available toolkit (Agents, Pipelines, Toolkits, MCPs)
-      * Full control via JSON-based configuration
-      * For advanced users with specific requirements
-
 **Use Cases**:
 
 * Call external services or APIs
@@ -265,6 +253,12 @@ ELITEA Pipelines provide **13 different node types** organized into **5 function
 * Process or transform data
 * Integrate with third-party systems
 * Perform calculations or validations
+
+1. **Custom Node** - Advanced manual JSON configuration
+      * Make manual and advanced configurations
+      * Use any available toolkit (Agents, Pipelines, Toolkits, MCPs)
+      * Full control via JSON-based configuration
+      * For advanced users with specific requirements
 
 ---
 
@@ -406,7 +400,6 @@ Need to...
 | Route by status (approved/rejected) | Router Node | Condition Node |
 | Process API response array | Loop from Tool Node | Loop Node |
 | Reuse existing pipeline | Pipeline (Subgraph) Node | Duplicate nodes |
-| Advanced custom configuration | Custom Node | Code Node |
 
 ## Common Patterns
 

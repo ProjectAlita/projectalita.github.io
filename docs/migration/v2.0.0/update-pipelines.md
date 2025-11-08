@@ -11,7 +11,7 @@ This guide provides instructions for migrating pipelines from earlier ELITEA ver
 ---
 
 
-## 1. Function Node Changes (Version 1.7+)
+## Function Node Changes (Version 1.7+)
 
 ### Issue Description
 
@@ -25,14 +25,12 @@ In version 1.7, "Function" nodes were significantly modified and can now only be
 
  ![Old pipelines](<../../img/migration/v2.0.0/empty_function.png>)
 
-2. **Replace with an Agent node**:
-   1. Delete the existing Function node.
-   2. Add a new **Agent** node type and integrate it into the flow (add all required connections).
-   3. Select the appropriate agent from the dropdown.
-
-3. **Configure input/output**: Set up the input and output connections as they were in the original Function node.
-
-4. **Add task description**: Fill in the task field — this is crucial as it triggers the agent execution.
+1. **Replace with an Agent node**:
+      1. Delete the existing Function node.
+      2. Add a new **Agent** node type and integrate it into the flow (add all required connections).
+      3. Select the appropriate agent from the dropdown.
+2. **Configure input/output**: Set up the input and output connections as they were in the original Function node.
+3. **Add task description**: Fill in the task field — this is crucial as it triggers the agent execution.
 
 !!! warning "Task Field Requirement"
     The task field in Agent nodes is mandatory and is used to trigger agent execution. Ensure you provide a clear, descriptive task for each Agent node.
@@ -43,7 +41,7 @@ Function nodes can still be used for toolkit operations without LLM participatio
 
 ---
 
-## 2. Prompt Entity Removal (Version 1.7+)
+## Prompt Entity Removal (Version 1.7+)
 
 ### Issue Description
 
@@ -56,17 +54,14 @@ In version 1.7, the prompt entity was removed from ELITEA. Previously existing p
 **For Tool Nodes Using Prompts**
 
 1. **Identify legacy Tool nodes**: Find Tool nodes that reference converted prompts (now agents).
-
 2. **Replace with Agent nodes**:
-   - Remove the existing Tool node.
-   - Add a new **Agent** node.
-   - Select the converted agent (formerly a prompt) from the agent dropdown.
-
+      * Remove the existing Tool node.
+      * Add a new **Agent** node.
+      * Select the converted agent (formerly a prompt) from the agent dropdown.
 3. **Configure parameters**:
-   - Set up input connections.
-   - Configure output handling.
-   - Add the required task description.
-
+      * Set up input connections.
+      * Configure output handling.
+      * Add the required task description.
 4. **Validate conversion**: Test the pipeline to ensure the converted prompt-to-agent functions correctly.
 
 **For Function Nodes Using Prompts**
@@ -75,7 +70,7 @@ Follow the same process as described in the Function Node Changes section above.
 
 ---
 
-## 3. Node Disconnection Issues
+## Node Disconnection Issues
 
 ### Issue Description
 
@@ -89,11 +84,9 @@ When replacing nodes that are followed by Decision, Condition, or Router nodes, 
 2. **Replace nodes**: Perform the necessary node replacements as described above.
 3. **Save pipeline**: Save your changes.
 4. **Reconnect nodes**: Manually reconnect the nodes to their proper destinations:
-
-   - **Decision nodes**: Reconnect to the appropriate conditional branches.
-   - **Condition nodes**: Reestablish logical flow connections.
-   - **Router nodes**: Restore routing configurations.
-
+      * **Decision nodes**: Reconnect to the appropriate conditional branches.
+     * **Condition nodes**: Reestablish logical flow connections.
+     * **Router nodes**: Restore routing configurations.
 5. **Test connections**: Verify all connections work as expected.
 
 !!! tip "Connection Management"
@@ -101,7 +94,7 @@ When replacing nodes that are followed by Decision, Condition, or Router nodes, 
 
 ---
 
-## 4. State Format Changes
+## State Format Changes
 
 ### Issue Description
 
@@ -142,7 +135,7 @@ New YAML syntax:
 
 ---
 
-## 5. Pre-1.7 Agent toolkit Compatibility Issues
+## Pre-1.7 Agent toolkit Compatibility Issues
 
 ### Issue Description
 
@@ -168,11 +161,9 @@ Additionally, you may see warning messages related to attached toolkits and agen
 
 1. **Identify affected toolkits**: Review all toolkits attached to the pipeline or nested agents.
 2. **Update toolkit configuration**:
-
-   - Open each affected toolkit.
-   - Select or create new credentials for it.
-   - Deselect obsolete tools, if any.
-
+      * Open each affected toolkit.
+      * Select or create new credentials for it.
+      * Deselect obsolete tools, if any.
 3. **Test toolkit functionality**: Verify that the updated toolkit works correctly in isolation.
 
 !!! warning "Agent Recreation May Be Required"
@@ -190,7 +181,8 @@ If you encounter issues during migration:
 2. **Contact support**: For complex issues, contact support at **SupportAlita@epam.com**.
 
 When contacting support, provide:
-- Pipeline version information
-- Specific error messages
-- Screenshots of the problematic configurations
-- Description of attempted migration steps.
+
+* Pipeline version information
+* Specific error messages
+* Screenshots of the problematic configurations
+* Description of attempted migration steps.

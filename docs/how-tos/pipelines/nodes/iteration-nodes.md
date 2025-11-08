@@ -4,11 +4,12 @@ Iteration Nodes enable your pipeline to perform repetitive tasks, processing mul
 
 **Available Iteration Nodes:**
 
-- **[Loop Node](#loop-node)** - Execute a toolkit repeatedly based on task instructions
-- **[Loop from Tool Node](#loop-from-tool-node)** - Generate a list dynamically and process each item
+* **[Loop Node](#loop-node)** - Execute a toolkit repeatedly based on task instructions
+* **[Loop from Tool Node](#loop-from-tool-node)** - Generate a list dynamically and process each item
+* **[Router Node (for Loops)](#router-node-for-loops)** - Create custom loop structures with conditional routing
 
 !!! note "Understanding Iteration"
-    Iteration nodes are powerful but can be complex. They allow you to process multiple items (files, records, tasks) in a single pipeline execution, making them essential for automation and batch processing workflows.
+    Iteration nodes are powerful but can be complex. They allow you to process multiple items (files, records, tasks) in a single pipeline execution, making them essential for automation and batch processing workflows. You can also create custom loops using Router nodes for more precise control over iteration logic.
 
 ---
 
@@ -22,11 +23,11 @@ The Loop Node executes a selected toolkit repeatedly, creating input for each it
 
 Use the Loop Node to:
 
-- **Process lists of items** where you define iteration logic in the Task field
-- **Execute the same action repeatedly** with different inputs
-- **Automate batch operations** across multiple entities
-- **Iterate through data** extracted from state or previous nodes
-- **Repeat toolkit execution** until all items are processed
+* **Process lists of items** where you define iteration logic in the Task field
+* **Execute the same action repeatedly** with different inputs
+* **Automate batch operations** across multiple entities
+* **Iterate through data** extracted from state or previous nodes
+* **Repeat toolkit execution** until all items are processed
 
 ### Parameters
 
@@ -88,11 +89,11 @@ The Loop from Tool Node is a two-stage iteration mechanism: first, it executes a
 
 Use the Loop from Tool Node to:
 
-- **Dynamically generate iteration lists** using a toolkit
-- **Process items from tool outputs** (e.g., files from a directory, tickets from Jira)
-- **Chain two toolkits** where first generates inputs for second
-- **Automate discovery and processing** workflows
-- **Handle variable-length lists** determined at runtime
+* **Dynamically generate iteration lists** using a toolkit
+* **Process items from tool outputs** (e.g., files from a directory, tickets from Jira)
+* **Chain two toolkits** where first generates inputs for second
+* **Automate discovery and processing** workflows
+* **Handle variable-length lists** determined at runtime
 
 ![Loop from Tool Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/loopfrom-tool-node-add.png)
 
@@ -137,37 +138,188 @@ Use the Loop from Tool Node to:
     Loop from Tool executes loop toolkit **for each item** in the list. Large lists can result in many iterations. Test with small lists first and consider rate limits.
 
 ### Best Practices
-   - Ensure List Tool Returns Structured Data: The first toolkit must return an array of objects with consistent fields.
-   - Map All Required Loop Tool Parameters: Include all necessary mappings for the item processor tool.
-   - Enable Structured Output: Always enable for list generation since the tool must return an array.
-   - Test List Generation First: Verify the list tool works before adding loop processing; check field names in output.
-   - Use Descriptive Variable Names: Clear mapping names improve readability (e.g., "customer_id" not "id").
-   - Handle Empty Lists: Ensure list tool returns empty array `[]` not null; loop skips execution if list is empty.
-   - Consider List Size Limits: Be aware of iteration count; test with small subsets first.
-   - Provide Input for List Tool: Ensure list tool has needed context (repository name, directory path, etc.).
-   - Use Task for Additional Context: Provide instructions to list tool (e.g., "Get only Python files modified in last 7 days").
-   - Document Mapping Expectations: Comment expected structure from list tool and what loop tool expects.
-   - Plan for Failures: Consider what happens if list tool fails; test with empty repositories, missing directories.
-   - Chain Outputs Properly: Ensure accumulated output is usable by next node.
+
+   * Ensure List Tool Returns Structured Data: The first toolkit must return an array of objects with consistent fields.
+   * Map All Required Loop Tool Parameters: Include all necessary mappings for the item processor tool.
+   * Enable Structured Output: Always enable for list generation since the tool must return an array.
+   * Test List Generation First: Verify the list tool works before adding loop processing; check field names in output.
+   * Use Descriptive Variable Names: Clear mapping names improve readability (e.g., "customer_id" not "id").
+   * Handle Empty Lists: Ensure list tool returns empty array `[]` not null; loop skips execution if list is empty.
+   * Consider List Size Limits: Be aware of iteration count; test with small subsets first.
+   * Provide Input for List Tool: Ensure list tool has needed context (repository name, directory path, etc.).
+   * Use Task for Additional Context: Provide instructions to list tool (e.g., "Get only Python files modified in last 7 days").
+   * Document Mapping Expectations: Comment expected structure from list tool and what loop tool expects.
+   * Plan for Failures: Consider what happens if list tool fails; test with empty repositories, missing directories.
+   * Chain Outputs Properly: Ensure accumulated output is usable by next node.
+
+---
+
+## Router Node (for Loops)
+
+The Router Node, typically used for conditional branching, can also create custom loop structures by routing execution back to previous nodes. This approach provides more precise control over loop conditions and iteration logic compared to dedicated Loop nodes.
+
+### Purpose
+
+Use the Router Node for loops to:
+
+* **Create custom iteration logic** with explicit loop control conditions
+* **Route back to previous nodes** to repeat execution
+* **Control loop termination** using state variables (counters, flags, conditions)
+* **Implement complex loop patterns** that Loop and Loop from Tool nodes don't support
+* **Combine conditional logic with iteration** in a single node
+
+### How It Works
+
+Router-based loops follow this pattern:
+
+1. **Initialize**: Set up loop control variables (counter, list index, continuation flag) in state
+2. **Process**: Execute processing nodes (LLM, Function, Tool, Code nodes)
+3. **Update State**: Modify loop control variables (increment counter, update flag, process next item)
+4. **Route Decision**: Router evaluates loop condition:
+   - **Continue Loop**: Routes back to processing node if condition met (e.g., counter < max)
+   - **Exit Loop**: Routes to next node or END if loop should terminate
+5. **Repeat**: Steps 2-4 repeat until exit condition is met
+
+### Configuration Pattern
+
+**Basic Loop Structure:**
+
+```yaml
+nodes:
+  - id: InitializeLoop
+    type: state_modifier
+    template: "{{ 0 }}"  # Initialize counter
+    output:
+      - loop_counter
+    transition: ProcessItem
+    
+  - id: ProcessItem
+    type: llm
+    # Processing logic here
+    transition: UpdateCounter
+    
+  - id: UpdateCounter
+    type: code
+    code:
+      type: fixed
+      value: |
+        counter = alita_state.get('loop_counter', 0)
+        max_iterations = alita_state.get('max_iterations', 10)
+        return {
+          "loop_counter": counter + 1,
+          "continue_loop": counter + 1 < max_iterations
+        }
+    input:
+      - loop_counter
+      - max_iterations
+    output:
+      - loop_counter
+      - continue_loop
+    structured_output: true
+    transition: LoopRouter
+    
+  - id: LoopRouter
+    type: router
+    condition: |
+      {% if continue_loop %}
+      ProcessItem
+      {% else %}
+      END
+      {% endif %}
+    routes:
+      - ProcessItem
+      - END
+    input:
+      - continue_loop
+    default_output: END
+
+state:
+  loop_counter:
+    type: int
+    value: 0
+  max_iterations:
+    type: int
+    value: 10
+  continue_loop:
+    type: bool
+    value: true
+```
+
+### Loop Patterns
+
+**Counter-Based Loop:**
+- Initialize counter to 0
+- Process item
+- Increment counter
+- Router checks if counter < max_iterations
+- Routes back to process or exits
+
+**List Processing Loop:**
+- Initialize list index to 0
+- Process current item at index
+- Increment index
+- Router checks if index < list length
+- Routes back to process next item or exits
+
+**Condition-Based Loop:**
+- Initialize continuation flag
+- Process and update state
+- Code node sets flag based on condition (e.g., task complete, error occurred)
+- Router checks flag
+- Routes back to process or exits
+
+### Best Practices
+
+   * Initialize Loop Variables: Always set up counters, flags, or indices before entering the loop.
+   * Prevent Infinite Loops: Include explicit termination conditions (max iterations, completion flag) to ensure loops exit.
+   * Use State Variables for Control: Track loop state with dedicated variables (loop_counter, current_index, continue_flag).
+   * Update State Between Iterations: Use Code or State Modifier nodes to update loop control variables after each iteration.
+   * Route Explicitly: Define both continue and exit paths clearly in Router condition.
+   * Set Maximum Iterations: Always include a max iteration limit as a safety measure.
+   * Test Loop Termination: Verify loops exit correctly under all conditions (normal completion, error, max iterations).
+   * Document Loop Logic: Comment YAML to explain loop purpose, termination condition, and iteration count.
+   * Consider Performance: Router-based loops execute synchronously; for large iteration counts, consider Loop or Loop from Tool nodes.
+   * Use Descriptive Variable Names: Name loop control variables clearly (loop_counter not i, continue_processing not flag).
+
+### When to Use Router for Loops
+
+**Choose Router-based loops when you**:
+
+* Need custom loop termination logic not supported by Loop nodes
+* Want explicit control over every iteration
+* Require complex conditional logic combined with iteration
+* Need to route to different processing paths within the loop
+* Have simple iteration requirements (< 20 iterations typically)
+
+**Use dedicated Loop nodes when you**:
+
+* Processing large lists (20+ items)
+* Loop logic fits Loop or Loop from Tool patterns
+* Performance is critical (dedicated Loop nodes are optimized)
+* Iteration logic is straightforward (process each item in a list)
 
 ---
 
 ## Iteration Nodes Comparison
 
-| Feature | Loop Node | Loop from Tool Node |
-|---------|-----------|---------------------|
-| **Purpose** | Execute toolkit repeatedly based on task instructions | Generate list dynamically, then process each item |
-| **Input Source** | Task instructions describe how to extract/create inputs | First toolkit generates the list of inputs |
-| **Iteration Logic** | Defined in Task field using natural language | Defined by output of list-generating toolkit |
-| **Toolkit Selection** | Single toolkit (Toolkits/MCPs/Agents/Pipelines) | Two toolkits: list generator + item processor |
-| **Tool Selection** | Optional (for Toolkits/MCPs only) | Two tools: list tool + loop tool (for Toolkits/MCPs) |
-| **Variables Mapping** | Not applicable | **Required** - maps list tool outputs to loop tool inputs |
-| **Configuration Complexity** | Medium (Task instructions) | High (two toolkits + variables mapping) |
-| **Use When** | You can describe iteration logic in Task | You need to dynamically discover items to process |
-| **List Generation** | Internal (from Task + LLM) | External (from toolkit execution) |
-| **Example Use Case** | Process file paths mentioned in chat | Get files from GitHub directory and process each |
-| **Performance** | Task execution + N toolkit calls | List tool call + N loop toolkit calls |
-| **Output** | Accumulated results from all iterations | Accumulated results from all loop iterations |
+| Feature | Loop Node | Loop from Tool Node | Router Node (for Loops) |
+|---------|-----------|---------------------|------------------------|
+| **Purpose** | Execute toolkit repeatedly based on task instructions | Generate list dynamically, then process each item | Create custom loop structures with conditional routing |
+| **Input Source** | Task instructions describe how to extract/create inputs | First toolkit generates the list of inputs | State variables (counters, flags, conditions) |
+| **Iteration Logic** | Defined in Task field using natural language | Defined by output of list-generating toolkit | Defined by Router condition template |
+| **Toolkit Selection** | Single toolkit (Toolkits/MCPs/Agents/Pipelines) | Two toolkits: list generator + item processor | N/A (uses other nodes for processing) |
+| **Tool Selection** | Optional (for Toolkits/MCPs only) | Two tools: list tool + loop tool (for Toolkits/MCPs) | N/A |
+| **Variables Mapping** | Not applicable | **Required** - maps list tool outputs to loop tool inputs | Not applicable (uses state variables) |
+| **Loop Control** | Internal (LLM-based from Task) | Internal (list length) | Explicit (Router condition evaluates state) |
+| **Configuration Complexity** | Medium (Task instructions) | High (two toolkits + variables mapping) | Medium-High (multiple nodes + state management) |
+| **Use When** | You can describe iteration logic in Task | You need to dynamically discover items to process | You need custom loop control logic |
+| **List Generation** | Internal (from Task + LLM) | External (from toolkit execution) | Manual (via state variables) |
+| **Example Use Case** | Process file paths mentioned in chat | Get files from GitHub directory and process each | Counter-based loop, process until condition met |
+| **Performance** | Task execution + N toolkit calls | List tool call + N loop toolkit calls | N iterations through pipeline nodes |
+| **Termination Control** | Task-defined or list exhaustion | List exhaustion | Explicit condition in Router |
+| **Output** | Accumulated results from all iterations | Accumulated results from all loop iterations | Accumulated via state updates |
+| **Flexibility** | Medium | Medium | Very High (complete control) |
+| **Best For** | Simple iteration with natural language | Dynamic list discovery + processing | Custom loop logic, complex conditions |
 
 ### When to Use Each Node
 
@@ -175,11 +327,11 @@ Use the Loop from Tool Node to:
 
 **Choose Loop Node when you**:
 
-- Can describe iteration logic in natural language
-- Know what items to process (from state or chat history)
-- Want simple configuration with task instructions
-- Don't need dynamic list discovery
-- Prefer LLM-based input generation
+* Can describe iteration logic in natural language
+* Know what items to process (from state or chat history)
+* Want simple configuration with task instructions
+* Don't need dynamic list discovery
+* Prefer LLM-based input generation
 
 **Example**: Process file paths mentioned in chat, iterate through known list of tasks, generate reports for ID range 1-100.
 
@@ -187,13 +339,25 @@ Use the Loop from Tool Node to:
 
 **Choose Loop from Tool Node when you**:
 
-- Need to dynamically discover items at runtime
-- Items come from external source (GitHub, Jira, database)
-- List generation requires toolkit execution
-- Want to chain two toolkits (discovery + processing)
-- Need structured mapping between tools
+* Need to dynamically discover items at runtime
+* Items come from external source (GitHub, Jira, database)
+* List generation requires toolkit execution
+* Want to chain two toolkits (discovery + processing)
+* Need structured mapping between tools
 
 **Example**: Get all files from GitHub directory then document each, list Confluence pages then process each, discover Jira tickets then update each.
+
+#### Router Node (for Loops) ✅
+
+**Choose Router Node for loops when you**:
+
+* Need custom loop termination conditions
+* Want explicit control over iteration logic
+* Require complex conditional routing within loops
+* Have simple iteration requirements (< 20 iterations)
+* Need to combine branching and iteration logic
+
+**Example**: Process items until condition met, retry operation with counter limit, iterate through workflow steps with conditional branching.
 
 ---
 

@@ -228,27 +228,7 @@ Executes Python in sandbox.
 !!! info "Code Node Rules"
     Use `alita_state.get('var')` to access state variables, return dict with `structured_output: true`
 
-### 6. [Custom Node](nodes/execution-nodes.md#custom-node)
-
-Executes custom Python with toolkit access.
-
-```yaml
-- id: CustomProcessor
-  type: custom
-  code:
-    type: fixed
-    value: |
-      result = {"status": "processed"}
-      result
-  input: [input_data]
-  output: [custom_result]
-  structured_output: true
-  transition: NextNode
-  tool_names:              # Optional
-    toolkit1: [tool_a]
-```
-
-### 7. [Router Node](nodes/control-flow-nodes.md#router-node)
+### 6. [Router Node](nodes/control-flow-nodes.md#router-node)
 
 Template-based routing with Jinja2.
 
@@ -268,7 +248,7 @@ Template-based routing with Jinja2.
     {% endif %}
 ```
 
-### 8. [Condition Node](nodes/control-flow-nodes.md#condition-node)
+### 7. [Condition Node](nodes/control-flow-nodes.md#condition-node)
 
 Boolean-based routing.
 
@@ -289,7 +269,7 @@ Boolean-based routing.
     default_output: ReviewNode
 ```
 
-### 9. [Decision Node](nodes/control-flow-nodes.md#decision-node)
+### 8. [Decision Node](nodes/control-flow-nodes.md#decision-node)
 
 LLM-powered routing.
 
@@ -309,7 +289,7 @@ LLM-powered routing.
     toolkit1: [tool_a]
 ```
 
-### 10. [Loop Node](nodes/iteration-nodes.md#loop-node)
+### 9. [Loop Node](nodes/iteration-nodes.md#loop-node)
 
 Iterates over task list.
 
@@ -329,7 +309,7 @@ Iterates over task list.
         items: item_list
 ```
 
-### 11. [Loop from Tool Node](nodes/iteration-nodes.md#loop-from-tool-node)
+### 10. [Loop from Tool Node](nodes/iteration-nodes.md#loop-from-tool-node)
 
 Iterates over toolkit results.
 
@@ -357,7 +337,7 @@ Iterates over toolkit results.
 !!! warning "Required Mapping"
     `variables_mapping` is critical—see [Iteration Nodes](nodes/iteration-nodes.md#loop-from-tool-node)
 
-### 12. [State Modifier Node](nodes/utility-nodes.md#state-modifier-node)
+### 11. [State Modifier Node](nodes/utility-nodes.md#state-modifier-node)
 
 Transforms state with Jinja2 templates.
 
@@ -390,7 +370,7 @@ Transforms state with Jinja2 templates.
   transition: NextStep
 ```
 
-### 13. [Pipeline Node](nodes/utility-nodes.md#pipeline-subgraph-node)
+### 12. [Pipeline Node](nodes/utility-nodes.md#pipeline-subgraph-node)
 
 Executes nested pipelines.
 
@@ -701,7 +681,7 @@ nodes:
 * [Nodes Connectors](nodes-connectors.md) - Connection patterns
 * [Entry Point](entry-point.md) - Entry point rules
 * [Interaction Nodes](nodes/interaction-nodes.md) - LLM, Agent
-* [Execution Nodes](nodes/execution-nodes.md) - Function, Tool, Code, Custom
+* [Execution Nodes](nodes/execution-nodes.md) - Function, Tool, Code nodes
 * [Control Flow Nodes](nodes/control-flow-nodes.md) - Router, Condition, Decision
 * [Iteration Nodes](nodes/iteration-nodes.md) - Loop nodes
 * [Utility Nodes](nodes/utility-nodes.md) - State Modifier, Pipeline

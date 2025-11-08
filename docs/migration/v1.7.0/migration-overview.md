@@ -8,10 +8,10 @@ Version 1.7.0 introduces significant improvements to ELITEA's data handling and 
 
 ## What's New in v1.7.0
 
-- **New Indexing System**: Replaces the legacy Datasources with integrated toolkit-based indexing
-- **Next Environment**: A dedicated preview environment with a snapshot of your data for safe testing
-- **Enhanced Credentials System**: Standalone credentials replace integrations
-- **Improved Search Capabilities**: Advanced search tools including stepback search
+* **New Indexing System**: Replaces the legacy Datasources with integrated toolkit-based indexing
+* **Next Environment**: A dedicated preview environment with a snapshot of your data for safe testing
+* **Enhanced Credentials System**: Standalone credentials replace integrations
+* **Improved Search Capabilities**: Advanced search tools including stepback search
 
 ## Migration Guides
 
@@ -22,11 +22,12 @@ Get up and running quickly in the Next environment with this comprehensive guide
 **[Quick Start for Next Environment](next-quick-start.md)**
 
 This guide covers:
-- What was migrated from Nexus (your main environment)
-- What was converted (Prompts → Agents, Datasources → Temporary Toolkits)
-- What needs to be recreated (Datasets, Integrations → Credentials)
-- Step-by-step setup instructions
-- How to configure EPAM AI DIAL keys for production use
+
+* What was migrated from Nexus (your main environment)
+* What was converted (Prompts → Agents, Datasources → Temporary Toolkits)
+* What needs to be recreated (Datasets, Integrations → Credentials)
+* Step-by-step setup instructions
+* How to configure EPAM AI DIAL keys for production use
 
 ### 2. Migrate Datasources to Indexing
 
@@ -35,14 +36,15 @@ Convert your legacy Datasources to the new Indexing system:
 **[Migrate Datasources to Indexing](migrate-datasources-to-indexing.md)**
 
 This comprehensive migration guide includes:
-- Overview of changes from Datasources to Indexing
-- Migration examples for each datasource type:
-  - File/Table → Artifacts or SharePoint Indexing
-  - Jira → Jira Indexing
-  - Confluence → Confluence Indexing
-  - Git → Repository Indexing
-- Key improvements in the new indexing system
-- Complete migration checklist
+
+* Overview of changes from Datasources to Indexing
+* Migration examples for each datasource type:
+    * File/Table → Artifacts or SharePoint Indexing
+    * Jira → Jira Indexing
+    * Confluence → Confluence Indexing
+    * Git → Repository Indexing
+* Key improvements in the new indexing system
+* Complete migration checklist
 
 ### 3. Configure AI DIAL Keys (Recommended)
 
@@ -136,23 +138,26 @@ See: [Configure EPAM AI DIAL Keys](../../getting-started/configure-epam-ai-dial-
 ### Prompts → Agents
 
 All prompts have been automatically converted to agents. Agents can now:
-- Work without a toolkit (lightweight replacement for prompts)
-- Use variables directly
-- Be configured with more sophisticated behaviors
+
+* Work without a toolkit (lightweight replacement for prompts)
+* Use variables directly
+* Be configured with more sophisticated behaviors
 
 ### Integrations → Credentials
 
 Integrations are deprecated. Use the new Credentials system:
-- Standalone entity for better management
-- Attach to multiple toolkits
-- Support for both project and private scopes
-- More credential types available
+
+* Standalone entity for better management
+* Attach to multiple toolkits
+* Support for both project and private scopes
+* More credential types available
 
 ## Troubleshooting
 
 ### Issue: Toolkit shows "Disconnected" or configuration errors
 
 **Solution:**
+
 1. Verify the credential is properly configured
 2. Check that required tools are enabled
 3. Ensure PgVector and Embedding model are selected
@@ -161,6 +166,7 @@ Integrations are deprecated. Use the new Credentials system:
 ### Issue: Search returns no results after indexing
 
 **Solution:**
+
 1. Verify the index was created successfully (check Tool Testing output)
 2. Confirm the collection name/suffix matches your search
 3. Check that the embedding model is the same used for indexing
@@ -169,30 +175,32 @@ Integrations are deprecated. Use the new Credentials system:
 ### Issue: "Daily limit reached" for LLM models
 
 **Solution:**
+
 Configure your own EPAM AI DIAL keys following the [Configure EPAM AI DIAL Keys](../../getting-started/configure-epam-ai-dial-key.md) guide.
 
 ## Getting Help
 
 If you encounter issues during migration:
 
-- **FAQs**: Check [Frequently Asked Questions](../../support/faqs.md)
-- **Contact Support**: Email [SupportAlita@epam.com](mailto:SupportAlita@epam.com)
-- **Documentation**: Browse [How-To Guides](../../how-tos/indexing/indexing-overview.md)
+* **FAQs**: Check [Frequently Asked Questions](../../support/faqs.md)
+* **Contact Support**: Email [SupportAlita@epam.com](mailto:SupportAlita@epam.com)
+* **Documentation**: Browse [How-To Guides](../../how-tos/indexing/indexing-overview.md)
 
 When contacting support, include:
-- Environment (Next or Nexus)
-- Project name and workspace type (Private/Team)
-- Clear description of the issue
-- Screenshots or error messages
-- Expected vs actual behavior
+
+* Environment (Next or Nexus)
+* Project name and workspace type (Private/Team)
+* Clear description of the issue
+* Screenshots or error messages
+* Expected vs actual behavior
 
 ## Related Documentation
 
-- [Release Notes - v1.7.0](../../release-notes/archived/rn11.md)
-- [Indexing Overview](../../how-tos/indexing/indexing-overview.md)
-- [Indexing Tools Reference](../../how-tos/indexing/indexing-tools.md)
-- [How to Use Credentials](../../how-tos/credentials-toolkits/how-to-use-credentials.md)
-- [Toolkits Menu Guide](../../menus/toolkits.md)
+* [Release Notes - v1.7.0](../../release-notes/archived/rn11.md)
+* [Indexing Overview](../../how-tos/indexing/indexing-overview.md)
+* [Indexing Tools Reference](../../how-tos/indexing/indexing-tools.md)
+* [How to Use Credentials](../../how-tos/credentials-toolkits/how-to-use-credentials.md)
+* [Toolkits Menu Guide](../../menus/toolkits.md)
 
 ---
 

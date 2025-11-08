@@ -7,7 +7,7 @@ Welcome to **ELITEA** — your comprehensive platform for building, deploying, a
 ## Information
  
 * **Release Version**: 2.0.0 Beta
-* **Released on**: 03-Nov-2025
+* **Released on**: 10-Nov-2025
 * **Access for 2.0.0 Beta**: [Next environment](https://next.elitea.ai)
 
  
@@ -195,6 +195,9 @@ Pipeline state management has been redesigned to provide a clearer, more intuiti
  
 ## Fixed Issues
 
+* [#2376](https://github.com/ProjectAlita/projectalita.github.io/issues/2376) **Inflated Token Count in Monitoring**: Fixed token counting inaccuracy due to duplicate/transformed messages; monitoring now reflects actual tokens sent to LLM.
+* [#2361](https://github.com/ProjectAlita/projectalita.github.io/issues/2361) **Flow Editor Crashes with Function/Custom Nodes**: Fixed React error (#185) when moving, editing, or modifying Function or Custom nodes in Flow Editor; nodes now manipulable without crashing.
+* [#2340](https://github.com/ProjectAlita/projectalita.github.io/issues/2340) **Bitbucket Indexing Fails with JSON Files**: Fixed indexing failure with AttributeError when Bitbucket repositories contain JSON files; JSON files now properly indexed.
 * [#2331](https://github.com/ProjectAlita/projectalita.github.io/issues/2331) **Model Settings Disabled in New Chat**: Fixed disabled Settings icon in new conversations preventing LLM configuration; settings now accessible before first message.
 * [#2327](https://github.com/ProjectAlita/projectalita.github.io/issues/2327) **SharePoint Toolkit Permissions Error for External Sites**: Fixed "insufficient permissions" error when connecting to external SharePoint sites with properly configured credentials; toolkit now successfully connects using graph.microsoft.com/.default scope.
 * [#2300](https://github.com/ProjectAlita/projectalita.github.io/issues/2300) **OpenAPI Toolkit Form View Missing**: Fixed OpenAPI toolkit opening in Raw JSON only after save; Form view now available for editing saved toolkits.
@@ -245,7 +248,13 @@ Pipeline state management has been redesigned to provide a clearer, more intuiti
  
  
 ## Known Issues
- 
+
+* [#2407](https://github.com/ProjectAlita/projectalita.github.io/issues/2407) **LLM Model Breaks When Clearing Token Fields**: Clearing "Context Window" or "Max Output Tokens" fields in LLM model configuration causes 500 error and model becomes unavailable; workaround is to delete and recreate the model with proper values.
+* [#2405](https://github.com/ProjectAlita/projectalita.github.io/issues/2405) **No Upload Progress for Large File Attachments**: No upload progress indicator shown when attaching large files (5MB+) in conversations, causing UI to appear frozen; files eventually upload successfully.
+* [#2389](https://github.com/ProjectAlita/projectalita.github.io/issues/2389) **Browser Toolkit Fails Without Credentials**: Browser toolkit execution fails when saved without credentials selected, even when Google tool is not selected; workaround is to add credentials.
+* [#2375](https://github.com/ProjectAlita/projectalita.github.io/issues/2375) **Multi-File Attachment Rejected with Single Duplicate**: When selecting multiple files for chat attachment, all files (including unique ones) are rejected if one duplicate is present; workaround is to deselect duplicate files before attaching.
+* [#2360](https://github.com/ProjectAlita/projectalita.github.io/issues/2360) **Deprecated Prompt Field in New LLM Nodes**: Newly created LLM nodes include deprecated "prompt" field in YAML alongside new "system" and "task" fields; deprecated field should be ignored.
+* [#2352](https://github.com/ProjectAlita/projectalita.github.io/issues/2352) **SharePoint Toolkit Read List Fails with Graph API**: Read List functionality fails with error when SharePoint toolkit is configured to use Graph API; workaround unavailable.
 * [#2351](https://github.com/ProjectAlita/projectalita.github.io/issues/2351) **Zephyr Essentials Reindexing Removes Previous Data**: Reindexing in Zephyr Essentials toolkit deletes previously indexed documents even when "Clean Index" is not selected; existing data is removed and reindexed.
 * [#2350](https://github.com/ProjectAlita/projectalita.github.io/issues/2350) **Misleading Error Message for Token Limit**: Agent shows "Maximum tool execution iterations (15) reached" when actual issue is Max Output Tokens limit; increase Max Output Tokens in Anthropic model settings to resolve.
 * [#2304](https://github.com/ProjectAlita/projectalita.github.io/issues/2304) **MCP Client Disconnects on macOS**: MCP client disconnects from platform despite tray showing "connected" on macOS; logs show "packet queue is empty" errors and repeated disconnect/reconnect cycles.

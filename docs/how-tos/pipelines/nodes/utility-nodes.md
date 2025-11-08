@@ -22,12 +22,12 @@ The State Modifier Node updates, transforms, or cleans up parts of the workflow'
 
 Use the State Modifier Node to:
 
-- **Transform state variables** using Jinja2 template logic
-- **Generate formatted content** from existing state data
-- **Clean up temporary variables** after processing
-- **Prepare state** for the next node in the workflow
-- **Aggregate or summarize data** from multiple state variables
-- **Reset counters, flags, or temporary data** to avoid stale information
+* **Transform state variables** using Jinja2 template logic
+* **Generate formatted content** from existing state data
+* **Clean up temporary variables** after processing
+* **Prepare state** for the next node in the workflow
+* **Aggregate or summarize data** from multiple state variables
+* **Reset counters, flags, or temporary data** to avoid stale information
 
 ### Parameters
 
@@ -81,16 +81,17 @@ state:
     **Filters:** Use `|default('value')` for optional variables, `|upper`/`|lower` for case conversion, `|length` for counts<br>**Multi-line:** Use YAML multi-line syntax (`|`) for complex templates<br>**Formatting:** Access nested data with dot notation: `{{ user.profile.name }}`
 
 ### Best Practices
-   - Always List Input Variables: Explicitly specify all variables used in template to avoid rendering errors.
-   - Use Default Filters for Optional Variables: Handle missing or null values gracefully with `{{ var|default('default_value') }}`.
-   - Clean Up Temporary Variables: Reset variables that are no longer needed using variables_to_clean.
-   - Format Long Templates for Readability: Use multi-line YAML strings with proper indentation.
-   - Test Templates with Sample Data: Verify template rendering before deployment with sample state data.
-   - Use Descriptive Output Names: Name outputs to indicate their content (e.g., "formatted_summary" not "result").
-   - Document Complex Templates: Add comments explaining template logic for maintainability.
-   - Validate State Before Cleaning: Ensure cleaned variables aren't needed by later nodes.
-   - Use State Modifier for Formatting Only: Don't use for complex logic - use LLM or Code nodes instead.
-   - Combine Multiple Variables in Output: Generate comprehensive output in single template rather than multiple State Modifiers.
+
+   * Always List Input Variables: Explicitly specify all variables used in template to avoid rendering errors.
+   * Use Default Filters for Optional Variables: Handle missing or null values gracefully with `{{ var|default('default_value') }}`.
+   * Clean Up Temporary Variables: Reset variables that are no longer needed using variables_to_clean.
+   * Format Long Templates for Readability: Use multi-line YAML strings with proper indentation.
+   * Test Templates with Sample Data: Verify template rendering before deployment with sample state data.
+   * Use Descriptive Output Names: Name outputs to indicate their content (e.g., "formatted_summary" not "result").
+   * Document Complex Templates: Add comments explaining template logic for maintainability.
+   * Validate State Before Cleaning: Ensure cleaned variables aren't needed by later nodes.
+   * Use State Modifier for Formatting Only: Don't use for complex logic - use LLM or Code nodes instead.
+   * Combine Multiple Variables in Output: Generate comprehensive output in single template rather than multiple State Modifiers.
 
 ---
 
@@ -104,12 +105,12 @@ The Pipeline (Subgraph) Node executes another pipeline as a nested component wit
 
 Use the Pipeline (Subgraph) Node to:
 
-- **Execute nested pipelines** within your main workflow
-- **Reuse pipeline modules** across multiple parent pipelines
-- **Modularize complex workflows** into smaller, manageable components
-- **Create hierarchical pipeline structures** with parent-child relationships
-- **Isolate functionality** in separate pipeline units
-- **Simplify maintenance** by breaking large pipelines into focused modules
+* **Execute nested pipelines** within your main workflow
+* **Reuse pipeline modules** across multiple parent pipelines
+* **Modularize complex workflows** into smaller, manageable components
+* **Create hierarchical pipeline structures** with parent-child relationships
+* **Isolate functionality** in separate pipeline units
+* **Simplify maintenance** by breaking large pipelines into focused modules
 
 ### Parameters
 
@@ -136,20 +137,25 @@ interrupt_before:
 !!! warning "State Isolation"
     Child pipelines execute in their own state context. The parent and child share the same state by default - changes made by the child pipeline are visible to the parent after execution.
 
+!!! warning "Pipeline Interrupt Limitation"
+    Pipelines containing interrupts (Interrupt Before/After enabled on any node) or subgraphs (nested Pipeline nodes) cannot be used as Pipeline (Subgraph) nodes. Only pipelines without interrupts or further nesting are supported.
+
 !!! note "Nested Pipeline Benefits"
     **Reusability:** Same child pipeline can be used by multiple parents<br>**Modularity:** Break complex workflows into focused modules<br>**Maintenance:** Update child pipeline once, all parents use new version automatically
 
 ### Best Practices
-   - Use Descriptive Pipeline Names: Name child pipelines to clearly indicate their function (e.g., "Data Validation Pipeline", "Report Generation Pipeline").
-   - Define Clear State Contract: Document which state variables child pipeline expects and modifies for parent pipeline integration.
-   - Keep Child Pipelines Focused: Each nested pipeline should have single, well-defined responsibility.
-   - Test Independently: Ensure child pipelines work correctly on their own before integrating into parent workflows.
-   - Document Parent-Child Relationships: Maintain clear documentation of which parent pipelines use which child pipelines.
-   - Version Child Pipelines Carefully: Changes to child pipelines affect all parent pipelines using them.
-   - Avoid Deep Nesting: Limit nesting depth (pipeline → subpipeline → sub-subpipeline) to maintain clarity.
-   - Use Interrupt Points: Enable Interrupt Before or After for debugging complex nested pipeline flows.
-   - Handle Child Pipeline Failures: Consider error handling when child pipeline fails or returns unexpected results.
-   - Share State Intentionally: Be mindful that child pipelines can modify parent state - ensure this is intentional.
+
+   * Use Descriptive Pipeline Names: Name child pipelines to clearly indicate their function (e.g., "Data Validation Pipeline", "Report Generation Pipeline").
+   * Define Clear State Contract: Document which state variables child pipeline expects and modifies for parent pipeline integration.
+   * Keep Child Pipelines Focused: Each nested pipeline should have single, well-defined responsibility.
+   * Ensure No Interrupts in Child Pipeline: Verify child pipeline has no Interrupt Before/After enabled on any nodes and contains no nested Pipeline nodes before using as subgraph.
+   * Test Independently: Ensure child pipelines work correctly on their own before integrating into parent workflows.
+   * Document Parent-Child Relationships: Maintain clear documentation of which parent pipelines use which child pipelines.
+   * Version Child Pipelines Carefully: Changes to child pipelines affect all parent pipelines using them.
+   * Avoid Deep Nesting: Limit nesting depth (pipeline → subpipeline → sub-subpipeline) to maintain clarity.
+   * Use Interrupt Points: Enable Interrupt Before or After for debugging complex nested pipeline flows.
+   * Handle Child Pipeline Failures: Consider error handling when child pipeline fails or returns unexpected results.
+   * Share State Intentionally: Be mindful that child pipelines can modify parent state - ensure this is intentional.
 
 ---
 

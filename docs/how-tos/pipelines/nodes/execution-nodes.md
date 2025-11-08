@@ -4,10 +4,9 @@ Execution Nodes enable your pipeline to perform actions, call external tools, ex
 
 **Available Execution Nodes:**
 
-- **[Function Node](#function-node)** - Execute specific toolkit/MCP functions with direct parameter mapping
-- **[Tool Node](#tool-node)** - LLM-assisted tool selection and execution based on task instructions
-- **[Code Node](#code-node)** - Execute custom Python code in a secure sandbox
-- **[Custom Node](#custom-node)** - Advanced JSON-based configuration for any toolkit type
+* **[Function Node](#function-node)** - Execute specific toolkit/MCP functions with direct parameter mapping
+* **[Tool Node](#tool-node)** - LLM-assisted tool selection and execution based on task instructions
+* **[Code Node](#code-node)** - Execute custom Python code in a secure sandbox
 
 ---
 
@@ -21,11 +20,11 @@ The Function Node executes specific tools from Toolkits or MCPs (Model Context P
 
 Use the Function Node to:
 
-- **Execute specific tools** without LLM decision-making overhead
-- **Call external APIs** through toolkit integrations (Jira, Confluence, GitHub, etc.)
-- **Perform deterministic actions** where the tool and parameters are known upfront
-- **Map pipeline state** directly to tool parameters
-- **Chain multiple tool calls** in sequence with precise control
+* **Execute specific tools** without LLM decision-making overhead
+* **Call external APIs** through toolkit integrations (Jira, Confluence, GitHub, etc.)
+* **Perform deterministic actions** where the tool and parameters are known upfront
+* **Map pipeline state** directly to tool parameters
+* **Chain multiple tool calls** in sequence with precise control
 
 !!! note "Function Node Scope"
     Function Nodes can use **Toolkits** and **MCPs** only. Agents and Pipelines now have their dedicated node types.
@@ -89,21 +88,22 @@ state:
     Each Function Node can select only **one toolkit** and **one tool**. For multiple tool executions, create separate Function Nodes and chain them together.
 
 ### Best Practices
-   - Map Required Parameters Correctly.
-   - Use Appropriate Type for Each Parameter
-       - **Variable**: When value comes from state
-       - **F-String**: When you need dynamic interpolation
-       - **Fixed**: For static, unchanging values
-   - Handle Optional Parameters: Set optional parameters to `null` if not needed:
-   - Include Output Variables: Capture important results in output variables:
-   - Use Interrupts for Debugging: Enable interrupts when testing new integrations:
-   - Validate State Variables: Ensure input state variables exist before the Function node executes:
-   - Choose Function Over Tool Node: Use Function Node when:
-       - You know exactly which tool to call
-       - Parameters are straightforward to map
-       - No LLM decision-making is needed
-       - Performance is critical (no LLM overhead)
-   - Chain Function Calls: Create workflows by sequencing Function nodes:
+
+   * Map Required Parameters Correctly.
+   * Use Appropriate Type for Each Parameter
+       * **Variable**: When value comes from state
+       * **F-String**: When you need dynamic interpolation
+       * **Fixed**: For static, unchanging values
+   * Handle Optional Parameters: Set optional parameters to `null` if not needed:
+   * Include Output Variables: Capture important results in output variables:
+   * Use Interrupts for Debugging: Enable interrupts when testing new integrations:
+   * Validate State Variables: Ensure input state variables exist before the Function node executes:
+   * Choose Function Over Tool Node: Use Function Node when:
+       * You know exactly which tool to call
+       * Parameters are straightforward to map
+       * No LLM decision-making is needed
+       * Performance is critical (no LLM overhead)
+   * Chain Function Calls: Create workflows by sequencing Function nodes:
 
 ---
 
@@ -117,11 +117,11 @@ The Tool Node uses LLM intelligence to analyze a task instruction, select approp
 
 Use the Tool Node to:
 
-- **Delegate tool selection** to LLM based on natural language instructions
-- **Handle complex workflows** where multiple tools might be needed
-- **Simplify configuration** by avoiding manual parameter mapping
-- **Leverage LLM reasoning** to choose the right tool for the task
-- **Execute multi-step tool chains** dynamically
+* **Delegate tool selection** to LLM based on natural language instructions
+* **Handle complex workflows** where multiple tools might be needed
+* **Simplify configuration** by avoiding manual parameter mapping
+* **Leverage LLM reasoning** to choose the right tool for the task
+* **Execute multi-step tool chains** dynamically
 
 ### Parameters
 
@@ -175,17 +175,18 @@ state:
 
 
 ### Best Practices
-   - Write Clear Task Instructions: Provide specific, actionable tasks that clearly describe what the node should accomplish.
-   - Single Tool Selection: Each Tool Node can select only one tool. The LLM uses that selected tool to accomplish the task based on the provided instructions.
-   - Use Structured Output for Data Extraction: When you need specific values, enable structured output to extract data into defined state variables.
-   - Provide Context in Task: Include necessary context from state variables using f-string formatting in the task description.
-   - Use Interrupts for Debugging: Enable interrupts to review LLM tool execution and results during development.
-   - Handle Multi-Step Tasks: Break complex workflows into clear, sequential steps in the task description.
-   - Choose Tool Node Over Function Node: Use Tool Node when:
-       - Task requires LLM reasoning about how to use the tool
-       - You want natural language task specification
-       - Tool parameters are complex or context-dependent
-   - Monitor Tool Execution: Review the tool execution results to ensure expected behavior and optimize task instructions.
+
+   * Write Clear Task Instructions: Provide specific, actionable tasks that clearly describe what the node should accomplish.
+   * Single Tool Selection: Each Tool Node can select only one tool. The LLM uses that selected tool to accomplish the task based on the provided instructions.
+   * Use Structured Output for Data Extraction: When you need specific values, enable structured output to extract data into defined state variables.
+   * Provide Context in Task: Include necessary context from state variables using f-string formatting in the task description.
+   * Use Interrupts for Debugging: Enable interrupts to review LLM tool execution and results during development.
+   * Handle Multi-Step Tasks: Break complex workflows into clear, sequential steps in the task description.
+   * Choose Tool Node Over Function Node: Use Tool Node when:
+       * Task requires LLM reasoning about how to use the tool
+       * You want natural language task specification
+       * Tool parameters are complex or context-dependent
+   * Monitor Tool Execution: Review the tool execution results to ensure expected behavior and optimize task instructions.
 
 ---
 
@@ -199,12 +200,12 @@ The Code Node enables secure execution of custom Python code within a sandboxed 
 
 Use the Code Node to:
 
-- **Execute custom Python logic** for data transformation and processing
-- **Perform calculations** that don't require external tool integrations
-- **Process pipeline state** with full programming control
-- **Implement business rules** and conditional logic in Python
-- **Transform data formats** between pipeline nodes
-- **Call external APIs** directly from Python
+* **Execute custom Python logic** for data transformation and processing
+* **Perform calculations** that don't require external tool integrations
+* **Process pipeline state** with full programming control
+* **Implement business rules** and conditional logic in Python
+* **Transform data formats** between pipeline nodes
+* **Call external APIs** directly from Python
 
 ### Parameters
 
@@ -294,170 +295,74 @@ state:
     Code runs in a sandboxed Pyodide/WebAssembly environment with full Python standard library. Use `import micropip; await micropip.install('package-name')` for additional packages. Network access is enabled for external API calls.
 
 ### Best Practices
-   - Return Structured Data: When using `structured_output: true`, always return dictionaries with keys matching output variables.
-   - Handle Errors Gracefully: Include try-except blocks to catch and return errors as part of the structured output.
-   - Validate Input Data: Check state variables exist and have expected types before processing using `alita_state.get()`.
-   - Use Descriptive Output Variables: Name output variables clearly to indicate their purpose (e.g., `total_revenue`, `average_order_value` instead of `result1`, `result2`).
-   - Keep Code Focused: Each Code Node should have one clear purpose - avoid combining multiple unrelated operations in a single node.
-   - Document Complex Logic: Use Python comments to explain business rules, calculations, and non-obvious operations.
-   - Test with Interrupts: Enable interrupts to review code execution results and debug issues during development.
-   - Optimize Performance: Avoid heavy computations in frequently called nodes, cache expensive operations when possible, and use efficient data structures.
 
----
-
-## Custom Node
-
-The Custom Node enables execution of custom Python code with optional toolkit access. It combines the flexibility of Code Node with the ability to use toolkits, providing advanced capabilities for complex integrations.
-
-![Custom Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/custom-node-add.png)
-
-### Purpose
-
-Use the Custom Node to:
-
-- **Execute custom Python code** with toolkit integration
-- **Combine code logic** with external tool calls
-- **Implement advanced workflows** requiring both computation and tool access
-- **Prototype complex integrations** before formal implementation
-- **Access multiple toolkits** within custom code logic
-
-### Parameters
-
-| Parameter | Purpose | Type Options & Examples |
-|-----------|---------|-------------------------|
-| **Code** | Provide the Python code to execute with optional toolkit access | **Fixed** - Static Python code block<br>**F-String** - Code with dynamic variable interpolation<br>**Variable** - Code sourced from state<br><br>**Full-Screen Editor:** Value field supports full-screen mode with Python syntax highlighting<br><br>Example (Fixed):<br>```python<br>result = {"status": "processed"}<br>return result<br>``` |
-| **Tool Names** | Optional: Select which toolkits and tools to make available in the code execution context | **How It Works:** Selected toolkits become accessible in custom code<br><br>Example:<br>`toolkit1:`<br>`  - tool_a`<br>`  - tool_b`<br><br>**Code Access:** Tools available through toolkit integration |
-| **Input** | Specify which state variables to inject into the code execution context | **How It Works:** Selected state variables become accessible via `alita_state` dictionary<br><br>Example:<br>`- input_data`<br>`- configuration`<br>`- messages` |
-| **Output** | Define which state variables the code's return value should populate | **Without Output Variables:** Code return value added to `messages`<br>**With Output Variables:** Code must return dictionary, only listed variables updated<br><br>Example:<br>`- custom_result`<br>`- status`<br>`- messages` |
-| **Structured Output** | Enable parsing of code return value as structured data for state variable updates | **Enabled (true):** Code must return dictionary, keys matching output variables update state<br>**Disabled (false):** Code return value goes to `messages`<br><br>Example: `true` or `false` |
-| **Interrupt Before** | Pause pipeline execution before code execution | **Enabled** / **Disabled** |
-| **Interrupt After** | Pause pipeline execution after code execution for inspection | **Enabled** / **Disabled** |
-
-
-**YAML Configuration**
-
-```yaml
-nodes:
-  - id: CustomProcessor
-    type: custom
-    code:
-      type: fixed
-      value: |
-        # Access state variables
-        input_data = alita_state.get('input_data', {})
-        
-        # Custom logic with toolkits
-        result = {
-          "status": "processed",
-          "count": len(input_data)
-        }
-        
-        result
-    input:
-      - input_data
-    output:
-      - custom_result
-    structured_output: true
-    transition: NextNode
-    tool_names:
-      toolkit1:
-        - tool_a
-state:
-  input_data:
-    type: dict
-    value: {}
-  custom_result:
-    type: dict
-    value: {}
-  messages:
-    type: list
-```
-
-!!! info "State Access in Code"
-    Access pipeline state via `alita_state` dictionary. When toolkits are configured in `tool_names`, they become available for use within the custom code.
-
-!!! warning "Output Variable Filtering"
-    **Only variables listed in `output` will be updated**, even if the returned dictionary contains additional keys. Use `structured_output: true` for proper variable mapping.
-
-!!! note "Toolkit Integration"
-    Custom Node combines Code Node capabilities with optional toolkit access. Configure `tool_names` to make specific toolkits available within your custom code.
-
-### Best Practices
-   - Use for Advanced Integration: Choose Custom Node when you need to combine custom Python logic with toolkit access that standard nodes don't support.
-   - Return Structured Data: When using `structured_output: true`, always return dictionaries with keys matching output variables.
-   - Handle Errors Gracefully: Include try-except blocks to catch and return errors as part of the structured output.
-   - Configure Tool Names: Only include toolkits in `tool_names` that are actually used in your custom code to optimize performance.
-   - Keep Code Focused: Each Custom Node should have one clear purpose - avoid combining too many unrelated operations.
-   - Document Toolkit Usage: Use Python comments to explain which toolkits are used and why.
-   - Test with Interrupts: Enable interrupts to review code execution results and toolkit interactions during development.
-   - Consider Standard Nodes First: Before using Custom Node, verify if Function, Tool, or Code nodes can accomplish the task more simply.
+   * Return Structured Data: When using `structured_output: true`, always return dictionaries with keys matching output variables.
+   * Handle Errors Gracefully: Include try-except blocks to catch and return errors as part of the structured output.
+   * Validate Input Data: Check state variables exist and have expected types before processing using `alita_state.get()`.
+   * Use Descriptive Output Variables: Name output variables clearly to indicate their purpose (e.g., `total_revenue`, `average_order_value` instead of `result1`, `result2`).
+   * Keep Code Focused: Each Code Node should have one clear purpose - avoid combining multiple unrelated operations in a single node.
+   * Document Complex Logic: Use Python comments to explain business rules, calculations, and non-obvious operations.
+   * Test with Interrupts: Enable interrupts to review code execution results and debug issues during development.
+   * Optimize Performance: Avoid heavy computations in frequently called nodes, cache expensive operations when possible, and use efficient data structures.
 
 ---
 
 ## Execution Nodes Comparison
 
-| Feature | Function Node | Tool Node | Code Node | Custom Node |
-|---------|---------------|-----------|-----------|-------------|
-| **Purpose** | Execute specific tool with explicit parameter mapping | LLM-assisted tool selection and execution | Execute custom Python code | Advanced JSON-based configuration for any toolkit type |
-| **Toolkit Types** | Toolkits, MCPs | Toolkits, MCPs | N/A (Python sandbox) | Toolkits, MCPs, Agents, Pipelines |
-| **Tool Selection** | Manual (user selects) | Automatic (LLM decides) | N/A | Manual (user selects) |
-| **Parameter Mapping** | Explicit Input Mapping (per tool) | LLM generates parameters from task | State via `alita_state` | Explicit Input Mapping (JSON) |
-| **Task Instruction** | No task field | Required (natural language) | Python code | Optional (depends on toolkit) |
-| **LLM Usage** | No LLM | Yes (for tool selection and params) | No LLM | No LLM (unless calling Agent/LLM toolkit) |
-| **Configuration** | UI-based parameter mapping | Natural language task + toolkit selection | Python code editor | JSON configuration |
-| **Flexibility** | Low (predefined tools) | High (LLM reasoning) | Very High (full Python) | Very High (full JSON control) |
-| **Complexity** | Medium | Low (natural language) | High (requires Python knowledge) | High (requires JSON understanding) |
-| **Performance** | Fast (direct execution) | Slower (LLM overhead) | Fast (compiled sandbox) | Fast (direct execution) |
-| **Structured Output** | Not applicable | Supported | Supported | Supported |
-| **Input Mapping** | Required parameters + optional | LLM generates from task | `alita_state` dictionary | Required parameters + optional (JSON) |
-| **Use Case** | Known tool, explicit parameters | Flexible tool selection, complex workflows | Custom logic, calculations, data processing | Advanced integrations, custom MCPs, subgraphs |
-| **Best For** | Deterministic tool calls (create Jira ticket, search Confluence) | Dynamic tool selection (research and document, multi-step workflows) | Data transformation, business logic, API calls | Custom MCPs, Agents, Pipelines, prototype integrations |
+| Feature | Function Node | Tool Node | Code Node |
+|---------|---------------|-----------|-----------|
+| **Purpose** | Execute specific tool with explicit parameter mapping | LLM-assisted tool selection and execution | Execute custom Python code |
+| **Toolkit Types** | Toolkits, MCPs | Toolkits, MCPs | N/A (Python sandbox) |
+| **Tool Selection** | Manual (user selects) | Automatic (LLM decides) | N/A |
+| **Parameter Mapping** | Explicit Input Mapping (per tool) | LLM generates parameters from task | State via `alita_state` |
+| **Task Instruction** | No task field | Required (natural language) | Python code |
+| **LLM Usage** | No LLM | Yes (for tool selection and params) | No LLM |
+| **Configuration** | UI-based parameter mapping | Natural language task + toolkit selection | Python code editor |
+| **Flexibility** | Low (predefined tools) | High (LLM reasoning) | Very High (full Python) |
+| **Complexity** | Medium | Low (natural language) | High (requires Python knowledge) |
+| **Performance** | Fast (direct execution) | Slower (LLM overhead) | Fast (compiled sandbox) |
+| **Structured Output** | Not applicable | Supported | Supported |
+| **Input Mapping** | Required parameters + optional | LLM generates from task | `alita_state` dictionary |
+| **Use Case** | Known tool, explicit parameters | Flexible tool selection, complex workflows | Custom logic, calculations, data processing |
+| **Best For** | Deterministic tool calls (create Jira ticket, search Confluence) | Dynamic tool selection (research and document, multi-step workflows) | Data transformation, business logic, API calls |
 
 ### When to Use Each Node
 
 #### Function Node ✅
 
 **Choose Function Node when you**:
-- Know exactly which tool to call
-- Have straightforward parameter mapping
-- Need fast, deterministic execution
-- Don't require LLM reasoning
-- Want explicit control over tool execution
+
+* Know exactly which tool to call
+* Have straightforward parameter mapping
+* Need fast, deterministic execution
+* Don't require LLM reasoning
+* Want explicit control over tool execution
 
 **Example**: Create a Jira ticket with known project, summary, and description.
 
 #### Tool Node ✅
 
 **Choose Tool Node when you**:
-- Need LLM to decide which tool(s) to call
-- Have complex, multi-step workflows
-- Want natural language task specification
-- Require dynamic tool selection based on context
-- Need LLM reasoning about tool parameters
+
+* Need LLM to decide which tool(s) to call
+* Have complex, multi-step workflows
+* Want natural language task specification
+* Require dynamic tool selection based on context
+* Need LLM reasoning about tool parameters
 
 **Example**: "Search Confluence for authentication docs, then create a Jira ticket summarizing the findings."
 
 #### Code Node ✅
 
 **Choose Code Node when you**:
-- Need custom Python logic
-- Require data transformation or processing
-- Implement business rules and calculations
-- Call external APIs directly
-- Have logic too complex for standard nodes
+
+* Need custom Python logic
+* Require data transformation or processing
+* Implement business rules and calculations
+* Call external APIs directly
+* Have logic too complex for standard nodes
 
 **Example**: Calculate tiered discounts based on customer segment, order value, and first-order status.
-
-#### Custom Node ✅
-
-**Choose Custom Node when you**:
-- Need to call Agents or Pipelines as toolkits
-- Work with custom MCPs requiring specific configuration
-- Require full JSON control over node behavior
-- Prototype new integrations
-- Standard nodes don't support your use case
-
-**Example**: Execute a custom MCP or run another pipeline as a subgraph.
 
 ---
 

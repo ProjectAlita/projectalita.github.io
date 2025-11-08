@@ -15,13 +15,13 @@ The Entry Point defines which node executes first when your pipeline runs—the 
 
 **Single Entry Point:**
 
-- Exactly one node must be designated as the entry point
-- Pipeline execution always begins at this node
+* Exactly one node must be designated as the entry point
+* Pipeline execution always begins at this node
 
 **Node Eligibility:**
 
-- ✅ **Can be entry points**: LLM, Agent, Function, Tool, Code, Custom, Loop, Loop from Tool, State Modifier, Pipeline (Subgraph), Decision
-- ❌ **Cannot be entry points**: Router and Condition nodes
+* ✅ **Can be entry points**: LLM, Agent, Function, Tool, Code, Custom, Loop, Loop from Tool, State Modifier, Pipeline (Subgraph), Decision
+* ❌ **Cannot be entry points**: Router and Condition nodes
 
 !!! info "Why Router and Condition Can't Be Entry Points"
     Router and Condition nodes require input data to evaluate their conditions. At pipeline start, no state variables have been populated yet, so these nodes have nothing to evaluate.
@@ -90,11 +90,11 @@ nodes:
 
 ### Match Entry Point to Workflow Type
 
-- **Conversational**: Start with LLM node
-- **Automated**: Start with Function/Tool node
-- **Routing**: Start with Decision node
-- **Batch**: Start with Loop/Loop from Tool node
-- **Modular**: Start with Pipeline (Subgraph) node
+* **Conversational**: Start with LLM node
+* **Automated**: Start with Function/Tool node
+* **Routing**: Start with Decision node
+* **Batch**: Start with Loop/Loop from Tool node
+* **Modular**: Start with Pipeline (Subgraph) node
 
 
 !!! tip "Essential Checks"

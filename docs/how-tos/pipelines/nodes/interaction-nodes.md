@@ -186,8 +186,8 @@ structured_output: true
 
 #### 6. Use Chat History Wisely
 
-- Include `messages` in input when context matters
-- Use `[]` (empty array) for stateless single-turn requests
+* Include `messages` in input when context matters
+* Use `[]` (empty array) for stateless single-turn requests
 
 #### 7. Test with Interrupts
 

@@ -238,13 +238,12 @@ Changes made in Flow Editor **instantly appear in YAML**:
 
 ## Best Practices
 
-- **Use Descriptive Node Names**: "Validate User Input" instead of "LLM Node"
-- **Organize Vertically**: Entry point at top, processing in middle, END at bottom
-- **Collapse Side Panels**: Maximize canvas space for complex pipelines
-- **Use Auto-Fix Layout**: Maintain clean alignment after adding/moving nodes
-- **Test Incrementally**: Build step-by-step, test after adding each node
-- **Save Frequently**: Prevent data loss by saving often
-
+* **Use Descriptive Node Names**: "Validate User Input" instead of "LLM Node"
+* **Organize Vertically**: Entry point at top, processing in middle, END at bottom
+* **Collapse Side Panels**: Maximize canvas space for complex pipelines
+* **Use Auto-Fix Layout**: Maintain clean alignment after adding/moving nodes
+* **Test Incrementally**: Build step-by-step, test after adding each node
+* **Save Frequently**: Prevent data loss by saving often
 ---
 
 ## Keyboard Shortcuts

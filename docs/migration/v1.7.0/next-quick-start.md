@@ -7,59 +7,59 @@ The **Next** environment is a separate preview space for Release 1.7.0. It lets 
 !!! info "Snapshot date and safe window"
 	 The **Next** environment contains migrated data from your **Private** and **Team** projects as of Aug-15-2025, plus all 1.7.0 changes. Use this safe period to review updates, reconfigure indexes, set up credentials, and validate flows before Nexus is upgraded.
 
-- **Access Next environment**: [https://next.elitea.ai](https://next.elitea.ai)
-- **Release Notes**: [Release 1.7.0](../../release-notes/rn_current.md)
+* **Access Next environment**: [https://next.elitea.ai](https://next.elitea.ai)
+* **Release Notes**: [Release 1.7.0](../../release-notes/rn_current.md)
 
 ## What was migrated from Nexus
 
 Projects and their entities were migrated as a point-in-time copy (**Aug-15-2025**):
 
-- Your **Private** projects
-- Your **Team** projects
-- **Public** project
+* Your **Private** projects
+* Your **Team** projects
+* **Public** project
 
 Within projects, the following content was included:
 
-- Agents
-- Pipelines
-- Toolkits that were used by your agents and pipelines
-- Chats and conversations
-- Collections
-- Artifacts
-- Secrets
-- Personal Access Tokens
+* Agents
+* Pipelines
+* Toolkits that were used by your agents and pipelines
+* Chats and conversations
+* Collections
+* Artifacts
+* Secrets
+* Personal Access Tokens
 
 ## What was migrated as a conversion
 
-- **Prompts** → **Agents**: All prompts were converted to agents. You can now create agents without a toolkit (a lightweight replacement for prompts) and use variables with them.
-- **Datasources** → **Temporary Toolkits**: All datasources were temporarily converted to toolkits and remain connected to agents/pipelines where they were previously linked in Nexus.
+* **Prompts** → **Agents**: All prompts were converted to agents. You can now create agents without a toolkit (a lightweight replacement for prompts) and use variables with them.
+* **Datasources** → **Temporary Toolkits**: All datasources were temporarily converted to toolkits and remain connected to agents/pipelines where they were previously linked in Nexus.
 
 ## What was not migrated
 
-- **Datasets of datasources**: Recreate them using the **Index Data** capability available in supporting toolkits. See the section below: [Index data for a toolkit](#index-data-for-a-toolkit).
-- **Integrations**: Recreate them as Credentials and attach to your Toolkits. See: [How to create a credential and attach it to the toolkit](#how-to-create-a-credential-and-attach-it-to-the-toolkit).
+* **Datasets of datasources**: Recreate them using the **Index Data** capability available in supporting toolkits. See the section below: [Index data for a toolkit](#index-data-for-a-toolkit).
+* **Integrations**: Recreate them as Credentials and attach to your Toolkits. See: [How to create a credential and attach it to the toolkit](#how-to-create-a-credential-and-attach-it-to-the-toolkit).
 
 ## Next steps
 
 1. Create and attach credentials
-	- See: [How to create a credential and attach it to the toolkit](#how-to-create-a-credential-and-attach-it-to-the-toolkit)
-	- Guides: [Create a Credential](../../getting-started/create-credential.md) · [Create a Toolkit](../../getting-started/create-toolkit.md) · [Use Credentials](../../how-tos/credentials-toolkits/how-to-use-credentials.md)
+    * See: [How to create a credential and attach it to the toolkit](#how-to-create-a-credential-and-attach-it-to-the-toolkit)
+	* Guides: [Create a Credential](../../getting-started/create-credential.md) · [Create a Toolkit](../../getting-started/create-toolkit.md) · [Use Credentials](../../how-tos/credentials-toolkits/how-to-use-credentials.md)
 2. Check your Toolkit Configuration
-	- Verify tools enabled (e.g., Index data), correct Credential selected, PgVector and Embedding settings; Save, then test from Tool Testing.
-	- See: [Check your Toolkit Configuration](#check-your-toolkit-configuration)
+	* Verify tools enabled (e.g., Index data), correct Credential selected, PgVector and Embedding settings; Save, then test from Tool Testing.
+	* See: [Check your Toolkit Configuration](#check-your-toolkit-configuration)
 3. Check your agents and pipelines
-	- Open each, resolve any configuration notices, and run one to confirm it executes.
-	- See: [Check your agents and pipelines](#check-your-agents-and-pipelines)
+	* Open each, resolve any configuration notices, and run one to confirm it executes.
+	* See: [Check your agents and pipelines](#check-your-agents-and-pipelines)
 4. Check your conversations
-	- Add your agent/pipeline in Chat and send a simple prompt to validate end-to-end.
-	- See: [Check your conversations](#check-your-conversations) · [Create a conversation](../../getting-started/create-conversation.md)
+	* Add your agent/pipeline in Chat and send a simple prompt to validate end-to-end.
+	* See: [Check your conversations](#check-your-conversations) · [Create a conversation](../../getting-started/create-conversation.md)
 5. Index data for a toolkit
-	- Use Tool Testing → Index Data to recreate datasets; parameters vary by toolkit.
-	- See: [Index data for a toolkit](#index-data-for-a-toolkit) · Example: [Index GitHub data](../../how-tos/indexing/index-github-data.md)
+	* Use Tool Testing → Index Data to recreate datasets; parameters vary by toolkit.
+	* See: [Index data for a toolkit](#index-data-for-a-toolkit) · Example: [Index GitHub data](../../how-tos/indexing/index-github-data.md)
 
 6. Configure EPAM AI DIAL keys (strongly recommended)
-	- Shared LLM models in Next are evaluation-only with daily limits. For sustained or production use, configure your own DIAL keys.
-	- See: [Configure EPAM AI DIAL Keys](../../getting-started/configure-epam-ai-dial-key.md) · Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
+	* Shared LLM models in Next are evaluation-only with daily limits. For sustained or production use, configure your own DIAL keys.
+	* See: [Configure EPAM AI DIAL Keys](../../getting-started/configure-epam-ai-dial-key.md) · Settings → [AI Configuration](../../menus/settings/ai-configuration.md)
 
 ---
 
@@ -76,19 +76,19 @@ See the detailed guide: [Create a Credential and Add It to a Toolkit](../../gett
 
 Before using a toolkit (including indexing), verify configuration:
 
-- **Tools**: Ensure the correct tools are enabled/selected for your use case (e.g., Index data, Create a file, Read file, etc.).
-- **Credential**: Confirm the right Credential is assigned (private vs project scope as needed).
-- **PgVector**: Select/verify PgVector (or your configured vector store) and **Embedding model settings**.
-- **Save**: Click Save to persist changes before testing.
-- **Test**: Use the **Test Settings** section to run a quick test and confirm the toolkit works.
+* **Tools**: Ensure the correct tools are enabled/selected for your use case (e.g., Index data, Create a file, Read file, etc.).
+* **Credential**: Confirm the right Credential is assigned (private vs project scope as needed).
+* **PgVector**: Select/verify PgVector (or your configured vector store) and **Embedding model settings**.
+* **Save**: Click Save to persist changes before testing.
+* **Test**: Use the **Test Settings** section to run a quick test and confirm the toolkit works.
 
 ## Check your agents and pipelines
 
 After toolkits are configured:
 
-- Open your agents and pipelines and confirm all attached toolkits are valid (no error banners or misconfiguration notices).
-- Resolve any missing credentials or required fields.
-- Execute an agent (or run a pipeline) to verify it responds and completes successfully.
+* Open your agents and pipelines and confirm all attached toolkits are valid (no error banners or misconfiguration notices).
+* Resolve any missing credentials or required fields.
+* Execute an agent (or run a pipeline) to verify it responds and completes successfully.
 
 ## Check your conversations
 
@@ -122,9 +122,9 @@ Steps:
 
 Quick steps:
 
-- Request a key from EPAM AI DIAL (see the guide below).
-- In Next env: Settings → AI Configuration → + Create → choose “AI DIAL” → enter API Base, Key, Version → Save.
-- Create LLM models: + Create → LLM Model → set exact model name from EPAM catalog, context window, max output tokens → select your DIAL credential → Save.
+* Request a key from EPAM AI DIAL (see the guide below).
+* In Next env: Settings → AI Configuration → + Create → choose “AI DIAL” → enter API Base, Key, Version → Save.
+* Create LLM models: + Create → LLM Model → set exact model name from EPAM catalog, context window, max output tokens → select your DIAL credential → Save.
 
 Full how-to: [Configure EPAM AI DIAL Keys](../../getting-started/configure-epam-ai-dial-key.md)
 
@@ -135,10 +135,9 @@ Full how-to: [Configure EPAM AI DIAL Keys](../../getting-started/configure-epam-
 
 What to include so we can help quickly:
 
-- Agents/Pipelines/Toolkits: screenshots or text of agent instructions, toolkit configuration (selected tools and assigned credential), and any error text/logs (expanded).
-- Indexing: toolkit type, parameters/options used (repo/site/project, filters), and logs/output from Tool Testing.
-- Chat/Conversations: exact instructions (queries), selected participant, (agent/pipeline/model), and any error banners.
-- General: relevant screenshots; send one issue per email when possible.
+* Agents/Pipelines/Toolkits: screenshots or text of agent instructions, toolkit configuration (selected tools and assigned credential), and any error text/logs (expanded).
+* Indexing: toolkit type, parameters/options used (repo/site/project, filters), and logs/output from Tool Testing.
+* Chat/Conversations: exact instructions (queries), selected participant, (agent/pipeline/model), and any error banners.
+* General: relevant screenshots; send one issue per email when possible.
 
 See the full guidance: [How to Contact ELITEA Support](../../support/contact-support.md).
-
