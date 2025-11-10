@@ -59,6 +59,7 @@ nav:
       - Chat & Conversations:
           - Chat Usage: how-tos/chat-conversations/how-to-use-chat-functionality.md
           - Canvas in Conversation: how-tos/chat-conversations/how-to-canvas.md
+          - Use Public Agents, Pipelines & Toolkits: how-tos/use-public-items-from-chat.md
           - Add Teammates to Conversation: how-tos/chat-conversations/add-teammates-to-conversation.md
           - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
           - Internal Tools in Conversation: how-tos/chat-conversations/enable-internal-tools.md
