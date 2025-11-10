@@ -374,7 +374,7 @@ After designing your workflow, click **Save** and close the Canvas (X button). Y
 
 ## Category 5: Collaboration & Advanced Features
 
-### Tip 39: Enable File Attachments
+### Tip 37: Enable File Attachments
 
 Click the paperclip icon (📎) in Chat. First time, an "Attachment settings" popup appears. Select an existing Artifact Toolkit or create a new one to store files. Save the configuration. Now the attachment feature is enabled for this conversation!
 
@@ -384,7 +384,7 @@ Click the paperclip icon (📎) in Chat. First time, an "Attachment settings" po
 
 ---
 
-### Tip 40: Attach Files to Chat
+### Tip 38: Attach Files to Chat
 
 Once enabled, click the paperclip icon again to see "Attach files" and "Attachment settings". Click "Attach files", select images or documents, type a message describing what you want the AI to do, and send. AI analyzes your files!
 
@@ -394,7 +394,7 @@ Once enabled, click the paperclip icon again to see "Attach files" and "Attachme
 
 ---
 
-### Tip 41: Add Human Teammates (Team Projects Only)
+### Tip 39: Add Human Teammates (Team Projects Only)
 
 Collaborate with colleagues! In the Participants panel, click the **users icon** next to your avatar to see "Add users" option. Click it, search for teammates by name, select them, and click Add. They join the conversation and can interact!
 
@@ -404,7 +404,7 @@ Collaborate with colleagues! In the Participants panel, click the **users icon**
 
 ---
 
-### Tip 42: Mention Teammates with @
+### Tip 40: Mention Teammates with @
 
 To get a teammate's attention, type **@** in your message followed by their name (e.g., "@John Doe, can you review this?"). They receive a notification. Use "@All Users" to notify everyone in the conversation!
 
@@ -414,7 +414,7 @@ To get a teammate's attention, type **@** in your message followed by their name
 
 ---
 
-### Tip 43: Edit Participants Using Canvas
+### Tip 41: Edit Participants Using Canvas
 
 Hover over any agent, pipeline, or toolkit in the Participants panel and click the **Edit** icon (or click ⚙️ settings icon). The Canvas editor opens where you can modify all settings—instructions, models, toolkits, workflow design—and save changes instantly!
 
@@ -424,7 +424,7 @@ Hover over any agent, pipeline, or toolkit in the Participants panel and click t
 
 ---
 
-### Tip 44: Copy and Regenerate Responses
+### Tip 42: Copy and Regenerate Responses
 
 Hover over any AI response to see action buttons: **Copy** (paste elsewhere), **Regenerate** (get a different response). Make AI outputs actionable and collaborative!
 
@@ -434,7 +434,7 @@ Hover over any AI response to see action buttons: **Copy** (paste elsewhere), **
 
 ---
 
-### Tip 45: Multi-Assistant Collaboration
+### Tip 43: Multi-Assistant Collaboration
 
 Add multiple agents or pipelines to one conversation! They can work together—one agent gathers data, another analyzes it, a third creates tickets. Build powerful multi-step workflows where specialists collaborate automatically!
 
@@ -444,7 +444,7 @@ Add multiple agents or pipelines to one conversation! They can work together—o
 
 ---
 
-### Tip 46: Switch Active Participants
+### Tip 44: Switch Active Participants
 
 At the bottom of the chat input, click the "Switch assistant" icon to quickly change which agent or pipeline is active. The active participant will respond to your next message. Switch seamlessly between different AI specialists!
 
@@ -454,7 +454,7 @@ At the bottom of the chat input, click the "Switch assistant" icon to quickly ch
 
 ---
 
-### Tip 47: Add Participants from Panel
+### Tip 45: Add Participants from Panel
 
 Click the **+** icon next to any section in the Participants panel (Agents, Pipelines, Toolkits, MCPs, or Users) to browse and add participants. They'll appear in the list and be ready to use in your conversation.
 
@@ -464,7 +464,7 @@ Click the **+** icon next to any section in the Participants panel (Agents, Pipe
 
 ---
 
-### Tip 48: Search Your Conversations
+### Tip 46: Search Your Conversations
 
 Use the search bar at the top of the Chat sidebar to find specific conversations by name or content. Filter by date, participants, or project. Never lose track of important conversations!
 
@@ -474,7 +474,7 @@ Use the search bar at the top of the Chat sidebar to find specific conversations
 
 ---
 
-### Tip 49: Organize Chats with Folders
+### Tip 47: Organize Chats with Folders
 
 Keep conversations organized by clicking "+ Create folder" in the Chat sidebar. Name your folder (like "Work Projects" or "Experiments"), then drag conversations into it. Public and private folders help you structure your workspace!
 
@@ -484,7 +484,7 @@ Keep conversations organized by clicking "+ Create folder" in the Chat sidebar. 
 
 ---
 
-### Tip 50: View Message Execution Details
+### Tip 48: View Message Execution Details
 
 Click on any AI response message in Chat to expand execution details. See timing information, execution logs, and which tools were called. Perfect for understanding performance and debugging workflows!
 
