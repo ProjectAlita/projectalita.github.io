@@ -1,0 +1,145 @@
+name: Move Issues to Done
+on:
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  move-to-done:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            // Get project data
+            const projectQuery = `
+              query($org: String!, $projectNumber: Int!) {
+                organization(login: $org) {
+                  projectV2(number: $projectNumber) {
+                    id
+                    items(first: 100) {
+                      nodes {
+                        id
+                        content {
+                          ... on Issue {
+                            id
+                            number
+                            repository {
+                              name
+                              owner {
+                                login
+                              }
+                            }
+                          }
+                        }
+                        fieldValueByName(name: "Status") {
+                          ... on ProjectV2ItemFieldSingleSelectValue {
+                            name
+                          }
+                        }
+                      }
+                      pageInfo {
+                        hasNextPage
+                        endCursor
+                      }
+                    }
+                    field(name: "Status") {
+                      ... on ProjectV2SingleSelectField {
+                        id
+                        options {
+                          id
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `;
+
+            const projectData = await github.graphql(projectQuery, {
+              org: "ProjectAlita",
+              projectNumber: 3
+            });
+
+            const project = projectData.organization.projectV2;
+            const statusField = project.field;
+            const doneOption = statusField.options.find(opt => opt.name === "Done");
+            
+            if (!doneOption) {
+              console.error('❌ "Done" status not found in project');
+              console.log('Available statuses:', statusField.options.map(o => o.name));
+              return;
+            }
+            
+            const doneOptionId = doneOption.id;
+
+            // Filter items in "Ready for Public Release" status
+            const itemsToMove = project.items.nodes.filter(item => 
+              item.fieldValueByName?.name === "Ready for Public Release"
+            );
+
+            console.log(`Found ${itemsToMove.length} issues to move from "Ready for Public Release" to "Done"`);
+
+            let successCount = 0;
+            let errorCount = 0;
+
+            for (const item of itemsToMove) {
+              if (!item.content) {
+                console.log(`⚠️  Skipping item ${item.id} - no content`);
+                continue;
+              }
+              
+              const issue = item.content;
+              
+              try {
+                // Close the issue
+                await github.rest.issues.update({
+                  owner: issue.repository.owner.login,
+                  repo: issue.repository.name,
+                  issue_number: issue.number,
+                  state: 'closed'
+                });
+                
+                console.log(`  ✓ Closed issue #${issue.number}`);
+                
+                // Update project status to "Done"
+                const updateMutation = `
+                  mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: String!) {
+                    updateProjectV2ItemFieldValue(
+                      input: {
+                        projectId: $projectId
+                        itemId: $itemId
+                        fieldId: $fieldId
+                        value: { singleSelectOptionId: $optionId }
+                      }
+                    ) {
+                      projectV2Item {
+                        id
+                      }
+                    }
+                  }
+                `;
+                
+                await github.graphql(updateMutation, {
+                  projectId: project.id,
+                  itemId: item.id,
+                  fieldId: statusField.id,
+                  optionId: doneOptionId
+                });
+                
+                console.log(`✅ Moved issue #${issue.number} to Done`);
+                successCount++;
+                
+              } catch (error) {
+                console.error(`❌ Error processing issue #${issue.number}:`, error.message);
+                errorCount++;
+              }
+            }
+            
+            console.log('\n' + '='.repeat(50));
+            console.log(`🎉 Completed!`);
+            console.log(`   ✅ Successfully moved: ${successCount} issues`);
+            if (errorCount > 0) {
+              console.log(`   ❌ Errors: ${errorCount} issues`);
+            }
+            console.log('='.repeat(50));
