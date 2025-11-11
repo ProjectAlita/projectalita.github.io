@@ -4,7 +4,7 @@
 
 ### Purpose of this Guide
 
-This guide is your definitive resource for integrating and utilizing the **TestRail toolkit** within ELITEA. It provides a step-by-step walkthrough, from setting up your TestRail API Key to configuring the toolkit in ELITEA and effectively using it within your Agents. By following this guide, you will unlock the power of automated test management, streamlined testing workflows, and enhanced team collaboration, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your software testing lifecycle using the combined strengths of ELITEA and TestRail.
+This guide is your definitive resource for integrating and utilizing the **TestRail toolkit** within ELITEA. It provides a comprehensive, step-by-step walkthrough, from generating a TestRail API key to configuring the toolkit in ELITEA and effectively using it within your Agents. By following this guide, you will unlock the power of automated test management, streamlined testing workflows, and enhanced team collaboration, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your software testing lifecycle using the combined strengths of ELITEA and TestRail.
 
 ### Brief Overview of TestRail
 
@@ -13,21 +13,24 @@ TestRail is a comprehensive, web-based test management tool that helps teams of 
 *   **Test Case Management:** Create, organize, and manage test cases with rich text formatting, attachments, and custom fields. Structure test cases into projects, suites, and sections for easy navigation and maintenance.
 *   **Test Execution & Tracking:** Plan and execute test runs and test plans, track test results in real-time, and assign tests to team members. Get a clear overview of testing progress and identify areas needing attention.
 *   **Reporting & Metrics:** Generate insightful reports and metrics on test coverage, test results, and team performance. Use dashboards and charts to visualize testing progress and identify trends.
-*   **Integration with Development Tools:** Seamlessly integrates with issue trackers like Jira, and automation tools, making it a central hub for your testing ecosystem.
+*   **Integration with Development Tools:** Seamlessly integrates with issue trackers like Jira and automation tools, making it a central hub for your testing ecosystem.
 *   **Customization & Scalability:** Adapt TestRail to your specific testing processes with customizable workflows, fields, and templates. Scale TestRail as your team and projects grow.
 
 Integrating TestRail with ELITEA brings these robust test management capabilities directly into your AI-powered workflows. Your ELITEA Agents can then interact with your TestRail instance to automate test-related tasks, enhance testing processes, and improve team collaboration through intelligent automation.
 
-## TestRail Account Setup and Configuration
+## Toolkit's Account Setup and Configuration in TestRail
+
+!!! note "Integration with ELITEA"
+    The credentials you create in this section will be used when creating your TestRail credential in ELITEA (Step 1 of the integration process).
 
 ### Account Setup
 
-If you don't have a TestRail account yet, here’s how to get started with a free trial:
+If you don't have a TestRail account yet, here's how to get started with a free trial:
 
-1.  **Go to TestRail Website:** Open your web browser and navigate to [TestRail's official website](https://www.gurocksoftware.com/testrail/).
+1.  **Visit TestRail Website:** Open your web browser and navigate to [TestRail's official website](https://www.gurocksoftware.com/testrail/).
 2.  **Start a Free Trial:** On the homepage, locate and click the **"Free Trial"** button.
 3.  **Fill Out the Registration Form:** Provide your details in the registration form. This typically includes your name, company email address, company name, and other relevant information. **For professional use, it's highly recommended to use your company email.**
-4.  **Submit the Form:** Click on the **“Start Free Trial”** or similar button to submit the form. TestRail will send a confirmation email to the email address you provided.
+4.  **Submit the Form:** Click on the **"Start Free Trial"** or similar button to submit the form. TestRail will send a confirmation email to the email address you provided.
 
     ![TestRail-Account_Form](../../img/integrations/toolkits/testrail/TestRail-Account_Form.png)
 
@@ -39,7 +42,7 @@ If you don't have a TestRail account yet, here’s how to get started with a fre
 
 6.  **Access Your Account:** After email verification, you will be redirected to your new TestRail instance or prompted to log in. Follow any on-screen instructions to complete the setup and access your TestRail account.
 
-### API Key Generation in TestRail
+### Token/API Key Generation: Creating an API Key in TestRail
 
 To securely integrate TestRail with ELITEA, you need to generate an API key within TestRail. This API key will be used by ELITEA to authenticate and access your TestRail instance.
 
@@ -57,240 +60,391 @@ To securely integrate TestRail with ELITEA, you need to generate an API key with
 
 5.  **Name the API Key:** In the "Name" field, enter a descriptive name for the API key, such as "ELITEA Integration Key". This will help you identify the purpose of this key later.
 6.  **Generate API Key:** Click the **"Generate Key"** button. TestRail will generate a new API key and display it to you.
-7.  **Securely Store Your API Key:** **Immediately copy the generated API key.** This is the only time it will be displayed in full. Store it securely using a password manager or ELITEA's built-in Secrets feature (recommended for enhanced security within ELITEA). You will need this API Key to configure the TestRail toolkit in ELITEA.
+7.  **Securely Copy and Store Your API Key:** **Immediately copy the generated API key.** This is the only time it will be displayed in full. Store it securely in a password manager or, preferably, ELITEA's built-in Secrets feature for enhanced security within ELITEA. You will need this API key to configure the TestRail toolkit in ELITEA.
 
+## System Integration with ELITEA
 
-## TestRail Integration with ELITEA
+To integrate TestRail with ELITEA, you need to follow a three-step process: **Create Credentials → Create Toolkit → Use in Agents**. This workflow ensures secure authentication and proper configuration.
 
-### Agent Creation/Configuration
+### Step 1: Create TestRail Credentials
 
-To integrate TestRail, you'll need to configure it within an ELITEA Agent. You can either create a new Agent or modify an existing one.
+Before creating a toolkit, you must first create TestRail credentials in ELITEA:
 
-1.  **Navigate to Agents:** In ELITEA, go to the **Agents** menu.
-2.  **Create or Edit Agent:**
-    *   **New Agent:** Click **"+ Agent"** to create a new Agent. Follow the steps to define Agent details like name, description, type, and instructions.
-    *   **Existing Agent:** Select the Agent you want to integrate with TestRail and click on its name to edit.
-3.  **Access Tools Section:** In the Agent configuration, scroll down to the **"Tools"** section.
+1. **Navigate to Credentials Menu:** Open the sidebar and select **[Credentials](../../menus/credentials.md)**.
+2. **Create New Credential:** Click the **`+ Create`** button.
+3. **Select TestRail:** Choose **TestRail** as the credential type.
+4. **Configure Credential Details:**
+     * **Display Name:** Enter a descriptive name (e.g., "TestRail - QA Environment")
+     * **URL:** Enter the URL of your TestRail instance (e.g., `https://yourcompany.testrail.io/`)
+     * **Email:** Enter the email address associated with your TestRail account
+     * **Password:** Enter your TestRail API key (the one you generated in the previous section)
+5. **Shared Credential:** Check the **Shared** checkbox if you want this credential to be accessible by all team members in the current project
+6. **Save Credential:** Click **Save** to create the credential
 
-### Toolkit Configuration
+!!! tip "Security Recommendation"
+    It's highly recommended to use **[Secrets](../../menus/settings/secrets.md)** for API keys instead of entering them directly. Create a secret first, then reference it in your credential configuration.
 
-This section details how to configure the TestRail toolkit within your ELITEA Agent.
+### Step 2: Create TestRail Toolkit
 
-1.  **Add Toolkit:** In the "Tools" section, click the **"+" icon**.
-2.  **Select TestRail:** Choose **"TestRail"** from the dropdown list of available toolkits. This opens the "New TestRail tool" configuration panel.
-3.  **Configure Toolkit Details:** Fill in the following fields:
+Once your credentials are configured, create the TestRail toolkit:
 
-    *   **Name:** Enter a **Name** for this TestRail toolkit instance. Choose a descriptive name that helps you identify its purpose within your Agent's instructions (e.g., "TestRailQA", "TestManagementTool").
-    *   **Description:** Provide a **Description** for the toolkit, clarifying its purpose or the specific TestRail project it accesses (e.g., "Toolkit to access and manage test cases in TestRail").
-    *   **URL:** Enter the **URL of your TestRail instance**.  **It is crucial to use the correct format and your specific instance URL.** For example: `https://yourcompany.testrail.io/`.  Replace `yourcompany` with your actual TestRail subdomain.
-    *   **Email:** Enter the **Email address** associated with your TestRail account that you used to generate the API key.
-    *   **Password/API token:** Select **"API token"** as the authentication method.
-        *   **Password/Secret:** Choose **"Secret"** and select a pre-configured secret from the dropdown. You must first create and securely store your **API Key** as a Secret in ELITEA's [Secrets](../../menus/settings/secrets.md) feature. Using Secrets prevents hardcoding sensitive credentials directly in the toolkit configuration and enhances security. Alternatively, you can choose **"Password"** and paste the **API Key** you generated in TestRail into the **"Password"** field, but using Secrets is highly recommended for security best practices.
+1. **Navigate to Toolkits Menu:** Open the sidebar and select **[Toolkits](../../menus/toolkits.md)**.
+2. **Create New Toolkit:** Click the **`+ Create`** button.
+3. **Select TestRail:** Choose **TestRail** from the list of available toolkit types.
+4. **Configure Credentials:** 
+     * In the **Configuration** section, select your previously created TestRail credential from the **Credentials** dropdown
+5. **Configure Advanced Options (Optional):**
+     * **PgVector Configuration:** Select a PgVector connection for vector database integration (required for indexing features)
+     * **Embedding Model:** Select an embedding model for text processing and semantic search capabilities (required for indexing features)
+6. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific TestRail tools you want to enable. **Enable only the tools your agents will actually use** to follow the principle of least privilege
+7. **Save Toolkit:** Click **Save** to create the toolkit
 
-       ![TestRail-Toolkit_Configuration](../../img/integrations/toolkits/testrail/TestRail-Toolkit_Configuration.png) 
+#### Available Tools:
 
-4.  **Enable Tools:** In the "Tools" section of the TestRail toolkit configuration, **select the checkboxes next to the TestRail tools** you want to enable for your Agent. **Enable only the tools your Agent will actually use** to adhere to the principle of least privilege and enhance security. Available tools are:
-    *   **Get case:** Retrieves a specific test case from TestRail.
-    *   **Get cases:** Retrieves a list of test cases from a TestRail project.
-    *   **Get cases by filter:** Retrieves test cases based on specified filter criteria.
-    *   **Add case:** Adds a new test case to TestRail.
+The TestRail toolkit provides the following tools for interacting with TestRail test cases and suites, organized by functional categories:
 
-5.  **Complete Configuration:** Click the **arrow icon** (at the top right of the toolkit configuration) to save the TestRail toolkit setup and return to the main Agent configuration.
-6.  Click **Save** to apply configuration and changes to the Agent.
+| **Tool Category** | **Tool Name** | **Description** | **Primary Use Case** |
+|:-----------------:|---------------|-----------------|----------------------|
+| **Test Case Access** | | | |
+| | **Get case** | Retrieves information about a single test case from TestRail | Access detailed information about a specific test case by its ID |
+| | **Get cases** | Extracts a list of test cases in specified format (json, csv, or markdown) | Get an overview of all test cases in a project or suite |
+| | **Get cases by filter** | Extracts test cases from a specified project based on given case attributes | Find test cases matching specific criteria (priority, type, status, etc.) |
+| **Test Case Management** | | | |
+| | **Add case** | Adds a new test case into TestRail per defined parameters | Create new test cases programmatically with custom fields and properties |
+| | **Add cases** | Adds new test cases into TestRail in bulk | Efficiently create multiple test cases at once |
+| | **Update case** | Updates an existing test case (partial updates supported) | Modify test case details, fields, or properties |
+| **Suite Management** | | | |
+| | **Get suites** | Extracts a list of test suites for a given project from TestRail | Retrieve all test suites available in a project |
+| **Indexing & Search** | | | |
+| | **Index data** | Loads TestRail test case data to index for semantic search | Enable advanced search and discovery across test cases with AI-powered semantic search |
+| | **Search index** | Performs searches across indexed content | Find specific test case content across indexed data |
+| | **Stepback search index** | Performs advanced contextual searches with broader scope | Execute sophisticated searches with expanded context |
+| | **Stepback summary index** | Creates comprehensive summaries of indexed content | Generate intelligent summaries of test case information |
+| | **Remove index** | Removes previously created search indexes | Clean up and manage indexed content |
+| | **List collections** | Lists available indexed collections | View and manage indexed data collections |
 
-### Tool Overview
+### Step 3: Use Toolkit in Agents, Pipelines, or Chat
 
-The TestRail toolkit provides the following tools for your ELITEA Agents:
+Now you can add the configured TestRail toolkit to your agents, pipelines, or use it directly in chat:
 
-*   **Get case:** `get_case` - Retrieves a specific test case from TestRail using its ID. Useful for reviewing details of a particular test case.
-*   **Get cases:** `get_cases` - Retrieves a list of test cases from a specified TestRail project. Useful for getting an overview of test cases within a project.
-*   **Get cases by filter:** `get_cases_by_filter` - Retrieves test cases from TestRail based on specified filter criteria, such as priority, status, or type. Useful for targeted retrieval of test cases based on specific attributes.
-*   **Add case:** `add_case` - Adds a new test case to a specified TestRail project and section. Useful for automating test case creation.
+**For Agents:**
 
-## Instructions and Prompts for Using the Toolkit
+1. **Navigate to Agents:** Open the sidebar and select **Agents**.
+2. **Create or Edit Agent:** Either create a new agent or select an existing agent to edit.
+3. **Add TestRail Toolkit:** 
+     * In the **"Tools"** section of the agent configuration, click the **"+Toolkit"** icon
+     * Select your TestRail toolkit from the dropdown menu
+     * The toolkit will be added to your agent with the previously configured tools enabled
 
-To instruct your ELITEA Agent to use the TestRail toolkit, you need to provide clear instructions within the Agent's "Instructions" field. These instructions guide the Agent on *when* and *how* to use the available tools.
+Your agent can now interact with TestRail using the configured toolkit.
+
+**For Pipelines:**
+
+1. **Navigate to Pipelines:** Open the sidebar and select **Pipelines**.
+2. **Create or Edit Pipeline:** Either create a new pipeline or select an existing pipeline to edit.
+3. **Add TestRail Toolkit:** 
+     * In the **"Tools"** section of the pipeline configuration, click the **"+Toolkit"** icon
+     * Select your TestRail toolkit from the dropdown menu
+
+**For Chat:**
+
+1. **Navigate to Chat:** Open the sidebar and select **Chat**.
+2. **Add TestRail Toolkit:** 
+     * In the chat Participants section, look for the **Toolkits** element
+     * Click to add a toolkit and select your TestRail toolkit from the available options
+
+## Instructions and Prompts for Using the TestRail Toolkit
+
+To effectively instruct your ELITEA Agent to use the TestRail toolkit, you need to provide clear and precise instructions within the Agent's "Instructions" field. These instructions are crucial for guiding the Agent on *when* and *how* to utilize the available TestRail tools to achieve your desired automation goals.
 
 ### Instruction Creation for OpenAI Agents
 
-When creating instructions for the TestRail toolkit for OpenAI-based Agents, focus on clear, action-oriented language. Break down tasks into simple steps and explicitly state the parameters required for each tool. OpenAI Agents respond best to instructions that are:
+When crafting instructions for the TestRail toolkit, especially for OpenAI-based Agents, clarity and precision are paramount. Break down complex tasks into a sequence of simple, actionable steps. Explicitly define all parameters required for each tool and guide the Agent on how to obtain or determine the values for these parameters. OpenAI Agents respond best to instructions that are:
 
-*   **Direct and Imperative:** Use action verbs and clear commands (e.g., "Use the 'get_case' tool...", "Add a new test case with...").
-*   **Parameter-Focused:** Clearly list each parameter and how the Agent should determine its value.
-*   **Context-Aware:** Provide enough context so the Agent understands the overall goal and when to use specific tools within a workflow.
+*   **Direct and Action-Oriented:** Employ strong action verbs and clear commands to initiate actions. For example, "Use the 'get_case' tool...", "Create a test case named...", "Search for test cases containing...".
 
-When instructing your Agent to use a TestRail toolkit, use this pattern:
+*   **Parameter-Centric:** Clearly enumerate each parameter required by the tool. For each parameter, specify:
+    *   Its name (exactly as expected by the tool)
+    *   Its expected data type (string, integer, JSON object, etc.)
+    *   How the Agent should obtain the value – whether from user input, derived from previous steps in the conversation, retrieved from an external source, or a predefined static value
+
+*   **Contextually Rich:** Provide sufficient context so the Agent understands the overarching objective and the specific scenario in which each TestRail tool should be applied within the broader workflow. Explain the desired outcome or goal for each tool invocation.
+
+*   **Step-by-Step Structure:** Organize instructions into a numbered or bulleted list of steps for complex workflows. This helps the Agent follow a logical sequence of actions.
+
+*   **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Show me test case 123', 'Create a new login test', 'Find all high priority test cases'"
+
+When instructing your Agent to use a TestRail toolkit tool, adhere to this structured pattern:
+
+1. **State the Goal:** Begin by clearly stating the objective you want to achieve with this step. For example, "Goal: To retrieve details of test case with ID 123."
+
+2. **Specify the Tool:** Clearly indicate the specific TestRail tool to be used for this step. For example, "Tool: Use the 'get_case' tool."
+
+3. **Define Parameters:** Provide a detailed list of all parameters required by the selected tool. For each parameter:
+   - **Parameter Name:** `<Parameter Name as defined in tool documentation>`
+   - **Value or Source:** `<Specify the value or how to obtain the value. Examples: "user input", "from previous step", "hardcoded value '123'", "value of variable X">`
+
+4. **Describe Expected Outcome (Optional but Recommended):** Briefly describe the expected result or outcome after the tool is successfully executed. For example, "Outcome: The Agent will display the full details of test case 123."
+
+**Example Instructions:**
+
+*   **Retrieve a Specific Test Case:**
 
 ```markdown
-1. Identify the goal: [State the objective, e.g., "To retrieve details of a specific test case"].
-2. Tool Selection: Use the "[tool_name]" tool.
-3. Parameter Specification: Provide the following parameters:
-    - Parameter Name 1: <value or description of value>
-    - Parameter Name 2: <value or description of value>
-    - ...
-4. Expected Outcome: [Optionally, describe what should happen after the tool is used].
+Goal: Retrieve detailed information about test case ID 2260.
+Tool: Use the 'get_case' tool.
+Parameters:
+  - testcase_id: "2260" (from user input or conversation context)
+Outcome: Display the complete details of test case 2260 including title, steps, expected results, and custom fields.
 ```
 
-**Example Agent Instructions for TestRail Toolkit Tools (OpenAI Agent Friendly):**
-
-*   **Agent Instructions for Retrieving a Specific Test Case:**
+*   **Get All Test Cases in a Project:**
 
 ```markdown
-1. Goal: To get the details of test case with ID 2260 from TestRail.
-2. Tool: Use the "get_case" tool.
-3. Parameters:
-    - Case ID: "2260"
-4. Outcome: The Agent will retrieve and display the details of test case with ID 2260.
+Goal: Get a list of all test cases from project ID 1.
+Tool: Use the 'get_cases' tool.
+Parameters:
+  - project_id: "1"
+  - output_format: "json" (default)
+  - keys: ["id", "title", "priority_id", "type_id"] (optional, specify which fields to include)
+  - suite_id: (optional, only if project uses multiple suites)
+Outcome: Display a formatted list of all test cases in project 1.
 ```
 
-*   **Agent Instructions for Adding a New Test Case:**
+*   **Filter Test Cases by Criteria:**
 
 ```markdown
-1. Goal: To create a new test case in TestRail project with ID 1, section ID 5, with title "Login Functionality Test" and priority "High".
-2. Tool: Use the "add_case" tool.
-3. Parameters:
-    - Project ID: "1"
-    - Section ID: "5"
-    - Title: "Login Functionality Test"
-    - Case Properties (JSON format): '{"priority_id": 1}'  (Note: priority_id 1 usually corresponds to High priority in TestRail, check your TestRail instance for specific IDs)
-4. Outcome: A new test case named "Login Functionality Test" will be created in TestRail under project ID 1 and section ID 5 with High priority.
+Goal: Find all high-priority functional test cases in project 1.
+Tool: Use the 'get_cases_by_filter' tool.
+Parameters:
+  - project_id: "1"
+  - json_case_arguments: '{"priority_id": 1, "type_id": 2}' (high priority and functional type - verify IDs in your TestRail instance)
+  - output_format: "json"
+  - keys: ["id", "title", "priority_id", "type_id"]
+Outcome: Display filtered list of test cases matching the criteria.
 ```
 
-*   **Agent Instructions for Retrieving All Test Cases in a Project:**
+*   **Create a New Test Case:**
 
 ```markdown
-1. Goal: To get a list of all test cases from TestRail project with ID 2.
-2. Tool: Use the "get_cases" tool.
-3. Parameters:
-    - Project ID: "2"
-4. Outcome: The Agent will retrieve and display a list of all test cases in project ID 2.
+Goal: Create a new test case for login functionality testing.
+Tool: Use the 'add_case' tool.
+Parameters:
+  - section_id: "5" (the section ID where the test case should be created)
+  - title: "Verify successful login with valid credentials"
+  - case_properties: {
+      "template_id": 1,
+      "priority_id": 2,
+      "type_id": 1,
+      "custom_preconds": "User must have valid account credentials",
+      "custom_steps": "1. Navigate to login page\n2. Enter valid username\n3. Enter valid password\n4. Click Login button",
+      "custom_expected": "User is successfully logged in and redirected to dashboard"
+    }
+Outcome: A new test case is created in TestRail with the specified details.
 ```
 
-*   **Agent Instructions for Retrieving Test Cases by Filter:**
+*   **Bulk Create Test Cases:**
 
 ```markdown
-1. Goal: To retrieve all test cases from project ID 1 that are of "Functional" type and have "High" priority.
-2. Tool: Use the "get_cases_by_filter" tool.
-3. Parameters:
-    - Project ID: "1"
-    - Filter Arguments (JSON format): '{"priority_id": 1, "type_id": 2}' (Note: priority_id 1 for High, type_id 2 for Functional are examples, check your TestRail instance for specific IDs)
-4. Outcome: The Agent will retrieve and display a list of test cases from project ID 1 that match the specified filter criteria (Functional type and High priority).
+Goal: Create multiple test cases from a list of requirements.
+Tool: Use the 'add_cases' tool.
+Parameters:
+  - add_test_cases_data: '[
+      {
+        "section_id": "5",
+        "title": "Test Case 1",
+        "case_properties": {"priority_id": 1, "custom_steps": "Step 1", "custom_expected": "Result 1"}
+      },
+      {
+        "section_id": "5",
+        "title": "Test Case 2",
+        "case_properties": {"priority_id": 2, "custom_steps": "Step 2", "custom_expected": "Result 2"}
+      }
+    ]'
+Outcome: Multiple test cases are created in TestRail in a single operation.
+```
+
+*   **Update an Existing Test Case:**
+
+```markdown
+Goal: Update the priority of test case 123 to High.
+Tool: Use the 'update_case' tool.
+Parameters:
+  - case_id: "123"
+  - case_properties: {"priority_id": 1}
+Outcome: Test case 123 is updated with high priority.
+```
+
+*   **Get Test Suites:**
+
+```markdown
+Goal: List all test suites in project 1.
+Tool: Use the 'get_suites' tool.
+Parameters:
+  - project_id: "1"
+  - output_format: "json"
+Outcome: Display a list of all test suites available in project 1.
+```
+
+*   **Index Test Case Data for Semantic Search:**
+
+```markdown
+Goal: Index all test cases from project 1, suite 2 to enable AI-powered semantic search.
+Tool: Use the 'index_data' tool.
+Parameters:
+  - index_name: "qa_proj1" (max 7 characters)
+  - project_id: "1"
+  - suite_id: "2" (optional)
+  - include_attachments: false (set to true if you want to index test case attachments)
+  - chunking_tool: "json"
+  - clean_index: false (set to true to clear existing index before reindexing)
+Outcome: Test case data is indexed and available for semantic search queries.
+Note: Requires PgVector configuration and embedding model to be set in the toolkit.
+```
+
+*   **Search Indexed Test Cases:**
+
+```markdown
+Goal: Search indexed test cases for content related to "authentication flow".
+Tool: Use the 'search_index' tool.
+Parameters:
+  - query: "authentication flow"
+  - index_name: "qa_proj1"
+  - cut_off: 0.7 (relevance threshold)
+  - search_top: 10 (number of results)
+Outcome: Returns top 10 most relevant test cases related to authentication flow.
 ```
 
 ### Conversation Starters
 
-Use these conversation starters to interact with your TestRail-integrated Agent.
+Include these conversation starters in your Agent instructions to help users interact with the TestRail-integrated Agent:
 
-**1. For Testing and Troubleshooting Connection:**
+**For Testing Connection:**
+* "Get test case with ID 1"
+* "Show me all test cases in project 1"
 
-These starters are designed to verify if the TestRail toolkit is correctly configured and connected to your TestRail instance.
-
-*   "Get test case with ID 1." - *This tests basic connectivity and read permissions.*
-*   "Get all test cases for project ID 1." - *This further tests read permissions and project access.*
-
-**2. For General Agent Usage Scenarios:**
-
-These starters demonstrate how to initiate agent execution for common TestRail-related tasks.
-
-*   "I need to review the details of test case 2260." - *This could trigger the `get_case` tool.*
-*   "Create a new test case in project 1, section 5, with title 'User Registration Test' and priority 'Medium'." - *This directly initiates the `add_case` tool.*
-*   "List all high priority test cases in project 2." - *This would use the `get_cases_by_filter` tool.*
-*   "Get me all test cases from project 3." - *This would use the `get_cases` tool.*
-
-These conversation starters provide a starting point for interacting with your TestRail-integrated ELITEA Agent and can be customized further based on your specific use cases and workflows.
+**For General Usage:**
+* "Show me the details of test case 2260"
+* "Create a new test case for user registration in section 5"
+* "Find all high-priority test cases in project 2"
+* "List all test suites in project 1"
+* "Update test case 123 priority to critical"
+* "Search for test cases about login functionality"
 
 ## Use Cases
 
-The TestRail toolkit unlocks numerous automation possibilities for software testing workflows within ELITEA. Here are some key use cases, demonstrating how each tool can be applied:
+The TestRail toolkit unlocks numerous automation possibilities for software testing workflows within ELITEA. Here are some key use cases:
 
 *   **Automated Test Case Review:**
-    *   **Scenario:**  Quickly review the details of a specific test case to understand its steps, expected results, and current status.
+    *   **Scenario:** Quickly review details of specific test cases without opening TestRail interface
     *   **Tools Used:** `get_case`
-    *   **Example Instruction:** "Use the 'get_case' tool to retrieve test case with ID 2260 and show me the details."
-    *   **Benefit:** Saves time in manually searching for and opening test cases in TestRail, allowing for faster reviews and decision-making.
+    *   **Benefit:** Saves time and allows for faster decision-making during test reviews
 
-*   **Project Test Case Overview:**
-    *   **Scenario:** Get a comprehensive list of all test cases within a specific TestRail project to understand the testing scope and coverage.
-    *   **Tools Used:** `get_cases`
-    *   **Example Instruction:** "Use the 'get_cases' tool to list all test cases in project ID 1 so I can get an overview of the project's test suite."
-    *   **Benefit:** Provides a quick and easy way to get a high-level view of all test cases in a project, aiding in test planning and progress monitoring.
+*   **Test Coverage Analysis:**
+    *   **Scenario:** Get comprehensive overview of test cases across projects and analyze coverage
+    *   **Tools Used:** `get_cases`, `get_cases_by_filter`, `get_suites`
+    *   **Benefit:** Provides insights into testing scope and identifies coverage gaps
 
-*   **Filtered Test Case Retrieval for Targeted Analysis:**
-    *   **Scenario:** Identify and retrieve test cases based on specific criteria, such as priority, status, or type, for focused analysis or reporting.
+*   **Automated Test Case Creation:**
+    *   **Scenario:** Generate test cases automatically from requirements, user stories, or technical specifications
+    *   **Tools Used:** `add_case`, `add_cases`
+    *   **Benefit:** Reduces manual effort, ensures consistency, and accelerates test case development
+
+*   **Test Case Maintenance:**
+    *   **Scenario:** Bulk update test case properties based on project changes or process improvements
+    *   **Tools Used:** `update_case`
+    *   **Benefit:** Keeps test cases up-to-date efficiently across large test suites
+
+*   **Priority-Based Test Selection:**
+    *   **Scenario:** Identify and retrieve high-priority or failed test cases for focused testing efforts
     *   **Tools Used:** `get_cases_by_filter`
-    *   **Example Instruction:** "Use the 'get_cases_by_filter' tool to get all 'Failed' test cases with 'High' priority in project ID 2 to prioritize bug fixing."
-    *   **Benefit:** Enables targeted retrieval of test cases, allowing testers and managers to quickly focus on specific areas of interest, such as failed tests or high-priority items.
+    *   **Benefit:** Enables targeted testing and efficient resource allocation
 
-*   **Automated Test Case Creation from Requirements:**
-    *   **Scenario:** Automatically create new test cases in TestRail based on new software requirements or user stories.
-    *   **Tools Used:** `add_case`
-    *   **Example Instruction:** "Use the 'add_case' tool to create a new test case in project ID 3, section ID 10, with title 'Data Validation Test' and priority 'Medium' based on this new requirement: [paste requirement details here]."
-    *   **Benefit:** Streamlines test case creation, reduces manual effort, and ensures that test cases are created promptly as requirements evolve, improving test coverage and efficiency.
+*   **Semantic Test Case Discovery:**
+    *   **Scenario:** Use AI-powered semantic search to find relevant test cases based on natural language queries
+    *   **Tools Used:** `index_data`, `search_index`, `stepback_search_index`
+    *   **Benefit:** Improves test case discoverability and enables intelligent test recommendations
+
+*   **Test Documentation Generation:**
+    *   **Scenario:** Export test cases in various formats for documentation or reporting purposes
+    *   **Tools Used:** `get_cases` with different output formats (json, csv, markdown)
+    *   **Benefit:** Automates documentation creation and supports various reporting needs
 
 ## Troubleshooting and Support
 
 ### Troubleshooting
 
 *   **Connection Issues:**
-    *   **Problem:** Agent fails to connect to TestRail, resulting in errors during toolkit execution.
+    *   **Problem:** Agent fails to connect to TestRail
     *   **Troubleshooting Steps:**
-        1.  **Verify TestRail URL:** Ensure the URL is correctly entered and points to your TestRail instance (e.g., `https://yourcompany.testrail.io/`).
-        2.  **Check Authentication:** Double-check the Email address and API Key for accuracy.
-        3.  **API Key Generation:** Re-generate a new API key in TestRail and try using that if you suspect the key might be invalid.
-        4.  **Network Connectivity:** Verify that both ELITEA and TestRail have internet access and no network issues are blocking the connection.
+        1. Verify TestRail URL is correct (e.g., `https://yourcompany.testrail.io/`)
+        2. Check that Email and API Key are accurate
+        3. Regenerate API key in TestRail if needed
+        4. Verify network connectivity between ELITEA and TestRail
 
-*   **Authorization Errors (Permission Denied):**
-    *   **Problem:** Agent receives "Permission Denied" or "Unauthorized" errors when accessing TestRail resources.
+*   **Authorization Errors:**
+    *   **Problem:** "Permission Denied" or "Unauthorized" errors
     *   **Troubleshooting Steps:**
-        1.  **API Key Validity:** Ensure the API key is valid and has not been revoked in TestRail.
-        2.  **Account Permissions:** Confirm that the TestRail account associated with the API key has the necessary permissions to access the specified projects and perform the requested actions (e.g., read test cases, add test cases). TestRail permissions are generally managed within TestRail itself, ensure your user role has sufficient privileges.
+        1. Ensure API key is valid and not revoked
+        2. Verify the TestRail account has necessary permissions (read, write, admin)
+        3. Check project-level permissions in TestRail
 
-*   **Incorrect Project or Section IDs:**
-    *   **Problem:** Agent fails to find projects or sections, especially when adding new test cases.
+*   **Invalid Project or Section IDs:**
+    *   **Problem:** Cannot find specified project, suite, or section
     *   **Troubleshooting Steps:**
-        1.  **Verify Project ID:** Double-check the Project ID in your TestRail instance. You can usually find the Project ID in the URL when you are viewing a specific project in TestRail.
-        2.  **Verify Section ID:** Similarly, verify the Section ID. Section IDs are typically found in the URL when you are within a specific section of a test suite in TestRail. Ensure the Section ID is valid within the specified Project.
+        1. Verify IDs by checking TestRail URLs (IDs are typically visible in the URL)
+        2. Ensure the suite_id is provided for projects in multiple suite mode
+        3. Confirm section exists within the specified project/suite
+
+*   **Indexing Failures:**
+    *   **Problem:** Index data tool fails or indexing takes too long
+    *   **Troubleshooting Steps:**
+        1. Verify PgVector configuration is correctly set up
+        2. Ensure embedding model is selected
+        3. Check that project has accessible test cases
+        4. Try indexing smaller datasets first (use suite_id or section_id filters)
 
 ### FAQ
 
 1.  **Q: Can I use my regular TestRail password instead of an API Key?**
-    *   **A:** No, for secure integration with ELITEA, you **must use a TestRail API Key**.  Using your regular password directly is not supported and is a security risk.
-2.  **Q: Where do I find Project IDs and Section IDs in TestRail?**
-    *   **A:** Project IDs and Section IDs are typically visible in the URL when you navigate to a specific project or section within TestRail. For example, in the URL `https://yourcompany.testrail.io/index.php?/projects/overview/1`, `1` is likely the Project ID. Similarly, when viewing a section, the URL will contain a section identifier. You can also find these IDs through TestRail's API if needed, but checking the URL is usually the easiest method.
-3.  **Q: What if I don't know the exact IDs for priority or type when filtering test cases?**
-    *   **A:** TestRail uses numerical IDs for various fields like priority and type. You need to find the correct IDs within your TestRail instance. Typically, you can find these IDs by inspecting the source code of the TestRail page when you are viewing or editing test cases, or by using TestRail's API to query available priorities and types. Contact your TestRail administrator if you are unsure about these IDs.
+    *   **A:** No, you must use a TestRail API Key for secure integration. Regular passwords are not supported.
+
+2.  **Q: Where do I find Project IDs, Suite IDs, and Section IDs?**
+    *   **A:** These IDs are typically visible in the URL when navigating in TestRail. For example, `/projects/overview/1` shows project ID 1. You can also use TestRail's API to query these IDs.
+
+3.  **Q: What are the priority_id and type_id values for my TestRail instance?**
+    *   **A:** These IDs vary by TestRail instance. Check your TestRail configuration or contact your TestRail administrator. Common values: Priority (1=High, 2=Medium, 3=Low), but verify for your instance.
+
+4.  **Q: How do I know which template_id to use when creating test cases?**
+    *   **A:** Template IDs depend on your TestRail configuration. Template 1 typically uses simple text steps (`custom_steps`), while template 2 uses separated steps (`custom_steps_separated`). Check your TestRail templates settings.
+
+5.  **Q: Can I index test case attachments?**
+    *   **A:** Yes, set `include_attachments: true` in the index_data tool parameters. Note that this requires additional processing time and storage.
+
+6.  **Q: What's the difference between single suite and multiple suite modes?**
+    *   **A:** TestRail projects can operate in single suite mode (all test cases in one suite) or multiple suite mode (test cases organized across multiple suites). For multiple suite projects, you must specify `suite_id` when retrieving or creating test cases.
 
 ### Support Contact
 
-For any issues, questions, or further assistance with the TestRail integration or ELITEA Agents, please reach out to our dedicated ELITEA Support Team. We are committed to providing prompt and effective support to ensure your success with ELITEA.
+For issues, questions, or assistance with TestRail integration, contact the ELITEA Support Team:
 
-**Contact ELITEA Support:**
+**Email:** [SupportAlita@epam.com](mailto:SupportAlita@epam.com)
 
-*   **Email:**  **[SupportAlita@epam.com](mailto:SupportAlita@epam.com)**
-
-**Best Practices for Effective Support Requests:**
-
-To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:
-
-*   **ELITEA Environment:** Clearly specify the ELITEA environment you are using (e.g., "Next" or the specific name of your ELITEA instance).
-*   **Project Details:**  Indicate the **Project Name** and whether you are working in your **Private** workspace or a **Team** project.
-*   **Detailed Issue Description:** Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.
-*   **Relevant Configuration Information:**  To help us diagnose the issue, please include relevant configuration details, such as:
-    *   **Agent Instructions (Screenshot or Text):** If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.
-    *   **Toolkit Configurations (Screenshots):** If the issue involves the TestRail toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.
-*   **Error Messages (Full Error Text):** If you are encountering an error message, please provide the **complete error text**. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.
-*   **Your Query/Prompt (Exact Text):** If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.
-
-**Before Contacting Support:**
-
-We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
+**When contacting support, please include:**
+* ELITEA environment name
+* Project name and workspace type (Private/Team)
+* Detailed description of the issue
+* Agent instructions (screenshot or text)
+* Toolkit configuration (screenshot)
+* Complete error messages
+* Exact query or prompt used
 
 ## Useful Links
 
-To further enhance your understanding and skills in integrating TestRail with ELITEA, here are some helpful resources:
-
-*   **[TestRail Website](https://www.gurocksoftware.com/testrail/)**: Access the main TestRail platform to create an account or log in and explore TestRail features.
-*   **[TestRail API Documentation](https://www.gurocksoftware.com/testrail/docs/api/)**:  Refer to the official TestRail API documentation for detailed information on API endpoints, data structures, and advanced usage.
-*   **[ELITEA Secrets](../../menus/settings/secrets.md)**: Learn how to securely store your TestRail API Key using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the TestRail toolkit to automate your workflows.
-*   **[ELITEA Support Email](mailto:SupportAlita@epam.com)**: Contact the ELITEA support team for direct assistance with TestRail integration or any other questions and issues you may encounter.
+*   **[TestRail Website](https://www.gurocksoftware.com/testrail/)**: Main TestRail platform
+*   **[TestRail API Documentation](https://www.gurocksoftware.com/testrail/docs/api/)**: Official API reference
+*   **[ELITEA Secrets](../../menus/settings/secrets.md)**: Secure credential storage
+*   **[ELITEA Credentials](../../menus/credentials.md)**: Credential management
+*   **[ELITEA Toolkits](../../menus/toolkits.md)**: Toolkit configuration
+*   **[ELITEA Agents](../../menus/agents.md)**: Agent creation and configuration
+*   **[ELITEA Support](mailto:SupportAlita@epam.com)**: Direct support contact
