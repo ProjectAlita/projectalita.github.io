@@ -72,76 +72,129 @@ To configure the Postman toolkit in ELITEA, you will need the Collection Id and 
 
 > **Tip:** You can also use the [Postman API](https://docs.api.getpostman.com/) to programmatically list collections and workspaces, which will include their IDs in the response.
 
-## Postman Integration with ELITEA
+## System Integration with ELITEA
 
-### Agent Creation/Configuration
+To integrate Postman with ELITEA, you need to follow a three-step process: **Create Credentials → Create Toolkit → Use in Agents**. This workflow ensures secure authentication and proper configuration.
 
-To integrate Postman, you'll need to configure it within an ELITEA Agent. You can either create a new Agent or modify an existing one.
+### Step 1: Create Postman Credentials
 
-1.  **Navigate to Agents:** In ELITEA, go to the **Agents** menu.
-2.  **Create or Edit Agent:**
-    *   **New Agent:** Click **"+ Agent"** to create a new Agent. Follow the steps to define Agent details like name, description, type, and instructions.
-    *   **Existing Agent:** Select the Agent you want to integrate with Postman and click on its name to edit.
-3.  **Access Tools Section:** In the Agent configuration, scroll down to the **"Tools"** section.
+Before creating a toolkit, you must first create Postman credentials in ELITEA:
 
-### Toolkit Configuration
+1. **Navigate to Credentials Menu:** Open the sidebar and select **[Credentials](../../menus/credentials.md)**.
+2. **Create New Credential:** Click the **`+ Create`** button.
+3. **Select Postman:** Choose **Postman** as the credential type.
+4. **Configure Credential Details:**
+     * **Display Name:** Enter a descriptive name (e.g., "Postman - API Testing")
+     * **Base URL:** Enter the Postman API base URL (typically `https://api.getpostman.com/`)
+     * **Workspace ID:** Enter your Postman workspace ID (found in the workspace URL)
+     * **API Key:** Enter your Postman API key (the one you generated in the previous section)
+5. **Save Credential:** Click **Save** to create the credential
 
-This section details how to configure the Postman toolkit within your ELITEA Agent.
+!!! tip "Security Recommendation"
+    It's highly recommended to use **[Secrets](../../menus/settings/secrets.md)** for API keys instead of entering them directly. Create a secret first, then reference it in your credential configuration.
 
-1.  **Add Toolkit:** In the "Tools" section, click the **"+" icon**.
-2.  **Select Postman:** Choose **"Postman"** from the dropdown list of available toolkits. This opens the "New Postman tool" configuration panel.
-3.  **Configure Toolkit Details:** Fill in the following fields:
+![Create Credential ](../../img/integrations/toolkits/postman/postman-credential-create.png)
 
-    *   **API Key:** Enter your Postman API Key. This is required for authenticating ELITEA with your Postman account. For best security, store your API Key as a Secret in ELITEA and select it from the dropdown. Alternatively, you can paste the API Key directly, but using Secrets is recommended.
-    *   **Base Url:** The base URL for the Postman API. Typically, this is `https://api.getpostman.com/`. Only change this if you are using a custom Postman API endpoint.
-    *   **Collection Id:** The unique identifier of the Postman collection you want the Agent to access or run. You can find the Collection ID in the Postman web interface (in the collection's URL or via the Postman API).
-    *   **Workspace Id:** The unique identifier of your Postman workspace. This is required if you want to scope actions (like listing or running collections) to a specific workspace. You can find the Workspace ID in the Postman web interface or via the Postman API.
-    *   **Environment Config:** (Optional) The ID or configuration for a Postman environment to use when running collections. This allows you to specify environment variables and settings for your API tests. You can find Environment IDs in the Postman web interface or via the API.
+### Step 2: Create Postman Toolkit
 
-    ![Postman-Toolkit_configuration](../../img/integrations/toolkits/postman/Postman-Toolkit_configuration.png)
+Once your credentials are configured, create the Postman toolkit:
 
-4.  **Enable Tools:** In the "Tools" section of the Postman toolkit configuration, **select the checkboxes next to the Postman tools** you want to enable for your Agent. **Enable only the tools your Agent will actually use** to adhere to the principle of least privilege and enhance security. Available tools may include:
-    *   **Get collections:** Retrieve a list of all collections in your Postman workspace.
-    *   **Get collection:** Retrieves details of a specific collection.
-    *   **Get folder:** Retrieve details of a specific folder within a collection.
+1. **Navigate to Toolkits Menu:** Open the sidebar and select **[Toolkits](../../menus/toolkits.md)**.
+2. **Create New Toolkit:** Click the **`+ Create`** button.
+3. **Select Postman:** Choose **Postman** from the list of available toolkit types.
+4. **Configure Toolkit Details:**
+     * **Name:** Enter a descriptive name for your toolkit (e.g., "Postman - API Collection Manager")
+     * **Description:** Enter a brief description of the toolkit's purpose (e.g., "Manages Postman API collections and automates API testing workflows")
+5. **Configure Credentials:** 
+     * In the **Configuration** section, select your previously created Postman credential from the **Credentials** dropdown
+6. **Configure Collection Settings (Optional):**
+     * **Collection ID:** Enter a default collection ID to scope toolkit operations
+     * **Environment Config:** Enter JSON configuration for request execution (auth headers, project IDs, base URLs, etc.)
+7. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific Postman tools you want to enable. **Enable only the tools your agents will actually use** to follow the principle of least privilege
+8. **Save Toolkit:** Click **Save** to create the toolkit
 
-5.  **Complete Configuration:** Click the **arrow icon** (at the top right of the toolkit configuration) to save the Postman toolkit setup and return to the main Agent configuration.
-6.  Click **Save** to apply configuration and changes to the Agent.
+![Create Credential ](../../img/integrations/toolkits/postman/postman-toolkit-create.png)
 
-### Tool Overview
 
-The Postman toolkit provides a wide range of tools for your ELITEA Agents. Below are the available tools and their purposes:
+#### Available Tools:
 
-- **get_collections:** Retrieve a list of all collections in your Postman workspace.
-- **get_collection:** Retrieve details of a specific collection by its ID.
-- **get_folder:** Retrieve details of a specific folder within a collection.
-- **get_request_by_path:** Retrieve a request by specifying its path within a collection/folder structure.
-- **get_request_by_id:** Retrieve a request by its unique ID.
-- **get_request_script:** Retrieve the pre-request or test script associated with a request.
-- **search_requests:** Search for requests within collections by name or other criteria.
-- **analyze:** Analyze a collection or request for best practices, issues, or structure.
-- **execute_request:** Execute a specific request and return the response.
-- **update_collection_description:** Update the description of a collection.
-- **update_collection_variables:** Update the variables defined at the collection level.
-- **update_collection_auth:** Update the authentication settings for a collection.
-- **duplicate_collection:** Create a duplicate of an existing collection.
-- **create_folder:** Create a new folder within a collection.
-- **update_folder:** Update the name or description of a folder.
-- **move_folder:** Move a folder to a different location within a collection.
-- **create_request:** Create a new request within a collection or folder.
-- **update_request_name:** Update the name of a request.
-- **update_request_method:** Update the HTTP method (GET, POST, etc.) of a request.
-- **update_request_url:** Update the URL of a request.
-- **update_request_description:** Update the description of a request.
-- **update_request_headers:** Update the headers for a request.
-- **update_request_body:** Update the body (payload) of a request.
-- **update_request_auth:** Update the authentication settings for a request.
-- **update_request_tests:** Update the test scripts for a request.
-- **update_request_pre_script:** Update the pre-request script for a request.
-- **duplicate_request:** Create a duplicate of an existing request.
-- **move_request:** Move a request to a different folder or collection.
+The Postman toolkit provides the following tools for interacting with Postman collections, folders, and requests, organized by functional categories:
 
-These tools enable comprehensive management, automation, and analysis of your Postman collections, folders, and requests directly from ELITEA Agents.
+| **Tool Category** | **Tool Name** | **Description** | **Primary Use Case** |
+|:-----------------:|---------------|-----------------|----------------------|
+| **Collection Access** | | | |
+| | **Get collections** | Retrieves all collections accessible in the workspace | List and browse available API collections |
+| | **Get collection** | Retrieves a specific collection in flattened format with path-based structure | Access collection structure and details |
+| | **Duplicate collection** | Creates a copy of an existing collection | Create backups or variants of collections for testing |
+| **Folder Management** | | | |
+| | **Get folder** | Retrieves a specific folder in flattened format with path-based structure | Access folder structure and contents |
+| | **Create folder** | Creates a new folder within a collection | Organize requests into logical groups |
+| | **Update folder** | Updates folder properties (name, description, auth) | Modify folder metadata and settings |
+| | **Move folder** | Moves a folder to a different location within the collection | Reorganize collection structure |
+| **Request Access** | | | |
+| | **Get request by path** | Retrieves a specific request by its path | Access requests using hierarchical paths |
+| | **Get request by ID** | Retrieves a specific request by its unique ID | Direct access to specific requests |
+| | **Get request script** | Retrieves the test or pre-request script content | Review automation scripts in requests |
+| | **Search requests** | Searches for requests across the collection | Find requests by name or criteria |
+| **Request Management** | | | |
+| | **Create request** | Creates a new API request in a folder | Add new API endpoints to collections |
+| | **Update request name** | Updates the name of a request | Rename requests for clarity |
+| | **Update request method** | Updates the HTTP method (GET, POST, etc.) | Change request type |
+| | **Update request URL** | Updates the request URL | Modify endpoint addresses |
+| | **Update request description** | Updates the request description | Add or update documentation |
+| | **Update request headers** | Updates request headers | Modify authentication and content headers |
+| | **Update request body** | Updates the request body (payload) | Change request data |
+| | **Update request auth** | Updates request authentication settings | Configure request-level auth |
+| | **Update request tests** | Updates the test scripts for a request | Add or modify test automation |
+| | **Update request pre script** | Updates the pre-request script | Add or modify pre-request setup |
+| | **Duplicate request** | Creates a copy of an existing request | Create request variants or templates |
+| | **Move request** | Moves a request to a different folder | Reorganize requests within collections |
+| **Collection Management** | | | |
+| | **Update collection description** | Updates the description of a collection | Add or update collection documentation |
+| | **Update collection variables** | Updates the variables defined at the collection level | Manage collection-wide variables |
+| | **Update collection auth** | Updates the authentication settings for a collection | Configure collection-level auth |
+| **Execution & Analysis** | | | |
+| | **Execute request** | Executes a Postman request with environment variables | Run API tests and validate responses |
+| | **Analyze** | Analyzes collection, folder, or request for API quality and best practices | Identify issues and improvement opportunities |
+
+### Step 3: Use Postman Toolkit in Agents
+
+Once your Postman toolkit is created, you can use it in various ELITEA features:
+
+#### **In Agents:**
+1. **Navigate to Agents:** Open the sidebar and select **[Agents](../../menus/agents.md)**.
+2. **Create or Edit Agent:** Click **`+ Create`** for a new agent or select an existing agent to edit.
+3. **Add Postman Toolkit:** 
+     * In the **"Tools"** section of the agent configuration, click the **"+Toolkit"** icon
+     * Select your Postman toolkit from the dropdown menu
+     * The toolkit will be added to your agent with the previously configured tools enabled
+
+Your agent can now interact with Postman using the configured toolkit and enabled tools.
+
+![agent add](../../img/integrations/toolkits/postman/postman-agent-add.png)
+
+#### **In Pipelines:**
+
+1. **Navigate to Pipelines:** Open the sidebar and select **[Pipelines](../../menus/pipelines.md)**.
+2. **Create or Edit Pipeline:** Either create a new pipeline or select an existing pipeline to edit.
+3. **Add Postman Toolkit:** 
+     * In the **"Tools"** section of the pipeline configuration, click the **"+Toolkit"** icon
+     * Select your Postman toolkit from the dropdown menu
+     * The toolkit will be added to your pipeline with the previously configured tools enabled
+
+![Pipeline add](../../img/integrations/toolkits/postman/postman-pipeline-add.png)     
+
+#### **In Chat:**
+
+1. **Navigate to Chat:** Open the sidebar and select **[Chat](../../menus/chat.md)**.
+2. **Start New Conversation:** Click **+Create** or open an existing conversation.
+3. **Add Toolkit to Conversation:**
+     * In the chat Participants section, look for the **Toolkits** element
+     * Click to add a toolkit and select your Postman toolkit from the available options
+     * The toolkit will be added to your conversation with all previously configured tools enabled
+4. **Use Toolkit in Chat:** You can now directly interact with your Postman collections by asking questions or requesting actions that will trigger the Postman toolkit tools.
+
+![Chat add](../../img/integrations/toolkits/postman/postman-chat-add.png)
 
 ## Instructions and Prompts for Using the Toolkit
 
@@ -167,74 +220,243 @@ When instructing your Agent to use a Postman toolkit, use this pattern:
 4. Expected Outcome: [Optionally, describe what should happen after the tool is used].
 ```
 
-**Example Agent Instructions for Postman Toolkit Tools (OpenAI Agent Friendly):**
+When providing instructions to agents using the Postman toolkit, follow these structured steps to ensure clarity and proper tool usage:
 
-*   **Get all collections:**
+1. **Define the Goal:** Clearly state the objective or what the agent needs to accomplish. For example, "Goal: Execute a specific API request and validate the response."
 
-```markdown
-1. Goal: To retrieve a list of all Postman collections in the workspace.
-2. Tool: Use the "get_collections" tool.
-3. Parameters: None
-4. Outcome: The Agent will display all available collections.
-```
+2. **Specify the Tool:** Clearly indicate the specific Postman tool to be used for this step. For example, "Tool: Use the 'execute_request' tool."
 
-*   **Get a specific request by ID:**
+3. **Define Parameters:** Provide a detailed list of all parameters required by the selected tool. For each parameter:
+   - **Parameter Name:** `<Parameter Name as defined in tool documentation>`
+   - **Value or Source:** `<Specify the value or how to obtain the value. Examples: "user input", "from previous step", "hardcoded value 'req123'", "value of variable X">`
 
-```markdown
-1. Goal: To get details of the request with ID "req123".
-2. Tool: Use the "get_request_by_id" tool.
-3. Parameters:
-    - Request ID: "req123"
-4. Outcome: The Agent will retrieve and display the details of the specified request.
-```
+4. **Describe Expected Outcome (Optional but Recommended):** Briefly describe the expected result or outcome after the tool is successfully executed. For example, "Outcome: The Agent will execute the request and display the API response with status code and body."
 
-*   **Update request headers:**
+5. **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Execute request req123', 'List all collections', 'Analyze collection for best practices'"
+
+#### Example Agent Instructions
+
+**Agent Instructions for Executing an API Request:**
 
 ```markdown
-1. Goal: To update the headers for request ID "req123" to include a new Authorization token.
-2. Tool: Use the "update_request_headers" tool.
-3. Parameters:
-    - Request ID: "req123"
-    - Headers: '{"Authorization": "Bearer <token>"}'
-4. Outcome: The Agent will update the request headers accordingly.
-```
-
-*   **Move a folder:**
-
-```markdown
-1. Goal: To move folder ID "folder789" to a new parent folder in collection ID "col456".
-2. Tool: Use the "move_folder" tool.
-3. Parameters:
-    - Folder ID: "folder789"
-    - Collection ID: "col456"
-    - New Parent Folder ID: "parent123"
-4. Outcome: The folder will be moved to the new location.
-```
-
-*   **Execute a request:**
-
-```markdown
-1. Goal: To execute the request with ID "req123" and view the response.
+1. Goal: Execute a specific API request in Postman and display the response.
 2. Tool: Use the "execute_request" tool.
 3. Parameters:
-    - Request ID: "req123"
-4. Outcome: The Agent will execute the request and display the response.
+    - request_id: "Get the request ID from the user. Example: 'req_abc123'"
+4. Outcome: The request will be executed and the agent will display the response status code, headers, and body. Confirm successful execution to the user.
 ```
 
-### Conversation Starters
+### Chat Usage Examples by Tool Category
 
-Use these conversation starters to interact with your Postman-integrated Agent and test the toolkit's capabilities:
+The following examples demonstrate how to interact with the Postman toolkit in ELITEA Chat, organized by functional categories. Each example shows the user request and the expected agent behavior.
 
-*   "List all Postman collections."
-*   "Get details for collection ID col456."
-*   "Find the request named 'Get User Info' in collection col456."
-*   "Update the request body for request ID req123 to use new JSON data."
-*   "Move folder ID folder789 to a different parent folder."
-*   "Duplicate the request with ID req123."
-*   "Analyze collection col456 for best practices."
-*   "Execute the request with ID req123 and show me the response."
-*   "Update the authentication settings for collection col456."
-*   "Create a new request in folder folder789."
+#### Collection Access - Get Collections
+
+**Chat Example:**
+```
+User: "Show me all Postman collections in my workspace."
+
+Agent Response: [Agent uses get_collections tool]
+
+📋 **Postman Collections** (3 collections):
+
+1. **Collection #col_123**: User API
+   - **Description**: API endpoints for user management and authentication
+   - **Requests**: 12
+
+2. **Collection #col_456**: Payment Gateway
+   - **Description**: Integration endpoints for payment processing
+   - **Requests**: 8
+
+3. **Collection #col_789**: Analytics API
+   - **Description**: Data analytics and reporting endpoints
+   - **Requests**: 15
+
+**Total Requests**: 35
+
+These collections organize your API endpoints by functional area.
+```
+
+#### Request Access - Search Requests
+
+**Chat Example:**
+```
+User: "Find all requests related to 'user authentication' in my collections."
+
+Agent Response: [Agent uses search_requests tool]
+
+🔍 **Search Results for "user authentication"** (4 matches):
+
+1. **POST /api/auth/login** (Collection: User API)
+   - **Description**: Authenticate user with email and password
+   - **Request ID**: req_auth_001
+
+2. **POST /api/auth/refresh** (Collection: User API)
+   - **Description**: Refresh authentication token
+   - **Request ID**: req_auth_002
+
+3. **POST /api/auth/logout** (Collection: User API)
+   - **Description**: Invalidate user session
+   - **Request ID**: req_auth_003
+
+4. **GET /api/auth/verify** (Collection: User API)
+   - **Description**: Verify token validity
+   - **Request ID**: req_auth_004
+
+These requests cover the complete authentication flow for your application.
+```
+
+#### Execution & Analysis - Execute Request
+
+**Chat Example:**
+```
+User: "Execute the login request req_auth_001 with test credentials."
+
+Agent Response: [Agent uses execute_request tool]
+
+✅ **Request Executed Successfully!**
+
+**Request**: POST /api/auth/login
+**Status Code**: 200 OK
+**Response Time**: 145ms
+
+**Response Body**:
+```json
+{
+  "status": "success",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "id": "usr_12345",
+    "email": "test@example.com",
+    "name": "Test User"
+  },
+  "expires_in": 3600
+}
+```
+
+**Headers**:
+- Content-Type: application/json
+- Authorization: Bearer [token]
+
+The authentication was successful and the user token is valid for 1 hour.
+```
+
+#### Execution & Analysis - Analyze Collection
+
+**Chat Example:**
+```
+User: "Analyze collection col_123 for best practices and issues."
+
+Agent Response: [Agent uses analyze tool]
+
+📊 **Analysis Report for Collection: User API**
+
+**Summary**:
+- **Total Requests**: 12
+- **Issues Found**: 5
+- **Warnings**: 3
+- **Best Practices Score**: 75%
+
+**Issues Identified**:
+1. **Missing Documentation** (3 requests)
+   - Requests without descriptions: POST /api/users/update, DELETE /api/users/:id, GET /api/users/search
+   - **Recommendation**: Add clear descriptions explaining the purpose and usage of each endpoint
+
+2. **Inconsistent Error Handling** (2 requests)
+   - Missing error response examples for POST /api/auth/login, POST /api/auth/refresh
+   - **Recommendation**: Document expected error responses and status codes
+
+3. **Incomplete Test Scripts** (4 requests)
+   - No automated tests found for POST /api/users/create, PUT /api/users/:id, etc.
+   - **Recommendation**: Add test scripts to validate response structure and status codes
+
+**Warnings**:
+1. Some requests use hardcoded values instead of environment variables
+2. Authentication headers not consistently applied across all requests
+3. Missing pre-request scripts for token refresh logic
+
+**Recommendations**:
+- Use environment variables for base URLs and API keys
+- Implement consistent authentication patterns across all requests
+- Add comprehensive test coverage for critical endpoints
+
+This analysis helps ensure your API collection follows best practices and maintains quality standards.
+```
+
+#### Request Management - Create Request
+
+**Chat Example:**
+```
+User: "Create a new GET request for fetching user profile in folder fld_users."
+
+Agent Response: [Agent uses create_request tool]
+
+✅ **Request Created Successfully!**
+
+- **Request ID**: req_new_001
+- **Method**: GET
+- **URL**: {{base_url}}/api/users/profile
+- **Folder**: fld_users
+- **Description**: Retrieve authenticated user profile information
+
+**Request Details**:
+- **Headers**: 
+  - Authorization: Bearer {{auth_token}}
+  - Content-Type: application/json
+- **Query Parameters**: None
+- **Body**: None
+
+The request has been added to your collection and is ready for configuration and testing.
+```
+
+#### Request Management - Update Request Body
+
+**Chat Example:**
+```
+User: "Update the request body for req_auth_001 to include email validation."
+
+Agent Response: [Agent uses update_request_body tool]
+
+✅ **Request Body Updated Successfully!**
+
+- **Request ID**: req_auth_001
+- **Method**: POST /api/auth/login
+- **Updated Field**: Request Body
+
+**New Request Body**:
+```json
+{
+  "email": "{{user_email}}",
+  "password": "{{user_password}}",
+  "validate_email": true,
+  "remember_me": false
+}
+```
+
+**Changes Made**:
+- Added `validate_email` field set to true
+- Added `remember_me` field for session persistence
+
+The request body has been updated with email validation. Test the request to ensure the API accepts the new format.
+```
+
+#### Folder Management - Create Folder
+
+**Chat Example:**
+```
+User: "Create a new folder called 'Authentication' in collection col_123."
+
+Agent Response: [Agent uses create_folder tool]
+
+✅ **Folder Created Successfully!**
+
+- **Folder ID**: fld_auth_001
+- **Name**: Authentication
+- **Collection**: User API (col_123)
+- **Description**: Authentication and authorization endpoints
+
+The folder has been created and is ready for organizing your authentication-related requests.
+```
 
 ## Use Cases
 
@@ -272,33 +494,54 @@ These use cases demonstrate how the Postman toolkit can streamline API managemen
 ### Troubleshooting
 
 *   **Connection Issues:**
-    *   **Problem:** Agent fails to connect to Postman, resulting in errors during toolkit execution.
+    *   **Problem:** Agent fails to connect to Postman
     *   **Troubleshooting Steps:**
-        1.  **Verify API Key:** Ensure the API Key is correctly entered and has the necessary permissions.
-        2.  **Check Account Access:** Double-check your Postman account and workspace access.
-        3.  **API Key Generation:** Re-generate a new API key in Postman and try using that if you suspect the key might be invalid.
-        4.  **Network Connectivity:** Verify that both ELITEA and Postman have internet access and no network issues are blocking the connection.
+        1. Verify Postman API URL is correct (e.g., `https://api.getpostman.com/`)
+        2. Check that API Key is accurate
+        3. Regenerate API key in Postman if needed
+        4. Verify network connectivity between ELITEA and Postman
 
-*   **Authorization Errors (Permission Denied):**
-    *   **Problem:** Agent receives "Permission Denied" or "Unauthorized" errors when accessing Postman resources.
+*   **Authorization Errors:**
+    *   **Problem:** "Permission Denied" or "Unauthorized" errors
     *   **Troubleshooting Steps:**
-        1.  **API Key Validity:** Ensure the API key is valid and has not been revoked in Postman.
-        2.  **Account Permissions:** Confirm that the Postman account associated with the API key has the necessary permissions to access the specified workspace and perform the requested actions.
+        1. Ensure API key is valid and not revoked
+        2. Verify the Postman account has necessary permissions
+        3. Check workspace-level permissions in Postman
 
-*   **Incorrect Collection or Environment IDs:**
-    *   **Problem:** Agent fails to find collections or environments, especially when running or retrieving details.
+*   **Invalid Collection or Request IDs:**
+    *   **Problem:** Cannot find specified collection, folder, or request
     *   **Troubleshooting Steps:**
-        1.  **Verify Collection ID:** Double-check the Collection ID in your Postman workspace. You can usually find the Collection ID in the URL or via the Postman API.
-        2.  **Verify Environment ID:** Similarly, verify the Environment ID. Ensure the Environment ID is valid within the specified workspace.
+        1. Verify IDs by checking Postman URLs (IDs are typically visible in the URL)
+        2. Ensure the workspace_id is correct in the toolkit configuration
+        3. Confirm the resource exists within the specified workspace
+
+*   **Request Execution Failures:**
+    *   **Problem:** Execute request tool fails or returns unexpected errors
+    *   **Troubleshooting Steps:**
+        1. Verify the request configuration is valid in Postman
+        2. Check that environment variables are properly set
+        3. Ensure the target API endpoint is accessible
+        4. Review request authentication settings
 
 ### FAQ
 
 1.  **Q: Can I use my regular Postman password instead of an API Key?**
-    *   **A:** No, for secure integration with ELITEA, you **must use a Postman API Key**. Using your regular password directly is not supported and is a security risk.
-2.  **Q: Where do I find Collection and Environment IDs in Postman?**
-    *   **A:** Collection and Environment IDs are typically visible in the URL when you navigate to a specific collection or environment within Postman. You can also find these IDs through the Postman API or by exporting the collection/environment.
-3.  **Q: What if I don't know the exact permissions needed for the API Key?**
-    *   **A:** Postman allows you to set scopes/permissions when creating an API key. For ELITEA integration, ensure the key has access to the collections and environments you want to manage. Contact your Postman administrator if you are unsure about these permissions.
+    *   **A:** No, you must use a Postman API Key for secure integration. Regular passwords are not supported.
+
+2.  **Q: Where do I find Collection IDs, Folder IDs, and Request IDs?**
+    *   **A:** These IDs are typically visible in the URL when navigating in Postman. You can also use Postman's API to query these IDs, or use the toolkit's search and list tools to find them.
+
+3.  **Q: How do I know my Workspace ID?**
+    *   **A:** Your Workspace ID can be found in the Postman web interface URL when viewing a workspace, or you can use the Postman API's `/workspaces` endpoint to list your workspaces.
+
+4.  **Q: Can I execute requests that require authentication?**
+    *   **A:** Yes, the execute_request tool will use the authentication settings configured in the Postman request. Ensure your request has proper authentication configured in Postman.
+
+5.  **Q: What happens if I update a request while someone else is using it?**
+    *   **A:** Postman uses collaborative editing. Changes are synchronized across users, but be aware that concurrent modifications may overwrite each other. Use version control practices for critical collections.
+
+6.  **Q: Can I analyze private or team collections?**
+    *   **A:** Yes, as long as your API key has the necessary permissions to access the workspace containing those collections. Verify your workspace access settings in Postman.
 
 ### Support Contact
 
@@ -327,11 +570,13 @@ We encourage you to first explore the resources available within this guide and 
 
 ## Useful Links
 
-To further enhance your understanding and skills in integrating Postman with ELITEA, here are some helpful resources:
+!!! info "Useful Links"
 
-*   **[Postman Website](https://www.postman.com/)**: Access the main Postman platform to create an account or log in and explore Postman features.
-*   **[Postman API Documentation](https://docs.api.getpostman.com/)**:  Refer to the official Postman API documentation for detailed information on API endpoints, data structures, and advanced usage.
-*   **[ELITEA Secrets](../../menus/settings/secrets.md)**: Learn how to securely store your Postman API Key using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Postman toolkit to automate your workflows.
-*   **[ELITEA Support Email](mailto:SupportAlita@epam.com)**: Contact the ELITEA support team for direct assistance with Postman integration or any other questions and issues you may encounter.
+    To further enhance your understanding and skills in integrating Postman with ELITEA, here are some helpful resources:
+
+    *   **[Postman Website](https://www.postman.com/)** - Access the main Postman platform to create an account or log in and explore Postman features
+    *   **[Postman API Documentation](https://docs.api.getpostman.com/)** - Refer to the official Postman API documentation for detailed information on API endpoints, data structures, and advanced usage
+    *   **[ELITEA Secrets](../../menus/settings/secrets.md)** - Learn how to securely store your Postman API Key using ELITEA's Secrets management feature for enhanced security
+    *   **[ELITEA Agents Configuration](../../menus/agents.md)** - Find out more about creating and configuring Agents in ELITEA, where you integrate the Postman toolkit to automate your workflows
+    *   **[ELITEA Support Email](mailto:SupportAlita@epam.com)** - Contact the ELITEA support team for direct assistance with Postman integration or any other questions and issues you may encounter
 
