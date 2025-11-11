@@ -1,8 +1,8 @@
-# How to Use Public Agents, Pipelines, and Toolkits from Chat
+# How to Use Public Agents and Pipelines from Chat
 
 ## Introduction
 
-While the **Public Project** has been removed from Elitea, **public agents, pipelines, and toolkits** remain fully accessible and usable within **Elitea Chat**. These community-shared resources provide pre-built workflows, specialized capabilities, and integrations that you can leverage directly in your conversations without needing to create them from scratch.
+While the **Public Project** has been removed from Elitea, **public agents and pipelines** remain fully accessible and usable within **Elitea Chat**. These community-shared resources provide pre-built workflows and specialized capabilities that you can leverage directly in your conversations without needing to create them from scratch.
 
 This guide explains how to discover, access, and use these public entities from the Chat interface, as well as their permissions and limitations.
 
@@ -10,7 +10,7 @@ This guide explains how to discover, access, and use these public entities from 
 
 ## Overview
 
-### What Are Public Agents, Pipelines, and Toolkits?
+### What Are Public Agents and Pipelines?
 
 **Public Agents:**
 
@@ -26,13 +26,6 @@ This guide explains how to discover, access, and use these public entities from 
 * Designed to handle complex, sequential tasks
 * Examples: Test case generation workflows, user story review pipelines
 
-**Public Toolkits:**
-
-* Collections of tools and integrations that extend chat capabilities
-* Bundle reusable actions for external services (GitHub, Jira, Confluence, etc.)
-* Can be shared for community reuse
-* Examples: GitHub integration toolkit, Slack connector, custom API toolkits
-
 ### Key Characteristics
 
 * **Community-Driven:** Shared by other Elitea users after quality review
@@ -45,7 +38,7 @@ This guide explains how to discover, access, and use these public entities from 
 
 ## Accessing Public Entities from Chat
 
-Public agents, pipelines, and toolkits are accessible directly within any conversation through the Chat interface.
+Public agents and pipelines are accessible directly within any conversation through the Chat interface.
 
 ### Method 1: Using the # Search
 
@@ -57,12 +50,12 @@ The quickest way to find and add public entities is using the `#` symbol:
 
 2. **Search for Public Entities:**
       * In the message input box, type `#` followed by the name or keywords
-      * A dropdown list appears showing matching agents, pipelines, and toolkits
+      * A dropdown list appears showing matching agents and pipelines
       * The list includes both your own entities and public community entities
       * Public entities are marked with a **"Public"** chip/badge for easy identification
 
 3. **Select the Entity:**
-      * Click on the desired agent, pipeline, or toolkit from the dropdown
+      * Click on the desired agent or pipeline from the dropdown
       * The selected entity appears as a chip above the input box
 
 4. **Send Your Message:**
@@ -70,7 +63,7 @@ The quickest way to find and add public entities is using the `#` symbol:
       * Click **Send** or press Enter
       * The public item will process your request
 
-![Search with #](../img/how-tos/chat-conversations/public-items/public-items-search.png)
+![Search with #](../../img/how-tos/chat-conversations/public-items/public-items-search.png)
 
 ### Method 2: Using the Participants Panel
 
@@ -78,10 +71,10 @@ You can also add public entities through the **PARTICIPANTS** panel on the right
 
 1. **Locate the Participants Panel:**
       * On the right side of the chat interface, find the **PARTICIPANTS** section
-      * You'll see collapsible sections for **Agents**, **Pipelines**, and **Toolkits**
+      * You'll see collapsible sections for **Agents** and **Pipelines**
 
 2. **Add Public Entities:**
-      * Click the **+** icon next to **Agents**, **Pipelines**, or **Toolkits**
+      * Click the **+** icon next to **Agents** or **Pipelines**
       * A dropdown list appears with available entities, including public ones
       * Public entities are marked with a **"Public"** chip/badge
       * Select the public entity you want to add
@@ -90,11 +83,11 @@ You can also add public entities through the **PARTICIPANTS** panel on the right
       * Click on the participant in the **PARTICIPANTS** list to activate it
       * Type your message and send
 
-![Participants Panel](../img/how-tos/chat-conversations/public-items/public-items-add-participants.png)
+![Participants Panel](../../img/how-tos/chat-conversations/public-items/public-items-add-participants.png)
 
 ---
 
-## Using Public Agents / Pipelines / Toolkits
+## Using Public Agents and Pipelines
 
 ### Using Public Agents
 
@@ -115,7 +108,83 @@ You can also add public entities through the **PARTICIPANTS** panel on the right
 
 !!! info "Visual Indicators"
     - Public agents are marked with a **"Public"** chip/badge, making them easily identifiable. This badge appears on the agent card in lists and search results, helping you quickly distinguish between your private agents and community-shared public agents.
-    ![alt text](../img/how-tos/chat-conversations/public-items/2025-11-10_17h09_35.png)
+    ![Public chip badge](../../img/how-tos/chat-conversations/public-items/public-chip.png)
+
+!!! example "Example: Using Business Analyst Agent"
+    The **Business Analyst** agent helps create requirements documentation, diagrams, and analysis artifacts for your projects.
+    
+    **Scenario:** You need user stories for an e-commerce shopping cart feature.
+    
+    **Step 1: Add the Agent**
+    
+    * Type `#Business Analyst` in the chat input box
+    * The agent appears in PARTICIPANTS with a "Public" badge
+
+    ![Use agent](../../img/how-tos/chat-conversations/public-items/agent-example.png)
+    
+    **Step 2: Ask Your Question**
+    
+    ```
+    You: I need user stories for adding items to a shopping cart
+    ```
+    
+    **Step 3: Agent Response**
+    
+    The agent provides a comprehensive guide on creating user stories, including:
+    
+    **Core Format:**
+    ```
+    As a [user/role], I want [capability] so that [benefit]
+    ```
+    
+    **Complete User Story Example:**
+    
+    | Title | Description | Acceptance Criteria | Priority | Story Points |
+    |---|---|---|---|---|
+    | Add item to cart | As a registered shopper, I want to add a product to my cart so that I can purchase later | See scenarios below | High | 3 |
+    
+    **Acceptance Criteria (Gherkin format):**
+    ```gherkin
+    Scenario: Add an in-stock item
+      Given I am a logged-in shopper
+      And product "ABC123" is in stock
+      When I click "Add to cart"
+      Then the item appears in my cart with quantity 1
+      And I see "Added to cart"
+    
+    Scenario: Prevent adding out-of-stock item
+      Given product "XYZ999" is out of stock
+      When I click "Add to cart"
+      Then I see "Item out of stock"
+      And the cart is unchanged
+    ```
+    
+    **Agent Also Provides:**
+    
+    - ✔️ **Quality Checklist**: INVEST criteria (Independent, Negotiable, Valuable, Estimable, Small, Testable)
+    - ✔️ **Story Splitting Techniques**: How to break down large stories
+    - ✔️ **Non-Functional Requirements**: Performance, security, accessibility considerations
+    - ✔️ **Traceability**: Links to business rules, test cases, and requirements
+    - ✔️ **Alternative Formats**: YAML, Jira markup, or Azure DevOps format
+    
+    **Step 4: Request Specific Format**
+    
+    ```
+    You: Can you provide this in YAML format for our Azure DevOps board?
+    ```
+    
+    The agent will regenerate the story in your preferred format with all necessary fields.
+    
+    **Benefits:**
+    
+    - ⚡ **Fast**: Get complete, well-structured user stories in seconds
+    - 📋 **Standards-Based**: Follows BABOK, IIBA, and Agile best practices
+    - 🔄 **Adaptable**: Works with Jira, Azure DevOps, Confluence, or plain Markdown
+    - 🎯 **Complete**: Includes acceptance criteria, NFRs, and traceability
+    
+    **Tip:** Click **⚙️** next to the agent to adjust Temperature (lower = more structured output) for your current session.
+
+    ![Use agent](../../img/how-tos/chat-conversations/public-items/public-agent-example.png)
 
 ### Using Public Pipelines
 
@@ -137,30 +206,7 @@ You can also add public entities through the **PARTICIPANTS** panel on the right
 
 !!! info "Pipeline Configuration"
     Public pipelines are marked with a **"Public"** chip/badge for easy identification. You can view pipeline workflow and settings using the settings icon (⚙️). Public pipelines open with limited editing capabilities when you click settings—you cannot modify or save the workflow, but you can inspect it to understand how it works.
-    ![alt text](../img/how-tos/chat-conversations/public-items/2025-11-10_17h09_35.png)
-
-
-### Using Public Toolkits
-
-**Step-by-Step:**
-
-1. **Add the Public Toolkit:**
-     * Click **+** next to **Toolkits** in the PARTICIPANTS panel
-     * Select the public toolkit from the dropdown
-
-2. **Toolkit Appears in Conversation:**
-     * The toolkit is added with all previously configured tools enabled
-     * Individual tools within the toolkit become available to active agents/pipelines
-
-3. **Use in Conversation:**
-     * Public toolkits work in conjunction with agents or pipelines
-     * When an agent/pipeline needs a capability, it can invoke tools from the public toolkit
-     * You can also directly request actions: "Use GitHub toolkit to create an issue"
-
-!!! tip "Toolkit Configuration"
-    Public toolkits are marked with a **"Public"** chip/badge for easy identification. They may require credentials or configuration. Some public toolkits are published with demo/shared credentials for community use—check toolkit configuration to see what's available.
-    ![Chip](../img/how-tos/chat-conversations/public-items/public-chip.png)
-
+    ![Public chip badge](../../img/how-tos/chat-conversations/public-items/public-chip.png)
 
 ---
 
@@ -174,7 +220,6 @@ You can also add public entities through the **PARTICIPANTS** panel on the right
 | **Add to Chat** | ✔️ Via # search or + button | ✔️ Via # search or + button |
 | **Temporary Model Changes** | ✔️ Change LLM & settings (session only) | ✔️ Full control |
 | **Temporary Variables (Agents)** | ✔️ Modify variables (session only) | ✔️ Full control |
-| **Temporary Credentials (Toolkits)** | ✔️ Select/create (session only) | ✔️ Full control |
 | **Save Changes** | ✘ Cannot save any modifications | ✔️ Can save all changes |
 | **Edit Core Configuration** | ✘ Prompts, workflows read-only | ✔️ Full edit access |
 | **Duplication** | ✔️ Can create your own copy | ✔️ Can duplicate |
@@ -187,7 +232,7 @@ You can also add public entities through the **PARTICIPANTS** panel on the right
 
 ✔️ **Execute Public Entities:**
 
-* Run public agents, pipelines, and toolkits in your conversations
+* Run public agents and pipelines in your conversations
 * Use them as many times as needed
 * Combine multiple public entities in one conversation
 
@@ -224,27 +269,15 @@ Public entities open with limited editing capabilities. You can view configurati
 !!! warning "LLM and Settings Configuration"
     LLM model and settings selections become enabled only after selecting the pipeline as an active participant. Once the pipeline is active in the **PARTICIPANTS** list, you can then access and temporarily modify the LLM model and model settings for your current conversation session.    
 
-**For Toolkits:**
-
-* Click the toolkit in **PARTICIPANTS** → Click **Edit** icon (if available)
-* Toolkit configuration opens with limited editing
-* **You CAN temporarily configure:**
-    * Select or create credentials
-    * Select PG Vector configuration
-    * Select embedding models
-* **You CANNOT modify:**
-    * Any configuration changes
-    * Tool selection
-
 !!! important "Session-Only Changes"
     All temporary modifications apply only to your current conversation. Starting a new conversation with the same public entity will revert to the original default configuration. This allows you to experiment without affecting the public version or other users.
 
 ✔️ **Create Your Own Versions:**
 
-* While you cannot save modifications to public entities, you can create your own agent/pipeline/toolkit
+* While you cannot save modifications to public entities, you can create your own agent or pipeline
 * Copy concepts and adapt them to your needs in your Private or Team projects
 * Save customized versions permanently in your workspace
-
+hat-conversations
 ### What You Cannot Do
 
 ✘ **Save Modifications to Public Entities:**
@@ -260,11 +293,6 @@ Public entities open with limited editing capabilities. You can view configurati
 
 ### Important Notes
 
-**Credentials in Public Toolkits:**
-
-* You can temporarily select different credentials or create new ones for your conversation
-* Private/sensitive credentials are never exposed in public toolkits
-
 **When Creating Your Own Versions:**
 
 * **Learn from Public Entities:** Study how successful entities are structured, understand prompt engineering techniques, and learn effective workflow patterns
@@ -274,23 +302,21 @@ Public entities open with limited editing capabilities. You can view configurati
 ---
 
 !!! note "Related Resources"
-    * **[How to Use Chat Functionality](chat-conversations/how-to-use-chat-functionality.md)** - Complete guide to Chat features
-    * **[How to Create and Edit Agents from Canvas](chat-conversations/how-to-create-and-edit-agents-from-canvas.md)** - Learn to create your own agents
-    * **[How to Create and Edit Pipelines from Canvas](chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md)** - Build custom pipelines
-    * **[How to Create and Edit Toolkits from Canvas](chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md)** - Configure toolkit integrations
-    * **[Agents Menu Guide](../menus/agents.md)** - Browse and manage agents
-    * **[Pipelines Menu Guide](../menus/pipelines.md)** - Explore pipeline workflows
-    * **[Toolkits Menu Guide](../menus/toolkits.md)** - Configure integrations
+    * **[How to Use Chat Functionality](how-to-use-chat-functionality.md)** - Complete guide to Chat features
+    * **[How to Create and Edit Agents from Canvas](how-to-create-and-edit-agents-from-canvas.md)** - Learn to create your own agents
+    * **[How to Create and Edit Pipelines from Canvas](how-to-create-and-edit-pipelines-from-canvas.md)** - Build custom pipelines
+    * **[Agents Menu Guide](../../menus/agents.md)** - Browse and manage agents
+    * **[Pipelines Menu Guide](../../menus/pipelines.md)** - Explore pipeline workflows
 
 ---
 
 ## Summary
 
-Public agents, pipelines, and toolkits provide immediate access to community-tested workflows and capabilities without the overhead of creating them yourself. While the Public Project interface has been removed, these resources remain accessible directly from Chat, where you can:
+Public agents and pipelines provide immediate access to community-tested workflows and capabilities without the overhead of creating them yourself. While the Public Project interface has been removed, these resources remain accessible directly from Chat, where you can:
 
 * ✔️ Search and add public entities using `#` or the Participants panel
 * ✔️ Execute them freely in your conversations
-* ✔️ Make temporary adjustments to model settings, variables, and credentials for your session
+* ✔️ Make temporary adjustments to model settings and variables for your session
 * ✔️ View their core configurations (prompts, workflows) in read-only mode
 * ✔️ Learn from them to create your own custom versions with saved modifications
 
