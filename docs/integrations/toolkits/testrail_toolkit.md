@@ -82,7 +82,9 @@ Before creating a toolkit, you must first create TestRail credentials in ELITEA:
 6. **Save Credential:** Click **Save** to create the credential
 
 !!! tip "Security Recommendation"
-    It's highly recommended to use **[Secrets](../../menus/settings/secrets.md)** for API keys instead of entering them directly. Create a secret first, then reference it in your credential configuration.
+    It's highly recommended to use **[Secrets](../../menus/settings/secrets.md)** for API keys instead of entering them directly. Create a secret first, then reference it
+
+![Credential Create](../../img/integrations/toolkits/testrail/testrail-credential-create.png) in your credential configuration.
 
 ### Step 2: Create TestRail Toolkit
 
@@ -91,13 +93,17 @@ Once your credentials are configured, create the TestRail toolkit:
 1. **Navigate to Toolkits Menu:** Open the sidebar and select **[Toolkits](../../menus/toolkits.md)**.
 2. **Create New Toolkit:** Click the **`+ Create`** button.
 3. **Select TestRail:** Choose **TestRail** from the list of available toolkit types.
-4. **Configure Credentials:** 
+4. **Configure Toolkit Details:**
+     * **Name:** Enter a descriptive name for your toolkit (e.g., "TestRail - QA Project")
+5. **Configure Credentials:** 
      * In the **Configuration** section, select your previously created TestRail credential from the **Credentials** dropdown
-5. **Configure Advanced Options (Optional):**
+6. **Configure Advanced Options (Optional):**
      * **PgVector Configuration:** Select a PgVector connection for vector database integration (required for indexing features)
      * **Embedding Model:** Select an embedding model for text processing and semantic search capabilities (required for indexing features)
-6. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific TestRail tools you want to enable. **Enable only the tools your agents will actually use** to follow the principle of least privilege
-7. **Save Toolkit:** Click **Save** to create the toolkit
+7. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific TestRail tools you want to enable. **Enable only the tools your agents will actually use** to follow the principle of least privilege
+8. **Save Toolkit:** Click **Save** to create the toolkit
+
+![Toolkit Create](../../img/integrations/toolkits/testrail/testrail-toolkit-create.png)
 
 #### Available Tools:
 
@@ -123,35 +129,48 @@ The TestRail toolkit provides the following tools for interacting with TestRail 
 | | **Remove index** | Removes previously created search indexes | Clean up and manage indexed content |
 | | **List collections** | Lists available indexed collections | View and manage indexed data collections |
 
-### Step 3: Use Toolkit in Agents, Pipelines, or Chat
+### Step 3: Use TestRail Toolkit in Agents
 
-Now you can add the configured TestRail toolkit to your agents, pipelines, or use it directly in chat:
+Once your TestRail toolkit is created, you can use it in various ELITEA features:
 
-**For Agents:**
-
-1. **Navigate to Agents:** Open the sidebar and select **Agents**.
-2. **Create or Edit Agent:** Either create a new agent or select an existing agent to edit.
+#### **In Agents:**
+1. **Navigate to Agents:** Open the sidebar and select **[Agents](../../menus/agents.md)**.
+2. **Create or Edit Agent:** Click **`+ Create`** for a new agent or select an existing agent to edit.
 3. **Add TestRail Toolkit:** 
      * In the **"Tools"** section of the agent configuration, click the **"+Toolkit"** icon
      * Select your TestRail toolkit from the dropdown menu
      * The toolkit will be added to your agent with the previously configured tools enabled
 
-Your agent can now interact with TestRail using the configured toolkit.
+Your agent can now interact with TestRail using the configured toolkit and enabled tools.
 
-**For Pipelines:**
 
-1. **Navigate to Pipelines:** Open the sidebar and select **Pipelines**.
+![TestRail Agent](../../img/integrations/toolkits/testrail/testrail-agent-add.png)
+
+
+#### **In Pipelines:**
+
+1. **Navigate to Pipelines:** Open the sidebar and select **[Pipelines](../../menus/pipelines.md)**.
 2. **Create or Edit Pipeline:** Either create a new pipeline or select an existing pipeline to edit.
 3. **Add TestRail Toolkit:** 
      * In the **"Tools"** section of the pipeline configuration, click the **"+Toolkit"** icon
      * Select your TestRail toolkit from the dropdown menu
+     * The toolkit will be added to your pipeline with the previously configured tools enabled
 
-**For Chat:**
+![TestRail Pipeline](../../img/integrations/toolkits/testrail/testrail-pipeline-add.png)
 
-1. **Navigate to Chat:** Open the sidebar and select **Chat**.
-2. **Add TestRail Toolkit:** 
+
+#### **In Chat:**
+
+1. **Navigate to Chat:** Open the sidebar and select **[Chat](../../menus/chat.md)**.
+2. **Start New Conversation:** Click **+Create** or open an existing conversation.
+3. **Add Toolkit to Conversation:**
      * In the chat Participants section, look for the **Toolkits** element
      * Click to add a toolkit and select your TestRail toolkit from the available options
+     * The toolkit will be added to your conversation with all previously configured tools enabled
+4. **Use Toolkit in Chat:** You can now directly interact with your TestRail instance by asking questions or requesting actions that will trigger the TestRail toolkit tools.
+    * **Example Chat Usage:**
+
+![TestRail Chat](../../img/integrations/toolkits/testrail/testrail-chat-add.png)     
 
 ## Instructions and Prompts for Using the TestRail Toolkit
 
@@ -186,150 +205,210 @@ When instructing your Agent to use a TestRail toolkit tool, adhere to this struc
 
 4. **Describe Expected Outcome (Optional but Recommended):** Briefly describe the expected result or outcome after the tool is successfully executed. For example, "Outcome: The Agent will display the full details of test case 123."
 
-**Example Instructions:**
+5. **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Show me test case 123', 'Create a new login test', 'Find all high priority test cases'"
 
-*   **Retrieve a Specific Test Case:**
+#### Example Agent Instructions
 
-```markdown
-Goal: Retrieve detailed information about test case ID 2260.
-Tool: Use the 'get_case' tool.
-Parameters:
-  - testcase_id: "2260" (from user input or conversation context)
-Outcome: Display the complete details of test case 2260 including title, steps, expected results, and custom fields.
-```
-
-*   **Get All Test Cases in a Project:**
+**Agent Instructions for Creating a Test Case:**
 
 ```markdown
-Goal: Get a list of all test cases from project ID 1.
-Tool: Use the 'get_cases' tool.
-Parameters:
-  - project_id: "1"
-  - output_format: "json" (default)
-  - keys: ["id", "title", "priority_id", "type_id"] (optional, specify which fields to include)
-  - suite_id: (optional, only if project uses multiple suites)
-Outcome: Display a formatted list of all test cases in project 1.
+1. Goal: Create a new test case in TestRail based on user requirements.
+2. Tool: Use the "add_case" tool.
+3. Parameters:
+    - section_id: "Ask the user which section the test case should be added to, or use a default section ID from the configuration."
+    - title: "Get the test case title from the user. Example: 'Verify login with valid credentials'"
+    - case_properties: "Ask the user for test case details including priority, type, steps, and expected results. Format as JSON object."
+4. Outcome: A new test case will be created in TestRail with the specified details. Confirm the creation to the user with the test case ID.
 ```
 
-*   **Filter Test Cases by Criteria:**
+### Chat Usage Examples by Tool Category
 
-```markdown
-Goal: Find all high-priority functional test cases in project 1.
-Tool: Use the 'get_cases_by_filter' tool.
-Parameters:
-  - project_id: "1"
-  - json_case_arguments: '{"priority_id": 1, "type_id": 2}' (high priority and functional type - verify IDs in your TestRail instance)
-  - output_format: "json"
-  - keys: ["id", "title", "priority_id", "type_id"]
-Outcome: Display filtered list of test cases matching the criteria.
+The following examples demonstrate how to interact with the TestRail toolkit in ELITEA Chat, organized by functional categories. Each example shows the user request and the expected agent behavior.
+
+#### Test Case Access - Get Case
+
+**Chat Example:**
+```
+User: "Show me the details of test case 2260."
+
+Agent Response: [Agent uses get_case tool]
+
+📋 **Test Case #2260 Details**:
+
+- **Title**: Verify user login with valid credentials
+- **Section**: Authentication Tests
+- **Priority**: High
+- **Type**: Functional
+- **Status**: Active
+
+**Preconditions**:
+- User account exists in the system
+- User has valid username and password
+
+**Steps**:
+1. Navigate to the login page
+2. Enter valid username
+3. Enter valid password
+4. Click the Login button
+
+**Expected Result**:
+User is successfully authenticated and redirected to the dashboard
+
+This test case validates the core authentication functionality of the application.
 ```
 
-*   **Create a New Test Case:**
+#### Test Case Access - Get Cases by Filter
 
-```markdown
-Goal: Create a new test case for login functionality testing.
-Tool: Use the 'add_case' tool.
-Parameters:
-  - section_id: "5" (the section ID where the test case should be created)
-  - title: "Verify successful login with valid credentials"
-  - case_properties: {
-      "template_id": 1,
-      "priority_id": 2,
-      "type_id": 1,
-      "custom_preconds": "User must have valid account credentials",
-      "custom_steps": "1. Navigate to login page\n2. Enter valid username\n3. Enter valid password\n4. Click Login button",
-      "custom_expected": "User is successfully logged in and redirected to dashboard"
-    }
-Outcome: A new test case is created in TestRail with the specified details.
+**Chat Example:**
+```
+User: "Find all high-priority test cases in project 1 that are related to the login feature."
+
+Agent Response: [Agent uses get_cases_by_filter tool]
+
+🔍 **High-Priority Test Cases Found** (5 cases):
+
+1. **TC-101**: Verify login with valid credentials
+   - **Priority**: High
+   - **Type**: Functional
+   - **Status**: Active
+
+2. **TC-102**: Verify login with invalid password
+   - **Priority**: High
+   - **Type**: Negative
+   - **Status**: Active
+
+3. **TC-103**: Verify login session timeout
+   - **Priority**: High
+   - **Type**: Functional
+   - **Status**: Active
+
+4. **TC-104**: Verify password reset functionality
+   - **Priority**: High
+   - **Type**: Functional
+   - **Status**: Active
+
+5. **TC-105**: Verify multi-factor authentication
+   - **Priority**: High
+   - **Type**: Security
+   - **Status**: Active
+
+These test cases cover critical authentication scenarios that should be prioritized in testing cycles.
 ```
 
-*   **Bulk Create Test Cases:**
+#### Test Case Management - Add Case
 
-```markdown
-Goal: Create multiple test cases from a list of requirements.
-Tool: Use the 'add_cases' tool.
-Parameters:
-  - add_test_cases_data: '[
-      {
-        "section_id": "5",
-        "title": "Test Case 1",
-        "case_properties": {"priority_id": 1, "custom_steps": "Step 1", "custom_expected": "Result 1"}
-      },
-      {
-        "section_id": "5",
-        "title": "Test Case 2",
-        "case_properties": {"priority_id": 2, "custom_steps": "Step 2", "custom_expected": "Result 2"}
-      }
-    ]'
-Outcome: Multiple test cases are created in TestRail in a single operation.
+**Chat Example:**
+```
+User: "Create a new test case for verifying the password reset functionality in section 5."
+
+Agent Response: [Agent uses add_case tool]
+
+✅ **Test Case Created Successfully!**
+
+- **Test Case ID**: #2305
+- **Title**: Verify password reset functionality
+- **Section**: Authentication Tests (Section 5)
+- **Priority**: Medium
+- **Type**: Functional
+- **Status**: Active
+
+**Created with the following details**:
+- **Preconditions**: User has a registered account with verified email
+- **Steps**: 
+  1. Click "Forgot Password" link on login page
+  2. Enter registered email address
+  3. Click "Send Reset Link" button
+  4. Check email for password reset link
+  5. Click the reset link
+  6. Enter new password
+  7. Confirm new password
+  8. Submit the form
+- **Expected Result**: Password is successfully reset and user can login with the new password
+
+The test case is now available in TestRail and ready for execution.
 ```
 
-*   **Update an Existing Test Case:**
+#### Test Case Management - Update Case
 
-```markdown
-Goal: Update the priority of test case 123 to High.
-Tool: Use the 'update_case' tool.
-Parameters:
-  - case_id: "123"
-  - case_properties: {"priority_id": 1}
-Outcome: Test case 123 is updated with high priority.
+**Chat Example:**
+```
+User: "Update test case 123 to set its priority to Critical."
+
+Agent Response: [Agent uses update_case tool]
+
+✅ **Test Case Updated Successfully!**
+
+- **Test Case ID**: #123
+- **Updated Field**: Priority
+- **New Value**: Critical (Priority ID: 1)
+- **Previous Value**: High
+
+The test case priority has been elevated to Critical. This change will be reflected in all test runs and reports.
 ```
 
-*   **Get Test Suites:**
+#### Suite Management - Get Suites
 
-```markdown
-Goal: List all test suites in project 1.
-Tool: Use the 'get_suites' tool.
-Parameters:
-  - project_id: "1"
-  - output_format: "json"
-Outcome: Display a list of all test suites available in project 1.
+**Chat Example:**
+```
+User: "Show me all test suites available in project 1."
+
+Agent Response: [Agent uses get_suites tool]
+
+📚 **Test Suites in Project 1** (4 suites):
+
+1. **Suite #1**: Authentication & Authorization
+   - **Description**: Test cases for login, logout, password management, and user permissions
+   - **Test Cases**: 45
+
+2. **Suite #2**: User Profile Management
+   - **Description**: Test cases for user profile creation, editing, and deletion
+   - **Test Cases**: 32
+
+3. **Suite #3**: Data Validation & Input
+   - **Description**: Test cases for form validation and data input scenarios
+   - **Test Cases**: 28
+
+4. **Suite #4**: Performance & Load Testing
+   - **Description**: Test cases for system performance under various load conditions
+   - **Test Cases**: 15
+
+**Total Test Cases**: 120
+
+These suites organize the test cases by functional area for better management and execution planning.
 ```
 
-*   **Index Test Case Data for Semantic Search:**
+#### Indexing & Search - Search Index
 
-```markdown
-Goal: Index all test cases from project 1, suite 2 to enable AI-powered semantic search.
-Tool: Use the 'index_data' tool.
-Parameters:
-  - index_name: "qa_proj1" (max 7 characters)
-  - project_id: "1"
-  - suite_id: "2" (optional)
-  - include_attachments: false (set to true if you want to index test case attachments)
-  - chunking_tool: "json"
-  - clean_index: false (set to true to clear existing index before reindexing)
-Outcome: Test case data is indexed and available for semantic search queries.
-Note: Requires PgVector configuration and embedding model to be set in the toolkit.
+**Chat Example:**
 ```
+User: "Search for test cases related to 'password authentication and security'."
 
-*   **Search Indexed Test Cases:**
+Agent Response: [Agent uses search_index tool]
 
-```markdown
-Goal: Search indexed test cases for content related to "authentication flow".
-Tool: Use the 'search_index' tool.
-Parameters:
-  - query: "authentication flow"
-  - index_name: "qa_proj1"
-  - cut_off: 0.7 (relevance threshold)
-  - search_top: 10 (number of results)
-Outcome: Returns top 10 most relevant test cases related to authentication flow.
+🔎 **Search Results for "password authentication and security"** (Top 5 matches):
+
+1. **TC-2260** (Relevance: 95%): Verify user login with valid credentials
+   - Covers password-based authentication flow
+   - Section: Authentication Tests
+
+2. **TC-2261** (Relevance: 92%): Verify password complexity requirements
+   - Tests security policies for password creation
+   - Section: Security Tests
+
+3. **TC-2262** (Relevance: 88%): Verify password reset functionality
+   - Tests secure password recovery process
+   - Section: Authentication Tests
+
+4. **TC-2263** (Relevance: 85%): Verify password encryption in database
+   - Validates password security at storage level
+   - Section: Security Tests
+
+5. **TC-2264** (Relevance: 82%): Verify account lockout after failed login attempts
+   - Tests security mechanism against brute force attacks
+   - Section: Security Tests
+
+These test cases cover various aspects of password authentication and security. Would you like details on any specific test case?
 ```
-
-### Conversation Starters
-
-Include these conversation starters in your Agent instructions to help users interact with the TestRail-integrated Agent:
-
-**For Testing Connection:**
-* "Get test case with ID 1"
-* "Show me all test cases in project 1"
-
-**For General Usage:**
-* "Show me the details of test case 2260"
-* "Create a new test case for user registration in section 5"
-* "Find all high-priority test cases in project 2"
-* "List all test suites in project 1"
-* "Update test case 123 priority to critical"
-* "Search for test cases about login functionality"
 
 ## Use Cases
 
@@ -441,10 +520,11 @@ For issues, questions, or assistance with TestRail integration, contact the ELIT
 
 ## Useful Links
 
-*   **[TestRail Website](https://www.gurocksoftware.com/testrail/)**: Main TestRail platform
-*   **[TestRail API Documentation](https://www.gurocksoftware.com/testrail/docs/api/)**: Official API reference
-*   **[ELITEA Secrets](../../menus/settings/secrets.md)**: Secure credential storage
-*   **[ELITEA Credentials](../../menus/credentials.md)**: Credential management
-*   **[ELITEA Toolkits](../../menus/toolkits.md)**: Toolkit configuration
-*   **[ELITEA Agents](../../menus/agents.md)**: Agent creation and configuration
-*   **[ELITEA Support](mailto:SupportAlita@epam.com)**: Direct support contact
+!!! info "Useful Links"
+    *   **[TestRail Website](https://www.gurocksoftware.com/testrail/)**: Main TestRail platform
+    *   **[TestRail API Documentation](https://www.gurocksoftware.com/testrail/docs/api/)**: Official API reference
+    *   **[ELITEA Secrets](../../menus/settings/secrets.md)**: Secure credential storage
+    *   **[ELITEA Credentials](../../menus/credentials.md)**: Credential management
+    *   **[ELITEA Toolkits](../../menus/toolkits.md)**: Toolkit configuration
+    *   **[ELITEA Agents](../../menus/agents.md)**: Agent creation and configuration
+    *   **[ELITEA Support](mailto:SupportAlita@epam.com)**: Direct support contact
