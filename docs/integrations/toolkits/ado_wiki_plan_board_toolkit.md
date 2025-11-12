@@ -97,182 +97,463 @@ For secure integration with ELITEA, it is essential to use an Azure DevOps **Per
 
 ## System Integration with ELITEA
 
-### Overview and Usage of Azure DevOps (ADO) Toolkits Integration with ELITEA
+To integrate Azure DevOps with ELITEA, you need to follow a three-step process: **Create Credentials → Create Toolkit → Use in Agents**. This workflow ensures secure authentication and proper configuration for Wiki, Boards, and Test Plans toolkits.
 
-ELITEA's integration with Azure DevOps provides a suite of toolkits that allow your AI Agents to seamlessly interact with various Azure DevOps services, including Wiki, Boards, and Test Plans. This integration empowers your Agents to:
+### Step 1: Create Azure DevOps Credentials
 
-*   **Access Azure DevOps Data:** Retrieve and utilize information from Azure DevOps Wiki pages, Boards work items, and Test Plans directly within ELITEA workflows.
-*   **Automate DevOps Tasks:** Automate tasks such as creating and updating wiki pages, managing work items in Boards, and interacting with Test Plans, streamlining your DevOps processes.
-*   **Enhance Project Management:** Integrate AI-powered automation into your project management workflows, improving efficiency and collaboration within Azure DevOps projects.
-*   **Improve Reporting and Insights:** Generate reports and extract insights from Azure DevOps data using ELITEA Agents, providing data-driven visibility into project status and progress.
+Before creating any toolkit, you must first create Azure DevOps credentials in ELITEA:
 
-### Integration Steps: Configuring Azure DevOps (ADO) Toolkits in ELITEA
+1. **Navigate to Credentials Menu:** Open the sidebar and select **[Credentials](../../menus/credentials.md)**.
+2. **Create New Credential:** Click the **`+ Create`** button.
+3. **Select Ado:** Choose **Ado** as the credential type.
+4. **Configure Credential Details:**
+     * **Display Name:** Enter a descriptive name (e.g., "Azure DevOps - Main Project")
+     * **Base API URL:** Enter your Azure DevOps organization URL: `https://dev.azure.com/{YourOrganizationName}` (replace `{YourOrganizationName}` with your actual organization name)
+     * **ADO Project:** Enter the project name within your Azure DevOps organization (e.g., "MyProject")
+     * **ADO Token:** Enter your Personal Access Token (the one you generated in the previous section)
+5. **Save Credential:** Click **Save** to create the credential
 
-To integrate Azure DevOps Wiki, Boards, and Test Plans with ELITEA and enable your Agents to interact with these services, follow these configuration steps within ELITEA:
+!!! tip "Security Recommendation"
+    It's highly recommended to use **[Secrets](../../menus/settings/secrets.md)** for Personal Access Tokens instead of entering them directly. Create a secret first, then reference it in your credential configuration.
 
-1.  **Navigate to Agents Menu:** In ELITEA, go to the **Agents** menu and either **create a new Agent** or **edit an existing Agent** that you want to integrate with Azure DevOps services.
-2.  **Access Toolkits Section:** Within the Agent configuration, scroll down to the **"Tools"** section.
-3.  **Add Toolkit:** Click the **"+" icon** under the "TOOLS" section to add a new toolkit.
-4.  **Select Azure DevOps Toolkit:** From the dropdown list of available toolkits, choose the specific Azure DevOps toolkit you want to configure:
-    *   **"Azure Wiki (ADO Wiki)"** (for Azure DevOps Wiki)
-    *   **"Azure Boards (ADO Board)"** (for Azure DevOps Boards)
-    *   **"Azure Test Plans (ADO Test Plan)"** (for Azure DevOps Test Plans)
-5.  **Configure Azure DevOps Toolkit Settings:**  Fill in the configuration fields for the selected Azure DevOps toolkit. The configuration steps are similar for all ADO toolkits:
+    ![Credential Create](../../img/integrations/toolkits/ado/ado-credentials-create.png)
 
-    *   **ADO Organization URL:** Enter your Azure DevOps organization URL. **Ensure you use the correct format**, including your organization name: `https://dev.azure.com/{YourOrganizationName}` (Replace `{YourOrganizationName}` with your actual Azure DevOps organization name).
-    *   **Project Name:** Enter the **Project Name** within your Azure DevOps organization that contains the Wiki, Boards, or Test Plans you want to access (e.g., `MyProject`).
-    *   **Personal Access Token:** Paste the **Personal Access Token** you generated in Azure DevOps (during the "Software-Specific Setup" section of this guide) into the **"Personal Access Token"** field.  **Important Security Note:** For enhanced security, consider using the **"Secret"** option instead and storing your Personal Access Token securely as a Secret within [Secrets](../../menus/settings/secrets.md) feature.
+### Step 2: Create Azure DevOps Toolkits
 
-    ![ADO-Wiki_Configuration_Toolkit](../../img/integrations/toolkits/ado/ADO-Wiki_Configuration_Toolkit.png)
+Once your credentials are configured, you can create one or more Azure DevOps toolkits depending on your needs. ELITEA provides three separate toolkits for different Azure DevOps services:
 
-    ![ADO-Board_Configuration_Toolkit](../../img/integrations/toolkits/ado/ADO-Board_Configuration_Toolkit.png)
+#### Azure DevOps Wiki Toolkit
 
-    ![ADO-Plan_Configuration_Toolkit](../../img/integrations/toolkits/ado/ADO-Plan_Configuration_Toolkit.png)
+1. **Navigate to Toolkits Menu:** Open the sidebar and select **[Toolkits](../../menus/toolkits.md)**.
+2. **Create New Toolkit:** Click the **`+ Create`** button.
+3. **Select ADO Wiki:** Choose **Azure Wiki (ADO Wiki)** from the list of available toolkit types.
+4. **Configure Toolkit Details:**
+     * **Name:** Enter a descriptive name (e.g., "ADO Wiki - Documentation Manager")
+5. **Configure Credentials:**
+     * In the **Configuration** section, select your previously created Azure DevOps credential from the **Credentials** dropdown
+6. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific Wiki tools you want to enable. **Enable only the tools your agents will actually use**
+7. **Save Toolkit:** Click **Save** to create the toolkit
 
-6.  **Enable Desired Tools:** In the **"Tools"** section within the Azure DevOps toolkit configuration, **check the boxes next to the specific Azure DevOps tools** you want to enable for your Agent. Select only the tools that your Agent will actually need to use to minimize unnecessary permissions and maintain security.  The available tools vary depending on the specific Azure DevOps toolkit you are configuring (Wiki, Boards, or Test Plans). Refer to the "Tool Overview" section below for details on the tools available for each toolkit type.
+![Ado wiki](../../img/integrations/toolkits/ado/ado-wiki-toolkit-create.png)
 
-7.  **Complete Setup:** Click the **arrow icon** (located at the top right of the toolkit configuration section) to complete the Azure DevOps toolkit setup and return to the main Agent configuration menu.
+##### Available Wiki Tools:
 
-### 3.3 Tool Overview: Azure DevOps (ADO) Toolkit Functionalities
+The ADO Wiki toolkit provides the following tools for interacting with Azure DevOps Wiki, organized by functional categories:
 
-Once the Azure DevOps toolkits are configured and added to your Agent, you can leverage the following tools within your Agent's instructions to interact with Azure DevOps services:
+| **Tool Category** | **Tool Name** | **Description** | **Primary Use Case** |
+|:-----------------:|---------------|-----------------|----------------------|
+| **Wiki Access** | | | |
+| | **Get wiki** | Extract ADO wiki information | Retrieve list of all wikis available in the project |
+| **Wiki Page Retrieval** | | | |
+| | **Get wiki page by path** | Extract ADO wiki page content | Fetch a specific wiki page using its hierarchical path |
+| | **Get wiki page by id** | Extract ADO wiki page content | Fetch a specific wiki page using its unique ID |
+| **Wiki Page Management** | | | |
+| | **Modify wiki page** | Create or Update ADO wiki page content | Create new or update existing wiki page content |
+| | **Rename wiki page** | Rename page | Rename an existing wiki page to a new name |
+| | **Delete page by path** | Extract ADO wiki page content | Delete a specific wiki page using its path |
+| | **Delete page by id** | Extract ADO wiki page content | Delete a specific wiki page using its unique ID |
+| **Indexing & Search** | | | |
+| | **Index data** | Loads Azure DevOps wiki data to index for semantic search | Enable advanced search and discovery across wiki pages with AI-powered semantic search |
+| | **Search index** | Performs searches across indexed content | Find specific wiki content across indexed data |
+| | **Stepback search index** | Performs advanced contextual searches with broader scope | Execute sophisticated searches with expanded context |
+| | **Stepback summary index** | Creates comprehensive summaries of indexed content | Generate intelligent summaries of wiki information |
+| | **Remove index** | Removes previously created search indexes | Clean up and manage indexed content |
+| | **List collections** | Lists available indexed collections | View and manage indexed data collections |
 
-#### ADO Wiki Tools:
+#### Azure DevOps Boards Toolkit
 
-*   **Get Wiki:**  **Tool Name:** `get_wiki`
-    *   **Functionality:** Retrieves the list of all wikis available in the Azure DevOps Wiki for the specified project.
-    *   **Purpose:** Enables Agents to list available wikis for navigation, reporting, or to provide users with a choice of wikis to interact with.
-*   **Get Wiki Page by Path:**  **Tool Name:** `get_wiki_page_by_path`
-    *   **Functionality:** Fetches a specific wiki page from Azure DevOps Wiki using its path within the wiki.
-    *   **Purpose:** Retrieve content from specific wiki pages to provide context, answer user questions, or incorporate wiki content into ELITEA workflows.
-*   **Get Wiki Page by ID:**  **Tool Name:** `get_wiki_page_by_id`
-    *   **Functionality:** Fetches a specific wiki page from Azure DevOps Wiki using its unique page ID.
-    *   **Purpose:** Retrieve content from specific wiki pages when you have the Page ID available, ensuring accurate retrieval of the intended wiki page.
-*   **Delete Wiki Page by Path:**  **Tool Name:** `delete_wiki_page_by_path`
-    *   **Functionality:** Deletes a specific wiki page from Azure DevOps Wiki using its path.
-    *   **Purpose:** Automate wiki page cleanup tasks, removing obsolete or outdated documentation pages based on workflow triggers or user requests.
-*   **Delete Wiki Page by ID:**  **Tool Name:** `delete_wiki_page_by_id`
-    *   **Functionality:** Deletes a specific wiki page from Azure DevOps Wiki using its unique page ID.
-    *   **Purpose:** Automate precise wiki page deletion when you have the Page ID, ensuring accurate removal of specific wiki pages.
-*   **Modify Wiki Page:**  **Tool Name:** `modify_wiki_page`
-    *   **Functionality:** Allows modifications to the content of an existing wiki page in Azure DevOps Wiki.
-    *   **Purpose:** Automate wiki updates, allowing Agents to dynamically update documentation, add meeting notes, or modify wiki content based on workflow events or user interactions.
-*   **Rename Wiki Page:**  **Tool Name:** `Rename_Wiki_Page`
-    *   **Functionality:** Allows renaming of the wiki pages.
-    *   **Purpose:** Automate wiki updates, allowing Agents to dynamically update documentation, or modify wiki content based on workflow events or user interactions.
+1. **Navigate to Toolkits Menu:** Open the sidebar and select **[Toolkits](../../menus/toolkits.md)**.
+2. **Create New Toolkit:** Click the **`+ Create`** button.
+3. **Select ADO Boards:** Choose **Azure Boards (ADO Board)** from the list of available toolkit types.
+4. **Configure Toolkit Details:**
+     * **Name:** Enter a descriptive name (e.g., "ADO Boards - Work Item Manager")
+5. **Configure Credentials:**
+     * In the **Configuration** section, select your previously created Azure DevOps credential from the **Credentials** dropdown
+6. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific Boards tools you want to enable
+7. **Save Toolkit:** Click **Save** to create the toolkit
 
-#### ADO Board Tools:
+![ADO boards](../../img/integrations/toolkits/ado/ado-board-toolkit-create.png)
 
-*   **Search Work Item:**  **Tool Name:** `search_work_item`
-    *   **Functionality:** Allows users to search for specific work items within Azure DevOps Boards based on various criteria such as keywords, status, and assigned user.
-    *   **Purpose:** Enable Agents to search for work items based on user queries, keywords, or specific criteria, facilitating efficient work item retrieval and information access within ELITEA workflows.
-*   **Get Work Item:**  **Tool Name:** `get_work_item`
-    *   **Functionality:** Retrieves detailed information about a specific work item from Azure DevOps Boards, including its status, description, and associated tasks.
-    *   **Purpose:** Allow Agents to fetch detailed work item information to provide context, summarize task status, or incorporate work item details into ELITEA conversations or reports.
-*   **Create Work Item:**  **Tool Name:** `create_work_item`
-    *   **Functionality:** Enables users to create new work items directly within Azure DevOps Boards, specifying details such as title, description, priority, and assigned user.
-    *   **Purpose:** Automate work item creation based on ELITEA workflow triggers or user requests, streamlining task management and issue reporting processes.
-*   **Update Work Item:** **Tool Name:** `update_work_item`
-    *   **Functionality:** Enables users to update fields of existing work items directly within Azure DevOps Boards, specifying fields and values.
-    *   **Purpose:** Automate work item updates based on ELITEA workflow triggers or user requests, streamlining task management and issue resolution processes.
-*   **Link Work Item:** **Tool Name:** `link_work_item`
-    *   **Functionality:** Enables users to create links between two existing work items in Azure DevOps Boards, specifying the target and source work items and link type.
-    *   **Purpose:** Automate linking work items to represent relationships between tasks, user stories, bugs, or other work items, enhancing traceability and project management within ELITEA workflows.
-*   **Get Relation Types:** **Tool Name:** `get_relation_types`
-    *   **Functionality:** Retrieves a list of available relation types for work items in Azure DevOps Boards.
-    *   **Purpose:** Allows Agents to dynamically retrieve valid relation types for work items, enabling dynamic link creation and providing users with valid linking options within ELITEA workflows.
-*   **Get Comments:** **Tool Name:** `get_comments`
-    *   **Functionality:** Retrieves comments from Azure DevOps Boards.
-    *   **Purpose:** Allow Agents to fetch work item information to provide context, summarize task status, or incorporate work item details into ELITEA conversations or reports.
+##### Available Boards Tools:
 
-#### ADO Test Plan Tools:
+The ADO Boards toolkit provides the following tools for interacting with Azure DevOps Boards (Work Items), organized by functional categories:
 
-*   **Create Test Plan:**  **Tool Name:** `create_test_plan`
-    *   **Functionality:** Allows users to create new test plans within Azure DevOps Test Plans.
-    *   **Use Case:** Automate the creation of test plans for new features, releases, or testing cycles directly from ELITEA workflows.
-*   **Delete Test Plan:**  **Tool Name:** `delete_test_plan`
-    *   **Functionality:** Enables users to delete existing test plans from Azure DevOps Test Plans.
-    *   **Use Case:** Automate the removal of obsolete or outdated test plans, keeping your test management environment clean and organized.
-*   **Get Test Plan:**  **Tool Name:** `get_test_plan`
-    *   **Functionality:** Retrieves detailed information about a specific test plan from Azure DevOps Test Plans.
-    *   **Use Case:** Allow Agents to fetch test plan details for reporting, analysis, or to provide users with summaries of test plan status and progress within ELITEA.
-*   **Create Test Suite:**  **Tool Name:** `create_test_suite`
-    *   **Functionality:** Allows users to create new test suites within a specific test plan in Azure DevOps Test Plans.
-    *   **Use Case:** Automate the creation of test suites to organize test cases logically within test plans, streamlining test planning and management.
-*   **Delete Test Suite:**  **Tool Name:** `delete_test_suite`
-    *   **Functionality:** Enables users to delete existing test suites from Azure DevOps Test Plans.
-    *   **Use Case:** Automate the removal of obsolete test suites, keeping your test plans organized and focused on relevant test cases.
-*   **Get Test Suite:**  **Tool Name:** `get_test_suite`
-    *   **Functionality:** Retrieves detailed information about a specific test suite from Azure DevOps Test Plans.
-    *   **Use Case:** Enable Agents to fetch test suite details for reporting, analysis, or to provide users with summaries of test suite contents and status within ELITEA.
-*   **Add Test Case:**  **Tool Name:** `add_test_case`
-    *   **Functionality:** Allows users to add new test cases to a specific test suite in Azure DevOps Test Plans.
-    *   **Use Case:** Automate the creation of test cases based on requirements, user stories, or other triggers within ELITEA workflows, streamlining test case authoring.
-*   **Get Test Case:**  **Tool Name:** `get_test_case`
-    *   **Functionality:** Retrieves detailed information about a specific test case from Azure DevOps Test Plans.
-    *   **Use Case:** Allow Agents to fetch test case details for test execution guidance, reporting, or to provide users with specific test case information within ELITEA.
-*   **Get Test Cases:**  **Tool Name:** `get_test_cases`
-    *   **Functionality:** Retrieves a list of test cases from Azure DevOps Test Plans, allowing for filtering and retrieval of test cases based on various criteria.
-    *   **Use Case:** Enables Agents to fetch test case lists for test management, reporting, or to provide users with a selection of test cases within ELITEA workflows.
+| **Tool Category** | **Tool Name** | **Description** | **Primary Use Case** |
+|:-----------------:|---------------|-----------------|----------------------|
+| **Work Item Search & Retrieval** | | | |
+| | **Search work items** | Search for work items using a WIQL query and dynamically fetch fields based on the query | Find specific tasks, bugs, or user stories matching criteria |
+| | **Get work item** | Get a single work item by ID | Retrieve detailed information about a specific work item |
+| | **Get comments** | Get comments for work item by ID | Access discussion and collaboration history |
+| **Work Item Management** | | | |
+| | **Create work item** | Creates new work items per defined data | Add new tasks, bugs, or features programmatically |
+| | **Update work item** | Updates existing work item per defined data | Modify work item status, fields, or properties |
+| **Work Item Linking** | | | |
+| | **Link work items** | Add the relation to the source work item with an appropriate attributes if any | Establish relationships between work items |
+| | **Get relation types** | Returns dict of possible relation types per syntax: 'relation name': 'relation reference name' | Discover valid link types for work items |
+| | **Link work items to wiki page** | Links one or more work items to a specific wiki page using an ArtifactLink | Connect work items with wiki documentation |
+| | **Unlink work items from wiki page** | Unlinks one or more work items from a specific wiki page by removing the ArtifactLink | Remove work item associations from wiki pages |
+| **Indexing & Search** | | | |
+| | **Index data** | Loads Azure DevOps work item data to index for semantic search | Enable advanced search and discovery across work items with AI-powered semantic search |
+| | **Search index** | Performs searches across indexed content | Find specific work item content across indexed data |
+| | **Stepback search index** | Performs advanced contextual searches with broader scope | Execute sophisticated searches with expanded context |
+| | **Stepback summary index** | Creates comprehensive summaries of indexed content | Generate intelligent summaries of work item information |
+| | **Remove index** | Removes previously created search indexes | Clean up and manage indexed content |
+| | **List collections** | Lists available indexed collections | View and manage indexed data collections |
 
-## 4. Instructions and Prompts for Using the Azure DevOps (ADO) Toolkits
+#### Azure DevOps Test Plans Toolkit
 
-To effectively utilize the Azure DevOps toolkits within your ELITEA Agents, you need to provide clear instructions within the Agent's "Instructions" field, telling the Agent *how* and *when* to use these tools.
+1. **Navigate to Toolkits Menu:** Open the sidebar and select **[Toolkits](../../menus/toolkits.md)**.
+2. **Create New Toolkit:** Click the **`+ Create`** button.
+3. **Select ADO Test Plans:** Choose **Azure Test Plans (ADO Test Plan)** from the list of available toolkit types.
+4. **Configure Toolkit Details:**
+     * **Name:** Enter a descriptive name (e.g., "ADO Test Plans - QA Automation")
+5. **Configure Credentials:**
+     * In the **Configuration** section, select your previously created Azure DevOps credential from the **Credentials** dropdown
+6. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific Test Plans tools you want to enable
+7. **Save Toolkit:** Click **Save** to create the toolkit
 
-**General Instruction Structure:**
+![ADO plans](../../img/integrations/toolkits/ado/ado-plans-toolkit-create.png)
 
-When instructing your Agent to use an Azure DevOps toolkit, you will typically follow this pattern:
+##### Available Test Plans Tools:
 
+The ADO Test Plans toolkit provides the following tools for interacting with Azure DevOps Test Plans, organized by functional categories:
+
+| **Tool Category** | **Tool Name** | **Description** | **Primary Use Case** |
+|:-----------------:|---------------|-----------------|----------------------|
+| **Test Plan Management** | | | |
+| | **Create test plan** | Create a test plan in Azure DevOps | Set up new test plans for releases or sprints |
+| | **Get test plan** | Get a test plan or list of test plans in Azure DevOps | Retrieve test plan details and information |
+| | **Delete test plan** | Delete a test plan in Azure DevOps | Remove obsolete test plans |
+| **Test Suite Management** | | | |
+| | **Create test suite** | Create a test suite in Azure DevOps | Organize test cases into test suites |
+| | **Get test suite** | Get a test suite or list of test suites in Azure DevOps | Retrieve test suite details and structure |
+| | **Delete test suite** | Delete a test suite in Azure DevOps | Remove obsolete test suites |
+| **Test Case Management** | | | |
+| | **Add test case** | Add a test case to a suite in Azure DevOps | Link existing test cases to test suites |
+| | **Create test case** | Creates a new test case in specified suite in Azure DevOps | Create new test cases with steps and expected results |
+| | **Create test cases** | Creates new test cases in specified suite in Azure DevOps | Bulk create multiple test cases at once |
+| | **Get test case** | Get a test case from a suite in Azure DevOps | Retrieve detailed test case information |
+| | **Get test cases** | Get test cases from a suite in Azure DevOps | List all test cases in a test suite |
+| **Indexing & Search** | | | |
+| | **Index data** | Loads Azure DevOps test case data to index for semantic search | Enable advanced search and discovery across test cases with AI-powered semantic search |
+| | **Search index** | Performs searches across indexed content | Find specific test case content across indexed data |
+| | **Stepback search index** | Performs advanced contextual searches with broader scope | Execute sophisticated searches with expanded context |
+| | **Stepback summary index** | Creates comprehensive summaries of indexed content | Generate intelligent summaries of test case information |
+| | **Remove index** | Removes previously created search indexes | Clean up and manage indexed content |
+| | **List collections** | Lists available indexed collections | View and manage indexed data collections |
+
+### Step 3: Use Azure DevOps Toolkits in Agents
+
+Once your Azure DevOps toolkits are created, you can use them in various ELITEA features:
+
+#### **In Agents:**
+1. **Navigate to Agents:** Open the sidebar and select **[Agents](../../menus/agents.md)**.
+2. **Create or Edit Agent:** Click **`+ Create`** for a new agent or select an existing agent to edit.
+3. **Add Azure DevOps Toolkit:**
+     * In the **"Tools"** section of the agent configuration, click the **"+Toolkit"** icon
+     * Select your desired Azure DevOps toolkit (Wiki, Boards, or Test Plans) from the dropdown menu
+     * The toolkit will be added to your agent with the previously configured tools enabled
+
+Your agent can now interact with Azure DevOps using the configured toolkit and enabled tools.
+
+![Agent add](../../img/integrations/toolkits/ado/ado-agent-add.png)
+
+#### **In Pipelines:**
+
+1. **Navigate to Pipelines:** Open the sidebar and select **[Pipelines](../../menus/pipelines.md)**.
+2. **Create or Edit Pipeline:** Either create a new pipeline or select an existing pipeline to edit.
+3. **Add Azure DevOps Toolkit:**
+     * In the **"Tools"** section of the pipeline configuration, click the **"+Toolkit"** icon
+     * Select your desired Azure DevOps toolkit from the dropdown menu
+     * The toolkit will be added to your pipeline with the previously configured tools enabled
+
+![Pipeline add](../../img/integrations/toolkits/ado/ado-pipeline-add.png)
+
+
+#### **In Chat:**
+
+1. **Navigate to Chat:** Open the sidebar and select **[Chat](../../menus/chat.md)**.
+2. **Start New Conversation:** Click **+Create** or open an existing conversation.
+3. **Add Toolkit to Conversation:**
+     * In the chat Participants section, look for the **Toolkits** element
+     * Click to add a toolkit and select your desired Azure DevOps toolkit from the available options
+     * The toolkit will be added to your conversation with all previously configured tools enabled
+4. **Use Toolkit in Chat:** You can now directly interact with Azure DevOps by asking questions or requesting actions that will trigger the toolkit tools.
+
+![Chat add](../../img/integrations/toolkits/ado/ado-chat-add.png)
+
+## Instructions and Prompts for Using the Toolkit
+
+To instruct your ELITEA Agent to use the Azure DevOps toolkits, you need to provide clear instructions within the Agent's "Instructions" field. These instructions guide the Agent on *when* and *how* to use the available tools.
+
+### Instruction Creation for OpenAI Agents
+
+When creating instructions for the Azure DevOps toolkits for OpenAI-based Agents, focus on clear, action-oriented language. Break down tasks into simple steps and explicitly state the parameters required for each tool. OpenAI Agents respond best to instructions that are:
+
+*   **Direct and Imperative:** Use action verbs and clear commands (e.g., "Use the 'get_wiki_page_by_path' tool...", "Create a work item using 'create_work_item'...").
+*   **Parameter-Focused:** Clearly list each parameter and how the Agent should determine its value.
+*   **Context-Aware:** Provide enough context so the Agent understands the overall goal and when to use specific tools within a workflow.
+
+When providing instructions to agents using the Azure DevOps toolkits, follow these structured steps to ensure clarity and proper tool usage:
+
+1. **Define the Goal:** Clearly state the objective or what the agent needs to accomplish. For example, "Goal: Retrieve content from a specific wiki page in Azure DevOps."
+
+2. **Specify the Tool:** Clearly indicate the specific Azure DevOps tool to be used for this step. For example, "Tool: Use the 'get_wiki_page_by_path' tool."
+
+3. **Define Parameters:** Provide a detailed list of all parameters required by the selected tool. For each parameter:
+   - **Parameter Name:** `<Parameter Name as defined in tool documentation>`
+   - **Value or Source:** `<Specify the value or how to obtain the value. Examples: "user input", "from previous step", "hardcoded value", "value of variable X">`
+
+4. **Describe Expected Outcome (Optional but Recommended):** Briefly describe the expected result or outcome after the tool is successfully executed. For example, "Outcome: The Agent will display the wiki page content to the user."
+
+5. **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Show me the release notes', 'Create a bug report', 'List all test plans'"
+
+#### Example Agent Instructions
+
+**Agent Instructions for Retrieving a Wiki Page:**
+
+```markdown
+1. Goal: Retrieve content from a specific wiki page in Azure DevOps Wiki.
+2. Tool: Use the "get_wiki_page_by_path" tool.
+3. Parameters:
+    - wiki_path: "Get the wiki page path from the user. Example: '/Release Notes/Latest'"
+    - wiki_identifier: "Use the default wiki or ask the user which wiki to access"
+4. Outcome: The agent will display the wiki page content to the user with proper formatting.
 ```
-Use the "[tool_name]" tool to [describe the action you want to perform] in ADO [Wiki/Boards/Test Plans].
-Provide the following parameters:
-- Parameter 1: <value or description of value>
-- Parameter 2: <value or description of value>
-- ...
+
+**Agent Instructions for Creating a Work Item:**
+
+```markdown
+1. Goal: Create a new work item in Azure Boards based on user requirements.
+2. Tool: Use the "create_work_item" tool.
+3. Parameters:
+    - work_item_type: "Ask the user for the work item type (Task, Bug, User Story, etc.)"
+    - title: "Get the work item title from the user"
+    - description: "Ask the user for work item details"
+    - assigned_to: "Optional - ask if the work item should be assigned to someone"
+4. Outcome: A new work item will be created in Azure Boards. Confirm the creation to the user with the work item ID.
 ```
 
-**Example Agent Instructions for Azure DevOps (ADO) Toolkits Tools:**
+### Chat Usage Examples by Tool Category
 
-*   **Agent Instructions for Getting a Wiki Page by Path:**
+The following examples demonstrate how to interact with the Azure DevOps toolkits in ELITEA Chat, organized by functional categories. Each example shows the user request and the expected agent behavior.
 
-    ```
-    Use the "get_wiki_page_by_path" tool to retrieve content from a specific wiki page in Azure DevOps Wiki.
-    Provide the following parameters:
-    - Organization Name: "your-azure-devops-organization-name"
-    - Project Name: "your-azure-devops-project-name"
-    - Wiki Path: "/path/to/your/wiki/page"
-    - Wiki Name or ID: "your-wiki-name-or-id"
-    ```
+#### Wiki Tools - Get Wiki Page by Path
 
-*   **Agent Instructions for Creating a Work Item in Azure Boards:**
+**Chat Example:**
+```
+User: "Show me the latest release notes from our project wiki."
 
-    ```
-    Use the "create_work_item" tool to create a new User Story work item in Azure Boards.
-    Provide the following parameters:
-    - Organization Name: "your-azure-devops-organization-name"
-    - Project Name: "your-azure-devops-project-name"
-    - Title: "Implement new user authentication flow"
-    - Work Item Type: "User Story"
-    - Description: "As a user, I want to be able to log in using my social media account..."
-    ```
+Agent Response: [Agent uses get_wiki_page_by_path tool]
 
-*   **Agent Instructions for Creating a Test Plan in Azure Test Plans:**
+📄 **Release Notes - Version 2.5.0**
 
-    ```
-    Use the "create_test_plan" tool to create a new test plan in Azure Test Plans.
-    Provide the following parameters:
-    - Organization Name: "your-azure-devops-organization-name"
-    - Project Name: "your-azure-devops-project-name"
-    - Test Plan Name: "Regression Tests - Release 1.5"
-    - Area Path: "ProjectAlpha\\Release 1.5"
-    ```
+**Released**: November 10, 2025
 
-**Important Considerations for Agent Instructions:**
+**New Features**:
+- Enhanced user authentication with OAuth 2.0 support
+- Real-time collaboration features in document editing
+- Advanced search capabilities with AI-powered suggestions
 
-*   **Tool Name Accuracy:** Ensure you use the correct **Tool Name** (e.g., `"get_wiki_page_by_path"`, `"create_work_item"`, `"create_test_plan"`) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the toolkit correctly.
-*   **Parameter Clarity:** Clearly specify the **parameters** required for each tool and provide instructions on where the Agent should obtain the values for these parameters (e.g., from user input, from previous steps in the workflow, or hardcoded values).
-*   **Context and Examples:** Provide sufficient context and examples within your Agent's "Instructions" to guide the LLM in understanding *when* and *how* to use the Azure DevOps toolkit tools effectively within your desired workflow.
-*   **Azure DevOps Hierarchy:** Be mindful of the Azure DevOps organization, project, and Wiki/Boards/Test Plans hierarchy when providing parameters like "Organization Name," "Project Name," "Wiki Name or ID," etc. Ensure these parameters accurately reflect the location of the resource you are trying to access or modify.
+**Bug Fixes**:
+- Fixed issue with file upload timeouts
+- Resolved memory leak in background processes
+- Corrected timezone display in activity logs
+
+**Known Issues**:
+- Mobile app may experience slow loading on 3G connections
+- Some users report intermittent sync delays
+
+For detailed technical documentation, please refer to the Technical Release Notes section.
+```
+
+#### Wiki Tools - Modify Wiki Page
+
+**Chat Example:**
+```
+User: "Add today's meeting notes to the 'Team Meetings' wiki page."
+
+Agent Response: [Agent uses modify_wiki_page tool]
+
+✅ **Wiki Page Updated Successfully!**
+
+- **Page**: Team Meetings
+- **Path**: /Project Documentation/Team Meetings
+- **Updated**: November 12, 2025
+
+**Added Content**:
+```markdown
+## Meeting - November 12, 2025
+
+**Attendees**: John, Sarah, Mike, Lisa
+**Duration**: 1 hour
+
+**Agenda**:
+1. Sprint review and retrospective
+2. Planning for next release
+3. Technical debt discussion
+
+**Key Decisions**:
+- Approved migration to new testing framework
+- Set release date for Version 2.6.0 to December 1st
+- Allocated resources for performance optimization
+
+**Action Items**:
+- John: Update API documentation by Nov 15
+- Sarah: Review security audit findings
+- Mike: Prepare deployment checklist
+
+The meeting notes have been successfully added to the Team Meetings wiki page.
+```
+
+#### Boards Tools - Search Work Items
+
+**Chat Example:**
+```
+User: "Find all high-priority bugs assigned to me."
+
+Agent Response: [Agent uses search_work_items tool]
+
+🔍 **Search Results: High-Priority Bugs** (3 items):
+
+1. **Bug #1234**: Application crashes on file upload
+   - **Priority**: High (Priority 1)
+   - **State**: Active
+   - **Assigned To**: You
+   - **Created**: Nov 8, 2025
+
+2. **Bug #1245**: Memory leak in background service
+   - **Priority**: High (Priority 1)
+   - **State**: Active
+   - **Assigned To**: You
+   - **Created**: Nov 10, 2025
+
+3. **Bug #1251**: Data validation error in user registration
+   - **Priority**: High (Priority 1)
+   - **State**: Active
+   - **Assigned To**: You
+   - **Created**: Nov 11, 2025
+
+These high-priority bugs require immediate attention. Would you like details on any specific bug?
+```
+
+#### Boards Tools - Create Work Item
+
+**Chat Example:**
+```
+User: "Create a new task to update the API documentation."
+
+Agent Response: [Agent uses create_work_item tool]
+
+✅ **Work Item Created Successfully!**
+
+- **Work Item ID**: #1256
+- **Type**: Task
+- **Title**: Update API documentation
+- **State**: New
+- **Priority**: Medium (Priority 2)
+- **Assigned To**: Unassigned
+
+**Description**:
+Update the REST API documentation to reflect recent changes in authentication endpoints and add examples for new OAuth 2.0 flows.
+
+**Created**: November 12, 2025
+
+The task has been added to your Azure Boards backlog and is ready for assignment and planning.
+```
+
+#### Boards Tools - Update Work Item
+
+**Chat Example:**
+```
+User: "Change the status of work item #1234 to 'In Progress'."
+
+Agent Response: [Agent uses update_work_item tool]
+
+✅ **Work Item Updated Successfully!**
+
+- **Work Item ID**: #1234
+- **Title**: Application crashes on file upload
+- **Updated Field**: State
+- **New Value**: In Progress
+- **Previous Value**: Active
+
+The work item status has been updated. The team will be notified of this progress update.
+```
+
+#### Test Plans Tools - Create Test Plan
+
+**Chat Example:**
+```
+User: "Create a new test plan for the upcoming 2.6.0 release."
+
+Agent Response: [Agent uses create_test_plan tool]
+
+✅ **Test Plan Created Successfully!**
+
+- **Test Plan ID**: #45
+- **Name**: Regression Tests - Release 2.6.0
+- **State**: Active
+- **Start Date**: November 12, 2025
+- **End Date**: November 30, 2025
+
+**Details**:
+- **Area Path**: ProjectAlpha/Release 2.6.0
+- **Iteration**: Sprint 15
+- **Description**: Comprehensive regression testing for Version 2.6.0 including new authentication features and bug fixes
+
+The test plan is now ready for test suite and test case creation. Next steps:
+1. Create test suites for different functional areas
+2. Add or link test cases to the suites
+3. Assign testers and begin test execution
+
+Would you like me to create test suites for this plan?
+```
+
+#### Test Plans Tools - Get Test Cases
+
+**Chat Example:**
+```
+User: "Show me all test cases in test suite #12."
+
+Agent Response: [Agent uses get_test_cases tool]
+
+📋 **Test Cases in Suite #12: Authentication Tests** (8 cases):
+
+1. **TC-101**: Verify login with valid credentials
+   - **Priority**: High
+   - **State**: Ready
+
+2. **TC-102**: Verify login with invalid password
+   - **Priority**: High
+   - **State**: Ready
+
+3. **TC-103**: Verify OAuth 2.0 login flow
+   - **Priority**: High
+   - **State**: Design
+
+4. **TC-104**: Verify session timeout handling
+   - **Priority**: Medium
+   - **State**: Ready
+
+5. **TC-105**: Verify multi-factor authentication
+   - **Priority**: High
+   - **State**: Ready
+
+6. **TC-106**: Verify password reset functionality
+   - **Priority**: Medium
+   - **State**: Ready
+
+7. **TC-107**: Verify account lockout after failed attempts
+   - **Priority**: High
+   - **State**: Ready
+
+8. **TC-108**: Verify SSO integration
+   - **Priority**: Medium
+   - **State**: Design
+
+**Summary**: 6 test cases ready for execution, 2 in design phase. All high-priority cases are ready.
+```
 
 ## Best Practices and Use Cases for Azure DevOps (ADO) Integration
 
@@ -371,38 +652,58 @@ The Azure DevOps toolkits open up a wide range of automation possibilities for p
 
 ## Troubleshooting and Support
 
-### Troubleshooting Common Issues
+### Troubleshooting
 
-*   **Connection Errors:**
-    *   **Problem:** ELITEA Agent fails to connect to Azure DevOps services (Wiki, Boards, Test Plans), resulting in errors during toolkit execution.
-    *   **Possible Solutions:**
-        1.  **Verify Azure DevOps URL:** Double-check that you have entered the correct Azure DevOps organization URL in the toolkit configuration, including `https://dev.azure.com/{YourOrganizationName}` format.
-        2.  **Check Personal Access Token:** Ensure that the **Personal Access Token** you provided is correct, has not expired, and is valid for your Azure DevOps account and project.
-        3.  **Verify Token Scopes:** Review the **scopes/permissions** granted to your Personal Access Token. Ensure it has the necessary scopes (e.g., `vso.work_full`, `vso.wiki_full`, `vso.test_full`) for the Azure DevOps tools your Agent is trying to use.
-        4.  **Network Connectivity:** Confirm that both your ELITEA environment and your Azure DevOps instance are connected to the internet and that there are no network connectivity issues blocking the integration.
+*   **Connection Issues:**
+    *   **Problem:** Agent fails to connect to Azure DevOps services
+    *   **Troubleshooting Steps:**
+        1. Verify Azure DevOps URL is correct (e.g., `https://dev.azure.com/{YourOrganizationName}`)
+        2. Check that Personal Access Token is accurate and not expired
+        3. Regenerate Personal Access Token in Azure DevOps if needed
+        4. Verify network connectivity between ELITEA and Azure DevOps
 
-*   **Permission Denied Errors:**
-    *   **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify Azure DevOps resources.
-    *   **Possible Solutions:**
-        1.  **Verify Token Scopes:**  Double-check the **scopes/permissions** granted to your Azure DevOps Personal Access Token. Ensure it has the necessary scopes for the specific Azure DevOps actions your Agent is trying to perform (e.g., `vso.work_write` scope for creating work items, `vso.wiki_write` for modifying wiki pages, `vso.test_write` for managing test plans).
-        2.  **Project and User Permissions:** Confirm that the Azure DevOps account associated with the Personal Access Token has the required access to the specified project and the specific Azure DevOps services (Wiki, Boards, Test Plans). Verify that the account is a member of the project and has the necessary roles or permissions within Azure DevOps project settings.
+*   **Authorization Errors:**
+    *   **Problem:** "Permission Denied" or "Unauthorized" errors
+    *   **Troubleshooting Steps:**
+        1. Ensure Personal Access Token is valid and not revoked
+        2. Verify the token has necessary scopes (e.g., `vso.work_full`, `vso.wiki_full`, `vso.test_full`)
+        3. Check Azure DevOps account has necessary permissions in the project
+        4. Confirm the account is a member of the project with appropriate roles
 
 *   **Incorrect Organization or Project Names:**
-    *   **Problem:** Agent tools fail to operate on the intended Azure DevOps organization or project.
-    *   **Possible Solutions:**
-        1.  **Double-Check Organization Name:** Carefully verify that you have entered the correct Azure DevOps Organization Name in the toolkit configuration, ensuring it matches your Azure DevOps organization URL (e.g., `AlitaTest` in `https://dev.azure.com/AlitaTest/`). Pay attention to capitalization and spelling.
-        2.  **Verify Project Name:** Ensure that you are using the correct Azure DevOps Project Name in the toolkit configuration. Project names are case-sensitive in Azure DevOps.
+    *   **Problem:** Cannot find specified organization or project
+    *   **Troubleshooting Steps:**
+        1. Verify organization name matches the Azure DevOps URL
+        2. Ensure project name is correct (project names are case-sensitive)
+        3. Check that the project exists in the specified organization
 
-### FAQs
+*   **Wiki/Work Item/Test Plan Access Issues:**
+    *   **Problem:** Cannot access specific resources within Azure DevOps
+    *   **Troubleshooting Steps:**
+        1. Verify the resource exists in the specified project
+        2. Ensure Personal Access Token has appropriate scopes for the service
+        3. Check that the service (Wiki, Boards, Test Plans) is enabled for the project
+        4. Confirm correct resource IDs or paths are being used
 
-1.  **Q: Can I use my regular Azure DevOps password for the ELITEA integration?**
-    *   **A:** No, it is **strongly recommended to use an Azure DevOps Personal Access Token** instead of your main account password for security reasons. Personal Access Tokens provide a more secure and controlled way to grant access to external applications like ELITEA.
-2.  **Q: What scopes/permissions should I grant to the Azure DevOps Personal Access Token?**
-    *   **A:** Grant only the **minimum necessary scopes** required for your ELITEA Agent's intended interactions with Azure DevOps services. For typical integration with ADO Wiki, Boards, and Test Plans, the `vso.work_full`, `vso.wiki_full`, and `vso.test_full` scopes are commonly needed. Avoid granting "Full access" or unnecessary permissions.
-3.  **Q: What is the correct format for the Azure DevOps Organization URL in the toolkit configuration?**
-    *   **A:**  The Azure DevOps URL should be entered in the format `https://dev.azure.com/{YourOrganizationName}`. Replace `{YourOrganizationName}` with your actual Azure DevOps organization name.
-4.  **Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?**
-    *   **A:** Double-check the **scopes/permissions** granted to your Azure DevOps Personal Access Token. Ensure that the token has the specific scopes required for the Azure DevOps tools your Agent is trying to use (e.g., `vso.work_write` scope for creating work items, `vso.wiki_write` for modifying wiki pages, `vso.test_write` for managing test plans). Also, verify that the Azure DevOps account associated with the token has the necessary access to the target project and the specific Azure DevOps services (Wiki, Boards, Test Plans).
+### FAQ
+
+1.  **Q: Can I use my regular Azure DevOps password instead of a Personal Access Token?**
+    *   **A:** No, you must use an Azure DevOps Personal Access Token for secure integration. Regular passwords are not supported and using PATs provides better security and control.
+
+2.  **Q: What scopes/permissions should I grant to the Personal Access Token?**
+    *   **A:** Grant only the minimum necessary scopes required for your intended use. Common scopes include `vso.work_full` (for Boards), `vso.wiki_full` (for Wiki), and `vso.test_full` (for Test Plans). Avoid granting "Full access" unless absolutely necessary.
+
+3.  **Q: What is the correct format for the Azure DevOps Organization URL?**
+    *   **A:** The URL should be in the format `https://dev.azure.com/{YourOrganizationName}`. Replace `{YourOrganizationName}` with your actual Azure DevOps organization name.
+
+4.  **Q: Can I use the same credential for Wiki, Boards, and Test Plans toolkits?**
+    *   **A:** Yes, you can create one Azure DevOps credential and reuse it across all three toolkits (Wiki, Boards, and Test Plans), as long as the Personal Access Token has the necessary scopes for all services.
+
+5.  **Q: How do I find my Azure DevOps organization and project names?**
+    *   **A:** Your organization name is visible in the URL when you navigate to Azure DevOps (e.g., `https://dev.azure.com/YourOrgName`). Project names are listed in the Azure DevOps interface when you log in.
+
+6.  **Q: Why am I getting "Permission Denied" errors even with a valid token?**
+    *   **A:** Verify that your Personal Access Token has the specific scopes required for the operations you're trying to perform (e.g., `vso.work_write` for creating work items, `vso.wiki_write` for modifying wiki pages). Also ensure your Azure DevOps account has the necessary permissions within the project itself.
 
 ### Support and Contact Information
 
@@ -431,11 +732,13 @@ We encourage you to first explore the resources available within this guide and 
 
 ## Useful Links
 
-To further enhance your understanding and skills in integrating Azure DevOps with ELITEA, here are some helpful resources:
+!!! info "Useful Links"
 
-*   **[Azure DevOps Website](https://azure.devops.com/)**: Access the main Azure DevOps platform to create an account or log in.
-*   **[Azure DevOps Login Page](https://azure.devops.com/)**: Directly access the login page for Azure DevOps.
-*   **[ELITEA Secrets Management](../../menus/settings/secrets.md)**: Learn how to securely store your Azure DevOps Personal Access Token using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Azure DevOps toolkits to automate your workflows.
-*   **[ELITEA Toolkit Guide: Azure Repos (ADO Repos) Integration](ado_repos_toolkit.md#elitea-toolkit-guide-azure-repos-ado-repos-integration)**: Refer to the Azure Repos Integration Guide for detailed information on setting up Azure DevOps accounts, organizations, and Personal Access Tokens.
-*   **[ELITEA Support Email](mailto:SupportAlita@epam.com)**: Contact the ELITEA support team for direct assistance with Azure DevOps integration or any other questions and issues you may encounter.
+    To further enhance your understanding and skills in integrating Azure DevOps with ELITEA, here are some helpful resources:
+
+    *   **[Azure DevOps Website](https://azure.devops.com/)** - Access the main Azure DevOps platform to create an account or log in
+    *   **[Azure DevOps Login Page](https://azure.devops.com/)** - Directly access the login page for Azure DevOps
+    *   **[ELITEA Secrets Management](../../menus/settings/secrets.md)** - Learn how to securely store your Azure DevOps Personal Access Token using ELITEA's Secrets management feature for enhanced security
+    *   **[ELITEA Agents Configuration](../../menus/agents.md)** - Find out more about creating and configuring Agents in ELITEA, where you integrate the Azure DevOps toolkits to automate your workflows
+    *   **[ELITEA Toolkit Guide: Azure Repos (ADO Repos) Integration](ado_repos_toolkit.md)** - Refer to the Azure Repos Integration Guide for additional information on Azure DevOps setup
+    *   **[ELITEA Support Email](mailto:SupportAlita@epam.com)** - Contact the ELITEA support team for direct assistance with Azure DevOps integration or any other questions and issues you may encounter
