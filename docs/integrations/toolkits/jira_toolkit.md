@@ -111,7 +111,7 @@ Once your credentials are configured, create the Jira toolkit:
          * **Server:** For self-hosted Jira Server or Data Center instances (e.g., `https://jira.epam.com`)
      * **Advanced Settings:**
          * **Limit:** Set the maximum number of issues to retrieve per request (default: 5)
-         * **API version:** REST API version, optional (default: 2) ( Currentl for jira cloud , you need to use 3 as api version)
+         * **API version:** REST API version ( Currentl for jira cloud , you need to use 3 as api version, for Epam Jira version 2 )
          * **Labels:** Specify labels to apply to created or updated entities (comma-separated list e.g., `alita,elitea`)
          * **Additional fields:** Custom field IDs accessible within the toolkit (e.g., `customfield_100450`)
          * **Custom Headers:** Additional HTTP headers to include with API requests (JSON format e.g., `{"X-Custom-Header": "value"}`)
@@ -435,6 +435,44 @@ The Jira toolkit opens up a wide range of automation possibilities for project m
         1.  **Verify Credential Selection:** Ensure you have selected the correct credential from the dropdown in the toolkit configuration.
         2.  **Check Hosting Option:** Verify that the hosting option matches your Jira instance type (Cloud for *.atlassian.net, Server for self-hosted instances).
         3.  **Review Advanced Settings:** Check that custom field IDs and other advanced settings are properly formatted.
+
+*   **Limited Number of Issues Returned:**
+    *   **Problem:** When using JQL search or listing issues, the toolkit returns only a limited number of issues (e.g., not more than 5) even when more issues match the criteria.
+    *   **Symptoms:**
+        *   JQL searches return fewer results than expected
+        *   Issue lists appear incomplete
+        *   Large projects show only partial issue sets
+    *   **Troubleshooting Steps:**
+        1.  **Check Limit Configuration:** In the toolkit configuration, locate the **"Limit"** field in the Advanced Settings section.
+        2.  **Increase Limit Value:** Change the limit from the default value (typically 5) to a higher value that meets your needs (e.g., 50, 100, or 500).
+        3.  **Save Configuration:** Save the toolkit configuration to apply the new limit.
+        4.  **Test Results:** Run your JQL query or list operation again to verify more issues are returned.
+
+        ![Jira limit](../../img/integrations/toolkits/jira/jira-limit.png)
+
+*   **Atlassian API Connection Issues (Too Many Redirects):**
+    *   **Error Message:**
+        ```
+        requests.exceptions.TooManyRedirects: Exceeded 30 redirects
+        ```
+    *   **Symptoms:**
+        *   Jira or Confluence tools refuse to connect
+        *   Multiple redirect errors during connection attempts
+        *   Some tools work while others fail (e.g., basic operations work but image-related tools fail)
+    *   **Cause:**
+        The API version is set incorrectly or is null in the toolkit configuration. As of November 2025:
+        *   **Atlassian Cloud:** API version 3
+        *   **EPAM Jira platform:** API version 2
+    *   **Troubleshooting Steps:**
+        1.  **Check API Version:** In the toolkit configuration, locate the **"API version"** field in the Advanced Settings section.
+        2.  **Set Correct Version:** Update the API version to match your deployment:
+            *   For Atlassian Cloud instances: Set to **3**
+            *   For EPAM Jira or self-hosted instances: Set to **2**
+        3.  **Save Configuration:** Save the toolkit configuration to apply the new API version.
+        4.  **Contact Support:** If unsure about your deployment type, contact your system administrator or ELITEA support to confirm the correct API version.
+        5.  **Test Functionality:** Note that some requests may work with both v2 and v3, so partial functionality doesn't guarantee the configuration is correct. Test multiple tools to ensure full compatibility.
+
+        ![Jira api v](../../img/integrations/toolkits/jira/jira-api_v.png)
 
 ### FAQ
 
