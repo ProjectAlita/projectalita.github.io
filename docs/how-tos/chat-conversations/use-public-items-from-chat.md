@@ -222,8 +222,6 @@ You can also add public entities through the **PARTICIPANTS** panel on the right
 | **Temporary Variables (Agents)** | ✔️ Modify variables (session only) | ✔️ Full control |
 | **Save Changes** | ✘ Cannot save any modifications | ✔️ Can save all changes |
 | **Edit Core Configuration** | ✘ Prompts, workflows read-only | ✔️ Full edit access |
-| **Duplication** | ✔️ Can create your own copy | ✔️ Can duplicate |
-
 ---
 
 ## Permissions and Limitations
