@@ -184,6 +184,27 @@ Task: "Analyze the following code and suggest improvements: {code_input}"
 2. Select from available pipeline variables
 3. Variables work the same way in both fields
 
+### Issue: Duplicate toolkits after migration
+
+**Symptoms:**
+- Multiple identical or similar toolkits appear after migration from v1.6 to v1.7/2.0
+- Toolkits are duplicated for every application version and every application instance
+- Agents using the same toolkit show different tool sets despite being configured with the same toolkit
+
+![Duplicate toolkits after migration](../../img/migration/duplicate-toolkits.png)
+
+**Cause:**
+During automatic data migration from v1.6 to v1.7 or v2.0, the migration process creates duplicate toolkits for each application version and application instance, even when they contain identical functionality.
+
+**Solution:**
+
+1. **Delete excessive toolkits**: Review your toolkits list and remove duplicates, keeping only one instance of each unique toolkit
+2. **Reuse tools in agents**: For agents using the same toolkit that show different tool sets, you can filter (deselect) specific tools within each agent to create consistent tool sets
+3. **Recreate problematic toolkits**: For some toolkits where credential selection doesn't help resolve configuration issues, it's easier to delete the toolkit completely and create a new one rather than troubleshooting and fixing the existing configuration.
+
+!!! tip "Toolkit Management"
+    After migration, audit your toolkits list and consolidate duplicates early to avoid confusion when configuring agents and pipelines.
+
 ## Rollback Considerations
 
 !!! warning "No Automatic Rollback"

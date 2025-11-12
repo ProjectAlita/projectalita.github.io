@@ -2,67 +2,46 @@
 
 ## Introduction
 
-### Purpose of this Guide
+The qTest toolkit enables seamless integration between ELITEA and Tricentis qTest, allowing your AI Agents to automate test management workflows. This guide covers setup, configuration, and effective usage of the qTest integration.
 
-This guide is your definitive resource for integrating and effectively utilizing the **qTest toolkit** within ELITEA. It provides a detailed, step-by-step walkthrough, from setting up your qTest API token to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated test management, streamlined QA workflows, and enhanced collaboration between development and testing teams, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your qTest-driven workflows, enhance QA productivity, and improve software quality within your projects.
+### About qTest
 
-### Brief Overview of qTest
+qTest is a cloud-based test management platform that centralizes software testing activities. Key capabilities include:
 
-qTest, by Tricentis, is a leading cloud-based test management platform designed to centralize and streamline all aspects of software testing. It is widely used by QA teams to manage test cases, execute test runs, track defects, and generate comprehensive reports. qTest offers a wide array of functionalities, including:
+- **Test Case Management:** Create, organize, and manage test cases in a centralized repository
+- **Test Execution Tracking:** Monitor test runs and track execution status in real-time  
+- **Requirements Traceability:** Link test cases to requirements and defects for complete audit trails
+- **Reporting & Analytics:** Generate comprehensive reports on test coverage and quality metrics
+- **Agile Integration:** Support for iterative testing and CI/CD pipeline integration
 
-*   **Centralized Test Case Management:** qTest provides a centralized repository for creating, organizing, and managing test cases, ensuring a structured and easily accessible test library for your QA team.
-*   **Efficient Test Execution and Tracking:** Enables efficient test execution and real-time tracking of test runs, allowing QA teams to monitor progress, identify bottlenecks, and ensure timely test completion.
-*   **Requirement and Defect Traceability:** qTest facilitates traceability by linking test cases to requirements and defects, providing a clear audit trail and ensuring comprehensive test coverage and issue tracking throughout the testing lifecycle.
-*   **Comprehensive Reporting and Analytics:** Offers robust reporting and analytics capabilities, allowing QA teams to generate detailed reports on testing progress, quality metrics, defect trends, and test coverage, providing valuable insights for decision-making and continuous improvement.
-*   **Agile and DevOps Integration:** qTest is designed to integrate seamlessly with Agile and DevOps workflows, supporting iterative testing, continuous testing practices, and integration with CI/CD pipelines and development tools, enabling efficient and agile QA processes.
+By integrating qTest with ELITEA, your Agents can intelligently interact with test assets to automate test management tasks and optimize testing workflows.
 
-Integrating qTest with ELITEA brings these powerful test management capabilities directly into your AI-driven workflows. Your ELITEA Agents can then intelligently interact with your qTest projects and test assets to automate test management tasks, enhance QA processes, improve test coverage, and leverage AI to optimize your entire software testing lifecycle within qTest.
-
-## Toolkit's Account Setup and Configuration in qTest
+## qTest Setup Requirements
 
 ### Account Setup
 
-qTest is a commercial test management tool and is available as a trial version for a limited period. To create a qTest account, follow these steps:
+qTest is a commercial test management tool available as a trial version. To create a qTest account:
 
-1.  **Visit Tricentis Website:** Open your web browser and navigate to the official Tricentis qTest website: [https://www.tricentis.com/](https://www.tricentis.com/).
-2.  **Navigate to Trials & Demos:** Click on **"Trials & demos"** in the main navigation menu to begin the trial registration process.
-3.  **Find qTest and Start Free Trial:** On the "Trials & demos" page, locate the qTest section and click the **"Free trial"** button.
-4.  **Fill in Registration Form:** The "Start your free 14-day Tricentis qTest Trial" message should be displayed, and a registration form will appear on the right side of the page. Provide the following basic information in the registration form:
-    *   **Business email address:** Enter your business email address (preferably your company email). QTest typically provides free trials for business email IDs.
-    *   **First Name:** Enter your first name.
-    *   **Last Name:** Enter your last name.
-    *   **Country:** Select your country from the dropdown menu.
-    *   **Phone:** Enter your phone number.
-    *   **Job Title:** Enter your job title.
-5.  **Submit Registration Form:** After filling out the registration form, click the **"Next Page"** button to submit the form.
-6.  **Create QTest Web Address and Account Details:** A new window will open, prompting you to fill in the details to create your new qTest web address and account credentials:
-    *   **Username:** Your username is prefilled based on your account registration. You can modify it if needed.
-    *   **Create Your QTest Web Address:** Enter a unique subdomain name in the field provided (e.g., `alitatest`). This subdomain will be used as part of your unique QTest web address to access your qTest trial account (e.g., `alitatest.qtestnet.com`).
-    *   **Password:** Create a strong password for your QTest account. Use a combination of uppercase letters, lowercase letters, numbers, and special characters to create a secure password.
-    *   **Confirm Password:** Re-enter the same password to confirm it.
-    *   **qTest Data Storage Location:** Select a preferred data storage location from the dropdown menu. Choose a location that complies with your organization's data storage and compliance requirements (e.g., United States, Europe).
-    *   **Privacy Policy Review:** Read the note regarding the data center location and compliance with jurisdictional laws. Review the Privacy Policy if necessary.
-7.  **Start My Trial:** Once all fields are correctly filled, click the orange **"Start My Trial"** button to proceed and create your qTest trial account.
-8.  **Check Your Email for Confirmation:** After submitting the form, you should receive a confirmation email from Tricentis qTest. This email may include a link to set up your qTest account and verify your email address. Follow the instructions in the email to complete the registration and activate your free trial.
-9.  **Access qTest:** After verifying your email, you will be directed to the qTest platform. Log in using the username, password, and QTest web address you provided during registration.
+1. Visit the [Tricentis qTest website](https://www.tricentis.com/)
+2. Navigate to **"Trials & demos"** and start a **free 14-day trial**  
+3. Complete the registration form with your business details
+4. Create your qTest web address and account credentials
+5. Verify your email and access your qTest instance
 
-### Token/API Key Generation: Finding API Token in qTest
+### API Token Generation
 
-To securely integrate ELITEA with qTest, you need to obtain your qTest API token. This token will be used by ELITEA to authenticate and access your qTest projects and test data.
+To integrate ELITEA with qTest, you need an API token:
 
-**Follow these steps to find your API token in qTest:**
+1. **Log in to qTest** using your credentials
+2. **Navigate to API Settings:** Go to **"Manager"** → **"API & SDK"**  
+3. **Copy Your API Token:** Find and copy your Bearer Token from the API settings page
+4. **Store Securely:** Save this token for use in ELITEA credentials configuration
 
-1.  **Log in to qTest:** Access your qTest instance by navigating to your qTest web address (e.g., `alitatest.qtestnet.com`) and logging in with your qTest credentials.
-2.  **Access API & Webhooks Settings:** Once logged in, navigate to your user profile settings. The exact location may vary slightly depending on your qTest version, but it is typically found under your profile menu or user settings. Look for options like **"Integration Settings"**, **"API Access"**, or **"Webhooks"**. In newer versions of qTest, you can find it under **"Manager"** -> **"API & SDK"**.
+![qTest API Token Location1](../../img/integrations/toolkits/qtest/qTest-API_Token_Location_1.png)
 
-    ![qTest-API_Token_Location_1](../../img/integrations/toolkits/qtest/qTest-API_Token_Location_1.png)
+![qTest API Token Location2](../../img/integrations/toolkits/qtest/qTest-API_Token_Location_2.png)
 
-    ![qTest-API_Token_Location_2](../../img/integrations/toolkits/qtest/qTest-API_Token_Location_2.png)
-
-3.  **Locate API Key/Token:** In the "API & SDK" settings, you should find your Token or Bearer Token. It may be labeled as **"Token"**, or **"Brstrt Token"**.
-4.  **Copy and Store Your API Token:**  **Copy the API token** displayed on the page. **Store it securely** in a password manager or, preferably, ELITEA's built-in Secrets feature for enhanced security within ELITEA. You will need this API token to configure the qTest toolkit in ELITEA.
-
-![qTest-API_Token_Location_3](../../img/integrations/toolkits/qtest/qTest-API_Token_Location_3.png)
+![qTest API Token Location](../../img/integrations/toolkits/qtest/qTest-API_Token_Location_3.png)
 
 ## System Integration with ELITEA
 
@@ -78,19 +57,40 @@ To integrate qTest functionalities into your workflows, you will need to configu
 
 ### Toolkit Configuration
 
-This section provides detailed instructions on how to configure the qTest toolkit within your ELITEA Agent.
+Creating a qTest toolkit in ELITEA requires a **two-step process**:
 
-1.  **Add Toolkit:** In the "Tools" section of the Agent configuration, click on the **"+" icon**. This action will display a dropdown list of available toolkits that can be integrated with your Agent.
-2.  **Select qTest Toolkit:** From the dropdown list of available toolkits, choose **"qTest"**. Selecting "qTest" will open the "New qTest tool" configuration panel, where you will specify the settings for your qTest integration.
-3.  **Configure qTest Toolkit Settings:** Carefully fill in the following configuration fields within the "New qTest tool" section:
+1. **Create Credentials** (see [Credentials documentation](../../menus/credentials.md) for detailed steps)
+2. **Create Toolkit** using the credentials
 
-    *   **Base URL:** Enter the base URL of your qTest instance API endpoint. **Ensure you use the correct format**: `https://qtest.example.com` (Replace `qtest.example.com` with your actual qTest subdomain).
-    *   **Project ID:** Enter the **Project ID** of the specific qTest project you want to connect to with this toolkit. The Project ID is a numerical identifier for your qTest project. You can typically find the Project ID in your qTest project settings or in the URL when you are within your qTest project.
-    *   **Authentication Options - API Token:** Select the **"API Token"** authentication option.
-        *   **Password/Secret:** Choose **"Password"** and paste the **Bearer token** you obtained from qTest (during the "Software-Specific Setup" section of this guide) into the **"Password"** field.
-        *   **Enhanced Security with Secrets (Recommended):** For enhanced security, it is strongly recommended to use ELITEA's **Secrets Management** feature to store your qTest API token securely. Instead of directly pasting the token into the "Password" field, select the **"Secret"** option and choose the pre-configured secret containing your qTest API token from the dropdown list. This prevents hardcoding sensitive credentials in your toolkit configuration.
+#### Step 1: Create qTest Credentials
 
-    ![qTest-Toolkit_Configuration](../../img/integrations/toolkits/qtest/qTest-Toolkit_Configuration.png)
+Before creating the toolkit, you must first create credentials for your qTest integration:
+
+1. Navigate to **Credentials** menu in ELITEA
+2. Click **"+ Credential"** to create a new credential
+3. Configure the following fields:
+   - **Display Name:** Enter a descriptive name (e.g., "qTest API Token")
+   - **ID:** Provide a unique identifier (e.g., "qtest_api_token") 
+   - **Base URL:** Enter your qTest instance URL: `https://your-subdomain.qtestnet.com`
+   - **qTest API Token:** Select this option and enter your Bearer token from qTest
+
+![qTest Credential Creation](../../img/integrations/toolkits/qtest/qTest-credential-creation.png)
+
+#### Step 2: Create qTest Toolkit
+
+After creating credentials, configure the qTest toolkit within your ELITEA Agent:
+
+1. **Add Toolkit:** In the "Tools" section of the Agent configuration, click the **"+" icon**
+2. **Select qTest Toolkit:** Choose **"qTest"** from the dropdown list
+3. **Configure Toolkit Settings:**
+   - **qTest API Token:** Select the credential you created in Step 1 from the dropdown
+   - **qTest Project ID:** Enter the numerical Project ID of your qTest project
+   - **No Of Tests Shown In DQL Search:** **[Required Field]** Set the maximum number of test cases to retrieve in DQL queries (recommended: 100-200)
+
+!!! warning "Required Field"
+    The "No Of Tests Shown In DQL Search" field is mandatory and must be filled in. This setting controls the maximum number of test cases returned from DQL queries to prevent context overflow and improve performance.
+
+![qTest Toolkit Configuration](../../img/integrations/toolkits/qtest/qTest-Toolkit_Configuration.png)
 
 4.  **Enable Desired Tools:** In the "Tools" section within the qTest toolkit configuration panel, **select the checkboxes next to the specific qTest tools** that you want to enable for your Agent. **It is crucial to enable only the tools that your Agent will actually need to use** to adhere to the principle of least privilege and minimize potential security risks. Available tools include:
     *   **Search by DQL** - Allows searching for test cases using qTest DQL queries. Includes an "Extract Images" property that can be enabled to retrieve embedded images from test case steps and expected results.
@@ -101,12 +101,23 @@ This section provides detailed instructions on how to configure the qTest toolki
     *   **Link tests to requirement** - Allows the Agent to Link tests to requirement in qTest.
     *   **Get modules** - Retrieves module IDs and names from the qTest project.
 
-    **DQL Search Limit Configuration:** The toolkit includes a "Number of tests shown in DQL search" setting that controls the maximum number of test cases retrieved when using DQL queries. This setting is crucial for:
-    *   **Performance Optimization:** Limiting the number of results helps prevent LLM context limits from being exceeded
-    *   **Response Time:** Smaller result sets improve query response times and Agent processing speed
-    *   **Resource Management:** Controls the amount of data transferred and processed during DQL operations
-    
-    **Important:** If this value is not set or is set too low, you may experience issues with incomplete data retrieval or no results being returned from your DQL queries.
+#### DQL Search Limit Configuration: "No Of Tests Shown In DQL Search"
+
+!!! important "Mandatory Field"
+    The "No Of Tests Shown In DQL Search" field is a **mandatory setting** that controls the maximum number of test cases retrieved when using DQL queries. This field **must be filled in** for the toolkit to function properly.
+
+**Purpose and Usage:**
+
+- **Context Management:** Prevents LLM context limits from being exceeded when retrieving large datasets
+- **Performance Optimization:** Smaller result sets improve query response times and Agent processing speed
+- **Resource Control:** Manages the amount of data transferred and processed during DQL operations
+- **Image Handling:** Especially important when "Extract Images" is enabled, as images significantly increase context size
+
+
+!!! warning "Common Issues"
+    - **Field left empty:** Queries may fail or return no results
+    - **Value too low:** You may miss important test cases in your search results
+    - **Value too high:** Risk of context overflow, especially with images enabled
     
 5.  **Complete Setup:** After configuring all the necessary settings and enabling the desired tools, click the **arrow icon** (located at the top right of the toolkit configuration section) to finalize the qTest toolkit setup and return to the main Agent configuration menu.
 6.  Click **Save** in the Agent configuration to save all changes and activate the qTest toolkit integration for your Agent.
@@ -116,15 +127,46 @@ This section provides detailed instructions on how to configure the qTest toolki
 Once the qTest toolkit is successfully configured and added to your Agent, you can leverage the following tools within your Agent's instructions to enable intelligent interaction with your qTest projects and test assets:
 
 *   **Search by DQL:**  **Tool Name:** `search_by_dql`
-    *   **Functionality:** Allows Agents to search for test cases in qTest using Data Query Language (DQL) queries. Returns a list of test cases matching the DQL query. Includes an "Extract Images" property that can be enabled to retrieve images that are embedded in test case steps and expected results (images pasted within the step text, not attached as separate files).
-    *   **Purpose:** Enables advanced and flexible test case searching based on complex criteria defined using DQL, allowing Agents to retrieve specific sets of test cases for reporting, analysis, test planning, or workflow automation based on qTest data. When image extraction is enabled, provides comprehensive test case data including visual elements for enhanced analysis.
-      **Image Analysis Configuration:** When the "Extract Images" property is enabled for the "Search by DQL" tool, you can also configure a custom image analysis prompt. If not specified, a default prompt will be used to describe the extracted images. You can provide your own image analysis prompt either in the toolkit configuration or when interacting with the Agent to customize how images are analyzed and described.
+    *   **Functionality:** Allows Agents to search for test cases in qTest using Data Query Language (DQL) queries. Returns a list of test cases matching the DQL query with comprehensive test case data.
+    *   **Folder Specification:** When searching by folder/module, the folder must be mentioned with the complete module name (e.g., "MD-3 MD-11 Partners pages")
+    *   **Image Extraction:** 
+        - **Available Images:** Only images that are directly pasted into test steps are retrievable (not step attachments, not test case attachments )
+        - **Enable Extraction:** Check the "Extract Images" checkbox in the tool configuration to retrieve images
+        - **Image Processing:** Retrieved images are automatically described by LLM and attached to the test step context
+        - **Custom Prompts:** You can modify the default image description prompt by providing your own prompt in the corresponding section
+    *   **Performance Considerations:**
+        - **Token Usage:** Large amounts of images can cause expensive token usage
+        - **Context Limits:** DQL queries returning many test cases with images may cause context fitting issues
+        - **Optimization:** Decrease test case list using more specific DQL queries or reduce the "No Of Tests Shown In DQL Search" field value
+    *   **Purpose:** Enables advanced and flexible test case searching based on complex criteria defined using DQL, allowing Agents to retrieve specific sets of test cases for reporting, analysis, test planning, or workflow automation. When image extraction is enabled, provides comprehensive visual analysis capabilities.
+
+!!! warning "Image Extraction Considerations"
+    - Images must be **pasted directly** into test steps, not attached as step attachments
+    - Large image datasets can significantly increase **token usage** and processing time
+    - Monitor for **context overflow** when extracting images from multiple test cases
+    - Use specific DQL queries to limit results when working with image-heavy test cases
+
+ 
+
+ ![qTest-dql](../../img/integrations/toolkits/qtest/qTest-modul.png)
 
  ![qTest-dql](../../img/integrations/toolkits/qtest/dql.png)
 
+ ![qTest-dql](../../img/integrations/toolkits/qtest/qTest-image.png)
+
 *   **Create test cases:**  **Tool Name:** `create_test_cases`
-    *   **Functionality:** Automates the creation of new test cases in qTest within a specified project and test suite. Allows for bulk creation of test cases using a list of test case details.
-    *   **Purpose:** Streamlines test case authoring and test plan creation by enabling Agents to automatically generate new test cases in qTest directly from ELITEA workflows, based on requirements, user stories, or automated test generation processes, improving test coverage and reducing manual test case creation effort.
+    *   **Functionality:** Automates the creation of new test cases in qTest within a specified project and test suite. Allows for bulk creation of test cases using a list of test case details. Includes:
+        - **Test Case Content:** Define test case name, description, steps, and expected results
+        - **Folder Path:** Specify the target folder using the full folder name format
+    *   **Folder Name Format:** When specifying the folder path, use the complete folder name containing both module and folder name separated by space (e.g., "MD-3 MD-11 Partners pages")
+    *   **Purpose:** Streamlines test case authoring by enabling Agents to automatically generate new test cases in qTest directly from ELITEA workflows, based on requirements, user stories, or automated test generation processes, improving test coverage and reducing manual test case creation effort.
+
+!!! warning "Folder Path Validation"
+    If the test case folder path is specified incorrectly or the folder doesn't exist, test cases will be created in the default folder called **"Created via API"**. Always verify the exact folder name format using the "Get Modules" tool before creating test cases.
+
+    ![qTest-dql](../../img/integrations/toolkits/qtest/qTest-modul.png)
+
+    ![qTest-dql](../../img/integrations/toolkits/qtest/create_tc.png)
 
 *   **Update test case:**  **Tool Name:** `update_test_case`
     *   **Functionality:** Allows Agents to modify and update fields of existing test cases in qTest. Requires the Test Case ID and a JSON object containing the fields to update and their new values.
@@ -181,7 +223,7 @@ Provide the following parameters:
     Use the "create_test_cases" tool to create new test cases in qTest.
     Provide the following parameters:
     - Project ID: "12345"
-    - Test Suite ID: "67890"
+    - Folder Path: "MD-3 MD-11 Partners pages" (use full folder name format: module + folder name separated by space)
     - Test Cases Data (JSON Array):
       [
         {
@@ -233,18 +275,17 @@ Provide the following parameters:
 
 ### Best Practices for Efficient Integration
 
-*   **Test Integration Thoroughly:** After setting up the qTest toolkit and incorporating it into your Agents, **thoroughly test each tool** you intend to use to ensure seamless connectivity, correct authentication, and accurate execution of qTest actions.
-*   **Monitor Agent Performance and Usage:**  Regularly **monitor the performance of Agents** utilizing qTest toolkits. Track metrics such as task completion success rate, execution time, and error rates to identify any potential issues or areas for optimization in Agent instructions or toolkit configurations.
-*   **Follow Security Best Practices:**
-    *   **Use API Tokens:** Always use qTest API tokens instead of your main account password for integrations.
-    *   **Grant Least Privilege:** While qTest API tokens have limited scope control, ensure you are generating tokens specifically for ELITEA integration and not reusing tokens with broader access.
-    *   **Securely Store Credentials:** Utilize ELITEA's Secrets Management feature to securely store and manage your qTest API tokens instead of hardcoding them directly in Agent configurations.
-*   **Provide Clear Instructions and Prompts:**  Craft clear and unambiguous instructions within your ELITEA Agents to guide them in using the qTest toolkit effectively. Use the prompt examples provided in this guide as a starting point and adapt them to your specific use cases.
-*   **Start with Simple Use Cases:** Begin by implementing qTest integration for simpler automation tasks, such as searching for test cases or retrieving test case details, and gradually progress to more complex workflows as you gain experience and confidence with the toolkit.
-*   **Optimize Performance with Advanced Settings:**  Leverage the toolkit configuration settings to fine-tune data fetching parameters and optimize performance:
-    *   **"Number of tests shown in DQL search":** Set an appropriate limit that balances comprehensive data retrieval with LLM context limitations. Start with 100-200 for most use cases and adjust based on your specific needs.
-    *   **"Extract Images" property:** Enable only when visual analysis is necessary, as images significantly increase response size and processing time.
-    *   Use these settings especially when working with large qTest projects or complex queries to maintain optimal performance.
+*   **Test Integration Thoroughly:** After setup, test each enabled tool to ensure proper connectivity and authentication
+*   **Security Best Practices:**
+    - Use API tokens instead of passwords for integration
+    - Store credentials securely using ELITEA's Credentials feature  
+    - Enable only the tools your Agent actually needs
+*   **Optimize Performance:**
+    - Set appropriate "No Of Tests Shown In DQL Search" limits (100-200 for most cases)
+    - Disable "Extract Images" when visual analysis isn't needed
+    - Use specific DQL queries instead of broad searches
+    - Start with simple use cases and gradually increase complexity
+*   **Provide Clear Agent Instructions:** Use the prompt examples in this guide and adapt them to your specific workflows
 
 ### Use Cases for qTest Toolkit Integration
 
@@ -289,72 +330,115 @@ The qTest toolkit opens up a wide range of automation possibilities for test man
 *   **Connection Errors:**
     *   **Problem:** ELITEA Agent fails to connect to qTest, resulting in errors during toolkit execution.
     *   **Possible Solutions:**
-        1.  **Verify qTest Base URL:** Double-check that you have entered the correct qTest Base URL in the toolkit configuration, including `https://` or `http://` (e.g., `https://qtest.example.com/`).
-        2.  **Check API Token:** Ensure that the **API Token** you provided is correct and valid for your qTest account and project. Carefully re-enter or copy-paste the token to rule out typos.
-        3.  **Verify Project ID:** Double-check that you have entered the correct **Project ID** for your qTest project in the toolkit configuration. Ensure the Project ID is a numerical value and corresponds to an existing qTest project.
-        4.  **Network Connectivity:** Confirm that both your ELITEA environment and your qTest instance are connected to the internet and that there are no network connectivity issues blocking the integration.
+        1.  **Verify Credentials:** Ensure your qTest credentials are correctly configured and the API token is valid
+        2.  **Check Base URL:** Verify the qTest Base URL in your credentials matches your instance (e.g., `https://yourcompany.qtestnet.com`)
+        3.  **Verify Project ID:** Double-check that you have entered the correct **Project ID** for your qTest project
+        4.  **Network Connectivity:** Confirm network connectivity between ELITEA and your qTest instance
 
 *   **Authorization Errors (Permission Denied/Unauthorized):**
-    *   **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify qTest resources.
+    *   **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors.
     *   **Possible Solutions:**
-        1.  **Verify API Token Validity:** Ensure that the qTest API token you are using is valid and has not been revoked in your qTest user settings. Generate a new token if necessary.
-        2.  **Check qTest Permissions:** Confirm that the qTest account associated with the API token has the necessary permissions within qTest to access and modify the specific projects and test assets your Agent is trying to interact with. Verify user roles and permissions within qTest project settings.
-        3.  **Project ID Accuracy:** Double-check that you have entered the correct **Project ID** in the toolkit configuration and that the API token is valid for that specific qTest project.
+        1.  **API Token Validity:** Generate a new API token in qTest and update your credentials
+        2.  **Check Permissions:** Verify the qTest account has proper permissions for the target project
+        3.  **Credential Selection:** Ensure you've selected the correct credential in the toolkit configuration
 
-*   **Tool-Specific Parameter Errors:**
-    *   **Problem:** Agent execution fails for specific qTest tools due to incorrect parameter values or formats.
-    *   **Troubleshooting Steps:**
-        1.  **Verify Project ID:** Ensure that you are using the correct qTest Project ID in your Agent's instructions when specifying project-related parameters for qTest tools. Project IDs are numerical and must match the Project ID in qTest exactly.
-        2.  **Verify Test Suite and Test Case IDs:** Double-check that you are using the correct Test Suite IDs and Test Case IDs when referencing specific test assets in your Agent's instructions. Test Suite and Test Case IDs are numerical and must match the IDs in qTest exactly.
-        3.  **Parameter Format:** Verify that you are providing parameters in the correct format expected by each qTest tool (e.g., string values for names, numerical values for IDs, JSON format for test case data). Refer to the "Instructions and Prompts for Using the Toolkit" section for parameter details and examples.
-        4.  **DQL Query Syntax Errors:** When using the "Search by DQL" tool, ensure that you provide valid DQL query strings that adhere to qTest DQL syntax. Incorrect DQL syntax will result in search errors. Refer to qTest documentation for DQL syntax details and examples.
+*   **Context and DQL Search Limit Issues:**
+    *   **Problem:** Queries return incomplete data, no results, or cause context overflow errors.
+    *   **Root Causes and Solutions:**
+        
+        **Missing or Invalid DQL Search Limit:**
+        - **Issue:** "No Of Tests Shown In DQL Search" field is empty or set to 0
+        - **Solution:** Set a valid number (recommended: 100-200 for most use cases)
+        
+        **Context Overflow with Images:**
+        - **Issue:** Large responses when "Extract Images" is enabled overwhelm the AI context
+        - **Root Cause:** Images significantly increase token usage and context size
+        - **Solutions:** 
+          - Reduce DQL search limit to 20-50 when images are enabled (much lower than text-only queries)
+          - Disable "Extract Images" checkbox if visual analysis isn't required
+          - Use highly specific DQL queries to target only necessary test cases
+          - Focus on single modules or specific test case criteria
+          - Monitor token usage and adjust limits accordingly
+        - **Image-Specific Considerations:**
+          - Only pasted images in test steps are retrieved (not attachments)
+          - Multiple images per test case multiply the context impact
+          - Custom image description prompts can help optimize token usage
+        
+        **Performance Issues with Large Datasets:**
+        - **Issue:** Slow response times or timeouts with high search limits
+        - **Solution:**
+          - Start with lower limits (50-100) and increase gradually
+          - Use targeted DQL queries instead of broad searches
+          - Consider pagination for large result sets
 
-*   **Response Exceeds LLM Context or Performance Issues:**
-    *   **Problem:** When retrieving test cases through DQL queries, the response becomes too large for the LLM context window, or the process becomes slow due to excessive data being retrieved.
-    *   **Possible Solutions:**
-        1.  **Disable Image Extraction:** If you have enabled the "Extract Images" property in the "Search by DQL" tool, consider disabling it to reduce the amount of data retrieved. Images can significantly increase response size and processing time.
-        2.  **Refine DQL Queries:** Use more specific DQL queries to limit the number of test cases returned. Add additional filters to narrow down the search results.
-        3.  **Paginate Results:** Consider implementing pagination in your queries to retrieve test cases in smaller batches.
-        4.  **Check Extract Images Status:** Verify the current status of the "Extract Images" property and disable it if not necessary for your current use case.
+!!! tip "DQL Search Limit Best Practices"
+    - **Start Conservative:** Begin with 100 test cases for text-only queries, 20-50 for image extraction
+    - **Monitor Context Usage:** Watch for context warnings in Agent responses
+    - **Image Considerations:** 
+      - Use much lower limits (20-50) when extracting images
+      - Only enable image extraction when visual analysis is essential
+      - Consider expensive token usage with multiple images
+    - **Query Specificity:** Use precise DQL filters and module names to reduce unnecessary data
+    - **Folder References:** Always use complete module names in folder queries (e.g., "MD-3 MD-11 Partners pages")
 
-*   **Module Reference Issues in DQL Queries:**
-    *   **Problem:** DQL queries targeting specific modules fail or return unexpected results when using partial module names.
-    *   **Cause and Solution:** When querying test cases from a specific module, you must provide the **full module name** in your DQL query, not just the last part of the module name.
-        *   **Incorrect:** `Module = 'MD-6 Company page'`
-        *   **Correct:** `Module = 'MD-1 MD-6 Company page'`
+**Example Use Cases for DQL Search Limit:**
 
-         ![qTest](../../img/integrations/toolkits/qtest/qTest-modul.png)
+- **Context Management:** Set to 100 to ensure queries don't overwhelm the AI context when working with text-only test suites
+- **Image-Heavy Test Cases:** Set to 20-50 when test cases contain pasted screenshots or diagrams to prevent context overflow and manage expensive token usage
+- **Performance Optimization:** Use higher values (200-300) for text-only test cases in well-structured projects with minimal visual content
+- **Large Dataset Handling:** Start with conservative limits and gradually increase based on Agent performance and response quality
+- **Module-Specific Queries:** Use complete folder names (e.g., "MD-3 MD-11 Partners pages") and adjust limits based on expected image content
 
+*   **DQL Query Syntax and Module Issues:**
+    *   **Problem:** DQL queries fail or return unexpected results.
+    *   **Solutions:**
+        1.  **Use Full Module Names:** Always use complete module paths (e.g., `'MD-1 MD-6 Company page'` not just `'Company page'`)
+        2.  **Get Modules First:** Use the "Get Modules" tool to retrieve exact module names for your queries
+        3.  **Verify DQL Syntax:** Ensure proper DQL syntax following qTest documentation standards
+        
+        ![qTest Module Names](../../img/integrations/toolkits/qtest/qTest-modul.png)
 
-    *   **Recommendation:** Use the "Get Modules" tool first to retrieve the complete list of module IDs and full module names, then use the exact full module name in your DQL queries to ensure accurate results.
+*   **No Data Retrieved from Queries:**
+    *   **Problem:** DQL searches return empty results despite matching test cases existing.
+    *   **Diagnostic Steps:**
+        1.  **Check Search Limit:** Verify "No Of Tests Shown In DQL Search" is set to appropriate value (>0)
+        2.  **Test Simple Query:** Start with basic queries like `Project = 'YourProject'` 
+        3.  **Verify Project ID:** Ensure the Project ID in toolkit matches the target project
+        4.  **Check Permissions:** Confirm the API token has read access to the target test cases
 
-*   **No Data or Insufficient Data Retrieved from DQL Queries:**
-    *   **Problem:** DQL searches return no results or fewer test cases than expected, even when you know matching test cases exist in qTest.
-    *   **Possible Causes and Solutions:**
-        1.  **DQL Search Limit Too Low:** Check the "Number of tests shown in DQL search" setting in the toolkit configuration. If this value is set too low (e.g., 5 or 10), it will limit the number of test cases returned regardless of how many actually match your query.
-        2.  **Setting Not Configured:** If the "Number of tests shown in DQL search" setting is not set or is blank, it may default to a very low limit or cause the query to fail entirely.
-        3.  **Solution:** Adjust the "Number of tests shown in DQL search" setting to an appropriate value that balances your needs:
-            *   For small datasets: 50-100 test cases
-            *   For larger datasets: 200-500 test cases (be mindful of LLM context limits)
-  
-        4.  **Verification:** After adjusting the setting, test your DQL query again to ensure the expected number of results are returned.
+*   **Toolkit Configuration Issues:**
+    *   **Problem:** Toolkit fails to save or function after configuration.
+    *   **Solutions:**
+        1.  **Complete Required Fields:** Ensure all mandatory fields are filled:
+           - qTest API Token (credential selection)
+           - Project ID (numerical value)
+           - No Of Tests Shown In DQL Search (positive number)
+        2.  **Credential Validation:** Test the credential independently before using in toolkit
+        3.  **Tool Selection:** Enable at least one tool for the toolkit to be functional
 
 ### FAQs
 
+*   **Q: How do I create a qTest toolkit in ELITEA?**
+    *   **A:** Toolkit creation requires a **two-step process**: 1) First create qTest credentials in the Credentials menu with your API token and Base URL, 2) Then create the toolkit by selecting those credentials and configuring the Project ID and DQL search limit.
+
+*   **Q: What is the "No Of Tests Shown In DQL Search" field and why is it required?**
+    *   **A:** This is a **mandatory field** that controls the maximum number of test cases retrieved in DQL queries. It's essential for preventing context overflow and ensuring optimal performance. Set it to 100-200 for most use cases, or lower (50-100) when extracting images.
+
 *   **Q: Can I use my regular qTest username and password for the ELITEA integration?**
-    *   **A:** No, it is **mandatory to use a qTest API token** for secure integration with ELITEA. Direct password authentication is not supported. API tokens provide a more secure and controlled way to grant access to external applications like ELITEA.
-*   **Q: What permissions should I grant to the qTest API Token?**
-    *   **A:** qTest API tokens, when generated through the user profile, inherently provide access based on the user's permissions within qTest. Ensure that the qTest user account associated with the API token has the necessary permissions to access and modify the specific projects and test assets your Agent will be interacting with. You do not need to configure specific scopes during token generation.
-*   **Q: What is the correct format for the qTest Base URL in the toolkit configuration?**
-    *   **A:**  The qTest Base URL should be entered in the format `https://qtest.example.com/api/v1`. Replace `qtest.example.com` with your actual qTest subdomain and ensure you include the `/api/v1` API endpoint path.
-*   **Q: How do I find the Project ID for my qTest project?**
-    *   **A:** The Project ID is a numerical identifier for your qTest project. You can typically find the Project ID in your qTest project settings, project URL, or by inspecting the browser's address bar when you are within your qTest project. It is usually a numerical value that is unique to each project.
-*   **Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?**
-    *   **A:** Double-check the following:
-        *   **API Token Validity:** Ensure that the API token is valid and has not been revoked.
-        *   **qTest Account Permissions:** Verify that the qTest account associated with the API token has the necessary permissions to access the specific projects and test assets your Agent is trying to use.
-        *   **Project ID Accuracy:** Double-check that you have entered the correct Project ID in the toolkit configuration and that it corresponds to the qTest project you intend to access.
-        *   **Base URL Accuracy:** Ensure that the Base URL is correctly entered and points to the API endpoint of your qTest instance.
+    *   **A:** No, you **must use a qTest API token** for secure integration. API tokens provide secure, controlled access specifically designed for external applications like ELITEA.
+
+*   **Q: Where do I find the Project ID for my qTest project?**
+    *   **A:** The Project ID is a numerical identifier found in your qTest project settings, project URL, or in the browser address bar when inside your qTest project.
+
+*   **Q: Why am I getting "Permission Denied" errors?**
+    *   **A:** Check these items:
+        - API token validity (hasn't been revoked)
+        - qTest account permissions for the target project
+        - Correct Project ID in toolkit configuration  
+        - Proper credential selection in toolkit
+
+*   **Q: My DQL queries return no results, but I know test cases exist. What's wrong?**
+    *   **A:** Most commonly this is due to the "No Of Tests Shown In DQL Search" field being empty, set to 0, or set too low. Ensure it's set to an appropriate value (e.g., 100-200).
 
 ### Support and Contact Information
 
