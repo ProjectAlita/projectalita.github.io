@@ -316,5 +316,6 @@ After creating MCPs from canvas, you can:
 
     - **[MCP Menu](../../menus/mcps.md)** - Complete reference for MCP management and testing options
     - **[MCP Client Integration](../../integrations/mcp/mcp-client.md)** - Setup and configuration guide for Elitea MCP Client
-    - **[Configure and Use MCP Servers](../../getting-started/configure-and-use-mcp.md)** - Quick start guide for MCP setup
+    - **[Connect External Tools to Elitea with MCP](../../getting-started/create-and-use-client-stdio.md)** - Quick start guide for MCP client setup
+    - **[Setting Up MCP Server in VS Code](../../getting-started/create-and-use-server-stdio.md)** - Quick start guide for MCP server setup
     - **[Chat Menu](../../menus/chat.md)** - Comprehensive guide to chat interface features and navigation

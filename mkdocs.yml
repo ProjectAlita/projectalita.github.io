@@ -34,7 +34,8 @@ nav:
           - Create a Pipeline: getting-started/create-pipeline.md
           - Create a Conversation: getting-started/create-conversation.md
           - Create an Index: getting-started/indexing-quick-start.md
-          - Configure and Use MCP Servers: getting-started/configure-and-use-mcp.md
+          - Configure and Use MCP Server(STDIO): getting-started/create-and-use-server-stdio.md
+          - Configure and Use MCP Client(STDIO): getting-started/create-and-use-client-stdio.md
 
   - Menus:
       - Main Menus:
@@ -213,6 +214,8 @@ theme:
     # - navigation.sections # Enable section navigation (DISABLED to allow collapsible subsections)
     # - navigation.expand # Expand navigation sections by default (COMMENTED OUT = sections collapsed by default)
     # - navigation.top # Enable top navigation
+    - content.code.copy # Enable copy button on code blocks
+    - content.code.annotate # Enable code annotations
   palette:
     # # Palette toggle for automatic mode
     # - media: "(prefers-color-scheme)"
@@ -251,6 +254,26 @@ markdown_extensions:
   - footnotes # Footnote support when needed
   - toc:
       permalink: true # Adds anchor links to headings
+  # Code block enhancements
+  - pymdownx.highlight:
+      anchor_linenums: true # Enable line number anchors
+      line_spans: __span # Enable line highlighting
+      pygments_lang_class: true # Add language class
+  - pymdownx.inlinehilite # Inline code highlighting
+  - pymdownx.snippets # Code snippets support
+
+plugins:
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      auto_caption: false
+      caption_position: bottom
 
 # plugins:
 #   - htmlproofer:
