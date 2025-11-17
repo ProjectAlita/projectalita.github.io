@@ -51,9 +51,15 @@ This essential guide covers:
 
 Take advantage of the new Model Context Protocol support:
 
-**[Configure and Use MCP Servers](../../getting-started/configure-and-use-mcp.md)**
+**MCP Client (Connect External Tools to Elitea):**
 
-This quick start guide includes:
+- [Connect External Tools to Elitea with MCP](../../getting-started/create-and-use-client-stdio.md)
+
+**MCP Server (Use Elitea Agents in VS Code):**
+
+- [Setting Up Your First MCP Server](../../getting-started/create-and-use-server-stdio.md)
+
+These quick start guides include:
 
 * Installing and configuring the Elitea MCP Client
 * Setting up MCP servers (example: Playwright)
@@ -114,7 +120,9 @@ Extend your agents and pipelines with Model Context Protocol:
 3. Create MCP entries in ELITEA
 4. Assign MCPs to agents or use in conversations
 
-See: [Configure and Use MCP Servers](../../getting-started/configure-and-use-mcp.md)
+See: 
+- [MCP Client Guide (External Tools → Elitea)](../../getting-started/create-and-use-client-stdio.md)
+- [MCP Server Guide (Elitea Agents → VS Code)](../../getting-started/create-and-use-server-stdio.md)
 
 #### Review New Features
 
@@ -191,7 +199,7 @@ Task: "Analyze the following code and suggest improvements: {code_input}"
 - Toolkits are duplicated for every application version and every application instance
 - Agents using the same toolkit show different tool sets despite being configured with the same toolkit
 
-![Duplicate toolkits after migration](../../img/migration/duplicate-toolkits.png)
+![Duplicate toolkits after migration](../../img/migration/v2.0.0/duplicate-toolkits.png)
 
 **Cause:**
 During automatic data migration from v1.6 to v1.7 or v2.0, the migration process creates duplicate toolkits for each application version and application instance, even when they contain identical functionality.
@@ -233,7 +241,8 @@ When contacting support, include:
 
 * [Release Notes - Current](../../release-notes/rn_current.md)
 * [Pipelines Menu Guide](../../menus/pipelines.md)
-* [Configure and Use MCP Servers](../../getting-started/configure-and-use-mcp.md)
+* [Connect External Tools to Elitea with MCP (Client)](../../getting-started/create-and-use-client-stdio.md)
+* [Setting Up MCP Server (Use Elitea in VS Code)](../../getting-started/create-and-use-server-stdio.md)
 * [MCPs Menu Guide](../../menus/mcps.md)
 * [MCP Client Integration](../../integrations/mcp/mcp-client.md)
 
