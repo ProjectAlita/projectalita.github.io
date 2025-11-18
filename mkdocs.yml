@@ -171,6 +171,8 @@ nav:
           - RN 1.0.0: release-notes/archived/rn1.md
 
   - Migration & Upgrade:
+      - Upgrading to v2.0.1:
+          - Migrate Condition Node to Router/Decision: migration/v2.0.1/condition-node-migration.md
       - Upgrading to v2.0.0:
           - Migration Overview: migration/v2.0.0/migration-overview.md
           - Update LLM Nodes in Pipelines: migration/v2.0.0/update-llm-nodes.md
