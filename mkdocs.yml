@@ -263,6 +263,9 @@ markdown_extensions:
   - pymdownx.snippets # Code snippets support
 
 plugins:
+  - search:
+      lang: en
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
   - glightbox:
       touchNavigation: true
       loop: false
@@ -274,7 +277,6 @@ plugins:
       draggable: true
       auto_caption: false
       caption_position: bottom
-
 # plugins:
 #   - htmlproofer:
 #       validate_external_urls: false # set true later if desired
