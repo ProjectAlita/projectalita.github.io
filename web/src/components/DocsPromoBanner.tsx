@@ -54,7 +54,7 @@ export default function DocsPromoBanner() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <Link href="/docs/llm-testing">
+          <Link href="/articles/llm-testing">
             <motion.button
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
