@@ -8,7 +8,7 @@ export default function Footer() {
   const footerLinks = {
     product: [
       { name: 'ELITEA', href: 'https://next.elitea.ai', external: true },
-      { name: 'LLM Testing Guide', href: '/docs/llm-testing' },
+      { name: 'LLM Testing Guide', href: '/articles/llm-testing' },
       { name: 'Documentation', href: '/docs' },
       { name: 'Changelog', href: '/docs/release-notes/rn_current/' },
     ],
