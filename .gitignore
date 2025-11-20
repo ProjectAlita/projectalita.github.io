@@ -32,7 +32,19 @@ settings.json
 
 
 docs/admin-guide/
-scripts/
 
 # Ignore VSCode settings
 .vscode/
+node_modules
+.DS_Store
+.next
+out/
+
+# Local preview directory
+_local_preview/
+
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+_deploy/
