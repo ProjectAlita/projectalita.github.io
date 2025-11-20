@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   description: 'Applied AI Lab building practical solutions at the intersection of AI, Data, and Software Engineering. From QA automation to intelligent workflows.',
   keywords: 'AI, Machine Learning, Applied AI, Testing, QA Automation, Software Engineering',
   authors: [{ name: 'elitea.ai Team' }],
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   openGraph: {
     title: 'elitea.ai - Where AI gets practical',
     description: 'Applied AI Lab building practical solutions at the intersection of AI, Data, and Software Engineering.',
