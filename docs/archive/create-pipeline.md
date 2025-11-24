@@ -179,7 +179,7 @@ The primary way to use your pipeline is by adding it to conversations for collab
 ![Add to Conversation](../img/getting-started/create-pipeline/pipeline-add-to-conversation.png)
 
 !!! note "Reference"
-      For detailed instructions on creating a conversation, refer to the [Create first Conversation](create-conversation.md) guide.
+      For detailed instructions on creating a conversation, refer to the [Create first Conversation](../archive/create-conversation.md) guide.
 
 ---
 
@@ -207,6 +207,6 @@ Now that you've created your first pipeline, consider:
     * **[Pipelines Menu Guide](../menus/pipelines.md)** - Comprehensive pipeline documentation
     * **[Chat Menu Guide](../menus/chat.md)** - Learn about conversations and collaboration
     * **[Create a Toolkit](create-toolkit.md)** - Learn to integrate external services
-    * **[Create Credentials](create-credential.md)** - Set up secure authentication
+    * **[Create Credentials](../getting-started/create-credential.md)** - Set up secure authentication
     * **[Pipeline Agent Framework](../features/pipelines/pipeline-agent-framework.md)** - Advanced pipeline development
     * **[Glossary](../home/glossary.md)** - Definitions of key terms and concepts

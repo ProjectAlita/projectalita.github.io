@@ -84,7 +84,7 @@ Before creating agents and toolkits, you'll need a personal token for secure acc
 ![Personal Access Token](../img/getting-started/quick-start/token.png)
 
 !!! note "Reference"
-      For more information, see the [Personal Access Tokens Guide](create-personal-access-token.md) and [Elitea Code Extensions](../integrations/extensions/elitea-code.md).
+      For more information, see the [Personal Access Tokens Guide](../getting-started/create-personal-access-token.md) and [Elitea Code Extensions](../integrations/extensions/elitea-code.md).
 
 ---
 

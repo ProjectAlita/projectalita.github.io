@@ -85,6 +85,6 @@ Now it's time to test your setup:
 !!! info "Related Documentation"
     For more detailed information, refer to:
 
-    * **[Create a Secret](create-secret.md)** - Secure storage for API keys and passwords
-    * **[Create a Personal Access Token](create-personal-access-token.md)** - Generate tokens for API access
+    * **[Create a Secret](../getting-started/create-secret.md)** - Secure storage for API keys and passwords
+    * **[Create a Personal Access Token](../getting-started/create-personal-access-token.md)** - Generate tokens for API access
     * **[Glossary](../home/glossary.md)** - Definitions of key terms and concepts

@@ -130,7 +130,7 @@ The primary way to use your agent is by adding it to conversations for collabora
 ![Add to Conversation](../img/getting-started/create-agent/agent-add-to-conversation.png)
 
 !!! note "Reference"
-      For detailed instructions on creating conversation, refer to the [Create first Conversation](create-conversation.md) guide.
+      For detailed instructions on creating conversation, refer to the [Create first Conversation](../archive/create-conversation.md) guide.
 ---
 
 ## Next Steps
@@ -155,6 +155,6 @@ Now that you've created your first agent, consider:
 
     * **[Agents Menu Guide](../menus/agents.md)** - Comprehensive agent documentation
     * **[Create a Toolkit](create-toolkit.md)** - Learn to integrate external services
-    * **[Create Credentials](create-credential.md)** - Set up secure authentication
+    * **[Create Credentials](../getting-started/create-credential.md)** - Set up secure authentication
     * **[Chat Menu Guide](../menus/chat.md)** - Comprehensive chat documentation
     * **[Glossary](../home/glossary.md)** - Definitions of key terms and concepts
