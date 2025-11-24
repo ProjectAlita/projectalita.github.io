@@ -816,7 +816,7 @@ Once you have created credentials, you can assign them to toolkits to enable sec
 * Regularly rotate and update credentials to maintain security.
 * Use Secrets for storing sensitive authentication information.
 
-For more information on creating and managing Toolkits, see the [Toolkits documentation](../../getting-started/create-toolkit.md).
+For more information on creating and managing Toolkits, see the [Toolkits documentation](../chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md).
 
 ## Best Practices and Use Cases
 

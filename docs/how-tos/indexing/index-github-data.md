@@ -382,7 +382,6 @@ Check that your index appears in the sidebar with:
     
     - [Indexing Overview](./indexing-overview.md) - General indexing concepts and features
     - [How to create and use indexes](./using-indexes-tab-interface.md) - Comprehensive guide for indexing functionality
-    - [Create first Index](../../getting-started/indexing-quick-start.md) - Quick start guide for creating indexes
     - [Create a Credential](../../getting-started/create-credential.md) - Step-by-step credential creation guide
     - [How to Use Credentials](../credentials-toolkits/how-to-use-credentials.md) - Credential management and GitHub setup
     - [Toolkits Menu](../../menus/toolkits.md) - Toolkit configuration and management
