@@ -12,8 +12,8 @@ Before you begin, make sure you have:
 
 - ☑️ **Python installed** on your computer (version 3.10 or newer) - [Download Python](https://www.python.org/downloads/)
 - ☑️ **Node.js installed** (required for most MCP servers like Playwright, GitHub, Figma) - [Download Node.js](https://nodejs.org/)
-- ☑️ **Your Elitea Project ID** (find this in Elitea Settings → [Configuration](../menus/settings/ai-configuration.md#key-configuration-fields))
-- ☑️ **Your Elitea Authentication Token** (create one in Elitea Settings → [Personal Tokens](create-personal-access-token.md))
+- ☑️ **Your Elitea Project ID** (find this in Elitea Settings → [Configuration](../../menus/settings/ai-configuration.md#key-configuration-fields))
+- ☑️ **Your Elitea Authentication Token** (create one in Elitea Settings → [Personal Tokens](../../getting-started/create-personal-access-token.md))
 - ☑️ **Your Elitea deployment URL** (example: `https://next.elitea.ai`)
 
 !!! note "Additional Dependencies"
@@ -50,14 +50,14 @@ The client is a program that connects Elitea to external MCP tools.
        ```
      - Wait for it to finish
 
-     ![alt text](../img/getting-started/mcp/install-pipx.png)
+     ![alt text](../../img/getting-started/mcp/install-pipx.png)
 
 3. **Set up pipx's path**
      - This makes sure your computer can find pipx. Copy and run:
        ```powershell
        python -m pipx ensurepath
        ```
-     ![alt text](../img/getting-started/mcp/pipx-ensurepath.png)
+     ![alt text](../../img/getting-started/mcp/pipx-ensurepath.png)
 
 4. **Install alita-mcp**
      - This is the actual client program. Copy and run:
@@ -66,7 +66,7 @@ The client is a program that connects Elitea to external MCP tools.
        ```
      - Wait for installation to complete
 
-     ![alt text](../img/getting-started/mcp/install-alita-mcp.png)
+     ![alt text](../../img/getting-started/mcp/install-alita-mcp.png)
 
 5. **Close and reopen PowerShell**
      - This refreshes your environment so the new program is recognized
@@ -99,7 +99,7 @@ Now you'll set up the connection to your Elitea account and add external tools.
      - **Args:** Type `@playwright/mcp@latest` and press Enter
      - **Keep Connection Alive:** Type `y` for Yes (recommended for browser automation)
 
-     ![alt text](<../img/getting-started/mcp/alita-mcp bootstrap.gif>){ loading=lazy }
+     ![alt text](<../../img/getting-started/mcp/alita-mcp bootstrap.gif>){ loading=lazy }
 
 4. **Add more servers** (optional)
      - You can add GitHub, Figma, or other MCP servers by repeating the process
@@ -152,14 +152,14 @@ Now you'll start the client so it runs in the background.
      - Press Enter
      - You should see the Alita icon appear in your system tray
 
-      ![mcp](../img/getting-started/mcp/alita-mcp-tray.png)
+      ![mcp](../../img/getting-started/mcp/alita-mcp-tray.png)
 
 2. **Start the MCP Server from the tray**
      - Look in the bottom-right corner of your screen (system tray)
      - Click the Alita icon
      - Select **Start MCP Server**
 
-      ![Windows tray menu](../img/integrations/mcp/mcp-tray-windows.png){ data-gallery="my-gallery" }
+      ![Windows tray menu](../../img/integrations/mcp/mcp-tray-windows.png){ data-gallery="my-gallery" }
 
 3. **Verify it's running**
      - The tray icon should show the server is active
@@ -173,7 +173,7 @@ Now you'll start the client so it runs in the background.
     4. Make any needed changes and save
     5. Restart the MCP server for changes to take effect
 
-    ![Config file menu](../img/getting-started/mcp/config-file-open.png){ width="300" align=left}
+    ![Config file menu](../../img/getting-started/mcp/config-file-open.png){ width="300" align=left}
 
 !!! tip "Run in Background"
     To run the tray app in the background without keeping a PowerShell window open:
@@ -228,7 +228,7 @@ Now you'll make the external tools available to your Elitea agents.
 5. **Save**
      - Click **Save** to create the MCP entry
 
-      ![Create MCP](../img/getting-started/mcp/mcp-toolkit-create.gif){ loading=lazy }
+      ![Create MCP](../../img/getting-started/mcp/mcp-toolkit-create.gif){ loading=lazy }
 
 
 ---
@@ -253,7 +253,7 @@ Now you'll give your agent access to these new tools.
 4. **Save your agent**
      - Click **Save** to apply the changes
 
-     ![alt text](../img/getting-started/mcp/mcp-add-to-agent.gif){ loading=lazy }
+     ![alt text](../../img/getting-started/mcp/mcp-add-to-agent.gif){ loading=lazy }
 
 ---
 
@@ -285,7 +285,7 @@ You can add MCP tools directly to conversations when creating a new chat or in a
 !!! tip "Adding Multiple MCPs"
     You can add multiple MCPs to the same conversation! Just repeat the process to add GitHub MCP, Playwright MCP, or any other MCP you've configured.
 
-![Add Chat](../img/getting-started/mcp/mcp-add-to-chat.gif){ loading=lazy }
+![Add Chat](../../img/getting-started/mcp/mcp-add-to-chat.gif){ loading=lazy }
 
 !!! example "Real-World Example: Testing a Login Page"
     Here's a practical example of using Playwright MCP to test a login page:
@@ -330,7 +330,7 @@ You can add MCP tools directly to conversations when creating a new chat or in a
 - When you ask your agent to use a tool, it executes successfully
 - No error messages appear
 
-![connection](<../img/getting-started/mcp/connection status.png>)
+![connection](<../../img/getting-started/mcp/connection status.png>)
 
 
 ✘ **Something's wrong if:**
@@ -426,11 +426,13 @@ Now that your MCP client is running, you can:
 
 
 !!! info "Helpful Resources"
-    - [Full MCP Client Documentation](../integrations/mcp/mcp-client.md)
-    - [Elitea Settings & Configuration](../menus/settings/ai-configuration.md)
+    - [Full MCP Client Documentation](../mcp/mcp-client.md)
+    - [Elitea Settings & Configuration](../../menus/settings/ai-configuration.md)
     - [MCP Protocol Official Docs](https://modelcontextprotocol.io/)
     - [Playwright MCP Server](https://github.com/microsoft/playwright-mcp)
     - [GitHub MCP Server](https://github.com/github/github-mcp-server)
-    - [How to Create and Edit MCPs from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md)
+    - [How to Create and Edit MCPs from Canvas](../../how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md)
 
 ---
+
+

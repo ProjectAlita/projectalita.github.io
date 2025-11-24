@@ -13,8 +13,8 @@ Before you begin, make sure you have:
 - ☑️ **VS Code installed** (version 1.99 or newer)
 - ☑️ **GitHub Copilot** installed and configured in VS Code
 - ☑️ **Python installed** on your computer (version 3.8 or newer) - [Download Python](https://www.python.org/downloads/)
-- ☑️ **Your Elitea Project ID** (find this in Elitea Settings → [Configuration](../menus/settings/ai-configuration.md#key-configuration-fields))
-- ☑️ **Your Elitea Authentication Token** (create one in Elitea Settings → [Personal Tokens](create-personal-access-token.md))
+- ☑️ **Your Elitea Project ID** (find this in Elitea Settings → [Configuration](../../menus/settings/ai-configuration.md#key-configuration-fields))
+- ☑️ **Your Elitea Authentication Token** (create one in Elitea Settings → [Personal Tokens](../../getting-started/create-personal-access-token.md))
 - ☑️ **Your Elitea deployment URL** (example: `https://next.elitea.ai`)
 
 ---
@@ -44,7 +44,7 @@ The "client" is a small program that handles communication between VS Code and E
        ```
      - Wait for it to finish
 
-   ![Install pipx](../img/getting-started/mcp/install-pipx.png)
+   ![Install pipx](../../img/getting-started/mcp/install-pipx.png)
 
 3. **Set up pipx's path**
      - This makes sure your computer can find pipx. Copy and run:
@@ -52,7 +52,7 @@ The "client" is a small program that handles communication between VS Code and E
        python -m pipx ensurepath
        ```
 
-   ![Setup pipx path](../img/getting-started/mcp/pipx-ensurepath.png)
+   ![Setup pipx path](../../img/getting-started/mcp/pipx-ensurepath.png)
 
 4. **Install alita-mcp**
      - This is the actual client program. Copy and run:
@@ -61,7 +61,7 @@ The "client" is a small program that handles communication between VS Code and E
        ```
      - Wait for installation to complete
 
-   ![Install alita-mcp](../img/getting-started/mcp/install-alita-mcp.png)
+   ![Install alita-mcp](../../img/getting-started/mcp/install-alita-mcp.png)
 
 5. **Close and reopen PowerShell**
      - This refreshes your environment so the new program is recognized
@@ -92,7 +92,7 @@ Now you'll tell the client how to connect to your Elitea account.
      - You should see a message confirming the configuration was saved
      - If you see errors, double-check your URL and token
 
-![ alita-mcp-server](../img/getting-started/mcp/alita-mcp-bootstrap-server.gif){ loading=lazy }
+![ alita-mcp-server](../../img/getting-started/mcp/alita-mcp-bootstrap-server.gif){ loading=lazy }
 
 !!! note "Skipping Project ID During Bootstrap"
     If the Project ID prompt keeps asking for a valid integer and won't accept an empty value, press `Ctrl+C` to cancel. Don't worry—your Deployment URL and Authentication Token have already been saved. You'll add the Project ID in VS Code's configuration file in Part 4 of this guide.
@@ -112,7 +112,7 @@ Now you'll add the MCP server to VS Code so it can talk to Elitea.
 3. **Open GitHub Copilot Chat**
      - Click the chat icon in the left sidebar (or press `Ctrl+Alt+I`)
 
-     ![screenshot](../img/integrations/mcp/open-copilot-chat.png)
+     ![screenshot](../../img/integrations/mcp/open-copilot-chat.png)
 
 4. **Switch to Agent mode**
      - In the chat panel, look for "Agent mode" and click it
@@ -123,21 +123,21 @@ Now you'll add the MCP server to VS Code so it can talk to Elitea.
      - Click **Add MCP Server** icon
      - Click **+ Add MCP Server**
 
-     ![alt text](../img/getting-started/mcp/add-mcp-server.png)
+     ![alt text](../../img/getting-started/mcp/add-mcp-server.png)
 
-     ![screenshot](../img/integrations/mcp/add-mcp-server.png)
+     ![screenshot](../../img/integrations/mcp/add-mcp-server.png)
 
      - Select **Command stdio**
 
-     ![screenshot](../img/integrations/mcp/select-command-stdio.png)
+     ![screenshot](../../img/integrations/mcp/select-command-stdio.png)
 
      - For "Command", type: `alita-mcp` and press Enter
 
-     ![screenshot](../img/integrations/mcp/enter-command.png)
+     ![screenshot](../../img/integrations/mcp/enter-command.png)
 
      - For "Server ID", use the suggested name or type something like `elitea`
 
-     ![screenshot](../img/integrations/mcp/add-server-id-stdio.png)
+     ![screenshot](../../img/integrations/mcp/add-server-id-stdio.png)
 
 6. **Choose where to save the settings**
      - You'll see two options:
@@ -145,7 +145,7 @@ Now you'll add the MCP server to VS Code so it can talk to Elitea.
        - **Global** – Works in all your VS Code projects
      - Choose based on your needs (Workspace is good for team projects)
 
-     ![screenshot](../img/getting-started/mcp/workspace.png)
+     ![screenshot](../../img/getting-started/mcp/workspace.png)
 
 ---
 
@@ -167,7 +167,7 @@ This tells the server which Elitea project to connect to.
        ```
      - Replace `YOUR_PROJECT_ID` with your actual number (example: `25`)
 
-     ![screenshot](../img/getting-started/mcp/add-project-id.png)
+     ![screenshot](../../img/getting-started/mcp/add-project-id.png)
 
 3. **Save the file**
      - Press `Ctrl+S`
@@ -175,7 +175,7 @@ This tells the server which Elitea project to connect to.
 4. **Start the server**
      - In Copilot Chat, click the **Start** button
 
-     ![screenshot](../img/getting-started/mcp/start-server.png)
+     ![screenshot](../../img/getting-started/mcp/start-server.png)
 
 !!! warning "Before Starting the Server"
     Make sure you have at least one agent tagged with `mcp`. Otherwise, no tools will be available when the server starts. See Part 5 for tagging instructions.
@@ -197,7 +197,7 @@ This tells the server which Elitea project to connect to.
        ```
      - Replace `YOUR_PROJECT_ID` with your actual number
 
-     ![screenshot](../img/getting-started/mcp/add-project-id.png)
+     ![screenshot](../../img/getting-started/mcp/add-project-id.png)
 
 
 3. **Save the file**
@@ -206,7 +206,7 @@ This tells the server which Elitea project to connect to.
 4. **Start the server**
      - In Copilot Chat, click the **Start** button
 
-   ![screenshot](../img/integrations/mcp/stdio-start-server-settings-json.png)
+   ![screenshot](../../img/integrations/mcp/stdio-start-server-settings-json.png)
 
 !!! Warning "Before Starting the Server"
     Make sure you have at least one agent tagged with `mcp`. Otherwise, no tools will be available when the server starts. See Part 5 for setup instructions.
@@ -230,7 +230,7 @@ For an agent to be available as a tool, it must be tagged in Elitea.
      - Add a tag named `mcp` (all lowercase)
      - Save your changes
 
-   ![Tag Agent](../img/getting-started/mcp/mcp-tag-agent.gif){ loading=lazy }
+   ![Tag Agent](../../img/getting-started/mcp/mcp-tag-agent.gif){ loading=lazy }
 
 !!! important "Agent Tool Visibility"
     Only agents with the `mcp` tag will be visible in VS Code. Make sure to tag the agents you want to use before starting the server.
@@ -242,7 +242,7 @@ For an agent to be available as a tool, it must be tagged in Elitea.
      - In Copilot Chat, stop the server and start it again
      - This syncs the newly tagged agents
 
-![Restart server](../img/getting-started/mcp/restart-server.gif){ loading=lazy }
+![Restart server](../../img/getting-started/mcp/restart-server.gif){ loading=lazy }
 
 ---
 
@@ -256,7 +256,7 @@ Now you're ready to use your Elitea agent from VS Code!
 2. **Click the Tools icon**
      - You should see your tagged agents listed
 
-   ![screenshot](../img/integrations/mcp/mcp-tools-list.png)
+   ![screenshot](../../img/integrations/mcp/mcp-tools-list.png)
 
 3. **Select the tools you want to use**
      - All tools are selected by default
@@ -266,12 +266,12 @@ Now you're ready to use your Elitea agent from VS Code!
      - In the chat box, type `#` followed by your agent's name
      - Example: `#BA Assistant Show me the scope of PLAN-3012`
 
-   ![screenshot](../img/integrations/mcp/call-ba-assistant.png)
+   ![screenshot](../../img/integrations/mcp/call-ba-assistant.png)
 
 5. **Run the tool**
      - Click **Run [tool name]** when prompted
 
-   ![screenshot](../img/integrations/mcp/run-tool.png)
+   ![screenshot](../../img/integrations/mcp/run-tool.png)
 
 6. **Confirm execution**
      - The first time, you'll be asked to confirm
@@ -280,7 +280,7 @@ Now you're ready to use your Elitea agent from VS Code!
 7. **Review the results**
      - Your agent will execute and return results directly in the chat
 
-   ![screenshot](../img/integrations/mcp/enhanced-user-story-saved.png)
+   ![screenshot](../../img/integrations/mcp/enhanced-user-story-saved.png)
 
 ---
 
@@ -319,11 +319,11 @@ Now you're ready to use your Elitea agent from VS Code!
 1. Click the error in the Chat view
 2. Select **Show Output** to see details
 
-   ![screenshot](../img/integrations/mcp/mcp-server-error.png)
+   ![screenshot](../../img/integrations/mcp/mcp-server-error.png)
 
 3. Look for specific error messages in the log
 
-   ![screenshot](../img/integrations/mcp/mcp-server-error-output.png)
+   ![screenshot](../../img/integrations/mcp/mcp-server-error-output.png)
 
 ### Problem: Server keeps disconnecting
 **Fix:**
@@ -400,8 +400,8 @@ You can set up multiple MCP servers for different projects:
 
 !!! tip "Helpful Resources"
 
-    - [Full MCP STDIO Documentation](../integrations/mcp/mcp-server-stdio.md)
-    - [Elitea Settings & Configuration](../menus/settings/ai-configuration.md)
+    - [Full MCP STDIO Documentation](mcp-server-stdio.md)
+    - [Elitea Settings & Configuration](../../menus/settings/ai-configuration.md)
     - [MCP Protocol Official Docs](https://modelcontextprotocol.io/)
 
 ---
