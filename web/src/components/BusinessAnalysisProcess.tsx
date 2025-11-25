@@ -6,6 +6,7 @@ import ExperimentCard from '@/components/ExperimentCard'
 import Footer from '@/components/Footer'
 import ThemeToggle from '@/components/ThemeToggle'
 import Link from 'next/link'
+import { getBAExperiments } from '@/data/experiments'
 
 interface Activity {
   text: string
@@ -21,6 +22,7 @@ interface ProcessStep {
   title: string
   owner: string
   activities: Activity[]
+  isExpanded?: boolean
 }
 
 interface BusinessAnalysisProcessProps {
@@ -33,6 +35,7 @@ export default function BusinessAnalysisProcess({ theme, onToggleTheme }: Busine
     {
       title: "Business Request",
       owner: "Business Stakeholders",
+      isExpanded: true,
       activities: [
         { text: "Identify business need or problem", type: "personal", scope: "out" },
         { text: "Prepare initial request or business case", type: "personal", scope: "out" },
@@ -43,78 +46,118 @@ export default function BusinessAnalysisProcess({ theme, onToggleTheme }: Busine
     {
       title: "Requirements Elicitation",
       owner: "Business Analyst",
+      isExpanded: true,
       activities: [
-        { text: "Plan elicitation activities", type: "personal", scope: "out", experiment: { name: "Requirements & Solution Designer", color: "bg-purple-500" } },
+        { text: "Plan elicitation activities", type: "personal", scope: "in", experiment: { name: "Requirements Designer", color: "bg-purple-500" } },
         { text: "Conduct stakeholder interviews and workshops", type: "in-meeting", scope: "out" },
-        { text: "Observe current workflows and systems", type: "personal", scope: "out", experiment: { name: "Requirements & Solution Designer", color: "bg-purple-500" } },
-        { text: "Document business, stakeholder, functional, and non-functional requirements", type: "personal", scope: "out", experiment: { name: "Requirements & Solution Designer", color: "bg-purple-500" } },
+        { text: "Observe current workflows and systems", type: "personal", scope: "in", experiment: { name: "Requirements Designer", color: "bg-purple-500" } },
+        { text: "Document business, stakeholder, functional, and non-functional requirements", type: "personal", scope: "in", experiment: { name: "Requirements Designer", color: "bg-purple-500" } },
         { text: "Clarify constraints and assumptions", type: "in-meeting", scope: "out" },
       ],
     },
     {
       title: "Requirements Validation & Approval",
       owner: "Business Analyst / Stakeholders",
+      isExpanded: true,
       activities: [
-        { text: "Validate requirements for completeness and feasibility", type: "personal", scope: "out", experiment: { name: "Requirements & Solution Designer", color: "bg-purple-500" } },
+        { text: "Validate requirements for completeness and feasibility", type: "personal", scope: "in", experiment: { name: "Requirements Designer", color: "bg-purple-500" } },
         { text: "Review with technical and business teams", type: "in-meeting", scope: "out" },
         { text: "Resolve gaps or ambiguities", type: "in-meeting", scope: "out" },
         { text: "Obtain stakeholder approval and formal sign-off", type: "in-meeting", scope: "out" },
+        { text: "Validation Checkpoint: Confirm business objectives validated with stakeholders", type: "in-meeting", scope: "out" },
+      ],
+    },
+    {
+      title: "Epic Design & Initiative Definition",
+      owner: "Product Owner / Business Analyst",
+      isExpanded: true,
+      activities: [
+        { text: "Capture epic ID, name and high-level description", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Define business value statements and expected outcomes", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Articulate business case and vision for the epic", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Define high-level acceptance criteria", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Identify and document stakeholders and their interests", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Create epic specification in Confluence with traceability to requirements", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Validation Checkpoint: Ensure epic has clear business value and stakeholder alignment", type: "in-meeting", scope: "out" },
+      ],
+    },
+    {
+      title: "Backlog Refinement",
+      owner: "Business Analyst / Product Owner",
+      isExpanded: true,
+      activities: [
+        { text: "Break down each epic into features and user stories", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Capture dependencies between stories and across epics", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Define detailed acceptance criteria for each story", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Estimate size, complexity and effort for stories", type: "in-meeting", scope: "out" },
+        { text: "Prioritise user stories based on business value and dependencies", type: "in-meeting", scope: "out" },
+        { text: "Ensure output is delivery-ready backlog items", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Maintain Epic → Features/Stories traceability", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Validation Checkpoint: Confirm backlog refined to minimal viable state and scope clarity", type: "in-meeting", scope: "out"},
+        { text: "Final backlog grooming and story refinement with Product Owner", type: "in-meeting", scope: "out" },
+      ],
+    },
+    {
+      title: "Test Planning & Design",
+      owner: "QA / Business Analyst",
+      isExpanded: true,
+      activities: [
+        { text: "User-story level test cases to Zephyr", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Epic level end-to-end tests to Zephyr", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Validate test coverage against acceptance criteria and solution design", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Define test data and test environments", type: "personal", scope: "out" },
       ],
     },
     {
       title: "Solution Design",
       owner: "Solution Architect / Technical Lead",
+      isExpanded: false,
       activities: [
-        { text: "Translate business requirements into technical solution design", type: "personal", scope: "out", experiment: { name: "Requirements & Solution Designer", color: "bg-purple-500" } },
-        { text: "Define architecture, data model, and integration approach", type: "personal", scope: "out", experiment: { name: "Requirements & Solution Designer", color: "bg-purple-500" } },
-        { text: "Estimate effort and cost", type: "personal", scope: "out", experiment: { name: "Requirements & Solution Designer", color: "bg-purple-500" } },
+        { text: "Translate refined backlog items into technical solution design", type: "personal", scope: "out", experiment: { name: "Solution Design Assistant", color: "bg-amber-600" } },
+        { text: "Define architecture, data model, and integration approach", type: "personal", scope: "out", experiment: { name: "Solution Design Assistant", color: "bg-amber-600" } },
+        { text: "Document non-functional requirements (performance, security, scalability)", type: "personal", scope: "out", experiment: { name: "Solution Design Assistant", color: "bg-amber-600" } },
+        { text: "Validate solution design references refined backlog items (traceability)", type: "personal", scope: "out", experiment: { name: "Solution Design Assistant", color: "bg-amber-600" } },
+        { text: "Identify technical risks and mitigation strategies", type: "personal", scope: "out", experiment: { name: "Solution Design Assistant", color: "bg-amber-600" } },
+        { text: "Estimate effort and cost", type: "personal", scope: "out", experiment: { name: "Solution Design Assistant", color: "bg-amber-600" } },
         { text: "Prepare design documentation and review with BA", type: "in-meeting", scope: "out" },
+        { text: "User-story to technical task breakdown", type: "personal", scope: "out", experiment: { name: "Solution Design Assistant", color: "bg-amber-600" } },
+        { text: "Validation Checkpoint: Confirm solution design baselined and NFRs captured", type: "in-meeting", scope: "out" },
       ],
     },
     {
-      title: "Epic & User Story Definition",
-      owner: "Business Analyst / Product Owner",
+      title: "Development & Implementation",
+      owner: "Development Team",
+      isExpanded: false,
       activities: [
-        { text: "Epic requirements solicitation – separate topic", type: "in-meeting", scope: "out" },
-        { text: "Epic requirements analysis to Epic level specification (Confluence)", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
-        { text: "Epic to User-story breakdown", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
-        { text: "User-story specification in Confluence", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
-        { text: "Define acceptance criteria (functional & non-functional)", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Technical task execution", type: "personal", scope: "out", experiment: { name: "Coding Agents", color: "bg-teal-600" } },
+        { text: "Code reviews and quality checks", type: "in-meeting", scope: "out" },
+        { text: "Unit testing and integration", type: "personal", scope: "out", experiment: { name: "Coding Agents", color: "bg-teal-600" } },
+        { text: "Continuous integration and deployment", type: "personal", scope: "out", experiment: { name: "Coding Agents", color: "bg-teal-600" } },
       ],
     },
     {
-      title: "Backlog Refinement & Prioritisation",
-      owner: "Business Analyst / Product Owner",
+      title: "Test Execution & Quality Assurance",
+      owner: "QA Team",
+      isExpanded: false,
       activities: [
-        { text: "Backlog grooming and story refinement with Product Owner", type: "in-meeting", scope: "out" },
-        { text: "Define and clarify acceptance criteria for each story", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
-        { text: "Estimate and prioritise user stories based on business value", type: "in-meeting", scope: "out" },
-      ],
-    },
-    {
-      title: "User Story to Technical Breakdown",
-      owner: "Development Team / PM",
-      activities: [
-        { text: "User-story to technical task breakdown", type: "in-meeting", scope: "out" },
-        { text: "Technical task execution", type: "personal", scope: "out" },
-      ],
-    },
-    {
-      title: "Testing & Quality Assurance",
-      owner: "QA / Business Analyst",
-      activities: [
-        { text: "User-story level test cases to Zephyr", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
-        { text: "Epic level end-to-end tests to Zephyr", type: "personal", scope: "in", experiment: { name: "Epic to Test Suite Generator", color: "bg-blue-500" } },
+        { text: "Execute user-story level test cases", type: "personal", scope: "out", experiment: { name: "Agentic QA", color: "bg-indigo-600" } },
+        { text: "Execute epic level end-to-end tests", type: "personal", scope: "out", experiment: { name: "Agentic QA", color: "bg-indigo-600" } },
+        { text: "Validate results against acceptance criteria", type: "personal", scope: "out", experiment: { name: "Agentic QA", color: "bg-indigo-600" } },
         { text: "Lead user acceptance testing (UAT) sessions", type: "in-meeting", scope: "out" },
+        { text: "Report defects and track resolution", type: "personal", scope: "out", experiment: { name: "Agentic QA", color: "bg-indigo-600" } },
       ],
     },
     {
       title: "Metrics & Continuous Improvement",
       owner: "Business Analyst / Product Owner / Scrum Master",
+      isExpanded: true,
       activities: [
         { text: "Collect metrics (cycle time, lead time, value delivered)", type: "personal", scope: "in", experiment: { name: "Delivery Metrics Analyzer", color: "bg-green-500" } },
-        { text: "Conduct retrospectives and feedback reviews", type: "in-meeting", scope: "in", experiment: { name: "Delivery Metrics Analyzer", color: "bg-green-500" } },
-        { text: "Refine backlog and process based on insights", type: "personal", scope: "in", experiment: { name: "Delivery Metrics Analyzer", color: "bg-green-500" } },
+        { text: "Log actual vs estimated times/efforts for each epic, refinement, and solution design", type: "personal", scope: "in", experiment: { name: "Delivery Metrics Analyzer", color: "bg-green-500" } },
+        { text: "Analyse variance between planned vs realized on epic closure", type: "personal", scope: "in", experiment: { name: "Delivery Metrics Analyzer", color: "bg-green-500" } },
+        { text: "Conduct retrospectives and feedback reviews", type: "in-meeting", scope: "out" },
+        { text: "Refine future sequencing, estimation, and process based on insights", type: "personal", scope: "in", experiment: { name: "Delivery Metrics Analyzer", color: "bg-green-500" } },
+        { text: "Agent provides templates and standards for metrics tracking with standardised data fields", type: "personal", scope: "in", experiment: { name: "Delivery Metrics Analyzer", color: "bg-green-500" } },
       ],
     },
   ]
@@ -192,7 +235,8 @@ export default function BusinessAnalysisProcess({ theme, onToggleTheme }: Busine
               className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
             >
               A comprehensive workflow from business request to continuous improvement, 
-              enhanced with AI capabilities across Agile and SAFe methodologies
+              with proper phase sequencing: Epic Design → Refinement → Solution Design. 
+              Enhanced with AI capabilities, traceability, and validation checkpoints across Agile and SAFe methodologies.
             </motion.p>
 
             {/* Featured Experiments */}
@@ -207,30 +251,18 @@ export default function BusinessAnalysisProcess({ theme, onToggleTheme }: Busine
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-                <ExperimentCard
-                  title="Epic to Test Suite Generator"
-                  description="Transform epics into comprehensive test cases with AI-powered analysis and coverage mapping"
-                  status="coming-soon"
-                  badge={{ label: "Coming Soon", color: "bg-blue-500" }}
-                  link="/experiments/epic-to-test-suite"
-                  index={0}
-                />
-                
-                <ExperimentCard
-                  title="Requirements & Solution Designer"
-                  description="AI-assisted elicitation and solution design from stakeholder input to technical specifications"
-                  status="coming-soon"
-                  badge={{ label: "Coming Soon", color: "bg-purple-500" }}
-                  index={1}
-                />
-                
-                <ExperimentCard
-                  title="Delivery Metrics Analyzer"
-                  description="Smart analytics for cycle time, lead time, and value delivery with AI-driven insights"
-                  status="coming-soon"
-                  badge={{ label: "Coming Soon", color: "bg-green-500" }}
-                  index={2}
-                />
+                {getBAExperiments().map((experiment, index) => (
+                  <ExperimentCard
+                    key={experiment.id}
+                    title={experiment.title}
+                    description={experiment.description}
+                    status={experiment.status}
+                    badge={experiment.badge}
+                    link={experiment.link}
+                    backgroundImage={experiment.backgroundImage}
+                    index={index}
+                  />
+                ))}
               </div>
             </motion.div>
 
@@ -239,34 +271,45 @@ export default function BusinessAnalysisProcess({ theme, onToggleTheme }: Busine
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="mt-12 md:mt-16 flex flex-wrap items-center justify-center gap-4 md:gap-6"
+              className="mt-12 md:mt-16 space-y-4"
             >
-              <div className="flex items-center gap-2">
+              {/* Work Type */}
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Work Type:</span>
                 <span className="border rounded-full px-3 py-1 text-xs font-medium bg-green-100 dark:bg-green-600/30 text-green-700 dark:text-green-300 border-green-300 dark:border-green-500/40">
                   In Meeting
                 </span>
-              </div>
-              <div className="flex items-center gap-2">
                 <span className="border rounded-full px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-600/30 text-blue-700 dark:text-blue-300 border-blue-300 dark:border-blue-500/40">
                   Personal Work
                 </span>
               </div>
-              <div className="flex items-center gap-2">
+
+              {/* AI BA Scope */}
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">AI BA Scope:</span>
                 <span className="border rounded-full px-3 py-1 text-xs font-bold text-white bg-blue-500 border-white/20 shadow-sm">
                   Epic to Test Suite Generator
                 </span>
-              </div>
-              <div className="flex items-center gap-2">
                 <span className="border rounded-full px-3 py-1 text-xs font-bold text-white bg-purple-500 border-white/20 shadow-sm">
-                  Requirements & Solution Designer
+                  Requirements Designer
                 </span>
-              </div>
-              <div className="flex items-center gap-2">
                 <span className="border rounded-full px-3 py-1 text-xs font-bold text-white bg-green-500 border-white/20 shadow-sm">
                   Delivery Metrics Analyzer
                 </span>
               </div>
-              <div className="flex items-center gap-2">
+
+              {/* AI Out of Scope */}
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">AI Out of Scope:</span>
+                <span className="border rounded-full px-3 py-1 text-xs font-bold text-white bg-amber-600 border-white/20 shadow-sm">
+                  Solution Design Assistant
+                </span>
+                <span className="border rounded-full px-3 py-1 text-xs font-bold text-white bg-teal-600 border-white/20 shadow-sm">
+                  Coding Agents
+                </span>
+                <span className="border rounded-full px-3 py-1 text-xs font-bold text-white bg-indigo-600 border-white/20 shadow-sm">
+                  Agentic QA
+                </span>
                 <span className="border rounded-full px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-600/30 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-500/40">
                   Manual Process
                 </span>
@@ -284,6 +327,7 @@ export default function BusinessAnalysisProcess({ theme, onToggleTheme }: Busine
                 activities={step.activities}
                 index={index}
                 isLast={index === steps.length - 1}
+                defaultExpanded={step.isExpanded}
               />
             ))}
           </div>

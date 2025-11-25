@@ -3,115 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
 import ExperimentCard from '@/components/ExperimentCard'
-
-interface ExperimentCard {
-  id: string
-  title: string
-  description: string
-  videoId?: string
-  githubRepo?: string
-  phase: 'phase-1' | 'phase-2' | 'phase-3'
-  views?: string
-  stars?: string
-  status: 'published' | 'coming-soon'
-  thumbnail?: string
-  link?: string
-}
-
-const experiments: ExperimentCard[] = [
-  {
-    id: 'epic-to-test-suite',
-    title: 'Epic to Test Suite Generator',
-    description: 'Transform epics into comprehensive test cases with AI-powered analysis and coverage mapping',
-    phase: 'phase-1',
-    status: 'coming-soon',
-    link: '/experiments/epic-to-test-suite'
-  },
-  {
-    id: '1',
-    title: 'AI Test Case Generator',
-    description: 'Automatically generate comprehensive test cases from user stories and requirements using GPT-4.',
-    phase: 'phase-1',
-    status: 'coming-soon'
-  },
-  {
-    id: '2',
-    title: 'Smart Test Data Factory',
-    description: 'AI-powered test data generation that creates realistic, compliant test datasets on demand.',
-    phase: 'phase-1',
-    status: 'coming-soon'
-  },
-  {
-    id: '3',
-    title: 'Visual Regression AI',
-    description: 'Intelligent screenshot comparison that understands intentional vs. unintentional changes.',
-    phase: 'phase-1',
-    status: 'coming-soon'
-  },
-  {
-    id: '4',
-    title: 'Meeting Notes to Tasks',
-    description: 'Transform meeting transcripts into actionable tasks and follow-ups automatically.',
-    phase: 'phase-2',
-    status: 'coming-soon'
-  },
-  {
-    id: '5',
-    title: 'Document Intelligence Hub',
-    description: 'Extract, summarize, and organize insights from multiple document formats using AI.',
-    phase: 'phase-2',
-    status: 'coming-soon'
-  },
-  {
-    id: '6',
-    title: 'AI Email Orchestrator',
-    description: 'Smart email categorization, prioritization, and draft responses for better inbox management.',
-    phase: 'phase-2',
-    status: 'coming-soon'
-  },
-  {
-    id: '7',
-    title: 'Code Review Assistant',
-    description: 'AI-powered code review that suggests improvements, catches bugs, and ensures best practices.',
-    phase: 'phase-3',
-    status: 'coming-soon'
-  },
-  {
-    id: '8',
-    title: 'AI Sprint Planner',
-    description: 'Intelligent sprint planning that optimizes team capacity and predicts delivery timelines.',
-    phase: 'phase-3',
-    status: 'coming-soon'
-  },
-  {
-    id: '9',
-    title: 'Knowledge Base Builder',
-    description: 'Automatically generate and maintain technical documentation from code and conversations.',
-    phase: 'phase-3',
-    status: 'coming-soon'
-  }
-]
-
-const phaseConfig = {
-  'phase-1': {
-    label: 'Phase 1',
-    title: 'Applied AI for Testers',
-    color: 'bg-primary-500',
-    textColor: 'text-primary-600'
-  },
-  'phase-2': {
-    label: 'Phase 2', 
-    title: 'Applied AI in Workflows',
-    color: 'bg-secondary-500',
-    textColor: 'text-secondary-600'
-  },
-  'phase-3': {
-    label: 'Phase 3',
-    title: 'Applied AI Lab', 
-    color: 'bg-accent-500',
-    textColor: 'text-accent-600'
-  }
-}
+import { type Experiment, getExperimentsWithPhaseBadges, phaseConfig } from '@/data/experiments'
 
 interface ExperimentShowcaseProps {
   className?: string
@@ -119,10 +11,11 @@ interface ExperimentShowcaseProps {
 
 export default function ExperimentShowcase({ className = '' }: ExperimentShowcaseProps) {
   const [filter, setFilter] = useState<'all' | 'phase-1' | 'phase-2' | 'phase-3'>('all')
-  const [filteredExperiments, setFilteredExperiments] = useState(experiments)
+  const [filteredExperiments, setFilteredExperiments] = useState<Experiment[]>([])
   const filterOptions = ['all', 'phase-1', 'phase-2', 'phase-3'] as const
 
   useEffect(() => {
+    const experiments = getExperimentsWithPhaseBadges()
     if (filter === 'all') {
       setFilteredExperiments(experiments)
     } else {
@@ -211,14 +104,12 @@ export default function ExperimentShowcase({ className = '' }: ExperimentShowcas
                 description={experiment.description}
                 videoId={experiment.videoId}
                 githubRepo={experiment.githubRepo}
-                badge={{
-                  label: phaseConfig[experiment.phase].label,
-                  color: phaseConfig[experiment.phase].color
-                }}
+                badge={experiment.badge}
                 views={experiment.views}
                 stars={experiment.stars}
                 status={experiment.status}
                 thumbnail={experiment.thumbnail}
+                backgroundImage={experiment.backgroundImage}
                 link={experiment.link}
                 index={index}
               />

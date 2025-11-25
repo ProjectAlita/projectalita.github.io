@@ -1,7 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ArrowDown } from 'lucide-react'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowDown, ChevronDown } from 'lucide-react'
 
 interface Activity {
   text: string
@@ -19,6 +20,7 @@ interface ProcessFlowCardProps {
   activities: Activity[]
   index: number
   isLast?: boolean
+  defaultExpanded?: boolean
 }
 
 export default function ProcessFlowCard({ 
@@ -26,8 +28,13 @@ export default function ProcessFlowCard({
   owner, 
   activities, 
   index, 
-  isLast = false 
+  isLast = false,
+  defaultExpanded 
 }: ProcessFlowCardProps) {
+  // Collapse by default if all activities are out of scope, unless defaultExpanded is specified
+  const allOutOfScope = activities.every(activity => activity.scope === 'out')
+  const initialExpanded = defaultExpanded !== undefined ? defaultExpanded : !allOutOfScope
+  const [isExpanded, setIsExpanded] = useState(initialExpanded)
   
   const getTagStyle = (type: 'personal' | 'in-meeting') => {
     return type === "in-meeting"
@@ -57,21 +64,43 @@ export default function ProcessFlowCard({
           }}
         >
           <div className="p-6 md:p-8">
-            {/* Header */}
-            <div className="mb-6">
-              <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                {title}
-              </h2>
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-500 dark:text-gray-400 italic">Owner:</span>
-                <span className="inline-flex items-center px-3 py-1 bg-primary-100 dark:bg-primary-600/20 text-primary-700 dark:text-blue-300 rounded-full text-sm font-medium border border-primary-200/50 dark:border-primary-500/30">
-                  {owner}
-                </span>
+            {/* Header - Clickable to toggle */}
+            <div 
+              className="mb-6 cursor-pointer select-none"
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    {title}
+                  </h2>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-gray-500 dark:text-gray-400 italic">Owner:</span>
+                    <span className="inline-flex items-center px-3 py-1 bg-primary-100 dark:bg-primary-600/20 text-primary-700 dark:text-blue-300 rounded-full text-sm font-medium border border-primary-200/50 dark:border-primary-500/30">
+                      {owner}
+                    </span>
+                  </div>
+                </div>
+                <motion.div
+                  animate={{ rotate: isExpanded ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-1 flex-shrink-0"
+                >
+                  <ChevronDown className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                </motion.div>
               </div>
             </div>
 
-            {/* Activities */}
-            <ul className="space-y-3 md:space-y-4">
+            {/* Activities - Collapsible */}
+            <AnimatePresence initial={false}>
+              {isExpanded && (
+                <motion.ul
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="space-y-3 md:space-y-4 overflow-hidden"
+                >
               {activities.map((activity, i) => (
                 <motion.li
                   key={i}
@@ -111,7 +140,9 @@ export default function ProcessFlowCard({
                   </div>
                 </motion.li>
               ))}
-            </ul>
+                </motion.ul>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </motion.div>

@@ -16,6 +16,7 @@ interface ExperimentCardProps {
   stars?: string
   status?: 'published' | 'coming-soon'
   thumbnail?: string
+  backgroundImage?: string
   index?: number
   link?: string
   onClick?: () => void
@@ -31,6 +32,7 @@ export default function ExperimentCard({
   stars,
   status = 'coming-soon',
   thumbnail,
+  backgroundImage,
   index = 0,
   link,
   onClick
@@ -98,7 +100,15 @@ export default function ExperimentCard({
       }}
     >
       {/* Video/Thumbnail Section */}
-      <div className="relative aspect-video bg-gradient-to-br from-primary-50/80 to-secondary-50/80 dark:from-primary-800/30 dark:to-secondary-800/30 backdrop-blur-sm overflow-hidden">
+      <div 
+        className="relative aspect-video bg-gradient-to-br from-primary-50/80 to-secondary-50/80 dark:from-primary-800/30 dark:to-secondary-800/30 backdrop-blur-sm overflow-hidden"
+        style={backgroundImage ? {
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        } : {}}
+      >
         {status === 'published' ? (
           <>
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
