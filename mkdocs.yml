@@ -72,6 +72,7 @@ nav:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
           - How to create and use indexes: how-tos/indexing/using-indexes-tab-interface.md
+          - Schedule Indexing: how-tos/indexing/schedule-indexing.md
           - Repository Indexing: how-tos/indexing/index-github-data.md
           - Confluence Indexing: how-tos/indexing/index-confluence-data.md
           - Jira Indexing: how-tos/indexing/index-jira-data.md
