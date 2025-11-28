@@ -5,15 +5,26 @@
 The **Condition Node** has been deprecated and is no longer available for creation in new pipelines. While existing Condition nodes in your pipelines will continue to function, we strongly recommend migrating to **Router** or **Decision** nodes to take advantage of improved functionality and ensure long-term compatibility.
 
 !!! warning "Deprecation Notice"
-    The Condition Node is deprecated and will be removed in a future release. Plan your migration accordingly.
+    The Condition Node is deprecated and will be removed in a future release. Existing Condition nodes in your pipelines will continue to function, but they display a **warning icon** with "Deprecated!" text in the node header and show a tooltip when hovered. Plan your migration accordingly.
 
 **What changed:**
 
-* **Condition Node** is now deprecated and displays a `(deprecated)` label in the UI
+* **Condition Node** is now deprecated and displays a **warning icon** with "Deprecated!" text in the node header
 * Creating new Condition nodes is no longer possible through the Add Node menu
 * Existing Condition nodes continue to function but should be migrated
 * **Router Node** is the primary replacement (recommended for most use cases)
 * **Decision Node** is available for complex, LLM-powered routing scenarios
+* Hovering over the warning icon shows a tooltip with migration guidance
+
+### How to Identify Deprecated Condition Nodes
+
+Deprecated Condition nodes are visually marked in the pipeline editor:
+
+* **Warning Icon**: A yellow/orange warning triangle icon appears in the node header
+* **"Deprecated!" Text**: Text next to the icon clearly indicates the deprecation status
+* **Tooltip**: Hovering over the warning area shows: *"This node is deprecated and will be removed in a future version. View Migration Guide"* with a link to this guide
+
+![Deprecated Condition Node](../../img/migration/v2.0.1/condition-node/deprecated-condition-node.png)
 
 !!! info "No Automatic Migration"
     There is no automatic migration from Condition Nodes to Router or Decision Nodes. You must manually replace Condition Nodes in your existing pipelines following the steps in this guide.
@@ -96,7 +107,7 @@ Follow these steps to migrate a Condition node to a Router node:
 2. Open the pipeline containing the Condition node
 3. Click the **Configuration** tab
 4. Select the **Flow** tab to view the pipeline flow diagram
-5. Locate the **Condition node** - it will display with a `(deprecated)` label in its title
+5. Locate the **Condition node** - it will display with a **warning icon** and "Deprecated!" text in the node header
 6. Click on the Condition node to open its configuration panel
 7. Review its current configuration:
       * **Conditional Input**: Note which state variables are used
@@ -104,7 +115,7 @@ Follow these steps to migrate a Condition node to a Router node:
       * **Conditional Outputs**: Identify the named output paths
       * **Default Output**: Note the fallback route
 `
-![Decision Node](../../img/migration/v2.0.1/condition-node/condition-node.png)
+![Condition Node](../../img/migration/v2.0.1/condition-node/condition-node.png)
 
 
 ### Step 2: Add a Router Node
@@ -187,7 +198,7 @@ Follow these steps to migrate a Condition node to a Decision node:
 1. Navigate to **Pipelines** in the main menu
 2. Open the pipeline containing the Condition node
 3. Click the **Configuration** tab → **Flow** tab
-4. Click on the **Condition node** (marked with `(deprecated)`)
+4. Click on the **Condition node** (marked with a **warning icon** and "Deprecated!" text)
 5. Analyze the conditional logic:
       * What criteria determine the routing?
       * What are the possible output paths?
@@ -353,7 +364,7 @@ Configure the Decision node with natural language instructions:
 
 ## Comparison Table
 
-| Feature | Condition Node (Deprecated) | Router Node (Recommended) | Decision Node |
+| Feature | Condition Node | Router Node (Recommended) | Decision Node |
 |---------|---------------------------|--------------------------|---------------|
 | **Status** | Deprecated (still works) | Active | Active |
 | **Can Create New** | No | Yes | Yes |
