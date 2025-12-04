@@ -11,12 +11,18 @@
   "dependencies": {
     "@next/font": "14.0.3",
     "clsx": "^2.0.0",
+    "cytoscape": "^3.33.1",
+    "cytoscape-cose-bilkent": "^4.1.0",
     "framer-motion": "^10.16.5",
     "lucide-react": "^0.294.0",
     "next": "14.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "reactflow": "^11.11.4"
+    "react-markdown": "^10.1.0",
+    "react-mermaid2": "^0.1.4",
+    "reactflow": "^11.11.4",
+    "rehype-mermaid": "^3.0.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",

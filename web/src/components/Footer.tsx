@@ -9,6 +9,7 @@ export default function Footer() {
     product: [
       { name: 'ELITEA', href: 'https://next.elitea.ai', external: true },
       { name: 'LLM Testing Guide', href: '/articles/llm-testing' },
+      { name: 'AI Experiments', href: '/experiments' },
       { name: 'Documentation', href: '/docs' },
       { name: 'Changelog', href: '/docs/release-notes/rn_current/' },
     ],
