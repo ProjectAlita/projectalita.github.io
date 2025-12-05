@@ -48,6 +48,8 @@ nav:
           - MCPs: menus/mcps.md
           - Collections: menus/collections.md
           - Artifacts: menus/artifacts.md
+          - Agents Studio: menus/agents-studio.md
+
           - Settings:
               - Settings Overview: menus/settings/settings-overview.md
               - AI Configuration: menus/settings/ai-configuration.md
@@ -60,7 +62,7 @@ nav:
       - Chat & Conversations:
           - Chat Usage: how-tos/chat-conversations/how-to-use-chat-functionality.md
           - Canvas in Conversation: how-tos/chat-conversations/how-to-canvas.md
-          - Use Public Agents and Pipelines: how-tos/chat-conversations/use-public-items-from-chat.md
+          - Use Public Agents: how-tos/chat-conversations/use-public-items-from-chat.md
           - Add Teammates to Conversation: how-tos/chat-conversations/add-teammates-to-conversation.md
           - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
           - Internal Tools in Conversation: how-tos/chat-conversations/enable-internal-tools.md
