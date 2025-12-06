@@ -515,9 +515,9 @@ Congratulations! You've completed your ELITEA onboarding journey with **49 build
 
 **Continue Learning:**
 
-* [Quick Start Guide](../getting-started/quick-start.md) for detailed walkthroughs
+* [Quick Start Guide](../getting-started/chat-quick-start.md) for detailed walkthroughs
 * [Chat Documentation](../menus/chat.md) for comprehensive reference
-* [Creating Agents](../getting-started/create-agent.md) for agent best practices
+* [Creating Agents](../how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md) for agent best practices
 * [Pipeline Documentation](../menus/pipelines.md) for advanced workflow patterns
 * [Glossary](../home/glossary.md) for definitions of all ELITEA terms
 

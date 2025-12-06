@@ -43,7 +43,7 @@ Within projects, the following content was included:
 
 1. Create and attach credentials
     * See: [How to create a credential and attach it to the toolkit](#how-to-create-a-credential-and-attach-it-to-the-toolkit)
-	* Guides: [Create a Credential](../../getting-started/create-credential.md) · [Create a Toolkit](../../getting-started/create-toolkit.md) · [Use Credentials](../../how-tos/credentials-toolkits/how-to-use-credentials.md)
+	* Guides: [Create a Credential](../../getting-started/create-credential.md) · [Create a Toolkit](../../how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md) · [Use Credentials](../../how-tos/credentials-toolkits/how-to-use-credentials.md)
 2. Check your Toolkit Configuration
 	* Verify tools enabled (e.g., Index data), correct Credential selected, PgVector and Embedding settings; Save, then test from Tool Testing.
 	* See: [Check your Toolkit Configuration](#check-your-toolkit-configuration)
@@ -52,7 +52,7 @@ Within projects, the following content was included:
 	* See: [Check your agents and pipelines](#check-your-agents-and-pipelines)
 4. Check your conversations
 	* Add your agent/pipeline in Chat and send a simple prompt to validate end-to-end.
-	* See: [Check your conversations](#check-your-conversations) · [Create a conversation](../../getting-started/create-conversation.md)
+	* See: [Check your conversations](#check-your-conversations) · [Create a conversation](../../archive/create-conversation.md)
 5. Index data for a toolkit
 	* Use Tool Testing → Index Data to recreate datasets; parameters vary by toolkit.
 	* See: [Index data for a toolkit](#index-data-for-a-toolkit) · Example: [Index GitHub data](../../how-tos/indexing/index-github-data.md)
@@ -96,7 +96,7 @@ Add your working agents, pipelines, and toolkits to a conversation and test end-
 
 - Open Chat → add/select an Agent or Pipeline as a participant.
 - Send a simple instruction and confirm the response.
-- For details, see: [Creating a Conversation and Adding AI Assistants](../../getting-started/create-conversation.md).
+- For details, see: [Creating a Conversation and Adding AI Assistants](../../archive/create-conversation.md).
 
 ## Index data for a toolkit
 

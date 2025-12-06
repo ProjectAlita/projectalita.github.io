@@ -53,11 +53,11 @@ Take advantage of the new Model Context Protocol support:
 
 **MCP Client (Connect External Tools to Elitea):**
 
-- [Connect External Tools to Elitea with MCP](../../getting-started/create-and-use-client-stdio.md)
+- [Connect External Tools to Elitea with MCP](../../integrations/mcp/create-and-use-client-stdio.md)
 
 **MCP Server (Use Elitea Agents in VS Code):**
 
-- [Setting Up Your First MCP Server](../../getting-started/create-and-use-server-stdio.md)
+- [Setting Up Your First MCP Server](../../integrations/mcp/create-and-use-server-stdio.md)
 
 These quick start guides include:
 
@@ -121,8 +121,8 @@ Extend your agents and pipelines with Model Context Protocol:
 4. Assign MCPs to agents or use in conversations
 
 See: 
-- [MCP Client Guide (External Tools → Elitea)](../../getting-started/create-and-use-client-stdio.md)
-- [MCP Server Guide (Elitea Agents → VS Code)](../../getting-started/create-and-use-server-stdio.md)
+- [MCP Client Guide (External Tools → Elitea)](../../integrations/mcp/create-and-use-client-stdio.md)
+- [MCP Server Guide (Elitea Agents → VS Code)](../../integrations/mcp/create-and-use-server-stdio.md)
 
 #### Review New Features
 
@@ -241,8 +241,8 @@ When contacting support, include:
 
 * [Release Notes - Current](../../release-notes/rn_current.md)
 * [Pipelines Menu Guide](../../menus/pipelines.md)
-* [Connect External Tools to Elitea with MCP (Client)](../../getting-started/create-and-use-client-stdio.md)
-* [Setting Up MCP Server (Use Elitea in VS Code)](../../getting-started/create-and-use-server-stdio.md)
+* [Connect External Tools to Elitea with MCP (Client)](../../integrations/mcp/create-and-use-client-stdio.md)
+* [Setting Up MCP Server (Use Elitea in VS Code)](../../integrations/mcp/create-and-use-server-stdio.md)
 * [MCPs Menu Guide](../../menus/mcps.md)
 * [MCP Client Integration](../../integrations/mcp/mcp-client.md)
 
