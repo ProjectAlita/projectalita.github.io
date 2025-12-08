@@ -12,10 +12,10 @@ jobs:
   set-reporter-bulk:
     runs-on: ubuntu-latest
 
+    # GitHub does not support "projects" permission; use issues/write + contents/read.
     permissions:
       contents: read
-      issues: read
-      projects: write
+      issues: write
 
     env:
       ORG_LOGIN: ProjectAlita
@@ -23,7 +23,7 @@ jobs:
       REPORTER_FIELD_ID: "243696364"
 
     steps:
-      - name: Check out (not strictly necessary but common practice)
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Get list of issues to process
@@ -35,7 +35,6 @@ jobs:
           script: |
             const maxIssues = parseInt(core.getInput('max_issues', { required: true }), 10);
 
-            // Get up to maxIssues open issues from this repo
             const { owner, repo } = context.repo;
             const issues = await github.paginate(
               github.rest.issues.listForRepo,
@@ -48,19 +47,19 @@ jobs:
             );
 
             const limited = issues.slice(0, maxIssues);
-
             core.info(`Found ${limited.length} open issues to process (max ${maxIssues}).`);
 
-            // Return a simple array of issue numbers
             return JSON.stringify(limited.map(i => i.number));
 
       - name: Ensure issues are on project and set Reporter field
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Pass the output from previous step into this script
+          result-encoding: string
           script: |
             const { ORG_LOGIN, PROJECT_NUMBER, REPORTER_FIELD_ID } = process.env;
-            const issueNumbers = JSON.parse(core.getInput('result', { required: true }));
+            const issueNumbers = JSON.parse('${{ steps.list_issues.outputs.result || "[]" }}');
 
             if (issueNumbers.length === 0) {
               core.info("No issues to process.");
@@ -92,7 +91,7 @@ jobs:
             const projectId = project.id;
             core.info(`ProjectV2 ID: ${projectId}`);
 
-            // 2) For each issue, ensure there is a project item and update the Reporter field
+            // GraphQL definitions
             const addItemMutation = `
               mutation($projectId: ID!, $contentId: ID!) {
                 addProjectV2ItemById(input: {
@@ -122,13 +121,14 @@ jobs:
             `;
 
             const listItemsQuery = `
-              query($projectId: ID!, $issueNodeId: ID!, $after: String) {
+              query($projectId: ID!, $after: String) {
                 node(id: $projectId) {
                   ... on ProjectV2 {
                     items(first: 50, after: $after) {
                       nodes {
                         id
                         content {
+                          __typename
                           ... on Issue {
                             id
                             number
@@ -148,16 +148,14 @@ jobs:
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
-            // Helper: make sure issue is in project, return itemId
+            // Helper: find or create item for a given issue node id
             async function ensureItemForIssue(issueNodeId, issueNumber) {
-              // Search for an existing item connected to this issue
               let after = null;
               let existingItemId = null;
 
               while (true) {
                 const res = await github.graphql(listItemsQuery, {
                   projectId,
-                  issueNodeId,
                   after,
                 });
 
@@ -179,7 +177,6 @@ jobs:
                 return existingItemId;
               }
 
-              // Not found, add the issue to the project
               const addResp = await github.graphql(addItemMutation, {
                 projectId,
                 contentId: issueNodeId,
@@ -192,7 +189,6 @@ jobs:
 
             for (const issueNumber of issueNumbers) {
               try {
-                // 2.a) Fetch issue details to get node_id and reporter login
                 const { data: issue } = await github.rest.issues.get({
                   owner,
                   repo,
@@ -204,10 +200,8 @@ jobs:
 
                 core.info(`Processing issue #${issueNumber} (reporter: ${reporterLogin})`);
 
-                // 2.b) Ensure the issue has a project item
                 const itemId = await ensureItemForIssue(issueNodeId, issueNumber);
 
-                // 2.c) Update the Reporter field with the reporter's login
                 await github.graphql(updateFieldMutation, {
                   projectId,
                   itemId,
