@@ -10,7 +10,7 @@ on:
       concurrency_limit:
         description: "Concurrent updates (1-20). Higher = faster, but watch rate limits."
         required: false
-        default: "8"
+        default: "6"
 
 jobs:
   set-reporter-bulk:
@@ -53,16 +53,39 @@ jobs:
             core.info(`Collected ${list.length} open issues (max ${maxIssues}).`);
             return JSON.stringify(list)
 
-      - name: Ensure items in project and set Reporter field (optimized, skip existing)
+      - name: Ensure items in project and set Reporter field (optimized, skip existing + backoff)
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT_TOKEN }}
           script: |
+            const sleep = (ms) => new Promise(res => setTimeout(res, ms));
+
+            // Simple backoff wrapper for graphql
+            async function gqlWithBackoff(fn, args, { retries = 4, baseMs = 750 } = {}) {
+              let attempt = 0;
+              while (true) {
+                try {
+                  return await fn(args);
+                } catch (err) {
+                  const msg = err?.message || String(err);
+                  // Backoff on rate limit or abuse detection
+                  if (attempt < retries && /rate limit|secondary rate|abuse/i.test(msg)) {
+                    const wait = baseMs * Math.pow(2, attempt);
+                    core.info(`Rate-limit/abuse detected. Backing off for ${wait}ms (attempt ${attempt + 1}/${retries})...`);
+                    await sleep(wait);
+                    attempt++;
+                    continue;
+                  }
+                  throw err;
+                }
+              }
+            }
+
             const { ORG_LOGIN, PROJECT_NUMBER, PROJECT_TITLE, REPORTER_FIELD_NAME } = process.env;
 
             const raw = `${{ steps.list_issues.outputs.result }}`;
             const issues = raw ? JSON.parse(raw) : [];
-            const concurrencyLimit = Math.max(1, Math.min(20, parseInt(core.getInput('concurrency_limit') || '8', 10)));
+            const concurrencyLimit = Math.max(1, Math.min(20, parseInt(core.getInput('concurrency_limit') || '6', 10)));
 
             if (!issues.length) {
               core.info('No open issues to process.');
@@ -78,9 +101,9 @@ jobs:
               }
             `;
             const projectsByTitleQuery = `
-              query($org: String!, $query: String!, $first: Int!) {
+              query($org: String!, $search: String!, $first: Int!) {
                 organization(login: $org) {
-                  projectsV2(first: $first, query: $query) {
+                  projectsV2(first: $first, query: $search) {
                     nodes { id title }
                   }
                 }
@@ -89,10 +112,10 @@ jobs:
 
             let projectId = null;
             try {
-              const resp = await github.graphql(projectByNumberQuery, {
-                org: ORG_LOGIN,
-                number: parseInt(PROJECT_NUMBER, 10),
-              });
+              const resp = await gqlWithBackoff(
+                (vars) => github.graphql(projectByNumberQuery, vars),
+                { org: ORG_LOGIN, number: parseInt(PROJECT_NUMBER, 10) }
+              );
               projectId = resp?.organization?.projectV2?.id || null;
               if (projectId) {
                 core.info(`Resolved project by number: ${resp.organization.projectV2.title} (ID: ${projectId})`);
@@ -104,11 +127,10 @@ jobs:
             }
 
             if (!projectId) {
-              const resp2 = await github.graphql(projectsByTitleQuery, {
-                org: ORG_LOGIN,
-                query: PROJECT_TITLE,
-                first: 20,
-              });
+              const resp2 = await gqlWithBackoff(
+                (vars) => github.graphql(projectsByTitleQuery, vars),
+                { org: ORG_LOGIN, search: PROJECT_TITLE, first: 20 }
+              );
               const candidates = resp2?.organization?.projectsV2?.nodes || [];
               const match = candidates.find(p => p.title === PROJECT_TITLE);
               if (!match) {
@@ -119,7 +141,7 @@ jobs:
               core.info(`Resolved project by title: ${PROJECT_TITLE} (ID: ${projectId})`);
             }
 
-            // Fetch fields to find "Reporter" node id
+            // Fetch fields → find Reporter field id
             const fieldsQuery = `
               query($projectId: ID!, $first: Int!, $after: String) {
                 node(id: $projectId) {
@@ -140,7 +162,10 @@ jobs:
             let reporterFieldId = null;
             let fAfter = null;
             while (true) {
-              const res = await github.graphql(fieldsQuery, { projectId, first: 50, after: fAfter });
+              const res = await gqlWithBackoff(
+                (vars) => github.graphql(fieldsQuery, vars),
+                { projectId, first: 50, after: fAfter }
+              );
               const fields = res?.node?.fields?.nodes || [];
               for (const f of fields) {
                 if (f?.name === REPORTER_FIELD_NAME) {
@@ -157,7 +182,7 @@ jobs:
             }
             core.info(`Reporter field ID: ${reporterFieldId}`);
 
-            // Fetch all project items once and map Issue node_id → { itemId, reporterValue }
+            // Fetch all items once and map Issue node_id → { itemId, reporterValue }
             const listAllItemsQuery = `
               query($projectId: ID!, $first: Int!, $after: String) {
                 node(id: $projectId) {
@@ -189,7 +214,10 @@ jobs:
             let iAfter = null;
             let totalItems = 0;
             while (true) {
-              const res = await github.graphql(listAllItemsQuery, { projectId, first: 100, after: iAfter });
+              const res = await gqlWithBackoff(
+                (vars) => github.graphql(listAllItemsQuery, vars),
+                { projectId, first: 100, after: iAfter }
+              );
               const items = res?.node?.items?.nodes || [];
               totalItems += items.length;
               for (const node of items) {
@@ -232,7 +260,7 @@ jobs:
               }
             `;
 
-            // Concurrency control
+            // Concurrency limit helper
             async function pLimit(limit, tasks) {
               const results = [];
               const executing = new Set();
@@ -257,7 +285,10 @@ jobs:
 
                 if (!itemId) {
                   // Add missing issue to project
-                  const addResp = await github.graphql(addItemMutation, { projectId, contentId: node_id });
+                  const addResp = await gqlWithBackoff(
+                    (vars) => github.graphql(addItemMutation, vars),
+                    { projectId, contentId: node_id }
+                  );
                   itemId = addResp.addProjectV2ItemById.item.id;
                   issueItemMap.set(node_id, { itemId, reporterValue: null });
                   core.info(`Issue #${number}: added to project as item ${itemId}`);
@@ -265,19 +296,17 @@ jobs:
                   core.info(`Issue #${number}: item exists ${itemId}`);
                 }
 
-                // Skip if Reporter already equals the issue author login
+                // Skip if Reporter already equals author login
                 if (currentReporter && currentReporter === reporter) {
                   core.info(`Issue #${number}: Reporter already "${reporter}", skipping.`);
                   return;
                 }
 
                 // Update Reporter field
-                await github.graphql(updateFieldMutationText, {
-                  projectId,
-                  itemId,
-                  fieldId: reporterFieldId,
-                  value: reporter,
-                });
+                await gqlWithBackoff(
+                  (vars) => github.graphql(updateFieldMutationText, vars),
+                  { projectId, itemId, fieldId: reporterFieldId, value: reporter }
+                );
 
                 core.info(`Issue #${number}: Reporter="${reporter}" set on item ${itemId}`);
               } catch (err) {
