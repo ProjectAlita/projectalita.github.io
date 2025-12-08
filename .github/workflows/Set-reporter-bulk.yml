@@ -4,9 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       max_issues:
-        description: "Maximum number of issues to process (1-100)"
+        description: "Maximum number of open issues to process (1-100)"
         required: false
         default: "100"
+      concurrency_limit:
+        description: "Concurrent updates (1-20). Higher = faster, but watch rate limits."
+        required: false
+        default: "8"
 
 jobs:
   set-reporter-bulk:
@@ -36,6 +40,7 @@ jobs:
             const maxIssues = Math.max(1, Math.min(100, parseInt(core.getInput('max_issues') || '100', 10)));
             const { owner, repo } = context.repo;
 
+            // Only open issues
             const issues = await github.paginate(
               github.rest.issues.listForRepo,
               { owner, repo, state: 'open', per_page: Math.min(maxIssues, 100) }
@@ -49,22 +54,24 @@ jobs:
             core.info(`Collected ${list.length} open issues (max ${maxIssues}).`);
             return JSON.stringify(list)
 
-      - name: Ensure items in project and set Reporter field
+      - name: Ensure items in project and set Reporter field (optimized batching)
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT_TOKEN }}
           script: |
             const { ORG_LOGIN, PROJECT_NUMBER, PROJECT_TITLE, REPORTER_FIELD_NAME } = process.env;
 
-            // Parse previous step output safely
+            // Inputs
             const raw = `${{ steps.list_issues.outputs.result }}`;
             const issues = raw ? JSON.parse(raw) : [];
+            const concurrencyLimit = Math.max(1, Math.min(20, parseInt(core.getInput('concurrency_limit') || '8', 10)));
+
             if (!issues.length) {
-              core.info('No issues to process.');
+              core.info('No open issues to process.');
               return;
             }
 
-            // Resolve the ProjectV2: try by number, then by exact title
+            // Resolve ProjectV2 (number → title fallback)
             const projectByNumberQuery = `
               query($org: String!, $number: Int!) {
                 organization(login: $org) {
@@ -114,7 +121,7 @@ jobs:
               core.info(`Resolved project by title: ${PROJECT_TITLE} (ID: ${projectId})`);
             }
 
-            // Fetch fields to find the "Reporter" field and get its node ID
+            // Fetch all fields to find "Reporter" node id
             const fieldsQuery = `
               query($projectId: ID!, $first: Int!, $after: String) {
                 node(id: $projectId) {
@@ -122,33 +129,20 @@ jobs:
                     fields(first: $first, after: $after) {
                       nodes {
                         __typename
-                        ... on ProjectV2Field {
-                          id
-                          name
-                        }
-                        ... on ProjectV2IterationField {
-                          id
-                          name
-                        }
-                        ... on ProjectV2SingleSelectField {
-                          id
-                          name
-                        }
+                        ... on ProjectV2Field { id name }
+                        ... on ProjectV2IterationField { id name }
+                        ... on ProjectV2SingleSelectField { id name }
                       }
-                      pageInfo {
-                        endCursor
-                        hasNextPage
-                      }
+                      pageInfo { endCursor hasNextPage }
                     }
                   }
                 }
               }
             `;
-
             let reporterFieldId = null;
-            let after = null;
+            let fAfter = null;
             while (true) {
-              const res = await github.graphql(fieldsQuery, { projectId, first: 50, after });
+              const res = await github.graphql(fieldsQuery, { projectId, first: 50, after: fAfter });
               const fields = res?.node?.fields?.nodes || [];
               for (const f of fields) {
                 if (f?.name === REPORTER_FIELD_NAME) {
@@ -157,7 +151,7 @@ jobs:
                 }
               }
               if (reporterFieldId || !res.node.fields.pageInfo.hasNextPage) break;
-              after = res.node.fields.pageInfo.endCursor;
+              fAfter = res.node.fields.pageInfo.endCursor;
             }
             if (!reporterFieldId) {
               core.setFailed(`Field "${REPORTER_FIELD_NAME}" not found on project.`);
@@ -165,7 +159,43 @@ jobs:
             }
             core.info(`Reporter field ID: ${reporterFieldId}`);
 
-            // GraphQL defs
+            // Fetch all project items once and map Issue node_id → itemId
+            const listAllItemsQuery = `
+              query($projectId: ID!, $first: Int!, $after: String) {
+                node(id: $projectId) {
+                  ... on ProjectV2 {
+                    items(first: $first, after: $after) {
+                      nodes {
+                        id
+                        content {
+                          __typename
+                          ... on Issue { id number }
+                        }
+                      }
+                      pageInfo { endCursor hasNextPage }
+                    }
+                  }
+                }
+              }
+            `;
+            const issueToItem = new Map(); // issueNodeId -> itemId
+            let iAfter = null;
+            let totalItems = 0;
+            while (true) {
+              const res = await github.graphql(listAllItemsQuery, { projectId, first: 100, after: iAfter });
+              const items = res?.node?.items?.nodes || [];
+              totalItems += items.length;
+              for (const node of items) {
+                if (node.content?.__typename === 'Issue') {
+                  issueToItem.set(node.content.id, node.id);
+                }
+              }
+              if (!res.node.items.pageInfo.hasNextPage) break;
+              iAfter = res.node.items.pageInfo.endCursor;
+            }
+            core.info(`Indexed ${totalItems} project items; mapped ${issueToItem.size} issues to items.`);
+
+            // Mutations
             const addItemMutation = `
               mutation($projectId: ID!, $contentId: ID!) {
                 addProjectV2ItemById(input: { projectId: $projectId, contentId: $contentId }) {
@@ -185,61 +215,51 @@ jobs:
                 }
               }
             `;
-            const listItemsQuery = `
-              query($projectId: ID!, $after: String) {
-                node(id: $projectId) {
-                  ... on ProjectV2 {
-                    items(first: 50, after: $after) {
-                      nodes {
-                        id
-                        content {
-                          __typename
-                          ... on Issue { id number }
-                        }
-                      }
-                      pageInfo { endCursor hasNextPage }
-                    }
-                  }
+
+            // Concurrency control
+            async function pLimit(limit, tasks) {
+              const results = [];
+              const executing = new Set();
+              for (const task of tasks) {
+                const p = Promise.resolve().then(task);
+                results.push(p);
+                executing.add(p);
+                p.finally(() => executing.delete(p));
+                if (executing.size >= limit) {
+                  await Promise.race(executing);
                 }
               }
-            `;
-
-            // Helper: find or create project item for issue node
-            async function ensureItemForIssue(issueNodeId, issueNumber) {
-              let after = null;
-              while (true) {
-                const res = await github.graphql(listItemsQuery, { projectId, after });
-                const items = res.node.items;
-
-                const found = items.nodes.find(n => n.content?.__typename === 'Issue' && n.content?.id === issueNodeId);
-                if (found) {
-                  core.info(`Issue #${issueNumber}: existing item ${found.id}`);
-                  return found.id;
-                }
-
-                if (!items.pageInfo.hasNextPage) break;
-                after = items.pageInfo.endCursor;
-              }
-
-              // Not found, add it
-              const addResp = await github.graphql(addItemMutation, { projectId, contentId: issueNodeId });
-              const itemId = addResp.addProjectV2ItemById.item.id;
-              core.info(`Issue #${issueNumber}: added item ${itemId}`);
-              return itemId;
+              return Promise.all(results);
             }
 
-            // Process each issue
-            for (const { number, node_id, reporter } of issues) {
+            // Prepare tasks only for open issues
+            const tasks = issues.map(({ number, node_id, reporter }) => async () => {
               try {
-                const itemId = await ensureItemForIssue(node_id, number);
+                let itemId = issueToItem.get(node_id);
+                if (!itemId) {
+                  // Add missing issue to project
+                  const addResp = await github.graphql(addItemMutation, { projectId, contentId: node_id });
+                  itemId = addResp.addProjectV2ItemById.item.id;
+                  issueToItem.set(node_id, itemId);
+                  core.info(`Issue #${number}: added to project as item ${itemId}`);
+                } else {
+                  core.info(`Issue #${number}: item exists ${itemId}`);
+                }
+
+                // Update Reporter field
                 await github.graphql(updateFieldMutationText, {
                   projectId,
                   itemId,
                   fieldId: reporterFieldId,
                   value: reporter,
                 });
+
                 core.info(`Issue #${number}: Reporter="${reporter}" set on item ${itemId}`);
               } catch (err) {
                 core.warning(`Issue #${number}: ${err.message}`);
               }
-            }
+            });
+
+            core.info(`Processing ${tasks.length} open issues with concurrency=${concurrencyLimit}...`);
+            await pLimit(concurrencyLimit, tasks);
+            core.info('Done.')
