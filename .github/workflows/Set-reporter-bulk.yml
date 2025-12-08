@@ -1,0 +1,222 @@
+name: Set Reporter field for issues in Project v2
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_issues:
+        description: "Maximum number of issues to process (1-100)"
+        required: false
+        default: "100"
+
+jobs:
+  set-reporter-bulk:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      issues: read
+      projects: write
+
+    env:
+      ORG_LOGIN: ProjectAlita
+      PROJECT_NUMBER: "3"
+      REPORTER_FIELD_ID: "243696364"
+
+    steps:
+      - name: Check out (not strictly necessary but common practice)
+        uses: actions/checkout@v4
+
+      - name: Get list of issues to process
+        id: list_issues
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            const maxIssues = parseInt(core.getInput('max_issues', { required: true }), 10);
+
+            // Get up to maxIssues open issues from this repo
+            const { owner, repo } = context.repo;
+            const issues = await github.paginate(
+              github.rest.issues.listForRepo,
+              {
+                owner,
+                repo,
+                state: 'open',
+                per_page: Math.min(maxIssues, 100)
+              }
+            );
+
+            const limited = issues.slice(0, maxIssues);
+
+            core.info(`Found ${limited.length} open issues to process (max ${maxIssues}).`);
+
+            // Return a simple array of issue numbers
+            return JSON.stringify(limited.map(i => i.number));
+
+      - name: Ensure issues are on project and set Reporter field
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { ORG_LOGIN, PROJECT_NUMBER, REPORTER_FIELD_ID } = process.env;
+            const issueNumbers = JSON.parse(core.getInput('result', { required: true }));
+
+            if (issueNumbers.length === 0) {
+              core.info("No issues to process.");
+              return;
+            }
+
+            // 1) Fetch the Projects v2 project id
+            const projectQuery = `
+              query($org: String!, $number: Int!) {
+                organization(login: $org) {
+                  projectV2(number: $number) {
+                    id
+                  }
+                }
+              }
+            `;
+
+            const projectResp = await github.graphql(projectQuery, {
+              org: ORG_LOGIN,
+              number: parseInt(PROJECT_NUMBER, 10),
+            });
+
+            const project = projectResp.organization?.projectV2;
+            if (!project) {
+              core.setFailed(\`ProjectV2 #\${PROJECT_NUMBER} not found in org \${ORG_LOGIN}.\`);
+              return;
+            }
+
+            const projectId = project.id;
+            core.info(`ProjectV2 ID: ${projectId}`);
+
+            // 2) For each issue, ensure there is a project item and update the Reporter field
+            const addItemMutation = `
+              mutation($projectId: ID!, $contentId: ID!) {
+                addProjectV2ItemById(input: {
+                  projectId: $projectId,
+                  contentId: $contentId
+                }) {
+                  item {
+                    id
+                  }
+                }
+              }
+            `;
+
+            const updateFieldMutation = `
+              mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $value: String!) {
+                updateProjectV2ItemFieldValue(input: {
+                  projectId: $projectId,
+                  itemId: $itemId,
+                  fieldId: $fieldId,
+                  value: { text: $value }
+                }) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }
+            `;
+
+            const listItemsQuery = `
+              query($projectId: ID!, $issueNodeId: ID!, $after: String) {
+                node(id: $projectId) {
+                  ... on ProjectV2 {
+                    items(first: 50, after: $after) {
+                      nodes {
+                        id
+                        content {
+                          ... on Issue {
+                            id
+                            number
+                          }
+                        }
+                      }
+                      pageInfo {
+                        endCursor
+                        hasNextPage
+                      }
+                    }
+                  }
+                }
+              }
+            `;
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Helper: make sure issue is in project, return itemId
+            async function ensureItemForIssue(issueNodeId, issueNumber) {
+              // Search for an existing item connected to this issue
+              let after = null;
+              let existingItemId = null;
+
+              while (true) {
+                const res = await github.graphql(listItemsQuery, {
+                  projectId,
+                  issueNodeId,
+                  after,
+                });
+
+                const items = res.node.items;
+                for (const node of items.nodes) {
+                  const content = node.content;
+                  if (content && content.__typename === 'Issue' && content.id === issueNodeId) {
+                    existingItemId = node.id;
+                    break;
+                  }
+                }
+
+                if (existingItemId || !items.pageInfo.hasNextPage) break;
+                after = items.pageInfo.endCursor;
+              }
+
+              if (existingItemId) {
+                core.info(`Issue #${issueNumber}: already has project item ${existingItemId}.`);
+                return existingItemId;
+              }
+
+              // Not found, add the issue to the project
+              const addResp = await github.graphql(addItemMutation, {
+                projectId,
+                contentId: issueNodeId,
+              });
+
+              const itemId = addResp.addProjectV2ItemById.item.id;
+              core.info(`Issue #${issueNumber}: added to project with item id ${itemId}.`);
+              return itemId;
+            }
+
+            for (const issueNumber of issueNumbers) {
+              try {
+                // 2.a) Fetch issue details to get node_id and reporter login
+                const { data: issue } = await github.rest.issues.get({
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                });
+
+                const issueNodeId = issue.node_id;
+                const reporterLogin = issue.user.login;
+
+                core.info(`Processing issue #${issueNumber} (reporter: ${reporterLogin})`);
+
+                // 2.b) Ensure the issue has a project item
+                const itemId = await ensureItemForIssue(issueNodeId, issueNumber);
+
+                // 2.c) Update the Reporter field with the reporter's login
+                await github.graphql(updateFieldMutation, {
+                  projectId,
+                  itemId,
+                  fieldId: REPORTER_FIELD_ID,
+                  value: reporterLogin,
+                });
+
+                core.info(`Issue #${issueNumber}: Reporter field set to "${reporterLogin}".`);
+              } catch (error) {
+                core.warning(`Failed to process issue #${issueNumber}: ${error.message}`);
+              }
+            }
