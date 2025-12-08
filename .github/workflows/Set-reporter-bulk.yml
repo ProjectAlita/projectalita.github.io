@@ -40,7 +40,6 @@ jobs:
             const maxIssues = Math.max(1, Math.min(100, parseInt(core.getInput('max_issues') || '100', 10)));
             const { owner, repo } = context.repo;
 
-            // Only open issues
             const issues = await github.paginate(
               github.rest.issues.listForRepo,
               { owner, repo, state: 'open', per_page: Math.min(maxIssues, 100) }
@@ -54,14 +53,13 @@ jobs:
             core.info(`Collected ${list.length} open issues (max ${maxIssues}).`);
             return JSON.stringify(list)
 
-      - name: Ensure items in project and set Reporter field (optimized batching)
+      - name: Ensure items in project and set Reporter field (optimized, skip existing)
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT_TOKEN }}
           script: |
             const { ORG_LOGIN, PROJECT_NUMBER, PROJECT_TITLE, REPORTER_FIELD_NAME } = process.env;
 
-            // Inputs
             const raw = `${{ steps.list_issues.outputs.result }}`;
             const issues = raw ? JSON.parse(raw) : [];
             const concurrencyLimit = Math.max(1, Math.min(20, parseInt(core.getInput('concurrency_limit') || '8', 10)));
@@ -121,7 +119,7 @@ jobs:
               core.info(`Resolved project by title: ${PROJECT_TITLE} (ID: ${projectId})`);
             }
 
-            // Fetch all fields to find "Reporter" node id
+            // Fetch fields to find "Reporter" node id
             const fieldsQuery = `
               query($projectId: ID!, $first: Int!, $after: String) {
                 node(id: $projectId) {
@@ -159,7 +157,7 @@ jobs:
             }
             core.info(`Reporter field ID: ${reporterFieldId}`);
 
-            // Fetch all project items once and map Issue node_id → itemId
+            // Fetch all project items once and map Issue node_id → { itemId, reporterValue }
             const listAllItemsQuery = `
               query($projectId: ID!, $first: Int!, $after: String) {
                 node(id: $projectId) {
@@ -167,6 +165,15 @@ jobs:
                     items(first: $first, after: $after) {
                       nodes {
                         id
+                        fieldValues(first: 50) {
+                          nodes {
+                            ... on ProjectV2ItemFieldTextValue {
+                              id
+                              field { ... on ProjectV2Field { id name } }
+                              text
+                            }
+                          }
+                        }
                         content {
                           __typename
                           ... on Issue { id number }
@@ -178,7 +185,7 @@ jobs:
                 }
               }
             `;
-            const issueToItem = new Map(); // issueNodeId -> itemId
+            const issueItemMap = new Map(); // issueNodeId -> { itemId, reporterValue }
             let iAfter = null;
             let totalItems = 0;
             while (true) {
@@ -187,13 +194,22 @@ jobs:
               totalItems += items.length;
               for (const node of items) {
                 if (node.content?.__typename === 'Issue') {
-                  issueToItem.set(node.content.id, node.id);
+                  let existingReporter = null;
+                  const fvNodes = node.fieldValues?.nodes || [];
+                  for (const fv of fvNodes) {
+                    const fieldName = fv?.field?.name;
+                    if (fieldName === REPORTER_FIELD_NAME) {
+                      existingReporter = fv?.text || null;
+                      break;
+                    }
+                  }
+                  issueItemMap.set(node.content.id, { itemId: node.id, reporterValue: existingReporter });
                 }
               }
               if (!res.node.items.pageInfo.hasNextPage) break;
               iAfter = res.node.items.pageInfo.endCursor;
             }
-            core.info(`Indexed ${totalItems} project items; mapped ${issueToItem.size} issues to items.`);
+            core.info(`Indexed ${totalItems} project items; mapped ${issueItemMap.size} issues to items with Reporter values.`);
 
             // Mutations
             const addItemMutation = `
@@ -235,15 +251,24 @@ jobs:
             // Prepare tasks only for open issues
             const tasks = issues.map(({ number, node_id, reporter }) => async () => {
               try {
-                let itemId = issueToItem.get(node_id);
+                const existing = issueItemMap.get(node_id);
+                let itemId = existing?.itemId || null;
+                let currentReporter = existing?.reporterValue || null;
+
                 if (!itemId) {
                   // Add missing issue to project
                   const addResp = await github.graphql(addItemMutation, { projectId, contentId: node_id });
                   itemId = addResp.addProjectV2ItemById.item.id;
-                  issueToItem.set(node_id, itemId);
+                  issueItemMap.set(node_id, { itemId, reporterValue: null });
                   core.info(`Issue #${number}: added to project as item ${itemId}`);
                 } else {
                   core.info(`Issue #${number}: item exists ${itemId}`);
+                }
+
+                // Skip if Reporter already equals the issue author login
+                if (currentReporter && currentReporter === reporter) {
+                  core.info(`Issue #${number}: Reporter already "${reporter}", skipping.`);
+                  return;
                 }
 
                 // Update Reporter field
