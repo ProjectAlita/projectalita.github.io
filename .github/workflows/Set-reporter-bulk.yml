@@ -1,4 +1,4 @@
-name: Set Reporter field for issues in Project v2
+name: Set Reporter field for issues
 
 on:
   workflow_dispatch:
@@ -19,6 +19,7 @@ jobs:
     env:
       ORG_LOGIN: ProjectAlita
       PROJECT_NUMBER: "3"
+      PROJECT_TITLE: "ELITEA Board"
       REPORTER_FIELD_ID: "243696364"
 
     steps:
@@ -35,22 +36,26 @@ jobs:
             const maxIssues = Math.max(1, Math.min(100, parseInt(core.getInput('max_issues') || '100', 10)));
             const { owner, repo } = context.repo;
 
-            // Get open issues
             const issues = await github.paginate(
               github.rest.issues.listForRepo,
               { owner, repo, state: 'open', per_page: Math.min(maxIssues, 100) }
             );
 
-            const list = issues.slice(0, maxIssues).map(i => ({ number: i.number, node_id: i.node_id, reporter: i.user.login }));
+            const list = issues.slice(0, maxIssues).map(i => ({
+              number: i.number,
+              node_id: i.node_id,
+              reporter: i.user.login
+            }));
             core.info(`Collected ${list.length} open issues (max ${maxIssues}).`);
             return JSON.stringify(list)
 
       - name: Ensure items in project and set Reporter field
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Use your PAT for org Projects v2 access
+          github-token: ${{ secrets.PAT_TOKEN }}
           script: |
-            const { ORG_LOGIN, PROJECT_NUMBER, REPORTER_FIELD_ID } = process.env;
+            const { ORG_LOGIN, PROJECT_NUMBER, PROJECT_TITLE, REPORTER_FIELD_ID } = process.env;
 
             // Parse previous step output safely
             const raw = `${{ steps.list_issues.outputs.result }}`;
@@ -60,24 +65,55 @@ jobs:
               return;
             }
 
-            // Resolve ProjectV2 ID
-            const projectQuery = `
+            // Resolve the ProjectV2: try by number, then by exact title
+            const projectByNumberQuery = `
               query($org: String!, $number: Int!) {
                 organization(login: $org) {
-                  projectV2(number: $number) { id }
+                  projectV2(number: $number) { id title }
                 }
               }
             `;
-            const projectResp = await github.graphql(projectQuery, {
-              org: ORG_LOGIN,
-              number: parseInt(PROJECT_NUMBER, 10),
-            });
-            const projectId = projectResp?.organization?.projectV2?.id;
-            if (!projectId) {
-              core.setFailed(`ProjectV2 #${PROJECT_NUMBER} not found in org ${ORG_LOGIN}`);
-              return;
+            const projectsByTitleQuery = `
+              query($org: String!, $query: String!, $first: Int!) {
+                organization(login: $org) {
+                  projectsV2(first: $first, query: $query) {
+                    nodes { id title }
+                  }
+                }
+              }
+            `;
+
+            let projectId = null;
+            try {
+              const resp = await github.graphql(projectByNumberQuery, {
+                org: ORG_LOGIN,
+                number: parseInt(PROJECT_NUMBER, 10),
+              });
+              projectId = resp?.organization?.projectV2?.id || null;
+              if (projectId) {
+                core.info(`Resolved project by number: ${resp.organization.projectV2.title} (ID: ${projectId})`);
+              } else {
+                core.info(`ProjectV2 #${PROJECT_NUMBER} not found by number; trying title lookup...`);
+              }
+            } catch (e) {
+              core.info(`Lookup by number failed: ${e.message}. Trying title lookup...`);
             }
-            core.info(`ProjectV2 ID: ${projectId}`);
+
+            if (!projectId) {
+              const resp2 = await github.graphql(projectsByTitleQuery, {
+                org: ORG_LOGIN,
+                query: PROJECT_TITLE,
+                first: 20,
+              });
+              const candidates = resp2?.organization?.projectsV2?.nodes || [];
+              const match = candidates.find(p => p.title === PROJECT_TITLE);
+              if (!match) {
+                core.setFailed(`Could not resolve Projects v2 titled "${PROJECT_TITLE}" in org ${ORG_LOGIN}.`);
+                return;
+              }
+              projectId = match.id;
+              core.info(`Resolved project by title: ${PROJECT_TITLE} (ID: ${projectId})`);
+            }
 
             // GraphQL defs
             const addItemMutation = `
