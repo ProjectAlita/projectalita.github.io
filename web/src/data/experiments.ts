@@ -54,6 +54,7 @@ export const experiments: Experiment[] = [
     description: 'Build unified knowledge from multi-source contexts for AI-powered code intelligence and agent reasoning',
     phase: 'phase-3',
     status: 'coming-soon',
+    videoId: 'O3FIvEjbpGQ',
     backgroundImage: '/assets/covers/product-inventory.png',
     link: '/experiments/inventory-graph'
   },

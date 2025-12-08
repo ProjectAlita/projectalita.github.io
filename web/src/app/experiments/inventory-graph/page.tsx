@@ -143,7 +143,7 @@ export default function InventoryGraphPage() {
                 </motion.p>
               </div>
 
-              {/* Right - Video Placeholder */}
+              {/* Right - Video Embed */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -155,15 +155,26 @@ export default function InventoryGraphPage() {
                     WebkitBackdropFilter: 'blur(20px) saturate(180%)',
                   }}
                 >
-                  <div className="aspect-video bg-gradient-to-br from-emerald-100 to-teal-200 dark:from-emerald-900/30 dark:to-teal-800/30 rounded-xl flex items-center justify-center border border-emerald-200/50 dark:border-emerald-700/50">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-emerald-500 dark:bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
-                      </div>
-                      <p className="text-emerald-700 dark:text-emerald-300 font-medium">Demo Video Coming Soon</p>
-                    </div>
+                  <div className="aspect-video rounded-xl overflow-hidden border border-emerald-200/50 dark:border-emerald-700/50 relative group">
+                    <iframe
+                      src="https://www.youtube.com/embed/O3FIvEjbpGQ?rel=0"
+                      title="Inventory Knowledge Graph Demo"
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                    {/* YouTube link overlay */}
+                    <a
+                      href="https://youtu.be/O3FIvEjbpGQ"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-3 right-3 flex items-center gap-2 px-3 py-1.5 bg-black/70 hover:bg-red-600 text-white text-xs font-medium rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
+                      Watch on YouTube
+                    </a>
                   </div>
                 </div>
               </motion.div>
