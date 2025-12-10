@@ -93,7 +93,6 @@ nav:
                   - Interaction Nodes: how-tos/pipelines/nodes/interaction-nodes.md
                   - Execution Nodes: how-tos/pipelines/nodes/execution-nodes.md
                   - Control Flow Nodes: how-tos/pipelines/nodes/control-flow-nodes.md
-                  - Iteration Nodes: how-tos/pipelines/nodes/iteration-nodes.md
                   - Utility Nodes: how-tos/pipelines/nodes/utility-nodes.md
               - Nodes Connectors: how-tos/pipelines/nodes-connectors.md
               - Entry Point: how-tos/pipelines/entry-point.md
@@ -200,6 +199,8 @@ nav:
       - Monitoring: features/monitoring.md
       - Pipelines:
           - Pipelines Architecture: features/pipelines/pipeline-agent-framework.md
+          - Iteration Nodes: how-tos/pipelines/nodes/iteration-nodes.md
+
 
 theme:
   name: material
