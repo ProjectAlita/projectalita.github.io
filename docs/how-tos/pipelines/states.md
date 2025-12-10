@@ -50,7 +50,7 @@ Starting with ELITEA 2.0.0 Beta, pipeline states are managed through an intuitiv
 2. **Click States Button**: Located under the **+** button for adding nodes
 3. **States Sidebar Opens**: A resizable panel appears on the right side
 
-![Opening States Sidebar](../../img/how-tos/agents-pipelines/pipeline-building-blocks/open-states-sidebar.png)
+![Opening States Sidebar](../../img/how-tos/agents-pipelines/pipeline-building-blocks/open-states-sidebar.png){loading=lazy}
 
 !!! note "Flow Mode Only"
     The States button is only visible in Flow mode. In YAML mode, states are defined directly in the YAML configuration.
@@ -62,7 +62,7 @@ When you open the States sidebar, you'll see the two default states:
 * **input** - Toggle to activate/deactivate
 * **messages** - Toggle to activate/deactivate
 
-![Default States](../../img/how-tos/agents-pipelines/pipeline-building-blocks/default-states-toggles.png)
+![Default States](../../img/how-tos/agents-pipelines/pipeline-building-blocks/default-states-toggles.png){loading=lazy}
 
 !!! warning "New Pipeline Behavior"
     When creating a new pipeline, `input` and `messages` states are **automatically added but disabled**. You must explicitly enable them if your pipeline needs to access user input or conversation history.
@@ -92,35 +92,35 @@ Custom states allow you to store pipeline-specific data beyond the default `inpu
       * **Default Value** (optional): Enter initial value in 5-row text area
 3. **Auto-Save**: Changes are automatically saved
 
-![Adding Custom State]![alt text](../../img/how-tos/agents-pipelines/pipeline-building-blocks/add-custom-state.png)
+![Adding Custom State](../../img/how-tos/agents-pipelines/pipeline-building-blocks/add-custom-state.png){loading=lazy}
 
 ### State Name Validation
 
 State names must follow these rules:
 
-✅ **Allowed**:
+✔️ **Allowed**:
 * Letters (a-z, A-Z)
 * Numbers (0-9)
 * Underscores (_)
 
-✅ **Must start with a letter**
+✔️ **Must start with a letter**
 
-❌ **Not allowed**:
+✘ **Not allowed**:
 * Special characters (!, @, #, $, %, etc.)
 * Spaces
 * Hyphens or dashes
 
 !!! example "Valid State Names"
-    * `user_story_title` ✅
-    * `jiraProjectId` ✅
-    * `epic_id_123` ✅
-    * `description` ✅
+    * `user_story_title` ✔️	
+    * `jiraProjectId` ✔️	
+    * `epic_id_123` ✔️	
+    * `description` ✔️	
 
 !!! failure "Invalid State Names"
-    * `user-story-title` ❌ (contains hyphens)
-    * `jira project id` ❌ (contains spaces)
-    * `123_epic_id` ❌ (starts with number)
-    * `epic@id` ❌ (contains special character)
+    * `user-story-title` ✘ (contains hyphens)
+    * `jira project id` ✘ (contains spaces)
+    * `123_epic_id` ✘ (starts with number)
+    * `epic@id` ✘ (contains special character)
 
 Real-time validation provides immediate feedback as you type.
 
@@ -204,7 +204,7 @@ state:
 * Structured metadata
 * Complex data structures
 
-![State types](../../img/how-tos/agents-pipelines/pipeline-building-blocks/state-types.png)
+![State types](../../img/how-tos/agents-pipelines/pipeline-building-blocks/state-types.png){loading=lazy}
 
 ## State Initialization
 
@@ -218,7 +218,7 @@ When adding a custom state, you can optionally provide a default value. This val
 * Expands when sidebar is resized
 * Supports multi-line input for complex values
 
-![Default Value Input](../../img/how-tos/agents-pipelines/pipeline-building-blocks/default-value-input.png)
+![Default Value Input](../../img/how-tos/agents-pipelines/pipeline-building-blocks/default-value-input.png){loading=lazy}
 
 **Examples:**
 
@@ -291,20 +291,36 @@ Code nodes can update state by returning structured dictionaries:
   structured_output: true
 ```
 
-### 4. Function/Tool Node Results
+### 4. Toolkit and MCP Node Results
 
-Function and Tool nodes automatically store results in output variables:
+Toolkit and MCP nodes automatically store results in output variables:
 
+**Toolkit Node Example:**
 ```yaml
 - id: "search_confluence"
-  type: "function"
-  function: "confluence_toolkit||search_by_title"
+  type: "toolkit"
+  toolkit_name: "confluence_toolkit"
+  tool: "search_by_title"
   input: ["search_query"]
   output: ["search_results"]
   input_mapping:
     query:
       type: "variable"
       value: "search_query"
+```
+
+**MCP Node Example:**
+```yaml
+- id: "get_file_content"
+  type: "mcp"
+  mcp_name: "filesystem_mcp"
+  tool: "read_file"
+  input: ["file_path"]
+  output: ["file_content"]
+  input_mapping:
+    path:
+      type: "variable"
+      value: "file_path"
 ```
 
 ## Practical Examples
@@ -357,9 +373,11 @@ state:
 
 nodes:
   - id: "Load Data"
-    type: "function"
-    function: "data_toolkit||fetch_records"
+    type: "toolkit"
+    toolkit_name: "data_toolkit"
+    tool: "fetch_records"
     output: ["raw_data"]
+    input_mapping: {}
     
   - id: "Process Data"
     type: "code"
@@ -415,7 +433,7 @@ nodes:
 
 ### 1. Use Descriptive State Names
 
-✅ **Good:**
+✔️ **Good:**
 ```yaml
 state:
   jira_project_id: str
@@ -423,7 +441,7 @@ state:
   extracted_requirements: list
 ```
 
-❌ **Avoid:**
+✘ **Avoid:**
 ```yaml
 state:
   data: str
@@ -538,18 +556,39 @@ Use State Modifier to clear state variables when no longer needed:
 
 ## Common Patterns
 
-### Pattern 1: Accumulating Results in Loops
+### Pattern 1: Iterative Processing with Router
 
 ```yaml
 state:
+  items: list
+  current_index: int
   accumulated_results: str
 
 nodes:
-  - id: "Loop Process"
-    type: "loop"
-    tool: "process_item_function"
-    output: ["accumulated_results"]
-    # Each iteration appends to accumulated_results
+  - id: "Process Item"
+    type: "code"
+    code:
+      type: "fixed"
+      value: |
+        items = alita_state.get('items', [])
+        index = alita_state.get('current_index', 0)
+        accumulated = alita_state.get('accumulated_results', '')
+        
+        if index < len(items):
+            result = f"{accumulated}\nProcessed: {items[index]}"
+            {"accumulated_results": result, "current_index": index + 1}
+        else:
+            {}
+    output: ["accumulated_results", "current_index"]
+    structured_output: true
+    transition: "Check Complete"
+  
+  - id: "Check Complete"
+    type: "router"
+    condition: "current_index < len(items)"
+    input: ["current_index", "items"]
+    routes: ["Process Item", "END"]
+    default_output: "END"
 ```
 
 ### Pattern 2: Conditional State Initialization

@@ -9,94 +9,48 @@ Nodes are the **fundamental building blocks** of ELITEA Pipelines—individual s
 
 Nodes execute sequentially or conditionally based on your configuration.
 
-![Node Concept Diagram](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/node-diagram.png)
+![Node Concept Diagram](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/node-diagram.png){loading=lazy}
 
 ``` Yaml
+state:
+  input:
+    type: str
+  messages:
+    type: list
+entry_point: LLM 1
+interrupt_after: []
 nodes:
+  - id: Agent 1
+    type: agent
+    input: []
+    input_mapping: {}
+    output: []
+    transition: Toolkit 1
   - id: LLM 1
     type: llm
-    prompt:
-      type: string
-      value: ''
     input: []
-    output: []
-    structured_output: false
-    transition: Agent 1
     input_mapping:
+      chat_history:
+        type: fixed
+        value: []
       system:
         type: fixed
         value: ''
       task:
         type: fixed
         value: ''
-      chat_history:
-        type: fixed
-        value: []
-  - id: Agent 1
-    type: agent
-    input: []
     output: []
-    transition: Tool 1
+    structured_output: false
+    transition: Agent 1
+  - id: Toolkit 1
+    type: toolkit
+    input: []
     input_mapping: {}
-  - id: Tool 1
-    type: tool
+    output: []
+    structured_output: false
     tool: ''
-    input: []
-    output: []
-    structured_output: false
-    transition: Function 1
-  - id: Function 1
-    type: function
-    tool: ''
-    input: []
-    output: []
-    structured_output: false
-    input_mapping: {}
-    transition: Router 1
-  - id: Router 1
-    type: router
-    default_output: ''
-    routes:
-      - Code 1
-    input: []
-    condition: ''
-  - id: Code 1
-    type: code
-    code:
-      type: fixed
-      value: ''
-    input: []
-    output: []
-    structured_output: false
-    transition: Pipeline 1
-  - id: Pipeline 1
-    type: pipeline
-    input: []
-    output: []
-    transition: StateModifier 1
-  - id: StateModifier 1
-    type: state_modifier
-    template: ''
-    variables_to_clean: []
-    input: []
-    output: []
-    transition: Loop 1
-  - id: Loop 1
-    type: loop
-    task: ''
-    tool: ''
-    input: []
-    output: []
-    structured_output: false
-    transition: Loop Tool 1
-  - id: Loop Tool 1
-    type: loop_from_tool
-    tool: ''
-    loop_tool: ''
-    input: []
-    output: []
-    structured_output: false
     transition: END
+
 ```
 
 
@@ -126,7 +80,7 @@ id: "process_request"
 ```
 
 **`type`** (required)
-: Node type (llm, agent, function, tool, code, etc.). Determines behavior and available parameters.
+: Node type (llm, agent, toolkit, mcp, code, custom, router, decision, state_modifier, printer). Determines behavior and available parameters.
 
 ```yaml
 type: "llm"
@@ -188,11 +142,11 @@ decision:
 
 Each node type has additional parameters covered in the individual node type guides.
 
-![Common Node Attributes](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/node-attributes.png)
+![Common Node Attributes](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/node-attributes.png){loading=lazy}
 
 ## Node Categories
 
-ELITEA Pipelines provide **12 different node types** organized into **5 functional categories**. Understanding these categories helps you quickly identify the right node for your needs.
+ELITEA Pipelines provide **7 different node types** organized into **3 functional categories**. Understanding these categories helps you quickly identify the right node for your needs.
 
 ### Interaction Nodes
 
@@ -227,17 +181,19 @@ ELITEA Pipelines provide **12 different node types** organized into **5 function
 
 **Node Types**:
 
-1. **[Function Node](execution-nodes.md#function-node)** - Call toolkits and MCPs
-      * Execute toolkit functions (Jira, GitHub, Slack, etc.)
-      * Call Model Context Protocol (MCP) servers
-      * ⚠️ **Important**: Only works with Toolkits and MCPs (prompts/datasources deprecated)
-      * Map inputs and capture outputs
+1. **[Toolkit Node](execution-nodes.md#toolkit-node)** - Execute ELITEA toolkit functions
+      * Call toolkit functions (Jira, GitHub, Slack, Confluence, etc.)
+      * Direct execution without LLM preprocessing
+      * Map inputs to toolkit parameters
+      * Capture structured outputs
+      * Support for all ELITEA toolkits
 
-2. **[Tool Node](execution-nodes.md#tool-node)** - Execute individual tools with LLM assistance
-      * Use LLM to prepare tool arguments
-      * Call external tools and services
-      * Process tool responses
-      * Handle validation errors gracefully
+2. **[MCP Node](execution-nodes.md#mcp-node)** - Execute Model Context Protocol (MCP) tools
+      * Connect to remote MCP servers via HTTP
+      * Execute MCP server tools directly
+      * Configure connection parameters (URL, headers, timeout)
+      * Map inputs and capture outputs
+      * Enable/disable specific tools from MCP server
 
 3. **[Code Node](execution-nodes.md#code-node)** - Run custom Python code
       * Execute arbitrary Python scripts
@@ -246,6 +202,12 @@ ELITEA Pipelines provide **12 different node types** organized into **5 function
       * Integrate with external APIs
       * Return structured results
 
+4. **Custom Node** - Advanced manual JSON configuration
+      * Make manual and advanced configurations
+      * Use any available toolkit (Agents, Pipelines, Toolkits, MCPs)
+      * Full control via JSON-based configuration
+      * For advanced users with specific requirements
+
 **Use Cases**:
 
 * Call external services or APIs
@@ -253,12 +215,6 @@ ELITEA Pipelines provide **12 different node types** organized into **5 function
 * Process or transform data
 * Integrate with third-party systems
 * Perform calculations or validations
-
-1. **Custom Node** - Advanced manual JSON configuration
-      * Make manual and advanced configurations
-      * Use any available toolkit (Agents, Pipelines, Toolkits, MCPs)
-      * Full control via JSON-based configuration
-      * For advanced users with specific requirements
 
 ---
 
@@ -274,17 +230,12 @@ ELITEA Pipelines provide **12 different node types** organized into **5 function
       * Support multiple output routes
       * Use state variables in conditions
 
-2. **[Condition Node](control-flow-nodes.md#condition-node)** - Branch using Jinja2 templates
-      * Write conditional logic with Jinja2
-      * Access state variables in templates
-      * Use filters and complex expressions
-      * Support if/elif/else patterns
-
-3. **[Decision Node](control-flow-nodes.md#decision-node)** - AI-powered routing decisions
-      * Let LLM decide the next step
-      * Provide context for intelligent routing
-      * Define possible decision outcomes
-      * Fallback to default if unclear
+2. **[Decision Node](control-flow-nodes.md#decision-node)** - AI-powered routing decisions
+      * Let LLM decide the next step based on context
+      * Provide natural language description of routing criteria
+      * Define possible decision outcomes (nodes list)
+      * Specify decisional inputs for LLM analysis
+      * Fallback to default output if decision unclear
 
 **Use Cases**:
 
@@ -296,38 +247,9 @@ ELITEA Pipelines provide **12 different node types** organized into **5 function
 
 ---
 
-### Iteration Nodes
-
-Repeat actions over collections of data or tool results.
-
-**Node Types**:
-
-1. **[Loop Node](iteration-nodes.md#loop-node)** - Iterate over data with LLM preparation
-    * Loop through lists or arrays
-    * Use LLM to prepare each iteration's input
-    * Execute a tool for each item
-    * Accumulate results
-
-2. **[Loop from Tool Node](iteration-nodes.md#loop-from-tool-node)** - Iterate over tool output
-    * Call a tool that returns a list
-    * Loop through the tool's results
-    * Execute another tool for each result item
-    * Map variables between iterations
-    * Aggregate loop outputs
-
-**Use Cases**:
-
-* Process multiple items in batch
-* Generate reports for each item in a list
-* Execute repeated actions on collections
-* Transform arrays of data
-* Aggregate results from multiple operations
-
----
-
 ### Utility Nodes
 
-Manage state and combine workflows.
+**Purpose**: Manage state, transform data, and display information.
 
 **Node Types**:
 
@@ -338,21 +260,21 @@ Manage state and combine workflows.
     * Clean up or reset state variables
     * Apply filters (from_json, base64_to_string, split_by_words, etc.)
 
-2. **[Pipeline (Subgraph) Node](utility-nodes.md#pipeline-subgraph-node)** - Nest pipelines
-    * Execute another pipeline as a node
-    * Pass state between parent and child pipelines
-    * Map inputs and outputs
-    * Build modular, reusable workflows
-    * Create complex multi-level pipelines
+2. **[Printer Node](utility-nodes.md#printer-node)** - Display formatted output to users
+    * Format and display messages during pipeline execution
+    * Pause pipeline execution for user review
+    * Use Jinja2 templates to format output
+    * Access state variables in templates
+    * Resume execution after user acknowledgment
 
 **Use Cases**:
 
 * Format output for specific purposes
 * Combine data from multiple sources
 * Clean up temporary state
-* Reuse existing pipelines
-* Organize complex workflows
-- Create modular pipeline architectures
+* Transform and structure data
+* Display progress or results to users
+* Show intermediate workflow status
 
 ---
 
@@ -369,41 +291,39 @@ Need to...
 │  └─ Use **LLM Node** or **Agent Node**
 │
 ├─ Call an external service or API?
-│  ├─ Via a Toolkit/MCP? → **Function Node**
-│  ├─ Need LLM to prepare arguments? → **Tool Node**
+│  ├─ ELITEA Toolkit? → **Toolkit Node**
+│  ├─ MCP Server? → **MCP Node**
 │  └─ Custom integration? → **Code Node**
 │
 ├─ Make a decision or branch?
-│  ├─ Simple expression? → **Router Node**
-│  ├─ Template logic? → **Condition Node**
-│  └─ AI-powered? → **Decision Node**
+│  ├─ Simple expression/condition? → **Router Node**
+│  └─ AI-powered decision? → **Decision Node**
 │
-├─ Process multiple items?
-│  ├─ From state array? → **Loop Node**
-│  └─ From tool output? → **Loop from Tool Node**
+├─ Delegate to specialized agent?
+│  └─ Use **Agent Node**
 │
-└─ Manage state or combine pipelines?
+└─ Transform, manage state, or display output?
    ├─ Transform state? → **State Modifier Node**
-   └─ Nest pipeline? → **Pipeline (Subgraph) Node**
+   └─ Display to user? → **Printer Node**
 ```
 
 ### Quick Reference Table
 
-| **Goal** | **Recommended Node** | **Alternative** |
-|----------|---------------------|-----------------|
-| Call GPT-4 for text generation | LLM Node | Agent Node |
-| Create Jira ticket | Function Node | Code Node + API |
-| Decide next step based on approval | Condition Node | Decision Node |
-| Process list of user stories | Loop Node | Loop from Tool Node |
-| Format output with template | State Modifier Node | Code Node |
-| Execute custom Python logic | Code Node | Function Node (if toolkit exists) |
-| Route by status (approved/rejected) | Router Node | Condition Node |
-| Process API response array | Loop from Tool Node | Loop Node |
-| Reuse existing pipeline | Pipeline (Subgraph) Node | Duplicate nodes |
+| **Goal** | **Recommended Node** | **Alternative** | **Example Use Case** |
+|----------|---------------------|-----------------|----------------------|
+| Generate text with AI | LLM Node | Agent Node | Summarize documents, generate responses, analyze content |
+| Call external API or service | Toolkit Node | Code Node + API | Create Jira tickets, send Slack messages, query databases |
+| Execute MCP server tools | MCP Node | Code Node + HTTP | Connect to remote MCP servers, execute MCP tools |
+| Make conditional decisions | Router Node | Decision Node | Route by status (approved/rejected), check error conditions |
+| Transform or format data | State Modifier Node | Code Node | Format output with templates, combine state variables |
+| Run custom business logic | Code Node | Toolkit Node | Perform calculations, data processing, custom validations |
+| Display information to users | Printer Node | Code Node | Show progress updates, formatted reports, status messages |
+| Delegate to AI agents | Agent Node | - | Use specialized agents for complex tasks, multi-step workflows |
+| AI-powered routing | Decision Node | Router Node | Route based on content analysis, sentiment, or context |
 
 ## Common Patterns
 
-### Pattern 1: Gather → Process → Act
+**Pattern 1: Gather → Process → Act**
 
 ```yaml
 nodes:
@@ -416,20 +336,24 @@ nodes:
   
   # 2. Process with external tool
   - id: "create_tickets"
-    type: "function"
-    function: "jira_toolkit||create_issue"
+    type: "toolkit"
+    toolkit_name: "jira_toolkit"
+    tool: "create_issue"
     input: ["requirements", "project_id"]
     output: ["ticket_ids"]
+    input_mapping: {}
   
   # 3. Act - send notification
   - id: "notify_team"
-    type: "function"
-    function: "slack_toolkit||send_message"
+    type: "toolkit"
+    toolkit_name: "slack_toolkit"
+    tool: "send_message"
     input: ["ticket_ids"]
+    input_mapping: {}
     transition: "END"
 ```
 
-### Pattern 2: Conditional Branching
+**Pattern 2: Conditional Branching**
 
 ```yaml
 nodes:
@@ -453,27 +377,43 @@ nodes:
     # ... review workflow
 ```
 
-### Pattern 3: Batch Processing with Loop
+**Pattern 3: Toolkit Integration**
 
 ```yaml
 nodes:
-  - id: "fetch_users"
-    type: "function"
-    function: "api_toolkit||get_users"
-    output: ["user_list"]
+  - id: "fetch_jira_issues"
+    type: "toolkit"
+    toolkit_name: "jira_toolkit"
+    tool: "search_issues"
+    input: ["project_key", "status"]
+    output: ["issues"]
+    input_mapping: {}
   
-  - id: "process_each_user"
-    type: "loop_from_tool"
-    tool: "email_toolkit||send_email"
-    variables_mapping:
-      email:
-        type: "variable"
-        source: "tool"
-        value: "user_email"
-    output: ["email_results"]
+  - id: "process_issues"
+    type: "code"
+    code: |
+      # Process each issue
+      processed = []
+      for issue in alita_state.get('issues', []):
+          processed.append({
+              'key': issue['key'],
+              'summary': issue['summary']
+          })
+      return {'processed_issues': processed}
+    input: ["issues"]
+    output: ["processed_issues"]
+    transition: "send_summary"
+  
+  - id: "send_summary"
+    type: "toolkit"
+    toolkit_name: "slack_toolkit"
+    tool: "send_message"
+    input: ["processed_issues"]
+    input_mapping: {}
+    transition: "END"
 ```
 
-### Pattern 4: State Transformation
+**Pattern 4: State Transformation**
 
 ```yaml
 nodes:
@@ -493,74 +433,83 @@ nodes:
 
 ## Best Practices
 
-### 1. Use Descriptive Node IDs
+**Use Descriptive Node IDs**
 
-✅ **Good**:
+✔️ Good:
 ```yaml
 id: "extract_jira_requirements"
 id: "send_slack_notification"
 id: "approve_or_reject_decision"
 ```
 
-❌ **Avoid**:
+✘ Avoid:
 ```yaml
 id: "node1"
 id: "process"
 id: "step_final"
 ```
 
-### 2. Minimize State Pollution
+**Minimize State Pollution**
 
 Only output what you need:
 
-✅ **Good**:
+✔️ Good:
 ```yaml
 output: ["user_id", "status"]  # Only what's needed
 ```
 
-❌ **Avoid**:
+✘ Avoid:
 ```yaml
 output: ["user_id", "status", "temp_data", "debug_info", "raw_response"]
 ```
 
-### 3. Choose the Right Tool
 
-- **Function Node** for direct toolkit calls (faster, more reliable)
-- **Tool Node** when LLM needs to prepare complex arguments
-- **Code Node** for custom logic not available in toolkits
+**Choose the Right Tool**
 
-### 4. Handle Errors Gracefully
+- **Toolkit Node** for direct ELITEA toolkit calls (faster, more reliable)
+- **MCP Node** for Model Context Protocol server integrations
+- **Code Node** for custom logic not available in toolkits or MCPs
+- **Printer Node** for displaying formatted output to users during execution
 
-Use conditional nodes to check for errors:
+
+
+**Handle Errors Gracefully**
+
+Use router nodes to check for errors:
 
 ```yaml
 - id: "api_call"
-  type: "function"
+  type: "toolkit"
+  toolkit_name: "api_toolkit"
+  tool: "fetch_data"
   output: ["result", "error"]
 
 - id: "check_error"
   type: "router"
   condition: "error is not None"
   routes: ["handle_error", "continue_success"]
+  input: ["error"]
 ```
 
-### 5. Keep Nodes Focused
+
+**Keep Nodes Focused**
 
 Each node should have a single responsibility:
 
-✅ **Good**: Separate nodes for each step
+✔️ Good: Separate nodes for each step
 ```yaml
 - id: "fetch_data"
 - id: "process_data"
 - id: "send_results"
 ```
 
-❌ **Avoid**: One node doing everything
+✘ Avoid: One node doing everything
 ```yaml
 - id: "fetch_process_and_send_everything"
 ```
 
-### 6. Use Consistent Naming
+
+**Use Consistent Naming**
 
 Establish naming conventions for your team:
 
@@ -576,7 +525,8 @@ id: "ticket_creation"
 id: "email_notification"
 ```
 
-### 7. Document Complex Nodes
+
+**Document Complex Nodes**
 
 Use comments in YAML to explain non-obvious logic:
 
@@ -589,6 +539,62 @@ Use comments in YAML to explain non-obvious logic:
   output: ["title", "description", "acceptance_criteria"]
 ```
 
+
+---
+
+## Deprecated Nodes
+
+The following nodes are deprecated and will be removed in a future release. Please migrate to the recommended alternatives:
+
+??? warning "Condition Node"
+
+    The **Condition** node is deprecated and will be removed in an upcoming release.
+
+    **Migration:** Use the **Router** node for expression-based routing or the **Decision** node for AI-powered routing decisions.
+
+    **Migration Guide:** [Condition Node Migration](../../../migration/v2.0.1/condition-node-migration.md)
+
+??? warning "Function Node"
+
+    The **Function** node is deprecated and will be removed in an upcoming release.
+
+    **Migration:** Use the **Toolkit** node for ELITEA toolkits, the **MCP** node for Model Context Protocol servers, or the **Agent** node for delegating to AI agents.
+
+    **Migration Guide:** [Function Node Migration](../../../migration/v2.0.1/function-node-migration.md)
+
+??? warning "Tool Node"
+
+    The **Tool** node is deprecated and will be removed in an upcoming release.
+
+    **Migration:** Use the **Toolkit** node for direct toolkit execution without LLM preprocessing.
+
+    **Migration Guide:** [Tool Node Migration](../../../migration/v2.0.1/tool-node-migration.md)
+
+??? warning "Loop Node"
+
+    The **Loop** node is deprecated and will be removed in an upcoming release.
+
+    **Migration:** Use the **Router** node with state-based iteration control for implementing loop patterns.
+
+    **Migration Guide:** [Loop Node Migration](../../../migration/v2.0.1/loop-node-migration.md)
+
+??? warning "Loop from Tool Node"
+
+    The **Loop from Tool** node is deprecated and will be removed in an upcoming release.
+
+    **Migration:** Use the **Router** node with state-based iteration control for implementing loop patterns.
+
+    **Migration Guide:** [Loop Node Migration](../../../migration/v2.0.1/loop-node-migration.md)
+
+??? warning "Pipeline (Subgraph) Node"
+
+    The **Pipeline** (Subgraph) node is deprecated and will be removed in an upcoming release.
+
+    **Migration:** Use the **Agent** node to delegate tasks to specialized AI agents, effectively replacing nested pipeline functionality.
+
+    **Migration Guide:** [Pipeline Node Migration](../../../migration/v2.0.1/pipeline-node-migration.md)
+
+---
 
 !!! info "Related Documentation"
 

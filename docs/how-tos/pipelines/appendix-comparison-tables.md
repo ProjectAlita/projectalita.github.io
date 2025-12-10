@@ -7,8 +7,8 @@ Quick reference for selecting pipeline components.
       - [Nodes by Category](#nodes-by-category-comparison) 
       - [Control Flow](#control-flow-comparison) 
       - [Execution](#execution-nodes-comparison) 
-      - [Iteration](#iteration-comparison) 
       - [Input Mapping](#input-mapping-types) 
+      - [Utility Nodes](#utility-nodes-comparison) 
       - [Decision Guide](#node-selection-decision-matrix)
 
 ---
@@ -32,31 +32,28 @@ Quick reference for selecting pipeline components.
 |------|----------|---------|-----|---------------|-------------|
 | **LLM** | Interaction | Generate/analyze text | ✔️ | ✘ | Structured output, tool calling |
 | **Agent** | Interaction | Specialized agents | ✔️ | ✘ | Reusable configurations |
-| **Function** | Execution | Direct toolkit call | ✘ | ✔️ | Explicit parameters |
-| **Tool** | Execution | LLM-assisted tool | ✔️ | ✔️ | Natural language task |
+| **Toolkit** | Execution | Direct ELITEA toolkit call | ✘ | ✔️ | Explicit parameters, fast |
+| **MCP** | Execution | Model Context Protocol tools | ✘ | ✔️ | Remote MCP servers |
 | **Code** | Execution | Python logic | ✘ | ✘ | Full programming control |
 | **Custom** | Execution | Advanced config | Varies | Varies | Maximum flexibility |
 | **Router** | Control Flow | Template routing | ✘ | ✘ | Multiple paths |
-| **Condition** | Control Flow | Boolean branching | ✘ | ✘ | Jinja2 logic |
 | **Decision** | Control Flow | AI routing | ✔️ | ✘ | LLM decision making |
-| **Loop** | Iteration | Task-based iteration | ✔️ | ✔️ | LLM prepares inputs |
-| **Loop from Tool** | Iteration | Tool result iteration | ✔️ | ✔️ | Two-stage execution |
 | **State Modifier** | Utility | Transform state | ✘ | ✘ | Jinja2 templates |
-| **Pipeline** | Utility | Nested pipelines | Varies | Varies | Workflow composition |
+| **Printer** | Utility | Display output to users | ✘ | ✘ | Pause & show messages |
 
 ---
 
 ## Control Flow Comparison
 
-| Feature | Router | Condition | Decision |
-|---------|--------|-----------|----------|
-| **Method** | Template expressions | Jinja2 boolean | LLM reasoning |
-| **Performance** | Fast | Fast | Slower (LLM call) |
-| **Best For** | Multiple clear paths | Boolean logic | Contextual decisions |
-| **Syntax** | `{% if %}`/`{% elif %}` | `{% if %}` returns ID | Natural language |
-| **Outputs** | Routes + default | Conditional + default | Nodes + default |
+| Feature | Router | Decision |
+|---------|--------|----------|
+| **Method** | Template expressions | LLM reasoning |
+| **Performance** | Fast | Slower (LLM call) |
+| **Best For** | Multiple clear paths, boolean logic | Contextual decisions |
+| **Syntax** | `{% if %}`/`{% elif %}` | Natural language |
+| **Outputs** | Routes + default | Nodes + default |
 
-**Selection:** Multiple paths → Router · Boolean → Condition · AI interpretation → Decision
+**Selection:** Multiple paths or boolean logic → Router · AI interpretation → Decision
 
 **Examples:**
 
@@ -67,8 +64,8 @@ condition: |
   {% elif 'rejected' in input|lower %}RejectNode
   {% else %}ReviewNode{% endif %}
 
-# Condition - Boolean
-condition_definition: |
+# Router - Boolean logic
+condition: |
   {% if status == 'approved' and user_type == 'admin' %}AdminPath
   {% else %}RegularPath{% endif %}
 
@@ -84,43 +81,54 @@ description: |
 
 ## Execution Nodes Comparison
 
-| Feature | Function | Tool | Code | Custom |
-|---------|----------|------|------|--------|
-| **Tool Selection** | Manual | LLM decides | N/A | Manual |
-| **Parameters** | Explicit mapping | LLM generates | Python code | JSON config |
-| **Use LLM** | ✘ | ✔️ | ✘ | Depends |
-| **Flexibility** | Low | High | Very High | Very High |
-| **Performance** | Fast | Slower | Fast | Fast |
-| **Best For** | Known tool/params | Flexible workflows | Custom logic | Advanced integrations |
+| Feature | Toolkit | MCP | Code | Custom |
+|---------|---------|-----|------|--------|
+| **Tool Selection** | Manual | Manual | N/A | Manual |
+| **Parameters** | Explicit mapping | Explicit mapping | Python code | JSON config |
+| **Use LLM** | ✘ | ✘ | ✘ | Depends |
+| **Flexibility** | Medium | Medium | Very High | Very High |
+| **Performance** | Fast | Fast | Fast | Fast |
+| **Best For** | ELITEA toolkit calls | MCP server tools | Custom logic | Advanced integrations |
 
 **When to Use:**
 
 | Scenario | Use |
 |----------|-----|
-| Create Jira ticket with known fields | Function |
-| "Search Confluence and create summary" | Tool |
+| Create Jira ticket with known fields | Toolkit |
+| Connect to GitHub MCP server | MCP |
 | Calculate discount with business rules | Code |
 | Execute custom MCP or Agent | Custom |
-| Call API with fixed endpoint | Function or Code |
-| Multi-step research workflow | Tool |
+| Call API with fixed endpoint | Toolkit or Code |
+| Access filesystem via MCP | MCP |
 | Data transformation/processing | Code |
 
 ---
 
-## Iteration Comparison
+## Utility Nodes Comparison
 
-| Feature | Loop | Loop from Tool |
-|---------|------|----------------|
-| **Input Source** | Task extracts from state | Tool execution generates list |
-| **Stages** | 1. LLM prepares<br>2. Execute per input | 1. First tool (get list)<br>2. LLM prepares<br>3. Second tool per item |
-| **Variables Mapping** | Not required | **Required** |
-| **Use Case** | Known list in state | Dynamic list from tool |
-| **Example** | Process files from history | Search results, process each |
+| Feature | State Modifier | Printer |
+|---------|----------------|----------|
+| **Purpose** | Transform state variables | Display output to users |
+| **Input** | State variables | State variables or text |
+| **Output** | Modified state | User interface message |
+| **Template Engine** | Jinja2 | Fixed/Variable/F-String |
+| **Pipeline Pause** | No | Yes (waits for user) |
+| **Use Case** | Combine/format data | Show progress/results |
+| **Example** | Aggregate responses, increment counter | Display report, show status |
 
-!!! warning "Loop from Tool"
-    `variables_mapping` is **critical**—maps first tool's output to second tool's input variables
+**State Modifier Features:**
+- Combine multiple state variables with templates
+- Apply filters: `from_json`, `base64_to_string`, `split_by_words`
+- Clean up temporary variables
+- Format structured output
 
-**Selection:** List in state → Loop · List from tool → Loop from Tool
+**Printer Features:**
+- Display formatted messages during execution
+- Pause pipeline for user review
+- Support Fixed, Variable, and F-String types
+- Resume after user acknowledgment
+
+**Selection:** Transform/format data → State Modifier · Show output to user → Printer
 
 ---
 
@@ -153,9 +161,8 @@ input_mapping:
 
 | Type | Node Types | Config | Example |
 |------|------------|--------|---------|
-| **Transition** | All except Router/Condition/Decision | `transition: NodeID` | `transition: ProcessData` |
+| **Transition** | All except Router/Decision | `transition: NodeID` | `transition: ProcessData` |
 | **Router** | Router | `condition` + `routes` + `default_output` | Multiple named paths |
-| **Condition** | Condition | `condition_definition` + `conditional_outputs` | True/False branching |
 | **Decision** | Decision | `decision.nodes` + `default_output` | LLM-powered routing |
 | **END** | Any node | `transition: END` | Pipeline termination |
 
@@ -165,16 +172,18 @@ input_mapping:
 # Simple
 transition: NextNode
 
-# Router
+# Router - Multiple paths
 condition: "{% if status == 'done' %}Complete{% endif %}"
 routes: [Complete, Retry]
 default_output: Review
 
-# Condition
-condition:
-  condition_definition: "{% if approved %}Publish{% else %}Review{% endif %}"
-  conditional_outputs: [Publish]
-  default_output: Review
+# Router - Boolean
+condition: |
+  {% if approved %}Publish
+  {% else %}Review
+  {% endif %}
+routes: [Publish, Review]
+default_output: Review
 
 # Decision
 decision:
@@ -206,32 +215,33 @@ decision:
 | Goal | Recommended | Alternative |
 |------|-------------|-------------|
 | Generate text/content | LLM, Agent | - |
-| Call external API | Function, Code | Tool |
-| Make decision | Condition, Router | Decision |
-| Process list | Loop, Loop from Tool | Code |
+| Call ELITEA toolkit | Toolkit | Code |
+| Execute MCP server tool | MCP | Code |
+| Make decision | Router | Decision |
 | Transform state | State Modifier | Code |
-| Nest workflows | Pipeline | - |
+| Display output to user | Printer | - |
 | Complex routing | Decision | Router |
+| Custom logic | Code | - |
 
 ### By Complexity
 
-* **Beginner:** LLM (simple), Function (clear params), Router (basic), State Modifier (simple)
-* **Intermediate:** Agent, Tool, Condition, Loop
-* **Advanced:** Code, Custom, Decision, Loop from Tool
+* **Beginner:** LLM (simple), Toolkit (clear params), Router (basic), State Modifier (simple), Printer
+* **Intermediate:** Agent, MCP, Decision
+* **Advanced:** Code, Custom
 
 ### Quick Selection
 
 | Need | Use |
 |------|-----|
 | Call GPT-4 | LLM |
-| Create Jira ticket | Function |
-| Decide next step | Condition/Router |
-| Process 100 files | Loop/Loop from Tool |
+| Create Jira ticket | Toolkit |
+| Decide next step | Router |
 | Format output | State Modifier |
-| Combine pipelines | Pipeline |
+| Show progress message | Printer |
 | Custom calculation | Code |
-| Unknown tool | Tool |
+| Execute MCP tool | MCP |
 | Execute agent | Agent |
+| Advanced integration | Custom |
 
 ---
 
@@ -251,15 +261,15 @@ decision:
 
 ### Flow Control
 
-✔️ **Do:** Router for multiple paths, Condition for boolean, Decision for AI, provide defaults
+✔️ **Do:** Router for multiple paths and boolean logic, Decision for AI reasoning, provide defaults
 
 ✘ **Avoid:** Complex nesting, missing fallbacks, unreachable nodes
 
 ### Execution
 
-✔️ **Do:** Function for known tools, Tool for flexibility, Code for custom logic, handle errors
+✔️ **Do:** Toolkit for ELITEA tools, MCP for MCP servers, Code for custom logic, handle errors
 
-✘ **Avoid:** Overusing Tool (LLM overhead), hardcoded secrets, ignoring errors
+✘ **Avoid:** Hardcoded secrets, ignoring errors, wrong node for task
 
 ---
 
@@ -268,33 +278,33 @@ decision:
 **Extract → Process → Act**
 ```yaml
 - id: GatherInfo      # LLM extracts
-- id: ProcessData     # Code/Function processes
-- id: TakeAction      # Function executes
+- id: ProcessData     # Code processes
+- id: TakeAction      # Toolkit executes
 ```
 *Use for: User stories, tickets, documents*
 
 **Conditional Workflow**
 ```yaml
-- id: CheckStatus     # Router/Condition
+- id: CheckStatus     # Router
 - id: PathA           # Approved
 - id: PathB           # Rejected
 ```
 *Use for: Approvals, status routing*
 
-**Batch Processing**
+**Data Integration**
 ```yaml
-- id: GetList         # Function fetches
-- id: ProcessEach     # Loop processes
-- id: Summarize       # LLM summarizes
+- id: FetchData       # Toolkit or MCP
+- id: Transform       # Code node
+- id: Display         # Printer shows result
 ```
-*Use for: Bulk operations, reporting*
+*Use for: API integration, data processing*
 
 **Human-in-Loop**
 ```yaml
 - id: GenerateDraft   # LLM creates
-- id: ReviewPoint     # interrupt_after
-- id: ApprovalCheck   # Condition checks
-- id: Publish         # Function publishes
+- id: ShowDraft       # Printer displays
+- id: ApprovalCheck   # Router checks
+- id: Publish         # Toolkit publishes
 ```
 *Use for: Content approval, reviews*
 
@@ -306,9 +316,10 @@ decision:
 |-------|-------|----------|
 | State variable not found | Not in state section | Add to `state:` |
 | Node won't execute | Missing parameters | Check Input Mapping |
-| Wrong path taken | Condition logic error | Review condition syntax |
-| Loop doesn't iterate | Unclear task/wrong input | Clarify task instructions |
-| Tool call fails | Wrong mapping | Verify mapping types |
+| Wrong path taken | Router logic error | Review condition syntax |
+| Toolkit call fails | Wrong mapping | Verify mapping types |
+| MCP connection fails | Server not configured | Check MCP server settings |
+| Printer not showing | Wrong input type | Verify printer input_mapping |
 | No interrupt output | Missing `messages` | Add to output list |
 
 ---
@@ -317,5 +328,5 @@ decision:
 
 * [Pipelines Overview](overview.md) · [States](states.md) · [Nodes Overview](nodes/overview.md)
 * [Interaction Nodes](nodes/interaction-nodes.md) · [Execution Nodes](nodes/execution-nodes.md)
-* [Control Flow Nodes](nodes/control-flow-nodes.md) · [Iteration Nodes](nodes/iteration-nodes.md) · [Utility Nodes](nodes/utility-nodes.md)
+* [Control Flow Nodes](nodes/control-flow-nodes.md) · [Utility Nodes](nodes/utility-nodes.md)
 * [Entry Point](entry-point.md) · [Nodes Connectors](nodes-connectors.md) · [Flow Editor](flow-editor.md) · [YAML Configuration](yaml.md)

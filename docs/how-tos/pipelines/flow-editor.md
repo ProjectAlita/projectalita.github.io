@@ -24,8 +24,6 @@ The **Flow Editor** is a visual workspace for building pipelines. It provides:
 3. Click the **Configuration** tab
 4. Select **Flow** mode (appears alongside **YAML** tab)
 
-![Flow Editor interface overview](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/flow-editor-overview.png)
-
 !!! note "Flow and YAML Sync"
     Whatever you configure in Flow automatically appears in YAML format, and vice versa. Both views stay perfectly synchronized.
 
@@ -46,8 +44,7 @@ The Flow Editor consists of several key areas:
 | 4 | **State Button** | Top right | Opens state configuration sidebar |
 | 5 | **Flow/YAML Tabs** | Top center | Switch between visual and code views |
 
-
-![Flow Editor interface components labeled](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/interface-components.png)
+![Flow Editor interface overview](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/flow-editor-overview.png){loading=lazy}
 
 ### Left Toolbar Buttons
 
@@ -75,19 +72,16 @@ The Flow Editor consists of several key areas:
 
 * Agent
 * Code
-* Condition
 * Custom
 * Decision
-* Function
 * LLM
-* Loop
-* Loop from tool
-* Pipeline (Subgraph)
+* MCP
+* Printer
 * Router
 * State modifier
-* Tool
+* Toolkit
 
-![Add node](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/add-node-button.png)
+![Add node](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/router-node-add.gif){loading=lazy}
 
 ### Method 2: Drag from Connection
 
@@ -99,7 +93,7 @@ You can also add nodes while creating connections:
 4. Choose node type
 5. New node is created with connection already attached
 
-![Creating node from connection dropdown](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/drag-connector.png)
+![Creating node from connection dropdown](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/drag-connector.gif){loading=lazy}
 
 ---
 
@@ -117,7 +111,7 @@ Each node type has specific configuration fields. Common options include:
 * **Advanced options** (Interrupt Before/After, Structured Output)
 
 !!! tip "Renaming Nodes"
-    Click on the node card title to rename most nodes. **Decision** and **Condition** nodes cannot be renamed.
+    Click on the node card title to rename most nodes. **Decision** nodes cannot be renamed.
 
 ### Renaming a Node
 
@@ -125,7 +119,7 @@ Each node type has specific configuration fields. Common options include:
 2. Type the new name
 3. Press **Enter** or click outside to save
 
-![Renaming a node by clicking title](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/rename-node.png)
+![Renaming a node by clicking title](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/rename-node.gif){loading=lazy}
 
 ---
 
@@ -151,11 +145,9 @@ Nodes must be connected to define the execution flow. See the [Nodes Connectors 
 
 ### Deleting Connections
 
-**Option 1:** Click on the connection line to select it, then press **Delete**
+ Click on the connection line to select it, then press **Delete** on keyboard
 
-**Option 2:** Click on the connection line to highlight it, then click again to delete
-
-![Selected connection line highlighted](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/delete-connection.png)
+![Selected connection line highlighted](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/delete-connection.gif){loading=lazy}
 
 ---
 
@@ -165,7 +157,7 @@ Nodes must be connected to define the execution flow. See the [Nodes Connectors 
 
 Click the **three-dots menu (⋮)** on any node card to access node actions:
 
-![Node card three-dots menu](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/node-menu-options.png)
+![Node card three-dots menu](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/node-menu-options.png){loading=lazy}
 
 **Available Actions:**
 
@@ -200,14 +192,12 @@ Toggle between compact and detailed node views:
 * **Collapsed**: Shows only node name and type icon
 * **Expanded**: Shows all configuration fields
 
-Click **⬜ Collapse/Expand** button to toggle all nodes at once.
-
-![Collapsed vs expanded node cards](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/collapse-expand-cards.png)
+![Collapsed vs expanded node cards](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/collapse-expand-cards.gif){loading=lazy}
 
 
 Click the **State** button (top right) to open the state configuration sidebar.
 
-![State sidebar panel](../../img/how-tos/agents-pipelines/pipeline-building-blocks/default-states-toggles.png)
+![State sidebar panel](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/default-states-toggles.gif){loading=lazy}
 
 **In the State Sidebar:**
 
@@ -229,7 +219,7 @@ Changes made in Flow Editor **instantly appear in YAML**:
 3. See the updated YAML code
 4. Switch back to **Flow** to continue visual editing
 
-![Flow and YAML tabs showing synchronized content](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/flow-yaml-sync.png)
+![Flow and YAML tabs showing synchronized content](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/flow-yaml-sync.gif){loading=lazy}
 
 !!! note "Two-Way Sync"
     Edits in YAML also update the Flow view immediately. You can work in whichever mode you prefer.
@@ -306,7 +296,7 @@ Changes made in Flow Editor **instantly appear in YAML**:
     * **[Nodes Connectors](nodes-connectors.md)**: Learn how to connect nodes and manage transitions
     * **[States Guide](states.md)**: Configure state variables for data flow
     * **[YAML Configuration](yaml.md)**: Work directly with YAML code
-    * **[Nodes Overview](nodes/overview.md)**: Understand all 13 node types
+    * **[Nodes Overview](nodes/overview.md)**: Understand all 10 node types
     * **[Entry Point Guide](entry-point.md)**: Set up pipeline starting points
 
 ---

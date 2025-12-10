@@ -5,7 +5,6 @@ Control Flow Nodes enable your pipeline to make decisions, route execution down 
 **Available Control Flow Nodes:**
 
 * **[Router Node](#router-node)** - Route execution based on condition matching with multiple named paths
-* **[Condition Node](#condition-node)** - Branch execution based on conditional logic with named outputs
 * **[Decision Node](#decision-node)** - LLM-powered intelligent routing based on natural language criteria
 
 ---
@@ -14,9 +13,9 @@ Control Flow Nodes enable your pipeline to make decisions, route execution down 
 
 The Router Node evaluates a condition and routes pipeline execution to one of multiple named paths. It uses template-based conditions (similar to Jinja2 syntax) to determine which route to take, with a default fallback route if no conditions match.
 
-![Router Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/router-node-add.png)
+![Router Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/router-node-add.gif){ loading=lazy }
 
-### Purpose
+**Purpose**
 
 Use the Router Node to:
 
@@ -27,73 +26,158 @@ Use the Router Node to:
 * **Create multi-path workflows** based on data conditions
 * **Create loops and iterative execution** by routing back to previous nodes
 
-### Parameters
+**Parameters**
 
 | Parameter | Purpose | Type Options & Examples |
 |-----------|---------|-------------------------|
-| **Condition** | Define the conditional logic that determines which route to take | **Syntax:** Template syntax (Jinja2-like)<br>**Operators:**<br>`{% if condition %}` - Start conditional block<br>`{% elif condition %}` - Alternative condition<br>`{% else %}` - Fallback condition<br>`{% endif %}` - End conditional block<br><br>**State Variables:** Use variable names directly (e.g., `input`, `status`, `user_type`)<br>**Filters:** `\|lower`, `\|upper`, `in` operator for substring matching<br><br>**Example:**<br>{% if 'approved' in input\|lower %}<br>ArticlePublisher<br>{% elif 'finish' in input\|lower %}<br>END<br>{% endif %}<br> |
+| **Condition** | Define the conditional logic that determines which route to take | **Syntax:** Template syntax (Jinja2-like)<br>**Operators:**<br>`{% if condition %}` - Start conditional block<br>`{% elif condition %}` - Alternative condition<br>`{% else %}` - Fallback condition<br>`{% endif %}` - End conditional block<br><br>**State Variables:** Use variable names directly (e.g., `input`, `status`, `priority`)<br>**Filters:** `\|lower`, `\|upper`, `in` operator for substring matching<br><br>**Example:**<br>{% if 'approved' in input\|lower %}<br>ArticlePublisher<br>{% elif 'finish' in input\|lower or 'complete' in input\|lower %}<br>END<br>{% endif %}<br> |
 | **Routes** | Define the named paths (node IDs) that the router can select | **Configuration:** List of node IDs that correspond to the route names returned by the condition<br><br>**Example:**<br>`- ArticlePublisher`<br>`- END`<br><br>**Important:** Route names in the condition must **exactly match** node IDs in the Routes list |
 | **Input** | Specify which state variables the Router node reads for condition evaluation | **Default states:** `input`, `messages`<br>**Custom states:** Any defined state variables<br><br>**Example:**<br>`- input`<br>`- status`<br>`- user_type` |
-| **Default Output** | Specify the fallback route if no conditions in the Router match | **Options:** Select a node ID from available nodes in the pipeline<br><br>**Example:** `ArticleReviewer`<br><br>**Fallback Behavior:** If the condition doesn't return any route name, execution goes to Default Output |
+| **Default Output** | Specify the fallback route if no conditions in the Router match | **Options:** Select a node ID from available nodes in the pipeline<br><br>**Example:** `ContentModerator`<br><br>**Fallback Behavior:** If the condition doesn't return any route name, execution goes to Default Output |
+| **Interrupt Before** | Pause pipeline execution before the Router node executes | **Enabled** / **Disabled** |
+| **Interrupt After** | Pause pipeline execution after the Router node for inspection | **Enabled** / **Disabled** |
 
-![Router Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/router-node-interface.png)
-**YAML Configuration**
+![Router Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/router-node-interface.png){ loading=lazy }
 
-```yaml
-nodes:
-  - id: Router 1
-    type: router
-    default_output: ArticleReviewer
-    routes:
-      - ArticlePublisher
-      - END
-    input:
-      - input
-    condition: |2-
-          {% if 'approved' in input|lower %}
-          ArticlePublisher
-          {% elif 'finish' in input|lower %}
-          END
-          {% endif %}
-  - id: ArticlePublisher
-    type: tool
-    tool: ''
-    input: []
-    output: []
-    structured_output: false
-    transition: END
-  - id: ArticleReviewer
-    type: llm
-    prompt:
-      type: string
-      value: ''
-    input: []
-    output: []
-    structured_output: false
-    transition: END
-    input_mapping:
-      system:
-        type: fixed
-        value: ''
-      task:
-        type: fixed
-        value: ''
-      chat_history:
-        type: fixed
-        value: []
-
-```
-
-!!! info "Condition Evaluation"
-    The Router evaluates the condition from top to bottom. When a condition matches, it returns the associated route name and execution proceeds to that node. If no conditions match, execution goes to the default output.
 
 !!! warning "Route Name Matching"
     Route names in the condition must **exactly match** node IDs in the pipeline. Case sensitivity matters: "ArticlePublisher" ≠ "article_publisher".
 
-!!! note "Template Syntax Features"
-    **String Operations:** Use `|lower`, `|upper` filters and `in` operator<br>**Comparisons:** Use `==`, `!=`, `>`, `<` operators<br>**Logical Operators:** Use `and`, `or`, `not` for complex conditions
+**YAML Configuration**
+
+```yaml
+state:
+  input:
+    type: str
+    value: ''
+  messages:
+    type: list
+entry_point: Router 1
+nodes:
+  - id: Router 1
+    type: router
+    condition: |2-
+          {% if 'approved' in input|lower %}
+          ArticlePublisher
+          {% elif 'finish' in input|lower or 'complete' in input|lower %}
+          END
+          {% endif %}
+    input:
+      - input
+    routes:
+      - ArticlePublisher
+      - ContentModerator
+      - END
+    default_output: ContentModerator
+  - id: ArticlePublisher
+    type: toolkit
+    toolkit_name: publishing_toolkit
+    tool: publish_article
+    input:
+      - input
+      - messages
+    output:
+      - messages
+    input_mapping:
+      article_content:
+        type: variable
+        value: input
+      status:
+        type: fixed
+        value: published
+    structured_output: false
+    transition: END
+  - id: ContentModerator
+    type: llm
+    prompt:
+      type: string
+      value: Review content for policy compliance and quality standards
+    input:
+      - input
+      - messages
+    output:
+      - messages
+    input_mapping:
+      system:
+        type: fixed
+        value: You are a content moderator checking for policy violations and quality issues
+      task:
+        type: fstring
+        value: 'Review this content: {input}'
+      chat_history:
+        type: variable
+        value: messages
+    structured_output: false
+    transition: END
+```
+
+??? example "Jinja Syntax Examples"
+
+    The Router Node uses Jinja2-like template syntax for condition evaluation. Here are common patterns:
+
+    **String Matching:**
+    ```jinja
+    {% if 'keyword' in input|lower %}
+    NodeA
+    {% endif %}
+    ```
+
+    **Multiple Conditions with elif:**
+    ```jinja
+    {% if priority == 'high' %}
+    UrgentHandler
+    {% elif priority == 'medium' %}
+    NormalHandler
+    {% elif priority == 'low' %}
+    LowPriorityHandler
+    {% else %}
+    DefaultHandler
+    {% endif %}
+    ```
+
+    **Logical Operators:**
+    ```jinja
+    {% if status == 'approved' and priority == 'high' %}
+    FastTrackPublisher
+    {% elif status == 'approved' or status == 'pending' %}
+    ReviewQueue
+    {% endif %}
+    ```
+
+    **Numeric Comparisons:**
+    ```jinja
+    {% if score > 80 %}
+    HighQualityPath
+    {% elif score >= 50 %}
+    MediumQualityPath
+    {% else %}
+    LowQualityPath
+    {% endif %}
+    ```
+
+    **String Filters:**
+    ```jinja
+    {% if input|upper == 'APPROVED' %}
+    ApprovalNode
+    {% elif 'reject' in input|lower %}
+    RejectionNode
+    {% endif %}
+    ```
+
+    **Complex Conditions:**
+    ```jinja
+    {% if ('urgent' in input|lower or priority == 'high') and status != 'completed' %}
+    EscalationNode
+    {% elif status == 'pending' and not ('hold' in input|lower) %}
+    ProcessingNode
+    {% endif %}
+    ```
+
 
 !!! tip "Router Node for Loops"
+
+    The Router evaluates the condition from top to bottom. When a condition matches, it returns the associated route name and execution proceeds to that node. If no conditions match, execution goes to the default output
+
     Router nodes can create loop structures by routing back to previous nodes. This enables iterative processing by:
     
     - Routing to an earlier node when a condition is met (e.g., counter < max_iterations)
@@ -102,7 +186,8 @@ nodes:
     
     This is an alternative to Loop and Loop from Tool nodes, offering more precise control over loop conditions and execution flow.
 
-### Best Practices
+**Best Practices**
+
    - Always Provide Default Output: Ensure fallback behavior for unmatched conditions to prevent pipeline failures.
    - Match Route Names Exactly: Route names in condition must match node IDs exactly (case-sensitive).
    - Order Conditions by Specificity: Place most specific conditions first to avoid unintended matches.
@@ -115,104 +200,13 @@ nodes:
 
 ---
 
-## Condition Node
-
-The Condition Node branches pipeline execution based on conditional logic, similar to the Router Node but with a focus on binary or multi-output branching. It evaluates template-based conditions and routes to named conditional outputs.
-
-![Condition Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/condition-node-add.png)
-
-### Purpose
-
-Use the Condition Node to:
-
-* **Branch execution** based on state variable conditions
-* **Create named output paths** for different conditions
-* **Implement if-else logic** in pipeline flow
-* **Route to specific nodes** based on evaluation results
-* **Provide multiple conditional branches** with named outputs
-
-### Parameters
-
-| Parameter | Purpose | Type Options & Examples |
-|-----------|---------|-------------------------|
-| **Conditional Input** | Specify which state variable to use for condition evaluation | **Default states:** `input`, `messages`<br>**Custom states:** Any defined state variables<br><br>**Example:** `input`|
-| **Condition** | Define the conditional logic that determines which output path to take | **Syntax:** Template syntax (Jinja2-like) similar to Router Node<br><br>**Example:**<br>{% if 'approved' in input\|lower %}<br>Article Publisher<br>{% else %}<br>Article Reviewer<br>{% endif %}<br><br>**Template Features:**<br>String matching, comparisons, multiple conditions with `{% elif %}` |
-| **Conditional Outputs** | Define the named output paths that the condition can route to | **Configuration:** List of node IDs or route names that correspond to the outputs returned by the condition<br><br>**Example:**<br>`- Article Publisher`<br>`- Article Reviewer`<br><br>**How It Works:** Condition returns a route name, which must be listed in Conditional Outputs |
-| **Default Output** | Specify the fallback route if the condition doesn't match any conditional outputs | **Options:** Select a node ID from available nodes in the pipeline<br><br>**Example:** `END`<br><br>**Fallback Behavior:** If condition doesn't match any conditional outputs or returns `{% endif %}` without a match, execution goes to Default Output |
-
-![Condition Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/condition-node-interface.png)
-
-**YAML Configuration**
-
-```yaml
-nodes:
-  - id: ArticlePublisher
-    type: tool
-    tool: ''
-    input: []
-    output: []
-    structured_output: false
-    transition: END
-  - id: ArticleReviewer
-    type: llm
-    prompt:
-      type: string
-      value: ''
-    input: []
-    output: []
-    structured_output: false
-    transition: END
-    input_mapping:
-      system:
-        type: fixed
-        value: ''
-      task:
-        type: fixed
-        value: ''
-      chat_history:
-        type: fixed
-        value: []
-state:
-  article:
-    type: str
-    value: ''
-  input:
-    type: str
-  messages:
-    type: list
-
-```
-
-!!! info "Condition Returns Route Name"
-    The condition must return a route name that matches one of the Conditional Outputs. The returned name determines which node to execute next.
-
-!!! warning "Output Name Matching"
-    Condition returns must **exactly match** conditional_outputs entries. Case sensitivity matters: "Article Publisher" ≠ "article publisher".
-
-!!! note "Template Syntax"
-    Uses the same template syntax as Router Node with `{% if %}`, `{% elif %}`, `{% else %}`, and `{% endif %}` blocks. Supports filters like `|lower`, `|upper`, and operators like `in`, `==`, `and`, `or`.
-
-### Best Practices
-   - Always Define Default Output: Provide fallback for unmatched conditions to prevent pipeline failures.
-   - List All Conditional Outputs: Include all possible output paths in the conditional_outputs list.
-   - Use Clear Output Names: Name outputs to indicate their purpose (e.g., "ApprovedWorkflow" not "Output1").
-   - Normalize Input for Comparisons: Use filters like `|lower` for case-insensitive matching.
-   - Match Output Names Exactly: Condition returns must match conditional_outputs exactly (case-sensitive).
-   - Test All Branches: Verify each conditional path with different test inputs.
-   - Use Descriptive Conditional Input: Name input variables clearly to indicate what's being evaluated.
-   - Document Branching Logic: Add comments explaining routing decisions for maintainability.
-
-
-
----
-
 ## Decision Node
 
-The Decision Node uses LLM intelligence to make routing decisions based on natural language criteria. Unlike Router and Condition nodes that use template-based conditions, the Decision Node analyzes the decision input and description to intelligently select the appropriate output path.
+The Decision Node uses LLM intelligence to make routing decisions based on natural language criteria. It operates as a standalone node in the pipeline and analyzes the input to intelligently select the appropriate output path from multiple decision outputs.
 
-![Decision Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/decision-node-add.png)
+![Decision Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/decision-node-add.gif){ loading=lazy }
 
-### Purpose
+**Purpose**
 
 Use the Decision Node to:
 
@@ -222,137 +216,186 @@ Use the Decision Node to:
 * **Leverage context and semantics** for routing decisions
 * **Simplify decision-making** with descriptive instructions
 
-### Parameters
+
+!!! warning "LLM Overhead"
+    Decision Nodes are slower than Router nodes due to LLM processing. Use for complex routing requiring semantic understanding, not simple condition matching.
+
+!!! note "Decision Node Chaining Restriction"
+    Decision nodes **cannot be connected to another Decision node**. If you need sequential decision-making, use a different node type (such as Router, LLM, or Code) between Decision nodes.
+
+**Parameters**
 
 | Parameter | Purpose | Type Options & Examples |
 |-----------|---------|-------------------------|
-| **Decision Input** | Specify which state variable the LLM analyzes to make the routing decision | **Default states:** `input`, `messages`<br>**Custom states:** Any defined state variables<br><br>**Example:** `article`<br><br>**Usage:** The LLM reads this state variable's content and analyzes it against the description criteria |
-| **Description** | Provide natural language instructions describing how the LLM should make routing decisions | **Format:** Clear, structured instructions with specific routing criteria<br><br>**Example:**<br>Your task is to redirect a user to a proper node<br>- if users wants to save listed branches then redirect to "LLM 2" node;<br>- If the request is unclear, redirect to "END" node.<br><br><br>**Best Practices:** Use clear criteria, specific examples, structured format |
-| **Decision Outputs** | Define the possible output paths the LLM can select from | **Configuration:** List of node IDs that the LLM can route execution to<br><br>**Example:**<br>`- LLM 1`<br>`- TechnicalSupport`<br>`- BillingSupport`<br><br>**How It Works:** LLM analyzes input, reviews description, selects appropriate output from list |
+| **Input** | Specify which state variables the LLM analyzes to make the routing decision | **Default states:** `input`, `messages`<br>**Custom states:** Any defined state variables<br><br>**Example:** <br>`- input`<br>`- messages`<br><br>**Usage:** The LLM reads these state variables' content and analyzes them against the description criteria |
+| **Description** | Provide natural language instructions describing how the LLM should make routing decisions | **Format:** Clear, structured instructions with specific routing criteria<br><br>**Example:**<br>Your task is to route content based on user intent:<br>- if user wants to publish the content, redirect to "ArticlePublisher" node<br>- if user wants content review or moderation, redirect to "ContentModerator" node<br>- If the request is to finish or end the process, redirect to "END" node<br><br>**Best Practices:** Use clear criteria, specific examples, structured format |
+| **Decision Outputs (nodes)** | Define the possible output paths (node IDs) the LLM can select from | **Configuration:** List of node IDs that the LLM can route execution to<br><br>**Example:**<br>`- ArticlePublisher`<br>`- ContentModerator`<br><br>**How It Works:** LLM analyzes input, reviews description, selects appropriate output from list |
 | **Default Output** | Specify the fallback route if the LLM cannot make a confident decision | **Options:** Select a node ID from available nodes in the pipeline<br><br>**Example:** `END`<br><br>**Fallback Behavior:** If LLM can't decide confidently, execution goes to Default Output |
+| **Interrupt Before** | Pause pipeline execution before the Decision node executes | **Enabled** / **Disabled** |
+| **Interrupt After** | Pause pipeline execution after the Decision node for inspection | **Enabled** / **Disabled** |
 
-![Decision Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/decision-node-interface.png)
+![Decision Node Interface](../../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/decision-node-interface.png){ loading=lazy }
 **YAML Configuration**
 
 ```yaml
+state:
+  input:
+    type: str
+    value: ''
+  messages:
+    type: list
+entry_point: Decision 1
 nodes:
-  - id: LLM 1
+  - id: Decision 1
+    type: decision
+    description: |
+      Your task is to route content based on user intent:
+      - if user wants to publish the content, redirect to "ArticlePublisher" node
+      - if user wants content review or moderation, redirect to "ContentModerator" node
+      - If the request is to finish or end the process, redirect to "END" node
+    input:
+      - input
+      - messages
+    nodes:
+      - ArticlePublisher
+      - ContentModerator
+    default_output: END
+  - id: ArticlePublisher
+    type: toolkit
+    toolkit_name: publishing_toolkit
+    tool: publish_article
+    input:
+      - input
+      - messages
+    output:
+      - messages
+    input_mapping:
+      article_content:
+        type: variable
+        value: input
+      status:
+        type: fixed
+        value: published
+    structured_output: false
+    transition: END
+  - id: ContentModerator
     type: llm
     prompt:
       type: string
-      value: ''
-    input: []
-    output: []
-    structured_output: false
-    transition: END
+      value: Review content for policy compliance and quality standards
+    input:
+      - input
+      - messages
+    output:
+      - messages
     input_mapping:
       system:
         type: fixed
-        value: ''
+        value: You are a content moderator checking for policy violations and quality issues
       task:
-        type: fixed
-        value: ''
+        type: fstring
+        value: 'Review this content: {input}'
       chat_history:
-        type: fixed
-        value: []
-state:
-  article:
-    type: str
-    value: ''
-  input:
-    type: str
-  messages:
-    type: list
-
+        type: variable
+        value: messages
+    structured_output: false
+    transition: END
 ```
 
 !!! info "LLM Decision Process"
-    The Decision Node uses LLM to:
+    The Decision Node operates as a standalone node that uses LLM to:
 
-        1. Analyze decision_input content, 
-        2. Review description for routing criteria, 
-        3.Select appropriate output from decision_outputs, 
-        4. Return selected node ID. If uncertain, defaults to default_output.
+    1. Read input state variables (configured in `input` parameter)
+    2. Analyze description for routing criteria
+    3. Select appropriate output from `nodes` list
+    4. Return selected node ID for routing
+    5. If uncertain, defaults to `default_output`
 
-!!! warning "LLM Overhead"
-    Decision Nodes are slower than Router/Condition nodes due to LLM processing. Use for complex routing requiring semantic understanding, not simple condition matching.
 
-!!! note "Description Quality Matters"
-    Clear, specific descriptions with examples improve routing accuracy. Structure your description with routing rules, criteria, and examples for each output path.
-
-### Best Practices
+**Best Practices**
 
    * Write Clear Decision Criteria: Provide specific, unambiguous routing rules with examples for each path.
    * Provide Examples in Description: Help the LLM understand expected routing with concrete examples.
    * Always Define Default Output: Provide fallback for unclear cases to prevent pipeline failures.
-   * List All Decision Outputs: Include all possible routing targets in the decision_outputs list.
+   * List All Decision Outputs: Include all possible routing targets in the `nodes` list.
    * Structure Descriptions Clearly: Use headings, lists, and clear formatting to organize routing criteria.
    * Use Decision Node for Complex Routing: Choose when routing requires semantic understanding, not simple condition matching.
+   * Configure Input Variables: Include relevant state variables in `input` for the LLM to analyze.
    * Test with Various Inputs: Verify LLM routing across different scenarios and edge cases.
    * Monitor Decision Quality: Review LLM routing decisions periodically and refine description if needed.
    * Provide Context in Description: Help the LLM make better decisions by explaining the use case.
    * Use Descriptive Output Names: Name outputs clearly to match description (e.g., "TechnicalSupport" not "Output1").
+   * Use Interrupts for Debugging: Enable interrupts to review decision-making and routing results during development.
 
 ---
 
 ## Control Flow Nodes Comparison
 
-| Feature | Router Node | Condition Node | Decision Node |
-|---------|-------------|----------------|---------------|
-| **Purpose** | Route execution based on template conditions with multiple paths | Branch execution based on conditional logic with named outputs | LLM-powered intelligent routing based on natural language criteria |
-| **Decision Logic** | Template-based conditions (Jinja2-like) | Template-based conditions (Jinja2-like) | LLM reasoning from natural language description |
-| **Configuration** | Condition, Routes, Input, Default Output | Conditional Input, Condition, Conditional Outputs, Default Output | Decision Input, Description, Decision Outputs, Default Output |
-| **LLM Usage** | No LLM | No LLM | Yes (LLM analyzes and decides) |
-| **Condition Syntax** | Template syntax with filters (`{% if %}`, `|lower`, `in`) | Template syntax with filters (`{% if %}`, `|lower`, `in`) | Natural language instructions |
-| **Complexity** | Medium (template syntax) | Medium (template syntax) | Low (natural language) |
-| **Flexibility** | High (full template control) | High (full template control) | Very High (LLM reasoning) |
-| **Performance** | Fast (template evaluation) | Fast (template evaluation) | Slower (LLM overhead) |
-| **Output Definition** | Routes list | Conditional outputs list | Decision outputs list |
-| **Default Behavior** | Default output if no match | Default output if no match | Default output if LLM uncertain |
-| **Best For** | Explicit multi-path routing with known conditions | Binary or multi-branch logic with clear conditions | Complex routing requiring semantic understanding |
-| **Use Case** | Status-based routing, priority levels, keyword matching | Approval checks, validation branching, permission gates | Customer support routing, sentiment analysis, intent classification |
+| Feature | Router Node | Decision Node |
+|---------|-------------|---------------|
+| **Purpose** | Route execution based on template conditions with multiple paths | LLM-powered intelligent routing as a standalone node |
+| **Node Type** | Independent routing node | Independent decision-making node |
+| **Decision Logic** | Template-based conditions (Jinja2-like) | LLM reasoning from natural language description |
+| **Configuration** | Condition, Routes, Input, Default Output | Input, Description, Nodes (decision outputs), Default Output |
+| **LLM Usage** | No LLM | Yes (LLM analyzes and decides) |
+| **Condition Syntax** | Template syntax with filters (`{% if %}`, `|lower`, `in`) | Natural language instructions |
+| **Input Variables** | State variables for condition evaluation | State variables for LLM analysis |
+| **Complexity** | Medium (template syntax) | Low (natural language) |
+| **Flexibility** | High (full template control) | Very High (LLM reasoning) |
+| **Performance** | Fast (template evaluation) | Slower (LLM overhead) |
+| **Output Definition** | Routes list | Nodes list (decision outputs) |
+| **Default Behavior** | Default output if no match | Default output if LLM uncertain |
+| **Best For** | Explicit multi-path routing with known conditions | Complex routing requiring semantic understanding |
+| **Use Case** | Status-based routing, priority levels, keyword matching, approval checks, validation branching | Customer support routing, sentiment analysis, intent classification, context-aware decisions |
 
 ### When to Use Each Node
 
-#### Router Node ✅
+??? note "Router Node"
 
-**Choose Router Node when you**:
+    **Choose Router Node when you**:
 
-* Need multiple named routes based on conditions
-* Have explicit condition logic you can express in templates
-* Want fast, deterministic routing without LLM overhead
-* Know all possible paths and conditions upfront
-* Need to match keywords, compare values, or check status
+    * Need multiple named routes based on explicit conditions
+    * Have condition logic you can express in Jinja2-like templates
+    * Want fast, deterministic routing without LLM overhead
+    * Know all possible paths and conditions upfront
+    * Need to match keywords, compare values, or check status
+    * Need binary or multi-branch conditional logic with if-else routing
+    * Want to create loops by routing back to previous nodes
 
-**Example**: Route tickets by priority level (critical/high/medium/low) or approval status (approved/pending/rejected).
+    **Example**: Route tickets by priority level (critical/high/medium/low), approval status (approved/pending/rejected), validation branching (valid → ProcessPath, invalid → ErrorPath), or iterative processing with loop control.
 
-#### Condition Node ✅
+??? note "Decision Node"
 
-**Choose Condition Node when you**:
+    **Choose Decision Node when you**:
 
-* Need binary or multi-branch conditional logic
-* Have clear if-else routing requirements
-* Want to use template-based conditions
-* Need named conditional outputs for clarity
-* Prefer explicit condition evaluation
+    * Need LLM intelligence for routing decisions
+    * Routing logic is complex, nuanced, or context-dependent
+    * Want natural language decision criteria instead of templates
+    * Require semantic understanding of user input or content
+    * Template conditions are too rigid or difficult to express
+    * Need to analyze multiple input variables simultaneously
+    * Routing depends on understanding intent, sentiment, or meaning
 
-**Example**: Approval check (approved → PublishPath, rejected → ReviewPath), validation branching (valid → ProcessPath, invalid → ErrorPath).
+    **Example**: Customer support routing (technical/billing/general inquiries), sentiment analysis (positive/negative/neutral routing), intent classification, context-aware content moderation, or multi-factor decision making based on conversation history.
 
-#### Decision Node ✅
+---
 
-**Choose Decision Node when you**:
+## Deprecated Control Flow Nodes
 
-* Need LLM intelligence for routing decisions
-* Routing logic is complex or nuanced
-* Want natural language decision criteria
-* Require semantic understanding of input
-* Template conditions are too rigid or complex
+The following control flow nodes are deprecated and will be removed in a future release. Please migrate to the recommended alternatives:
+
+??? warning "Condition Node"
+
+    The **Condition** node is deprecated and will be removed in an upcoming release.
+
+    **Migration:** Use the **Router** node for expression-based routing or the **Decision** node for AI-powered routing decisions.
+
+    **Migration Guide:** [Condition Node Migration](../../../migration/v2.0.1/condition-node-migration.md)
 
 ---
 
 !!! info "Related"
     - **[Nodes Overview](overview.md)** - Understand all available node types
-    - **[Interaction Nodes](interaction-nodes.md)** - LLM and Agent nodes for AI-powered tasks
     - **[Execution Nodes](execution-nodes.md)** - Function, Tool, Code, and Custom nodes
     - **[States](../states.md)** - Manage data flow through pipeline state
     - **[Connections](../nodes-connectors.md)** - Link nodes together
