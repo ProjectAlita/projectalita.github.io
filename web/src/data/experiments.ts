@@ -43,6 +43,7 @@ export const experiments: Experiment[] = [
     id: 'epic-to-test-suite',
     title: 'Epic to Test Suite Generator',
     description: 'Transform epics into comprehensive test cases with AI-powered analysis and coverage mapping',
+    videoId: 'h_TGDgsgMzI',
     phase: 'phase-1',
     status: 'coming-soon',
     backgroundImage: '/assets/covers/ba1png.png',
