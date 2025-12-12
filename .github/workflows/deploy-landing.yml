@@ -1,14 +1,19 @@
-name: Deploy Documentation to GitHub Pages
+name: Deploy Landing Page to GitHub Pages
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: 
+  push:
+    branches:  [main]
+    paths: 
+      - 'web/**'
+      - '! web/docs/**'
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
+concurrency: 
   group: "pages"
   cancel-in-progress: false
 
@@ -16,61 +21,64 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name:  Checkout
         uses: actions/checkout@v4
 
-      # Download existing landing page from GitHub Pages
-      - name: Download existing landing page
+      # Download existing GitHub Pages deployment to preserve docs
+      - name: Download existing GitHub Pages
+        continue-on-error: true
         run: |
-          echo "Downloading existing landing page..."
-          mkdir -p existing-landing
-          wget -r -np -nH -R "docs*" -P existing-landing https://elitea.ai/ || echo "Download completed"
+          echo "Downloading existing GitHub Pages deployment..."
+          mkdir -p existing-pages
+          
+          # Try to download from GitHub Pages
+          wget -r -np -nH -R "index.html" -P existing-pages https://elitea.ai/docs/ 2>&1 || echo "No existing docs found, will create empty docs folder"
           
           # Clean up wget artifacts
-          rm -f existing-landing/robots.txt.tmp
+          find existing-pages -name "robots.txt*" -delete 2>/dev/null || true
+          find existing-pages -name "*. tmp" -delete 2>/dev/null || true
           
-          echo "Downloaded landing page structure:"
-          ls -la existing-landing/
+          echo "Existing pages structure:"
+          ls -la existing-pages/ 2>/dev/null || echo "No existing pages"
 
-      # Build MkDocs Documentation
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
+      # Build Next.js Landing Page
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path:  './web/package-lock.json'
 
-      - name: Cache Python dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install MkDocs and dependencies
+      - name: Install Next.js dependencies
         run: |
-          pip install mkdocs mkdocs-material mkdocs-glightbox
+          cd web
+          npm ci
 
-      - name: Build MkDocs documentation
-        run: mkdocs build --clean --config-file mkdocs.yml
+      - name: Build Next. js app
+        run: |
+          cd web
+          npm run build
 
-      # Prepare unified deployment
-      - name: Prepare unified deployment
+      - name: Prepare deployment with preserved docs
         run: |
           # Create deployment directory
           mkdir -p _deploy
           
-          # Copy existing landing page
-          echo "Preserving existing landing page..."
-          if [ -d "existing-landing" ] && [ "$(ls -A existing-landing)" ]; then
-            cp -r existing-landing/* _deploy/
-          else
-            echo "Warning: Could not preserve landing page!"
-          fi
+          # Copy Next.js build (landing page at root)
+          echo "Copying Next.js landing page to root..."
+          cp -r web/out/* _deploy/
           
-          # Copy MkDocs build (docs at /docs subdirectory)
-          echo "Copying NEW MkDocs documentation to /docs..."
-          mkdir -p _deploy/docs
-          cp -r site/* _deploy/docs/
+          # Preserve existing /docs directory if it exists
+          if [ -d "existing-pages/docs" ] && [ "$(ls -A existing-pages/docs 2>/dev/null)" ]; then
+            echo "Preserving existing /docs directory..."
+            mkdir -p _deploy/docs
+            cp -r existing-pages/docs/* _deploy/docs/
+            echo "✓ Existing docs preserved"
+          else
+            echo "⚠ No existing docs found - creating placeholder"
+            mkdir -p _deploy/docs
+            echo "<html><body><h1>Documentation will be available soon</h1></body></html>" > _deploy/docs/index. html
+          fi
           
           # Add .nojekyll to prevent Jekyll processing
           touch _deploy/.nojekyll
@@ -78,24 +86,52 @@ jobs:
           # Add CNAME for custom domain
           echo "elitea.ai" > _deploy/CNAME
           
-          # Display structure for verification
-          echo "Deployment structure:"
-          ls -la _deploy/
-          echo "Docs subdirectory:"
-          ls -la _deploy/docs/ | head -20
+          # Verification
+          echo ""
+          echo "=== DEPLOYMENT VERIFICATION ==="
+          echo "Root directory (landing page):"
+          ls -la _deploy/ | head -20
+          echo ""
+          echo "Docs directory (preserved):"
+          ls -la _deploy/docs/ | head -10
+          echo ""
+          
+          # Check critical files
+          if [ -f "_deploy/index.html" ]; then
+            echo "✓ Landing page index.html exists"
+          else
+            echo "✗ ERROR: Landing page index.html missing!"
+            exit 1
+          fi
+          
+          if [ -d "_deploy/docs" ]; then
+            echo "✓ Docs directory exists"
+          else
+            echo "✗ ERROR:  Docs directory missing!"
+            exit 1
+          fi
+          
+          echo ""
+          echo "=== Deployment ready ==="
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        with:
+        with: 
           path: ./_deploy
 
   deploy:
-    environment:
+    environment: 
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment. outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-    steps:
+    steps: 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      
+      - name: Display deployment URLs
+        run: |
+          echo "🚀 Deployment completed!"
+          echo "🏠 Landing page: https://elitea.ai/"
+          echo "📄 Documentation (preserved): https://elitea.ai/docs/"
