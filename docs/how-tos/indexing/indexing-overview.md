@@ -17,7 +17,7 @@ The **Indexes Tab interface** provides a comprehensive, user-friendly way to cre
 * Replace legacy datasets with standardized tools across many toolkits.
 
 !!! tip "Quick start"
-	For the recommended approach using the new Indexes Tab interface, see the [Create first Index](../../getting-started/indexing-quick-start.md) guide. For the legacy toolkit test section approach, see [Next – Quick Start](../../migration/v1.7.0/next-quick-start.md#index-data-for-a-toolkit).
+	For the recommended approach using the new Indexes Tab interface, see the [How to create and use indexes](./using-indexes-tab-interface.md) guide. For the legacy toolkit test section approach, see [Next – Quick Start](../../migration/v1.7.0/next-quick-start.md#index-data-for-a-toolkit).
 
 ## Indexing Tools
 
@@ -115,7 +115,7 @@ Use these steps to prepare your project and toolkit before running **Index data*
 **Helpful links:**
 
 * Create a Credential: [Guide](../../getting-started/create-credential.md)
-* Create a Toolkit: [Guide](../../getting-started/create-toolkit.md)
+* Create a Toolkit: [Guide](../chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md)
 * Examples: [GitHub](./index-github-data.md), [Confluence](./index-confluence-data.md), [Jira](./index-jira-data.md), [SharePoint](./index-sharepoint-data.md)
 
 ## Index data and verify
@@ -223,7 +223,6 @@ Query your indexed data and review matched results.
     For detailed information about indexing tools and configuration:
 
     * **Primary Interface**: [How to create and use indexes](./using-indexes-tab-interface.md) - Comprehensive guide for the dedicated Indexes tab interface.
-    * **Quick Start**: [Create first Index](../../getting-started/indexing-quick-start.md) - Fast walkthrough using the recommended Indexes Tab approach.
     * See the [Indexing Tools](#indexing-tools) section above for tool capabilities and purpose.
     * Review [AI Configuration](../../menus/settings/ai-configuration.md) for Embedding Models and Vector Storage (PgVector).
     * Check the Release Notes: [Indexing Tools: Replacement for Datasets](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab).
@@ -280,7 +279,7 @@ While the **Indexes Tab interface provides the most comprehensive index manageme
 * Troubleshooting Chat and Canvas usage: [Chat – Advanced Usage](../chat-conversations/how-to-use-chat-functionality.md) and [Canvas – Advanced Usage](../chat-conversations/how-to-canvas.md)
 
 !!! success "Next steps"
-	* **Start with the Indexes Tab**: Use the [Create first Index](../../getting-started/indexing-quick-start.md) guide to create your first index via the dedicated interface.
+	* **Start with the Indexes Tab**: Use the [How to create and use indexes](./using-indexes-tab-interface.md) guide to create your first index via the dedicated interface.
 	* **Index one system** (e.g., a single repo or space) to validate settings using the Indexes Tab visual progress monitoring.
 	* **Try integrated search tools** from the Indexes Tab Run interface: Search Index and Stepback Summary Index to compare results quality.
 	* **Expand scope** and schedule regular re-indexing as content changes using the Indexes Tab management features.

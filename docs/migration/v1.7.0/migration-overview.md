@@ -89,7 +89,7 @@ Update your toolkits with the new credentials and indexing tools:
 4. Configure PgVector and Embedding settings
 5. Save your changes
 
-See: [Create a Toolkit](../../getting-started/create-toolkit.md)
+See: [Create a Toolkit](../../how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md)
 
 ### Step 5: Index Your Data
 

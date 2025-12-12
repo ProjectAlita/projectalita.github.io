@@ -120,7 +120,7 @@ Once a credential is created, it is available for assignment when configuring to
         Use project-scoped credentials for team integrations, and personal credentials for individual agent tasks.
 
 !!! note "Reference"
-    For more information on creating and managing Toolkits, see the [Toolkits documentation](../getting-started/create-toolkit.md)
+    For more information on creating and managing Toolkits, see the [Toolkits documentation](../how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md)
 
 ---
 
