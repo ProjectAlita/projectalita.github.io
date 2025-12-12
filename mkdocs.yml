@@ -1,5 +1,5 @@
 site_name: ELITEA Documentation
-site_url: https://elitea.ai/docs/
+site_url: use_directory_urls: true 
 
 nav:
   - Home:
