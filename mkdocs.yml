@@ -30,7 +30,7 @@ nav:
           - How to create and use indexes: how-tos/indexing/using-indexes-tab-interface.md
           - Configure and Use Server (STDIO): integrations/mcp/create-and-use-server-stdio.md
           - Configure and Use Client (STDIO): integrations/mcp/create-and-use-client-stdio.md
-          - Configure EPAM AI DIAL Keys: getting-started\configure-epam-ai-dial-key.md
+          - Configure EPAM AI DIAL Keys: getting-started/configure-epam-ai-dial-key.md
           - Create a Personal Access Token: getting-started/create-personal-access-token.md
           - Create a Secret: getting-started/create-secret.md
           - Create a Credential: getting-started/create-credential.md
