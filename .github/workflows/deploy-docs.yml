@@ -7,7 +7,7 @@ on:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
-      - 'mkdocs_el. yml'
+      - 'mkdocs_el.yml'
 
 permissions:
   contents: read
@@ -87,7 +87,7 @@ jobs:
           head -n 5 mkdocs.yml
 
       - name: Build MkDocs documentation
-        run: mkdocs build --clean --strict --config-file mkdocs. yml
+        run: mkdocs build --clean --strict --config-file mkdocs.yml
 
       - name:  Prepare deployment with preserved landing page
         run: |
