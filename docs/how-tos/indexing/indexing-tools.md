@@ -20,9 +20,15 @@ This guide explains each **indexing** tool, required vs optional settings, and w
 
 Create or update an index from your source system.
 
-Where to run it: Open your Toolkit → TEST SETTINGS → select “Index data” → configure → RUN TOOL.
+Where to run it: 
 
-![Index Data – form](../../img/how-tos/indexing/index-data-github.png){ width="900" }
+**Recommended: Indexes Tab Interface** Open your Toolkit → Indexes → "+" → configure → RUN.
+
+![Index Data – form](../../img/how-tos/indexing/index-tab/start-indexing.gif)
+
+**Alternative: TEST SETTINGS** Open your Toolkit → TEST SETTINGS → select “Index data” → configure → RUN TOOL
+
+![Index test settings](../../img/how-tos/indexing/index-test-settings.gif)
 
 ### Purpose
 - Build a new index collection or update an existing one for later search and Q&A.
@@ -38,8 +44,7 @@ Where to run it: Open your Toolkit → TEST SETTINGS → select “Index data”
 | Chunking Tool | Name of chunking tool to apply | No | - | - |
 | Chunking Config | Configuration for chunking tool | No | {} | - |
 
-!!! tip
-	If you’re not sure, start with defaults. You can re‑run indexing later with refined settings.
+
 
 ### Toolkit Specific Settings and Parameters
 
@@ -103,9 +108,11 @@ Where to run it: Open your Toolkit → TEST SETTINGS → select “Index data”
 
 Search your indexed content using natural language.
 
-Where to run it: Toolkit → TEST SETTINGS → select “Search index” → configure → RUN TOOL.
+**Recommended: Indexes Tab Interface** Open your Toolkit → Indexes → "Run" tab → select “Search index” → configure → RUN.
 
-![Search Index – form](../../img/how-tos/indexing/search-index.png){ width="900" }
+![Index Data – form](../../img/how-tos/indexing/search-index-tool.gif)
+
+**Alternative: TEST SETTINGS** Toolkit → TEST SETTINGS → select “Search index” → configure → RUN TOOL.
 
 ### Purpose
 - Retrieve relevant chunks from one or more index collections.
@@ -118,7 +125,7 @@ Where to run it: Toolkit → TEST SETTINGS → select “Search index” → con
 | Query | Query text to search in index | Yes | - | - |
 | Collection Suffix | Search specific dataset or all if empty | No | "" | max_length=7 |
 | Filter | Metadata filter for search results | No | {} | JSON format |
-| Cut-off Score | Minimum similarity score threshold | No | 0.5 | - |
+| Cut-off Score | Minimum similarity score threshold | No | 0.2 | - |
 | Search Top | Number of top results to return | No | 10 | - |
 | Reranker | Reranker configuration | No | {} | - |
 | Full Text Search | Full text search configuration | No | - | JSON with enabled, weight, fields, language |
@@ -134,9 +141,12 @@ Where to run it: Toolkit → TEST SETTINGS → select “Search index” → con
 
 Advanced search that first “simplifies” your query for better matches and can consider conversation context.
 
-Where to run it: Toolkit → TEST SETTINGS → “Stepback search index”.
+**Recommended: Indexes Tab Interface** Open your Toolkit → Indexes → "Run" tab → select “Stepback search index” → configure → RUN.
 
-![Stepback Search – form](../../img/how-tos/indexing/stepback-search.png){ width="900" }
+![Stepback Search – form](../../img/how-tos/indexing/stepback-search-tool.gif)
+
+**Alternative: TEST SETTINGS** Toolkit → TEST SETTINGS → select “Stepback search index” → configure → RUN TOOL.
+
 
 ### Purpose
 - Improve retrieval by transforming your question (e.g., “How do I configure GitHub auth?” → “configure GitHub authentication”). Returns raw results.
@@ -150,7 +160,7 @@ Where to run it: Toolkit → TEST SETTINGS → “Stepback search index”.
 | Collection Suffix | Search specific dataset or all if empty | No | "" | max_length=7 |
 | Filter | Metadata filter for search results | No | {} | JSON format |
 | Messages | Chat messages for stepback search context | No | {} | JSON format |
-| Cut-off Score | Minimum similarity score threshold | No | 0.5 | - |
+| Cut-off Score | Minimum similarity score threshold | No | 0.2 | - |
 | Search Top | Number of top results to return | No | 10 | - |
 | Reranker | Reranker configuration | No | {} | - |
 | Full Text Search | Full text search configuration | No | - | JSON with enabled, weight, fields, language |
@@ -167,9 +177,11 @@ Where to run it: Toolkit → TEST SETTINGS → “Stepback search index”.
 
 Contextual search plus an AI‑generated answer, with optional citations.
 
-Where to run it: Toolkit → TEST SETTINGS → “Stepback summary index”.
+**Recommended: Indexes Tab Interface** Open your Toolkit → Indexes → "Run" tab → select “Stepback Sumary index” → configure → RUN.
 
-![Stepback Summary – form](../../img/how-tos/indexing/stepback-summary.png){ width="900" }
+![Stepback Search – form](../../img/how-tos/indexing/index-tab/stepback-summary-index.gif)
+
+**Alternative: TEST SETTINGS**: Toolkit → TEST SETTINGS →  select “Stepback summary index”→ configure → RUN..
 
 ### Purpose
 - Combine stepback search with a concise, human‑readable answer. Good for end‑users who want a direct response.
@@ -185,7 +197,7 @@ Where to run it: Toolkit → TEST SETTINGS → “Stepback summary index”.
 | Collection Suffix | Search specific dataset or all if empty | No | "" | max_length=7 |
 | Filter | Metadata filter for search results | No | {} | JSON format |
 | Messages | Chat messages for stepback search context | No | {} | JSON format |
-| Cut-off Score | Minimum similarity score threshold | No | 0.5 | - |
+| Cut-off Score | Minimum similarity score threshold | No | 0.2 | - |
 | Search Top | Number of top results to return | No | 10 | - |
 | Reranker | Reranker configuration | No | {} | - |
 | Full Text Search | Full text search configuration | No | - | JSON with enabled, weight, fields, language |
@@ -202,9 +214,13 @@ Where to run it: Toolkit → TEST SETTINGS → “Stepback summary index”.
 
 Delete an existing collection (index) when it’s no longer needed.
 
-Where to run it: Toolkit → TEST SETTINGS → “Remove index”.
+**Recommended: Indexes Tab Interface** Open your Toolkit → Indexes → "Select Index" → Delete.
 
-![Remove Index – form](../../img/how-tos/indexing/remove-index.png){ width="900" }
+![Delete Index](../../img/how-tos/indexing/index-tab/delete-index.gif)
+
+**Alternative: TEST SETTINGS**: Toolkit → TEST SETTINGS → “Remove index”.
+
+![Remove Index – form](../../img/how-tos/indexing/remove-index-tool.gif)
 
 ### Purpose
 - Clean up test data or retire outdated collections.
@@ -227,9 +243,13 @@ Where to run it: Toolkit → TEST SETTINGS → “Remove index”.
 
 List all available collections for the toolkit.
 
-Where to run it: Toolkit → TEST SETTINGS → “List collections”.
+**Recommended: Indexes Tab Interface** Open your Toolkit → Indexes → "Left sidebar.
 
-![List Collections – output](../../img/how-tos/indexing/list-collection-github.png){ width="900" }
+![List Index](../../img/how-tos/indexing/index-tab/index-card.png)
+
+**Alternative: TEST SETTINGS**: Toolkit → TEST SETTINGS → “List collections”.
+
+![List Collections – output](../../img/how-tos/indexing/list-collection.gif)
 
 ### Purpose
 - Quickly verify what indexes exist and their names (suffixes).
@@ -262,5 +282,7 @@ Where to run it: Toolkit → TEST SETTINGS → “List collections”.
 
 !!! info "Related guides"
     - [Indexing Overview](./indexing-overview.md)
-    - Per‑toolkit examples: [GitHub](./index-github-data.md), [Confluence](./index-confluence-data.md), [Jira](./index-jira-data.md), [SharePoint](./index-sharepoint-data.md)
+    - [How tocreate and use Indexes](using-indexes-tab-interface.md)
+    -  [GitHub](./index-github-data.md), [Confluence](./index-confluence-data.md), [Jira](./index-jira-data.md), [SharePoint](./index-sharepoint-data.md): Per‑toolkit examples
     - [AI Configuration](../../menus/settings/ai-configuration.md)
+

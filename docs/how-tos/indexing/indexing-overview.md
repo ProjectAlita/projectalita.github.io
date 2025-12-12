@@ -16,8 +16,6 @@ The **Indexes Tab interface** provides a comprehensive, user-friendly way to cre
 * Keep results fresh by re-running indexing when content changes.
 * Replace legacy datasets with standardized tools across many toolkits.
 
-!!! tip "Quick start"
-	For the recommended approach using the new Indexes Tab interface, see the [How to create and use indexes](./using-indexes-tab-interface.md) guide. For the legacy toolkit test section approach, see [Next – Quick Start](../../migration/v1.7.0/next-quick-start.md#index-data-for-a-toolkit).
 
 ## Indexing Tools
 
@@ -31,22 +29,21 @@ ELITEA provides six standardized tools available across supported toolkits:
 * **List Collections** — list available collections (logical index groups).
 
 !!! note "Replacement for datasets"
-	These tools replace legacy datasets. Your old datasources remain visible for reference in Nexus, but you should use the new tools in Next env to re-create indexes.
+	These tools replace legacy datasets. Your old datasources remain visible for reference in Nexus, but you should use the new tools in Next env to re-create indexes. For detailed migration guidance, see [Migrate Datasources to Indexing](../../migration/v1.7.0/migrate-datasources-to-indexing.md).
 
 ## Toolkits which support Indexes
 
 Currently supported toolkits include:
 
 | Category | Toolkits |
-|----------|----------|
-| **Repos** | ADO Repos, Bitbucket, GitHub, GitLab |
-| **Wikis** | ADO Wiki, Confluence, SharePoint |
-| **Issues** | ADO Boards, ADO Plans, Jira |
-| **Files** | Artifact, SharePoint |
-| **Designs** | Figma |
-| **Tests** | TestRail, Xray Cloud, Zephyr Enterprise, Zephyr Essential, Zephyr Scale |
+|----------|-------------------|
+| **Repos** | [ADO Repos, Bitbucket, GitLab, GitHub](./index-github-data.md), |
+| **Wikis** | [ADO Wiki](./index-ado-wiki-data.md), [Confluence](./index-confluence-data.md), [SharePoint](./index-sharepoint-data.md) |
+| **Issues** | ADO Boards, ADO Plans, [Jira](./index-jira-data.md) |
+| **Files** | [Artifact](./index-artifacts-data.md), [SharePoint](./index-sharepoint-data.md) |
+| **Designs** | [Figma](./index-figma-data.md) |
+| **Tests** | [TestRail](./index-testrail-data.md), [Xray Cloud](./index-xray-data.md), [Zephyr Enterprise, Zephyr Essential, Zephyr Scale](./index-zephyr-data.md) |
 
-For setup of a specific toolkit, see Integrations → Toolkits (e.g., [GitHub Toolkit](../../integrations/toolkits/github_toolkit.md), [Confluence Toolkit](../../integrations/toolkits/confluence_toolkit.md), [Jira Toolkit](../../integrations/toolkits/jira_toolkit.md)).
 
 ## How to configure Toolkit for Indexing
 
@@ -66,7 +63,7 @@ Use these steps to prepare your project and toolkit before running **Index data*
    * Assign it to your toolkit when creating or editing the toolkit.
    * See: [Create a Credential](../../getting-started/create-credential.md) and specific toolkit pages under Integrations → Toolkits.
 
-	![Toolkit credential selection](../../img/how-tos/indexing/new-creds.png){ width="900" }
+
 
 2) Configure PgVector (required storage for indexed data)
 
@@ -77,7 +74,6 @@ Use these steps to prepare your project and toolkit before running **Index data*
      * Save it to use configuration to use for indexing.
      * Click Refresh icon to update the configuration and have it in the PgVector Configuration dropdown to select.
 
-	![AI Configuration – Vector Storage (PgVector)](../../img/how-tos/indexing/new-pgvector.png){ width="900" }
 
 3) Configure Embedding Model (required for indexing)
 
@@ -88,9 +84,7 @@ Use these steps to prepare your project and toolkit before running **Index data*
 	  
    * **Practical notes**:
        * For cost/speed, ada-002 and 3-small are similar; test with your data.
-       * Some reports suggest ada can work better in certain cases—ada is a solid “go-to” if you just need embeddings.
-
-	![AI Configuration – Embedding model](../../img/how-tos/indexing/new-model.png){ width="900" }
+       * Some reports suggest ada can work better in certain cases—ada is a solid "go-to" if you just need embeddings.
 
 4) Select Indexing tools on the Toolkit
 
@@ -99,7 +93,6 @@ Use these steps to prepare your project and toolkit before running **Index data*
    * **Required for Indexes Tab**: Index Data tool must be enabled for the Indexes tab to appear.
    * **Recommended minimum**: Index Data, Search Index, Stepback Summary Index for full Indexes Tab functionality.
 
-	![Toolkit – indexing tools selection](../../img/how-tos/indexing/overview-tools.png){ width="900" }
 
 5) Fill toolkit-required fields (vary by toolkit)
 
@@ -112,11 +105,12 @@ Use these steps to prepare your project and toolkit before running **Index data*
 
 6) Save the toolkit, if you created a new one.
 
-**Helpful links:**
+![Toolkit](../../img/how-tos/indexing/toolkit-config.gif){loading=lazy }
 
-* Create a Credential: [Guide](../../getting-started/create-credential.md)
-* Create a Toolkit: [Guide](../chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md)
-* Examples: [GitHub](./index-github-data.md), [Confluence](./index-confluence-data.md), [Jira](./index-jira-data.md), [SharePoint](./index-sharepoint-data.md)
+!!! info "Helpful links"
+    * Create a Credential: [Guide](../../getting-started/create-credential.md)
+    * Create a Toolkit: [Guide](../../getting-started/create-toolkit.md)
+    * Examples: [GitHub](./index-github-data.md), [Confluence](./index-confluence-data.md), [Jira](./index-jira-data.md), [SharePoint](./index-sharepoint-data.md)
 
 ## Index data and verify
 
@@ -128,12 +122,12 @@ The **Indexes Tab** provides a dedicated interface within Toolkit Configuration 
 
 1. Navigate to **Toolkits** → Select your toolkit → Click **Indexes** tab
 2. Click **+ Create New Index** to create indexes
-3. Monitor progress with visual indicators (🔄 In Progress, ✅ Completed, ❌ Failed)
+3. Monitor progress with visual indicators
 4. Use integrated search tools directly from the **Run** tab
 
 **Alternative: Toolkit Test Settings**
 
-For quick testing and validation, you can also use the TEST SETTINGS section. The example below uses the **Artifact** toolkit, but the flow is similar for other toolkits.
+For quick testing and validation, you can also use the TEST SETTINGS section. The example below uses the **GitHub** toolkit, but the flow is similar for other toolkits.
 
 ### Index Data tool
 
@@ -141,22 +135,31 @@ For quick testing and validation, you can also use the TEST SETTINGS section. Th
 
 **Prerequisites:**
 
-* You've already configured an **Artifact** toolkit and have a bucket with files to index.
+* You've already configured a **Github** toolkit and have a repository with files to index.
 
 
 **Steps:**
 
-1. Open **Toolkits** → select your toolkit that supports indexing.
-2. Click the **Indexes** tab in the toolkit detail view.
-3. Click the **+ Create New Index** button in the sidebar.
-4. In the new index creation form, provide a meaningful **Index Name (Collection Suffix)** (max 7 characters, for example: prod, test, v1).
-5. Leave other settings at defaults for a first run.
-6. Click **Index** button to start indexing (button activates when all required fields are filled).
-7. Progress and completion details appear with visual indicators (🔄 In Progress, ✅ Completed, ❌ Failed) in the interface.
+1. Navigate to **Toolkits** → select your toolkit that supports indexing
+2. Click the **Indexes** tab in the toolkit detail view (tab is disabled if Index Data tool is not enabled or prerequisites are not met)
+3. Click the **+ Create New Index** button in the Indexes sidebar
+4. In the new index creation form, configure the following:
+     - **Index Name (Collection Suffix)**: Unique identifier (max 7 characters, e.g., prod, test, v1)
+     - **Toolkit-Specific Parameters**: Repository name, branch, filters (varies by toolkit type)
+     - **Progress Step**: Progress reporting interval (0-100), default: 10
+     - **Chunking Config**: Document chunking configuration, default: `{}`
+5. Click **Index** button to start indexing (button activates when all required fields are filled)
+6. Monitor progress with visual indicators:
+     - ![In Progress](../../img/how-tos/indexing/index-tab/progress-in.png): Indexing is currently running
+     - ✅ **Completed**: Indexing finished successfully
+     - ![Error](../../img/how-tos/indexing/index-tab/progress-error.png): Indexing encountered an error
+     - ![Stopped](../../img/how-tos/indexing/index-tab/progress-stopped.png): Indexing was manually cancelled
+7. Progress messages appear in the Chat Panel (right) in real-time
 
 See the [How to create and use indexes](./using-indexes-tab-interface.md) guide for detailed instructions.
 
-![Index Tab - Create New Index](../../img/how-tos/indexing/index-tab/new-index.png){ width="900" }
+
+![Creating New Index](../../img/how-tos/indexing/index-tab/start-indexing.gif){ loading=lazy }
 
 **Alternative: TEST SETTINGS Approach**
 
@@ -174,15 +177,33 @@ See the [How to create and use indexes](./using-indexes-tab-interface.md) guide 
 6. Click **RUN TOOL** to start indexing.
 7. Progress and completion details appear in the main panel; scroll if needed to view messages.
 
-![Toolkit Test – Index Data](../../img/how-tos/indexing/index-data-github.png){ width="900" }
+![Toolkit Test – Index Data](../../img/how-tos/indexing/index-test-settings.gif){ width="900" loading=lazy }
 
 ### List Collections tool
 
 **Primary Method: Use the Indexes Tab Interface**
 
-All created indexes are automatically displayed in the **Indexes** tab sidebar with visual status indicators (🔄 In Progress, ✅ Completed, ❌ Failed), document counts, and last updated timestamps.
+All created indexes are automatically displayed in the **Indexes** tab sidebar. Each index card shows:
 
-![Index Tab - Indexes List](../../img/how-tos/indexing/index-tab/indexed-data.png){ width="900" }
+- **Index Name**: Collection suffix (e.g., `docs`, `prod`)
+- **Creation Date**: Format: `dd.MM.yyyy`
+- **Document Count**: Total indexed documents (or `reindexed / total indexed` for reindexed items)
+- **Status Icon**: Real-time visual indicator ( In Progress, Completed,  Failed, Stopped)
+- **Last Updated**: Timestamp of most recent update
+
+When you select an index from the sidebar, you can:
+
+- **View details** in the Index Management Panel (center)
+- **Access three tabs**: Run, Configuration, History
+- **Manage the index**: Reindex, schedule, delete, or search
+
+![Index Card in Sidebar](../../img/how-tos/indexing/index-tab/index-card.png){ width="200" }
+
+!!! tip "Index Management Features"
+    - **Manual Reindexing**: Click **Reindex** button in Configuration tab to update index with original settings
+    - **Automated Scheduling**: Toggle **Schedule** switch to enable cron-based reindexing (only for completed indexes)
+    - **Delete Index**: Use **Delete** button with confirmation modal (requires Remove Index tool enabled)
+    - **View History**: Access History tab to see all past operations with sortable Event and Date columns
 
 **Alternative: TEST SETTINGS Approach**
 
@@ -192,40 +213,101 @@ Use this to view the indexes (collections) created for the toolkit.
 2. Click **RUN TOOL**.
 3. Review the output in the main panel for available collections.
 
-![Toolkit Test – List Collections output](../../img/how-tos/indexing/list-collection-github.png){ width="900" }
+![Toolkit Test – List Collections output](../../img/how-tos/indexing/list-collection.gif){ width="900" loading=lazy }
+
+### Reindex and Schedule
+
+**Manual Reindexing:**
+
+To update an existing index with fresh data:
+
+1. Navigate to **Toolkits** → Select your toolkit → Click **Indexes** tab
+2. Select the index you want to update from the sidebar
+3. Click the **Configuration** tab in the center panel
+4. Click **Reindex** button to trigger manual update
+5. Monitor progress with real-time visual indicators
+
+![Manual Reindex](../../img/how-tos/indexing/index-tab/reindex.gif){ loading=lazy }
+
+!!! warning "Reindexing Parameters"
+    Parameters cannot be modified when reindexing. The operation uses the original configuration settings. To change parameters, create a new index.
+
+**Automated Scheduling:**
+
+To configure periodic reindexing:
+
+1. Select a **completed** index from the sidebar (scheduling only available for completed indexes)
+2. Toggle the **Schedule** switch to activate automated reindexing
+3. Click the settings icon to open the schedule configuration modal
+4. Set **Cron Expression** to define reindexing frequency (e.g., `0 2 * * *` for daily at 2 AM)
+5. Click **Save** to activate the automated schedule
+
+**Schedule Status Indicators:**
+
+- **Schedule Toggle**: ON (enabled) or OFF (disabled)
+- **Cron Expression**: Displayed next to the schedule controls
+- **Next Run**: Timestamp showing when the next automated reindex will occur
+
+![Configure Cron Expression](../../img/how-tos/indexing/schedule-indexing/configure-cron-expression.gif){ loading=lazy }
+
+!!! tip "Detailed Scheduling Guide"
+    For comprehensive information about scheduling features, cron expressions, troubleshooting, and best practices, see the [Schedule Indexing](./schedule-indexing.md) guide.
+
+### Delete Index
+
+**Delete Process:**
+
+1. Select the index to delete from the sidebar
+2. Click **Delete** button in the index information panel
+3. Enter the index name in the confirmation modal to confirm
+4. Index and all associated data are permanently deleted
+
+![Delete Index](../../img/how-tos/indexing/index-tab/delete-index.gif){ loading=lazy }
+
+!!! warning "Deletion Warning"
+    - Index deletion is **permanent** and **cannot be undone**
+    - All indexed data, search history, and configurations are permanently removed
+    - The **Delete** button is disabled when the **Remove Index** tool is not enabled in toolkit configuration
 
 ### Search Index tool
 
 **Primary Method: Use the Indexes Tab Interface**
 
 1. Navigate to **Toolkits** → Select your toolkit → Click **Indexes** tab
-2. Select your completed index from the sidebar 
+2. Select your completed index from the sidebar
 3. Click the **Run** tab in the center panel
-4. Choose search tool from dropdown (Search Index, Stepback Search Index, or Stepback Summary Index)
-5. Enter your query and configure optional parameters
-6. Click **Run** button - results appear in the integrated chat interface on the right
+4. Choose search tool from dropdown:
+     - **Search Index**: Basic semantic search across indexed content
+     - **Stepback Search Index**: Advanced search that breaks down complex questions
+     - **Stepback Summary Index**: Search with automatic summarization of results
+5. Enter your query and configure optional parameters:
+     - **Filter**: Metadata filter as dictionary or JSON string
+     - **Cut Off (0-1)**: Relevance threshold (0.7 for high relevance, 0.3 for broader)
+     - **Search Top**: Maximum number of results (10, 25, 50)
+     - **Full Text Search**: Dictionary with full-text search configuration
+     - **Extended Search**: List of chunk types to search
+     - **Reranking Config**: Dictionary with field-based reranking rules
+6. Select LLM model and adjust settings
+7. Click **Run** button - results appear in the Chat Panel (right) in conversational format
 
-![Index Tab - Search Interface](../../img/how-tos/indexing/index-tab/Index-search.png){ width="900" }
+![Stepback Summary Index Search](../../img/how-tos/indexing/index-tab/stepback-summary-index.gif){ loading=lazy }
 
-**Alternative: TEST SETTINGS Approach**
+!!! info "Search Prerequisites"
+    - Only **completed** indexes support search operations
+    - At least one search tool must be enabled in toolkit configuration
+    - The **Run tab** is disabled if no search tools are enabled
 
-Query your indexed data and review matched results.
 
-1. In **TEST SETTINGS**, choose **Search Index**.
-2. In the **Query** field, enter what you're looking for.
-3. (Optional) In **Collection Suffix**, specify a particular index name; otherwise, the search runs across all indexes for the toolkit.
-4. Leave other options at defaults for a first try.
-5. Click **RUN TOOL** and review results in the main panel.
+**Accessing Index History:**
 
-![Toolkit Test – Search Index output](../../img/how-tos/indexing/search-index.png){ width="900" }
+The **History** tab provides a chronological record of all indexing operations performed on a selected index.
 
-!!! reference "Reference"
-    For detailed information about indexing tools and configuration:
+1. Select an index from the left sidebar
+2. Click the **History** tab in the center panel (only available for completed indexes)
+3. Review all past indexing events in chronological order
 
-    * **Primary Interface**: [How to create and use indexes](./using-indexes-tab-interface.md) - Comprehensive guide for the dedicated Indexes tab interface.
-    * See the [Indexing Tools](#indexing-tools) section above for tool capabilities and purpose.
-    * Review [AI Configuration](../../menus/settings/ai-configuration.md) for Embedding Models and Vector Storage (PgVector).
-    * Check the Release Notes: [Indexing Tools: Replacement for Datasets](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab).
+
+![Index History Tab](../../img/how-tos/indexing/index-tab/index-history.gif)
 
 
 ## How to configure and use Indexes from Chat
@@ -239,26 +321,15 @@ While the **Indexes Tab interface is the recommended primary method** for index 
 	 * "Index Confluence space 'ABC' for pages with label docs."
 4. Wait for confirmation in the thinking steps. If an error appears, refine your instruction or reconfigure the attached toolkit/credential.
 
-![Chat – trigger indexing](../../img/how-tos/indexing/indexing-from-chat.png){ width="900" }
+![Chat – trigger indexing](../../img/how-tos/indexing/indexing-from-chat.gif){ width="900" loading=lazy }
 
 Once indexes exist, you can use Search Index or Stepback search tools through Chat as well (e.g., "Search the index for onboarding guidelines").
-
-## How to configure and use Indexes from Agent
-
-While the **Indexes Tab interface provides the most comprehensive index management experience**, you can also prepare an Agent with the required toolkit(s) and run indexing via Chat or within the Agent's context.
-
-1. Open your Agent. See [Agents](../../menus/agents.md).
-2. In the Toolkits section, add/select a toolkit that supports **Index Data** and configure it with the correct Credential.
-3. Save the Agent.
-4. From Chat, select the Agent and instruct it to index the desired scope (repo/site/project, branch/filters, etc.).
-
-![Agent – toolkits section](../../img/how-tos/indexing/indexing-agent-chat.png){ width="900" }
 
 
 ## FAQs
 
 1. Where do I see my created indexes?
-	* **Primary Method**: Navigate to Toolkits → Select your toolkit → Click the **Indexes** tab to view and manage all created indexes with visual status indicators, document counts, and last updated timestamps.
+	* **Primary Method**: Navigate to Toolkits → Select your toolkit → Click the **Indexes** tab to view and manage all created indexes with visual status indicators, document counts, and last updated timestamps. The **History** tab provides a chronological record with sortable Event and Date columns, showing Created, Reindexed, Stopped, and Failed operations.
 	* **Alternative**: Use List Collections and Search Index via the toolkit Test section or through Chat.
 2. Can I keep using Datasources?
 	* Datasources remain in Nexus for reference, but indexing in Next replaces datasets. New datasets are not supported.
@@ -271,16 +342,10 @@ While the **Indexes Tab interface provides the most comprehensive index manageme
 5. Are there usage limits?
 	* Next uses shared LLMs for evaluation and may have daily limits. For production, configure your own EPAM AI DIAL keys in Settings → [AI Configuration](../../menus/settings/ai-configuration.md) and see [Configure EPAM AI DIAL Key](../../getting-started/configure-epam-ai-dial-key.md).
 
-## Useful Information
-
-* Release details and changes: [Release Notes 1.7.0](../../release-notes/rn_current.md)
-* AI Configuration (models, embeddings, vector storage): [AI Configuration](../../menus/settings/ai-configuration.md)
-* Add Teammates to conversations: [Guide](../chat-conversations/add-teammates-to-conversation.md)
-* Troubleshooting Chat and Canvas usage: [Chat – Advanced Usage](../chat-conversations/how-to-use-chat-functionality.md) and [Canvas – Advanced Usage](../chat-conversations/how-to-canvas.md)
-
 !!! success "Next steps"
 	* **Start with the Indexes Tab**: Use the [How to create and use indexes](./using-indexes-tab-interface.md) guide to create your first index via the dedicated interface.
 	* **Index one system** (e.g., a single repo or space) to validate settings using the Indexes Tab visual progress monitoring.
 	* **Try integrated search tools** from the Indexes Tab Run interface: Search Index and Stepback Summary Index to compare results quality.
-	* **Expand scope** and schedule regular re-indexing as content changes using the Indexes Tab management features.
+	* **Review index history**: Use the History tab to track all indexing operations with sortable columns and detailed event information.
+	* **Expand scope** and schedule regular re-indexing as content changes using the Indexes Tab management features with automated scheduling via cron expressions.
 
