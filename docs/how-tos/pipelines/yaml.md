@@ -106,7 +106,7 @@ The `nodes` array contains all pipeline nodes with common structure plus node-sp
 
 ## Node-Type-Specific Configurations
 
-Complete configurations for all 13 node types. See [Nodes Overview](nodes/overview.md) for detailed documentation.
+Complete configurations for all 7 node types. See [Nodes Overview](nodes/overview.md) for detailed documentation.
 
 ### 1. [LLM Node](nodes/interaction-nodes.md#llm-node)
 
@@ -161,50 +161,7 @@ Executes pre-configured agents.
     tool: Github
 ```
 
-### 3. [Function Node](nodes/execution-nodes.md#function-node)
-
-Executes single toolkit function.
-
-```yaml
-  - id: Function 1
-    type: function
-    tool: read_page_by_id
-    input:
-      - counter
-    output:
-      - metadata
-    structured_output: false
-    input_mapping:
-      skip_images:
-        type: fixed
-        value: false
-      page_id:
-        type: fixed
-        value: ''
-    transition: END
-    toolkit_name: ELITEATEST
-```
-
-### 4. [Tool Node](nodes/execution-nodes.md#tool-node)
-
-Executes multiple toolkit functions.
-
-```yaml
-- id: MultiTool
-  type: tool
-  tool: ["function1", "function2"]
-  toolkit_name: MyToolkit
-  input: [input_data]
-  output: [tool_results]
-  structured_output: false
-  input_mapping:
-    param1:
-      type: variable
-      value: input_data
-  transition: END
-```
-
-### 5. [Code Node](nodes/execution-nodes.md#code-node)
+### 3. [Code Node](nodes/execution-nodes.md#code-node)
 
 Executes Python in sandbox.
 
@@ -228,7 +185,7 @@ Executes Python in sandbox.
 !!! info "Code Node Rules"
     Use `alita_state.get('var')` to access state variables, return dict with `structured_output: true`
 
-### 6. [Router Node](nodes/control-flow-nodes.md#router-node)
+### 4. [Router Node](nodes/control-flow-nodes.md#router-node)
 
 Template-based routing with Jinja2.
 
@@ -248,28 +205,7 @@ Template-based routing with Jinja2.
     {% endif %}
 ```
 
-### 7. [Condition Node](nodes/control-flow-nodes.md#condition-node)
-
-Boolean-based routing.
-
-```yaml
-- id: ApprovalCheck
-  type: condition
-  input: [input, branches]
-  output: [branches]
-  condition:
-    condition_definition: |
-      {% if 'approved' in input|lower %}
-        PublishNode
-      {% else %}
-        ReviewNode
-      {% endif %}
-    condition_input: [input, branches]
-    conditional_outputs: [PublishNode]
-    default_output: ReviewNode
-```
-
-### 8. [Decision Node](nodes/control-flow-nodes.md#decision-node)
+### 5. [Decision Node](nodes/control-flow-nodes.md#decision-node)
 
 LLM-powered routing.
 
@@ -289,55 +225,7 @@ LLM-powered routing.
     toolkit1: [tool_a]
 ```
 
-### 9. [Loop Node](nodes/iteration-nodes.md#loop-node)
-
-Iterates over task list.
-
-```yaml
-- id: ProcessItems
-  type: loop
-  input: [item_list]
-  output: [processed_items]
-  transition: SummaryNode
-  input_mapping:
-    task_instructions:
-      type: fixed
-      value: "Process each item"
-    variables_mapping:
-      type: fixed
-      value:
-        items: item_list
-```
-
-### 10. [Loop from Tool Node](nodes/iteration-nodes.md#loop-from-tool-node)
-
-Iterates over toolkit results.
-
-```yaml
-- id: ProcessSearchResults
-  type: loop_from_tool
-  tool: search_index
-  toolkit_name: EPMALTA
-  input: [query]
-  output: [all_results]
-  transition: AggregateResults
-  input_mapping:
-    task_instructions:
-      type: fixed
-      value: "Analyze each result"
-    variables_mapping:
-      type: fixed
-      value:
-        results: search_results
-    query:
-      type: variable
-      value: query
-```
-
-!!! warning "Required Mapping"
-    `variables_mapping` is critical—see [Iteration Nodes](nodes/iteration-nodes.md#loop-from-tool-node)
-
-### 11. [State Modifier Node](nodes/utility-nodes.md#state-modifier-node)
+### 6. [State Modifier Node](nodes/utility-nodes.md#state-modifier-node)
 
 Transforms state with Jinja2 templates.
 
@@ -370,19 +258,6 @@ Transforms state with Jinja2 templates.
   transition: NextStep
 ```
 
-### 12. [Pipeline Node](nodes/utility-nodes.md#pipeline-subgraph-node)
-
-Executes nested pipelines.
-
-```yaml
-- id: RunSubPipeline
-  type: pipeline
-  tool: "Baseline Automation assessment"
-  input: []
-  output: []
-  transition: NextNode
-```
-
 ---
 
 ## [Entry Point](entry-point.md)
@@ -399,7 +274,7 @@ nodes:
 ```
 
 !!! warning "Rules"
-     Must reference existing node ID; only one per pipeline; Router/Condition nodes cannot be entry points
+     Must reference existing node ID; only one per pipeline; Router nodes cannot be entry points
 
 ---
 
@@ -434,7 +309,7 @@ Nodes connect via `transition`, `condition`, `decision`, or routes. See [Nodes C
   transition: Step2
   
 - id: Step2
-  type: function
+  type: code
   transition: END
 ```
 
@@ -453,23 +328,6 @@ nodes:
       {% else %}
         ProcessB
       {% endif %}
-```
-
-**Condition:**
-```yaml
-nodes:
-  - id: CheckApproval
-    type: condition
-    condition:
-      condition_definition: |
-        {% if 'approved' in input|lower %}
-          PublishNode
-        {% else %}
-          ReviewNode
-        {% endif %}
-      conditional_outputs:
-        - PublishNode
-      default_output: ReviewNode
 ```
 
 **Decision:**
@@ -585,7 +443,7 @@ value: None
 **Invalid Type:**
 ```yaml
 ✘ type: invalid_type
-✔️ type: llm  # Use: llm, agent, function, tool, code, custom, router, condition, decision, loop, loop_from_tool, state_modifier, pipeline
+✔️ type: llm  # Use: llm, agent, toolkit, mcp, code, custom, router, decision, state_modifier
 ```
 
 **Missing Fields:**
@@ -681,8 +539,7 @@ nodes:
 * [Nodes Connectors](nodes-connectors.md) - Connection patterns
 * [Entry Point](entry-point.md) - Entry point rules
 * [Interaction Nodes](nodes/interaction-nodes.md) - LLM, Agent
-* [Execution Nodes](nodes/execution-nodes.md) - Function, Tool, Code nodes
-* [Control Flow Nodes](nodes/control-flow-nodes.md) - Router, Condition, Decision
-* [Iteration Nodes](nodes/iteration-nodes.md) - Loop nodes
-* [Utility Nodes](nodes/utility-nodes.md) - State Modifier, Pipeline
+* [Execution Nodes](nodes/execution-nodes.md) - Toolkit, MCP, Code, Custom nodes
+* [Control Flow Nodes](nodes/control-flow-nodes.md) - Router, Decision
+* [Utility Nodes](nodes/utility-nodes.md) - State Modifier
 

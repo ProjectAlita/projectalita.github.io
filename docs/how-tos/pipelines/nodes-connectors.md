@@ -26,16 +26,17 @@ The Entry Point is the first node that executes when your pipeline runs. Every p
 2. Click the three-dots menu (⋮) on the node
 3. Select **Make entrypoint**
 
-![Make entrypoint menu option](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/make-entrypoint-menu.png)
+![Make entrypoint menu option](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/node-menu-options.png){loading=lazy}
+
 **YAML Method:**
 
 ```yaml
-entry_point: Tool 1
+entry_point: Validate Input
 ```
 
 !!! warning "Entry Point Rules"
     - Only **one node** can be the entry point
-    - **Router** and **Condition** nodes **cannot** be entry points (they require input from previous nodes)
+    - **Router**  node **cannot** be entry point (they require input from previous nodes)
     - All other node types can serve as entry points
     - Entry point must be set before running the pipeline
 
@@ -75,7 +76,7 @@ transition: END
 !!! note "Complete Execution Paths"
     Every execution path must eventually reach END. Paths without termination may cause unexpected behavior.
 
-![Multiple paths converging to END](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/end-node.png)
+![Multiple paths converging to END](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/end-node.gif){loading=lazy}
 
 ---
 
@@ -87,7 +88,7 @@ All nodes have **input** and **output** ports for connectors:
 |-----------|---------|------------------|
 | **Input** | Receives data/control from previous nodes | Top of node card |
 | **Output** | Sends data/control to next nodes | Bottom of node card |
-| **Default Output** | Fallback path (Router, Condition, Decision only) | Labeled separately |
+| **Default Output** | Fallback path (Router, Decision only) | Labeled separately |
 
 ---
 
@@ -99,26 +100,25 @@ Most nodes can have **only ONE output connection**:
 
 * LLM
 * Agent
-* Function
-* Tool
+* Toolkit
+* MCP
 * Code
-* Loop
-* Loop from Tool
+* Custom
 * State Modifier
-* Pipeline (Subgraph)
+* Printer
 * Decision
 
 **YAML Example:**
 
 ```yaml
 - id: Process Data
-  type: function
+  type: code
   transition: Display Results
 ```
 
 ### Multi-Output Nodes
 
-Three node types support **multiple outputs**:
+Two node types support **multiple outputs**:
 
 #### 1. Router Node
 
@@ -142,26 +142,7 @@ Routes execution based on conditional logic. Can have:
 ```
 
 
-#### 2. Condition Node
-
-Boolean evaluation with two outputs:
-
-* **True output**: When condition evaluates to true
-* **False output**: When condition evaluates to false
-
-**YAML Example:**
-
-```yaml
-- id: Check Approval
-  type: condition
-  condition: "{{ status == 'approved' }}"
-  transitions:
-    true: Publish Story
-    false: Request Changes
-```
-
-
-#### 3. Decision Node
+#### 2. Decision Node
 
 LLM-powered routing to multiple destinations.
 
@@ -191,7 +172,7 @@ All nodes can accept **multiple input connections**, allowing:
 
 ```yaml
 - id: Generate Report
-  type: function
+  type: toolkit
   # Can receive input from multiple nodes
   transition: Email Results
 
@@ -203,7 +184,7 @@ All nodes can accept **multiple input connections**, allowing:
   transition: Generate Report
 ```
 
-![Multiple nodes connecting to single node](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/multiple-inputs.png)
+![Multiple nodes connecting to single node](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/multiple-inputs.png){loading=lazy}
 
 ---
 
@@ -221,7 +202,7 @@ transition: <node_id>
 
 ```yaml
 - id: Fetch Data
-  type: function
+  type: toolkit
   transition: Process Data  # Next node ID
 ```
 
@@ -237,17 +218,6 @@ routes:
   - when: "{{ condition_2 }}"
     transition: Node B
 default: Default Node  # Optional fallback
-```
-
-### Boolean Transitions (Condition)
-
-True/false paths:
-
-```yaml
-condition: "{{ expression }}"
-transitions:
-  true: Success Node
-  false: Failure Node
 ```
 
 ### Decision-Based Transitions
@@ -280,7 +250,7 @@ ELITEA provides multiple ways to create connections in Flow mode:
 2. Drag the connector line across the canvas
 3. Release on the **input port** (top of target node)
 
-![Dragging connector between nodes](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/drag-from-node.png)
+![Dragging connector between nodes](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/drag-from-node.gif){loading=lazy}
 
 **Method 2: Dropdown Menu**
 
@@ -291,7 +261,7 @@ ELITEA provides multiple ways to create connections in Flow mode:
    - **Create New Node** - Add and connect new node
    - **END** - Terminate pipeline
 
-![Dragging connector between nodes](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/drag-connector.png)
+![Dragging connector between nodes](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/drag-connector.gif){loading=lazy}
 
 ---
 
@@ -316,7 +286,8 @@ interrupt_before:
 
 **Visual:** Toggle **Interrupt Before** in node's Advanced settings
 
-![Interrupt Before toggle](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/interrupt.png)
+![Interrupt Before toggle](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/interrupt.png){loading=lazy}
+
 ### Interrupt After
 
 Pauses execution **after a node completes**. Useful for:
@@ -351,7 +322,7 @@ Sequential execution through nodes.
 entry_point: Step 1
 nodes:
   - id: Step 1
-    type: function
+    type: code
     transition: Step 2
 
   - id: Step 2
@@ -359,34 +330,11 @@ nodes:
     transition: Step 3
 
   - id: Step 3
-    type: function
+    type: code
     transition: END
 ```
 
-![Linear flow diagram](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/pattern-linear.png)
-
-### Conditional Branching
-
-Route based on true/false condition.
-
-```yaml
-entry_point: Check Status
-nodes:
-  - id: Check Status
-    type: condition
-    condition: "{{ approved }}"
-    transitions:
-      true: Publish
-      false: Request Changes
-
-  - id: Publish
-    type: function
-    transition: END
-
-  - id: Request Changes
-    type: llm
-    transition: END
-```
+![Linear flow diagram](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/pattern-linear.png){loading=lazy}
 
 ### Multi-Path Routing
 
@@ -420,15 +368,15 @@ nodes:
         - Process Type B
 
   - id: Process Type A
-    type: function
+    type: toolkit
     transition: Generate Report
 
   - id: Process Type B
-    type: function
+    type: toolkit
     transition: Generate Report
 
   - id: Generate Report
-    type: function
+    type: toolkit
     transition: END
 ```
 
@@ -454,7 +402,7 @@ nodes:
 entry_point: Validate User Input
 nodes:
   - id: Validate User Input
-    type: function
+    type: code
     transition: Process Valid Data
 
   - id: Process Valid Data
@@ -481,6 +429,6 @@ nodes:
 !!! tip "Related Documentation"
     - **[Entry Point Guide](entry-point.md)** - Detailed entry point configuration
     - **[State Management](states.md)** - Data flow between nodes
-    - **[Control Flow Nodes](nodes/control-flow-nodes.md)** - Router, Condition, and Decision nodes
+    - **[Control Flow Nodes](nodes/control-flow-nodes.md)** - Router and Decision nodes
     - **[Flow Editor](flow-editor.md)** - Visual pipeline design
     - **[YAML Configuration](yaml.md)** - Complete YAML syntax reference

@@ -75,25 +75,25 @@ Both Pipelines and Agents are powerful automation tools in ELITEA, but they serv
 
 ### Use Pipelines When:
 
-✅ **Structured Workflows**: You have a clear, defined sequence of steps that need to happen in order
+✔️ **Structured Workflows**: You have a clear, defined sequence of steps that need to happen in order
 
-✅ **Multiple Integrations**: Your workflow requires connecting to several external tools or services (Jira, GitHub, Confluence, etc.)
+✔️ **Multiple Integrations**: Your workflow requires connecting to several external tools or services (Jira, GitHub, Confluence, etc.)
 
-✅ **Conditional Logic**: You need to make decisions and branch the workflow based on specific conditions
+✔️ **Conditional Logic**: You need to make decisions and branch the workflow based on specific conditions
 
-✅ **Data Processing**: You're handling data transformation, validation, or aggregation across multiple steps
+✔️ **Data Processing**: You're handling data transformation, validation, or aggregation across multiple steps
 
-✅ **Orchestration**: You need to coordinate multiple agents, tools, or sub-processes as part of a larger workflow
+✔️ **Orchestration**: You need to coordinate multiple agents, tools, or sub-processes as part of a larger workflow
 
 ### Use Agents When:
 
-✅ **Conversational Interactions**: You want a more free-form, chat-based interaction with users
+✔️ **Conversational Interactions**: You want a more free-form, chat-based interaction with users
 
-✅ **Single-Purpose Tasks**: The task is focused and doesn't require complex branching or orchestration
+✔️ **Single-Purpose Tasks**: The task is focused and doesn't require complex branching or orchestration
 
-✅ **Exploratory Work**: Users need to ask questions and explore information dynamically
+✔️ **Exploratory Work**: Users need to ask questions and explore information dynamically
 
-✅ **Simple Automation**: The workflow is straightforward without complex conditional logic
+✔️ **Simple Automation**: The workflow is straightforward without complex conditional logic
 
 !!! tip "Combining Both"
     Pipelines can include Agents as nodes! Use Agents for specific tasks within a larger Pipeline workflow to get the best of both approaches.
@@ -105,7 +105,7 @@ Understanding pipelines requires familiarity with their core components. Each bu
 | Building Block | Description | Purpose | Key Topics |
 |----------------|-------------|---------|------------|
 | **[States](states.md)** | Pipeline's memory system for storing and managing data | Track information collected during execution and pass data between nodes | State variables, data types, input vs messages, state initialization |
-| **[Nodes](nodes/overview.md)** | Individual actions or steps in your pipeline workflow | Perform specific tasks like interacting with users, calling services, making decisions, or processing data | 13 different node types organized into 5 categories (Interaction, Execution, Control Flow, Iteration, Utility) |
+| **[Nodes](nodes/overview.md)** | Individual actions or steps in your pipeline workflow | Perform specific tasks like interacting with users, calling services, making decisions, or processing data | 7 different node types organized into 3 categories (Interaction, Execution, Control Flow, Utility) |
 | **[Connections](nodes-connectors.md)** | Links between nodes that control execution flow | Define how the pipeline moves from one step to the next, including conditional branching | Simple transitions, conditional edges, decision edges, router outputs, data mapping |
 | **[Entry Point](entry-point.md)** | Designated starting node of your pipeline | Define where execution begins when the pipeline is triggered | Entry point syntax, validation rules, using different node types as starting points |
 | **[Flow Editor](flow-editor.md)** | Visual interface for designing pipelines graphically | Build complex workflows using drag-and-drop without writing code | Creating nodes visually, connecting nodes, configuring parameters, debugging |
@@ -139,7 +139,6 @@ Ready to dive deeper? We recommend exploring the building blocks in this order:
 ### Explore Advanced Topics
 
 * **[Agent Integration](nodes/interaction-nodes.md#agent-node)**: Incorporate AI agents into pipelines
-* **[Pipeline Nesting](nodes/utility-nodes.md#pipeline-subgraph-node)**: Create complex workflows by combining pipelines
 * **[Monitoring & Debugging](../../menus/pipelines.md#monitoring-tab)**: Track performance and troubleshoot issues
 
 ### Get Inspired
