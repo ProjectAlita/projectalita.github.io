@@ -3,7 +3,7 @@ name: Deploy Documentation to GitHub Pages
 on:
   workflow_dispatch:
   push:
-    branches: [main, redesign_getting_started_section]
+   # Only manual trigger, no automatic push triggers
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
@@ -71,7 +71,7 @@ jobs:
           echo "Configuring MkDocs for /docs/ subdirectory..."
           
           # Backup original
-          cp mkdocs.yml mkdocs.yml. backup
+          cp mkdocs.yml mkdocs.yml.backup
           
           # Update site_url in mkdocs.yml
           if grep -q "# site_url:  use_directory_urls:  true" mkdocs.yml; then
