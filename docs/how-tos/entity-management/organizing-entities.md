@@ -143,7 +143,6 @@ Effective organization with **Tags** and **PINs** is crucial for managing your A
 
 To further expand your knowledge and skills in organizing Entities and utilizing Collections within ELITEA, here are some helpful resources:
 
-*   **[Collections Menu](../../menus/collections.md)**:  Access the dedicated Collections Menu Guide for a comprehensive walkthrough of the Collections menu interface, features, and functionalities within ELITEA.
 *   **[ELITEA Public Project Guide](../../features/public-project.md)**:  Explore the ELITEA Public Project to discover and utilize community-shared Prompts and Collections. Learn more about the purpose and guidelines of the Public project.
 *   **[Export and Import Guide](../../features/export-import.md)**:  Refer to the detailed Export and Import Guide for in-depth instructions on exporting and importing individual Entities and entire Collections within ELITEA.
 **Example Tagging Scenarios:**
@@ -183,5 +182,4 @@ To further expand your knowledge and skills in organizing Entities within ELITEA
 
 *   **[Pin Entities Guide](working-with-pins.md)**: Comprehensive guide to using PINs for quick access to frequently used entities
 *   **[Search Entities](search-entities.md)**: Learn how to efficiently search and filter entities in ELITEA
-*   **[Collections Menu (Deprecated)](../../menus/collections.md)**: Information about the deprecated Collections feature
 *   **[Export and Import Guide](../../features/export-import.md)**: Instructions on exporting and importing entities

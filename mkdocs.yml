@@ -97,6 +97,8 @@ nav:
               - Nodes Connectors: how-tos/pipelines/nodes-connectors.md
               - Entry Point: how-tos/pipelines/entry-point.md
               - Flow Editor: how-tos/pipelines/flow-editor.md
+              - AI Assistant in Nodes: how-tos/pipelines/ai-assistant-in-nodes.md
+              - Pipeline Runs: how-tos/pipelines/pipeline-runs.md
               - YAML Configuration: how-tos/pipelines/yaml.md
               - Appendix - Comparison Tables: how-tos/pipelines/appendix-comparison-tables.md
       - Credentials & Toolkits:
@@ -173,6 +175,12 @@ nav:
           - RN 1.0.0: release-notes/archived/rn1.md
 
   - Migration & Upgrade:
+      - Upgrading to v2.0.1:
+          - Condition Node Migration: migration/v2.0.1/condition-node-migration.md
+          - Function Node Migration: migration/v2.0.1/function-node-migration.md
+          - Loop Node Migration: migration/v2.0.1/loop-node-migration.md
+          - Pipeline Node Migration: migration/v2.0.1/pipeline-node-migration.md
+          - Tool Node Migration: migration/v2.0.1/tool-node-migration.md
       - Upgrading to v2.0.0:
           - Migration Overview: migration/v2.0.0/migration-overview.md
           - Update LLM Nodes in Pipelines: migration/v2.0.0/update-llm-nodes.md
@@ -201,8 +209,8 @@ nav:
       - Creating Prompts: archive/creating-prompts.md
       - Prompts: archive/prompts.md
       - Datasources: archive/datasources.md
-      - Collections: menus/collections.md
-      - What is a collection?: home/key-concepts/what-is-a-collection.md
+      - Collections: archive/collections.md
+      - What is a collection?: archive/what-is-a-collection.md
       - Agents Examples: archive/agents-examples.md
       - Prompts Examples: archive/prompts-examples.md
       - Export & Import Entities: features/export-import.md

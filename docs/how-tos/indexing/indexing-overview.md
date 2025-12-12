@@ -109,7 +109,7 @@ Use these steps to prepare your project and toolkit before running **Index data*
 
 !!! info "Helpful links"
     * Create a Credential: [Guide](../../getting-started/create-credential.md)
-    * Create a Toolkit: [Guide](../../getting-started/create-toolkit.md)
+    * Create a Toolkit: [Guide](../chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md)
     * Examples: [GitHub](./index-github-data.md), [Confluence](./index-confluence-data.md), [Jira](./index-jira-data.md), [SharePoint](./index-sharepoint-data.md)
 
 ## Index data and verify
