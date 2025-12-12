@@ -19,6 +19,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Download existing landing page from GitHub Pages
+      - name: Download existing landing page
+        run: |
+          echo "Downloading existing landing page..."
+          mkdir -p existing-landing
+          wget -r -np -nH -R "docs*" -P existing-landing https://elitea.ai/ || echo "Download completed"
+          
+          # Clean up wget artifacts
+          rm -f existing-landing/robots.txt.tmp
+          
+          echo "Downloaded landing page structure:"
+          ls -la existing-landing/
+
       # Build MkDocs Documentation
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -40,14 +53,23 @@ jobs:
       - name: Build MkDocs documentation
         run: mkdocs build --clean --config-file mkdocs.yml
 
-      # Prepare deployment
-      - name: Prepare deployment
+      # Prepare unified deployment
+      - name: Prepare unified deployment
         run: |
           # Create deployment directory
-          mkdir -p _deploy/docs
+          mkdir -p _deploy
+          
+          # Copy existing landing page
+          echo "Preserving existing landing page..."
+          if [ -d "existing-landing" ] && [ "$(ls -A existing-landing)" ]; then
+            cp -r existing-landing/* _deploy/
+          else
+            echo "Warning: Could not preserve landing page!"
+          fi
           
           # Copy MkDocs build (docs at /docs subdirectory)
-          echo "Copying MkDocs documentation to /docs..."
+          echo "Copying NEW MkDocs documentation to /docs..."
+          mkdir -p _deploy/docs
           cp -r site/* _deploy/docs/
           
           # Add .nojekyll to prevent Jekyll processing
