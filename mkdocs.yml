@@ -16,8 +16,6 @@ nav:
           - What is a toolkit?: home/key-concepts/what-is-a-toolkit.md
           - What is a conversation?: home/key-concepts/what-is-a-conversation.md
           - What is an artifact?: home/key-concepts/what-is-an-artifact.md
-          - What is a collection?: home/key-concepts/what-is-a-collection.md
-
   - Getting Started:
       - Quick Start:
           - Start Chat: getting-started/chat-quick-start.md
@@ -46,7 +44,6 @@ nav:
           - Credentials: menus/credentials.md
           - Toolkits: menus/toolkits.md
           - MCPs: menus/mcps.md
-          - Collections: menus/collections.md
           - Artifacts: menus/artifacts.md
           - Agents Studio: menus/agents-studio.md
 
@@ -110,6 +107,7 @@ nav:
           - Use Webhooks: how-tos/credentials-toolkits/how-to-use-webhooks.md
       - Entity Management:
           - Search Entities: how-tos/entity-management/search-entities.md
+          - Pin Entities: how-tos/entity-management/working-with-pins.md
           - Organizing Entities: how-tos/entity-management/organizing-entities.md
           - Manage Roles & Permissions: how-tos/entity-management/manage-users-and-roles.md
   - Integrations:
@@ -203,6 +201,8 @@ nav:
       - Creating Prompts: archive/creating-prompts.md
       - Prompts: archive/prompts.md
       - Datasources: archive/datasources.md
+      - Collections: menus/collections.md
+      - What is a collection?: home/key-concepts/what-is-a-collection.md
       - Agents Examples: archive/agents-examples.md
       - Prompts Examples: archive/prompts-examples.md
       - Export & Import Entities: features/export-import.md
