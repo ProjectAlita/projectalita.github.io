@@ -1,13 +1,11 @@
-name: Deploy Landing + Docs to GitHub Pages
+name: Deploy Landing Page to GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
-      - 'docs/**'
-      - 'mkdocs.yml'
       - 'web/**'
-      - '.github/workflows/deploy-unified.yml'
+      - '.github/workflows/deploy-landing.yml'
   workflow_dispatch:
 
 permissions:
@@ -44,29 +42,8 @@ jobs:
           cd web
           npm run build
 
-      # Build MkDocs Documentation
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-
-      - name: Cache Python dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install MkDocs and dependencies
-        run: |
-          pip install mkdocs mkdocs-material mkdocs-glightbox
-
-      - name: Build MkDocs documentation
-        run: mkdocs build --clean --config-file mkdocs.yml
-
-      # Combine both builds into unified deployment
-      - name: Prepare unified deployment
+      # Prepare deployment
+      - name: Prepare deployment
         run: |
           # Create deployment directory
           mkdir -p _deploy
@@ -74,11 +51,6 @@ jobs:
           # Copy Next.js build (landing page at root)
           echo "Copying Next.js landing page to root..."
           cp -r web/out/* _deploy/
-          
-          # Copy MkDocs build (docs at /docs subdirectory)
-          echo "Copying MkDocs documentation to /docs..."
-          mkdir -p _deploy/docs
-          cp -r site/* _deploy/docs/
           
           # Add .nojekyll to prevent Jekyll processing
           touch _deploy/.nojekyll
@@ -89,8 +61,6 @@ jobs:
           # Display structure for verification
           echo "Deployment structure:"
           ls -la _deploy/
-          echo "Docs subdirectory:"
-          ls -la _deploy/docs/ | head -20
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
