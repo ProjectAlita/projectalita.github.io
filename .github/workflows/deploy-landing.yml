@@ -1,11 +1,6 @@
-name: Deploy Landing Page to GitHub Pages
+name: Deploy Documentation to GitHub Pages
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'web/**'
-      - '.github/workflows/deploy-landing.yml'
   workflow_dispatch:
 
 permissions:
@@ -24,33 +19,58 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Build Next.js Landing Page
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      # Download existing landing page from GitHub Pages
+      - name: Download existing landing page
+        run: |
+          echo "Downloading existing landing page..."
+          mkdir -p existing-landing
+          wget -r -np -nH -R "docs*" -P existing-landing https://elitea.ai/ || echo "Download completed"
+          
+          # Clean up wget artifacts
+          rm -f existing-landing/robots.txt.tmp
+          
+          echo "Downloaded landing page structure:"
+          ls -la existing-landing/
+
+      # Build MkDocs Documentation
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: './web/package-lock.json'
+          python-version: "3.x"
 
-      - name: Install Next.js dependencies
+      - name: Cache Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install MkDocs and dependencies
         run: |
-          cd web
-          npm ci
+          pip install mkdocs mkdocs-material mkdocs-glightbox
 
-      - name: Build Next.js app
-        run: |
-          cd web
-          npm run build
+      - name: Build MkDocs documentation
+        run: mkdocs build --clean --config-file mkdocs.yml
 
-      # Prepare deployment
-      - name: Prepare deployment
+      # Prepare unified deployment
+      - name: Prepare unified deployment
         run: |
           # Create deployment directory
           mkdir -p _deploy
           
-          # Copy Next.js build (landing page at root)
-          echo "Copying Next.js landing page to root..."
-          cp -r web/out/* _deploy/
+          # Copy existing landing page
+          echo "Preserving existing landing page..."
+          if [ -d "existing-landing" ] && [ "$(ls -A existing-landing)" ]; then
+            cp -r existing-landing/* _deploy/
+          else
+            echo "Warning: Could not preserve landing page!"
+          fi
+          
+          # Copy MkDocs build (docs at /docs subdirectory)
+          echo "Copying NEW MkDocs documentation to /docs..."
+          mkdir -p _deploy/docs
+          cp -r site/* _deploy/docs/
           
           # Add .nojekyll to prevent Jekyll processing
           touch _deploy/.nojekyll
@@ -61,6 +81,8 @@ jobs:
           # Display structure for verification
           echo "Deployment structure:"
           ls -la _deploy/
+          echo "Docs subdirectory:"
+          ls -la _deploy/docs/ | head -20
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
