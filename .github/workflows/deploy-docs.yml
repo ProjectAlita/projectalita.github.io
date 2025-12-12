@@ -3,7 +3,7 @@ name: Deploy Documentation to GitHub Pages
 on:
   workflow_dispatch:
   push:
-    branches: [main, redesign_getting_started_section]
+    # Only manual trigger, no automatic push triggers
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
