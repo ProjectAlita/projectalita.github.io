@@ -127,13 +127,13 @@ Ready to dive deeper? We recommend exploring the building blocks in this order:
 6. **Reference [Appendix - Comparison Tables](appendix-comparison-tables.md)** - Quick comparisons of node types and features
 
 !!! info "Prerequisites"
-    Before building pipelines, make sure you've completed the [Quick Start Guide](../../getting-started/quick-start.md) and familiarized yourself with [Creating a Pipeline](../../getting-started/create-pipeline.md).
+    Before building pipelines, make sure you've completed the [Quick Start Guide](../../getting-started/chat-quick-start.md) and familiarized yourself with [Creating a Pipeline](../chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md).
 
 ## Next Steps
 
 ### Learn by Doing
 
-* **[Create Your First Pipeline](../../getting-started/create-pipeline.md)**: Step-by-step tutorial for beginners
+* **[Create Your First Pipeline](../chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md)**: Step-by-step tutorial for beginners
 * **[Pipelines Menu Guide](../../menus/pipelines.md)**: Complete reference for the Pipelines interface
 
 ### Explore Advanced Topics

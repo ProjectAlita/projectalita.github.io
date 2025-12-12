@@ -19,7 +19,7 @@ export interface Experiment {
 
 export const phaseConfig = {
   'phase-1': {
-    label: 'Phase 1',
+    label: 'Case-Study',
     title: 'Applied AI for Testers',
     color: 'bg-primary-500',
     textColor: 'text-primary-600'
@@ -31,7 +31,7 @@ export const phaseConfig = {
     textColor: 'text-secondary-600'
   },
   'phase-3': {
-    label: 'Phase 3',
+    label: 'Research',
     title: 'Applied AI Lab', 
     color: 'bg-accent-500',
     textColor: 'text-accent-600'
@@ -43,10 +43,21 @@ export const experiments: Experiment[] = [
     id: 'epic-to-test-suite',
     title: 'Epic to Test Suite Generator',
     description: 'Transform epics into comprehensive test cases with AI-powered analysis and coverage mapping',
+    videoId: 'h_TGDgsgMzI',
     phase: 'phase-1',
     status: 'coming-soon',
     backgroundImage: '/assets/covers/ba1png.png',
     link: '/experiments/epic-to-test-suite'
+  },
+  {
+    id: 'inventory-knowledge-graph',
+    title: 'Inventory Knowledge Graph',
+    description: 'Build unified knowledge from multi-source contexts for AI-powered code intelligence and agent reasoning',
+    phase: 'phase-3',
+    status: 'coming-soon',
+    videoId: 'O3FIvEjbpGQ',
+    backgroundImage: '/assets/covers/product-inventory.png',
+    link: '/experiments/inventory-graph'
   },
   {
     id: 'requirements-designer',

@@ -250,15 +250,25 @@ export default function EpicToTestSuitePage() {
                     WebkitBackdropFilter: 'blur(20px) saturate(180%)',
                   }}
                 >
-                  <div className="aspect-video bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl flex items-center justify-center border border-blue-200/50 dark:border-blue-700/50">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-blue-500 dark:bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
-                      </div>
-                      <p className="text-blue-700 dark:text-blue-300 font-medium">Demo Video Coming Soon</p>
-                    </div>
+                  <div className="relative aspect-video bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl overflow-hidden border border-blue-200/50 dark:border-blue-700/50">
+                    <iframe
+                      src="https://www.youtube.com/embed/h_TGDgsgMzI"
+                      title="Epic to Test Suite Generator Demo"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full"
+                    />
+                    <a
+                      href="https://youtu.be/h_TGDgsgMzI"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg transition-colors duration-200 flex items-center gap-2 z-10"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                      </svg>
+                      Watch on YouTube
+                    </a>
                   </div>
                 </div>
               </motion.div>

@@ -6,7 +6,7 @@ nav:
       - Welcome to Elitea:
           - Elitea Values: index.md
           - Introduction: home/introduction.md
-          - Quick Start: getting-started/quick-start.md
+          - Quick Start: getting-started/chat-quick-start.md
           - Glossary: home/glossary.md
           - Onboarding Tips: home/onboarding-tips.md
       - Key Concepts:
@@ -19,23 +19,23 @@ nav:
           - What is a collection?: home/key-concepts/what-is-a-collection.md
 
   - Getting Started:
-      - Quick Starts:
-          - Very Quick Start: getting-started/very-quick-start.md
-          - Quick Start: getting-started/quick-start.md
-      - Initial Setup:
+      - Quick Start:
+          - Start Chat: getting-started/chat-quick-start.md
+          - Connect Toolkits: getting-started/connect-toolkits-quick-start.md
+
+      - Troubleshooting & System Check:
+          - Quick Health Check: getting-started/system-health-checklist.md
+      - Guides (Advanced):
+          - Create a Pipeline(Canvas): how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
+          - Create a MCP(Canvas): how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
+          - Create an Artifact: getting-started/create-artifact.md
+          - How to create and use indexes: how-tos/indexing/using-indexes-tab-interface.md
+          - Configure and Use Server (STDIO): integrations/mcp/create-and-use-server-stdio.md
+          - Configure and Use Client (STDIO): integrations/mcp/create-and-use-client-stdio.md
+          - Configure EPAM AI DIAL Keys: getting-started\configure-epam-ai-dial-key.md
           - Create a Personal Access Token: getting-started/create-personal-access-token.md
           - Create a Secret: getting-started/create-secret.md
           - Create a Credential: getting-started/create-credential.md
-          - Create a Toolkit: getting-started/create-toolkit.md
-          - Configure EPAM AI DIAL Keys: getting-started/configure-epam-ai-dial-key.md
-      - Create Entities:
-          - Create an Agent: getting-started/create-agent.md
-          - Create an Artifact: getting-started/create-artifact.md
-          - Create a Pipeline: getting-started/create-pipeline.md
-          - Create a Conversation: getting-started/create-conversation.md
-          - Create an Index: getting-started/indexing-quick-start.md
-          - Configure and Use MCP Server(STDIO): getting-started/create-and-use-server-stdio.md
-          - Configure and Use MCP Client(STDIO): getting-started/create-and-use-client-stdio.md
 
   - Menus:
       - Main Menus:
@@ -48,6 +48,8 @@ nav:
           - MCPs: menus/mcps.md
           - Collections: menus/collections.md
           - Artifacts: menus/artifacts.md
+          - Agents Studio: menus/agents-studio.md
+
           - Settings:
               - Settings Overview: menus/settings/settings-overview.md
               - AI Configuration: menus/settings/ai-configuration.md
@@ -60,7 +62,7 @@ nav:
       - Chat & Conversations:
           - Chat Usage: how-tos/chat-conversations/how-to-use-chat-functionality.md
           - Canvas in Conversation: how-tos/chat-conversations/how-to-canvas.md
-          - Use Public Agents and Pipelines: how-tos/chat-conversations/use-public-items-from-chat.md
+          - Use Public Agents: how-tos/chat-conversations/use-public-items-from-chat.md
           - Add Teammates to Conversation: how-tos/chat-conversations/add-teammates-to-conversation.md
           - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
           - Internal Tools in Conversation: how-tos/chat-conversations/enable-internal-tools.md
@@ -116,6 +118,8 @@ nav:
           - Server (STDIO): integrations/mcp/mcp-server-stdio.md
           - Server (SSE): integrations/mcp/mcp-server-sse.md
           - Client (STDIO): integrations/mcp/mcp-client.md
+          - Configure and Use Server (STDIO): integrations/mcp/create-and-use-server-stdio.md
+          - Configure and Use Client (STDIO): integrations/mcp/create-and-use-client-stdio.md
           - Make Tools Available by MCP: integrations/mcp//make-tools-available-by-mcp.md
       - Toolkits:
           - ADO Repos: integrations/toolkits/ado_repos_toolkit.md
@@ -188,6 +192,13 @@ nav:
       - Additional Resources: support/additional-resources.md
 
   - Archive:
+      - Quick Start : archive/quick-start.md
+      - Very Quick Start : archive/very-quick-start.md
+      - Create Conversation: archive/create-conversation.md
+      - Create an Agent: archive/create-agent.md
+      - Create a Pipeline: archive/create-pipeline.md
+      - Create a Toolkit: archive/create-toolkit.md
+      - Indexing Quick Start: archive/indexing-quick-start.md
       - Prompt Magic Assistant: archive/prompt-magic-assistant.md
       - Alita Dial: archive/alita-dial.md
       - Creating Prompts: archive/creating-prompts.md

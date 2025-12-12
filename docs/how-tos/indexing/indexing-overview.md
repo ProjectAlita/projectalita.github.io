@@ -343,7 +343,7 @@ Once indexes exist, you can use Search Index or Stepback search tools through Ch
 	* Next uses shared LLMs for evaluation and may have daily limits. For production, configure your own EPAM AI DIAL keys in Settings → [AI Configuration](../../menus/settings/ai-configuration.md) and see [Configure EPAM AI DIAL Key](../../getting-started/configure-epam-ai-dial-key.md).
 
 !!! success "Next steps"
-	* **Start with the Indexes Tab**: Use the [Create first Index](../../getting-started/indexing-quick-start.md) guide to create your first index via the dedicated interface.
+	* **Start with the Indexes Tab**: Use the [How to create and use indexes](./using-indexes-tab-interface.md) guide to create your first index via the dedicated interface.
 	* **Index one system** (e.g., a single repo or space) to validate settings using the Indexes Tab visual progress monitoring.
 	* **Try integrated search tools** from the Indexes Tab Run interface: Search Index and Stepback Summary Index to compare results quality.
 	* **Review index history**: Use the History tab to track all indexing operations with sortable columns and detailed event information.

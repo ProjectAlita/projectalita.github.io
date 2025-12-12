@@ -109,38 +109,23 @@ export default function ExperimentCard({
           backgroundRepeat: 'no-repeat'
         } : {}}
       >
-        {status === 'published' ? (
-          <>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
-            <div className="absolute inset-0 flex items-center justify-center z-20">
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="w-16 h-16 bg-white/95 dark:bg-obsidian-200/95 backdrop-blur-lg rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.15),inset_0_1px_2px_rgba(255,255,255,1)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_1px_2px_rgba(255,255,255,0.1)] group-hover:bg-primary-600 dark:group-hover:bg-blue-500 group-hover:text-white transition-all duration-300 border border-white/40 dark:border-obsidian-300/40"
-              >
-                <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </motion.div>
-            </div>
-            {thumbnail && (
-              <img 
-                src={thumbnail} 
-                alt={title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-            )}
-          </>
-        ) : (
-          <div className="flex items-center justify-center h-full py-8">
-            <div className="text-center">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/70 dark:bg-obsidian-200/70 backdrop-blur-lg rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto shadow-[0_4px_12px_rgba(0,0,0,0.08),inset_0_1px_2px_rgba(255,255,255,0.9)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.3),inset_0_1px_2px_rgba(255,255,255,0.1)] border border-white/60 dark:border-obsidian-300/60">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <span className="text-sm sm:text-base text-gray-500 dark:text-gray-400 font-semibold">Coming Soon</span>
-            </div>
-          </div>
+        {/* Gradient overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
+        
+        {/* Thumbnail images */}
+        {thumbnail && (
+          <img 
+            src={thumbnail} 
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        )}
+        {videoId && !thumbnail && !backgroundImage && (
+          <img 
+            src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`} 
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
         )}
 
         {/* Badge */}
