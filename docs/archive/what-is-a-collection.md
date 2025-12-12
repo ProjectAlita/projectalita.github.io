@@ -34,6 +34,5 @@ Each collection type helps organize agents and pipelines logically and enables e
 ---
 
 !!! info "Reference"
-    Ready to organize your resources? Check out the [Collections menu](../../menus/collections.md) to create and manage your collections.
+    Ready to organize your resources? Check out the [Collections menu](../archive/collections.md) to create and manage your collections.
 
-    For detailed definitions of terms and concepts, please refer to the [ELITEA Glossary](../glossary.md)
