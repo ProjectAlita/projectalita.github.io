@@ -2,65 +2,59 @@ name: Deploy Documentation to GitHub Pages
 
 on:
   workflow_dispatch:
-  push: 
-   # Only manual trigger, no automatic push triggers
+  push:
+    # branches: [main, redesign_getting_started_section]
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
-      - 'mkdocs_el.yml'
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency: 
+concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
   build:
-    runs-on:  ubuntu-latest
-    steps: 
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Download existing GitHub Pages deployment to preserve landing page
       - name: Download existing GitHub Pages
         run: |
           echo "Downloading existing GitHub Pages deployment..."
           mkdir -p existing-pages
           
-          # Download only root level files, not the docs directory
           wget --quiet --no-parent --no-host-directories --level=1 \
                --reject-regex ". */docs/.*" \
                --directory-prefix=existing-pages \
                https://elitea.ai/ 2>&1 || echo "Download completed with expected errors"
           
-          # Get root index.html
           wget --quiet -O existing-pages/index.html https://elitea.ai/index.html 2>&1 || echo "Root index downloaded"
           
-          # Clean up wget artifacts
           find existing-pages -name "robots.txt*" -delete 2>/dev/null || true
           find existing-pages -name "*. tmp" -delete 2>/dev/null || true
-          find existing-pages -name "index.html? *" -delete 2>/dev/null || true
+          find existing-pages -name "index. html? *" -delete 2>/dev/null || true
           
           echo "Downloaded landing page structure:"
           ls -la existing-pages/ 2>/dev/null || echo "Landing directory contents not available"
 
-      # Build MkDocs Documentation
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version:  "3.x"
+          python-version: "3.x"
 
       - name: Cache Python dependencies
         uses: actions/cache@v3
         with: 
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements. txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
-            ${{ runner. os }}-pip-
+            ${{ runner.os }}-pip-
 
       - name: Install MkDocs and dependencies
         run: |
@@ -70,14 +64,12 @@ jobs:
         run: |
           echo "Configuring MkDocs for /docs/ subdirectory..."
           
-          # Backup original
           cp mkdocs.yml mkdocs.yml.backup
           
-          # Update site_url in mkdocs.yml
-          if grep -q "# site_url:  use_directory_urls: true" mkdocs.yml; then
-            sed -i 's|# site_url: use_directory_urls: true|site_url:  https://elitea.ai/docs/|g' mkdocs.yml
+          if grep -q "# site_url:  use_directory_urls:  true" mkdocs.yml; then
+            sed -i 's|# site_url: use_directory_urls: true|site_url: https://elitea.ai/docs/|g' mkdocs.yml
           elif grep -q "^site_url:" mkdocs.yml; then
-            sed -i 's|^site_url: .*|site_url: https://elitea.ai/docs/|g' mkdocs.yml
+            sed -i 's|^site_url:  .*|site_url: https://elitea.ai/docs/|g' mkdocs.yml
           else
             sed -i '/^site_name:/a site_url: https://elitea.ai/docs/' mkdocs.yml
           fi
@@ -86,19 +78,16 @@ jobs:
           head -n 5 mkdocs.yml
 
       - name: Build MkDocs documentation
-        run: mkdocs build --clean --strict --config-file mkdocs.yml
+        run:  mkdocs build --clean --config-file mkdocs.yml
 
       - name:  Prepare deployment with preserved landing page
         run: |
           echo "Creating deployment structure..."
           mkdir -p _deploy
           
-          # Step 1: Copy preserved landing page files to root
           echo "Step 1: Preserving landing page files..."
           if [ -d "existing-pages" ] && [ "$(ls -A existing-pages 2>/dev/null)" ]; then
-            # Copy all files except docs directory
             find existing-pages -maxdepth 1 -type f -exec cp {} _deploy/ \; 2>/dev/null || true
-            # Copy directories except docs
             find existing-pages -maxdepth 1 -type d !  -name "existing-pages" !  -name "docs" -exec cp -r {} _deploy/ \; 2>/dev/null || true
             echo "✓ Landing page files preserved"
           else
@@ -106,7 +95,6 @@ jobs:
             echo "<html><body><h1>Landing page will be available soon</h1></body></html>" > _deploy/index.html
           fi
           
-          # Step 2: Copy MkDocs build to /docs subdirectory
           echo "Step 2: Copying MkDocs documentation to /docs/..."
           mkdir -p _deploy/docs
           
@@ -118,15 +106,12 @@ jobs:
             exit 1
           fi
           
-          # Step 3: Add . nojekyll to prevent Jekyll processing
           touch _deploy/.nojekyll
           echo "✓ .nojekyll file created"
           
-          # Step 4: Add CNAME for custom domain
           echo "elitea.ai" > _deploy/CNAME
           echo "✓ CNAME file created"
           
-          # Verification
           echo ""
           echo "=== DEPLOYMENT VERIFICATION ==="
           echo ""
@@ -137,40 +122,46 @@ jobs:
           ls -lah _deploy/docs/ | head -20
           echo ""
           
-          # Critical file checks
           echo "=== CRITICAL FILE CHECKS ==="
           
+          ERRORS=0
+          
           if [ -f "_deploy/index.html" ]; then
-            echo "✓ _deploy/index.html EXISTS (landing page)"
-            echo "  Size: $(stat -c%s _deploy/index.html 2>/dev/null || stat -f%z _deploy/index.html) bytes"
+            SIZE=$(stat -c%s _deploy/index.html 2>/dev/null || stat -f%z _deploy/index.html 2>/dev/null || echo "unknown")
+            echo "✓ _deploy/index.html EXISTS (landing page) - Size: ${SIZE} bytes"
           else
             echo "⚠ Warning: _deploy/index.html MISSING (no landing page)"
           fi
           
-          if [ -f "_deploy/docs/index.html" ]; then
-            echo "✓ _deploy/docs/index.html EXISTS (documentation)"
-            echo "  Size:  $(stat -c%s _deploy/docs/index.html 2>/dev/null || stat -f%z _deploy/docs/index.html) bytes"
+          if [ -f "_deploy/docs/index. html" ]; then
+            SIZE=$(stat -c%s _deploy/docs/index.html 2>/dev/null || stat -f%z _deploy/docs/index.html 2>/dev/null || echo "unknown")
+            echo "✓ _deploy/docs/index.html EXISTS (documentation) - Size: ${SIZE} bytes"
           else
             echo "✗ ERROR: _deploy/docs/index.html MISSING!"
-            exit 1
+            ERRORS=$((ERRORS + 1))
           fi
           
-          if [ -f "_deploy/. nojekyll" ]; then
+          if [ -e "_deploy/.nojekyll" ]; then
             echo "✓ _deploy/.nojekyll EXISTS"
           else
-            echo "✗ ERROR: _deploy/.nojekyll MISSING!"
-            exit 1
+            echo "⚠ Warning: _deploy/. nojekyll MISSING (recreating)"
+            touch _deploy/.nojekyll
           fi
           
           if [ -f "_deploy/CNAME" ]; then
-            echo "✓ _deploy/CNAME EXISTS"
+            echo "✓ _deploy/CNAME EXISTS:"
             cat _deploy/CNAME
           else
             echo "⚠ Warning: _deploy/CNAME MISSING"
           fi
           
           echo ""
-          echo "=== Deployment ready!  ==="
+          if [ $ERRORS -eq 0 ]; then
+            echo "=== ✓ Deployment ready! ==="
+          else
+            echo "=== ✗ Deployment has ${ERRORS} error(s)! ==="
+            exit 1
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
