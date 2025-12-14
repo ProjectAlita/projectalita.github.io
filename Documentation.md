@@ -236,7 +236,7 @@ git push -u origin feature/add-mcp-integration-guide
 
 ## MkDocs Specific Guidelines
 
-Since this repository uses MkDocs with `mkdocs_el.yml`:
+Since this repository uses MkDocs with `mkdocs.yml`:
 
 1. **Add new pages to navigation:**
    ```yaml
@@ -247,13 +247,13 @@ Since this repository uses MkDocs with `mkdocs_el.yml`:
 
 2. **Test before PR:**
    ```bash
-   mkdocs serve -f mkdocs_el.yml
+   mkdocs serve -f mkdocs.yml
    # Visit http://127.0.0.1:8000
    ```
 
 3. **Common file locations:**
    - Documentation: `docs/` directory
-   - Configuration: `mkdocs_el.yml`
+   - Configuration: `mkdocs.yml`
    - Release Notes: `docs/release-notes/`
 
 ---
