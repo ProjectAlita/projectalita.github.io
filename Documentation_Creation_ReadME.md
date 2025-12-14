@@ -25,7 +25,7 @@ git checkout -b <branch-name>
 - Edit documentation files
 - Test locally using MkDocs:
   ```bash
-  mkdocs serve -f mkdocs_el.yml
+  mkdocs serve -f mkdocs.yml
   ```
 - Verify navigation, links, and formatting
 
@@ -188,7 +188,7 @@ git checkout -b restructure/reorganize-user-guides
 - Use descriptive branch names
 - Target `documentation` branch in PRs
 - Keep changes focused (one topic per branch)
-- Update navigation in `mkdocs_el.yml` if needed
+- Update navigation in `mkdocs.yml` if needed
 
 ### DON'T ❌
 - Don't create branches from `main`
@@ -215,10 +215,10 @@ git checkout -b feature/add-mcp-integration-guide
 
 # 4. Make changes
 # Edit docs/user-guide/mcp-integration.md
-# Update mkdocs_el.yml navigation
+# Update mkdocs.yml navigation
 
 # 5. Test locally
-mkdocs serve -f mkdocs_el.yml
+mkdocs serve -f mkdocs.yml
 
 # 6. Commit changes
 git add .
