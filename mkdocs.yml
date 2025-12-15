@@ -65,6 +65,7 @@ nav:
           - Internal Tools in Conversation: 
                 - Python Sandbox: how-tos/chat-conversations/enable-internal-tools.md
                 - Image Creation: how-tos/chat-conversations/image-generation.md
+                - Planner: how-tos/chat-conversations/planner-internal-tool.md
           - Canvas - Create and Edit Agents: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
           - Canvas - Create and Edit Pipelines: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
           - Canvas - Create and Edit Toolkits: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
