@@ -62,7 +62,9 @@ nav:
           - Use Public Agents: how-tos/chat-conversations/use-public-items-from-chat.md
           - Add Teammates to Conversation: how-tos/chat-conversations/add-teammates-to-conversation.md
           - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
-          - Internal Tools in Conversation: how-tos/chat-conversations/enable-internal-tools.md
+          - Internal Tools in Conversation: 
+                - Python Sandbox: how-tos/chat-conversations/enable-internal-tools.md
+                - Image Creation: how-tos/chat-conversations/image-generation.md
           - Canvas - Create and Edit Agents: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
           - Canvas - Create and Edit Pipelines: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
           - Canvas - Create and Edit Toolkits: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
