@@ -1,0 +1,43 @@
+name: Docs to Main
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "publish" to confirm merging documentation to main'
+        required: true
+        default: ''
+
+jobs:
+  merge-docs-to-main:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/documentation'
+    
+    steps:
+      - name: Validate confirmation
+        if: github.event.inputs.confirm != 'publish'
+        run: |
+          echo "❌ Merge cancelled. You must type 'publish' to confirm."
+          exit 1
+      
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Merge documentation to main
+        run: |
+          git checkout main
+          git merge --no-ff documentation -m "Publish documentation updates from documentation branch"
+          git push origin main
+      
+      - name: Success notification
+        run: |
+          echo "✅ Documentation has been successfully merged to main branch"
+          echo "🚀 Deployment should trigger automatically"
