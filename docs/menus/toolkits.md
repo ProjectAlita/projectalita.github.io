@@ -163,13 +163,33 @@ The toolkit configuration page includes a **Test Settings** panel on the right s
 
 1. **Select a Model:** Choose the LLM model from the model dropdown (e.g., `gpt-4o`).
 
-  ![Select a Model](../img/menus/toolkits/LLM_model.png)
+     ![Select a Model](../img/menus/toolkits/LLM_model.png)
 
-2. **Adjust Model Parameters:** Fine-tune how the model generates responses using the following controls:
-    * **Temperature (0.1 - 1.0):** Controls randomness and creativity. Lower values (e.g., 0.2) yield more predictable results.
-    * **Top P (0.1 - 1.0):** Nucleus sampling parameter. Limits output to the most probable words, with higher values allowing more diversity.
-    * **Top K:** Restricts choices to the top K most likely next words (e.g., 10).
-    * **Max Completion Tokens:** Sets the upper limit for the length of the model’s output (e.g., 1024 tokens)
+2. **Adjust Model Settings** (Optional): Click the **Model Settings** icon (⚙️) next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
+    **For Reasoning Models** (e.g., GPT-5.1):
+    
+    * **Reasoning** - Controls the depth of logical thinking and problem-solving with three levels:
+        * **Low**: Fast, surface-level reasoning with concise answers and minimal steps
+        * **Medium**: Balanced reasoning with clear explanations and moderate multi-step thinking (default)
+        * **High**: Deep, thorough reasoning with detailed step-by-step analysis (may be slower)
+    
+    **For Standard Models** (e.g., GPT-4o):
+    
+    * **Creativity** - Controls response randomness and creativity. Lower values produce more focused and deterministic outputs, while higher values generate more diverse and creative responses with five levels (1-5):
+        * **1**: Highly focused and deterministic outputs
+        * **2**: Mostly focused with slight variation
+        * **3**: Balanced between focus and creativity (default)
+        * **4**: More varied and creative responses
+        * **5**: Maximum creativity and diversity
+    
+    **Max Completion Tokens** Limits the maximum length of AI responses measured in tokens (roughly 4 characters per token).(All Models):
+    
+    * **Auto** (default): System automatically sets the token limit to 4096 tokens
+    * **Custom**: Manually set a specific token limit for responses
+        * When Custom is selected, you can enter a specific number of maximum tokens
+        * The interface shows remaining tokens available after your specified limit
+        * Setting too high a value will show an error if it exceeds the model's maximum output tokens
+
 3. **Select Tool:** Use the **Tool** dropdown to choose which toolkit action you want to test.
     * **Search functionality:** Type in the search box to filter available tools
     * **Tool options:** Select from available tools

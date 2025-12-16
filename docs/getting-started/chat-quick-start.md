@@ -6,7 +6,7 @@ Get started with ELITEA by sending your first chat message. This hands-on guide 
 
 ## Step 1: Open Chat
 
-1. **Navigate to ELITEA**: Open your browser and go to [https://elitea.ai](https://elitea.ai)
+1. **Navigate to ELITEA**: Open your browser and go to your ELITEA instance (e.g., [https://next.elitea.ai/](https://next.elitea.ai/))
 2. **Sign In**: Enter your account credentials.
 3. **Access Chat**: Click **Chat** in the left sidebar (or you'll be redirected there automatically).
 

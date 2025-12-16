@@ -100,16 +100,34 @@ After saving the initial configuration, the advanced configuration interface ope
 ![Agent Basic Configuration](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-select-model.png)
 
 2. **Model Settings:**
-    - Click the **Model Settings** button (gear icon) next to the model selector
-    - Configure the following parameters:
-       - **Temperature** (0.1-1.0): Controls creativity and randomness in responses
-         - Lower values (0.1-0.3): More focused and deterministic responses
-         - Higher values (0.7-1.0): More creative and varied responses
-       - **Top P** (0.1-1.0): Controls diversity of word choices
-       - **Max Completion Tokens**: Maximum length of the response (e.g., 4096)
-    - Click **Apply** to save the model settings
+    - Click the **Model Settings** icon (⚙️) next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
 
-![Agent Basic Configuration](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-model-settings.png)
+    **For Reasoning Models** (e.g., GPT-5.1):
+    
+    * **Reasoning** - Controls the depth of logical thinking and problem-solving with three levels:
+        * **Low**: Fast, surface-level reasoning with concise answers and minimal steps
+        * **Medium**: Balanced reasoning with clear explanations and moderate multi-step thinking (default)
+        * **High**: Deep, thorough reasoning with detailed step-by-step analysis (may be slower)
+    
+    **For Standard Models** (e.g., GPT-4o):
+    
+    * **Creativity** - Controls response randomness and creativity. Lower values produce more focused and deterministic outputs, while higher values generate more diverse and creative responses with five levels (1-5):
+        * **1**: Highly focused and deterministic outputs
+        * **2**: Mostly focused with slight variation
+        * **3**: Balanced between focus and creativity (default)
+        * **4**: More varied and creative responses
+        * **5**: Maximum creativity and diversity
+    
+    **Max Completion Tokens** Limits the maximum length of AI responses measured in tokens (roughly 4 characters per token).(All Models):
+    
+    * **Auto** (default): System automatically sets the token limit to 4096 tokens
+    * **Custom**: Manually set a specific token limit for responses
+        * When Custom is selected, you can enter a specific number of maximum tokens
+        * The interface shows remaining tokens available after your specified limit
+        * Setting too high a value will show an error if it exceeds the model's maximum output tokens
+    - Click **Apply** to save the model settings    
+
+     ![Agent Basic Configuration](../../img/how-tos/chat-conversations/canvas-agent/canvas-agent-model-settings.png)
 
 ### Toolkits Configuration
 
