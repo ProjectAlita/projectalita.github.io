@@ -1,14 +1,16 @@
 # Agents
 
+## Overview
+
+**What are ELITEA Agents?**
+
+ELITEA Agents are customizable virtual assistants or bots that you can create within the ELITEA interface. Each agent is tailored to handle specific tasks or sets of tasks, based on the instructions and capabilities you define. These agents integrate various components and external toolkits, allowing them to make informed decisions and perform actions like searching on Google, creating Jira tickets, interacting with your code in GitHub. The flexibility of ELITEA Agents enables them to work with a wide range of external toolkits, making them versatile tools for automating complex workflows.
+
 ## Private project - Agents menu
 
 ELITEA Agents are a cornerstone feature within the ELITEA platform, designed to significantly enhance and expand the capabilities of AI technologies. By leveraging the advanced natural language processing capabilities of GPT models, ELITEA Agents serve as virtual assistants or "agents" that automate tasks and streamline workflows, providing users with a more efficient and effective way to interact with AI models.
 
-![Agents-Menu_Interface](<../img/menus/agents/Agents-Menu_Interface.png>)
-
-## What are ELITEA Agents?
-
-ELITEA Agents are customizable virtual assistants or bots that you can create within the ELITEA interface. Each agent is tailored to handle specific tasks or sets of tasks, based on the instructions and capabilities you define. These agents integrate various components and external toolkits, allowing them to make informed decisions and perform actions like searching on Google, creating Jira tickets, interacting with your code in GitHub. The flexibility of ELITEA Agents enables them to work with a wide range of external toolkits, making them versatile tools for automating complex workflows.
+![Agents-Menu_Interface](<../img/menus/agents/Agents-Menu_Interface.png>){: loading=lazy }
 
 ## Purpose of ELITEA Agents
 
@@ -62,7 +64,7 @@ By harnessing the power of these integrations, ELITEA Agents can automate a wide
 
 The Agents menu is accessible from the main platform navigation. Upon entering the Agents section, you'll see a dashboard listing all created agents for your project.
 
-  ![Agents-Menu_Navigation](../img/menus/agents/Agents-Menu_Navigation.png)
+  ![Agents-Menu_Navigation](../img/menus/agents/Agents-Menu_Navigation.png){: loading=lazy }
 
 ## Creating an Agent
 
@@ -79,7 +81,7 @@ To set up a new agent:
 
 Your newly created agent will subsequently appear on the **Agents** page for your project.
 
-![Agents-Menu_Create](<../img/menus/agents/Agents-Menu_Create.png>)
+![Agents-Menu_Create](<../img/menus/agents/Agents-Menu_Create.png>){: loading=lazy }
 
 
 When configuring Agents, you can further personalize their profiles by adding a custom image along with the **Name** and **Description**. This feature allows you to create a unique, visually distinct identity for each Agent, making them easier to recognize and manage.
@@ -90,7 +92,7 @@ To add an image:
 2. Click the **Upload a Custom Image** icon to upload a custom image from your local system to personalize the Agent's profile.
 3. **Use Default Images** from a set of default images provided by the platform.
 
-![Agents_icon](<../img/menus/agents/Agents_icon.png>)
+![Agents_icon](<../img/menus/agents/Agents_icon.png>){: loading=lazy }
 
 
 ### How to Create Instructions
@@ -103,21 +105,23 @@ The **Instructions** section is the core component where you define how your age
 * **Enter the Details**: In the Instructions field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the agent's focus and efficiency.
 * **Using toolkits**: For enhancing agent's capabilities, you can integrate toolkits and provide instructions how to use them and in which order. The name of toolkit can be denoted by "", (e.g. "Access_JIRA" toolkit).
 
-![Agents-Instructions](<../img/menus/agents/Agents_Instructions.png>)
+![Agents-Instructions](<../img/menus/agents/Agents_Instructions.png>){: loading=lazy }
 
 
 ### How to select and configure Toolkits
 
-Toolkits are integrations with external or ELITEA's internal services that enhance your agent's capabilities by allowing it to interact with various resources and perform specific tasks. You can add toolkits to your agent during the creation process or edit them later.
+Toolkits are integrations with external or ELITEA's internal services that enhance your agent's capabilities by allowing it to interact with various resources and perform specific tasks. In addition to toolkits, you can also add other Agents, MCPs (Model Context Protocol servers), and Pipelines to extend your agent's functionality. You can add these resources to your agent during the creation process or edit them later.
 
-**Adding Toolkits to Your Agent**:
+**Adding Resources to Your Agent**:
 
 1. In the agent creation or editing interface, navigate to the toolkits section
-2. Click the **+Toolkit** button to browse available toolkits
-3. You can either:
-   - Select an existing toolkit from the list of available toolkits, or
-   - Click **"+ Create New"** to create a new toolkit, which will redirect you to the toolkit creation page
-4. If using an existing toolkit, configure any additional settings as required
+2. Click the **+Toolkit** button to browse available resources
+3. You can add the following types of resources:
+   - **Toolkits**: Select an existing toolkit from the list or click **"+ Create New"** to create a new toolkit
+   - **Agents**: Add nested agents to enable your agent to delegate tasks or collaborate with specialized agents
+   - **MCPs**: Integrate Model Context Protocol servers to provide additional context and capabilities. You can select an existing MCP from the list or click "+ Create New" to create a new MCP
+   - **Pipelines**: Include pipelines to orchestrate complex multi-step workflows
+4. Configure any additional settings as required for the selected resource
 5. Save your agent configuration
 
 > **Note:** For detailed instructions on creating and configuring toolkits, refer to the [How to Create a Toolkit](toolkits.md) guide.
@@ -137,22 +141,34 @@ Below is the list of toolkits supported by the platform. For detailed instructio
 | **Testing**            | [Browser](../integrations/toolkits/browser_toolkit.md), Carrier, [Open API](../integrations/toolkits/openapi_toolkit.md), [Report Portal](../integrations/toolkits/reportportal_toolkit.md), [TestIO](../integrations/toolkits/testIO_toolkit.md) |
 
 
-![Agents-Toolkits](<../img/menus/agents/Agents_Toolkits.png>)
+![Agents-Toolkits](../img/menus/agents/agent-add-toolkit.gif){: loading=lazy }
 
-### PYTHON SANDBOX (Internal Tool)
+### INTERNAL TOOLS
 
-The **Python Sandbox** enables secure Python code execution directly within your agent's conversations using Pyodide. When enabled, your agent can execute Python code, perform calculations, analyze data, and use compatible Python packages like numpy, pandas, and matplotlib.
+ELITEA provides built-in internal tools that extend your agent's capabilities without requiring external integrations. These tools enable your agents to perform specialized tasks directly within the platform.
 
-**How to Enable**:
+**Available Internal Tools**:
 
-1. In the **TOOLKITS** section, find the **Python sandbox** toggle at the bottom
-2. Toggle the switch to enable it
+* **Python Sandbox**: Enables secure Python code execution using Pyodide. Your agent can execute Python code, perform calculations, analyze data, and use compatible Python packages like numpy, pandas, and matplotlib.
+
+* **Image Creation**: Allows your agent to generate images based on text descriptions using AI image generation capabilities.
+
+* **Planner**: Provides structured planning and task breakdown capabilities, helping your agent organize complex workflows into manageable steps.
+
+**How to Enable Internal Tools**:
+
+1. In the **TOOLKITS** section, find the internal tools toggles at the bottom
+2. Toggle the switches for the tools you want to enable
 3. Click **Save**
 
-![Agent Python Sandbox](../img/menus/agents/agents-enable-python-sandbox.png)
+![Agent Python Sandbox](../img/menus/agents/agent-internal-tools-enable.gif){: loading=lazy }
 
 !!! info "Learn More"
-    For detailed information about capabilities, available packages, and troubleshooting, see the [Enable Internal Tools Guide](../how-tos/chat-conversations/enable-internal-tools.md).
+    For detailed information about each internal tool:
+    
+    * [Python Sandbox Guide](../how-tos/chat-conversations/enable-internal-tools.md) - Capabilities, available packages, and troubleshooting
+    * [Image Generation Guide](../how-tos/chat-conversations/image-generation.md) - Creating images with AI using text descriptions
+    * [Planner Internal Tool Guide](../how-tos/chat-conversations/planner-internal-tool.md) - Structured planning and task breakdown
 
 ### WELCOME MESSAGE
 
@@ -164,7 +180,7 @@ The **Welcome Message** feature allows you to provide additional context and ins
 2. **Add the Welcome Message**: Type the welcome message text in the input field.
 3. **Save the Configuration**: After entering the desired text, ensure to save the changes to the agent. This action makes the configured welcome message available to users in the **Chat** section.
 
-![Agents-WelcomeMessage](<../img/menus/agents/Agents_WelcomeMessage.png>)
+![Agents-WelcomeMessage](<../img/menus/agents/Agents_WelcomeMessage.png>){: loading=lazy }
 
 
 **Using the Welcome Message**:
@@ -198,7 +214,7 @@ The **Conversation Starter** feature enables you to configure predefined prompts
 * "Review this code and suggest improvements."
 * "Help me write documentation for this feature."
 
-![Agents-Conversation_Starter](<../img/menus/agents/Agents_ConversationStarter.png>)
+![Agents-Conversation_Starter](<../img/menus/agents/Agents_ConversationStarter.png>){: loading=lazy }
 
 By setting up conversation starters, you streamline the process of initiating specific tasks or queries, making your interactions with the agent more efficient and standardized.
 
@@ -209,20 +225,34 @@ To execute the agent and get the output:
 
 1. **Configure the Agent**: Ensure your agent is properly configured with clear instructions and any necessary toolkits.
 2. **Navigate to Chat**: Access the agent's chat interface by clicking on the agent from your agents list.
-3. **Select the AI Model**: In the chat interface, choose the appropriate AI model (e.g., gpt-4o-2024-11-20, gpt-4o-2024-08-06, etc.) from the model selection dropdown.
-   ![Agents-Ai-Model](<../img/menus/agents/Agents-Ai-Model.png>)
-4. **Adjust Parameters** (Optional): Fine-tune the response generation with these settings:
-    * **Temperature (0.1-1.0)** - adjusts the level of creativity or unpredictability in responses.
-        * **Higher values**: Responses are more creative and varied, but may be less consistent and more unpredictable.
-        * **Lower values**: Responses are more consistent and predictable, but may be less creative and varied.
-      * **Top P (0-1)** - determines the cumulative probability threshold for selecting words, balancing between creativity and consistency.
-        * **Higher values**: A wider range of words is considered, leading to more creative and diverse responses.
-        * **Lower values**: A narrower range of words is considered, leading to more consistent and predictable responses.
-      * **Max Completion Tokens** - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.
-        * **Higher values**: Responses can be longer and more detailed.
-        * **Lower values**: Responses are shorter and more concise.
+3. **Select the AI Model**: In the chat interface, choose the appropriate AI model (e.g., gpt-4o, gpt-5.1, etc.) from the model selection dropdown.
+4. **Adjust Model Settings** (Optional): Click the **Model Settings** icon (⚙️) next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
 
-    ![Agents-Model- Settings](<../img/menus/agents/Agents-Model_settings.png>)   
+    **For Reasoning Models** (e.g., GPT-5.1):
+    
+    * **Reasoning** - Controls the depth of logical thinking and problem-solving with three levels:
+        * **Low**: Fast, surface-level reasoning with concise answers and minimal steps
+        * **Medium**: Balanced reasoning with clear explanations and moderate multi-step thinking (default)
+        * **High**: Deep, thorough reasoning with detailed step-by-step analysis (may be slower)
+    
+    **For Standard Models** (e.g., GPT-4o):
+    
+    * **Creativity** - Controls response randomness and creativity. Lower values produce more focused and deterministic outputs, while higher values generate more diverse and creative responses with five levels (1-5):
+        * **1**: Highly focused and deterministic outputs
+        * **2**: Mostly focused with slight variation
+        * **3**: Balanced between focus and creativity (default)
+        * **4**: More varied and creative responses
+        * **5**: Maximum creativity and diversity
+    
+    **Max Completion Tokens** Limits the maximum length of AI responses measured in tokens (roughly 4 characters per token).(All Models):
+    
+    * **Auto** (default): System automatically sets the token limit to 4096 tokens
+    * **Custom**: Manually set a specific token limit for responses
+        * When Custom is selected, you can enter a specific number of maximum tokens
+        * The interface shows remaining tokens available after your specified limit
+        * Setting too high a value will show an error if it exceeds the model's maximum output tokens
+
+    ![Agents-Model- Settings](<../img/menus/agents/agent-model_settings.gif>){: loading=lazy }   
 
 5. **Start Interaction**: Begin your conversation by either:
    - Clicking on a **Conversation Starter** (if configured) to use a predefined prompt
@@ -246,7 +276,7 @@ To execute the agent and get the output:
   * Click the **Like** icon if the output meets your expectations.
   * Click the **Dislike** icon if the output is unsatisfactory. Upon disliking, you will have the option to leave a comment explaining why the output did not meet your expectations. This feedback helps improve the system's performance and relevance.
 
-![Agents-Execution](<../img/menus/agents/Agents_Execution.png>)
+![Agents-Execution](<../img/menus/agents/Agents_Execution.png>){: loading=lazy }
 
 ### Managing Agent Versions: Save, Create Versions, Publish and Manage
 
@@ -290,25 +320,20 @@ The **Publish** functionality allows you to make a specific version of your agen
    * Once you click **Publish**, the version will be sent to a moderator for review.
    * The moderator will evaluate the agent version and either approve or reject the request.
 
-![Agents-Publish](<../img/menus/agents/Agents_Publish.png>)
+![Agents-Publish](<../img/menus/agents/Agents_Publish.png>){: loading=lazy }
 
 
 #### What Happens After Publishing:
 
 * **If Approved**:
   * The agent version will be made publicly available for use.
-  * Users will be able to access and execute the published version.
+  * Users will be able to access and execute the published version in Agent studio
 
 * **If Rejected**:
   * The moderator may provide feedback on why the version was not approved.
   * You can make the necessary changes and resubmit the version for approval.
 
 By following these steps, you can effectively manage the lifecycle and iterations of your agents, ensuring that each version is appropriately saved, published, and utilized as per your requirements.
-
-### Monitoring Agents
-
-The **Monitoring** menu allows you to track the performance and activity of your agents in real-time. By accessing this feature, you can view detailed logs, analyze execution metrics, and identify potential issues or bottlenecks in your agent's workflows.
-For detailed instructions on how to use the Monitoring feature, please refer to the **[Monitoring User Guide](../features/monitoring.md)**
 
 ### Viewing Agent History
 
@@ -324,7 +349,7 @@ The History tab displays runs in a two-panel layout with a list of all execution
 
 For detailed instructions on using the History tab, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines/agents-pipelines-history.md)**.
 
-![History Tab](../img/menus/agents/agent-history-tab.png)
+![History Tab](../img/menus/agents/agent-history-tab.png){: loading=lazy }
 
 
 ---

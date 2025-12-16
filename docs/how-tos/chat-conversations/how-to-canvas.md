@@ -56,7 +56,7 @@ Start by asking ELITEA to create something for you.
 
 Once ELITEA generates the content, look for the pencil icon (✏️) in the top-right corner of the content block. This icon indicates that Canvas is available.
 
-![Canvas_Edit](../../img/how-tos/chat-conversations/canvas/canvas-open.png)
+![Canvas_Edit](../../img/how-tos/chat-conversations/canvas/canvas-open.gif)
 
 Click the pencil icon to launch the Canvas editor for that content block.*
 

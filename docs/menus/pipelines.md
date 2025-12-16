@@ -8,7 +8,7 @@
 
 The Pipelines menu is accessible from the main platform navigation. Upon entering the Pipelines section, you'll see a dashboard with different views depending on your applied filters:
 
-![Pipeline_Menu](<../img/menus/pipeline/pipeline-menu.png>)
+![Pipeline_Menu](<../img/menus/pipeline/pipeline-menu.png>){: loading=lazy }
 
 ### Interface Elements
 
@@ -22,35 +22,16 @@ The Pipelines menu is accessible from the main platform navigation. Upon enterin
 - Global search functionality to quickly find pipelines by name, description, tags, or author
 - Real-time filtering as you type to narrow down results instantly
 
-**Filtering dropdown:**
-
-   `Filter By:` (For Public Projects)
- >  - **Latest**: View the most recently published pipelines
- >  - **My Liked**: Access pipelines you've liked
- >  - **Trending**: Explore trending pipelines based on usage and popularity
- >  - **Admin**: Administrative view for managing all pipelines (visible to administrators only)
-
-`Statuses:`(For Private Projects)
-
-> - **All**: View all pipelines in your project
-> - **Drafts**: Access pipeline drafts that haven't been published yet
-> - **Published**: View published pipelines
-> - **Moderation**: Pipelines pending moderation approval
-> - **Approval**: Pipelines awaiting user approval
-> - **Rejected**: Previously rejected pipelines
-
 **Tags Section:**
 - Interactive tag cloud or list showing all available pipeline tags
 - Click tags to filter pipelines by specific categories or functionalities
 
-**Community Features (Public Projects):**
-- **Trending Authors**: Discover and follow popular pipeline creators in the community
 
 
 
 ## What are ELITEA Pipelines?
 
-ELITEA Pipelines are customizable workflows that you can create within the ELITEA interface to automate complex processes. Each pipeline is designed to handle specific tasks or sequences of tasks by connecting various nodes such as conditions, decisions, loops, and tool integrations. Pipelines enable seamless interaction with external services, toolkits, and data sources, allowing users to design workflows that automate tasks like data processing, decision-making, and integration with tools like Jira, GitHub, or Salesforce. The flexibility of ELITEA Pipelines makes them powerful tools for streamlining operations and reducing manual effort.
+ELITEA Pipelines are customizable workflows that you can create within the ELITEA interface to automate complex processes. Each pipeline is designed to handle specific tasks or sequences of tasks by connecting various nodes such as router, decision, and tool integrations. Pipelines enable seamless interaction with external services, toolkits, and data sources, allowing users to design workflows that automate tasks like data processing, decision-making, and integration with tools like Jira, GitHub, or Salesforce. The flexibility of ELITEA Pipelines makes them powerful tools for streamlining operations and reducing manual effort.
 
 ## Purpose of ELITEA Pipelines
 
@@ -66,21 +47,12 @@ Creating a Pipeline involves defining a sequence of nodes, each representing a s
 - **Flexibility**: Pipelines can be customized to handle a wide range of tasks, from simple linear workflows to intricate multi-step processes, adapting to diverse use cases.
 - **Integration**: By incorporating toolkits, datasources, and external APIs, pipelines can integrate various resources and services, ensuring efficient execution of tasks.
 - **Visualization**: The Flow Designer provides an intuitive visual interface for designing workflows, making it easy to map out and manage even the most complex processes.
-- **Monitoring**: Pipelines include robust monitoring capabilities, allowing users to track performance, analyze execution metrics, and troubleshoot issues in real-time.
 
 By leveraging ELITEA Pipelines, users can automate and optimize their workflows, ensuring efficiency and scalability while maintaining full control over their processes. This empowers users to focus on higher-level strategic tasks, driving innovation and productivity within the ELITEA platform.
 
 ## Pipeline Interface Structure
 
 When working with pipelines, the interface is organized into several key tabs:
-
-### Run Tab
-The **Run** tab serves as the primary execution environment where you can:
-
-- Execute your pipeline with real data
-- View the pipeline execution flow and results
-- Interact with the pipeline through the chat interface
-- Monitor real-time execution progress
 
 ### Configuration Tab  
 The **Configuration** tab is where you design and configure your pipeline:
@@ -91,13 +63,14 @@ The **Configuration** tab is where you design and configure your pipeline:
 - Configure toolkits and integrations
 - Add welcome messages and conversation starters
 
-### Monitoring Tab
-The **Monitoring** tab provides comprehensive analytics and performance tracking:
+### History Tab
+The **History** tab provides a complete audit trail of all past pipeline executions:
 
-- View detailed execution logs and metrics
-- Track pipeline performance over time
-- Analyze usage patterns and bottlenecks
-- Access debugging information for troubleshooting
+- Review past conversations and execution results
+- Track performance metrics across different versions
+- Debug issues by replaying previous runs
+- Compare how different versions performed
+- Maintain compliance records of all pipeline interactions
 
 ## Creating a Pipeline
 
@@ -117,11 +90,11 @@ To set up a new Pipeline:
 5. **Integration of Toolkits** becomes available after the first save. Navigate to the **Toolkits** section to enhance the pipeline's functionality by connecting it to external services or internal tools.
 6. Click **Save** again to preserve your additional configurations.
 
-![Pipeline_Create](<../img/menus/pipeline/pipeline_create.png>)
+![Pipeline_Create](<../img/menus/pipeline/pipeline_create.png>){: loading=lazy }
 
-### Adding Toolkits, Agents, and Pipelines
+### Adding Toolkits, Agents, MCPs, and Pipelines
 
-After saving your initial pipeline, the **TOOLKITS** section becomes available with three integration options:
+After saving your initial pipeline, the **TOOLKITS** section becomes available with four integration options:
 
 #### **Add a Toolkit**
 Click the **+ Toolkit** button to integrate external services and tools into your pipeline:
@@ -141,17 +114,24 @@ Click the **+ Agent** button to incorporate existing agents into your pipeline w
 - **Purpose**: Leverage pre-built AI agents with specialized capabilities and knowledge domains
 - **Selection Process**: Choose from existing agents in your workspace
 
+#### **Add an MCP**
+Click the **+ MCP** button to integrate Model Context Protocol servers into your pipeline:
+
+- **Purpose**: Connect to MCP servers to provide additional context and capabilities to your pipeline
+- **Selection Process**: Choose from configured MCP servers in your workspace
+
 #### **Add a Pipeline**
 Click the **+ Pipeline** button to nest other pipelines within your current pipeline:
 
 - **Purpose**: Create complex workflows by chaining multiple pipelines together
 - **Selection Process**: Select from existing pipelines in your workspace
 
-![Add Toolkit](<../img/menus/pipeline/add-toolkit.png>)
+![Add Toolkit](<../img/menus/pipeline/pipeline-add-toolkit.gif>){: loading=lazy }
 
 !!! tip "Integration Best Practices"
     - **Toolkit Integration**: Ensure you have proper credentials configured before adding toolkits
     - **Agent Integration**: Test agent responses and adjust parameters for optimal performance
+    - **MCP Integration**: Verify MCP server connectivity and context requirements before integration
     - **Pipeline Integration**: Consider data flow and dependencies when nesting pipelines
 
    
@@ -163,7 +143,7 @@ To add an image:
 2. Click the **Upload a Custom Image** icon to upload a custom image from your local system to personalize the Pipeline's profile.
 3. **Use Default Images** from a set of default images provided by the platform.
 
-![Pipeline_Change_Icon](<../img/menus/pipeline/pipeline_change_icon.png>)
+![Pipeline_Change_Icon](<../img/menus/pipeline/pipeline_change_icon.png>){: loading=lazy }
 
 
 ### WELCOME MESSAGE
@@ -173,13 +153,13 @@ The **Welcome Message** feature allows you to provide additional context and ins
 **How to Add the Welcome Message**:
 
 1. **Add the Welcome Message**: Type the welcome message text in the input field.
-2. **Save the Configuration**: After entering the desired text, ensure to save the changes to the pipeline. This action makes the configured welcome message available to users in the **Run** tab.
+2. **Save the Configuration**: After entering the desired text, ensure to save the changes to the pipeline.
 
-![Pipeline_Welcome_Message](<../img/menus/pipeline/pipeline_welcome_message.png>)
+![Pipeline_Welcome_Message](<../img/menus/pipeline/pipeline_welcome_message.png>){: loading=lazy }
 
 **Using the Welcome Message**:
 
-When users go to the **Run** tab of the pipeline, they will see the configured **Welcome Message**. It provides helpful context and instructions to guide their interaction with the pipeline.
+When users interact with the pipeline, they will see the configured **Welcome Message**. It provides helpful context and instructions to guide their interaction with the pipeline.
 
 **Examples of Welcome Message**:
 
@@ -197,11 +177,11 @@ The **Conversation Starter** feature enables you to configure and add predefined
 2. **Add a Conversation Starter**: Click the `+` icon to open the text input field where you can type the text you wish to use as a conversation starter.
 3. **Save the Configuration**: After entering the desired text, ensure to save the changes to the pipeline. This action makes the configured conversation starter available for use.
 
-![Pipeline_Conversation_Starter](<../img/menus/pipeline/pipeline_conversation_starter.png>)
+![Pipeline_Conversation_Starter](<../img/menus/pipeline/pipeline_conversation_starter.png>){: loading=lazy }
 
 **Using a Conversation Starter**:
 
-**Initiate a Conversation**: Go to the **Run** tab of the pipeline. Here, you will find the saved conversation starters displayed as clickable options. Click on the desired starter to automatically populate the chat input and execute the pipeline.
+**Initiate a Conversation**: When interacting with the pipeline, you will find the saved conversation starters displayed as clickable options. Click on the desired starter to automatically populate the chat input and execute the pipeline.
 
 **Examples of Conversation Starters**:
 
@@ -214,13 +194,13 @@ By setting up conversation starters, you streamline the process of initiating sp
 
 ### **Flow Designer**:
 
-* Use the **Flow** tab to visually design your pipeline by connecting various nodes, such as **Agent**, **Condition**, **Decision**, **Function**, **LLM**, **Loop**, **Loop from Tool**, **Pipeline**, **Router**, **State Modifier**, **Tool**, and **Custom**.
+* Use the **Flow** tab to visually design your pipeline by connecting various nodes, such as **LLM**, **Agent**, **Toolkit**, **MCP**, **Code**, **Custom**, **Router**, **Decision**, **State Modifier**, and **Printer**.
 
-![Pipeline_Flow](<../img/menus/pipeline/pipeline_flow.png>)
+![Pipeline_Flow](<../img/menus/pipeline/pipeline_flow.png>){: loading=lazy }
 
 * Add new nodes by clicking the **+** icon and selecting the desired node type from the dropdown menu.
 
-![Pipeline_Nodes](<../img/menus/pipeline/pipeline_nodes.png>)
+![Pipeline_Nodes](<../img/menus/pipeline/pipeline_nodes.png>){: loading=lazy }
 
 * Use the **End** node to define the completion of the pipeline.
 * Drag and drop connections between nodes to establish the workflow's logic and transitions.
@@ -231,25 +211,30 @@ By setting up conversation starters, you streamline the process of initiating sp
 * **Plan Your Workflow**: Before adding nodes, outline the desired workflow to ensure a clear and logical structure.
 * **Use Descriptive Names**: Name each node clearly to make the pipeline easier to understand and maintain.
 * **Test Iteratively**: Test nodes and connections incrementally to identify and resolve issues early in the design process.
-* **Optimize Loops**: Use loops efficiently to avoid unnecessary iterations and improve pipeline performance.
+
 * **Leverage Node Types**: Choose the appropriate node type for each task:
 
-     - **Tool**: Integrate with external services and APIs
-    - **LLM**: Leverage language models for text processing and generation
-    - **Function**: Create custom logic and data transformations
-    - **Decision**: Implement conditional branching based on criteria
-    - **Condition**: Set up simple true/false evaluations
-    - **Loop/Loop from Tool**: Handle iterative operations
-    - **Agent**: Integrate other agents into your pipeline
-    - **Pipeline**: Nest pipelines within pipelines for complex workflows
-    - **Router**: Direct flow based on multiple conditions
-    - **State Modifier**: Manage and update pipeline state variables
-    - **Custom**: Implement specialized functionality
+    **Interaction Nodes:**
 
-!!! note "Reference"
-     For detailed information on each node type and its use cases, refer to the [Pipeline Architecture Guide](../features/pipelines/pipeline-agent-framework.md).
+    - **[LLM Node](../how-tos/pipelines/nodes/interaction-nodes.md#llm-node)**: Leverage language models for text processing and generation
+    - **[Agent Node](../how-tos/pipelines/nodes/interaction-nodes.md#agent-node)**: Integrate other agents into your pipeline for specialized tasks
+    
+    **Execution Nodes:**
 
+    - **[Toolkit Node](../how-tos/pipelines/nodes/execution-nodes.md#toolkit-node)**: Integrate with external services and APIs
+    - **[MCP Node](../how-tos/pipelines/nodes/execution-nodes.md#mcp-node)**: Connect to Model Context Protocol servers for additional context
+    - **[Code Node](../how-tos/pipelines/nodes/execution-nodes.md#code-node)**: Execute custom code logic within your pipeline
+    - **[Custom Node](../how-tos/pipelines/nodes/execution-nodes.md#custom-node)**: Implement specialized functionality with custom configurations
+    
+    **Control Flow Nodes:**
 
+    - **[Router Node](../how-tos/pipelines/nodes/control-flow-nodes.md#router-node)**: Direct flow based on multiple conditions
+    - **[Decision Node](../how-tos/pipelines/nodes/control-flow-nodes.md#decision-node)**: Implement conditional branching based on criteria
+    
+    **Utility Nodes:**
+    
+    - **[State Modifier Node](../how-tos/pipelines/nodes/utility-nodes.md#state-modifier-node)**: Manage and update pipeline state variables
+    - **[Printer Node](../how-tos/pipelines/nodes/utility-nodes.md#printer-node)**: Output and display data during pipeline execution
 By following best practices and leveraging the available nodes, you can design efficient and scalable workflows tailored to your specific needs.
 
 ### **YAML Editor**:
@@ -259,7 +244,7 @@ By following best practices and leveraging the available nodes, you can design e
 * Use the YAML editor to fine-tune node configurations, set advanced parameters, and integrate custom logic.
 * Validate your YAML syntax to ensure the pipeline runs smoothly without errors.
 
-![Pipeline_Yaml](<../img/menus/pipeline/pipeline_yaml.png>)
+![Pipeline_Yaml](<../img/menus/pipeline/pipeline_yaml.png>){: loading=lazy }
 
 * This is particularly useful for users who prefer a code-first approach, need to implement intricate logic, or want to replicate and modify existing pipelines efficiently.
 
@@ -270,23 +255,36 @@ By following best practices and leveraging the available nodes, you can design e
 To execute the pipeline and get the output:
 
 1. **Configure the Pipeline**: Ensure your pipeline is properly configured with clear instructions and any necessary toolkits.
-2. **Navigate to Chat**: Access the pipeline's chat interface by clicking on the pipeline from your pipelines list, then go to the **Run** tab.
-3. **Select the AI Model**: In the chat interface, choose the appropriate AI model (e.g., gpt-4o-2024-11-20, gpt-4o-2024-08-06, etc.) from the model selection dropdown.
+2. **Navigate to Pipeline**: Access the pipeline's interface by clicking on the pipeline from your pipelines list.
+3. **Select the AI Model**: In the interface, choose the appropriate AI model (e.g., gpt-4o, gpt-5.1, etc.) from the model selection dropdown.
+4. **Adjust Model Settings** (Optional): Click the **Model Settings** icon (⚙️) next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
 
-   ![Pipeline-Ai-Model](<../img/menus/pipeline/pipeline-model-select.png>)
+    **For Reasoning Models** (e.g., GPT-5.1):
+    
+    * **Reasoning** - Controls the depth of logical thinking and problem-solving with three levels:
+        * **Low**: Fast, surface-level reasoning with concise answers and minimal steps
+        * **Medium**: Balanced reasoning with clear explanations and moderate multi-step thinking (default)
+        * **High**: Deep, thorough reasoning with detailed step-by-step analysis (may be slower)
+    
+    **For Standard Models** (e.g., GPT-4o):
+    
+    * **Creativity** - Controls response randomness and creativity. Lower values produce more focused and deterministic outputs, while higher values generate more diverse and creative responses with five levels (1-5):
+        * **1**: Highly focused and deterministic outputs
+        * **2**: Mostly focused with slight variation
+        * **3**: Balanced between focus and creativity (default)
+        * **4**: More varied and creative responses
+        * **5**: Maximum creativity and diversity
+    
+    **Max Completion Tokens** Limits the maximum length of AI responses measured in tokens (roughly 4 characters per token).(All Models):
+    
+    * **Auto** (default): System automatically sets the token limit to 4096 tokens
+    * **Custom**: Manually set a specific token limit for responses
+        * When Custom is selected, you can enter a specific number of maximum tokens
+        * The interface shows remaining tokens available after your specified limit
+        * Setting too high a value will show an error if it exceeds the model's maximum output tokens
 
-4. **Adjust Parameters** (Optional): Fine-tune the response generation with these settings:
-    * **Temperature (0.1-1.0)** - adjusts the level of creativity or unpredictability in responses.
-        * **Higher values**: Responses are more creative and varied, but may be less consistent and more unpredictable.
-        * **Lower values**: Responses are more consistent and predictable, but may be less creative and varied.
-      * **Top P (0-1)** - determines the cumulative probability threshold for selecting words, balancing between creativity and consistency.
-        * **Higher values**: A wider range of words is considered, leading to more creative and diverse responses.
-        * **Lower values**: A narrower range of words is considered, leading to more consistent and predictable responses.
-      * **Max Completion Tokens** - sets the cap on the response length, helping tailor responses to be as concise or detailed as desired.
-        * **Higher values**: Responses can be longer and more detailed.
-        * **Lower values**: Responses are shorter and more concise.
 
-    ![Pipeline-Model-Settings](<../img/menus/pipeline/pipelin-model-settings.png>)   
+    ![Pipeline-Model-Settings](<../img/menus/pipeline/pipeline-model-settings.gif>){: loading=lazy }   
 
 5. **Start Interaction**: Begin your conversation by either:
      - Clicking on a **Conversation Starter** (if configured) to use a predefined prompt
@@ -309,9 +307,9 @@ To execute the pipeline and get the output:
     * Click the **Like** icon if the output meets your expectations.
     * Click the **Dislike** icon if the output is unsatisfactory. Upon disliking, you will have the option to leave a comment explaining why the output did not meet your expectations. This feedback helps improve the system's performance and relevance.
 
-![Pipeline-Execution](<../img/menus/pipeline/pipeline_execution.png>)
+![Pipeline-Execution](<../img/menus/pipeline/pipeline_execution.png>){: loading=lazy }
 
-### Managing Pipeline Versions: Save, Create Versions, Publish and Manage
+### Managing Pipeline Versions: Save, Create Versions, and Manage
 
 To optimally manage your pipeline, understanding how to save and create versions is crucial. Follow these guidelines to efficiently save your pipeline, create versions, and manage them.
 
@@ -330,7 +328,7 @@ For instances where you need to create and manage different iterations of your P
 1. **Initiate a New Version**: Start by clicking the **Save As Version** button.
 2. **Name Your Version**: When saving your work, provide a version name that clearly identifies the iteration or changes made. Click **Save** to confirm your entry. 
 
-![Pipeline New Version](<../img/menus/pipeline/pipeline-version-create.png>)
+![Pipeline New Version](<../img/menus/pipeline/pipeline-version-create.png>){: loading=lazy }
 
 **Best Practices for Version Naming**:
 
@@ -340,50 +338,11 @@ For instances where you need to create and manage different iterations of your P
 
 Upon creating a new version of the Pipeline, several options become available to you:
 
-* **Delete**: Remove this version of the Pipeline if it’s no longer needed.
+* **Delete**: Remove this version of the Pipeline if it's no longer needed.
 * **Execute**: Run this specific version of the Pipeline to see how it performs.
 * **Navigate Versions**: Use the **Version** dropdown list to switch between and select different versions of the Pipeline. This allows for easy comparison and management of various iterations.
 
-By following these steps, you can effectively manage the lifecycle and iterations of your pipelines, ensuring that each version is appropriately saved, published, and utilized as per your requirements.
-
-### Publishing a Pipeline Version
-
-The **Publish** functionality allows you to make a specific version of your pipeline available for public use after moderator approval. This ensures that only reviewed and approved versions are accessible to users.
-
-#### How to Publish a Pipeline Version:
-
-1. Navigate to the top menu and click the **Publish** button. A dialog box will appear prompting you to confirm the publishing process.
-2. **Provide a Version Name**. Enter a meaningful name for the version you want to publish. This helps in identifying the version during the review process.
-3. **Submit for Approval**:
-      * Once you click **Publish**, the version will be sent to a moderator for review.
-      * The moderator will evaluate the pipeline version and either approve or reject the request.
-
-![Pipeline-Publish](<../img/menus/pipeline/pipeline_publish.png>)
-
-#### What Happens After Publishing:
-
-* **If Approved**:
-    * The pipeline version will be made publicly available for use.
-    * Users will be able to access and execute the published version.
-
-* **If Rejected**:
-    * The moderator may provide feedback on why the version was not approved.
-    * You can make the necessary changes and resubmit the version for approval.
-
-  By following these steps, you can effectively manage the lifecycle and iterations of your pipelines, ensuring that each version is appropriately saved, published, and utilized as per your requirements.
-
-#### Best Practices for Publishing:
-
-* **Test Thoroughly**: Ensure the pipeline is fully functional and free of errors before submitting it for publishing.
-* **Provide Clear Version Names**: Use descriptive names to make it easier for moderators and users to understand the purpose of the version.
-* **Incorporate Feedback**: If a version is rejected, carefully review the feedback provided by the moderator and address the issues before resubmitting.
-
-By following these steps, you can ensure a smooth publishing process and make your pipeline versions available for broader use.
-
-### Monitoring Pipelines
-
-The **Monitoring** menu allows you to track the performance and activity of your Pipeline in real-time. By accessing this feature, you can view detailed logs, analyze execution metrics, and identify potential issues or bottlenecks in your pipeline's workflows.
-For detailed instructions on how to use the Monitoring feature, please refer to the **[Monitoring User Guide](../features/monitoring.md)**
+By following these steps, you can effectively manage the lifecycle and iterations of your pipelines, ensuring that each version is appropriately saved and utilized as per your requirements.
 
 ### Viewing Pipeline History
 
@@ -399,7 +358,7 @@ The History tab displays runs in a two-panel layout with a list of all execution
 
 For detailed instructions on using the History tab, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines/agents-pipelines-history.md)**.
 
-![History Tab](../img/menus/pipeline/pipeline-history-tab.png)
+![History Tab](../img/menus/pipeline/pipeline-history-tab.png){: loading=lazy }
 
 
 ### Best Practices for Pipelines
@@ -407,7 +366,6 @@ For detailed instructions on using the History tab, please refer to the **[Agent
 * **Keep It Modular**: Break down complex workflows into smaller, manageable states for better readability and maintainability.
 * **Use Tags**: Organize pipelines with tags to make them easier to find and manage.
 * **Test Iteratively**: Test each state or action individually before executing the entire pipeline to ensure accuracy.
-* **Monitor Regularly**: Use the Monitoring feature to track performance and identify areas for improvement.
 * **Document Your Logic**: Use clear names and descriptions for nodes to make your pipeline self-documenting.
 * **Validate Data Flow**: Ensure proper data flow between nodes by testing with sample data.
 * **Handle Errors Gracefully**: Implement error handling and fallback mechanisms in your pipeline design.
@@ -419,8 +377,7 @@ For detailed instructions on using the History tab, please refer to the **[Agent
 
     - **[Credentials](credentials.md)** - Learn how to create and manage credentials for toolkit integrations
     - **[Toolkits](toolkits.md)** - Comprehensive guide on creating and configuring toolkits
-    - **[Pipeline Agent Framework](../features/pipelines/pipeline-agent-framework.md)** - Advanced pipeline development guide
-    - **[Monitoring](../features/monitoring.md)** - Track and analyze pipeline performance
+    - **[Pipeline Overview](../how-tos/pipelines/overview.md)** - Advanced pipeline development guide
     - **[Glossary](../home/glossary.md)** - Definitions of key terms and concepts used in the ELITEA platform
 
 

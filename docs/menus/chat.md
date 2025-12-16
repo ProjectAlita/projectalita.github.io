@@ -8,7 +8,7 @@ All your conversations are stored on the ELITEA server, and you can access them 
 
 Conversations support the following functionality:
 
-* **Public and Private Conversations**: Share your conversation with other users from your project, involve them in the same conversation, or keep it private and visible only to you.
+* **Project and Private Conversations**: Share your conversation with other users from your project, involve them in the same conversation, or keep it private and visible only to you.
 * **Participants**: Add various participants to the conversation, including other users in public conversations, agents, pipelines and language models, making them part of the conversation.
 * **Canvas Mode**: Visualize and interact with conversation flows using a graphical canvas interface. 
 * **Interactions**: Interact with added participants, copy generated responses, and more.
@@ -23,11 +23,16 @@ For more details see [How to Use Chat Functionality](../how-tos/chat-conversatio
 
 1. Go to the **Chat** section in the left sidebar.
 2. Click the **+ Create** button at the top.
-3. Enter a name for your conversation (defaults to "New Conversation") and confirm.
+3. The chat input field appears and is highlighted to focus your attention.
+4. Type your first message in the input field.
+5. Press **Send** (or press Enter).
+6. The new conversation is created and appears in the **CONVERSATIONS** sidebar.
+7. The conversation name is automatically generated based on your message content. During name generation (1-2 seconds), you'll see a loader icon with "Naming" text next to the conversation item.
 
-![Create_Conversation](<../img/menus/chat/create_conversation.png>)
+![Create_Conversation](<../img/menus/chat/create-conversation.gif>){: loading=lazy }
 
-Your newly created conversation will subsequently appear in the Conversation's list.
+!!! tip "Quick Start"
+    You can optionally add participants (agents, pipelines, or models) before sending your first message by typing **#** followed by the participant name, or by using the participant panel on the right.
 
 ### Conversation Sorting and Organization
 
@@ -47,7 +52,7 @@ This automatic time-based sorting helps you quickly locate recent conversations 
 2. Provide a **Name** for the folder.
 3. Click **Save** to create the folder. The new folder will appear in the **CONVERSATIONS** sidebar.
 
-![Chat_Create_Folder](<../img/menus/chat/create_folder.png>)
+![Chat_Create_Folder](<../img/menus/chat/create-folder.gif>){: loading=lazy }
 
 ### How to Move Conversations to a Folder
 
@@ -58,7 +63,7 @@ This automatic time-based sorting helps you quickly locate recent conversations 
 !!! tip "Quick Organization"
       Alternatively, you can drag and drop conversations directly into folders in the sidebar for quick organization.
 
-![Chat_MoveTo_Folder](../img/menus/chat/moveto-folder.png)
+![Chat_MoveTo_Folder](../img/menus/chat/moveto-folder.gif){: loading=lazy }
 
 ### How to Move Conversations Back to the Main List
 
@@ -69,8 +74,10 @@ To move conversations from folders back to the main **CONVERSATIONS** list:
 3. Select **Back to the list** from the contextual menu.
 4. The conversation will be moved from the folder back to the main **CONVERSATIONS** list.
 
-  ![Chat_MoveTo_list](<../img/menus/chat/moveto_list.png>)
+  ![Chat_MoveTo_list](<../img/menus/chat/moveto-list.gif>){: loading=lazy }
 
+!!! tip "Quick Organization"
+      Alternatively, you can drag and drop conversations directly into folders in the sidebar for quick organization.
 !!! note "Note"
       This action is only available if you are a member of the conversation or have the necessary permissions.
 
@@ -112,51 +119,106 @@ Participants are additional "tools" that can be added to the conversation to enh
 ### How to Add Users to a Conversation
 1. In the **PARTICIPANTS** panel, click the users icon next to your avatar.
 2. Select **Add users** from the dropdown menu.
-   ![Add User](<../img/menus/chat/add_user.png>)
 3. The **Add users** modal will appear with a search bar.
 4. Use the search bar to find teammates by name.
 5. Select one or more users from the list by clicking on them.
-   ![Select User](<../img/menus/chat/select_user.png>)
 6. Click **Add** to confirm. The selected users will be added as participants to your chat.
-
 7. Added users will appear in the **PARTICIPANTS** section.  Hover over user avatars in the participant list or type **@username** in the chat input to mention and notify teammates in the conversation. To mention everyone in the conversation, select the **All Users** option.
-        ![Mention User ](<../img/menus/chat/mention.png>)        
+   ![Add User](<../img/menus/chat/add-user.gif>){: loading=lazy }        
 
 !!! note "Note"
       * Users can be removed by hovering over their name in the participants list and clicking the remove icon.
       * Users will receive notifications when they are added as participants in a conversation.
 
 
-#### Adding Assistants:
+### Adding Participants (Agents, Pipelines, Toolkits, MCPs)
 
-1. At the bottom of the chat, click the **Switch assistant** icon.
-2. In the opened "Frequently Used" list, click on the desired assistant (e.g., Agent) to select it.
-3. Alternatively, type **#** followed by the assistant name (e.g., `#ADO`) in the input box to quickly select an assistant.
-4. The Agent will be visible under "AI Assets" in the **PARTICIPANTS** area.
-5. Select a version of the agent at the bottom of the chat.
-      ![Chat_MoveTo_Folder](<../img/menus/chat/add_assistans.png>)
-      ![select version](<../img/menus/chat/agent.png>)
+You can add various AI participants to enhance your conversations:
 
-6. All assistants appear in the right sidebar (PARTICIPANTS area) for easy switching. Click on a participant in the list to activate and interact with it 
-7. To remove an assistant, hover over their card in the list and click the remove icon.
+**Method 1: Using the Participants Panel**
 
-   ![Remove assistant](<../img/menus/chat/remove_assistant.png>)
+1. In the **PARTICIPANTS** section on the right side of the screen, you'll see collapsible sections for:
+   - **agents**
+   - **pipelines**
+   - **toolkits**
+   - **MCPs**
+2. Click the **+** icon next to any section title to add participants of that type.
+3. Select the desired participant from the list (e.g., an Agent, Pipeline, Toolkit, or MCP).
+4. The selected participant will appear in the **PARTICIPANTS** panel.
+5. Click on a participant in the list to activate and interact with it.
+
+![Add participants](../img/menus/chat/add-participants-section.gif){: loading=lazy }
+
+**Method 2: Using the # Symbol (Quick Access)**
+
+1. In the chat input box, type `#` to see a dropdown list of frequently used participants.
+2. Continue typing to filter participants by name (e.g., `#Jira` will show all Jira-related participants).
+3. Select a participant from the filtered list (e.g., `#Data Analysis Agent`, `#Jira Toolkit`).
+4. The selected participant will appear as a chip above the input box and in the **PARTICIPANTS** panel.
+
+![Add participants](../img/menus/chat/add-participants-search.gif){: loading=lazy }
+
+**Creating New Participants:**
+
+You can also create new participants directly from the chat interface:
+
+* **Agents**: Click **Create new agent** in the agents section to open the Agent Canvas
+* **Pipelines**: Click **Create new pipeline** in the pipelines section to open the Pipeline Canvas
+* **Toolkits**: Click **+ Create new Toolkit** in the toolkits section to configure integrations
+* **MCPs**: Click **Create new MCP** in the MCPs section to connect Model Context Protocol servers
+![Create New Participants](../img/menus/chat/canvas-create.gif)
+
+
+**Managing Participants:**
+
+* To remove a participant, hover over their card in the **PARTICIPANTS** list and click the remove icon.
+* All participants appear in the right sidebar for easy switching between them.
 
 ## Display Configured Conversation Starter
 
 When you add a participant to a conversation, the configured conversation starter for that participant will automatically display in the chat. This feature improves usability and ensures a smooth start to conversations by providing immediate context and guidance on how to interact with each participant.
 
-![Conversation Starter](<../img//menus/chat/conversation_starter.png>)
+![Conversation Starter](<../img//menus/chat/conversation-starter.gif>){: loading=lazy }
 
-#### Adding LLM Models:
+### Adding LLM Models
 
-1. Click the **Switch to model** button at the bottom of the chat.
-2. Select a desired LLM model (e.g., gpt-4o) from the available options.
-3. To configure the model settings, click the **Settings** (gear) icon next to the assistant name.
-4. Configure the Model settings in the opened modal window. You can configure the following settings for the model:     Temperature, Top P (0-1), Top K, and MaxCompletion Tokens. To apply changes, click the **< Apply** button.
+**Selecting a Model:**
 
-      ![Switch model](<../img/menus/chat/model.png>)
-      ![Settings](<../img/menus/chat/settings.png>)
+1. Click the **model selector dropdown** at the bottom of the chat.
+2. Select a desired LLM model from the available options (e.g., gpt-4o, gpt-5.1, Claude).
+
+**Configuring Model Settings:**
+
+Click the **Settings** (⚙️) icon next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
+
+**For Reasoning Models** (e.g., GPT-5.1):
+
+* **Reasoning** - Controls the depth of logical thinking and problem-solving with three levels:
+    * **Low**: Fast, surface-level reasoning with concise answers and minimal steps
+    * **Medium**: Balanced reasoning with clear explanations and moderate multi-step thinking (default)
+    * **High**: Deep, thorough reasoning with detailed step-by-step analysis (may be slower)
+
+**For Standard Models** (e.g., GPT-4o):
+
+* **Creativity** - Controls response randomness and creativity. Lower values produce more focused and deterministic outputs, while higher values generate more diverse and creative responses with five levels (1-5):
+    * **1**: Highly focused and deterministic outputs
+    * **2**: Mostly focused with slight variation
+    * **3**: Balanced between focus and creativity (default)
+    * **4**: More varied and creative responses
+    * **5**: Maximum creativity and diversity
+
+**Max Completion Tokens** (All Models):
+
+Limits the maximum length of AI responses measured in tokens (roughly 4 characters per token):
+
+* **Auto** (default): System automatically sets the token limit to 4096 tokens
+* **Custom**: Manually set a specific token limit for responses
+    * When Custom is selected, you can enter a specific number of maximum tokens
+    * The interface shows remaining tokens available after your specified limit
+    * Setting too high a value will show an error if it exceeds the model's maximum output tokens
+
+
+![Settings](<../img/menus/chat/chat-model-settings.gif>){: loading=lazy }
 
 
 ### Actions for Conversation
@@ -174,7 +236,7 @@ The following actions are available for created conversations from **CONVERSATIO
     !!! tip "Tip"
         You can unpin the conversation by clicking the **Unpin** action.
 
-![Chat_Conversation_Actions](<../img/menus/chat/conversation_action.png>)
+![Chat_Conversation_Actions](<../img/menus/chat/conversation_action.png>){: loading=lazy }
 
 ### Actions for Folders
 
@@ -187,7 +249,7 @@ The following actions are available for managing folders in the **CONVERSATIONS*
     !!! note "Note"
         To be available in future updates.
 
-![Chat_Folder_Actions](<../img/menus/chat/folder_actions.png>)
+![Chat_Folder_Actions](<../img/menus/chat/folder_actions.png>){: loading=lazy }
 
 
 ## Like/Dislike, Comment, and Regenerate Outputs
@@ -200,7 +262,7 @@ To engage with the generated outputs in conversations, utilize the **Like/Dislik
 2. Click the **Thumbs Up** icon to like the output or the **Thumbs Down** icon to dislike it.
 3. After clicking the **Thumbs Down** icon, a **Leave comment** field will appear. Click on it, type your feedback in the input box, and press **Send** to save it.
 
-![Chat_Like_Dislike](<../img/menus/chat/like_dislike.png>)
+![Chat_Like_Dislike](<../img/menus/chat/like_dislike.png>){: loading=lazy }
 
 
 ### How to Regenerate the Last Output
@@ -210,7 +272,7 @@ The **Regenerate Last Output** option becomes available only after initiating a 
 1. After generating an output in the conversation, click the **Regenerate** icon 🔄 . 
 2. The system will regenerate the output based on the same input, providing a refined or corrected response.
 
-![Chat_Regenerate](<../img/menus/chat/regenerate.png>)
+![Chat_Regenerate](<../img/menus/chat/regenerate.gif>){: loading=lazy }
 
 ### Editing Generated Content with Canvas
  
@@ -229,7 +291,7 @@ The Canvas feature is supported when interacting with the following participants
 * Pipelines
 * LLM Models (direct interaction)
 
-   ![Canvas](<../img/menus/chat/canvas_open.png>)
+   ![Canvas](<../img/menus/chat/canvas-open.gif>){: loading=lazy }
 
 ### Real-time Collaboration in Canvas
 
@@ -250,7 +312,7 @@ Canvas supports real-time collaborative editing where multiple users can work on
     * **Undo/Redo**: Click the respective icons to revert or reapply changes.
     * **Save**: Click the **X** icon to save your changes and close the Canvas editor. *(Placeholder for actual save icon/mechanism if 'X' is incorrect)*
  
-![Canvas_Code_Editor](<../img/menus/chat/canvas_code.png>)
+![Canvas_Code_Editor](<../img/menus/chat/canvas_code.png>){: loading=lazy }
 
  
 #### Editing Tables with Canvas
@@ -267,7 +329,7 @@ Canvas supports real-time collaborative editing where multiple users can work on
     * **Undo/Redo**: Click the respective icons to revert or reapply changes.
     * **Save**: Click the **X** icon to save your changes and close the Canvas editor. *(Placeholder for actual save icon/mechanism if 'X' is incorrect)*
 
-    ![Canvas_Table_Editor](<../img/menus/chat/canvas_table.png>)
+    ![Canvas_Table_Editor](<../img/menus/chat/canvas_table.png>){: loading=lazy }
 
  
 **Table Manipulations:**
@@ -278,7 +340,7 @@ Canvas supports real-time collaborative editing where multiple users can work on
 * **Column Resizing**: Drag the column borders to resize columns to your preferred width.
 * **Cell Editing**: Double-click any cell to edit its content directly within the table interface.
  
-![Canvas_Table_Editor_Filtering](<../img/menus/chat/canvas_table_filtering.png>)
+![Canvas_Table_Editor_Filtering](<../img/menus/chat/canvas-table-filtering.gif>){: loading=lazy }
  
 #### Editing Mermaid Diagrams with Canvas
 
@@ -291,7 +353,7 @@ Canvas supports real-time collaborative editing where multiple users can work on
     * **Undo/Redo**: Click the respective icons to revert or reapply changes.
     * **Save**: Click the **X** icon to save your changes and close the Canvas editor. *(Placeholder for actual save icon/mechanism if 'X' is incorrect)*
 
-      ![Canvas_Mermaid_Editor](<../img/menus/chat/canvas_mermaid.png>)
+      ![Canvas_Mermaid_Editor](<../img/menus/chat/canvas_mermaid.png>){: loading=lazy }
 
 ## Clear Chat History
 
@@ -302,7 +364,7 @@ The **Clear Chat History** feature allows you to remove all messages and content
 3. A confirmation dialog will appear asking you to confirm the action.
 4. Click **Confirm** to proceed with clearing the chat history.
 
-      ![Canvas_Mermaid_Editor](<../img/menus/chat/clear_history.png>)
+      ![Canvas_Mermaid_Editor](<../img/menus/chat/clear-history.gif>){: loading=lazy }
 
 !!! note "Note"
        * This action will permanently remove all messages, responses, and generated content from the conversation. The conversation itself, its name, participants, and settings will remain unchanged.
