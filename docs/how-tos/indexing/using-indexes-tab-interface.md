@@ -166,6 +166,18 @@ Each index card in the left sidebar shows:
     - Displays accumulated progress messages
     - Continues monitoring until completion
 
+!!! success "Indexing Notifications"
+    You will receive notifications for all indexing operations (initial indexing and reindexing):
+    
+    - **Success**: Green checkmark icon with message showing indexed/reindexed counts
+    - **Failure**: Red error icon with failure message
+    - **Scheduled Operations**: Marked with "by schedule" text
+    - **Action**: Click any notification to navigate directly to the index
+    
+    Notifications appear in the notifications panel 
+    
+    ![Notifications](../../img/how-tos/indexing/schedule-indexing/indexing-notifications.gif){width="400" loading=lazy}
+
 ---
 
 ### Managing Existing Indexes
@@ -207,10 +219,11 @@ When an index is selected, the index card displays:
 **Automated Reindexing:**
 
 1. **Select Completed Index**: Choose an index with completed status from the sidebar
-2. **Enable Schedule**: Toggle the **Schedule** switch to activate automated reindexing
-3. **Configure Schedule**: Click the settings icon to open the schedule configuration modal
-4. **Set Cron Expression**: Define the reindexing frequency using cron syntax (e.g., `0 2 * * *` for daily at 2 AM)
-5. **Save Schedule**: Click **Save** to activate the automated schedule
+2. **Configure Schedule**: Click the settings icon to open the schedule configuration modal
+3. **Set Cron Expression**: Define the reindexing frequency using cron syntax (e.g., `0 2 * * *` for daily at 2 AM)
+4. **Configure Credentials**: Select an existing credential configuration or create a new one(only credentials matching your project type will be shown)
+5. **Save Schedule**: Click **Aplay** to activate the automated schedule
+6. **Enable Schedule**: Toggle the **Schedule** switch to activate automated reindexing
 
 **Schedule Status Indicators:**
 
@@ -484,7 +497,7 @@ Created        | 20-11-2025, 10:30 AM
 
 ### Common Issues and Solutions
 
-??? example "Disabled Tabs and Buttons"
+??? warning "Disabled Tabs and Buttons"
 
     **Indexes Tab Disabled:**
 
@@ -514,7 +527,7 @@ Created        | 20-11-2025, 10:30 AM
 
     The **Reindex button** is enabled only in the **Configuration tab**. It is disabled in the **Run** and **History** tabs. To trigger a manual reindex, navigate to the Configuration tab.
 
-??? example "Index Creation Failures"
+??? warning "Index Creation Failures"
 
     **Symptoms:**
 
@@ -539,7 +552,7 @@ Created        | 20-11-2025, 10:30 AM
     | "Insufficient permissions" | Limited access rights | Grant appropriate permissions to credential |
     | "Processing timeout" | Large dataset or slow connection | Reduce scope or increase timeout settings |
 
-??? example "Search Tool Issues"
+??? warning "Search Tool Issues"
 
     **Symptoms:**
 
@@ -555,7 +568,7 @@ Created        | 20-11-2025, 10:30 AM
     4. **Model Configuration**: Verify LLM model is properly configured
     5. **Collection Access**: Confirm index collections are accessible
 
-??? example "Poor Search Results"
+??? warning "Poor Search Results"
 
     **Symptoms:**
 
@@ -589,7 +602,7 @@ Created        | 20-11-2025, 10:30 AM
 
 ### Performance Optimization
 
-??? example "Large Dataset Handling"
+??? warning "Large Dataset Handling"
 
     **Strategies:**
 
@@ -598,7 +611,7 @@ Created        | 20-11-2025, 10:30 AM
     - **Chunking Optimization**: Adjust chunk sizes for optimal processing
     - **Batch Processing**: Process large datasets in smaller batches
 
-??? example "Search Performance"
+??? warning "Search Performance"
 
     **Optimization Tips:**
 
