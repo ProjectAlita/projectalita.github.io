@@ -75,16 +75,17 @@ nav:
           - Indexing Tools: how-tos/indexing/indexing-tools.md
           - How to create and use indexes: how-tos/indexing/using-indexes-tab-interface.md
           - Schedule Indexing: how-tos/indexing/schedule-indexing.md
-          - Repository Indexing: how-tos/indexing/index-github-data.md
-          - Confluence Indexing: how-tos/indexing/index-confluence-data.md
-          - Jira Indexing: how-tos/indexing/index-jira-data.md
-          - SharePoint Indexing: how-tos/indexing/index-sharepoint-data.md
-          - Artifacts Indexing: how-tos/indexing/index-artifacts-data.md
-          - Figma Indexing: how-tos/indexing/index-figma-data.md
-          - TestRail Indexing: how-tos/indexing/index-testrail-data.md
-          - Xray Indexing: how-tos/indexing/index-xray-data.md
-          - Zephyr Indexing: how-tos/indexing/index-zephyr-data.md
-          - ADO Wiki Indexing: how-tos/indexing/index-ado-wiki-data.md
+          - Toolkit-Specific Indexing Guides:
+              - Repository Indexing: how-tos/indexing/index-github-data.md
+              - Confluence Indexing: how-tos/indexing/index-confluence-data.md
+              - Jira Indexing: how-tos/indexing/index-jira-data.md
+              - SharePoint Indexing: how-tos/indexing/index-sharepoint-data.md
+              - Artifacts Indexing: how-tos/indexing/index-artifacts-data.md
+              - Figma Indexing: how-tos/indexing/index-figma-data.md
+              - TestRail Indexing: how-tos/indexing/index-testrail-data.md
+              - Xray Indexing: how-tos/indexing/index-xray-data.md
+              - Zephyr Indexing: how-tos/indexing/index-zephyr-data.md
+              - ADO Wiki Indexing: how-tos/indexing/index-ado-wiki-data.md
       - Agents & Pipelines:
           - View Agents and Pipelines History: how-tos/agents-pipelines/agents-pipelines-history.md
           - Entity Versioning: how-tos/agents-pipelines/entity-versioning.md

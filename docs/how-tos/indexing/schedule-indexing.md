@@ -22,6 +22,16 @@ Before configuring scheduled indexing, ensure the following requirements are met
 2. **Valid Index State**: The index must be in a valid state (not cancelled or failed)
 3. **Indexes Tab Access**: Access to the Indexes Tab interface within Toolkit Configuration
 4. **Appropriate Permissions**: User permissions to modify toolkit configurations
+5. **ELITEA Personal Access Token**: At least one generated and valid (not expired) ELITEA personal access token is required for scheduled indexing operations
+6. **Credentials Configuration** (if required): Some toolkits require credentials for scheduled indexing operations. If your toolkit requires credentials, you must select or create a credential configuration before enabling the schedule
+
+!!! warning "ELITEA Personal Access Token Required"
+    Scheduled indexing requires at least one **valid ELITEA personal access token** to authenticate scheduled operations:
+    
+    - You must generate an ELITEA personal access token before configuring schedules
+    - The token must not be expired at the time of scheduled execution
+    - If all your tokens are expired, scheduled reindexing operations will fail
+    - To manage your tokens, go to **User Settings** → **[Personal Access Tokens](../../getting-started/create-personal-access-token.md)**
 
 !!! warning "Index State Requirements"
     Scheduling is automatically **disabled** for indexes in the following states:
@@ -30,6 +40,17 @@ Before configuring scheduled indexing, ensure the following requirements are met
      - **failed** - Index creation or reindexing encountered an error
     
     To enable scheduling for these indexes, you must first successfully reindex them.
+
+!!! info "Credentials Requirement"
+    Some toolkits require credentials for scheduled indexing operations. If credentials are required:
+    
+    - You must configure credentials before enabling the schedule
+    - The Schedule toggle will show a tooltip: "Set credentials to enable scheduling"
+    - The gear icon will be clickable to configure both the cron expression and credentials
+    - The schedule cannot be enabled until valid credentials are selected
+    - **Credential Scope**: Only credentials matching the project type are available:
+        - **Private Project**: Only private project credentials can be selected
+        - **Team Project**: Only team project credentials can be selected
 
 ---
 
@@ -41,12 +62,116 @@ Before configuring scheduled indexing, ensure the following requirements are met
 2. **Select Your Toolkit**: Choose the toolkit containing the index you want to schedule
 3. **Open Indexes Tab**: Click on the **Indexes** tab
 4. **Select Index**: Click on an existing index from the sidebar to view its details
+5. **Switch to Configuration Tab**: In the index detail view, click on the **Configuration** tab to access the schedule controls
 
 ![Schedule Controls](../../img/how-tos/indexing/schedule-indexing/access-indexes-tab.gif){ loading=lazy }
 
 
 
-### Step 2: Enable Scheduling
+### Step 2: Configure Cron Expression
+
+1. **Click the Gear Icon** next to the Schedule label to open the Schedule Settings modal
+2. **View Current Schedule**: The modal displays the human-readable description of the current cron expression (e.g., "At 00:00, only on Saturday")
+3. **Choose Schedule Type**:
+      - **Default**: Visual cron builder with dropdown menus (beginner-friendly)
+      - **Advanced**: Manual text input for cron expression (for experienced users)
+4. **Configure Schedule**:
+   
+      **Default Mode** (Visual Builder):
+      
+      - Use dropdown menus to select:
+        - Period (e.g., "Every", "Specific")
+        - Minutes/hours
+        - Days of week/month
+        - Months
+      - The cron expression is built automatically as you make selections
+      - Human-readable description updates in real-time above the builder
+
+      **Advanced Mode** (Manual Entry):
+      
+      - Enter a cron expression directly in the text field (e.g., `0 2 * * *`)
+      - Format guide shown below: `minute – hour – day (month) – month – day (week)`
+      - Click the **info icon** to open [crontab.guru](https://crontab.guru) for help
+      - Human-readable description updates as you type
+
+5. **Configure Credentials** (if required):
+      - Some toolkits require credentials for scheduled indexing
+      - If required, a **credentials dropdown** will appear below the cron configuration
+      - Select an existing credential configuration or create a new one
+      - **Available credentials are filtered by project type**:
+          - If you're in a **Private Project**, only private project credentials are shown
+          - If you're in a **Team Project**, only team project credentials are shown
+6. **Apply Changes**: Click **Apply** button to save 
+
+![Configure Cron](../../img/how-tos/indexing/schedule-indexing/configure-cron-expression.gif){ loading=lazy }
+
+**Schedule Settings Modal Fields:**
+
+| Element | Description | Behavior |
+|---------|-------------|----------|
+| **Description Text** | Human-readable schedule explanation at the top | Updates in real-time, turns red if invalid |
+| **Schedule Type** | Radio button group: "Default" or "Advanced" | Switches between visual builder and manual entry |
+| **Visual Cron Builder** (Default mode) | Interactive dropdown menus for period, time, days | Automatically builds cron expression from selections |
+| **Cron Expression Input** (Advanced mode) | Text field for entering 5-field cron expression | Center-aligned, validates on change |
+| **Format Guide** (Advanced mode) | `minute – hour – day (month) – month – day (week)` | Static reference below input |
+| **Help Icon** (Advanced mode) | Info icon linking to crontab.guru | Opens external cron expression help |
+| **Credentials Selector** (conditional) | Dropdown to select credential configuration | Only shown if toolkit requires credentials for scheduling. Available options are filtered by project type (private or team) |
+| **Apply Button** | Saves the cron expression and credentials | Disabled when expression is invalid or required credentials missing |
+| **Cancel Button** | Closes modal without saving | Always enabled |
+
+**Default Cron Expression:**
+
+When first configured, the schedule defaults to `0 0 * * 6` (Every Saturday at midnight).
+
+**Schedule Type Modes:**
+
+The modal offers two input modes to accommodate different user experience levels:
+
+- **Default Mode**: Visual cron builder
+    - User-friendly dropdown menus
+    - Automatically constructs valid cron expressions
+    - Prevents common syntax errors
+    - Best for users unfamiliar with cron syntax
+
+- **Advanced Mode**: Manual text input
+    - Direct cron expression entry
+    - Full flexibility for complex schedules
+    - Includes format guide and help link
+    - Best for experienced users who prefer precise control
+
+!!! info "Review History"
+    Scheduled reindexing operations will appear in the History tab with the label "Reindexed"
+
+!!! success "Notifications"
+    You will receive notifications for all indexing operations (initial indexing, manual reindexing, and scheduled reindexing):
+    
+    **Successful Operations:**
+    
+    - **Icon**: Green success checkmark
+    - **Message Format**:
+        - Initial indexing: `Index {name} is successfully created: { "indexed": X }`
+        - Reindex (manual): `Index {name} is successfully reindexed. { "reindexed": X, "indexed": Y }`
+        - Reindex (scheduled): `Index {name} is successfully reindexed by schedule. { "reindexed": X, "indexed": Y }`
+    - **Action**: Click the notification to navigate to the index in the Indexes tab
+    
+    **Failed Operations:**
+    
+    - **Icon**: Red error icon
+    - **Message**: `Index {name} is failed.`
+    - **Note**: This applies to both initial indexing failures and reindexing failures
+    - **Action**: Click the notification to view the index and check error details in the History tab
+    
+    **Notification Details:**
+    
+    - Notifications appear in the notifications panel (bell icon in top navigation)
+    - Each notification shows the relative time (e.g., "2 minutes ago", "1 hour ago")
+    - Clicking a notification navigates directly to the specific index in the Indexes tab
+    - Scheduled operations are clearly marked with "by schedule" text
+
+    ![Notifications](../../img/how-tos/indexing/schedule-indexing/indexing-notifications.gif){width="500" loading=lazy}
+
+
+### Step 3: Enable Scheduling
 
 In the index detail view header, locate the **Schedule** controls:
 
@@ -65,41 +190,6 @@ In the index detail view header, locate the **Schedule** controls:
 2. A success notification will appear: "Schedule is disabled for index!"
 
 ![Schedule Controls](../../img/how-tos/indexing/schedule-indexing/schedule-controls.gif){ loading=lazy }
-
-
-
-### Step 3: Configure Cron Expression
-
-1. **Click the Gear Icon** next to the Schedule label to open the Schedule Settings modal
-2. **View Current Schedule**: The modal displays the current cron expression
-3. **Human-Readable Description**: Above the input field, see a natural language description of the schedule (e.g., "At 12:00 AM, only on Saturday")
-4. **Modify Expression**: Enter a new cron expression in the input field
-5. **Real-Time Validation**: 
-      - **Valid expression**: Description updates to show the new schedule
-      - **Invalid expression**: Red error message appears with the specific issue
-6. **Get Help** (optional): Click the **info icon** next to the format guide to open [crontab.guru](https://crontab.guru) in a new tab for cron expression assistance
-7. **Apply Changes**: Click **Apply** button to save (disabled if expression is invalid)
-8. **Cancel Changes**: Click **Cancel** button to discard modifications
-
-**Schedule Settings Modal Fields:**
-
-| Element | Description | Behavior |
-|---------|-------------|----------|
-| **Cron Expression Input** | Text field for entering 5-field cron expression | Center-aligned, validates on change |
-| **Description Text** | Human-readable schedule explanation | Updates in real-time, turns red if invalid |
-| **Format Guide** | `minute – hour – day (month) – month – day (week)` | Static reference below input |
-| **Help Icon** | Info icon linking to crontab.guru | Opens external cron expression help |
-| **Apply Button** | Saves the new cron expression | Disabled when expression is invalid |
-| **Cancel Button** | Closes modal without saving | Always enabled |
-
-**Default Cron Expression:**
-
-When first configured, the schedule defaults to `0 0 * * 6` (Every Saturday at midnight).
-
-![Configure Cron](../../img/how-tos/indexing/schedule-indexing/configure-cron-expression.gif){ loading=lazy }
-
-!!! info "Review History"
-    Scheduled reindexing operations will appear in the History tab with the label "Reindexed"
 
 ---
 ## Understanding Cron Expressions
@@ -130,12 +220,18 @@ minute   hour   day(month)   month   day(week)
 
 ### Frequency Limitations
 
-!!! warning "Minimum Frequency Restriction"
-    The system enforces a **minimum frequency of 1 hour** between reindexing operations to prevent excessive resource usage. The following patterns are **not allowed**:![Minimum](../../img/how-tos/indexing/schedule-indexing/minimum-frequency.png){ align=right width="250" loading=lazy }
+!!! info "Frequency Recommendations"
+    While the system currently allows any valid cron expression frequency, it is **strongly recommended** to avoid scheduling reindexing operations more frequently than once per hour to prevent excessive resource usage:![Minimum](../../img/how-tos/indexing/schedule-indexing/minimum-frequency.png){ align=right width="250" loading=lazy }
     
+    **Not recommended:**
     - `* * * * *` - Every minute
     - `*/30 * * * *` - Every 30 minutes
-    - Any pattern that would trigger more than once per hour 
+    - Any pattern triggering more than once per hour
+    
+    **Recommended minimum:** `0 * * * *` (Every hour at minute 0) or less frequent
+    
+    !!! warning "Future Enforcement"
+        A minimum frequency restriction of 1 hour may be enforced in future releases to protect system resources. 
 
 ---
 
@@ -228,10 +324,26 @@ This example demonstrates setting up automated daily reindexing for a GitHub rep
 **3. Configure Daily 2 AM Schedule:**
 
 1. Click the **gear icon** next to the Schedule label
-2. The Schedule Settings modal opens with default expression `0 0 * * 6`
-3. **Clear the input** and enter: `0 2 * * *`
-4. **Verify the description** updates to: "At 02:00 AM"
-5. **Click Apply** to save the new schedule
+2. The Schedule Settings modal opens showing the current schedule
+3. **Choose configuration method:**
+   
+      **Option A: Using Default (Visual Builder)**:
+      
+      - Select **Default** schedule type (if not already selected)
+      - Use the dropdown menus to configure:
+        - Period: "Every"
+        - Hour: "2:00"
+        - Day: "*" (every day)
+      - The cron expression `0 2 * * *` is built automatically
+      - Verify the description shows: "At 02:00 AM"
+      
+      **Option B: Using Advanced (Manual Entry)**:
+      
+      - Select **Advanced** schedule type
+      - Clear the input and enter: `0 2 * * *`
+      - Verify the description updates to: "At 02:00 AM"
+
+4. **Click Apply** to save the new schedule
 
 **4. Verify Configuration:**
 
@@ -248,11 +360,21 @@ This example demonstrates setting up automated daily reindexing for a GitHub rep
 3. Progress is tracked and visible in the index interface
 4. Upon completion, the index state returns to `completed`
 5. A new entry appears in the **History** tab with label "Reindexed" and the timestamp
+6. A **notification** is sent:
+   - **Success**: "Index docs is successfully reindexed by schedule. { "reindexed": X, "indexed": Y }"
+   - **Failure**: "Index docs is failed."
 
 **History Tab Entry:**
 ```
 Event: Reindexed
 Date: 25-11-2025, 02:00 AM
+```
+
+**Notification Received:**
+```
+Index docs is successfully reindexed by schedule.
+{ "reindexed": 15, "indexed": 120 }
+2 minutes ago
 ```
 
 **Result:**
@@ -322,11 +444,62 @@ Your team can now ask questions about the codebase and documentation using the m
 
     **Symptom**: When updating the cron expression, no success notification appears.
 
-    **Expected Behavior**: This is normal. Success notifications only appear when **enabling or disabling** the schedule toggle, not when modifying the cron expression.
+    **Expected Behavior**: This is normal. Success notifications only appear when **enabling or disabling** the schedule toggle, not when modifying the cron expression or credentials.
 
     **To Verify Configuration:**
     - Reopen the Schedule Settings modal
     - Confirm the cron expression shows your updated value
+    - Confirm credentials are selected (if required)
+
+??? example "Cannot Enable Schedule - Credentials Required"
+
+    **Symptom**: The Schedule toggle is disabled with tooltip "Set credentials to enable scheduling".
+
+    **Cause**: The toolkit requires credentials for scheduled indexing operations.
+
+    **Solution:**
+    
+    1. Click the **gear icon** next to the Schedule toggle
+    2. In the Schedule Settings modal, scroll down to the **credentials selector**
+    3. Select an existing credential configuration from the dropdown (only credentials matching your project type will be shown), or
+    4. Click **+ Create new** to create a new credential configuration
+    5. Click **Apply** to save
+    6. Now the Schedule toggle will be enabled
+    
+    **Note**: The credentials dropdown only shows credentials that match your current project type:
+    - **Private Project**: Only private project credentials are available
+    - **Team Project**: Only team project credentials are available
+
+??? example "Apply Button Disabled in Schedule Settings"
+
+    **Symptom**: The Apply button in the Schedule Settings modal is grayed out.
+
+    **Causes and Solutions:**
+
+    | Cause | Solution |
+    |-------|----------|
+    | Invalid cron expression | Check the error message and correct the expression |
+    | Required credentials not selected | Scroll down and select a credential configuration |
+    | Toolkit schema still loading | Wait for the loading to complete |
+
+??? example "Scheduled Reindexing Fails - Token Error"
+
+    **Symptom**: Scheduled reindexing operations fail, and you receive error notifications.
+
+    **Cause**: No valid ELITEA personal access token is available, or all tokens have expired.
+
+    **Solution:**
+    
+    1. Navigate to **User Settings** → **Personal Access Tokens**
+    2. Check if you have any active (non-expired) tokens
+    3. If all tokens are expired or no tokens exist:
+          - Click **Generate New Token**
+          - Provide a token name and expiration date
+          - Save the token
+    4. Return to the Indexes tab and verify the schedule is still enabled
+    5. Wait for the next scheduled execution or manually trigger a reindex to test
+    
+    **Prevention**: Regularly review your personal access tokens and generate new ones before existing tokens expire to avoid disruption to scheduled operations.
 
 ---
 
@@ -339,18 +512,19 @@ Your team can now ask questions about the codebase and documentation using the m
     | **Minimum Frequency** | Schedules cannot execute more frequently than once per hour |
     | **User-Specific Schedules** | Schedules are per-user; there is no shared/global schedule for all users |
     | **Single Schedule Per User Per Index** | Each user can only configure one schedule per index |
+    | **Credentials Stored Per Schedule** | If credentials are required, they are stored with the schedule and used for all scheduled runs |
     | **No Schedule History** | The system does not maintain a history of schedule configuration changes |
     | **No Concurrent Execution Protection** | If a scheduled run is in progress when the next trigger occurs, behavior is undefined |
     | **Time Zone** | Schedules execute in the server's time zone (not user's local time zone) |
     | **No Advanced Scheduling Options** | No support for:<br>• Date ranges (e.g., only reindex between Jan 1 and Mar 31)<br>• Conditional schedules (e.g., only if data has changed)<br>• Retry logic on failure<br>• Schedule dependencies between indexes |
     | **Schedule Disables After Index Failure** | If a manually triggered or scheduled reindexing fails, the schedule is automatically disabled and must be manually re-enabled after fixing the issue |
-    | **No Notification for Scheduled Runs** | There is no notification system to alert users when a scheduled reindexing completes or fails. Users must manually check the History tab |
+    | **Notification for Result Only** | Notifications are sent when reindexing completes (success) or fails (error), but there is no notification when a scheduled reindexing starts. Check the index status or History tab to monitor ongoing operations |
 
 ---
 
 ## Best Practices
 
-??? example "Choosing the Right Schedule"
+??? info "Choosing the Right Schedule"
 
     1. **Data Change Frequency**: Match schedule to how often your source data changes
           - **Rapidly changing data** (e.g., active repositories): Daily or multiple times per day
@@ -371,7 +545,7 @@ Your team can now ask questions about the codebase and documentation using the m
           - Balance data freshness requirements with system resources
           - Don't schedule more frequently than necessary
 
-??? example "Managing Multiple Schedules"Schedules"
+??? info "Managing Multiple Schedules"Schedules"
 
     When managing schedules across multiple indexes:
 
@@ -386,7 +560,7 @@ Your team can now ask questions about the codebase and documentation using the m
 
     3. **Document Your Schedules**: Maintain a reference document listing all configured schedules for coordination
 
-??? example "Monitoring and Maintenance"intenance"
+??? info "Monitoring and Maintenance"intenance"
 
     1. **Regular Review**: Periodically check the History tab to verify schedules are executing successfully
     2. **Update Schedules as Needed**: Adjust cron expressions when data change patterns evolve
