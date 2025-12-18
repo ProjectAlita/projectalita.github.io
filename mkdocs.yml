@@ -62,14 +62,16 @@ nav:
           - Use Public Agents: how-tos/chat-conversations/use-public-items-from-chat.md
           - Add Teammates to Conversation: how-tos/chat-conversations/add-teammates-to-conversation.md
           - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
-          - Internal Tools in Conversation: 
+          - Context Management: how-tos/chat-conversations/context-management.md
+          - Canvas - Create and Edit Entities:
+                - Agents: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
+                - Pipelines: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
+                - Toolkits: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
+                - MCPs: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
+          - Internal Tools: 
                 - Python Sandbox: how-tos/chat-conversations/enable-internal-tools.md
                 - Image Creation: how-tos/chat-conversations/image-generation.md
-                - Planner: how-tos/chat-conversations/planner-internal-tool.md
-          - Canvas - Create and Edit Agents: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
-          - Canvas - Create and Edit Pipelines: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
-          - Canvas - Create and Edit Toolkits: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
-          - Canvas - Create and Edit MCPs: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
+                - Planner: how-tos/chat-conversations/planner-internal-tool.md                
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
