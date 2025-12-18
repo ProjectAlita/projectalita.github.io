@@ -165,8 +165,9 @@ nav:
 
   - Release Notes:
       - Current Version:
-          - RN 2.0.0 Beta: release-notes/rn_current.md
+          - RN 2.0.0 B2: release-notes/rn_current.md
       - Previous versions:
+          - RN 2.0.0 Beta: release-notes/rn13.md
           - RN 1.7.1: release-notes/archived/rn12.md
           - RN 1.7.0: release-notes/archived/rn11.md
           - RN 1.6.0: release-notes/archived/rn10.md
@@ -203,8 +204,8 @@ nav:
       - Additional Resources: support/additional-resources.md
 
   - Archive:
-      - Quick Start : archive/quick-start.md
-      - Very Quick Start : archive/very-quick-start.md
+      - Quick Start: archive/quick-start.md
+      - Very Quick Start: archive/very-quick-start.md
       - Create Conversation: archive/create-conversation.md
       - Create an Agent: archive/create-agent.md
       - Create a Pipeline: archive/create-pipeline.md
@@ -226,7 +227,6 @@ nav:
       - Pipelines:
           - Pipelines Architecture: features/pipelines/pipeline-agent-framework.md
           - Iteration Nodes: how-tos/pipelines/nodes/iteration-nodes.md
-
 
 theme:
   name: material
