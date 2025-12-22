@@ -187,6 +187,8 @@ nav:
           - Loop Node Migration: migration/v2.0.1/loop-node-migration.md
           - Pipeline Node Migration: migration/v2.0.1/pipeline-node-migration.md
           - Tool Node Migration: migration/v2.0.1/tool-node-migration.md
+          - Pipeline Save Button State: migration/v2.0.1/pipeline-save-button.md
+
       - Upgrading to v2.0.0:
           - Migration Overview: migration/v2.0.0/migration-overview.md
           - Update LLM Nodes in Pipelines: migration/v2.0.0/update-llm-nodes.md
