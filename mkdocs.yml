@@ -24,8 +24,8 @@ nav:
       - Troubleshooting & System Check:
           - Quick Health Check: getting-started/system-health-checklist.md
       - Guides (Advanced):
-          - Create a Pipeline(Canvas): how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
-          - Create a MCP(Canvas): how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
+          - Create a Pipeline: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
+          - Create a MCP: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
           - Create an Artifact: getting-started/create-artifact.md
           - How to create and use indexes: how-tos/indexing/using-indexes-tab-interface.md
           - Configure and Use Server (STDIO): integrations/mcp/create-and-use-server-stdio.md
@@ -64,14 +64,14 @@ nav:
           - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
           - Context Management: how-tos/chat-conversations/context-management.md
           - Canvas - Create and Edit Entities:
-                - Agents: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
-                - Pipelines: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
-                - Toolkits: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
-                - MCPs: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
-          - Internal Tools: 
-                - Python Sandbox: how-tos/chat-conversations/enable-internal-tools.md
-                - Image Creation: how-tos/chat-conversations/image-generation.md
-                - Planner: how-tos/chat-conversations/planner-internal-tool.md                
+              - Agents: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
+              - Edit Pipelines: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
+              - Toolkits: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
+              - MCPs: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
+          - Internal Tools:
+              - Python Sandbox: how-tos/chat-conversations/enable-internal-tools.md
+              - Image Creation: how-tos/chat-conversations/image-generation.md
+              - Planner: how-tos/chat-conversations/planner-internal-tool.md
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
@@ -167,7 +167,7 @@ nav:
       - Current Version:
           - RN 2.0.0 B2: release-notes/rn_current.md
       - Previous versions:
-          - RN 2.0.0 Beta: release-notes/rn13.md
+          - RN 2.0.0 Beta: release-notes/archived/rn13.md
           - RN 1.7.1: release-notes/archived/rn12.md
           - RN 1.7.0: release-notes/archived/rn11.md
           - RN 1.6.0: release-notes/archived/rn10.md
@@ -183,6 +183,7 @@ nav:
 
   - Migration & Upgrade:
       - Upgrading to v2.0.1:
+          - Migration Overview: migration/v2.0.1/migration-overview.md
           - Condition Node Migration: migration/v2.0.1/condition-node-migration.md
           - Function Node Migration: migration/v2.0.1/function-node-migration.md
           - Loop Node Migration: migration/v2.0.1/loop-node-migration.md
