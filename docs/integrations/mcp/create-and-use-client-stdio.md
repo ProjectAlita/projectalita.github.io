@@ -346,69 +346,113 @@ You can add MCP tools directly to conversations when creating a new chat or in a
 
 ## Common Problems & Fixes
 
-### Problem: "Node.js not found" error with Playwright
-**Fix:** 
+??? warning "Problem: 'Node.js not found' error with Playwright"
+    **Fix:** 
 
-1. Install Node.js from [nodejs.org](https://nodejs.org/)
-2. Download the LTS (Long Term Support) version
-3. Restart your terminal after installation
-4. Verify by running: `node --version`
+    1. Install Node.js from [nodejs.org](https://nodejs.org/)
+    2. Download the LTS (Long Term Support) version
+    3. Restart your terminal after installation
+    4. Verify by running: `node --version`
 
-### Problem: "npx command not found" on Windows
-**Fix:**
+??? warning "Problem: 'npx command not found' on Windows"
+    **Fix:**
 
-1. Open your configuration file at `%APPDATA%\alita-mcp-client\config.json`
-2. Change `"command": "npx"` to `"command": "npx.cmd"` in the servers section
-3. Save the file and restart the MCP client
+    1. Open your configuration file at `%APPDATA%\alita-mcp-client\config.json`
+    2. Change `"command": "npx"` to `"command": "npx.cmd"` in the servers section
+    3. Save the file and restart the MCP client
 
-### Problem: No tools showing up in Elitea
-**Fix:**
+??? warning "Problem: No tools showing up in Elitea"
+    **Fix:**
 
-1. Make sure the MCP client is running (check the tray icon or terminal)
-2. Restart the MCP server from the tray menu
-3. Refresh the Elitea page in your browser
-4. Check that your Project ID is correct
+    1. Make sure the MCP client is running (check the tray icon or terminal)
+    2. Restart the MCP server from the tray menu
+    3. Refresh the Elitea page in your browser
+    4. Check that your Project ID is correct
 
-### Problem: "Server configuration empty" error
-**Fix:**
+??? warning "Problem: 'Server configuration empty' error"
+    **Fix:**
 
-1. Open your `config.json` file at `%APPDATA%\alita-mcp-client\config.json`
-2. Make sure the `"servers"` section is not empty
-3. If it's empty, run `alita-mcp bootstrap` again to add servers
+    1. Open your `config.json` file at `%APPDATA%\alita-mcp-client\config.json`
+    2. Make sure the `"servers"` section is not empty
+    3. If it's empty, run `alita-mcp bootstrap` again to add servers
 
+??? warning "Problem: Tray icon not visible"
+    **Fix:**
 
-### Problem: Tray icon not visible
-**Fix:**
+    1. Make sure the tray app is actually running (check PowerShell window)
+    2. Try running `alita-mcp tray` again
+    3. Check if other applications are hiding the icon in the system tray
+    4. Click the small arrow (^) in the system tray to show hidden icons
 
-1. Make sure the tray app is actually running (check PowerShell window)
-2. Try running `alita-mcp tray` again
-3. Check if other applications are hiding the icon in the system tray
-4. Click the small arrow (^) in the system tray to show hidden icons
+??? warning "Problem: 'Connection failures in Elitea', 'Port already in use', 'Address already in use' errors"
+    **Fix:**
 
-### Problem: "Connection failures in Elitea", "Port already in use" , "Address already in use"  errors
-**Fix:**
+    1. Another application is using port 8000 (the default MCP port)
+    2. **Option 1 - Change the port:**
+         - Open your `config.json` file at `%APPDATA%\alita-mcp-client\config.json`
+         - Change `"port": 8000` to a different port like `"port": 8001`
+         - Save the file and restart the MCP client
+    3. **Option 2 - Find and stop the conflicting application:**
+         - Open PowerShell as Administrator
+         - Run: `netstat -ano | findstr :8000`
+         - Note the PID (Process ID) in the last column
+         - Run: `tasklist | findstr <PID>` (replace `<PID>` with the number)
+         - Stop that application if it's not needed
+    4. Restart the MCP client after making changes
 
-1. Another application is using port 8000 (the default MCP port)
-2. **Option 1 - Change the port:**
-     - Open your `config.json` file at `%APPDATA%\alita-mcp-client\config.json`
-     - Change `"port": 8000` to a different port like `"port": 8001`
-     - Save the file and restart the MCP client
-3. **Option 2 - Find and stop the conflicting application:**
-     - Open PowerShell as Administrator
-     - Run: `netstat -ano | findstr :8000`
-     - Note the PID (Process ID) in the last column
-     - Run: `tasklist | findstr <PID>` (replace `<PID>` with the number)
-     - Stop that application if it's not needed
-4. Restart the MCP client after making changes
+??? warning "Problem: Tools work but give errors"
+    **Fix:**
 
-### Problem: Tools work but give errors
-**Fix:**
+    1. Check the tool's specific requirements (authentication, permissions, etc.)
+    2. For GitHub: Make sure you have proper access tokens configured
+    3. For Playwright: Ensure you have sufficient system resources for browser automation
+    4. Click the tray icon and select **View Logs** to see detailed error messages
 
-1. Check the tool's specific requirements (authentication, permissions, etc.)
-2. For GitHub: Make sure you have proper access tokens configured
-3. For Playwright: Ensure you have sufficient system resources for browser automation
-4. Click the tray icon and select **View Logs** to see detailed error messages
+??? warning "Problem: MCP server not working - need to clear NPX cache"
+    **Fix:**
 
+    If the MCP server is not working correctly, you may need to clear the NPX cache:
+
+    1. **Clear the NPX cache:**
+       ```bash
+       npx clear-npx-cache
+       ```
+
+    2. **Or manually delete the cache folder (Windows):**
+       ```cmd
+       rmdir /s "C:\Users\<Firstname_Lastname>\AppData\Local\npm-cache\_npx"
+       ```
+       (Replace `<Firstname_Lastname>` with your actual Windows username)
+
+    3. **Try installing the MCP server again:**
+       ```bash
+       npx @playwright/mcp@latest
+       ```
+
+    4. **Verify it works:**
+       ```bash
+       alita-mcp serve
+       ```
+
+??? warning "Problem: Errors when running 'alita-mcp serve' or 'alita-mcp tray' - need to upgrade client"
+    **Fix:**
+
+    If you're getting errors with the Alita MCP client, try upgrading to the latest version:
+
+    - **If you installed via pip:**
+      ```bash
+      pip install --upgrade alita-mcp
+      ```
+
+    - **If you installed via pipx:**
+      ```bash
+      pipx upgrade alita-mcp
+      ```
+
+    **Verify the upgrade worked:**
+    ```bash
+    alita-mcp serve
+    ```
 
 ---
 
