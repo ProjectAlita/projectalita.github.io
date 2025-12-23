@@ -1,10 +1,12 @@
-# Migration Guide: Upgrading to v2.0.1
+# Migration Guide: Upgrading to v2.0.0 B2
 
 ## Overview
 
-Version 2.0.1 introduces significant improvements to pipeline nodes, deprecating several legacy node types and replacing them with more specialized, easier-to-use alternatives. This guide provides an overview of the changes and links to detailed migration instructions for each deprecated node type.
+Version 2.0.0 B2 introduces significant improvements to pipeline nodes, deprecating several legacy node types and replacing them with more specialized, easier-to-use alternatives. This guide provides an overview of the changes and links to detailed migration instructions for each deprecated node type.
 
 ## What's Changing
+
+### Pipeline Nodes
 
 The following pipeline nodes have been deprecated and will be removed in a future release (planned for 2026):
 
@@ -17,18 +19,47 @@ The following pipeline nodes have been deprecated and will be removed in a futur
 !!! warning "Deprecation Timeline"
     Existing pipelines using deprecated nodes will continue to function, but you cannot add new instances of these nodes. Deprecated nodes are marked with a warning icon and "Deprecated!" text in the node header. Plan your migration before the 2026 removal date.
 
+### OpenAPI Toolkit
+
+Starting with release 2.0.0 B2, the **OpenAPI toolkit now requires explicit credential configuration** for all toolkits:
+
+* **Existing OpenAPI Toolkits** → Must add credential selection (including Anonymous for public APIs)
+* **New OpenAPI Toolkits** → Credential selection required during creation
+
+!!! warning "Action Required for Existing Toolkits"
+    Existing OpenAPI toolkits will not function until credentials are configured. See the [OpenAPI Toolkit Migration Guide](openapi-toolkit-migration.md) for step-by-step instructions.
+
+### Pipeline Save Button Behavior
+
+Starting with version 2.0.1, the **Save button is active immediately** when you first open an existing pipeline. This allows you to review recent platform updates (enhanced LLM Node, redesigned Decision Node, YAML structure changes, deprecated node warnings) and save when ready. After your first save, the button only activates when you make changes.
+
+!!! info "No Immediate Action Required"
+    Existing pipelines continue to function without saving. See the [Pipeline Save Button State Guide](pipeline-save-button.md) for details.
+
 ## Migration Priority
 
 We recommend migrating in the following order:
 
+### Pipeline Nodes
+
 1. **Condition Nodes** → Router/Decision Nodes (straightforward replacement)
 2. **Function/Tool Nodes** → Toolkit/MCP Nodes (clear path with feature parity)
 3. **Pipeline Nodes** → Agent Nodes (enhanced node now supports pipeline execution)
-4. **Loop Nodes** → Alternative patterns (requires design rethinking)
-
 ## Detailed Migration Guides
 
+### Pipeline Node Migrations
+
 Select the migration guide for the node type you need to update:
+
+* [Condition Node Migration](condition-node-migration.md) - Migrate to Router or Decision nodes
+* [Function Node Migration](function-node-migration.md) - Migrate to Toolkit or MCP nodes
+* [Tool Node Migration](tool-node-migration.md) - Migrate to Toolkit or MCP nodes
+* [Pipeline Node Migration](pipeline-node-migration.md) - Migrate to enhanced Agent node
+* [Loop Node Migration](loop-node-migration.md) - Use alternative design patterns
+
+### Toolkit Migrations
+
+* [OpenAPI Toolkit Migration](openapi-toolkit-migration.md) - Add credentials to existing OpenAPI toolkits
 
 * [Condition Node Migration](condition-node-migration.md) - Migrate to Router or Decision nodes
 * [Function Node Migration](function-node-migration.md) - Migrate to Toolkit or MCP nodes
