@@ -70,7 +70,6 @@ nav:
               - MCPs: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
           - Internal Tools:
               - Python Sandbox: how-tos/chat-conversations/enable-internal-tools.md
-              - Image Creation: how-tos/chat-conversations/image-generation.md
               - Planner: how-tos/chat-conversations/planner-internal-tool.md
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
@@ -182,14 +181,16 @@ nav:
           - RN 1.0.0: release-notes/archived/rn1.md
 
   - Migration & Upgrade:
-      - Upgrading to v2.0.1:
+      - Upgrading to v2.0.0 B2:
           - Migration Overview: migration/v2.0.1/migration-overview.md
           - Condition Node Migration: migration/v2.0.1/condition-node-migration.md
           - Function Node Migration: migration/v2.0.1/function-node-migration.md
           - Loop Node Migration: migration/v2.0.1/loop-node-migration.md
           - Pipeline Node Migration: migration/v2.0.1/pipeline-node-migration.md
           - Tool Node Migration: migration/v2.0.1/tool-node-migration.md
-      - Upgrading to v2.0.0:
+          - Pipeline Save Button State: migration/v2.0.1/pipeline-save-button.md
+          - OpenAPI Toolkit Migration: migration/v2.0.1/openapi-toolkit-migration.md
+      - Upgrading to v2.0.0 B:
           - Migration Overview: migration/v2.0.0/migration-overview.md
           - Update LLM Nodes in Pipelines: migration/v2.0.0/update-llm-nodes.md
           - Update Pipelines from Previous Versions: migration/v2.0.0/update-pipelines.md
