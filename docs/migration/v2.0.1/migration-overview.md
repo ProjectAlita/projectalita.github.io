@@ -60,6 +60,7 @@ Select the migration guide for the node type you need to update:
 ### Toolkit Migrations
 
 * [OpenAPI Toolkit Migration](openapi-toolkit-migration.md) - Add credentials to existing OpenAPI toolkits
+* [Pandas Toolkit Migration](pandas-toolkit-migration.md) - Migrate from Pandas toolkits to Data Analysis internal tool
 
 * [Condition Node Migration](condition-node-migration.md) - Migrate to Router or Decision nodes
 * [Function Node Migration](function-node-migration.md) - Migrate to Toolkit or MCP nodes
