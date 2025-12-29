@@ -70,6 +70,7 @@ nav:
               - MCPs: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
           - Internal Tools:
               - Python Sandbox: how-tos/chat-conversations/enable-internal-tools.md
+              - Data Analysis: how-tos/chat-conversations/data-analysis-internal-tool.md
               - Planner: how-tos/chat-conversations/planner-internal-tool.md
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
@@ -141,7 +142,6 @@ nav:
           - Jira: integrations/toolkits/jira_toolkit.md
           - Memory: integrations/toolkits/memory_toolkit.md
           - OpenAPI: integrations/toolkits/openapi_toolkit.md
-          - Pandas: integrations/toolkits/pandas_toolkit.md
           - Postman: integrations/toolkits/postman_toolkit.md
           - PowerPoint: integrations/toolkits/powerpoint_toolkit.md
           - qTest: integrations/toolkits/qtest_toolkit.md
@@ -190,6 +190,7 @@ nav:
           - Tool Node Migration: migration/v2.0.1/tool-node-migration.md
           - Pipeline Save Button State: migration/v2.0.1/pipeline-save-button.md
           - OpenAPI Toolkit Migration: migration/v2.0.1/openapi-toolkit-migration.md
+          - Pandas Toolkit Migration: migration/v2.0.1/pandas-toolkit-migration.md
       - Upgrading to v2.0.0 B:
           - Migration Overview: migration/v2.0.0/migration-overview.md
           - Update LLM Nodes in Pipelines: migration/v2.0.0/update-llm-nodes.md
@@ -226,6 +227,8 @@ nav:
       - Fork Entities: features/forking.md
       - Public Project: features/public-project.md
       - Monitoring: features/monitoring.md
+      - Pandas: archive/pandas_toolkit.md
+
       - Pipelines:
           - Pipelines Architecture: features/pipelines/pipeline-agent-framework.md
           - Iteration Nodes: how-tos/pipelines/nodes/iteration-nodes.md

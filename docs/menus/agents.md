@@ -130,7 +130,7 @@ Below is the list of toolkits supported by the platform. For detailed instructio
 
 | **Category**           | **Available Toolkits**                                                                                 |
 |------------------------|------------------------------------------------------------------------------------------------------|
-| **Analysis**           | [Pandas](../integrations/toolkits/pandas_toolkit.md)                                                  |
+| **Analysis**           | [Data Analysis](../how-tos/chat-conversations/data-analysis-internal-tool.md)                                                  |
 | **Code Repositories**  | [ADO Repos](../integrations/toolkits/ado_repos_toolkit.md), [Bitbucket](../integrations/toolkits/bitbucket_toolkit.md), [GitHub](../integrations/toolkits/github_toolkit.md), [GitLab](../integrations/toolkits/gitlab_toolkit.md), [GitLab Org](../integrations/toolkits/gitlab_org_toolkit.md) |
 | **Development**        | [Sonar](../integrations/toolkits/sonar_toolkit.md), [SQL](../integrations/toolkits/sql_toolkit.md)     |
 | **Documentation**      | [ADO Wiki](../integrations/toolkits/ado_wiki_plan_board_toolkit.md), [Confluence](../integrations/toolkits/confluence_toolkit.md) |

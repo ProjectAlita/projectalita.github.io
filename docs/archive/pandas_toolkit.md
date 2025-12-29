@@ -29,13 +29,13 @@ To configure the Pandas Toolkit for use with an ELITEA agent, follow these steps
     *   Define the **Agent Name**, **Description**, and **Instructions** that guide the agent's behavior when using the Pandas Toolkit.
     *   Select an appropriate **Agent Type** for your workflow, such as "OpenAI" Agent.
 
-    ![pandas-Create_agent](../../img/integrations/toolkits/pandas/create_agent.png)
+    ![Create Agent](Image: Create a new agent configuration)
 
 3.  **Add Pandas Tool:** Within the Agent configuration, locate the "Tools" section and click the **"+" (Add Tool)** icon.
 
 4.  **Select Pandas Toolkit:** From the dropdown list of available toolkits, choose **"pandas"**.
 
-     ![pandas-Create_agent](../../img/integrations/toolkits/pandas/toolkits.png)
+     ![Select Toolkits](Image: Select pandas toolkit from available tools)
 
 5.  **Pandas Tool Configuration:** The "New pandas tool configuration" section will appear. Configure the following:
 
@@ -55,7 +55,7 @@ To configure the Pandas Toolkit for use with an ELITEA agent, follow these steps
 
 7.  **Save Configuration:** Click the **"Save"** button to save the Pandas Toolkit configuration for your agent.
 
-      ![pandas-Create_toolkit](../../img/integrations/toolkits/pandas/create_toolkit.png)
+      ![Configure Toolkit](Image: Configure pandas toolkit settings)
 
 ### File Types Supported
 
@@ -89,7 +89,7 @@ Note: `dataFrame_name` and `file_name` are optional parameters. You can choose t
 
 ### Bucket Accessibility and Security
 
-The Pandas Toolkit leverages the Elitea Artifact functionality for accessing data files. Therefore, it inherits the same bucket accessibility and security characteristics as described in the [Artifact Toolkit Guide](../../menus/artifacts.md#artifacts), and [Artifact Functionality Section](../../menus/artifacts.md)
+The Pandas Toolkit leverages the Elitea Artifact functionality for accessing data files. Therefore, it inherits the same bucket accessibility and security characteristics as described in the [Artifact Toolkit Guide](../menus/artifacts.md#artifacts), and [Artifact Functionality Section](../menus/artifacts.md)
 
 *   **Project-Specific Buckets:** Buckets are project-specific and not accessible across different ELITEA projects.
 *   **Project Member Access:** Project members with access to agents using the Artifact Toolkit or artifact functionality can potentially access data files in configured buckets.
@@ -98,7 +98,7 @@ The Pandas Toolkit leverages the Elitea Artifact functionality for accessing dat
 
 ### Artifact Retention
 
-Data files stored in Artifact buckets and used by the Pandas Toolkit are subject to the same default retention period and retention management policies as described in the [Artifact Functionality Section](../../menus/artifacts.md):
+Data files stored in Artifact buckets and used by the Pandas Toolkit are subject to the same default retention period and retention management policies as described in the [Artifact Functionality Section](../menus/artifacts.md):
 
 *   **Retention Management:** Retention periods can be viewed and potentially modified from the Artifacts menu.
 *   **Manual Deletion:** Files and buckets can be manually deleted from the Artifacts menu.
@@ -257,5 +257,5 @@ We encourage you to first explore the resources available within this guide and 
 To further enhance your understanding and skills in using the Pandas Toolkit with ELITEA, here are some helpful external resources:
 
 *   **Pandas Official Documentation:** [https://pandas.pydata.org/docs/](https://pandas.pydata.org/docs/) - *The complete and official documentation for the Pandas Python library. A comprehensive resource for learning about all Pandas functionalities, API, and usage examples.*
-*   **[ELITEA Artifacts Page:](../../menus/artifacts.md#artifacts)** - *Refer to the ELITEA Artifacts page documentation for detailed information on using Artifacts for data storage, bucket management, and file handling within ELITEA, which is essential for using the Pandas Toolkit with artifact data files.*
-*   **[ELITEA Agents Configuration:](../../menus/agents.md)** - *Find out more about creating and configuring Agents in ELITEA, where you integrate the Pandas toolkit to automate your data analysis workflows.*
+*   **[ELITEA Artifacts Page:](../menus/artifacts.md#artifacts)** - *Refer to the ELITEA Artifacts page documentation for detailed information on using Artifacts for data storage, bucket management, and file handling within ELITEA, which is essential for using the Pandas Toolkit with artifact data files.*
+*   **[ELITEA Agents Configuration:](../menus/agents.md)** - *Find out more about creating and configuring Agents in ELITEA, where you integrate the Pandas toolkit to automate your data analysis workflows.*
