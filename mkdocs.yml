@@ -28,8 +28,9 @@ nav:
           - Create a MCP: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
           - Create an Artifact: getting-started/create-artifact.md
           - How to create and use indexes: how-tos/indexing/using-indexes-tab-interface.md
-          - Configure and Use Server (STDIO): integrations/mcp/create-and-use-server-stdio.md
-          - Configure and Use Client (STDIO): integrations/mcp/create-and-use-client-stdio.md
+          - Server STDIO (Configure and Use): integrations/mcp/create-and-use-server-stdio.md
+          - Client STDIO (Configure and Use): integrations/mcp/create-and-use-client-stdio.md
+          - Remote MCP (Configure and Use): integrations/mcp/create-and-use-remote-mcp.md
           - Configure EPAM AI DIAL Keys: getting-started/configure-epam-ai-dial-key.md
           - Create a Personal Access Token: getting-started/create-personal-access-token.md
           - Create a Secret: getting-started/create-secret.md
@@ -64,10 +65,10 @@ nav:
           - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
           - Context Management: how-tos/chat-conversations/context-management.md
           - Canvas - Create and Edit Entities:
-              - Agents: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
-              - Edit Pipelines: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
-              - Toolkits: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
-              - MCPs: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
+              - Create an Agent: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
+              - Create a Pipeline: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
+              - Create a Toolkit: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
+              - Create a MCP: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
           - Internal Tools:
               - Python Sandbox: how-tos/chat-conversations/enable-internal-tools.md
               - Planner: how-tos/chat-conversations/planner-internal-tool.md
@@ -122,8 +123,9 @@ nav:
           - Server (STDIO): integrations/mcp/mcp-server-stdio.md
           - Server (SSE): integrations/mcp/mcp-server-sse.md
           - Client (STDIO): integrations/mcp/mcp-client.md
-          - Configure and Use Server (STDIO): integrations/mcp/create-and-use-server-stdio.md
-          - Configure and Use Client (STDIO): integrations/mcp/create-and-use-client-stdio.md
+          - Remote MCP (Configure and Use): integrations/mcp/create-and-use-remote-mcp.md
+          - Server STDIO (Configure and Use): integrations/mcp/create-and-use-server-stdio.md
+          - Client STDIO (Configure and Use): integrations/mcp/create-and-use-client-stdio.md
           - Make Tools Available by MCP: integrations/mcp//make-tools-available-by-mcp.md
       - Toolkits:
           - ADO Repos: integrations/toolkits/ado_repos_toolkit.md
