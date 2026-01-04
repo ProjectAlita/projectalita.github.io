@@ -1,5 +1,5 @@
 site_name: ELITEA Documentation
-site_url: https://elitea.ai/docs/
+site_url: https://elitea.ai/docs
 
 nav:
   - Home:
@@ -239,6 +239,7 @@ theme:
   name: material
   logo: img/favicon.ico # Uses existing favicon file as header logo (replace with your logo file path if different)
   favicon: img/favicon.ico
+  homepage: https://elitea.ai
   features:
     - navigation.footer # Built-in previous/next navigation in footer
     # - header.autohide # Automatically hide header when scrolling down

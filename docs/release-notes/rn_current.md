@@ -7,7 +7,7 @@ Welcome to **ELITEA** — your comprehensive platform for building, deploying, a
 ## Information
  
 * **Release Version**: 2.0.0 B2
-* **Released on**: 23-Dec-2025
+* **Released on**: 19-Jan-2026
 * **Access for 2.0.0 B2**: [Next environment](https://next.elitea.ai)
 
 
@@ -28,7 +28,7 @@ Connect remote MCP servers to ELITEA with full OAuth 2.0 authentication support,
 
 **Benefits:** Eliminates manual tool configuration, reduces authentication friction, ensures toolkit reliability through proactive session validation, and expands integration possibilities with the growing ecosystem of remote MCP servers.
 
-For more information about this feature, see [MCP Client](../integrations/mcp/mcp-client.md).
+For more information about this feature, see [Remote MCP Server Integration Guide](../integrations/mcp/create-and-use-remote-mcp.md).
 
 ### Agents Studio: Shared Library for Published Agents
 
@@ -128,7 +128,37 @@ Track and review all toolkit index operations with a dedicated History tab that 
 * **View detailed information**: Click any run in the history table to view comprehensive details in the right panel, including all relevant actions, parameters, and results (both successful and failed).
 * **Reference-only access**: History events are displayed for reference and auditing purposes; no direct actions can be performed from the History tab.
 
-This feature enables better debugging, performance analysis, and compliance tracking by maintaining a complete audit trail of all indexing operations.
+This feature enables better debugging, performance analysis, and compliance tracking by maintaining a complete audit of all indexing operations.
+
+
+### Toolkits: ADO Work Item Attachment Reading
+
+Read and access attached images and files directly from Azure DevOps (ADO) work items through the ADO toolkit.
+
+**What you can do now:**
+
+* **Access work item attachments**: Retrieve attached images and files from ADO work items using the enhanced ADO toolkit capabilities.
+* **Expanded integration**: Process visual content and documentation stored as work item attachments for comprehensive workflow automation.
+* **Seamless file handling**: Access attachments alongside other work item data (descriptions, comments, fields) through the same toolkit interface.
+
+**Benefits:** Enables complete work item data extraction including visual assets, eliminates manual file downloads for automation workflows, and expands ADO integration capabilities for documentation-heavy projects.
+
+### Credentials: Enhanced Test Connection Verification
+
+Comprehensive connection testing for integration credentials with authentication validation, service-specific API verification, and detailed error diagnostics.
+
+**What you can do now:**
+
+* **URL reachability verification**: Test Connection now performs actual HTTP requests to verify the service URL is accessible, not just well-formed.
+* **Authentication validation**: Validates provided credentials (API Key/Token, Username, Password) by attempting authenticated connections to each service.
+* **Service-specific API calls**: Uses appropriate endpoints for each integration:
+    * **GitHub**: Verifies credentials via `/user` or `/repos` endpoints
+    * **TestRail**: Validates access through `/get_projects` endpoint
+    * **Jira**: Confirms authentication via `/myself` endpoint
+    * **Confluence**: Checks credentials through `/content` endpoint
+* **Detailed error messages**: Receive specific feedback for issues including "Invalid URL," "Authentication Failed," "Insufficient Permissions," or "Service Unreachable" instead of generic connection errors.
+
+**Benefits:** Eliminates false positives from URL-only validation, catches authentication issues before saving credentials, reduces troubleshooting time with specific error messages, improves integration reliability through comprehensive testing, and prevents configuration errors that could cause workflow failures.
   
 ## Changed Features
 
@@ -145,6 +175,8 @@ The new conversation creation flow has been redesigned to reduce user confusion 
 
 **Benefits:** Cleaner and more intuitive conversation creation experience with reduced cognitive load, eliminated premature placeholder conversations, and alignment with popular chat application patterns like ChatGPT.
 
+For more information about this, see [Chat Usage](../how-tos/chat-conversations/how-to-use-chat-functionality.md).
+
 ### Chat: Intelligent Attachment Bucket Management
 
 Attachment storage is now automatically configured from agents with full manual control, clear visibility, and intelligent bucket inheritance.
@@ -160,6 +192,8 @@ Attachment storage is now automatically configured from agents with full manual 
 * **Unified artifact storage**: Artifact toolkit uses the conversation's attachment bucket when present, avoiding duplicate bucket configurations.
 
 **Benefits:** Reduces attachment configuration friction by 70%, provides seamless agent-to-conversation bucket inheritance, ensures clear visibility of active storage location, and maintains full user control with manual override capabilities.
+
+For more information about this feature, see [Attachements in Conversation](../how-tos/chat-conversations/attach-images-and-files-in-chat.md).
 
 ### Model Settings: Simplified Configuration with Auto Mode
 
@@ -208,7 +242,7 @@ The pipeline node architecture has been streamlined with new specialized nodes a
 
 **Benefits:** Clearer node responsibilities reduce configuration errors, specialized nodes improve pipeline readability, and removing overlapping legacy nodes simplifies learning curve for new users while maintaining full functionality for existing workflows.
 
-For detailed migration guidance, see [Migration Overview: migration/v2.0.1/migration-overview.md](../migration/v2.0.1/migration-overview.md).
+For detailed migration guidance, see [Migration Overview: migration/v2.0.0 B2/migration-overview.md](../migration/v2.0.1/migration-overview.md).
  
 
 ### Toolkits: Standardized Name and Description Fields
@@ -253,6 +287,22 @@ The QTest toolkit has been significantly enhanced with new tools for managing cu
 
 **Benefits:** Expands QTest toolkit capabilities for comprehensive test management workflows, improves reliability for complex multi-agent scenarios, and enables better discoverability through indexing integration.
 
+### Toolkits: Data Analysis Internal Tool
+
+Access Pandas data processing capabilities directly as an internal tool without requiring separate toolkit configuration.
+
+**What you can do now:**
+
+* **Enable Data Analysis tool**: Access Pandas functionality through the "Enable internal tools" dropdown menu (gear icon in chat input), positioned between TODO and Python sandbox tools.
+* **Automatic function activation**: Both "Process query" and "Save dataframe" functions are automatically activated when you enable the Data Analysis tool, eliminating manual function selection.
+* **Session persistence**: Your enable/disable choice persists throughout the conversation session, maintaining consistent data processing capabilities.
+* **Streamlined workflow**: Use Pandas operations directly in chat without navigating to the Toolkits menu or attaching separate toolkit instances.
+* **Consistent experience**: Follows the same interaction pattern as other internal tools (TODO, Python sandbox) for familiar, unified usage.
+
+**Benefits:** Eliminates toolkit creation and configuration overhead for common data analysis tasks, provides instant access to Pandas capabilities in any conversation, reduces friction for ad-hoc data processing workflows, and maintains cleaner toolkit management by moving frequently-used functionality to internal tools.
+
+For more information about this feature, see [Data Analysis](../how-tos/chat-conversations/data-analysis-internal-tool.md).
+
 ### Standardized Field Character Limits
 
 Field character limits are now standardized across all entity types with real-time character counters for better input management.
@@ -296,8 +346,13 @@ Several features and UI elements have been removed or temporarily disabled to si
  
 ## Fixed Issues
 
+* [#2966](https://github.com/ProjectAlita/projectalita.github.io/issues/2966) **Router Node Routes to END Instead of Default Output**: Router node incorrectly prioritizes END node over Default Output node when END is included in routes, causing premature pipeline termination.
+* [#2923](https://github.com/ProjectAlita/projectalita.github.io/issues/2923) **ADO Repo Indexing Ignores TypeScript Files in Subdirectories**: ADO Repository indexing with "*.ts" whitelist pattern only indexes root-level TypeScript files; files in subdirectories and those with compound extensions (e.g., .steps.ts) are completely ignored.
+* [#2886](https://github.com/ProjectAlita/projectalita.github.io/issues/2886) **GitLab Update File Tool Fails**: GitLab toolkit Update File tool fails with "404 File Not Found" error or AttributeError about missing 'extract_old_new_pairs' attribute.
+* [#2871](https://github.com/ProjectAlita/projectalita.github.io/issues/2871) **Figma Toolkit Default Limit Too Low**: Figma toolkit default limit parameter (10,000) stops execution prematurely before retrieving complete data from Figma files; should be increased to 1,000,000+.
 * [#2858](https://github.com/ProjectAlita/projectalita.github.io/issues/2858) **Confluence Search Generates Dead Links**: Confluence toolkit search results generate links missing "/wiki" path segment, resulting in 404 errors when clicked.
 * [#2799](https://github.com/ProjectAlita/projectalita.github.io/issues/2799) **TestRail Index Search Returns No Results**: Search index returns zero results for TestRail toolkit even with cut-off score set to 0.1.
+* [#2782](https://github.com/ProjectAlita/projectalita.github.io/issues/2782) **No Loading Indicator When Uploading Attachments**: File attachments upload without visual feedback (spinner, progress bar, or status message), leaving users unable to tell if upload is in progress, stuck, or complete.
 * [#2780](https://github.com/ProjectAlita/projectalita.github.io/issues/2780) **Stepback Summary Index Fails with Anthropic Models**: Stepback Summary Index fails with Anthropic models due to duplicate tool call IDs on retry.
 * [#2763](https://github.com/ProjectAlita/projectalita.github.io/issues/2763) **OpenAPI Default Parameters Ignored**: OpenAPI toolkit ignores default parameter values when making requests.
 * [#2715](https://github.com/ProjectAlita/projectalita.github.io/issues/2715) **Code Node Fails with Inline Newline Characters**: Code node execution fails when code contains inline \n characters.
@@ -309,13 +364,18 @@ Several features and UI elements have been removed or temporarily disabled to si
 * [#2621](https://github.com/ProjectAlita/projectalita.github.io/issues/2621) **QTest Project ID Not Marked Required**: QTest toolkit Project ID field not marked as required despite being mandatory.
 * [#2619](https://github.com/ProjectAlita/projectalita.github.io/issues/2619) **Validation Error with Disabled Messages State**: Pipeline produces validation error when messages state is disabled.
 * [#2578](https://github.com/ProjectAlita/projectalita.github.io/issues/2578) **Pipeline Flow Loops Back After Interrupt**: Pipeline flow incorrectly returns to starting node after interrupt instead of continuing forward.
+* [#2571](https://github.com/ProjectAlita/projectalita.github.io/issues/2571) **No Full Screen View for Index Tool Configuration Fields**: Index tool configuration fields (Filter, Chunking Config, etc.) lack full screen editing capability, making it impossible to properly review and edit complex JSON configurations in small textarea boxes.
+* [#2569](https://github.com/ProjectAlita/projectalita.github.io/issues/2569) **Default Cut-off Score Too High for Search Indexes**: Search index tools (Search Index, Stepback Summary, Stepback Search) use default cut-off score of 0.5 instead of recommended 0.2, potentially filtering out relevant results.
 * [#2563](https://github.com/ProjectAlita/projectalita.github.io/issues/2563) **Router Node Ignores Conditions**: Router node condition logic ignored, always routes to specific node regardless of condition evaluation.
 * [#2540](https://github.com/ProjectAlita/projectalita.github.io/issues/2540) **Invalid Tools Not Highlighted in Red**: Toolkit interface does not highlight non-existing or invalid tools in red.
 * [#2532](https://github.com/ProjectAlita/projectalita.github.io/issues/2532) **GitLab Index Creation Fails**: GitLab toolkit cannot create or reindex indexes with "AttributeError: 'NoneType' object has no attribute 'get_index_meta'" error.
+* [#2525](https://github.com/ProjectAlita/projectalita.github.io/issues/2525) **SQL Toolkit Save Button Unresponsive Without Dialect**: Save button in SQL toolkit creation does not work when Dialect field is left unselected, with no error message indicating the field is required.
 * [#2518](https://github.com/ProjectAlita/projectalita.github.io/issues/2518) **CodeMirror Search Dialog Disappears**: CodeMirror search dialog (CMD+F) appears briefly and immediately disappears, making search unusable.
 * [#2512](https://github.com/ProjectAlita/projectalita.github.io/issues/2512) **Pipeline Agent Node Rendering Issues**: Agent node in pipelines displays incorrectly with rendering problems.
 * [#2504](https://github.com/ProjectAlita/projectalita.github.io/issues/2504) **Credential ID Not Updating**: Credential ID field does not update when credential name is overwritten.
 * [#2503](https://github.com/ProjectAlita/projectalita.github.io/issues/2503) **ADO Wiki Update Response Not Handled**: Azure DevOps toolkit does not properly handle API response during Wiki page updates.
+* [#2498](https://github.com/ProjectAlita/projectalita.github.io/issues/2498) **State Variable Values Not Applied with Legacy Type Definitions**: Pipeline state variable values not applied when YAML uses legacy type definition "string" instead of current "str" from version 1.6.
+* [#2492](https://github.com/ProjectAlita/projectalita.github.io/issues/2492) **Canvas Attachment Binding Not Persisted**: Agent canvas shows "attachment manager set successfully" when binding artifact toolkit, but binding disappears after reopening canvas; requires page refresh to display correctly.
 * [#2496](https://github.com/ProjectAlita/projectalita.github.io/issues/2496) **State Dropdowns Unsorted**: Custom state dropdowns appear in random order with default states (input/messages) not pinned to top.
 * [#2444](https://github.com/ProjectAlita/projectalita.github.io/issues/2444) **Modified Secret Received Unmasked**: Modified secrets received unmasked from backend, exposing sensitive values.
 * [#2418](https://github.com/ProjectAlita/projectalita.github.io/issues/2418) **LLM Node Ignores Step Limit**: LLM node hard-codes 15 execution iterations, ignoring configured Step limit in Agents and Pipelines.
@@ -332,6 +392,8 @@ Several features and UI elements have been removed or temporarily disabled to si
 * [#2350](https://github.com/ProjectAlita/projectalita.github.io/issues/2350) **Misleading Error Message for Token Limit**: Agent shows "Maximum tool execution iterations (15) reached" when actual issue is Max Output Tokens limit; increase Max Output Tokens in Anthropic model settings to resolve.
 * [#2347](https://github.com/ProjectAlita/projectalita.github.io/issues/2347) **Pandas Bucket Name with Dash Causes Error**: Pandas toolkit fails when bucket name contains dash character.
 * [#2294](https://github.com/ProjectAlita/projectalita.github.io/issues/2294) **Misleading Unsaved Changes Warning**: Starting conversation with Canvas open triggers unsaved changes warning even when no edits were made.
+* [#2053](https://github.com/ProjectAlita/projectalita.github.io/issues/2053) **Claude Model Integration Error with Dial Key**: Claude model integration via Dial API key fails with "invalid structure" error on stream_options path.
+* [#2051](https://github.com/ProjectAlita/projectalita.github.io/issues/2051) **Gemini/Claude Models Fail via Dial API**: Integrating Gemini or Claude models using Dial API key results in "invalid structure" error on stream_options path.
 * [#1986](https://github.com/ProjectAlita/projectalita.github.io/issues/1986) **ADO Attachment Reading Not Available**: Azure DevOps toolkit lacks capability to read attached images from work items.
 * [#1746](https://github.com/ProjectAlita/projectalita.github.io/issues/1746) **Jira Attachment Content Limited to JSON/TXT**: Get Attachments Content tool in Jira toolkit does not support common file types (PNG, JPEG, XLSX); only JSON and TXT files are supported.
 * [#1547](https://github.com/ProjectAlita/projectalita.github.io/issues/1547) **Jira JQL Search Fails Without Priority Field**: Jira toolkit fails with validation error when searching issues that lack the "priority" field; affects Jira configurations where priority field is disabled.
@@ -343,8 +405,7 @@ Several features and UI elements have been removed or temporarily disabled to si
 
 * [#2389](https://github.com/ProjectAlita/projectalita.github.io/issues/2389) **Browser Toolkit Fails Without Credentials**: Browser toolkit execution fails when saved without credentials selected, even when Google tool is not selected; workaround is to add credentials.
 * [#2304](https://github.com/ProjectAlita/projectalita.github.io/issues/2304) **MCP Client Disconnects on macOS**: MCP client disconnects from platform despite tray showing "connected" on macOS; logs show "packet queue is empty" errors and repeated disconnect/reconnect cycles.
-* [#2053](https://github.com/ProjectAlita/projectalita.github.io/issues/2053) **Claude Model Integration Error with Dial Key**: Claude model integration via Dial API key fails with "invalid structure" error on stream_options path.
-* [#2051](https://github.com/ProjectAlita/projectalita.github.io/issues/2051) **Gemini/Claude Models Fail via Dial API**: Integrating Gemini or Claude models using Dial API key results in "invalid structure" error on stream_options path.
+
 * [#1990](https://github.com/ProjectAlita/projectalita.github.io/issues/1990) **Browser Toolkit Fails Without Google Credentials**: Browser toolkit execution fails with "NoneType object is not a mapping" error when Google tool is not selected and credentials are missing.
 * [#1869](https://github.com/ProjectAlita/projectalita.github.io/issues/1869) **Zephyr Essential Tools Return 400 Error**: Multiple tools in Zephyr Essential toolkit fail with "400 Client Error: Bad Request" including Create/Update operations for test cases, cycles, and executions.
 * [#1163](https://github.com/ProjectAlita/projectalita.github.io/issues/1163) **MCP Only Executes Latest Version**: MCP-tagged resources execute the latest version regardless of which version has the MCP tag; only the latest version is accessible via MCP.

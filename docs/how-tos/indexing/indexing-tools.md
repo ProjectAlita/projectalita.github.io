@@ -1,7 +1,7 @@
 # Indexing Tools
 
 !!! warning "Availability"
-	Indexing tools are available in the Next environment (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab) and the [Indexing Overview](./indexing-overview.md).
+	Indexing tools are available in the Next environment (Release 1.7.0) and replace legacy Datasources/Datasets. For context, see [Release Notes 1.7.0](../../release-notes/archived/rn13.md#indexing-dedicated-toolkit-indexes-tab) and the [Indexing Overview](./indexing-overview.md).
 
 This guide explains each **indexing** tool, required vs optional settings, and which toolkits it applies to.
 
