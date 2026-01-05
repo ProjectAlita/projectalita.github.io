@@ -14,6 +14,7 @@ jobs:
       group: ai-developer
     outputs:
       should_investigate: ${{ steps.check-status.outputs.should_investigate }}
+      should_implement: ${{ steps.check-status.outputs.should_implement }}
       issue_url: ${{ steps.check-status.outputs.issue_url }}
       project_item_id: ${{ steps.get-project-state.outputs.project_item_id }}
       status_field_id: ${{ steps.get-project-state.outputs.status_field_id }}
@@ -177,18 +178,22 @@ jobs:
           if [[ "$STATUS" == "To Do" || "$STATUS" == "Bugs" ]]; then
             echo "📋 Issue is in TO DO or BUGS column - will trigger investigation"
             echo "should_investigate=true" >> $GITHUB_OUTPUT
-            
+            echo "should_implement=false" >> $GITHUB_OUTPUT
+
           elif [[ "$STATUS" == "Development" ]]; then
-            echo "💻 Issue is in DEVELOPMENT column - taking development action"
+            echo "💻 Issue is in DEVELOPMENT column - will trigger auto-fixer directly"
             echo "should_investigate=false" >> $GITHUB_OUTPUT
-            
-          elif [[ "$STATUS" == "In Testing" ]]; then
-            echo "🧪 Issue is in IN TESTING column - taking QA action"
+            echo "should_implement=true" >> $GITHUB_OUTPUT
+
+          elif [[ "$STATUS" == "In Testing" || "$STATUS" == "Dev Review" ]]; then
+            echo "🧪 Issue is in testing/review column - no action needed"
             echo "should_investigate=false" >> $GITHUB_OUTPUT
-            
+            echo "should_implement=false" >> $GITHUB_OUTPUT
+
           else
-            echo "ℹ️ Issue is in column: $STATUS"
+            echo "ℹ️ Issue is in column: $STATUS - no action"
             echo "should_investigate=false" >> $GITHUB_OUTPUT
+            echo "should_implement=false" >> $GITHUB_OUTPUT
           fi
 
   investigate-issue:
