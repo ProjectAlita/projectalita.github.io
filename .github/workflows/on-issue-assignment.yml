@@ -10,7 +10,8 @@ permissions:
   
 jobs:
   notify-assignment:
-    runs-on: [self-hosted, aidev]
+    runs-on:
+      group: ai-developer
     outputs:
       should_investigate: ${{ steps.check-status.outputs.should_investigate }}
       issue_url: ${{ steps.check-status.outputs.issue_url }}
@@ -184,7 +185,8 @@ jobs:
   investigate-issue:
     needs: notify-assignment
     if: needs.notify-assignment.outputs.should_investigate == 'true'
-    runs-on: [self-hosted, aidev]
+    runs-on:
+      group: ai-developer
     steps:
       - name: Debug - Check outputs
         run: |
