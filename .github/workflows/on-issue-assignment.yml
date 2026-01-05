@@ -10,7 +10,7 @@ permissions:
   
 jobs:
   notify-assignment:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, aidev]
     outputs:
       should_investigate: ${{ steps.check-status.outputs.should_investigate }}
       issue_url: ${{ steps.check-status.outputs.issue_url }}
@@ -184,7 +184,7 @@ jobs:
   investigate-issue:
     needs: notify-assignment
     if: needs.notify-assignment.outputs.should_investigate == 'true'
-    runs-on: [self-hosted, macOS, aidev]
+    runs-on: [self-hosted, aidev]
     steps:
       - name: Debug - Check outputs
         run: |
