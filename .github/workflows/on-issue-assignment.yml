@@ -187,6 +187,12 @@ jobs:
     runs-on:
       group: ai-developer
     steps:
+      - name: Debug - Check outputs
+        run: |
+          echo "Should investigate: ${{ needs.notify-assignment.outputs.should_investigate }}"
+          echo "Issue URL: ${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Runner: $(hostname)"
+          
       - name: Checkout repository
         uses: actions/checkout@v4
       
