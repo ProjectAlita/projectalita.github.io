@@ -184,8 +184,7 @@ jobs:
   investigate-issue:
     needs: notify-assignment
     if: needs.notify-assignment.outputs.should_investigate == 'true'
-    runs-on:
-      group: ai-developer
+    runs-on: [self-hosted, macOS, aidev]
     steps:
       - name: Debug - Check outputs
         run: |
