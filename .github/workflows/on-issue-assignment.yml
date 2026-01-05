@@ -196,6 +196,7 @@ jobs:
           echo "Working directory: $(pwd)"
       
       - name: Run autonomous RCA investigation
+        id: rca-investigation
         working-directory: /Volumes/KINGSTON/Development/elitea
         timeout-minutes: 30
         env:
@@ -218,8 +219,39 @@ jobs:
           ISSUE_URL="${{ needs.notify-assignment.outputs.issue_url }}"
           echo "Investigating issue: $ISSUE_URL"
           claude --debug --dangerously-skip-permissions --agent autonomous-rca-investigator -p "Investigate this GitHub issue and post your RCA findings as comments: $ISSUE_URL"
-      
+
+      - name: Remove elitea-ai from assignees
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
+          script: |
+            const issueUrl = '${{ needs.notify-assignment.outputs.issue_url }}';
+
+            // Parse owner, repo, and issue number from URL
+            const urlMatch = issueUrl.match(/github\.com\/([^\/]+)\/([^\/]+)\/issues\/(\d+)/);
+            if (!urlMatch) {
+              console.log('Could not parse issue URL, skipping assignee removal');
+              return;
+            }
+
+            const [, owner, repo, issueNumber] = urlMatch;
+            console.log(`Removing elitea-ai from issue ${owner}/${repo}#${issueNumber}`);
+
+            try {
+              await github.rest.issues.removeAssignees({
+                owner,
+                repo,
+                issue_number: parseInt(issueNumber),
+                assignees: ['elitea-ai']
+              });
+              console.log('✅ Successfully removed elitea-ai from assignees');
+            } catch (error) {
+              console.log(`⚠️ Could not remove assignee: ${error.message}`);
+            }
+
       - name: Move ticket to Development column
+        if: steps.rca-investigation.outcome == 'success'
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
