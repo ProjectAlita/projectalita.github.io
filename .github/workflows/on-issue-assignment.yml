@@ -197,6 +197,7 @@ jobs:
       
       - name: Run autonomous RCA investigation
         working-directory: /Volumes/KINGSTON/Development/elitea
+        timeout-minutes: 30
         env:
           CLAUDE_CONFIG_DIR: /Volumes/KINGSTON/Development/elitea/.claude
         run: |
