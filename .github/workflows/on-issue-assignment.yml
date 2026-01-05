@@ -33,23 +33,32 @@ jobs:
           TARGET_PROJECT_NAME: "ELITEA Board"  # Your GitHub Project name
         with:
           script: |
-            const query = `
-              query($owner: String!, $repo: String!, $issueNumber: Int!) {
-                repository(owner: $owner, name: $repo) {
-                  issue(number: $issueNumber) {
-                    projectItems(first: 10) {
-                      nodes {
-                        project {
-                          title
-                          number
-                        }
-                        fieldValues(first: 10) {
-                          nodes {
-                            ... on ProjectV2ItemFieldSingleSelectValue {
-                              name
-                              field {
-                                ... on ProjectV2FieldCommon {
-                                  name
+            // Try organization-level projects first
+            const orgQuery = `
+              query($org: String!, $issueNumber: Int!, $repo: String!) {
+                organization(login: $org) {
+                  projectsV2(first: 20) {
+                    nodes {
+                      title
+                      number
+                      items(first: 100) {
+                        nodes {
+                          content {
+                            ... on Issue {
+                              number
+                              repository {
+                                name
+                              }
+                            }
+                          }
+                          fieldValues(first: 10) {
+                            nodes {
+                              ... on ProjectV2ItemFieldSingleSelectValue {
+                                name
+                                field {
+                                  ... on ProjectV2FieldCommon {
+                                    name
+                                  }
                                 }
                               }
                             }
@@ -63,63 +72,88 @@ jobs:
             `;
             
             const variables = {
-              owner: context.repo.owner,
+              org: context.repo.owner,
               repo: context.repo.repo,
               issueNumber: context.issue.number
             };
             
-            const result = await github.graphql(query, variables);
-            const projectItems = result.repository.issue.projectItems.nodes;
+            console.log(`Looking for issue #${variables.issueNumber} in org ${variables.org}`);
             
-            if (projectItems.length > 0) {
-              const targetProjectName = process.env.TARGET_PROJECT_NAME;
-              
-              // Filter by project name if specified
-              let projectItem;
-              if (targetProjectName) {
-                projectItem = projectItems.find(
-                  item => item.project.title === targetProjectName
-                );
-                if (!projectItem) {
-                  console.log(`Issue not in project: ${targetProjectName}`);
-                  core.setOutput('has_project', 'false');
-                  return;
-                }
-              } else {
-                projectItem = projectItems[0];
-              }
-              
-              const statusField = projectItem.fieldValues.nodes.find(
-                node => node.field?.name === 'Status'
-              );
-              
-              if (statusField) {
-                console.log(`Project: ${projectItem.project.title} (#${projectItem.project.number})`);
-                console.log(`Status: ${statusField.name}`);
-                core.setOutput('project_status', statusField.name);
-                core.setOutput('project_name', projectItem.project.title);
-                core.setOutput('has_project', 'true');
-              } else {
+            const result = await github.graphql(orgQuery, variables);
+            const projects = result.organization.projectsV2.nodes;
+            
+            console.log(`Found ${projects.length} projects in organization`);
+            
+            const targetProjectName = process.env.TARGET_PROJECT_NAME;
+            let targetProject = null;
+            
+            if (targetProjectName) {
+              targetProject = projects.find(p => p.title === targetProjectName);
+              if (!targetProject) {
+                console.log(`Project "${targetProjectName}" not found`);
                 core.setOutput('has_project', 'false');
+                return;
               }
+              console.log(`Found project: ${targetProject.title}`);
+            }
+            
+            // Find the issue in the project
+            const projectToSearch = targetProject || projects[0];
+            const projectItem = projectToSearch.items.nodes.find(item => {
+              const content = item.content;
+              return content && 
+                     content.number === variables.issueNumber && 
+                     content.repository?.name === variables.repo;
+            });
+            
+            if (!projectItem) {
+              console.log(`Issue #${variables.issueNumber} not found in project "${projectToSearch.title}"`);
+              core.setOutput('has_project', 'false');
+              return;
+            }
+            
+            console.log(`✅ Found issue in project "${projectToSearch.title}"`);
+            
+            const statusField = projectItem.fieldValues.nodes.find(
+              node => node.field?.name === 'Status'
+            );
+            
+            if (statusField) {
+              console.log(`Project: ${projectToSearch.title} (#${projectToSearch.number})`);
+              console.log(`Status: ${statusField.name}`);
+              core.setOutput('project_status', statusField.name);
+              core.setOutput('project_name', projectToSearch.title);
+              core.setOutput('has_project', 'true');
             } else {
-              console.log('Issue not in any project');
+              console.log('Status field not found');
+              console.log('Available fields:', projectItem.fieldValues.nodes.map(n => n.field?.name));
               core.setOutput('has_project', 'false');
             }
 
       - name: Take action based on project state
         if: steps.check-assignee.outputs.match == 'true' && steps.get-project-state.outputs.has_project == 'true'
         run: |
-          echo "Issue Details:"
+          echo "=== Issue Details ==="
           echo "Title: ${{ github.event.issue.title }}"
           echo "URL: ${{ github.event.issue.html_url }}"
           echo "Assignee: ${{ github.event.assignee.login }}"
-          echo "Project Status: ${{ steps.get-project-state.outputs.project_status }}"
+          echo "Project: ${{ steps.get-project-state.outputs.project_name }}"
+          echo "Status/Column: ${{ steps.get-project-state.outputs.project_status }}"
+          echo ""
           
-          # Check for specific statuses
           STATUS="${{ steps.get-project-state.outputs.project_status }}"
-          if [[ "$STATUS" == "In Progress" || "$STATUS" == "Todo" ]]; then
-            echo "✅ Issue is in active status"
+          
+          if [[ "$STATUS" == "To Do" || "$STATUS" == "Bugs" ]]; then
+            echo "📋 Issue is in TO DO or BUGS column - taking initial action"
+            
+          elif [[ "$STATUS" == "Development" ]]; then
+            echo "💻 Issue is in DEVELOPMENT column - taking development action"
+            
+          elif [[ "$STATUS" == "In Testing" ]]; then
+            echo "🧪 Issue is in IN TESTING column - taking QA action"
+            
+          else
+            echo "ℹ️ Issue is in column: $STATUS"
           fi
 
       # Example: Add a comment to the issue
