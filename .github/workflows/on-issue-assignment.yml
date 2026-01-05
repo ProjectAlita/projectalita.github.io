@@ -305,7 +305,7 @@ jobs:
 
           ISSUE_URL="${{ needs.notify-assignment.outputs.issue_url }}"
           echo "Implementing fixes for issue: $ISSUE_URL"
-          claude --debug --dangerously-skip-permissions --agent rca-autofixer -p "Implement fixes for this GitHub issue based on the RCA analysis and create a pull request: $ISSUE_URL"
+          claude --debug --dangerously-skip-permissions --agent rca-autofixer -p "Implement fixes for this GitHub issue based on the RCA analysis and create a pull request: $ISSUE_URL . If applicable test using playwright mcp."
 
       - name: Move ticket to Dev Review column
         if: steps.auto-fixer.outcome == 'success'
