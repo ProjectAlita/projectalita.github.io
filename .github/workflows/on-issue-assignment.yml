@@ -395,3 +395,123 @@ jobs:
             } catch (error) {
               console.log(`⚠️ Could not remove assignee: ${error.message}`);
             }
+
+  # Job for tickets already in Development - skip RCA, run auto-fixer directly
+  implement-fixes:
+    needs: notify-assignment
+    if: needs.notify-assignment.outputs.should_implement == 'true'
+    runs-on:
+      group: ai-developer
+    steps:
+      - name: Debug - Check outputs
+        run: |
+          echo "Should implement: ${{ needs.notify-assignment.outputs.should_implement }}"
+          echo "Issue URL: ${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Runner: $(hostname)"
+          echo "Working directory: $(pwd)"
+
+      - name: Run auto-fixer implementation
+        id: auto-fixer
+        working-directory: /Volumes/KINGSTON/Development/elitea
+        timeout-minutes: 60
+        env:
+          CLAUDE_CONFIG_DIR: /Volumes/KINGSTON/Development/elitea/.claude
+        run: |
+          echo "🔧 Starting auto-fixer for issue: ${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Working directory: $(pwd)"
+
+          # Read model names from settings.json
+          SETTINGS_FILE="$CLAUDE_CONFIG_DIR/settings.json"
+          export ANTHROPIC_SMALL_FAST_MODEL=$(jq -r '.env.ANTHROPIC_DEFAULT_SONNET_MODEL' "$SETTINGS_FILE")
+          export ANTHROPIC_DEFAULT_HAIKU_MODEL=$(jq -r '.env.ANTHROPIC_DEFAULT_SONNET_MODEL' "$SETTINGS_FILE")
+          export CLAUDE_CODE_SUBAGENT_MODEL=$(jq -r '.env.ANTHROPIC_DEFAULT_SONNET_MODEL' "$SETTINGS_FILE")
+
+          echo "Using model for subagents: $ANTHROPIC_SMALL_FAST_MODEL"
+
+          ISSUE_URL="${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Implementing fixes for issue: $ISSUE_URL"
+          claude --debug --dangerously-skip-permissions --agent rca-autofixer -p "Implement fixes for this GitHub issue based on the RCA analysis and create a pull request: $ISSUE_URL . If applicable test using playwright mcp."
+
+      - name: Move ticket to Dev Review column
+        if: steps.auto-fixer.outcome == 'success'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
+          script: |
+            const mutation = `
+              mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $value: ProjectV2FieldValue!) {
+                updateProjectV2ItemFieldValue(
+                  input: {
+                    projectId: $projectId
+                    itemId: $itemId
+                    fieldId: $fieldId
+                    value: $value
+                  }
+                ) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }
+            `;
+
+            const getProjectQuery = `
+              query($itemId: ID!) {
+                node(id: $itemId) {
+                  ... on ProjectV2Item {
+                    project {
+                      id
+                    }
+                  }
+                }
+              }
+            `;
+
+            const projectData = await github.graphql(getProjectQuery, {
+              itemId: "${{ needs.notify-assignment.outputs.project_item_id }}"
+            });
+
+            const projectId = projectData.node.project.id;
+
+            console.log('Moving issue to Dev Review column...');
+
+            await github.graphql(mutation, {
+              projectId: projectId,
+              itemId: "${{ needs.notify-assignment.outputs.project_item_id }}",
+              fieldId: "${{ needs.notify-assignment.outputs.status_field_id }}",
+              value: {
+                singleSelectOptionId: "${{ needs.notify-assignment.outputs.dev_review_option_id }}"
+              }
+            });
+
+            console.log('✅ Successfully moved to Dev Review column');
+
+      - name: Remove elitea-ai from assignees
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
+          script: |
+            const issueUrl = '${{ needs.notify-assignment.outputs.issue_url }}';
+
+            // Parse owner, repo, and issue number from URL
+            const urlMatch = issueUrl.match(/github\.com\/([^\/]+)\/([^\/]+)\/issues\/(\d+)/);
+            if (!urlMatch) {
+              console.log('Could not parse issue URL, skipping assignee removal');
+              return;
+            }
+
+            const [, owner, repo, issueNumber] = urlMatch;
+            console.log(`Removing elitea-ai from issue ${owner}/${repo}#${issueNumber}`);
+
+            try {
+              await github.rest.issues.removeAssignees({
+                owner,
+                repo,
+                issue_number: parseInt(issueNumber),
+                assignees: ['elitea-ai']
+              });
+              console.log('✅ Successfully removed elitea-ai from assignees');
+            } catch (error) {
+              console.log(`⚠️ Could not remove assignee: ${error.message}`);
+            }
