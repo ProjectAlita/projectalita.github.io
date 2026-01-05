@@ -35,7 +35,7 @@ jobs:
           script: |
             // Try organization-level projects first
             const orgQuery = `
-              query($org: String!, $issueNumber: Int!, $repo: String!) {
+              query($org: String!) {
                 organization(login: $org) {
                   projectsV2(first: 20) {
                     nodes {
@@ -72,12 +72,10 @@ jobs:
             `;
             
             const variables = {
-              org: context.repo.owner,
-              repo: context.repo.repo,
-              issueNumber: context.issue.number
+              org: context.repo.owner
             };
             
-            console.log(`Looking for issue #${variables.issueNumber} in org ${variables.org}`);
+            console.log(`Looking for issue #${context.issue.number} in org ${context.repo.owner}, repo ${context.repo.repo}`);
             
             const result = await github.graphql(orgQuery, variables);
             const projects = result.organization.projectsV2.nodes;
@@ -104,12 +102,12 @@ jobs:
               return content && 
                      content.number === variables.issueNumber && 
                      content.repository?.name === variables.repo;
+            });context.issue.number && 
+                     content.repository?.name === context.repo.repo;
             });
             
             if (!projectItem) {
-              console.log(`Issue #${variables.issueNumber} not found in project "${projectToSearch.title}"`);
-              core.setOutput('has_project', 'false');
-              return;
+              console.log(`Issue #${context.issue.n
             }
             
             console.log(`✅ Found issue in project "${projectToSearch.title}"`);
