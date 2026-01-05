@@ -199,13 +199,18 @@ jobs:
         working-directory: /Volumes/KINGSTON/Development/elitea
         env:
           CLAUDE_CONFIG_DIR: /Volumes/KINGSTON/Development/elitea/.claude
-          ANTHROPIC_SMALL_FAST_MODEL: "eu.anthropic.claude-sonnet-4-5-20250929-v1:0"
-          ANTHROPIC_DEFAULT_HAIKU_MODEL: "eu.anthropic.claude-sonnet-4-5-20250929-v1:0"
-          CLAUDE_CODE_SUBAGENT_MODEL: "eu.anthropic.claude-sonnet-4-5-20250929-v1:0"
         run: |
           echo "🔍 Starting autonomous investigation for issue: ${{ needs.notify-assignment.outputs.issue_url }}"
           echo "Working directory: $(pwd)"
           echo "CLAUDE_CONFIG_DIR: $CLAUDE_CONFIG_DIR"
+
+          # Read model names from settings.json
+          SETTINGS_FILE="$CLAUDE_CONFIG_DIR/settings.json"
+          export ANTHROPIC_SMALL_FAST_MODEL=$(jq -r '.env.ANTHROPIC_DEFAULT_SONNET_MODEL' "$SETTINGS_FILE")
+          export ANTHROPIC_DEFAULT_HAIKU_MODEL=$(jq -r '.env.ANTHROPIC_DEFAULT_SONNET_MODEL' "$SETTINGS_FILE")
+          export CLAUDE_CODE_SUBAGENT_MODEL=$(jq -r '.env.ANTHROPIC_DEFAULT_SONNET_MODEL' "$SETTINGS_FILE")
+
+          echo "Using model for subagents: $ANTHROPIC_SMALL_FAST_MODEL"
           echo "Checking .claude/agents directory:"
           ls -la .claude/agents
           claude --print --debug --dangerously-skip-permissions --agent autonomous-rca-investigator "${{ needs.notify-assignment.outputs.issue_url }}"
