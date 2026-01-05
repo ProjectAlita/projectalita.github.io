@@ -184,7 +184,7 @@ jobs:
   investigate-issue:
     needs: notify-assignment
     if: needs.notify-assignment.outputs.should_investigate == 'true'
-    runs-on: [self-hosted, macOS, ARM64, local]
+    runs-on: [self-hosted, macOS]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
