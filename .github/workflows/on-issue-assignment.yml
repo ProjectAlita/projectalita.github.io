@@ -213,7 +213,10 @@ jobs:
           echo "Using model for subagents: $ANTHROPIC_SMALL_FAST_MODEL"
           echo "Checking .claude/agents directory:"
           ls -la .claude/agents
-          claude --print --debug --dangerously-skip-permissions --agent autonomous-rca-investigator "${{ needs.notify-assignment.outputs.issue_url }}"
+          # Run with explicit prompt flag
+          ISSUE_URL="${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Investigating issue: $ISSUE_URL"
+          claude --debug --dangerously-skip-permissions --agent autonomous-rca-investigator -p "Investigate this GitHub issue and post your RCA findings as comments: $ISSUE_URL"
       
       - name: Move ticket to Development column
         uses: actions/github-script@v7
@@ -240,7 +243,7 @@ jobs:
             // Get the project ID from the item ID (extract from project item)
             const getProjectQuery = `
               query($itemId: ID!) {
-                node(id: "${{ needs.notify-assignment.outputs.project_item_id }}") {
+                node(id: $itemId) {
                   ... on ProjectV2Item {
                     project {
                       id
