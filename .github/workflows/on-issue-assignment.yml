@@ -4,6 +4,10 @@ on:
   issues:
     types: [assigned]
 
+permissions:
+  issues: read
+  contents: read
+  
 jobs:
   notify-assignment:
     runs-on: ubuntu-latest
@@ -30,6 +34,7 @@ jobs:
         env:
           TARGET_PROJECT_NAME: "ELITEA Board"
         with:
+          github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
           script: |
             // Query the issue directly to get its project memberships
             const query = `
