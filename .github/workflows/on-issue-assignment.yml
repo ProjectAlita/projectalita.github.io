@@ -193,13 +193,13 @@ jobs:
           echo "Should investigate: ${{ needs.notify-assignment.outputs.should_investigate }}"
           echo "Issue URL: ${{ needs.notify-assignment.outputs.issue_url }}"
           echo "Runner: $(hostname)"
-          
-      - name: Checkout repository
-        uses: actions/checkout@v4
+          echo "Working directory: $(pwd)"
       
       - name: Run autonomous RCA investigation
+        working-directory: /Volumes/KINGSTON/Development/elitea
         run: |
           echo "🔍 Starting autonomous investigation for issue: ${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Working directory: $(pwd)"
           claude --dangerously-skip-permissions --agent autonomous-rca-investigator "${{ needs.notify-assignment.outputs.issue_url }}"
       
       - name: Move ticket to Development column
