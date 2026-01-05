@@ -184,7 +184,8 @@ jobs:
   investigate-issue:
     needs: notify-assignment
     if: needs.notify-assignment.outputs.should_investigate == 'true'
-    runs-on: [self-hosted, macOS]
+    runs-on:
+      group: ai-developer
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
