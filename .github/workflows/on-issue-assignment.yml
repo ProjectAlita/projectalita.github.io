@@ -5,12 +5,18 @@ on:
     types: [assigned]
 
 permissions:
-  issues: read
+  issues: write
   contents: read
   
 jobs:
   notify-assignment:
     runs-on: ubuntu-latest
+    outputs:
+      should_investigate: ${{ steps.check-status.outputs.should_investigate }}
+      issue_url: ${{ steps.check-status.outputs.issue_url }}
+      project_item_id: ${{ steps.get-project-state.outputs.project_item_id }}
+      status_field_id: ${{ steps.get-project-state.outputs.status_field_id }}
+      development_option_id: ${{ steps.get-project-state.outputs.development_option_id }}
     steps:
       - name: Check if assigned to target user
         id: check-assignee
@@ -47,8 +53,18 @@ jobs:
                       nodes {
                         id
                         project {
+                          id
                           title
                           number
+                          field(name: "Status") {
+                            ... on ProjectV2SingleSelectField {
+                              id
+                              options {
+                                id
+                                name
+                              }
+                            }
+                          }
                         }
                         fieldValues(first: 20) {
                           nodes {
@@ -113,6 +129,18 @@ jobs:
               core.setOutput('project_status', statusField.name);
               core.setOutput('project_name', targetProjectItem.project.title);
               core.setOutput('has_project', 'true');
+              
+              // Save IDs needed to update the status later
+              core.setOutput('project_item_id', targetProjectItem.id);
+              core.setOutput('status_field_id', targetProjectItem.project.field?.id);
+              
+              // Find Development option ID
+              const developmentOption = targetProjectItem.project.field?.options?.find(
+                opt => opt.name === 'Development'
+              );
+              if (developmentOption) {
+                core.setOutput('development_option_id', developmentOption.id);
+              }
             } else {
               console.log('Status field not found');
               core.setOutput('has_project', 'false');
@@ -120,6 +148,7 @@ jobs:
 
       - name: Take action based on project state
         if: steps.check-assignee.outputs.match == 'true' && steps.get-project-state.outputs.has_project == 'true'
+        id: check-status
         run: |
           echo "=== Issue Details ==="
           echo "Title: ${{ github.event.issue.title }}"
@@ -130,29 +159,91 @@ jobs:
           echo ""
           
           STATUS="${{ steps.get-project-state.outputs.project_status }}"
+          ISSUE_URL="${{ github.event.issue.html_url }}"
+          
+          # Set output for issue URL
+          echo "issue_url=$ISSUE_URL" >> $GITHUB_OUTPUT
           
           if [[ "$STATUS" == "To Do" || "$STATUS" == "Bugs" ]]; then
-            echo "📋 Issue is in TO DO or BUGS column - taking initial action"
+            echo "📋 Issue is in TO DO or BUGS column - will trigger investigation"
+            echo "should_investigate=true" >> $GITHUB_OUTPUT
             
           elif [[ "$STATUS" == "Development" ]]; then
             echo "💻 Issue is in DEVELOPMENT column - taking development action"
+            echo "should_investigate=false" >> $GITHUB_OUTPUT
             
           elif [[ "$STATUS" == "In Testing" ]]; then
             echo "🧪 Issue is in IN TESTING column - taking QA action"
+            echo "should_investigate=false" >> $GITHUB_OUTPUT
             
           else
             echo "ℹ️ Issue is in column: $STATUS"
+            echo "should_investigate=false" >> $GITHUB_OUTPUT
           fi
 
-      # Example: Add a comment to the issue
-      - name: Add comment to issue
-        if: steps.check-assignee.outputs.match == 'true'
+  investigate-issue:
+    needs: notify-assignment
+    if: needs.notify-assignment.outputs.should_investigate == 'true'
+    runs-on: ai-developer
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Run autonomous RCA investigation
+        run: |
+          echo "🔍 Starting autonomous investigation for issue: ${{ needs.notify-assignment.outputs.issue_url }}"
+          claude --dangerously-skip-permissions --agent autonomous-rca-investigator "${{ needs.notify-assignment.outputs.issue_url }}"
+      
+      - name: Move ticket to Development column
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
           script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 This issue has been assigned to a priority user and will be tracked accordingly.'
-            })
+            const mutation = `
+              mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $value: ProjectV2FieldValue!) {
+                updateProjectV2ItemFieldValue(
+                  input: {
+                    projectId: $projectId
+                    itemId: $itemId
+                    fieldId: $fieldId
+                    value: $value
+                  }
+                ) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }
+            `;
+            
+            // Get the project ID from the item ID (extract from project item)
+            const getProjectQuery = `
+              query($itemId: ID!) {
+                node(id: "${{ needs.notify-assignment.outputs.project_item_id }}") {
+                  ... on ProjectV2Item {
+                    project {
+                      id
+                    }
+                  }
+                }
+              }
+            `;
+            
+            const projectData = await github.graphql(getProjectQuery, {
+              itemId: "${{ needs.notify-assignment.outputs.project_item_id }}"
+            });
+            
+            const projectId = projectData.node.project.id;
+            
+            console.log('Moving issue to Development column...');
+            
+            await github.graphql(mutation, {
+              projectId: projectId,
+              itemId: "${{ needs.notify-assignment.outputs.project_item_id }}",
+              fieldId: "${{ needs.notify-assignment.outputs.status_field_id }}",
+              value: {
+                singleSelectOptionId: "${{ needs.notify-assignment.outputs.development_option_id }}"
+              }
+            });
+            
+            console.log('✅ Successfully moved to Development column');
