@@ -28,8 +28,9 @@ jobs:
         id: get-project-state
         uses: actions/github-script@v7
         env:
-          # Set your target project board name (leave empty to check first project found)
-          TARGET_PROJECT_NAME: "AI-Dev"  # e.g., "Development Sprint" or "Main Board"
+          # Set your target project name (NOT the view/board name)
+          # The project is the container, views like "AI-Dev" are just filtered displays
+          TARGET_PROJECT_NAME: "ELITEA Board"  # Your GitHub Project name
         with:
           script: |
             const query = `
