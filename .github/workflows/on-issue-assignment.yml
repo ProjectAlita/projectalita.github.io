@@ -15,11 +15,16 @@ jobs:
     outputs:
       should_investigate: ${{ steps.check-status.outputs.should_investigate }}
       should_implement: ${{ steps.check-status.outputs.should_implement }}
+      should_reproduce: ${{ steps.check-status.outputs.should_reproduce }}
+      should_sync: ${{ steps.check-status.outputs.should_sync }}
       issue_url: ${{ steps.check-status.outputs.issue_url }}
+      is_bug: ${{ steps.check-status.outputs.is_bug }}
       project_item_id: ${{ steps.get-project-state.outputs.project_item_id }}
       status_field_id: ${{ steps.get-project-state.outputs.status_field_id }}
       development_option_id: ${{ steps.get-project-state.outputs.development_option_id }}
       dev_review_option_id: ${{ steps.get-project-state.outputs.dev_review_option_id }}
+      bugs_option_id: ${{ steps.get-project-state.outputs.bugs_option_id }}
+      todo_option_id: ${{ steps.get-project-state.outputs.todo_option_id }}
     steps:
       - name: Check if assigned to target user
         id: check-assignee
@@ -152,9 +157,62 @@ jobs:
               if (devReviewOption) {
                 core.setOutput('dev_review_option_id', devReviewOption.id);
               }
+
+              // Find Bugs option ID
+              const bugsOption = targetProjectItem.project.field?.options?.find(
+                opt => opt.name === 'Bugs'
+              );
+              if (bugsOption) {
+                core.setOutput('bugs_option_id', bugsOption.id);
+              }
+
+              // Find To Do option ID
+              const todoOption = targetProjectItem.project.field?.options?.find(
+                opt => opt.name === 'To Do'
+              );
+              if (todoOption) {
+                core.setOutput('todo_option_id', todoOption.id);
+              }
             } else {
               console.log('Status field not found');
               core.setOutput('has_project', 'false');
+            }
+
+      - name: Get issue type
+        if: steps.check-assignee.outputs.match == 'true' && steps.get-project-state.outputs.has_project == 'true'
+        id: get-issue-type
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
+          script: |
+            // Query to get issue type
+            const query = `
+              query($owner: String!, $repo: String!, $issueNumber: Int!) {
+                repository(owner: $owner, name: $repo) {
+                  issue(number: $issueNumber) {
+                    issueType {
+                      name
+                    }
+                  }
+                }
+              }
+            `;
+
+            try {
+              const result = await github.graphql(query, {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issueNumber: context.issue.number
+              });
+
+              const issueType = result.repository.issue.issueType?.name || '';
+              console.log(`Issue type: ${issueType}`);
+              core.setOutput('issue_type', issueType);
+              core.setOutput('is_bug', issueType.toLowerCase() === 'bug');
+            } catch (error) {
+              console.log(`Could not get issue type: ${error.message}`);
+              core.setOutput('issue_type', '');
+              core.setOutput('is_bug', false);
             }
 
       - name: Take action based on project state
@@ -167,34 +225,193 @@ jobs:
           echo "Assignee: ${{ github.event.assignee.login }}"
           echo "Project: ${{ steps.get-project-state.outputs.project_name }}"
           echo "Status/Column: ${{ steps.get-project-state.outputs.project_status }}"
+          echo "Issue Type: ${{ steps.get-issue-type.outputs.issue_type }}"
           echo ""
-          
+
           STATUS="${{ steps.get-project-state.outputs.project_status }}"
           ISSUE_URL="${{ github.event.issue.html_url }}"
-          
+
           # Set output for issue URL
           echo "issue_url=$ISSUE_URL" >> $GITHUB_OUTPUT
-          
-          if [[ "$STATUS" == "To Do" || "$STATUS" == "Bugs" ]]; then
+
+          # Get issue type from previous step
+          IS_BUG="${{ steps.get-issue-type.outputs.is_bug }}"
+          echo "is_bug=$IS_BUG" >> $GITHUB_OUTPUT
+          echo "Is Bug type: $IS_BUG"
+
+          if [[ "$STATUS" == "Reproduction" ]]; then
+            echo "🔬 Issue is in REPRODUCTION column - will trigger issue-reproducer"
+            echo "should_reproduce=true" >> $GITHUB_OUTPUT
+            echo "should_investigate=false" >> $GITHUB_OUTPUT
+            echo "should_implement=false" >> $GITHUB_OUTPUT
+            echo "should_sync=false" >> $GITHUB_OUTPUT
+
+          elif [[ "$STATUS" == "To Do" || "$STATUS" == "Bugs" ]]; then
             echo "📋 Issue is in TO DO or BUGS column - will trigger investigation"
+            echo "should_reproduce=false" >> $GITHUB_OUTPUT
             echo "should_investigate=true" >> $GITHUB_OUTPUT
             echo "should_implement=false" >> $GITHUB_OUTPUT
+            echo "should_sync=false" >> $GITHUB_OUTPUT
 
           elif [[ "$STATUS" == "Development" ]]; then
             echo "💻 Issue is in DEVELOPMENT column - will trigger auto-fixer directly"
+            echo "should_reproduce=false" >> $GITHUB_OUTPUT
             echo "should_investigate=false" >> $GITHUB_OUTPUT
             echo "should_implement=true" >> $GITHUB_OUTPUT
+            echo "should_sync=false" >> $GITHUB_OUTPUT
 
-          elif [[ "$STATUS" == "In Testing" || "$STATUS" == "Dev Review" ]]; then
-            echo "🧪 Issue is in testing/review column - no action needed"
+          elif [[ "$STATUS" == "In Testing" ]]; then
+            echo "🧪 Issue is in IN TESTING column - will sync codebase"
+            echo "should_reproduce=false" >> $GITHUB_OUTPUT
             echo "should_investigate=false" >> $GITHUB_OUTPUT
             echo "should_implement=false" >> $GITHUB_OUTPUT
+            echo "should_sync=true" >> $GITHUB_OUTPUT
+
+          elif [[ "$STATUS" == "Dev Review" ]]; then
+            echo "👀 Issue is in DEV REVIEW column - no action needed"
+            echo "should_reproduce=false" >> $GITHUB_OUTPUT
+            echo "should_investigate=false" >> $GITHUB_OUTPUT
+            echo "should_implement=false" >> $GITHUB_OUTPUT
+            echo "should_sync=false" >> $GITHUB_OUTPUT
 
           else
             echo "ℹ️ Issue is in column: $STATUS - no action"
+            echo "should_reproduce=false" >> $GITHUB_OUTPUT
             echo "should_investigate=false" >> $GITHUB_OUTPUT
             echo "should_implement=false" >> $GITHUB_OUTPUT
+            echo "should_sync=false" >> $GITHUB_OUTPUT
           fi
+
+  # Job for tickets in Reproduction column - run issue-reproducer first
+  reproduce-issue:
+    needs: notify-assignment
+    if: needs.notify-assignment.outputs.should_reproduce == 'true'
+    runs-on:
+      group: ai-developer
+    steps:
+      - name: Debug - Check outputs
+        run: |
+          echo "Should reproduce: ${{ needs.notify-assignment.outputs.should_reproduce }}"
+          echo "Issue URL: ${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Is bug: ${{ needs.notify-assignment.outputs.is_bug }}"
+          echo "Runner: $(hostname)"
+          echo "Working directory: $(pwd)"
+
+      - name: Run issue reproducer
+        id: issue-reproducer
+        working-directory: /Volumes/KINGSTON/Development/elitea
+        timeout-minutes: 45
+        env:
+          CLAUDE_CONFIG_DIR: /Volumes/KINGSTON/Development/elitea/.claude
+        run: |
+          echo "🔬 Starting issue reproduction for: ${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Working directory: $(pwd)"
+          echo "CLAUDE_CONFIG_DIR: $CLAUDE_CONFIG_DIR"
+
+          # Read model names from settings.json
+          SETTINGS_FILE="$CLAUDE_CONFIG_DIR/settings.json"
+          export ANTHROPIC_SMALL_FAST_MODEL=$(jq -r '.env.ANTHROPIC_DEFAULT_SONNET_MODEL' "$SETTINGS_FILE")
+          export ANTHROPIC_DEFAULT_HAIKU_MODEL=$(jq -r '.env.ANTHROPIC_DEFAULT_SONNET_MODEL' "$SETTINGS_FILE")
+          export CLAUDE_CODE_SUBAGENT_MODEL=$(jq -r '.env.ANTHROPIC_DEFAULT_SONNET_MODEL' "$SETTINGS_FILE")
+
+          echo "Using model for subagents: $ANTHROPIC_SMALL_FAST_MODEL"
+          echo "Checking .claude/agents directory:"
+          ls -la .claude/agents
+
+          ISSUE_URL="${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Reproducing issue: $ISSUE_URL"
+          claude --debug --dangerously-skip-permissions --agent issue-reproducer -p "Reproduce and document this GitHub issue. Use Playwright MCP for UI issues or create Python scripts for API issues. Post all findings and reproduction steps to the ticket: $ISSUE_URL"
+
+      - name: Move ticket to Bugs or To Do column
+        if: steps.issue-reproducer.outcome == 'success'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
+          script: |
+            const mutation = `
+              mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $value: ProjectV2FieldValue!) {
+                updateProjectV2ItemFieldValue(
+                  input: {
+                    projectId: $projectId
+                    itemId: $itemId
+                    fieldId: $fieldId
+                    value: $value
+                  }
+                ) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }
+            `;
+
+            const getProjectQuery = `
+              query($itemId: ID!) {
+                node(id: $itemId) {
+                  ... on ProjectV2Item {
+                    project {
+                      id
+                    }
+                  }
+                }
+              }
+            `;
+
+            const projectData = await github.graphql(getProjectQuery, {
+              itemId: "${{ needs.notify-assignment.outputs.project_item_id }}"
+            });
+
+            const projectId = projectData.node.project.id;
+            const isBug = "${{ needs.notify-assignment.outputs.is_bug }}" === "true";
+
+            // Move to Bugs if it's a bug, otherwise To Do
+            const targetColumn = isBug ? "Bugs" : "To Do";
+            const targetOptionId = isBug
+              ? "${{ needs.notify-assignment.outputs.bugs_option_id }}"
+              : "${{ needs.notify-assignment.outputs.todo_option_id }}";
+
+            console.log(`Moving issue to ${targetColumn} column (is_bug: ${isBug})...`);
+
+            await github.graphql(mutation, {
+              projectId: projectId,
+              itemId: "${{ needs.notify-assignment.outputs.project_item_id }}",
+              fieldId: "${{ needs.notify-assignment.outputs.status_field_id }}",
+              value: {
+                singleSelectOptionId: targetOptionId
+              }
+            });
+
+            console.log(`✅ Successfully moved to ${targetColumn} column`);
+
+      - name: Remove elitea-ai from assignees
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
+          script: |
+            const issueUrl = '${{ needs.notify-assignment.outputs.issue_url }}';
+
+            // Parse owner, repo, and issue number from URL
+            const urlMatch = issueUrl.match(/github\.com\/([^\/]+)\/([^\/]+)\/issues\/(\d+)/);
+            if (!urlMatch) {
+              console.log('Could not parse issue URL, skipping assignee removal');
+              return;
+            }
+
+            const [, owner, repo, issueNumber] = urlMatch;
+            console.log(`Removing elitea-ai from issue ${owner}/${repo}#${issueNumber}`);
+
+            try {
+              await github.rest.issues.removeAssignees({
+                owner,
+                repo,
+                issue_number: parseInt(issueNumber),
+                assignees: ['elitea-ai']
+              });
+              console.log('✅ Successfully removed elitea-ai from assignees');
+            } catch (error) {
+              console.log(`⚠️ Could not remove assignee: ${error.message}`);
+            }
 
   investigate-issue:
     needs: notify-assignment
@@ -208,7 +425,7 @@ jobs:
           echo "Issue URL: ${{ needs.notify-assignment.outputs.issue_url }}"
           echo "Runner: $(hostname)"
           echo "Working directory: $(pwd)"
-      
+
       - name: Run autonomous RCA investigation
         id: rca-investigation
         working-directory: /Volumes/KINGSTON/Development/elitea
@@ -408,6 +625,105 @@ jobs:
             });
 
             console.log('✅ Successfully moved to Dev Review column');
+
+      - name: Remove elitea-ai from assignees
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
+          script: |
+            const issueUrl = '${{ needs.notify-assignment.outputs.issue_url }}';
+
+            // Parse owner, repo, and issue number from URL
+            const urlMatch = issueUrl.match(/github\.com\/([^\/]+)\/([^\/]+)\/issues\/(\d+)/);
+            if (!urlMatch) {
+              console.log('Could not parse issue URL, skipping assignee removal');
+              return;
+            }
+
+            const [, owner, repo, issueNumber] = urlMatch;
+            console.log(`Removing elitea-ai from issue ${owner}/${repo}#${issueNumber}`);
+
+            try {
+              await github.rest.issues.removeAssignees({
+                owner,
+                repo,
+                issue_number: parseInt(issueNumber),
+                assignees: ['elitea-ai']
+              });
+              console.log('✅ Successfully removed elitea-ai from assignees');
+            } catch (error) {
+              console.log(`⚠️ Could not remove assignee: ${error.message}`);
+            }
+
+  # Job for tickets in In Testing column - sync codebase (reset and pull all repos)
+  sync-codebase:
+    needs: notify-assignment
+    if: needs.notify-assignment.outputs.should_sync == 'true'
+    runs-on:
+      group: ai-developer
+    steps:
+      - name: Debug - Check outputs
+        run: |
+          echo "Should sync: ${{ needs.notify-assignment.outputs.should_sync }}"
+          echo "Issue URL: ${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Runner: $(hostname)"
+          echo "Working directory: $(pwd)"
+
+      - name: Run git reset and pull script
+        id: sync-repos
+        working-directory: /Volumes/KINGSTON/Development/elitea
+        timeout-minutes: 10
+        run: |
+          echo "🔄 Starting codebase sync for testing: ${{ needs.notify-assignment.outputs.issue_url }}"
+          echo "Working directory: $(pwd)"
+
+          # Make script executable and run it
+          chmod +x ./git_reset_and_pull.sh
+          ./git_reset_and_pull.sh
+
+          echo "✅ Codebase sync completed"
+
+      - name: Post sync status to issue
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_GIT_PAT || secrets.GITHUB_TOKEN }}
+          script: |
+            const issueUrl = '${{ needs.notify-assignment.outputs.issue_url }}';
+            const syncOutcome = '${{ steps.sync-repos.outcome }}';
+
+            // Parse owner, repo, and issue number from URL
+            const urlMatch = issueUrl.match(/github\.com\/([^\/]+)\/([^\/]+)\/issues\/(\d+)/);
+            if (!urlMatch) {
+              console.log('Could not parse issue URL');
+              return;
+            }
+
+            const [, owner, repo, issueNumber] = urlMatch;
+
+            const statusEmoji = syncOutcome === 'success' ? '✅' : '❌';
+            const statusText = syncOutcome === 'success' ? 'succeeded' : 'failed';
+
+            const comment = [
+              `## ${statusEmoji} Codebase Sync ${statusText}`,
+              '',
+              'The codebase has been synchronized for testing:',
+              '- All repositories reset to main branch',
+              '- Latest changes pulled from origin',
+              '',
+              `**Status:** ${statusText}`,
+              '**Triggered by:** Moving to "In Testing" column'
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: parseInt(issueNumber),
+              body: comment
+            });
+
+            console.log('✅ Posted sync status to issue');
 
       - name: Remove elitea-ai from assignees
         if: always()
