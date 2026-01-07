@@ -47,7 +47,6 @@ nav:
           - MCPs: menus/mcps.md
           - Artifacts: menus/artifacts.md
           - Agents Studio: menus/agents-studio.md
-
           - Settings:
               - Settings Overview: menus/settings/settings-overview.md
               - AI Configuration: menus/settings/ai-configuration.md
@@ -55,6 +54,8 @@ nav:
               - Secrets: menus/settings/secrets.md
               - Projects: menus/settings/projects.md
               - Monitoring: menus/settings/monitoring.md
+          - Profile:
+              - Personalization: menus/profile/personalization.md              
 
   - How-To Guides:
       - Chat & Conversations:
