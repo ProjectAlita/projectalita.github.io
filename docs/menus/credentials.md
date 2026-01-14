@@ -28,7 +28,7 @@ The Credentials menu is accessible from the main platform navigation. Upon enter
 
 The Credentials dashboard provides multiple ways to view and manage your credentials:
 
-#### View Options
+**View Options**
 
 * **Card View** - Visual cards displaying credential name, type, and key information. Ideal for browsing and quick identification.
 * **Table View** - Organized list format with columns for detailed credential information. Better for managing large numbers of credentials.
@@ -37,14 +37,14 @@ Switch between views using the view toggle button in the top-right corner of the
 
 ![Credentials-Menu_Interface](../img//menus/credentials/credentials-view.gif){loading=lazy}
 
-#### Search and Filter
+**Search and Filter**
 
 * **Search Bar** - Quickly find credentials by typing the credential name or related keywords
 * **Filter by Type** - Filter credentials by their type/category (e.g., show only GitHub, Jira, or Slack credentials). Select one or multiple types to narrow down the list.
 
 ![Credentials-Menu_Interface](../img//menus/credentials/credentials-filter.gif){loading=lazy}
 
-#### Pinning Credentials
+**Pinning Credentials**
 
 Pin frequently used credentials to keep them at the top of your list for quick access:
 
@@ -100,7 +100,7 @@ The ELITEA platform currently supports the following credential types, organized
 
 You can add new authentication records to the platform by creating a credential through the Credentials menu.
 
-### How to Create a New Credential
+**How to Create a New Credential**
 
 Follow these steps to add authentication details to the platform:
 
@@ -112,7 +112,7 @@ Follow these steps to add authentication details to the platform:
 !!! note "Note"
     Only users with the necessary permissions can create or configure credentials. If the `+ Create` button is disabled, contact your platform administrator.
 
-### Selecting a Credential Type
+**Selecting a Credential Type**
 
 Choose the required credential type from the categorized list. The credential types are organized by category to help you quickly find the integration you need. You can also use the search bar to quickly locate a specific credential type by name.
 
@@ -122,7 +122,7 @@ Choose the required credential type from the categorized list. The credential ty
 
 Once you've selected a credential type, you'll need to configure the following fields:
 
-#### Main Configuration Fields:
+**Main Configuration Fields:**
 
 * **Display Name*** - A clear, descriptive name for your credential that helps identify its purpose
 * **ID*** - A unique identifier for the credential (auto-generated or customizable depending on the platform configuration)
@@ -142,7 +142,7 @@ Once you've selected a credential type, you'll need to configure the following f
 !!! tip "Tip"
     The exact fields required for each credential depend on the integration type. For detailed setup instructions for each credential type, see the [How to Use Credentials](../how-tos/credentials-toolkits/how-to-use-credentials.md) guide.
 
-### Saving Your Credential
+**Saving Your Credential**
 
 Before saving, you can use the **Test Connection** button to verify your credential configuration (availability varies by credential type). This helps ensure your credentials are correctly configured before adding them to your dashboard.
 
@@ -154,7 +154,7 @@ Click **Save** (top right) to add the credential to your dashboard. It will now 
 
 ## Editing and Managing Credentials
 
-### How to Edit an Existing Credential
+**How to Edit an Existing Credential**
 
 To edit a credential, open its detailed page from the Credentials dashboard. On this page, you can:
 
