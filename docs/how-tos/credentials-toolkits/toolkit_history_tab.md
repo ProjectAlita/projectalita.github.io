@@ -66,9 +66,9 @@ The left panel displays a sortable table titled **"Toolkit runs"** with the foll
 
 - **Sorting**: Click any column header to toggle sort order (ascending ↑ or descending ↓). Default: Date descending (most recent first)
 - **Row Selection**: Click any row to view details in the right panel. Selected row is highlighted
-- **Hover Actions**: Move mouse over a row to reveal action icons:
-     - **Copy Link Icon**: Copy direct link to this specific run
-     - **Delete Icon**: Remove run from history view
+- **Actions Menu**: Hover over any row to reveal the three-dot menu icon (⋮) on the right side. Click it to access actions:
+     - **Share link**: Copy direct link to this specific run
+     - **Delete**: Remove run from history view
 
 **Right Panel: Run Details**
 
@@ -136,10 +136,12 @@ The right panel displays comprehensive execution details for the selected run in
 
 Share specific run results with team members by copying direct links:
 
-1. **Hover Over Run**: Move mouse over desired run row
-2. **Copy Link Icon Appears**: Icon becomes visible on hover
-3. **Click Copy Icon**: Link is copied to clipboard
-4. **Share Link**: Paste link to share with team members
+1. **Locate Run**: Find the desired run in the history list
+2. **Hover Over Run**: Move your mouse over the run row to reveal the actions menu
+3. **Open Actions Menu**: Click the three-dot menu icon (⋮) that appears on the right side
+4. **Select Share Link**: Click "Share link" from the menu options
+5. **Link Copied**: The link is automatically copied to your clipboard
+6. **Share Link**: Paste the link to share with team members
 
 **Link Behavior:**
 
@@ -159,11 +161,12 @@ Remove individual runs from the history view:
 
 **To Delete a Run:**
 
-1. **Hover Over Run**: Move mouse over the run to delete
-2. **Delete Icon Appears**: Red delete icon becomes visible
-3. **Click Delete Icon**: Confirmation modal opens
-4. **Confirm Deletion**: Click "Remove" to confirm
-5. **Run Removed**: Row disappears from history table
+1. **Locate Run**: Find the run you want to delete in the history list
+2. **Hover Over Run**: Move your mouse over the run row to reveal the actions menu
+3. **Open Actions Menu**: Click the three-dot menu icon (⋮) that appears on the right side
+4. **Select Delete**: Click "Delete" from the menu options
+5. **Confirm Deletion**: A confirmation dialog appears - click "Remove" to confirm
+6. **Run Removed**: The row disappears from the history table
 
 ![Delete](../../img/how-tos/credentials-toolkits/toolkit-history/history-delete.gif){ loading=lazy }
 
@@ -314,26 +317,31 @@ Remove individual runs from the history view:
     **Solution:**
     
     1. Ensure your browser has clipboard access permissions
-    2. Try hovering over the run again to reveal icons
-    3. Click the copy icon and check for success notification
-    4. Manually copy the URL from the address bar after selecting a run
-    5. If using private/incognito mode, check browser permissions
+    2. Hover over the run row to reveal the three-dot menu icon (⋮)
+    3. Click the icon to open the actions menu
+    4. Select "Share link" from the menu
+    5. Check for success notification or confirmation
+    6. Manually copy the URL from the address bar after selecting a run
+    7. If using private/incognito mode, check browser permissions
 
-??? warning "Delete Button Not Appearing"
+??? warning "Delete Option Not Appearing"
 
     **Possible Causes:**
     
-    - Not hovering over the run row correctly
+    - Not hovering over the run row
+    - Actions menu not opening
     - Insufficient permissions
     - UI not fully loaded
     
     **Solution:**
     
-    1. Move mouse pointer directly over the run row
-    2. Wait briefly for hover state to activate
-    3. Look for icons on the right side of the row
-    4. Verify you have necessary permissions to delete runs
-    5. Refresh the page if icons persist in not appearing
+    1. Hover your mouse over the run row to reveal the three-dot menu icon (⋮)
+    2. Wait briefly for the icon to appear on the right side of the row
+    3. Click the icon to open the actions menu
+    4. Look for "Delete" option in the menu
+    5. Verify you have necessary permissions to delete runs
+    6. Refresh the page if the menu doesn't appear
+    7. Check if you're viewing a different user's runs that you cannot delete
 
 ??? warning "Runs Not Sorted Correctly"
 
