@@ -123,12 +123,10 @@ nav:
           - Manage Roles & Permissions: how-tos/entity-management/manage-users-and-roles.md
   - Integrations:
       - MCP:
-          - Server (STDIO): integrations/mcp/mcp-server-stdio.md
-          - Server (SSE): integrations/mcp/mcp-server-sse.md
-          - Client (STDIO): integrations/mcp/mcp-client.md
-          - Remote MCP (Configure and Use): integrations/mcp/create-and-use-remote-mcp.md
           - Server STDIO (Configure and Use): integrations/mcp/create-and-use-server-stdio.md
           - Client STDIO (Configure and Use): integrations/mcp/create-and-use-client-stdio.md
+          - Remote MCP (Configure and Use): integrations/mcp/create-and-use-remote-mcp.md
+          - Server (SSE): integrations/mcp/mcp-server-sse.md
           - Make Tools Available by MCP: integrations/mcp//make-tools-available-by-mcp.md
       - Toolkits:
           - ADO Repos: integrations/toolkits/ado_repos_toolkit.md
@@ -232,6 +230,8 @@ nav:
       - Public Project: features/public-project.md
       - Monitoring: features/monitoring.md
       - Pandas: archive/pandas_toolkit.md
+      - Server (STDIO): integrations/mcp/mcp-server-stdio.md
+      - Client (STDIO): integrations/mcp/mcp-client.md
 
       - Pipelines:
           - Pipelines Architecture: features/pipelines/pipeline-agent-framework.md

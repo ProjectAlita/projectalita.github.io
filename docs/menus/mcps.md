@@ -2,185 +2,476 @@
 
 ## Introduction to the MCPs Menu
 
-The **MCPs** menu lets you manage external **Model Context Protocol (MCP) servers** that your ELITEA project can use. Unlike standard toolkits (native integrations), MCP entries appear only **after you connect at least one MCP server through the Elitea MCP Client**. Once connected, MCPs expose their tools to agents, pipelines, and conversations for orchestration and automation.
-
-!!! note "Menu Availability"
-	The MCPs menu is empty by default. It becomes available (and populated) only after the Elitea MCP Client connects your project to one or more configured MCP servers.
+The **MCPs** menu in the ELITEA platform provides a centralized interface for managing and configuring Model Context Protocol (MCP) servers that extend your AI agents' capabilities. MCPs enable your agents to interact with external services and tools through standardized protocol interfaces. This guide walks you through the MCPs menu, explains how to navigate its features, and describes how to configure and use MCPs effectively.
 
 ---
 
 ## What Are MCPs?
 
-**MCPs** represent external MCP servers (e.g., Playwright MCP, Figma MCP, GitHub MCP) that expose tools following the Model Context Protocol. When the Elitea MCP Client is running, these tools become available inside ELITEA just like native toolkit tools—allowing agents and pipelines to perform actions such as browser automation, repository operations, or other domain tasks.
+**MCPs** (Model Context Protocol servers) are external tool providers that follow the MCP specification to expose specialized capabilities to ELITEA. Unlike native toolkits (built-in integrations), MCPs represent connections to external servers that can provide tools for browser automation, repository operations, API integrations, and other domain-specific tasks.
 
-**Key characteristics:**
+ELITEA supports two types of MCPs:
 
-* External runtime managed outside the ELITEA web UI (started via the Elitea MCP Client CLI or tray app)
-* Dynamic tool discovery (tools are listed from the connected server)
-* Connection state: **Connected** (active) or **Disconnected** (client not running / server unreachable)
-* Tools can be selectively enabled per MCP entry
+* **Local MCPs** - External MCP servers running locally and connected through the Elitea MCP Client (STDIO transport)
+* **Remote MCPs** - HTTP/HTTPS-based MCP servers accessible over the network
 
-For MCP Client setup see the **[MCP Client Integration Guide](../integrations/mcp/mcp-client.md)**.
+Once configured, MCP tools become available to agents, pipelines, and conversations just like native toolkit tools, enabling powerful automation and orchestration capabilities.
 
 ---
 
 ## Navigating the MCPs Menu
 
-When populated, the MCPs menu shows a card/grid or table list of all configured MCP connections for your project.
+The MCPs menu is accessible from the main platform navigation. Upon entering the MCPs section, you'll see a dashboard listing all configured MCP servers for your project.
 
-![MCPs Menu Dashboard Placeholder](../img/menus/mcps/mcps_menu.png)
+![MCPs Menu Interface](../img/menus/mcps/mcp-menu-access.gif){loading=lazy}
 
-### Main Elements
+**Main Elements:**
 
-* **MCP Cards / Rows:** Show name, description (if provided), connection state, and number of enabled tools.
-* **Search & Filter:** Locate MCPs by name or state.
-* **`+ Create` Button:** Opens the create panel to create a new MCP reference (logical entry) within the project.
-* **State Indicator:** Displays Connected or Disconnected (orange) based on live client status.
+* **MCP Cards:** Each card displays the MCP name, type (Local/Remote), connection status, and available tools count.
+* **Search and Filter:** Quickly locate MCPs using the search bar or filter by type (Local/Remote).
+* **Create MCP Button:** Use the `+ Create` button to add a new MCP configuration.
+
+### MCPs Dashboard
+
+The MCPs dashboard provides multiple ways to view and manage your MCP servers:
+
+**View Options**
+
+* **Card View** - Visual cards displaying MCP name, type, connection status, and key information. Ideal for browsing and quick identification.
+* **Table View** - Organized list format with columns for detailed MCP information. Better for managing large numbers of MCPs.
+
+Switch between views using the view toggle button in the top-right corner of the dashboard.
+
+![MCP](../img/menus/mcps/mcp-view.gif)
+
+**Search and Filter**
+
+* **Search Bar** - Quickly find MCPs by typing the MCP name or related keywords
+* **Filter by Type** - Filter MCPs by their type:
+    * **Local** - MCPs running locally via Elitea MCP Client
+    * **Remote** - HTTP/HTTPS-based MCP servers
+
+![MCP](../img/menus/mcps/mcp-filter.gif)
+
+**Pinning MCPs**
+
+Pin frequently used MCPs to keep them at the top of your list for quick access:
+
+1. Locate the MCP you want to pin
+2. Click the pin icon (📌) on the MCP card or in the table row
+3. Pinned MCPs will appear at the top of the list, separated from unpinned ones
+4. Click the pin icon again to unpin the MCP
+
+![MCP Pin](../img/menus/mcps/mcp-pin.gif){loading=lazy}
+
+
+**MCP Connection States**
+
+MCPs display their current connection status:
+
+* **Connected** (Grey) - Active connection; tools are available for use
+
+![Connected](../img/menus/mcps/connected.png){width="250"}
+
+* **Disconnected** (Orange) - MCP exists but cannot reach server; tools unavailable
+
+![Disconnected](../img/menus/mcps/disconnected.png){width="250"}
+---
+
+## MCP Types
+
+ELITEA supports two types of MCP servers, each designed for different deployment scenarios and use cases:
+
+### Local MCPs
+
+**Local MCPs** are external MCP servers running on your local machine and connected through the Elitea MCP Client using STDIO (Standard Input/Output) transport.
+
+**Key Features:**
+
+* Connected via Elitea MCP Client (STDIO transport)
+* Run as local processes on your machine
+* Automatically discovered when MCP Client is running
+* Ideal for development and local automation tasks
+
+For detailed setup instructions, see the **[MCP Client Integration Guide](../integrations/mcp/create-and-use-client-stdio.md)**.
+
+### Remote MCPs
+
+**Remote MCPs** are HTTP/HTTPS-based MCP servers accessible over the network, hosted anywhere accessible to your ELITEA instance.
+
+**Key Features:**
+
+* No local client installation required
+* Accessed via HTTP/HTTPS URLs
+* Support OAuth 2.0 authentication
+* Ideal for team environments and cloud deployments
+* Easier to share across teams and projects
+
+**Common Examples:** GitHub MCP, Atlassian MCPs (Jira, Confluence)
+
+For detailed setup instructions, see the **[Remote MCP Integration Guide](../integrations/mcp/create-and-use-remote-mcp.md)**.
 
 ---
 
 ## Creating a New MCP
 
-You create an MCP entry in ELITEA after (or while) configuring the underlying MCP server in your local Elitea MCP Client.
+### Creating a Local MCP
 
-![Create MCP Placeholder](../img/menus/mcps/mcps_create.png)
+!!! warning "Prerequisites"
+    Before creating a Local MCP entry, ensure the Elitea MCP Client is installed and running with your target MCP server configured and connected. 
+    
+    If no local MCP servers are available, you'll see a message: **"Still no local MCP available. Follow creation guides in our [Documentation](../integrations/mcp/create-and-use-client-stdio.md)."** with a link redirecting you to the MCP Client Integration Guide for installation and setup instructions.
 
-### How to Create a New MCP
+	![MCP](../img/menus/mcps/mcp-run-notification.png){width="450"}
 
-1. Ensure the **Elitea MCP Client** is installed and started (see [integration guide](../integrations/mcp/mcp-client.md)).
-2. Open the **MCPs** menu.
-3. Select the **available MCP servers** you want to add after they are running locally and connected to your project.
-4. Click **`+ Create`**.
-5. Enter basic details:
-	* **Name:** Descriptive label (e.g., "Playwright Browser Automation").
-	* **Description:** Purpose or scope (optional).
-    * Select or review the **Tools** list (fetched when the server is reachable) and optionally unselect tools you do not want exposed.
-6. Click **Save**.
+**How to Create a Local MCP:**
 
-![Creating MCP Server](../img/menus/mcps/mcps_creating_an_mcp.png)
+1. **Open the MCPs menu** from the main navigation.
+2. **Click the `+ Create` button** in the dashboard.
+3. **Select the available Local MCP servers** that are running locally and connected to your project.
+4. **Enter basic details:**
+    * **Name (Required):** Descriptive label (e.g., "Playwright Browser Automation")
+    * **Description (Optional):** A brief description to clarify the MCP's purpose and usage
+5. **TOOLS** - Select which specific tools and actions to enable for this MCP
+    * Review available tools carefully and enable only those needed for your use case
+    * Enabling only necessary tools improves security (principle of least privilege) and optimizes performance
+    * **[Make Tools Available by MCP](../integrations/mcp/make-tools-available-by-mcp.md)** - (optional checkbox) Enable this option to make the selected tools accessible through the external MCP clients to use the toolkit's capabilities
+6. **Click `Create`** to finalize. The new MCP card appears in your dashboard with its current connection status.
 
+    ![Local MCP Configuration](../img/menus/mcps/local-mcp-create.gif){loading=lazy}
 
-!!! tip "Disconnected Creation"
-	If the MCP Client is not running at creation time, tools may not be auto-discovered. Start the client and revisit the MCP to refresh the tool list.
+### Creating a Remote MCP
 
----
+Remote MCPs connect to external MCP servers over HTTP/HTTPS. They are ideal for cloud-based integrations like GitHub, Atlassian (Jira/Confluence), and other enterprise services.
 
-## MCP States
+!!! warning "Prerequisites"
+    Ensure you have the following ready before proceeding:
+    
+    * **Server URL**: HTTP/HTTPS endpoint of the remote MCP server
+    * **Authentication Credentials**: Depending on the server:
+        * Bearer token (API key)
+        * OAuth 2.0 client credentials (Client ID, Client Secret)
+        * Custom authentication headers
 
-| **State** | **Meaning** | **User Action Needed?** | **Typical Cause** |
-|-----------|-------------|-------------------------|-------------------|
-| Connected | Active link to the external MCP server; tools callable. | No | MCP Client running and server responding. |
-| Disconnected | MCP entry exists but cannot reach server. Tools unavailable. | Start / restart MCP Client or server. | Client stopped, network issue, misconfiguration. |
+**How to Create a Remote MCP:**
 
-!!! warning "Using Disconnected MCPs"
-	Disconnected MCPs cannot be invoked by agents, pipelines, or conversations. Start the Elitea MCP Client to re-establish connectivity.
+1. Navigate to **MCPs** → Click **+ Create**
+2. Click **Remote MCP** 
+3. Enter name, description, and server URL
+4. Configure authentication (Headers, OAuth, or None)
+5. Click **Load tools** 
+6. Complete OAuth flow 
+7. Select tools and click **Create**
 
----
+![Remote MCP](../img/menus/mcps/remote-mcp-access.gif)
 
-## Editing and Configuring an MCP
-
-Open an MCP entry to view or modify its configuration.
-
-![MCP Detail Placeholder](../img/menus/mcps/mcps_detail.png)
-
-You can:
-
-* **Rename** the MCP.
-* **Update Description**.
-* **Enable / Disable Tools** (subset selection for least privilege).
-* **Delete MCP** (if no longer needed).
-
----
-
-## Testing MCP Functionality
-
-Each MCP detail page includes a **Test Settings** panel—identical in behavior to **Toolkits** testing.
-
-![MCP Test Panel Placeholder](../img/menus/mcps/mcps_test_panel.png)
-
-### Test Panel Controls
-
-* **Model Selection:** Choose LLM model (e.g., `gpt-4o`).
-* **Temperature / Top P / Top K / Max Completion Tokens:** Adjust generation parameters.
-* **Tool Selector:** Pick a tool exposed by the MCP server.
-* **Parameter Inputs:** Provide required arguments (auto-generated form fields where applicable).
-* **Run Tool:** Executes and streams response in a chat-like interface.
-
-### Interface Features
-
-* **Chat Output:** Shows input + tool results.
-* **Fullscreen Mode:** Expand for deeper inspection.
-* **Clear Results:** Reset panel for next test.
-* **Error Visibility:** Connection or invocation failures surface immediately.
-
-!!! tip "Connection First"
-	If the MCP is Disconnected, start the Elitea MCP Client and refresh before testing.
+!!! info "Detailed Configuration Guide"
+    For comprehensive setup instructions, authentication methods, real-world examples (GitHub, Atlassian), and troubleshooting, see the **[Remote MCP Integration Guide](../integrations/mcp/create-and-use-remote-mcp.md)**.
 
 ---
 
-## Using MCPs with Agents, Pipelines & Conversations
+## Managing MCP Configuration
 
-### Assigning to Agents or Pipelines
+After creating an MCP, you can view and edit its configuration by clicking on the MCP card in the dashboard. The MCP detail page provides two main tabs for managing different aspects of your MCP:
 
-1. Open **Agents**.
-2. Create or edit an agent.
-3. In the **Toolkits** section, click **+MCP** and choose the desired MCP.
-4. (Optional) Adjust enabled tools at agent level if supported.
-5. The MCP Servers will be automatically added to the agent's toolkit list and be available for use.
+### Run Tab
 
-!!! note "Multiple MCPs"
-    You can attach multiple MCPs to a single agent to combine toolsets.
+The **Run Tab** is where you configure the MCP's connection settings and manage enabled tools.
 
-!!! tip "Pipeline Configuration"
-	Adding MCP servers to a pipeline follows the same pattern as adding them to an agent: use the **+MCP** selector (or equivalent pipeline tool selection control), choose the MCP, then enable only the required tools.
+![MCP Run Tab](../img/menus/mcps/mcp-run-tab.png){loading=lazy}
 
-### Using in Conversations
+**What You Can Do on the Run Tab:**
 
-1. Open **Chat → Conversations**.
-2. Start a new or open an existing conversation.
-3. In **Participants → MCP** section, select one or more MCPs.
-4. Once Connected, conversation prompts can invoke those MCP tools.
+* **Edit MCP Details:** Update the name and description
+* **Manage Tool Selection:** Configure which specific tools are enabled for this MCP. In the "Tools" section, select only the tools your agents will use. Enabling only necessary tools improves security (principle of least privilege) and optimizes performance
+* **Update Connection Settings (Remote MCPs):** Modify server URL, authentication credentials, session ID, timeout, and custom headers
+* **Connection Badge (Remote MCPs):** Log in or log out using OAuth authentication. The connection badge shows your current authentication status
+* **Save Changes:** Click **Save** to apply your updates. Changes are applied immediately and reflected in the dashboard
+* **Remove MCP:** Click the **Remove** (trash) icon to delete the MCP. Confirm the removal in the dialog
+* **Copy Link:** Click the copy link icon to copy a direct link to the MCP's detailed page—useful for sharing with teammates who have access
 
-!!! note "Multiple MCPs"
-    You can attach multiple MCPs to a single agent to combine toolsets.
+!!! note "Local MCP Configuration"
+    If the Local MCP Client is not connected, the configuration will be shown in raw JSON format.
+
+#### Tool Management
+
+When selecting tools for your MCP:
+    
+* **Review available tools** carefully and enable only those needed for your specific use case
+* **Test each enabled tool** using the Test Settings panel to ensure proper functionality
+* **Update tool selection** as your requirements change or new tools become available
+
+!!! tip "Least Privilege Principle"
+    Enable only the tools you actually need. This reduces complexity, improves performance, and enhances security by limiting the scope of available actions.
+
+#### Testing MCP Functionality
+
+The MCP configuration page includes a **Test Settings** panel on the right side that allows you to test MCP functionality in real-time. For comprehensive testing instructions and best practices, see [How to Test Toolkit Tools](../how-tos/credentials-toolkits/how-to-test-toolkit-tools.md).
+
+**Steps to Test an MCP:**
+
+1. **Select a Model:** Choose the LLM model from the model dropdown (e.g., `gpt-4o`).
+
+2. **Adjust Model Settings** (Optional): Click the **Model Settings** icon (⚙️) next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
+    
+    **For Reasoning Models** (e.g., GPT-5.1):
+    
+    * **Reasoning** - Controls the depth of logical thinking and problem-solving with three levels:
+        * **Low**: Fast, surface-level reasoning with concise answers and minimal steps
+        * **Medium**: Balanced reasoning with clear explanations and moderate multi-step thinking (default)
+        * **High**: Deep, thorough reasoning with detailed step-by-step analysis (may be slower)
+    
+    **For Standard Models** (e.g., GPT-4o):
+    
+    * **Creativity** - Controls response randomness and creativity. Lower values produce more focused and deterministic outputs, while higher values generate more diverse and creative responses with five levels (1-5):
+        * **1**: Highly focused and deterministic outputs
+        * **2**: Mostly focused with slight variation
+        * **3**: Balanced between focus and creativity (default)
+        * **4**: More varied and creative responses
+        * **5**: Maximum creativity and diversity
+    
+    **Max Completion Tokens** - Limits the maximum length of AI responses measured in tokens (roughly 4 characters per token) (All Models):
+    
+    * **Auto** (default): System automatically sets the token limit to 4096 tokens
+    * **Custom**: Manually set a specific token limit for responses
+        * When Custom is selected, you can enter a specific number of maximum tokens
+        * The interface shows remaining tokens available after your specified limit
+        * Setting too high a value will show an error if it exceeds the model's maximum output tokens
+
+3. **Select Tool:** Use the **Tool** dropdown to choose which MCP tool you want to test.
+    * **Search functionality:** Type in the search box to filter available tools
+    * **Tool options:** Select from available tools
+    * **Provide Required Parameters (if prompted):** Fill in any inputs required by the selected tool
+
+4. **Execute the tool:** Click the **RUN TOOL** button and review the results in the output area. `(The RUN TOOL button appears after selecting a tool.)`
+
+![MCP History Tab](../img/menus/mcps/test-mcp-tools.gif){loading=lazy}
+
+### History Tab
+
+The **History** tab provides a comprehensive log of all operations and activities performed with the MCP.
+For detailed instructions on using the History tab, see [Toolkits History Tab Guide](../how-tos/credentials-toolkits/toolkit_history_tab.md).
+
+**Using the History Tab**
+
+The History tab allows you to:
+
+* **View operation history:** Track MCP operations and their status
+* **Monitor MCP usage:** Review when and how the MCP has been used
+* **Track changes:** See configuration changes and updates made to the MCP
+* **Troubleshoot issues:** Analyze past operations to identify and resolve problems
+* **Audit trail:** Maintain a record of MCP activities for compliance and review purposes
+
+---
+
+## Using MCPs in Workflows
+
+Once an MCP is configured and connected, you can use its tools in various ELITEA workflows:
+
+**In Agents**
+
+1. Navigate to the **[Agents](agents.md)** menu.
+2. Select or create an agent.
+3. In the agent's configuration, add the desired MCP from the list of available MCPs.
+4. Save your agent.
+
+**In Pipelines**
+
+1. Navigate to the **[Pipelines](pipelines.md)** menu.
+2. Select or create a pipeline.
+3. In the pipeline configuration, add the desired MCP to enable automated workflow steps.
+4. Save your pipeline.
+
+**In Chat**
+
+1. Open a **[Chat](chat.md)** session.
+2. Access the MCP selector within the chat interface.
+3. Select one or more MCPs to make their capabilities available during the conversation.
+4. Use natural language to interact with the MCP's features.
+
+!!! info "Tip"
+    You can use multiple MCPs simultaneously in agents, pipelines, and chat sessions to create powerful, integrated workflows that span multiple services and platforms.
 
 ---
 
 ## Best Practices
 
-* **Least Privilege:** Disable tools not needed by current workflows.
-* **Consistent Naming:** Use clear names to distinguish similar servers (e.g., "Playwright (QA)" vs "Playwright (Prod)").
-* **Monitor State:** Reconnect promptly if Disconnected before critical operations.
-* **Version Awareness:** When updating external MCP server packages, re-test key tools.
-* **Secure Context:** Avoid exposing sensitive environment paths or commands through custom MCP server arguments.
+Following these best practices ensures optimal MCP performance, security, and maintainability:
+
+??? tip "Enable Only Required Tools"
+    **Least Privilege Principle:** Disable MCP tools that aren't needed for current workflows. This reduces complexity, improves performance, and enhances security by limiting the scope of available actions.
+    
+    **How to apply:**
+    
+    * Review all enabled tools when creating or editing an MCP
+    * Disable unused tools in the Run Tab → Tool Management section
+    * Periodically audit agent/pipeline tool usage and remove unnecessary MCPs
+    
+    **Benefits:**
+    
+    * Faster agent decision-making (fewer tools to evaluate)
+    * Reduced risk of unintended tool invocations
+    * Clearer audit trails in History Tab
+
+??? tip "Use Clear and Consistent Naming"
+    **Naming Convention:** Use descriptive names that clearly identify the MCP's purpose, environment, or scope. Avoid generic names like "MCP 1" or "Test Server".
+    
+    **Recommended formats:**
+    
+    * **By Environment:** "GitHub Production", "GitHub Staging", "GitHub Development"
+    * **By Purpose:** "Playwright Browser Automation", "Filesystem Local Documents"
+    * **By Team:** "DevOps GitHub MCP", "QA Playwright MCP"
+    
+    **Benefits:**
+    
+    * Easier to identify correct MCP when assigning to agents/pipelines
+    * Reduces configuration errors in multi-environment setups
+    * Improves team collaboration and handoff documentation
+
+??? tip "Monitor Connection Status Regularly"
+    **Proactive Monitoring:** Check MCP connection states before starting critical operations, especially for time-sensitive workflows.
+    
+    **What to monitor:**
+    
+    * **Local MCPs:** Verify Elitea MCP Client is running (system tray or CLI)
+    * **Remote MCPs:** Check OAuth login state and token expiration
+    * **Both Types:** Review connection status indicators in dashboard
+    
+    **When to check:**
+    
+    * Before deploying agents or pipelines to production
+    * After system restarts or network changes
+    * When agents/pipelines report tool invocation failures
+    
+    **Quick fix:** Keep MCP Client as a startup application (Local) or set up token refresh notifications (Remote)
+
+??? tip "Test After Server Updates"
+    **Version Compatibility:** When updating external MCP server packages or configurations, always re-test key tools before using them in production workflows.
+    
+    **Testing checklist:**
+    
+    1. Update MCP server software or configuration
+    2. Restart MCP server (Local) or verify remote endpoint
+    3. Open MCP in ELITEA and check connection status
+    4. Use Test Settings panel to validate critical tools
+    5. Review tool parameter schemas for changes
+    6. Update agent/pipeline configurations if needed
+    
+    **Common issues after updates:**
+    
+    * New tool parameters require additional inputs
+    * Deprecated tools removed from server
+    * Authentication requirements changed (Remote MCPs)
 
 ---
 
 ## Troubleshooting
 
-| **Issue** | **Symptoms** | **Likely Cause** | **Resolution** |
-|-----------|--------------|------------------|----------------|
-| MCP Disconnected | Grey/red state badge | Client not running | Start tray app / CLI (`alita-mcp run` / `tray`). |
-| No Tools Listed | Empty tool list | Server offline or created while disconnected | Start server, refresh MCP detail. |
-| Tool Invocation Error | Error output in test panel | Parameter mismatch or server error | Check server logs / update args. |
-| Stale Tool List | Missing newly added tools | No refresh since server change | Use refresh control or reopen page. |
+Common MCP issues and their solutions:
 
-!!! danger "Persistent Failures"
-	If all tools fail consistently while the state shows Connected, verify the underlying MCP server command and arguments in your local configuration file.
+??? warning "MCP Shows Disconnected Status"
+    **Symptoms:**
+    
+    * Orange connection indicator
+    * Tools unavailable in agents/pipelines/chat
+    * "Cannot reach server" error messages
+    
+    **Likely Causes:**
+    
+    * **Local MCPs:** Elitea MCP Client not running or server not configured
+    * **Remote MCPs:** Network connectivity issue, server down, or incorrect URL
+    * **Both:** Configuration mismatch between ELITEA and server
+    
+    **Resolution Steps:**
+    
+    1. **Local MCPs:**
+        * Check if Elitea MCP Client is running (system tray or `ps aux | grep alita-mcp`)
+        * Verify server is listed in MCP Client configuration file
+        * Restart MCP Client: `alita-mcp run` or use tray app restart
+        * Check MCP Client logs for errors: `~/.alita-mcp/logs/`
+    
+    2. **Remote MCPs:**
+        * Verify server URL is correct and accessible (ping or curl test)
+        * Check network connectivity and firewall rules
+        * Confirm server is running and responding to HTTP requests
+        * Review server-side logs for connection errors
+    
+    3. **Both Types:**
+        * Re-create MCP configuration with correct server details
+        * Test connection using Test Settings panel
+        * Contact server administrator if issue persists
+
+??? warning "Tools Not Appearing in List"
+    **Symptoms:**
+    
+    * Empty tools list in MCP configuration
+    * "No tools available" message
+    * Tools missing after server update
+    
+    **Likely Causes:**
+    
+    * MCP created while server was offline
+    * Server hasn't registered tools yet
+    * Authentication required but not completed (Remote MCPs)
+    * MCP server configuration error
+    
+    **Resolution Steps:**
+    
+    1. Verify MCP shows "Connected" status
+    2. **Local MCPs:** Ensure MCP Client is running and server is started
+    3. **Remote MCPs:** Complete OAuth authentication if required
+    4. Click refresh button in MCP detail page
+    5. Close and reopen the MCP configuration page
+    6. Check MCP server logs for tool registration errors
+    7. If still empty, delete and recreate the MCP entry
+    
+    **Prevention:** Always ensure server is running and connected before creating MCP configuration
+
+??? warning "Tool Invocation Fails During Execution"
+    **Symptoms:**
+    
+    * Error messages in agent/pipeline execution logs
+    * "Tool execution failed" in chat responses
+    * Timeout errors or parameter validation failures
+    
+    **Likely Causes:**
+    
+    * Incorrect tool parameters provided by AI
+    * MCP server bug or crash
+    * Network timeout (Remote MCPs)
+    * Permission or authentication issues
+    
+    **Resolution Steps:**
+    
+    1. Use Test Settings panel to isolate the issue:
+        * Test the specific tool with known-good parameters
+        * Review error output for clues (parameter names, types)
+    2. Check MCP server logs for detailed error messages
+    3. Verify tool parameter schemas match server expectations
+    4. For Remote MCPs:
+        * Check OAuth token validity
+        * Verify custom headers are correct
+        * Test server endpoint directly with curl/Postman
+    5. For Local MCPs:
+        * Restart MCP server via Elitea MCP Client
+        * Check for conflicting processes or resource limits
+    6. If errors persist:
+        * Disable the problematic tool
+        * Report issue to MCP server maintainer
+        * Use alternative tools or workarounds
+
+### Support Contact
+
+If you encounter issues not covered in this guide or need additional assistance with MCP management, please refer to **[Contact Support](../support/contact-support.md)** for detailed information on how to reach the ELITEA Support Team.
 
 ---
 
-## Summary
-
-The **MCPs** menu bridges ELITEA and external MCP servers, letting you orchestrate advanced, protocol-compliant tools inside agents, pipelines, and conversations. By managing connection state, curating enabled tools, and validating functionality through Test Settings, you maintain reliable augmented automation.
+!!! info "Additional Resources"
+    * **[MCP Server Integration Guide](../integrations/mcp/create-and-use-server-stdio.md)** – Create and configure MCP servers with STDIO transport
+    * **[Toolkits](./toolkits.md)** – Native toolkit integrations and configurations
+    * **[Testing Toolkit Functionality](../how-tos/credentials-toolkits/how-to-test-toolkit-tools.md)** – Comprehensive testing guide for tools and MCPs
 
 ---
-
-## Additional Resources
-
-* **[MCP Client Integration Guide](../integrations/mcp/mcp-client.md)** – Install & configure the Elitea MCP Client
-* **[Toolkits](./toolkits.md)** – Native integrations overview
-* **[AI Configuration](./settings/ai-configuration.md)** – Model & embedding configuration
 
 
 
