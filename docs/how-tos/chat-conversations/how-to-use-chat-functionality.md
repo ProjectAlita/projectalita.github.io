@@ -80,10 +80,62 @@ You can manage conversations directly from the **CONVERSATIONS** sidebar by righ
 * **Move To**: Move the conversation into a folder, as described above.
 * **Make Public**: Convert a private conversation into a public one, visible to other project members.  
      **Caution**: This action is irreversible; you cannot make a public conversation private again.
+*  **Share**: To share a conversation with team members, select **Share** from the conversation contextual menu. This action copies a direct link to the conversation to your clipboard. Team members can use this link to access and view the conversation. (`available for team project`)  
 * **Delete**: Permanently remove the conversation. You will be asked to confirm this action.
 * **Playback**: Enter Playback mode for this conversation (See [Playback Mode](#playback-mode)).
 
 ![Conversation actions](../../img/menus/chat/conversation_action.png){: loading=lazy }
+
+### Sharing Conversations
+
+The conversation sharing feature allows you to share conversations with team members by providing them with a direct link. This is particularly useful for collaboration, code reviews, troubleshooting, and knowledge sharing within your team.
+
+!!! warning "Important Permissions"
+    * **Team Projects Only**: Conversation sharing is only available for conversations in team projects. You cannot share conversations from personal projects.
+    * **Team Members**: Only team members who have access to the project can view shared conversations.
+    * **Access Level**: Recipients must have appropriate permissions within the project to access the shared content.
+
+**How Conversation Sharing Works**
+
+When you share a conversation, ELITEA generates a unique URL that includes the conversation ID, name, and a special parameter that identifies it as a shared conversation. Team members who receive this link can access and view the complete conversation history in their browser.
+
+**How to Share a Conversation**
+
+1. Navigate to the **CONVERSATIONS** sidebar in the **Chat** section.
+2. Locate the conversation you want to share.
+3. Hover over the conversation to reveal the contextual menu.
+4. Select **Share** from the menu options.
+5. The conversation link is automatically copied to your clipboard.
+6. You will see a notification: "The link has been copied to the clipboard."
+7. Paste the link in your communication channel (email, Slack, Teams, etc.) to share it with team members.
+
+![Chat_Share_Conversation](<../../img/menus/chat/share-conversation.gif>){: loading=lazy }
+
+
+**Use Cases for Sharing Conversations**
+
+* **Collaboration**: Share conversations to involve team members in ongoing discussions or problem-solving sessions
+* **Code Reviews**: Share conversations containing code generation or refactoring for peer review
+* **Troubleshooting**: Share error discussions with technical support or senior team members
+* **Knowledge Transfer**: Share valuable conversations as learning resources for team members
+* **Documentation**: Share conversations that demonstrate best practices or solutions to common problems
+* **Demos and Presentations**: Share conversations to demonstrate ELITEA capabilities or AI-assisted workflows
+
+!!! tip "Sharing vs Making Public"
+    The **Share** action is different from **Make Public**. Sharing creates a link for easy access while maintaining existing permissions, whereas making a conversation public changes its visibility settings permanently and cannot be reversed.
+
+**Accessing Shared Conversations**
+
+When a team member clicks on a shared conversation link:
+
+1. The link opens in their browser
+2. ELITEA automatically navigates to the specified conversation
+3. The conversation opens with the complete history visible
+4. The recipient can read the entire conversation thread
+5. Depending on their permissions, they may be able to interact with or continue the conversation
+
+!!! note "Access Permissions"
+    If a user doesn't have access or permissions to the shared conversation (i.e., the conversation is not public and the user is not added as a participant), clicking the shared link will navigate them to the chat interface, but they will not be able to view the conversation content. This is the expected behavior to maintain conversation privacy and security.
 
 ## Managing Folders
 
@@ -489,71 +541,78 @@ For complete setup instructions, advanced configuration, and troubleshooting, se
 
 ## Using Internal Tools
 
-Internal tools provide built-in capabilities that enhance your conversations and agents without requiring external integrations. ELITEA supports three internal tools: **Python Sandbox**, **Planner**, and **Image Creation**.
+Internal tools provide built-in capabilities that enhance your conversations without requiring external integrations. These tools can be enabled directly from the chat interface or configured as part of an agent's default setup.
 
 ### Available Internal Tools
 
 **Python Sandbox**
 
-Python Sandbox enables secure Python code execution directly within your conversations using Pyodide (Python compiled to WebAssembly).
+Execute Python code securely in conversations using Pyodide (Python compiled to WebAssembly). Useful for calculations, data processing, testing algorithms, and generating visualizations.
 
-* **Secure Code Execution**: Run Python code in a secure sandbox environment.
-* **Package Support**: Install and use Python packages like numpy, pandas, and matplotlib.
-* **Persistent State**: Code execution maintains state within the same conversation.
-* **Visualizations**: Generate data visualizations and reports.
-* **Use Cases**: Execute code snippets, perform calculations and data analysis, test algorithms, and process data.
+* **Secure Code Execution**: Run Python code in a secure sandbox environment
+* **Package Support**: Install and use Python packages like numpy, pandas, and matplotlib
+* **Persistent State**: Code execution maintains state within the same conversation
+* **Visualizations**: Generate data visualizations and reports
+* **Use Cases**: Execute code snippets, perform calculations and data analysis, test algorithms, and process data
 
 **Planner**
 
-Planner provides structured planning and task breakdown capabilities, helping organize complex workflows into manageable steps.
+Create, manage, and track tasks and action items directly within conversations. Set priorities, due dates, and monitor task progress without switching to external task management tools.
 
-* **Task Decomposition**: Break down complex requests into smaller, actionable tasks.
-* **Workflow Organization**: Create structured plans with clear steps and dependencies.
-* **Progress Tracking**: Monitor task completion and workflow progress.
-* **Use Cases**: Project planning, feature development breakdown, complex problem-solving, and workflow design.
+* **Task Decomposition**: Break down complex requests into smaller, actionable tasks
+* **Workflow Organization**: Create structured plans with clear steps and dependencies
+* **Progress Tracking**: Monitor task completion and workflow progress with priority levels (High/Medium/Low)
+* **Task Status**: Track tasks through Pending, In Progress, and Completed states
+* **Use Cases**: Project planning, feature development breakdown, complex problem-solving, and workflow design
 
-**Image Creation**
+**Data Analysis**
 
-Image Creation allows generating images based on text descriptions using AI image generation capabilities.
+Perform Pandas-based data analysis on uploaded files (CSV, Excel, etc.) using natural language queries. Automatically processes data and generates charts with downloadable results.
 
-* **Text-to-Image Generation**: Create images from natural language descriptions.
-* **Creative Control**: Specify styles, subjects, and visual elements through prompts.
-* **Multiple Formats**: Generate images in various styles and formats.
-* **Use Cases**: Create illustrations, design mockups, generate visual concepts, and produce marketing materials.
+* **Natural Language Processing**: Use plain English to request data analysis operations
+* **File-Based Analysis**: Works with files uploaded directly to conversations
+* **Automated Processing**: Intelligent file format detection and data analysis
+* **Chart Generation**: Automatic creation of visualizations with downloadable results
+* **Use Cases**: Data exploration, statistical analysis, trend identification, and report generation
 
 ### Enabling Internal Tools in Conversations
 
-1. Navigate to your conversation.
-2. Locate the chat input toolbar at the bottom of the screen.
-3. Find the **Internal Tools** icon (wrench icon) next to the attachment button.
-4. Click the Internal Tools icon to open the configuration popup.
-5. Find the tool you want to enable (**Python sandbox**, **Planner**, or **Image creation**) and toggle it ON.
-6. A success notification will appear: "Internal tools configuration updated".
+1. Navigate to your conversation
+2. Locate the **Internal Tools** icon (value icon) in the chat input toolbar at the bottom of the screen, next to the attachment button
+3. Click the Internal Tools icon to open the configuration popup
+4. Find the tool you want to enable in the list
+5. Click the toggle switch next to the tool name to enable it
+6. A success notification will appear: "Internal tools configuration updated"
+7. Click anywhere outside the popup to close it
+
+![Enabling Internal Tools](<../../img//menus/chat/enable-internal-tools.gif>){: loading=lazy }
+
+Once enabled, the AI assistant can automatically use these tools during conversations when appropriate.
 
 ### Enabling Internal Tools in Agents
 
-1. Navigate to **Agents** in the main menu and select the agent.
-2. Click the **Configuration** tab.
-3. Scroll to the **TOOLKITS** section.
-4. Find the internal tool switches (**Python sandbox**, **Planner**, **Image creation**) and toggle them ON as needed.
-5. Click **Save** at the top of the configuration page.
-6. The enabled internal tools will be available in all new conversations using this agent.
+You can also enable internal tools as part of an agent's default configuration in the **TOOLKITS** section. This makes the tools available in all new conversations using that agent.
+
+1. Navigate to **Agents** in the main menu and select the agent
+2. Click the **Configuration** tab
+3. Scroll to the **TOOLKITS** section
+4. Find the internal tool switches (**Python sandbox**, **Planner**, **Data Analysis**) and toggle them ON as needed
+5. Click **Save** at the top of the configuration page
+6. The enabled internal tools will be available in all new conversations using this agent
 
 ### Using Internal Tools
 
 Once enabled, the AI assistant can use the internal tools during conversations:
 
-* **Python Sandbox**: The assistant can execute Python code, install packages, perform calculations, and generate visualizations.
-* **Planner**: The assistant can break down complex tasks, create structured plans, and organize workflows.
-* **Image Creation**: The assistant can generate images based on your text descriptions and creative requirements.
+* **Python Sandbox**: The assistant can execute Python code, install packages, perform calculations, and generate visualizations
+* **Planner**: The assistant can break down complex tasks, create structured plans with priorities and due dates, and track task progress
+* **Data Analysis**: The assistant can perform comprehensive data analysis on uploaded files using natural language commands
 
 For detailed usage examples, troubleshooting, and best practices, see:
 
-* [Python Sandbox Guide](enable-internal-tools.md)
+* [Python Sandbox Guide](python-sandbox-internal-tool.md)
 * [Planner Internal Tool Guide](planner-internal-tool.md)
-* [Image Generation Guide](image-generation.md)
-
-![Python Sandbox](<../../img/how-tos/chat-conversations/internal tools/enable-python-sandbox.gif>){: loading=lazy }
+* [Data Analysis Internal Tool Guide](data-analysis-internal-tool.md)
 
 
 ## Playback Mode
