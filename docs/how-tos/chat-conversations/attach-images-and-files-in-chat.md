@@ -520,4 +520,4 @@ The maximum size for individual images also depends on the AI model:
     - **[Artifacts Menu](../../menus/artifacts.md)** - Manage buckets, retention policies, and file storage
     - **[Agent Configuration](../../menus/agents.md)** - Configure agents with attachment support
     - **[Chat Functionality](how-to-use-chat-functionality.md)** - General chat features and usage
-    - **[Python Sandbox](enable-internal-tools.md)** - Execute custom Python code with file access
+    - **[Python Sandbox](python-sandbox-internal-tool.md)** - Execute custom Python code with file access

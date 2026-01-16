@@ -580,5 +580,5 @@ AI:
     
     * **[Agent Configuration](../../menus/agents.md)** - Setting up agents with internal tools
     * **[Chat Functionality](how-to-use-chat-functionality.md)** - General chat features and usage
-    * **[Python Sandbox](enable-internal-tools.md)** - Python Sandbox and internal tools overview
+    * **[Python Sandbox](python-sandbox-internal-tool.md)** - Python Sandbox and internal tools overview
     * **[Conversation Management](../../menus/chat.md)** - Managing conversations and settings

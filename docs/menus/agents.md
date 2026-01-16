@@ -166,7 +166,7 @@ ELITEA provides built-in internal tools that extend your agent's capabilities wi
 !!! info "Learn More"
     For detailed information about each internal tool:
     
-    * [Python Sandbox Guide](../how-tos/chat-conversations/enable-internal-tools.md) - Capabilities, available packages, and troubleshooting
+    * [Python Sandbox Guide](../how-tos/chat-conversations/python-sandbox-internal-tool.md) - Capabilities, available packages, and troubleshooting
     * [Image Generation Guide](../how-tos/chat-conversations/image-generation.md) - Creating images with AI using text descriptions
     * [Planner Internal Tool Guide](../how-tos/chat-conversations/planner-internal-tool.md) - Structured planning and task breakdown
 
