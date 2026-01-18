@@ -81,6 +81,25 @@ Comprehensive pipeline improvements including real-time run tracking in Canvas a
 
 For detailed guidance, see [AI Assistant in Nodes](../how-tos/pipelines/ai-assistant-in-nodes.md) and [Pipeline Runs](../how-tos/pipelines/pipeline-runs.md).
 
+### Agents & Pipelines: Run History Actions (Restore Conversation & Copy Link)
+
+Restore a previous conversation from **Agents** or **Pipelines** run history into a new, editable chat session, and share specific runs with a direct link. This helps you troubleshoot issues, re-test after changes, collaborate with teammates, or recover context after an accidental page refresh.
+
+**What you can do now:**
+
+* **Restore from history**: Use the **Restore Conversation** action on any run in the Agents or Pipelines **History** tab.
+* **Copy a direct run link**: Use the **Copy link** action for any run to copy a unique URL to your clipboard.
+* **Open the exact run from a link**: When you open the link, ELITEA navigates directly to the selected Agent/Pipeline run and shows its details.
+* **Open a new session**: Restoring opens a new chat session in the **Configuration** tab.
+* **Restore chat history only**: Messages and responses are restored; historical agent/pipeline configuration is not.
+* **Use current configuration**: The restored conversation runs with the current Agent/Pipeline configuration (for example, if toolkits changed, the current setup applies).
+* **Continue immediately**: The restored session is fully interactive so you can continue from the last message.
+* **Non-destructive behavior**: Restoring does not delete or modify the original history entry, and you can restore multiple runs into separate sessions.
+
+**Benefits:** Enables faster iterative debugging and validation with the same context, improves collaboration by sharing run-specific links, reduces lost work after refresh or browser closure, and supports re-testing with updated configurations.
+
+For background on run history, see [Agents and Pipelines History](../how-tos/agents-pipelines/agents-pipelines-history.md).
+
 ### Pin Frequently Used Entities
 
 Pin agents, pipelines, credentials, toolkits, and MCPs to keep frequently used items at the top of lists for quick access.
@@ -143,6 +162,10 @@ Read and access attached images and files directly from Azure DevOps (ADO) work 
 
 **Benefits:** Enables complete work item data extraction including visual assets, eliminates manual file downloads for automation workflows, and expands ADO integration capabilities for documentation-heavy projects.
 
+### Toolkits: Better PPTX Table/Chart Text Extraction
+
+Artifacts, SharePoint, and indexing tools can now extract and index text from tables and charts embedded in PPTX files for more complete document understanding.
+
 ### Credentials: Enhanced Test Connection Verification
 
 Comprehensive connection testing for integration credentials with authentication validation, service-specific API verification, and detailed error diagnostics.
@@ -194,6 +217,21 @@ Attachment storage is now automatically configured from agents with full manual 
 **Benefits:** Reduces attachment configuration friction by 70%, provides seamless agent-to-conversation bucket inheritance, ensures clear visibility of active storage location, and maintains full user control with manual override capabilities.
 
 For more information about this feature, see [Attachements in Conversation](../how-tos/chat-conversations/attach-images-and-files-in-chat.md).
+
+### Toolkits: ADO Repos Credential Simplification
+
+ADO Repos toolkit configuration is now simpler and more consistent by reusing the standard ADO credential and moving repository-specific configuration into the toolkit.
+
+**What changed:**
+
+* **ADO Repos credential removed**: ADO Repos no longer uses a separate credential type; configure and reuse your existing **ADO credential** instead.
+* **Repository ID moved to toolkit**: A new **Repository ID** field is now part of the ADO Repos toolkit configuration.
+* **Repository ID is required**: Repository ID is now a mandatory field and appears before **Base branch**.
+* **Seamless transition**: Migrations are provided to support existing configurations.
+
+**Benefits:** Reduces configuration overhead and credential confusion, standardizes Azure DevOps authentication across toolkits, and makes ADO Repos setup more predictable.
+
+For more information about ADO credentials, see [How to Use Credentials](../how-tos/credentials-toolkits/how-to-use-credentials.md#ado-azure-devops-credential-setup).
 
 ### Model Settings: Simplified Configuration with Auto Mode
 
@@ -346,6 +384,12 @@ Several features and UI elements have been removed or temporarily disabled to si
  
 ## Fixed Issues
 
+* [#3092](https://github.com/ProjectAlita/projectalita.github.io/issues/3092) **Code Node Misformats Code Stored in State Variables**: Code node fails to preserve new lines and escaped characters when code is stored as a string in state variables.
+* [#3070](https://github.com/ProjectAlita/projectalita.github.io/issues/3070) **Bitbucket Update File Fails on Full File Rewrite**: Full file content replacement can fail with "old content was not found" even when the provided old content matches the file exactly.
+* [#3069](https://github.com/ProjectAlita/projectalita.github.io/issues/3069) **Bitbucket Update/Edit File Fail on JSON Files**: JSON file updates fail because file content is read as a parsed dictionary instead of raw text, breaking string-based edits.
+* [#3040](https://github.com/ProjectAlita/projectalita.github.io/issues/3040) **ADO Repos Update File Corrupts Content**: Updating files with OLD/NEW markers can duplicate lines and remove original content.
+* [#3005](https://github.com/ProjectAlita/projectalita.github.io/issues/3005) **GitHub Get Commits Diff Tool Throws Exception**: GitHub toolkit get_commits_diff throws an exception instead of presenting commit diffs.
+* [#2990](https://github.com/ProjectAlita/projectalita.github.io/issues/2990) **Repository Update File Fails for Multi-line Replacements**: Repository toolkits can fail to match and replace multi-line content blocks, preventing updates from being applied.
 * [#2966](https://github.com/ProjectAlita/projectalita.github.io/issues/2966) **Router Node Routes to END Instead of Default Output**: Router node incorrectly prioritizes END node over Default Output node when END is included in routes, causing premature pipeline termination.
 * [#2923](https://github.com/ProjectAlita/projectalita.github.io/issues/2923) **ADO Repo Indexing Ignores TypeScript Files in Subdirectories**: ADO Repository indexing with "*.ts" whitelist pattern only indexes root-level TypeScript files; files in subdirectories and those with compound extensions (e.g., .steps.ts) are completely ignored.
 * [#2886](https://github.com/ProjectAlita/projectalita.github.io/issues/2886) **GitLab Update File Tool Fails**: GitLab toolkit Update File tool fails with "404 File Not Found" error or AttributeError about missing 'extract_old_new_pairs' attribute.
@@ -395,6 +439,7 @@ Several features and UI elements have been removed or temporarily disabled to si
 * [#2053](https://github.com/ProjectAlita/projectalita.github.io/issues/2053) **Claude Model Integration Error with Dial Key**: Claude model integration via Dial API key fails with "invalid structure" error on stream_options path.
 * [#2051](https://github.com/ProjectAlita/projectalita.github.io/issues/2051) **Gemini/Claude Models Fail via Dial API**: Integrating Gemini or Claude models using Dial API key results in "invalid structure" error on stream_options path.
 * [#1986](https://github.com/ProjectAlita/projectalita.github.io/issues/1986) **ADO Attachment Reading Not Available**: Azure DevOps toolkit lacks capability to read attached images from work items.
+* [#1869](https://github.com/ProjectAlita/projectalita.github.io/issues/1869) **Zephyr Essential Tools Return 400 Error**: Multiple tools in Zephyr Essential toolkit fail with "400 Client Error: Bad Request" including Create/Update operations for test cases, cycles, and executions.
 * [#1746](https://github.com/ProjectAlita/projectalita.github.io/issues/1746) **Jira Attachment Content Limited to JSON/TXT**: Get Attachments Content tool in Jira toolkit does not support common file types (PNG, JPEG, XLSX); only JSON and TXT files are supported.
 * [#1547](https://github.com/ProjectAlita/projectalita.github.io/issues/1547) **Jira JQL Search Fails Without Priority Field**: Jira toolkit fails with validation error when searching issues that lack the "priority" field; affects Jira configurations where priority field is disabled.
 * [#1531](https://github.com/ProjectAlita/projectalita.github.io/issues/1531) **Multiple Agents with Same Toolkit Type Interfere**: Multiple agents using same toolkit type (ADO Boards, GitLab, QTest) in same pipeline/agent interfere with project initialization.
@@ -407,5 +452,4 @@ Several features and UI elements have been removed or temporarily disabled to si
 * [#2304](https://github.com/ProjectAlita/projectalita.github.io/issues/2304) **MCP Client Disconnects on macOS**: MCP client disconnects from platform despite tray showing "connected" on macOS; logs show "packet queue is empty" errors and repeated disconnect/reconnect cycles.
 
 * [#1990](https://github.com/ProjectAlita/projectalita.github.io/issues/1990) **Browser Toolkit Fails Without Google Credentials**: Browser toolkit execution fails with "NoneType object is not a mapping" error when Google tool is not selected and credentials are missing.
-* [#1869](https://github.com/ProjectAlita/projectalita.github.io/issues/1869) **Zephyr Essential Tools Return 400 Error**: Multiple tools in Zephyr Essential toolkit fail with "400 Client Error: Bad Request" including Create/Update operations for test cases, cycles, and executions.
 * [#1163](https://github.com/ProjectAlita/projectalita.github.io/issues/1163) **MCP Only Executes Latest Version**: MCP-tagged resources execute the latest version regardless of which version has the MCP tag; only the latest version is accessible via MCP.
