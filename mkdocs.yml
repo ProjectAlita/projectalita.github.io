@@ -1,5 +1,5 @@
 site_name: ELITEA Documentation
-site_url: https://elitea.ai/docs/
+site_url: https://elitea.ai/docs
 
 nav:
   - Home:
@@ -24,12 +24,13 @@ nav:
       - Troubleshooting & System Check:
           - Quick Health Check: getting-started/system-health-checklist.md
       - Guides (Advanced):
-          - Create a Pipeline(Canvas): how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
-          - Create a MCP(Canvas): how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
+          - Create a Pipeline: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
+          - Create a MCP: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
           - Create an Artifact: getting-started/create-artifact.md
           - How to create and use indexes: how-tos/indexing/using-indexes-tab-interface.md
-          - Configure and Use Server (STDIO): integrations/mcp/create-and-use-server-stdio.md
-          - Configure and Use Client (STDIO): integrations/mcp/create-and-use-client-stdio.md
+          - Server STDIO (Configure and Use): integrations/mcp/create-and-use-server-stdio.md
+          - Client STDIO (Configure and Use): integrations/mcp/create-and-use-client-stdio.md
+          - Remote MCP (Configure and Use): integrations/mcp/create-and-use-remote-mcp.md
           - Configure EPAM AI DIAL Keys: getting-started/configure-epam-ai-dial-key.md
           - Create a Personal Access Token: getting-started/create-personal-access-token.md
           - Create a Secret: getting-started/create-secret.md
@@ -46,7 +47,6 @@ nav:
           - MCPs: menus/mcps.md
           - Artifacts: menus/artifacts.md
           - Agents Studio: menus/agents-studio.md
-
           - Settings:
               - Settings Overview: menus/settings/settings-overview.md
               - AI Configuration: menus/settings/ai-configuration.md
@@ -54,6 +54,8 @@ nav:
               - Secrets: menus/settings/secrets.md
               - Projects: menus/settings/projects.md
               - Monitoring: menus/settings/monitoring.md
+          - Profile:
+              - Personalization: menus/profile/personalization.md              
 
   - How-To Guides:
       - Chat & Conversations:
@@ -62,26 +64,32 @@ nav:
           - Use Public Agents: how-tos/chat-conversations/use-public-items-from-chat.md
           - Add Teammates to Conversation: how-tos/chat-conversations/add-teammates-to-conversation.md
           - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
-          - Internal Tools in Conversation: how-tos/chat-conversations/enable-internal-tools.md
-          - Canvas - Create and Edit Agents: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
-          - Canvas - Create and Edit Pipelines: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
-          - Canvas - Create and Edit Toolkits: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
-          - Canvas - Create and Edit MCPs: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
+          - Context Management: how-tos/chat-conversations/context-management.md
+          - Canvas - Create and Edit Entities:
+              - Create an Agent: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
+              - Create a Pipeline: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
+              - Create a Toolkit: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
+              - Create a MCP: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
+          - Internal Tools:
+              - Python Sandbox: how-tos/chat-conversations/python-sandbox-internal-tool.md
+              - Data Analysis: how-tos/chat-conversations/data-analysis-internal-tool.md
+              - Planner: how-tos/chat-conversations/planner-internal-tool.md
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
           - How to create and use indexes: how-tos/indexing/using-indexes-tab-interface.md
           - Schedule Indexing: how-tos/indexing/schedule-indexing.md
-          - Repository Indexing: how-tos/indexing/index-github-data.md
-          - Confluence Indexing: how-tos/indexing/index-confluence-data.md
-          - Jira Indexing: how-tos/indexing/index-jira-data.md
-          - SharePoint Indexing: how-tos/indexing/index-sharepoint-data.md
-          - Artifacts Indexing: how-tos/indexing/index-artifacts-data.md
-          - Figma Indexing: how-tos/indexing/index-figma-data.md
-          - TestRail Indexing: how-tos/indexing/index-testrail-data.md
-          - Xray Indexing: how-tos/indexing/index-xray-data.md
-          - Zephyr Indexing: how-tos/indexing/index-zephyr-data.md
-          - ADO Wiki Indexing: how-tos/indexing/index-ado-wiki-data.md
+          - Toolkit-Specific Indexing Guides:
+              - Repository Indexing: how-tos/indexing/index-github-data.md
+              - Confluence Indexing: how-tos/indexing/index-confluence-data.md
+              - Jira Indexing: how-tos/indexing/index-jira-data.md
+              - SharePoint Indexing: how-tos/indexing/index-sharepoint-data.md
+              - Artifacts Indexing: how-tos/indexing/index-artifacts-data.md
+              - Figma Indexing: how-tos/indexing/index-figma-data.md
+              - TestRail Indexing: how-tos/indexing/index-testrail-data.md
+              - Xray Indexing: how-tos/indexing/index-xray-data.md
+              - Zephyr Indexing: how-tos/indexing/index-zephyr-data.md
+              - ADO Wiki Indexing: how-tos/indexing/index-ado-wiki-data.md
       - Agents & Pipelines:
           - View Agents and Pipelines History: how-tos/agents-pipelines/agents-pipelines-history.md
           - Entity Versioning: how-tos/agents-pipelines/entity-versioning.md
@@ -105,6 +113,7 @@ nav:
           - Use Credentials: how-tos/credentials-toolkits/how-to-use-credentials.md
           - Individual User Credentials for Shared Toolkits: how-tos/credentials-toolkits/creating-toolkits-with-user-specific-credentials.md
           - Test Toolkits Tools: how-tos/credentials-toolkits/how-to-test-toolkit-tools.md
+          - Toolkit History Tab: how-tos/credentials-toolkits/toolkit_history_tab.md
           - Automate JIRA Issue Review: how-tos/credentials-toolkits/jira-automation-with-elitea.md
           - Use Webhooks: how-tos/credentials-toolkits/how-to-use-webhooks.md
       - Entity Management:
@@ -114,11 +123,10 @@ nav:
           - Manage Roles & Permissions: how-tos/entity-management/manage-users-and-roles.md
   - Integrations:
       - MCP:
-          - Server (STDIO): integrations/mcp/mcp-server-stdio.md
+          - Server STDIO (Configure and Use): integrations/mcp/create-and-use-server-stdio.md
+          - Client STDIO (Configure and Use): integrations/mcp/create-and-use-client-stdio.md
+          - Remote MCP (Configure and Use): integrations/mcp/create-and-use-remote-mcp.md
           - Server (SSE): integrations/mcp/mcp-server-sse.md
-          - Client (STDIO): integrations/mcp/mcp-client.md
-          - Configure and Use Server (STDIO): integrations/mcp/create-and-use-server-stdio.md
-          - Configure and Use Client (STDIO): integrations/mcp/create-and-use-client-stdio.md
           - Make Tools Available by MCP: integrations/mcp//make-tools-available-by-mcp.md
       - Toolkits:
           - ADO Repos: integrations/toolkits/ado_repos_toolkit.md
@@ -136,7 +144,6 @@ nav:
           - Jira: integrations/toolkits/jira_toolkit.md
           - Memory: integrations/toolkits/memory_toolkit.md
           - OpenAPI: integrations/toolkits/openapi_toolkit.md
-          - Pandas: integrations/toolkits/pandas_toolkit.md
           - Postman: integrations/toolkits/postman_toolkit.md
           - PowerPoint: integrations/toolkits/powerpoint_toolkit.md
           - qTest: integrations/toolkits/qtest_toolkit.md
@@ -159,8 +166,9 @@ nav:
 
   - Release Notes:
       - Current Version:
-          - RN 2.0.0 Beta: release-notes/rn_current.md
+          - RN 2.0.0 B2: release-notes/rn_current.md
       - Previous versions:
+          - RN 2.0.0 Beta: release-notes/archived/rn13.md
           - RN 1.7.1: release-notes/archived/rn12.md
           - RN 1.7.0: release-notes/archived/rn11.md
           - RN 1.6.0: release-notes/archived/rn10.md
@@ -175,13 +183,17 @@ nav:
           - RN 1.0.0: release-notes/archived/rn1.md
 
   - Migration & Upgrade:
-      - Upgrading to v2.0.1:
+      - Upgrading to v2.0.0 B2:
+          - Migration Overview: migration/v2.0.1/migration-overview.md
           - Condition Node Migration: migration/v2.0.1/condition-node-migration.md
           - Function Node Migration: migration/v2.0.1/function-node-migration.md
           - Loop Node Migration: migration/v2.0.1/loop-node-migration.md
           - Pipeline Node Migration: migration/v2.0.1/pipeline-node-migration.md
           - Tool Node Migration: migration/v2.0.1/tool-node-migration.md
-      - Upgrading to v2.0.0:
+          - Pipeline Save Button State: migration/v2.0.1/pipeline-save-button.md
+          - OpenAPI Toolkit Migration: migration/v2.0.1/openapi-toolkit-migration.md
+          - Pandas Toolkit Migration: migration/v2.0.1/pandas-toolkit-migration.md
+      - Upgrading to v2.0.0 B:
           - Migration Overview: migration/v2.0.0/migration-overview.md
           - Update LLM Nodes in Pipelines: migration/v2.0.0/update-llm-nodes.md
           - Update Pipelines from Previous Versions: migration/v2.0.0/update-pipelines.md
@@ -197,8 +209,8 @@ nav:
       - Additional Resources: support/additional-resources.md
 
   - Archive:
-      - Quick Start : archive/quick-start.md
-      - Very Quick Start : archive/very-quick-start.md
+      - Quick Start: archive/quick-start.md
+      - Very Quick Start: archive/very-quick-start.md
       - Create Conversation: archive/create-conversation.md
       - Create an Agent: archive/create-agent.md
       - Create a Pipeline: archive/create-pipeline.md
@@ -217,15 +229,19 @@ nav:
       - Fork Entities: features/forking.md
       - Public Project: features/public-project.md
       - Monitoring: features/monitoring.md
+      - Pandas: archive/pandas_toolkit.md
+      - Server (STDIO): integrations/mcp/mcp-server-stdio.md
+      - Client (STDIO): integrations/mcp/mcp-client.md
+
       - Pipelines:
           - Pipelines Architecture: features/pipelines/pipeline-agent-framework.md
           - Iteration Nodes: how-tos/pipelines/nodes/iteration-nodes.md
-
 
 theme:
   name: material
   logo: img/favicon.ico # Uses existing favicon file as header logo (replace with your logo file path if different)
   favicon: img/favicon.ico
+  homepage: https://elitea.ai
   features:
     - navigation.footer # Built-in previous/next navigation in footer
     # - header.autohide # Automatically hide header when scrolling down

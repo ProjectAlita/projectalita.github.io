@@ -39,7 +39,7 @@ Before accessing the History tab, ensure you have:
 2. Click on the agent you want to review
 3. In the agent detail view, click the **History** tab
 
-![Agent History](../../img/how-tos/agents-pipelines/agents-pipelines-history/agent-history.png)
+![Agent History](../../img/how-tos/agents-pipelines/agents-pipelines-history/agent-history.gif){ loading=lazy }
 
 ### For Pipelines
 
@@ -47,14 +47,16 @@ Before accessing the History tab, ensure you have:
 2. Click on the pipeline you want to review
 3. In the pipeline detail view, click the **History** tab
 
-![Pipeline History](../../img/how-tos/agents-pipelines/agents-pipelines-history/pipeline-history.png)
+![Pipeline History](../../img/how-tos/agents-pipelines/agents-pipelines-history/pipeline-history.gif){ loading=lazy }
 
 !!! tip "Quick Navigation"
-    The History tab is located alongside other tabs like Run, Configuration, and Monitoring in the agent or pipeline detail page.
+    The History tab is located alongside  Configuration tab in the agent or pipeline detail page.
 
 ## Understanding the History View
 
 The History tab has a **two-panel layout**:
+
+![Hystory Tab View](../../img/how-tos/agents-pipelines/agents-pipelines-history/history-tab-view.png){ loading=lazy }
 
 ### Left Panel: Run History List
 
@@ -80,8 +82,6 @@ The right panel shows the complete conversation for the selected run:
 - **Formatting**: Messages retain their original formatting, including code blocks and lists
 - **Read-only**: This is a replay view—you cannot modify or continue the conversation
 
-![Hystory Tab View](../../img/how-tos/agents-pipelines/agents-pipelines-history/history-tab-view.png)
-
 !!! info "Empty State"
     When no run is selected, the right panel remains empty. Select a run from the left panel to view its conversation.
 
@@ -94,6 +94,8 @@ The right panel shows the complete conversation for the selected run:
 3. Click on the run you want to review
 4. The complete conversation for that run appears in the right panel
 5. Scroll through the messages to review the interaction
+
+![View-run](../../img/how-tos/agents-pipelines/agents-pipelines-history/view-run.gif){ loading=lazy }
 
 ### Finding a Specific Run
 
@@ -123,6 +125,21 @@ To analyze execution performance:
 2. Select slower runs to identify what might have caused delays
 3. Compare durations across different versions to measure improvements
 
+### Copying a Run Link
+
+To share a specific run with team members or save it for later reference:
+
+1. Hover over the run you want to copy in the left panel
+2. Click the **Copy Link** icon that appears
+3. The link is copied to your clipboard
+4. A check icon appears briefly to confirm the copy
+5. Share the link with others or paste it elsewhere
+
+![Copy Run Link](../../img/how-tos/agents-pipelines/agents-pipelines-history/copy-run-agent.gif){ loading=lazy }
+
+!!! info "Link Behavior"
+    The copied link includes the specific run ID and will automatically navigate to the History tab and select that run when opened.
+
 ### Deleting a Run
 
 If you need to remove a specific run from history:
@@ -132,162 +149,161 @@ If you need to remove a specific run from history:
 3. Confirm the deletion in the modal dialog
 4. The run is permanently removed from history
 
-![Deleting a Run](../../img/how-tos/agents-pipelines/agents-pipelines-history/remove-run.png)
+![Deleting a Run](../../img/how-tos/agents-pipelines/agents-pipelines-history/remove-run.gif){ loading=lazy }
 
 !!! warning "Permanent Deletion"
     Deleting a run from history is permanent and cannot be undone. Make sure you want to remove the record before confirming.
 
 ## Common Use Cases
 
-### 1. Debugging a Failed Run
+??? info "Debugging a Failed Run"
 
-**Scenario**: An agent produced unexpected results or failed to complete.
+    **Scenario**: An agent produced unexpected results or failed to complete.
 
-**Steps**:
+    **Steps**:
 
-1. Go to the History tab
-2. Find the failed run by date or version
-3. Select the run to view the conversation
-4. Review the messages to identify:
-   - What input triggered the issue
-   - Where the agent's response went wrong
-   - Any error messages or unexpected behavior
-5. Use this information to fix the agent's configuration or prompts
+    1. Go to the History tab
+    2. Find the failed run by date or version
+    3. Select the run to view the conversation
+    4. Review the messages to identify:
+       - What input triggered the issue
+       - Where the agent's response went wrong
+       - Any error messages or unexpected behavior
+    5. Use this information to fix the agent's configuration or prompts
 
-### 2. Performance Optimization
+??? info "Performance Optimization"
 
-**Scenario**: You want to optimize your pipeline's execution time.
+    **Scenario**: You want to optimize your pipeline's execution time.
 
-**Steps**:
+    **Steps**:
 
-1. Open the History tab
-2. Review the Duration column across multiple runs
-3. Identify runs that took longer than expected
-4. Select those runs to see what operations were performed
-5. Optimize the pipeline based on the longest-running operations
+    1. Open the History tab
+    2. Review the Duration column across multiple runs
+    3. Identify runs that took longer than expected
+    4. Select those runs to see what operations were performed
+    5. Optimize the pipeline based on the longest-running operations
 
-### 3. Version Comparison
+??? info "Version Comparison"
 
-**Scenario**: You updated your agent and want to verify improvements.
+    **Scenario**: You updated your agent and want to verify improvements.
 
-**Steps**:
+    **Steps**:
 
-1. Create a new version of the agent
-2. Run the same test inputs on both the old and new versions
-3. Go to the History tab
-4. Compare runs from the old version vs. the new version
-5. Verify that the new version produces better results
+    1. Create a new version of the agent
+    2. Run the same test inputs on both the old and new versions
+    3. Go to the History tab
+    4. Compare runs from the old version vs. the new version
+    5. Verify that the new version produces better results
 
-### 4. Audit and Compliance
+??? info "Audit and Compliance"
 
-**Scenario**: You need to provide evidence of what your agent processed.
+    **Scenario**: You need to provide evidence of what your agent processed.
 
-**Steps**:
+    **Steps**:
 
-1. Navigate to the History tab
-2. Find the relevant run by date
-3. Review the complete conversation
-4. Use this as documentation for compliance or audit purposes
+    1. Navigate to the History tab
+    2. Find the relevant run by date
+    3. Review the complete conversation
+    4. Use this as documentation for compliance or audit purposes
 
-### 5. Learning and Training
+??? info "Learning and Training"
 
-**Scenario**: You want to understand how your agent handles different inputs.
+    **Scenario**: You want to understand how your agent handles different inputs.
 
-**Steps**:
+    **Steps**:
 
-1. Review multiple runs in the History tab
-2. Study patterns in successful responses
-3. Identify common failure scenarios
-4. Use these insights to improve your agent's instructions or configuration
+    1. Review multiple runs in the History tab
+    2. Study patterns in successful responses
+    3. Identify common failure scenarios
+    4. Use these insights to improve your agent's instructions or configuration
 
 ## Troubleshooting
 
-### No History Entries Appear
+??? warning "No History Entries Appear"
 
-**Problem**: The History tab is empty or shows no runs.
+    **Problem**: The History tab is empty or shows no runs.
 
-**Solutions**:
+    **Solutions**:
 
-- **Verify runs**: Make sure the agent or pipeline has been executed at least once
-- **Check project**: Confirm you're viewing the correct agent/pipeline in the correct project
-- **Wait for sync**: If you just ran the agent, wait a few seconds and refresh the page
-- **Check permissions**: Ensure you have access to view this agent/pipeline
+    - **Verify runs**: Make sure the agent or pipeline has been executed at least once
+    - **Check project**: Confirm you're viewing the correct agent/pipeline in the correct project
+    - **Wait for sync**: If you just ran the agent, wait a few seconds and refresh the page
+    - **Check permissions**: Ensure you have access to view this agent/pipeline
 
-### Selected Run Shows No Messages
+??? warning "Selected Run Shows No Messages"
 
-**Problem**: When you click a run, the right panel remains empty.
+    **Problem**: When you click a run, the right panel remains empty.
 
-**Solutions**:
+    **Solutions**:
 
-- **Wait for loading**: The conversation may still be loading—look for a loading indicator
-- **Check selection**: Ensure the run is highlighted in the left panel
-- **Refresh**: Try selecting another run, then select the original run again
-- **Network issues**: Check your internet connection and try again
+    - **Wait for loading**: The conversation may still be loading—look for a loading indicator
+    - **Check selection**: Ensure the run is highlighted in the left panel
+    - **Refresh**: Try selecting another run, then select the original run again
+    - **Network issues**: Check your internet connection and try again
 
-### Cannot Delete a Run
+??? warning "Cannot Delete a Run"
 
-**Problem**: The delete button doesn't appear or deletion fails.
+    **Problem**: The delete button doesn't appear or deletion fails.
 
-**Solutions**:
+    **Solutions**:
 
-- **Hover properly**: Make sure you hover directly over the run item to reveal the delete icon
-- **Check permissions**: You may not have permission to delete runs in this project
-- **Retry**: If deletion fails, wait a moment and try again
+    - **Hover properly**: Make sure you hover directly over the run item to reveal the delete icon
+    - **Check permissions**: You may not have permission to delete runs in this project
+    - **Retry**: If deletion fails, wait a moment and try again
 
-### List Not Loading More Runs
+??? warning "List Not Loading More Runs"
 
-**Problem**: Scrolling to the bottom doesn't load more historical runs.
+    **Problem**: Scrolling to the bottom doesn't load more historical runs.
 
-**Solutions**:
+    **Solutions**:
 
-- **Check total count**: You may already have all available runs loaded
-- **Network issues**: Check your internet connection
-- **Scroll position**: Try scrolling back up slightly, then scroll down again to trigger loading
+    - **Check total count**: You may already have all available runs loaded
+    - **Network issues**: Check your internet connection
+    - **Scroll position**: Try scrolling back up slightly, then scroll down again to trigger loading
 
-### Duration Shows Unusual Values
+??? warning "Duration Shows Unusual Values"
 
-**Problem**: The duration column shows unexpected values like very short or very long times.
+    **Problem**: The duration column shows unexpected values like very short or very long times.
 
-**Explanation**:
+    **Explanation**:
 
-- **Very short durations** (< 1 second): The agent/pipeline responded very quickly
-- **Very long durations** (> several minutes): The execution involved complex processing, multiple tool calls, or external API delays
-- **This is normal**: Duration reflects actual execution time and can vary widely
+    - **Very short durations** (< 1 second): The agent/pipeline responded very quickly
+    - **Very long durations** (> several minutes): The execution involved complex processing, multiple tool calls, or external API delays
+    - **This is normal**: Duration reflects actual execution time and can vary widely
 
 ## Best Practices
 
-### Regular Review
+??? tip "Regular Review"
 
-- **Check history periodically**: Review your agent/pipeline runs regularly to catch issues early
-- **Monitor trends**: Track performance over time to identify degradation
-- **Version tracking**: Always note which version was used for important runs
+    - **Check history periodically**: Review your agent/pipeline runs regularly to catch issues early
+    - **Monitor trends**: Track performance over time to identify degradation
+    - **Version tracking**: Always note which version was used for important runs
 
-### Performance Monitoring
+??? tip "Performance Monitoring"
 
-- **Baseline duration**: Establish a baseline for normal execution times
-- **Alert on anomalies**: If a run takes much longer than usual, investigate immediately
-- **Version comparison**: After each update, compare new runs to previous versions
+    - **Baseline duration**: Establish a baseline for normal execution times
+    - **Alert on anomalies**: If a run takes much longer than usual, investigate immediately
+    - **Version comparison**: After each update, compare new runs to previous versions
 
-### Debugging Workflow
+??? tip "Debugging Workflow"
 
-1. **Reproduce issues**: When a problem is reported, find the run in history first
-2. **Analyze context**: Review what led to the issue in the conversation
-3. **Test fixes**: After fixing, run the same scenario and compare in history
-4. **Document findings**: Use the history as documentation of the issue and resolution
+    1. **Reproduce issues**: When a problem is reported, find the run in history first
+    2. **Analyze context**: Review what led to the issue in the conversation
+    3. **Test fixes**: After fixing, run the same scenario and compare in history
+    4. **Document findings**: Use the history as documentation of the issue and resolution
 
-### Data Management
+??? tip "Data Management"
 
-- **Clean old runs**: Periodically delete very old runs that are no longer needed
-- **Keep important runs**: Don't delete runs that serve as examples or evidence
-- **Version milestones**: Keep at least one run from each major version for reference
+    - **Clean old runs**: Periodically delete very old runs that are no longer needed
+    - **Keep important runs**: Don't delete runs that serve as examples or evidence
+    - **Version milestones**: Keep at least one run from each major version for reference
 
-### Security Considerations
+??? tip "Security Considerations"
 
-- **Sensitive data**: Be aware that all messages are stored in run history
-- **Access control**: Ensure only authorized users can access agents/pipelines with sensitive data
-- **Retention policy**: Consider establishing a policy for how long to retain run history
+    - **Sensitive data**: Be aware that all messages are stored in run history
+    - **Access control**: Ensure only authorized users can access agents/pipelines with sensitive data
+    - **Retention policy**: Consider establishing a policy for how long to retain run history
 
-## Related Documentation
 
 !!! info "Related Resources"
     - [Agents Menu](../../menus/agents.md) - Learn about managing agents

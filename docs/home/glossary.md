@@ -41,6 +41,9 @@ This glossary provides definitions for key terms, components, and features used 
 **Credential**
 : Secure authentication information (API keys, OAuth tokens, usernames, passwords) used to connect ELITEA agents and toolkits to external platforms. Credentials are managed centrally through the Credentials menu for security and convenience.
 
+**Creativity (1-5)**
+: A parameter available for standard AI models (such as GPT-4o) that controls response randomness and diversity. Lower values (1-2) produce more focused and deterministic outputs, while higher values (4-5) generate more diverse and creative responses. Level 3 provides a balanced approach between focus and creativity. This setting is distinct from the Reasoning parameter used in reasoning models.
+
 ---
 
 ## D
@@ -145,6 +148,9 @@ This glossary provides definitions for key terms, components, and features used 
 ---
 
 ## R
+
+**Reasoning (Low/Medium/High)**
+: A parameter available for reasoning models (such as GPT-5.1) that controls the depth of logical thinking and problem-solving in AI responses. Low provides fast, surface-level reasoning with concise answers and minimal steps. Medium offers balanced reasoning with clear explanations and moderate multi-step thinking (default setting). High delivers deep, thorough reasoning with detailed step-by-step analysis, though it may be slower. This setting is distinct from the Creativity parameter used in standard models.
 
 **ReAct**
 : An application type in ELITEA that uses JSON format for tool interactions. ReAct agents operate by reasoning about tasks and taking actions using available tools to achieve specified goals.

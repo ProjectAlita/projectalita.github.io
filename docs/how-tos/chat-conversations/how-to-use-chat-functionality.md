@@ -23,18 +23,18 @@ All your conversations are securely stored on the ELITEA server, making them acc
 
 1. In the main sidebar on the left, locate the **Chat** section.
 2. Click **+ Create** to start a new conversation.
-3. You'll see a welcome screen with the message "Hello, [Your Name]! What can I do for you today?"
-4. The message input box at the bottom shows the placeholder: "Type your message. Use # to search and add AI assistants to conversation."
-5. **Choose your approach:**
+3. The chat input field appears and is highlighted to focus your attention.
+4. You'll see a welcome screen with the message "Hello, [Your Name]! What can I do for you today?"
+5. The message input box at the bottom shows the placeholder: "Type your message. Use # to search and add AI assistants to conversation."
+6. **Choose your approach:**
       - **Add a participant first**: Type `#` to search and select an Agent, Pipeline, Toolkit, or MCP from the dropdown list that appears. Selected participants will appear as chips above the input box.
       - **Select a model**: Click the model selector dropdown to choose an LLM (e.g., GPT-4, Claude).
-6. **Type your message**: Enter your initial message, question, or command (e.g., "Help me write a Python script", "What are the best practices for API design?", "Explain quantum computing").
-7. **Send**: Click the **Send** icon (paper airplane icon) or press Enter.
-8. The system will automatically create a new conversation with a temporary name "Naming..." while it generates a descriptive name based on your conversation content. Once complete, the generated name will replace the placeholder. You can manually rename it at any time.
+7. **Type your message**: Enter your initial message, question, or command (e.g., "Help me write a Python script", "What are the best practices for API design?", "Explain quantum computing").
+8. **Send**: Click the **Send** icon (paper airplane icon) or press Enter.
+9. The new conversation is created and appears in the **CONVERSATIONS** sidebar on the left.
+10. The conversation name is automatically generated based on your message content. During name generation (1-2 seconds), you'll see a loader icon with "Naming" text next to the conversation item. You can manually rename it at any time after generation completes.
 
-Your new conversation will now appear in the **CONVERSATIONS** sidebar on the left.
-
-![Create conversation](../../img/menus/chat/create_conversation.png)
+![Create conversation](../../img/menus/chat/create-conversation.gif){: loading=lazy }
 
 ### Creating a New Folder
 
@@ -47,7 +47,7 @@ Organize your conversations by grouping them into folders.
 
 The new folder will appear in your **CONVERSATIONS** sidebar.  
 
-![Create Folder](../../img/menus/chat/create_folder.png)
+![Create Folder](../../img/menus/chat/create-folder.gif){: loading=lazy }
 
 ## Managing Conversations
 
@@ -69,7 +69,7 @@ To organize conversations into folders:
 4. Select **Create folder** to create a new folder and move the conversation into it simultaneously.
 5. To move a conversation back to the main list, select **Back to the list** from the Move to menu.
 
-![Move to Folder](../../img/menus/chat/moveto-folder.png)
+![Move to Folder](../../img/menus/chat/moveto-folder.gif){: loading=lazy }
 
 ### Conversation Actions (Sidebar)
 
@@ -80,10 +80,62 @@ You can manage conversations directly from the **CONVERSATIONS** sidebar by righ
 * **Move To**: Move the conversation into a folder, as described above.
 * **Make Public**: Convert a private conversation into a public one, visible to other project members.  
      **Caution**: This action is irreversible; you cannot make a public conversation private again.
+*  **Share**: To share a conversation with team members, select **Share** from the conversation contextual menu. This action copies a direct link to the conversation to your clipboard. Team members can use this link to access and view the conversation. (`available for team project`)  
 * **Delete**: Permanently remove the conversation. You will be asked to confirm this action.
 * **Playback**: Enter Playback mode for this conversation (See [Playback Mode](#playback-mode)).
 
-![Conversation actions](../../img/menus/chat/conversation_action.png)
+![Conversation actions](../../img/menus/chat/conversation_action.png){: loading=lazy }
+
+### Sharing Conversations
+
+The conversation sharing feature allows you to share conversations with team members by providing them with a direct link. This is particularly useful for collaboration, code reviews, troubleshooting, and knowledge sharing within your team.
+
+!!! warning "Important Permissions"
+    * **Team Projects Only**: Conversation sharing is only available for conversations in team projects. You cannot share conversations from personal projects.
+    * **Team Members**: Only team members who have access to the project can view shared conversations.
+    * **Access Level**: Recipients must have appropriate permissions within the project to access the shared content.
+
+**How Conversation Sharing Works**
+
+When you share a conversation, ELITEA generates a unique URL that includes the conversation ID, name, and a special parameter that identifies it as a shared conversation. Team members who receive this link can access and view the complete conversation history in their browser.
+
+**How to Share a Conversation**
+
+1. Navigate to the **CONVERSATIONS** sidebar in the **Chat** section.
+2. Locate the conversation you want to share.
+3. Hover over the conversation to reveal the contextual menu.
+4. Select **Share** from the menu options.
+5. The conversation link is automatically copied to your clipboard.
+6. You will see a notification: "The link has been copied to the clipboard."
+7. Paste the link in your communication channel (email, Slack, Teams, etc.) to share it with team members.
+
+![Chat_Share_Conversation](<../../img/menus/chat/share-conversation.gif>){: loading=lazy }
+
+
+**Use Cases for Sharing Conversations**
+
+* **Collaboration**: Share conversations to involve team members in ongoing discussions or problem-solving sessions
+* **Code Reviews**: Share conversations containing code generation or refactoring for peer review
+* **Troubleshooting**: Share error discussions with technical support or senior team members
+* **Knowledge Transfer**: Share valuable conversations as learning resources for team members
+* **Documentation**: Share conversations that demonstrate best practices or solutions to common problems
+* **Demos and Presentations**: Share conversations to demonstrate ELITEA capabilities or AI-assisted workflows
+
+!!! tip "Sharing vs Making Public"
+    The **Share** action is different from **Make Public**. Sharing creates a link for easy access while maintaining existing permissions, whereas making a conversation public changes its visibility settings permanently and cannot be reversed.
+
+**Accessing Shared Conversations**
+
+When a team member clicks on a shared conversation link:
+
+1. The link opens in their browser
+2. ELITEA automatically navigates to the specified conversation
+3. The conversation opens with the complete history visible
+4. The recipient can read the entire conversation thread
+5. Depending on their permissions, they may be able to interact with or continue the conversation
+
+!!! note "Access Permissions"
+    If a user doesn't have access or permissions to the shared conversation (i.e., the conversation is not public and the user is not added as a participant), clicking the shared link will navigate them to the chat interface, but they will not be able to view the conversation content. This is the expected behavior to maintain conversation privacy and security.
 
 ## Managing Folders
 
@@ -95,7 +147,7 @@ Folders can be managed directly from the **CONVERSATIONS** sidebar. Right-click 
 * **Delete Folder**: Remove the folder.  
   **Important**: Deleting a folder does not delete the conversations inside it. Conversations within a deleted folder are automatically moved back to the main conversation list (root level). You will be asked to confirm deletion.
 
-![Folder actions](../../img/menus/chat/folder_actions.png)
+![Folder actions](../../img/menus/chat/folder_actions.png){: loading=lazy }
 
 ## Understanding Conversation/Folder Visibility
 
@@ -218,16 +270,19 @@ To add participants:
 2. Click the **+** icon next to any section title to add participants of that type.
 3. Once participants are added, type your message and click **Send**.
 
-![Participants](../../img/menus/chat/participants-section.png)
+![Add participants](../../img/menus/chat/add-participants-section.gif){: loading=lazy }
+
 
 **Method 2: Using the # Symbol (Frequently Used)**
 
 1. In the chat input box, type `#` to see a dropdown list of frequently used participants.
-2. Select a participant from the list to add it to the conversation (e.g., `#Data Analysis Agent`).
-3. The selected participant will appear as a chip above the input box.
-4. Type your message and click **Send**.
+2. Continue typing to filter participants by name (e.g., `#Jira` will show all Jira-related participants).
+3. Select a participant from the filtered list (e.g., `#Data Analysis Agent`, `#Jira Toolkit`).
+4. The selected participant will appear as a chip above the input box and in the
+5. Type your message and click **Send**.
 
-![Search participant](../../img/menus/chat/search-participants.png)
+![Search participant](../../img/menus/chat/add-participants-search.gif){: loading=lazy }
+
 
 **Creating New Participants from Chat:**
 
@@ -238,8 +293,7 @@ You can also create new participants directly from the chat interface using the 
 * **Toolkits**: Click **+Add toolkit** then **+ Create new Toolkit** to configure integrations like GitHub, Jira, etc. See [How to Create and Edit Toolkits from Canvas](how-to-create-and-edit-toolkits-from-canvas.md).
 * **MCPs**: Click **Create new MCP** to connect Model Context Protocol servers. See [How to Create and Edit MCPs from Canvas](how-to-create-and-edit-mcps-from-canvas.md).
 
-![text](../../img/menus/chat/canvas-create.png)
-![text](../../img/menus/chat/canvas-create-interface.png) 
+![Create New Participants](../../img/menus/chat/canvas-create.gif){: loading=lazy }
 
 
 ### Adding Users to a Conversation
@@ -263,7 +317,7 @@ Users (team members) can only be added to in team projects. They cannot be added
 
 For detailed information on adding teammates, see [Adding Teammates to Conversation](add-teammates-to-conversation.md).
 
-![Add_User](../../img/menus/chat/add_user.png)
+![Add_User](../../img/menus/chat/add-user.gif){: loading=lazy }
 
 
 ### Using Participants in a Conversation
@@ -310,15 +364,35 @@ Models are the large language models (LLMs) that power your conversations. You c
 
 **Configuring Model Settings:**
 
-1. **Access Settings**: Click the **⚙️** (settings) icon next to the model selector dropdown.
-2. **Adjustable Parameters**:
-    * **Temperature**: Controls randomness (higher = more creative, lower = more deterministic). Range: 0-2.
-    * **Top P**: Nucleus sampling (considers tokens with cumulative probability > P). Range: 0-1.
-    * **Max Completion Tokens**: Maximum number of tokens in the response.
-    * **Remaining Tokens**: Displays the number of tokens remaining in the current context window.
-3. **Apply**: Click the **< SETTINGS** button to save changes for this conversation.
+Click the **Settings** (⚙️) icon next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
 
-![Model](../../img/menus/chat/model.png)
+**For Reasoning Models** (e.g., GPT-5.1):
+
+* **Reasoning** - Controls the depth of logical thinking and problem-solving with three levels:
+    * **Low**: Fast, surface-level reasoning with concise answers and minimal steps
+    * **Medium**: Balanced reasoning with clear explanations and moderate multi-step thinking (default)
+    * **High**: Deep, thorough reasoning with detailed step-by-step analysis (may be slower)
+
+**For Standard Models** (e.g., GPT-4o):
+
+* **Creativity** - Controls response randomness and creativity. Lower values produce more focused and deterministic outputs, while higher values generate more diverse and creative responses with five levels (1-5):
+    * **1**: Highly focused and deterministic outputs
+    * **2**: Mostly focused with slight variation
+    * **3**: Balanced between focus and creativity (default)
+    * **4**: More varied and creative responses
+    * **5**: Maximum creativity and diversity
+
+**Max Completion Tokens** (All Models):
+
+Limits the maximum length of AI responses measured in tokens (roughly 4 characters per token):
+
+* **Auto** (default): System automatically sets the token limit to 4096 tokens
+* **Custom**: Manually set a specific token limit for responses
+    * When Custom is selected, you can enter a specific number of maximum tokens
+    * The interface shows remaining tokens available after your specified limit
+    * Setting too high a value will show an error if it exceeds the model's maximum output tokens
+
+![Model](../../img/menus/chat/chat-model-settings.gif){: loading=lazy }
 
 
 ### Configuring Participants
@@ -368,7 +442,7 @@ You can configure and edit participants (Agents, Pipelines, Toolkits, and MCPs) 
 2. Click the **Save** button to apply your modifications.
 3. The updated configuration will be used for subsequent messages in the conversation.
 
-![Agent](../../img/menus/chat/edit-agent.png)
+![Agent](../../img/menus/chat/edit-agent.gif){: loading=lazy }
 
 
 ### Displaying Configured Conversation Starters
@@ -393,7 +467,7 @@ When you add a participant (like an Agent, Pipeline, Toolkit, or MCP) that has a
 3. Click the **Regenerate** icon 🔄 usually located near the last message or the input box.
 4. The system will use the same input/prompt that generated the last response and attempt to create a new, potentially improved, output.
 
-![Regenerate](../../img/menus/chat/regenerate.png)
+![Regenerate](../../img/menus/chat/regenerate.gif){: loading=lazy }
 
 
 ## Using Canvas for Content Editing
@@ -424,7 +498,7 @@ Canvas is a built-in editor that appears automatically when ELITEA generates cod
 
 For detailed information, real-world examples, and best practices, see [Canvas in Conversation](how-to-canvas.md).
 
-![Canvas open](../../img/menus/chat/canvas_open.png)
+![Canvas open](../../img/menus/chat/canvas-open.gif){: loading=lazy }
 
 
 ## Attaching Files and Images
@@ -461,50 +535,84 @@ The attachment functionality is integrated with the **Artifact Toolkit**. When y
 
 For complete setup instructions, advanced configuration, and troubleshooting, see [Attachments in Conversation](attach-images-and-files-in-chat.md).
 
-![Add Attachments](../../img/menus/chat/add-attachments.png)
+![Attachment Settings chat](../../img/how-tos/chat-conversations/attachments/attachment-settings-chat.png){width="400" loading=lazy}
+![Attachment Settings chat1](../../img/how-tos/chat-conversations/attachments/attachment-settings-chat1.png){width="300" loading=lazy}
 
 
 ## Using Internal Tools
 
-Internal tools provide built-in capabilities that enhance your conversations and agents without requiring external integrations. Currently, ELITEA supports the **Python Sandbox** internal tool.
+Internal tools provide built-in capabilities that enhance your conversations without requiring external integrations. These tools can be enabled directly from the chat interface or configured as part of an agent's default setup.
 
-**What is Python Sandbox?**
+### Available Internal Tools
 
-Python Sandbox enables secure Python code execution directly within your conversations using Pyodide (Python compiled to WebAssembly).
+**Python Sandbox**
 
-**Python Sandbox Features:**
+Execute Python code securely in conversations using Pyodide (Python compiled to WebAssembly). Useful for calculations, data processing, testing algorithms, and generating visualizations.
 
-* **Secure Code Execution**: Run Python code in a secure sandbox environment.
-* **Package Support**: Install and use Python packages like numpy, pandas, and matplotlib.
-* **Persistent State**: Code execution maintains state within the same conversation.
-* **Visualizations**: Generate data visualizations and reports.
-* **Use Cases**: Execute code snippets, perform calculations and data analysis, test algorithms, and process data.
+* **Secure Code Execution**: Run Python code in a secure sandbox environment
+* **Package Support**: Install and use Python packages like numpy, pandas, and matplotlib
+* **Persistent State**: Code execution maintains state within the same conversation
+* **Visualizations**: Generate data visualizations and reports
+* **Use Cases**: Execute code snippets, perform calculations and data analysis, test algorithms, and process data
 
-**To Enable Python Sandbox in Conversations:**
+**Planner**
 
-1. Navigate to your conversation.
-2. Locate the chat input toolbar at the bottom of the screen.
-3. Find the **Internal Tools** icon (value icon) next to the attachment button.
-4. Click the Internal Tools icon to open the configuration popup.
-5. Find **Python sandbox** in the list and toggle it ON.
-6. A success notification will appear: "Internal tools configuration updated".
+Create, manage, and track tasks and action items directly within conversations. Set priorities, due dates, and monitor task progress without switching to external task management tools.
 
-**To Enable Python Sandbox in Agents:**
+* **Task Decomposition**: Break down complex requests into smaller, actionable tasks
+* **Workflow Organization**: Create structured plans with clear steps and dependencies
+* **Progress Tracking**: Monitor task completion and workflow progress with priority levels (High/Medium/Low)
+* **Task Status**: Track tasks through Pending, In Progress, and Completed states
+* **Use Cases**: Project planning, feature development breakdown, complex problem-solving, and workflow design
 
-1. Navigate to **Agents** in the main menu and select the agent.
-2. Click the **Configuration** tab.
-3. Scroll to the **TOOLKITS** section.
-4. Find the **Python sandbox** switch and toggle it ON.
-5. Click **Save** at the top of the configuration page.
-6. The Python sandbox will be available in all new conversations using this agent.
+**Data Analysis**
 
-**Using Python Sandbox:**
+Perform Pandas-based data analysis on uploaded files (CSV, Excel, etc.) using natural language queries. Automatically processes data and generates charts with downloadable results.
 
-Once enabled, the AI assistant can execute Python code during conversations. The assistant can install packages, execute multi-line scripts, maintain state between executions, and generate visualizations.
+* **Natural Language Processing**: Use plain English to request data analysis operations
+* **File-Based Analysis**: Works with files uploaded directly to conversations
+* **Automated Processing**: Intelligent file format detection and data analysis
+* **Chart Generation**: Automatic creation of visualizations with downloadable results
+* **Use Cases**: Data exploration, statistical analysis, trend identification, and report generation
 
-For detailed usage examples, troubleshooting, and verification steps, see [Internal Tools in Conversation](enable-internal-tools.md).
+### Enabling Internal Tools in Conversations
 
-![Python Sandbox](<../../img/menus/chat/internal tools.png>)
+1. Navigate to your conversation
+2. Locate the **Internal Tools** icon (value icon) in the chat input toolbar at the bottom of the screen, next to the attachment button
+3. Click the Internal Tools icon to open the configuration popup
+4. Find the tool you want to enable in the list
+5. Click the toggle switch next to the tool name to enable it
+6. A success notification will appear: "Internal tools configuration updated"
+7. Click anywhere outside the popup to close it
+
+![Enabling Internal Tools](<../../img//menus/chat/enable-internal-tools.gif>){: loading=lazy }
+
+Once enabled, the AI assistant can automatically use these tools during conversations when appropriate.
+
+### Enabling Internal Tools in Agents
+
+You can also enable internal tools as part of an agent's default configuration in the **TOOLKITS** section. This makes the tools available in all new conversations using that agent.
+
+1. Navigate to **Agents** in the main menu and select the agent
+2. Click the **Configuration** tab
+3. Scroll to the **TOOLKITS** section
+4. Find the internal tool switches (**Python sandbox**, **Planner**, **Data Analysis**) and toggle them ON as needed
+5. Click **Save** at the top of the configuration page
+6. The enabled internal tools will be available in all new conversations using this agent
+
+### Using Internal Tools
+
+Once enabled, the AI assistant can use the internal tools during conversations:
+
+* **Python Sandbox**: The assistant can execute Python code, install packages, perform calculations, and generate visualizations
+* **Planner**: The assistant can break down complex tasks, create structured plans with priorities and due dates, and track task progress
+* **Data Analysis**: The assistant can perform comprehensive data analysis on uploaded files using natural language commands
+
+For detailed usage examples, troubleshooting, and best practices, see:
+
+* [Python Sandbox Guide](python-sandbox-internal-tool.md)
+* [Planner Internal Tool Guide](planner-internal-tool.md)
+* [Data Analysis Internal Tool Guide](data-analysis-internal-tool.md)
 
 
 ## Playback Mode

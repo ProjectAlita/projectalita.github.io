@@ -1,7 +1,7 @@
 # Indexing Overview
 
 !!! warning "Availability and migration"
-	**Indexing** feature and tools are available in the [Next environment](https://next.elitea.ai) as part of the 1.7.0 release. They replace the legacy **Datasources/Datasets** feature. As of Release 1.7.2, a dedicated **Indexes Tab** interface is available within Toolkit Configuration for comprehensive index management. Datasources are still available in the [Nexus environment](https://nexus.elitea.ai) for reference, but new datasets are not supported. See the [Release Notes 1.7.0](../../release-notes/rn_current.md#indexing-dedicated-toolkit-indexes-tab).
+	**Indexing** feature and tools are available in the [Next environment](https://next.elitea.ai) as part of the 1.7.0 release. They replace the legacy **Datasources/Datasets** feature. As of Release 1.7.2, a dedicated **Indexes Tab** interface is available within Toolkit Configuration for comprehensive index management. Datasources are still available in the [Nexus environment](https://nexus.elitea.ai) for reference, but new datasets are not supported. See the [Release Notes 1.7.0](../../release-notes/archived/rn13.md#indexing-dedicated-toolkit-indexes-tab).
 
 ## Introduction
 

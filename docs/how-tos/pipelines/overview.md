@@ -139,7 +139,6 @@ Ready to dive deeper? We recommend exploring the building blocks in this order:
 ### Explore Advanced Topics
 
 * **[Agent Integration](nodes/interaction-nodes.md#agent-node)**: Incorporate AI agents into pipelines
-* **[Monitoring & Debugging](../../menus/pipelines.md#monitoring-tab)**: Track performance and troubleshoot issues
 
 ### Get Inspired
 
