@@ -9,6 +9,9 @@ This glossary provides definitions for key terms, components, and features used 
 **Agent**
 : A customizable virtual assistant or bot within ELITEA that automates specific tasks or sets of tasks. Agents combine external toolkits to make informed decisions and perform actions. They can integrate with external services like GitHub, Jira, or Salesforce to create powerful automation workflows.
 
+**Agent Studio**
+: A dedicated shared library menu in ELITEA that provides centralized access to community-published agents. Similar to a marketplace, Agent Studio serves as a discovery hub where users can browse, search, and instantly use pre-built AI agents created by the ELITEA community. All agents undergo moderation review before publication, and users can like, fork, and add agents to conversations with one click.
+
 **Artifact**
 : A temporary file storage system in ELITEA that allows sharing and storing text-based files between agents and workflows. Artifacts are organized in buckets and provide temporary storage for data and context during agent operations, enabling create, read, update, and delete operations.
 
@@ -26,6 +29,9 @@ This glossary provides definitions for key terms, components, and features used 
 
 ## C
 
+**Canvas**
+: An interactive editing workspace within ELITEA Chat that appears automatically when AI generates code, tables, or Mermaid diagrams. Canvas provides instant editing capabilities with syntax highlighting, version control through undo/redo, and flexible exporting options. It supports three content types: code blocks (for programming languages), tables (for structured data), and Mermaid diagrams (for visual flowcharts and diagrams), eliminating the need for external editing tools.
+
 **Chat**
 : The conversational interface in ELITEA where users interact with AI models, agents, and pipelines. Chat brings together all ELITEA components in a natural interface for human-AI collaboration.
 
@@ -34,6 +40,15 @@ This glossary provides definitions for key terms, components, and features used 
 
 **Configuration**
 : The setup and customization settings for various ELITEA components. This includes defining parameters for integrations, toolkits, agents, pipelines, and other platform features to match specific requirements and use cases.
+
+**Context Budget**
+: A real-time widget displaying token usage metrics across Chat conversations, Agent runs, Pipeline executions, and Application configurations. The Context Budget provides immediate visibility into context consumption, showing how many tokens have been used and how many remain available within the current model's context window.
+
+**Context Management**
+: An intelligent feature that automatically controls conversation token usage through message pruning and summarization. When enabled via a project-level secret, context management helps maintain conversation continuity while staying within model token limits by automatically managing message history, generating summaries of older conversations, and preserving important messages.
+
+**Context Window**
+: The maximum amount of text (measured in tokens) that an AI model can process in a single request, including both input and output. The context window represents the model's "memory capacity" for a conversation or task. Different models have different context window sizes, ranging from thousands to hundreds of thousands of tokens. Managing context window usage is crucial for maintaining effective conversations and preventing errors when processing large documents or long discussions.
 
 **Conversation Starter**
 : Pre-defined prompts or questions configured in agents or pipelines that help users initiate interactions. Conversation starters provide suggested entry points for engaging with AI components, making it easier for users to understand what the component can do and how to interact with it effectively.
@@ -80,6 +95,9 @@ This glossary provides definitions for key terms, components, and features used 
 **Flow Designer**
 : A visual interface for creating and managing pipelines in ELITEA. The Flow Designer allows users to drag and drop nodes, connect workflows, and design complex automation processes without requiring code.
 
+**Feedback**
+: A user interface feature that allows users to provide ratings, comments, and suggestions about the ELITEA platform. The Feedback icon, typically located in the bottom left of the screen, enables users to share their experiences, report issues, and contribute to platform improvement by submitting structured feedback to the development team.
+
 **Fork**
 : The process of creating a personal copy of an existing entity (agent, pipeline, or collection) from another user's shared work from the "Team" project. Forking allows users to customize and modify the copied entity without affecting the original, enabling experimentation and personalization while building upon existing work.
 
@@ -114,7 +132,13 @@ This glossary provides definitions for key terms, components, and features used 
 : A parameter that sets the maximum number of tokens (words, punctuation, or parts of words) that an AI model can generate in a single response. This setting helps control response length and manage computational costs by preventing excessively long outputs.
 
 **MCP (Model Context Protocol)**
-: A protocol that allows ELITEA to integrate with external MCP servers, extending the platform's capabilities by accessing tools and services from third-party MCP implementations.
+: A standardized protocol that enables ELITEA to integrate with external MCP servers, extending the platform's capabilities by accessing tools and services from third-party implementations. MCPs can be Local (connected through STDIO transport via the Elitea MCP Client) or Remote (HTTP/HTTPS-based servers). Once configured, MCP tools become available to agents, pipelines, and conversations for browser automation, repository operations, API integrations, and other domain-specific tasks.
+
+**Model Selector**
+: A user interface dropdown component in ELITEA Chat that allows users to choose which AI model to use for their conversations. The model selector displays available LLM models from various providers and enables quick switching between models during a conversation. It typically appears at the top of the chat interface and may include additional model settings configuration options.
+
+**Moderator**
+: A designated user role in ELITEA with special permissions to review, approve, or reject content submissions for publication to shared spaces. Moderators are typically QA professionals or experienced users who evaluate the quality, security, and appropriateness of agents, pipelines, and collections before they become publicly available, ensuring that shared resources meet community standards and best practices.
 
 **Monitoring**
 : Analytics and tracking capabilities in ELITEA that provide insights into usage patterns, performance metrics, token consumption, engagement rates, and system health across agents, pipelines, and the overall platform.
@@ -123,15 +147,34 @@ This glossary provides definitions for key terms, components, and features used 
 
 ## N
 
+**Nested Agent**
+: An agent that is integrated as a component within another agent's toolkit or pipeline configuration. Nested agents enable modular design by allowing specialized agents to be reused as building blocks within larger workflows. They inherit the parent context and can perform specific sub-tasks while maintaining their own configurations and capabilities.
+
+**Nested Pipeline**
+: A pipeline that is incorporated as a component within another pipeline workflow. Nested pipelines enable hierarchical workflow design, allowing complex processes to be broken down into reusable sub-workflows. They can be configured through SubGraph nodes in the Flow Designer and help maintain clean, modular pipeline architectures.
+
 **Node**
 : Individual components or steps within a pipeline workflow. Nodes can be LLM interactions, tool calls, functions, loops, conditions, or decisions that connect to form automated processes.
 
 ---
 
+## O
+
+**OpenAI-BaseURL**
+: A configuration parameter that specifies the base API endpoint URL for OpenAI-compatible services. This setting allows ELITEA to connect to alternative LLM providers that implement OpenAI's API specification, enabling flexibility in model provider selection while maintaining compatibility with OpenAI's interface standards. Custom BaseURL configurations are useful for connecting to self-hosted models, proxy services, or alternative AI providers.
+
+---
+
 ## P
+
+**Participant**
+: An active entity in an ELITEA conversation, including AI models, agents, pipelines, toolkits, and human team members. Participants can be added to conversations to provide specific capabilities, expertise, or functionality. The Participants panel in Chat allows users to manage which entities are available during a conversation, enabling multi-participant collaboration and access to diverse capabilities.
 
 **Personal Access Token (PAT)**
 : A secure authentication credential used to access external platforms and services programmatically. In ELITEA, Personal Access Tokens are commonly used for integrations with platforms like GitHub, GitLab, Jira, and other external services, providing a more secure alternative to using passwords for API authentication.
+
+**Persona**
+: A predefined character or role configuration that shapes an agent's behavior, communication style, and domain expertise. Personas help customize agent responses to match specific professional roles (such as QA engineer, business analyst, or developer) or behavioral patterns, ensuring that agent interactions are contextually appropriate and aligned with user expectations.
 
 **Pipeline**
 : Automated workflows that connect sequences of states, actions, and decisions to streamline complex processes. Pipelines can integrate with toolkits and external APIs, and are designed using either the visual Flow Designer or programmatic YAML configuration.
@@ -141,6 +184,12 @@ This glossary provides definitions for key terms, components, and features used 
 
 **Project Selector**
 : A user interface component that allows users to switch between different projects (Private Project, Team Projects, and Public Project) within the ELITEA platform. The project selector is typically located in the sidebar and provides quick access to navigate between different workspace environments and their associated entities.
+
+**Project ID**
+: A unique numerical identifier assigned to each project in ELITEA. The Project ID is used for API authentication, integration configurations, CLI operations, and programmatic access to project resources. It serves as a reference key for accessing project-specific data, managing permissions, and connecting external tools and services to the correct workspace environment.
+
+**Public Project**
+: A community-shared workspace in ELITEA where published agents, pipelines, and collections are made available to all users within an organization. The Public Project serves as a collaborative hub for discovering, utilizing, and sharing best practices, promoting knowledge sharing and collective innovation. While users cannot directly create or modify entities in the Public Project, they can fork published resources to their private or team projects for customization.
 
 **Prompt**
 : Instructions, questions, or statements given to AI models to elicit specific responses or outputs. In ELITEA, prompts can include context, variables, welcome messages, conversation starters, and various configuration settings to guide AI behavior.
@@ -155,8 +204,14 @@ This glossary provides definitions for key terms, components, and features used 
 **ReAct**
 : An application type in ELITEA that uses JSON format for tool interactions. ReAct agents operate by reasoning about tasks and taking actions using available tools to achieve specified goals.
 
+**Regenerate**
+: A feature in ELITEA Chat that allows users to request a new response to the same input prompt without retyping it. Accessed through a regenerate icon (🔄) after an AI generates a response, this function produces an alternative answer using the same context, enabling users to explore different perspectives, improve response quality, or recover from unsatisfactory outputs.
+
 **Remaining Tokens**
 : The count of available tokens left for use in the current AI model context window or session. This indicator helps users understand how much input capacity remains before reaching the model's token limit, which is important for managing long conversations or processing large documents.
+
+**Retention Policy**
+: Configuration settings that define how long data, files, conversations, and session information are stored within ELITEA before automatic deletion or archiving. Retention policies help manage storage resources, comply with data governance requirements, and maintain system performance by controlling the lifecycle of temporary files, conversation histories, and session metadata.
 
 **Role**
 : User permission levels within ELITEA that control access to different features and capabilities. Roles can be customized and assigned to manage collaboration and security in team projects.
@@ -174,6 +229,12 @@ This glossary provides definitions for key terms, components, and features used 
 **State**
 : The memory system of a pipeline that serves as a dynamic repository for all information gathered, processed, and passed between workflow steps. State maintains context and data throughout pipeline execution.
 
+**Step Limit**
+: A configuration parameter that defines the maximum number of reasoning or action steps an agent can take while processing a request. The step limit prevents infinite loops and controls computational resource usage by capping how many iterations an agent can perform. When an agent reaches its step limit, it must conclude its response with the information gathered up to that point.
+
+**Storage**
+: The data persistence infrastructure in ELITEA that manages files, artifacts, conversation histories, vector embeddings, and system data. Storage encompasses various systems including temporary artifact buckets, vector databases (PgVector) for datasources, file attachments, and persistent configurations. Different storage types serve specific purposes: artifact storage for temporary file sharing, vector storage for semantic search and retrieval, and database storage for entities and metadata.
+
 **SubGraph**
 : A modular pipeline feature that allows entire pipelines to be included as components within other pipelines, enabling reusable and scalable workflow building.
 
@@ -186,6 +247,12 @@ This glossary provides definitions for key terms, components, and features used 
 
 **Team Project**
 : Collaborative workspaces in ELITEA where multiple users can work together, share entities, and manage resources based on assigned roles and permissions.
+
+**Theme Toggle**
+: A user interface control in ELITEA that allows users to switch between dark and light display modes. Located in the sidebar, the theme toggle enables users to customize the visual appearance of the platform to match their preferences or lighting conditions, providing optimal viewing comfort for extended usage.
+
+**Tips**
+: A help feature accessible through a button in the sidebar that provides helpful guidance, onboarding information, and best practices for using ELITEA effectively. Tips offer contextual suggestions and educational content to help users discover features, learn workflows, and maximize their productivity on the platform.
 
 **Temperature (0.1 - 1.0)**
 : A parameter that controls the randomness and creativity of AI model responses. Lower values (0.1-0.3) produce more focused, deterministic, and predictable outputs, while higher values (0.7-1.0) generate more creative, diverse, and unpredictable responses. A value of 0.0 makes the model completely deterministic.
@@ -204,6 +271,9 @@ This glossary provides definitions for key terms, components, and features used 
 
 **Transition**
 : The connections between nodes in a pipeline that define the flow of execution and how steps connect to each other in automated workflows.
+
+**Trending**
+: A content discovery feature that highlights popular entities, authors, and resources within ELITEA based on user engagement metrics such as likes, usage frequency, and community activity. Trending sections help users identify valuable and widely-adopted resources, showcasing highly-rated agents, pipelines, and collections that have gained significant traction within the community.
 
 ---
 
