@@ -97,7 +97,9 @@ To set up a new agent:
       - **Tags** (optional): Add tags by typing a tag name or selecting from pre-existing tags
 3. In the **Instructions** section, provide detailed guidelines for the AI agent that specify how it should behave and what tasks it should perform.
 4. Optionally, add and configure **Welcome Message** and **Conversation Starter**. 
-5. Click **Save**.
+5. In the **Advanced** section (optional):
+         - **Step Limit**: Set the maximum number of tool execution steps the agent can perform in a single turn (range: 0-999, default: 25). This parameter controls how many iterations the agent can execute before stopping, preventing infinite loops and managing resource usage. A higher step limit allows more complex multi-step workflows, while a lower limit ensures faster execution for simpler tasks.
+6. Click **Save**.
 
 After clicking **Save**, the agent configuration page will open, where you can:
 
