@@ -142,7 +142,7 @@ Ready to dive deeper? We recommend exploring the building blocks in this order:
 
 ### Get Inspired
 
-* **[Pipeline Examples](../../menus/pipelines.md#what-are-elitea-pipelines)**: Real-world pipeline implementations
+* **[Pipeline Examples](../../menus/pipelines.md#overview)**: Real-world pipeline implementations
 * **[Community Pipelines](https://nexus.elitea.ai/alita_ui/agents/latest)**: Discover public pipelines created by the community
 
 ---
