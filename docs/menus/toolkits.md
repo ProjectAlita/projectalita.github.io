@@ -88,9 +88,9 @@ Once you've selected a toolkit type, you'll need to configure the following fiel
 
 **Main Configuration Fields:**
 
-* **Toolkit Name*** - A clear, descriptive name for your toolkit
+* **Toolkit Name** - A clear, descriptive name for your toolkit
 * **Description** - A brief description to clarify the toolkit's purpose and usage
-* **Credentials Configuration*** - (varies by toolkit type) Select or create credentials for the integration
+* **Credentials Configuration** - (varies by toolkit type) Select or create credentials for the integration
     * For toolkits that require credentials (e.g., Jira, GitHub), open the Credentials dropdown and either create new credentials or select an existing one
     * For toolkits without credential requirements (e.g., Artifact), configuration fields will be shown directly on the create toolkit page
 * **PgVector Configuration** - Select or configure a PgVector connection to enable vector storage capabilities for document indexing and similarity search
