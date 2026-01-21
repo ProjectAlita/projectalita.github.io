@@ -443,12 +443,50 @@ Automate Atlassian workflows including:
 
 ### Prerequisites
 
-- **Atlassian Account** with access to Jira and/or Confluence
-- **Site access** to your Atlassian cloud instance
-- **Appropriate permissions** for the operations you want to perform
+- ✔️ **Atlassian Account** with access to Jira and/or Confluence
+- ✔️ **Atlassian Cloud site** with Jira, Confluence, and/or Compass
+- ✔️ **Site access** to your Atlassian cloud instance
+- ✔️ **Product access**: Users need access to Atlassian products they want to integrate
+- ✔️ **First-time setup**: The first user to complete OAuth consent flow must have access to all requested products
+- ✔️ **Appropriate permissions** for the operations you want to perform
+- ✔️ **Modern browser** for completing OAuth 2.1 authorization flow
 
 !!! note "No Pre-Configuration Required"
     You don't need to create OAuth applications or obtain credentials in advance. Simply log in with your Atlassian account credentials when prompted during the OAuth flow.
+
+#### Configuring Atlassian Rovo MCP Server Domain Access
+
+Domain configuration is **only required for organization admins** who want to control which AI tools can connect to their Atlassian organization.
+
+**Step 1: Access Rovo MCP Server Settings**
+
+1. Go to [Atlassian Administration](https://admin.atlassian.com/)
+2. Select your organization if you have more than one
+3. Navigate to **Apps** → **AI settings** → **Rovo MCP server**
+
+**Step 2: Add Custom Domain**
+
+By default, Atlassian-supported domains (ChatGPT, Claude, Google Gemini, etc.) are automatically allowed.
+
+To add your custom domain (e.g., ELITEA):
+
+1. Click **Add domain**
+2. Enter your domain with required protocol format: (e.g,  `https://next.elitea.ai/**`)
+3. Click **Add** to save
+
+**Step 3: (Optional) Block Atlassian-Supported Domains**
+
+If your security policy requires restricting to only custom domains:
+
+1. Deselect **Allow Atlassian supported domains**
+2. Only your manually added domains will be allowed
+
+![Rovo mcp](../../img/integrations/mcp/remote-mcp/atlassian-add-domain.png)
+
+!!! warning "Admin Requirements"
+    - **Role required**: Organization admin
+    - **Available for**: Atlassian Cloud (Free, Standard, Premium, Enterprise)
+
 
 
 ### Step-by-Step Setup
@@ -462,10 +500,10 @@ Automate Atlassian workflows including:
 
 **2. Connection Configuration**
 
-- **URL**: `https://mcp.atlassian.com/v1/sse`
+- **URL**: `https://mcp.atlassian.com/v1/mcp`
   
-  !!! note "Atlassian MCP Endpoint"
-      The actual Atlassian MCP endpoint may vary based on your instance. Check your organization's MCP server documentation or use the Atlassian-provided endpoint. This is an example.
+  !!! note "Atlassian Rovo MCP Endpoint"
+      The official Atlassian Rovo MCP endpoint is `https://mcp.atlassian.com/v1/mcp` (recommended). The legacy `/sse` endpoint is still supported but Atlassian recommends updating to `/mcp` for new configurations.
 
 **3. Advanced Settings**
 
@@ -799,6 +837,24 @@ Common issues and solutions when working with Remote MCP servers:
         - Retry the operation after a delay
         - Check MCP server status page if available
         - Contact MCP provider support if issue persists
+
+??? warning "Atlassian Rovo MCP Server: Organization Admin Must Authorize Domain"
+    **Problem:** `"Your organization admin must authorize access from a domain to this app"` error
+    
+    **Possible Causes & Solutions:**
+    
+    - **Domain not allowed by admin:**
+
+        - Contact your Atlassian organization admin
+        - Ask them to add your domain (e.g., `https://next.elitea.ai/**`) in:
+          - **Atlassian Administration** → **Apps** → **AI settings** → **Rovo MCP server** → **Add domain**
+        - Admins can check the [domain configuration guide](#configuring-atlassian-rovo-mcp-server-domain-access)
+    
+    - **Atlassian-supported domains blocked:**
+
+        - Check if your admin blocked Atlassian-supported domains
+        - Admin can verify in **Rovo MCP server settings** if "Allow Atlassian supported domains" is enabled
+        - If disabled and your domain isn't manually added, connection will fail
 
 ??? warning "Cache Issues"
     **Problem:** Tools show outdated information or changes not reflected
