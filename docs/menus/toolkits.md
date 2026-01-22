@@ -274,6 +274,14 @@ The toolkit configuration page includes a **Test Settings** panel on the right s
 Toolkits that support document processing and content indexing provide an **Indexes** tab for managing indexed data.
 For detailed instructions on using the Indexes tab, see [Using Indexes Tab Interface](../how-tos/indexing/using-indexes-tab-interface.md). 
 
+!!! warning "Indexes Tab Availability"
+    The **Indexes tab** is automatically disabled if either of the following requirements are not met:
+    
+    * **Index Data tool must be enabled** - The Index Data tool must be selected in your toolkit configuration
+    * **Project-level configuration required** - PgVector and Embedding Model must be properly configured at the project level (see [AI Configuration](./settings/ai-configuration.md))
+    
+    Both requirements must be satisfied before the Indexes tab becomes available.
+
 **Accessing the Indexes Tab**
 
 The Indexes tab is enabled in the toolkit detail page alongside the Run tab when:
@@ -373,6 +381,13 @@ Once a toolkit is configured, you can use it across different areas of the platf
 
 ??? warning "Agent Cannot Use Toolkit"
     Ensure the toolkit is configured and assigned to the agent.
+
+??? warning "Indexes Tab Not Available"
+    If the Indexes tab is disabled in your toolkit:
+    
+    1. **Verify Index Data tool is enabled** - Check your toolkit configuration and ensure the Index Data tool is selected in the Tools section
+    2. **Check project-level configuration** - Confirm that PgVector and Embedding Model are properly configured at the project level in [AI Configuration](./settings/ai-configuration.md)
+    3. **Save and refresh** - After making changes, save your toolkit configuration and refresh the page to see the Indexes tab become available
 
 For further assistance, contact your platform administrator.
 
