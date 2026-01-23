@@ -264,6 +264,27 @@ The GitHub toolkit provides the following tools for interacting with GitHub repo
 
 !!! tip "Vector Search Tools"
     The tools **Index data**, **List collections**, **Remove index**, **Search index**, **Stepback search index**, and **Stepback summary index** require PgVector configuration and an embedding model. These enable advanced semantic search capabilities across your GitHub repositories.
+
+#### Testing Toolkit Tools
+
+After configuring your GitHub toolkit, you can test individual tools directly from the Toolkit detailed page using the **Test Settings** panel. This allows you to verify that your credentials are working correctly and validate tool functionality before adding the toolkit to your workflows.
+
+**General Testing Steps:**
+
+1. **Select LLM Model:** Choose a Large Language Model from the model dropdown in the Test Settings panel
+2. **Configure Model Settings:** Adjust model parameters like Creativity, Max Completion Tokens, and other settings as needed
+3. **Select a Tool:** Choose the specific GitHub tool you want to test from the available tools
+4. **Provide Input:** Enter any required parameters or test queries for the selected tool
+5. **Run the Test:** Execute the tool and wait for the response
+6. **Review the Response:** Analyze the output to verify the tool is working correctly and returning expected results
+
+!!! tip "Key benefits of testing toolkit tools:"
+    * Verify that GitHub credentials and connection are configured correctly
+    * Test tool parameters and see actual responses from your GitHub repositories
+    * Debug tool behavior and understand output formats
+    * Optimize tool settings before integrating with agents or pipelines
+    > For detailed instructions on how to use the Test Settings panel, see **[How to Test Toolkit Tools](../../how-tos/credentials-toolkits/how-to-test-toolkit-tools.md)**.
+
 ---
 ### Step 3: Add GitHub Toolkit to Your Workflows
 
