@@ -126,7 +126,7 @@ nav:
           - Server STDIO (Configure and Use): integrations/mcp/create-and-use-server-stdio.md
           - Client STDIO (Configure and Use): integrations/mcp/create-and-use-client-stdio.md
           - Remote MCP (Configure and Use): integrations/mcp/create-and-use-remote-mcp.md
-          - Server (SSE): integrations/mcp/mcp-server-sse.md
+          - Server SSE (Configure and Use): integrations/mcp/mcp-server-sse.md
           - Make Tools Available by MCP: integrations/mcp//make-tools-available-by-mcp.md
       - Toolkits:
           - ADO Repos: integrations/toolkits/ado_repos_toolkit.md
