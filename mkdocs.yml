@@ -75,6 +75,7 @@ nav:
               - Python Sandbox: how-tos/chat-conversations/python-sandbox-internal-tool.md
               - Data Analysis: how-tos/chat-conversations/data-analysis-internal-tool.md
               - Planner: how-tos/chat-conversations/planner-internal-tool.md
+              - Image creation: how-tos/chat-conversations/image-generation.md
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
