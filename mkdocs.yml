@@ -71,9 +71,12 @@ nav:
               - Create a Toolkit: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
               - Create a MCP: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
           - Internal Tools:
+              - Smart Tools Selection: how-tos/chat-conversations/smart-tools-selection-internal-tool.md
               - Python Sandbox: how-tos/chat-conversations/python-sandbox-internal-tool.md
               - Data Analysis: how-tos/chat-conversations/data-analysis-internal-tool.md
               - Planner: how-tos/chat-conversations/planner-internal-tool.md
+              - Image creation: how-tos/chat-conversations/image-generation.md
+              - Swarm Mode: how-tos/chat-conversations/swarm-mode-internal-tool.md
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
           - Indexing Tools: how-tos/indexing/indexing-tools.md
