@@ -95,7 +95,7 @@ nav:
               - ADO Wiki Indexing: how-tos/indexing/index-ado-wiki-data.md
       - Agents & Pipelines:
           - View Agents and Pipelines History: how-tos/agents-pipelines/agents-pipelines-history.md
-          - Entity Versioning: how-tos/agents-pipelines/entity-versioning.md
+          - Agent and Pipeline Versioning: how-tos/agents-pipelines/entity-versioning.md
           - Pipeline Building Blocks:
               - Pipelines Overview: how-tos/pipelines/overview.md
               - States: how-tos/pipelines/states.md
