@@ -163,6 +163,9 @@ nav:
           - Xray Cloud: integrations/toolkits/xray_toolkit.md
           - Zephyr Scale: integrations/toolkits/zephyr_scale_toolkit.md
           - Zephyr Enterprise: integrations/toolkits/zephyr_enterprise_toolkit.md
+      - Third-Party Integrations:
+          - API Integration Guide: integrations/third-party-integrations/api-usage.md
+          - Power Automate Integration: integrations/third-party-integrations/power-automate-integration.md          
       - Extensions:
           - Elitea Code: integrations/extensions/elitea-code.md
           - Elitea Code Chat: integrations/extensions/elitea-code-chat.md
