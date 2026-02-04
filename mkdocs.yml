@@ -52,7 +52,7 @@ nav:
               - AI Configuration: menus/settings/ai-configuration.md
               - Personal Tokens: menus/settings/personal-tokens.md
               - Secrets: menus/settings/secrets.md
-              - Projects: menus/settings/projects.md
+              - Users: menus/settings/users.md
               - Monitoring: menus/settings/monitoring.md
           - Profile:
               - Personalization: menus/profile/personalization.md              
