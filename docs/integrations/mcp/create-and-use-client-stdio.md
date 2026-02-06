@@ -12,7 +12,7 @@ Before you begin, make sure you have:
 
 - ☑️ **Python installed** on your computer (version 3.10 or newer) - [Download Python](https://www.python.org/downloads/)
 - ☑️ **Node.js installed** (required for most MCP servers like Playwright, GitHub, Figma) - [Download Node.js](https://nodejs.org/)
-- ☑️ **Your Elitea Project ID** (find this in Elitea Settings → [Configuration](../../menus/settings/ai-configuration.md#key-configuration-fields))
+- ☑️ **Your Elitea Project ID** (find this in Elitea Settings → [Configuration](../../menus/settings/ai-configuration.md#server-configuration-fields))
 - ☑️ **Your Elitea Authentication Token** (create one in Elitea Settings → [Personal Tokens](../../getting-started/create-personal-access-token.md))
 - ☑️ **Your Elitea deployment URL** (example: `https://next.elitea.ai`)
 
