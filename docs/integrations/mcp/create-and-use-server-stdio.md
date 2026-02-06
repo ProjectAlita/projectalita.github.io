@@ -13,7 +13,7 @@ Before you begin, make sure you have:
 - ☑️ **VS Code installed** (version 1.99 or newer)
 - ☑️ **GitHub Copilot** installed and configured in VS Code
 - ☑️ **Python installed** on your computer (version 3.8 or newer) - [Download Python](https://www.python.org/downloads/)
-- ☑️ **Your Elitea Project ID** (find this in Elitea Settings → [Configuration](../../menus/settings/ai-configuration.md#key-configuration-fields))
+- ☑️ **Your Elitea Project ID** (find this in Elitea Settings → [Configuration](../../menus/settings/ai-configuration.md#server-configuration-fields))
 - ☑️ **Your Elitea Authentication Token** (create one in Elitea Settings → [Personal Tokens](../../getting-started/create-personal-access-token.md))
 - ☑️ **Your Elitea deployment URL** (example: `https://next.elitea.ai`)
 
