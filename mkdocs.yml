@@ -97,6 +97,7 @@ nav:
       - Agents & Pipelines:
           - View Agents and Pipelines History: how-tos/agents-pipelines/agents-pipelines-history.md
           - Agent and Pipeline Versioning: how-tos/agents-pipelines/entity-versioning.md
+          - Export/Import Agents and Pipelines: how-tos/agents-pipelines/import-export.md
           - Pipeline Building Blocks:
               - Pipelines Overview: how-tos/pipelines/overview.md
               - States: how-tos/pipelines/states.md
