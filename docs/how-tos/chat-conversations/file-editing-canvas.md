@@ -38,8 +38,12 @@ This guide explains how to access Canvas file editing for attached, stored, and 
         - **Image Preview**: view-only for JPG, PNG, GIF, BMP, WebP, SVG, TIFF
 
 4. **Save or Close:**
-      * **To save:** Click the **three-dot menu (⋮)** in the header → select **"✓Save changes"** → file overwrites original in artifact storage → success notification appears
-      * **To close without saving:** Click the **X icon** → if unsaved changes exist, alert dialog appears asking to confirm closure
+      * **To save:** Click the **Save button** in the header → file overwrites original in artifact storage → success notification appears
+
+    !!! note "Save Button Behavior"
+        - The Save and Discard buttons are only enabled when you have unsaved changes. They appear disabled (grayed out) when there are no changes to save.
+        - **To discard changes:** Click the **Discard button** → changes are discarded without saving
+        - **To close without saving:** Click the **X icon** → if unsaved changes exist, alert dialog appears asking to confirm closure
 
 ![Chat](../../img/how-tos/chat-conversations/edit-file-in-canvas/edit-files-in-chat.gif)      
 
@@ -72,8 +76,13 @@ This section covers the complete workflow for editing files stored in Artifacts�
         - **Image Preview**: view-only for JPG, PNG, GIF, BMP, WebP, SVG, TIFF
 
 3. **Save or Close:**
-   * **To save:** Click the **check icon (✓)** in the header → file overwrites original in bucket → success notification appears
-   * **To close without saving:** Click the **X icon** → if unsaved changes exist, alert dialog appears asking to confirm closure
+   * **To save:** Click the **Save button** in the header → file overwrites original in bucket → success notification appears
+
+
+    !!! note "Save Button Behavior"
+        - The Save and Discard buttons are only enabled when you have unsaved changes. They appear disabled (grayed out) when there are no changes to save.
+        - **To discard changes:** Click the **Discard button** → changes are discarded without saving
+        - **To close without saving:** Click the **X icon** → if unsaved changes exist, alert dialog appears asking to confirm closure
 
 ![Artifacts](../../img/how-tos/chat-conversations/edit-file-in-canvas/edit-files-in-artifacts.gif)
 
