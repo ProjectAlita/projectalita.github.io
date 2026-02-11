@@ -46,13 +46,13 @@ Once logged in to Langfuse Cloud:
 
 1. **Access Projects:** You'll be directed to the projects overview page
 2. **Create New Project (if needed):**
-        - Click the **"New Project"** button
-        - Enter a **Project Name** (e.g., "ELITEA Production")
-        - Optionally add a description
-        - Click **"Create"** to create the project
+     - Click the **"New Project"** button
+     - Enter a **Project Name** (e.g., "ELITEA Production")
+     - Optionally add a description
+     - Click **"Create"** to create the project
 3. **Select Existing Project:** If you already have a project, click on it to open the project dashboard
 
-![Create New Project](../../img/how-tos/credentials-toolkits/langfuse/create-project.gif)
+![Create New Project](../../img/integrations/third-party-integrations/langfuse/create-project.gif)
 
 !!! note "Project Organization"
     Projects in Langfuse organize your traces and analytics. You can create separate projects for different environments (development, staging, production) or different applications.
@@ -77,7 +77,7 @@ Once logged in to Langfuse Cloud:
         - If you lose the secret key, you must generate a new key pair
 
 
-![New API Keys](../../img/how-tos/credentials-toolkits/langfuse/create-api-key.gif)
+![New API Keys](../../img/integrations/third-party-integrations/langfuse/create-api-key.gif)
 
 !!! note "Next Steps"
     After obtaining your keys, verify they work correctly:
@@ -118,7 +118,7 @@ To integrate Langfuse with ELITEA for LLM tracing and observability:
 2. Click the **+ (Create New)** button
 3. Select **Langfuse** from the credential type list
 
-      ![Access Credentials](../../img/how-tos/credentials-toolkits/langfuse/select-langfuse-credential.gif)
+      ![Access Credentials](../../img/integrations/third-party-integrations/langfuse/select-langfuse-credential.gif)
 
 **Configure and Save Langfuse Credential**
 
@@ -135,7 +135,7 @@ To integrate Langfuse with ELITEA for LLM tracing and observability:
 2. **Test Connection:** Click **Test Connection** to verify that your credentials are valid and ELITEA can successfully connect to Langfuse
 3. **Save Credential:** Click **Save** to create the credential. After saving, your Langfuse credential will be added to the credentials dashboard and will be ready to use in agent configurations, pipeline configurations, and toolkit integrations requiring LLM tracing. You can view, edit, or delete it from the **Credentials** menu at any time.
 
-      ![alt text](../../img/how-tos/credentials-toolkits/langfuse/langfuse-credential-configs.gif)
+      ![alt text](../../img/integrations/third-party-integrations/langfuse/langfuse-credential-configs.gif)
 
 ---
 
@@ -396,6 +396,7 @@ Tokens > 10,000 (large conversations)
     **Cause:** The provided API keys are incorrect or have been revoked.
     
     **Solution:**
+
     1. Log in to your Langfuse dashboard
     2. Navigate to **Project Settings** → **API Keys**
     3. Verify the keys match exactly (no extra spaces)
@@ -406,6 +407,7 @@ Tokens > 10,000 (large conversations)
     **Cause:** The API keys lack necessary permissions for the project.
     
     **Solution:**
+
     1. Verify the keys are from the correct Langfuse project
     2. Check key permissions in Langfuse dashboard
     3. Ensure the keys have read/write access to tracing data
@@ -415,6 +417,7 @@ Tokens > 10,000 (large conversations)
     **Cause:** The Base URL is incorrect or the Langfuse server is unreachable.
     
     **Solution:**
+
     1. **Verify Base URL:**
          - For Langfuse Cloud: `https://cloud.langfuse.com`
          - For Self-Hosted: Check your deployment URL
@@ -434,6 +437,7 @@ Tokens > 10,000 (large conversations)
     **Cause:** The Langfuse server is slow to respond or experiencing issues.
     
     **Solution:**
+
     1. **Check Server Status:**
          - For Langfuse Cloud: Check [status page](https://status.langfuse.com)
          - For Self-Hosted: Verify server health and resources
@@ -452,6 +456,7 @@ Tokens > 10,000 (large conversations)
     **Cause:** Configuration is saved but traces are not being sent to Langfuse.
     
     **Solution:**
+
     1. **Verify Agent/Pipeline Configuration:**
          - Ensure the Langfuse credential is selected in agent or pipeline settings
          - Check that observability is enabled for the execution
@@ -469,6 +474,7 @@ Tokens > 10,000 (large conversations)
     **Cause:** Token counts or pricing information may not be accurate.
     
     **Solution:**
+
     1. **Verify Model Pricing:**
          - Check that model pricing is configured correctly in Langfuse
          - Update pricing information if provider costs change

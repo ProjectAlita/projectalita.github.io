@@ -118,7 +118,6 @@ nav:
           - Use Credentials: how-tos/credentials-toolkits/how-to-use-credentials.md
           - Individual User Credentials for Shared Toolkits: how-tos/credentials-toolkits/creating-toolkits-with-user-specific-credentials.md
           - Test Toolkits Tools: how-tos/credentials-toolkits/how-to-test-toolkit-tools.md
-          - Langfuse: how-tos/credentials-toolkits/langfuse.md
           - Toolkit History Tab: how-tos/credentials-toolkits/toolkit_history_tab.md
           - Automate JIRA Issue Review: how-tos/credentials-toolkits/jira-automation-with-elitea.md
           - Use Webhooks: how-tos/credentials-toolkits/how-to-use-webhooks.md
@@ -168,7 +167,8 @@ nav:
           - Zephyr Enterprise: integrations/toolkits/zephyr_enterprise_toolkit.md
       - Third-Party Integrations:
           - API Integration Guide: integrations/third-party-integrations/api-usage.md
-          - Power Automate Integration: integrations/third-party-integrations/power-automate-integration.md          
+          - Power Automate Integration: integrations/third-party-integrations/power-automate-integration.md
+          - Langfuse: integrations/third-party-integrations/langfuse.md          
       - Extensions:
           - Elitea Code: integrations/extensions/elitea-code.md
           - Elitea Code Chat: integrations/extensions/elitea-code-chat.md
