@@ -167,7 +167,8 @@ nav:
           - Zephyr Enterprise: integrations/toolkits/zephyr_enterprise_toolkit.md
       - Third-Party Integrations:
           - API Integration Guide: integrations/third-party-integrations/api-usage.md
-          - Power Automate Integration: integrations/third-party-integrations/power-automate-integration.md          
+          - Power Automate Integration: integrations/third-party-integrations/power-automate-integration.md
+          - Langfuse: integrations/third-party-integrations/langfuse.md          
       - Extensions:
           - Elitea Code: integrations/extensions/elitea-code.md
           - Elitea Code Chat: integrations/extensions/elitea-code-chat.md
