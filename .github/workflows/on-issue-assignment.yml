@@ -299,10 +299,10 @@ jobs:
 
       - name: Run issue reproducer
         id: issue-reproducer
-        working-directory: /Volumes/KINGSTON/Development/elitea
+        working-directory: /Users/arozumenko/Development/elitea
         timeout-minutes: 45
         env:
-          CLAUDE_CONFIG_DIR: /Volumes/KINGSTON/Development/elitea/.claude
+          CLAUDE_CONFIG_DIR: /Users/arozumenko/Development/elitea/.claude
         run: |
           echo "🔬 Starting issue reproduction for: ${{ needs.notify-assignment.outputs.issue_url }}"
           echo "Working directory: $(pwd)"
@@ -428,10 +428,10 @@ jobs:
 
       - name: Run autonomous RCA investigation
         id: rca-investigation
-        working-directory: /Volumes/KINGSTON/Development/elitea
+        working-directory: /Users/arozumenko/Development/elitea
         timeout-minutes: 30
         env:
-          CLAUDE_CONFIG_DIR: /Volumes/KINGSTON/Development/elitea/.claude
+          CLAUDE_CONFIG_DIR: /Users/arozumenko/Development/elitea/.claude
         run: |
           echo "🔍 Starting autonomous investigation for issue: ${{ needs.notify-assignment.outputs.issue_url }}"
           echo "Working directory: $(pwd)"
@@ -552,10 +552,10 @@ jobs:
 
       - name: Run auto-fixer implementation
         id: auto-fixer
-        working-directory: /Volumes/KINGSTON/Development/elitea
+        working-directory: /Users/arozumenko/Development/elitea
         timeout-minutes: 60
         env:
-          CLAUDE_CONFIG_DIR: /Volumes/KINGSTON/Development/elitea/.claude
+          CLAUDE_CONFIG_DIR: /Users/arozumenko/Development/elitea/.claude
         run: |
           echo "🔧 Starting auto-fixer for issue: ${{ needs.notify-assignment.outputs.issue_url }}"
           echo "Working directory: $(pwd)"
@@ -672,7 +672,7 @@ jobs:
 
       - name: Run git reset and pull script
         id: sync-repos
-        working-directory: /Volumes/KINGSTON/Development/elitea
+        working-directory: /Users/arozumenko/Development/elitea
         timeout-minutes: 10
         run: |
           echo "🔄 Starting codebase sync for testing: ${{ needs.notify-assignment.outputs.issue_url }}"
