@@ -76,7 +76,6 @@ nav:
               - Python Sandbox: how-tos/chat-conversations/python-sandbox-internal-tool.md
               - Data Analysis: how-tos/chat-conversations/data-analysis-internal-tool.md
               - Planner: how-tos/chat-conversations/planner-internal-tool.md
-              - Image creation: how-tos/chat-conversations/image-generation.md
               - Swarm Mode: how-tos/chat-conversations/swarm-mode-internal-tool.md
       - Indexing:
           - Indexing Overview: how-tos/indexing/indexing-overview.md
@@ -138,7 +137,6 @@ nav:
           - ADO Wiki / Boards / Test Plans: integrations/toolkits/ado_wiki_plan_board_toolkit.md
           - Artifact: integrations/toolkits/artifact_toolkit.md
           - BitBucket: integrations/toolkits/bitbucket_toolkit.md
-          - Browser: integrations/toolkits/browser_toolkit.md
           - Confluence: integrations/toolkits/confluence_toolkit.md
           - Custom: integrations/toolkits/custom_toolkit.md
           - Figma: integrations/toolkits/figma_toolkit.md
@@ -164,7 +162,7 @@ nav:
           - TestRail: integrations/toolkits/testrail_toolkit.md
           - Xray Cloud: integrations/toolkits/xray_toolkit.md
           - Zephyr Scale: integrations/toolkits/zephyr_scale_toolkit.md
-          - Zephyr Enterprise: integrations/toolkits/zephyr_enterprise_toolkit.md
+          - Zephyr Enterprise: integrations/toolkits/zephyr_enterprise_toolkit.md       
       - Third-Party Integrations:
           - API Integration Guide: integrations/third-party-integrations/api-usage.md
           - Power Automate Integration: integrations/third-party-integrations/power-automate-integration.md
@@ -218,11 +216,11 @@ nav:
       - Additional Resources: support/additional-resources.md
 
   - Archive:
+
       - Quick Start: archive/quick-start.md
       - Very Quick Start: archive/very-quick-start.md
       - Create Conversation: archive/create-conversation.md
       - Create an Agent: archive/create-agent.md
-      - Create a Pipeline: archive/create-pipeline.md
       - Create a Toolkit: archive/create-toolkit.md
       - Indexing Quick Start: archive/indexing-quick-start.md
       - Prompt Magic Assistant: archive/prompt-magic-assistant.md
@@ -238,13 +236,16 @@ nav:
       - Fork Entities: features/forking.md
       - Public Project: features/public-project.md
       - Monitoring: features/monitoring.md
-      - Pandas: archive/pandas_toolkit.md
       - Server (STDIO): integrations/mcp/mcp-server-stdio.md
       - Client (STDIO): integrations/mcp/mcp-client.md
-
+      - Toolkits:
+          - Browser: archive/browser_toolkit.md
+          - Pandas: archive/pandas_toolkit.md
       - Pipelines:
           - Pipelines Architecture: features/pipelines/pipeline-agent-framework.md
           - Iteration Nodes: how-tos/pipelines/nodes/iteration-nodes.md
+          - Create a Pipeline: archive/create-pipeline.md
+
 
 theme:
   name: material

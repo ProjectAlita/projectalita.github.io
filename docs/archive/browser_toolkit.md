@@ -31,7 +31,7 @@ The Google Tool within the Browser Toolkit leverages Google's Programmable Searc
 2.  **Sign In with Google Account:** If you are not already logged in, sign in with your Google account. If you don't have a Google account, you will need to create one.
 3.  **Create a New Search Engine:** Click the **"Add"** button to create a new Custom Search Engine.
 
-    ![Browser-AddSearchEngine](../../img/integrations/toolkits/browser/Browser-AddSearchEngine.png)
+    ![Browser-AddSearchEngine](../img/archive/browser/Browser-AddSearchEngine.png)
 
 4.  **Configure Search Engine Details:** Fill in the required fields for your search engine:
     *   **Sites to search:** Specify the websites or web pages you want your search engine to cover. You can enter specific URLs or entire domains. You can also choose to search the entire web if needed.
@@ -39,15 +39,15 @@ The Google Tool within the Browser Toolkit leverages Google's Programmable Searc
     *   **Search Settings:** Configure additional search settings as needed for your use case.
     *   **Terms of Service:** Make sure to read and agree to Google's Programmable Search Engine Terms of Service.
 
-    ![Browser-ConfigSearchEngine](../../img/integrations/toolkits/browser/Browser-ConfigSearchEngine.png)
+    ![Browser-ConfigSearchEngine](../img/archive/browser/Browser-ConfigSearchEngine.png)
 
 5.  **Get Custom Search Engine ID:** Once your search engine is created, you will be provided with a **Custom Search Engine ID**.  You can find this ID in the code snippet provided by Google or by clicking on your search engine in the Programmable Search Engine control panel.
 
-    ![Browser-SearchEngineID](../../img/integrations/toolkits/browser/Browser-SearchEngineID.png)
+    ![Browser-SearchEngineID](../img/archive/browser/Browser-SearchEngineID.png)
 
-    ![Browser-SearchEngineIDLocation](../../img/integrations/toolkits/browser/Browser-SearchEngineIDLocation_1.png)
+    ![Browser-SearchEngineIDLocation](../img/archive/browser/Browser-SearchEngineIDLocation_1.png)
 
-    ![Browser-SearchEngineIDLocation](../../img/integrations/toolkits/browser/Browser-SearchEngineIDLocation.png)
+    ![Browser-SearchEngineIDLocation](../img/archive/browser/Browser-SearchEngineIDLocation.png)
 
 ### Token/API Key Generation: Obtaining Google API Key
 
@@ -55,17 +55,17 @@ To use the Google Tool, you also need a Google API Key:
 
 1.  **Access Programmatic Access Section:** In the Programmable Search Engine control panel, scroll down to the **"Programmatic Access"** section and click the **"Get started"** button.
 
-    ![Browser-SearchEngineIDLocation](../../img/integrations/toolkits/browser/Browser-SearchEngineIDLocation_1.png)
+    ![Browser-SearchEngineIDLocation](../img/archive/browser/Browser-SearchEngineIDLocation_1.png)
 
-    ![Browser-ProgrammaticAccess](../../img/integrations/toolkits/browser/Browser-ProgrammaticAccess.png)
+    ![Browser-ProgrammaticAccess](../img/archive/browser/Browser-ProgrammaticAccess.png)
 
 2.  **Select or Create Project:** Select an existing Google Cloud Project or create a new one if required.
 
 3.  **Get API Key:** Your API key will be displayed. **Securely copy and store this API Key.** You will need it to configure the Browser Toolkit in ELITEA.
 
-    ![Browser-APIKey](../../img/integrations/toolkits/browser/Browser-APIKey_2.png)
+    ![Browser-APIKey](../img/archive/browser/Browser-APIKey_2.png)
 
-    ![Browser-APIKey](../../img/integrations/toolkits/browser/Browser-APIKey.png)
+    ![Browser-APIKey](../img/archive/browser/Browser-APIKey.png)
 
 **Important Security Note:** Treat your Google API Key and Custom Search Engine ID as sensitive credentials. Store them securely and avoid exposing them in your Agent instructions or public configurations. ELITEA's Secrets Management feature is recommended for secure storage.
 
@@ -80,7 +80,7 @@ To integrate Browser functionalities into your workflows, you will need to confi
     *   **Create a New Agent:** Click on the **"+ Agent"** button to create a new Agent. Follow the on-screen prompts to define essential Agent attributes such as Agent name, a descriptive Agent description, the desired Agent type, and initial instructions for the Agent.
     *   **Edit an Existing Agent:** Select the Agent you intend to integrate with Browser from your list of Agents. Click on the Agent to open its configuration settings for editing.
 
-![Browser-agent](../../img/integrations/toolkits/browser/create_agent.png)
+![Browser-agent](../img/archive/browser/create_agent.png)
 
 3.  **Access Tools Section:** Within the Agent configuration interface, scroll down until you locate the **"Tools"** section. This section is where you will add and configure toolkits, including the Browser Toolkit.
 
@@ -98,7 +98,7 @@ This section provides detailed instructions on how to configure the Browser Tool
     *   **Custom Search Engine ID:** Enter your **Custom Search Engine ID** obtained from Google Programmable Search Engine setup ( mandatory only in case Google tool is selected ).
     *   **Select Tools:**  Choose the specific tools from the Browser Toolkit that you want to enable for this agent by selecting the checkboxes next to their names.
 
-    ![Browser-Toolkit_Configuration](../../img/integrations/toolkits/browser/Browser-Toolkit_Configuration.png)
+    ![Browser-Toolkit_Configuration](../img/archive/browser/Browser-Toolkit_Configuration.png)
 
     **Enable Desired Tools:** In the "Tools" section within the Browser toolkit configuration panel, **select the checkboxes next to the specific Browser tools** that you want to enable for your Agent. Available tools include:
 
@@ -202,7 +202,7 @@ Here are practical use cases demonstrating how to leverage the Browser Toolkit w
 *   **Web Page Protected Against Non-Human Access:**
     *   **Problem:**  Tools like `single_url_crawler` or `get_html_content` fail to retrieve content from a webpage, and you may encounter errors indicating that the page is protected against automated access (e.g., CAPTCHA requirements, bot detection).
 
-        ![Browser-ProtectedPageError](../../img/integrations/toolkits/browser/Browser-ProtectedPageError.png)
+        ![Browser-ProtectedPageError](../img/archive/browser/Browser-ProtectedPageError.png)
 
     *   **Possible Solutions:**
         1.  **Page Access Restrictions:** The website is intentionally blocking programmatic access. Unfortunately, ELITEA Browser Toolkit is not designed to bypass such protections.
@@ -211,7 +211,7 @@ Here are practical use cases demonstrating how to leverage the Browser Toolkit w
 *   **Inaccessible URL:**
     *   **Problem:** Tools fail with errors indicating that the provided URL is not accessible or cannot be reached (e.g., "URL not found", "Connection timed out").
 
-        ![Browser-InaccessibleURL](../../img/integrations/toolkits/browser/Browser-InaccessibleURL.png)
+        ![Browser-InaccessibleURL](../img/archive/browser/Browser-InaccessibleURL.png)
 
     *   **Troubleshooting Steps:**
         1.  **Verify URL:** Double-check the URL for typos or errors. Ensure it is a valid and correctly formatted web address.
@@ -226,7 +226,7 @@ Here are practical use cases demonstrating how to leverage the Browser Toolkit w
 *   **Error with Some Web Page Elements:**
     *   **Problem:**  For some web pages, the Browser Toolkit might not be able to retrieve all dynamic content, especially elements heavily reliant on JavaScript rendering or AJAX loading. You might find that the retrieved content is incomplete or missing certain sections.
 
-        ![Browser-JSElementsError](../../img/integrations/toolkits/browser/Browser-JSElementsError.png)
+        ![Browser-JSElementsError](../img/archive/browser/Browser-JSElementsError.png)
 
     *   **Explanation:** The Browser Toolkit, in its current form, might have limitations in fully rendering and extracting content from highly dynamic web pages that heavily depend on client-side JavaScript execution. Static content and server-rendered HTML are generally retrieved more reliably.
     *   **Limitations:**  Be aware that for very complex, JavaScript-heavy websites, the Browser Toolkit's content extraction might be limited to the initially loaded HTML and may not capture dynamically generated content that appears after page load.
@@ -279,5 +279,5 @@ To further enhance your understanding and skills in using the Browser Toolkit wi
 
 *   **[Programmable Search Engine Help](https://support.google.com/programmable-search/#topic=4513742)**: - *Official Google Programmable Search Engine documentation and help resources.*
 *   **[Programmable Search Engine Setup](https://programmablesearchengine.google.com/u/1/controlpanel/all)**: - *Direct link to the Google Programmable Search Engine control panel to set up and manage your custom search engines.*
-*   **[ELITEA Secrets Management](../../menus/settings/secrets.md)**: Learn how to securely store your Zephyr Scale API Token using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Zephyr Scale toolkit to automate your workflows.
+*   **[ELITEA Secrets Management](../menus/settings/secrets.md)**: Learn how to securely store your Zephyr Scale API Token using ELITEA's Secrets management feature for enhanced security.
+*   **[ELITEA Agents Configuration](../menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Zephyr Scale toolkit to automate your workflows.
