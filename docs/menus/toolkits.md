@@ -164,8 +164,7 @@ The platform supports a wide range of toolkits, organized by category. Below is 
 |                                 | Zephyr Essential                                                                  | Zephyr test management, essential edition            |
 |                                 | [Zephyr Scale](../integrations/toolkits/zephyr_scale_toolkit.md)                 | Zephyr Scale test management for Jira Cloud          |
 |                                 | Zephyr Squad                                                                      | Zephyr Squad test management for Jira Server         |
-| **Testing**                     | [Browser](../integrations/toolkits/browser_toolkit.md)                           | Browser automation and web testing                   |
-|                                 | Carrier                                                                           | Carrier performance testing platform                 |
+| **Testing**                     | Carrier                                                                           | Carrier performance testing platform                 |
 |                                 | [Report Portal](../integrations/toolkits/reportportal_toolkit.md)                | Test reporting, analytics, and dashboards            |
 |                                 | [TestIO](../integrations/toolkits/testIO_toolkit.md)                             | TestIO crowdsourced testing services                 |
 
