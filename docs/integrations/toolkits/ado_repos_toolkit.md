@@ -1,26 +1,28 @@
-# ELITEA Toolkit Guide: Azure Repos (ADO Repos) Integration
+# Azure Repos (ADO Repos) Toolkit Integration Guide
+
+---
 
 ## Introduction
 
-### Purpose of this Guide
+This guide is your definitive resource for integrating and utilizing the **Azure Repos (ADO Repos) toolkit** within ELITEA. It provides a comprehensive, step-by-step walkthrough, from generating an Azure DevOps Personal Access Token to configuring the toolkit in ELITEA and effectively using it within your Agents, Pipelines, and Chat conversations. By following this guide, you will unlock the power of automated code management, streamlined Azure DevOps workflows, and enhanced team collaboration, all directly within the ELITEA platform.
 
-This guide is your definitive resource for integrating and effectively utilizing the **Azure Repos (ADO Repos) toolkit** within ELITEA. It provides a detailed, step-by-step walkthrough, from setting up your Azure DevOps Personal Access Token to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated code management, streamlined Azure DevOps workflows, and enhanced team collaboration, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your software development lifecycle within the Azure DevOps ecosystem, harnessing the combined strengths of ELITEA and Azure Repos.
+**Brief Overview of Azure Repos**
 
-### Brief Overview of Azure Repos (ADO Repos)
+Azure Repos is a core service within Azure DevOps, providing a robust and scalable cloud-hosted platform for version control and collaborative code management. It offers essential tools for development teams to manage their codebase efficiently and collaborate effectively throughout the software development lifecycle. Azure Repos includes features for:
 
-Azure Repos, a core service within Azure DevOps, is a robust and scalable cloud-hosted platform for version control and collaborative code management. It provides development teams with the essential tools to manage their codebase efficiently and collaborate effectively throughout the software development lifecycle. Azure Repos offers a comprehensive set of features, including:
+*   **Versatile Version Control:** Supports both Git (distributed) and Team Foundation Version Control (TFVC - centralized), providing flexibility for diverse team preferences and project requirements.
+*   **Enhanced Collaborative Development:** Facilitates team-based software development with Pull Requests for code review, Branch Policies for quality enforcement, and Code Search for efficient code discovery.
+*   **Seamless Azure DevOps Integration:** Integrates with Azure Boards for work item tracking, Azure Pipelines for CI/CD, and Azure Test Plans for testing, creating a unified DevOps platform.
+*   **Scalability and Reliability:** Built on Azure cloud infrastructure, providing a highly scalable and reliable platform for repositories of any size.
+*   **Advanced Security and Compliance:** Offers granular access control, branch permissions, audit logging, and compliance certifications.
 
-*   **Versatile Version Control:** Supports both Git, the industry-standard distributed version control system, and Team Foundation Version Control (TFVC), a centralized version control system, providing flexibility to accommodate diverse team preferences and project requirements.
-*   **Enhanced Collaborative Development:** Facilitates seamless team-based software development with powerful collaboration features such as Pull Requests for code review, Branch Policies to enforce code quality and workflow standards, and Code Search for efficient code discovery and navigation.
-*   **Seamless Azure DevOps Integration:** Integrates seamlessly with the broader Azure DevOps ecosystem. Azure Boards for agile work item tracking and project management, and Azure Test Plans for comprehensive testing, creating a unified DevOps platform.
-*   **Scalability and Reliability:** Built on the Azure cloud infrastructure, Azure Repos provides a highly scalable and reliable platform for managing code repositories of any size, from small projects to large enterprise-scale applications, ensuring code availability and data integrity.
-*   **Advanced Security and Compliance:** Offers robust security features, including granular access control, branch permissions, and audit logging, along with compliance certifications, ensuring the security and compliance of your codebase and development processes.
+Integrating Azure Repos with ELITEA brings these powerful version control capabilities directly into your AI-driven workflows. Your ELITEA Agents, Pipelines, and Chat conversations can intelligently interact with Azure Repos repositories to automate code-related tasks, enhance DevOps workflows, and improve team collaboration.
 
-Integrating Azure Repos with ELITEA brings these powerful version control and DevOps capabilities directly into your AI-driven workflows. Your ELITEA Agents can then intelligently interact with your Azure Repos repositories to automate code-related tasks, enhance Azure DevOps pipelines, improve team collaboration, and leverage AI to optimize your entire software development lifecycle within the Azure ecosystem.
+---
 
-## Toolkit's Account Setup and Configuration in Azure Repos
+## Toolkit's Account Setup and Configuration in Azure DevOps
 
-### Account Setup
+**Account Setup**
 
 If you do not yet have an Azure DevOps account and organization, please follow these steps to create one:
 
@@ -49,427 +51,713 @@ If you do not yet have an Azure DevOps account and organization, please follow t
     *   Enter the email address or name of the user you want to add to the project member group and click **"Add"**.
 10. **Verify Repo Access:** After completing user setup, refresh the Azure DevOps page and ensure that the **"Repos"** feature is enabled and visible for your account within your Azure DevOps project. This confirms that you have successfully set up your Azure DevOps account and have access to Azure Repos.
 
-**Note:** If the "Repos" feature is not available, you may need to create a new project within your Azure DevOps organization or verify that Azure Repos is enabled for your organization and project.
+     ![Add user](../../img/integrations/toolkits/ado/ado-repo-add-user.gif){loading=lazy}
 
-### Token/API Key Generation: Creating a Personal Access Token in Azure DevOps
+!!! note "Note:"
+    If the "Repos" feature is not available, you may need to create a new project within your Azure DevOps organization or verify that Azure Repos is enabled for your organization and project.
+
+### Generate a Personal Access Token (PAT)
 
 For secure integration with ELITEA, it is essential to use an Azure DevOps **Personal Access Token (PAT)**. This method is significantly more secure than using your primary Azure DevOps account password directly and allows you to precisely control the permissions granted to ELITEA.
 
 **Follow these steps to generate a Personal Access Token (PAT) in Azure DevOps:**
 
 1.  **Log in to Azure DevOps:** Access your Azure DevOps organization by navigating to `https://dev.azure.com/` and logging in with your credentials.
-2.  **Access User Settings:** Click on the **User settings** icon, typically located in the top right corner of the Azure DevOps interface, next to your profile picture. From the dropdown menu, select **"Personal access tokens"**.
-3.  **Generate New Token:** On the "Personal Access Tokens" page, click the **"+ New Token"** button to create a new PAT.
-4.  **Configure Token Details:** In the "Create a new personal access token" panel, configure the following settings:
-    *   **Name:** In the "Name" field, enter a descriptive label for your token. For example, use "ELITEA Integration Token" or "ELITEA Agent Access." This label will help you easily identify the purpose of this token in the future.
-    *   **Organization (Optional):** Select the Azure DevOps organization for which this token will be valid. In most cases, you will select "All accessible organizations" to allow the token to access resources across your organizations.
-    *   **Expiration (Recommended):** For enhanced security, it is highly recommended to set an **Expiration date** for your token. Choose a reasonable validity period that aligns with your security policies. Shorter expiration periods are generally more secure.
-    *   **Scopes - Grant Least Privilege (Crucial for Security):** Carefully and deliberately select the **scopes** or permissions you grant to this token. **It is paramount to grant only the absolute minimum necessary permissions** required for your ELITEA Agent's intended interactions with Azure Repos. Overly permissive tokens pose a significant security risk. For typical ELITEA integration with Azure Repos, consider these minimal scopes:
+2.  **Access User Settings:** Click on the **User settings** icon in the top right corner, next to your profile picture. From the dropdown menu, select **"Personal access tokens"**.
+3.  **Generate New Token:** Click the **"+ New Token"** button to create a new PAT.
+4.  **Configure Token Details:** In the "Create a new personal access token" panel, configure the following:
+    *   **Name:** Enter a descriptive label (e.g., "ELITEA Integration" or "ELITEA ADO Access")
+    *   **Organization:** Select "All accessible organizations" or choose specific organizations
+    *   **Expiration:** Set an expiration date for enhanced security
+    *   **Scopes:** Grant only the minimum necessary permissions
 
-        *   **Minimal Scopes for Common Use Cases:**
-            *   **Custom Defined:** Select "Custom defined" to manually choose granular scopes.
-            *   **Code:** Expand the "Code" section and select:
-                *   **Read & write:** (Grants read and write access to code repositories. If possible, for enhanced security, consider using more granular code scopes instead of full "Read & write" if your agent only needs read access.)
-                    *   **Read:** (If your agent only needs to read repository content and not modify it, select "Read" instead of "Read & write" for even tighter security.)
-            *   **Work items:** Expand the "Work items" section and select:
-                *   **Read:** (If your agent needs to read work item details, select "Read")
-                *   **Write:** (If your agent needs to create or update work items, select "Write". Only include this if your Agent needs to manage work items.)
+    !!! tip "Token Scopes"
+        **Minimal Scopes for Common Use Cases:**
+    
+        * **Custom Defined** - Select to manually choose granular scopes
+        * **Code**:
+            * **Read & write** (For full repository access)
+            * **Read** (If agent only needs to read repository content)
+        * **Work items**:
+            * **Read** (To read work item details)
+            * **Write** (To create or update work items - only if needed)    
+        * **Additional Scopes for Specific Functionality (Grant only if needed):**    
+            * **Build** (For Azure Pipelines builds interaction)
+            * **Release** (For Azure Pipelines releases interaction)
+            * **Test Management** (For Azure Test Plans interaction)
 
-        *   **Additional Scopes for Specific Functionality (Grant only when needed):**
-            *   **Build:** (If your Agent needs to interact with Azure Pipelines builds)
-            *   **Release:** (If your Agent needs to interact with Azure Pipelines releases)
-            *   **Test Management:** (If your Agent needs to interact with Azure Test Plans)
+5.  **Create Token:** Click the **"Create"** button to generate your PAT.
+6.  **Copy and Store Token:** **Copy the generated token immediately** - this is your only chance to see it. Store it securely in a password manager or ELITEA's **[Secrets](../../menus/settings/secrets.md)** feature.
 
-    **Important Security Best Practices:**
+    ![AdoRepos-Generate_PAT](../../img/integrations/toolkits/ado/ado-repo-new-token.gif){loading=lazy}
 
-    *   **Principle of Least Privilege:** **Strictly adhere to the principle of least privilege.** Grant only the absolute minimum set of scopes necessary for your ELITEA Agent to perform its specific, intended tasks. Avoid granting broad or unnecessary permissions.
-    *   **Avoid Full Access Scopes:** **Avoid granting full access scopes like "Full access" unless absolutely necessary and with a clear and thorough understanding of the significant security implications.** Full access scopes provide extensive administrative privileges and should be avoided for integration purposes whenever possible.
-    *   **Regular Token Review and Rotation:** Implement a process for regularly reviewing the Personal Access Tokens you have generated, their associated scopes, and their usage. Rotate tokens periodically (generate new tokens and revoke older ones) as a proactive security measure, especially for integrations that handle sensitive data or critical operations.
-    *   **Secure Storage:** Store the generated Personal Access Token securely, preferably using ELITEA's built-in Secrets Management feature, rather than hardcoding it directly in Agent configurations or less secure storage locations.
+!!! warning "Important Security Practices"
+    **Principle of Least Privilege:** Grant only the scopes absolutely essential for your ELITEA integration tasks.
+    
+    **Avoid "Full Access" Scopes:** Never grant full access unless absolutely necessary and with clear understanding of security implications.
+    
+    **Regular Token Review and Rotation:** Regularly review generated tokens and their scopes. Rotate tokens periodically as a security best practice.
 
-5.  **Create Token:** Click the **"Create"** button at the bottom of the panel to generate your Personal Access Token.
-6.  **Securely Copy and Store the Token:** **Immediately copy the generated token** that is displayed in the "Success!" pop-up window. **This is the only time you will be able to view and copy the full token value.** Store it securely using a robust password manager or, ideally, ELITEA's built-in Secrets feature for enhanced security within the ELITEA platform. You will require this token to configure the Azure Repos toolkit within ELITEA.
-
-![AdoRepos-Generate_PAT](../../img/integrations/toolkits/adorepos/AdoRepos-Generate_PAT.png)
+---
 
 ## System Integration with ELITEA
 
-### Agent Creation/Configuration
+To integrate Azure Repos with ELITEA, you need to follow a three-step process: **Create Credentials → Create Toolkit → Use in Agents/Pipelines/Chat**. This workflow ensures secure authentication and proper configuration.
 
-To integrate Azure Repos functionalities into your workflows, you will need to configure the Azure Repos toolkit within an ELITEA Agent. You can either create a new Agent specifically for Azure Repos interactions or modify an existing Agent to incorporate Azure Repos tools.
+### Step 1: Create Azure DevOps Credentials
+Before creating a toolkit, you must first create Azure DevOps credentials in ELITEA:
 
-1.  **Navigate to Agents Menu:** In ELITEA, access the **Agents** menu from the main navigation panel.
-2.  **Create or Edit Agent:**
-    *   **Create a New Agent:** Click on the **"+ Agent"** button to initiate the creation of a new Agent. Follow the on-screen prompts to define essential Agent attributes such as Agent name, a descriptive Agent description, the desired Agent type, and initial instructions for the Agent.
-    *   **Edit an Existing Agent:** Select the Agent you intend to integrate with Azure Repos from your list of Agents. Click on the Agent's name to open its configuration settings for editing.
-3.  **Access Tools Section:** Within the Agent configuration interface, scroll down until you locate the **"Tools"** section. This section is where you will add and configure toolkits, including the Azure Repos toolkit.
+1. **Navigate to Credentials Menu:** Open the sidebar and select **[Credentials](../../menus/credentials.md)**.
+2. **Create New Credential:** Click the **`+ Create`** button.
+3. **Select Azure DevOps:** Choose **Ado** as the credential type.
+4. **Configure Credential Details:**
 
-### Toolkit Configuration
+    | Field | Description | Example |
+    |-------|-------------|---------|
+    | **Display Name** | Enter a descriptive name (e.g., "Azure DevOps - Team Project Access") | `Azure DevOps - Team Project Access` |
+    | **ID** | Unique identifier for the credential | 	Auto-populated from the Display Name |
+    | **Organization Url** | Enter your Azure DevOps organization URL (e.g., `https://dev.azure.com/YourOrganization`) | `https://dev.azure.com/MyCompany` |
+    | **Project** | Enter your Azure DevOps project name (e.g., `MyProject`) | `ProjectAlpha` |
+    | **Token** | Enter your PAT or select a secret containing your PAT | `ghp_1234...` |
 
-This section provides detailed instructions on how to configure the Azure Repos toolkit within your ELITEA Agent.
+5. **Test Connection:** Click **Test Connection** to verify your credentials are valid and ELITEA can connect to Azure DevOps
+6. **Save Credential:** Click **Save** to create the credential. It will be available in the Credentials dashboard for use in toolkit configurations.
 
-1.  **Add Toolkit:** In the "Tools" section of the Agent configuration, click on the **"+" icon**. This action will display a dropdown list of available toolkits that can be integrated with your Agent.
-2.  **Select Azure Repos (ADO Repos) Toolkit:** From the dropdown list of available toolkits, choose **"Azure Repos (ADO Repos)"**. Selecting "Azure Repos (ADO Repos)" will open the "New Azure Repos (ADO Repo) tool" configuration panel, where you will specify the settings for your Azure Repos integration.
-3.  **Configure Azure Repos (ADO Repos) Toolkit Settings:** Carefully fill in the following configuration fields within the "New Azure Repos (ADO Repo) tool" section:
+     ![Credentials](../../img/integrations/toolkits/ado/ado-credentials-create.gif){ loading=lazy }
 
-    *   **Organization URL:** Enter the base URL of your Azure DevOps organization. **It is crucial to use the correct format**, including your organization name: `https://dev.azure.com/{YourOrganizationName}` (Replace `{YourOrganizationName}` with your actual Azure DevOps organization name).
-    *   **Personal Access Token:** In the "Personal Access Token" field, paste the **Personal Access Token** that you generated in Azure DevOps during the "Software-Specific Setup" section of this guide.
-        *   **Enhanced Security with Secrets (Recommended):** For enhanced security, it is strongly recommended to use ELITEA's **Secrets Management** feature to store your Azure DevOps Personal Access Token securely. Instead of directly pasting the token into the "Personal Access Token" field, select the **"Secret"** option and choose the pre-configured secret containing your Azure DevOps token from the dropdown list. This prevents hardcoding sensitive credentials in your toolkit configuration.
-    *   **Organization Name:** Enter your Azure DevOps **Organization Name**. This is the name you used when creating your Azure DevOps organization (e.g., `AlitaTest` in `https://dev.azure.com/AlitaTest/`).
-    *   **Project Name:** Enter the **Project Name** within your Azure DevOps organization that contains the repository you want to access (e.g., `MyProject`).
-    *   **Repository ID:**  This field requires the **Repository ID**, which is a unique identifier for your Azure Repos repository. To obtain the Repository ID, you need to run a `curl` command as described below:
+!!! tip "Security Recommendation"
+    Use **[Secrets](../../menus/settings/secrets.md)** for your PAT instead of entering values directly. Create a secret first, then reference it in your credential configuration.
 
-        **Steps to Obtain Repository ID:**
+### Step 2: Create Azure Repos Toolkit
 
-        1.  **Open a Terminal or Command Prompt:** Open your command-line interface on your local machine.
-        2.  **Execute the `curl` Command:**  Run the following `curl` command, replacing `{PAT}`, `{organization}`, and `{project}` with your actual values:
+Once your credentials are configured, create the Azure Repos toolkit:
 
-            ```bash
-            curl -u {PAT}:  https://dev.azure.com/{organization}/{project}/_apis/git/repositories?api-version=7.1-preview.1
-            ```
+1. **Navigate to Toolkits Menu:** Open the sidebar and select **[Toolkits](../../menus/toolkits.md)**.
+2. **Create New Toolkit:** Click the **`+ Create`** button.
+3. **Select Azure Repos:** Choose **Azure Repos (ADO Repos)** from the list of available toolkit types.
+4. **Configure Toolkit Settings:**
 
-            *   **`{PAT}`:** Replace this with your **Personal Access Token** that you generated in Azure DevOps.
-            *   **`{organization}`:** Replace this with your Azure DevOps **Organization Name** (e.g., `AlitaTest`).
-            *   **`{project}`:** Replace this with your Azure DevOps **Project Name** (e.g., `MyProject`).
+    | Field | Description | Example |
+    |-------|-------------|---------|
+    | **Toolkit Name** | Enter a descriptive name (required) | `Azure Repos - ProjectX` |
+    | **Description** | Provide an optional description | `Toolkit for managing ProjectX repository - handles code reviews and deployments` |
+    | **ADO configuration** | Select your previously created Azure DevOps credential from the dropdown | `Azure DevOps - Team Project Access` |
+    | **PgVector Configuration** | Select the PgVector configuration for embedding storage | `elitea-pgvector` |
+    | **Embedding Model** | Select the embedding model to use | `amazon.titan-embed-text-v2:0` |
+    | **Repository Id** | Enter your repository ID (required - see note below on how to obtain it) | `a1b2c3d4-e5f6-7890-abcd-ef1234567890` |
+    | **Base branch** | Set the default branch | `main` |
+    | **Active branch** | Set the active working branch | `main` |
 
-            **Example Command:**
+5. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific Azure Repos tools you want to enable. **Enable only the tools your agents will actually use** to follow the principle of least privilege
+       * **[Make Tools Available by MCP](../mcp/make-tools-available-by-mcp.md)** - (optional checkbox) Enable this option to make the selected tools accessible through the external MCP clients to use the toolkit's capabilities
+6. **Save Toolkit:** Click **Save** to create the toolkit.
 
-            ```bash
-            curl -u your_personal_access_token:  https://dev.azure.com/AlitaTest/MyProject/_apis/git/repositories?api-version=7.1-preview.1
-            ```
+     ![AdoRepos-Toolkit_Configuration](../../img/integrations/toolkits/adorepos/ado-repo-toolkit-create.gif){loading=lazy}
 
-        3.  **Extract Repository ID from Output:** After executing the `curl` command, you will receive a JSON response in your terminal. Look for the `Repository ID` within the JSON output. It will be a GUID (Globally Unique Identifier) string, typically found within the `"value"` array, for example: `"id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`.
-        4.  **Copy and Paste Repository ID:** Copy the **Repository ID** value from the JSON output and paste it into the **"Repository ID"** field in the ELITEA toolkit configuration.
-
+!!! info "How to Get Repository ID"
+    To find your Repository ID, run this curl command in your terminal:
     
-4.  **Enable Desired Tools:** In the "Tools" section within the Azure Repos toolkit configuration panel, **select the checkboxes next to the specific Azure Repos tools** that you want to enable for your Agent. **It is crucial to enable only the tools that your Agent will actually need to use** to adhere to the principle of least privilege and minimize potential security risks. Available tools include:
-    *   **List branches** - Allows the Agent to list branches in the repository.
-    *   **Set active branch** - Enables the Agent to set a specific branch as active for subsequent operations.
-    *   **Create Branch** - Enables the Agent to create new branches in the repository.
-    *   **Get pull request** - Enables the Agent to retrieve details of a specific pull request.
-    *   **List pull request files** - Allows the Agent to list files changed in a pull request.
-    *   **Comment Pull Request** - Allows the Agent to add comments to pull requests.
-    *   **Create Pull Request** - Enables the Agent to create new pull requests.
-    *   **List files** - Allows the Agent to list files within the repository.
-    *   **Read File** - Allows the Agent to read the content of files within the repository.
-    *   **Create File** - Enables the Agent to create new files within the repository.
-    *   **Update File** - Allows the Agent to update the content of existing files within the repository.
-    *   **Delete File** - Allows the Agent to delete files from the repository.
-    *   **Get Work Items** - Allows the Agent to retrieve lists of work items (issues).
-    *   **Loader** - Allows the agent to retrieve data from repo.
-
-5.  **Complete Setup:** After configuring all the necessary settings and enabling the desired tools, click the **arrow icon** (located at the top right of the toolkit configuration section) to finalize the Azure Repos toolkit setup and return to the main Agent configuration menu.
-6.  Click **Save** in the Agent configuration to save all changes and activate the Azure Repos toolkit integration for your Agent.
-
-![AdoRepos-Toolkit_Configuration](../../img/integrations/toolkits/adorepos/AdoRepos-Toolkit_Configuration.png)
-
-### Tool Overview: Azure Repos (ADO Repos) Toolkit Functionalities
-
-Once the Azure Repos toolkit is successfully configured and added to your Agent, you can utilize the following tools within your Agent's instructions to enable intelligent interaction with your Azure DevOps repositories:
-
-*   **List Branches:**  **Tool Name:** `list_branches`
-    *   **Functionality:** Retrieves a list of all branches available in the specified Azure Repos repository.
-    *   **Purpose:** Enables Agents to fetch branch lists for branch management tasks, reporting, or to provide users with branch options within ELITEA workflows.
-
-*   **Set Active Branch:** **Tool Name:** `set_active_branch`
-    *   **Functionality:** Sets a specific branch as the active branch in the specified Azure Repos repository for subsequent operations.
-    *   **Purpose:** Allows Agents to switch the active branch for file operations or pull request creation within your ELITEA Agent workflows, ensuring actions are performed in the correct branch context.
-
-*   **List Files:** **Tool Name:** `list_files`
-    *   **Functionality:** Retrieves a list of files in the active branch of the specified Azure Repos repository.
-    *   **Purpose:** Allows Agents to browse repository contents, provide users with file lists for navigation, or analyze file structures within ELITEA workflows.
-
-*   **Get Pull Request:** **Tool Name:** `get_pull_request`
-    *   **Functionality:** Retrieves detailed information about a specific pull request from an Azure Repos repository.
-    *   **Purpose:** Enable Agents to fetch PR details for code review assistance, providing context on specific pull requests, or incorporating PR information into ELITEA workflows.
-
-*   **List Pull Request Files:** **Tool Name:** `list_pull_request_files`
-    *   **Functionality:** Retrieves a list of files changed in a specific pull request from an Azure Repos repository.
-    *   **Purpose:** Allow Agents to provide summaries of files changed in a PR, facilitate code review by listing modified files, or analyze the scope of code changes within ELITEA.
-
-*   **Create Branch:**  **Tool Name:** `create_branch`
-    *   **Functionality:** Creates a new branch in the specified Azure Repos repository.
-    *   **Purpose:** Automate the creation of new branches for feature development, bug fixes, or experimental code changes directly from ELITEA.
-
-*   **Read File:**  **Tool Name:** `read_file`
-    *   **Functionality:** Reads the content of a file from the specified Azure Repos repository.
-    *   **Purpose:** Retrieve code snippets, configuration files, or documentation content from your repository to provide context or data to your ELITEA Agent or to users within ELITEA conversations.
-
-*   **Create File:**  **Tool Name:** `create_file`
-    *   **Functionality:** Creates a new file in the specified Azure Repos repository.
-    *   **Purpose:** Automate the creation of new code files, documentation files, or configuration files within your repository directly from ELITEA workflows.
-
-*   **Update File:**  **Tool Name:** `update_file`
-    *   **Functionality:** Updates the content of a specific file in an Azure Repos repository.
-    *   **Purpose:** Automate updating code files, documentation, or configuration files within your repository based on ELITEA workflow outputs or user requests.
-
-*   **Delete File:**  **Tool Name:** `delete_file`
-    *   **Functionality:** Deletes a specific file from an Azure Repos repository.
-    *   **Purpose:** Automate file deletion tasks within your repository, such as removing obsolete files or cleaning up temporary files generated by ELITEA workflows.
-
-*   **Comment Pull Request:** **Tool Name:** `comment_pull_request`
-    *   **Functionality:** Adds a comment to a specific pull request in an Azure Repos repository or to a specific line of a pull request.
-    *   **Purpose:** Automate adding comments to Azure Repos pull requests directly from ELITEA, facilitating communication, updates, and feedback within code review workflows.
-
-*   **Create Pull Request:**  **Tool Name:** `create_pull_request`
-    *   **Functionality:** Creates a new pull request in the specified Azure Repos repository.
-    *   **Purpose:** Automate pull request creation for code contributions, feature branches, or bug fixes directly from ELITEA, streamlining the code review and merging process.
-
-*   **Get Work Items:** **Tool Name:** `get_work_items`
-    *   **Functionality:** Retrieves a list of work items (issues) from the specified Azure DevOps project.
-    *   **Purpose:** Allow Agents to fetch work item lists for task prioritization, reporting, or to provide users with issue summaries within ELITEA workflows.
-
-*   **Loader:** **Tool Name:** `loader`
-    *   **Functionality:** Generates file content from a branch, respecting whitelist and blacklist patterns.
-    *   **Purpose:** Allows Agents to list and fetch content from files in a specified branch, filtered by whitelist and blacklist patterns, to facilitate tasks like code analysis, reporting, or content extraction within ELITEA workflows.
-
-## Instructions and Prompts for Using the Toolkit
-
-To effectively utilize the Azure Repos toolkit within your ELITEA Agents, you need to provide clear instructions within the Agent's "Instructions" field, telling the Agent *how* and *when* to use these tools.
-
-### Instruction Creation for OpenAI Agents
-
-When creating instructions for the Azure Repos toolkit for OpenAI-based Agents, focus on clear, action-oriented language. Break down tasks into simple steps and explicitly state the parameters required for each tool.  OpenAI Agents respond best to instructions that are:
-
-*   **Direct and Imperative:** Use action verbs and clear commands (e.g., "Use the 'read_file' tool...", "Create a branch named...").
-*   **Parameter-Focused:** Clearly list each parameter and how the Agent should determine its value.
-*   **Context-Aware:** Provide enough context so the Agent understands the overall goal and when to use specific tools within a workflow.
-
-When instructing your Agent to use a Azure Repos toolkit, use this pattern:
-Use code with caution.
-Markdown
-Identify the goal: [State the objective, e.g., "To read the content of a file"].
-
-Tool Selection: Use the "[tool_name]" tool.
-
-Parameter Specification: Provide the following parameters:
-
-Parameter Name 1: <value or description of value>
-
-Parameter Name 2: <value or description of value>
-
-...
-
-Expected Outcome: [Optionally, describe what should happen after the tool is used].
-
-**Example Agent Instructions for Azure Repos Toolkit Tools (OpenAI Agent Friendly):**
-
-*   **Agent Instructions for Updating a File:**
-
+    ```bash
+    curl -u {PAT}: https://dev.azure.com/{organization}/{project}/_apis/git/repositories?api-version=7.1-preview.1
     ```
-    1. Goal: To update the content of the 'config.json' file in the 'settings' branch.
-    2. Tool: Use the "update_file" tool.
-    3. Parameters:
-        - Repository Name: "your-azure-devops-organization/your-repository-name"
-        - File Path: "config.json"
-        - Branch Name: "settings"
-        - New Content: "Provide the new JSON configuration content here. For example: {\"setting\": \"new_value\"}"
-    4. Outcome: The 'config.json' file in the 'settings' branch will be updated with the new content.
+    
+    Replace `{PAT}`, `{organization}`, and `{project}` with your actual values. Look for the `"id"` field in the JSON response.
+    
+    **Example:**
+    ```bash
+    curl -u mytoken: https://dev.azure.com/MyOrg/MyProject/_apis/git/repositories?api-version=7.1-preview.1
     ```
 
-*   **Agent Instructions for Creating a New Branch:**
+#### Available Tools:
 
+The Azure Repos toolkit provides the following tools for interacting with Azure DevOps repositories, organized by functional categories:
+
+| **Tool Category** | **Tool Name** | **Description** | **Primary Use Case** |
+|:-----------------:|---------------|-----------------|----------------------|
+| **Branch Management** | | | |
+| | **List branches in repo** | Retrieves all branches in the repository | View available branches for project management |
+| | **Set active branch** | Sets a specific branch as active for operations | Switch context for file operations |
+| | **Create branch** | Creates a new branch in the repository | Start new feature development or bug fixes |
+| **File Operations** | | | |
+| | **List files** | Lists files in the active branch | Browse repository contents |
+| | **Read file** | Reads content of a specific file | Retrieve code or configuration files |
+| | **Create file** | Creates a new file in the repository | Add new code or documentation files |
+| | **Update file** | Updates content of an existing file | Modify code or configuration |
+| | **Delete file** | Deletes a file from the repository | Remove obsolete or temporary files |
+| **Pull Request Management** | | | |
+| | **List open pull requests** | Retrieves list of open pull requests | Track pending code reviews |
+| | **Get pull request** | Retrieves details of a specific pull request | Get PR information for review |
+| | **List pull request files** | Lists files changed in a pull request | See what files were modified in PR |
+| | **Create pull request** | Creates a new pull request | Initiate code review process |
+| | **Comment on pull request** | Adds comments to a pull request | Provide feedback on code changes |
+| **Commit Operations** | | | |
+| | **Get commits** | Retrieves commit history and details | Track code changes and commit information |
+| **Work Item Integration** | | | |
+| | **Get work items** | Retrieves work items linked to pull requests | View associated issues and tasks |
+| **Search & Index Operations** | | | |
+| | **Index data** | Indexes repository data for semantic search | Enable AI-powered code search capabilities |
+| | **Search index** | Searches indexed repository data | Find code patterns and relevant files |
+| | **Remove index** | Removes indexed data from the system | Clean up outdated search indexes |
+| | **Stepback search index** | Performs advanced stepback search on indexed data | Complex multi-step code analysis |
+| | **Stepback summary index** | Generates summaries from stepback search results | Summarize complex search findings |
+| **Collections** | | | |
+| | **List collections** | Lists available collections in the repository | Manage and view collection structures |
+
+!!! tip "Vector Search Tools"
+    The tools **Index data**, **List collections**, **Remove index**, **Search index**, **Stepback search index**, and **Stepback summary index** require PgVector configuration and an embedding model. These enable advanced semantic search capabilities across your ADO repositories.
+
+#### Testing Toolkit Tools
+
+After configuring your Azure Repos toolkit, you can test individual tools directly from the Toolkit detailed page using the **Test Settings** panel. This allows you to verify that your credentials are working correctly and validate tool functionality before adding the toolkit to your workflows.
+
+**General Testing Steps:**
+
+1. **Select LLM Model:** Choose a Large Language Model from the model dropdown in the Test Settings panel
+2. **Configure Model Settings:** Adjust model parameters like Creativity, Max Completion Tokens, and other settings as needed
+3. **Select a Tool:** Choose the specific Azure Repos tool you want to test from the available tools
+4. **Provide Input:** Enter any required parameters or test queries for the selected tool
+5. **Run the Test:** Execute the tool and wait for the response
+6. **Review the Response:** Analyze the output to verify the tool is working correctly and returning expected results
+
+!!! tip "Key benefits of testing toolkit tools:"
+    * Verify that Azure DevOps credentials and connection are configured correctly
+    * Test tool parameters and see actual responses from your Azure Repos repositories
+    * Debug tool behavior and understand output formats
+    * Optimize tool settings before integrating with agents or pipelines
+    > For detailed instructions on how to use the Test Settings panel, see **[How to Test Toolkit Tools](../../how-tos/credentials-toolkits/how-to-test-toolkit-tools.md)**.
+
+---
+### Step 3: Add Azure Repos Toolkit to Your Workflows
+
+Now you can add the configured Azure Repos toolkit to your agents, pipelines, or use it directly in chat:
+
+---
+#### In Agents:
+
+1. **Navigate to Agents:** Open the sidebar and select **[Agents](../../menus/agents.md)**.
+2. **Create or Edit Agent:** Either create a new agent or select an existing agent to edit.
+3. **Add Azure Repos Toolkit:** 
+     * In the **"TOOLKITS"** section of the agent configuration, click the **"+Toolkit"** icon
+     * Select your configured Azure Repos toolkit from the dropdown list
+     * The toolkit will be added to your agent with the previously configured tools enabled
+
+    ![Agents](../../img/integrations/toolkits/adorepos/ado-repo-agent-add.gif){loading=lazy}     
+
+Your agent can now interact with Azure DevOps Repos using the configured toolkit and enabled tools.
+
+---
+#### In Pipelines:
+
+1. **Navigate to Pipelines:** Open the sidebar and select **[Pipelines](../../menus/pipelines.md)**.
+2. **Create or Edit Pipeline:** Either create a new pipeline or select an existing pipeline to edit.
+3. **Add Azure Repos Toolkit:** 
+     * In the **"TOOLKITS"** section of the pipeline configuration, click the **"+Toolkit"** icon
+     * Select your configured Azure Repos toolkit from the dropdown list
+     * The toolkit will be added to your pipeline with the previously configured tools enabled
+
+     ![Agents](../../img/integrations/toolkits/adorepos/ado-repo-pipeline-add.gif){loading=lazy} 
+
+---
+#### In Chat:
+
+1. **Navigate to Chat:** Open the sidebar and select **[Chat](../../menus/chat.md)**.
+2. **Start New Conversation:** Click **+Create** or open an existing conversation.
+3. **Add Toolkit to Conversation:**
+     * In the chat Participants section, look for the **Toolkits** element
+     * Click the **"Add Tools"** Icon to open the tools selection dropdown
+     * Select your configured Azure Repos toolkit from the dropdown list
+     * The toolkit will be added to your conversation with all previously configured tools enabled
+4. **Use Toolkit in Chat:** You can now directly interact with your Azure DevOps repositories by asking questions or requesting actions that will trigger the Azure Repos toolkit tools.
+
+     ![Agents](../../img/integrations/toolkits/adorepos/ado-repo-chat-add.gif){loading=lazy} 
+
+!!! example "Example Chat Usage:"
+    - "List all open pull requests in the repository that are in review."
+    - "Create a new branch called 'feature-authentication' from the main branch."
+    - "Show me the content of the README.md file."
+    - "Create a pull request to merge 'feature-login' into 'develop' with the title 'Add user authentication'."
+
+---
+
+## Instructions and Prompts for Using the Azure Repos Toolkit
+
+To effectively instruct your ELITEA Agent to use the Azure Repos toolkit, you need to provide clear and precise instructions within the Agent's "Instructions" field. These instructions are crucial for guiding the Agent on *when* and *how* to utilize the available Azure Repos tools to achieve your desired automation goals.
+
+### Instruction Creation for Agents
+
+When crafting instructions for the Azure Repos toolkit, especially for OpenAI-based Agents, clarity and precision are paramount. Break down complex tasks into a sequence of simple, actionable steps. Explicitly define all parameters required for each tool and guide the Agent on how to obtain or determine the values for these parameters. OpenAI Agents respond best to instructions that are:
+
+*   **Direct and Action-Oriented:** Employ strong action verbs and clear commands to initiate actions. For example, "Use the 'read_file' tool...", "Create a branch named...", "List all open pull requests...".
+
+*   **Parameter-Centric:** Clearly enumerate each parameter required by the tool. For each parameter, specify:
+    *   Its name (exactly as expected by the tool)
+    *   The format or type of value expected
+    *   How the Agent should obtain the value – whether from user input, derived from previous steps in the conversation, retrieved from an external source, or a predefined static value
+
+*   **Contextually Rich:** Provide sufficient context so the Agent understands the overarching objective and the specific scenario in which each Azure Repos tool should be applied within the broader workflow. Explain the desired outcome or goal for each tool invocation.
+
+*   **Step-by-Step Structure:** Organize instructions into a numbered or bulleted list of steps for complex workflows. This helps the Agent follow a logical sequence of actions.
+
+*   **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Show me the README file', 'What's in the README.md?', 'Display the project documentation'"
+
+When instructing your Agent to use an Azure Repos toolkit tool, adhere to this structured pattern:
+
+1. **State the Goal:** Begin by clearly stating the objective you want to achieve with this step. For example, "Goal: To retrieve the content of the 'README.md' file."
+
+2. **Specify the Tool:** Clearly indicate the specific Azure Repos tool to be used for this step. For example, "Tool: Use the 'read_file' tool."
+
+3. **Define Parameters:** Provide a detailed list of all parameters required by the selected tool. For each parameter:
+   - **Parameter Name:** `<Parameter Name as defined in tool documentation>`
+   - **Value or Source:** `<Specify the value or how to obtain the value. Examples: "user input", "from previous step", "hardcoded value 'main'", "value of variable X">`
+
+4. **Describe Expected Outcome (Optional but Recommended):** Briefly describe the expected result or outcome after the tool is successfully executed. For example, "Outcome: The Agent will provide the content of the 'README.md' file."
+
+5. **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'Show me the README file', 'What's in the README.md?', 'Display the project documentation'"
+
+!!! example "Example Agent Instructions"
+    **Agent Instructions for Updating a File:**
     ```
-    1. Goal: To create a new feature branch for user authentication.
-    2. Tool: Use the "create_branch" tool.
-    3. Parameters:
-        - Repository Name: "your-azure-devops-organization/your-repository-name"
-        - New Branch Name: "feature-user-auth"
-        - Base Branch: "main"
-    4. Outcome: A new branch named 'feature-user-auth' will be created based on the 'main' branch.
+    Goal: Update the content of a specific file in the Azure Repos repository.
+    
+    Tool: Use the 'update_file' tool.
+    
+    Parameters:
+    - file_path: <Obtain from user input or specify the file path, e.g., "docs/api-guide.md">
+    - content: <The new content for the file. This should be the complete updated file content as provided by the user or generated by the agent.>
+    - commit_message: <A descriptive commit message, e.g., "Updated API documentation with new endpoints">
+    
+    Outcome: The file will be updated in the repository with the new content, and a commit will be created with the specified message.
+    
+    Conversation Starters: "Update the API documentation", "Modify the README file", "Change the configuration settings"
     ```
 
-*   **Agent Instructions for Listing Branches in a Repository:**
+---
+### Chat Usage Examples by Tool Category
 
+The following examples demonstrate how to interact with the Azure Repos toolkit in ELITEA Chat, organized by functional categories. Each example shows the user request and the expected agent behavior.
+
+??? example "Branch Management - Create Branch"
+
+    **User Request:**
     ```
-    1. Goal: To get a list of all branches in the repository to understand the current project structure.
-    2. Tool: Use the "list_branches" tool.
-    3. Parameters:
-        - Repository Name: "your-azure-devops-organization/your-repository-name"
-    4. Outcome: The Agent will provide a list of all branches in the repository.
+    Create a new feature branch called 'feature-user-authentication' from the main branch.
+    ```
+    
+    **Agent Actions:**
+    1. Uses `create_branch` tool with parameters:
+       - branch_name: "feature-user-authentication"
+       - base_branch: "main"
+    
+    **Agent Response:**
+    ```
+    I've successfully created a new branch 'feature-user-authentication' from the main branch. 
+    You can now switch to this branch to start working on the user authentication feature.
     ```
 
-*   **Agent Instructions for Reading a File from a Repository:**
+??? example "File Operations - Read File"
 
+    **User Request:**
     ```
-    1. Goal: To read the content of the 'README.md' file to understand the project's overview.
-    2. Tool: Use the "read_file" tool.
-    3. Parameters:
-        - Repository Name: "your-azure-devops-organization/your-repository-name"
-        - File Path: "README.md"
-        - Branch Name: "main"
-    4. Outcome: The Agent will provide the content of the 'README.md' file from the 'main' branch.
+    Show me the content of the README.md file.
+    ```
+    
+    **Agent Actions:**
+    1. Uses `read_file` tool with parameters:
+       - file_path: "README.md"
+    
+    **Agent Response:**
+    ```
+    Here's the content of README.md:
+    
+    # Project Name
+    
+    This is the main documentation file for our project...
+    [displays full file content]
     ```
 
-### Conversation Starters
+??? example "File Operations - Update File"
 
-Use these conversation starters to interact with your Azure Repos-integrated Agent.
+    **User Request:**
+    ```
+    Update the version number in package.json to 2.0.0
+    ```
+    
+    **Agent Actions:**
+    1. Uses `read_file` to get current package.json content
+    2. Updates the version field
+    3. Uses `update_file` tool with parameters:
+       - file_path: "package.json"
+       - content: [updated content]
+       - commit_message: "Update version to 2.0.0"
+    
+    **Agent Response:**
+    ```
+    I've successfully updated the version number in package.json to 2.0.0. 
+    The change has been committed with the message "Update version to 2.0.0".
+    ```
 
-**1. For Testing and Troubleshooting Connection:**
+??? example "Pull Request Management - Create Pull Request"
 
-These starters are designed to verify if the Azure Repos toolkit is correctly configured and connected to your Azure Repos repository.
+    **User Request:**
+    ```
+    Create a pull request to merge the 'feature-login' branch into 'develop' with the title 'Add user login functionality'.
+    ```
+    
+    **Agent Actions:**
+    1. Uses `create_pull_request` tool with parameters:
+       - source_branch: "feature-login"
+       - target_branch: "develop"
+       - title: "Add user login functionality"
+       - description: [generated or provided description]
+    
+    **Agent Response:**
+    ```
+    I've created pull request #247 to merge 'feature-login' into 'develop'. 
+    Title: "Add user login functionality"
+    
+    You can review and approve the PR in Azure DevOps.
+    ```
 
-*   "List branches in the repository." - *This tests basic connectivity and read permissions.*
-*   "Read the file 'README.md' from the main branch." - *This further tests read permissions and file access.*
-*   "Create a new branch named 'test-connection' based on main." - *This tests write permissions (if enabled) and branch creation functionality. Remember to delete the test branch afterwards.*
-*   "List open pull requests." - *Tests the ability to retrieve pull request data, verifying permissions for PR access.*
-*   "Get work items." - *Tests the ability to retrieve work item data, verifying permissions for issue access.*
+??? example "Pull Request Management - List Open Pull Requests"
 
-**2. For General Agent Usage Scenarios & Workflow Initiation:**
+    **User Request:**
+    ```
+    Show me all open pull requests that need review.
+    ```
+    
+    **Agent Actions:**
+    1. Uses `list_open_pull_requests` tool
+    2. Filters and formats the results
+    
+    **Agent Response:**
+    ```
+    Here are the currently open pull requests:
+    
+    1. PR #245 - "Fix authentication timeout issue" (feature-auth-fix → develop)
+       - Created 2 days ago by John Smith
+       - Status: Waiting for review
+    
+    2. PR #246 - "Add user profile page" (feature-profile → main)
+       - Created 1 day ago by Jane Doe
+       - Status: Changes requested
+    
+    3. PR #247 - "Update API documentation" (docs-update → main)
+       - Created 3 hours ago by Mike Johnson
+       - Status: Ready for review
+    ```
 
-These conversation starters demonstrate how to initiate agent execution for common, practical Azure Repos-related tasks and workflows. They represent typical user requests and showcase the agent's ability to perform useful actions within Azure Repos.
+??? example "Work Item Integration - Get Work Items"
 
-*   "I need to update the documentation file 'user_guide.md' with details about the new API endpoints. Can you help me update it in Azure Repos?" - *This could trigger a workflow involving `read_file` to get the current documentation content, potentially some content modification steps, and then `update_file` to save the updated documentation back to the repository.*
-*   "Create a pull request to merge my 'feature-x' branch into 'develop' for code review and integration." - *This directly initiates the `create_pull_request` tool to automate the pull request creation process.*
-*   "What are the currently open feature branches in the repository that need code review?" - *This would utilize the `list_branches` tool (potentially combined with pull request data) to provide a project status overview, specifically focusing on feature branches awaiting review.*
-*   "I need to add a new configuration file 'deploy.config' to the 'config' directory in the main branch with these settings: [provide configuration settings here]. Can you create this file for me?" - *This would use the `create_file` tool to automate the creation of a new configuration file with user-specified content in the designated repository location.*
-*   "Get me a list of all open work items assigned to me." - *This would use the `get_work_items` tool to retrieve and summarize assigned work items for task management.*
+    **User Request:**
+    ```
+    Show me the work items linked to PR #247.
+    ```
+    
+    **Agent Actions:**
+    1. Uses `get_work_items` tool with parameters:
+       - pull_request_id: 247
+    
+    **Agent Response:**
+    ```
+    The following work items are linked to PR #247:
+    
+    1. Work Item #1234 - Bug: Login timeout after 5 minutes
+       - Type: Bug
+       - Priority: High
+       - Assigned to: John Smith
+       - State: Active
+    
+    2. Work Item #1235 - Task: Update session management documentation
+       - Type: Task
+       - Priority: Medium
+       - Assigned to: Jane Doe
+       - State: In Progress
+    ```
 
-## Use Cases
+---
 
-The Azure Repos toolkit unlocks a vast array of automation possibilities for your software development workflows within ELITEA. Here are compelling use cases, demonstrating how each tool can be effectively applied to streamline development processes and enhance productivity:
+## Troubleshooting
 
-*   **Automated Feature Branching:**
-    *   **Scenario:** When a new feature is planned, the Agent can automatically create a dedicated feature branch in Azure Repos.
-    *   **Tools Used:** `create_branch`
-    *   **Example Instruction:** "Use the 'create_branch' tool to create a new branch named 'feature-branch-name' based on the 'main' branch."
-    *   **Benefit:** Streamlines branch management, ensures organized feature development.
+??? warning "Credential Not Appearing in Toolkit Configuration"
+    **Problem:** When creating a toolkit, your Azure DevOps credential doesn't appear in the credentials dropdown.
+    
+    **Troubleshooting Steps:**
+    
+    1. **Check Credential Scope:** Ensure you're working in the same workspace/project where the credential was created. Private credentials are only visible in your Private workspace, while project credentials are visible within the specific team project.
+    2. **Verify Credential Creation:** Go to the Credentials menu and confirm that your Azure DevOps credential was successfully saved.
+    3. **Credential Type Match:** Ensure you selected "Ado" as the credential type when creating the credential.
 
-*   **Contextual Code Retrieval for Support:**
-    *   **Scenario:** During a support conversation, an Agent can retrieve relevant code snippets from Azure Repos to provide context or examples to the user.
-    *   **Tools Used:** `read_file`
-    *   **Example Instruction:** "Use the 'read_file' tool to read the content of the file 'src/components/UserComponent.js' from the 'main' branch and show it to the user."
-    *   **Benefit:** Enhances support interactions with direct access to codebase information.
+??? warning "Connection Errors"
+    **Problem:** ELITEA Agent fails to establish a connection with Azure DevOps, resulting in errors during toolkit execution.
+    
+    **Troubleshooting Steps:**
+    
+    1. **Verify Organization URL:** Ensure that the **Organization Url** field in the credential configuration is correctly set to your Azure DevOps organization URL in the format: `https://dev.azure.com/YourOrganization`. Double-check spelling and capitalization.
+    2. **Check Personal Access Token (PAT):** Double-check that the **Personal Access Token** you have provided is accurate, has not expired, and is valid for your Azure DevOps account and the target project. Carefully re-enter or copy-paste the token to rule out typos.
+    3. **Verify Token Scopes:** Review the **scopes/permissions** granted to your Personal Access Token in Azure DevOps. Ensure that the token has the necessary scopes (e.g., `vso.code`, `vso.code_write`, `vso.work`) for the specific Azure Repos tools your Agent is attempting to use. Insufficient scopes are a common cause of connection and permission errors.
+    4. **Network Connectivity:** Confirm that both your ELITEA environment and the Azure DevOps service are connected to the internet and that there are no network connectivity issues, firewalls, or proxies blocking the integration.
 
-*   **Automated Documentation Updates:**
-    *   **Scenario:** When code changes are made, the Agent can automatically update related documentation files in the repository.
-    *   **Tools Used:** `read_file`, `update_file`
-    *   **Example Instruction:** "Use the 'read_file' tool to get the current content of 'docs/api.md'. Update it with the new API changes and use 'update_file' to save the updated content back to 'docs/api.md' in the 'main' branch."
-    *   **Benefit:** Keeps documentation synchronized with the latest codebase, reducing manual effort and errors.
+??? warning "Authorization Errors (Permission Denied/Unauthorized)"
+    **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors when attempting to access or modify Azure Repos resources, even with a seemingly valid token.
+    
+    **Troubleshooting Steps:**
+    
+    1. **Re-verify Token Scopes:** Double-check the **scopes/permissions** granted to your Personal Access Token with extreme care. Ensure that the token possesses the precise scopes required for the specific Azure Repos actions your Agent is trying to perform. For example:
+        - `vso.code_full` or `vso.code` (Read) + `vso.code_write` (Write) for repository operations
+        - `vso.work` for work item operations
+        - `vso.code_manage` for pull request management
+    2. **Project Access Permissions:** Confirm that the Azure DevOps account associated with the Personal Access Token has the necessary access permissions to the specified project and repository. Verify that the account is a project member with appropriate roles (e.g., Contributor for write access). Check project and repository settings in Azure DevOps to confirm access levels.
+    3. **Token Revocation or Expiration:** Ensure that the Personal Access Token has not been accidentally revoked in Azure DevOps settings or that it has not reached its expiration date if you set one. Generate a new token if necessary.
 
-*   **Pull Request Automation for Code Review:**
-    *   **Scenario:** After a developer completes a task, the Agent can automatically create a pull request for code review.
-    *   **Tools Used:** `create_pull_request`
-    *   **Example Instruction:** "Use the 'create_pull_request' tool to create a pull request from branch 'feature-branch-name' to 'develop' branch with the title 'Feature Branch Review' and description 'Please review the changes for the new feature.'"
-    *   **Benefit:** Automates the pull request process, facilitating timely code reviews and improving code quality.
+??? warning "Incorrect Repository or Project Names"
+    **Problem:** Agent tools fail to operate on the intended repository or project, often resulting in "Repository not found" or "Project not found" errors.
+    
+    **Troubleshooting Steps:**
+    
+    1. **Verify Project Name:** Carefully verify that you have entered the correct Azure DevOps Project name in the credential configuration. Pay close attention to capitalization, spelling, and spacing. Even minor typos can cause errors.
+    2. **Check Repository ID Format:** Ensure that you are using the correct Repository ID (UUID format) in the toolkit configuration. Use the provided curl command or alternative methods (see "How to Get Repository ID" in FAQ) to retrieve the exact repository ID.
+    3. **Verify Branch Names:** Ensure branch names are spelled correctly and exist in the repository. Branch names in Git are case-sensitive. Use `list_branches_in_repo` to verify available branches.
 
-*   **Listing Branches for Project Overview:**
-    *   **Scenario:** A project manager wants a quick overview of all active branches in the repository.
-    *   **Tools Used:** `list_branches_in_repo`
-    *   **Example Instruction:** "Use the 'list_branches_in_repo' tool to list all branches in the repository and present them to the user."
-    *   **Benefit:** Provides easy access to branch information for project management and monitoring.
+??? warning "Repository ID Retrieval Issues"
+    **Problem:** Unable to retrieve the Repository ID using the provided curl command or other methods.
+    
+    **Troubleshooting Steps:**
+    
+    1. **Verify curl Command Format:** Double-check that you've correctly replaced `{PAT}`, `{organization}`, and `{project}` placeholders in the curl command with your actual values.
+    2. **Authentication in curl:** Ensure the PAT is formatted correctly in the curl command: `curl -u {PAT}:` (note the colon after PAT).
+    3. **Use Alternative Methods:** Try the Azure DevOps UI method:
+        - Navigate to your repository in Azure DevOps
+        - Click the "Clone" button
+        - Look for the repository ID in the URL or clone dialog
+    4. **Browser Method:** Visit `https://dev.azure.com/{Org}/{Project}/_apis/git/repositories?api-version=7.1` in your browser, authenticate, and find the repository ID in the JSON response.
 
-*   **Setting Active Branch for Focused Operations:**
-    *   **Scenario:** Before performing a series of file operations, ensure the Agent is working on the correct branch.
-    *   **Tools Used:** `set_active_branch`
-    *   **Example Instruction:** "First, use 'set_active_branch' to set the active branch to 'develop'. Then, use 'read_file' to read 'config.json' from the active branch."
-    *   **Benefit:** Ensures operations are performed in the intended branch context, reducing errors and improving workflow reliability.
+??? warning "Toolkit Configuration Issues"
+    **Problem:** The toolkit fails to load or shows configuration errors after creation.
+    
+    **Troubleshooting Steps:**
+    
+    1. **Verify Repository ID Format:** Ensure the repository ID is a valid UUID format (e.g., `a1b2c3d4-e5f6-7890-abcd-ef1234567890`).
+    2. **Check Branch Names:** Verify that the base branch and active branch names match actual branches in your repository (commonly `main` or `master`).
+    3. **Credential Selection:** Ensure you have selected the correct credential from the dropdown in the toolkit configuration.
+    4. **Refresh Configuration:** After updating credential details, refresh or recreate the toolkit to ensure it picks up the latest configuration.
+    5. **PgVector Configuration:** If using vector search tools, ensure PgVector configuration and embedding model are properly configured.
 
-*   **Automated Work Item Status Updates:**
-    *   **Scenario:** Automatically update the status of an Azure DevOps work item (issue) to "Resolved" when a linked code change (e.g., pull request merge) is completed in ELITEA, reflecting the issue resolution in the Azure Boards tracking system.
-    *   **Tools Used:** `set_issue_status`
-    *   **Example Instruction:** "Use the 'set_issue_status' tool to update issue number [issue_number]. Set the issue status to 'Resolved'."
-    *   **Benefit:** Automates work item lifecycle management, ensuring work item statuses are always synchronized with the actual development progress. Reduces manual status updates, improves issue tracking accuracy, and provides a clear audit trail of issue resolution.
+### Support Contact
 
-*   **Retrieving Work Item Details for Context:**
-    *   **Scenario:** During a task discussion or troubleshooting session, provide users with quick access to detailed information about a specific Azure DevOps work item to understand the task context and status.
-    *   **Tools Used:** `get_issue`
-    *   **Example Instruction:** "Use the 'get_issue' tool to get details for work item number [issue_number]. Summarize the work item title, description, and status for the user."
-    *   **Benefit:** Provides users with quick, contextual access to detailed work item information directly within ELITEA, improving understanding, facilitating faster problem-solving, and enhancing communication around specific tasks.
+If you encounter issues not covered in this guide or need additional assistance with Azure Repos integration, please refer to **[Contact Support](../../support/contact-support.md)** for detailed information on how to reach the ELITEA Support Team.    
 
-*   **Automated Work Item Commenting for Updates:**
-    *   **Scenario:** Allow ELITEA Agents to automatically add comments to Azure DevOps work items to provide status updates, request information, or log actions taken within ELITEA workflows, keeping work item discussions current.
-    *   **Tools Used:** `add_comments`
-    *   **Example Instruction:** "Use the 'add_comments' tool to add a comment to work item number [issue_number] with the text '[comment_text]'."
-    *   **Benefit:** Streamlines communication within work item tracking, enabling automated updates and feedback directly within Azure DevOps work items. Keeps all stakeholders informed, reduces manual communication overhead, and centralizes work item-related discussions.
+---
 
-## Troubleshooting and Support
+## FAQ
 
-### Troubleshooting Common Issues
+??? question "Can I use my regular Azure DevOps password directly for the ELITEA integration instead of a Personal Access Token?"
+    **No, password authentication is not supported for Azure DevOps integration.** You must use a Personal Access Token (PAT) for secure authentication. Personal Access Tokens provide a more secure and controlled method for granting access to external applications like ELITEA, without exposing your primary account credentials.
+    
+    **To create a PAT:**
+    
+    1. Navigate to Azure DevOps User Settings → Personal Access Tokens
+    2. Click "New Token"
+    3. Configure name, expiration, and scopes
+    4. Copy the generated token immediately (you won't be able to see it again)
+    5. Store it securely in ELITEA Secrets or a password manager
 
-*   **Connection Errors:**
-    *   **Problem:** ELITEA Agent fails to connect to Azure Repos, resulting in errors during toolkit execution.
-    *   **Troubleshooting Steps:**
-        1.  **Verify Azure DevOps URL:** Double-check that the **Azure DevOps URL** field in the toolkit configuration is correctly set to your Azure DevOps organization URL (e.g., `https://dev.azure.com/YourOrganizationName`). Ensure it includes `https://dev.azure.com/` and your organization name.
-        2.  **Check Personal Access Token:** Ensure that the **Personal Access Token** you provided is correct, has not expired, and is valid for your Azure DevOps account and project. Carefully re-enter or copy-paste the token to rule out typos.
-        3.  **Verify Token Scopes:** Review the **scopes/permissions** granted to your Azure DevOps Personal Access Token in Azure DevOps. Ensure it has the necessary scopes (e.g., `vso.code_full`, `vso.work_full`) for the specific Azure Repos tools your Agent is trying to use. Insufficient scopes are a common cause of connection and permission errors.
-        4.  **Network Connectivity:** Confirm that both your ELITEA environment and the Azure DevOps instance are connected to the internet and that there are no network connectivity issues, firewalls, or proxies blocking the integration. Test network connectivity to `dev.azure.com` from your ELITEA environment if possible.
+??? question "What scopes/permissions are absolutely necessary for the Azure DevOps Personal Access Token to work with ELITEA?"
+    The minimum required scopes depend on the specific Azure Repos tools your ELITEA Agent will be using:
+    
+    **Read-Only Operations** (`read_file`, `list_files`, `get_pull_request`):
+    
+    - `vso.code` (Code - Read)
+    - `vso.work` (Work Items - Read) - if using work item tools
+    
+    **Write Operations** (`create_file`, `update_file`, `delete_file`):
+    
+    - `vso.code` (Code - Read)
+    - `vso.code_write` (Code - Read & Write)
+    
+    **Pull Request Operations** (`create_pull_request`, `comment_on_pull_request`):
+    
+    - `vso.code` (Code - Read)
+    - `vso.code_write` (Code - Read & Write)
+    
+    **Work Item Operations** (`get_work_items`):
+    
+    - `vso.work` (Work Items - Read)
+    - `vso.work_write` (Work Items - Read & Write) if creating/updating work items
+    
+    **For Full Functionality:**
+    
+    - `vso.code_full` (Full access to code)
+    - `vso.work` (Work Items access)
+    
+    **Always adhere to the principle of least privilege and grant only the scopes that are strictly necessary for your Agent's intended functionalities.**
 
-*   **Authorization Errors (Permission Denied/Unauthorized):**
-    *   **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify Azure Repos resources.
-    *   **Troubleshooting Steps:**
-        1.  **Re-verify Token Scopes:** Double-check the **scopes/permissions** granted to your Azure DevOps Personal Access Token with extreme care. Ensure it grants sufficient access for the specific Azure Repos actions your Agent is trying to perform. For example, creating files or pull requests requires scopes that grant write access (`vso.code_full` scope).
-        2.  **Project and Repository Access Permissions:** Confirm that the Azure DevOps account associated with the Personal Access Token has the necessary access permissions to the specified project and repository within Azure DevOps. Verify that the account is a member of the project and has the necessary roles and permissions (e.g., Contributor or Project Administrator role for write access). Check project settings in Azure DevOps to confirm access levels.
-        3.  **Token Revocation or Expiration:** Ensure that the Personal Access Token has not been accidentally revoked in Azure DevOps settings or that it has not reached its expiration date if you set one. Generate a new token as a test if unsure.
+??? question "What is the correct format for the Repository ID in the Azure Repos toolkit configuration?"
+    The Repository ID must be a **UUID (Universally Unique Identifier)** in the format: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
+    
+    **Example:** `a1b2c3d4-e5f6-7890-abcd-ef1234567890`
+    
+    **How to obtain the Repository ID:**
+    
+    **Method 1 - curl command:**
+    ```bash
+    curl -u {PAT}: https://dev.azure.com/{organization}/{project}/_apis/git/repositories?api-version=7.1-preview.1
+    ```
+    
+    **Method 2 - Azure DevOps UI:**
+    1. Navigate to your repository in Azure DevOps
+    2. Click "Clone" button
+    3. Look for the repository ID in the clone URL or dialog
+    
+    **Method 3 - Browser:**
+    Visit `https://dev.azure.com/{Org}/{Project}/_apis/git/repositories?api-version=7.1` and find the `"id"` field in the JSON response.
+    
+    **Important:** Do NOT use the repository name - you must use the UUID format ID.
 
-*   **Incorrect Repository or Branch Names:**
-    *   **Problem:** Agent tools fail to operate on the intended repository or branch, often resulting in "Repository not found" or "Branch not found" errors.
-    *   **Troubleshooting Steps:**
-        1.  **Double-Check Repository Name:** Carefully and meticulously verify that you have entered the correct Azure Repos Repository name in the toolkit configuration within ELITEA. Pay close attention to capitalization, spelling, and the `repository_name`.
-        2.  **Verify Branch Name Spelling and Case:** Ensure that you are using the correct branch name (e.g., `main`, `develop`, `feature-branch`) in your Agent's instructions when specifying branch-related parameters for Azure Repos tools. Branch names in Git are case-sensitive. Double-check the spelling and capitalization of branch names against your repository in Azure DevOps.
-        3.  **Branch Existence:** Confirm that the specified branch actually exists in your Azure Repos repository. It's possible the branch name is correct but the branch was deleted or renamed.
+??? question "How do I switch from the old Agent-based configuration to the new Credentials + Toolkit workflow?"
+    The new workflow provides better security, reusability, and organization:
+    
+    **New Workflow Steps:**
+    
+    1. **Create an Azure DevOps Credential:** Navigate to Credentials menu → Create new credential → Select "Ado" type → Add your Organization URL, Project, and PAT
+    2. **Create an Azure Repos Toolkit:** Navigate to Toolkits menu → Create toolkit → Select "Azure Repos (ADO Repos)" → Link your credential → Configure repository ID and branches → Select tools to enable
+    3. **Add Toolkit to Workflows:** Add the toolkit to your agents, pipelines, or chat sessions
+    
+    **Benefits over old approach:**
+    
+    - Credentials stored securely in one place
+    - Reuse same credential across multiple toolkits
+    - Easier to update authentication without reconfiguring agents
+    - Better audit trail and access control
+    - Separate concerns: authentication vs. toolkit configuration
 
-*   **Invalid Repository ID:**
-    *   **Problem:** Agent execution fails because of an invalid or incorrect Repository ID in the toolkit configuration.
-    *   **Troubleshooting Steps:**
-        1.  **Re-obtain Repository ID:** Double-check that you have correctly obtained the **Repository ID** using the `curl` command as described in the "Integration Steps" section of this guide. Follow the steps precisely to ensure you retrieve the correct ID.
-        2.  **Verify Repository ID Value:** Carefully verify that you have pasted the correct Repository ID into the **"Repository ID"** field in the ELITEA toolkit configuration. Ensure there are no typos, missing characters, or extra spaces in the Repository ID field. Copy and paste the ID again to rule out transcription errors.
+??? question "Can I use the same Azure DevOps credential across multiple toolkits and agents?"
+    **Yes!** This is one of the key benefits of the new workflow.
+    
+    **Credential Reusability:**
+    
+    - One Azure DevOps credential can be used by multiple Azure Repos toolkits
+    - Each toolkit can be configured for different repositories or with different tool selections
+    - Each toolkit can be added to multiple agents, pipelines, and chat sessions
+    
+    **Example Use Case:**
+    
+    1. Create one Azure DevOps credential with your Personal Access Token
+    2. Create multiple toolkits using the same credential:
+        - Toolkit A: Frontend repository
+        - Toolkit B: Backend repository
+        - Toolkit C: Documentation repository
+    3. Add different toolkits to different agents based on their purpose
+    
+    This promotes better credential management, reduces duplication, and simplifies updates when credentials need to be rotated.
 
-### FAQs
+??? question "Can I use Azure Repos toolkits with private repositories?"
+    **Yes**, Azure Repos toolkits fully support private repositories with proper authentication.
+    
+    **Requirements:**
+    
+    - Personal Access Token with appropriate scopes (`vso.code` for read, `vso.code_write` for write operations)
+    - Your Azure DevOps account must have appropriate access to the private repository (project member with Contributor or higher role)
+    - The project containing the repository must be accessible to your account
+    
+    **Note:** Ensure your PAT has the necessary permissions and hasn't expired. Private repositories require explicit project membership.
 
-1.  **Q: Can I use my regular Azure DevOps password directly for the ELITEA integration instead of a Personal Access Token?**
-    *   **A:** **No, using an Azure DevOps Personal Access Token is mandatory and strongly recommended for security.** Direct password authentication is not supported for ELITEA's Azure Repos toolkit integration. Personal Access Tokens provide a significantly more secure and controlled method for granting access to external applications like ELITEA, without exposing your primary account credentials.
+??? question "Can I use the same toolkit across different workspaces (Private vs. Team Projects)?"
+    Credential and toolkit visibility depends on where they're created:
+    
+    **Private Workspace:**
+    
+    - Credentials created in Private workspace are only visible to you
+    - Toolkits using private credentials are only accessible in your private workspace
+    - Cannot be shared with team members
+    
+    **Team Project Workspace:**
+    
+    - Credentials created in a team project are visible to all project members
+    - Toolkits using project credentials can be used by all project members
+    - Ideal for team collaboration
+    
+    **Best Practice:**
+    
+    - Use Private workspace credentials for personal repositories or testing
+    - Use Team Project credentials for shared repositories and team collaboration
+    - Create separate toolkits for different repositories even if using the same credential
 
-2.  **Q: What scopes/permissions are absolutely necessary and minimally sufficient for the Azure DevOps Personal Access Token to work with ELITEA?**
-    *   **A:** The minimum required scopes depend on the specific Azure Repos tools your ELITEA Agent will be using. For basic read-only access to repositories (e.g., using `read_file`, `list_files`), the `vso.code_read` scope might suffice. However, for most common integration scenarios involving modifications (e.g., `create_file`, `update_file`, `create_pull_request`), you will need the `vso.code_full` scope. For work item (issue) management, include `vso.work_full` scope. **Always adhere to the principle of least privilege and grant only the scopes that are strictly necessary for your Agent's tasks.** Refer to the Azure DevOps documentation for detailed scope descriptions.
+??? question "Why am I getting 'Repository not found' errors even though the repository exists?"
+    This error typically occurs due to one of the following reasons:
+    
+    **1. Incorrect Repository ID:**
+    
+    - Verify you're using the repository UUID, not the repository name
+    - Re-run the repository ID retrieval command to get the correct ID
+    - Ensure there are no extra spaces or characters in the repository ID
+    
+    **2. Project Name Mismatch:**
+    
+    - Verify the project name in your credential matches exactly (case-sensitive)
+    - Check for spelling errors or extra spaces
+    - Ensure you're using the project name, not the project ID
+    
+    **3. Access Permissions:**
+    
+    - Confirm your account has access to the project and repository
+    - Verify you're a member of the project in Azure DevOps
+    - Check that the repository hasn't been deleted or moved
+    
+    **4. Organization URL:**
+    
+    - Ensure the organization URL is correct: `https://dev.azure.com/YourOrganization`
+    - Check for typos in the organization name
+    
+    **Debugging Steps:**
+    
+    1. Test the credential connection in ELITEA Credentials menu
+    2. Verify you can access the repository directly in Azure DevOps web interface
+    3. Re-create the credential with fresh values
+    4. Contact your Azure DevOps administrator to verify access permissions
 
-3.  **Q: What is the correct format for specifying the Azure DevOps Organization URL in the ELITEA toolkit configuration?**
-    *   **A:**  The Azure DevOps Organization URL must be entered in the format `https://dev.azure.com/{YourOrganizationName}`. Replace `{YourOrganizationName}` with your actual Azure DevOps organization name. Ensure you include `https://dev.azure.com/` and your organization name.
+??? question "How do I handle PAT expiration and rotation?"
+    Regular PAT rotation is a security best practice. Here's how to manage it:
+    
+    **When PAT Expires:**
+    
+    1. **Generate New PAT:** Create a new PAT in Azure DevOps with the same scopes
+    2. **Update Secret (Recommended):** If using ELITEA Secrets, update the secret value with the new PAT
+    3. **Update Credential (Alternative):** If not using Secrets, edit the credential and update the PAT directly
+    4. **Test Connection:** Use the "Test Connection" button to verify the new PAT works
+    5. **No Toolkit Changes Needed:** All toolkits using this credential will automatically use the new PAT
+    
+    **Proactive Rotation:**
+    
+    - Set PAT expiration dates (recommended: 90 days or less)
+    - Document when PATs need renewal
+    - Use ELITEA Secrets for easier rotation
+    - Consider using service accounts for production agents
+    
+    **Benefits of Using Secrets:**
+    
+    - Update token in one place
+    - All credentials referencing the secret automatically updated
+    - Better audit trail
+    - Reduced risk of exposing tokens
 
-4.  **Q: How do I find the Repository ID for my Azure Repos repository?**
-    *   **A:**  You need to use the `curl` command provided in the "Integration Steps" section of this guide to retrieve the Repository ID from the Azure DevOps API. Follow the detailed steps in section 3.2 "Integration Steps: Configuring the Azure Repos (ADO Repo) Toolkit in ELITEA" to correctly obtain the Repository ID. Pay close attention to replacing the placeholders with your actual PAT, organization name, and project name in the `curl` command.
+---
 
-5.  **Q: Why am I consistently getting "Permission Denied" errors, even though I think I have configured everything correctly and granted the right permissions?**
-    *   **A:** If you are still facing "Permission Denied" errors despite careful configuration, systematically re-examine the following:
-        *   **Token Scope Accuracy:** Double and triple-check the **scopes/permissions** granted to your Azure DevOps Personal Access Token in your Azure DevOps user settings. Ensure that the token possesses the *exact* scopes required for *each* Azure Repos tool your Agent is attempting to use. Pay close attention to write vs. read permissions and ensure you have granted sufficient scopes.
-        *   **Project and Repository Access Verification:** Explicitly verify that the Azure DevOps account associated with the Personal Access Token has the necessary access rights to the *specific target project and repository* within Azure DevOps itself. Confirm project membership, assigned roles, and repository permissions within the Azure DevOps project settings.
-        *   **Token Validity and Revocation:** Double-check that the Personal Access Token is still valid, has not expired, and has not been accidentally revoked in your Azure DevOps settings. Generate a new token as a test if unsure.
-        *   **Typographical Errors:** Carefully review all configuration fields in ELITEA, especially the Azure DevOps URL, Organization Name, Project Name, Repository ID, and the Personal Access Token itself for any hidden typographical errors or accidental whitespace.
+!!! reference "Useful ELITEA Resources"
+    To further enhance your understanding and skills in using the Azure Repos toolkit with ELITEA, here are helpful internal resources:
+    
+    * **[How to Use Chat Functionality](../../how-tos/chat-conversations/how-to-use-chat-functionality.md)** - *Complete guide to using ELITEA Chat with toolkits for interactive GitHub operations.*
+     * **[Create and Edit Agents from Canvas](../../how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md)** - *Learn how to quickly create and edit agents directly from chat canvas for rapid prototyping and workflow automation.*
+     * **[Create and Edit Toolkits from Canvas](../../how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md)** - *Discover how to create and configure GitHub toolkits directly from chat interface for streamlined workflow setup.*
+     * **[Create and Edit Pipelines from Canvas](../../how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md)** - *Guide to building and modifying pipelines from chat canvas for automated GitHub workflows.*
+     * **[Indexing Overview](../../how-tos/indexing/indexing-overview.md)** - *Comprehensive guide to understanding ELITEA's indexing capabilities and how to leverage them for enhanced search and discovery.*
+     * **[Index Repo Data](../../how-tos/indexing/index-github-data.md)** - *Detailed instructions for indexing repository data to enable advanced search, analysis, and AI-powered insights across your codebase.*
 
-If, after meticulously checking all of these points, you still encounter "Permission Denied" errors, please reach out to ELITEA Support with detailed information for further assistance.
+---
 
+!!! reference "External Resources"
+    *   **Azure DevOps REST API Documentation:** [https://learn.microsoft.com/en-us/rest/api/azure/devops/](https://learn.microsoft.com/en-us/rest/api/azure/devops/) - *Navigate to the official Azure DevOps REST API reference for comprehensive endpoint documentation and usage examples.*
+    *   **Personal Access Tokens Guide:** [https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) - *Learn how to create, manage, and secure Personal Access Tokens for Azure DevOps authentication.*
+    *   **Repository Permissions Reference:** [https://learn.microsoft.com/en-us/azure/devops/repos/git/set-git-repository-permissions](https://learn.microsoft.com/en-us/azure/devops/repos/git/set-git-repository-permissions) - *Understand Azure DevOps repository permission levels and how to configure access control.*
+    *   **Azure DevOps Services REST API Overview:** [https://learn.microsoft.com/en-us/azure/devops/integrate/](https://learn.microsoft.com/en-us/azure/devops/integrate/) - *Access comprehensive integration documentation, including REST APIs, webhooks, and service hooks.*
 
-### Support and Contact Information
-
-If you encounter any issues, have questions, or require further assistance beyond what is covered in this guide regarding the Azure Repos integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.
-
-**How to Reach ELITEA Support:**
-
-*   **Email:**  **[SupportAlita@epam.com](mailto:SupportAlita@epam.com)**
-
-**Best Practices for Effective Support Requests:**
-
-To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:
-
-*   **ELITEA Environment:** Clearly specify the ELITEA environment you are using (e.g., "Next" ).
-*   **Project Details:**  Indicate the **Project Name** and whether you are working in your **Private** workspace or a **Team** project.
-*   **Detailed Issue Description:** Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.
-*   **Relevant Configuration Information:**  To help us diagnose the issue, please include relevant configuration details, such as:
-    *   **Agent Instructions (Screenshot or Text):** If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.
-    *   **Toolkit Configurations (Screenshots):** If the issue involves the Azure Repos toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.
-*   **Error Messages (Full Error Text):** If you are encountering an error message, please provide the **complete error text**. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.
-*   **Your Query/Prompt (Exact Text):** If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.
-
-**Before Contacting Support:**
-
-We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
-
-## Useful Links
-
-To further enhance your understanding and skills in integrating Azure Repos (ADO Repos) with ELITEA, here are some helpful resources:
-
-*   **[Azure DevOps Website](https://dev.azure.com/)**: Access the main Azure DevOps platform to create an account or sign in.
-*   **[Azure DevOps Organization URL Example](https://dev.azure.com/{YourOrganizationName})**: Example URL to understand the structure of Azure DevOps Organization URLs.
-*   **[ELITEA Secrets Management](../../menus/settings/secrets.md)**: Learn how to securely store your Azure DevOps Personal Access Token using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the Azure Repos toolkit to automate your workflows.
-*   **[ELITEA Support Email](mailto:SupportAlita@epam.com)**: Contact the ELITEA support team for direct assistance with Azure Repos integration or any other questions and issues you may encounter.
+---
