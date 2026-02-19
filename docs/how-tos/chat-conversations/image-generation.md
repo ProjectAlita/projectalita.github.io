@@ -4,14 +4,21 @@
 
 The Image Generation feature enables AI-powered creation of images directly from text prompts within Chat conversations and Agents. When using an LLM model with image generation capabilities (such as GPT-5.1, DALL-E 3, or other vision-enabled models) and the **Image Generator** internal tool is enabled, you can generate high-quality images through natural language descriptions.
 
-Generated images appear inline as thumbnails in the conversation and can be viewed full-size or downloaded in multiple formats (PNG, JPG).
+Generated images appear inline as thumbnails in the conversation and can be viewed full-size or downloaded. Images are automatically saved to the **`imagelibrary`** Artifact bucket for easy access and management.
 
 !!! info "Prerequisites"
     To use image generation, you need:
     
     * An LLM model that supports image generation (e.g., GPT-4o, GPT-5.1, DALL-E 3, DALL-E 2)
     * The **Image creation** internal tool enabled in your conversation or agent
-    * Appropriate model configuration for image generation
+    * An image generation model selected in your project
+    * Proper project configuration by your administrator
+
+    ![Model](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-generation-model.gif>){width="300"}
+    
+    
+    !!! note "Not Seeing Image Creation?"
+        If the **Image creation** option is not available, contact your administrator to enable image generation for your project.
 
 ---
 
@@ -120,13 +127,12 @@ Once enabled, generating images is as simple as asking the AI assistant:
 
 ??? example "Advanced Image Generation"
 
-    You can customize image generation with additional parameters:
+    You can customize images by including details in your prompt:
     
     **Number of Images:**
     
     * "Generate 3 variations of a logo design"
-    * Default: 1 image
-    * Range: 1-10 images per request
+    * You can request up to 10 images per generation
     
     **Image Quality:**
     
@@ -141,10 +147,10 @@ Once enabled, generating images is as simple as asking the AI assistant:
     * Common sizes: 256x256, 512x512, 1024x1024, 1024x1792, etc.
     * Available sizes depend on the specific image generation model
     
-    **Style Parameters:**
+    **Style:**
     
     * "Generate an image in a watercolor style"
-    * Style options vary by model (some models support style parameters)
+    * Describe the artistic style you want
 
 ??? example "Multi-Step Generation"
 
@@ -169,13 +175,24 @@ Generated images appear as thumbnails in the conversation. Hover over any image 
 
 **Download:**
 
-* Click the **Download icon** to save the image
-* Available formats: PNG or JPG 
+* Click the **Download icon** to save the image locally
+* Images are also accessible from **Artifacts → imagelibrary** bucket
+* You can download images from the Artifacts page at any time
 
 ![Download image](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-download.gif>){width="450" loading="lazy"}
 
+**Access from Artifacts:**
+
+* Navigate to **Artifacts** in the main menu
+* Find the **imagelibrary** bucket 
+* All generated images are stored here with timestamps
+* Download, delete, or manage images from this centralized location
+
+![Artifact](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-generation-artifact.gif>)
+
 !!! note "Storage and Deletion"
-    Generated images are stored as base64 data in the chat history and don't consume Artifact Toolkit storage quota. Since images are not stored as attachments, they cannot be deleted individually. To remove generated images, you need to delete the entire message containing them or clear the chat history.
+    Generated images are automatically saved in the **Artifact Toolkit** in a bucket named **`imagelibrary`**. This bucket is created automatically the first time you generate an image if it doesn't already exist.
+    
 
 ---
 
@@ -356,9 +373,8 @@ Generated images appear as thumbnails in the conversation. Hover over any image 
 ??? tip "Batch Requests Wisely"
 
     * Generate multiple variations in one request when possible
-    * Avoid excessive image counts that slow responses
-    * Balance quantity with quality requirements
-    * Consider conversation context length
+    * Avoid requesting too many images at once (max 10)
+    * Balance quantity with quality for better results
 
 ---
 
@@ -369,16 +385,14 @@ Generated images appear as thumbnails in the conversation. Hover over any image 
     **Possible Causes:**
     
     * Image creation internal tool not enabled
-    * Selected model doesn't support image generation
-    * Model configuration missing image generation endpoint
+    * Image generation not configured for your project
     * Network connectivity issues
     
     **Solutions:**
     
-    1. Verify the **Image creation** toggle is enabled in Internal Tools settings
-    2. Check that the selected LLM model supports image generation
-    3. Contact your administrator to verify model configuration
-    4. Refresh the page and try again
+    1. Enable the **Image creation** toggle in Internal Tools settings
+    2. Contact your administrator if the option is not visible
+    3. Refresh the page and try again
 
 ??? warning "Issue: Image Generation Model is Not Configured"
 
@@ -463,6 +477,7 @@ Generated images appear as thumbnails in the conversation. Hover over any image 
 
 !!! info "Additional Resources"
     
+    * **[Artifact Toolkit](../../integrations/toolkits/artifact_toolkit.md)** - Managing files and images in Artifacts
     * **[Agent Configuration](../../menus/agents.md)** - Setting up agents with internal tools
     * **[Chat Functionality](how-to-use-chat-functionality.md)** - General chat features and usage
     * **[Canvas in Conversation](how-to-canvas.md)** - Creating and editing content in chat
