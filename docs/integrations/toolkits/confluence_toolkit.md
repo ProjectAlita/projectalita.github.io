@@ -590,6 +590,25 @@ If you encounter issues not covered in this guide or need additional assistance 
     
     If, after meticulously checking all of these points, you still encounter "Permission Denied" errors, please reach out to ELITEA Support with detailed information for further assistance.
 
+??? question "Why do I get 'Permission Denied' when using EPAM Confluence (https://kb.epam.com), even though my token worked before?"
+    This is a known EPAM Confluence behavior and is **not an ELITEA bug**.
+
+    **Root cause (confirmed by EPAM Support): floating license management**
+
+    - EPAM Confluence licenses are limited and shared across employees.
+    - If your account is inactive for a period (often ~30 minutes), your license can be automatically reallocated to another active user.
+    - How quickly this happens can depend on how many other users become active after your last session.
+    - When this happens, your API token can effectively stop working and the toolkit can start returning **Permission Denied/Unauthorized** errors.
+    - Logging in via browser reclaims an active license, after which the toolkit typically works again.
+
+    **What you can do**
+
+    1. **Before running agents/pipelines that use Confluence toolkit**, open a browser and log in to [https://kb.epam.com/](https://kb.epam.com/).
+    2. For stable automation, **request a dedicated service account** and coordinate with support to assign a **permanent Confluence license** to that account.
+
+    Service account request form:
+    [Managing service accounts](https://support.epam.com/ess?id=sc_cat_item&sys_id=76f3375797795d10386e3a871153affa&name=ManagingServiceAccounts&sysparm_copy_vars=%7B%22u_employee_account_management%22%3A%22%22%2C%22u_Actiontobeperformed%22%3A%22%22%2C%22u_select_item%22%3A%22Service%20account%20management%22%2C%22u_action%22%3A%22Create%20service%20account%22%2C%22u_keyword_order_guide%22%3A%22%7B%5Cr%5Cn%20%20%5C%22contains%5C%22%3A%20%5C%22password%2Cprivileged%20account%2Clegacy%2Cauthentication%2CPIN%2Cservice%20account%5C%22%2C%5Cr%5Cn%20%20%5C%22notContains%5C%22%3A%20%5C%22CyberArk%2Clocal%20admin%5C%22%5Cr%5Cn%7D%22%7D)
+
 ??? question "What are some best practices for using the Confluence toolkit effectively?"
     **Test Integration Thoroughly:**
     

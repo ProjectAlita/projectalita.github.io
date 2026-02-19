@@ -6,6 +6,9 @@ This glossary provides definitions for key terms, components, and features used 
 
 ## A
 
+**AI Configuration**
+: A project-level settings page where you configure models and storage used by ELITEA features (for example, LLM providers, embedding models, and vector storage such as PgVector).
+
 **Agent**
 : A customizable virtual assistant or bot within ELITEA that automates specific tasks or sets of tasks. Agents combine external toolkits to make informed decisions and perform actions. They can integrate with external services like GitHub, Jira, or Salesforce to create powerful automation workflows.
 
@@ -36,7 +39,7 @@ This glossary provides definitions for key terms, components, and features used 
 : The conversational interface in ELITEA where users interact with AI models, agents, and pipelines. Chat brings together all ELITEA components in a natural interface for human-AI collaboration.
 
 **Collection**
-: A curated group of related entities (agents and pipelines) organized for efficient access and management. Collections help users organize their AI resources by themes, projects, or categories, and can be shared across team projects.
+: **Legacy:** A curated group of related entities organized for access and sharing. This term is kept for older documentation and may not be available in the current ELITEA UI.
 
 **Configuration**
 : The setup and customization settings for various ELITEA components. This includes defining parameters for integrations, toolkits, agents, pipelines, and other platform features to match specific requirements and use cases.
@@ -63,8 +66,11 @@ This glossary provides definitions for key terms, components, and features used 
 
 ## D
 
+**Data Analysis (Internal Tool)**
+: A built-in internal tool that enables Pandas-style data analysis in Chat and agents without creating a separate toolkit.
+
 **Datasource**
-: A repository that extends Large Language Models (LLMs) by integrating user-specific or project-specific data not included in the model's training set. Datasources support various formats including files (PDF, DOCX, TXT, JSON), tables (CSV, XLSX), Git repositories, Confluence pages, and QTest projects.
+: **Legacy:** A repository concept used in older ELITEA versions for connecting external or project data to AI workflows. This term is kept for older documentation and may not be available in the current ELITEA UI.
 
 ---
 
@@ -75,6 +81,9 @@ This glossary provides definitions for key terms, components, and features used 
 
 **ELITEA Code**
 : AI-powered IDE extensions for VS Code and IntelliJ that integrate with the ELITEA platform. These extensions provide intelligent code suggestions, automated test generation, code commenting, and access to ELITEA's agents directly within development environments.
+
+**Elitea MCP Client**
+: A local client that connects ELITEA to STDIO-based MCP servers running on your machine, so MCP tools can be used in Chat, agents, and pipelines.
 
 **Embedding Model**
 : AI models used to convert text and documents into vector representations that can be searched and retrieved to provide context to LLMs.
@@ -108,21 +117,36 @@ This glossary provides definitions for key terms, components, and features used 
 **Import**
 : A feature that allows users to upload and restore ELITEA entities (agents, pipelines, collections) from previously exported files. Import functionality enables users to migrate content between projects, restore backups, or share work across different ELITEA instances, maintaining the original configurations and relationships.
 
+**Indexing**
+: The process of extracting content from files, toolkits, and other sources and storing it in vector storage so it can be retrieved with semantic search tools.
+
 **Instruction**
 : The core directive or guidance text that defines how an AI component (agent or pipeline) should behave and respond. Instructions serve as the primary programming mechanism for AI entities, specifying their purpose, behavior patterns, constraints, and objectives. Well-crafted instructions are crucial for achieving desired AI performance and outcomes.
 
 **Integration**
 : A configuration that establishes connections between ELITEA and external platforms such as Jira, Confluence, GitHub, GitLab, QTest, TestRail, Salesforce, and others. Integrations make external services available for use within agents and pipelines.
 
+**Internal Tools**
+: Built-in capabilities you can enable in Chat or agent configuration (for example, Planner, Python Sandbox, Data Analysis, Swarm Mode, and Smart Tools Selection) without setting up external integrations.
+
+**Interrupt (Pipeline)**
+: A pipeline execution pause point (Interrupt Before/After) that stops a run for review or intervention at specific nodes.
+
 ---
 
 ## L
+
+**Langfuse**
+: A third-party observability platform that can be integrated with ELITEA to capture tracing and execution telemetry for agents and pipelines.
 
 **Likes**
 : A social engagement feature that allows users to express approval or appreciation for entities (agents, pipelines, collections) in the ELITEA platform. Likes help identify popular and useful content within the community, providing feedback to creators and helping other users discover valuable resources.
 
 **LLM (Large Language Model)**
 : AI models that process and generate human-like text. ELITEA supports various LLM providers and models, allowing users to select appropriate models for different tasks and configure parameters like temperature and token limits.
+
+**Local MCP**
+: An MCP connection that uses a locally running MCP server (STDIO transport) connected through the Elitea MCP Client.
 
 ---
 
@@ -133,6 +157,12 @@ This glossary provides definitions for key terms, components, and features used 
 
 **MCP (Model Context Protocol)**
 : A standardized protocol that enables ELITEA to integrate with external MCP servers, extending the platform's capabilities by accessing tools and services from third-party implementations. MCPs can be Local (connected through STDIO transport via the Elitea MCP Client) or Remote (HTTP/HTTPS-based servers). Once configured, MCP tools become available to agents, pipelines, and conversations for browser automation, repository operations, API integrations, and other domain-specific tasks.
+
+**MCP Node**
+: A pipeline node type used to execute tools from a connected MCP server (instead of executing toolkit tools). 
+
+**MCP Server**
+: An external service or local process that implements the Model Context Protocol and exposes tools that ELITEA can discover and use through MCP connections.
 
 **Model Selector**
 : A user interface dropdown component in ELITEA Chat that allows users to choose which AI model to use for their conversations. The model selector displays available LLM models from various providers and enables quick switching between models during a conversation. It typically appears at the top of the chat interface and may include additional model settings configuration options.
@@ -160,6 +190,9 @@ This glossary provides definitions for key terms, components, and features used 
 
 ## O
 
+**OAuth 2.0**
+: A common authentication method that allows ELITEA to access third-party services without storing user passwords, often used by remote MCP servers and enterprise integrations.
+
 **OpenAI-BaseURL**
 : A configuration parameter that specifies the base API endpoint URL for OpenAI-compatible services. This setting allows ELITEA to connect to alternative LLM providers that implement OpenAI's API specification, enabling flexibility in model provider selection while maintaining compatibility with OpenAI's interface standards. Custom BaseURL configurations are useful for connecting to self-hosted models, proxy services, or alternative AI providers.
 
@@ -176,8 +209,14 @@ This glossary provides definitions for key terms, components, and features used 
 **Persona**
 : A predefined character or role configuration that shapes an agent's behavior, communication style, and domain expertise. Personas help customize agent responses to match specific professional roles (such as QA engineer, business analyst, or developer) or behavioral patterns, ensuring that agent interactions are contextually appropriate and aligned with user expectations.
 
+**PgVector**
+: A Postgres-based vector storage option used by ELITEA to store embeddings for indexing and semantic search features.
+
 **Pipeline**
 : Automated workflows that connect sequences of states, actions, and decisions to streamline complex processes. Pipelines can integrate with toolkits and external APIs, and are designed using either the visual Flow Designer or programmatic YAML configuration.
+
+**Planner (Internal Tool)**
+: A built-in internal tool that helps you break work into steps (a plan) and track progress within Chat or an agent conversation. Also called: Internal Planner.
 
 **Private Project**
 : A personal workspace in ELITEA accessible only to the individual user. Private projects allow users to create and manage their own agents, pipelines, and collections without sharing access.
@@ -189,7 +228,10 @@ This glossary provides definitions for key terms, components, and features used 
 : A unique numerical identifier assigned to each project in ELITEA. The Project ID is used for API authentication, integration configurations, CLI operations, and programmatic access to project resources. It serves as a reference key for accessing project-specific data, managing permissions, and connecting external tools and services to the correct workspace environment.
 
 **Public Project**
-: A community-shared workspace in ELITEA where published agents, pipelines, and collections are made available to all users within an organization. The Public Project serves as a collaborative hub for discovering, utilizing, and sharing best practices, promoting knowledge sharing and collective innovation. While users cannot directly create or modify entities in the Public Project, they can fork published resources to their private or team projects for customization.
+: **Legacy:** A community-shared workspace concept used in older ELITEA versions for publishing content to a shared area. This term is kept for older documentation and may not be available in the current ELITEA UI.
+
+**Python Sandbox (Internal Tool)**
+: A built-in internal tool that enables secure Python code execution (via Pyodide) in Chat and agents, useful for calculations, data processing, and prototyping.
 
 **Prompt**
 : Instructions, questions, or statements given to AI models to elicit specific responses or outputs. In ELITEA, prompts can include context, variables, welcome messages, conversation starters, and various configuration settings to guide AI behavior.
@@ -198,11 +240,14 @@ This glossary provides definitions for key terms, components, and features used 
 
 ## R
 
+**Remote MCP**
+: An MCP connection to an HTTP/HTTPS-based MCP server accessible over the network (for example, a hosted service that provides tools like Web Search).
+
 **Reasoning (Low/Medium/High)**
 : A parameter available for reasoning models (such as GPT-5.1) that controls the depth of logical thinking and problem-solving in AI responses. Low provides fast, surface-level reasoning with concise answers and minimal steps. Medium offers balanced reasoning with clear explanations and moderate multi-step thinking (default setting). High delivers deep, thorough reasoning with detailed step-by-step analysis, though it may be slower. This setting is distinct from the Creativity parameter used in standard models.
 
 **ReAct**
-: An application type in ELITEA that uses JSON format for tool interactions. ReAct agents operate by reasoning about tasks and taking actions using available tools to achieve specified goals.
+: **Legacy:** An application type used in older ELITEA versions for JSON-based tool interactions. This term is kept for older documentation and may not be available in the current ELITEA UI.
 
 **Regenerate**
 : A feature in ELITEA Chat that allows users to request a new response to the same input prompt without retyping it. Accessed through a regenerate icon (🔄) after an AI generates a response, this function produces an alternative answer using the same context, enabling users to explore different perspectives, improve response quality, or recover from unsatisfactory outputs.
@@ -223,6 +268,9 @@ This glossary provides definitions for key terms, components, and features used 
 **Secret**
 : Sensitive information (passwords, tokens, API keys) stored securely in ELITEA's vault system. Secrets can be configured once and reused across multiple components like credentials and toolkits, enhancing security by avoiding hardcoded sensitive information.
 
+**Smart Tools Selection (Internal Tool)**
+: An optimization tool that loads and invokes toolkit tools on-demand (instead of binding every tool definition up front), helping reduce token overhead when many toolkits are configured.
+
 **Socket Connection**
 : The real-time communication link between the ELITEA client interface and the server. The socket connection status indicator, displayed at the bottom of the sidebar, shows whether the user has an active connection to ELITEA servers. This connection enables real-time features like live collaboration, instant notifications, and immediate response updates during AI interactions.
 
@@ -235,8 +283,14 @@ This glossary provides definitions for key terms, components, and features used 
 **Storage**
 : The data persistence infrastructure in ELITEA that manages files, artifacts, conversation histories, vector embeddings, and system data. Storage encompasses various systems including temporary artifact buckets, vector databases (PgVector) for datasources, file attachments, and persistent configurations. Different storage types serve specific purposes: artifact storage for temporary file sharing, vector storage for semantic search and retrieval, and database storage for entities and metadata.
 
+**STDIO Transport**
+: A local MCP connection method where ELITEA communicates with an MCP server process through standard input/output (stdin/stdout), typically via the Elitea MCP Client.
+
 **SubGraph**
 : A modular pipeline feature that allows entire pipelines to be included as components within other pipelines, enabling reusable and scalable workflow building.
+
+**Swarm Mode (Internal Tool)**
+: An internal tool that enables multi-agent collaboration by allowing a parent agent to delegate tasks to child agents while sharing the same conversation context.
 
 ---
 
@@ -257,6 +311,9 @@ This glossary provides definitions for key terms, components, and features used 
 **Temperature (0.1 - 1.0)**
 : A parameter that controls the randomness and creativity of AI model responses. Lower values (0.1-0.3) produce more focused, deterministic, and predictable outputs, while higher values (0.7-1.0) generate more creative, diverse, and unpredictable responses. A value of 0.0 makes the model completely deterministic.
 
+**Test Settings**
+: A panel on toolkit pages that lets you run a tool with selected parameters and validate authentication/configuration before using the toolkit in agents or pipelines. 
+
 **Toolkit**
 : Sets of tools and integrations that extend the capabilities of agents and pipelines. Toolkits can include internal ELITEA components (other agents) or external service integrations (Jira, GitHub, Confluence, etc.).
 
@@ -264,10 +321,10 @@ This glossary provides definitions for key terms, components, and features used 
 : Individual functions or capabilities within a toolkit that perform specific actions or operations. Tools are the building blocks that make up toolkits, providing discrete functionality such as creating tickets, reading files, sending messages, or executing API calls. Each tool typically corresponds to a specific operation that can be performed on an external service or within ELITEA.
 
 **Top K**
-: A parameter that limits the AI model's word selection to the K most likely next tokens at each step. For example, Top K = 40 means the model only considers the 40 most probable next words. Lower values create more focused responses, while higher values allow for more diversity in word choice.
+: **Legacy:** A sampling parameter used in some model configurations that limits token selection to the K most likely next tokens. This term is kept for older documentation and may not be available in the current ELITEA UI.
 
 **Top P (0.1 - 1.0)**
-: Also known as nucleus sampling, this parameter controls response diversity by considering only the smallest set of tokens whose cumulative probability exceeds the P threshold. For example, Top P = 0.9 means the model considers the most likely tokens that together account for 90% of the probability mass. Lower values produce more focused responses, while higher values allow for more creativity.
+: **Legacy:** Also called nucleus sampling, a sampling parameter used in some model configurations that controls diversity by limiting token selection to a cumulative probability threshold. This term is kept for older documentation and may not be available in the current ELITEA UI.
 
 **Transition**
 : The connections between nodes in a pipeline that define the flow of execution and how steps connect to each other in automated workflows.
@@ -285,6 +342,9 @@ This glossary provides definitions for key terms, components, and features used 
 ---
 
 ## V
+
+**Vector Storage**
+: The storage layer used for embeddings and semantic retrieval in ELITEA (for example, PgVector configured at the project level).
 
 **Variable**
 : Dynamic placeholders in components that can be filled with different values during execution, allowing for flexible and reusable AI interactions.
@@ -307,7 +367,7 @@ This glossary provides definitions for key terms, components, and features used 
 ## X
 
 **XMLChat**
-: An application type in ELITEA that uses XML format for tool interactions instead of JSON. XMLChat is particularly suitable for LLama and Anthropic models that work better with XML-structured inputs.
+: **Legacy:** An application type used in older ELITEA versions that uses XML format for tool interactions instead of JSON. This term is kept for older documentation and may not be available in the current ELITEA UI.
 
 ---
 

@@ -174,8 +174,9 @@ nav:
 
   - Release Notes:
       - Current Version:
-          - RN 2.0.0 B2: release-notes/rn_current.md
+          - RN 2.0.0: release-notes/rn_current.md
       - Previous versions:
+          - RN 2.0.0 B2: release-notes/archived/rn14.md
           - RN 2.0.0 Beta: release-notes/archived/rn13.md
           - RN 1.7.1: release-notes/archived/rn12.md
           - RN 1.7.0: release-notes/archived/rn11.md

@@ -1,4 +1,4 @@
-# Release Notes - 2.0.0 B2
+# Release Notes - 2.0.0
  
 ## Introduction
  
@@ -6,450 +6,295 @@ Welcome to **ELITEA** — your comprehensive platform for building, deploying, a
  
 ## Information
  
-* **Release Version**: 2.0.0 B2
-* **Released on**: 19-Jan-2026
-* **Access for 2.0.0 B2**: [Next environment](https://next.elitea.ai)
+* **Release Version**: 2.0.0
+* **Released on**: 19-Feb-2026
+* **Access for 2.0.0**: [Next environment](https://next.elitea.ai)
 
 
 ## New Features
 
-### MCP: Remote MCP Server Integration with OAuth & Dynamic Tool Discovery
+### Agents & Pipelines: Set a Default Version
 
-Connect remote MCP servers to ELITEA with full OAuth 2.0 authentication support, dynamic tool discovery, and intelligent session management.
+Choose which version of an agent or pipeline should be used as the **default**. This helps you keep a stable “go-to” version for everyday use, while continuing to iterate and experiment in other versions.
 
-**What you can do now:**
-
-* **OAuth & PAT Authentication**: Seamlessly authenticate remote MCP servers using OAuth 2.0 flow or Personal Access Token (PAT), depending on the remote server type. The authentication method is automatically detected based on server requirements.
-* **Dynamic Tool Discovery**: Click "Get/Sync Tools" to automatically fetch and discover all available tools from the remote MCP server without manual configuration.
-* **Automatic Tool Synchronization**: Use "Sync Tools" to update your tool list when the remote server adds or removes capabilities, with visual indicators showing what changed.
-* **Session Management**: Real-time validation of credentials with visual status indicators (connected/disconnected/expired) on toolkit cards.
-* **Graceful Expiration Handling**: When sessions expire, receive clear in-chat notifications with one-click re-authentication options to quickly restore connectivity.
-* **Browse Remote Servers**: Explore a curated directory of remote MCP servers at [mcpservers.org](https://mcpservers.org/remote-mcp-servers) to discover and connect new capabilities.
-
-**Benefits:** Eliminates manual tool configuration, reduces authentication friction, ensures toolkit reliability through proactive session validation, and expands integration possibilities with the growing ecosystem of remote MCP servers.
-
-For more information about this feature, see [Remote MCP Server Integration Guide](../integrations/mcp/create-and-use-remote-mcp.md).
-
-### Agents Studio: Shared Library for Published Agents
-
-Discover, browse, and use community-published agents through the new Agents Studio menu—a centralized shared library for exploring pre-built agents across all projects.
+In addition, the previously used **latest** version naming is now **base**. When you create a new agent or pipeline, ELITEA automatically creates an initial version named **base** and sets it as the default.
 
 **What you can do now:**
 
-* **Centralized Discovery Hub**: Access the new **Studio** menu (located between Import and Connection Status) to explore all published agents from the community in one place.
-* **Smart Search & Filtering**: Search agents by name, description, or tag with real-time results, and filter by categories like "Trending" (most-liked agents) to quickly find what you need.
-* **Visual Agent Browsing**: View agents as cards showing agent name, creator avatar, and like count in a responsive grid layout optimized for different screen sizes.
-* **Detailed Agent Preview**: Click any agent card to open a modal displaying the agent's title, description, welcome message, conversation starters, and a "Start Conversation" button.
-* **Instant Conversation Launch**: Click "Start Conversation" to automatically create a new chat with the selected agent added as an active participant, complete with conversation starters ready to use.
-* **Flexible Integration**: Add published agents to existing conversations by typing `#[Agent Name]` in the chat input or searching from the Agents section in Participants.
-* **Customizable Experience**: Modify LLM model and model settings for published agents in your conversations (other properties remain read-only to preserve the original agent design).
+* **Make any version the default**: Use the **Set as a default** action to mark the selected version as the one ELITEA uses by default.
+* **Start from a default base version**: New agents and pipelines start with a **base** version that is set as the default automatically.
+* **Clear UI indication**: The default version is visually marked in the versions dropdown so you can confirm at a glance which one is active.
+* **One default at a time**: Only one version can be the default; selecting a new default automatically replaces the previous one.
+* **Safe version management**: The **base** version cannot be deleted, and default versions are protected to prevent accidental removal until another default is selected.
 
-**Benefits:** Reduces time to discover and deploy pre-built agents, fosters community engagement through agent sharing, and provides an intuitive browsing experience similar to popular AI assistant marketplaces.
+**Benefits:** Reduces confusion about which version is “live”, makes it easier to roll out updates by switching the default, and supports safer experimentation without disrupting day-to-day work.
 
-For more information about this feature, see [Use Public Agents](../how-tos/chat-conversations/use-public-items-from-chat.md).
+For more information, see [Agent and Pipeline Versioning](../how-tos/agents-pipelines/entity-versioning.md).
 
-### Indexing: Enhanced Index Management with Real-Time Monitoring & Automation
+### Agents & Pipelines: Import and Export
 
-Comprehensive index management improvements including real-time progress monitoring, automated scheduling with visual cron builder, event notifications, and execution history tracking.
+Move agents and pipelines between projects or environments by exporting them as portable files and importing them through a guided wizard. This makes it easier to share reusable building blocks, create backups, and maintain agent/pipeline configurations in version control.
 
-**What you can do now:**
-
-* **Real-time progress monitoring**: Monitor index creation and reindexing with color-coded status indicators (green checkmark for success, blue loading for in-progress, red info icon for failed), view detailed progress information and real-time logs, and see index card details including name, creation date, and document count.
-* **Automated schedule updates with visual cron builder**: Enable scheduled index refreshes (daily, weekly, monthly) with the Auto-Update toggle, use the intuitive visual cron builder with dropdown-based controls for frequency selection (Every minute, Hourly, Daily, Weekly, Monthly, Custom), time picker, day selectors, and real-time preview of generated cron expressions—eliminating the need to understand cron syntax or use external tools like crontab.guru.
-* **Flexible scheduling options**: Configure schedules using the visual builder interface or switch to manual text input for advanced cron expressions, select from common presets ("Every hour", "Daily at midnight", "Weekly on Monday"), and ensure security compliance with enforced project-level credentials and role-based access control.
-* **Execution history tracking**: Access the History tab to view all index runs with creation/update timestamps, track successful and failed runs with detailed status information, and click any run to view comprehensive details including input/output data and error diagnostics.
-* **Event notifications**: Receive real-time notifications for index creation, reindexing (manual or scheduled), and failures with document counts, click index names in notifications to navigate directly to the Index tab with the selected index and Run details displayed.
-* **Failed index management**: View detailed error information for failed indexes, reconfigure parameters and restart indexing via the Update button, or delete indexes that are no longer needed.
-
-**Benefits:** Eliminates manual monitoring and maintenance overhead, reduces scheduling errors through intuitive visual interface accessible to non-technical users, ensures indexes stay current automatically, provides complete visibility into index operations and history, enables quick troubleshooting with detailed diagnostics, and maintains enterprise security through enforced credential policies.
-
-For detailed guidance, see [How to create and use indexes](../how-tos/indexing/using-indexes-tab-interface.md) and
-[Schedule Indexing](../how-tos/indexing/schedule-indexing.md).
-
-### Pipelines: Enhanced Execution Monitoring & AI-Powered Configuration
-
-Comprehensive pipeline improvements including real-time run tracking in Canvas and Flow View with AI-powered input assistance for node configuration.
+!!! warning "No backward compatibility with pre-2.0.0 import/export"
+    Agent and pipeline import/export formats in **2.0.0** are not backward compatible with previous releases. Exports created in **2.0.0** may not import into earlier versions, and exports from earlier versions may not import into **2.0.0**.
 
 **What you can do now:**
 
-* **Real-time run tracking in Canvas**: Monitor pipeline execution directly in Canvas Flow Editor when running from chat, with run details appearing automatically using the same UI as Pipelines Menu Flow View, multiple run support with completed runs grouped under a History icon, and seamless tab switching between Flow Editor and YAML tabs.
-* **Enhanced run display in Flow View**: View streamlined chipsets showing status icons and run numbers (e.g., "Run 1", "Run 2"), with smart grouping of completed/inactive runs under a History icon, color-coded status indicators (blue loading, green success, red error, orange stopped), and click-through access to detailed run information with input/output data and timestamps.
-* **Run management**: Delete completed runs from both Canvas and Flow View (in-progress runs must be stopped first), with session-based persistence that clears on page refresh to keep views focused on current work.
-* **AI-powered input assistant**: Generate or improve content for specific node fields (Decision descriptions, Router/Condition conditions, State Modifier Jinja templates, LLM System/Task fields) with side-by-side comparison of current versus improved options, iterative refinement support, and context-aware suggestions using your pipeline's configured LLM model.
+* **Export a single agent or pipeline as Markdown**: Export downloads the **`.md`** file that includes the entity configuration (YAML frontmatter) and the instructions/body content.
+* **Export agents/pipelines with dependencies as ZIP**: If an agent or pipeline references nested agents or pipelines, export downloads the **`.zip`** archive that includes the main entity and all referenced entities as separate **`.md`** files.
+* **Import `.md` and `.zip` files with a preview wizard**: Upload an exported file to open the import wizard, review what will be created, and import it into the target project.
+* **Validate models during import**: If the exported model is not available in the target project, you see a clear warning and can select an alternative before importing.
+* **Preserve toolkit tool selection**: When exporting, the selected tools inside toolkits are saved and restored on import, so imported agents keep the same enabled tools.
+* **Resolve nested references by name**: Nested agents and pipelines are matched and linked by name during import, so relationships are recreated reliably.
+* **Use MD/ZIP formats only**: Import/export is streamlined to Markdown (`.md`) and ZIP (`.zip`) files; JSON formats are not supported.
 
-**Benefits:** Eliminates context switching for execution monitoring, enables rapid iteration and debugging with immediate result visibility, improves troubleshooting efficiency with clear status differentiation, reduces time writing node configurations through AI assistance, and provides complete execution history—all while maintaining full user control over pipeline design and content.
+**Benefits:** Makes agent and pipeline sharing and migration predictable and repeatable, reduces manual reconfiguration, and helps teams collaborate by exchanging portable files.
 
-For detailed guidance, see [AI Assistant in Nodes](../how-tos/pipelines/ai-assistant-in-nodes.md) and [Pipeline Runs](../how-tos/pipelines/pipeline-runs.md).
+For more information, see [Export and Import Guide](../how-tos/agents-pipelines/import-export.md).
 
-### Agents & Pipelines: Run History Actions (Restore Conversation & Copy Link)
+### Chat & Artifacts: Edit Generated Files in Canvas
 
-Restore a previous conversation from **Agents** or **Pipelines** run history into a new, editable chat session, and share specific runs with a direct link. This helps you troubleshoot issues, re-test after changes, collaborate with teammates, or recover context after an accidental page refresh.
-
-**What you can do now:**
-
-* **Restore from history**: Use the **Restore Conversation** action on any run in the Agents or Pipelines **History** tab.
-* **Copy a direct run link**: Use the **Copy link** action for any run to copy a unique URL to your clipboard.
-* **Open the exact run from a link**: When you open the link, ELITEA navigates directly to the selected Agent/Pipeline run and shows its details.
-* **Open a new session**: Restoring opens a new chat session in the **Configuration** tab.
-* **Restore chat history only**: Messages and responses are restored; historical agent/pipeline configuration is not.
-* **Use current configuration**: The restored conversation runs with the current Agent/Pipeline configuration (for example, if toolkits changed, the current setup applies).
-* **Continue immediately**: The restored session is fully interactive so you can continue from the last message.
-* **Non-destructive behavior**: Restoring does not delete or modify the original history entry, and you can restore multiple runs into separate sessions.
-
-**Benefits:** Enables faster iterative debugging and validation with the same context, improves collaboration by sharing run-specific links, reduces lost work after refresh or browser closure, and supports re-testing with updated configurations.
-
-For background on run history, see [Agents and Pipelines History](../how-tos/agents-pipelines/agents-pipelines-history.md).
-
-### Pin Frequently Used Entities
-
-Pin agents, pipelines, credentials, toolkits, and MCPs to keep frequently used items at the top of lists for quick access.
+Edit supported files generated in conversations (via the Artifacts toolkit) directly in Canvas, then save changes back to the same artifact file. This helps you iterate on AI-generated outputs (code, configs, notes, and data files) without downloading, re-uploading, or switching tools.
 
 **What you can do now:**
 
-* **Pin entities**: Click the pin icon in card view (bottom-left corner), table view ("..." menu), or detail view to pin any entity.
-* **Quick access**: Pinned entities appear at the top of lists across all views and persist across sessions.
-* **Multiple pinning**: Pin multiple entities while maintaining pin order; newly created entities appear after pinned items.
-* **Visual indicators**: Pinned state shown with filled icon; unpin with a single click.
-* **Available for**: Agents, Pipelines, Credentials, Toolkits, and MCPs across card, table, and detail views.
+* **Open artifact files in Canvas from chat**: Click the pencil icon or the file link in the conversation to start editing in Canvas.
+* **Save changes back to the same file**: Saving overwrites the existing file in the selected Artifacts bucket so the latest version stays in one place.
+* **Download files from the conversation**: Download the generated or modified artifact directly from chat when you need a local copy.
+* **Discard changes when needed**: Use **Discard** to drop edits and return to the original file content.
+* **Avoid losing work with an unsaved-changes warning**: If you navigate away without saving, ELITEA shows a notification so you can decide whether to save or discard.
+* **Edit common text and code formats**: Canvas supports editing for a wide range of file types such as **`.py`**, **`.txt`**, **`.md`**, **`.json`**, **`.java`**, **`.cs`**, and **`.cpp`**.
 
-**Benefits:** Reduces time searching for frequently used entities, provides instant access to critical resources, and maintains personalized workspace organization across sessions.
+**Benefits:** Faster iteration on generated deliverables, fewer manual copy/paste steps, and a single source of truth for working files stored in Artifacts.
 
-For detailed guidance, see [Pin Entities](../how-tos/entity-management/working-with-pins.md).
+For more information, see [File Editing in Canvas](../how-tos/chat-conversations/file-editing-canvas.md) and [Artifacts](../menus/artifacts.md).
 
+### Chat & Agents: Smart Tools Selection (On-Demand Tool Loading)
 
-### Chat: Planner Tool for Task Management
-
-Create and manage tasks directly within conversations using the new Planner internal tool.
-
-**What you can do now:**
-
-* **Access via internal tools menu**: Enable the Planner tool through the "Enable internal tools" dropdown (gear icon in chat input) to activate task management capabilities in your conversations.
-* **Task creation from conversation context**: Capture action items and tasks directly from your conversation by using phrases like "add this to my todo," "create a task for," or "remind me to follow up."
-* **Context linking**: Tasks are automatically linked to the conversation thread where they were created, preserving context for future reference.
-* **Available everywhere**: Use the Planner tool in Conversations (Chat menu), Agents menu, and Pipelines menu chat inputs.
-* **Session persistence**: Your enable/disable choice persists throughout the conversation session, and tasks remain accessible across conversations.
-* **Smart invocation**: The tool activates only when enabled and when task-related input is detected, ensuring focused and relevant responses.
-
-**Benefits:** Eliminates context switching between conversations and external task management tools, captures action items in real-time as they emerge during discussions, and maintains task context for better follow-through—all without leaving your chat interface.
-
-For detailed guidance, see [Planner](../how-tos/chat-conversations/planner-internal-tool.md).
-
-### Toolkits: Usage History Tracking
-
-Track and review all toolkit index operations with a dedicated History tab that preserves run details and execution information for auditing and analysis.
+When you work with many toolkits, ELITEA can now optimize how tools are provided to the AI. With **Smart Tools Selection** enabled, the assistant discovers and uses the right tools on-demand instead of receiving every tool definition up front—helping reduce overhead while keeping the same user experience.
 
 **What you can do now:**
 
-* **View execution history**: Access a dedicated **History** tab in the Indexes view to see all past indexing operations for the selected index.
-* **Run details at a glance**: Each history entry displays the creation date/time, update timestamps for manual and scheduled re-indexing, run status (success or failed), and detailed execution information.
-* **Real-time updates**: The history table automatically updates when indexing events occur (index creation, re-indexing, or failures).
-* **Failed operation tracking**: Failed updates appear in the history table with date/time and status indicating the failure reason.
-* **View detailed information**: Click any run in the history table to view comprehensive details in the right panel, including all relevant actions, parameters, and results (both successful and failed).
-* **Reference-only access**: History events are displayed for reference and auditing purposes; no direct actions can be performed from the History tab.
+* **Enable Smart Tools Selection in Chat**: Turn it on from the **Internal Tools** menu in the chat input.
+* **Enable Smart Tools Selection for an agent**: Turn it on in the agent configuration so new conversations with that agent use it by default.
+* **Keep the same task results**: Tool execution works the same way—Smart Tools Selection changes efficiency (how tools are loaded), not what you can do.
+* **Use it with other internal tools**: Smart Tools Selection can be enabled alongside tools like **Planner**.
+* **Persist the setting**: In chat, the toggle remains enabled for the conversation even after a page refresh.
 
-This feature enables better debugging, performance analysis, and compliance tracking by maintaining a complete audit of all indexing operations.
+**Benefits:** Faster, more cost-efficient conversations when multiple toolkits are attached, with no change to how you ask for work to be done.
 
+For more information, see [Smart Tools Selection Internal Tool](../how-tos/chat-conversations/smart-tools-selection-internal-tool.md).
 
-### Toolkits: ADO Work Item Attachment Reading
+### Chat & Agents: Sub-Agent Response Accordions (Swarm Mode)
 
-Read and access attached images and files directly from Azure DevOps (ADO) work items through the ADO toolkit.
-
-**What you can do now:**
-
-* **Access work item attachments**: Retrieve attached images and files from ADO work items using the enhanced ADO toolkit capabilities.
-* **Expanded integration**: Process visual content and documentation stored as work item attachments for comprehensive workflow automation.
-* **Seamless file handling**: Access attachments alongside other work item data (descriptions, comments, fields) through the same toolkit interface.
-
-**Benefits:** Enables complete work item data extraction including visual assets, eliminates manual file downloads for automation workflows, and expands ADO integration capabilities for documentation-heavy projects.
-
-### Toolkits: Better PPTX Table/Chart Text Extraction
-
-Artifacts, SharePoint, and indexing tools can now extract and index text from tables and charts embedded in PPTX files for more complete document understanding.
-
-### Credentials: Enhanced Test Connection Verification
-
-Comprehensive connection testing for integration credentials with authentication validation, service-specific API verification, and detailed error diagnostics.
+When you use **Swarm Mode** (multi-agent collaboration), child agent responses are now shown inside the parent message as collapsible accordions, instead of appearing as separate chat messages.
 
 **What you can do now:**
 
-* **URL reachability verification**: Test Connection now performs actual HTTP requests to verify the service URL is accessible, not just well-formed.
-* **Authentication validation**: Validates provided credentials (API Key/Token, Username, Password) by attempting authenticated connections to each service.
-* **Service-specific API calls**: Uses appropriate endpoints for each integration:
-    * **GitHub**: Verifies credentials via `/user` or `/repos` endpoints
-    * **TestRail**: Validates access through `/get_projects` endpoint
-    * **Jira**: Confirms authentication via `/myself` endpoint
-    * **Confluence**: Checks credentials through `/content` endpoint
-* **Detailed error messages**: Receive specific feedback for issues including "Invalid URL," "Authentication Failed," "Insufficient Permissions," or "Service Unreachable" instead of generic connection errors.
+* **Review child agent outputs inline**: Sub-agent responses appear under the parent message, so the main conversation stays easy to follow.
+* **Expand/collapse sub-agent content**: Open an accordion only when you need the full detail from a specific sub-agent.
+* **See which agent responded**: Each accordion is labeled with the child agent name.
+* **Keep history consistent after refresh**: Sub-agent responses are preserved when you reload the conversation.
 
-**Benefits:** Eliminates false positives from URL-only validation, catches authentication issues before saving credentials, reduces troubleshooting time with specific error messages, improves integration reliability through comprehensive testing, and prevents configuration errors that could cause workflow failures.
+**Benefits:** Cleaner chat history for swarm-based workflows, easier auditing of delegation steps, and faster scanning of results from multiple specialists.
+
+For more information, see [Swarm Mode Internal Tool](../how-tos/chat-conversations/swarm-mode-internal-tool.md).
+
+### Toolkits: ADO Wiki Optional Wiki Identifier
+
+The ADO Wiki toolkit now supports an optional **Wiki Identifier** field, so you can explicitly control which Azure DevOps wiki the toolkit should use.
+
+**What you can do now:**
+
+* **Set a Wiki Identifier when needed**: Provide a specific identifier to target the right wiki for your operations.
+* **Keep it optional**: If you leave the field empty, ELITEA uses the default identifier from the toolkit configuration.
+* **Reduce ambiguity in wiki operations**: Make wiki read/update actions more predictable when multiple wikis exist.
+
+**Benefits:** Faster configuration and fewer “wrong wiki” results when working across multiple Azure DevOps projects.
+
+For more information, see [Azure DevOps Wiki, Boards, and Plans Toolkit Guide](../integrations/toolkits/ado_wiki_plan_board_toolkit.md).
+
+### Chat: Pin and Reorder Folders
+
+Keep your **Conversations** sidebar organized by pinning important folders for quick access and reordering folders to match your workflow.
+
+**What you can do now:**
+
+* **Pin folders for quick access**: Pin your most important folders so they stay easy to reach.
+* **Reorder folders with drag-and-drop**: Change folder order directly in the UI.
+* **Keep your setup across sessions**: Pinned folders and folder order persist until you change them.
+
+**Benefits:** Faster navigation and a cleaner workspace when you manage many conversations.
+
+For more information, see [Chat](../menus/chat.md).
+
+### MCPs: Run History Tracking
+
+MCPs now include a working **History** tab (similar to Toolkits), so you can review past runs for the current MCP and inspect the preserved conversation context.
+
+**What you can do now:**
+
+* **Review MCP runs for a specific MCP**: See when a run happened and its total duration.
+* **Open a run to view the preserved conversation**: Run details show the associated chat in a read-only view.
+* **Remove runs from the list**: Use the delete action to remove a run from the History view (without deleting it from the database).
+
+**Benefits:** Easier auditing and troubleshooting of MCP activity, without leaving the MCP details page.
+
+For more information, see [MCPs](../menus/mcps.md).
+
+### Integrations: Langfuse Tracing
+
+Langfuse tracing is now available through a standard ELITEA credential type (registered via the SDK), so you can enable observability for agent/pipeline executions without installing a separate plugin.
+
+**What you can do now:**
+
+* **Create Langfuse credentials**: Add a Langfuse credential from **Settings → Credentials** using your **Base URL**, **Public Key**, and **Secret Key**.
+* **Validate the configuration**: Use **Test Connection** to verify the credential before using it.
+* **Use tracing in minimal deployments**: Langfuse configuration is registered via the SDK, making it available even in environments that don’t include optional plugins.
+
+**Benefits:** Easier troubleshooting and monitoring for agent workflows, with a consistent credential-based setup.
+
+For more information, see [Langfuse](../integrations/third-party-integrations/langfuse.md) and [Credentials](../menus/credentials.md).
+
   
 ## Changed Features
 
-### Chat: Improved New Conversation Creation Flow
+### Settings: Redesigned Settings Menu and Sub-Menus
 
-The new conversation creation flow has been redesigned to reduce user confusion and align with familiar chat application patterns.
-
-**What changed:**
-
-* **Deferred sidebar updates**: Clicking **+Create** now highlights the chat input field without immediately showing a placeholder conversation in the sidebar.
-* **Message-triggered creation**: New conversation items appear in the sidebar only after you type and send your first message, eliminating premature UI elements.
-* **Auto-generated naming**: Conversation names are automatically generated based on your first message content.
-* **Focused naming indicator**: The loader icon and "Naming" text appear only during the brief name generation process (1-2 seconds), not before you've started typing.
-
-**Benefits:** Cleaner and more intuitive conversation creation experience with reduced cognitive load, eliminated premature placeholder conversations, and alignment with popular chat application patterns like ChatGPT.
-
-For more information about this, see [Chat Usage](../how-tos/chat-conversations/how-to-use-chat-functionality.md).
-
-### Chat: Intelligent Attachment Bucket Management
-
-Attachment storage is now automatically configured from agents with full manual control, clear visibility, and intelligent bucket inheritance.
+The **Settings** area has been refreshed to improve navigation and align key sub-menus with updated UI patterns.
 
 **What changed:**
 
-* **Automatic bucket inheritance**: Adding an agent with a configured attachment bucket automatically sets it as the conversation's attachment bucket, eliminating manual configuration for each conversation.
-* **First-agent priority**: When adding multiple agents with different buckets, the first agent's bucket is used; subsequent agents' buckets are ignored to maintain consistent storage.
-* **Manual override capability**: Change the attachment bucket at any time via the settings icon in Participants → Toolkits; manual selections take precedence over future agent additions.
-* **Persistent configuration**: Attachment buckets remain active even when agents are removed from the conversation, ensuring previously uploaded files stay accessible.
-* **Public agent bucket creation**: Public agents automatically create buckets in your current project context (Private or Team) if they don't already exist.
-* **Clear visual indicators**: Active attachment buckets appear in Participants → Toolkits with a 📎 icon, bucket name, project type badge (Private/Team), and management controls.
-* **Unified artifact storage**: Artifact toolkit uses the conversation's attachment bucket when present, avoiding duplicate bucket configurations.
+* **AI Configuration reorganized**: The page is split into **AI Configuration** and **OpenAI Template** tabs for clearer separation.
+* **Personal Tokens simplified**: Download options for IDEs are now hidden to reduce visual noise.
+* **Secrets protected**: Default/system secrets cannot be deleted, and the UI explains why deletion is blocked.
+* **Users management updated**: The users-related settings area has an updated layout for inviting and editing users.
+* **Monitoring reorganized**: Monitoring visuals have been updated, and **Groups** are now accessed under **Monitoring**.
 
-**Benefits:** Reduces attachment configuration friction by 70%, provides seamless agent-to-conversation bucket inheritance, ensures clear visibility of active storage location, and maintains full user control with manual override capabilities.
+**Benefits:** Faster setup, fewer mis-clicks in sensitive areas (like secrets), and a more consistent Settings experience.
 
-For more information about this feature, see [Attachements in Conversation](../how-tos/chat-conversations/attach-images-and-files-in-chat.md).
+For more information, see [Settings Overview](../menus/settings/settings-overview.md), [AI Configuration](../menus/settings/ai-configuration.md), [Personal Tokens](../menus/settings/personal-tokens.md), [Secrets](../menus/settings/secrets.md), [Users](../menus/settings/users.md), and [Monitoring](../menus/settings/monitoring.md).
 
-### Toolkits: ADO Repos Credential Simplification
+### Artifacts: Updated Buckets and Artifacts Menu Experience
 
-ADO Repos toolkit configuration is now simpler and more consistent by reusing the standard ADO credential and moving repository-specific configuration into the toolkit.
+The **Artifacts** menu and buckets experience has been improved to make files easier to organize, review, and download.
 
 **What changed:**
 
-* **ADO Repos credential removed**: ADO Repos no longer uses a separate credential type; configure and reuse your existing **ADO credential** instead.
-* **Repository ID moved to toolkit**: A new **Repository ID** field is now part of the ADO Repos toolkit configuration.
-* **Repository ID is required**: Repository ID is now a mandatory field and appears before **Base branch**.
-* **Seamless transition**: Migrations are provided to support existing configurations.
+* **Refreshed Artifacts menu UI**: The Artifacts pages follow updated layouts for better usability.
+* **Folder support in buckets**: You can organize artifacts using logical folders (including nested folders).
+* **Retention enforcement via archiving**: When a bucket retention period expires, affected files are **archived** (not deleted) and hidden by default.
+* **Optional archived visibility**: Use a toggle to show archived files when you need them.
+* **Bulk download as ZIP**: Selecting multiple files downloads a single ZIP archive (named after the bucket) instead of downloading files one by one.
 
-**Benefits:** Reduces configuration overhead and credential confusion, standardizes Azure DevOps authentication across toolkits, and makes ADO Repos setup more predictable.
+**Benefits:** Cleaner organization for large buckets, safer retention behavior, and faster bulk downloads.
 
-For more information about ADO credentials, see [How to Use Credentials](../how-tos/credentials-toolkits/how-to-use-credentials.md#ado-azure-devops-credential-setup).
+For more information, see [Artifacts](../menus/artifacts.md).
 
-### Model Settings: Simplified Configuration with Auto Mode
+### Entities: Refreshed Entity Menus and Unified Table Layout
 
-Token management and model parameters are now easier to configure with auto mode defaults and intuitive control settings for both technical and non-technical users.
-
-**What changed:**
-
-* **Auto token management**: `max_completion_tokens` now defaults to "auto" (uses model defaults), with option to set explicit integer values for custom limits.
-* **Creativity control**: Replaced `temperature` with **Creativity** setting using a 3-5 dimension scale for intuitive model behavior tuning.
-* **Reasoning levels**: Replaced `max_p` and `max_k` with **Reasoning** (hi/med/lo) for simplified response control.
-* **State-saving for continuity**: Chat and agent sessions now save state when token limits are reached, with a "Continue" button to resume generation while preserving full context and history.
-
-**Benefits:** Simplifies model configuration for non-technical users, eliminates manual token calculations, provides intuitive control dimensions, prevents context loss during long generations, and maintains advanced customization options for power users.
-
-### Pipelines: Node Deprecations and New Node Types
-
-The pipeline node architecture has been streamlined with new specialized nodes and deprecation of legacy nodes to simplify pipeline design and reduce configuration complexity.
-
-**New Node Types Introduced:**
-
-* **Toolkit Node**: Dedicated node for executing individual toolkit tools with input/output state mapping, interrupt settings, and tool-specific field configuration. Select from toolkits added to your pipeline, choose specific tools, and configure tool parameters directly in the node—replacing the generic Function/Tool approach with toolkit-specific clarity.
-* **MCP Node**: Specialized node for executing MCP server tools with the same configuration capabilities as Toolkit Node. Provides clean separation between toolkit and MCP tool execution for better pipeline organization.
-* **Printer Node**: Display formatted output to users without LLM processing or tool invocation. Supports F-string formatting (enabled by default) for dynamic variable interpolation, multiple input variables, and configurable Interrupt Before/After settings (Interrupt After enabled by default). Ideal for showing intermediate results, progress updates, or data summaries during pipeline execution—faster and more consistent than using LLM nodes for simple output display.
-
-!!! note "Node Deprecation Timeline"
-    The following nodes are marked as deprecated in this release and will be removed in 2026. Existing pipelines using these nodes will continue to function, but you cannot add new instances of deprecated nodes. Migration guides are available to help transition to replacement nodes.
-
-**Enhanced Agent Node:**
-
-* **Agent Node**: The Agent node has been enhanced to support pipeline execution alongside agent execution, providing a unified interface for both use cases. Agent nodes can now execute pipelines that do not contain interruptions or subgraphs (nested pipelines), supporting standard sequential and conditional flows. This enhancement simplifies workflow creation and reduces the need for separate node types.
-
-**Deprecated Nodes (Marked for 2026 Removal):**
-
-* **Function Node** (deprecated): Replaced by **Toolkit Node** and **MCP Node**. The Function node handled both toolkits and MCPs in a single node type, creating configuration confusion. Dedicated Toolkit and MCP nodes provide clearer separation and improved usability.
-* **Tool Node** (deprecated): Replaced by **Toolkit Node** and **MCP Node**. Functionality now fully covered by the dedicated replacement nodes with enhanced capabilities.
-* **Condition Node** (deprecated): Replaced by **Router Node**. The Router node provides more robust and flexible conditional routing with better configuration options and clearer branching logic.
-* **Decision Node** (redesigned and deprecated old version): The legacy "semi-node" Decision Node attached to other nodes is deprecated. A new standalone **Decision Node** functions independently, accepts multiple input connections, and operates similarly to Router Node. The new Decision Node supports its own input/output state management and decision logic configuration without dependency on connected nodes.
-* **Pipeline Node** (deprecated): Replaced by enhanced **Agent Node**. The Agent node now supports pipeline execution for pipelines without interruptions or subgraphs, providing a unified interface for both agents and pipelines. Validation prevents adding unsupported pipeline types with clear error messages.
-* **Loop Node and Loop for Tool Node** (deprecated): These nodes were overly complicated for configuration and everyday usage. Alternative pipeline patterns using simpler nodes and design patterns are recommended. Simpler approaches provide the same iteration capabilities with better clarity and easier maintenance.
-
-**Migration Support:**
-
-* No automatic migration is provided—existing pipelines continue to work with deprecated nodes.
-* Comprehensive migration guides available with step-by-step instructions, visual diagrams, and example conversions.
-* New nodes provide full feature parity with deprecated nodes, including input/output states, input mappings, and interrupt configurations.
-
-**Benefits:** Clearer node responsibilities reduce configuration errors, specialized nodes improve pipeline readability, and removing overlapping legacy nodes simplifies learning curve for new users while maintaining full functionality for existing workflows.
-
-For detailed migration guidance, see [Migration Overview: migration/v2.0.0 B2/migration-overview.md](../migration/v2.0.1/migration-overview.md).
- 
-
-### Toolkits: Standardized Name and Description Fields
-
-All toolkits now use consistent Toolkit Name and Description fields for better identification and organization.
+Entity menus have been updated to improve consistency across the platform and align with the refreshed layouts used in **Settings** and **Artifacts**.
 
 **What changed:**
 
-* **Toolkit Name field**: All toolkits now include a mandatory "Toolkit Name" field (previously various fields like Collection ID, Space Key, Repository, Bucket, etc. were used for naming).
-* **Description field**: Optional "Description" field added to all toolkits for additional context and documentation.
-* **Consistent placement**: Toolkit Name always appears as the first configuration field across all toolkit types.
-* **Automatic migration**: Existing toolkits automatically migrated with current names preserved as "Toolkit Name".
+* **Updated entity headers**: The header area has been redesigned across entity menus (Agents, Pipelines, Toolkits, MCPs, and Credentials).
+* **Unified table styling**: Entity lists now use consistent table styles (row spacing, hover/selection behavior, and overall layout).
+* **Unified pagination**: Pagination controls are now consistent across entity menus.
+* **Import action repositioned**: In **Agents** and **Pipelines**, the Import icon is now placed next to the menu name for quicker access.
+* **Agents header simplified**: The status dropdown has been removed from the Agents menu.
 
-**Benefits:** Eliminates naming inconsistencies across toolkit types, improves toolkit identification in lists and dropdowns, provides better documentation capabilities, and creates consistent user experience when configuring any toolkit.
+**Benefits:** A more consistent experience across entity pages, with cleaner headers and easier scanning of long lists.
 
-### OpenAPI Toolkit: Enhanced Configuration and Validation
+For more information, see [Agents](../menus/agents.md), [Pipelines](../menus/pipelines.md), [Toolkits](../menus/toolkits.md), [MCPs](../menus/mcps.md), and [Credentials](../menus/credentials.md).
 
-The OpenAPI toolkit has been redesigned with improved schema validation, credentials support, and better toolkit organization.
+### Chat: Improved Conversation Rendering (Thinking Steps and Tool Calls)
 
-**What changed:**
-
-* **Credentials support**: OpenAPI toolkit now supports credentials for secure authentication configuration.
-* **Toolkit categorization**: Moved to **Integrations** category for better organization alongside other integration toolkits.
-* **Global headers**: Toolkit-level headers configuration eliminates repetitive header definitions across endpoints, with secure storage for sensitive values.
-* **Enhanced schema editor**: CodeMirror integration provides syntax highlighting and real-time validation for schema field.
-* **YAML support**: Schema field now accepts both JSON and YAML formats with automatic format detection and validation.
-* **Immediate feedback**: Real-time syntax error detection prevents invalid configurations before saving.
-
-**Benefits:** Reduces configuration errors, streamlines setup with reusable headers, supports industry-standard formats, improves security for sensitive values, and provides better editing experience with validation feedback.
-
-### QTest Toolkit: Enhanced Test Management Capabilities
-
-The QTest toolkit has been significantly enhanced with new tools for managing custom fields, internal requirements, and indexing support, plus critical bug fixes for multi-agent usage.
+Chat conversation rendering has been updated to make tool usage and AI reasoning easier to follow—especially when using **Smart Tools Selection**.
 
 **What changed:**
 
-* **Custom Field Management**: New tools enable you to retrieve, create, and edit custom field values for test cases, supporting various field types including checkboxes, text inputs, integers, and dropdown selections.
-* **Internal Requirements Support**: Attach internal requirements to test cases and use new tools for listing and retrieving requirements, with clear differentiation between internal and external requirement types.
-* **Indexing Support**: QTest data can now be indexed and searched using standard indexing tools, enabling better searchability and more efficient data retrieval across test cases, requirements, and other QTest entities.
-* **Default Field Fixes**: Priority, Type, and Status fields now correctly save user-selected values instead of defaulting to the first available option during test case creation.
-* **Multi-Agent Compatibility**: Fixed conflicts that occurred when multiple agents used the QTest toolkit simultaneously in the same pipeline or agent, ensuring independent project initialization per agent and proper credential handling.
+* **Turn-based grouping**: Tool calls are grouped into logical turns, with tool badges displayed together in a single row.
+* **Meta-tools hidden in Smart Tools Selection**: Technical meta-tools (such as `invoke_tool` and `list_toolkits`) are hidden when real toolkit tools are present.
+* **Cleaner tool labels**: Tool calls use a compact badge format (for example, `GitHub: list_issues`) and remove verbose technical text.
+* **Inline progress indicators**: Execution progress is shown inside the tool badge during runs.
+* **No empty thinking steps**: Empty reasoning steps are filtered out to avoid blank entries in the conversation.
 
-**Benefits:** Expands QTest toolkit capabilities for comprehensive test management workflows, improves reliability for complex multi-agent scenarios, and enables better discoverability through indexing integration.
+**Benefits:** Cleaner chat history, easier scanning of multi-tool workflows, and less technical noise in both streaming and history views.
 
-### Toolkits: Data Analysis Internal Tool
+### Canvas: Clearer Model Configuration and Save Behavior
 
-Access Pandas data processing capabilities directly as an internal tool without requiring separate toolkit configuration.
-
-**What you can do now:**
-
-* **Enable Data Analysis tool**: Access Pandas functionality through the "Enable internal tools" dropdown menu (gear icon in chat input), positioned between TODO and Python sandbox tools.
-* **Automatic function activation**: Both "Process query" and "Save dataframe" functions are automatically activated when you enable the Data Analysis tool, eliminating manual function selection.
-* **Session persistence**: Your enable/disable choice persists throughout the conversation session, maintaining consistent data processing capabilities.
-* **Streamlined workflow**: Use Pandas operations directly in chat without navigating to the Toolkits menu or attaching separate toolkit instances.
-* **Consistent experience**: Follows the same interaction pattern as other internal tools (TODO, Python sandbox) for familiar, unified usage.
-
-**Benefits:** Eliminates toolkit creation and configuration overhead for common data analysis tasks, provides instant access to Pandas capabilities in any conversation, reduces friction for ad-hoc data processing workflows, and maintains cleaner toolkit management by moving frequently-used functionality to internal tools.
-
-For more information about this feature, see [Data Analysis](../how-tos/chat-conversations/data-analysis-internal-tool.md).
-
-### Standardized Field Character Limits
-
-Field character limits are now standardized across all entity types with real-time character counters for better input management.
+Model configuration in Canvas has been updated to prevent accidental changes and make it clearer when updates take effect.
 
 **What changed:**
 
-* **Name field limit**: All entity Name fields (Agents, Pipelines, Toolkits, MCP Servers, Credentials) now support up to 32 characters.
-* **Description field limit**: Description fields across all entities support up to 768 characters.
-* **Message field limits**: Conversation Starter and Welcome Message fields support up to 768 characters.
-* **Character counter**: Real-time character counter displays remaining characters as you type in any limited field.
+* **Public agent models are locked**: When viewing a public agent in Canvas, the model selection is now read-only.
+* **Save is required after model changes**: In private/team projects, changing the model in an agent or pipeline now marks the configuration as **unsaved** and requires an explicit **Save**.
+* **Version-aware saving**: Model changes apply only to the current version after you save.
 
-**Benefits:** Ensures consistent field validation across the platform, prevents truncation issues, provides clear visual feedback during input, and helps users stay within limits before saving.
+**Benefits:** Fewer unintended configuration changes, clearer expectations about which model is being used, and safer updates when working across multiple versions.
 
-### Jira Toolkit: Improved API Version Configuration
+For more information, see [How to Create and Edit Agents from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md), [How to Create and Edit Pipelines from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md), and [How to Use Public Agents from Chat](../how-tos/chat-conversations/use-public-items-from-chat.md).
 
-Jira API version selection is now simpler with dropdown controls, intelligent defaults, and auto-detection during connection testing.
+### Deprecation: Browser Toolkit and Browser Credentials
 
-**What changed:**
+The **Browser toolkit** and **Browser credentials** are deprecated. For web search use cases, use a **Remote MCP server** that provides Web Search tools (for example, [Tavily](https://tavily.com)).
 
-* **Dropdown selection**: API version changed from text input to dropdown with v2 and v3 options only.
-* **v3 default**: API v3 is now the default (most common for Jira Cloud instances).
-* **Auto-detection**: Connection test attempts to detect correct API version and suggests it to users.
-* **Manual override**: Users can override auto-detected version when needed.
+**Benefits:** More flexible web search integrations, clearer separation between platform and third-party tools, and easier switching between providers.
 
-**Benefits:** Eliminates API version confusion, reduces setup errors, and streamlines Jira toolkit configuration with intelligent defaults.
+For more information, see [MCPs](../menus/mcps.md) and [Remote MCP Integration Guide](../integrations/mcp/create-and-use-remote-mcp.md).
 
-### Deprecated Features and UI Simplifications
 
-Several features and UI elements have been removed or temporarily disabled to simplify workflows and align with the platform's conversation-first direction.
-
-**What changed:**
-
-* **RUN tab removed**: RUN tab removed from Agent and Pipeline detail views; Configuration tab now opens by default with execution available through Conversations menu.
-* **Monitoring tab removed**: Monitoring tab removed from Agent and Pipeline details, and Monitoring sub-menu will be removed from Settings in future release; redesigned project-level monitoring system planned in future.
-* **Pipeline publishing removed**: Publishing capability removed for Pipelines (agents-only publication model); pipelines remain private within projects with all creation and execution functionality preserved.
-* **Import temporarily disabled**: Import functionality for agents and pipelines temporarily disabled pending improvements.
-* **Profile section redesigned**: User Profile menu item removed from sidebar; legacy sections (About Me, Rewards, Own Items, Shared Items) replaced with entity statistics tabs showing created/published counts for Agents, Pipelines, Toolkits, Credentials, MCPs, and Apps.
-
-**Benefits:** Simplified user interface with clearer execution path through Conversations, reduced feature complexity, focused publication model on Agents only, and aligned with conversation-first platform strategy.
-
- 
 ## Fixed Issues
 
-* [#3092](https://github.com/ProjectAlita/projectalita.github.io/issues/3092) **Code Node Misformats Code Stored in State Variables**: Code node fails to preserve new lines and escaped characters when code is stored as a string in state variables.
-* [#3070](https://github.com/ProjectAlita/projectalita.github.io/issues/3070) **Bitbucket Update File Fails on Full File Rewrite**: Full file content replacement can fail with "old content was not found" even when the provided old content matches the file exactly.
-* [#3069](https://github.com/ProjectAlita/projectalita.github.io/issues/3069) **Bitbucket Update/Edit File Fail on JSON Files**: JSON file updates fail because file content is read as a parsed dictionary instead of raw text, breaking string-based edits.
-* [#3040](https://github.com/ProjectAlita/projectalita.github.io/issues/3040) **ADO Repos Update File Corrupts Content**: Updating files with OLD/NEW markers can duplicate lines and remove original content.
-* [#3005](https://github.com/ProjectAlita/projectalita.github.io/issues/3005) **GitHub Get Commits Diff Tool Throws Exception**: GitHub toolkit get_commits_diff throws an exception instead of presenting commit diffs.
-* [#2990](https://github.com/ProjectAlita/projectalita.github.io/issues/2990) **Repository Update File Fails for Multi-line Replacements**: Repository toolkits can fail to match and replace multi-line content blocks, preventing updates from being applied.
-* [#2966](https://github.com/ProjectAlita/projectalita.github.io/issues/2966) **Router Node Routes to END Instead of Default Output**: Router node incorrectly prioritizes END node over Default Output node when END is included in routes, causing premature pipeline termination.
-* [#2923](https://github.com/ProjectAlita/projectalita.github.io/issues/2923) **ADO Repo Indexing Ignores TypeScript Files in Subdirectories**: ADO Repository indexing with "*.ts" whitelist pattern only indexes root-level TypeScript files; files in subdirectories and those with compound extensions (e.g., .steps.ts) are completely ignored.
-* [#2886](https://github.com/ProjectAlita/projectalita.github.io/issues/2886) **GitLab Update File Tool Fails**: GitLab toolkit Update File tool fails with "404 File Not Found" error or AttributeError about missing 'extract_old_new_pairs' attribute.
-* [#2871](https://github.com/ProjectAlita/projectalita.github.io/issues/2871) **Figma Toolkit Default Limit Too Low**: Figma toolkit default limit parameter (10,000) stops execution prematurely before retrieving complete data from Figma files; should be increased to 1,000,000+.
-* [#2858](https://github.com/ProjectAlita/projectalita.github.io/issues/2858) **Confluence Search Generates Dead Links**: Confluence toolkit search results generate links missing "/wiki" path segment, resulting in 404 errors when clicked.
-* [#2799](https://github.com/ProjectAlita/projectalita.github.io/issues/2799) **TestRail Index Search Returns No Results**: Search index returns zero results for TestRail toolkit even with cut-off score set to 0.1.
-* [#2782](https://github.com/ProjectAlita/projectalita.github.io/issues/2782) **No Loading Indicator When Uploading Attachments**: File attachments upload without visual feedback (spinner, progress bar, or status message), leaving users unable to tell if upload is in progress, stuck, or complete.
-* [#2780](https://github.com/ProjectAlita/projectalita.github.io/issues/2780) **Stepback Summary Index Fails with Anthropic Models**: Stepback Summary Index fails with Anthropic models due to duplicate tool call IDs on retry.
-* [#2763](https://github.com/ProjectAlita/projectalita.github.io/issues/2763) **OpenAPI Default Parameters Ignored**: OpenAPI toolkit ignores default parameter values when making requests.
-* [#2715](https://github.com/ProjectAlita/projectalita.github.io/issues/2715) **Code Node Fails with Inline Newline Characters**: Code node execution fails when code contains inline \n characters.
-* [#2693](https://github.com/ProjectAlita/projectalita.github.io/issues/2693) **Nested Agent Tool Call Fails**: Parent agent calling nested agent with toolkit fails with "This event loop is already running" error.
-* [#2671](https://github.com/ProjectAlita/projectalita.github.io/issues/2671) **ID Conflicts Between Public and Custom Agents/Pipelines**: Public agents can share IDs with custom agents/pipelines, causing conflicts when adding both to conversations.
-* [#2670](https://github.com/ProjectAlita/projectalita.github.io/issues/2670) **Bitbucket Repository Field Character Limit**: Bitbucket toolkit Repository field limited to 36 characters.
-* [#2659](https://github.com/ProjectAlita/projectalita.github.io/issues/2659) **ServiceNow Toolkit Fails with Valid Credentials**: ServiceNow toolkit produces errors even with valid credentials configured.
-* [#2639](https://github.com/ProjectAlita/projectalita.github.io/issues/2639) **Router Node Error When Routing to END**: Router node produces errors when first routing branch points directly to END node.
-* [#2621](https://github.com/ProjectAlita/projectalita.github.io/issues/2621) **QTest Project ID Not Marked Required**: QTest toolkit Project ID field not marked as required despite being mandatory.
-* [#2619](https://github.com/ProjectAlita/projectalita.github.io/issues/2619) **Validation Error with Disabled Messages State**: Pipeline produces validation error when messages state is disabled.
-* [#2578](https://github.com/ProjectAlita/projectalita.github.io/issues/2578) **Pipeline Flow Loops Back After Interrupt**: Pipeline flow incorrectly returns to starting node after interrupt instead of continuing forward.
-* [#2571](https://github.com/ProjectAlita/projectalita.github.io/issues/2571) **No Full Screen View for Index Tool Configuration Fields**: Index tool configuration fields (Filter, Chunking Config, etc.) lack full screen editing capability, making it impossible to properly review and edit complex JSON configurations in small textarea boxes.
-* [#2569](https://github.com/ProjectAlita/projectalita.github.io/issues/2569) **Default Cut-off Score Too High for Search Indexes**: Search index tools (Search Index, Stepback Summary, Stepback Search) use default cut-off score of 0.5 instead of recommended 0.2, potentially filtering out relevant results.
-* [#2563](https://github.com/ProjectAlita/projectalita.github.io/issues/2563) **Router Node Ignores Conditions**: Router node condition logic ignored, always routes to specific node regardless of condition evaluation.
-* [#2540](https://github.com/ProjectAlita/projectalita.github.io/issues/2540) **Invalid Tools Not Highlighted in Red**: Toolkit interface does not highlight non-existing or invalid tools in red.
-* [#2532](https://github.com/ProjectAlita/projectalita.github.io/issues/2532) **GitLab Index Creation Fails**: GitLab toolkit cannot create or reindex indexes with "AttributeError: 'NoneType' object has no attribute 'get_index_meta'" error.
-* [#2525](https://github.com/ProjectAlita/projectalita.github.io/issues/2525) **SQL Toolkit Save Button Unresponsive Without Dialect**: Save button in SQL toolkit creation does not work when Dialect field is left unselected, with no error message indicating the field is required.
-* [#2518](https://github.com/ProjectAlita/projectalita.github.io/issues/2518) **CodeMirror Search Dialog Disappears**: CodeMirror search dialog (CMD+F) appears briefly and immediately disappears, making search unusable.
-* [#2512](https://github.com/ProjectAlita/projectalita.github.io/issues/2512) **Pipeline Agent Node Rendering Issues**: Agent node in pipelines displays incorrectly with rendering problems.
-* [#2504](https://github.com/ProjectAlita/projectalita.github.io/issues/2504) **Credential ID Not Updating**: Credential ID field does not update when credential name is overwritten.
-* [#2503](https://github.com/ProjectAlita/projectalita.github.io/issues/2503) **ADO Wiki Update Response Not Handled**: Azure DevOps toolkit does not properly handle API response during Wiki page updates.
-* [#2498](https://github.com/ProjectAlita/projectalita.github.io/issues/2498) **State Variable Values Not Applied with Legacy Type Definitions**: Pipeline state variable values not applied when YAML uses legacy type definition "string" instead of current "str" from version 1.6.
-* [#2492](https://github.com/ProjectAlita/projectalita.github.io/issues/2492) **Canvas Attachment Binding Not Persisted**: Agent canvas shows "attachment manager set successfully" when binding artifact toolkit, but binding disappears after reopening canvas; requires page refresh to display correctly.
-* [#2496](https://github.com/ProjectAlita/projectalita.github.io/issues/2496) **State Dropdowns Unsorted**: Custom state dropdowns appear in random order with default states (input/messages) not pinned to top.
-* [#2444](https://github.com/ProjectAlita/projectalita.github.io/issues/2444) **Modified Secret Received Unmasked**: Modified secrets received unmasked from backend, exposing sensitive values.
-* [#2418](https://github.com/ProjectAlita/projectalita.github.io/issues/2418) **LLM Node Ignores Step Limit**: LLM node hard-codes 15 execution iterations, ignoring configured Step limit in Agents and Pipelines.
-* [#2417](https://github.com/ProjectAlita/projectalita.github.io/issues/2417) **Project Admin Sees Only Own Executions**: Project administrators can only view their own execution history instead of all project executions.
-* [#2415](https://github.com/ProjectAlita/projectalita.github.io/issues/2415) **Default State Variables Become Inactive**: Input and Messages default state variables incorrectly become inactive when creating new custom state.
-* [#2407](https://github.com/ProjectAlita/projectalita.github.io/issues/2407) **LLM Model Breaks When Clearing Token Fields**: Clearing "Context Window" or "Max Output Tokens" fields in LLM model configuration causes 500 error and model becomes unavailable; workaround is to delete and recreate the model with proper values.
-* [#2405](https://github.com/ProjectAlita/projectalita.github.io/issues/2405) **No Upload Progress for Large File Attachments**: No upload progress indicator shown when attaching large files (5MB+) in conversations, causing UI to appear frozen; files eventually upload successfully.
-* [#2375](https://github.com/ProjectAlita/projectalita.github.io/issues/2375) **Multi-File Attachment Rejected with Single Duplicate**: When selecting multiple files for chat attachment, all files (including unique ones) are rejected if one duplicate is present; workaround is to deselect duplicate files before attaching.
-* [#2366](https://github.com/ProjectAlita/projectalita.github.io/issues/2366) **Bucket Selection Changes Unexpectedly**: Bucket selection changes when clicking dropdown options in artifact configuration.
-* [#2363](https://github.com/ProjectAlita/projectalita.github.io/issues/2363) **Cannot Read Python Files from SharePoint**: SharePoint toolkit unable to read .py files from SharePoint libraries.
-* [#2360](https://github.com/ProjectAlita/projectalita.github.io/issues/2360) **Deprecated Prompt Field in New LLM Nodes**: Newly created LLM nodes include deprecated "prompt" field in YAML alongside new "system" and "task" fields; deprecated field should be ignored.
-* [#2352](https://github.com/ProjectAlita/projectalita.github.io/issues/2352) **SharePoint Toolkit Read List Fails with Graph API**: Read List functionality fails with error when SharePoint toolkit is configured to use Graph API; workaround unavailable.
-* [#2351](https://github.com/ProjectAlita/projectalita.github.io/issues/2351) **Zephyr Essentials Reindexing Removes Previous Data**: Reindexing in Zephyr Essentials toolkit deletes previously indexed documents even when "Clean Index" is not selected; existing data is removed and reindexed.
-* [#2350](https://github.com/ProjectAlita/projectalita.github.io/issues/2350) **Misleading Error Message for Token Limit**: Agent shows "Maximum tool execution iterations (15) reached" when actual issue is Max Output Tokens limit; increase Max Output Tokens in Anthropic model settings to resolve.
-* [#2347](https://github.com/ProjectAlita/projectalita.github.io/issues/2347) **Pandas Bucket Name with Dash Causes Error**: Pandas toolkit fails when bucket name contains dash character.
-* [#2294](https://github.com/ProjectAlita/projectalita.github.io/issues/2294) **Misleading Unsaved Changes Warning**: Starting conversation with Canvas open triggers unsaved changes warning even when no edits were made.
-* [#2053](https://github.com/ProjectAlita/projectalita.github.io/issues/2053) **Claude Model Integration Error with Dial Key**: Claude model integration via Dial API key fails with "invalid structure" error on stream_options path.
-* [#2051](https://github.com/ProjectAlita/projectalita.github.io/issues/2051) **Gemini/Claude Models Fail via Dial API**: Integrating Gemini or Claude models using Dial API key results in "invalid structure" error on stream_options path.
-* [#1986](https://github.com/ProjectAlita/projectalita.github.io/issues/1986) **ADO Attachment Reading Not Available**: Azure DevOps toolkit lacks capability to read attached images from work items.
-* [#1869](https://github.com/ProjectAlita/projectalita.github.io/issues/1869) **Zephyr Essential Tools Return 400 Error**: Multiple tools in Zephyr Essential toolkit fail with "400 Client Error: Bad Request" including Create/Update operations for test cases, cycles, and executions.
-* [#1746](https://github.com/ProjectAlita/projectalita.github.io/issues/1746) **Jira Attachment Content Limited to JSON/TXT**: Get Attachments Content tool in Jira toolkit does not support common file types (PNG, JPEG, XLSX); only JSON and TXT files are supported.
-* [#1547](https://github.com/ProjectAlita/projectalita.github.io/issues/1547) **Jira JQL Search Fails Without Priority Field**: Jira toolkit fails with validation error when searching issues that lack the "priority" field; affects Jira configurations where priority field is disabled.
-* [#1531](https://github.com/ProjectAlita/projectalita.github.io/issues/1531) **Multiple Agents with Same Toolkit Type Interfere**: Multiple agents using same toolkit type (ADO Boards, GitLab, QTest) in same pipeline/agent interfere with project initialization.
-* [#1371](https://github.com/ProjectAlita/projectalita.github.io/issues/1371) **OpenAPI Toolkit Fails in Pipelines**: OpenAPI Toolkit cannot be used in pipeline function or tool nodes; execution fails with errors.
+* [#3492](https://github.com/ProjectAlita/projectalita.github.io/issues/3492) **Missing Default PG Vector Configuration When Creating a Project**: After creating a new project, the default PgVector configuration may not be created immediately, which can block indexing prerequisites until the configuration is generated.
+* [#3490](https://github.com/ProjectAlita/projectalita.github.io/issues/3490) **Chat Briefly Shows “New Conversation” View Instead of Loading Last Conversation**: When opening Chat, the UI can briefly display the New Conversation view while the last conversation is still loading, creating a misleading “no conversations” experience.
+* [#3435](https://github.com/ProjectAlita/projectalita.github.io/issues/3435) **Tool Dropdown Lists Are Not Sorted Alphabetically in Nodes (Toolkit, LLM, MCP)**: Tool selection dropdowns in pipeline nodes can appear in an arbitrary order, making it harder to quickly find a specific tool.
+* [#3382](https://github.com/ProjectAlita/projectalita.github.io/issues/3382) **Nested Agents/Pipelines Not Callable with Smart Tools Selection (Low Toolkit Count)**: Nested agents and pipelines may not be invoked when Smart Tools Selection is enabled and only a small number of tools are available.
+* [#3389](https://github.com/ProjectAlita/projectalita.github.io/issues/3389) **Chat Thinking Steps Show Incorrect Agent/Pipeline Icons and Names**: When running an agent with a nested pipeline via chat commands, pipelines can be shown with the agent icon/name during and after execution.
+* [#3377](https://github.com/ProjectAlita/projectalita.github.io/issues/3377) **Jinja2 Template Generation Truncated with GPT Models**: When generating Jinja2 templates in pipeline nodes, some GPT models can omit `{% ... %}` blocks, resulting in invalid/incomplete templates.
+* [#3371](https://github.com/ProjectAlita/projectalita.github.io/issues/3371) **Internal Planner Not Invoked in Conversation Chat**: The Internal Planner toolkit may not run in Conversation chat (even when it works in Agent chat).
+* [#3353](https://github.com/ProjectAlita/projectalita.github.io/issues/3353) **Serialization Failure When Calling get_wiki in Pipeline (WikiV2 Object)**: Pipelines using ADO Wiki tools like `get_wiki` may fail with serialization errors when raw `WikiV2` objects are persisted in state (for example, with `msgpack/jsonplus`), causing the run to error.
+* [#3341](https://github.com/ProjectAlita/projectalita.github.io/issues/3341) **Index Tool Instances Stuck in “In progress” After Stopping Execution**: Stopped index runs can remain visible as “In progress” instead of transitioning to a final state.
+* [#3325](https://github.com/ProjectAlita/projectalita.github.io/issues/3325) **Child Pipeline Code Node Can’t Read Mapped State Variable**: Nested pipelines may fail in Code nodes when accessing mapped state, causing an AttributeError.
+* [#3323](https://github.com/ProjectAlita/projectalita.github.io/issues/3323) **Validation Errors Not Shown for pydantic_core Exceptions**: Some validation failures were suppressed in the UI, making errors harder to diagnose.
+* [#3317](https://github.com/ProjectAlita/projectalita.github.io/issues/3317) **Code Node Fails with Pyodide Sandbox Read-Access Error**: Code node execution could fail due to sandbox read-access restrictions in the Pyodide environment.
+* [#3290](https://github.com/ProjectAlita/projectalita.github.io/issues/3290) **Internal Planner + Smart Tools Selection Fails with gpt-4.1 on First Message**: The first prompt could fail when using Internal Planner with Smart Tools Selection on the `gpt-4.1` model.
+* [#3288](https://github.com/ProjectAlita/projectalita.github.io/issues/3288) **Python Sandbox Fails Due to Missing Dependency**: Python sandbox and pipeline Code nodes could fail if the `langchain-sandbox` dependency was missing.
+* [#3275](https://github.com/ProjectAlita/projectalita.github.io/issues/3275) **Parent Agent Cannot Execute Nested Agents or Pipelines**: Parent agents could fail to detect or resolve configured nested agents/pipelines, preventing delegation.
+* [#3271](https://github.com/ProjectAlita/projectalita.github.io/issues/3271) **Code Node Newlines Double-Escaped Before Pyodide Execution**: Newline characters could be double-escaped, causing Python code to run as a single line unexpectedly.
+* [#3261](https://github.com/ProjectAlita/projectalita.github.io/issues/3261) **Router/Decision Routes to Default Output Instead of END**: When routing to an END node, Router/Decision nodes could incorrectly follow the Default Output path.
+* [#3220](https://github.com/ProjectAlita/projectalita.github.io/issues/3220) **ADO Test Plans: Custom Fields Fail to Populate on Test Case Creation**: Creating test cases with custom fields could fail with a ToolException-related error.
+* [#3215](https://github.com/ProjectAlita/projectalita.github.io/issues/3215) **Nested/Child Agent Not Called When Parent Agent Is Used in Chat**: Child agents could be skipped in chat conversations when a parent agent was selected.
+* [#3134](https://github.com/ProjectAlita/projectalita.github.io/issues/3134) **Incorrect Duration in Agents/Pipelines History After Error Runs**: Run durations could be calculated incorrectly when error runs occurred in the same conversation.
+* [#2961](https://github.com/ProjectAlita/projectalita.github.io/issues/2961) **Regenerate Uses Old LLM Model After Model Change**: Regenerate could continue using the previous model instead of the newly selected model.
+
  
 ## Known Issues
 
 
-* [#2389](https://github.com/ProjectAlita/projectalita.github.io/issues/2389) **Browser Toolkit Fails Without Credentials**: Browser toolkit execution fails when saved without credentials selected, even when Google tool is not selected; workaround is to add credentials.
+* [#3563](https://github.com/ProjectAlita/projectalita.github.io/issues/3563) **Pipeline interrupts lost on export/import**: Pipelines that include interrupts may export without interrupt configuration (in both `.zip` and `.md`), so imported pipelines lose interrupt settings.
+* [#3528](https://github.com/ProjectAlita/projectalita.github.io/issues/3528) **Update File Tool - Unable to Input Multi-line Format in Test Settings and Pipeline Node**: The `update_file` query field may not preserve required line breaks in Toolkit Test Settings or pipeline Toolkit nodes, causing OLD/NEW marker formatting errors.
+* [#3516](https://github.com/ProjectAlita/projectalita.github.io/issues/3516) **State creation does not apply default values based on field type**: Newly created pipeline state fields can start as empty values instead of type-based defaults (for example, `0` for numbers or `[]` for arrays).
+* [#3502](https://github.com/ProjectAlita/projectalita.github.io/issues/3502) **Default value changes for pipeline state not applied until page reload or chat clearing**: After updating a state’s default value, pipeline runs may continue using the previous value until you reload the page or start a new chat.
+* [#3494](https://github.com/ProjectAlita/projectalita.github.io/issues/3494) **Swarm agent intermittently fails to transfer/execute the peers when both pipeline and agent are configured as toolkit**: In Swarm mode, `transfer_to_<agent>` calls can intermittently return without executing the delegated peer when both agent and pipeline toolkits are configured.
+* [#3468](https://github.com/ProjectAlita/projectalita.github.io/issues/3468) **Published agent with sub-agents fails at runtime due to using latest versions instead of published versions**: Published agents with nested sub-agents can fail at runtime if sub-agents resolve to latest (draft) versions instead of the published versions.
+* [#3464](https://github.com/ProjectAlita/projectalita.github.io/issues/3464) **Import Attach Duplicate Nested Entities When Multiple Versions Exist in Pipeline Hierarchy**: Importing certain pipeline hierarchies with multiple nested versions can create duplicated nested attachments (relationships), even though versions are created correctly.
+* [#3400](https://github.com/ProjectAlita/projectalita.github.io/issues/3400) **Postman Toolkit: Folder Lookup Failure During Request Creation**: A folder created via the Postman toolkit may not be found in a subsequent step (for example, when creating a request by path), causing the run to fail.
+* [#3388](https://github.com/ProjectAlita/projectalita.github.io/issues/3388) **SharePoint Indexing Displays Incorrect success message**: SharePoint indexing can show a “files indexed” success message even when the run is interrupted by repeated 429 errors, which can be misleading.
+* [#3367](https://github.com/ProjectAlita/projectalita.github.io/issues/3367) **SharePoint index_data Fails with IndexError for Some Folder Configurations**: SharePoint toolkit indexing can fail with `IndexError: list index out of range` for empty folder settings or specific folder-path inputs.
+* [#3366](https://github.com/ProjectAlita/projectalita.github.io/issues/3366) **SharePoint index_data fails to retrieve data from document libraries with hyphens in folder names**: The SharePoint `index_data` tool can fail with an “incorrect folder path” error when the target document library or folder name includes hyphens.
+* [#3362](https://github.com/ProjectAlita/projectalita.github.io/issues/3362) **Chat Thought Duration Can Display Negative Values After Toolkit Exceptions**: When a pipeline stops due to certain toolkit-node exceptions, the Thought (thinking steps) duration can show negative time values.
+* [#3359](https://github.com/ProjectAlita/projectalita.github.io/issues/3359) **Artifacts Toolkit create_file Fails When Optional Parameters Are Left Empty**: The `create_file` tool can fail if both `filedata` and `filepath` are omitted, even though the UI marks them as optional.
+* [#3347](https://github.com/ProjectAlita/projectalita.github.io/issues/3347) **Deprecated Pipeline Node Fails When Calling a Nested Pipeline**: Executions can error when using the deprecated **Pipeline** node to invoke a nested pipeline.
+* [#3322](https://github.com/ProjectAlita/projectalita.github.io/issues/3322) **Incorrect MCP settings and UI placement after Agent/Pipeline export/import**: After exporting/importing an agent with an attached Local MCP, the MCP can appear in the wrong UI location (Toolkits instead of MCPs) and/or lose settings.
+* [#3321](https://github.com/ProjectAlita/projectalita.github.io/issues/3321) **Toolkit credentials show incorrect UI validation message after agent import despite functional credentials**: Imported toolkits can show incorrect credential-validation errors (and related UI inconsistencies) even though the toolkit works.
+* [#3315](https://github.com/ProjectAlita/projectalita.github.io/issues/3315) **Pipeline export shows nested agents/pipelines duplicated in both nested agents and toolkits sections during import UI**: Import can display duplicated nested agents/pipelines across sections in the import UI even when the final imported result has no actual duplication.
+* [#3307](https://github.com/ProjectAlita/projectalita.github.io/issues/3307) **Conversation Chat Doesn’t Detect Pipeline-Configured Artifacts Toolkit for Attachments**: When a pipeline participant has attachments enabled, chat can still prompt for artifact-toolkit selection instead of using the configured toolkit automatically.
+* [#3287](https://github.com/ProjectAlita/projectalita.github.io/issues/3287) **Excel Indexing Misses Formula-Calculated Values**: When indexing Excel files that contain formulas, calculated values may not be indexed and can appear empty in the indexed content.
+* [#3252](https://github.com/ProjectAlita/projectalita.github.io/issues/3252) **Input mapping fields persist when switching to tools without required/optional fields**: When switching tools in MCP/Toolkit nodes, input mapping fields from the previous tool can persist and be sent unexpectedly.
+* [#3151](https://github.com/ProjectAlita/projectalita.github.io/issues/3151) **PPT Files Fail to Read or Index from Artifacts or SharePoint**: Reading or indexing PowerPoint files can raise errors instead of completing successfully or returning a clear “format not supported” message.
+* [#3076](https://github.com/ProjectAlita/projectalita.github.io/issues/3076) **Non-Latest Agent/Pipeline Versions Don’t Save Name/Description Updates**: Editing the name/description in older versions can show a success message but not persist after reload.
+* [#2939](https://github.com/ProjectAlita/projectalita.github.io/issues/2939) **Users Can Select Pipeline Versions Containing Interruptions or Deprecated Pipeline Node When Adding to Parent Pipelines**: When nesting pipelines, the UI can allow selecting pipeline versions that contain interruptions (or deprecated nodes), bypassing expected validation.
+* [#2922](https://github.com/ProjectAlita/projectalita.github.io/issues/2922) **GitLab org Toolkit does not restrict access to specified repositories when only one repository is added**: GitLab org toolkits may ignore a single-repository restriction and operate across all project repositories.
 * [#2304](https://github.com/ProjectAlita/projectalita.github.io/issues/2304) **MCP Client Disconnects on macOS**: MCP client disconnects from platform despite tray showing "connected" on macOS; logs show "packet queue is empty" errors and repeated disconnect/reconnect cycles.
-
-* [#1990](https://github.com/ProjectAlita/projectalita.github.io/issues/1990) **Browser Toolkit Fails Without Google Credentials**: Browser toolkit execution fails with "NoneType object is not a mapping" error when Google tool is not selected and credentials are missing.
 * [#1163](https://github.com/ProjectAlita/projectalita.github.io/issues/1163) **MCP Only Executes Latest Version**: MCP-tagged resources execute the latest version regardless of which version has the MCP tag; only the latest version is accessible via MCP.
