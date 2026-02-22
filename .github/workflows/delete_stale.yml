@@ -1,0 +1,126 @@
+name: Delete stale branches
+
+on:
+  workflow_dispatch:
+    inputs:
+      cutoff_days:
+        description: "Delete branches whose last commit is older than this many days"
+        required: false
+        default: "7"
+      dry_run:
+        description: "If true, only prints what would be deleted"
+        required: false
+        default: "true"
+      keep_branches:
+        description: "Comma-separated branch names to never delete (in addition to protected branches)"
+        required: false
+        default: "main,documentation,gh-pages"
+
+permissions:
+  contents: write
+
+jobs:
+  delete-stale-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Delete stale non-protected branches
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const cutoffDays = parseInt(core.getInput('cutoff_days') || '7', 10);
+            const dryRun = (core.getInput('dry_run') || 'true').toLowerCase() === 'true';
+            const keepBranchesInput = core.getInput('keep_branches') || 'main,documentation,gh-pages';
+            const keepBranches = new Set(
+              keepBranchesInput
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean)
+            );
+
+            const cutoffMs = cutoffDays * 24 * 60 * 60 * 1000;
+            const cutoffTime = Date.now() - cutoffMs;
+
+            core.info(`cutoff_days=${cutoffDays} (cutoffTime=${new Date(cutoffTime).toISOString()})`);
+            core.info(`dry_run=${dryRun}`);
+            core.info(`keep_branches=${Array.from(keepBranches).join(', ')}`);
+
+            // List branches (paginate)
+            const branches = await github.paginate(github.rest.repos.listBranches, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              per_page: 100,
+            });
+
+            core.info(`Found ${branches.length} branches.`);
+
+            let candidates = [];
+
+            for (const br of branches) {
+              const name = br.name;
+
+              if (br.protected) {
+                core.info(`SKIP protected: ${name}`);
+                continue;
+              }
+
+              if (keepBranches.has(name)) {
+                core.info(`SKIP keep list: ${name}`);
+                continue;
+              }
+
+              // Fetch commit details to get authored/committed date
+              const sha = br.commit?.sha;
+              if (!sha) {
+                core.warning(`SKIP (no commit sha): ${name}`);
+                continue;
+              }
+
+              const commit = await github.rest.repos.getCommit({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: sha,
+              });
+
+              const dateStr = commit.data?.commit?.committer?.date || commit.data?.commit?.author?.date;
+              if (!dateStr) {
+                core.warning(`SKIP (no commit date): ${name}`);
+                continue;
+              }
+
+              const commitTime = new Date(dateStr).getTime();
+              const ageDays = Math.floor((Date.now() - commitTime) / (24 * 60 * 60 * 1000));
+
+              if (commitTime < cutoffTime) {
+                candidates.push({ name, sha, dateStr, ageDays });
+              } else {
+                core.info(`KEEP recent: ${name} (age ~${ageDays}d, last=${dateStr})`);
+              }
+            }
+
+            if (candidates.length === 0) {
+              core.info('No stale branches to delete.');
+              return;
+            }
+
+            core.info(`Stale branches to delete: ${candidates.length}`);
+            for (const c of candidates) {
+              core.info(`  - ${c.name} (age ~${c.ageDays}d, last=${c.dateStr}, sha=${c.sha})`);
+            }
+
+            if (dryRun) {
+              core.warning('Dry run enabled; no branches were deleted.');
+              return;
+            }
+
+            for (const c of candidates) {
+              core.info(`Deleting branch ref: heads/${c.name}`);
+              await github.rest.git.deleteRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `heads/${c.name}`,
+              });
+            }
+
+            core.info(`Deleted ${candidates.length} branches.`);
