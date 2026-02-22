@@ -5,122 +5,101 @@ on:
     inputs:
       cutoff_days:
         description: "Delete branches whose last commit is older than this many days"
-        required: false
+        required: true
         default: "7"
       dry_run:
-        description: "If true, only prints what would be deleted"
-        required: false
-        default: "true"
+        description: "If true, only print branches that would be deleted"
+        required: true
+        type: boolean
+        default: true
       keep_branches:
-        description: "Comma-separated branch names to never delete (in addition to protected branches)"
-        required: false
+        description: "Comma-separated list of branch names to never delete"
+        required: true
         default: "main,documentation,gh-pages"
 
 permissions:
   contents: write
 
 jobs:
-  delete-stale-branches:
+  delete-stale:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Delete stale non-protected branches
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const cutoffDays = parseInt(core.getInput('cutoff_days') || '7', 10);
-            const dryRun = (core.getInput('dry_run') || 'true').toLowerCase() === 'true';
-            const keepBranchesInput = core.getInput('keep_branches') || 'main,documentation,gh-pages';
-            const keepBranches = new Set(
-              keepBranchesInput
-                .split(',')
-                .map(s => s.trim())
-                .filter(Boolean)
-            );
+      - name: Delete stale branches
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CUTOFF_DAYS: ${{ inputs.cutoff_days }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          KEEP_BRANCHES: ${{ inputs.keep_branches }}
+        run: |
+          set -euo pipefail
 
-            const cutoffMs = cutoffDays * 24 * 60 * 60 * 1000;
-            const cutoffTime = Date.now() - cutoffMs;
+          REPO="${GITHUB_REPOSITORY}"
+          echo "Repository: ${REPO}"
+          echo "Cutoff days: ${CUTOFF_DAYS}"
+          echo "Dry run (raw input): '${DRY_RUN}'"
+          echo "Keep branches: ${KEEP_BRANCHES}"
 
-            core.info(`cutoff_days=${cutoffDays} (cutoffTime=${new Date(cutoffTime).toISOString()})`);
-            core.info(`dry_run=${dryRun}`);
-            core.info(`keep_branches=${Array.from(keepBranches).join(', ')}`);
+          # workflow_dispatch boolean inputs still arrive as strings: "true"/"false".
+          # Never use them directly in a truthy check.
+          if [[ "${DRY_RUN}" != "true" && "${DRY_RUN}" != "false" ]]; then
+            echo "Unexpected DRY_RUN value: '${DRY_RUN}' (expected 'true' or 'false')" >&2
+            exit 1
+          fi
 
-            // List branches (paginate)
-            const branches = await github.paginate(github.rest.repos.listBranches, {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              per_page: 100,
-            });
+          # Convert cutoff to epoch seconds
+          CUTOFF_EPOCH=$(date -d "-${CUTOFF_DAYS} days" +%s)
 
-            core.info(`Found ${branches.length} branches.`);
+          # Parse keep list into an array
+          IFS=',' read -r -a KEEP_ARR <<< "${KEEP_BRANCHES}"
+          for i in "${!KEEP_ARR[@]}"; do
+            # trim whitespace
+            KEEP_ARR[$i]="$(echo "${KEEP_ARR[$i]}" | xargs)"
+          done
 
-            let candidates = [];
+          is_kept_branch() {
+            local b="$1"
+            for k in "${KEEP_ARR[@]}"; do
+              if [[ "$b" == "$k" ]]; then
+                return 0
+              fi
+            done
+            return 1
+          }
 
-            for (const br of branches) {
-              const name = br.name;
+          echo "Fetching branches..."
+          # For each branch, we fetch its protection flag and head SHA
+          gh api "repos/${REPO}/branches?per_page=100" --paginate \
+            --jq '.[] | @base64' \
+            | while read -r row; do
+                _jq() { echo "$row" | base64 -d | jq -r "$1"; }
 
-              if (br.protected) {
-                core.info(`SKIP protected: ${name}`);
-                continue;
-              }
+                BRANCH=$(_jq '.name')
+                PROTECTED=$(_jq '.protected')
+                SHA=$(_jq '.commit.sha')
 
-              if (keepBranches.has(name)) {
-                core.info(`SKIP keep list: ${name}`);
-                continue;
-              }
+                if is_kept_branch "$BRANCH"; then
+                  echo "SKIP (keep-list): ${BRANCH}"
+                  continue
+                fi
 
-              // Fetch commit details to get authored/committed date
-              const sha = br.commit?.sha;
-              if (!sha) {
-                core.warning(`SKIP (no commit sha): ${name}`);
-                continue;
-              }
+                if [[ "${PROTECTED}" == "true" ]]; then
+                  echo "SKIP (protected): ${BRANCH}"
+                  continue
+                fi
 
-              const commit = await github.rest.repos.getCommit({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                ref: sha,
-              });
+                # Get last commit date for the branch head
+                COMMIT_DATE=$(gh api "repos/${REPO}/commits/${SHA}" --jq '.commit.committer.date')
+                COMMIT_EPOCH=$(date -d "${COMMIT_DATE}" +%s)
 
-              const dateStr = commit.data?.commit?.committer?.date || commit.data?.commit?.author?.date;
-              if (!dateStr) {
-                core.warning(`SKIP (no commit date): ${name}`);
-                continue;
-              }
-
-              const commitTime = new Date(dateStr).getTime();
-              const ageDays = Math.floor((Date.now() - commitTime) / (24 * 60 * 60 * 1000));
-
-              if (commitTime < cutoffTime) {
-                candidates.push({ name, sha, dateStr, ageDays });
-              } else {
-                core.info(`KEEP recent: ${name} (age ~${ageDays}d, last=${dateStr})`);
-              }
-            }
-
-            if (candidates.length === 0) {
-              core.info('No stale branches to delete.');
-              return;
-            }
-
-            core.info(`Stale branches to delete: ${candidates.length}`);
-            for (const c of candidates) {
-              core.info(`  - ${c.name} (age ~${c.ageDays}d, last=${c.dateStr}, sha=${c.sha})`);
-            }
-
-            if (dryRun) {
-              core.warning('Dry run enabled; no branches were deleted.');
-              return;
-            }
-
-            for (const c of candidates) {
-              core.info(`Deleting branch ref: heads/${c.name}`);
-              await github.rest.git.deleteRef({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                ref: `heads/${c.name}`,
-              });
-            }
-
-            core.info(`Deleted ${candidates.length} branches.`);
+                if (( COMMIT_EPOCH < CUTOFF_EPOCH )); then
+                  if [[ "${DRY_RUN}" == "true" ]]; then
+                    echo "DRY RUN: would delete ${BRANCH} (last commit ${COMMIT_DATE})"
+                  else
+                    echo "Deleting ${BRANCH} (last commit ${COMMIT_DATE})"
+                    gh api -X DELETE "repos/${REPO}/git/refs/heads/${BRANCH}"
+                  fi
+                else
+                  echo "KEEP (recent): ${BRANCH} (last commit ${COMMIT_DATE})"
+                fi
+              done
