@@ -491,6 +491,20 @@ pre code {
 }
 
 /* =============================================================================
+   ADMONITION CONTRAST — LIGHT MODE
+   Ensures warning admonitions meet accessibility contrast requirements.
+   Problem: --md-admonition-fg-color resolves to #4f4e4e (medium gray) and
+   --md-admonition-bg-color is rgba(255,255,255,0.05) (effectively white),
+   making warning text indistinguishable from the page background in Light mode.
+   ============================================================================= */
+
+[data-md-color-scheme="default"] .md-typeset .admonition.warning,
+[data-md-color-scheme="default"] .md-typeset details.warning {
+  color: #000000;
+  background-color: rgba(255, 145, 0, 0.06);
+}
+
+/* =============================================================================
    FULLSCREEN MODE
    ============================================================================= */
 
