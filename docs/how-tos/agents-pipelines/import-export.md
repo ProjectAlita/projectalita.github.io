@@ -27,9 +27,10 @@ The Import/Export feature supports:
 
 3. **File Format:**
       - Agents and pipelines are exported as **Markdown (`.md`)** files
+      - Only the **currently selected version** of the agent or pipeline is included in the export
       - Each file contains YAML frontmatter with configuration and Markdown body with instructions
 
-![Agent Export](../../img/how-tos/agents-pipelines/import-export/agent-export.gif)
+![Agent Export](../../img/how-tos/agents-pipelines/import-export/agent-export.gif){loading=lazy}
 
 !!! note "Exporting Agents with Nested Dependencies"
     When you export an agent or pipeline that contains nested agents (agents referencing other agents), the system automatically includes all dependencies in the export:
@@ -116,7 +117,7 @@ The Import/Export feature supports:
 
 ## Import Functionality
 
-ELITEA allows you to import agents and pipelines from exported files. Agents support both single-entity and multi-entity imports, while pipelines use single-entity imports.
+ELITEA allows you to import agents and pipelines from exported files. Both agents and pipelines support single-entity (`.md`) and multi-entity (`.zip`) imports.
 
 !!! warning "Credentials Configuration Required"
     After importing agents or pipelines, you must manually reconfigure authentication credentials for all toolkits. Credentials are **NOT** included in exports for security reasons. Ensure you have the necessary API keys, tokens, and connection details ready before testing imported entities.
@@ -125,7 +126,11 @@ ELITEA allows you to import agents and pipelines from exported files. Agents sup
     
     1. Toolkit type and name are imported
     2. Selected tools are preserved
-    3. Settings are imported
+    3. Settings (non-credential) are imported
+    4. Model settings default to the destination project's configured LLM, Embedding, and PgVector settings — you can customize these individually after import
+
+!!! note "Permission Requirement"
+    Importing requires the appropriate import permission in the destination project. The **Import** button is disabled if this permission is not granted. Contact your project administrator if you need access.
 ---
 
 ### Importing Agents
@@ -143,42 +148,46 @@ Use `.md` file import when you want to import a single agent.
 3. Select the `.md` file from the file dialog
 4. The file is parsed and the Import Wizard opens
 
-![Select .md](../../img/how-tos/agents-pipelines/import-export/import-agent-md.gif)
+![Select .md](../../img/how-tos/agents-pipelines/import-export/import-agent-md.gif){loading=lazy}
 
 !!! note "Import Wizard Interface"
-    The Import Wizard displays in a modal dialog with two panels:
+    The Import Wizard displays in a single-column modal dialog:
 
-    **Left Panel - Entity Tree:**
-    
-    - Shows the agent found in the import file
-    - Displays agent name, type, and version
-    - Checkbox selection for the agent
-    - Project selector dropdown
+    **Project Selector** — at the top of the modal, select the destination project.
 
-    **Right Panel - Configuration:**
+    **Entity Cards** — the modal shows one card per entity:
     
-    - Shows detailed configuration for the agent
-    - Displays model settings
-    - Shows toolkit configurations
-    - Allows model selection/remapping
+    - **Main entity** — the primary agent or pipeline being imported
+    - **Nested entities** — any dependent agents (ZIP imports only)
+    
+    Each card shows the entity name and type (agent/pipeline). Click **Show details** to expand the card and review:
+    - Description, Instructions (agents) or Pipeline Diagram (pipelines)
+    - Toolkits and their tools
+    - Welcome message, Conversation starters, Internal tools, Step limit
+
+    **Credentials warning** — a notice at the bottom reminds you to configure authentication for any toolkits that require it.
 
 **Step 2: Select Project and Review Configuration**
 
 1. **Select Project Destination:**
-       - At the top of the left panel, find the **Project** selector
-       - Click the dropdown to select destination project
-       - You must have appropriate permissions in the target project
+       - At the top of the modal, find the **Project** selector
+       - Click the dropdown to select the destination project
 
-2. **Review Configuration:** Check the agent details in the left panel and review LLM settings,toolkits, tools, and parameters in the right panel(credentials will need to be reconfigured after import)
+2. **Review Entity Card:** The wizard displays the entity as a card showing its name and type (agent or pipeline)
+       - Click **Show details** on the card to expand full configuration
+       - Expanded details include: Description, Instructions, Toolkits and their tools, Welcome message, Conversation starters, Internal tools, and Step limit
 
-3. **Model Remapping:** The system automatically detects and matches models. If the exact model isn't available, select an alternative from the dropdown (grouped by type: GPT-4, Claude, etc.)
+       ![Show details](../../img/how-tos/agents-pipelines/import-export/import-agent-details.gif){loading=lazy, width="450"}
 
+3. **Model and Embedding Remapping:** The system automatically maps LLM and embedding models to the destination project's defaults. You can adjust model settings individually after import.
+
+4. **Credentials warning:** A warning at the bottom of the modal reminds you that any toolkits requiring authentication will need credentials configured manually after import
 
 **Step 3: Import**
 
-   - **Click Import:** Located at the bottom of the left panel. The button is disabled if no project is selected or permissions are missing. Upon successful import, a notification appears and the imported agent and its associated toolkits become available in the Agents and Toolkits dashboards.
+   - **Click Import** at the bottom of the modal. Upon successful import, the modal transitions to an **Import Complete** screen showing the imported agents, pipelines, and toolkits. Toolkits that require additional credential configuration are highlighted in an "Action required" section.
 
-![Agent Import](../../img/how-tos/agents-pipelines/import-export/import-agent-config.gif)   
+     ![Agent Import](../../img/how-tos/agents-pipelines/import-export/import-agent.gif){loading=lazy}
 
 ---
 
@@ -191,33 +200,33 @@ Use `.zip` file import when you want to import multiple agents with dependencies
 1. Navigate to **Agents** menu
 2. Click the **Import** button in the toolbar
 3. Select a `.zip` file from the file dialog
-4. All `.md` files in the ZIP are extracted and parsed
+4. All `.md` files in the ZIP are extracted and parsed; versions from files with the same agent name are merged
 5. The Import Wizard opens showing all agents
 
-![Agents from .zip](../../img/how-tos/agents-pipelines/import-export/import-agent-zip.gif)
+![Agents from .zip](../../img/how-tos/agents-pipelines/import-export/import-agent-zip.gif){loading=lazy}
 
 
 **Step 2: Select Project and Review Configuration**
 
 1. **Select Project Destination:**
-      - At the top of the left panel, find the **Project** selector
-      - Click the dropdown to select destination project
-      - You must have appropriate permissions in the target project
 
-2. **Select Entities and Versions:**
-      - Check/uncheck boxes next to agents and versions you want to import
-      - All entities and versions are selected by default
+      - At the top of the modal, find the **Project** selector
+      - Click the dropdown to select the destination project
 
-3. **Review Configuration:** Click on an agent in the left panel to view its detailed configuration in the right panel
+2. **Review Entity Cards:** The wizard displays a **Main entity** section for the primary agent and a **Nested entities** section for each dependency
+      - Click **Show details** on any card to expand its configuration
+      - Each card shows: Description, Instructions, Toolkits, Welcome message, Conversation starters, Internal tools, and Step limit
 
-4. **Model Remapping:** The system automatically detects and matches models. If the exact model isn't available, select an alternative from the dropdown (grouped by type: GPT-4, Claude, etc.)
+3. **Model and Embedding Remapping:** The system automatically maps LLM and embedding models to the destination project's defaults. You can adjust model settings individually after import.
+
+     ![Agents from .zip](../../img/how-tos/agents-pipelines/import-export/import-agent-zip-config.gif){loading=lazy, width="450"}
+
 
 **Step 3: Import**
 
-   - **Click Import:** Located at the bottom of the left panel. The button is disabled if no project is selected or permissions are missing. Upon successful import, a notification appears and the imported agent and its associated toolkits and nested agents become available in the Agents and Toolkits dashboards.
+   - **Click Import** at the bottom of the modal. Upon successful import, the modal transitions to an **Import Complete** screen showing all imported agents, pipelines, and toolkits. Toolkits that require credentials are highlighted in an "Action required" section.
 
-
-![Agents from .zip](../../img/how-tos/agents-pipelines/import-export/import-agent-zip-config.gif)
+     ![Agents from .zip](../../img/how-tos/agents-pipelines/import-export/import-agent-nested.gif){loading=lazy}
 
 
 !!! note "ZIP File Structure:"
@@ -227,7 +236,7 @@ Use `.zip` file import when you want to import multiple agents with dependencies
 
 ### Importing Pipelines
 
-Pipelines are imported from `.md` or `.zip` files. Each pipeline export contains a single entity.
+Pipelines are imported from `.md` or `.zip` files. If the pipeline has nested dependencies (referenced agents or pipelines), the export will be a ZIP archive containing all required entities.
 
 
 **Step 1: Select Import File**
@@ -241,19 +250,24 @@ Pipelines are imported from `.md` or `.zip` files. Each pipeline export contains
 **Step 2: Select Project and Review Configuration**
 
 1. **Select Project Destination:**
-        - At the top of the left panel, find the **Project** selector
-        - Click the dropdown to select destination project
-        - You must have appropriate permissions in the target project
+     - At the top of the modal, find the **Project** selector
+     - Click the dropdown to select the destination project
+     - You must have the `models.applications.export_import.import` permission in the target project
 
-2. **Review Configuration:** Check the pipeline details in the left panel and review pipeline structure, nodes, and parameters in the right panel. You can also review  the pipeline flow diagram to understand the workflow
+2. **Review Entity Card:** The wizard displays the pipeline as a card showing its name and type
+     - Click **Show details** to expand full configuration
+     - Expanded details include: Description, a live **Pipeline Diagram** (Mermaid, with fullscreen view option), Toolkits and their tools, Welcome message, Conversation starters, and Step limit
 
-3. **Model Remapping:** The system automatically detects and matches models used in pipeline nodes. If the exact model isn't available, select an alternative from the dropdown (grouped by type: GPT-4, Claude, etc.)
+3. **Model and Embedding Remapping:** The system automatically maps LLM and embedding models to the destination project's defaults. You can adjust model settings individually after import.
+
+     ![Importing Pipelines](../../img/how-tos/agents-pipelines/import-export/import-pipeline-config.gif)
+
 
 **Step 3: Import**
 
-   - **Click Import:** Located at the bottom of the left panel. The button is disabled if no project is selected or permissions are missing. Upon successful import, a notification appears and the imported pipeline becomes available in the Pipelines dashboard, with its associated toolkits accessible in the Toolkits dashboard.
+   - **Click Import** at the bottom of the modal. Upon successful import, the modal transitions to an **Import Complete** screen showing the imported pipeline and its toolkits. Toolkits that require credentials are highlighted in the "Action required" section.
 
-![Importing Pipelines](../../img/how-tos/agents-pipelines/import-export/import-pipeline-config.gif)
+     ![Importing Pipelines](../../img/how-tos/agents-pipelines/import-export/import-pipeline-complete.gif)
 
 ---
 
@@ -280,9 +294,9 @@ Pipelines are imported from `.md` or `.zip` files. Each pipeline export contains
     - Ensure necessary models are available
     - Check you have appropriate permissions
 
-??? tip "Selective Import"
-    - Review all entities before importing
-    - Deselect unnecessary toolkits
+??? tip "Review Before Importing"
+    - Expand entity cards using **Show details** to review configuration before importing
+    - Verify model remapping is correct for your destination project
 
 ??? tip "Post-Import Configuration"
     - Reconfigure toolkit credentials
@@ -309,15 +323,15 @@ Pipelines are imported from `.md` or `.zip` files. Each pipeline export contains
     **Cause:** Referenced toolkit not installed in destination project
     
     **Solution:**
-    - Install the toolkit in the destination project first
-    - Or deselect the entity referencing the unavailable toolkit
+    - Install the missing toolkit in the destination project before importing
+    - Or import to a different project where the toolkit is available
 
 ??? warning "Issue: Permission Denied"
-    **Cause:** Insufficient permissions in destination project
+    **Cause:** The user does not have the `models.applications.export_import.import` permission in the destination project
     
     **Solution:**
-    - Request appropriate permissions from project administrator
-    - Import to a different project where you have permissions
+    - Request the `models.applications.export_import.import` permission from your project administrator
+    - Import to a different project where you have this permission
 
 ??? warning "Issue: Invalid Import Format"
     **Cause:** The `.md` file doesn't have proper YAML frontmatter structure
@@ -330,13 +344,11 @@ Pipelines are imported from `.md` or `.zip` files. Each pipeline export contains
 ??? warning "Issue: Import Button Disabled"
     **Possible Causes:**
     - No project selected
-    - No entities selected for import
-    - Missing permissions in destination project
+    - Missing `models.applications.export_import.import` permission in the destination project
     
     **Solution:**
-    - Select a destination project from dropdown
-    - Check at least one entity/version
-    - Verify project permissions
+    - Select a destination project from the dropdown
+    - Verify you have the `models.applications.export_import.import` permission in the target project
 
 ??? warning "Issue: Failed to Parse MD File"
     **Possible Causes:**
@@ -377,4 +389,5 @@ Pipelines are imported from `.md` or `.zip` files. Each pipeline export contains
     - **[Credentials Menu](../../menus/credentials.md):** Configure authentication credentials for toolkits
     - **[Agents Menu](../../menus/agents.md):** Complete agents documentation
     - **[Pipelines Menu](../../menus/pipelines.md):** Complete pipelines documentation
+    - **[Toolkits Menu](../../menus/toolkits.md):** Complete toolkits documentation
 ---
