@@ -220,28 +220,26 @@ Attach files and images directly to chat conversations for AI-powered analysis. 
 * **Document Processing**: Attach documents for content indexing, semantic search, and information retrieval
 * **Data Files**: Upload CSV, JSON, and other data formats for analysis and processing
 * **Multiple Upload Methods**: Click to browse, drag-and-drop, or paste from clipboard
-* **Centralized Storage**: All attachments stored in Artifact buckets with configurable retention policies
+* **Centralized Storage**: All attachments automatically stored in the default `attachments` Artifact bucket — no manual configuration required
 
 **How Attachments Work:**
 
-The attachment functionality is integrated with the **Artifact Toolkit**. When you enable attachments, you must link it to an Artifact Toolkit. Every file you attach is automatically uploaded and stored in the specific Artifact bucket associated with that toolkit. This provides centralized file management through the **Artifacts** section.
+Every file you attach is automatically uploaded to the default `attachments` bucket — no manual Artifact Toolkit configuration is required. Files are accessible from the **Artifacts** section and subject to the bucket's retention policy (30-day default).
 
-**Enabling Attachments in a Conversation:**
+* **Images** are sent directly to the LLM for real-time vision analysis
+* **Non-image files** (documents, code, data) are indexed into a vector database and retrieved via semantic search
 
-1. Open a new or existing conversation
-2. Locate the **paperclip icon** in the message input area at the bottom
-3. Click the paperclip icon
-4. If attachments are not configured, the **Attachment settings** popup appears automatically
-5. Configure storage by either:
-   - Selecting an existing Artifact Toolkit from the dropdown, or
-   - Creating a new toolkit by selecting "Create new" and entering a bucket name
-6. Click **Save**
+**Enabling Attachments:**
+
+* **Direct LLM chat**: The paperclip icon is always available — click it to attach files immediately
+* **Agent-based conversations**: An agent must have the **Allow attachments** toggle enabled (in the INTERNAL TOOLS section of the Agent Configuration tab). Once enabled, the paperclip becomes active in all conversations using that agent
+* **Conversation-level**: Click the paperclip icon in the message input area to attach files directly without modifying agent settings
 
 ![Attachments](../img/how-tos/chat-conversations/attachments/enable-attachment-chat.gif)
 
-Once enabled, you can upload files by clicking the paperclip icon, dragging and dropping files into the chat, or pasting from clipboard.
+Once attachments are available, upload files by clicking the paperclip icon, dragging and dropping into the chat, or pasting from clipboard.
 
-For detailed information about attachments, including agent configuration and file management, see [Attach Images and Files in Chat](../how-tos/chat-conversations/attach-images-and-files-in-chat.md).
+For detailed information about attachments, including agent configuration and file management, see [Attach Files](../how-tos/chat-conversations/attach-files.md).
 
 ## Adding LLM Models
 

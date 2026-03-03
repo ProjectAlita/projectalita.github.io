@@ -533,7 +533,7 @@ The attachment functionality is integrated with the **Artifact Toolkit**. When y
 3. Type a text prompt to accompany your images (required).
 4. Click **Send** to submit the message with attachments.
 
-For complete setup instructions, advanced configuration, and troubleshooting, see [Attachments in Conversation](attach-images-and-files-in-chat.md).
+For complete setup instructions, advanced configuration, and troubleshooting, see [Attachments in Conversation](attach-files.md).
 
 ![Attachment Settings chat](../../img/how-tos/chat-conversations/attachments/attachment-settings-chat.png){width="400" loading=lazy}
 ![Attachment Settings chat1](../../img/how-tos/chat-conversations/attachments/attachment-settings-chat1.png){width="300" loading=lazy}
