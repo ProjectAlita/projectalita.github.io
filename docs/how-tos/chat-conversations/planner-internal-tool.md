@@ -34,7 +34,7 @@ Enable the Planner tool for ad-hoc task management in conversations.
 2. Locate the chat input toolbar at the bottom of the screen
 3. Find the **Internal Tools** icon (value icon) next to the attachment button
 4. Click the Internal Tools icon to open the configuration popup
-5. In the popup, find **Planner** in the list (positioned above Python sandbox)
+5. In the popup, find **Planner** in the list
 6. Click the toggle switch next to "Planner" to enable it
 7. Once enabled, a success toast notification will appear: "Internal tools configuration updated"
 8. Click anywhere outside the popup to close it
@@ -51,12 +51,13 @@ Enable the Planner tool for ad-hoc task management in conversations.
 Configure the Planner tool as part of an agent's default configuration.
 
 1. Navigate to **Agents** in the main menu
-2. Select the agent you want to configure
-3. Scroll to the **TOOLKITS** section at the bottom
-4. In the TOOLKITS section, find the **Planner** switch
-5. Toggle the switch to enable Planner for this agent
-6. Click **Save** at the top of the configuration page
-7. The Planner tool will now be available in all new conversations using this agent
+2. Select the agent you want to configure or create a new agent
+3. On the **Configuration** tab, scroll down to the **TOOLKITS** section
+4. Within the TOOLKITS section, locate the **INTERNAL TOOLS** subsection
+5. Find the **Planner** toggle. If it is not visible, click **Show all** to expand the full list of internal tools
+6. Click the **Planner** toggle to enable it
+7. Click **Save** at the top of the configuration page to persist the change
+8. New conversations created with this agent will have Planner enabled by default
 
 ![Agent Planner Configuration](<../../img/how-tos/chat-conversations/internal tools/planner/planner-enable-agent.gif>){width="700" loading="lazy"}
 
