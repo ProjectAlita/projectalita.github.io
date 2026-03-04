@@ -72,6 +72,7 @@ nav:
               - Create a MCP: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
           - Internal Tools:
               - Attach Files: how-tos/chat-conversations/attach-files.md
+              - Image Creation: how-tos/chat-conversations/image-generation.md
               - Smart Tools Selection: how-tos/chat-conversations/smart-tools-selection-internal-tool.md
               - Python Sandbox: how-tos/chat-conversations/python-sandbox-internal-tool.md
               - Data Analysis: how-tos/chat-conversations/data-analysis-internal-tool.md
