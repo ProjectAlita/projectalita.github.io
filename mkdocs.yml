@@ -64,7 +64,6 @@ nav:
           - File Editing in Canvas: how-tos/chat-conversations/file-editing-canvas.md
           - Use Public Agents: how-tos/chat-conversations/use-public-items-from-chat.md
           - Add Teammates to Conversation: how-tos/chat-conversations/add-teammates-to-conversation.md
-          - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
           - Context Management: how-tos/chat-conversations/context-management.md
           - Canvas - Create and Edit Entities:
               - Create an Agent: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
@@ -72,6 +71,7 @@ nav:
               - Create a Toolkit: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
               - Create a MCP: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
           - Internal Tools:
+              - Attach Files: how-tos/chat-conversations/attach-files.md
               - Smart Tools Selection: how-tos/chat-conversations/smart-tools-selection-internal-tool.md
               - Python Sandbox: how-tos/chat-conversations/python-sandbox-internal-tool.md
               - Data Analysis: how-tos/chat-conversations/data-analysis-internal-tool.md

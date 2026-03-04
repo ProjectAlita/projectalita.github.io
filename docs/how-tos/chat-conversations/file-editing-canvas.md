@@ -259,7 +259,7 @@ This section covers the complete workflow for editing files stored in Artifactsâ
     - **[Canvas in Conversation](how-to-canvas.md):** Guide on using Canvas for editing generated code blocks, tables, and diagrams within conversations
     - **[Chat Usage Guide](how-to-use-chat-functionality.md):** Complete overview of chat functionality including file attachments
     - **[Artifacts Menu](../../menus/artifacts.md):** Full documentation on Artifacts management and file organization
-    - **[Attachments in Conversations](attach-images-and-files-in-chat.md):** Upload and attach images, documents, and data files for AI analysis
+    - **[Attachments in Conversations](attach-files.md):** Upload and attach images, documents, and data files for AI analysis
 
 
 ---

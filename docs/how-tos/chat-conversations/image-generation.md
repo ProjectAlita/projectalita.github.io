@@ -481,4 +481,4 @@ Generated images appear as thumbnails in the conversation. Hover over any image 
     * **[Agent Configuration](../../menus/agents.md)** - Setting up agents with internal tools
     * **[Chat Functionality](how-to-use-chat-functionality.md)** - General chat features and usage
     * **[Canvas in Conversation](how-to-canvas.md)** - Creating and editing content in chat
-    * **[Attach Images and Files](attach-images-and-files-in-chat.md)** - Working with file attachments
+    * **[Attach Images and Files](attach-files.md)** - Working with file attachments
