@@ -4,17 +4,17 @@
 
 The Image Generation feature enables AI-powered creation of images directly from text prompts within Chat conversations and Agents. When using an LLM model with image generation capabilities (such as GPT-5.1, DALL-E 3, or other vision-enabled models) and the **Image Generator** internal tool is enabled, you can generate high-quality images through natural language descriptions.
 
-Generated images appear inline as thumbnails in the conversation and can be viewed full-size or downloaded. Images are automatically saved to the **`imagelibrary`** Artifact bucket for easy access and management.
+Generated images appear inline as thumbnails in the conversation and can be viewed full-size or downloaded. Images are automatically saved to a dedicated folder within the **`attachment`** Artifact bucket for easy access and management.
 
 !!! info "Prerequisites"
     To use image generation, you need:
     
-    * An LLM model that supports image generation (e.g., GPT-4o, GPT-5.1, DALL-E 3, DALL-E 2)
+    * An LLM model that supports image generation (e.g., GPT-5.2, GPT-5.1, DALL-E 3, DALL-E 2)
     * The **Image creation** internal tool enabled in your conversation or agent
-    * An image generation model selected in your project
+    * An image generation model configured and selected in your project (see [AI Configuration → Image Generation](../../menus/settings/ai-configuration.md#image-generation))
     * Proper project configuration by your administrator
 
-    ![Model](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-generation-model.gif>){width="300"}
+         ![Model](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-generation-model.gif>){width="400"}
     
     
     !!! note "Not Seeing Image Creation?"
@@ -28,70 +28,41 @@ Image generation is available in two primary locations within ELITEA:
 
 ### From Chat Conversations
 
-Enable image generation for ad-hoc conversations:
+Enable image generation for ad-hoc conversations.
 
-**Step 1: Open Internal Tools Configuration**
+1. Navigate to your conversation.
+2. Locate the chat input toolbar at the bottom of the screen.
+3. Click the **Internal Tools** icon (value icon) next to the attachment button.
+4. In the popup, find **Image creation** in the list.
+5. Toggle the **Image creation** switch to enable it.
+6. A success notification appears: "Internal tools configuration updated".
+7. Click anywhere outside the popup to close it.
+8. Use the model selector to choose a model with image generation capabilities (e.g., GPT-5.2, GPT-5.1, DALL-E 3).
 
-1. Navigate to your conversation
-2. Locate the chat input toolbar at the bottom of the screen
-2. Find the **Internal Tools** icon (⚙️ gear icon) next to the attachment button
-3. Click the Internal Tools icon to open the configuration popup
+     ![Chat Image Creation Configuration](<../../img/how-tos/chat-conversations/internal tools/image-generation/chat-image-creation.gif>){width="700" loading="lazy"}
 
-**Step 2: Enable Image Creation**
-
-1. In the configuration popup, you'll see a list of available internal tools
-2. Find **Image creation** in the list
-3. Click the toggle switch next to "Image creation" to enable it
-4. A success notification appears: "Internal tools configuration updated"
-5. Click outside the popup to close it
-
-**Step 3: Select an Image Generation Model**
-
-1. Locate the model selector at the top of the conversation
-2. Click on the model selector dropdown
-3. Choose a model with image generation capabilities (e.g., GPT-4o, GPT-5.1, DALL-E 3)
-4. Verify the model is properly configured for your project
-
-![Chat Image Creation Configuration](<../../img/how-tos/chat-conversations/internal tools/image-generation/chat-image-creation.gif>){width="700" loading="lazy"}
+!!! note "What appears in the Internal Tools popup"
+    The **Image creation** option is only visible in the popup when an image generation provider toolkit is configured for your project. If no such toolkit is available, the option is silently omitted from the list — and if no internal tools are available at all, the Internal Tools icon will not appear in the chat toolbar. Contact your administrator if you cannot see the option.
 
 ---
 
 ### In Agent Configuration
 
-Configure image generation as part of an agent's capabilities:
+Configure image generation as a persistent capability for an agent.
 
-1. Navigate to **Agents** and select or create an agent
-2. Configure image generation in the agent settings
-3. Use the agent in conversations with automatic image generation support
+1. Navigate to **Agents** in the main menu.
+2. Select the agent you want to configure or create a new agent.
+3. On the **Configuration** tab, scroll down to the **TOOLKITS** section
+4. Within the **TOOLKITS** section, locate the **INTERNAL TOOLS** subsection
+5. Find the **Image creation** toggle. If it is not immediately visible, click **Show all** to expand the full list of internal tools.
+6. Toggle the **Image creation** switch to enable it.
+7. Use the model selector at the top of the configuration page to choose a model with image generation capabilities (e.g., GPT-5.2, GPT-5.1, DALL-E 3).
+8. Click **Save** at the top of the configuration page to persist the change.
 
-**Step 1: Access Agent Settings**
+     ![Agent Image Creation Configuration](<../../img/how-tos/chat-conversations/internal tools/image-generation/agent-image-creation.gif>){width="700" loading="lazy"}
 
-1. Navigate to **Agents** in the main menu
-2. Select the agent you want to configure
-3. Click the **Configuration** tab
-4. Scroll to the **TOOLKITS** section
-
-**Step 2: Enable Image Creation for the Agent**
-
-1. Find the **Image creation** toggle at the bottom of the TOOLKITS section
-2. Toggle the switch to enable image generation for this agent
-3. The setting includes an info icon (ℹ️) with tooltip: "Enable AI-powered image generation capabilities"
-4. This configuration is saved in the agent version metadata
-
-**Step 3: Select an Image Generation Model**
-
-1. Locate the model selector at the top of the conversation
-2. Click on the model selector dropdown
-3. Choose a model with image generation capabilities (e.g., GPT-4o, GPT-5.1, DALL-E 3)
-4. Verify the model is properly configured for your project
-
-**Step 4: Save Changes**
-
-1. Click **Save** at the top of the configuration page
-2. Image generation is now available in all new conversations using this agent
-3. Existing conversations maintain their own internal tools settings
-
-![Agent Image Creation Configuration](<../../img/how-tos/chat-conversations/internal tools/image-generation/agent-image-creation.gif>){width="700" loading="lazy"}
+!!! tip "Consistent Image Generation Across Conversations"
+    Enabling **Image creation** at the agent level means every new conversation that uses this agent has image generation available by default, without requiring users to enable it manually each time.
 
 ---
 
@@ -105,7 +76,7 @@ Once enabled, generating images is as simple as asking the AI assistant:
 4. The AI will automatically invoke the image generation tool
 5. Generated image(s) will appear inline in the conversation
 
-![Generate image](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-creation.gif>){width="700" loading="lazy"}
+     ![Generate image](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-creation.gif>){width="700" loading="lazy"}
 
 !!! info "Technical Limitations"
 
@@ -171,27 +142,41 @@ Generated images appear as thumbnails in the conversation. Hover over any image 
 * Click the thumbnail to open fullscreen modal
 * Press Escape or click outside to close
 
-![Fuul size image](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-full-size.gif>){width="450" loading="lazy"}
+     ![Fuul size image](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-full-size.gif>){width="600" loading="lazy"}
 
 **Download:**
 
 * Click the **Download icon** to save the image locally
-* Images are also accessible from **Artifacts → imagelibrary** bucket
+* Images are also accessible from **Artifacts → attachment** bucket, inside the folder
 * You can download images from the Artifacts page at any time
 
-![Download image](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-download.gif>){width="450" loading="lazy"}
+     ![Download image](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-download.gif>){width="600" loading="lazy"}
 
 **Access from Artifacts:**
 
 * Navigate to **Artifacts** in the main menu
-* Find the **imagelibrary** bucket 
+* Open the **`attachment`** bucket
+* Navigate to the folder inside the bucket
 * All generated images are stored here with timestamps
 * Download, delete, or manage images from this centralized location
 
-![Artifact](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-generation-artifact.gif>)
+     ![Artifact](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-generation-artifact.gif>){width="600" loading="lazy"}
+
+**Delete:**
+
+* Hover over the generated image thumbnail in the conversation to reveal the action buttons overlay
+* Click the **Delete** icon (trash icon) that appears on hover
+* A confirmation dialog opens showing the image filename
+* The dialog includes an **"Also delete from attachment storage"** checkbox (unchecked by default)
+     * Leave it unchecked to remove the image only from the conversation view
+     * Check it to also delete the file from the **`attachment`** bucket in Artifacts
+* Click **Delete** to confirm
+
+     ![Fuul size image](<../../img/how-tos/chat-conversations/internal tools/image-generation/image-delete.gif>){width="600" loading="lazy"}
+
 
 !!! note "Storage and Deletion"
-    Generated images are automatically saved in the **Artifact Toolkit** in a bucket named **`imagelibrary`**. This bucket is created automatically the first time you generate an image if it doesn't already exist.
+    Generated images are automatically saved in the **Artifact Toolkit** in the **`attachment`** bucket, inside a dedicated images folder. This folder is created automatically the first time you generate an image if it doesn't already exist.
     
 
 ---
@@ -385,14 +370,16 @@ Generated images appear as thumbnails in the conversation. Hover over any image 
     **Possible Causes:**
     
     * Image creation internal tool not enabled
-    * Image generation not configured for your project
+    * No image generation provider toolkit configured for the project — the **Image creation** option is filtered out of the popup entirely when this toolkit is absent
+    * If no internal tools are available at all, the Internal Tools icon is hidden from the chat toolbar
     * Network connectivity issues
     
     **Solutions:**
     
     1. Enable the **Image creation** toggle in Internal Tools settings
-    2. Contact your administrator if the option is not visible
-    3. Refresh the page and try again
+    2. If the **Image creation** option is not visible in the popup, your project has no image generation provider toolkit configured — ask your administrator to add an image generation integration
+    3. If the Internal Tools icon is missing from the chat toolbar entirely, contact your administrator to verify toolkit configuration
+    4. Refresh the page and try again
 
 ??? warning "Issue: Image Generation Model is Not Configured"
 
