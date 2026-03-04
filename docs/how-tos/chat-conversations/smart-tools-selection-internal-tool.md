@@ -117,11 +117,12 @@ Configure Smart Tools Selection as part of an agent's default configuration.
 
 1. Navigate to **Agents** in the main menu.
 2. Select the agent you want to configure or create a new agent.
-3. Scroll to the **TOOLKITS** section.
-4. In the TOOLKITS section, find the **Smart Tools Selection** switch.
-5. Toggle the switch to enable Smart Tools Selection for this agent.
-6. Click **Save** at the top of the configuration page to persist the change.
-7. New conversations created with this agent will have Smart Tools Selection enabled by default.
+3. On the **Configuration** tab, scroll down to the **TOOLKITS** section.
+4. Within the TOOLKITS section, locate the **INTERNAL TOOLS** subsection.
+5. Find the **Smart Tools Selection** toggle. If it is not visible, click **Show all** to expand the full list of internal tools.
+6. Click the **Smart Tools Selection** toggle to enable it.
+7. Click **Save** at the top of the configuration page to persist the change.
+8. New conversations created with this agent will have Smart Tools Selection enabled by default.
 
 ![Agent](<../../img/how-tos/chat-conversations/internal tools/smart-tools-selection/smart-tools-enable-agent.gif>)
 
@@ -362,14 +363,25 @@ Use the following guidelines to estimate token savings:
     3. Verify toolkit configuration includes proper tool metadata
     4. If specific tools fail consistently, report to system administrators
 
+??? warning "Internal Tools icon is not visible in the chat toolbar"
+
+    **Possible causes:**
+    
+    * No internal tools passed the availability filter for the current project
+    * Image Generation is the only tool configured, but its required provider toolkit is not set up
+    
+    **Solution:**
+    
+    1. The Internal Tools icon is hidden entirely when no tools are available for the project
+    2. Verify that at least one applicable toolkit or provider is configured in the project settings
+    3. Contact your project administrator to confirm the project has the necessary toolkit providers enabled
+
 ---
 
 !!! note "Compatibility with Other Internal Tools"
-    Smart Tools Selection works seamlessly with other internal tools. Middleware tools like Planning, Python Sandbox, and Data Analysis are always bound directly (not through meta-tools) for immediate availability and optimal performance.
+    Smart Tools Selection works seamlessly with other internal tools. Middleware tools like **Planning**, **Python Sandbox**, **Data Analysis**, **Swarm Mode**, and **Image Generation** are always bound directly (not through meta-tools) for immediate availability and optimal performance.
 
 ---
-
-## Related Features
 
 !!! info "Additional Resources"
 
@@ -377,6 +389,8 @@ Use the following guidelines to estimate token savings:
     * **[Chat Functionality](how-to-use-chat-functionality.md)** - General chat features and usage
     * **[Python Sandbox](python-sandbox-internal-tool.md)** - Python Sandbox internal tool
     * **[Data Analysis](data-analysis-internal-tool.md)** - Data Analysis internal tool
+    * **[Image Generation](image-generation.md)** - Generate images in conversations
+    * **[Attachments in Conversations](attach-files.md)** - Upload and attach files for AI analysis
     * **[Conversation Management](../../menus/chat.md)** - Managing conversations and settings
     * **[Toolkits Overview](../../menus/toolkits.md)** - Understanding and configuring toolkits
 

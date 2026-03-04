@@ -84,16 +84,17 @@ Configure Python Sandbox as part of an agent's default configuration.
 
 1. Navigate to **Agents** in the main menu.
 2. Select the agent you want to configure or create a new agent.
-3. Scroll to the **TOOLKITS** section.
-4. In the TOOLKITS section, find the **Python sandbox** switch.
-5. Toggle the switch to enable Python Sandbox for this agent.
-6. Click **Save** at the top of the configuration page to persist the change.
-7. New conversations created with this agent will have Python Sandbox enabled by default.
+3. On the **Configuration** tab, scroll down to the **TOOLKITS** section.
+4. Within the TOOLKITS section, locate the **INTERNAL TOOLS** subsection.
+5. Find the **Python sandbox** toggle. If it is not visible, click **Show all** to expand the full list of internal tools.
+6. Click the **Python sandbox** toggle to enable it.
+7. Click **Save** at the top of the configuration page to persist the change.
+8. New conversations created with this agent will have Python Sandbox enabled by default.
 
 ![Agent Python Sandbox](<../../img/how-tos/chat-conversations/internal tools/python-sandbox/python-sandbox-agent.gif>)
 
 !!! tip "Recommended for Data & Development Agents"
-    For agents designed for data analysis, testing, or development tasks, enabling Python Sandbox significantly enhances their problem-solving capabilities and allows them to provide executable solutions.
+    For agents designed for data analysis, testing, or development tasks, enabling **Python sandbox** significantly enhances their problem-solving capabilities and allows them to provide executable solutions.
 
 ---
 
@@ -394,6 +395,9 @@ Once enabled, Python Sandbox works seamlessly during conversations. The assistan
 
 ??? tip "Combine with Data Analysis Internal Tool"
     When working with conversation attachments (CSV, Excel files), enable both Python Sandbox and Data Analysis internal tools. Python Sandbox provides the execution environment, while Data Analysis can help with file parsing and data structure handling.
+
+??? tip "Combine with Swarm Mode for multi-agent workflows"
+    Python Sandbox works seamlessly alongside **Swarm Mode**. In multi-agent setups, individual child agents can each have Python Sandbox enabled, allowing them to perform independent code execution tasks within the shared conversation context.
 
 ??? tip "Review Generated Code for Learning"
     While Python Sandbox is secure and isolated, reviewing the code the assistant plans to execute helps you understand the approach and learn from the implementation. This is especially valuable for educational use cases.
