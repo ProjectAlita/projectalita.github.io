@@ -51,7 +51,7 @@ Monitor and control context during active conversations:
 5. The widget displays real-time token usage and management status
 6. Click on the widget to view detailed metrics and controls
 
-![Chat Context Budget](<../../img/how-tos/chat-conversations/context-management/chat-context-budget.gif>){width="600" loading="lazy"}
+     ![Chat Context Budget](<../../img/how-tos/chat-conversations/context-management/chat-context-budget.gif>){width="600" loading="lazy"}
 
 ---
 
@@ -65,7 +65,7 @@ Track context usage during agent execution:
 4. Monitor token consumption as the agent processes requests
 5. View pruning and summarization activity in real-time
 
-![Chat Context Budget](<../../img/how-tos/chat-conversations/context-management/agent-context-budget.gif>){width="600" loading="lazy"}
+     ![Chat Context Budget](<../../img/how-tos/chat-conversations/context-management/agent-context-budget.gif>){width="600" loading="lazy"}
 
 ---
 
@@ -80,7 +80,7 @@ Monitor context during pipeline chat panels:
 5. Track context usage across pipeline node executions
 6. Observe automatic context management as the pipeline runs
 
-![Chat Context Budget](<../../img/how-tos/chat-conversations/context-management/chat-context-budget.gif>){width="600" loading="lazy"}
+     ![Pipelinet](<../../img/how-tos/chat-conversations/context-management/pipeline-context-budget.gif>){width="600" loading="lazy"}
 ---
 
 ## Understanding the Context Budget Widget
@@ -89,25 +89,27 @@ The Context Budget widget provides three view modes that display progressively m
 
 **Collapsed View**
 
-The minimal view shows essential token usage at a glance:
+* The minimal view shows essential token usage at a glance:
 
-* **Status Indicator**: Simple line indicator showing 
+    ![Collapsed View](<../../img/how-tos/chat-conversations/context-management/collapsed-view.png>){width="160" loading="lazy"}
+
+**Status Indicator**: Simple line indicator showing 
 usage status
-      - Green: Normal usage (0-100%)
-      - Orange: High usage (more than 100%)
+      * Green: Normal usage (0-100%)
+      * Orange: High usage (more than 100%)
 
-![Collapsed View](<../../img/how-tos/chat-conversations/context-management/collapsed-view.png>){width="160" loading="lazy"}
+
 
 ---
 
 **Compact View**
 
-The compact view adds strategy and message tracking:
+The compact view adds token usage, message, and summary tracking:
 
-* **Strategy Indicator**: Current pruning strategy (e.g., "oldest_first", "importance_based")
+* **Token Usage**: Current token utilization percentage with a high-usage warning indicator when context is running low
 * **Messages Count**: Total messages in conversation context
 * **Summaries Count**: Number of generated summaries
-* **Expand Button**: Click to reveal full details
+* **Edit Button**: Click to open the full Context Management configuration modal
 
     **Conversation**
 
@@ -124,19 +126,21 @@ The full view displays comprehensive context management details organized in col
 
 **Available Sections:**
 
-* **Context Strategy & Token Management**: Configure pruning strategy, token limits, and message preservation settings
+* **Context Strategy & Token Management**: Configure token limits and message preservation settings
 * **Summarization**: Enable automatic summarization and configure summary generation parameters
-* **System Messages**: Manage system-level instructions and preservation settings
+* **User Instructions**: Manage system message preservation, default persona, and custom user instructions
+
+     ![Expanded View](<../../img/how-tos/chat-conversations/context-management/expanded-view.png>){width="300" loading="lazy"}
 
 For detailed information about each parameter, see the [Configuration Parameters](#configuration-parameters) section below.
 
-![Expanded View](<../../img/how-tos/chat-conversations/context-management/expanded-view.png>){width="300" loading="lazy"}
+
 
 **Context Management Toggle**
 
-At the top of the expanded view, there is a toggle switch to enable or disable Context Management entirely. When disabled, all automatic context management features (pruning and summarization) are turned off.
+* At the top of the expanded view, there is a toggle switch to enable or disable Context Management entirely. When disabled, all automatic context management features (pruning and summarization) are turned off.
 
-![Context Management Toggle](<../../img/how-tos/chat-conversations/context-management/context-managment-off.png>){width="300" loading="lazy"}
+     ![Context Management Toggle](<../../img/how-tos/chat-conversations/context-management/context-managment-off.png>){width="300" loading="lazy"}
 
 ---
 
@@ -150,78 +154,61 @@ The system continuously monitors token consumption:
 1. **Message Addition**: Every new message added to conversation context
 2. **Token Estimation**: Tokens calculated using tiktoken library (with character-based fallback)
 3. **Real-Time Display**: Context Budget widget updates immediately
-4. **Threshold Monitoring**: System checks if usage exceeds summary_trigger_ratio
+4. **Threshold Monitoring**: System checks if usage is approaching the maximum context token limit
+
 Context Management settings are organized into three main sections in the expanded view modal.
+
+!!! warning "Token Limit Mid-Response"
+    When the model reaches its output token limit before finishing a response, a prompt appears directly in the chat. Click the **Continue** button to resume and receive the rest of the response. This may occur multiple times for very long outputs.
+
+    ![Token Limit](../../img/how-tos/chat-conversations/context-management/token-limit-message.png){width="700" loading="lazy"}
 
 ---
 ## Configuration Parameters
 
 ### Overview Metrics
 
-| Metric | Description | Example |
-|--------|-------------|---------|
-| **Tokens** | Current token usage with percentage | "2,591 / 64,000 (4%)" |
-| **Messages** | Total number of messages in conversation | "7" |
-| **Summaries** | Number of generated summaries | "0" |
+* The expanded view displays three real-time usage metrics:
+
+    ![Metrics](../../img/how-tos/chat-conversations/context-management/overview-metrics.png){width="580" loading="lazy"}
+
+    | Metric | Description | Example |
+    |--------|-------------|---------|
+    | **Tokens** | Current token usage with percentage | "2,591 / 64,000 (4%)" |
+    | **Messages** | Total number of messages in conversation | "7" |
+    | **Summaries** | Number of generated summaries | "0" |
 
 ### Context Strategy & Token Management
 
-| Parameter | Description | Default | Range/Options | Purpose |
-|-----------|-------------|---------|---------------|---------|
-| **Pruning Strategy** | Method for removing messages from context when limit is exceeded | Oldest First | • **Oldest First**: Remove oldest messages first when limit is reached<br>• **Importance Based**: Prioritize messages based on importance scoring<br>• **Thread Aware**: Maintain thread continuity when pruning messages<br>• **Hybrid**: Combine multiple strategies for optimal context management | Determines how messages are removed when context limit is exceeded<br>• **Note**:`Currently view-only in the UI`|
-| **Max Context Tokens** | Maximum number of tokens to keep in conversation context | 64,000 tokens | 1,000 - 100,000 | Defines the upper limit before pruning or summarization occurs |
-| **Preserve Recent Messages** | Number of most recent messages to always keep in context | 5 messages | 1 - 50 | Ensures the most recent messages are protected during context optimization |
-| **Summaries Limit Count** | Maximum number of conversation summaries to maintain | 5 summaries | 1 - 20 | Prevents unlimited summary accumulation while preserving conversation history 
+* Configure token limits and message preservation to control how context is managed:
 
-#### Pruning Strategy Details
+    ![Context Strategy](../../img/how-tos/chat-conversations/context-management/context-strategy.png){width="500" loading="lazy"}
 
-**Oldest First (FIFO)**
-
-* **Description**: Removes oldest messages first when context limit is reached
-* **Behavior**: Simple chronological pruning
-* **Use Case**: Basic context management with straightforward message history
-* **Preserved**: Recent messages (per preserve_recent_messages setting)
-
-**Importance Based**
-
-* **Description**: Scores messages by importance and removes lowest-scored messages
-* **Scoring Factors**:
-     - Message recency (newer messages score higher)
-     - Role importance (system/user messages scored higher than assistant)
-     - Message length (longer messages may score higher)
-     - Position in conversation (earlier messages in threads preserved)
-* **Use Case**: Intelligent context management for complex conversations
-* **Preserved**: High-importance messages and recent messages
-
-!!! note "Strategy Selection"
-    The pruning strategy dropdown is currently disabled in the UI.
-
-#### How Pruning Works
-
-When context approaches the token limit:
-
-1. **Trigger Detection**: System detects usage approaching max_context_tokens
-2. **Recent Message Protection**: Preserves last N messages (per preserve_recent_messages setting)
-3. **Strategy Application**: Applies active pruning strategy (oldest_first or importance_based)
-4. **Message Removal**: Removes messages according to strategy logic
-5. **Context Rebuild**: Rebuilds conversation context with remaining messages
+    | Parameter | Description | Default | Range/Options | Purpose |
+    |-----------|-------------|---------|---------------|---------|
+    | **Max Context Tokens** | Maximum number of tokens to keep in conversation context | 64,000 tokens | 1,000 - 10,000,000 | Defines the upper limit before pruning or summarization occurs |
+    | **Preserve Recent Messages** | Number of most recent messages to always keep in context | 5 messages | 1 - 99 | Ensures the most recent messages are protected during context optimization |
 
 ---
 
 ### Summarization
 
-| Parameter | Description | Default | Range/Options | Purpose |
-|-----------|-------------|---------|---------------|---------|
-| **Enable Automatic Summarization** | Toggle to enable or disable automatic conversation summarization | Enabled | On/Off | Controls whether the system automatically generates summaries when context limits are approached |
-| **Summarization Instructions** | Custom instructions for how summaries should be generated | "Generate a concise summary of the following conversation messages" | Free text (multiline) | Guides the LLM on how to create summaries that match your needs |
-| **Summary Model** | AI model used for generating conversation summaries | Project's default model | All available LLM models from your project and shared models | Determines which model processes the summarization task |
-| **Summary Trigger Ratio** | Trigger summarization when context reaches this percentage of max tokens | 0.8 (80%) | 0.1 - 1.0 | Controls when automatic summarization is initiated |
-| **Min Messages for Summary** | Minimum number of messages required before creating a summary | 5 messages | 1 - 50 | Prevents summarization of very short conversations |
-| **Target Summary Tokens** | Target length for generated summaries | 4,096 tokens | 1 - 100,000 | Controls the conciseness of generated summaries |
+* Configure automatic summarization to compress older messages and preserve conversation continuity:
+
+    ![Summarization](../../img/how-tos/chat-conversations/context-management/summarization.png){width="400" loading="lazy"}
+
+    | Parameter | Description | Default | Range/Options | Purpose |
+    |-----------|-------------|---------|---------------|---------|
+    | **Enable Automatic Summarization** | Toggle to enable or disable automatic conversation summarization | Enabled | On/Off | Controls whether the system automatically generates summaries when context limits are approached |
+    | **Summarization Instructions** | Custom instructions for how summaries should be generated | "Generate a concise summary of the following conversation messages." | Free text (multiline) | Guides the LLM on how to create summaries that match your needs |
+    | **Target Summary Tokens** | Target length for generated summaries | 4,096 tokens | 100 - 4,096 | Controls the conciseness of generated summaries |
+
+    !!! note
+        **Target Summary Tokens must always be less than Max Context Tokens.** The UI enforces this rule and will prevent saving if the value equals or exceeds Max Context Tokens.
 
 #### How Summarization Works
 
-When summary_trigger_ratio threshold is reached:
+* When the context approaches the token limit:
 
 1. **Summarization Trigger**: System detects token usage exceeds trigger ratio (e.g., 100%)
 2. **Message Selection**: Identifies messages eligible for summarization (excludes preserved recent messages)
@@ -232,61 +219,20 @@ When summary_trigger_ratio threshold is reached:
 
 ---
 
-### System Messages
+### User Instructions
 
-| Parameter | Description | Default | Range/Options | Purpose |
-|-----------|-------------|---------|---------------|---------|
-| **Always Preserve System Messages** | Toggle to keep system messages during context pruning | Enabled | On/Off | Ensures system-level instructions remain available throughout the conversation |
-| **System Messages** | Custom system messages for the conversation | "You are a helpful assistant." | Free text (multiline) | Defines the AI assistant's role and behavior guidelines |
+* Configure system message preservation, default persona, and custom instructions for the assistant:
 
----
+    ![User Instructions](../../img/how-tos/chat-conversations/context-management/user-instruction.png){width="450" loading="lazy"}
 
-## Manual Context Optimization
-
-In addition to automatic context management, you can manually trigger context optimization when needed. This is particularly useful when you want to immediately prune messages without waiting for automatic thresholds to be reached.
-
-**When to Use Manual Optimization**
-
-* **High Context Usage**: When you see the orange status indicator (>100% usage) in the Context Budget widget
-* **Immediate Cleanup**: When you want to reduce token usage before continuing a conversation
-* **Before Important Interactions**: To ensure maximum available context for upcoming complex tasks
-* **Performance Issues**: When experiencing slow response times due to high token counts
-
-**How to Manually Optimize**
-
-1. Click on the **Context Budget** widget to open the expanded view
-2. When context usage exceeds 100%, a yellow warning banner appears at the top with the message:
-   
-   ![Manual optimization](<../../img/how-tos/chat-conversations/context-management/optimizations-banner.png>){width="500" loading="lazy"}
-
-3. Click the **Optimize now** button in the warning banner
-4. Confirm the action in the dialog that appears
-5. The system will immediately prune messages based on your configured strategy
-
-!!! warning "Irreversible Action"
-    Manual optimization cannot be undone. Preserved recent messages (per your configuration) will always be retained.
-
-![Manual optimization](<../../img/how-tos/chat-conversations/context-management/manual-optimization .gif>){width="550" loading="lazy"}
-
-**What Happens During Manual Optimization**
-
-When you manually trigger optimization:
-
-1. **Strategy Application**: The system applies your configured pruning strategy (oldest_first or importance_based)
-2. **Message Protection**: Recent messages (per preserve_recent_messages setting) are protected from removal
-3. **System Message Preservation**: If enabled, system messages are retained
-4. **Token Reduction**: Messages are removed until the target token count (max_context_tokens) is reached
-5. **Context Rebuild**: The conversation context is rebuilt with the remaining messages
-6. **Widget Update**: The Context Budget widget updates to reflect the new token count
-
-**Best Practices for Manual Optimization**
-
-* **Review Settings First**: Before manually optimizing, review your Context Strategy settings to ensure recent message preservation is appropriate
-* **Monitor Usage**: Use manual optimization proactively when you see the status indicator turning orange
-* **Strategic Timing**: Trigger optimization before starting new complex tasks or multi-turn interactions
-* **Combine with Configuration**: Use manual optimization alongside proper configuration of automatic settings for best results
+    | Parameter | Description | Default | Range/Options | Purpose |
+    |-----------|-------------|---------|---------------|---------|
+    | **Always Preserve System Messages** | Toggle to keep system messages during context pruning | Enabled | On/Off | Ensures system-level instructions remain available throughout the conversation |
+    | **Default Persona** | Default assistant persona for model chat (without agent selected) | Generic | Generic, QA, Nerdy, Quirky, Cynical | Sets the assistant's default behavioral style when no agent is selected |
+    | **User instructions** | Custom instructions for the assistant | — | Free text (multiline) | Defines custom behavior guidelines for the AI assistant |
 
 ---
+
 
 ## Usage Scenarios
 
@@ -297,15 +243,13 @@ When you manually trigger optimization:
     **Configuration:**
     
     * Max Context Tokens: 64,000
-    * Summary Trigger Ratio: 0.8
     * Preserve Recent Messages: 10
-    * Pruning Strategy: importance_based
     
     **Behavior:**
     
     1. User engages in extended conversation with AI assistant
     2. Context grows naturally as messages are added
-    3. At 51,200 tokens (80% of 64,000), summarization triggers automatically
+    3. As context grows, older messages are automatically summarized to free up space
     4. System generates summary of older messages
     5. Last 10 messages always preserved for immediate context
     6. Conversation continues seamlessly with reduced token usage
@@ -324,15 +268,13 @@ When you manually trigger optimization:
     **Configuration:**
     
     * Max Context Tokens: 32,000
-    * Summary Trigger Ratio: 0.75
     * Preserve Recent Messages: 5
-    * Pruning Strategy: oldest_first
     
     **Behavior:**
     
     1. Agent starts task with initial instructions
     2. Multiple tool calls and responses accumulate
-    3. At 24,000 tokens (75% of 32,000), oldest messages are pruned
+    3. As the context grows, oldest messages are automatically pruned to stay within the token limit
     4. Last 5 exchanges preserved for immediate task context
     5. Agent continues task execution without context overflow
     
@@ -350,17 +292,15 @@ When you manually trigger optimization:
     **Configuration:**
     
     * Max Context Tokens: 16,000
-    * Summary Trigger Ratio: 0.8
     * Preserve Recent Messages: 8
-    * Pruning Strategy: importance_based
     
     **Behavior:**
     
     1. Pipeline nodes generate output and chat messages
     2. User interactions add additional context
     3. Context Budget widget shows real-time usage across pipeline execution
-    4. At 12,800 tokens (80% of 16,000), importance-based pruning occurs
-    5. System preserves critical pipeline outputs and recent user messages
+    4. As the context grows, automatic pruning occurs to maintain token limits
+    5. Recent user messages are preserved per the configured setting
     6. Pipeline continues with optimized context
     
     **Benefits:**
@@ -380,11 +320,10 @@ When you manually trigger optimization:
 
     * Check Context Budget widget periodically during long conversations
     * Pay attention to color changes in the percentage bar:
-      - Green: Safe range, no action needed
-      - Yellow: Monitor closely, approaching limit
-      - Red: Critical range, summarization or pruning likely
-    * Expand widget to full view for detailed metrics when yellow or red
-    * Use compact view for quick strategy and message count checks
+      - Green: Safe range, context is within limits
+      - Yellow: Context is at or beyond the configured limit; the widget also shows the warning "Context usage is high. Consider configuring budget settings."
+    * Expand widget to full view for detailed metrics when the bar turns yellow
+    * Use compact view for quick token usage and message count checks
 
 ??? tip "Understanding Token Consumption"
 
@@ -396,12 +335,6 @@ When you manually trigger optimization:
     * Attachments and images can significantly increase token usage
     * Summary messages reduce overall token count while preserving information
 
-??? tip "Strategy Awareness"
-
-    * Know which pruning strategy is active for your conversations
-    * `oldest_first`: Predictable, simple, but may lose important early context
-    * `importance_based`: Intelligent, preserves high-value messages, but less predictable
-    * Contact administrator if strategy doesn't match your use case needs
 
 ---
 
@@ -411,7 +344,6 @@ When you manually trigger optimization:
 
     * Keep messages concise when possible to reduce token consumption
     * Break long messages into smaller logical chunks
-    * Use clear, structured formatting to help importance-based scoring
     * Avoid unnecessary repetition or verbose phrasing
 
 ??? tip "Preserve Recent Messages Setting"
@@ -423,19 +355,17 @@ When you manually trigger optimization:
     * Remember: Preserved messages are never pruned or summarized
     * Higher numbers mean more guaranteed context but less flexibility
 
-??? tip "Summary Trigger Ratio"
+??? tip "Coordinating Target Summary Tokens with Max Context Tokens"
 
-    * Lower ratios (0.7-0.75): More frequent summarization, lower peak token usage
-    * Higher ratios (0.8-0.9): Less frequent summarization, higher token efficiency
-    * Balance based on:
-      - Model token limits
-      - Conversation importance
-      - Cost considerations (summarization uses LLM calls)
-      - Desired conversation continuity
+    * **Target Summary Tokens must always be less than Max Context Tokens** — the UI enforces this rule and will prevent saving if it is violated
+    * A good rule of thumb: set Target Summary Tokens to roughly 5–10% of your Max Context Tokens value (e.g., 4,096 Target Summary Tokens with 64,000 Max Context Tokens)
+    * Very small Target Summary Tokens values produce very short, possibly lossy summaries; very large values leave little room for active conversation context
+    * Adjust based on how much detail you need preserved in summaries
+
 
 ---
 
-## Troubleshooting Common Issues
+## Troubleshooting
 
 ??? warning "Context Budget Widget Not Visible"
 
@@ -482,24 +412,21 @@ When you manually trigger optimization:
 
     **Symptoms:**
     
-    * Token usage reaches trigger ratio but no summary is generated
+    * Summaries count does not increase even as context grows
     * Context continues to grow beyond expected limit
     
     **Possible Causes:**
     
     1. Insufficient messages to summarize (all recent messages preserved)
-    2. Summary limit already reached (summaries_limit_count)
-    3. LLM model configuration issue
-    4. Backend summarization disabled
+    2. LLM model configuration issue
+    3. Backend summarization disabled
     
     **Resolution:**
     
     1. Check expanded view: Compare Messages vs Preserve Recent count
        - If Messages ≤ Preserve Recent, summarization cannot occur
-    2. Check expanded view: Review Summaries count
-       - If at limit (default 5), oldest summary will be replaced
-    3. Verify LLM model is properly configured for text generation
-    4. Contact administrator to check backend context management configuration
+    2. Verify LLM model is properly configured for text generation
+    3. Contact administrator to check backend context management configuration
 
 ??? warning "Messages Disappearing Unexpectedly"
 
@@ -516,16 +443,51 @@ When you manually trigger optimization:
     
     **Understanding:**
     
-    1. Check Context Budget widget for strategy in use
-    2. `oldest_first`: Messages disappear in chronological order
-    3. `importance_based`: Lower-scored messages disappear first
-    4. Recent messages (per preserve_recent_messages) never disappear
+    1. Automatic pruning removes oldest messages when the token limit is approached
+    2. Recent messages (per preserve_recent_messages) never disappear
     
     **If Unwanted:**
     
     * Increase max_context_tokens to reduce pruning frequency
     * Increase preserve_recent_messages to keep more messages
-    * Request administrator to adjust pruning strategy
+
+??? warning "Settings Not Saving — Inline Validation Error"
+
+    **Symptoms:**
+    
+    * Save button remains disabled
+    * A field shows an inline red error message
+    
+    **Most Common Cause:**
+    
+    * **Target Summary Tokens is equal to or greater than Max Context Tokens** — the UI validation requires Target Summary Tokens to be strictly less than Max Context Tokens
+    * Example error shown: `Must be less than Max Context Tokens (64000)`
+    
+    **Resolution:**
+    
+    1. Open the Summarization accordion in the Context Management settings
+    2. Check the **Target Summary Tokens** value
+    3. Reduce it to a value less than **Max Context Tokens** (e.g., set to 4,096 when Max Context Tokens is 64,000)
+    4. The Save button will re-enable once all validation errors are cleared
+
+??? warning "Settings Not Saving — Toast Error After Submit"
+
+    **Symptoms:**
+    
+    * A toast notification appears with the message: "Failed to update context strategy"
+    * Settings appear to revert to previous values
+    
+    **Possible Causes:**
+    
+    1. Network connectivity issue
+    2. API or backend service error
+    3. Session has expired
+    
+    **Resolution:**
+    
+    1. Check your network connection and retry
+    2. Refresh the page and attempt to save again
+    3. If the problem persists, contact your administrator to check backend service health
 
 ??? warning "Performance Issues"
 
@@ -557,6 +519,10 @@ When you manually trigger optimization:
     4. **Contact administrator**:
        - May need to adjust backend processing limits
        - Could configure more aggressive pruning
+
+### Support Contact
+
+If you encounter issues not covered in this guide or need additional assistance with context management, please refer to **[Contact Support](../../support/contact-support.md)** for detailed information on how to reach the ELITEA Support Team.
 
 ---
 
