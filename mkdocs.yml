@@ -160,6 +160,7 @@ nav:
           - Slack: integrations/toolkits/slack_toolkit.md
           - Sonar: integrations/toolkits/sonar_toolkit.md
           - SQL: integrations/toolkits/sql_toolkit.md
+          - Syngen: integrations/toolkits/syngen_toolkit.md
           - TestIO: integrations/toolkits/testIO_toolkit.md
           - TestRail: integrations/toolkits/testrail_toolkit.md
           - Xray Cloud: integrations/toolkits/xray_toolkit.md
