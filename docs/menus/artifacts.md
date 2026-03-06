@@ -275,7 +275,8 @@ Files must be under the size limit for preview (varies by file type, with flexib
   * **CSV/TSV Files:** Toggle between **Code** (text view) and **Rendered** (formatted table) modes for better data visualization.
   * **Image Files:** Direct image preview with proper scaling and centering.
   * **Mermaid Diagram Files (.mermaid, .mmd):** Toggle between **Code** (source) and **Rendered** (visual diagram) modes to view both the code and the visual diagram.
-* **Supported File Types:** Includes text, markdown, CSV, TSV, mermaid, image, and code files with various programming language extensions.
+  * **DOCX Files (.docx):** Open directly in a full **WYSIWYG document editor** with a formatting toolbar, ruler, and zoom control. Edit content in-place and save changes back to the bucket.
+* **Supported File Types:** Includes text, markdown, CSV, TSV, mermaid, DOCX, image, and code files with various programming language extensions.
 
 ![artifact-preview](../img/menus/artifacts/file-preview.gif){loading=lazy}
 
@@ -291,7 +292,7 @@ Files must be under the size limit for preview (varies by file type, with flexib
 !!! info "File Preview Requirements"
     **File Type Requirements:**
     
-    Preview is available only for supported file types including programming languages (Python, JavaScript, Java, C++, etc.), data formats (JSON, CSV, YAML, XML), configuration files, web technologies (HTML, CSS), images (JPEG, PNG, GIF, SVG), and special files (Dockerfile, Makefile, .gitignore). Binary files and unsupported formats cannot be previewed.
+    Preview is available only for supported file types including programming languages (Python, JavaScript, Java, C++, etc.), data formats (JSON, CSV, YAML, XML), configuration files, web technologies (HTML, CSS), images (JPEG, PNG, GIF, SVG), Word documents (DOCX), and special files (Dockerfile, Makefile, .gitignore). Binary files and unsupported formats cannot be previewed.
     
     **File Size Limit:**
     
@@ -301,7 +302,7 @@ Files must be under the size limit for preview (varies by file type, with flexib
 
 ### Editing Files in Artifacts
 
-Canvas file editing allows you to edit actual files directly within the Artifacts interface without using external tools. You can work with code files, text documents, data files (CSV/TSV), and special formats like Markdown and Mermaid diagrams.
+Canvas file editing allows you to edit actual files directly within the Artifacts interface without using external tools. You can work with code files, text documents, data files (CSV/TSV), Word documents (DOCX), and special formats like Markdown and Mermaid diagrams.
 
 **How to Edit Files:**
 
@@ -311,6 +312,7 @@ Canvas file editing allows you to edit actual files directly within the Artifact
     * **Table Editor:** Toggle **Raw/Table** modes, edit cells, add/remove rows/columns, sort/filter, Export to XLSX
     * **Markdown Editor:** Toggle **Raw/Preview** modes, edit markdown source, view rendered output
     * **Mermaid Diagram Editor:** Edit diagram code in Raw mode, toggle to **Diagram** mode for visual diagram preview, export PNG/JPG/SVG
+    * **DOCX Editor:** Full WYSIWYG editor for `.docx` files — formatting toolbar (bold, italic, alignment, fonts, lists, tables, etc.), ruler, and zoom control. Edits are made directly in the rendered document view, with no Raw mode toggle. Save overwrites the original `.docx` file in the bucket. See [The DOCX Editor](../how-tos/chat-conversations/how-to-canvas.md#the-docx-editor) for a full walkthrough.
     * **Image Preview:** View-only for JPG, PNG, GIF, BMP, WebP, SVG, TIFF
 3. **Save or Discard Changes:**
     * **Save button:** Click to save changes and overwrite the original file in the bucket
@@ -324,6 +326,7 @@ Canvas file editing allows you to edit actual files directly within the Artifact
     * **CSV/TSV files** can only be edited in **Raw mode**. Switch to Raw mode to make changes, then toggle back to Rendered mode to view the table.
     * **Markdown files** can only be edited in **Raw mode**. Switch to Raw mode to edit the markdown source, then toggle to Preview mode to see the rendered output.
     * **Mermaid diagrams** can only be edited in **Raw mode**. Edit the diagram code in Raw mode, then toggle to Rendered mode to see the visual diagram.
+    * **DOCX files** are always opened in the **WYSIWYG editor** — there is no Raw mode for DOCX. The language dropdown selector is not available for DOCX files.
     * **Image files** are **view-only** and cannot be edited.
     * Files must be under **2MB** for editing
     * The file overwrites the original in the bucket with the same filename and location
@@ -450,7 +453,7 @@ If you encounter issues not covered in this guide or need additional assistance 
     All file types are supported for upload. For optimal agent workflow integration, plain text files are recommended. The preview feature supports 50+ file types including programming languages, configuration files, documentation formats, data files (CSV/TSV), images, and Mermaid diagrams. See the [Artifact Toolkit Guide](../integrations/toolkits/artifact_toolkit.md) for agent-specific usage details.
 
 ??? question "How can I preview files?"
-    Select a file and click the preview icon (eye symbol) to open it in Canvas Mode. The preview supports multiple view modes: code with syntax highlighting, rendered Markdown, table view for CSV/TSV files, and rendered diagrams for Mermaid files. You can copy content, switch languages, and toggle between raw and rendered views.
+    Select a file and click the preview icon (eye symbol) to open it in Canvas Mode. The preview supports multiple view modes: code with syntax highlighting, rendered Markdown, table view for CSV/TSV files, rendered diagrams for Mermaid files, and WYSIWYG editing for DOCX files. You can copy content, switch languages, and toggle between raw and rendered views (except for DOCX and image files, which use dedicated viewers).
 
 ??? question "Who can access artifact files?"
     Access is controlled by project membership and specific permissions. Users need appropriate permissions for different actions: artifacts.create for uploading, artifacts.buckets.update for editing buckets, artifacts.delete for deleting files, etc. Bucket owners have full control over their buckets.
