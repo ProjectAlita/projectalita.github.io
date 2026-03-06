@@ -189,9 +189,15 @@ Internal tools provide built-in capabilities that enhance your conversations wit
 
 **Available Internal Tools:**
 
-* **[Python Sandbox](../how-tos/chat-conversations/python-sandbox-internal-tool.md)**: Execute Python code securely in conversations using Pyodide (Python compiled to WebAssembly). Useful for calculations, data processing, testing algorithms, and generating visualizations.
-* **[Planner](../how-tos/chat-conversations/planner-internal-tool.md)**: Create, manage, and track tasks and action items directly within conversations. Set priorities, due dates, and monitor task progress without switching to external task management tools.
-* **[Data Analysis](../how-tos/chat-conversations/data-analysis-internal-tool.md)**: Perform Pandas-based data analysis on uploaded files (CSV, Excel, etc.) using natural language queries. Automatically processes data and generates charts with downloadable results.
+| Tool | Description |
+|------|-------------|
+| **[Python Sandbox](../how-tos/chat-conversations/python-sandbox-internal-tool.md)** | Execute Python code securely in conversations using Pyodide (Python compiled to WebAssembly). Useful for calculations, data processing, testing algorithms, and generating visualizations. |
+| **[Data Analysis](../how-tos/chat-conversations/data-analysis-internal-tool.md)** | Perform Pandas-based data analysis on uploaded files (CSV, Excel, etc.) using natural language queries. Automatically processes data and generates charts with downloadable results. |
+| **[Planner](../how-tos/chat-conversations/planner-internal-tool.md)** | Create, manage, and track tasks and action items directly within conversations. Set priorities, due dates, and monitor task progress without switching to external task management tools. |
+| **[Image creation](../how-tos/chat-conversations/image-generation.md)** | Generate AI-powered images from text prompts directly within conversations. Requires an image generation model configured in your project. |
+| **[Attachments](../how-tos/chat-conversations/attach-files.md)** | Attach files and images to conversations for AI-powered analysis. Files are automatically stored in the default `attachments` artifact bucket. |
+| **[Smart Tools Selection](../how-tos/chat-conversations/smart-tools-selection-internal-tool.md)** | Optimizes token usage when working with many toolkits by dynamically loading tool schemas on demand instead of binding all tools upfront. Recommended when your conversation uses 5 or more toolkits. |
+| **[Swarm Mode](../how-tos/chat-conversations/swarm-mode-internal-tool.md)** | Enables multi-agent collaboration by allowing all child agents to share the full conversation history and hand off control to each other. Ideal for complex workflows requiring multiple specialized agents working as a team. |
 
 **Enabling Internal Tools:**
 
@@ -203,14 +209,14 @@ Internal tools provide built-in capabilities that enhance your conversations wit
 6. A success notification will appear: "Internal tools configuration updated"
 7. Click anywhere outside the popup to close it
 
-![Enabling Internal Tools](<../img//menus/chat/enable-internal-tools.gif>){: loading=lazy }
+     ![Enabling Internal Tools](<../img//menus/chat/enable-internal-tools.gif>){: loading=lazy }
 
 Once enabled, the AI assistant can automatically use these tools during conversations when appropriate.
 
 !!! tip "Agent Configuration"
     You can also enable internal tools as part of an agent's default configuration in the **TOOLKITS** section. This makes the tools available in all new conversations using that agent.
 
-## Attachments in Conversations
+### Attachments in Conversations
 
 Attach files and images directly to chat conversations for AI-powered analysis. This feature enables multimodal interactions where AI can process visual content, documents, and data files alongside text-based queries.
 
@@ -220,28 +226,26 @@ Attach files and images directly to chat conversations for AI-powered analysis. 
 * **Document Processing**: Attach documents for content indexing, semantic search, and information retrieval
 * **Data Files**: Upload CSV, JSON, and other data formats for analysis and processing
 * **Multiple Upload Methods**: Click to browse, drag-and-drop, or paste from clipboard
-* **Centralized Storage**: All attachments stored in Artifact buckets with configurable retention policies
+* **Centralized Storage**: All attachments automatically stored in the default `attachments` Artifact bucket — no manual configuration required
 
 **How Attachments Work:**
 
-The attachment functionality is integrated with the **Artifact Toolkit**. When you enable attachments, you must link it to an Artifact Toolkit. Every file you attach is automatically uploaded and stored in the specific Artifact bucket associated with that toolkit. This provides centralized file management through the **Artifacts** section.
+Every file you attach is automatically uploaded to the default `attachments` bucket — no manual Artifact Toolkit configuration is required. Files are accessible from the **Artifacts** section and subject to the bucket's retention policy (30-day default).
 
-**Enabling Attachments in a Conversation:**
+* **Images** are sent directly to the LLM for real-time vision analysis
+* **Non-image files** (documents, code, data) are indexed into a vector database and retrieved via semantic search
 
-1. Open a new or existing conversation
-2. Locate the **paperclip icon** in the message input area at the bottom
-3. Click the paperclip icon
-4. If attachments are not configured, the **Attachment settings** popup appears automatically
-5. Configure storage by either:
-   - Selecting an existing Artifact Toolkit from the dropdown, or
-   - Creating a new toolkit by selecting "Create new" and entering a bucket name
-6. Click **Save**
+**Enabling Attachments:**
 
-![Attachments](../img/how-tos/chat-conversations/attachments/enable-attachment-chat.gif)
+* **Direct LLM chat**: The paperclip icon is always available — click it to attach files immediately
+* **Agent-based conversations**: An agent must have the **Allow attachments** toggle enabled (in the INTERNAL TOOLS section of the Agent Configuration tab). Once enabled, the paperclip becomes active in all conversations using that agent
+* **Conversation-level**: Click the paperclip icon in the message input area to attach files directly without modifying agent settings
 
-Once enabled, you can upload files by clicking the paperclip icon, dragging and dropping files into the chat, or pasting from clipboard.
+     ![Attachments](../img/how-tos/chat-conversations/attachments/enable-attachment-chat.gif)
 
-For detailed information about attachments, including agent configuration and file management, see [Attach Images and Files in Chat](../how-tos/chat-conversations/attach-images-and-files-in-chat.md).
+Once attachments are available, upload files by clicking the paperclip icon, dragging and dropping into the chat, or pasting from clipboard.
+
+For detailed information about attachments, including agent configuration and file management, see [Attach Files](../how-tos/chat-conversations/attach-files.md).
 
 ## Adding LLM Models
 

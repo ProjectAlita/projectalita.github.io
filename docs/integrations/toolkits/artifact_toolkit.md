@@ -111,7 +111,7 @@ When enabling attachments for agents, pipelines, or conversations, an Artifact T
     Files uploaded through the attachment feature are stored in the linked Artifact Toolkit's bucket and can be accessed by agents using the toolkit's file management tools. This provides seamless integration between user uploads and agent file processing capabilities.
 
 !!! note "Reference"
-    For comprehensive details on attachment functionality, see [Attach Images and Files in Chat](../../how-tos/chat-conversations/attach-images-and-files-in-chat.md).
+    For comprehensive details on attachment functionality, see [Attach Images and Files in Chat](../../how-tos/chat-conversations/attach-files.md).
 
 ---
 
@@ -836,4 +836,4 @@ For issues, questions, or assistance with Artifact toolkit integration, please r
     - **[Chat Documentation](../../menus/chat.md)** - Using chat conversations with toolkits
     - **[Secrets Management](../../menus/settings/secrets.md)** - Secure storage for sensitive data
     - **[How to Create and Edit Toolkits from Canvas](../../how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md)** - Creating toolkits from conversations
-    - **[Attach Files in Chat](../../how-tos/chat-conversations/attach-images-and-files-in-chat.md)** - Using attachments with artifacts
+    - **[Attach Files in Chat](../../how-tos/chat-conversations/attach-files.md)** - Using attachments with artifacts

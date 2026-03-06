@@ -23,7 +23,7 @@ Unlike open-ended AI conversations, agents provide a structured and efficient ap
 Creating an agent involves three key components:
 
 1. **Instructions**: Define the agent's behavior, goals, and decision-making logic through custom instructions
-2. **Toolkits & Integrations**: Connect external services (GitHub, Jira, Slack, etc.) and internal tools (Python Sandbox, Data Analysis, Planner) to extend capabilities
+2. **Toolkits & Integrations**: Connect external services (GitHub, Jira, Slack, etc.) and internal tools (Python Sandbox, Data Analysis, Planner, Image Generation, Attachments, Swarm Mode, Smart Tools Selection) to extend capabilities
 3. **AI Model Configuration**: Select and configure the appropriate language model (GPT-4o, GPT-5.1, etc.) with optimal settings for your use case
 
 Once configured, the agent leverages advanced natural language processing to interpret instructions, interact with connected tools, and autonomously execute tasks while adapting to changing conditions.
@@ -107,7 +107,7 @@ After clicking **Save**, the agent configuration page will open, where you can:
 * **Add Agents, MCPs, and Pipelines**: Include other agents, Model Context Protocol servers, or pipelines to enhance functionality
 * **Select AI Model**: Choose the appropriate language model (e.g., GPT-4o, GPT-5.1) for your agent
 * **Configure Model Settings**: Adjust parameters such as reasoning level, creativity, and token limits to optimize performance
-* **Enable Internal Tools**: Toggle Python Sandbox, Data Analysis or Planner tools as needed
+* **Enable Internal Tools**: Toggle Python Sandbox, Data Analysis, Planner, Image Generation, Attachments, Swarm Mode, or Smart Tools Selection as needed
 
 Your newly created agent will subsequently appear on the **Agents** page for your project.
 
@@ -149,19 +149,28 @@ ELITEA provides built-in internal tools that extend your agent's capabilities wi
 
 **Available Internal Tools**:
 
-* **[Python Sandbox](../how-tos/chat-conversations/python-sandbox-internal-tool.md)**: Enables secure Python code execution using Pyodide. Your agent can execute Python code, perform calculations, analyze data, and use compatible Python packages like numpy, pandas, and matplotlib.
-
-* **[Data Analysis](../how-tos/chat-conversations/data-analysis-internal-tool.md)**: Enables comprehensive data analysis capabilities using pandas and natural language queries. Your agent can process CSV files, Excel spreadsheets, perform statistical analysis, and generate visualizations.
-
-* **[Planner](../how-tos/chat-conversations/planner-internal-tool.md)**: Provides structured planning and task breakdown capabilities, helping your agent organize complex workflows into manageable steps.
+| Tool | Description |
+|------|-------------|
+| **[Python Sandbox](../how-tos/chat-conversations/python-sandbox-internal-tool.md)** | Enables secure Python code execution using Pyodide. Your agent can execute Python code, perform calculations, analyze data, and use compatible Python packages like numpy, pandas, and matplotlib. |
+| **[Data Analysis](../how-tos/chat-conversations/data-analysis-internal-tool.md)** | Enables comprehensive data analysis capabilities using pandas and natural language queries. Your agent can process CSV files, Excel spreadsheets, perform statistical analysis, and generate visualizations. |
+| **[Planner](../how-tos/chat-conversations/planner-internal-tool.md)** | Provides structured planning and task breakdown capabilities, helping your agent organize complex workflows into manageable steps. |
+| **[Image creation](../how-tos/chat-conversations/image-generation.md)** | Enables AI-powered image creation from text prompts directly within your agent. Requires an image generation model configured in your project. |
+| **[Attachments](../how-tos/chat-conversations/attach-files.md)** | Allows users to attach files and images to conversations for AI-powered analysis. Files are automatically stored in the default `attachments` artifact bucket. |
+| **[Swarm Mode](../how-tos/chat-conversations/swarm-mode-internal-tool.md)** | Enables multi-agent collaboration by allowing all child agents to share the full conversation history and hand off control to each other. Ideal for complex workflows requiring multiple specialized agents working as a team. |
+| **[Smart Tools Selection](../how-tos/chat-conversations/smart-tools-selection-internal-tool.md)** | Optimizes token usage when working with many toolkits by dynamically loading tool schemas on demand instead of binding all tools upfront. Recommended when your agent uses 5 or more toolkits. |
 
 **How to Enable Internal Tools**:
 
-1. In the **TOOLKITS** section, scroll to the bottom to find the internal tools
-2. Each tool has its own toggle switch - enable the ones you want to use:
-   - Python Sandbox toggle
-   - Data Analysis toggle
-   - Planner toggle
+1. In the **TOOLKITS** section, scroll to the bottom to find the **INTERNAL TOOLS** subsection.
+2. Each tool has its own toggle switch. If not all tools are visible, click **Show all** to expand the full list.
+3. Enable the tools you need:
+     - Python Sandbox toggle
+     - Data Analysis toggle
+     - Planner toggle
+     - Image creation toggle
+     - Attachments toggle
+     - Swarm Mode toggle
+     - Smart Tools Selection toggle
 
 ![Agent Python Sandbox](../img/menus/agents/agent-internal-tools-enable.gif){: loading=lazy }
 

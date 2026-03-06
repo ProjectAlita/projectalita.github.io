@@ -490,5 +490,5 @@ If you encounter issues not covered in this guide or need additional assistance 
     For more information about working with artifacts in ELITEA:
     
     * **[Artifact Toolkit Guide](../integrations/toolkits/artifact_toolkit.md)** - Learn how to use artifacts with ELITEA Agents
-    * **[Attach Images and Files in Chat](../how-tos/chat-conversations/attach-images-and-files-in-chat.md)** - Upload and share files in chat conversations
+    * **[Attach Images and Files in Chat](../how-tos/chat-conversations/attach-files.md)** - Upload and share files in chat conversations
     * **[Data Analysis Internal Tool](../how-tos/chat-conversations/data-analysis-internal-tool.md)** - Analyze data files using the internal data analysis tool

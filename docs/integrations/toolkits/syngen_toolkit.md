@@ -86,8 +86,8 @@ The Syngen Toolkit provides the following three tools:
 
 | Parameter | Required | Default | Description |
 |---|---|---|---|
-| **Model Name** | ✅ Yes | — | Unique name for the model. Used to identify and retrieve the model later. Example: `customer_model` |
-| **Training File Name** | ✅ Yes | — | File name of the training data file in the bucket. Example: `customers.csv` |
+| **Model Name** | ✔️ Yes | — | Unique name for the model. Used to identify and retrieve the model later. Example: `customer_model` |
+| **Training File Name** | ✔️ Yes | — | File name of the training data file in the bucket. Example: `customers.csv` |
 | **Batch Size** | No | `32` | Training batch size. Reduce this to save memory on large datasets |
 | **Drop Null** | No | `False` | If enabled, rows containing any missing values are dropped before training |
 | **Epochs** | No | `10` | Number of training epochs. Higher values generally improve quality |
@@ -100,7 +100,7 @@ The Syngen Toolkit provides the following three tools:
 
 | Parameter | Required | Default | Description |
 |---|---|---|---|
-| **Model Name** | ✅ Yes | — | Name of the trained model to use. Must exactly match the name used during training |
+| **Model Name** | ✔️ Yes | — | Name of the trained model to use. Must exactly match the name used during training |
 | **Batch Size** | No | `32` | Generation batch size for memory management |
 | **Number Of Avro Preview Rows** | No | *(none)* | Number of rows to preview when the output is in Avro format |
 | **Random Seed** | No | *(none)* | Set a seed for fully reproducible generation results. Must be 0 or greater |
@@ -251,11 +251,11 @@ The following examples demonstrate how to interact with the Syngen Toolkit in EL
     ```
     User: "Please train a model called 'customer_model' using 'customers.csv'. Use 20 epochs."
 
-    Agent Response: I'll start training the synthetic data model now.
+    Agent Response:  Start training the synthetic data model now.
 
     [Agent uses train_model tool — background processing]
 
-    ✅ Training completed for model 'customer_model'.
+    ✔️ Training completed for model 'customer_model'.
     - Model saved as: customer_model_model.tgz
     - Bucket: syngen-data
     - Epochs: 20 | Batch size: 32 | Drop null: False
@@ -263,6 +263,7 @@ The following examples demonstrate how to interact with the Syngen Toolkit in EL
 
     The model is ready for data generation.
     ```
+    ![Train](../../img/integrations/toolkits/syngen/train-model.gif){loading=lazy width="650"}
 
 ??? example "generate_data — Generate Synthetic Rows"
 
@@ -270,17 +271,18 @@ The following examples demonstrate how to interact with the Syngen Toolkit in EL
     ```
     User: "Generate 500 rows of synthetic customer data using 'customer_model'. Make it reproducible with seed 42."
 
-    Agent Response: I'll generate synthetic data now using the trained model.
+    Agent Response: Generate synthetic data now using the trained model.
 
     [Agent uses generate_data tool — background processing]
 
-    ✅ Generated 500 rows of synthetic data for model 'customer_model'.
+    ✔️ Generated 500 rows of synthetic data for model 'customer_model'.
     - Output file: customer_model_synthetic.csv
     - Saved to bucket: syngen-data
     - Random seed: 42 (fully reproducible)
 
     The synthetic CSV file is ready in the Artifacts bucket.
     ```
+    ![Generate](../../img/integrations/toolkits/syngen/generate-data.gif){loading=lazy width="650"}
 
 ??? example "list_models — Inspect Available Models"
 
@@ -288,7 +290,7 @@ The following examples demonstrate how to interact with the Syngen Toolkit in EL
     ```
     User: "What trained models are available?"
 
-    Agent Response: Let me check the model registry.
+    Agent Response: Check the model registry.
 
     [Agent uses list_models tool — background processing]
 
@@ -313,7 +315,11 @@ The following examples demonstrate how to interact with the Syngen Toolkit in EL
          • Batch size: 32
          • Drop null: False
        - Created: 2025-06-14T08:55:10
+    
     ```
+    ![List](../../img/integrations/toolkits/syngen/list-models.gif){loading=lazy width="650"}
+
+
 
 ---
 
