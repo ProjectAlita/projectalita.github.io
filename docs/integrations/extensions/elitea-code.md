@@ -1,5 +1,8 @@
 # ELITEA Code
 
+!!! warning "Deprecated"
+    **ELITEA Code** extension is **deprecated** and no longer actively developed. Existing functionality may still be partially available. However, compatibility with current and future IDE versions cannot be guaranteed. No further updates, bug fixes, or feature enhancements are planned.
+
 ## Get Started with ELITEA Code
 
 Welcome to the **ELITEA Code** your comprehensive resource for harnessing the power of the ultimate AI-powered IDE extension that's set to transform your coding workflow. ELITEA Code integrates seamlessly with VS Code and InteliiJ, offering intelligent suggestions, automating routine tasks, and providing a level of adaptability that's unmatched, all designed to elevate your coding experience.
