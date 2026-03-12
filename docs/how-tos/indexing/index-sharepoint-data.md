@@ -87,9 +87,7 @@ Your SharePoint credential needs appropriate permissions based on what you want 
 !!! info "Detailed Instructions"
     For complete credential setup steps including Azure AD app registration, permissions, and security best practices, see:
     
-    - [Create a Credential](../../getting-started/create-credential.md)
-    - [SharePoint Credential Setup](../credentials-toolkits/how-to-use-credentials.md#sharepoint-credential-setup)
-    - [SharePoint Toolkit Integration Guide](../../integrations/toolkits/sharepoint_toolkit.md)
+    - [SharePoint Toolkit Integration Guide](../../integrations/toolkits/sharepoint_toolkit.md#step-1-create-sharepoint-credentials)
 
 ---
 
@@ -112,70 +110,103 @@ Your SharePoint credential needs appropriate permissions based on what you want 
     For complete toolkit configuration including site URL setup and authentication options, see:
     
     - [Toolkits Menu](../../menus/toolkits.md)
-    - [SharePoint Toolkit Integration Guide](../../integrations/toolkits/sharepoint_toolkit.md)
+    - [SharePoint Toolkit Integration Guide](../../integrations/toolkits/sharepoint_toolkit.md#step-2-create-sharepoint-toolkit)
 
 ---
 
 ## Step-by-Step: Index SharePoint Data
 
-!!! info "Primary Interface"
-    All indexing operations are performed via the **Indexes Tab Interface**. This dedicated interface provides comprehensive index management with visual status indicators, real-time progress monitoring, and integrated search capabilities.
+**Step 1: Open the Indexes Tab**
 
-!!! warning "Requirements"
-    Before proceeding, ensure your project has PgVector and Embedding Model configured in Settings → AI Configuration, and your SharePoint toolkit has the **Index Data** tool enabled.
+1. Navigate to **Toolkits** and select your SharePoint toolkit.
+2. Click the **Indexes** tab in the toolkit detail view.
+3. In the left sidebar, click **+ Create New Index** — the creation form opens in the center panel.
 
-### Step 1: Access the Interface
+    ![Indexes Tab](../../img/how-tos/indexing/sharepoint/index-tab-access.gif)
 
-1. **Navigate to Toolkits**: Go to **Toolkits** in the main navigation
-2. **Select Your SharePoint Toolkit**: Choose your configured SharePoint toolkit from the list
-3. **Open Indexes Tab**: Click on the **Indexes** tab in the toolkit detail view
+    !!! tip "Indexes tab disabled?"
+        Verify PgVector and Embedding Model are configured in **Settings → AI Configuration** and that the **Index Data** tool is enabled in your toolkit configuration.
 
-If the tab is disabled or not visible, verify that:
-- PgVector and Embedding Model are configured in Settings → AI Configuration
-- The **Index Data** tool is enabled in your toolkit configuration
+**Step 2: Configure Index Parameters**
 
-### Step 2: Create a New Index
+* Fill in the required and optional parameters for your SharePoint indexing:
 
-1. **Click Create New Index**: In the Indexes sidebar, click the **+ Create New Index** button
-2. **New Index Form**: The center panel displays the new index creation form
+    | **Parameter** | Required | Description | Example Value |
+    |-----------|----------|-------------|---------------|
+    | **Index Name** | ✓ | Suffix for collection name (min 1, max 7 chars) | `docs` or `files` |
+    | **Clean Index** | ✗ | Remove existing index data before re-indexing (default: `false`) | ✓ (checked) or ✗ (unchecked) |
+    | **Progress Step (0 - 100)** | ✗ | Step size for progress reporting during indexing (default: `10`) | `10` or `25` |
+    | **Chunking Config** | ✗ | Configuration for document chunking | Default or custom settings |
+    | **Limit Files** | ✗ | Maximum number of files to index from the document library (default: `1000`) | `500` |
+    | **Include Extensions** | ✗ | File extensions to include. Applies to both document library files and OneNote attachments. Leave empty to include all (except skipped). Accepts `pdf` or `.pdf` form. | `  ["*.docx", "*.pdf", "*.xlsx"]` |
+    | **Skip Extensions** | ✗ | File extensions to skip. Applies to both document library files and OneNote attachments. Accepts `exe` or `.exe` form. | `["*.exe", "*.zip", "*.png"]` |
+    | **Path** | ✗ | Scope indexing to a specific folder. Accepts a full server-relative path (`/sites/SiteName/...`) or a relative path (searched recursively under Shared Documents and private libraries). Leave empty to index the whole site. | `/sites/MySite/Shared Documents/Reports` |
+    | **Include Onenote** | ✗ | When `true`, also indexes OneNote pages from the SharePoint site in addition to document library files. **Requires Delegated (User OAuth) authentication** — will not work with App-Only credentials. (default: `false`) | `true` |
+    | **Onenote Filter** | ✗ | Optional dictionary to control which OneNote notebooks, sections, and pages are indexed, and how they are processed (e.g., whether to capture images or include file attachments). Leave empty to index all OneNote content with defaults. Only used when `include_onenote` is `true`. | See note below |
 
-### Step 3: Configure Index Parameters
+!!! info "onenote_filter structure"
+    The `onenote_filter` parameter accepts a JSON object with the following optional keys:
 
-Fill in the required and optional parameters for your SharePoint indexing:
+    - `notebooks` — list of notebook scope filters. Omit to index all notebooks. Each entry: `{"id": "<notebook-id>", "sections": [{"id": "<section-id>", "pages": ["<page-id>", ...]}]}`. Omit `sections` to include all sections; omit `pages` to include all pages in a section.
+    - `capture_images` — boolean, default `true`. When `true` and an LLM is configured, embedded images are described.
+    - `include_attachments` — boolean, default `false`. When `true`, file attachments on OneNote pages are also indexed.
 
-| Parameter | Required | Description | Example Value |
-|-----------|----------|-------------|---------------|
-| Index Name | ✓ | Suffix for collection name (max 7 chars) | `docs` or `files` |
-| Clean Index | ✗ | Remove existing index data before re-indexing | ✓ (checked) or ✗ (unchecked) |
-| Progress Step (0 - 100) | ✗ | Step size for progress reporting during indexing | `10` or `25` |
-| Chunking Config | ✗ | Configuration for document chunking | Default or custom settings |
-| limit_files | ✗ | Maximum number of files to index | `1000` (default) |
-| include_extensions | ✗ | File extensions to include in indexing | `["*.docx", "*.pdf", "*.xlsx"]` |
-| skip_extensions | ✗ | File extensions to skip when processing | `["*.exe", "*.zip", "*.png"]` |
+    Extension filtering for attachments reuses the top-level `include_extensions` and `skip_extensions` parameters.
 
-### Step 4: Start Indexing
+**Step 3: Start Indexing**
 
-1. **Form Validation**: The **Index** button remains inactive until all required fields are filled
-2. **Review Configuration**: Verify all parameters are correct
-3. **Click Index Button**: Start the indexing process
-4. **Monitor Progress**: Watch real-time updates with visual indicators:
-      - 🔄 **In Progress**: Indexing is currently running
-      - ✅ **Completed**: Indexing finished successfully
-      - ❌ **Failed**: Indexing encountered an error
+1. Click **Index** to start the process.
+2. Monitor real-time status via the indicator on the index list item and detail header:
 
-![Indexes tab](../../img/how-tos/indexing/sharepoint/sharepoint-index-tab.png)
+      | Status | Indicator | Description |
+      |--------|-----------|-------------|
+      | **In Progress** | ![in progress](../../img/how-tos/indexing/sharepoint/in-progress-badge.png){width="150"}| Indexing is currently running |
+      | **Completed** | ✅ (no badge) | All documents indexed successfully |
+      | **Partially Indexed** | ⚠️ "Partially indexed" badge | Some documents indexed successfully; others failed |
+      | **Failed** |![in progress](../../img/how-tos/indexing/sharepoint/error-badge.png){width="150"}| Indexing encountered a fatal error |
+      | **Stopped** | ![in progress](../../img/how-tos/indexing/sharepoint/stopped-badge.png){width="140"} | Indexing was manually cancelled |
 
-!!! info "Alternative: Test Settings Method"
-    For quick testing and validation, you can also use the **Test Settings** panel on the right side of the toolkit detail page. Select a model, choose the **Index Data** tool from the dropdown, configure parameters, and click **Run Tool**. However, the Indexes Tab Interface is the recommended approach for comprehensive index management.
+    !!! tip "Stopping an indexing run"
+        If indexing is in progress and the backend task ID is available, a **Stop** button appears in place of the **Index** button. Click **Stop** to cancel the current run. The index retains any documents successfully indexed before the stop.
 
+    ![Indexes tab](../../img/how-tos/indexing/sharepoint/sharepoint-index-data.gif)
+---
 
-### Step 5: Verify Index Creation
+## Managing Existing Indexes
 
-After indexing completes, verify the index was created successfully:
+Once an index exists, selecting it in the sidebar reveals a three-tab detail view:
 
-1. **Check Index Status**: Visual indicators show completion status
-2. **Review Index Details**: Click on the created index to see metadata and document count
-3. **Test Search**: Use the **Run** tab to test search functionality with sample queries
+| Tab | Description |
+|-----|-------------|
+| **Run** | Run search tools against the index: **Search Index**, **Stepback Search Index**, or **Stepback Summary Index**. Select the tool from the dropdown, enter a query, and click **Run**. Only tools enabled in the toolkit configuration appear here. |
+| **Configuration** | View the parameters used when the index was created. This tab is read-only. |
+| **History** | Audit log of all indexing events (Created, Reindexed, Stopped, Failed, Partially Indexed) with timestamps. Selecting a history entry lets you view the chat results from that specific run. |
+
+### Reindexing
+
+* To refresh an existing index with updated SharePoint content, click the **Reindex** button (visible in the **Run** tab header of an existing index). Reindexing uses the same configuration as the original index. The history entry for the new run is added to the **History** tab.
+
+     ![ReIndexes](../../img/how-tos/indexing/sharepoint/sharepoint-reindex-data.gif)
+
+### Scheduling Automatic Reindexing
+
+The **Schedule** toggle (visible when an existing index is selected) lets you enable cron-based automatic reindexing:
+
+1. Click the **gear icon** next to the **Schedule** toggle to open the **Schedule Settings** dialog.
+2. Choose "Default" for a picker UI or "Advanced" to enter a cron expression directly.
+3. Optionally select specific credentials to use for scheduled runs.
+4. Click **Apply** to save the schedule, then enable the **Schedule** toggle.
+
+The default cron value is `0 0 * * 6` (every Saturday at midnight). Scheduling requires appropriate project permissions.
+
+!!! info "Detailed Instructions"
+    For a complete walkthrough of the scheduling feature, see [Schedule Indexing](./schedule-indexing.md).
+
+### Deleting an Index
+
+* Click the **Delete** button on an existing index to permanently remove all indexed data for that collection. The **Remove index** tool must be enabled in the toolkit for this button to be active.
+
+    ![Deleting](../../img/how-tos/indexing/sharepoint/sharepoint-delete-index.gif)
 
 ---
 
@@ -197,7 +228,7 @@ Once your SharePoint data is indexed, you can use it in multiple ways:
 5. **Enter Query**: Type your natural language question
 6. **View Results**: See responses with citations to specific SharePoint documents
 
-![Run search](../../img/how-tos/indexing/sharepoint/sharepoint-index-run.png)
+    ![Run search](../../img/how-tos/indexing/sharepoint/sharepoint-search-index.gif)
 
 ### Using Toolkit in Conversations and Agents
 
@@ -212,173 +243,184 @@ Your SharePoint toolkit can be used in two main contexts:
 - **Add Toolkit as Participant**: Select your SharePoint toolkit from the available toolkits
 - **Ask Natural Language Questions**: The toolkit will automatically search your indexed data and provide relevant answers with citations
 
+    ![Chat](../../img/how-tos/indexing/sharepoint/sharepoint-chat-add.gif)
+
 ### Real-Life Example Workflow
 
-Let's walk through a complete example of indexing and using a company's SharePoint document library:
+The following examples show a typical end-to-end flow: indexing documents, verifying the index, and querying the content — all through a conversation with the SharePoint toolkit added.
 
-**Step 1: Setup SharePoint Toolkit for Document Management**
+!!! example "Index the Document Library"
 
-**Step 2: Use in Conversations**
+    **User:**
+    > "Index all documents from our SharePoint site with suffix 'docs'. Include Word and PDF files but skip image files. Clean any existing index first."
 
-   Add toolkit to a conversation and start asking questions:
+     ![SharePoint Index Chat](../../img/how-tos/indexing/sharepoint/sharepoint-index-chat.gif)
 
-  - Navigate to **Conversations** → **+ New Conversation**
-  - In the participants section click + to add Toolkit
-  - Select your SharePoint toolkit from the available toolkits list
+!!! example "Verify Index Creation"
 
-**Step 3: Index the Document Library**
+    **User:**
+    > "List my collections"
 
- * **User Request in Chat:**
- 
-     > "Index all documents from our SharePoint site with suffix 'docs'. Include Word and PDF files but skip image files. Clean any existing index first."
+       ![SharePoint List](../../img/how-tos/indexing/sharepoint/sharepoint-list-collections.gif)
 
-   ![SharePoint Index Chat](../../img/how-tos/indexing/sharepoint/sharepoint-index-chat.png)
+    This confirms the indexing completed successfully and the collection is available for searching.
 
-**Step 4: Verify Index Creation**
+!!! example "Search Indexed Content"
 
- * **User Request in Chat:**
- 
-     > "List my collections"
+    **User:** "What are the key points from our Q3 financial report?"
 
- * **SharePoint Toolkit Response:**
+    **SharePoint Toolkit:** "Based on your indexed documents, here are the key points from the Q3 financial report:
 
-![SharePoint List](../../img/how-tos/indexing/sharepoint/sharepoint-list-collections.png)
-
- This confirms the indexing completed successfully and your document collection is available for searching.
-
-**Step 5: Start the conversation and begin asking questions about your indexed content**
-
-  * **User:** "What are the key points from our Q3 financial report?"
-   
-  * **SharePoint Toolkit:** "Based on your indexed documents, here are the key points from the Q3 financial report:
-   
     1. **Revenue Growth**: 15% increase compared to Q2, reaching $2.3M total revenue
     2. **Cost Management**: Operating expenses reduced by 8% through efficiency initiatives
     3. **Market Expansion**: Successful launch in two new regional markets contributing 12% of revenue
+
+    *Source: Q3_Financial_Report.pdf (Created: 2024-10-15, Modified: 2024-10-20)*"
+
+      ![SharePoint Search](../../img/how-tos/indexing/sharepoint/sharepoint-index-search-chat.gif)
    
-   *Source: Q3_Financial_Report.pdf (Created: 2024-10-15, Modified: 2024-10-20)*"
-
-   ![SharePoint Search](../../img/how-tos/indexing/sharepoint/sharepoint-index-search.png)
+    * **User:** "Find me the latest project management templates"
    
-  * **User:** "Find me the latest project management templates"
+    * **SharePoint Toolkit:** "Here are the latest project management templates from your indexed documents:
    
-  * **SharePoint Toolkit:** "Here are the latest project management templates from your indexed documents:
+      **Templates Found:**
+
+       1. **Project Charter Template v3.2**: Comprehensive project initiation document with stakeholder analysis
+       2. **Sprint Planning Template**: Agile project management with backlog and capacity planning
+       3. **Risk Management Matrix**: Template for identifying and tracking project risks
    
-    **Templates Found:**
+      **Template Features:**
 
-     1. **Project Charter Template v3.2**: Comprehensive project initiation document with stakeholder analysis
-     2. **Sprint Planning Template**: Agile project management with backlog and capacity planning
-     3. **Risk Management Matrix**: Template for identifying and tracking project risks
+       1. Pre-formatted sections for scope, objectives, and deliverables
+       2. Built-in formulas for timeline and resource calculations
+       3. Integration with company branding and approval workflows
    
-    **Template Features:**
-
-     1. Pre-formatted sections for scope, objectives, and deliverables
-     2. Built-in formulas for timeline and resource calculations
-     3. Integration with company branding and approval workflows
-   
-   *Sources: Project_Charter_Template_v3.2.docx, Sprint_Planning_Template.xlsx, Risk_Management_Matrix.xlsx*"
+     *Sources: Project_Charter_Template_v3.2.docx, Sprint_Planning_Template.xlsx, Risk_Management_Matrix.xlsx*"
 
 
-## Troubleshooting & Tips
+## Troubleshooting
 
-### Common Errors and Solutions
+**Common Errors and Solutions**
 
-**"Indexes tab not visible" or "Tab disabled":**
+??? warning "Indexes Tab Not Visible or Tab Disabled"
+    - Verify PgVector and Embedding Model are configured in Settings → AI Configuration
+    - Ensure the **Index Data** tool is enabled in your SharePoint toolkit configuration
+    - Check that your toolkit supports indexing (SharePoint is supported)
+    - Refresh the browser page and retry
 
-- Verify PgVector and Embedding Model are configured in Settings → AI Configuration
-- Ensure the **Index Data** tool is enabled in your SharePoint toolkit configuration
-- Check that your toolkit supports indexing (SharePoint is supported)
-- Refresh the browser page and retry
+??? warning "+ Create New Index Button Not Working"
+    - Verify all project-level prerequisites are met (PgVector and Embedding Model)
+    - Check that you have proper permissions for the toolkit
+    - Ensure the toolkit is properly saved with credentials
 
-**"+ Create New Index button not working":**
+??? warning "Authentication Failed or Unauthorized Access"
+    The toolkit supports two authentication modes — ensure you are using the correct one:
 
-- Verify all project-level prerequisites are met (PgVector and Embedding Model)
-- Check that you have proper permissions for the toolkit
-- Ensure the toolkit is properly saved with credentials
+    **App-Only (Client Credentials):** `client_id` + `client_secret`
 
-**"Authentication failed" or "Unauthorized access":**
+    - Verify the Client ID and Client Secret are correct and not expired
+    - Ensure your Azure AD app registration has `Sites.Read.All` (or `Sites.FullControl.All`) application permissions and admin consent was granted
+    - Grant the app access to the specific site collection via `/_layouts/15/AppInv.aspx`
+    - Verify the SharePoint site URL includes `https://` and the full site path
 
-  - Verify your SharePoint credential has the correct Client ID and Client Secret
-  - Ensure your Azure AD app registration has appropriate permissions for SharePoint access
-  - Check that admin consent has been granted for the application permissions
-  - Verify the SharePoint site URL format includes `https://` and the complete site path
+    **Delegated (User OAuth):** `token` + `scopes`
 
-**"Site not found" or "Access denied to site":**
+    - Ensure the OAuth token is valid and has not expired — click **Log in** again to refresh it
+    - Verify all required scopes are listed in the credential (e.g., `https://graph.microsoft.com/Sites.ReadWrite.All`)
+    - Ensure your Azure AD app has **Delegated** permissions (not Application) for the required Graph API scopes
 
-  - Verify the SharePoint site URL is correct and accessible
-  - Ensure your Azure AD app has been granted permissions to the specific site collection using AppInv.aspx
-  - Check that the site collection exists and is not archived or deleted
-  - Confirm your app registration has the necessary SharePoint API permissions
+    !!! note
+        Providing only a token **without** scopes routes to the REST backend (legacy). All Graph API and OneNote features require `token` + `scopes`.
 
-**"No files indexed" or "Empty document library":**
+??? warning "Site Not Found or Access Denied to Site"
+    - Verify the SharePoint site URL is correct and accessible
+    - Ensure your Azure AD app has been granted permissions to the specific site collection using AppInv.aspx
+    - Check that the site collection exists and is not archived or deleted
+    - Confirm your app registration has the necessary SharePoint API permissions
 
-  - Check that the document library contains accessible files
-  - Verify file extensions are not being filtered out by Skip Extensions parameter
-  - Ensure your app has read permissions to the document library
-  - Try indexing without extension filters first, then add restrictions
+??? warning "No Files Indexed or Empty Document Library"
+    - Check that the document library contains accessible files
+    - Verify file extensions are not being filtered out by the Skip Extensions parameter
+    - Ensure your app has read permissions to the document library
+    - Try indexing without extension filters first, then add restrictions
+    - Check the **Limit Files** parameter — a value of `0` disables file collection entirely; use the default (`1000`) or a positive number
 
-**"Vector database connection failed" or "PgVector errors":**
+??? warning "Vector Database Connection Failed or PgVector Errors"
+    - Ensure PgVector is properly configured in Settings → AI Configuration
+    - Verify the vector database is running and accessible
+    - Check connection credentials and database permissions
+    - Restart the vector database service if connection issues persist
 
-  - Ensure PgVector is properly configured in Settings → AI Configuration
-  - Verify the vector database is running and accessible
-  - Check connection credentials and database permissions
-  - Restart the vector database service if connection issues persist
+??? warning "Index Name Validation Error (Exceeds 7 Characters)"
+    **Cause**: The `index_name` field has a hard limit of **7 characters** enforced by the SDK. Providing a longer value will cause a Pydantic validation error before indexing starts.
 
-**"File processing errors" or "Document parsing failures":**
+    - Keep the Index Name to 7 characters or fewer (e.g., `docs`, `sp2024`, `hr`)
+    - Leave the field blank to use the default collection name without a suffix
+    - Use short abbreviations for descriptive names (e.g., `fin` instead of `finance`)
 
-  - Large files may cause timeouts; consider using file size limits or Skip Extensions
-  - Binary files (executables, archives) should be excluded via Skip Extensions
-  - Check available storage space for the vector database
-  - Verify document formats are supported (Word, PDF, Excel, PowerPoint, text files)
+??? warning "File Processing Errors or Document Parsing Failures"
+    Individual file-level parse errors are **non-fatal** — the SDK logs them as warnings and continues indexing remaining files. The final result will report a partial count if some files failed.
 
-### Performance and Scope Considerations
+    - Large files may cause timeouts; consider using file size limits or Skip Extensions
+    - Binary files (executables, archives) should be excluded via Skip Extensions
+    - Check available storage space for the vector database
+    - Verify document formats are supported (Word, PDF, Excel, PowerPoint, text files)
+    - Review application logs for specific file paths that failed to parse
 
-**For Large SharePoint Sites:**
+??? warning "OneNote Indexing Fails with 401 Unauthorized (include_onenote: true enabled)"
+    **Cause**: The Delegated OAuth token does not include the `Notes.ReadWrite.All` permission — either it was never added, admin consent was not granted, or the token was issued before the scope was added.
 
-- Use file type filters: `Include Extensions: ["*.docx", "*.pdf", "*.xlsx"]`
-- Set reasonable file limits: start with 500-1000 files for testing
-- Consider indexing by document library: create separate indexes for different libraries
-- Index by content type: separate indexes for documents vs. lists vs. archived content
+    1. In the [Azure Portal](https://portal.azure.com), go to **Microsoft Entra ID → App registrations → [your app] → API permissions**. Click **"+ Add a permission"** → **Microsoft Graph** → **Delegated permissions**, search for `Notes.ReadWrite.All`, and add it.
+    2. Click **"Grant admin consent for [Your Organization]"** on the API permissions page. The `Notes.ReadWrite.All` entry must show a green checkmark.
+    3. Update the **Scopes** field in your ELITEA SharePoint credential using full URL format:
+        ```
+        https://graph.microsoft.com/Sites.ReadWrite.All https://graph.microsoft.com/Files.ReadWrite.All https://graph.microsoft.com/Notes.ReadWrite.All
+        ```
+    4. Click **Log in** again in your ELITEA credential to obtain a fresh token that includes the Notes scope.
 
-### Search Result Quality
+    !!! note
+        `include_onenote` requires **Delegated (User OAuth)** authentication — it will not work with App-Only (Client Credentials).
 
-**If search returns few/no results:**
+**Performance and Scope Considerations**
 
-- Lower the cut-off score from 0.5 to 0.35 or 0.3
-- Increase search_top from 10 to 20 or 30
-- Try rephrasing your query with document-specific terms (file names, content types)
-- Verify the indexed content contains relevant information for your query
+??? warning "Large SharePoint Sites"
+    - Use file type filters: `Include Extensions: ["*.docx", "*.pdf", "*.xlsx"]`
+    - Set reasonable file limits: start with 500-1000 files for testing
+    - Consider indexing by document library: create separate indexes for different libraries
+    - Index by content type: separate indexes for documents vs. lists vs. archived content
 
-**For better search quality:**
+**Search Result Quality**
 
-- Include multiple document types for comprehensive coverage
-- Use natural language queries rather than exact file names
-- Leverage stepback search for complex business questions that require reasoning
-- Create separate indexes for different content types (current vs archived, public vs restricted)
+??? warning "Search Returns Few or No Results"
+    - Lower the cut-off score from 0.5 to 0.35 or 0.3
+    - Increase search_top from 10 to 20 or 30
+    - Try rephrasing your query with document-specific terms (file names, content types)
+    - Verify the indexed content contains relevant information for your query
 
-### Content-Specific Indexing Tips
+??? warning "Improving Search Quality"
+    - Include multiple document types for comprehensive coverage
+    - Use natural language queries rather than exact file names
+    - Leverage stepback search for complex business questions that require reasoning
+    - Create separate indexes for different content types (current vs archived, public vs restricted)
 
-**For Business Documents:**
+**Content-Specific Indexing Tips**
 
-- Focus on current documents: exclude outdated templates and archived files
-- Include metadata-rich content: documents with proper titles, descriptions, and tags
-- Index both working documents and finalized reports for complete coverage
+??? warning "Business Documents"
+    - Focus on current documents: exclude outdated templates and archived files
+    - Include metadata-rich content: documents with proper titles, descriptions, and tags
+    - Index both working documents and finalized reports for complete coverage
 
-**For Project Management:**
+??? warning "Project Management"
+    - Include project templates, status reports, and planning documents
+    - Index across multiple project sites for portfolio-level insights
+    - Consider including both active and completed projects for lessons learned
 
-- Include project templates, status reports, and planning documents
-- Index across multiple project sites for portfolio-level insights
-- Consider including both active and completed projects for lessons learned
-
-**For Knowledge Management:**
-
-- Include policy documents, procedures, and training materials
-- Index FAQ documents and troubleshooting guides for support scenarios
-- Focus on documents with high business value and frequent access patterns
+??? warning "Knowledge Management"
+    - Include policy documents, procedures, and training materials
+    - Index FAQ documents and troubleshooting guides for support scenarios
+    - Focus on documents with high business value and frequent access patterns
 
 ---
-
-## References
 
 !!! info "Related Documentation"
     For additional information and detailed setup instructions, see:

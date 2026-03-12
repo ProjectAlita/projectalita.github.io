@@ -204,10 +204,15 @@ The SharePoint credential supports two authentication modes — **App-Only** (th
     | **Field** | **Description** | **Example** |
     |-----------|----------------|-------------|
     | **OAuth Discovery Endpoint** | Azure AD tenant base URL in the format `https://login.microsoftonline.com/{tenant_id}`. The `{tenant_id}` is the **Directory (tenant) ID** from your Azure AD App Registration Overview page | `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` |
-    | **Scopes** | Space-separated OAuth permission scopes the delegated token should request | `Sites.ReadWrite.All Files.ReadWrite.All Lists.ReadWrite.All` |
+    | **Scopes** | Space-separated OAuth permission scopes the delegated token should request | `Sites.ReadWrite.All Files.ReadWrite.All Notes.ReadWrite.All` |
 
 2. **Log in:** Once all fields are filled, a **Log in** button appears next to the **Test Connection** button. Click **Log in** to complete the OAuth authorization flow — ELITEA redirects to Azure AD for user sign-in, and after authorization the token is stored and the connection is verified via Microsoft Graph.
 3. **Save Credential:** Click **Save**.
+
+     ![Delegated](../../img/integrations/toolkits/sharepoint/sharepoint-credential-delegated.gif)
+
+!!! warning "Re-login required after scope changes"
+    If you add, remove, or modify the **Scopes** field after the initial login (e.g., to add `Notes.ReadWrite.All` for OneNote access), the existing token will not automatically include the new scopes. You must click **Log in** again to complete a new OAuth authorization flow and obtain a fresh token that reflects the updated scope list.
 
 ---
 
@@ -694,6 +699,33 @@ The following examples demonstrate how to interact with the SharePoint toolkit i
     2. **Configure OAuth Discovery Endpoint:** Enter `https://login.microsoftonline.com/{tenant_id}` using your Directory (tenant) ID.
     3. **Configure Scopes:** Enter the required scopes: `Sites.ReadWrite.All Files.ReadWrite.All Lists.ReadWrite.All Notes.ReadWrite.All`.
     4. **Complete the OAuth flow:** Click **Log in** to authorize. Once authorized with Delegated credentials, all OneNote tools become available.
+
+??? warning "OneNote Tools Return 401 Unauthorized Error"
+    **Problem:** OneNote tool calls succeed with Delegated credentials but return a `401 Unauthorized` response from `graph.microsoft.com/.../onenote/...`.
+
+    **Cause:** The OAuth token was issued without the `Notes.ReadWrite.All` delegated permission — either the scope was never added to the Azure AD app, admin consent was not granted, or the token was issued before the scope was added.
+
+    **Troubleshooting Steps:**
+
+    1. **Add the Notes permission in Azure AD:** In the [Azure Portal](https://portal.azure.com), go to **Microsoft Entra ID → App registrations → [your app] → API permissions**. Click **"+ Add a permission"** → **"Microsoft Graph"** → **"Delegated permissions"**, search for `Notes.ReadWrite.All`, and add it.
+    2. **Grant admin consent:** On the API permissions page, click **"Grant admin consent for [Your Organization]"**. The `Notes.ReadWrite.All` entry must show a green checkmark.
+    3. **Update the Scopes field in your ELITEA credential** to include all required OneNote scopes. Use the full URL format:
+        ```
+        https://graph.microsoft.com/Sites.ReadWrite.All https://graph.microsoft.com/Files.ReadWrite.All https://graph.microsoft.com/Notes.ReadWrite.All
+        ```
+    4. **Re-login:** Click **Log in** again in your ELITEA SharePoint credential to obtain a fresh token that includes the `Notes.ReadWrite.All` scope.
+
+    !!! note "Required OneNote Scopes"
+        The following scopes are required for OneNote indexing and tool operations:
+
+        | **Scope** | **Purpose** |
+        |-----------|-------------|
+        | `Notes.ReadWrite.All` | Read and write access to all OneNote notebooks and pages |
+        | `Sites.ReadWrite.All` | Access to the SharePoint site where notebooks are hosted |
+        | `Files.ReadWrite.All` | Access to files referenced from OneNote pages |
+
+    !!! note "Short vs. Full URL scope format"
+        The ELITEA credential accepts scopes in both short (`Notes.ReadWrite.All`) and full URL (`https://graph.microsoft.com/Notes.ReadWrite.All`) formats. If short-format scopes do not resolve for your tenant, switch to the full URL format.
 
 ### Support Contact
 
