@@ -93,9 +93,9 @@ To set up a new Pipeline:
          - **Conversation Starters**: Add predefined commands or prompts to initiate interactions with the pipeline. (e.g., "Generate test cases for the login feature" or "Create test scenarios for payment processing")
 4. In the **Advanced** section (optional):
          - **Step Limit**: Set the maximum number of tool execution steps the pipeline can perform in a single turn (range: 0-999, default: 25). This parameter controls how many iterations the pipeline can execute before stopping, preventing infinite loops and managing resource usage. A higher step limit allows more complex multi-step workflows, while a lower limit ensures faster execution for simpler tasks.
-5. Click **Save** to save your work on a Pipeline for the first time. This action creates what's known as the "**latest**" version of your pipeline.   
+5. Click **Save** to save your work on a Pipeline for the first time. This action creates what's known as the "**base**" version of your pipeline.
 
-![Pipeline_Create](<../img/menus/pipeline/pipeline-create.gif>){: loading=lazy }
+     ![Pipeline_Create](<../img/menus/pipeline/pipeline-create.gif>){: loading=lazy }
 
 !!! info "Integration of Toolkits"
     Integration of Toolkits becomes available after the first save. Navigate to the **Toolkits** section to enhance the pipeline's functionality by connecting it to external services or internal tools.
@@ -118,12 +118,12 @@ Toolkits are integrations with external or ELITEA's internal services that enhan
 **Adding Resources to Your Pipeline**:
 
 1. In the pipeline Configuration interface, navigate to the **TOOLKITS** section
-2. Click the **+Toolkit** button to browse available resources
-3. You can add the following types of resources:
-      - **[Toolkits](toolkits.md)**: Select an existing toolkit from the list or click **"+ Create New"** to create a new toolkit
-      - **[Agents](agents.md)**: Add nested agents to enable your pipeline to delegate tasks or collaborate with specialized agents
-      - **[MCPs](mcps.md)**: Integrate Model Context Protocol servers to provide additional context and capabilities. You can select an existing MCP from the list or click "+ Create New" to create a new MCP
-      - **Pipelines**: Include other pipelines to create complex multi-step workflows by chaining pipelines together
+2. Use the dedicated add buttons to attach resources. Each button opens its own searchable dropdown:
+      - **+Toolkit**: Browse and select from available toolkits, or click **"Create new"** to create a new toolkit. See **[Toolkits](toolkits.md)**.
+      - **+MCP**: Browse and select Model Context Protocol servers, or click **"Create new"** to create a new MCP. See **[MCPs](mcps.md)**.
+      - **+Agent**: Browse and select agents to enable your pipeline to delegate tasks or collaborate with specialized agents. See **[Agents](agents.md)**.
+      - **+Pipeline**:Browse other pipelines to create complex multi-step workflows by chaining pipelines together
+3. Each dropdown supports inline search and paginated scrolling to locate resources quickly.
 
 > **Note:** Your changes are saved automatically when you add or remove resources.
 
@@ -136,28 +136,9 @@ Toolkits are integrations with external or ELITEA's internal services that enhan
     - **Pipeline Integration**: Consider data flow and dependencies when nesting pipelines
 
 
-## Pipeline Interface Structure
+## Designing Your Pipeline
 
-When working with pipelines, the interface is organized into several key tabs:
-
-
-### History Tab
-The **History** tab provides a complete audit trail of all past pipeline executions:
-
-- Review past conversations and execution results
-- Track performance metrics across different versions
-- Debug issues by replaying previous runs
-- Compare how different versions performed
-- Maintain compliance records of all pipeline interactions
-
-## Configuration Tab 
-The **Configuration** tab is where you design and configure your pipeline:
-
-- Use the **Flow Designer** to visually create your pipeline workflow
-- Switch to **YAML Editor** for advanced text-based configuration
-- Set up general information (name, description, tags)
-- Configure toolkits and integrations
-- Add welcome messages and conversation starters
+The center panel of the pipeline page contains the **Editor**. Use the **Flow/YAML toggle** at the top of the editor to switch between the two modes.
 
 ### State Management
 
@@ -182,14 +163,13 @@ Pipeline state is a collection of key-value pairs that store data during pipelin
 
 **How to Define State Variables:**
 
-1. In the **Configuration** tab, locate the **State** section
+1. In the **left panel**, locate the **State** section
 2. Click **+ Context** to create a new state variable
 3. Enter a **Variable Name** (use descriptive names like `project_id`, `analysis_result`, `counter`)
-4. Set an **Initial Value** (optional) - can be text, numbers, or JSON objects
-5. Add a **Description** (optional) to document the variable's purpose
-6. Click **Save** to apply your changes
+4. Set an **default Value** (optional) - can be text, numbers, or JSON objects
+5. Click **Save** to apply your changes
 
-![Pipeline State](<../img/menus/pipeline/pipeline-state.gif>){: loading=lazy }
+     ![Pipeline State](<../img/menus/pipeline/pipeline-state.gif>){: loading=lazy }
 
 **Using State in Your Pipeline:**
 
@@ -200,7 +180,7 @@ Once defined, state variables can be accessed and modified throughout your pipel
 * **Conditional Logic**: Use state variables in Decision and Router nodes to control workflow branches
 * **Data Transformation**: Pass state values between LLM, Code, and Toolkit nodes for complex processing
 
-??? tip "Best Practices for State Management"
+!!! tip "Best Practices for State Management"
     * **Use Descriptive Names**: Choose clear, meaningful names for state variables (e.g., `customer_data` instead of `data1`)
     * **Initialize When Possible**: Set initial values to prevent undefined variable errors
     * **Document Purpose**: Add descriptions to help team members understand each variable's role
@@ -212,15 +192,15 @@ Once defined, state variables can be accessed and modified throughout your pipel
 
 ### **Flow Designer**:
 
-* Use the **Flow** tab to visually design your pipeline by connecting various nodes, such as **LLM**, **Agent**, **Toolkit**, **MCP**, **Code**, **Custom**, **Router**, **Decision**, **State Modifier**, and **Printer**.
+* Use **Flow** mode (selected via the **Flow/YAML toggle** in the editor panel) to visually design your pipeline by connecting various nodes, such as **LLM**, **Agent**, **Toolkit**, **MCP**, **Code**, **Custom**, **Router**, **Decision**, **State Modifier**, and **Printer**.
 * Add new nodes by clicking the **+** icon and selecting the desired node type from the dropdown menu.
 * Use the **End** node to define the completion of the pipeline.
 * Drag and drop connections between nodes to establish the workflow's logic and transitions.
 * Zoom in or out and adjust the view for better navigation and management of complex workflows.
 
-![Pipeline_Nodes](<../img/menus/pipeline/pipeline-add-nodes.gif>){: loading=lazy }
+     ![Pipeline_Nodes](<../img/menus/pipeline/pipeline-add-nodes.gif>){: loading=lazy }
 
-??? tip "Best Practices for Using Nodes"
+!!! tip "Best Practices for Using Nodes"
     **Plan Your Workflow**: Before adding nodes, outline the desired workflow to ensure a clear and logical structure.
 
     **Use Descriptive Names**: Name each node clearly to make the pipeline easier to understand and maintain.
@@ -258,7 +238,7 @@ Once defined, state variables can be accessed and modified throughout your pipel
 
 ### **YAML Editor**:
 
-* Switch to the **YAML** tab to configure the pipeline using code for advanced customization.
+* Switch to **YAML** mode using the **Flow/YAML toggle** in the editor panel for code-based configuration.
 * Define complex workflows, conditions, and logic that may not be easily achievable through the visual Flow Designer.
 * Use the YAML editor to fine-tune node configurations, set advanced parameters, and integrate custom logic.
 * Validate your YAML syntax to ensure the pipeline runs smoothly without errors.
@@ -323,7 +303,7 @@ To execute the pipeline and get the output:
     * Click the **Like** icon if the output meets your expectations.
     * Click the **Dislike** icon if the output is unsatisfactory. Upon disliking, you will have the option to leave a comment explaining why the output did not meet your expectations. This feedback helps improve the system's performance and relevance.
 
-![Pipeline-Execution](<../img/menus/pipeline/pipeline-execution.png>){: loading=lazy }
+     ![Pipeline-Execution](<../img/menus/pipeline/pipeline-execution.png>){: loading=lazy }
 
 ### Managing Context Budget
 
@@ -348,7 +328,7 @@ Context Management helps maintain conversation continuity while staying within m
 3. The Context Budget widget appears above the chat interface
 4. Click to expand and view detailed metrics and configuration options
 
-![Context Management](<../img/menus/pipeline/pipeline-context-management.gif>){: loading=lazy }
+     ![Context Management](<../img/menus/pipeline/pipeline-context-management.gif>){: loading=lazy }
 
 !!! info "Learn More About Context Management"
     For detailed information about context management configuration, strategies, and best practices, see the **[Context Management Guide](../how-tos/chat-conversations/context-management.md)**.
@@ -365,7 +345,7 @@ Each time you execute a pipeline, the system creates a **pipeline run** that cap
 * **Performance Metrics**: Analyze execution time, token usage, and resource consumption
 * **Error Diagnostics**: Identify where failures occur and access detailed error messages
 
-Pipeline runs are automatically saved and can be accessed through the History tab, where you can replay past executions, compare different runs, and analyze workflow behavior over time.
+Pipeline runs are automatically saved and can be accessed through the **Run History** panel (clock icon in the chat panel), where you can replay past executions, compare different runs, and analyze workflow behavior over time.
 
 ![Run](../img/menus/pipeline/run-details.gif)
 
@@ -378,11 +358,11 @@ To optimally manage your pipeline, understanding how to save and create versions
 
 **How to Save a Pipeline:**
 
-* To save your work on a Pipeline for the first time, simply click the **Save** button. This action creates what's known as the "**latest**" version of your pipeline.
-* You can continue to modify your pipeline and save the changes to the "**latest**" version at any time by clicking the **Save** button again. If you wish to discard any changes made, you have the option to click the **Discard** button before saving.
+* To save your work on a Pipeline for the first time, simply click the **Save** button. This action creates what's known as the "**base**" version of your pipeline.
+* You can continue to modify your pipeline and save the changes to the "**base**" version at any time by clicking the **Save** button again. If you wish to discard any changes made, you have the option to click the **Discard** button before saving.
 
 !!! note "Note"
-    The "**latest**" version represents the initial version you create. You can keep updating this version with your changes by saving them, without the need to create additional versions for your pipeline.
+    The "**base**" version represents the initial version you create. You can keep updating this version with your changes by saving them, without the need to create additional versions for your pipeline.
 
 ### How to Create New Versions:
 
@@ -392,9 +372,9 @@ For instances where you need to create and manage different iterations of your P
 2. **Name Your Version**: When saving your work, provide a version name that clearly identifies the iteration or changes made.
 3. Click **Save** to confirm your entry. 
 
-![Pipeline New Version](<../img/menus/pipeline/pipeline-save-version.gif>){: loading=lazy }
+     ![Pipeline New Version](<../img/menus/pipeline/pipeline-save-version.gif>){: loading=lazy }
 
-??? tip "Best Practices for Version Naming"
+!!! tip "Best Practices for Version Naming"
     * **Length**: Keep the version name concise, not exceeding 48 characters. This ensures readability and compatibility across various systems.
     * **Characters**: Avoid using special characters such as spaces (" "), underscores ("_"), and others that might cause parsing or recognition issues in certain environments.
     * **Clarity**: Choose names that clearly and succinctly describe the version's purpose or the changes it introduces, facilitating easier tracking and management of different versions.
@@ -407,22 +387,111 @@ Upon creating a new version of the Pipeline, several options become available to
 
 By following these steps, you can effectively manage the lifecycle and iterations of your pipelines, ensuring that each version is appropriately saved and utilized as per your requirements.
 
+!!! info "Full Versioning Guide"
+    For detailed information on version management, naming conventions, and best practices, see the **[Entity Versioning guide](../how-tos/agents-pipelines/entity-versioning.md)**.
+
+### Exporting and Importing Pipelines
+
+ELITEA allows you to export the **currently selected version** of a pipeline as a file and import it into another project. Export and import are always version-specific — there is no option to export the entire pipeline with all its versions at once.
+
+**Exporting a Pipeline Version:**
+
+1. Open the pipeline and select the **version** you want to export using the version selector.
+2. Click the **three-dot menu (⋮)** in the toolbar.
+3. Select **Export**. The file downloads automatically to your device.
+   - If the selected version has **no nested dependencies**, a single **`.md`** file is downloaded.
+   - If the selected version references **other agents or pipelines as toolkits**, the export is a **`.zip`** file containing all dependencies.
+
+**Importing a Pipeline:**
+
+1. In the **Pipelines** dashboard, click the **Import** button in the toolbar.
+2. Upload the `.md` or `.zip` file previously exported from ELITEA.
+3. The Import Wizard displays entity cards for the main pipeline and any nested dependencies. Review configuration before confirming.
+4. Click **Import** to complete. The pipeline will appear in the current project.
+
+!!! note
+    After import, toolkits requiring authentication will need their credentials reconfigured manually.
+
+!!! info "Full Import/Export Guide"
+    For complete details on file formats, nested dependencies, and advanced options, see the **[Import/Export Agents and Pipelines guide](../how-tos/agents-pipelines/import-export.md)**.
+
+---
+
+### Forking Pipelines
+
+Forking copies the **currently selected version** of a pipeline from one project to another within the same ELITEA environment — no file download required. Only one version is forked at a time; there is no option to fork the entire pipeline with all its versions.
+
+**How to Fork a Pipeline Version:**
+
+1. Open the pipeline and select the **version** you want to fork using the version selector.
+2. Click the **three-dot menu (⋮)** in the toolbar and select **Fork**.
+3. In the **Fork parameters** wizard, choose a **target project** from the dropdown. No project is pre-selected; you must pick one manually.
+4. Review the entity cards — the main pipeline card and any nested dependencies that will be forked automatically.
+5. Click **Fork**. When complete, click **Got it** to navigate directly to the forked pipeline in the target project.
+
+!!! note "What gets forked"
+    - Only the **currently selected version** is forked.
+    - Nested agent or pipeline dependencies are automatically included.
+    - **Model settings** are preserved if the model is available in the target project; otherwise the first available model is used.
+    - **Credentials** for toolkits must be reconfigured manually after forking.
+
+!!! info "Full Forking Guide"
+    For complete details and agent forking, see the **[Fork Agents and Pipelines guide](../how-tos/agents-pipelines/forking.md)**.
+
+---
+
 ### Viewing Pipeline History
 
-The **History** tab provides a complete audit trail of all past executions of your pipeline. This feature allows you to:
+The **Run History** panel provides a complete audit trail of all past executions of your pipeline.
+
+**How to access Run History:**
+
+1. Open any saved pipeline.
+2. In the **right panel** (embedded chat area), click the **clock icon** (🕐) in the top bar. The tooltip reads *"View run history"*.
+3. The pipeline page is replaced by the two-panel Run History display. Click the **✕ (Close)** button in the top-left to return.
+
+**What Run History shows:**
 
 - **Review past conversations**: View complete chat histories from previous pipeline runs
 - **Track performance**: Monitor execution duration across different versions
-- **Debug issues**: Replay conversations to identify where problems occurred in the workflow
+- **Debug issues**: Replay conversations to identify where problems occurred
 - **Compare versions**: See how different pipeline versions performed with the same inputs
 - **Audit trail**: Maintain records of all pipeline interactions for compliance purposes
 
-The History tab displays runs in a two-panel layout with a list of all executions on the left (showing date, version, and duration) and the complete conversation replay on the right when you select a run.
+**Run History layout:**
 
-For detailed instructions on using the History tab, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines/agents-pipelines-history.md)**.
+The Run History panel uses a two-panel layout:
 
-![History Tab](../img/menus/pipeline/pipeline-history-tab.gif){: loading=lazy }
+- **Left panel** — sortable list of all past runs. Click any column header to sort:
 
+    | Column | Description |
+    |--------|-------------|
+    | **Date** | Timestamp of the run in `dd-MM-yyyy, hh:mm a` format |
+    | **Version** | Pipeline version used for the run |
+    | **Duration** | Total execution time of the run |
+
+    Click a row to load the conversation replay in the right panel. Each row also has a **three-dot menu (⋮)** with: **Share link**, **Delete**, and **Restore conversation**.
+
+- **Right panel** — full conversation replay of the selected run.
+
+     ![History Tab](../img/menus/pipeline/pipeline-history-tab.gif){: loading=lazy }
+
+!!! info "Learn More About Pipeline History"
+    For detailed instructions on using the History panel, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines/agents-pipelines-history.md)**.
+
+
+### INFORMATION
+
+The **Information** accordion at the bottom of the left panel provides read-only metadata about the current pipeline and version.
+
+| Field | Description |
+|-------|-------------|
+| **Pipeline ID** | The unique identifier for this pipeline. Click the copy icon to copy it to the clipboard. Useful for API integrations and support requests. |
+| **Version ID** | The unique identifier for the currently selected version. Click the copy icon to copy it. |
+| **Forked from** | Visible only if this pipeline was forked. Displays the name of the original pipeline with a clickable link. The link is disabled if you do not have permission to view the source project. |
+| **Pipeline** | A **Show** link that opens a read-only preview of the pipeline flow diagram in a modal. |
+
+![INFORMATION](../img/menus/pipeline/pipeline-information-section.png)
 ---
 
 ## Best Practices
