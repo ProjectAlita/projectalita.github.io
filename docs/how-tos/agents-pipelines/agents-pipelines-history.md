@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **History** tab in Agents and Pipelines allows you to view and review all past execution runs of your agent or pipeline. This feature provides a complete audit trail of interactions, enabling you to replay conversations, analyze performance metrics, and debug issues from previous runs.
+The **Run History** panel in Agents and Pipelines allows you to view and review all past execution runs of your agent or pipeline. This feature provides a complete audit trail of interactions, enabling you to replay conversations, analyze performance metrics, and debug issues from previous runs.
 
 Each history entry captures:
 
@@ -22,56 +22,65 @@ This is particularly useful for:
 
 ## Prerequisites
 
-Before accessing the History tab, ensure you have:
+Before accessing Run History, ensure you have:
 
 - **Project access**: You must be a member of the project containing the agent or pipeline
 - **Agent or Pipeline**: At least one agent or pipeline must exist in the project
 - **Run history**: The agent or pipeline must have been executed at least once
 
 !!! note "Permissions"
-    The History tab is visible to all users who can view the agent or pipeline. You don't need special permissions to view run history.
+    Run History is visible to all users who can view the agent or pipeline. You don't need special permissions to view run history.
 
-## Accessing the History Tab
+## Accessing Run History
 
 ### For Agents
 
 1. Navigate to the **Agents** menu in the left sidebar
 2. Click on the agent you want to review
-3. In the agent detail view, click the **History** tab
+3. In the agent page, look at the **right panel** (embedded chat area)
+4. Click the **clock icon** (🕐) in the top bar of the right panel. The tooltip reads *"View run history"*
+5. The page is replaced by the **Run History** panel. Click the **✕ (Close)** button in the top-left to return.
 
-![Agent History](../../img/how-tos/agents-pipelines/agents-pipelines-history/agent-history.gif){ loading=lazy }
+     ![Agent History](../../img/how-tos/agents-pipelines/agents-pipelines-history/agent-history.gif){ loading=lazy }
 
 ### For Pipelines
 
 1. Navigate to the **Pipelines** menu in the left sidebar
 2. Click on the pipeline you want to review
-3. In the pipeline detail view, click the **History** tab
+3. In the pipeline page, look at the **right panel** (embedded chat area)
+4. Click the **clock icon** (🕐) in the top bar of the right panel. The tooltip reads *"View run history"*
+5. The page is replaced by the **Run History** panel. Click the **✕ (Close)** button in the top-left to return.
 
-![Pipeline History](../../img/how-tos/agents-pipelines/agents-pipelines-history/pipeline-history.gif){ loading=lazy }
+     ![Pipeline History](../../img/how-tos/agents-pipelines/agents-pipelines-history/pipeline-history.gif){ loading=lazy }
 
-!!! tip "Quick Navigation"
-    The History tab is located alongside  Configuration tab in the agent or pipeline detail page.
+!!! tip "Right panel must be visible"
+    The clock icon appears in the top bar of the embedded chat panel on the right side of the agent/pipeline page. If the right panel is collapsed, expand it first using the collapse toggle button.
 
-## Understanding the History View
+## Understanding the Run History View
 
-The History tab has a **two-panel layout**:
+The Run History panel replaces the current page view and has a **two-panel layout**: a header bar at the top with a close button and "Run History" title, a left panel listing all past runs, and a right panel showing the selected conversation replay.
 
-![Hystory Tab View](../../img/how-tos/agents-pipelines/agents-pipelines-history/history-tab-view.png){ loading=lazy }
+     ![Hystory Tab View](../../img/how-tos/agents-pipelines/agents-pipelines-history/history-tab-view.png){ loading=lazy }
 
 ### Left Panel: Run History List
 
-The left panel displays all historical runs in a list format with three columns:
+The left panel displays all historical runs in a sortable list with the following columns:
 
-- **Date**: Timestamp when the run was executed (format: DD-MM-YYYY, hh:mm AM/PM)
-- **Version**: The version of the agent/pipeline that was used for this run
-- **Duration**: How long the execution took (displayed in human-readable format)
+| Column | Description |
+|--------|-------------|
+| **Date** | Timestamp when the run was executed (format: `dd-MM-yyyy, hh:mm AM/PM`) |
+| **Version** | The version of the agent/pipeline used for this run |
+| **Duration** | How long the execution took (human-readable format) |
+
+All column headers are clickable to sort the list ascending or descending by that column.
 
 **Features:**
 
 - **Infinite scroll**: As you scroll down, more runs are automatically loaded
-- **Selection**: Click on any run to view its details in the right panel
+- **Selection**: Click on any row to view its conversation in the right panel
 - **Visual indicator**: The selected run is highlighted
-- **Chronological order**: Runs are displayed from newest to oldest
+- **Default order**: Newest runs appear first (sorted by Date descending)
+- **Three-dot menu (⋮)**: Each row has a context menu with [actions](#run-actions) available on hover
 
 ### Right Panel: Chat Replay
 
@@ -85,25 +94,40 @@ The right panel shows the complete conversation for the selected run:
 !!! info "Empty State"
     When no run is selected, the right panel remains empty. Select a run from the left panel to view its conversation.
 
-## Using the History Tab
+### Run Actions
+
+Each run row has a **three-dot menu (⋮)** that appears on hover, containing the following actions:
+
+| Action | Description |
+|--------|-------------|
+| **Share link** | Copies a direct URL to this specific run to the clipboard. Opening the link automatically navigates to the Run History panel and selects that run. |
+| **Delete** | Permanently removes this run record. A confirmation dialog titled "Remove run" appears before deletion. |
+| **Restore conversation** | Pre-populates the embedded test chat with the selected run's message history. **Note:** restores chat history only — agent/pipeline configuration, instructions, and tool settings are **not** reverted. |
+
+!!! warning "Permanent Deletion"
+    Deleting a run is permanent and cannot be undone. Confirm carefully before removing any run record.
+
+## Using Run History
 
 ### Viewing a Past Run
 
-1. Navigate to the History tab as described above
+1. Access Run History as described in [Accessing Run History](#accessing-run-history)
 2. Browse the list of runs in the left panel
 3. Click on the run you want to review
 4. The complete conversation for that run appears in the right panel
 5. Scroll through the messages to review the interaction
+6. Click **✕ (Close)** when done to return to the agent/pipeline page
 
-![View-run](../../img/how-tos/agents-pipelines/agents-pipelines-history/view-run.gif){ loading=lazy }
+     ![View-run](../../img/how-tos/agents-pipelines/agents-pipelines-history/view-run.gif){ loading=lazy }
 
 ### Finding a Specific Run
 
-Since runs are ordered by date (newest first), you can:
+Since runs are sorted by date (newest first) by default, you can:
 
 - **Recent runs**: Look at the top of the list
-- **Specific date**: Scroll down until you find the date range
-- **Specific version**: Look for the version name in the Version column
+- **Specific date**: Scroll down or click the **Date** column header to reverse the sort order
+- **Specific version**: Click the **Version** column header to sort alphabetically by version name
+- **By duration**: Click the **Duration** column header to sort by execution time
 
 !!! tip "Load More Runs"
     If you have many historical runs, scroll to the bottom of the list to automatically load more entries.
@@ -129,30 +153,47 @@ To analyze execution performance:
 
 To share a specific run with team members or save it for later reference:
 
-1. Hover over the run you want to copy in the left panel
-2. Click the **Copy Link** icon that appears
-3. The link is copied to your clipboard
-4. A check icon appears briefly to confirm the copy
-5. Share the link with others or paste it elsewhere
+1. Hover over the run you want to share in the left panel
+2. Click the **⋮ (three-dot menu)** icon that appears
+3. Select **Share link**
+4. A success toast appears confirming the link was copied to your clipboard
+5. Share the link — when opened it navigates directly to the Run History panel with that run selected
 
-![Copy Run Link](../../img/how-tos/agents-pipelines/agents-pipelines-history/copy-run-agent.gif){ loading=lazy }
-
-!!! info "Link Behavior"
-    The copied link includes the specific run ID and will automatically navigate to the History tab and select that run when opened.
+     ![Copy Run Link](../../img/how-tos/agents-pipelines/agents-pipelines-history/copy-run-agent.gif){ loading=lazy }
 
 ### Deleting a Run
 
 If you need to remove a specific run from history:
 
 1. Hover over the run you want to delete in the left panel
-2. Click the **Delete** icon that appears
-3. Confirm the deletion in the modal dialog
-4. The run is permanently removed from history
+2. Click the **⋮ (three-dot menu)** icon that appears
+3. Select **Delete**
+4. Confirm the deletion in the **"Remove run"** dialog
+5. The run is permanently removed from history
 
-![Deleting a Run](../../img/how-tos/agents-pipelines/agents-pipelines-history/remove-run.gif){ loading=lazy }
+     ![Deleting a Run](../../img/how-tos/agents-pipelines/agents-pipelines-history/remove-run.gif){ loading=lazy }
 
 !!! warning "Permanent Deletion"
     Deleting a run from history is permanent and cannot be undone. Make sure you want to remove the record before confirming.
+
+### Restoring a Conversation
+
+The **Restore conversation** action pre-populates the embedded test chat (right panel of the agent/pipeline page) with the message history from a selected run. This lets you quickly resume or replay an earlier conversation without manually re-entering the same inputs.
+
+To restore a past conversation:
+
+1. Open the Run History panel by clicking the **clock icon** (🕐) in the right panel top bar
+2. Find the run whose conversation you want to restore
+3. Hover over that run row and click the **⋮ (three-dot menu)** icon
+4. Select **Restore conversation**
+5. Click **✕ (Close)** to return to the agent/pipeline page
+6. The embedded chat on the right now shows the restored message history — continue the conversation from there
+
+     ![Restoring a Conversation](../../img/how-tos/agents-pipelines/agents-pipelines-history/restore-conversation.gif)
+
+!!! warning "What is restored"
+    * **Restore conversation restores chat history only.** The agent/pipeline's configuration, instructions, model settings, and tool settings are **not** reverted to their state at the time of the original run. If the agent/pipeline has changed since that run, the restored chat will continue with the current configuration.
+    * The **Restore conversation** option is available for **Agents** and **Pipelines** only. It does not appear in the history panels for Toolkits or MCPs.
 
 ## Common Use Cases
 
@@ -162,7 +203,7 @@ If you need to remove a specific run from history:
 
     **Steps**:
 
-    1. Go to the History tab
+    1. Open the agent and click the **clock icon** (🕐) in the right panel top bar
     2. Find the failed run by date or version
     3. Select the run to view the conversation
     4. Review the messages to identify:
@@ -177,10 +218,10 @@ If you need to remove a specific run from history:
 
     **Steps**:
 
-    1. Open the History tab
+    1. Open the pipeline and click the **clock icon** (🕐) in the right panel top bar
     2. Review the Duration column across multiple runs
-    3. Identify runs that took longer than expected
-    4. Select those runs to see what operations were performed
+    3. Click the **Duration** column header to sort by execution time
+    4. Select the longest-running runs to see what operations were performed
     5. Optimize the pipeline based on the longest-running operations
 
 ??? info "Version Comparison"
@@ -189,9 +230,9 @@ If you need to remove a specific run from history:
 
     **Steps**:
 
-    1. Create a new version of the agent
-    2. Run the same test inputs on both the old and new versions
-    3. Go to the History tab
+    1. Create a new version of the agent and run the same test inputs on both versions
+    2. Open the agent and click the **clock icon** (🕐) in the right panel top bar
+    3. Click the **Version** column header to group runs by version
     4. Compare runs from the old version vs. the new version
     5. Verify that the new version produces better results
 
@@ -201,10 +242,10 @@ If you need to remove a specific run from history:
 
     **Steps**:
 
-    1. Navigate to the History tab
+    1. Open the agent and click the **clock icon** (🕐) in the right panel top bar
     2. Find the relevant run by date
     3. Review the complete conversation
-    4. Use this as documentation for compliance or audit purposes
+    4. Use **Share link** from the ⋮ menu to save a direct URL to the run for documentation
 
 ??? info "Learning and Training"
 
@@ -212,16 +253,17 @@ If you need to remove a specific run from history:
 
     **Steps**:
 
-    1. Review multiple runs in the History tab
-    2. Study patterns in successful responses
-    3. Identify common failure scenarios
-    4. Use these insights to improve your agent's instructions or configuration
+    1. Open the agent and click the **clock icon** (🕐) in the right panel top bar
+    2. Review multiple runs in the left panel
+    3. Study patterns in successful responses
+    4. Identify common failure scenarios
+    5. Use these insights to improve your agent's instructions or configuration
 
 ## Troubleshooting
 
 ??? warning "No History Entries Appear"
 
-    **Problem**: The History tab is empty or shows no runs.
+    **Problem**: The Run History panel is empty or shows no runs.
 
     **Solutions**:
 
@@ -243,11 +285,12 @@ If you need to remove a specific run from history:
 
 ??? warning "Cannot Delete a Run"
 
-    **Problem**: The delete button doesn't appear or deletion fails.
+    **Problem**: The delete option doesn't appear or deletion fails.
 
     **Solutions**:
 
-    - **Hover properly**: Make sure you hover directly over the run item to reveal the delete icon
+    - **Hover properly**: Make sure you hover directly over the run row to reveal the ⋮ menu
+    - **Use the menu**: Click the ⋮ icon and select **Delete**, then confirm in the dialog
     - **Check permissions**: You may not have permission to delete runs in this project
     - **Retry**: If deletion fails, wait a moment and try again
 
@@ -275,7 +318,7 @@ If you need to remove a specific run from history:
 
 ??? tip "Regular Review"
 
-    - **Check history periodically**: Review your agent/pipeline runs regularly to catch issues early
+    - **Check history periodically**: Click the clock icon (🕐) regularly to review your agent/pipeline runs and catch issues early
     - **Monitor trends**: Track performance over time to identify degradation
     - **Version tracking**: Always note which version was used for important runs
 
@@ -287,10 +330,10 @@ If you need to remove a specific run from history:
 
 ??? tip "Debugging Workflow"
 
-    1. **Reproduce issues**: When a problem is reported, find the run in history first
+    1. **Reproduce issues**: When a problem is reported, click the clock icon (🕐) and find the run in history first
     2. **Analyze context**: Review what led to the issue in the conversation
     3. **Test fixes**: After fixing, run the same scenario and compare in history
-    4. **Document findings**: Use the history as documentation of the issue and resolution
+    4. **Document findings**: Use **Share link** from the ⋮ menu to save a direct URL to the key runs as documentation
 
 ??? tip "Data Management"
 

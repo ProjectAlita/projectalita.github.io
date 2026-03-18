@@ -1,10 +1,10 @@
-# Toolkit History Tab
+# Toolkit Run History
 
 ## Overview
 
-The **History Tab** is a feature within the Toolkit detail page that provides a comprehensive record of all toolkit execution runs. It enables users to track, review, and audit toolkit operations by displaying detailed information about each run, including execution parameters, timestamps, duration, and results.
+The **Run History** panel is a feature within the Toolkit detail page that provides a comprehensive record of all toolkit execution runs. It enables users to track, review, and audit toolkit operations by displaying detailed information about each run, including execution parameters, timestamps, duration, and results.
 
-The History Tab serves as a valuable auditing and troubleshooting tool, allowing teams to:
+The Run History panel serves as a valuable auditing and troubleshooting tool, allowing teams to:
 
 - Monitor toolkit usage patterns and frequency
 - Review past executions with full input/output details
@@ -23,54 +23,61 @@ The History Tab serves as a valuable auditing and troubleshooting tool, allowing
 
 ### Toolkit Requirements
 
-- **Any Toolkit Type**: History tracking is available for all toolkit types:
+- **Any Toolkit Type**: Run History is available for all toolkit types:
      - Custom Toolkits
      - Integration Toolkits (GitHub, Jira, Confluence, etc.)
-     - MCP Servers (except MCPs do not have History tab)
+     - MCP Servers
      - Application Toolkits
 
 !!! info "History Availability"
-    The History tab appears automatically in the toolkit detail view for all supported toolkits. No additional configuration is required.
+    The Run History panel is accessible from the toolkit detail page for all supported toolkits. No additional configuration is required.
 
 ---
 
-## Accessing the History Tab
+## Accessing Run History
 
 1. **Open Toolkits Menu**: From the main navigation, click **Toolkits**
 2. **Select a Toolkit**: Click on any toolkit from your toolkit list
-3. **Open History Tab**: In the toolkit detail page, locate the horizontal tab bar and click the **History** tab (clock icon)
+3. **Open the Configuration page**: The toolkit detail page opens on the Configuration page by default
+4. **Click the clock icon**: In the top bar of the **right panel** (Test Settings area), click the **clock icon** (🕐). The tooltip reads *"View run history"*
+5. The two-column layout is replaced by the **Run History** panel. Click the **✕ (Close)** button to return to the Configuration page.
 
-![Accessing History Tab](../../img/how-tos/credentials-toolkits/toolkit-history/access-history-tab.gif){ loading=lazy }
+     ![Accessing History](../../img/how-tos/credentials-toolkits/toolkit-history/access-history-tab.gif){ loading=lazy }
+
+!!! tip "Right panel must be visible"
+    The clock icon appears in the top bar of the Test Settings panel on the right side of the Configuration page. If the right panel is collapsed, expand it first using the collapse toggle button.
 
 ---
 
-## Understanding the History View
+## Understanding the Run History View
 
-The History Tab uses a **two-panel layout** for comprehensive run review:
+The Run History panel replaces the Configuration page view and has a **two-panel layout**: a header bar at the top with a close button and "Run History" title, a left panel listing all past runs, and a right panel showing the selected conversation replay.
 
-![History Tab View](../../img/how-tos/credentials-toolkits/toolkit-history/toolkit-history-tab.png){ loading=lazy }
+![Run History View](../../img/how-tos/credentials-toolkits/toolkit-history/toolkit-history-tab.png){ loading=lazy }
 
-**Left Panel: Run History List**
+### Left Panel: Run History List
 
-The left panel displays a sortable table titled **"Toolkit runs"** with the following columns:
+The left panel displays a sortable list of all toolkit runs with the following columns:
 
-| Column | Description | Sort Options |
-|--------|-------------|--------------|
-| **Date** | Execution date and time (format: `dd-MM-yyyy, hh:mm a`) | Chronological (ascending/descending) |
-| **Duration** | Cumulative time for all toolkit tools used in the conversation (e.g., `2m 34s`, `45s`) | Duration length (shortest/longest) |
+| Column | Description |
+|--------|-------------|
+| **Date** | Execution date and time (format: `dd-MM-yyyy, hh:mm AM/PM`) |
+| **Duration** | Cumulative time for all toolkit tools used in the conversation (e.g., `2m 34s`, `45s`) |
 
 !!! note "Duration Calculation"
     Duration represents the **cumulative time** for all toolkit tool executions within a single conversation. If multiple tools from the same toolkit were used (e.g., Index Data, Search Index, List Collections), the duration shows the total time for all of them.
 
-**Interaction:**
+!!! note "No Version column"
+    The Version column is not shown for toolkits. Only Date and Duration are displayed.
+
+**Features:**
 
 - **Sorting**: Click any column header to toggle sort order (ascending ↑ or descending ↓). Default: Date descending (most recent first)
-- **Row Selection**: Click any row to view details in the right panel. Selected row is highlighted
-- **Actions Menu**: Hover over any row to reveal the three-dot menu icon (⋮) on the right side. Click it to access actions:
-     - **Share link**: Copy direct link to this specific run
-     - **Delete**: Remove run from history view
+- **Selection**: Click any row to view details in the right panel. Selected row is highlighted
+- **Infinite scroll**: Scroll to the bottom to automatically load more entries
+- **Three-dot menu (⋮)**: Each row has a context menu available on hover with [run actions](#run-actions)
 
-**Right Panel: Run Details**
+### Right Panel: Run Details
 
 The right panel displays comprehensive execution details for the selected run in **read-only format**. You cannot interact with or modify the displayed conversation.
 
@@ -82,18 +89,38 @@ The right panel displays comprehensive execution details for the selected run in
 - **Error Messages**: Detailed error information with stack traces
 - **Timestamps**: Timing information for each step
 
+!!! info "Empty State"
+    When no run is selected, the right panel remains empty. Select a run from the left panel to view its details.
+
+### Run Actions
+
+Each run row has a **three-dot menu (⋮)** that appears on hover, containing the following actions:
+
+| Action | Description |
+|--------|-------------|
+| **Share link** | Copies a direct URL to this specific run to the clipboard. Opening the link automatically navigates to the Run History panel and selects that run. |
+| **Delete** | Permanently removes this run record. A confirmation dialog titled "Remove run" appears before deletion. |
+
+!!! warning "Permanent Deletion"
+    Deleting a run is permanent and cannot be undone. Confirm carefully before removing any run record.
+
+!!! note "No Restore conversation"
+    The **Restore conversation** option is not available for Toolkits. It is only available for Agents and Pipelines.
+
 ---
 
-## Using the History Tab
+## Using Run History
 
 ### Viewing Run Details
 
 **To View a Run:**
 
-1. **Select from List**: Click any row in the left panel run history table
-2. **Details Load**: Right panel automatically displays the preserved conversation in read-only format
-3. **Scroll Through Details**: Use the scroll bar to review all execution steps
-4. **Read-Only Mode**: You cannot interact with or modify the displayed conversation
+1. Open Run History as described in [Accessing Run History](#accessing-run-history)
+2. **Select from List**: Click any row in the left panel run history list
+3. **Details Load**: Right panel automatically displays the preserved conversation in read-only format
+4. **Scroll Through Details**: Use the scroll bar to review all execution steps
+5. **Read-Only Mode**: You cannot interact with or modify the displayed conversation
+6. Click **✕ (Close)** when done to return to the Configuration page
 
 **What You'll See:**
 
@@ -103,12 +130,12 @@ The right panel displays comprehensive execution details for the selected run in
 - Results returned by tools
 - Any errors encountered with stack traces
 
-![Run details](../../img/how-tos/credentials-toolkits/toolkit-history/run-details.gif){ loading=lazy }
+     ![Run details](../../img/how-tos/credentials-toolkits/toolkit-history/run-details.gif){ loading=lazy }
 
 !!! note "Tracked Executions"
-    The History tab tracks toolkit runs from:
+    The Run History panel tracks toolkit runs from:
     
-    - **Run Tab**: Tool executions from the toolkit's Test Settings
+    - **Test Settings** (right panel on the Configuration page): Tool executions performed interactively
     - **Indexes Tab**: Index Data, Search Index, and other indexing operations
     
     It does **not** track toolkit usage from:
@@ -120,55 +147,48 @@ The right panel displays comprehensive execution details for the selected run in
 
 **Sort by Date:**
 
-1. **Click Date Column Header**: Toggles between ascending and descending order
-2. **Ascending** (oldest first): Earliest runs at top
-3. **Descending** (newest first): Most recent runs at top (default)
+1. Click the **Date** column header to toggle ascending/descending order
+2. **Ascending** (oldest first): Earliest runs appear at the top
+3. **Descending** (newest first): Most recent runs at the top (default)
 
 **Sort by Duration:**
 
-1. **Click Duration Column Header**: Toggles between shortest and longest
-2. **Ascending** (shortest first): Fastest runs at top
-3. **Descending** (longest first): Slowest runs at top
+1. Click the **Duration** column header to toggle ascending/descending order
+2. **Ascending** (shortest first): Fastest runs appear at the top
+3. **Descending** (longest first): Slowest runs appear at the top
 
-![Sorting](../../img/how-tos/credentials-toolkits/toolkit-history/history-sorting.gif){ loading=lazy }
+     ![Sorting](../../img/how-tos/credentials-toolkits/toolkit-history/history-sorting.gif){ loading=lazy }
 
 ### Copying Run Links
 
 Share specific run results with team members by copying direct links:
 
-1. **Locate Run**: Find the desired run in the history list
-2. **Hover Over Run**: Move your mouse over the run row to reveal the actions menu
-3. **Open Actions Menu**: Click the three-dot menu icon (⋮) that appears on the right side
-4. **Select Share Link**: Click "Share link" from the menu options
-5. **Link Copied**: The link is automatically copied to your clipboard
-6. **Share Link**: Paste the link to share with team members
+1. **Locate Run**: Find the desired run in the run history list
+2. **Hover Over Run**: Move your mouse over the run row to reveal the ⋮ menu
+3. **Open Actions Menu**: Click the **⋮ (three-dot menu)** icon that appears
+4. **Select Share link**: Click **Share link** from the menu options
+5. A success toast confirms the link was copied to your clipboard
+6. Share the link — when opened it navigates directly to the Run History panel with that run selected
 
-**Link Behavior:**
+     ![Copy](../../img/how-tos/credentials-toolkits/toolkit-history/history-copy.gif){ loading=lazy }
 
-- Opens toolkit detail page with History tab active
-- Automatically selects the specific run
-- Displays run details in right panel
-- Allows recipient to review exact execution results
-
-![Copy](../../img/how-tos/credentials-toolkits/toolkit-history/history-copy.gif){ loading=lazy }
-
-### Deleting Run History
+### Deleting a Run
 
 Remove individual runs from the history view:
 
-!!! warning "Deletion Behavior"
-    Deleting a run removes it from the History tab. This action cannot be undone.
+!!! warning "Permanent Deletion"
+    Deleting a run from history is permanent and cannot be undone. Make sure you want to remove the record before confirming.
 
 **To Delete a Run:**
 
-1. **Locate Run**: Find the run you want to delete in the history list
-2. **Hover Over Run**: Move your mouse over the run row to reveal the actions menu
-3. **Open Actions Menu**: Click the three-dot menu icon (⋮) that appears on the right side
-4. **Select Delete**: Click "Delete" from the menu options
-5. **Confirm Deletion**: A confirmation dialog appears - click "Remove" to confirm
-6. **Run Removed**: The row disappears from the history table
+1. **Locate Run**: Find the run you want to delete in the run history list
+2. **Hover Over Run**: Move your mouse over the run row to reveal the ⋮ menu
+3. **Open Actions Menu**: Click the **⋮ (three-dot menu)** icon that appears
+4. **Select Delete**: Click **Delete** from the menu options
+5. **Confirm Deletion**: A confirmation dialog titled **"Remove run"** appears — click **Remove** to confirm
+6. **Run Removed**: The row disappears from the history list
 
-![Delete](../../img/how-tos/credentials-toolkits/toolkit-history/history-delete.gif){ loading=lazy }
+     ![Delete](../../img/how-tos/credentials-toolkits/toolkit-history/history-delete.gif){ loading=lazy }
 
 ---
 
@@ -180,7 +200,7 @@ Remove individual runs from the history view:
 
     **Steps**:
 
-    1. Go to the History tab
+    1. Open Run History via the **clock icon** (🕐) in the right panel
     2. Find the failed run by date
     3. Select the run to view the execution details
     4. Review the details to identify:
@@ -196,10 +216,10 @@ Remove individual runs from the history view:
 
     **Steps**:
 
-    1. Open the History tab
+    1. Open Run History via the **clock icon** (🕐) in the right panel
     2. Review the Duration column across multiple runs
-    3. Identify runs that took longer than expected
-    4. Select those runs to see what operations were performed
+    3. Click the **Duration** column header to sort by execution time
+    4. Select the longest-running runs to see what operations were performed
     5. Optimize the toolkit based on the longest-running operations
 
 ??? info "Verifying Toolkit Changes"
@@ -209,8 +229,8 @@ Remove individual runs from the history view:
     **Steps**:
 
     1. Make changes to your toolkit configuration
-    2. Run the same test inputs on both the old and new configurations
-    3. Go to the History tab
+    2. Run the same test inputs before and after the changes using Test Settings
+    3. Open Run History via the **clock icon** (🕐) in the right panel
     4. Compare runs before and after the changes
     5. Verify that the new configuration produces better results
 
@@ -220,10 +240,10 @@ Remove individual runs from the history view:
 
     **Steps**:
 
-    1. Navigate to the History tab
+    1. Open Run History via the **clock icon** (🕐) in the right panel
     2. Find the relevant run by date
     3. Review the complete execution details
-    4. Use this as documentation for compliance or audit purposes
+    4. Use **Share link** from the ⋮ menu to save a direct URL to the run for documentation
 
 ??? info "Learning and Training"
 
@@ -231,10 +251,11 @@ Remove individual runs from the history view:
 
     **Steps**:
 
-    1. Review multiple runs in the History tab
-    2. Study patterns in successful executions
-    3. Identify common failure scenarios
-    4. Use these insights to improve your toolkit's configuration or documentation
+    1. Open Run History via the **clock icon** (🕐) in the right panel
+    2. Review multiple runs in the list
+    3. Study patterns in successful executions
+    4. Identify common failure scenarios
+    5. Use these insights to improve your toolkit's configuration or documentation
 
 ---
 
@@ -242,16 +263,16 @@ Remove individual runs from the history view:
 
 ??? tip "Regular Review"
 
-    - **Check history periodically**: Review your toolkit runs regularly to catch issues early
+    - **Check history periodically**: Click the clock icon (🕐) in the right panel regularly to review toolkit runs and catch issues early
     - **Monitor trends**: Track execution duration and frequency patterns over time
     - **Performance baseline**: Establish expected duration ranges for different toolkit operations
 
 ??? tip "Debugging Workflow"
 
-    1. **Reproduce issues**: When a problem is reported, find the specific run in history first
+    1. **Reproduce issues**: When a problem is reported, click the clock icon (🕐) and find the specific run in Run History first
     2. **Analyze context**: Review input parameters and error messages in detail
-    3. **Test fixes**: After fixing, execute the toolkit and compare results in history
-    4. **Document findings**: Use the history as documentation of issues and resolutions
+    3. **Test fixes**: After fixing, execute the toolkit and compare results in Run History
+    4. **Document findings**: Use **Share link** from the ⋮ menu to save a direct URL to key runs as documentation
 
 ??? tip "Data Management"
 
@@ -275,7 +296,7 @@ Remove individual runs from the history view:
 
 ## Troubleshooting
 
-??? warning "History Tab is Empty"
+??? warning "Run History Panel Shows No Entries"
 
     **Possible Causes:**
     
@@ -285,10 +306,9 @@ Remove individual runs from the history view:
     
     **Solution:**
     
-    1. Execute the toolkit from the **Run tab** using Test Settings
-    2. Or use the toolkit in a chat conversation or agent
-    3. Return to the History tab to see the new run
-    4. If runs were deleted, they cannot be restored in the UI
+    1. Execute the toolkit from the **Test Settings** area (right panel on the Configuration page)
+    2. Close the Run History panel (✕) and re-open it to refresh
+    3. If runs were deleted, they cannot be restored in the UI
 
 ??? warning "Cannot See Run Details in Right Panel"
 
@@ -300,9 +320,9 @@ Remove individual runs from the history view:
     
     **Solution:**
     
-    1. Click a run in the left panel list to select it
+    1. Click a run in the left panel to select it
     2. Wait a moment for details to load
-    3. If details don't appear, refresh the page
+    3. If details don't appear, close (✕) and re-open Run History
     4. Check your network connection
     5. Try selecting a different run to verify functionality
 
@@ -312,52 +332,45 @@ Remove individual runs from the history view:
     
     - Clipboard permissions not granted
     - Browser security restrictions
-    - Network connectivity issues
     
     **Solution:**
     
     1. Ensure your browser has clipboard access permissions
-    2. Hover over the run row to reveal the three-dot menu icon (⋮)
-    3. Click the icon to open the actions menu
-    4. Select "Share link" from the menu
-    5. Check for success notification or confirmation
-    6. Manually copy the URL from the address bar after selecting a run
-    7. If using private/incognito mode, check browser permissions
+    2. Hover over the run row to reveal the **⋮ (three-dot menu)** icon
+    3. Click the icon and select **Share link**
+    4. Check for the success toast notification confirming the link was copied
+    5. If using private/incognito mode, check browser clipboard permissions
 
 ??? warning "Delete Option Not Appearing"
 
     **Possible Causes:**
     
     - Not hovering over the run row
-    - Actions menu not opening
     - Insufficient permissions
     - UI not fully loaded
     
     **Solution:**
     
-    1. Hover your mouse over the run row to reveal the three-dot menu icon (⋮)
+    1. Hover your mouse over the run row to reveal the **⋮ (three-dot menu)** icon
     2. Wait briefly for the icon to appear on the right side of the row
-    3. Click the icon to open the actions menu
-    4. Look for "Delete" option in the menu
-    5. Verify you have necessary permissions to delete runs
-    6. Refresh the page if the menu doesn't appear
-    7. Check if you're viewing a different user's runs that you cannot delete
+    3. Click the icon and look for **Delete** in the menu
+    4. Verify you have the necessary permissions to delete runs
+    5. Refresh the page if the menu doesn't appear
 
 ??? warning "Runs Not Sorted Correctly"
 
     **Possible Causes:**
     
-    - Multiple clicks on sort header
-    - Sort direction not clearly indicated
+    - Unexpected sort direction after multiple clicks
     - Cached data display issue
     
     **Solution:**
     
     1. Click the column header once to sort ascending
     2. Click again to sort descending
-    3. Look for the arrow indicator showing current sort direction
-    4. Refresh the page if sorting appears broken
-    5. Try sorting by a different column first, then return
+    3. Look for the arrow indicator (↑/↓) showing current sort direction
+    4. Close (✕) and re-open Run History if sorting appears broken
+    5. Try sorting by a different column first, then switch back
 
 ---
 

@@ -62,7 +62,7 @@ Pin frequently used MCPs to keep them at the top of your list for quick access:
 3. Pinned MCPs will appear at the top of the list, separated from unpinned ones
 4. Click the pin icon again to unpin the MCP
 
-![MCP Pin](../img/menus/mcps/mcp-pin.gif){loading=lazy}
+     ![MCP Pin](../img/menus/mcps/mcp-pin.gif){loading=lazy}
 
 
 **MCP Connection States**
@@ -71,11 +71,11 @@ MCPs display their current connection status:
 
 * **Connected** (Grey) - Active connection; tools are available for use
 
-![Connected](../img/menus/mcps/connected.png){width="250"}
+     ![Connected](../img/menus/mcps/connected.png){width="250"}
 
 * **Disconnected** (Orange) - MCP exists but cannot reach server; tools unavailable
 
-![Disconnected](../img/menus/mcps/disconnected.png){width="250"}
+     ![Disconnected](../img/menus/mcps/disconnected.png){width="250"}
 ---
 
 ## MCP Types
@@ -172,15 +172,18 @@ Remote MCPs connect to external MCP servers over HTTP/HTTPS. They are ideal for 
 
 ## Managing MCP Configuration
 
-After creating an MCP, you can view and edit its configuration by clicking on the MCP card in the dashboard. The MCP detail page provides two main tabs for managing different aspects of your MCP:
+After creating an MCP, you can view and edit its configuration by clicking on the MCP card in the dashboard. This opens the **MCP configuration page**.
 
-### Run Tab
+### MCP Configuration Page
 
-The **Run Tab** is where you configure the MCP's connection settings and manage enabled tools.
+The MCP configuration page is where you configure connection settings, manage enabled tools, and test MCP functionality in real-time. It uses a **two-column layout**:
+
+- **Left panel** — the configuration form (name, description, connection settings, tool selection)
+- **Right panel** — the **Test Settings** panel for running tools interactively, with a **View run history** (🕐 clock icon) in the top bar (see [Viewing MCP History](#viewing-mcp-history))
 
 ![MCP Run Tab](../img/menus/mcps/mcp-run-tab.png){loading=lazy}
 
-**What You Can Do on the Run Tab:**
+**What You Can Do on the MCP Configuration Page:**
 
 * **Edit MCP Details:** Update the name and description
 * **Manage Tool Selection:** Configure which specific tools are enabled for this MCP. In the "Tools" section, select only the tools your agents will use. Enabling only necessary tools improves security (principle of least privilege) and optimizes performance
@@ -206,37 +209,44 @@ When selecting tools for your MCP:
 
 #### Testing MCP Functionality
 
-The MCP configuration page includes a **Test Settings** panel on the right side that allows you to test MCP functionality in real-time. For comprehensive testing instructions and best practices, see [How to Test Toolkit Tools](../how-tos/credentials-toolkits/how-to-test-toolkit-tools.md).
+The **right panel** of the MCP configuration page contains the **Test Settings** area, which lets you test MCP functionality in real-time without leaving the page. The top bar of the Test Settings panel includes a **View run history** (🕐 clock icon) — click it to open the Run History panel. See [Viewing MCP History](#viewing-mcp-history) for details.
+
+For comprehensive testing instructions and best practices, see [How to Test Toolkit Tools](../how-tos/credentials-toolkits/how-to-test-toolkit-tools.md).
 
 **Steps to Test an MCP:**
 
-1. **Select a Model:** Choose the LLM model from the model dropdown (e.g., `gpt-4o`).
+1. **Select a Model:** Choose the LLM model from the model dropdown (e.g., `GPT-5.1`).
+
+     ![Select a Model](../img/menus/mcps/mcp-model-select.gif)
 
 2. **Adjust Model Settings** (Optional): Click the **Model Settings** icon (⚙️) next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
-    
+
     **For Reasoning Models** (e.g., GPT-5.1):
-    
-    * **Reasoning** - Controls the depth of logical thinking and problem-solving with three levels:
-        * **Low**: Fast, surface-level reasoning with concise answers and minimal steps
-        * **Medium**: Balanced reasoning with clear explanations and moderate multi-step thinking (default)
-        * **High**: Deep, thorough reasoning with detailed step-by-step analysis (may be slower)
-    
+
+    | Setting | Level | Description |
+    |---------|-------|-------------|
+    | **Reasoning** | Low | Fast, surface-level reasoning with concise answers and minimal steps |
+    | | Medium *(default)* | Balanced reasoning with clear explanations and moderate multi-step thinking |
+    | | High | Deep, thorough reasoning with detailed step-by-step analysis (may be slower) |
+
     **For Standard Models** (e.g., GPT-4o):
-    
-    * **Creativity** - Controls response randomness and creativity. Lower values produce more focused and deterministic outputs, while higher values generate more diverse and creative responses with five levels (1-5):
-        * **1**: Highly focused and deterministic outputs
-        * **2**: Mostly focused with slight variation
-        * **3**: Balanced between focus and creativity (default)
-        * **4**: More varied and creative responses
-        * **5**: Maximum creativity and diversity
-    
-    **Max Completion Tokens** - Limits the maximum length of AI responses measured in tokens (roughly 4 characters per token) (All Models):
-    
-    * **Auto** (default): System automatically sets the token limit to 4096 tokens
-    * **Custom**: Manually set a specific token limit for responses
-        * When Custom is selected, you can enter a specific number of maximum tokens
-        * The interface shows remaining tokens available after your specified limit
-        * Setting too high a value will show an error if it exceeds the model's maximum output tokens
+
+    | Setting | Level | Description |
+    |---------|-------|-------------|
+    | **Creativity** | 1 | Highly focused and deterministic outputs |
+    | | 2 | Mostly focused with slight variation |
+    | | 3 *(default)* | Balanced between focus and creativity |
+    | | 4 | More varied and creative responses |
+    | | 5 | Maximum creativity and diversity |
+
+    **All Models:**
+
+    | Setting | Option | Description |
+    |---------|--------|-------------|
+    | **Max Completion Tokens** | Auto *(default)* | System automatically sets the token limit to 4096 tokens |
+    | | Custom | Manually set a specific token limit; interface shows remaining tokens available. An error is shown if the value exceeds the model's maximum output tokens |
+
+     ![Settings](../img/menus/mcps/mcp-model-settings.gif)
 
 3. **Select Tool:** Use the **Tool** dropdown to choose which MCP tool you want to test.
     * **Search functionality:** Type in the search box to filter available tools
@@ -245,22 +255,37 @@ The MCP configuration page includes a **Test Settings** panel on the right side 
 
 4. **Execute the tool:** Click the **RUN TOOL** button and review the results in the output area. `(The RUN TOOL button appears after selecting a tool.)`
 
-![MCP History Tab](../img/menus/mcps/test-mcp-tools.gif){loading=lazy}
+     ![MCP Test Tools](../img/menus/mcps/test-mcp-tools.gif){loading=lazy}
 
-### History Tab
+### Viewing MCP History
 
-The **History** tab provides a comprehensive log of all operations and activities performed with the MCP.
-For detailed instructions on using the History tab, see [Toolkits History Tab Guide](../how-tos/credentials-toolkits/toolkit_history_tab.md).
+The **Run History** panel provides a complete audit trail of all past test executions performed in the MCP's Test Settings panel.
 
-**Using the History Tab**
+**How to access Run History:**
 
-The History tab allows you to:
+1. Open any saved MCP.
+2. In the **right panel** of the MCP configuration page (Test Settings area), click the **clock icon** (🕐) in the top bar. The tooltip reads *"View run history"*.
+3. The MCP page is replaced by the two-panel Run History display. Click the **✕ (Close)** button to return to the configuration page.
 
-* **View operation history:** Track MCP operations and their status
-* **Monitor MCP usage:** Review when and how the MCP has been used
-* **Track changes:** See configuration changes and updates made to the MCP
-* **Troubleshoot issues:** Analyze past operations to identify and resolve problems
-* **Audit trail:** Maintain a record of MCP activities for compliance and review purposes
+**Run History layout:**
+
+The Run History panel uses a two-panel layout:
+
+- **Left panel** — sortable list of all past test runs. Click any column header to sort:
+
+    | Column | Description |
+    |--------|-------------|
+    | **Date** | Timestamp of the run in `dd-MM-yyyy, hh:mm a` format |
+    | **Duration** | Total execution time of the run |
+
+    Click a row to load the conversation replay in the right panel. Each row also has a **three-dot menu (⋮)** with: **Share link**, **Delete**.
+
+- **Right panel** — full conversation replay of the selected test run.
+
+     ![History](../img/menus/mcps/mcp-view-history.gif)
+
+!!! info "Learn More About History"
+    For detailed instructions on using the History panel, see the **[Toolkit History Tab Guide](../how-tos/credentials-toolkits/toolkit_history_tab.md)**.
 
 ---
 
@@ -304,14 +329,14 @@ Following these best practices ensures optimal MCP performance, security, and ma
     **How to apply:**
     
     * Review all enabled tools when creating or editing an MCP
-    * Disable unused tools in the Run Tab → Tool Management section
+    * Disable unused tools in the MCP configuration page → Tool Management section
     * Periodically audit agent/pipeline tool usage and remove unnecessary MCPs
     
     **Benefits:**
     
     * Faster agent decision-making (fewer tools to evaluate)
     * Reduced risk of unintended tool invocations
-    * Clearer audit trails in History Tab
+    * Clearer audit trails in Run History
 
 ??? tip "Use Clear and Consistent Naming"
     **Naming Convention:** Use descriptive names that clearly identify the MCP's purpose, environment, or scope. Avoid generic names like "MCP 1" or "Test Server".
