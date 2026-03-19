@@ -80,7 +80,7 @@ id: "process_request"
 ```
 
 **`type`** (required)
-: Node type (llm, agent, toolkit, mcp, code, custom, router, decision, state_modifier, printer). Determines behavior and available parameters.
+: Node type (llm, agent, hitl, toolkit, mcp, code, custom, router, decision, state_modifier, printer). Determines behavior and available parameters.
 
 ```yaml
 type: "llm"
@@ -146,7 +146,7 @@ Each node type has additional parameters covered in the individual node type gui
 
 ## Node Categories
 
-ELITEA Pipelines provide **7 different node types** organized into **3 functional categories**. Understanding these categories helps you quickly identify the right node for your needs.
+ELITEA Pipelines provide **11 different node types** organized into **4 functional categories**. Understanding these categories helps you quickly identify the right node for your needs.
 
 ### Interaction Nodes
 
@@ -155,23 +155,22 @@ ELITEA Pipelines provide **7 different node types** organized into **3 functiona
 **Node Types**:
 
 1. **[LLM Node](interaction-nodes.md#llm-node)** - Interact with Large Language Models
-    * Call AI models (GPT-4, Claude, etc.) for text generation
-    * Support chat history and conversation context
-    * Bind tools for function calling
-    * Extract structured data from responses
+     * Call AI models (GPT-4, Claude, etc.) for text generation
+     * Support chat history and conversation context
+     * Bind tools for function calling
+     * Extract structured data from responses
 
 2. **[Agent Node](interaction-nodes.md#agent-node)** - Delegate tasks to pre-built AI agents
-    * Execute specialized agents within your pipeline
-    * Leverage agent-specific capabilities
-    * Pass context and get results
-    * Combine multiple agents in workflows
+     * Execute specialized agents within your pipeline
+     * Leverage agent-specific capabilities
+     * Pass context and get results
+     * Combine multiple agents in workflows
 
-**When to Use**:
-
-* Generate text, summaries, or responses
-* Analyze content or extract information
-* Have contextual conversations
-* Delegate to specialized AI capabilities
+    !!! tip "Use Cases"
+        * Generate text, summaries, or responses
+        * Analyze content or extract information
+        * Have contextual conversations
+        * Delegate to specialized AI capabilities
 
 ---
 
@@ -208,13 +207,12 @@ ELITEA Pipelines provide **7 different node types** organized into **3 functiona
       * Full control via JSON-based configuration
       * For advanced users with specific requirements
 
-**Use Cases**:
-
-* Call external services or APIs
-* Execute custom business logic
-* Process or transform data
-* Integrate with third-party systems
-* Perform calculations or validations
+    !!! tip "Use Cases"
+        * Call external services or APIs
+        * Execute custom business logic
+        * Process or transform data
+        * Integrate with third-party systems
+        * Perform calculations or validations
 
 ---
 
@@ -237,13 +235,19 @@ ELITEA Pipelines provide **7 different node types** organized into **3 functiona
       * Specify decisional inputs for LLM analysis
       * Fallback to default output if decision unclear
 
-**Use Cases**:
+3. **[Human-in-the-Loop Node](control-flow-nodes.md#human-in-the-loop-node)** - Pause for a human decision
 
-* Branch workflow based on data values
-* Implement business rules
-* Create approval workflows
-* Route based on AI interpretation
-* Handle different scenarios dynamically
+      * Present AI output for human review
+      * Provide Approve / Edit / Reject actions
+      * Route the pipeline based on the human's choice
+      * Optionally update a state variable with the user's edited value
+
+    !!! tip "Use Cases"
+        * Branch workflow based on data values
+        * Implement business rules
+        * Create approval workflows
+        * Route based on AI interpretation
+        * Handle different scenarios dynamically
 
 ---
 
@@ -254,27 +258,26 @@ ELITEA Pipelines provide **7 different node types** organized into **3 functiona
 **Node Types**:
 
 1. **[State Modifier Node](utility-nodes.md#state-modifier-node)** - Transform and clean state
-    * Use Jinja2 templates to modify state
-    * Combine multiple state variables
-    * Format and transform data
-    * Clean up or reset state variables
-    * Apply filters (from_json, base64_to_string, split_by_words, etc.)
+      * Use Jinja2 templates to modify state
+      * Combine multiple state variables
+      * Format and transform data
+      * Clean up or reset state variables
+      * Apply filters (from_json, base64_to_string, split_by_words, etc.)
 
 2. **[Printer Node](utility-nodes.md#printer-node)** - Display formatted output to users
-    * Format and display messages during pipeline execution
-    * Pause pipeline execution for user review
-    * Use Jinja2 templates to format output
-    * Access state variables in templates
-    * Resume execution after user acknowledgment
+      * Format and display messages during pipeline execution
+      * Pause pipeline execution for user review
+      * Use Jinja2 templates to format output
+      * Access state variables in templates
+      * Resume execution after user acknowledgment
 
-**Use Cases**:
-
-* Format output for specific purposes
-* Combine data from multiple sources
-* Clean up temporary state
-* Transform and structure data
-* Display progress or results to users
-* Show intermediate workflow status
+    !!! tip "Use Cases"
+        * Format output for specific purposes
+        * Combine data from multiple sources
+        * Clean up temporary state
+        * Transform and structure data
+        * Display progress or results to users
+        * Show intermediate workflow status
 
 ---
 
@@ -297,7 +300,8 @@ Need to...
 │
 ├─ Make a decision or branch?
 │  ├─ Simple expression/condition? → **Router Node**
-│  └─ AI-powered decision? → **Decision Node**
+│  ├─ AI-powered decision? → **Decision Node**
+│  └─ Human decision required? → **HITL Node**
 │
 ├─ Delegate to specialized agent?
 │  └─ Use **Agent Node**
@@ -315,6 +319,7 @@ Need to...
 | Call external API or service | Toolkit Node | Code Node + API | Create Jira tickets, send Slack messages, query databases |
 | Execute MCP server tools | MCP Node | Code Node + HTTP | Connect to remote MCP servers, execute MCP tools |
 | Make conditional decisions | Router Node | Decision Node | Route by status (approved/rejected), check error conditions |
+| Require human approval or review | HITL Node | - | Approve AI-generated content, compliance checkpoint before publishing |
 | Transform or format data | State Modifier Node | Code Node | Format output with templates, combine state variables |
 | Run custom business logic | Code Node | Toolkit Node | Perform calculations, data processing, custom validations |
 | Display information to users | Printer Node | Code Node | Show progress updates, formatted reports, status messages |
