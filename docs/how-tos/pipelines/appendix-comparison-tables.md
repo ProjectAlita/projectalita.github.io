@@ -30,30 +30,33 @@ Quick reference for selecting pipeline components.
 
 | Node | Category | Purpose | LLM | External Tool | Key Feature |
 |------|----------|---------|-----|---------------|-------------|
-| **LLM** | Interaction | Generate/analyze text | ✔️ | ✘ | Structured output, tool calling |
-| **Agent** | Interaction | Specialized agents | ✔️ | ✘ | Reusable configurations |
-| **Toolkit** | Execution | Direct ELITEA toolkit call | ✘ | ✔️ | Explicit parameters, fast |
-| **MCP** | Execution | Model Context Protocol tools | ✘ | ✔️ | Remote MCP servers |
-| **Code** | Execution | Python logic | ✘ | ✘ | Full programming control |
-| **Custom** | Execution | Advanced config | Varies | Varies | Maximum flexibility |
-| **Router** | Control Flow | Template routing | ✘ | ✘ | Multiple paths |
-| **Decision** | Control Flow | AI routing | ✔️ | ✘ | LLM decision making |
-| **State Modifier** | Utility | Transform state | ✘ | ✘ | Jinja2 templates |
-| **Printer** | Utility | Display output to users | ✘ | ✘ | Pause & show messages |
+| **[LLM](nodes/interaction-nodes.md#llm-node)** | Interaction | Generate/analyze text | ✔️ | ✘ | Structured output, tool calling |
+| **[Agent](nodes/interaction-nodes.md#agent-node)** | Interaction | Specialized agents | ✔️ | ✘ | Reusable configurations |
+| **[Toolkit](nodes/execution-nodes.md#toolkit-node)** | Execution | Direct ELITEA toolkit call | ✘ | ✔️ | Explicit parameters, fast |
+| **[MCP](nodes/execution-nodes.md#mcp-node)** | Execution | Model Context Protocol tools | ✘ | ✔️ | Remote MCP servers |
+| **[Code](nodes/execution-nodes.md#code-node)** | Execution | Python logic | ✘ | ✘ | Full programming control |
+| **[Custom](nodes/execution-nodes.md#custom-node)** | Execution | Advanced config | Varies | Varies | Maximum flexibility |
+| **[Router](nodes/control-flow-nodes.md#router-node)** | Control Flow | Template routing | ✘ | ✘ | Multiple paths |
+| **[Decision](nodes/control-flow-nodes.md#decision-node)** | Control Flow | AI routing | ✔️ | ✘ | LLM decision making |
+| **[HITL](nodes/control-flow-nodes.md#human-in-the-loop-node)** | Control Flow | Human approval checkpoint | ✘ | ✘ | Approve / Edit / Reject actions |
+| **[State Modifier](nodes/utility-nodes.md#state-modifier-node)** | Utility | Transform state | ✘ | ✘ | Jinja2 templates |
+| **[Printer](nodes/utility-nodes.md#printer-node)** | Utility | Display output to users | ✘ | ✘ | Pause & show messages |
 
 ---
 
 ## Control Flow Comparison
 
-| Feature | Router | Decision |
-|---------|--------|----------|
-| **Method** | Template expressions | LLM reasoning |
-| **Performance** | Fast | Slower (LLM call) |
-| **Best For** | Multiple clear paths, boolean logic | Contextual decisions |
-| **Syntax** | `{% if %}`/`{% elif %}` | Natural language |
-| **Outputs** | Routes + default | Nodes + default |
+| Feature | Router | Decision | HITL |
+|---------|--------|----------|------|
+| **Method** | Template expressions | LLM reasoning | Human decision |
+| **Performance** | Fast | Slower (LLM call) | Depends on human response time |
+| **Best For** | Multiple clear paths, boolean logic | Contextual decisions | Approval gates, compliance checkpoints |
+| **Syntax** | `{% if %}`/`{% elif %}` | Natural language | Configure message + routes |
+| **Outputs** | Routes + default | Nodes + default | Per-action routes (approve/edit/reject) |
+| **State Change** | None | None | `edit_state_key` updated on Edit |
+| **LLM Required** | ✘ | ✔️ | ✘ |
 
-**Selection:** Multiple paths or boolean logic → Router · AI interpretation → Decision
+**Selection:** Multiple paths or boolean logic → Router · AI interpretation → Decision · Human sign-off required → HITL
 
 **Examples:**
 
@@ -218,6 +221,7 @@ decision:
 | Call ELITEA toolkit | Toolkit | Code |
 | Execute MCP server tool | MCP | Code |
 | Make decision | Router | Decision |
+| Require human approval or review | HITL | - |
 | Transform state | State Modifier | Code |
 | Display output to user | Printer | - |
 | Complex routing | Decision | Router |
@@ -236,6 +240,7 @@ decision:
 | Call GPT-4 | LLM |
 | Create Jira ticket | Toolkit |
 | Decide next step | Router |
+| Require human approval | HITL |
 | Format output | State Modifier |
 | Show progress message | Printer |
 | Custom calculation | Code |
@@ -301,12 +306,12 @@ decision:
 
 **Human-in-Loop**
 ```yaml
-- id: GenerateDraft   # LLM creates
-- id: ShowDraft       # Printer displays
-- id: ApprovalCheck   # Router checks
-- id: Publish         # Toolkit publishes
+- id: GenerateDraft   # LLM creates content
+- id: ReviewDraft     # HITL pauses for human decision
+- id: Publish         # Toolkit publishes (on Approve/Edit)
+- id: Cancelled       # Printer confirms cancellation (on Reject)
 ```
-*Use for: Content approval, reviews*
+*Use for: Content approval, ticket sign-off, compliance checkpoints*
 
 ---
 
