@@ -37,7 +37,7 @@ To enable secure integration between ELITEA and SharePoint, you need to register
     *   **Supported account types:** Select the appropriate account type based on your organization's requirements. In most cases, **"Accounts in this organizational directory only (\[Your Organization Name] only - Single tenant)"** is the recommended option for internal organizational use. If you need to access SharePoint resources across multiple organizations, you may need to select a different option.
     *   **Redirect URI:** If you plan to use **Delegated (User OAuth)** authentication, set the redirect URI here during registration:
           1. In the **"Select a platform"** dropdown, select **"Web"**.
-          2. In the URI field, enter the ELITEA callback URL for your instance:(e.g.,`https://next.elitea.ai/app/mcp-auth-callback`)
+          2. In the URI field, enter the ELITEA callback URL for your instance. The correct value depends on your deployment — refer to the info callout below.
 
         > If you are using **App-Only (Client Credentials)** mode only, leave this field blank.
 
@@ -45,8 +45,17 @@ To enable secure integration between ELITEA and SharePoint, you need to register
  
      ![SharePoint-Register_an_Application](../../img/integrations/toolkits/sharepoint/app-registrations-configs.gif)
 
-!!! warning "Confirm the exact Redirect URI with your ELITEA administrator"
-    The redirect URI must exactly match what ELITEA sends during the OAuth flow. Contact your ELITEA administrator to confirm the correct value for your deployment.       
+!!! info "ELITEA OAuth Redirect URI"
+    The redirect URI to register in Azure AD depends on your ELITEA deployment:
+
+    | Deployment Type | Redirect URI |
+    |----------------|--------------|
+    | **ELITEA Cloud** | **Pattern:** `https://<your-elitea-instance-domain>/app/mcp-auth-callback` <br> **Example:** `https://next.elitea.ai/app/mcp-auth-callback` |
+    | **Self-hosted / standard path** | `https://<your-domain>/mcp-auth-callback` |
+    | **Self-hosted / sub-path (e.g., `/app`)** | `https://<your-domain>/app/mcp-auth-callback` |
+
+    !!! note "URL is not shown in the UI"
+        ELITEA does not display the redirect URI anywhere in its interface. The URL is automatically derived from the domain your ELITEA instance is deployed on. If you are unsure which value applies, contact your ELITEA administrator.
 
 ### Application Credentials
 
@@ -55,7 +64,7 @@ Once the app registration is created successfully, you will be redirected to the
 *   **Application (client) ID** — Copy and store this value securely.
 *   **Directory (tenant) ID** — Copy and store this value securely.
 
-![SharePoint-App_Registration_Overview](../../img/integrations/toolkits/sharepoint/application-credentials.png)
+     ![SharePoint-App_Registration_Overview](../../img/integrations/toolkits/sharepoint/application-credentials.png)
   
 
 ### Configure API Permissions for the Registered App
@@ -642,7 +651,15 @@ The following examples demonstrate how to interact with the SharePoint toolkit i
     1. **Open your App Registration:** In the [Azure Portal](https://portal.azure.com), go to **Microsoft Entra ID → App registrations** and select your app.
     2. **Navigate to Authentication:** In the left menu, click **"Authentication"**.
     3. **Add a Redirect URI:** If no Web platform exists, click **"+ Add a platform"** → **"Web"**. If Web is already listed, click the **Edit** pencil next to it.
-    4. **Enter the ELITEA callback URL:** In the **"Redirect URIs"** field, enter the ELITEA callback URL for your instance (e.g., `https://next.elitea.ai/app/mcp-auth-callback`). Contact your ELITEA administrator to confirm the exact URI for your deployment.
+    4. **Enter the ELITEA callback URL:** In the **"Redirect URIs"** field, enter the value matching your deployment:
+
+        | Deployment Type | Redirect URI |
+        |----------------|--------------|
+        | **ELITEA Cloud** | **Pattern:** `https://<your-elitea-instance-domain>/app/mcp-auth-callback` <br> **Example:** `https://next.elitea.ai/app/mcp-auth-callback` |
+        | **Self-hosted / standard path** | `https://<your-domain>/mcp-auth-callback` |
+        | **Self-hosted / sub-path (e.g., `/app`)** | `https://<your-domain>/app/mcp-auth-callback` |
+
+        This URL is derived from your deployment domain and is **not shown in the ELITEA UI**. Contact your ELITEA administrator if you are unsure which value applies.
     5. **Save:** Click **"Configure"** (or **"Save"** if editing), then click **"Save"** at the top of the page.
     6. **Retry the OAuth flow:** Return to your ELITEA SharePoint credential and click **Log in** again.
 
@@ -768,7 +785,15 @@ If you encounter issues not covered in this guide or need additional assistance 
     1. In the **[Azure Portal](https://portal.azure.com)**, go to **Microsoft Entra ID → App registrations** and select your app.
     2. In the left menu, click **"Authentication"**.
     3. If no Web platform exists yet, click **"+ Add a platform"** → **"Web"**. If Web already exists, click the **Edit** pencil next to it.
-    4. In the **"Redirect URIs"** field, enter the ELITEA callback URL for your instance (e.g., `https://next.elitea.ai/app/mcp-auth-callback`). Contact your ELITEA administrator to confirm the exact URI for your deployment.
+    4. In the **"Redirect URIs"** field, enter the value matching your deployment:
+
+        | Deployment Type | Redirect URI |
+        |----------------|--------------|
+        | **ELITEA Cloud** | **Pattern:** `https://<your-elitea-instance-domain>/app/mcp-auth-callback` <br> **Example:** `https://next.elitea.ai/app/mcp-auth-callback` |
+        | **Self-hosted / standard path** | `https://<your-domain>/mcp-auth-callback` |
+        | **Self-hosted / sub-path (e.g., `/app`)** | `https://<your-domain>/app/mcp-auth-callback` |
+
+        This URL is derived from your deployment domain and is **not shown in the ELITEA UI**. Contact your ELITEA administrator if you are unsure which value applies.
     5. Click **"Configure"** (or **"Save"** if editing), then click **"Save"** at the top of the page.
     6. Scroll down to verify the URI appears under **Web → Redirect URIs**.
 
