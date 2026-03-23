@@ -263,9 +263,9 @@ Images are sent directly to the LLM for visual analysis. Supported formats inclu
 !!! note "Image Processing"
     Images are sent directly to the LLM's vision capabilities for analysis. Animated GIFs are processed using only the first frame.
 
-**Non-Image File Types**
+**Documents & Data Files**
 
-Non-image files are indexed into a vector database for semantic search and retrieval. Supported types include:
+Documents and data files are indexed into a vector database for semantic search and retrieval. Supported types include:
 
 | Extension | Category |
 |-----------|----------|
@@ -279,16 +279,34 @@ Non-image files are indexed into a vector database for semantic search and retri
 | `.json` | Data |
 | `.yaml` / `.yml` | Data |
 | `.xml` | Data |
-| `.py` | Code |
-| `.js` | Code |
-| `.java` | Code |
-| `.cpp` | Code |
-| `.html` | Code |
-| `.css` | Code |
-| `.sql` | Code |
-| `.sh` | Code |
 
-!!! info "Non-Image File Types and Processing"
+**Programming & Code Files**
+
+Source code files are indexed and their content is made available for AI analysis. Supported languages include:
+
+| Extension | Language |
+|-----------|----------|
+| `.py` | Python |
+| `.js` | JavaScript |
+| `.ts` | TypeScript |
+| `.java` | Java |
+| `.cpp` / `.c` / `.h` | C / C++ |
+| `.cs` | C# |
+| `.go` | Go |
+| `.rb` | Ruby |
+| `.php` | PHP |
+| `.swift` | Swift |
+| `.kt` | Kotlin |
+| `.rs` | Rust |
+| `.html` | HTML |
+| `.css` | CSS |
+| `.sql` | SQL |
+| `.sh` | Shell |
+
+!!! note "Programming File Support"
+    You can attach source code files directly to a conversation. The AI reads and analyzes the full code content — enabling code review, bug detection, refactoring suggestions, explanations, and more — without requiring any copy-paste.
+
+!!! info "File Types and Processing"
     Supported types are configured dynamically per ELITEA deployment — unsupported files are rejected with an error listing allowed extensions. Unlike images, non-image files are indexed into a vector database and retrieved via semantic search rather than sent directly to the LLM.
 
 **File Size and Quantity Limits**

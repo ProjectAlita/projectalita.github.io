@@ -254,9 +254,14 @@ For detailed information about attachments, including agent configuration and fi
 1. Click the **model selector dropdown** at the bottom of the chat.
 2. Select a desired LLM model from the available options (e.g., gpt-4o, gpt-5.1, Claude).
 
+     ![Selecting a Model](../img/menus/chat/chat-llm-model.gif)
+
 **Configuring Model Settings:**
 
-Click the **Settings** (⚙️) icon next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
+1. Click the **Settings** (⚙️) icon next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
+
+     ![Settings](<../img/menus/chat/chat-model-settings.gif>){: loading=lazy }
+
 
 **For Reasoning Models** (e.g., GPT-5.1):
 
@@ -284,8 +289,24 @@ Limits the maximum length of AI responses measured in tokens (roughly 4 characte
     * The interface shows remaining tokens available after your specified limit
     * Setting too high a value will show an error if it exceeds the model's maximum output tokens
 
+**Steps Limit** (Conversations only):
 
-![Settings](<../img/menus/chat/chat-model-settings.gif>){: loading=lazy }
+Controls the maximum number of execution steps (tool calls) the AI can take before the loop is forcefully stopped. This prevents runaway agent executions that could consume excessive resources.
+
+* **Default**: 25 steps
+* **Range**: 0 – 999
+* **How it works**: Each time the AI invokes a tool or performs an internal reasoning step, the counter increments by one. When the limit is reached, the execution loop ends and the AI returns whatever results it has collected so far.
+* **When it appears**: The Steps Limit field is shown in the model settings panel only in **Conversations** (chat). It is not available on the Agents or Pipelines pages, where step limits are configured at the agent/pipeline level.
+* **Sent as**: The value is passed as a top-level `step_limit` field in the conversation payload — it is separate from the `llm_settings` block.
+
+!!! tip "Choosing a Steps Limit"
+    - Set a **lower value** (e.g. 5–10) for simple question-answering tasks where you want fast, predictable responses.
+    - Set a **higher value** (e.g. 50–100) for complex, multi-step research or automation tasks that require chaining many tool calls.
+    - If a conversation ends abruptly with incomplete results, check whether the steps limit was reached and increase it accordingly.
+
+!!! warning "Step Limit Reached"
+    When the steps limit is exceeded, the AI stops executing further tool calls and returns partial results. No error is displayed to the user by default — the response simply stops at the last completed step.
+
 
 ## Context Budget
 

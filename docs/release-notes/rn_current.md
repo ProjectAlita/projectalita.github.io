@@ -173,7 +173,8 @@ The **Settings** area has been refreshed to improve navigation and align key sub
 
 **Benefits:** Faster setup, fewer mis-clicks in sensitive areas (like secrets), and a more consistent Settings experience.
 
-For more information, see [Settings Overview](../menus/settings/settings-overview.md), [AI Configuration](../menus/settings/ai-configuration.md), [Personal Tokens](../menus/settings/personal-tokens.md), [Secrets](../menus/settings/secrets.md), [Users](../menus/settings/users.md), and [Monitoring](../menus/settings/monitoring.md).
+For more information, see [Settings Overview](../menus/settings/settings-overview.md), [AI Configuration](../menus/settings/ai-configuration.md), [Personal Tokens](../menus/settings/personal-tokens.md), [Secrets](../menus/settings/secrets.md), [Users](../menus/settings/users.md), and [Monitoring](../archive/monitoring.md).
+
 
 ### Artifacts: Updated Buckets and Artifacts Menu Experience
 

@@ -14,7 +14,7 @@ To access the Monitoring section:
    - **Monitoring** - Main landing page with project groups management
    - **Monitoring Data** - Detailed analytics dashboard with filters, metrics, and charts
 
-![Monitoring](../../img/menus/settings/monitoring/access-monitoring.gif){loading=lazy}
+![Monitoring](../img/archive/monitoring/access-monitoring.gif){loading=lazy}
 
 ## Managing Groups:
 
@@ -24,7 +24,7 @@ To manage project groups:
 2. The tag editor will open, allowing you to add or remove group tags.
 3. Click **Save** to apply changes or **Cancel** to discard.
 
-![Managing Groups](../../img/menus/settings/monitoring/group-manage.gif)
+![Managing Groups](../img/archive/monitoring/group-manage.gif)
 
 **Purpose of Groups:**
 
@@ -46,13 +46,13 @@ To access the detailed analytics dashboard:
 1. From the Monitoring landing page, click the **Download** button.
 2. The Monitoring Data dashboard will display with comprehensive filters, metrics, and charts.
 
-![Analytics Dashboard](../../img/menus/settings/monitoring/download-data-dashboard.gif)
+![Analytics Dashboard](../img/archive/monitoring/download-data-dashboard.gif)
 
 ### Filter Options
 
 Configure the data displayed using the following filters located at the top of the dashboard:
 
-![Filter Options](../../img/menus/settings/monitoring/filter-options.png)
+![Filter Options](../img/archive/monitoring/filter-options.png)
 
 | Filter | Description | Options | Details |
 |--------|-------------|---------|----------|
@@ -71,7 +71,7 @@ Configure the data displayed using the following filters located at the top of t
 
 Below the filter options, key metrics provide a snapshot of the current monitoring period:
 
-![Key Metrics](../../img/menus/settings/monitoring/key-metrics.png)
+![Key Metrics](../img/archive/monitoring/key-metrics.png)
 
 | Metric | Description | Details |
 |--------|-------------|----------|
@@ -104,12 +104,12 @@ This section displays two charts side by side:
       - Stacked bars showing active users and inactive users
       - Y-axis: Number of users
       - X-axis: Date (formatted based on aggregation period)
-      ![Users](../../img/menus/settings/monitoring/active-users.png){width="350"}
+      ![Users](../img/archive/monitoring/active-users.png){width="350"}
 
 * **Token Usage**: Line chart showing token consumption and generation
       - Displays "Tokens in" and "Tokens out" metrics over time
       - X-axis: Date (formatted based on aggregation period)
-      ![Token](../../img/menus/settings/monitoring/token-usage.png){width="350"}
+      ![Token](../img/archive/monitoring/token-usage.png){width="350"}
 
 
 ### Acceptance Rate
@@ -120,7 +120,7 @@ A comprehensive chart showing user acceptance of generated outputs:
 - Helps assess user satisfaction with generated outputs
 - Shows trends in output acceptance
 
- ![Acceptance Rate](../../img/menus/settings/monitoring/acceptance-rate.png){width="450"}
+ ![Acceptance Rate](../img/archive/monitoring/acceptance-rate.png){width="450"}
 
 !!! note "Chart Visibility"
     Some charts may be hidden based on system configuration. Additional chart sections such as Sentiments (Human Input and LLM Output sentiment analysis), Accuracy (Relevancy, Reliability, and Prompt Scatter quality metrics), and Topics (Topic Prompt and Topic Chart analysis) may be available depending on your system configuration.
@@ -139,7 +139,7 @@ Two export buttons are located in the top-right corner of the Monitoring Data da
 
 ### Export Raw Data
 
-![Export Raw Data](../../img/menus/settings/monitoring/export-raw-data.gif){width="550"}
+![Export Raw Data](../img/archive/monitoring/export-raw-data.gif){width="550"}
 
 
 Export comprehensive monitoring data based on current filter selections:
@@ -159,7 +159,7 @@ Export comprehensive monitoring data based on current filter selections:
 
 ### Export Acceptance Data
 
-![Export Raw Data](../../img/menus/settings/monitoring/export-acceptance-data.gif){width="550"}
+![Export Raw Data](../img/archive/monitoring/export-acceptance-data.gif){width="550"}
 
 
 Export focused acceptance metrics:
