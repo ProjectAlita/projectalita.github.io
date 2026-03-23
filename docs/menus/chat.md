@@ -577,6 +577,7 @@ If you encounter issues not covered in this guide or need additional assistance 
 !!! info "Additional Resources"
     Explore these comprehensive guides to master ELITEA Chat features:
 
+    * [Sensitive Action Authorization Guardrail](../how-tos/chat-conversations/sensitive-action-authorization-guardrail.md) — Understand how the guardrail pauses conversations for human approval before sensitive tool actions are executed.
     * [How to Create and Edit Agents from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md)
     * [How to Create and Edit Pipelines from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md)
     * [How to Create and Edit Toolkits from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md)

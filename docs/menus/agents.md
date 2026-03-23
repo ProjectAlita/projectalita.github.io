@@ -597,7 +597,8 @@ If you encounter issues not covered in this guide or need additional assistance 
 
 !!! info "Additional Resources"
     For more detailed information on related topics, please refer to the following documentation:
-    
+
+    * **[Sensitive Action Authorization Guardrail](../how-tos/chat-conversations/sensitive-action-authorization-guardrail.md)** - Learn how the guardrail intercepts sensitive tool calls mid-execution and requires human approval before proceeding.
     * **[Credentials](credentials.md)** - Learn how to create and manage credentials for toolkit integrations
     * **[Glossary](../home/glossary.md)** - Definitions of key terms and concepts used in the ELITEA platform    
     * **[How to Create and Edit Agents from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md)** - Create and configure agents directly from chat interface

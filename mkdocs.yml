@@ -65,6 +65,7 @@ nav:
           - Use Public Agents: how-tos/chat-conversations/use-public-items-from-chat.md
           - Add Teammates to Conversation: how-tos/chat-conversations/add-teammates-to-conversation.md
           - Context Management: how-tos/chat-conversations/context-management.md
+          - Sensitive Action Authorization: how-tos/chat-conversations/sensitive-action-authorization-guardrail.md
           - Canvas - Create and Edit Entities:
               - Create an Agent: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
               - Create a Pipeline: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
