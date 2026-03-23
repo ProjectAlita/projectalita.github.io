@@ -53,7 +53,7 @@ nav:
               - Personal Tokens: menus/settings/personal-tokens.md
               - Secrets: menus/settings/secrets.md
               - Users: menus/settings/users.md
-              - Monitoring: menus/settings/monitoring.md
+              - Analytics: menus/settings/analytics.md
           - Profile:
               - Personalization: menus/profile/personalization.md              
 
@@ -127,7 +127,6 @@ nav:
           - Search Entities: how-tos/entity-management/search-entities.md
           - Pin Entities: how-tos/entity-management/working-with-pins.md
           - Organizing Entities: how-tos/entity-management/organizing-entities.md
-          - Manage Roles & Permissions: how-tos/entity-management/manage-users-and-roles.md
   - Integrations:
       - MCP:
           - Server STDIO (Configure and Use): integrations/mcp/create-and-use-server-stdio.md
@@ -243,6 +242,9 @@ nav:
       - Monitoring: features/monitoring.md
       - Server (STDIO): integrations/mcp/mcp-server-stdio.md
       - Client (STDIO): integrations/mcp/mcp-client.md
+      - Monitoring: archive/monitoring.md
+      - Manage Roles & Permissions: archive/manage-users-and-roles.md
+
       - Toolkits:
           - Browser: archive/browser_toolkit.md
           - Pandas: archive/pandas_toolkit.md
