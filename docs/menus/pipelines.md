@@ -550,6 +550,7 @@ If you encounter issues not covered in this guide or need additional assistance 
 !!! info "Additional Resources"
     For more detailed information on related topics, please refer to the following documentation:
 
+    * **[Sensitive Action Authorization Guardrail](../how-tos/chat-conversations/sensitive-action-authorization-guardrail.md)** - Learn how pipeline tool calls can be paused for human authorization before executing sensitive actions.
     * **[Credentials](credentials.md)** - Learn how to create and manage credentials for toolkit integrations
     * **[Toolkits](toolkits.md)** - Comprehensive guide on creating and configuring toolkits
     * **[Glossary](../home/glossary.md)** - Definitions of key terms and concepts used in the ELITEA platform

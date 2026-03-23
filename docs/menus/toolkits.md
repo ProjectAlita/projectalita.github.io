@@ -426,6 +426,7 @@ If you encounter issues not covered in this guide or need additional assistance 
 !!! info "Additional Resources"
     Explore these related guides to maximize your toolkit usage:
 
+    * **[Sensitive Action Authorization Guardrail](../how-tos/chat-conversations/sensitive-action-authorization-guardrail.md)** — Learn how to protect sensitive toolkit actions by requiring human approval before they are executed.
     * **[Glossary](../home/glossary.md)** — Definitions of common terms used across the platform
     * **[Credentials](./credentials.md)** — Learn how to create and manage credentials used by toolkits
     * **[AI Configuration](./settings/ai-configuration.md)** — Set up embedding models and vector configurations
