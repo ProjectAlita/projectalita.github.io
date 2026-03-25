@@ -22,6 +22,9 @@
 - **Child Agents**: At least one child agent configured in the parent agent's toolkits
 - **Use Case**: Tasks requiring specialized agents to collaborate and share context
 
+!!! warning "Swarm-enabled agents cannot be used as child agents"
+    When adding child agents to a parent, agents that already have Swarm Mode enabled are excluded from the agent picker. Nested swarms (a swarm-enabled agent as a child of another swarm agent) are not supported. To use an agent as a child, ensure Swarm Mode is disabled on that agent.
+
 ---
 
 ## How It Works
@@ -88,11 +91,11 @@ Configure Swarm Mode as part of an agent's default configuration.
 
 1. Navigate to **Agents** in the main menu.
 2. Select the agent you want to configure or create a new agent.
-3. Scroll to the **TOOLKITS** section.
-4. Ensure you have added at least one child agent (using **+ Agent** button).
-5. In the TOOLKITS section, find the **Swarm Mode** switch.
-6. Toggle the switch to enable Swarm Mode for this agent.
-7. Click **Save** at the top of the configuration page.
+3. On the **Configuration** tab, add at least one child agent using the **+ Agent** button in the TOOLKITS section before proceeding.
+4. Scroll down to the **TOOLKITS** section and locate the **INTERNAL TOOLS** subsection.
+5. Find the **Swarm Mode** toggle. If it is not visible, click **Show all** to expand the full list of internal tools.
+6. Click the **Swarm Mode** toggle to enable it.
+7. Click **Save** at the top of the configuration page to persist the change.
 8. New conversations created with this agent will have Swarm Mode enabled by default.
 
 ![Agent](<../../img/how-tos/chat-conversations/internal tools/swarm-mode/swarm-mode-agent.gif>)

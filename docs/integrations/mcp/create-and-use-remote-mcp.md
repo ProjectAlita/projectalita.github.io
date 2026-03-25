@@ -161,6 +161,20 @@ Remote MCP servers support multiple authentication mechanisms. Choose the method
 - ✔️ Automatic token refresh
 - ✔️ Multiple MCP server authentication
 
+!!! info "OAuth Callback (Redirect) URL"
+    When registering an OAuth application with a provider (e.g., GitHub), you must set the **redirect URI / callback URL** to ELITEA's OAuth callback path. The exact URL depends on your deployment:
+
+    | Deployment Type | Redirect URI |
+    |----------------|--------------|
+    | **ELITEA Cloud** | **Pattern:** `https://<your-elitea-instance-domain>/app/mcp-auth-callback` <br> **Example:** `https://next.elitea.ai/app/mcp-auth-callback` |
+    | **Self-hosted / standard path** | `https://<your-domain>/mcp-auth-callback` |
+    | **Self-hosted / sub-path (e.g., `/app`)** | `https://<your-domain>/app/mcp-auth-callback` |
+
+    This URL must be added to the **Authorized redirect URIs** (or equivalent field) in your OAuth app settings. A mismatch between this value and the registered redirect URI will cause OAuth authorization to fail.
+
+    !!! note "URL is not shown in the UI"
+        ELITEA does not display the redirect URI anywhere in its interface. The URL is automatically derived from the domain your ELITEA instance is deployed on. Use the table above to determine the correct value for your deployment.
+
 !!! info "OAuth Metadata Discovery"
     ELITEA automatically discovers OAuth endpoints using:
     - `WWW-Authenticate` header `authorization_uri` parameter
@@ -328,7 +342,13 @@ Automate GitHub workflows including:
    - **Client ID**: OAuth application client identifier
    - **Client Secret**: OAuth application secret
 2. Ensure the OAuth app has appropriate scopes (same as above)
-3. Note the **Callback URL** configured for the OAuth app (must match ELITEA's OAuth redirect URL)
+3. Confirm the OAuth app's **Authorization callback URL** is set to ELITEA's redirect URI:
+   ```
+   https://<your-elitea-host>/mcp-auth-callback
+   ```
+   For example, on the ELITEA cloud instance: `https://next.elitea.ai/mcp-auth-callback`
+
+   This value must be registered in the GitHub OAuth App settings under **Authorization callback URL**. If it doesn't match, GitHub will reject the OAuth flow with a redirect URI mismatch error.
 
 !!! info "Authentication Priority"
     If you provide a valid Bearer token in Headers, the system will connect automatically using token authentication. If Headers are empty or invalid, the system will fall back to OAuth flow using Client ID and Client Secret.### Step-by-Step Setup
@@ -774,8 +794,14 @@ Common issues and solutions when working with Remote MCP servers:
         - Try authorizing in a different browser
     
     - **Redirect URI mismatch:**
-        - Ensure the OAuth app's redirect URI matches ELITEA's OAuth callback URL
-        - Contact your OAuth provider to update redirect URI settings
+        - The redirect URI registered in your OAuth app must exactly match ELITEA's callback URL:
+          ```
+          https://<your-elitea-host>/mcp-auth-callback
+          ```
+          Example: `https://next.elitea.ai/mcp-auth-callback`
+        - Update the **Authorized redirect URIs** (or equivalent field) in your OAuth app settings to this value
+        - If your ELITEA instance uses a sub-path, include it in the URL (e.g., `https://your-host/app/mcp-auth-callback`)
+        - Contact your OAuth provider's admin console to update the redirect URI if you do not have access
     
     - **Insufficient scopes:**
         - Review the scopes requested vs. scopes configured in OAuth app

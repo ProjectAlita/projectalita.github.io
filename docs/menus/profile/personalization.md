@@ -6,7 +6,7 @@ The Personalization page provides comprehensive settings to customize how the AI
 
 When you access Personalization from your user profile menu, you'll find your user information at the top, followed by three main configuration sections organized as expandable accordions:
 
-1. **Personalization**: Set default AI personality and custom instructions
+1. **General**: Set default AI personality and custom instructions
 2. **Default Context Management**: Control conversation memory and token usage
 3. **Default Summarization**: Configure automatic conversation summarization
 
@@ -31,26 +31,35 @@ The Personalization page is accessed through your user profile menu.
 1. Click on your **User Avatar** at the bottom of the main sidebar
 2. Select **Personalization** from the dropdown menu
 
-![User Button Menu](<../../img/menus/profile/personalization/access-personalization.gif>){width="600" loading="lazy"}
+     ![User Button Menu](<../../img/menus/profile/personalization/access-personalization.gif>){width="600" loading="lazy"}
 
 ---
 
-## PERSONALIZATION
+## Settings Overview
 
-The Personalization accordion section provides two configuration options that control the AI assistant's default behavior and communication style.
+The Personalization page is organized into four accordion sections, each controlling a different aspect of AI behavior.
+
+| Section | Purpose | Key Settings | When Applied | Can Change Mid-Conversation | Available |
+|---------|---------|--------------|--------------|----------------------------|-----------|
+| **General** | Define AI personality and behavior | Default Personality, Default User Instructions | At conversation creation | ✘ No | ✔️ |
+| **Default Context Management** | Manage conversation memory and token usage | Enable Toggle, Max Context Tokens, Preserve Recent Messages | Throughout conversation lifecycle | ✔️ Yes (via Context Budget widget) | ✔️ |
+| **Default Summarization** | Automatically condense long conversations | Enable Toggle, Summarization Instructions, Target Summary Tokens | During conversation when thresholds reached | ✔️ Yes (via Context Budget widget) | ✔️ |
+| **Long-term Memory** | Manage what the AI remembers across conversations | — | — | — | 🔜 Coming Soon |
+
+!!! info "Future Feature"
+    Long-term memory capabilities are currently in development and not yet available.
+
+---
+
+### GENERAL
+
+The General accordion section provides two configuration options that control the AI assistant's default behavior and communication style.
 
 ![Default Instructions](<../../img/menus/profile/personalization/personalization-sub-section.gif>){width="600" loading="lazy"}
 
-### Configuration Parameters
-
-| Parameter | Type | Options/Default | Description |
-|-----------|------|-----------------|-------------|
-| **Default Personality** | Dropdown | Generic, QA, Nerdy, Quirky, Cynical | Communication style and approach for AI interactions |
-| **Default Instructions** | Multiline text | (empty) | Custom guidelines that automatically apply to all new conversations |
-
 ---
 
-**Default Personality**
+#### Default Personality
 
 Select the communication style and approach that the AI assistant will use by default in all new conversations.
 
@@ -63,6 +72,7 @@ Select the communication style and approach that the AI assistant will use by de
 | **Nerdy** | Technical deep-dives, detailed explanations | Complex technical topics, learning new concepts, in-depth analysis |
 | **Quirky** | Creative, playful, thinking outside the box | Brainstorming sessions, creative problem-solving, innovative approaches |
 | **Cynical** | Skeptical, challenges assumptions | Critical analysis, risk assessment, design reviews |
+| **None** | No personality overlay applied | When you prefer the AI's default behavior without any personality customization |
 
 !!! tip "Choosing the Right Personality"
     Consider your primary use cases when selecting a personality:
@@ -71,10 +81,11 @@ Select the communication style and approach that the AI assistant will use by de
     * **Creative Projects**: Quirky personality for innovative thinking
     * **Business Analysis**: Cynical personality for critical evaluation
     * **General Use**: Generic personality for balanced, versatile assistance
+    * **No Preference**: None to use the AI's default behavior without any style overlay
 
 ---
 
-**Default Instructions**
+#### Default User Instructions
 
 Provide custom guidelines that automatically apply to all new conversations. These instructions define specific requirements, preferences, or constraints that the AI assistant should follow in every interaction.
 
@@ -158,7 +169,7 @@ Provide custom guidelines that automatically apply to all new conversations. The
     ```
 ---
 
-## DEFAULT CONTEXT MANAGEMENT
+### DEFAULT CONTEXT MANAGEMENT
 
 The Default Context Management accordion section controls how conversation history is managed in all new conversations. These settings optimize token usage while preserving conversation continuity.
 
@@ -170,13 +181,13 @@ The Default Context Management accordion section controls how conversation histo
     * **Performance**: Excessive context can slow response times
     * **Limits**: AI models have maximum token limits (context windows)
 
-![Max Context Tokens](<../../img/menus/profile/personalization/default-context-management.gif>){width="600" loading="lazy"}
+![Max Context Tokens](<../../img/menus/profile/personalization/default-context-management.png>){width="600" loading="lazy"}
 
-### Configuration Parameters
+#### Configuration Parameters
 
 | Parameter | Type | Default | Range | Description |
 |-----------|------|---------|-------|-------------|
-| **Enable Context Management** | Toggle | ON | ON/OFF | Activates automatic context management |
+| **Enable context management for new conversations** | Toggle | ON | ON/OFF | Activates automatic context management |
 | **Max Context Tokens** | Number | 64000 | 1000 - 10000000 | Maximum tokens allocated for conversation history |
 | **Preserve Recent Messages** | Number | 5 | 1 - 99 | Minimum recent messages always retained in context |
 
@@ -305,9 +316,12 @@ Specifies the minimum number of recent conversation messages to always keep in c
 
 ---
 
-## DEFAULT SUMMARIZATION
+### DEFAULT SUMMARIZATION
 
 The Default Summarization accordion section configures automatic conversation summarization for new conversations. When enabled, long conversations are automatically condensed to maintain context while reducing token usage.
+
+!!! warning "Dependency on Context Management"
+    Summarization is only active when **Context Management is enabled**. If the **Enable context management for new conversations** toggle is off, summarization settings are inactive even if the summarization toggle is on. To use summarization, make sure context management is enabled first.
 
 !!! info "What Is Automatic Summarization?"
     As conversations grow longer, they consume more tokens and approach model limits. Automatic summarization:
@@ -318,18 +332,15 @@ The Default Summarization accordion section configures automatic conversation su
     * **Preserves** recent messages (as specified in Context Management)
     * **Maintains** conversation continuity while reducing tokens
 
-![Default Summarization](<../../img/menus/profile/personalization/default-summarization.gif>){width="600" loading="lazy"}
+![Default Summarization](<../../img/menus/profile/personalization/default-summarization.png>){width="600" loading="lazy"}
 
-### Configuration Parameters
+#### Configuration Parameters
 
 | Parameter | Type | Default | Range/Options | Description |
 |-----------|------|---------|---------------|-------------|
 | **Enable automatic summarization** | Toggle | ON | ON/OFF | Activates automatic conversation summarization |
 | **Summarization instructions** | Multiline text | "Generate a concise summary of the following conversation messages." | - | Custom instructions for summary generation |
-| **Summary Model** | Dropdown | GPT-5 mini | GPT-5 mini, gpt-4.1 | AI model used for generating summaries |
-| **Summary Trigger Ratio** | Number | 0.8 | 0.1 - 1.0 | Proportion of Max Context Tokens that triggers summarization |
-| **Min Messages for Summary** | Number | 10 | 3 - 99 | Minimum messages before summarization can occur |
-| **Target Summary Tokens** | Number | 4096 | 64 - 4096 | Target token count for generated summaries |
+| **Target Summary Tokens** | Number | 4,096 | 100 - 4,096 | Target token count for generated summaries |
 
 ---
 
@@ -412,185 +423,12 @@ Generate a concise summary of the following conversation messages.
 
 ---
 
-**Summary Model**
-
-Specifies which AI model to use for generating conversation summaries.
-
-!!! info "Available Models"
-    Model availability depends on your account and integrations.
-
-**Choosing the Right Model**
-
-When selecting a summary model, consider the following factors:
-
-* **Speed**: Faster models generate summaries more quickly but may provide less nuanced results
-* **Cost**: Different models have varying API costs per token
-* **Quality**: More advanced models typically produce higher quality summaries with better context preservation
-* **Technical Content**: Some models are better at preserving technical terminology, code snippets, and specialized vocabulary
-
-**General Considerations:**
-
-* **Cost-Sensitive Projects**: Choose more economical models for routine conversations where basic summarization is sufficient
-* **Quality-Critical Applications**: Use more capable models when summary accuracy and detail preservation are essential
-* **Technical Discussions**: Advanced models typically better preserve technical terminology, code structures, and domain-specific language
-* **Long Conversations**: More capable models generally handle extensive context more effectively and produce more coherent summaries
-
----
-
-**Summary Trigger Ratio**
-
-Specifies the threshold at which automatic summarization is triggered, as a ratio of current context to maximum context tokens.
-
-**Understanding the Value:**
-
-* **0.8 (default)**: Summarize at 80% of max tokens - recommended balance
-* **0.5**: Summarize at 50% - more frequent summarization, keeps context leaner
-* **0.9**: Summarize at 90% - less frequent summarization, maintains more detail
-* **1.0**: Summarize only when max tokens reached - minimal summarization
-
-!!! info "How It Works"
-    Trigger Point = Max Context Tokens × Summary Trigger Ratio
-    
-    **Example:**
-    
-      - Max Context Tokens = 64,000
-      - Summary Trigger Ratio = 0.8
-      - Trigger Point = 64,000 × 0.8 = 51,200 tokens
-      
-      → Summarization occurs when context reaches 51,200 tokens
-
-**Choosing the Right Ratio**
-
-??? tip "Lower Ratio (0.5-0.7)"
-
-    **When to Use:**
-    
-    * Cost optimization is priority
-    * Conversations tend to be very long
-    * Context quality remains good with aggressive summarization
-    
-    **Effects:**
-    
-    * ✔️ Lower token costs
-    * ✔️ More headroom before hitting model limits
-    * ✔️ Summaries generated earlier, keeping context concise
-    * ✘ More frequent summarization may lose some detail
-    * ✘ AI may need clarification more often
-
-??? tip "Default Ratio (0.8)"
-
-    **When to Use:**
-    
-    * Standard use cases (recommended for most users)
-    * Balance between quality and cost
-    * Default setting works well for typical conversations
-    
-    **Effects:**
-    
-    * ✔️ Good balance of context retention and efficiency
-    * ✔️ Summarization triggered before approaching limits
-    * ✔️ Leaves buffer for model's response generation
-    * ✔️ Proven to work well in practice
-
-??? tip "Higher Ratio (0.9-1.0)"
-
-    **When to Use:**
-    
-    * Maximum context retention needed
-    * Conversations are moderately long
-    * Cost is less of a concern
-    * Working with context-sensitive tasks
-    
-    **Effects:**
-    
-    * ✔️ Maximum detail preservation
-    * ✔️ Less frequent summarization
-    * ✔️ AI has more complete conversation history
-    * ✘ Higher token costs
-    * ✘ Risk of hitting model limits if conversation continues
-
----
-
-**Min Messages for Summary**
-
-Specifies the minimum number of messages required before summarization can be triggered.
-
-**Why This Setting Exists:**
-
-* **Prevents Premature Summarization**: Avoids summarizing very short conversations
-* **Maintains Initial Context**: Early messages often contain critical setup information
-* **Quality Control**: Summaries of very short exchanges may lose important nuance
-* **Performance**: Avoids summarization overhead for brief interactions
-
-!!! info "How It Works"
-    **Summarization Prerequisites:**
-    
-    1. Message count ≥ Min Messages for Summary
-       AND
-    2. Current tokens ≥ (Max Context Tokens × Summary Trigger Ratio)
-    
-    **Example:**
-    
-      - Min Messages for Summary = 10
-      
-      - Conversation with 8 messages:
-        → Summarization will NOT trigger (even if token threshold reached)
-      
-      - Conversation with 12 messages:
-        → Summarization can trigger (if token threshold also reached)
-
-**Choosing the Right Value**
-
-??? tip "Short Conversations (3-5 messages)"
-
-    **When to Use:**
-    
-    * Quick Q&A sessions
-    * Single-topic inquiries
-    * Brief clarifications
-    
-    **Setting: 3-5 messages**
-    
-    * Allows summarization of even short exchanges
-    * Useful if conversations are always brief but token-heavy (e.g., code reviews)
-
-??? tip "Standard Conversations (10 messages - default)"
-
-    **When to Use:**
-    
-    * Typical development sessions
-    * Moderate-length discussions
-    * Balanced approach
-    
-    **Setting: 8-12 messages (default 10)**
-    
-    * Recommended for most use cases
-    * Ensures conversation has established context before summarizing
-    * Protects important early discussion from being condensed too soon
-
-??? tip "Extended Conversations (15-30 messages)"
-
-    **When to Use:**
-    
-    * Long troubleshooting sessions
-    * In-depth technical discussions
-    * Complex multi-step problem-solving
-    
-    **Setting: 15-30 messages**
-    
-    * Preserves more conversation history before summarization
-    * Appropriate when early context is crucial for understanding
-    * Use with higher Max Context Tokens to accommodate
-
----
-
 **Target Summary Tokens**
 
 Specifies the target length (in tokens) for generated conversation summaries.
 
 **Token Reference:**
 
-* **64 tokens**: ~48 words - very brief summary
 * **256 tokens**: ~192 words - short paragraph summary
 * **1024 tokens**: ~768 words - moderate detail summary
 * **4096 tokens (default)**: ~3072 words - comprehensive summary
@@ -611,7 +449,7 @@ Specifies the target length (in tokens) for generated conversation summaries.
 
 **Choosing the Right Value**
 
-??? tip "Brief Summaries (64-512 tokens)"
+??? tip "Brief Summaries (100-512 tokens)"
 
     **When to Use:**
     
@@ -659,43 +497,35 @@ Specifies the target length (in tokens) for generated conversation summaries.
     * ✘ Higher summarization costs
     * ✘ Summaries themselves consume significant tokens
 
-??? tip "Relationship with Summary Trigger Ratio"
-
-    Consider both settings together:
-    
-    ```
-    Scenario 1: Aggressive Compression
-      Summary Trigger Ratio: 0.5 (early summarization)
-      Target Summary Tokens: 512 (brief summaries)
-      → Frequent, concise summaries = maximum token savings
-    
-    Scenario 2: Maximum Context (default)
-      Summary Trigger Ratio: 0.8 (late summarization)
-      Target Summary Tokens: 4096 (comprehensive summaries)
-      → Infrequent, detailed summaries = maximum context retention
-    
-    Scenario 3: Balanced
-      Summary Trigger Ratio: 0.7
-      Target Summary Tokens: 2048
-      → Moderate approach balancing both needs
-    ```
-
 ---
 
-## Long-term Memory
+### How the Sections Work Together
 
-**Coming Soon**
+**Example Scenario: Long Development Session**
 
-Manage what the AI remembers about you across conversations.
+!!! example
+    1. **GENERAL** (Foundation):
+         - Personality: "Nerdy" - Technical deep-dives
+         - Instructions: "Use TypeScript, include unit tests, explain trade-offs"
+         - Result: AI uses technical language and provides detailed code examples
 
-!!! warning "Future Feature"
-    Long-term memory capabilities are currently in development. This feature will allow you to:
-    
-    * Store persistent information about your preferences across all conversations
-    * Build a knowledge base of your workflows and patterns
-    * Enable the AI to remember your context without manual setup
-    * Maintain continuity across different projects and time periods
+    2. **DEFAULT CONTEXT MANAGEMENT** (Efficiency):
+         - Max Context Tokens: 64,000
+         - Preserve Recent Messages: 5
+         - Result: AI can reference extensive history (up to 64K tokens) while always keeping last 5 exchanges
 
+    3. **DEFAULT SUMMARIZATION** (Optimization):
+         - Enabled: Yes
+         - Target Tokens: 4,096
+         - Result: When the context approaches the token limit, older messages are automatically condensed into a 4K token summary
+
+    **Combined Effect**:
+
+    * AI maintains technical, detailed communication style throughout (General settings)
+    * Conversation can continue indefinitely without hitting token limits (Context Management + Summarization)
+    * Recent context always available for coherent responses (Preserve Recent Messages)
+    * Token costs optimized by automatic summarization of older content
+    * Consistent quality even in very long debugging or development sessions
 ---
 
 ## How Settings Apply
@@ -714,51 +544,6 @@ Manage what the AI remembers about you across conversations.
 
 ---
 
-## Understanding the Three Configuration Sections
-
-The Personalization page contains three accordion sections that work together to provide comprehensive conversation control.
-
-| Aspect | PERSONALIZATION | DEFAULT CONTEXT MANAGEMENT | DEFAULT SUMMARIZATION |
-|--------|----------------|---------------------------|----------------------|
-| **Purpose** | Define AI personality and behavior | Manage conversation memory and token usage | Automatically condense long conversations |
-| **What It Controls** | How the AI communicates | How much context is retained | When and how summaries are created |
-| **When Applied** | At conversation creation | Throughout conversation lifecycle | During conversation when thresholds reached |
-| **Key Settings** | • Default Personality<br>• Default Instructions | • Enable Toggle<br>• Max Context Tokens<br>• Preserve Recent Messages | • Enable Toggle<br>• Summarization Instructions<br>• Summary Model<br>• Trigger Ratio<br>• Min Messages<br>• Target Tokens |
-| **Can Change Mid-Conversation** | ✘ No (set at creation) | ✔️ Yes (via Context Budget widget) | ✔️ Yes (via Context Budget widget) |
-| **Primary Use Case** | Customize assistant personality and behavior | Optimize token usage and prevent limit errors | Maintain context quality in long conversations |
-| **Impact On** | Response style and content | Token costs and context availability | Context efficiency and conversation continuity |
-
-### How They Work Together
-
-**Example Scenario: Long Development Session**
-
-1. **PERSONALIZATION** (Foundation):
-   - Personality: "Nerdy" - Technical deep-dives
-   - Instructions: "Use TypeScript, include unit tests, explain trade-offs"
-   - Result: AI uses technical language and provides detailed code examples
-
-2. **DEFAULT CONTEXT MANAGEMENT** (Efficiency):
-   - Max Context Tokens: 64,000
-   - Preserve Recent Messages: 5
-   - Result: AI can reference extensive history (up to 64K tokens) while always keeping last 5 exchanges
-
-3. **DEFAULT SUMMARIZATION** (Optimization):
-   - Enabled: Yes
-   - Trigger Ratio: 0.8 (at 51,200 tokens)
-   - Min Messages: 10
-   - Target Tokens: 4,096
-   - Result: After 10+ messages when context reaches 51K tokens, older messages are condensed into a 4K token summary
-
-**Combined Effect**:
-
-* AI maintains technical, detailed communication style throughout (Personalization)
-* Conversation can continue indefinitely without hitting token limits (Context Management + Summarization)
-* Recent context always available for coherent responses (Preserve Recent Messages)
-* Token costs optimized by automatic summarization of older content
-* Consistent quality even in very long debugging or development sessions
-
----
-
 ## Best Practices
 
 **Configuring All Three Sections Together**
@@ -766,9 +551,9 @@ The Personalization page contains three accordion sections that work together to
 ??? tip "Start with Defaults, Then Customize"
 
     1. **Test Default Settings First**:
-       - Personalization: Generic personality, no custom instructions
+       - General: Generic personality, no custom instructions
        - Context Management: Enabled, 64,000 tokens, 5 preserved messages
-       - Summarization: Enabled, 0.8 ratio, 10 min messages, 4,096 target tokens
+       - Summarization: Enabled, 4,096 target tokens
     
     2. **Monitor Conversation Quality**:
        - Are responses in the style you need?
@@ -784,13 +569,23 @@ The Personalization page contains three accordion sections that work together to
        - Keep notes on effective configurations
        - Track which settings work for which types of tasks
 
+??? tip "Understand Section Dependencies"
+
+    The three active sections interact with each other:
+    
+    * **Disabling Context Management** also disables the Max Context Tokens and Preserve Recent Messages inputs — they become grayed out and uneditable
+    * **Summarization is only active when Context Management is enabled** — if you disable context management, summarization settings are also inactive even if the toggle is on
+    * **General settings are always independent** — personality and instructions apply regardless of context management state
+    
+    Therefore, if you want summarization, you must keep context management enabled.
+
 ??? tip "Consider Your Conversation Patterns"
 
     **For Short Conversations (< 20 messages):**
     
-    * Focus on Personalization (personality + instructions most important)
+    * Focus on General settings (personality + instructions most important)
     * Context Management: Lower token limits (20,000-30,000) to save costs
-    * Summarization: Can disable or set higher min messages (15-20)
+    * Summarization: Can disable or leave at defaults for short conversations
     
     **For Medium Conversations (20-50 messages):**
     
@@ -802,14 +597,13 @@ The Personalization page contains three accordion sections that work together to
     
     * Context Management: Higher limits (64,000-128,000)
     * Summarization: Critical for cost control
-    * Consider lower trigger ratio (0.6-0.7) for more aggressive summarization
 
 ??? tip "Balance Quality, Cost, and Performance"
 
     **Quality-Focused Configuration:**
     
     ```
-    Personalization:
+    General:
       - Personality: Match your work style
       - Instructions: Detailed, specific requirements
     
@@ -818,9 +612,7 @@ The Personalization page contains three accordion sections that work together to
       - Preserve Messages: 10-15 (more recent context)
     
     Summarization:
-      - Trigger Ratio: 0.9 (late summarization)
       - Target Tokens: 4,096 (comprehensive summaries)
-      - Model: gpt-4.1 (high quality)
     
     Result: Maximum context retention, best AI responses, higher costs
     ```
@@ -828,7 +620,7 @@ The Personalization page contains three accordion sections that work together to
     **Cost-Focused Configuration:**
     
     ```
-    Personalization:
+    General:
       - Personality: Generic (works for most cases)
       - Instructions: Brief, essential points only
     
@@ -837,9 +629,7 @@ The Personalization page contains three accordion sections that work together to
       - Preserve Messages: 3-5 (minimal recent context)
     
     Summarization:
-      - Trigger Ratio: 0.5 (early, frequent summarization)
       - Target Tokens: 1,024 (concise summaries)
-      - Model: GPT-5 mini (efficient)
     
     Result: Minimal token usage, lower costs, may need more clarifications
     ```
@@ -847,7 +637,7 @@ The Personalization page contains three accordion sections that work together to
     **Balanced Configuration (Recommended):**
     
     ```
-    Personalization:
+    General:
       - Personality: Choose based on primary use case
       - Instructions: 3-7 key requirements
     
@@ -856,9 +646,7 @@ The Personalization page contains three accordion sections that work together to
       - Preserve Messages: 5 (default)
     
     Summarization:
-      - Trigger Ratio: 0.8 (default)
       - Target Tokens: 4,096 (default)
-      - Model: GPT-5 mini (default)
     
     Result: Good quality, reasonable costs, works for most scenarios
     ```
@@ -870,6 +658,7 @@ The Personalization page contains three accordion sections that work together to
     * **Single Role**: Choose the personality that best matches your main work function
     * **Multiple Roles**: Select the personality you use most frequently
     * **Team Accounts**: If shared, choose Generic for balanced, versatile interactions
+    * **No Preference**: Use **None** to keep the AI's raw default behavior without any style overlay
     * **Experimentation**: Try different personalities over a few days to find what works best
 
 ??? tip "Consider Team Communication Style"
@@ -981,23 +770,80 @@ The Personalization page contains three accordion sections that work together to
     
     * New conversations don't reflect configured personality
     * Default instructions not being followed in new conversations
-    * AI behavior seems unchanged after saving settings
+    * AI behavior seems unchanged after making changes
+    
+    **How Saving Works:**
+    
+    Settings auto-save — there is no Save button to click. Each change type saves differently:
+    
+    * **Personality dropdown**: saves immediately when you select a new option
+    * **Text fields**: save when you click/tab out of the field
+    * **Numeric fields**: save on blur, but only if the entered value is within the valid range
+    * **Toggles**: save immediately on toggle
+    
+    Watch for the **"Settings saved successfully"** toast notification to confirm each save occurred.
     
     **Diagnosis:**
     
-    1. Verify you clicked **Save Changes** button and saw success message
-    2. Check if you're testing in an existing conversation (settings only apply to new ones)
-    3. Confirm settings are visible when reopening Profile settings page
-    4. Look for any error messages that appeared during save
+    1. Check whether a **"Settings saved successfully"** toast appeared after each change — if not, the save may not have triggered
+    2. Check whether a **"Failed to save settings"** error appeared — indicates a network or server issue
+    3. Verify you are testing in a **brand new** conversation — existing conversations retain their original settings
+    4. For numeric fields, verify the values are within the allowed ranges (see Configuration Parameters tables)
+    5. Confirm settings are visible when reopening the Personalization page after the save notification appeared
     
     **Resolution:**
     
-    1. Navigate back to Profile settings → Personalization
-    2. Verify all configurations are present and correct
-    3. Click **Save Changes** again to ensure persistence
-    4. Create a brand new conversation (not continuing an existing one)
-    5. Test with specific questions that should trigger your personality/instructions
-    6. Clear browser cache if issues persist: Ctrl+Shift+Delete (Windows) or Cmd+Shift+Delete (Mac)
+    1. Re-enter any field value and click outside to trigger auto-save again
+    2. Refresh the page and re-apply any changes that weren't confirmed with a toast
+    3. Create a brand new conversation (do not continue an existing one) to test the new settings
+    4. Clear browser cache if the page is loading stale data: Ctrl+Shift+Delete (Windows) or Cmd+Shift+Delete (Mac)
+
+??? warning "Numeric Fields Not Saving (Silent Failure)"
+
+    **Symptoms:**
+    
+    * You type a new value for Max Context Tokens, Preserve Recent Messages, or Target Summary Tokens
+    * No "Settings saved successfully" toast appears after clicking away
+    * The field may show a red validation error message
+    
+    **Cause:**
+    
+    Auto-save is blocked when a field value fails validation. The form will not save until all fields contain valid values.
+    
+    **Valid Ranges:**
+    
+    | Field | Min | Max |
+    |-------|-----|-----|
+    | Max Context Tokens | 1,000 | 10,000,000 |
+    | Preserve Recent Messages | 1 | 99 |
+    | Target Summary Tokens | 100 | 4,096 |
+    
+    **Resolution:**
+    
+    1. Look for a red error message directly below the field
+    2. Correct the value to be within the valid range
+    3. Click outside the field — the save will trigger automatically once the value is valid
+    4. Wait for the **"Settings saved successfully"** confirmation toast
+
+??? warning "Context Management Fields Are Grayed Out"
+
+    **Symptoms:**
+    
+    * Max Context Tokens and Preserve Recent Messages fields appear grayed out and cannot be edited
+    * Summarization settings appear inactive
+    
+    **Cause:**
+    
+    The **Enable context management for new conversations** toggle is turned off. When context management is disabled, the token and message fields are intentionally disabled because they have no effect without context management active.
+    
+    Additionally, summarization is only active when context management is enabled — disabling context management also deactivates summarization even if its toggle is on.
+    
+    **Resolution:**
+    
+    1. Scroll up to the **Default Context Management** accordion
+    2. Enable the **"Enable context management for new conversations"** toggle
+    3. The grayed-out fields will become editable immediately
+    4. The toggle saves automatically — no further action needed
 
 ??? warning "AI Not Following Default Instructions"
 
@@ -1033,7 +879,7 @@ The Personalization page contains three accordion sections that work together to
        - Test with Generic personality to isolate instruction issues
     
     4. **Test Incrementally**:
-       - Start with one instruction, verify it works in new conversation
+       - Start with one instruction, verify it works in a new conversation
        - Add instructions one at a time
        - Identify which instruction causes problems
        - Refine problematic instruction before adding more
@@ -1065,30 +911,29 @@ The Personalization page contains three accordion sections that work together to
     3. **Compare Side-by-Side**: Create conversations with different personalities, ask the same complex question
     4. **Use Creative Tasks**: Brainstorming, problem-solving, or design discussions show personality most clearly
 
-??? warning "Save Operation Fails"
+??? warning "\"Failed to Save Settings\" Error Appears"
 
     **Symptoms:**
     
-    * "Save Changes" button doesn't respond
-    * Error message appears after clicking Save
-    * Settings don't persist after page reload
+    * A red **"Failed to save settings"** toast notification appears after making a change
+    * The change was made successfully in the UI but was not persisted
     
     **Possible Causes:**
     
     1. Network connectivity issues
     2. Session timeout (logged out)
     3. Server error or maintenance
-    4. Browser issues or extensions blocking request
+    4. Browser issues or extensions blocking the request
     
     **Resolution:**
     
     1. **Check Network**: Ensure stable internet connection
-    2. **Refresh Page**: Reload page and try again (Ctrl+R or Cmd+R)
-    3. **Check Login**: Verify you're still logged in, re-authenticate if needed
+    2. **Refresh Page**: Reload page and re-apply the change (Ctrl+R or Cmd+R)
+    3. **Check Login**: Verify you're still logged in — re-authenticate if needed
     4. **Try Different Browser**: Test in incognito/private mode or different browser
     5. **Clear Cache**: Clear browser cache and cookies
-    6. **Check Console**: Open browser console (F12) to see any error messages
-    7. **Contact Support**: If issue persists, contact administrator with error details
+    6. **Check Console**: Open browser developer tools (F12) → Console tab to see any error messages
+    7. **Contact Support**: If the issue persists, contact your administrator with error details from the console
 
 ---
 

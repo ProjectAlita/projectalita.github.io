@@ -175,19 +175,22 @@ The platform supports a wide range of toolkits, organized by category. Below is 
 
 ## Managing Toolkit Configuration
 
-The toolkit detail page provides a comprehensive interface for configuring, testing, and monitoring your toolkits. Access it by clicking on any toolkit from the Toolkits dashboard. The page is organized into three main tabs, each serving a specific purpose:
+The toolkit detail page provides a comprehensive interface for configuring, testing, and monitoring your toolkits. Access it by clicking on any toolkit from the Toolkits dashboard. The page is organized into **two main tabs**, each serving a specific purpose:
 
 ---
 
-### Run Tab: Managing and Testing Toolkit
+### Configuration Tab: Managing and Testing Toolkit
 
-The **Run** tab is the primary interface for configuring toolkit settings, managing tool selection, and testing toolkit functionality in real-time.
+The **Configuration** tab (⚙ icon) is the primary interface for configuring toolkit settings, managing tool selection, and testing toolkit functionality in real-time. It uses a **two-column layout**:
 
- ![Toolkits-Manage](../img/menus/toolkits/toolkit-run-tab.png){loading=lazy}
+- **Left panel** — the configuration form (name, description, credentials, parameters, tool selection)
+- **Right panel** — the **Test Settings** panel for running tools interactively, with a **View run history** (🕐 clock icon) in the top bar (see [Viewing Toolkit History](#viewing-toolkit-history))
+
+![Toolkits-Manage](../img/menus/toolkits/toolkit-config-tab.png){loading=lazy}
 
 **How to Edit Toolkit Configuration**
 
-On the Run tab, you can:
+On the **Configuration tab**, you can:
 
 * **Edit Toolkit Details:** Update the name, description, credentials (API keys, tokens, service URLs), and any custom or advanced options directly in the configuration panel.
 * **Manage Tool Selection:** Configure which specific tools are enabled for this toolkit. In the "Tools" section, check only the tools your agent will use. Enabling only necessary tools improves security (principle of least privilege) and optimizes performance.
@@ -195,7 +198,7 @@ On the Run tab, you can:
 * **Save Changes:** Click **Save** to apply your updates. Changes are applied immediately and reflected in the dashboard.
 * **Remove Toolkit:** Click the **Remove** (trash) icon to delete the toolkit. Confirm the removal in the dialog.
 * **Copy Link:** Click the copy link icon to copy a direct link to the toolkit’s detailed page—useful for sharing with teammates who have access.
-* **Export and Fork Icons:** These icons (currently unavailable) will allow you to export a toolkit’s configuration or create a fork (duplicate) of an existing toolkit in other projects in future releases.
+* **Export and Fork:** Available in the **three-dot menu (⋮)** in the toolbar. These options are currently **disabled** (greyed out) and will be enabled in a future release.
 
 **Tool Selection Best Practices**
 
@@ -223,7 +226,9 @@ When configuring toolkit tools, you may see a checkbox labeled **[Make Tools Ava
 
 **Testing Toolkit Functionality**
 
-The toolkit configuration page includes a **Test Settings** panel on the right side that allows you to test toolkit functionality in real-time. For comprehensive testing instructions and best practices, see [How to Test Toolkit Tools](../how-tos/credentials-toolkits/how-to-test-toolkit-tools.md).
+The **right panel** of the Configuration tab contains the **Test Settings** area, which lets you test toolkit functionality in real-time without leaving the configuration view. The top bar of the Test Settings panel includes a **View run history** (🕐 clock icon) — click it to open the Run History panel. See [Viewing Toolkit History](#viewing-toolkit-history) for details.
+
+For comprehensive testing instructions and best practices, see [How to Test Toolkit Tools](../how-tos/credentials-toolkits/how-to-test-toolkit-tools.md).
 
 **Steps to Test a Toolkit:**
 
@@ -232,29 +237,31 @@ The toolkit configuration page includes a **Test Settings** panel on the right s
      ![Select a Model](../img/menus/toolkits/select-model.gif){loading=lazy}
 
 2. **Adjust Model Settings** (Optional): Click the **Model Settings** icon (⚙️) next to the model selector to fine-tune the response generation. The settings vary depending on the selected model:
+
     **For Reasoning Models** (e.g., GPT-5.1):
-    
-    * **Reasoning** - Controls the depth of logical thinking and problem-solving with three levels:
-        * **Low**: Fast, surface-level reasoning with concise answers and minimal steps
-        * **Medium**: Balanced reasoning with clear explanations and moderate multi-step thinking (default)
-        * **High**: Deep, thorough reasoning with detailed step-by-step analysis (may be slower)
-    
+
+    | Setting | Level | Description |
+    |---------|-------|-------------|
+    | **Reasoning** | Low | Fast, surface-level reasoning with concise answers and minimal steps |
+    | | Medium *(default)* | Balanced reasoning with clear explanations and moderate multi-step thinking |
+    | | High | Deep, thorough reasoning with detailed step-by-step analysis (may be slower) |
+
     **For Standard Models** (e.g., GPT-4o):
-    
-    * **Creativity** - Controls response randomness and creativity. Lower values produce more focused and deterministic outputs, while higher values generate more diverse and creative responses with five levels (1-5):
-        * **1**: Highly focused and deterministic outputs
-        * **2**: Mostly focused with slight variation
-        * **3**: Balanced between focus and creativity (default)
-        * **4**: More varied and creative responses
-        * **5**: Maximum creativity and diversity
-    
-    **Max Completion Tokens** Limits the maximum length of AI responses measured in tokens (roughly 4 characters per token).(All Models):
-    
-    * **Auto** (default): System automatically sets the token limit to 4096 tokens
-    * **Custom**: Manually set a specific token limit for responses
-        * When Custom is selected, you can enter a specific number of maximum tokens
-        * The interface shows remaining tokens available after your specified limit
-        * Setting too high a value will show an error if it exceeds the model's maximum output tokens
+
+    | Setting | Level | Description |
+    |---------|-------|-------------|
+    | **Creativity** | 1 | Highly focused and deterministic outputs |
+    | | 2 | Mostly focused with slight variation |
+    | | 3 *(default)* | Balanced between focus and creativity |
+    | | 4 | More varied and creative responses |
+    | | 5 | Maximum creativity and diversity |
+
+    **All Models:**
+
+    | Setting | Option | Description |
+    |---------|--------|-------------|
+    | **Max Completion Tokens** | Auto *(default)* | System automatically sets the token limit to 4096 tokens |
+    | | Custom | Manually set a specific token limit; interface shows remaining tokens available. An error is shown if the value exceeds the model's maximum output tokens |
 
     ![Model Settings](../img/menus/toolkits/model-settings.gif){loading=lazy}
 
@@ -283,12 +290,14 @@ For detailed instructions on using the Indexes tab, see [Using Indexes Tab Inter
 
 **Accessing the Indexes Tab**
 
-The Indexes tab is enabled in the toolkit detail page alongside the Run tab when:
+The Indexes tab is enabled in the toolkit detail page alongside the **Configuration tab** when:
 
 * The toolkit schema includes indexing tools (such as `index_data`, `search_index`, `remove_index`)
 * PgVector configuration is set
 * Embedding Model is configured
 * **index_data** tool is selected in the toolkit's tool selection
+
+     ![Indexes Tab](../img/menus/toolkits/toolkit-indexes-tab.gif)
 
 **Using the Indexes Tab**
 
@@ -300,26 +309,43 @@ The Indexes tab provides a dedicated interface for:
 * **Index operations:** Execute indexing operations and track their progress
 * **Removing indexes:** Delete indexes that are no longer needed
 
-![Indexex Tab](../img/menus/toolkits/indexes-tab.gif){loading=lazy}
+     ![Indexex Tab](../img/menus/toolkits/indexes-tab.gif){loading=lazy}
 
 ---
 
-### History Tab: Tracking Toolkit Operations
+### Viewing Toolkit History
 
-The **History** tab provides a comprehensive log of all operations and activities performed with the toolkit.
-For detailed instructions on using the History tab, see [Toolkit History Tab Guide](../how-tos/credentials-toolkits/toolkit_history_tab.md).
+The **Run History** panel provides a complete audit trail of all past test executions performed in the toolkit's Test Settings panel.
 
-**Using the History Tab**
+**How to access Run History:**
 
-The History tab allows you to:
+1. Open any saved toolkit.
+2. In the **right panel** of the Configuration tab (Test Settings area), click the **clock icon** (🕐) in the top bar. The tooltip reads *"View run history"*.
+3. The toolkit page is replaced by the two-panel Run History display. Click the **✕ (Close)** button to return to the Configuration tab.
 
-* **View operation history:** Track indexing operations and their status
-* **Monitor toolkit usage:** Review when and how the toolkit has been used
-* **Track changes:** See configuration changes and updates made to the toolkit
-* **Troubleshoot issues:** Analyze past operations to identify and resolve problems
-* **Audit trail:** Maintain a record of toolkit activities for compliance and review purposes
+**Run History layout:**
 
-![Indexex Tab](../img/menus/toolkits/history-tab.gif){loading=lazy}
+The Run History panel uses a two-panel layout:
+
+- **Left panel** — sortable list of all past test runs. Click any column header to sort:
+
+    | Column | Description |
+    |--------|-------------|
+    | **Date** | Timestamp of the run in `dd-MM-yyyy, hh:mm a` format |
+    | **Version** | Toolkit version used for the run |
+    | **Duration** | Total execution time of the run |
+
+    Click a row to load the conversation replay in the right panel. Each row also has a **three-dot menu (⋮)** with: **Share link**, **Delete**.
+
+- **Right panel** — full conversation replay of the selected test run.
+
+     ![History](../img/menus/toolkits/toolkit-view-history.gif)
+
+!!! info "Learn More About History"
+    For detailed instructions on using the Toolkit History panel, see the **[Toolkit History Tab Guide](../how-tos/credentials-toolkits/toolkit_history_tab.md)**.
+    
+    For general information on the History panel shared across agents, pipelines, and toolkits, see the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines/agents-pipelines-history.md)**.
+
 ---
 
 ## Using Toolkits in Your Workflows
@@ -400,6 +426,7 @@ If you encounter issues not covered in this guide or need additional assistance 
 !!! info "Additional Resources"
     Explore these related guides to maximize your toolkit usage:
 
+    * **[Sensitive Action Authorization Guardrail](../how-tos/chat-conversations/sensitive-action-authorization-guardrail.md)** — Learn how to protect sensitive toolkit actions by requiring human approval before they are executed.
     * **[Glossary](../home/glossary.md)** — Definitions of common terms used across the platform
     * **[Credentials](./credentials.md)** — Learn how to create and manage credentials used by toolkits
     * **[AI Configuration](./settings/ai-configuration.md)** — Set up embedding models and vector configurations

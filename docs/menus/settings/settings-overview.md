@@ -18,5 +18,5 @@ The **Settings** consists of several sections organized in a vertical navigation
 * [**Personal Tokens**](personal-tokens.md): Create and manage personal access tokens for API access and IDE integrations.
 * [**Secrets**](secrets.md): Securely store and manage API keys, passwords, and other authentication credentials used across your projects.
 * [**Users**](users.md): Manage users within a project, including inviting new users, editing user roles, and viewing user activity. This section requires appropriate permissions.
-* [**Monitoring**](monitoring.md): View comprehensive overview of the application's usage and performance metrics, and download monitoring data.
+* [**Analytics**](analytics.md): Explore detailed, project-scoped analytics covering AI adoption, agent and tool usage, per-user activity breakdowns, and system health metrics.
 

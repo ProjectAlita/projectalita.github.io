@@ -74,6 +74,7 @@ The Flow Editor consists of several key areas:
 * Code
 * Custom
 * Decision
+* HITL
 * LLM
 * MCP
 * Printer
@@ -81,7 +82,7 @@ The Flow Editor consists of several key areas:
 * State modifier
 * Toolkit
 
-![Add node](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/router-node-add.gif){loading=lazy}
+     ![Add node](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/hitl-node-add.gif){loading=lazy}
 
 ### Method 2: Drag from Connection
 
@@ -93,7 +94,7 @@ You can also add nodes while creating connections:
 4. Choose node type
 5. New node is created with connection already attached
 
-![Creating node from connection dropdown](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/drag-connector.gif){loading=lazy}
+     ![Creating node from connection dropdown](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/drag-connector.gif){loading=lazy}
 
 ---
 
@@ -119,7 +120,7 @@ Each node type has specific configuration fields. Common options include:
 2. Type the new name
 3. Press **Enter** or click outside to save
 
-![Renaming a node by clicking title](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/rename-node.gif){loading=lazy}
+     ![Renaming a node by clicking title](../../img/how-tos/agents-pipelines/pipeline-building-blocks/nodes/rename-node.gif){loading=lazy}
 
 ---
 
@@ -226,16 +227,6 @@ Changes made in Flow Editor **instantly appear in YAML**:
 
 ---
 
-## Best Practices
-
-* **Use Descriptive Node Names**: "Validate User Input" instead of "LLM Node"
-* **Organize Vertically**: Entry point at top, processing in middle, END at bottom
-* **Collapse Side Panels**: Maximize canvas space for complex pipelines
-* **Use Auto-Fix Layout**: Maintain clean alignment after adding/moving nodes
-* **Test Incrementally**: Build step-by-step, test after adding each node
-* **Save Frequently**: Prevent data loss by saving often
----
-
 ## Keyboard Shortcuts
 
 | Action | Shortcut |
@@ -247,47 +238,59 @@ Changes made in Flow Editor **instantly appear in YAML**:
 
 ---
 
+## Best Practices
+
+!!! tip
+    * **Use Descriptive Node Names**: "Validate User Input" instead of "LLM Node"
+    * **Organize Vertically**: Entry point at top, processing in middle, END at bottom
+    * **Collapse Side Panels**: Maximize canvas space for complex pipelines
+    * **Use Auto-Fix Layout**: Maintain clean alignment after adding/moving nodes
+    * **Test Incrementally**: Build step-by-step, test after adding each node
+    * **Save Frequently**: Prevent data loss by saving often
+
+---
+
 ## Troubleshooting
 
-### Nodes Not Connecting
+??? warning "Nodes Not Connecting"
 
-**Problem**: Cannot create connection between nodes.
+    **Problem**: Cannot create connection between nodes.
 
-**Solutions**:
+    **Solutions**:
 
-* Check if nodes are compatible (e.g., Router requires specific output nodes)
-* Verify you're dragging from output port (bottom) to input port (top)
-* Try **Auto-fix Layout** if nodes are overlapping
+    * Check if nodes are compatible (e.g., Router requires specific output nodes)
+    * Verify you're dragging from output port (bottom) to input port (top)
+    * Try **Auto-fix Layout** if nodes are overlapping
 
-### Canvas is Blank
+??? warning "Canvas is Blank"
 
-**Problem**: Flow Editor shows empty canvas.
+    **Problem**: Flow Editor shows empty canvas.
 
-**Solutions**:
+    **Solutions**:
 
-* Switch to **YAML** tab to check if pipeline has nodes
-* Click **Fit View** to center nodes
-* Refresh the page
+    * Switch to **YAML** tab to check if pipeline has nodes
+    * Click **Fit View** to center nodes
+    * Refresh the page
 
-### Changes Not Saving
+??? warning "Changes Not Saving"
 
-**Problem**: Edits disappear after closing pipeline.
+    **Problem**: Edits disappear after closing pipeline.
 
-**Solutions**:
+    **Solutions**:
 
-* Click **Save** button before navigating away
-* Check for error messages at top of screen
-* Verify network connection
+    * Click **Save** button before navigating away
+    * Check for error messages at top of screen
+    * Verify network connection
 
-### Node Configuration Not Opening
+??? warning "Node Configuration Not Opening"
 
-**Problem**: Clicking node doesn't show configuration panel.
+    **Problem**: Clicking node doesn't show configuration panel.
 
-**Solutions**:
+    **Solutions**:
 
-* Click directly on the node card (not the connection lines)
-* Unlock editing if canvas is locked (🔒 button)
-* Expand the **GENERAL** section if collapsed
+    * Click directly on the node card (not the connection lines)
+    * Unlock editing if canvas is locked (🔒 button)
+    * Expand the **GENERAL** section if collapsed
 
 ---
 
@@ -296,7 +299,7 @@ Changes made in Flow Editor **instantly appear in YAML**:
     * **[Nodes Connectors](nodes-connectors.md)**: Learn how to connect nodes and manage transitions
     * **[States Guide](states.md)**: Configure state variables for data flow
     * **[YAML Configuration](yaml.md)**: Work directly with YAML code
-    * **[Nodes Overview](nodes/overview.md)**: Understand all 10 node types
+    * **[Nodes Overview](nodes/overview.md)**: Understand all 11 node types
     * **[Entry Point Guide](entry-point.md)**: Set up pipeline starting points
 
 ---

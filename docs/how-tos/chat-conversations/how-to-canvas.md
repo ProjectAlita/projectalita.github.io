@@ -24,13 +24,14 @@ Canvas is a built-in editor that appears automatically when ELITEA generates cod
 * Version Control: Easily track changes with built-in undo/redo functionality.
 * Flexible Exporting: Save or copy your refined content in various formats suitable for documentation, code repositories, or reports.
 
-### Canvas supports three primary content types:
+### Canvas supports four primary content types:
 
 | **Content Type**   | **Description**                          | **Common Uses**                                      |
 |---------------------|------------------------------------------|-----------------------------------------------------|
 | **Code Blocks**     | For programming and scripting languages. | Python, Java, SQL, YAML, Selenium scripts.          |
 | **Tables**          | For structured, tabular data.            | Test cases, requirements matrices, data sets.       |
 | **Mermaid Diagrams**| For text-based visual diagrams.          | Flowcharts, sequence diagrams, ERDs.                |
+| **DOCX Files**      | For Word documents (.docx).              | Reports, specifications, documentation drafts.      |
 
  
 ## Getting Started: Accessing and Using Canvas
@@ -40,7 +41,7 @@ Using Canvas is a simple, three-step process.
 ### Prerequisites
 
 * Ensure you have access to an [ELITEA conversation](how-to-use-chat-functionality.md) with supported participants, such as Agents, Pipelines, or LLM Models.
-* The AI participant (Agent, Pipeline, or LLM Model) should generate content in the form of a code block, a Markdown table, or a Mermaid diagram.
+* The AI participant (Agent, Pipeline, or LLM Model) should generate content in the form of a code block, a Markdown table, or a Mermaid diagram. DOCX files can also be opened directly from Artifacts or chat attachments.
 
 ### Step 1: Generate Canvas-Compatible Content
 
@@ -162,6 +163,50 @@ The Mermaid Diagram Editor allows you to edit the simple text-based syntax of a 
       * He adds styling to the "Rejected" end-state node to make it red, highlighting the negative path.
 4. **Export**: Happy with the visual, Tom clicks **Export** and saves the diagram as a PNG, ready to be inserted directly into his PowerPoint presentation.
 
+
+#### The DOCX Editor
+
+**Ideal for Business Analysts, Technical Writers, and anyone working with Word documents.**  
+The DOCX Editor provides a full WYSIWYG editing experience for `.docx` files stored in Artifacts or attached to chat conversations. You can edit document content directly—no need to download, open in Word, and re-upload.
+
+**Key Features**
+
+* **WYSIWYG Editing**: See your document as it will appear—formatted text, headings, lists, and tables rendered in real time.
+* **Formatting Toolbar**: Apply bold, italic, underline, heading styles, lists, and other rich-text formatting.
+* **Ruler**: Adjust indentation and paragraph layout using the document ruler.
+* **Zoom Control**: Zoom in or out to inspect document details or get a full-page view.
+* **Save as DOCX**: Saving overwrites the original `.docx` file, preserving the Word format.
+* **Discard Changes**: Reset the editor to the last saved state at any time.
+
+!!! note "DOCX Editor Limitations"
+    - DOCX files are always edited in **WYSIWYG mode**. There is no Raw mode or language dropdown.
+    - The DOCX Editor is only available for `.docx` files. Legacy `.doc` files are not editable.
+    - The Canvas pencil icon (✏️) does **not** appear for DOCX files in chat — open DOCX files via the **View/Edit file icon** in Artifacts or chat attachments instead.
+
+**Real-World Example: Editing a Requirements Document**
+
+!!! example
+    **Role**: Emma, a Business Analyst.  
+    **Goal**: Update a requirements specification stored in Artifacts without leaving ELITEA.
+
+    1. **Open**: Emma navigates to the Artifacts bucket containing `requirements_v2.docx` and clicks the **View/Edit file icon** to open it in Canvas.
+    2. **Edit in Canvas**:
+        - She uses the formatting toolbar to update section headings and fix bullet list formatting.
+        - She adds a new acceptance criteria section directly in the WYSIWYG editor.
+        - She uses the zoom control to review the full-page layout before saving.
+    3. **Save**: Emma clicks **Save** — the updated file overwrites the original `.docx` in the bucket.
+    4. **Result**: The refreshed specification is immediately available to all team members with bucket access, without any download/upload cycle.
+
+    ![Docx](../../img/how-tos/chat-conversations/canvas/docx-editor.gif){width="680"}
+
+
+**Benefits:**
+
+- No need to download, edit in Microsoft Word, and re-upload
+- Changes are immediately visible to all team members with bucket access
+- Preserves native Word formatting and structure
+
+---
 
 ### Tips and Best Practices
 

@@ -17,7 +17,7 @@ A code editor for pipelines in the **Configuration** tab (alongside [Flow Editor
 * **Find & Replace**: `Ctrl+F` (Windows) or `⌘+F` (Mac)
 * **Version Control**: Copy/paste YAML for backup or sharing
 
-![YAML Editor Interface](../../img/how-tos/agents-pipelines/pipeline-building-blocks/yaml/yaml-editor-interface.png)
+    ![YAML Editor Interface](../../img/how-tos/agents-pipelines/pipeline-building-blocks/yaml/yaml-editor-interface.png)
 
 ---
 
@@ -106,7 +106,7 @@ The `nodes` array contains all pipeline nodes with common structure plus node-sp
 
 ## Node-Type-Specific Configurations
 
-Complete configurations for all 7 node types. See [Nodes Overview](nodes/overview.md) for detailed documentation.
+Configurations for key node types. See [Nodes Overview](nodes/overview.md) for the full list of all 11 node types.
 
 ### 1. [LLM Node](nodes/interaction-nodes.md#llm-node)
 
@@ -258,6 +258,39 @@ Transforms state with Jinja2 templates.
   transition: NextStep
 ```
 
+### 7. [HITL Node](nodes/control-flow-nodes.md#human-in-the-loop-node)
+
+Pauses pipeline execution and waits for a human decision (Approve, Edit, or Reject) before continuing.
+
+```yaml
+- id: Review_summary
+  type: hitl
+  input:
+    - summary
+  user_message:
+    type: fstring             # fixed | fstring | variable
+    value: "Please review the following summary and choose an action:\n\n{summary}"
+  routes:
+    approve: Publish_node     # Route on Approve
+    reject: END               # Route on Reject
+    edit: Regenerate_node     # Route on Edit
+  edit_state_key: summary     # State variable updated when user edits
+```
+
+**User Message Types:**
+
+| Type | Description | Example |
+|------|-------------|----------|
+| `fixed` | Static text shown as-is | `"Please approve to continue."` |
+| `fstring` | Template with `{state_key}` placeholders resolved from state | `"Review draft:\n\n{draft_content}"` |
+| `variable` | Reads the entire message from a named state variable | `review_message` |
+
+!!! info "Route and Edit Rules"
+    - Only configured routes appear as buttons in the UI — omit routes you don't need
+    - `edit` requires `edit_state_key` to be set; omitting either hides the Edit button
+    - Use `END` as a route value to terminate the pipeline for that action
+    - HITL nodes do not use `transition` — routing is handled entirely by `routes`
+
 ---
 
 ## [Entry Point](entry-point.md)
@@ -343,6 +376,21 @@ nodes:
       default_output: END
 ```
 
+**HITL Routes:**
+```yaml
+nodes:
+  - id: ReviewStep
+    type: hitl
+    user_message:
+      type: fixed
+      value: "Please approve or reject the generated content."
+    routes:
+      approve: PublishNode
+      reject: END
+      edit: ReviseNode
+    edit_state_key: draft_content
+```
+
 ---
 
 ## Editor Features
@@ -355,7 +403,7 @@ nodes:
 * Line numbers for navigation
 * Find & Replace: `Ctrl+F` (Windows) / `⌘+F` (Mac)
 
-![CodeMirror Highlighting](../../img/how-tos/agents-pipelines/pipeline-building-blocks/yaml/codemirror-highlighting.png)
+   ![CodeMirror Highlighting](../../img/how-tos/agents-pipelines/pipeline-building-blocks/yaml/codemirror-highlighting.png)
 
 **Two-Way Sync:**
 
@@ -443,7 +491,7 @@ value: None
 **Invalid Type:**
 ```yaml
 ✘ type: invalid_type
-✔️ type: llm  # Use: llm, agent, toolkit, mcp, code, custom, router, decision, state_modifier
+✔️ type: llm  # Use: llm, agent, toolkit, mcp, code, custom, router, decision, hitl, state_modifier, printer
 ```
 
 **Missing Fields:**
@@ -470,76 +518,74 @@ Before saving:
 
 ### Best Practices
 
-**Use Descriptive IDs:**
-```yaml
-✔️ - id: FetchUserData
-✘ - id: Node1
-```
+??? tip "Use Descriptive IDs"
+    ```yaml
+    ✔️ - id: FetchUserData
+    ✘ - id: Node1
+    ```
 
-**Initialize Defaults:**
-```yaml
-✔️ counter: {type: number, value: 0}
-✘ counter: {type: number}
-```
+??? tip "Initialize Defaults"
+    ```yaml
+    ✔️ counter: {type: number, value: 0}
+    ✘ counter: {type: number}
+    ```
 
-**Multi-Line Templates:**
-```yaml
-✔️ template: |
-     {% if condition %}NodeA{% else %}NodeB{% endif %}
-✘ template: '{% if condition %}NodeA{% else %}NodeB{% endif %}'
-```
+??? tip "Multi-Line Templates"
+    ```yaml
+    ✔️ template: |
+         {% if condition %}NodeA{% else %}NodeB{% endif %}
+    ✘ template: '{% if condition %}NodeA{% else %}NodeB{% endif %}'
+    ```
 
-**Group Nodes:**
-```yaml
-nodes:
-  # Data Loading
-  - id: LoadData
-  # Processing
-  - id: ProcessData
-```
+??? tip "Group Nodes with Comments"
+    ```yaml
+    nodes:
+      # Data Loading
+      - id: LoadData
+      # Processing
+      - id: ProcessData
+    ```
 
-**Don't Hardcode Secrets:**
-```yaml
-✘ api_key: {type: fixed, value: "sk-123"}
-✔️ Use Credentials instead
-```
+??? tip "Don't Hardcode Secrets"
+    ```yaml
+    ✘ api_key: {type: fixed, value: "sk-123"}
+    ✔️ Use Credentials instead
+    ```
 
-**Avoid Unreachable Nodes:**
-```yaml
-✘ - id: Node1
-     transition: Node3
-   - id: Node2  # Unreachable
-```
+??? tip "Avoid Unreachable Nodes"
+    ```yaml
+    ✘ - id: Node1
+         transition: Node3
+       - id: Node2  # Unreachable
+    ```
 
-**Always Terminate:**
-```yaml
-✔️ - id: FinalNode
-     transition: END
-```
+??? tip "Always Terminate"
+    ```yaml
+    ✔️ - id: FinalNode
+         transition: END
+    ```
 
-### Workflow Tips
-
-1. **Start Visual, Refine in Code:** Use Flow Editor for layout → YAML for bulk edits
-2. **Bulk Updates:** Find/replace to update toolkit names, node IDs
-3. **Test Incrementally:** Add one node at a time, run pipeline after each
-4. **Version Control:** Copy YAML to files, commit to git
-5. **Use Comments:**
-   ```yaml
-   # Step 1: Load data
-   - id: LoadData
-   ```
+??? tip "Workflow Tips"
+    1. **Start Visual, Refine in Code:** Use Flow Editor for layout → YAML for bulk edits
+    2. **Bulk Updates:** Find/replace to update toolkit names, node IDs
+    3. **Test Incrementally:** Add one node at a time, run pipeline after each
+    4. **Version Control:** Copy YAML to files, commit to git
+    5. **Use Comments:**
+       ```yaml
+       # Step 1: Load data
+       - id: LoadData
+       ```
 
 ---
 
-## Related Documentation
-
-* [Flow Editor](flow-editor.md) - Visual pipeline building
-* [States](states.md) - State variable design
-* [Nodes Overview](nodes/overview.md) - All node types
-* [Nodes Connectors](nodes-connectors.md) - Connection patterns
-* [Entry Point](entry-point.md) - Entry point rules
-* [Interaction Nodes](nodes/interaction-nodes.md) - LLM, Agent
-* [Execution Nodes](nodes/execution-nodes.md) - Toolkit, MCP, Code, Custom nodes
-* [Control Flow Nodes](nodes/control-flow-nodes.md) - Router, Decision
-* [Utility Nodes](nodes/utility-nodes.md) - State Modifier
+!!! related "Related Documentation"
+    * [Flow Editor](flow-editor.md) - Visual pipeline building
+    * [States](states.md) - State variable design
+    * [Nodes Overview](nodes/overview.md) - All node types
+    * [Nodes Connectors](nodes-connectors.md) - Connection patterns
+    * [Entry Point](entry-point.md) - Entry point rules
+    * [Interaction Nodes](nodes/interaction-nodes.md) - LLM, Agent
+    * [Execution Nodes](nodes/execution-nodes.md) - Toolkit, MCP, Code, Custom nodes
+    * [Control Flow Nodes](nodes/control-flow-nodes.md) - Router, Decision, HITL
+    * [Utility Nodes](nodes/utility-nodes.md) - State Modifier, Printer
 

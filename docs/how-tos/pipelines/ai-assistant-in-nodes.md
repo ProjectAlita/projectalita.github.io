@@ -91,6 +91,7 @@ AI Assistant is available in the following pipeline nodes and their specific fie
 | **[State Modifier Node](#state-modifier-node)** | Jinja Template | Template for state transformation | Generate Jinja2 templates, create formatted output, build dynamic content |
 | **[Router Node](#router-node)** | Condition | Jinja2 template for routing logic | Generate routing conditions, create complex branching logic, build pattern matching rules |
 | **[Decision Node](#decision-node)** | Description | Context for LLM decision-making | Generate decision criteria, create routing descriptions, define decision logic |
+| **[HITL Node](#hitl-node)** | User Message | Message shown to user at the interrupt point | Craft clear review requests, write F-String messages with state variable context, create actionable approval prompts |
 | **[Printer Node](#printer-node)** | Printer | Output formatting template | Generate display templates, create formatted messages, build user-facing output |
 
 
@@ -298,6 +299,36 @@ AI Assistant is available in the following pipeline nodes and their specific fie
 
 ---
 
+### HITL Node
+
+**Use Cases:**
+
+* Craft clear, context-aware approval request messages
+* Build F-String messages that embed state variable content for user review
+* Write actionable interrupt prompts that guide the user on what to do next
+* Create professional review messages for compliance or content approval workflows
+
+!!! example "Generate F-String Review Message"
+
+    **Prompt:** "Write an F-String user message asking the reviewer to read a generated article draft and choose an action. The message should show the article title and summary, and explain what each button does."
+
+    **Generated User Message:**
+    ```
+    Please review the article draft before it is published.
+
+    **Title:** {article_title}
+
+    **Summary:**
+    {article_summary}
+
+    Choose an action:
+    - **Approve** — publish the article as-is
+    - **Edit** — modify the draft content before publishing
+    - **Reject** — discard the draft and restart generation
+    ```
+
+---
+
 ### Printer Node
 
 **Use Cases:**
@@ -307,7 +338,7 @@ AI Assistant is available in the following pipeline nodes and their specific fie
 * Pause pipeline for user inspection
 * Show progress updates during multi-step workflows
 
-??? example "Generate Processing Summary (Type: F-String)"
+!!! example "Generate Processing Summary (Type: F-String)"
 
     Create a comprehensive processing summary that combines multiple variables and includes conditional formatting.
 
@@ -481,6 +512,18 @@ AI Assistant is available in the following pipeline nodes and their specific fie
     Result: Professional template with formatting, conditionals, and loops.
     ```
 
+??? example "Craft HITL User Messages"
+
+    **Challenge:** Writing clear, actionable interrupt messages that tell reviewers exactly what to do and what each button means.
+
+    **Solution with AI Assistant:**
+
+    ```
+    Prompt: "Write an F-String message for a compliance review checkpoint that shows the generated policy text and explains what approve, edit, and reject will each do"
+
+    Result: Structured review message with {state_variable} placeholders, plain-language button descriptions, and a professional tone suitable for compliance workflows.
+    ```
+
 ---
 
 ## Best Practices
@@ -626,14 +669,14 @@ AI Assistant is available in the following pipeline nodes and their specific fie
 
 ---
 
-## Related Documentation
-
-* **[LLM Node](nodes/interaction-nodes.md#llm-node)** - Configure LLM nodes with AI Assistant
-* **[Code Node](nodes/execution-nodes.md#code-node)** - Write Python code with AI help
-* **[State Modifier Node](nodes/utility-nodes.md#state-modifier-node)** - Create Jinja templates
-* **[Router Node](nodes/control-flow-nodes.md#router-node)** - Build routing conditions
-* **[Decision Node](nodes/control-flow-nodes.md#decision-node)** - Write decision descriptions
-* **[Pipeline Configuration](overview.md)** - Configure pipeline LLM settings
-* **[States](states.md)** - Understanding pipeline state for AI-generated code
+!!! related "Related Documentation"
+    * **[LLM Node](nodes/interaction-nodes.md#llm-node)** - Configure LLM nodes with AI Assistant
+    * **[Code Node](nodes/execution-nodes.md#code-node)** - Write Python code with AI help
+    * **[State Modifier Node](nodes/utility-nodes.md#state-modifier-node)** - Create Jinja templates
+    * **[Router Node](nodes/control-flow-nodes.md#router-node)** - Build routing conditions
+    * **[Decision Node](nodes/control-flow-nodes.md#decision-node)** - Write decision descriptions
+    * **[HITL Node](nodes/control-flow-nodes.md#human-in-the-loop-node)** - Create user interrupt messages
+    * **[Pipeline Configuration](overview.md)** - Configure pipeline LLM settings
+    * **[States](states.md)** - Understanding pipeline state for AI-generated code
 
 ---

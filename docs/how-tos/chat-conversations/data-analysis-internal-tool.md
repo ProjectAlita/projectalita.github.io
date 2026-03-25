@@ -53,11 +53,13 @@ Enable the Data Analysis tool for ad-hoc data analysis in conversations.
 You can configure Data Analysis as part of an agent's default configuration.
 
 1. Navigate to **Agents** in the main menu.
-2. Select the agent you want to configure.
-3. Scroll to the **TOOLKITS** section .
-4. In the TOOLKITS section, find the **Data Analysis** switch.
-5. Toggle the switch to enable Data Analysis for this agent.
-6. Click **Save** at the top of the configuration page to persist the change. New conversations created with this agent will have Data Analysis enabled by default.
+2. Select the agent you want to configure or create a new agent.
+3. On the **Configuration** tab, scroll down to the **TOOLKITS** section.
+4. Within the TOOLKITS section, locate the **INTERNAL TOOLS** subsection.
+5. Find the **Data Analysis** toggle. If it is not visible, click **Show all** to expand the full list of internal tools.
+6. Click the **Data Analysis** toggle to enable it.
+7. Click **Save** at the top of the configuration page to persist the change.
+8. New conversations created with this agent will have Data Analysis enabled by default.
 
 !!! info "Agent vs Conversation Settings"
     - **Agent Configuration**: Sets the default state for all new conversations with that agent
@@ -219,14 +221,16 @@ What happens: the assistant indexes the uploaded data first, then performs the r
     
     * Insufficient user permissions
     * Internal Tools popup not accessible
+    * Internal Tools icon hidden because no tools pass the availability filter
     * UI configuration issue
     
     **Solution:**
     
     1. Confirm you have conversation edit access permissions
-    2. Check that the Internal Tools button is visible next to the attachment button
-    3. Verify Data Analysis appears in the popup list
+    2. Check that the Internal Tools icon (value icon) is visible next to the attachment button — the icon is hidden entirely when no internal tools are available for the project
+    3. Verify Data Analysis appears in the popup list after clicking the icon
     4. Refresh the page and try accessing the popup again
+    5. If the icon is missing, contact your project administrator to confirm internal tools are enabled for the project
 
 ??? warning "Data Analysis requests timeout or fail"
 

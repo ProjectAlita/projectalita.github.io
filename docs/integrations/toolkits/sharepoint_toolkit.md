@@ -1,22 +1,24 @@
-# ELITEA Toolkit Guide: SharePoint Integration
+# SharePoint Toolkit Integration Guide
+
+---
 
 ## Introduction
 
-### Purpose of the Guide
+This guide is your definitive resource for integrating and utilizing the **SharePoint toolkit** within ELITEA. It provides a comprehensive, step-by-step walkthrough, from registering your SharePoint application in Azure Active Directory to configuring the toolkit in ELITEA and effectively using it within your Agents. By following this guide, you will unlock the power of automated document management, streamlined collaboration workflows, and enhanced information access, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your SharePoint-driven workflows using the combined strengths of ELITEA and Microsoft SharePoint.
 
-This guide is your definitive resource for integrating and effectively utilizing the **SharePoint toolkit** within ELITEA. It provides a detailed, step-by-step walkthrough, from registering your SharePoint application in Azure Active Directory to configuring the toolkit in ELITEA and seamlessly incorporating it into your Agents. By following this guide, you will unlock the power of automated document management, streamlined collaboration workflows, and enhanced information access, all directly within the ELITEA platform. This integration empowers you to leverage AI-driven automation to optimize your SharePoint-driven workflows, enhance team productivity, and improve information management within your organization.
+**Brief Overview of Microsoft SharePoint**
 
-### Brief Overview of Microsoft SharePoint
+Microsoft SharePoint is a powerful web-based collaboration and document management platform that enables organizations to create sites, document libraries, lists, and other collaborative resources. It is a cornerstone of modern digital workplaces, facilitating teamwork, information sharing, and workflow automation. Key features of SharePoint include:
 
-Microsoft SharePoint is a powerful web-based collaboration and document management platform that enables organizations to create websites, document libraries, lists, and other collaborative resources. It is a cornerstone of modern digital workplaces, facilitating teamwork, information sharing, and workflow automation. Key features of SharePoint include:
+*   **Centralized Document Management:** SharePoint provides a central repository for storing, organizing, and managing documents, ensuring version control, secure access, and efficient document retrieval. Document libraries offer features like check-in/check-out, version history, and metadata tagging for robust document lifecycle management.
+*   **Collaborative Workspaces and Team Sites:** SharePoint enables the creation of team sites and collaboration workspaces, providing teams with a shared platform for communication, document sharing, task management, and project collaboration.
+*   **Customizable Lists and Libraries:** SharePoint lists and libraries are highly customizable and can be tailored to meet specific business needs. Lists can track tasks, manage contacts, or hold custom data tables, while libraries organize documents and media of all types.
+*   **Workflow Automation:** SharePoint supports workflow automation through Power Automate and SharePoint workflows, allowing organizations to automate business processes, streamline approvals, and automate document-centric workflows.
+*   **Enterprise Search Capabilities:** SharePoint offers robust enterprise search capabilities, enabling users to quickly find relevant information across sites, document libraries, lists, and other content sources.
 
-*   **Centralized Document Management:** SharePoint provides a central repository for storing, organizing, and managing documents, ensuring version control, secure access, and efficient document retrieval. Document libraries in SharePoint offer features like check-in/check-out, version history, and metadata tagging for robust document lifecycle management.
-*   **Collaborative Workspaces and Team Sites:** SharePoint enables the creation of team sites and collaboration workspaces, providing teams with a shared platform for communication, document sharing, task management, and project collaboration. Team sites facilitate teamwork and information sharing within project teams and departments.
-*   **Customizable Lists and Libraries:** SharePoint lists and libraries are highly customizable and can be tailored to meet specific business needs. Lists can be used to track tasks, manage contacts, or create custom data tables, while libraries can be structured to organize various types of documents and media.
-*   **Workflow Automation:** SharePoint supports workflow automation through Power Automate and SharePoint workflows, allowing organizations to automate business processes, streamline approvals, and automate document-centric workflows, improving efficiency and reducing manual tasks.
-*   **Enterprise Search Capabilities:** SharePoint offers robust enterprise search capabilities, enabling users to quickly find relevant information across SharePoint sites, document libraries, lists, and other content sources, improving information discovery and knowledge sharing.
+Integrating SharePoint with ELITEA brings these powerful collaboration and document management capabilities directly into your AI-driven workflows. Your ELITEA Agents can then intelligently interact with your SharePoint sites, lists, and libraries to automate document-related tasks, enhance collaboration processes, and improve information accessibility through intelligent automation.
 
-Integrating SharePoint with ELITEA brings these powerful collaboration and document management capabilities directly into your AI-driven workflows. Your ELITEA Agents can then intelligently interact with your SharePoint sites, lists, and libraries to automate document-related tasks, enhance collaboration processes, and improve information accessibility through AI-powered automation.
+---
 
 ## Toolkit's Account Setup and Configuration in SharePoint
 
@@ -28,57 +30,80 @@ To enable secure integration between ELITEA and SharePoint, you need to register
 2.  **Navigate to App Registrations:** In the Azure portal, use the search bar at the top to search for "App registrations" and select **"App registrations"** from the search results under "Services".
 3.  **Create New Registration:** On the "App registrations" page, click on **"+ New registration"**.
  
-    ![SharePoint-App_Registration_New_Registration](../../img/integrations/toolkits/sharepoint/SharePoint-App_Registration_New_Registration.png)
+    ![SharePoint-App_Registration_New_Registration](../../img/integrations/toolkits/sharepoint/app-registrations-navigate.gif)
 
 4.  **Configure App Registration Details:** On the "Register an application" page, provide the following information:
     *   **Name:** Enter a meaningful and descriptive name for your application registration. For example, use "ELITEA SharePoint Integration" or "ELITEA Agent Access to SharePoint". This name will help you identify the purpose of this app registration later.
     *   **Supported account types:** Select the appropriate account type based on your organization's requirements. In most cases, **"Accounts in this organizational directory only (\[Your Organization Name] only - Single tenant)"** is the recommended option for internal organizational use. If you need to access SharePoint resources across multiple organizations, you may need to select a different option.
-    *   **Redirect URI (Optional):** You do not need to configure a Redirect URI for this integration as ELITEA will be authenticating as an application without user interaction. Leave the "Redirect URI" field blank.
+    *   **Redirect URI:** If you plan to use **Delegated (User OAuth)** authentication, set the redirect URI here during registration:
+          1. In the **"Select a platform"** dropdown, select **"Web"**.
+          2. In the URI field, enter the ELITEA callback URL for your instance. The correct value depends on your deployment — refer to the info callout below.
+
+        > If you are using **App-Only (Client Credentials)** mode only, leave this field blank.
+
 5.  **Register Application:** After providing the application details, click the **"Register"** button at the bottom of the page to create the app registration.
  
-    ![SharePoint-Register_an_Application](../../img/integrations/toolkits/sharepoint/SharePoint-Register_an_Application.png)
+     ![SharePoint-Register_an_Application](../../img/integrations/toolkits/sharepoint/app-registrations-configs.gif)
 
-6.  **Note Application Credentials:** Once the app registration is created successfully, you will be redirected to the application's "Overview" page. **Note down the following credentials from this page, as you will need them to configure the SharePoint toolkit in ELITEA:**
-    *   **Application (client) ID:** This is the unique identifier for your registered application. Copy and store this value securely.
-    *   **Directory (tenant) ID:** This is the unique identifier for your Azure AD tenant (your organization's Azure AD instance). Copy and store this value securely.
+!!! info "ELITEA OAuth Redirect URI"
+    The redirect URI to register in Azure AD depends on your ELITEA deployment:
 
-    ![SharePoint-App_Registration_Overview](../../img/integrations/toolkits/sharepoint/SharePoint-App_Registration_Overview.png)
+    | Deployment Type | Redirect URI |
+    |----------------|--------------|
+    | **ELITEA Cloud** | **Pattern:** `https://<your-elitea-instance-domain>/app/mcp-auth-callback` <br> **Example:** `https://next.elitea.ai/app/mcp-auth-callback` |
+    | **Self-hosted / standard path** | `https://<your-domain>/mcp-auth-callback` |
+    | **Self-hosted / sub-path (e.g., `/app`)** | `https://<your-domain>/app/mcp-auth-callback` |
+
+    !!! note "URL is not shown in the UI"
+        ELITEA does not display the redirect URI anywhere in its interface. The URL is automatically derived from the domain your ELITEA instance is deployed on. If you are unsure which value applies, contact your ELITEA administrator.
+
+### Application Credentials
+
+Once the app registration is created successfully, you will be redirected to the application's **Overview** page. Note down the following credentials, as you will need them to configure the SharePoint toolkit in ELITEA:
+
+*   **Application (client) ID** — Copy and store this value securely.
+*   **Directory (tenant) ID** — Copy and store this value securely.
+
+     ![SharePoint-App_Registration_Overview](../../img/integrations/toolkits/sharepoint/application-credentials.png)
+  
 
 ### Configure API Permissions for the Registered App
 
 To allow ELITEA to access SharePoint resources, you need to configure API permissions for your registered application. This involves granting the application the necessary permissions to interact with Microsoft Graph and SharePoint APIs.
 
 1.  **Navigate to API Permissions:** In your registered app within the Azure portal, navigate to the left-hand menu and click on **"API permissions"**.
-
-    ![SharePoint-API_Permissions_tab](../../img/integrations/toolkits/sharepoint/SharePoint-API_Permissions_tab.png)
-
 2.  **Add Permissions:** On the "API permissions" page, click on **"+ Add a permission"**.
-
-    ![SharePoint-Add_a_Permission](../../img/integrations/toolkits/sharepoint/SharePoint-Add_a_Permission.png)
-
 3.  **Select API Type - Microsoft Graph:** In the "Request API permissions" panel, select the **"Microsoft Graph"** API tile. Microsoft Graph provides access to various Microsoft 365 services, including SharePoint.
-4.  **Select Permission Type - Application permissions:** Choose **"Application permissions"** as the permission type. Application permissions are used when the application acts without a signed-in user, which is the case for ELITEA's SharePoint integration.
-5.  **Add Microsoft Graph Scopes:** In the "Application permissions" section, use the search bar to search for and select the following scopes. These scopes grant ELITEA Agents the necessary permissions to access SharePoint resources through Microsoft Graph:
-    *   **`Sites.Read.All`**: Allows the application to read site collections and list all sites, lists, and libraries in all site collections without a signed-in user.
-    *   **`Sites.ReadWrite.All`**: Allows the application to read and write site collections and list all sites, lists, and libraries in all site collections without a signed-in user. **Note:** Grant this scope only if your ELITEA Agents need to modify SharePoint content (e.g., create or update files). If you only need read-only access, only grant `Sites.Read.All`.
 
-    ![SharePoint-API_Permissions_Microsoft_Graph](../../img/integrations/toolkits/sharepoint/SharePoint-API_Permissions_Microsoft_Graph.png)
+    ![SharePoint-Add_a_Permission](../../img/integrations/toolkits/sharepoint/app-permission-navigate.gif)
+
+4.  **Select Permission Type - Application permissions:** Choose **"Application permissions"** as the permission type. Application permissions are used when the application acts without a signed-in user (App-Only mode). If you are using Delegated (User OAuth) mode, you may also need to add **Delegated permissions**.
+5.  **Add Microsoft Graph Scopes:** In the "Application permissions" section, use the search bar to search for and select the following scopes:
+
+    | **Scope** | **Description** | **When to Grant** |
+    |-----------|-----------------|-------------------|
+    | `Sites.Read.All` | Read all site collections, lists, and libraries without a signed-in user | Always — required for read access |
+    | `Sites.ReadWrite.All` | Read and write all site collections, lists, and libraries without a signed-in user | Only if Agents need to create or modify SharePoint content |
+
+    ![SharePoint-API_Permissions_Microsoft_Graph](../../img/integrations/toolkits/sharepoint/app-permission-microsoft-graph.gif)
 
 6.  **Add Permissions - SharePoint API:** Click **"+ Add a permission"** again to add SharePoint-specific permissions. This time, in the "Request API permissions" panel, select the **"SharePoint"** API tile (you may need to scroll down to find it).
-7.  **Select Permission Type - Application permissions:** Choose **"Application permissions"** as the permission type again.
-8.  **Add SharePoint Scopes:** In the "Application permissions" section for SharePoint API, use the search bar to search for and select the following scopes. These scopes grant ELITEA Agents direct SharePoint-specific access:
-    *   **`Sites.FullControl.All`**: Allows the application to have full control of all site collections without a signed-in user. **Important Security Note:** Grant this scope with caution and only if absolutely necessary, as it provides extensive permissions. For most use cases, more granular scopes through Microsoft Graph are sufficient and recommended for better security.
+7.  **Select Permission Type - Application permissions:** Choose **"Application permissions"** as the permission type for the SharePoint API as well. If you are using Delegated (User OAuth) mode, select **Delegated permissions** instead.
+8.  **Add SharePoint Scopes:** In the "Application permissions" section for SharePoint API, use the search bar to search for and select the following scope:
 
-    ![SharePoint-Microsoft_APIs](../../img/integrations/toolkits/sharepoint/SharePoint-Microsoft_APIs.png)
-
-    ![SharePoint-Request_API_Permissions](../../img/integrations/toolkits/sharepoint/SharePoint-Request_API_Permissions.png)
+    | **Scope** | **Description** | **When to Grant** |
+    |-----------|-----------------|-------------------|
+    | `Sites.FullControl.All` | Full control of all site collections without a signed-in user | Only if absolutely necessary — prefer Microsoft Graph scopes for better security |
 
 9.  **Add Permissions:** After selecting the necessary scopes for both Microsoft Graph and SharePoint APIs, click the **"Add permissions"** button at the bottom of the "Request API permissions" panel to add the selected permissions to your application registration.
+
+    ![SharePoint-Request_API_Permissions](../../img/integrations/toolkits/sharepoint/app-permission-sharepoint.gif)
+
 10. **Grant Admin Consent:** On the "API permissions" page, you will see the newly added permissions listed. Click the **"Grant admin consent for \[Your Organization Name]"** button and then click **"Yes"** to grant admin consent for these permissions. **Admin consent is required for application permissions to take effect.**
 
-![SharePoint-Grant_Admin_Consent](../../img/integrations/toolkits/sharepoint/SharePoint-Grant_Admin_Consent.png)
 
-**Note:** If you are unable to obtain admin consent for application permissions, you can use **delegated permissions** instead. This allows ELITEA to access SharePoint resources on behalf of the signed-in user. For example, this approach can be used when integrating with EPAM SharePoint pages.
+!!! note "Delegated Permissions"
+    If you cannot obtain admin consent for application permissions, you can use **delegated permissions** instead. This allows ELITEA to access SharePoint resources on behalf of a signed-in user. This approach is commonly used when integrating with organizational SharePoint pages.
 
 
 ### Configure the Client Secret
@@ -86,290 +111,790 @@ To allow ELITEA to access SharePoint resources, you need to configure API permis
 To securely authenticate your ELITEA Agents with SharePoint, you need to create a Client Secret for your registered application. The Client Secret acts as a password for your application when authenticating with Azure AD.
 
 1.  **Navigate to Certificates & secrets:** In your registered app within the Azure portal, navigate to the left-hand menu and click on **"Certificates & secrets"**.
-
-    ![SharePoint-Certificates_Secrets_page](../../img/integrations/toolkits/sharepoint/SharePoint-Certificates_Secrets_page.png)
-
 2.  **Create New Client Secret:** On the "Certificates & secrets" page, click on **"Client secrets"** tab (if not already selected) and then click **"+ New client secret"**.
-
-    ![SharePoint-New_Client_Secret](../../img/integrations/toolkits/sharepoint/SharePoint-New_Client_Secret.png)
-
 3.  **Configure Client Secret Details:** In the "Add a client secret" panel:
-    *   **Description:** Enter a descriptive name for your client secret. For example, use "ELITEA Integration Client Secret" or "SharePoint Access Secret." This description will help you identify the purpose of this client secret later.
-    *   **Expiration:** Choose an appropriate expiration period for the client secret from the "Expires" dropdown. For security best practices, it is recommended to set an expiration period and rotate client secrets regularly.
+    *   **Description:** Enter a descriptive name for your client secret.
+    *   **Expiration:** Choose an appropriate expiration period for the client secret from the "Expires" dropdown.
 4.  **Add Client Secret:** Click the **"Add"** button at the bottom of the "Add a client secret" panel to create the client secret.
-5.  **Securely Copy and Store Client Secret Value:** **Immediately copy the generated Client Secret Value** that is displayed in the "Client secrets" page. **This is the only time you will see the full Client Secret Value.**  **Important Security Note:** Store the Client Secret Value securely in a password manager or, preferably, ELITEA's built-in Secrets Management feature. **Do not store the Client Secret Value in plain text or in insecure locations.** You will need this Client Secret Value to configure the SharePoint toolkit in ELITEA.  **Note:** Take note of the **"Value"** column, not the "Secret ID" column. The "Value" is the actual client secret, while "Secret ID" is just an identifier for the secret itself.
+5.  **Securely Copy and Store Client Secret Value:** **Immediately copy the generated Client Secret Value** displayed in the **"Value"** column. **This is the only time you will see the full Client Secret Value.** Store it securely in a password manager or in ELITEA's **[Secrets](../../menus/settings/secrets.md)** feature. Do not store the value in plain text.
+
+    ![SharePoint-New_Client_Secret](../../img/integrations/toolkits/sharepoint/new-client-secret.gif)
+
+    !!! warning "Important"
+        Copy the **"Value"** column — not the "Secret ID" column. The Value is the actual credential used for authentication.
 
 
-### Granting Access Scope to SharePoint Site (App-Only Access)
+### Grant App-Only Access to the SharePoint Site
 
-To enable ELITEA Agents to access and interact with your SharePoint site and its content, you need to grant specific access permissions to your registered application at the SharePoint site collection level. This is done using the SharePoint App-Only Access via the `AppInv.aspx` page in the SharePoint Admin Center.
+!!! info "App-Only mode only"
+    This step is **required for App-Only (Client Credentials)** authentication only. If you are using **Delegated (User OAuth)** mode, skip this section — access is governed by the signed-in user's own SharePoint permissions.
 
-1.  **Navigate to SharePoint Site AppInv.aspx Page:** Open your web browser and navigate to the following URL, replacing `{your-tenant}` and `{site}` with your actual SharePoint tenant name and site name:
+Grant your registered application access at the SharePoint site collection level via the `AppInv.aspx` page.
 
-    ![SharePoint-Create_Site](../../img/integrations/toolkits/sharepoint/SharePoint-Create_Site.png)
+1.  **Navigate to the SharePoint AppInv.aspx page:** Open your browser and go to the following URL, replacing `{your-tenant}` and `{site}` with your values:
 
     ```
     https://{your-tenant}.sharepoint.com/sites/{site}/_layouts/15/appinv.aspx
     ```
 
-    *   **`{your-tenant}`:** Replace this with your SharePoint tenant name (e.g., `epam` in `epam.sharepoint.com`).
-    *   **`{site}`:** Replace this with the URL-encoded name of the specific SharePoint site collection you want to grant access to (e.g., `EPAMAlitaDoc` for a site named "EPAMAlitaDoc").
-
-    **Example URL:**
-
+    **Example:**
     ```
-    https://epam.sharepoint.com/sites/EPAMAlitaDoc/_layouts/15/appinv.aspx
+    https://contoso.sharepoint.com/sites/MyProjectSite/_layouts/15/appinv.aspx
     ```
 
-2.  **Enter Client ID:** On the "App permissions request page," in the "App Id" field, enter the **Application (client) ID** of your registered application that you noted down in Step 1.3. Click **"Lookup"**.
-3.  **Verify App Information:** After clicking "Lookup," SharePoint will retrieve information about your registered application. Verify that the "Title," "App Domain," and "Redirect URL" fields are populated correctly based on your app registration details.
-4.  **Define Permissions using XML:** In the "Permission Request XML" field, define the permissions you want to grant to your application for the SharePoint site collection. Use XML format to specify the permission scopes.
+2.  **Look Up the App:** In the **"App Id"** field, enter your **Application (client) ID** and click **"Lookup"**. Verify that the Title, App Domain, and Redirect URL are populated correctly.
 
-    **Example XML Permission Request (Full Control at Site Collection Level):**
+3.  **Define Permissions using XML:** In the **"Permission Request XML"** field, enter one of the following XML blocks depending on the level of access your Agents require:
 
-    ```xml
-    <AppPermissionRequests AllowAppOnlyPolicy="true">
-     <AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="FullControl" />
-    </AppPermissionRequests>
-    ```
+    !!! example "Permission Request XML Options"
 
-    **Explanation of Example XML:**
+        **Full Control (read and write operations):**
+        ```xml
+        <AppPermissionRequests AllowAppOnlyPolicy="true">
+          <AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="FullControl" />
+        </AppPermissionRequests>
+        ```
 
-    *   **`<AppPermissionRequests AllowAppOnlyPolicy="true">`**: This element indicates that you are requesting app-only access, meaning the application will access SharePoint without a signed-in user context.
-    *   **`<AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="FullControl" />`**: This element defines the permission scope and right:
-        *   **`Scope="http://sharepoint/content/sitecollection"`**: Specifies that the permission scope is the entire site collection.
-        *   **`Right="FullControl"`**: Grants the application Full Control permissions over the site collection. **Important Security Note:** Grant FullControl only if absolutely necessary. For most use cases, more limited permissions like "Read" or "Write" might be sufficient and are recommended for better security.
+        **Read-Only Access:**
+        ```xml
+        <AppPermissionRequests AllowAppOnlyPolicy="true">
+          <AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="Read" />
+        </AppPermissionRequests>
+        ```
 
-    **More Granular Permission Scopes (Example - Read Only at Site Collection Level):**
+    !!! warning "Principle of Least Privilege"
+        Grant only the minimum required permissions. Avoid `FullControl` unless your Agents need to create, modify, or delete SharePoint content.
 
-    If you only need read-only access, you can use the following XML:
+4.  **Create and Trust the App:** Click **"Create"**, then click **"Trust It"** on the confirmation page to grant the requested permissions to your application.
 
-    ```xml
-    <AppPermissionRequests AllowAppOnlyPolicy="true">
-     <AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="Read" />
-    </AppPermissionRequests>
-    ```
+     ![SharePoint-AppInv_Permissions](../../img/integrations/toolkits/sharepoint/SharePoint-AppInv_Permissions.png)
 
-    **Important Security Practice:**  **Grant Least Privilege.** Carefully consider the necessary permissions and grant only the minimum required permissions for your ELITEA Agent's intended interactions with SharePoint. Avoid granting "FullControl" or overly broad permissions unless absolutely necessary.
-
-5.  **Create and Grant Permissions:** After entering the XML permission request, click the **"Create"** button.
-6.  **Trust the App:** A confirmation page will appear asking if you trust the application. Click **"Trust It"** to grant the requested permissions to your registered application for the specified SharePoint site collection.
-
-![SharePoint-AppInv_Permissions](../../img/integrations/toolkits/sharepoint/SharePoint-AppInv_Permissions.png)
+---
 
 ## System Integration with ELITEA
 
-### Overview and Usage of SharePoint Integration with ELITEA
+To integrate SharePoint with ELITEA, follow a three-step process: **Create Credentials → Create Toolkit → Use in Agents**. This workflow ensures secure authentication and proper configuration.
 
-The SharePoint toolkit integration in ELITEA provides a powerful bridge between your AI Agents and your Microsoft SharePoint Online environment. This integration empowers your Agents to:
+### Step 1: Create SharePoint Credentials
 
-*   **Access SharePoint Content:** Retrieve and analyze content from SharePoint document libraries and lists, including documents, list items, and metadata.
-*   **Automate Document Management Tasks:** Automate routine document management tasks such as retrieving files, reading document content, and listing files within document libraries, streamlining document workflows.
-*   **Enhance Collaboration Workflows:** Integrate AI-powered automation into your SharePoint-based collaboration workflows, improving efficiency and information sharing within teams and projects.
-*   **Extract Data from SharePoint Lists:** Access and process data stored in SharePoint lists, enabling agents to utilize list data for analysis, reporting, or integration with other systems.
+Before creating a toolkit, you must first create SharePoint credentials in ELITEA.
 
-### Integration Steps: Configuring the SharePoint Toolkit in ELITEA
+The SharePoint credential supports two authentication modes — **App-Only** (the application acts as itself) and **Delegated** (the application acts on behalf of a signed-in user). Select the tab in the ELITEA credential form that matches your organization's access policy:
 
-To integrate SharePoint with ELITEA and enable your Agents to interact with your SharePoint sites, lists, and libraries, follow these configuration steps within ELITEA:
+**Steps to create a SharePoint credential:**
 
-1.  **Navigate to Agents Menu:** In ELITEA, go to the **Agents** menu and either **create a new Agent** or **edit an existing Agent** that you want to integrate with SharePoint.
-2.  **Access Toolkits Section:** Within the Agent configuration, scroll down to the **"Tools"** section.
-3.  **Add Toolkit:** Click the **"+" icon** under the "TOOLS" section to add a new toolkit.
-4.  **Select SharePoint Toolkit:** From the dropdown list of available toolkits, choose **"SharePoint"**. This will open the "New SharePoint tool" configuration section.
-5.  **Configure SharePoint Toolkit Settings:**  Fill in the following configuration fields in the "New SharePoint tool" section:
+1. **Navigate to Credentials Menu:** Open the sidebar and select **[Credentials](../../menus/credentials.md)**.
+2. **Create New Credential:** Click the **`+ Create`** button.
+3. **Select SharePoint:** Choose **SharePoint** as the credential type.
+4. **Configure credential fields:**
 
-    *   **Name:**  Enter a descriptive **Name** for your SharePoint toolkit instance. This name will be used to reference the toolkit within your Agent's instructions (e.g., "MySharePointSite", "DocumentLibraryAccess").
-    *   **Description:** Provide a brief **Description** of the toolkit's purpose or the specific SharePoint site it will access (e.g., "Access to Project Marketing SharePoint Site").
-    *   **SharePoint Site URL:** Enter the full URL of your SharePoint site collection that you want to access with this toolkit. **Ensure you use the correct format**, including `https://` and the full site URL (e.g., `https://your-tenant.sharepoint.com/sites/YourSiteName`).
-    *   **Client ID:** Paste the **Application (client) ID** of your registered Azure AD application that you noted down in Step 1.3 (during the "Software-Specific Setup" section of this guide) into the **"Client Id"** field.
-    *   **Client Secret:** Paste the **Client Secret Value** of your registered Azure AD application that you generated in Step 1.4 (during the "Software-Specific Setup" section of this guide) into the **"Client Secret"** field.  **Important Security Note:** For enhanced security, consider using the **"Secret"** option instead and storing your Client Secret securely as a Secret within [Secrets](../../menus/settings/secrets.md) feature.
+    | **Field** | **Description** | **Example** |
+    |-----------|----------------|-------------|
+    | **Display Name** | Descriptive name for this credential | `SharePoint - Contoso Marketing Site` |
+    | **Client ID** | Application (client) ID from your Azure AD app registration | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` |
+    | **Client Secret** | Client Secret Value generated in Azure AD | `your-client-secret-value` |
+    | **Site URL** | Full URL of your SharePoint site | `https://contoso.sharepoint.com/sites/MarketingTeam` |
 
-    ![SharePoint-Toolkit_Configuration](../../img/integrations/toolkits/sharepoint/SharePoint-Toolkit_Configuration.png)
+5. **Select the authentication tab:** In the credential form, choose either **"App-only"** or **"Delegated"** depending on your access model.    
 
-6.  **Enable Desired Tools:** In the **"Tools"** section within the SharePoint toolkit configuration, **check the boxes next to the specific SharePoint tools** you want to enable for your Agent. Select only the tools that your Agent will actually need to use to minimize unnecessary permissions and maintain security. Available tools include:
-    *   **Get All Files**
-    *   **Read Document**
-    *   **Read List**
+#### App-Only (Client Credentials)
 
-7.  **Complete Setup:** Click the **arrow icon** (located at the top right of the toolkit configuration section) to complete the SharePoint toolkit setup and return to the main Agent configuration menu.
+1. **Test Connection:** Click **Test Connection**to verify your credentials are valid and ELITEA can connect to SharePoint.
+2. **Save Credential:** Click **Save**.
 
-### Tool Overview: SharePoint Toolkit Functionalities
+     ![App-Only](../../img/integrations/toolkits/sharepoint/sharepoint-credential-app.gif)
 
-Once the SharePoint toolkit is configured and added to your Agent, you can leverage the following tools within your Agent's instructions to interact with your SharePoint sites, lists, and libraries:
+---
 
-*   **Get all files:**  **Tool Name:** `get_all_files`
-    *   **Functionality:** Retrieves a list of all files from a specified SharePoint document library.
-    *   **Purpose:** Enables Agents to access and manage documents within SharePoint document libraries directly from ELITEA, facilitating document retrieval, reporting, or automated file processing workflows.
+#### Delegated (User OAuth)
 
-*   **Read document:** **Tool Name:** `read_document`
-    *   **Functionality:** Reads the content of a specific document from a specified SharePoint document library. Supports various document formats including `.txt`, `.csv`, `.docx`, `.xlsx`, and `.pptx`.
-    *   **Purpose:** Allows Agents to extract content from SharePoint documents for analysis, information extraction, content summarization, or to provide document content to users within ELITEA conversations, enabling AI-powered document processing and information retrieval.
+1. **Configure additional Delegated fields:**
 
-*   **Read list:** **Tool Name:** `read_list`
-    *   **Functionality:** Reads items from a specified SharePoint list. Returns list items with their fields and values in JSON format.
-    *   **Purpose:** Enables Agents to access and process data stored in SharePoint lists, allowing for data extraction, reporting, list item analysis, or integration of SharePoint list data into ELITEA workflows, facilitating data-driven automation and insights from SharePoint lists.
+    | **Field** | **Description** | **Example** |
+    |-----------|----------------|-------------|
+    | **OAuth Discovery Endpoint** | Azure AD tenant base URL in the format `https://login.microsoftonline.com/{tenant_id}`. The `{tenant_id}` is the **Directory (tenant) ID** from your Azure AD App Registration Overview page | `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` |
+    | **Scopes** | Space-separated OAuth permission scopes the delegated token should request | `Sites.ReadWrite.All Files.ReadWrite.All Notes.ReadWrite.All` |
+
+2. **Log in:** Once all fields are filled, a **Log in** button appears next to the **Test Connection** button. Click **Log in** to complete the OAuth authorization flow — ELITEA redirects to Azure AD for user sign-in, and after authorization the token is stored and the connection is verified via Microsoft Graph.
+3. **Save Credential:** Click **Save**.
+
+     ![Delegated](../../img/integrations/toolkits/sharepoint/sharepoint-credential-delegated.gif)
+
+!!! warning "Re-login required after scope changes"
+    If you add, remove, or modify the **Scopes** field after the initial login (e.g., to add `Notes.ReadWrite.All` for OneNote access), the existing token will not automatically include the new scopes. You must click **Log in** again to complete a new OAuth authorization flow and obtain a fresh token that reflects the updated scope list.
+
+---
+
+!!! info "Site URL Format"
+    The Site URL must follow the format `https://<tenant>.sharepoint.com/sites/<site>`. For App-Only, the tenant name is extracted from this URL to construct the ACS endpoint. For Delegated, the full URL is passed to the Microsoft Graph sites API.
+
+    | Example | URL |
+    |---------|-----|
+    | Contoso Marketing site | `https://contoso.sharepoint.com/sites/MarketingTeam` |
+    | EPAM AlitaDoc site | `https://epam.sharepoint.com/sites/EPAMAlitaDoc` |
+
+    Ensure there are no trailing slashes and that the URL is well-formed.
+
+!!! tip "Security Recommendation"
+    Use **[Secrets](../../menus/settings/secrets.md)** for sensitive values (Client Secret) instead of entering them directly. Create a secret first, then reference it in your credential configuration.
+
+#### Choosing an Authentication Mode
+
+**Use App-Only (Client Credentials) when:**
+
+- Your workflow runs automatically, without a user actively involved (e.g., a nightly report, a scheduled file sync, or a background data processing pipeline).
+- You want a single shared connection that doesn't depend on any individual user's account.
+- You need to read from or write to public team sites where user identity doesn't matter.
+
+    !!! example
+        An ELITEA Agent that runs every morning, reads all items from a "Project Tasks" list, and generates a summary report — App-Only is the right choice here because no user interaction is needed.
+
+**Use Delegated (User OAuth) when:**
+
+- You need to access OneNote notebooks (only available in Delegated mode).
+- Your organization's SharePoint permissions are user-based — only specific people can see certain sites or libraries.
+- The workflow involves a user actively working in ELITEA and you want actions to be logged under their identity.
+- You're building a personal assistant that reads documents or lists on behalf of the signed-in user.
+
+    !!! example
+        An ELITEA Agent helping a team member search their department's restricted SharePoint site and read OneNote meeting notes — Delegated is required because the site is access-controlled per user and OneNote needs a user token.
+
+    | | **App-Only (Client Credentials)** | **Delegated (User OAuth)** |
+    |---|---|---|
+    | **How it works** | ELITEA connects as the application itself, with no user involved | ELITEA connects on behalf of a specific signed-in user |
+    | **Best for** | Automation, background tasks, scheduled workflows | Workflows where user identity matters, or access is restricted to specific users |
+    | **Example use case** | Nightly report generation, automated file archiving, batch list updates | Reading a user's personal SharePoint files, accessing sites restricted to certain team members |
+    | **OneNote support** | ✘ Not supported | ✔️ Supported |
+    | **Setup complexity** | Simpler — App registration + AppInv.aspx site grant | Requires Redirect URI + OAuth login step |
+    | **Access scope** | Defined by permissions granted to the app | Defined by the permissions of the signed-in user |
+
+
+### Step 2: Create SharePoint Toolkit
+
+Once your credentials are configured, create the SharePoint toolkit:
+
+1. **Navigate to Toolkits Menu:** Open the sidebar and select **[Toolkits](../../menus/toolkits.md)**.
+2. **Create New Toolkit:** Click the **`+ Create`** button.
+3. **Select SharePoint:** Choose **SharePoint** from the list of available toolkit types.
+4. **Configure Toolkit Settings:**
+
+    | **Field** | **Description** | **Example** |
+    |-----------|----------------|-------------|
+    | **Toolkit Name** | Descriptive name for your toolkit (required) | `SharePoint - Marketing Documents` |
+    | **Description** | Optional description for the toolkit purpose | `Toolkit for accessing the Marketing Team SharePoint site` |
+    | **Credentials** | Select your previously created SharePoint credential | `SharePoint - Contoso Marketing Site` |
+    | **PgVector Configuration** | (Optional) Select PgVector connection for indexing and semantic search features | Your PgVector configuration |
+    | **Embedding Model** | (Optional) Select embedding model for text processing and semantic search | `amazon.titan-embed-text-v2:0` |
+
+5. **Enable Desired Tools:** In the **"Tools"** section, select the checkboxes next to the specific SharePoint tools you want to enable. **Enable only the tools your agents will actually use** to follow the principle of least privilege.
+       * **[Make Tools Available by MCP](../mcp/make-tools-available-by-mcp.md)** — (optional checkbox) Enable this option to make the selected tools accessible through external MCP clients.
+6. **Save Toolkit:** Click **Save** to create the toolkit.
+
+     ![Toolkit](../../img/integrations/toolkits/sharepoint/sharepoint-toolkit-create.gif)
+
+#### Available Tools
+
+* The SharePoint toolkit provides the following tools for interacting with SharePoint sites, document libraries, and lists, organized by functional categories:
+
+    | **Tool Category** | **Tool Name** | **Description** | **Primary Use Case** |
+    |:-----------------:|---------------|-----------------|----------------------|
+    | **File Operations** | | | |
+    | | **Get files list** | Lists files in a SharePoint document library, optionally filtered by folder or library name | Browse and discover files across document libraries |
+    | | **Read document** | Reads the content of a document at a given server-relative path; supports `.docx`, `.xlsx`, `.pptx`, `.pdf`, `.txt`, `.csv`, and more | Extract text content from SharePoint documents for analysis or summarization |
+    | | **Upload file** | Uploads a file to a specified SharePoint document library folder, from artifact storage or direct string content | Automate file delivery and publishing to SharePoint |
+    | **List & Data Operations** | | | |
+    | | **Get lists** | Returns all visible SharePoint lists on the configured site with their titles, IDs, descriptions, and item counts | Discover lists on a site before reading or writing data |
+    | | **Read list** | Reads items from a specified SharePoint list (up to a configurable limit) | Access and process data stored in SharePoint lists |
+    | | **Get list columns** | Returns all column metadata for a specified list, including field names, display names, types, required flags, and valid choice values | Discover available columns before creating list items |
+    | | **Create list item** | Creates a new item in a specified SharePoint list using a dictionary of field-value pairs | Automate data entry and record creation in SharePoint lists |
+    | | **Add attachment to list item** | Attaches a file to an existing SharePoint list item, from artifact storage or direct string content | Link supporting documents or data files to list records |
+    | **OneNote Operations** | | | |
+    | | **Onenote get notebooks** | Lists all OneNote notebooks in the configured SharePoint site, returning ids, display names, creation dates, and web URLs | Discover notebooks on a site before reading or writing OneNote content |
+    | | **Onenote get sections** | Lists all sections in a specific OneNote notebook, returning section ids, display names, and page URLs | Browse notebook structure to locate a section before reading pages |
+    | | **Onenote get pages** | Lists page metadata (id, title, dates, webUrl) from a OneNote section; does not return page content | Discover pages in a section before reading their content |
+    | | **Onenote get page content** | Retrieves the raw HTML content of a OneNote page as stored by the service | Access the raw XHTML of a page for programmatic processing or export |
+    | | **Onenote list attachments** | Lists all file attachments on a OneNote page, returning filenames, resource IDs, and download URLs | Discover files attached to a page before downloading or reading them |
+    | | **Onenote read attachment** | Downloads and parses a file attachment from a OneNote page; supports PDF, DOCX, XLSX, PPTX, images, and more | Extract text content from files attached to OneNote pages for analysis |
+    | | **Onenote read page** | Reads and converts a OneNote page into beautified plain text with `-----` separators between content items, image descriptions, and attachment entries | Retrieve human-readable page content for summarization or analysis |
+    | | **Onenote read page items** | Reads a OneNote page into a structured list of typed items (text, image, attachment) in document order | Process page content programmatically with fine-grained control over each element |
+    | | **Onenote search pages** | Searches all OneNote pages in the site matching a full-text query and returns matching page metadata | Quickly locate OneNote pages by topic, keyword, or content across all notebooks |
+    | | **Onenote create notebook** | Creates a new OneNote notebook in the SharePoint site, returning the notebook id, display name, and web URL | Set up new notebooks for organizing notes and content |
+    | | **Onenote create section** | Creates a new section within an existing OneNote notebook, returning the section id and display name | Add organizational sections to an existing notebook |
+    | | **Onenote create page** | Creates a new page in a OneNote section from an HTML document, returning the page id, title, and web URL | Publish AI-generated or automated content as OneNote pages |
+    | | **Onenote update page** | Updates a OneNote page using Graph API PATCH commands to append, prepend, replace, or delete specific content elements | Make targeted incremental edits to existing OneNote pages |
+    | | **Onenote replace page content** | Replaces the entire body of a OneNote page with new HTML content | Fully overwrite a page's content with a new version |
+    | | **Onenote delete page** | Permanently deletes a OneNote page (this action is irreversible) | Remove outdated or incorrect OneNote pages |
+    | **Indexing & Search** | | | |
+    | | **Index data** | Creates searchable indexes of SharePoint document library content | Enable advanced semantic search across SharePoint files |
+    | | **List collections** | Lists available indexed content collections | View and manage indexed SharePoint data collections |
+    | | **Remove index** | Removes a previously created search index | Clean up indexed SharePoint data |
+    | | **Search index** | Performs semantic searches across indexed SharePoint content | Find specific documents or file content across the site |
+    | | **Stepback search index** | Performs advanced contextual searches with broader scope | Execute sophisticated searches with expanded context |
+    | | **Stepback summary index** | Creates comprehensive summaries of indexed SharePoint content | Generate intelligent summaries of documents and files |
+
+    !!! tip "Vector Search Tools"
+        The tools **Index data**, **List collections**, **Remove index**, **Search index**, **Stepback search index**, and **Stepback summary index** require PgVector configuration and an embedding model. These enable advanced semantic search capabilities across your SharePoint documents.
+
+#### Testing Toolkit Tools
+
+After configuring your SharePoint toolkit, you can test individual tools directly from the Toolkit detail page using the **Test Settings** panel. This allows you to verify that your credentials are working correctly and validate tool functionality before adding the toolkit to your workflows.
+
+**General Testing Steps:**
+
+1. **Select LLM Model:** Choose a Large Language Model from the model dropdown in the Test Settings panel.
+2. **Configure Model Settings:** Adjust model parameters like Creativity, Max Completion Tokens, and other settings as needed.
+3. **Select a Tool:** Choose the specific SharePoint tool you want to test from the available tools.
+4. **Provide Input:** Enter any required parameters or test queries for the selected tool.
+5. **Run the Test:** Execute the tool and wait for the response.
+6. **Review the Response:** Analyze the output to verify the tool is working correctly and returning expected results.
+
+    !!! tip "Key benefits of testing toolkit tools:"
+        * Verify that SharePoint credentials and connection are configured correctly
+        * Test tool parameters and see actual responses from your SharePoint site
+        * Debug tool behavior and understand output formats
+        * Optimize tool settings before integrating with agents or pipelines
+        > For detailed instructions on how to use the Test Settings panel, see **[How to Test Toolkit Tools](../../how-tos/credentials-toolkits/how-to-test-toolkit-tools.md)**.
+
+---
+
+### Step 3: Add SharePoint Toolkit to Your Workflows
+
+Now you can add the configured SharePoint toolkit to your agents, pipelines, or use it directly in chat:
+
+---
+
+#### In Agents:
+
+1. **Navigate to Agents:** Open the sidebar and select **[Agents](../../menus/agents.md)**.
+2. **Create or Edit Agent:** Either create a new agent or select an existing agent to edit.
+3. **Add SharePoint Toolkit:**
+     * In the **"TOOLKITS"** section of the agent configuration, click the **"+Toolkit"** icon.
+     * Select your configured SharePoint toolkit from the dropdown list.
+     * The toolkit will be added to your agent with the previously configured tools enabled.
+
+     ![Agents](../../img/integrations/toolkits/sharepoint/sharepoint-agent-add.gif)
+
+
+Your agent can now interact with SharePoint using the configured toolkit and enabled tools.
+
+---
+
+#### In Pipelines:
+
+1. **Navigate to Pipelines:** Open the sidebar and select **[Pipelines](../../menus/pipelines.md)**.
+2. **Create or Edit Pipeline:** Either create a new pipeline or select an existing pipeline to edit.
+3. **Add SharePoint Toolkit:**
+     * In the **"TOOLKITS"** section of the pipeline configuration, click the **"+Toolkit"** icon.
+     * Select your configured SharePoint toolkit from the dropdown list.
+     * The toolkit will be added to your pipeline with the previously configured tools enabled.
+
+     ![Pipelines](../../img/integrations/toolkits/sharepoint/sharepoint-pipeline-add.gif)
+
+---
+
+#### In Chat:
+
+1. **Navigate to Chat:** Open the sidebar and select **[Chat](../../menus/chat.md)**.
+2. **Start New Conversation:** Click **+Create** or open an existing conversation.
+3. **Add Toolkit to Conversation:**
+     * In the chat Participants section, look for the **Toolkits** element.
+     * Click the **"Add Tools"** icon to open the tools selection dropdown.
+     * Select your configured SharePoint toolkit from the dropdown list.
+     * The toolkit will be added to your conversation with all previously configured tools enabled.
+4. **Use Toolkit in Chat:** You can now directly interact with your SharePoint site by asking questions or requesting actions that will trigger the SharePoint toolkit tools.
+
+     ![Chat](../../img/integrations/toolkits/sharepoint/sharepoint-chat-add.gif)
+
+
+    !!! example "Example Chat Usage:"
+        - "List all files in the 'Shared Documents' library"
+        - "Read the content of the project proposal at /sites/Marketing/Shared Documents/Q3 Proposal.docx"
+        - "Show me all items in the 'Project Tasks' list"
+        - "Create a new item in the 'Bug Reports' list with Title 'Login page error' and Status 'Open'"
+
+---
 
 ## Instructions and Prompts for Using the SharePoint Toolkit
 
-To effectively utilize the SharePoint toolkit within your ELITEA Agents, you need to provide clear instructions within the Agent's "Instructions" field, telling the Agent *how* and *when* to use these tools.
+To effectively instruct your ELITEA Agent to use the SharePoint toolkit, you need to provide clear and precise instructions within the Agent's "Instructions" field. These instructions guide the Agent on *when* and *how* to use the available SharePoint tools to achieve your desired automation goals.
 
-**General Instruction Structure:**
+### Instruction Creation for Agents
 
-When instructing your Agent to use a SharePoint tool, you will typically follow this pattern:
+When crafting instructions for the SharePoint toolkit, especially for OpenAI-based Agents, clarity and precision are paramount. Break down complex tasks into a sequence of simple, actionable steps. Explicitly define all parameters required for each tool and guide the Agent on how to obtain or determine the values for these parameters. Effective instructions are:
 
-```
-Use the "[tool_name]" tool to [describe the action you want to perform] in SharePoint.
-Provide the following parameters:
-- Parameter 1: <value or description of value>
-- Parameter 2: <value or description of value>
-- ...
-```
+*   **Direct and Action-Oriented:** Use strong action verbs and clear commands. For example, "Use the 'get_files_list' tool...", "Read the document at...", "Create a list item in...".
 
-**Example Agent Instructions for SharePoint Toolkit Tools:**
+*   **Parameter-Centric:** Clearly enumerate each parameter required by the tool. For each parameter, specify:
+    *   Its name (exactly as expected by the tool)
+    *   The format or type of value expected
+    *   How the Agent should obtain the value — whether from user input, from previous steps, or as a predefined value
 
-*   **Agent Instructions for Getting All Files from a Document Library:**
+*   **Contextually Rich:** Provide sufficient context so the Agent understands the overall objective and the scenario in which each SharePoint tool should be applied.
 
+*   **Step-by-Step Structure:** Organize instructions into a numbered or bulleted list for complex workflows to help the Agent follow a logical sequence.
+
+*   **Add Conversation Starters:** Include example conversation starters that users can use to trigger this functionality. For example, "Conversation Starters: 'List the files in the marketing folder', 'What's in the Q3 report?'"
+
+When instructing your Agent to use a SharePoint toolkit tool, follow this structured pattern:
+
+1. **State the Goal:** Clearly state the objective for this step.
+2. **Specify the Tool:** Clearly indicate which SharePoint tool to use.
+3. **Define Parameters:** List all required parameters with their values or how to obtain them.
+4. **Describe Expected Outcome (Optional but Recommended):** Briefly describe the expected result.
+5. **Add Conversation Starters:** Include examples that users can use.
+
+    !!! example "Example Agent Instructions"
+        **Agent Instructions for Reading a List and Summarizing Tasks:**
+
+        ```markdown
+        1. Goal: Retrieve all items from the 'Project Tasks' SharePoint list and summarize the current workload.
+        2. Tool: Use the "read_list" tool.
+        3. Parameters:
+           - list_title: "Project Tasks"
+           - limit: 200 (or as needed)
+        4. Outcome: The Agent will retrieve all task items and produce a summary grouped by status
+           (e.g., Not Started, In Progress, Completed), highlighting any overdue tasks.
+        5. Conversation Starters: "Show me the project task summary", "What tasks are currently in progress?"
+        ```
+
+---
+
+### Chat Usage Examples by Tool Category
+
+The following examples demonstrate how to interact with the SharePoint toolkit in ELITEA Chat, organized by functional categories.
+
+??? example "File Operations - Get All Files"
+
+    **Chat Example:**
     ```
-    Use the "get_all_files" tool to retrieve a list of all files from a SharePoint document library.
-    Provide the following parameters:
-    - SharePoint Site URL: "your-sharepoint-site-url"
-    - Library Name: "Marketing Documents"
+    User: "List all files in the Shared Documents library."
+
+    Agent Response: I'll retrieve the file list from your SharePoint document library.
+
+    [Agent uses get_files_list tool]
+
+    📁 Files in Shared Documents (12 total):
+
+    1. Q3 Financial Report.xlsx
+       - Path: /sites/MarketingTeam/Shared Documents/Q3 Financial Report.xlsx
+       - Modified: 2026-03-01
+    2. Project Proposal - Alpha.docx
+       - Path: /sites/MarketingTeam/Shared Documents/Project Proposal - Alpha.docx
+       - Modified: 2026-02-28
+    3. Team Roster.xlsx
+       - Path: /sites/MarketingTeam/Shared Documents/Team Roster.xlsx
+       - Modified: 2026-02-15
+
+    Would you like me to read the content of any of these documents?
     ```
 
-*   **Agent Instructions for Reading a Document:**
+??? example "File Operations - Read Document"
 
+    **Chat Example:**
     ```
-    Use the "read_document" tool to read the content of a specific document from SharePoint.
-    Provide the following parameters:
-    - SharePoint Site URL: "your-sharepoint-site-url"
-    - Library Name: "Financial Reports"
-    - File Name: "Q3 Financial Report.xlsx"
+    User: "Read the content of the Q3 Financial Report."
+
+    Agent Response: I'll retrieve the document content for you.
+
+    [Agent uses read_document tool with path="/sites/MarketingTeam/Shared Documents/Q3 Financial Report.xlsx"]
+
+    📄 Q3 Financial Report.xlsx - Contents:
+
+    Sheet: Summary
+
+    Quarter | Revenue    | Expenses   | Net Profit
+    Q1 2026 | $1,200,000 | $950,000   | $250,000
+    Q2 2026 | $1,350,000 | $1,020,000 | $330,000
+    Q3 2026 | $1,480,000 | $1,100,000 | $380,000
+
+    Would you like me to analyze these figures or compare them with another period?
     ```
 
-*   **Agent Instructions for Reading a SharePoint List:**
+??? example "File Operations - Upload File"
 
+    **Chat Example:**
     ```
-    Use the "read_list" tool to read items from a SharePoint list.
-    Provide the following parameters:
-    - SharePoint Site URL: "your-sharepoint-site-url"
-    - List Name: "Project Tasks"
+    User: "Upload the meeting notes from artifact storage to the 'Meeting Notes' folder."
+
+    Agent Response: I'll upload the file to your SharePoint document library.
+
+    [Agent uses upload_file tool]
+
+    ✔️ File uploaded successfully!
+    - File: MeetingNotes_2026-03-10.docx
+    - Location: /sites/MarketingTeam/Shared Documents/Meeting Notes/
+    - Size: 45 KB
+
+    The file is now available in the Meeting Notes folder on your SharePoint site.
     ```
 
-**Important Considerations for Agent Instructions:**
+??? example "List & Data Operations - Get Lists"
 
-*   **Tool Name Accuracy:** Ensure you use the correct **Tool Name** (e.g., `"get_all_files"`, `"read_document"`, `"read_list"`) as listed in the "Tool Overview" section. Typos or incorrect tool names will prevent the Agent from using the toolkit correctly.
-*   **Parameter Clarity:** Clearly specify the **parameters** required for each tool and provide instructions on where the Agent should obtain the values for these parameters (e.g., from user input, from previous steps in the workflow, or hardcoded values).
-*   **Context and Examples:** Provide sufficient context and examples within your Agent's "Instructions" to guide the LLM in understanding *when* and *how* to use the SharePoint toolkit tools effectively within your desired workflow.
-*   **SharePoint Element Names:** Ensure that you use the correct SharePoint Site URL, Library Name, File Name, and List Name in your Agent instructions. These names are case-sensitive and must exactly match the names in your SharePoint site.
+    **Chat Example:**
+    ```
+    User: "What lists are available on the SharePoint site?"
 
-## Best Practices and Use Cases for SharePoint Integration
+    Agent Response: Let me retrieve all visible lists from your SharePoint site.
 
-### Best Practices for Efficient Integration
+    [Agent uses get_lists tool]
 
-*   **Test Integration Regularly:**  After setting up the SharePoint toolkit and incorporating it into your Agents, **thoroughly test the integration** to ensure it is functioning as expected. Test each tool you intend to use to verify connectivity, authentication, and correct execution of SharePoint actions.
-*   **Monitor Agent Performance:**  After deploying Agents with SharePoint integration, **monitor their performance** regularly. Track metrics like task completion success rate, execution time, and error rates to identify any potential issues or areas for optimization in your Agent's instructions or toolkit configurations.
-*   **Follow Security Best Practices:**
-    *   **Use App Registration and Client Secrets:** Always use Azure AD App Registrations and Client Secrets for secure authentication instead of user credentials.
-    *   **Grant Least Privilege:** Grant only the minimum necessary scopes/permissions to the App Registration to limit potential security risks.
-    *   **Securely Store Credentials:** Utilize ELITEA's Secrets Management feature to securely store and manage your SharePoint Client IDs and Client Secrets instead of hardcoding them directly in Agent configurations.
-*   **Provide Clear Instructions and Prompts:**  Craft clear and unambiguous instructions within your ELITEA Agents to guide them in using the SharePoint toolkit effectively. Use the prompt examples provided in this guide as a starting point and adapt them to your specific use cases.
-*   **Start with Simple Use Cases:** Begin by implementing SharePoint integration for simpler automation tasks, such as retrieving document lists or reading document content, and gradually progress to more complex workflows as you gain experience and confidence with the toolkit.
+    📋 Available SharePoint Lists (6 total):
 
-## Use Cases
+    1. Project Tasks — 142 items
+    2. Bug Reports — 87 items
+    3. Team Contacts — 34 items
+    4. Meeting Agenda — 23 items
+    5. Announcements — 12 items
+    6. Vendor Contracts — 9 items
 
-The SharePoint toolkit unlocks numerous automation possibilities for document management, collaboration, and information retrieval workflows within ELITEA. Here are some compelling use cases, demonstrating how each tool can be applied, formatted to match the Bitbucket and GitHub guide style:
+    Which list would you like to read or work with?
+    ```
 
-*   **Automated Document Library File Listing and Reporting:**
-    *   **Scenario:** Project managers need regular reports on the project documentation stored in SharePoint, including summaries of document types and sizes within specific libraries.
-    *   **Tools Used:** `get_all_files`
-    *   **Example Instruction:** "Use the 'get_all_files' tool to retrieve a list of all files from the 'Project Documentation' library in SharePoint. Generate a summary report showing the count of each document type (e.g., .docx, .pdf, .xlsx) and the total size of documents in the library. Send the report to the project manager weekly."
-    *   **Benefit:** Provides project managers with automated, regular visibility into project documentation stored in SharePoint, improving document management oversight, enabling proactive monitoring of document storage, and facilitating better resource planning.
+??? example "List & Data Operations - Read List"
 
-*   **AI-Powered Document Content Extraction and Summarization:**
-    *   **Scenario:** Stakeholders need a quick summary of key information from lengthy project proposals or reports stored as documents in SharePoint, such as project goals, timelines, and budget.
-    *   **Tools Used:** `read_document`
-    *   **Example Instruction:** "Use the 'read_document' tool to read the content of the 'Project Proposal.docx' document from the 'Financial Reports' library in SharePoint. Extract key information related to project goals, timelines, and budget. Summarize this information into a concise report for stakeholders."
-    *   **Benefit:** Enables AI-powered document analysis and information extraction from SharePoint documents, providing valuable insights and summaries directly within ELITEA workflows. Improves efficiency by automating information extraction, speeds up decision-making, and enhances stakeholder communication with readily available document summaries.
+    **Chat Example:**
+    ```
+    User: "Show me all open bug reports from the Bug Reports list."
 
-*   **Automated Project Task Progress Reporting from SharePoint Lists:**
-    *   **Scenario:** Project teams require regular progress reports on project tasks managed within SharePoint lists for team meetings and status updates.
-    *   **Tools Used:** `read_list`
-    *   **Example Instruction:** "Use the 'read_list' tool to retrieve items from the 'Project Tasks' list in SharePoint. Analyze the 'Status', 'Due Date', and 'Assigned To' fields for each task. Generate a project task progress report summarizing tasks by status, highlighting overdue tasks, and listing tasks assigned to each team member. Send the report to the project team before each weekly meeting."
-    *   **Benefit:** Provides automated reporting and analysis of SharePoint list data, enabling project managers and teams to track progress, identify potential bottlenecks, and improve task management directly within ELITEA. Reduces manual effort in report generation, ensures timely and accurate progress updates, and facilitates data-driven project management.
+    Agent Response: I'll retrieve the items from the Bug Reports list.
 
+    [Agent uses read_list tool]
 
-## Troubleshooting and Support
+    🐛 Bug Reports — Open Items (14 total):
 
-### Troubleshooting Common Issues
+    1. BUG-0051: Login page times out on mobile
+       - Status: Open | Priority: High | Assigned To: @alexdev
+    2. BUG-0049: Export to CSV produces empty file
+       - Status: In Review | Priority: Medium | Assigned To: @sara
+    3. BUG-0047: Dashboard chart renders incorrectly in Firefox
+       - Status: Open | Priority: Low | Assigned To: Unassigned
 
-*   **Connection Errors:**
-    *   **Problem:** ELITEA Agent fails to connect to SharePoint, resulting in errors during toolkit execution.
-    *   **Possible Solutions:**
-        1.  **Verify SharePoint Site URL:** Double-check that you have entered the correct SharePoint Site URL in the toolkit configuration, including `https://` and the full site URL (e.g., `https://your-tenant.sharepoint.com/sites/YourSiteName`).
-        2.  **Check Client ID and Client Secret:** Ensure that the **Client ID** and **Client Secret** you provided are correct and valid for your registered Azure AD application. Carefully re-enter or copy-paste these credentials to rule out typos.
-        3.  **Verify App Registration Permissions:** Review the API permissions configured for your registered Azure AD application. Ensure it has the necessary permissions (e.g., `Sites.Read.All`, `Sites.ReadWrite.All`) for the SharePoint tools your Agent is trying to use.
-        4.  **Network Connectivity:** Confirm that both your ELITEA environment and your SharePoint Online instance are connected to the internet and that there are no network connectivity issues blocking the integration.
+    Would you like me to create a summary report or filter by assignee?
+    ```
 
-*   **Authorization Errors (Permission Denied/Unauthorized):**
-    *   **Problem:** Agent execution fails with "Permission Denied" or "Unauthorized" errors when trying to access or modify SharePoint resources.
-    *   **Possible Solutions:**
-        1.  **Verify App Registration Permissions:** Double-check the **API permissions** granted to your registered Azure AD application. Ensure it has the necessary scopes for the specific SharePoint actions your Agent is trying to perform (e.g., `Sites.ReadWrite.All` for modifying documents).
-        2.  **SharePoint Site Collection Permissions:** Confirm that the registered Azure AD application has been granted access to the specific SharePoint site collection using the `AppInv.aspx` page and that the granted permissions are sufficient for the actions your Agent is trying to perform.
-        3.  **Client ID and Client Secret Validity:** Ensure that the Client ID and Client Secret you are using are still valid and have not expired or been revoked in Azure AD.
+??? example "List & Data Operations - Create List Item"
 
-*   **Incorrect SharePoint Element Names:**
-    *   **Problem:** Agent tools fail to operate on the intended SharePoint document library or list.
-    *   **Possible Solutions:**
-        1.  **Double-Check Library Name:** Carefully verify that you have entered the correct SharePoint Document Library Name in your Agent's instructions, ensuring it exactly matches the library name in SharePoint. Library names are case-sensitive.
-        2.  **Verify List Name:** Ensure that you are using the correct SharePoint List Name in your Agent's instructions. List names are also case-sensitive and must match the list name in SharePoint exactly.
-        3.  **SharePoint Site URL Accuracy:** Double-check that the SharePoint Site URL in the toolkit configuration is correct and points to the root site collection where your target libraries and lists are located.
+    **Chat Example:**
+    ```
+    User: "Create a new task: 'Review Q3 report', assigned to Maria, due April 1st, status Not Started."
 
-### FAQs
+    Agent Response: I'll create the new task in the Project Tasks list.
 
-1.  **Q: Can I use my regular SharePoint username and password for the ELITEA integration?**
-    *   **A:** No, it is **strongly recommended to use Azure AD App Registration and Client Secrets** instead of user credentials for secure integration. App registration provides a more secure and controlled way to grant access to external applications like ELITEA without exposing user accounts.
-2.  **Q: What permissions should I grant to the Azure AD App Registration for SharePoint integration?**
-    *   **A:** Grant only the **minimum necessary scopes** required for your ELITEA Agent's intended interactions with SharePoint. For read-only access, `Sites.Read.All` scope in Microsoft Graph might be sufficient. If your Agent needs to modify SharePoint content, you might need to grant `Sites.ReadWrite.All` in Microsoft Graph or more granular SharePoint-specific permissions via `AppInv.aspx`. Avoid granting "FullControl" or unnecessary permissions.
-3.  **Q: What is the correct format for the SharePoint Site URL in the toolkit configuration?**
-    *   **A:**  The SharePoint Site URL should be entered in the full format, including `https://` and the complete site URL (e.g., `https://your-tenant.sharepoint.com/sites/YourSiteName`). Ensure there are no typos or missing parts in the URL.
-4.  **Q: Why is my Agent getting "Permission Denied" errors even though I think I have configured everything correctly?**
-    *   **A:** Double-check the following:
-        *   **App Registration Permissions:** Verify that the API permissions granted to your Azure AD App Registration include the necessary scopes for the SharePoint tools your Agent is trying to use (e.g., `Sites.ReadWrite.All` for modifying documents).
-        *   **SharePoint Site Collection Permissions:** Ensure that you have granted access to your registered App for the specific SharePoint site collection using `AppInv.aspx` and that the granted permissions are sufficient.
-        *   **Client ID and Client Secret Validity:** Double-check that the Client ID and Client Secret are correct, valid, and have not expired or been revoked in Azure AD.
+    [Agent uses get_list_columns tool first, then create_list_item tool]
 
-### Support and Contact Information
+    ✔️ Task created successfully!
+    - Title: Review Q3 report
+    - Assigned To: Maria
+    - Due Date: 2026-04-01
+    - Status: Not Started
+    - Item ID: 143
 
-If you encounter any issues, have questions, or require further assistance beyond what is covered in this guide regarding the SharePoint integration or ELITEA Agents in general, please do not hesitate to contact our dedicated ELITEA Support Team. We are here to help you resolve any problems quickly and efficiently and ensure you have a smooth and productive experience with ELITEA.
+    The task is now visible in the Project Tasks list on your SharePoint site.
+    ```
 
-**How to Reach ELITEA Support:**
+??? example "Indexing & Search - Search Index"
 
-*   **Email:**  **[SupportAlita@epam.com](mailto:SupportAlita@epam.com)**
+    **Chat Example:**
+    ```
+    User: "Search the indexed SharePoint documents for anything related to 'budget approval process'."
 
-**Best Practices for Effective Support Requests:**
+    Agent Response: I'll search the indexed SharePoint content for budget approval process references.
 
-To help us understand and resolve your issue as quickly as possible, please ensure you provide the following information in your support email:
+    [Agent uses search_index tool]
 
-*   **ELITEA Environment:** Clearly specify the ELITEA environment you are using (e.g., "Next" or the specific name of your ELITEA instance).
-*   **Project Details:**  Indicate the **Project Name** and whether you are working in your **Private** workspace or a **Team** project.
-*   **Detailed Issue Description:** Provide a clear, concise, and detailed description of the problem you are encountering. Explain what you were trying to do, what you expected to happen, and what actually occurred.
-*   **Relevant Configuration Information:**  To help us diagnose the issue, please include relevant configuration details, such as:
-    *   **Agent Instructions (Screenshot or Text):** If the issue is with an Agent, provide a screenshot or copy the text of your Agent's "Instructions" field.
-    *   **Toolkit Configurations (Screenshots):** If the issue involves the SharePoint toolkit or other toolkits, include screenshots of the toolkit configuration settings within your Agent.
-*   **Error Messages (Full Error Text):** If you are encountering an error message, please provide the **complete error text**. In the Chat window, expand the error details and copy the full error message. This detailed error information is crucial for diagnosis.
-*   **Your Query/Prompt (Exact Text):** If the issue is related to Agent execution, provide the exact query or prompt you used to trigger the issue.
+    🔍 Search Results for "budget approval process" (5 matches):
 
-**Before Contacting Support:**
+    1. Budget_Policy_2026.docx — /sites/Finance/Shared Documents/Policies/
+       Excerpt: "...all budget approvals above $10,000 must follow the standard approval workflow..."
 
-We encourage you to first explore the resources available within this guide and the broader ELITEA documentation. You may find answers to common questions or solutions to known issues in the documentation.
+    2. Q1 Review Notes.docx — /sites/Finance/Shared Documents/Meeting Notes/
+       Excerpt: "...the budget approval process was revised in January to require two sign-offs..."
 
-## Useful Links
+    3. Finance Procedures.xlsx — /sites/Finance/Shared Documents/Procedures/
+       Excerpt: "...Sheet 'Approvals': defines the budget approval matrix by department..."
 
-To further enhance your understanding and skills in integrating SharePoint with ELITEA, here are some helpful resources:
+    Would you like me to read any of these documents in full?
+    ```
 
-*   **[Microsoft SharePoint Website](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)**: Access the main Microsoft SharePoint website for product information and documentation.
-*   **[Azure Portal](https://portal.azure.com/)**: Access the Azure portal to manage your Azure AD App Registrations and configure API permissions.
-*   **[ELITEA Secrets Management](../../menus/settings/secrets.md)**: Learn how to securely store your SharePoint Client ID and Client Secret using ELITEA's Secrets management feature for enhanced security.
-*   **[ELITEA Agents Configuration](../../menus/agents.md)**:  Find out more about creating and configuring Agents in ELITEA, where you integrate the SharePoint toolkit to automate your workflows.
-*   **[ELITEA Support Email](mailto:SupportAlita@epam.com)**: Contact the ELITEA support team for direct assistance with SharePoint integration or any other questions and issues you may encounter.
+---
+
+## Troubleshooting
+
+??? warning "Credential Not Appearing in Toolkit Configuration"
+    **Problem:** When creating a toolkit, your SharePoint credential doesn't appear in the credentials dropdown.
+
+    **Troubleshooting Steps:**
+
+    1. **Check Credential Scope:** Ensure you are working in the same workspace/project where the credential was created. Private credentials are only visible in your Private workspace, while project credentials are visible within the specific team project.
+    2. **Verify Credential Creation:** Go to the Credentials menu and confirm that your SharePoint credential was successfully saved.
+    3. **Credential Type Match:** Ensure you selected **"SharePoint"** as the credential type when creating the credential.
+
+??? warning "Connection Errors"
+    **Problem:** ELITEA Agent fails to establish a connection with SharePoint, resulting in errors during toolkit execution.
+
+    **Troubleshooting Steps:**
+
+    1. **Verify Site URL Format:** Ensure the SharePoint Site URL follows the exact format `https://<tenant>.sharepoint.com/sites/<site>`. The URL must start with `https://` and contain `.sharepoint.com`. Remove any trailing slashes.
+    2. **Check Client ID:** Double-check that the **Application (client) ID** is entered correctly, matching the value on the Azure AD app registration Overview page.
+    3. **Check Client Secret:** Ensure the **Client Secret Value** (not the Secret ID) is accurate and has not expired. If the secret has expired, generate a new one in Azure AD.
+    4. **Verify App-Only Access (App-Only mode only):** If using App-Only (Client Credentials) authentication, confirm that you completed the `AppInv.aspx` step to grant App-Only access to the SharePoint site collection. Without this step, authentication tokens will be issued but access to the site will be denied. This step is **not required** for Delegated (User OAuth) mode.
+    5. **Network Connectivity:** Confirm that your ELITEA environment can reach SharePoint over the internet with no firewall or proxy blocking the connection.
+
+??? warning "OAuth Login Fails with 'No Reply Address Is Registered' Error"
+    **Problem:** When clicking **Log in** during Delegated credential setup, the OAuth flow fails with an error such as:
+    > *AADSTS500113: No reply address is registered for the application.*
+
+    **Cause:** This error occurs when no Redirect URI has been registered in your Azure AD App Registration. Azure AD requires the redirect URI to be explicitly registered before it will send the authorization response back to ELITEA.
+
+    **Troubleshooting Steps:**
+
+    1. **Open your App Registration:** In the [Azure Portal](https://portal.azure.com), go to **Microsoft Entra ID → App registrations** and select your app.
+    2. **Navigate to Authentication:** In the left menu, click **"Authentication"**.
+    3. **Add a Redirect URI:** If no Web platform exists, click **"+ Add a platform"** → **"Web"**. If Web is already listed, click the **Edit** pencil next to it.
+    4. **Enter the ELITEA callback URL:** In the **"Redirect URIs"** field, enter the value matching your deployment:
+
+        | Deployment Type | Redirect URI |
+        |----------------|--------------|
+        | **ELITEA Cloud** | **Pattern:** `https://<your-elitea-instance-domain>/app/mcp-auth-callback` <br> **Example:** `https://next.elitea.ai/app/mcp-auth-callback` |
+        | **Self-hosted / standard path** | `https://<your-domain>/mcp-auth-callback` |
+        | **Self-hosted / sub-path (e.g., `/app`)** | `https://<your-domain>/app/mcp-auth-callback` |
+
+        This URL is derived from your deployment domain and is **not shown in the ELITEA UI**. Contact your ELITEA administrator if you are unsure which value applies.
+    5. **Save:** Click **"Configure"** (or **"Save"** if editing), then click **"Save"** at the top of the page.
+    6. **Retry the OAuth flow:** Return to your ELITEA SharePoint credential and click **Log in** again.
+
+    !!! note
+        This step is only required for **Delegated (User OAuth)** mode. App-Only (Client Credentials) authentication does not use a redirect URI.
+
+??? warning "Authorization Errors (Permission Denied / Unauthorized)"
+    **Problem:** Agent execution fails with "Permission Denied", "Unauthorized", or "403 Forbidden" errors when accessing SharePoint resources.
+
+    **Troubleshooting Steps:**
+
+    1. **Verify API Permissions:** Double-check the API permissions granted in Azure AD. Ensure at minimum `Sites.Read.All` (Microsoft Graph) is granted and admin consent has been applied.
+    2. **Verify App-Only Permissions on the Site:** Check that the `AppInv.aspx` step was completed for the specific site collection. App-only permissions must be granted per site collection.
+    3. **Check Permission Level:** If your Agent requires write operations (upload files, create list items), ensure you granted `Sites.ReadWrite.All` (Graph) and that the AppInv.aspx XML specifies `Right="Write"` or `Right="FullControl"`.
+    4. **Token or Secret Expiry:** Ensure the Client Secret has not expired. Generate a new secret in Azure AD and update your ELITEA credential.
+
+??? warning "Incorrect Library or List Name"
+    **Problem:** Agent tools fail to operate on the intended SharePoint document library or list, with "not found" or empty results.
+
+    **Troubleshooting Steps:**
+
+    1. **Check Library/List Title:** Verify you are using the exact title of the document library or list as it appears in SharePoint. Titles must be spelled correctly.
+    2. **Use `get_lists` First:** Run the `get_lists` tool to retrieve the exact title of all visible lists on your site before attempting to read a specific one.
+    3. **Use `get_files_list` Without Filters:** Call `get_files_list` without specifying a folder to list all files and discover the correct library and path names.
+    4. **Verify the Site URL:** Confirm the Site URL in your credential points to the root of the site collection where the target library or list lives.
+
+??? warning "File Path Errors When Reading Documents"
+    **Problem:** The `read_document` tool returns "File not found" even though the file exists.
+
+    **Troubleshooting Steps:**
+
+    1. **Use Server-Relative Path:** The `path` parameter for `read_document` must be a server-relative path (e.g., `/sites/MySite/Shared Documents/folder/file.docx`), not a full URL.
+    2. **Retrieve Path from `get_files_list`:** Use `get_files_list` first. Each result includes a `Path` field containing the correct server-relative path to use with `read_document`.
+    3. **Check for Special Characters:** Use the raw path as returned by `get_files_list` — do not URL-encode it when passing it to `read_document`.
+
+??? warning "Create List Item Fails with Field Errors"
+    **Problem:** The `create_list_item` tool returns errors about invalid fields or missing required fields.
+
+    **Troubleshooting Steps:**
+
+    1. **Call `get_list_columns` First:** Always call `get_list_columns` before `create_list_item` to discover available fields, their internal names, required flags, and valid choice values for the target list.
+    2. **Use Internal Field Names:** The `fields` dictionary must use the **internal field name** (the `name` property returned by `get_list_columns`), not the display label.
+    3. **Choice Field Values:** For choice fields, the value must exactly match one of the allowed choices returned by `get_list_columns`.
+    4. **DateTime Format:** Use ISO 8601 format for date fields: `2026-04-01T00:00:00Z`.
+
+??? warning "OneNote Tools Return 'Graph API Delegated Access Required' Error"
+    **Problem:** OneNote tool calls fail with the message: *"OneNote operations require Graph API delegated access. Provide token + scopes to enable OneNote support."*
+
+    **Cause:** All OneNote tools exclusively use the Microsoft Graph API with a delegated user token. They are not available when using App-Only (Client Credentials) authentication.
+
+    **Troubleshooting Steps:**
+
+    1. **Switch to Delegated credential:** In ELITEA, navigate to your SharePoint credential and switch to the **Delegated** tab.
+    2. **Configure OAuth Discovery Endpoint:** Enter `https://login.microsoftonline.com/{tenant_id}` using your Directory (tenant) ID.
+    3. **Configure Scopes:** Enter the required scopes: `Sites.ReadWrite.All Files.ReadWrite.All Lists.ReadWrite.All Notes.ReadWrite.All`.
+    4. **Complete the OAuth flow:** Click **Log in** to authorize. Once authorized with Delegated credentials, all OneNote tools become available.
+
+??? warning "OneNote Tools Return 401 Unauthorized Error"
+    **Problem:** OneNote tool calls succeed with Delegated credentials but return a `401 Unauthorized` response from `graph.microsoft.com/.../onenote/...`.
+
+    **Cause:** The OAuth token was issued without the `Notes.ReadWrite.All` delegated permission — either the scope was never added to the Azure AD app, admin consent was not granted, or the token was issued before the scope was added.
+
+    **Troubleshooting Steps:**
+
+    1. **Add the Notes permission in Azure AD:** In the [Azure Portal](https://portal.azure.com), go to **Microsoft Entra ID → App registrations → [your app] → API permissions**. Click **"+ Add a permission"** → **"Microsoft Graph"** → **"Delegated permissions"**, search for `Notes.ReadWrite.All`, and add it.
+    2. **Grant admin consent:** On the API permissions page, click **"Grant admin consent for [Your Organization]"**. The `Notes.ReadWrite.All` entry must show a green checkmark.
+    3. **Update the Scopes field in your ELITEA credential** to include all required OneNote scopes. Use the full URL format:
+        ```
+        https://graph.microsoft.com/Sites.ReadWrite.All https://graph.microsoft.com/Files.ReadWrite.All https://graph.microsoft.com/Notes.ReadWrite.All
+        ```
+    4. **Re-login:** Click **Log in** again in your ELITEA SharePoint credential to obtain a fresh token that includes the `Notes.ReadWrite.All` scope.
+
+    !!! note "Required OneNote Scopes"
+        The following scopes are required for OneNote indexing and tool operations:
+
+        | **Scope** | **Purpose** |
+        |-----------|-------------|
+        | `Notes.ReadWrite.All` | Read and write access to all OneNote notebooks and pages |
+        | `Sites.ReadWrite.All` | Access to the SharePoint site where notebooks are hosted |
+        | `Files.ReadWrite.All` | Access to files referenced from OneNote pages |
+
+    !!! note "Short vs. Full URL scope format"
+        The ELITEA credential accepts scopes in both short (`Notes.ReadWrite.All`) and full URL (`https://graph.microsoft.com/Notes.ReadWrite.All`) formats. If short-format scopes do not resolve for your tenant, switch to the full URL format.
+
+### Support Contact
+
+If you encounter issues not covered in this guide or need additional assistance with SharePoint integration, please refer to **[Contact Support](../../support/contact-support.md)** for detailed information on how to reach the ELITEA Support Team.
+
+---
+
+## FAQ
+
+??? question "Can I use my regular SharePoint username and password instead of an Azure AD App Registration?"
+    **No — using an Azure AD App Registration with a Client Secret is the required and recommended method.** It provides secure App-Only access without exposing user credentials. The ELITEA SharePoint toolkit authenticates using the OAuth 2.0 client credentials flow (`client_id` + `client_secret` + `site_url`) and does not support username/password authentication.
+
+??? question "What are the required credential fields for the SharePoint toolkit?"
+    The required fields depend on the authentication mode:
+
+    **App-Only (Client Credentials)** — three fields:
+
+    * **Client ID** — The Application (client) ID from your Azure AD app registration.
+    * **Client Secret** — The client secret value generated in Azure AD.
+    * **Site URL** — The full URL of your SharePoint site in the format `https://<tenant>.sharepoint.com/sites/<site>`.
+
+    **Delegated (User OAuth)** — five fields:
+
+    * **Client ID**, **Client Secret**, and **Site URL** — same as above.
+    * **OAuth Discovery Endpoint** — Azure AD base URL in the format `https://login.microsoftonline.com/{tenant_id}`.
+    * **Scopes** — Space-separated OAuth permission scopes, e.g. `Sites.ReadWrite.All Files.ReadWrite.All Lists.ReadWrite.All`.
+
+    For App-Only, the tenant is derived automatically from the Site URL; you do not need to enter it separately.
+
+??? question "Do I need to complete the AppInv.aspx step even if I already granted Microsoft Graph permissions in Azure AD?"
+    **Yes.** The Azure AD API permissions (Microsoft Graph `Sites.Read.All`, etc.) and the SharePoint App-Only access via `AppInv.aspx` are two separate authorization layers. Graph permissions allow the app to call the Microsoft Graph API, while `AppInv.aspx` grants the app direct access to the specific SharePoint site collection via the SharePoint REST API. The ELITEA toolkit uses the SharePoint REST API as its primary method and falls back to Graph API. Both steps are required for full functionality.
+
+    **Important:** App-Only credentials will authenticate successfully (obtain a token) but receive **Access Forbidden (403)** responses from SharePoint unless the `AppInv.aspx` site collection grant has been completed. Authentication ≠ authorization — the token is issued, but access is denied until the site-level grant is in place.
+
+??? question "Do I need to register a Redirect URI for the Delegated auth flow?"
+    **Yes — for the Delegated (User OAuth) mode only.** The OAuth 2.0 authorization code flow requires that the ELITEA redirect URI is registered in your Azure AD App Registration under **Authentication → Redirect URIs**. Without it, Azure AD will reject the authorization request with `AADSTS500113: No reply address is registered`. This step is **not required** for App-Only (client credentials) authentication.
+
+    You can set it during app registration (step 4 in [Registering an App](#registering-an-app-in-azure-active-directory-azure-ad)) or add it later to an existing registration:
+
+    1. In the **[Azure Portal](https://portal.azure.com)**, go to **Microsoft Entra ID → App registrations** and select your app.
+    2. In the left menu, click **"Authentication"**.
+    3. If no Web platform exists yet, click **"+ Add a platform"** → **"Web"**. If Web already exists, click the **Edit** pencil next to it.
+    4. In the **"Redirect URIs"** field, enter the value matching your deployment:
+
+        | Deployment Type | Redirect URI |
+        |----------------|--------------|
+        | **ELITEA Cloud** | **Pattern:** `https://<your-elitea-instance-domain>/app/mcp-auth-callback` <br> **Example:** `https://next.elitea.ai/app/mcp-auth-callback` |
+        | **Self-hosted / standard path** | `https://<your-domain>/mcp-auth-callback` |
+        | **Self-hosted / sub-path (e.g., `/app`)** | `https://<your-domain>/app/mcp-auth-callback` |
+
+        This URL is derived from your deployment domain and is **not shown in the ELITEA UI**. Contact your ELITEA administrator if you are unsure which value applies.
+    5. Click **"Configure"** (or **"Save"** if editing), then click **"Save"** at the top of the page.
+    6. Scroll down to verify the URI appears under **Web → Redirect URIs**.
+
+??? question "How do I find my Directory (Tenant) ID?"
+    The **Directory (tenant) ID** is needed for the **OAuth Discovery Endpoint** field in Delegated credentials. You can find it in two places:
+
+    **Option 1 — Microsoft Entra ID Overview:**
+    1. In the **[Azure Portal](https://portal.azure.com)**, search for **"Microsoft Entra ID"** and select it.
+    2. On the **Overview** page, copy the **"Tenant ID"** value.
+
+    **Option 2 — App Registration Overview:**
+    1. In the Azure Portal, go to **Microsoft Entra ID → App registrations** and select your app.
+    2. On the **Overview** page, copy the **"Directory (tenant) ID"** value.
+
+    Use the Tenant ID in the **OAuth Discovery Endpoint** field as:
+    ```
+    https://login.microsoftonline.com/{tenant_id}
+    ```
+
+??? question "What is the correct format for the Site URL in the SharePoint credential?"
+    The Site URL must follow the format `https://<tenant>.sharepoint.com/sites/<site>`:
+
+    * ✔️ `https://contoso.sharepoint.com/sites/MarketingTeam`
+    * ✔️ `https://epam.sharepoint.com/sites/EPAMAlitaDoc`
+    * ✘ `https://contoso.sharepoint.com` (missing `/sites/<site>`)
+    * ✘ `contoso.sharepoint.com/sites/Marketing` (missing `https://`)
+    * ✘ `https://contoso.sharepoint.com/sites/Marketing/` (trailing slash)
+
+??? question "Which tools require PgVector and an Embedding Model?"
+    The six indexing and semantic search tools require both a PgVector configuration and an Embedding Model to be selected in the toolkit settings:
+
+    * **Index data** — Indexes documents into the vector store.
+    * **List collections** — Lists available indexed collections.
+    * **Remove index** — Removes an indexed collection.
+    * **Search index** — Searches the vector index semantically.
+    * **Stepback search index** — Contextual search with broader scope.
+    * **Stepback summary index** — Generates summaries from indexed content.
+
+    The other tools (`get_files_list`, `read_document`, `read_list`, `get_lists`, `get_list_columns`, `create_list_item`, `upload_file`, `add_attachment_to_list_item`) work without a vector database configuration.
+
+??? question "Do OneNote tools work with App-Only (Client Credentials) mode?"
+    **No.** All OneNote tools (`onenote_get_notebooks`, `onenote_get_sections`, `onenote_get_pages`, `onenote_get_page_content`, `onenote_read_page`, `onenote_read_page_items`, `onenote_list_attachments`, `onenote_read_attachment`, `onenote_create_notebook`, `onenote_create_section`, `onenote_create_page`, `onenote_update_page`, `onenote_replace_page_content`, `onenote_delete_page`, `onenote_search_pages`) require **Delegated (User OAuth)** authentication. They communicate exclusively with the Microsoft Graph API using a user-context access token and will return an error when called with App-Only credentials.
+
+    To use OneNote tools:
+    1. Configure your SharePoint credential using the **Delegated** tab.
+    2. Set the **OAuth Discovery Endpoint** to `https://login.microsoftonline.com/{tenant_id}`.
+    3. Set **Scopes** to include at minimum: `Sites.ReadWrite.All Files.ReadWrite.All Lists.ReadWrite.All Notes.ReadWrite.All`.
+    4. Complete the OAuth **Log in** flow to authorize.
+
+??? question "Can I use the same SharePoint credential across multiple toolkits?"
+    **Yes.** One SharePoint credential can be used by multiple SharePoint toolkits. Each toolkit can target the same site with different tools enabled, or you can create separate toolkits for different use cases (e.g., one for document reading, another for list management) while sharing the same credential.
+
+??? question "Can I use the same toolkit across different workspaces (Private vs. Team Projects)?"
+    Credential and toolkit visibility depends on where they are created:
+
+    * **Private Workspace:** Credentials and toolkits are only visible to you.
+    * **Team Project Workspace:** Credentials and toolkits are visible to all project members.
+
+    **Best Practice:** Use Private workspace credentials for personal testing and Team Project credentials for shared, production use.
+
+??? question "Why is `create_list_item` failing with a validation error?"
+    The most common cause is using the wrong field name or an invalid choice value. Always call `get_list_columns` on the target list first — this returns each column's internal name (`name` field), its type, required flag, and valid choices. Use the internal name (not the display label) as the key in the `fields` dictionary passed to `create_list_item`.
+
+??? question "Why am I consistently encountering 'Permission Denied' errors even though I believe I configured everything correctly?"
+    Systematically re-examine the following:
+
+    **1. App-Only Access via AppInv.aspx:**
+    Confirm you completed the `AppInv.aspx` step for the exact site collection specified in your Site URL. App-Only permissions granted on one site collection do not apply to sub-sites or other site collections.
+
+    **2. Azure AD Admin Consent:**
+    Verify that admin consent was granted for the API permissions in Azure AD. Without admin consent, application permissions have no effect.
+
+    **3. Client Secret Validity:**
+    Check that the Client Secret has not expired. Review the expiration date in Azure AD under Certificates & Secrets and regenerate if needed.
+
+    **4. Site URL Accuracy:**
+    Confirm the Site URL in your ELITEA credential exactly matches the site collection where App-Only access was granted.
+
+    **5. Permission Level:**
+    If the error occurs on write operations (upload, create item), verify that `Right="FullControl"` or `Right="Write"` was specified in the AppInv.aspx XML — `Right="Read"` is insufficient for write operations.
+
+---
+
+!!! reference "Useful ELITEA Resources"
+    To further enhance your understanding and skills in using the SharePoint toolkit with ELITEA, here are helpful internal resources:
+
+      * **[How to Use Chat Functionality](../../how-tos/chat-conversations/how-to-use-chat-functionality.md)** — *Complete guide to using ELITEA Chat with toolkits for interactive SharePoint operations.*
+      * **[Create and Edit Agents from Canvas](../../how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md)** — *Learn how to quickly create and edit agents directly from chat canvas for rapid prototyping and workflow automation.*
+      * **[Create and Edit Toolkits from Canvas](../../how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md)** — *Discover how to create and configure SharePoint toolkits directly from the chat interface.*
+      * **[Create and Edit Pipelines from Canvas](../../how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md)** — *Guide to building and modifying pipelines from chat canvas for automated SharePoint workflows.*
+      * **[Indexing Overview](../../how-tos/indexing/indexing-overview.md)** — *Comprehensive guide to understanding ELITEA's indexing capabilities for enhanced search and discovery.*
+      * **[Index SharePoint Data](../../how-tos/indexing/index-sharepoint-data.md)** — *Detailed instructions for indexing SharePoint document library data to enable advanced semantic search.*
+
+---
+
+!!! reference "External Resources"
+    *   **Azure Portal:** [https://portal.azure.com](https://portal.azure.com) — *Manage your Azure AD App Registrations, API permissions, and Client Secrets.*
+    *   **Azure AD App Registrations:** [https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) — *View and manage your registered applications in Azure Active Directory.*
+    *   **Microsoft Graph Permissions Reference:** [https://learn.microsoft.com/en-us/graph/permissions-reference](https://learn.microsoft.com/en-us/graph/permissions-reference) — *Detailed reference for Microsoft Graph API permission scopes.*
+    *   **SharePoint REST API Reference:** [https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service) — *Official documentation for the SharePoint REST API.*
+    *   **Microsoft SharePoint:** [https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) — *Main Microsoft SharePoint product page.*
+---
+
 

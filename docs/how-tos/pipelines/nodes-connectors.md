@@ -107,6 +107,7 @@ Most nodes can have **only ONE output connection**:
 * State Modifier
 * Printer
 * Decision
+* Hitl
 
 **YAML Example:**
 
@@ -157,6 +158,40 @@ LLM-powered routing to multiple destinations.
       - Bug Report Handler
       - Feature Request Handler
       - Question Handler
+```
+
+#### 3. HITL Node
+
+Human-in-the-Loop routing to up to three destinations based on the user's action. Can have:
+
+* **Approve output**: Routes to the next node when the user approves
+* **Edit output**: Routes to the next node when the user edits a state variable
+* **Reject output**: Routes to the next node when the user rejects
+
+!!! info "HITL Uses Command Routing"
+    HITL does not use `transition` or `routes`. Instead it uses a `routes` block with `approve`, `edit`, and `reject` keys. No `default_output` is needed — the user's action determines the path.
+
+**YAML Example:**
+
+```yaml
+- id: Review_ticket
+  type: hitl
+  input:
+    - ticket_title
+    - ticket_description
+  user_message:
+    type: fstring
+    value: |
+      **Title:** {ticket_title}
+
+      **Description:** {ticket_description}
+
+      Approve to create, Edit to modify, or Reject to cancel.
+  routes:
+    approve: Create_ticket
+    edit: Create_ticket
+    reject: END
+  edit_state_key: ticket_description
 ```
 
 
@@ -230,6 +265,18 @@ decision:
     - Option 1 Node
     - Option 2 Node
     - Option 3 Node
+```
+
+### HITL Routes
+
+Human chooses from up to three actions:
+
+```yaml
+routes:
+  approve: Next_node      # Required — any node or END
+  edit: Next_node         # Optional — cannot be END
+  reject: END             # Optional — any node or END
+edit_state_key: state_var # Required when edit route is set
 ```
 
 ### Terminate Pipeline
@@ -376,6 +423,30 @@ nodes:
     transition: Generate Report
 
   - id: Generate Report
+    type: toolkit
+    transition: END
+```
+
+### Human Approval Gate
+
+Pause execution for a human decision before proceeding.
+
+```yaml
+entry_point: Generate_draft
+nodes:
+  - id: Generate_draft
+    type: llm
+    transition: Review_draft
+
+  - id: Review_draft
+    type: hitl
+    routes:
+      approve: Publish         # Approved — continue
+      edit: Publish            # Edited — continue with updated value
+      reject: END              # Rejected — cancel
+    edit_state_key: draft
+
+  - id: Publish
     type: toolkit
     transition: END
 ```

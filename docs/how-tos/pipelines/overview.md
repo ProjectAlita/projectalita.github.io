@@ -105,7 +105,7 @@ Understanding pipelines requires familiarity with their core components. Each bu
 | Building Block | Description | Purpose | Key Topics |
 |----------------|-------------|---------|------------|
 | **[States](states.md)** | Pipeline's memory system for storing and managing data | Track information collected during execution and pass data between nodes | State variables, data types, input vs messages, state initialization |
-| **[Nodes](nodes/overview.md)** | Individual actions or steps in your pipeline workflow | Perform specific tasks like interacting with users, calling services, making decisions, or processing data | 7 different node types organized into 3 categories (Interaction, Execution, Control Flow, Utility) |
+| **[Nodes](nodes/overview.md)** | Individual actions or steps in your pipeline workflow | Perform specific tasks like interacting with users, calling services, making decisions, or processing data | 11 different node types organized into 4 categories (Interaction, Execution, Control Flow, Utility) |
 | **[Connections](nodes-connectors.md)** | Links between nodes that control execution flow | Define how the pipeline moves from one step to the next, including conditional branching | Simple transitions, conditional edges, decision edges, router outputs, data mapping |
 | **[Entry Point](entry-point.md)** | Designated starting node of your pipeline | Define where execution begins when the pipeline is triggered | Entry point syntax, validation rules, using different node types as starting points |
 | **[Flow Editor](flow-editor.md)** | Visual interface for designing pipelines graphically | Build complex workflows using drag-and-drop without writing code | Creating nodes visually, connecting nodes, configuring parameters, debugging |

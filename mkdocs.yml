@@ -53,7 +53,7 @@ nav:
               - Personal Tokens: menus/settings/personal-tokens.md
               - Secrets: menus/settings/secrets.md
               - Users: menus/settings/users.md
-              - Monitoring: menus/settings/monitoring.md
+              - Analytics: menus/settings/analytics.md
           - Profile:
               - Personalization: menus/profile/personalization.md              
 
@@ -64,14 +64,16 @@ nav:
           - File Editing in Canvas: how-tos/chat-conversations/file-editing-canvas.md
           - Use Public Agents: how-tos/chat-conversations/use-public-items-from-chat.md
           - Add Teammates to Conversation: how-tos/chat-conversations/add-teammates-to-conversation.md
-          - Attachments in Conversation: how-tos/chat-conversations/attach-images-and-files-in-chat.md
           - Context Management: how-tos/chat-conversations/context-management.md
+          - Sensitive Action Authorization: how-tos/chat-conversations/sensitive-action-authorization-guardrail.md
           - Canvas - Create and Edit Entities:
               - Create an Agent: how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md
               - Create a Pipeline: how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas.md
               - Create a Toolkit: how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas.md
               - Create a MCP: how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas.md
           - Internal Tools:
+              - Attach Files: how-tos/chat-conversations/attach-files.md
+              - Image Creation: how-tos/chat-conversations/image-generation.md
               - Smart Tools Selection: how-tos/chat-conversations/smart-tools-selection-internal-tool.md
               - Python Sandbox: how-tos/chat-conversations/python-sandbox-internal-tool.md
               - Data Analysis: how-tos/chat-conversations/data-analysis-internal-tool.md
@@ -98,6 +100,7 @@ nav:
           - View Agents and Pipelines History: how-tos/agents-pipelines/agents-pipelines-history.md
           - Agent and Pipeline Versioning: how-tos/agents-pipelines/entity-versioning.md
           - Export/Import Agents and Pipelines: how-tos/agents-pipelines/import-export.md
+          - Fork Agents and Pipelines: how-tos/agents-pipelines/forking.md
           - Pipeline Building Blocks:
               - Pipelines Overview: how-tos/pipelines/overview.md
               - States: how-tos/pipelines/states.md
@@ -125,7 +128,6 @@ nav:
           - Search Entities: how-tos/entity-management/search-entities.md
           - Pin Entities: how-tos/entity-management/working-with-pins.md
           - Organizing Entities: how-tos/entity-management/organizing-entities.md
-          - Manage Roles & Permissions: how-tos/entity-management/manage-users-and-roles.md
   - Integrations:
       - MCP:
           - Server STDIO (Configure and Use): integrations/mcp/create-and-use-server-stdio.md
@@ -159,6 +161,7 @@ nav:
           - Slack: integrations/toolkits/slack_toolkit.md
           - Sonar: integrations/toolkits/sonar_toolkit.md
           - SQL: integrations/toolkits/sql_toolkit.md
+          - Syngen: integrations/toolkits/syngen_toolkit.md
           - TestIO: integrations/toolkits/testIO_toolkit.md
           - TestRail: integrations/toolkits/testrail_toolkit.md
           - Xray Cloud: integrations/toolkits/xray_toolkit.md
@@ -174,8 +177,9 @@ nav:
 
   - Release Notes:
       - Current Version:
-          - RN 2.0.0: release-notes/rn_current.md
+          - RN 2.0.1: release-notes/rn_current.md
       - Previous versions:
+          - RN 2.0.0: release-notes/archived/rn15.md
           - RN 2.0.0 B2: release-notes/archived/rn14.md
           - RN 2.0.0 Beta: release-notes/archived/rn13.md
           - RN 1.7.1: release-notes/archived/rn12.md
@@ -240,6 +244,9 @@ nav:
       - Monitoring: features/monitoring.md
       - Server (STDIO): integrations/mcp/mcp-server-stdio.md
       - Client (STDIO): integrations/mcp/mcp-client.md
+      - Monitoring: archive/monitoring.md
+      - Manage Roles & Permissions: archive/manage-users-and-roles.md
+
       - Toolkits:
           - Browser: archive/browser_toolkit.md
           - Pandas: archive/pandas_toolkit.md

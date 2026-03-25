@@ -1,5 +1,8 @@
 # ELITEA Code Chat 
 
+!!! warning "Deprecated"
+    **ELITEA Code Chat** extension is **deprecated** and no longer actively developed. Existing functionality may still be partially available. However, compatibility with current and future IDE versions cannot be guaranteed. No further updates, bug fixes, or feature enhancements are planned.
+
 ELITEA Code Chat for VSCode and IntelliJ is an auxiliary GUI for ELITEA Code, allowing you to utilize the functionality of ELITEA Code and chat with ELITEA. It provides a seamless interface for interacting with prompts, datasources, and agents configured in ELITEA.
 
 

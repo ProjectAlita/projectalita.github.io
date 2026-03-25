@@ -6,7 +6,7 @@
 
 ELITEA Agents are customizable AI-powered virtual assistants that automate tasks and streamline workflows within the ELITEA platform. Each agent is purpose-built to handle specific tasks or workflows based on custom instructions, integrated toolkits, and AI model capabilities you configure. Agents can interact with external services, make intelligent decisions, and perform complex actions—from creating Jira tickets and managing GitHub repositories to analyzing data and generating documentation.
 
-![Agents-Menu_Interface](<../img/menus/agents/Agents-Menu_Interface.png>){: loading=lazy }
+![Agents-Menu_Interface](<../img/menus/agents/agents-menu-Interface.png>){: loading=lazy }
 
 **Why Use Agents?**
 
@@ -23,7 +23,7 @@ Unlike open-ended AI conversations, agents provide a structured and efficient ap
 Creating an agent involves three key components:
 
 1. **Instructions**: Define the agent's behavior, goals, and decision-making logic through custom instructions
-2. **Toolkits & Integrations**: Connect external services (GitHub, Jira, Slack, etc.) and internal tools (Python Sandbox, Data Analysis, Planner) to extend capabilities
+2. **Toolkits & Integrations**: Connect external services (GitHub, Jira, Slack, etc.) and internal tools (Attachments, Image creation, Data Analysis, Planner, Python sandbox, Swarm Mode, Smart Tools Selection) to extend capabilities
 3. **AI Model Configuration**: Select and configure the appropriate language model (GPT-4o, GPT-5.1, etc.) with optimal settings for your use case
 
 Once configured, the agent leverages advanced natural language processing to interpret instructions, interact with connected tools, and autonomously execute tasks while adapting to changing conditions.
@@ -59,17 +59,11 @@ Switch between views using the view toggle button in the top-right corner of the
 
 ![Agents-Menu_Interface](../img/menus/agents/agents-view.gif)
 
+
 **Search and Filter**
 
-* **Search Bar** - Quickly find agents by typing the agent name or related keywords
-* **Filter by Status** - Filter agents by their status to organize and view agents based on their current state:
-    * **All** - Shows all agents regardless of status
-    * **Drafts** - Agents that are still being developed and not yet published
-    * **Published** - Agents that have been published and are available for use
-    * **Moderation** - Agents that are under review by moderators
-    * **Approval** - Agents awaiting final approval before publication
-    * **Rejected** - Agents that were rejected during moderation
-* **Filter by Tags** - Filter agents by their assigned tags to find agents in specific categories or with particular characteristics. Select one or multiple tags to narrow down the list.
+* **Search Bar** - Quickly find agents by typing the agent name or related keywords. Results update as you type (minimum 3 characters).
+* **Filter by Tags** - As you type, matching tags appear in the search dropdown. Click a tag to add it as a filter chip in the search bar. Multiple tags can be selected simultaneously. Remove a tag by clicking the Clear all icon.
 
 ![Agents-Menu_Interface](../img/menus/agents/agents-filter.gif)
 
@@ -101,13 +95,21 @@ To set up a new agent:
          - **Step Limit**: Set the maximum number of tool execution steps the agent can perform in a single turn (range: 0-999, default: 25). This parameter controls how many iterations the agent can execute before stopping, preventing infinite loops and managing resource usage. A higher step limit allows more complex multi-step workflows, while a lower limit ensures faster execution for simpler tasks.
 6. Click **Save**.
 
-After clicking **Save**, the agent configuration page will open, where you can:
+After clicking **Save**, the agent configuration page will open. The page uses a **two-column layout**:
+
+- **Left panel** — the configuration form with all settings sections (General, Instructions, Variables, Welcome Message, Toolkits, Conversation Starters, Advanced, Information)
+- **Right panel** — an embedded live chat panel for interactively testing the agent without leaving the configuration view
+
+From this page you can:
 
 * **Add Toolkits**: Integrate external services and APIs to extend your agent's capabilities
 * **Add Agents, MCPs, and Pipelines**: Include other agents, Model Context Protocol servers, or pipelines to enhance functionality
 * **Select AI Model**: Choose the appropriate language model (e.g., GPT-4o, GPT-5.1) for your agent
 * **Configure Model Settings**: Adjust parameters such as reasoning level, creativity, and token limits to optimize performance
-* **Enable Internal Tools**: Toggle Python Sandbox, Data Analysis or Planner tools as needed
+* **Enable Internal Tools**: Toggle Attachments, Image creation, Data Analysis, Planner, Python sandbox, Swarm Mode, or Smart Tools Selection as needed
+* **Set Variable Values**: Provide values for any `{{variable}}` placeholders defined in your instructions
+* **Test Interactively**: Use the embedded chat panel on the right to send messages and verify agent behaviour in real time
+* **View Run History**: Click the clock icon (🕐) in the top bar of the chat panel to open the Run History view
 
 Your newly created agent will subsequently appear on the **Agents** page for your project.
 
@@ -131,17 +133,18 @@ Toolkits are integrations with external or ELITEA's internal services that enhan
 
 **Adding Resources to Your Agent**:
 
-1. In the agent creation or editing interface, navigate to the toolkits section
-2. Click the **+Toolkit** button to browse available resources
-3. You can add the following types of resources:
-      - **[Toolkits](toolkits.md)**: Select an existing toolkit from the list or click **"+ Create New"** to create a new toolkit
-      - **Agents**: Add nested agents to enable your agent to delegate tasks or collaborate with specialized agents
-      - **[MCPs](mcps.md)**: Integrate Model Context Protocol servers to provide additional context and capabilities. You can select an existing MCP from the list or click "+ Create New" to create a new MCP
-      - **[Pipelines](pipelines.md)**: Include pipelines to orchestrate complex multi-step workflows
+1. In the agent creation or editing interface, navigate to the **TOOLKITS** section.
+2. Use the dedicated add buttons to attach resources. Each button opens its own searchable dropdown:
+      - **+Toolkit**: Browse and select from available toolkits, or click **"Create new"** to create a new toolkit. See **[Toolkits](toolkits.md)**.
+      - **+MCP**: Browse and select Model Context Protocol servers, or click **"Create new"** to create a new MCP. See **[MCPs](mcps.md)**.
+      - **+Agent**: Browse and select classic agents in the project to add as nested agents.
+      - **+Pipeline**: Browse and select pipelines in the project. See **[Pipelines](pipelines.md)**.
+3. Each dropdown supports inline search and paginated scrolling to locate resources quickly.
+
+     ![Agents-Toolkits](../img/menus/agents/agent-add-toolkit.gif){: loading=lazy }
+
 
 > **Note:** Your changes are saved automatically when you add or remove resources.
-
-![Agents-Toolkits](../img/menus/agents/agent-add-toolkit.gif){: loading=lazy }
 
 ### INTERNAL TOOLS
 
@@ -149,21 +152,30 @@ ELITEA provides built-in internal tools that extend your agent's capabilities wi
 
 **Available Internal Tools**:
 
-* **[Python Sandbox](../how-tos/chat-conversations/python-sandbox-internal-tool.md)**: Enables secure Python code execution using Pyodide. Your agent can execute Python code, perform calculations, analyze data, and use compatible Python packages like numpy, pandas, and matplotlib.
-
-* **[Data Analysis](../how-tos/chat-conversations/data-analysis-internal-tool.md)**: Enables comprehensive data analysis capabilities using pandas and natural language queries. Your agent can process CSV files, Excel spreadsheets, perform statistical analysis, and generate visualizations.
-
-* **[Planner](../how-tos/chat-conversations/planner-internal-tool.md)**: Provides structured planning and task breakdown capabilities, helping your agent organize complex workflows into manageable steps.
+| Tool | Description |
+|------|-------------|
+| **[Attachments](../how-tos/chat-conversations/attach-files.md)** | Allows users to attach files and images to conversations for AI-powered analysis. Enables document upload, indexing, and search operations. Available for agents only. |
+| **[Image creation](../how-tos/chat-conversations/image-generation.md)** | Enables AI-powered image creation from text prompts directly within your agent. Requires an image generation toolkit (`ImageGenServiceProvider`) configured in your project. |
+| **[Data Analysis](../how-tos/chat-conversations/data-analysis-internal-tool.md)** | Enables comprehensive data analysis capabilities using pandas and natural language queries. Your agent can process CSV files, Excel spreadsheets, perform statistical analysis, and generate visualizations. |
+| **[Planner](../how-tos/chat-conversations/planner-internal-tool.md)** | Provides structured planning and task breakdown capabilities, helping your agent organize complex workflows into manageable steps. |
+| **[Python sandbox](../how-tos/chat-conversations/python-sandbox-internal-tool.md)** | Enables secure Python code execution using Pyodide. Your agent can execute Python code, perform calculations, analyze data, and use compatible Python packages like numpy, pandas, and matplotlib. |
+| **[Swarm Mode](../how-tos/chat-conversations/swarm-mode-internal-tool.md)** | Enables multi-agent collaboration by allowing all child agents to share the full conversation history and hand off control to each other. Ideal for complex workflows requiring multiple specialized agents working as a team. |
+| **[Smart Tools Selection](../how-tos/chat-conversations/smart-tools-selection-internal-tool.md)** | Reduces token usage by using meta-tools instead of binding all tools directly. Recommended when using many toolkits. |
 
 **How to Enable Internal Tools**:
 
-1. In the **TOOLKITS** section, scroll to the bottom to find the internal tools
-2. Each tool has its own toggle switch - enable the ones you want to use:
-   - Python Sandbox toggle
-   - Data Analysis toggle
-   - Planner toggle
+1. In the **TOOLKITS** section, scroll to the bottom to find the **INTERNAL TOOLS** subsection.
+2. Each tool has its own toggle switch. If not all tools are visible, click **Show all** to expand the full list.
+3. Enable the tools you need:
+     - Attachments toggle
+     - Image creation toggle
+     - Data Analysis toggle
+     - Planner toggle
+     - Python sandbox toggle
+     - Swarm Mode toggle
+     - Smart Tools Selection toggle
 
-![Agent Python Sandbox](../img/menus/agents/agent-internal-tools-enable.gif){: loading=lazy }
+     ![Agent Python Sandbox](../img/menus/agents/agent-internal-tools-enable.gif){: loading=lazy }
 
 ### How to Create Instructions
 
@@ -175,7 +187,26 @@ The **Instructions** section is the core component where you define how your age
 * **Enter the Details**: In the Instructions field, clearly and concisely input the identified information. Ensure that the information is directly relevant to the task to maintain the agent's focus and efficiency.
 * **Using toolkits**: For enhancing agent's capabilities, you can integrate toolkits and provide instructions how to use them and in which order. The name of toolkit can be denoted by "", (e.g. "Access_JIRA" toolkit).
 
-![Agents-Instructions](<../img/menus/agents/agents-instructions.gif>){: loading=lazy }
+     ![Agents-Instructions](<../img/menus/agents/agents-instructions.gif>){: loading=lazy }
+
+
+#### VARIABLES
+
+The **Variables** section appears automatically in the left configuration panel when your agent's instructions contain one or more template placeholders in the `{{variable_name}}` syntax.
+
+Each placeholder is extracted and displayed as a separate input field, allowing you to define reusable values without hardcoding them directly in instructions.
+
+**How Variables Work:**
+
+1. In the **Instructions** field, include placeholders using double curly braces: e.g., `{{project_name}}`, `{{jira_ticket_id}}`.
+2. After saving, the **Variables** accordion appears below Instructions with an input field for each detected placeholder.
+3. Enter the default or current value for each variable.
+4. During execution, the placeholders are substituted with the provided values before the instructions are sent to the model.
+
+     ![Variables](../img/menus/agents/agent-add-variables.gif){: loading=lazy }
+
+!!! note
+    The Variables section is only visible when instructions contain at least one `{{variable}}` placeholder. It does not appear for agents without template variables.
 
 
 ### WELCOME MESSAGE
@@ -222,6 +253,36 @@ The **Conversation Starter** feature enables you to configure predefined prompts
     * "Help me write documentation for this feature."
 
 By setting up conversation starters, you streamline the process of initiating specific tasks or queries, making your interactions with the agent more efficient and standardized.
+
+
+### INFORMATION
+
+The **Information** section is an accordion at the bottom of the left configuration panel. It provides read-only metadata about the current agent and version.
+
+| Field | Description |
+|-------|-------------|
+| **Agent ID** | The unique identifier for this agent. Click the copy icon to copy it to the clipboard. Useful for API integrations and support requests. |
+| **Version ID** | The unique identifier for the currently selected version. Click the copy icon to copy it. Useful for version-specific API calls. |
+| **Forked from** | Visible only if this agent was forked. Displays the name of the original agent with a clickable link. The link is disabled if you do not have permission to view the source project. |
+
+![INFORMATION](../img/menus/agents/agent-information-section.png)
+
+
+### Embedded Test Chat
+
+The **right panel** of the agent page contains a live chat panel that lets you test the agent without navigating away.
+
+![chat panel](../img/menus/agents/chat-panel-controls.png)
+
+**Controls in the top bar of the chat panel:**
+
+| Control | Description |
+|---------|-------------|
+| **Full-screen toggle** (⛶) | Expands the chat panel to fill the full width of the page, hiding the left configuration panel. Click again to return to the two-column view. |
+| **Clear chat** | Erases the current test conversation. |
+| **View run history** (🕐) | Opens the Run History panel. See [Viewing Agent History](#viewing-agent-history). |
+
+**Context Budget widget** (if context management is enabled): Appears above the chat panel after the first message. See [Managing Context Budget](#managing-context-budget) for details.
 
 
 ## How to Execute Agent
@@ -299,7 +360,7 @@ Context Management provides intelligent control over conversation token usage th
 * **Summarization**: Generate summaries of conversation history to preserve context
 * **Message preservation**: Configure how many recent messages to always keep
 
-![Agent Context Budget](<../img/how-tos/chat-conversations/context-management/agent-context-budget.gif>){: loading=lazy }
+     ![Agent Context Budget](<../img/how-tos/chat-conversations/context-management/agent-context-budget.gif>){: loading=lazy }
 
 ### Starting and Interacting with Your Agent
 
@@ -353,7 +414,10 @@ Upon creating a new version of the agent, several options become available to yo
 * **Execute**: Run this specific version of the agent to see how it performs.
 * **Navigate Versions**: Use the **Version** dropdown list to switch between and select different versions of the agent. This allows for easy comparison and management of various iterations.
 
-![Agents-Publish](<../img/menus/agents/agents-version-create.gif>){: loading=lazy }
+     ![Agents-Publish](<../img/menus/agents/agents-version-create.gif>){: loading=lazy }
+
+!!! info "Full Versioning Guide"
+    For detailed information on version management, naming conventions, and best practices, see the **[Entity Versioning guide](../how-tos/agents-pipelines/entity-versioning.md)**.
 
 
 ### Publishing an Agent Version
@@ -368,7 +432,7 @@ The **Publish** functionality allows you to make a specific version of your agen
    * Once you click **Publish**, the version will be sent to a moderator for review.
    * The moderator will evaluate the agent version and either approve or reject the request.
 
-![Agents-Publish](<../img/menus/agents/agents-publish.gif>){: loading=lazy }
+     ![Agents-Publish](<../img/menus/agents/agents-publish.gif>){: loading=lazy }
 
 
 **What Happens After Publishing:**
@@ -382,9 +446,67 @@ The **Publish** functionality allows you to make a specific version of your agen
   * You can make the necessary changes and resubmit the version for approval.
 
 
+### Exporting and Importing Agents
+
+ELITEA allows you to export the **currently selected version** of an agent as a file and import it into another project, making it easy to back up, share, and migrate your work. Export and import are always version-specific — there is no option to export the entire agent with all its versions at once.
+
+**Exporting an Agent Version:**
+
+1. Open the agent and select the **version** you want to export using the version selector.
+2. Click the **three-dot menu (⋮)** in the toolbar.
+3. Select **Export**. The file downloads automatically to your device.
+   - If the selected version has **no nested dependencies**, a single **`.md`** file is downloaded.
+   - If the selected version references **other agents as toolkits**, the export is a **`.zip`** file containing all dependencies.
+
+**Importing an Agent:**
+
+1. In the **Agents** dashboard, click the **Import** button in the toolbar.
+2. Upload the `.md` or `.zip` file previously exported from ELITEA.
+3. The Import Wizard displays entity cards for the main agent and any nested dependencies. Review configuration before confirming.
+4. Click **Import** to complete. The agent will appear in the current project.
+
+!!! note
+    After import, toolkits requiring authentication will need their credentials reconfigured manually.
+
+!!! info "Full Import/Export Guide"
+    For complete details on file formats, nested dependencies, and advanced options, see the **[Import/Export Agents and Pipelines guide](../how-tos/agents-pipelines/import-export.md)**.
+
+---
+
+### Forking Agents
+
+Forking copies the **currently selected version** of an agent from one project to another within the same ELITEA environment — no file download required. Only one version is forked at a time; there is no option to fork the entire agent with all its versions.
+
+**How to Fork an Agent Version:**
+
+1. Open the agent and select the **version** you want to fork using the version selector.
+2. Click the **three-dot menu (⋮)** in the toolbar and select **Fork**.
+3. In the **Fork parameters** wizard, choose a **target project** from the dropdown. No project is pre-selected; you must pick one manually.
+4. Review the entity cards — the main agent card and any nested agent dependencies that will be forked automatically.
+5. Click **Fork**. When complete, click **Got it** to navigate directly to the forked agent in the target project.
+
+!!! note "What gets forked"
+    - Only the **currently selected version** is forked.
+    - If the agent uses other agents as toolkits (nested dependencies), those are automatically included.
+    - **Model settings** are preserved if the model is available in the target project; otherwise the first available model is used.
+    - **Credentials** for toolkits must be reconfigured manually after forking.
+
+!!! info "Full Forking Guide"
+    For complete details and pipeline forking, see the **[Fork Agents and Pipelines guide](../how-tos/agents-pipelines/forking.md)**.
+
+---
+
 ## Viewing Agent History
 
-The **History** tab provides a complete audit trail of all past executions of your agent. This feature allows you to:
+The **Run History** panel provides a complete audit trail of all past executions of your agent.
+
+**How to access Run History:**
+
+1. Open any saved agent.
+2. In the **right panel** (embedded chat area), click the **clock icon** (🕐) in the top bar. The tooltip reads *"View run history"*.
+3. The agent page is replaced by the two-panel Run History display. Click the **✕ (Close)** button in the top-left to return.
+
+**What Run History shows:**
 
 - **Review past conversations**: View complete chat histories from previous agent runs
 - **Track performance**: Monitor execution duration across different versions
@@ -392,14 +514,36 @@ The **History** tab provides a complete audit trail of all past executions of yo
 - **Compare versions**: See how different agent versions performed with the same inputs
 - **Audit trail**: Maintain records of all agent interactions for compliance purposes
 
-The History tab displays runs in a two-panel layout with a list of all executions on the left (showing date, version, and duration) and the complete conversation replay on the right when you select a run.
+**Run History layout:**
+
+The Run History panel uses a two-panel layout:
+
+- **Left panel** — sortable list of all past runs. Click any column header to sort by that column:
+
+    | Column | Description |
+    |--------|-------------|
+    | **Date** | Timestamp of the run in `dd-MM-yyyy, hh:mm a` format |
+    | **Version** | Agent version used for the run |
+    | **Duration** | Total execution time of the run |
+
+    Click a row to load the conversation replay in the right panel.
+
+    Each row also has a **three-dot menu (⋮)** with the following actions:
+
+    | Action | Description |
+    |--------|-------------|
+    | **Share link** | Copies a direct URL to this run to the clipboard |
+    | **Delete** | Permanently removes this run record (with confirmation prompt) |
+    | **Restore conversation** | Pre-populates the embedded test chat with the selected run's message history. Note: restores chat history only — agent configuration, instructions, and tool settings are **not** reverted. |
+
+    The list supports infinite scroll — additional runs load automatically as you scroll down.
+
+- **Right panel** — full conversation replay of the selected run.
 
 ![History Tab](../img/menus/agents/agent-history-tab.gif){: loading=lazy }
 
 !!! info "Learn More About Agent History"
-    For detailed instructions on using the History tab, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines/agents-pipelines-history.md)**.
-
----
+    For detailed instructions on using the History panel, please refer to the **[Agents and Pipelines History Guide](../how-tos/agents-pipelines/agents-pipelines-history.md)**.
 
 ## Best Practices
 
@@ -453,7 +597,8 @@ If you encounter issues not covered in this guide or need additional assistance 
 
 !!! info "Additional Resources"
     For more detailed information on related topics, please refer to the following documentation:
-    
+
+    * **[Sensitive Action Authorization Guardrail](../how-tos/chat-conversations/sensitive-action-authorization-guardrail.md)** - Learn how the guardrail intercepts sensitive tool calls mid-execution and requires human approval before proceeding.
     * **[Credentials](credentials.md)** - Learn how to create and manage credentials for toolkit integrations
     * **[Glossary](../home/glossary.md)** - Definitions of key terms and concepts used in the ELITEA platform    
     * **[How to Create and Edit Agents from Canvas](../how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas.md)** - Create and configure agents directly from chat interface
