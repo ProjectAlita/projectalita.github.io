@@ -12,7 +12,7 @@ The Forking feature supports:
 - **In-place project transfer** — No file downloads required; the operation is fully integrated in the UI
 
 !!! note "Version Scope"
-    The Fork Wizard forks only the **currently selected version** of the agent ar pipeline. There is no option to select multiple versions during forking.
+    The Fork Wizard forks only the **currently selected version** of the agent or pipeline. There is no option to select multiple versions during forking.
 
 ---
 
@@ -171,7 +171,7 @@ The Fork Wizard opens as a modal dialog titled **"Fork parameters"**. It display
     - Select a different destination project where you have the required permissions
     - Request the fork permission from the target project's administrator
 
-??? warning "Issue: Some Items Have Already Existed"
+??? warning "Issue: Some Items Already Exist"
     **Cause:** An entity with the same internal object ID already exists in the target project. ELITEA prevents duplicate forks of the same entity to the same project.
     
     **Solution:**
