@@ -1,0 +1,16 @@
+{
+  "_note": "ELITEA brand colors — paste into mint.json 'colors' block to re-enable custom branding",
+  "colors": {
+    "primary": "#C428DD",
+    "light": "#F47CFF",
+    "dark": "#5488e8",
+    "background": {
+      "light": "#F8FCFF",
+      "dark": "#1A1F28"
+    },
+    "anchors": {
+      "from": "#6390FE",
+      "to": "#C428DD"
+    }
+  }
+}

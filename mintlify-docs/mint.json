@@ -1,0 +1,422 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+
+  "name": "ELITEA Documentation",
+  "logo": {
+    "light": "/img/favicon.ico",
+    "dark": "/img/favicon.ico",
+    "href": "https://elitea.ai"
+  },
+  "favicon": "/img/favicon.ico",
+
+  "colors": {
+    "primary": "#0D9373"
+  },
+
+  "topbarLinks": [
+    {
+      "name": "ELITEA Platform",
+      "url": "https://elitea.ai"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://elitea.ai"
+  },
+
+  "tabs": [
+    { "name": "Home",            "url": "home",            "icon": "house" },
+    { "name": "Getting Started", "url": "getting-started", "icon": "rocket" },
+    { "name": "Menus",           "url": "menus",           "icon": "compass" },
+    { "name": "How-To Guides",   "url": "how-tos",         "icon": "book-open" },
+    { "name": "Integrations",    "url": "integrations",    "icon": "plug" },
+    { "name": "Release Notes",   "url": "release-notes",   "icon": "newspaper" },
+    { "name": "Migration",       "url": "migration",       "icon": "arrow-up-from-bracket" },
+    { "name": "Support",         "url": "support",         "icon": "life-ring" }
+  ],
+
+  "anchors": [
+    {
+      "name": "FAQs",
+      "icon": "circle-question",
+      "url": "support/faqs"
+    },
+    {
+      "name": "Release Notes",
+      "icon": "newspaper",
+      "url": "release-notes/rn_current"
+    },
+    {
+      "name": "Contact Support",
+      "icon": "envelope",
+      "url": "support/contact-support"
+    }
+  ],
+
+  "navigation": [
+    {
+      "group": "Welcome to ELITEA",
+      "icon": "house",
+      "pages": [
+        "index",
+        "home/introduction",
+        "home/glossary",
+        "home/onboarding-tips"
+      ]
+    },
+    {
+      "group": "Key Concepts",
+      "icon": "lightbulb",
+      "pages": [
+        "home/key-concepts/what-is-an-agent",
+        "home/key-concepts/what-is-a-pipeline",
+        "home/key-concepts/what-is-a-credential",
+        "home/key-concepts/what-is-a-toolkit",
+        "home/key-concepts/what-is-a-conversation",
+        "home/key-concepts/what-is-an-artifact"
+      ]
+    },
+
+    {
+      "group": "Quick Start",
+      "icon": "rocket",
+      "pages": [
+        "getting-started/chat-quick-start",
+        "getting-started/connect-toolkits-quick-start"
+      ]
+    },
+    {
+      "group": "Troubleshooting & System Check",
+      "icon": "stethoscope",
+      "pages": [
+        "getting-started/system-health-checklist"
+      ]
+    },
+    {
+      "group": "Guides (Advanced)",
+      "icon": "graduation-cap",
+      "pages": [
+        "how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas",
+        "how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas",
+        "getting-started/create-artifact",
+        "how-tos/indexing/using-indexes-tab-interface",
+        "integrations/mcp/create-and-use-server-stdio",
+        "integrations/mcp/create-and-use-client-stdio",
+        "integrations/mcp/create-and-use-remote-mcp",
+        "getting-started/configure-epam-ai-dial-key",
+        "getting-started/create-personal-access-token",
+        "getting-started/create-secret",
+        "getting-started/create-credential"
+      ]
+    },
+
+    {
+      "group": "Main Menus",
+      "icon": "compass",
+      "pages": [
+        "menus/overview",
+        "menus/chat",
+        "menus/agents",
+        "menus/pipelines",
+        "menus/credentials",
+        "menus/toolkits",
+        "menus/mcps",
+        "menus/artifacts",
+        "menus/agents-studio",
+        {
+          "group": "Settings",
+          "pages": [
+            "menus/settings/settings-overview",
+            "menus/settings/ai-configuration",
+            "menus/settings/personal-tokens",
+            "menus/settings/secrets",
+            "menus/settings/users",
+            "menus/settings/analytics"
+          ]
+        },
+        {
+          "group": "Profile",
+          "pages": [
+            "menus/profile/personalization"
+          ]
+        }
+      ]
+    },
+
+    {
+      "group": "Chat & Conversations",
+      "icon": "comments",
+      "pages": [
+        "how-tos/chat-conversations/how-to-use-chat-functionality",
+        "how-tos/chat-conversations/how-to-canvas",
+        "how-tos/chat-conversations/file-editing-canvas",
+        "how-tos/chat-conversations/use-public-items-from-chat",
+        "how-tos/chat-conversations/add-teammates-to-conversation",
+        "how-tos/chat-conversations/context-management",
+        "how-tos/chat-conversations/sensitive-action-authorization-guardrail",
+        {
+          "group": "Canvas - Create and Edit Entities",
+          "pages": [
+            "how-tos/chat-conversations/how-to-create-and-edit-agents-from-canvas",
+            "how-tos/chat-conversations/how-to-create-and-edit-pipelines-from-canvas",
+            "how-tos/chat-conversations/how-to-create-and-edit-toolkits-from-canvas",
+            "how-tos/chat-conversations/how-to-create-and-edit-mcps-from-canvas"
+          ]
+        },
+        {
+          "group": "Internal Tools",
+          "pages": [
+            "how-tos/chat-conversations/attach-files",
+            "how-tos/chat-conversations/image-generation",
+            "how-tos/chat-conversations/smart-tools-selection-internal-tool",
+            "how-tos/chat-conversations/python-sandbox-internal-tool",
+            "how-tos/chat-conversations/data-analysis-internal-tool",
+            "how-tos/chat-conversations/planner-internal-tool",
+            "how-tos/chat-conversations/swarm-mode-internal-tool"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Indexing",
+      "icon": "database",
+      "pages": [
+        "how-tos/indexing/indexing-overview",
+        "how-tos/indexing/indexing-tools",
+        "how-tos/indexing/using-indexes-tab-interface",
+        "how-tos/indexing/schedule-indexing",
+        "how-tos/indexing/vector_search",
+        {
+          "group": "Toolkit-Specific Indexing Guides",
+          "pages": [
+            "how-tos/indexing/index-github-data",
+            "how-tos/indexing/index-confluence-data",
+            "how-tos/indexing/index-jira-data",
+            "how-tos/indexing/index-sharepoint-data",
+            "how-tos/indexing/index-artifacts-data",
+            "how-tos/indexing/index-figma-data",
+            "how-tos/indexing/index-testrail-data",
+            "how-tos/indexing/index-xray-data",
+            "how-tos/indexing/index-zephyr-data",
+            "how-tos/indexing/index-ado-wiki-data"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Agents & Pipelines",
+      "icon": "robot",
+      "pages": [
+        "how-tos/agents-pipelines/agents-pipelines-history",
+        "how-tos/agents-pipelines/entity-versioning",
+        "how-tos/agents-pipelines/import-export",
+        "how-tos/agents-pipelines/forking",
+        {
+          "group": "Pipeline Building Blocks",
+          "pages": [
+            "how-tos/pipelines/overview",
+            "how-tos/pipelines/states",
+            {
+              "group": "Nodes",
+              "pages": [
+                "how-tos/pipelines/nodes/overview",
+                "how-tos/pipelines/nodes/interaction-nodes",
+                "how-tos/pipelines/nodes/execution-nodes",
+                "how-tos/pipelines/nodes/control-flow-nodes",
+                "how-tos/pipelines/nodes/utility-nodes"
+              ]
+            },
+            "how-tos/pipelines/nodes-connectors",
+            "how-tos/pipelines/entry-point",
+            "how-tos/pipelines/flow-editor",
+            "how-tos/pipelines/ai-assistant-in-nodes",
+            "how-tos/pipelines/pipeline-runs",
+            "how-tos/pipelines/yaml",
+            "how-tos/pipelines/appendix-comparison-tables"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Credentials & Toolkits",
+      "icon": "key",
+      "pages": [
+        "how-tos/credentials-toolkits/how-to-use-credentials",
+        "how-tos/credentials-toolkits/creating-toolkits-with-user-specific-credentials",
+        "how-tos/credentials-toolkits/how-to-test-toolkit-tools",
+        "how-tos/credentials-toolkits/toolkit_history_tab",
+        "how-tos/credentials-toolkits/jira-automation-with-elitea",
+        "how-tos/credentials-toolkits/how-to-use-webhooks"
+      ]
+    },
+    {
+      "group": "Entity Management",
+      "icon": "folder-tree",
+      "pages": [
+        "how-tos/entity-management/search-entities",
+        "how-tos/entity-management/working-with-pins",
+        "how-tos/entity-management/organizing-entities"
+      ]
+    },
+
+    {
+      "group": "MCP",
+      "icon": "server",
+      "pages": [
+        "integrations/mcp/create-and-use-server-stdio",
+        "integrations/mcp/create-and-use-client-stdio",
+        "integrations/mcp/create-and-use-remote-mcp",
+        "integrations/mcp/mcp-server-sse",
+        "integrations/mcp/make-tools-available-by-mcp"
+      ]
+    },
+    {
+      "group": "Toolkits",
+      "icon": "screwdriver-wrench",
+      "pages": [
+        "integrations/toolkits/ado_repos_toolkit",
+        "integrations/toolkits/ado_wiki_plan_board_toolkit",
+        "integrations/toolkits/artifact_toolkit",
+        "integrations/toolkits/bitbucket_toolkit",
+        "integrations/toolkits/confluence_toolkit",
+        "integrations/toolkits/custom_toolkit",
+        "integrations/toolkits/figma_toolkit",
+        "integrations/toolkits/github_toolkit",
+        "integrations/toolkits/gitlab_toolkit",
+        "integrations/toolkits/gitlab_org_toolkit",
+        "integrations/toolkits/google_places_toolkit",
+        "integrations/toolkits/jira_toolkit",
+        "integrations/toolkits/memory_toolkit",
+        "integrations/toolkits/openapi_toolkit",
+        "integrations/toolkits/postman_toolkit",
+        "integrations/toolkits/powerpoint_toolkit",
+        "integrations/toolkits/qtest_toolkit",
+        "integrations/toolkits/rally_toolkit",
+        "integrations/toolkits/reportportal_toolkit",
+        "integrations/toolkits/salesforce_toolkit",
+        "integrations/toolkits/servicenow_toolkit",
+        "integrations/toolkits/sharepoint_toolkit",
+        "integrations/toolkits/slack_toolkit",
+        "integrations/toolkits/sonar_toolkit",
+        "integrations/toolkits/sql_toolkit",
+        "integrations/toolkits/syngen_toolkit",
+        "integrations/toolkits/testIO_toolkit",
+        "integrations/toolkits/testrail_toolkit",
+        "integrations/toolkits/xray_toolkit",
+        "integrations/toolkits/zephyr_scale_toolkit",
+        "integrations/toolkits/zephyr_enterprise_toolkit"
+      ]
+    },
+    {
+      "group": "Third-Party Integrations",
+      "icon": "plug",
+      "pages": [
+        "integrations/third-party-integrations/api-usage",
+        "integrations/third-party-integrations/power-automate-integration",
+        "integrations/third-party-integrations/langfuse"
+      ]
+    },
+    {
+      "group": "Extensions",
+      "icon": "puzzle-piece",
+      "pages": [
+        "integrations/extensions/elitea-code",
+        "integrations/extensions/elitea-code-chat"
+      ]
+    },
+
+    {
+      "group": "Current Version",
+      "icon": "tag",
+      "pages": [
+        "release-notes/rn_current"
+      ]
+    },
+    {
+      "group": "Previous Versions",
+      "icon": "clock-rotate-left",
+      "pages": [
+        "release-notes/archived/rn15",
+        "release-notes/archived/rn14",
+        "release-notes/archived/rn13",
+        "release-notes/archived/rn12",
+        "release-notes/archived/rn11",
+        "release-notes/archived/rn10",
+        "release-notes/archived/rn9",
+        "release-notes/archived/rn8",
+        "release-notes/archived/rn7",
+        "release-notes/archived/rn6",
+        "release-notes/archived/rn5",
+        "release-notes/archived/rn4",
+        "release-notes/archived/rn3",
+        "release-notes/archived/rn2",
+        "release-notes/archived/rn1"
+      ]
+    },
+
+    {
+      "group": "Upgrading to v2.0.1",
+      "icon": "arrow-up-from-bracket",
+      "pages": [
+        "migration/v2.0.1/migration-overview",
+        "migration/v2.0.1/condition-node-migration",
+        "migration/v2.0.1/function-node-migration",
+        "migration/v2.0.1/loop-node-migration",
+        "migration/v2.0.1/pipeline-node-migration",
+        "migration/v2.0.1/tool-node-migration",
+        "migration/v2.0.1/pipeline-save-button",
+        "migration/v2.0.1/openapi-toolkit-migration",
+        "migration/v2.0.1/pandas-toolkit-migration"
+      ]
+    },
+    {
+      "group": "Upgrading to v2.0.0 B",
+      "icon": "arrow-up-from-bracket",
+      "pages": [
+        "migration/v2.0.0/migration-overview",
+        "migration/v2.0.0/update-llm-nodes",
+        "migration/v2.0.0/update-pipelines"
+      ]
+    },
+    {
+      "group": "Upgrading to v1.7.0",
+      "icon": "arrow-up-from-bracket",
+      "pages": [
+        "migration/v1.7.0/migration-overview",
+        "migration/v1.7.0/next-quick-start",
+        "migration/v1.7.0/migrate-datasources-to-indexing"
+      ]
+    },
+
+    {
+      "group": "Support",
+      "icon": "life-ring",
+      "pages": [
+        "support/faqs",
+        "support/troubleshooting",
+        "support/contact-support",
+        "support/additional-resources"
+      ]
+    }
+  ],
+
+  "footerSocials": {
+    "website":  "https://elitea.ai",
+    "linkedin": "https://www.linkedin.com/company/elitea-ai"
+  },
+
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true,
+    "raiseIssue": true
+  },
+
+  "modeToggle": {
+    "default": "light",
+    "isHidden": false
+  },
+
+  "search": {
+    "prompt": "Search ELITEA docs..."
+  }
+}
